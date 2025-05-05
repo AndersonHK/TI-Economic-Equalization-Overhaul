@@ -30,7 +30,7 @@ namespace TIEconomyMod
             if (totalRegions >= 4) regionsMult += 0.025f * (totalRegions - 3); //2.5% bonus for fourth region and beyond
 
             //Demographic stat bonuses
-            float educationMult = 1f + (0.15f * __instance.education); //get 15% bonus growth per education point
+            // float educationMult = 1f + (0.15f * __instance.education); //get 15% bonus growth per education point Removed this bonus
             float democracyMult = 1f + (0.05f * __instance.democracy); //get 5% bonus growth per democracy point
             float cohesionMult = 1.2f - (Mathf.Abs(__instance.cohesion - 5) * 0.04f); //at 5 cohesion, get 120% growth, reduced by 4% per point away from 5
 
@@ -38,10 +38,11 @@ namespace TIEconomyMod
             //This is an exponential decay function that gives countries with very low GDP per capita a large (up to 6 times!) bonus to growth
             //This is 6 for a country with 0 gdp per capita, about 3.25 for a country with 15k, 1.76 for a country with 30k, 1 for a country with 44k, and 0.34 for a country with 70k
             //In other words, countries with low gdp per capita will grow their absolute gdp per capita much faster than a country with higher, with things really speeding up for the first 15-20k, and really slowing down after 50k gdp per capita
-            float perCapGDPMult = 6f * Mathf.Pow(0.96f, __instance.perCapitaGDP / 1000f);
+            float educationScaling = Mathf.Pow(0.96f,1/(__instance.education / 10)); // changed it so that instead of education giving a flat bonus, it changes the GDP scaling
+            float perCapGDPMult = 6f * Mathf.Pow(educationScaling, __instance.perCapitaGDP / 1000f); // was (0.96f, __instance.perCapitaGDP / 1000f)
 
 
-            float modifiedGDPChange = baseGDPChange * regionsMult * educationMult * democracyMult * cohesionMult * perCapGDPMult; //Final amount of gdp to gain
+            float modifiedGDPChange = baseGDPChange * regionsMult * democracyMult * cohesionMult * perCapGDPMult; //Final amount of gdp to gain removed educationMult
 
             float finalPerCapGDPChange = modifiedGDPChange / __instance.population; //Amount to change GDP per capita by
 
