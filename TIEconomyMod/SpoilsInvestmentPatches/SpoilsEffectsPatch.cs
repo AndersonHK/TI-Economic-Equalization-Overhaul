@@ -19,7 +19,7 @@ namespace TIEconomyMod
             //Otherwise, this method is almost as vanilla, barring referenced values that are changed in other patches
 
             //Below as vanilla
-            __instance.AddToInequality(__instance.spoilsPriorityInequalityChange);
+            __instance.AddToInequality(__instance.spoilsPriorityInequalityChange, TINationState.InequalityChangeReason.SpoilsPriority); //Added TINationState.InequalityChangeReason.SpoilsPriority
             __instance.AddToDemocracy(__instance.spoilsPriorityDemocracyChange);
 
             TIFactionState controlPointTypeOwner = __instance.GetControlPointTypeOwner(ControlPointType.Aristocracy);
@@ -62,7 +62,7 @@ namespace TIEconomyMod
 
 
             //Below as vanilla
-            TIGlobalValuesState.GlobalValues.AddSpoilsPriorityEnvEffect(__instance);
+            TIGlobalValuesState.GlobalValues.AddSpoilsPriorityEnvEffect(__instance, 1);  //Added 1 to scaling
 
 
             return false; //Cancels the call to the original method but runs any other prefixes

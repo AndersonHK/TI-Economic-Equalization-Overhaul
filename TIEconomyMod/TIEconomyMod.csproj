@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TIEconomyMod</RootNamespace>
     <AssemblyName>TIEconomyMod</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
@@ -122,6 +122,10 @@
     <None Include="ModFiles\Templates\TITechTemplate.json" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="libs\0Harmony.dll" />
+    <Content Include="libs\Assembly-CSharp.dll" />
+    <Content Include="libs\UnityEngine.CoreModule.dll" />
+    <Content Include="libs\UnityModManager.dll" />
     <Content Include="ModFiles\Economic Equalization Overhaul.png" />
   </ItemGroup>
   <ItemGroup />

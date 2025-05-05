@@ -28,7 +28,7 @@ namespace TIEconomyMod.SpoilsInvestmentPatches
             if (nation.currentResourceRegions >= 4) resRegionCO2Mult += (0.80f / 8f) * (nation.currentResourceRegions - 3);
             //This is a stronger increase to emissions compared to the increase in money
 
-            __instance.AddCO2_ppm(baseCO2 * resRegionCO2Mult);
+            __instance.AddCO2_ppm(baseCO2 * resRegionCO2Mult, GHGSources.SpoilsPriority);
 
 
             //CH4
@@ -41,7 +41,7 @@ namespace TIEconomyMod.SpoilsInvestmentPatches
             if (nation.currentResourceRegions >= 4) resRegionCH4Mult += (1.0f / 8f) * (nation.currentResourceRegions - 3);
             //This is double the increase to emissions compared to the increase in money
 
-            __instance.AddCH4_ppm(baseCH4 * resRegionCH4Mult);
+            __instance.AddCH4_ppm(baseCH4 * resRegionCH4Mult, GHGSources.SpoilsPriority);
 
 
             //N2O
@@ -54,7 +54,7 @@ namespace TIEconomyMod.SpoilsInvestmentPatches
             if (nation.currentResourceRegions >= 4) resRegionN2OMult += (1.0f / 8f) * (nation.currentResourceRegions - 3);
             //This is double the increase to emissions compared to the increase in money
 
-            __instance.AddN2O_ppm(baseN2O * resRegionN2OMult);
+            __instance.AddN2O_ppm(baseN2O * resRegionN2OMult, GHGSources.SpoilsPriority);
 
 
 

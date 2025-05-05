@@ -14,11 +14,12 @@ namespace TIEconomyMod.EconomyInvestmentPatches
         [HarmonyPrefix]
         public static bool AddEconomyPriorityEnvEffectOverwrite(TINationState nation, TIGlobalValuesState __instance)
         {
+            /*
             //Overwrites the vanilla greenhouse gas emissions values for completing an economy investment
             //Applies a diminishing returns effect on the emissions from resource regions
 
             //CO2
-            float baseCO2 = TemplateManager.global.EcoCO2_ppm; //Flat per investment completion
+            float baseCO2 = TemplateManager.global.SpoCO2_ppm; //Flat per investment completion, changed from EcoCO2_ppm to SpoCO2_ppm
 
             float resRegionCO2Mult = 1.0f;
             if (nation.currentResourceRegions >= 1) resRegionCO2Mult += 0.3f;
@@ -27,11 +28,11 @@ namespace TIEconomyMod.EconomyInvestmentPatches
             if (nation.currentResourceRegions >= 4) resRegionCO2Mult += (0.3f / 8f) * (nation.currentResourceRegions - 3);
             //Emissions mult is >2x higher than the gdp mult
 
-            __instance.AddCO2_ppm(baseCO2 * resRegionCO2Mult);
+            __instance.AddCO2_ppm(baseCO2 * resRegionCO2Mult, GHGSources.SpoilsPriority); //Added GHGSources.SpoilsPriority
 
 
             //CH4
-            float baseCH4 = TemplateManager.global.EcoCH4_ppm;
+            float baseCH4 = TemplateManager.global.SpoCH4_ppm; //Changed from EcoCH4_ppm to SpoCH4_ppm
 
             float resRegionCH4Mult = 1.0f;
             if (nation.currentResourceRegions >= 1) resRegionCH4Mult += 0.2f;
@@ -40,11 +41,11 @@ namespace TIEconomyMod.EconomyInvestmentPatches
             if (nation.currentResourceRegions >= 4) resRegionCH4Mult += (0.2f / 8f) * (nation.currentResourceRegions - 3);
             //Emissions mult is slightly higher than the gdp mult
 
-            __instance.AddCH4_ppm(baseCH4 * resRegionCH4Mult);
+            __instance.AddCH4_ppm(baseCH4 * resRegionCH4Mult, GHGSources.SpoilsPriority); //Added GHGSources.SpoilsPriority
 
 
             //N2O
-            float baseN2O = TemplateManager.global.EcoN2O_ppm;
+            float baseN2O = TemplateManager.global.SpoN2O_ppm; //Changed from EcoN2O_ppm to SpoN2O_ppm
 
             float resRegionN2OMult = 1.0f;
             if (nation.currentResourceRegions >= 1) resRegionN2OMult += 0.05f;
@@ -53,12 +54,12 @@ namespace TIEconomyMod.EconomyInvestmentPatches
             if (nation.currentResourceRegions >= 4) resRegionN2OMult += (0.05f / 8f) * (nation.currentResourceRegions - 3);
             //Emissions mult is significantly lower than the gdp mult
 
-            __instance.AddN2O_ppm(baseN2O * resRegionN2OMult);
+            __instance.AddN2O_ppm(baseN2O * resRegionN2OMult, GHGSources.SpoilsPriority); //Added GHGSources.SpoilsPriority
 
 
 
-
-            return false; //Skip the original method
+            */
+            return true; //Skip the original method Changed to true
         }
     }
 }
