@@ -34,7 +34,7 @@ namespace TIEconomyMod
             //Each investment still removes 0.0167 inequality, as this is a function only of population which is still 20 million.
             //12 investments a month removes 0.20 inequality a month, twice the amount due to twice the economic expense for the same population.
 
-            __result = -333333f / __instance.population;
+            __result = Math.Min(-100000f / __instance.population * (__instance.inequality - 1),0); //Changed from a simple -333333f / __instance.population by multiplying with inequality, too many countries fall down to 1 very easily.
 
             return false; //Skip original getter
         }

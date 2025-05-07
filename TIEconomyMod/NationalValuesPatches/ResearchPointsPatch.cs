@@ -29,7 +29,7 @@ namespace TIEconomyMod
 
             float educationEffect = Mathf.Pow(__instance.education, 2.0f); //Vanilla power 2
 
-            float gdpPerCapEffect = Mathf.Max(__instance.perCapitaGDP / 20000f, 0.6f); //Floored at 60% research at 12000 gdp per capita, 200% at 40k, and indefinitely upward
+            float gdpPerCapEffect = __instance.perCapitaGDP / 20000f; //Removed floor at 60% research at 12000 gdp per capita, 200% at 40k, and indefinitely upward
             float democracyEffect = Mathf.Pow(Mathf.Max(__instance.democracy, 0.1f), 0.2f); //Vanilla, gives about 60% boost at 10 democracy, 40% penalty at 0
             float cohesionEffect = (1.25f - Mathf.Abs(__instance.cohesion - 5f) / 10f); //Vanilla, get 25% research boost at 5 cohesion, 25% penalty at 0 or 10 cohesion
             float unrestEffect = (1f - Mathf.Max(__instance.unrest - 2f, 0f) / 10f); //Vanilla, get 100% research at <=2 unrest, up to 80% penalty at 10 unrest

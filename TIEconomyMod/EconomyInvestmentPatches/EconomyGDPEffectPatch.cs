@@ -22,7 +22,7 @@ namespace TIEconomyMod
 
             //Resource and core economic region multiplier
             //Get a diminishing-return % bonus to growth based on total number of these regions
-            int totalRegions = __instance.currentResourceRegions + __instance.currentCoreEconomicRegions;
+            int totalRegions = __instance.currentCoreEconomicRegions; //Removed __instance.currentResourceRegions
             float regionsMult = 1f;
             if (totalRegions >= 1) regionsMult += 0.2f; //20% bonus for first region
             if (totalRegions >= 2) regionsMult += 0.1f; //10% bonus for second region
@@ -38,9 +38,21 @@ namespace TIEconomyMod
             //This is an exponential decay function that gives countries with very low GDP per capita a large (up to 6 times!) bonus to growth
             //This is 6 for a country with 0 gdp per capita, about 3.25 for a country with 15k, 1.76 for a country with 30k, 1 for a country with 44k, and 0.34 for a country with 70k
             //In other words, countries with low gdp per capita will grow their absolute gdp per capita much faster than a country with higher, with things really speeding up for the first 15-20k, and really slowing down after 50k gdp per capita
-            float educationScaling = Mathf.Pow(0.96f,1/(__instance.education / 10)); // changed it so that instead of education giving a flat bonus, it changes the GDP scaling
+
+            //Replaced the fixed 0.96f with a value that gradually approaches 1 as the tech progresses, but never reaches it
+            float techScaling = 0.9f + 0.1f * (GameStateManager.GlobalResearch().finishedTechsNames.Count + 60f / (GameStateManager.GlobalResearch().finishedTechsNames.Count + 100f));
+
+            //Basically workforce and know-how
+            float educationScaling = Mathf.Pow(techScaling, 1/(__instance.education / 10)); // changed it so that instead of education giving a flat bonus, it changes the GDP scaling
             float perCapGDPMult = 6f * Mathf.Pow(educationScaling, __instance.perCapitaGDP / 1000f); // was (0.96f, __instance.perCapitaGDP / 1000f)
 
+            //The below additions to CapGDP Mult should compensate for the resource region changes and heavily punish instability
+
+            // Natural Resources Availability
+            perCapGDPMult += 2f * Mathf.Pow(Mathf.Pow(techScaling, __instance.unrest), (float)(__instance.GDP / (__instance.currentResourceRegions * 100000000000d))); //Receive a bonus of up to 100% based on GDP / resource regions * 100B
+
+            // Populational density (agriculture/forestry)
+            perCapGDPMult += Mathf.Pow(Mathf.Pow(techScaling, __instance.unrest), (__instance.populationDesnity_pop_km2 / 50f)); //Received a small bonus based on populational density
 
             float modifiedGDPChange = baseGDPChange * regionsMult * democracyMult * cohesionMult * perCapGDPMult; //Final amount of gdp to gain removed educationMult
 

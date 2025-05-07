@@ -27,6 +27,7 @@ namespace TIEconomyMod.MissionPatches
             {
                 float vanillaEcoScore = Mathf.Pow(tINationState.economyScore * 100f, 0.33f); //This is the vanilla economyScore the country would have
                 __result = vanillaEcoScore * TemplateManager.global.TIMissionModifier_TargetNationGDP_Multiplier;
+                //__result = vanillaEcoScore * ( 1f - (tINationState.democracy / 10f ) ) + tINationState.democracy * 2;
             }
 
 
