@@ -31,7 +31,7 @@ for the current patch-by-patch review.
 - GDP-normalized Economy, Welfare, and Spoils Inequality effects with smooth
   bounded behavior on TI's 1-9 scale.
 - GDP-only economy emissions; fixed atmospheric removal per completed IP;
-  GDP-relative sustainability transition; land-relative nuclear damage.
+  GDP-relative sustainability transition; no direct Spoils gas pulse; land-relative nuclear damage.
 - Population-normalized Unity, Knowledge, Government, Oppression, and selected
   Spoils social effects.
 - Army-count-normalized Military technology and per-army upkeep.
@@ -70,7 +70,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\verify.ps1
 Verification rebuilds with warnings as errors, runs dependency-free formula
 tests, validates the implementation matrix against settings and Harmony patches,
 checks the manifest/package layout, and creates
-`artifacts/TIEconomyMod-0.6.0-ti1.0.47.zip`.
+`artifacts/TIEconomyMod-0.6.1-ti1.0.47.zip`.
 
 ## Smoke test
 

@@ -31,7 +31,7 @@ from making a proportional effect scale incorrectly.
 | `UnityPropagandaPatch` | Vanilla demographic effect × configured strength | Aligned. It changes only one config field load and preserves TI 1.0.47 claims and completion logic. |
 | `SpoilsGovernmentPatch` | Population / institutions | Aligned with the selected inverse-population behavior. |
 | `SpoilsSustainabilityPatch` | GDP | Aligned. Spoils damages carbon intensity, so its per-IP change falls with the economy and rises with resource dependence while Abundance is enabled. |
-| `SpoilsPropagandaPatch` | Vanilla demographic effect × configured strength | Aligned. It preserves payout, CP, corruption, sustainability, and emissions branches. |
+| `SpoilsPropagandaPatch` | Vanilla demographic effect × configured strength | Aligned. It preserves payout, CP, corruption, and Sustainability, scales propaganda, then deletes vanilla's final direct atmospheric-emissions block. |
 | `SpoilsMoneyPatch` | Fixed payout × resources/GDP × Government | Aligned. The curve is continuous from no resource premium toward the configured maximum; no region-count table remains, and disabling Abundance leaves the base/Government payout. |
 | `EconomyRegionThresholdPatch` | Fixed accumulated IP | Aligned. Region conversion is a fixed capital project; default x5 makes it harder without border-sensitive scaling. |
 | `DecolonizationThresholdPatch` | Fixed accumulated IP | Aligned. The threshold is a political project cost and uses the same guarded multiplier. |

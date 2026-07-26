@@ -58,7 +58,7 @@ $manifest = Get-Content -LiteralPath $manifestPath -Raw | ConvertFrom-Json
 if ($manifest.GameVersion -ne '1.0.47') {
     throw "ModInfo.json targets '$($manifest.GameVersion)' instead of TI 1.0.47."
 }
-if ($manifest.Version -ne '0.6.0') {
+if ($manifest.Version -ne '0.6.1') {
     throw "ModInfo.json version '$($manifest.Version)' does not match this release."
 }
 if ($manifest.AssemblyName -ne 'Assembly/TIEconomyMod.dll') {
@@ -107,7 +107,7 @@ if (Test-Path -LiteralPath $imagePath) {
     Copy-Item -LiteralPath $imagePath -Destination $stagingDirectory
 }
 
-$zipPath = Join-Path $artifactDirectory 'TIEconomyMod-0.6.0-ti1.0.47.zip'
+$zipPath = Join-Path $artifactDirectory 'TIEconomyMod-0.6.1-ti1.0.47.zip'
 if (Test-Path -LiteralPath $zipPath) {
     Remove-Item -LiteralPath $zipPath
 }

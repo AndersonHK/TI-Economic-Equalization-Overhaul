@@ -62,40 +62,41 @@ namespace TIEconomyMod.Patches
     [HarmonyPatch(typeof(TINationState), "OnSpoilsPriorityComplete")]
     public static class SpoilsPropagandaPatch
     {
-        private static readonly FieldInfo VanillaScaling = AccessTools.Field(
-            typeof(TIGlobalConfig), "spoilsPriorityPublicOpinionScaling");
-        private static readonly MethodInfo ConfiguredScaling = AccessTools.Method(
-            typeof(SpoilsPropagandaPatch), nameof(GetConfiguredScaling));
+        private static readonly FieldInfo VanillaScaling = AccessTools.Field(typeof(TIGlobalConfig), "spoilsPriorityPublicOpinionScaling");
+        private static readonly MethodInfo DirectEmissions = AccessTools.Method(typeof(TIGlobalValuesState), "AddSpoilsPriorityEnvEffect");
 
         [HarmonyTranspiler]
         public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
-            // Preserve vanilla's entire Spoils completion: payout distribution, Aristocracy
-            // and Extractive Sector CP effects, corruption checks, Government/Inequality,
-            // Sustainability, and emissions. Only anti-propaganda strength is reduced to
-            // 20%, preventing linear IP from multiplying its nonlinear population effect.
-            List<CodeInstruction> patched = new List<CodeInstruction>();
-            int replacements = 0;
-            foreach (CodeInstruction instruction in instructions)
+            // Keep every vanilla effect through AddToSustainability, then remove the final
+            // eight instructions that calculate and inject a second CO2/CH4/N2O pulse.
+            // Spoils now raises future GDP emissions only through Sustainability.
+            List<CodeInstruction> patched = new List<CodeInstruction>(instructions);
+            int scalingLoads = 0, emissionsCalls = 0;
+            for (int index = 0; index < patched.Count; index++)
             {
+                CodeInstruction instruction = patched[index];
                 if (instruction.opcode == OpCodes.Ldfld &&
                     Equals(instruction.operand, VanillaScaling))
                 {
-                    CodeInstruction replacement = new CodeInstruction(OpCodes.Call, ConfiguredScaling);
-                    replacement.labels.AddRange(instruction.labels);
-                    replacement.blocks.AddRange(instruction.blocks);
-                    patched.Add(replacement);
-                    replacements++;
+                    instruction.opcode = OpCodes.Call;
+                    instruction.operand = AccessTools.Method(
+                        typeof(SpoilsPropagandaPatch), nameof(GetConfiguredScaling));
+                    scalingLoads++;
                 }
-                else
+                else if ((instruction.opcode == OpCodes.Call ||
+                    instruction.opcode == OpCodes.Callvirt) &&
+                    Equals(instruction.operand, DirectEmissions))
                 {
-                    patched.Add(instruction);
+                    patched.RemoveRange(index - 7, 8);
+                    index -= 8;
+                    emissionsCalls++;
                 }
             }
-            if (replacements != 1)
+            if (scalingLoads != 1 || emissionsCalls != 1)
             {
-                string message = "Spoils propaganda IL changed: expected one scaling field load, found " +
-                    replacements + ". Refusing a partial compatibility patch.";
+                string message = "Spoils IL changed: expected one propaganda load and one direct-emissions call; found " +
+                    scalingLoads + " and " + emissionsCalls + ".";
                 Main.Warn(message);
                 throw new InvalidOperationException(message);
             }
@@ -104,10 +105,8 @@ namespace TIEconomyMod.Patches
 
         public static float GetConfiguredScaling(TIGlobalConfig config)
         {
-            return config.spoilsPriorityPublicOpinionScaling *
-                (Main.FeatureEnabled(Main.settings.spoils.enabled)
-                    ? Main.settings.spoils.propagandaMultiplier
-                    : 1f);
+            return config.spoilsPriorityPublicOpinionScaling * (Main.FeatureEnabled(
+                Main.settings.spoils.enabled) ? Main.settings.spoils.propagandaMultiplier : 1f);
         }
     }
 }
