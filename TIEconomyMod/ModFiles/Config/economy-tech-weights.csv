@@ -1,0 +1,82 @@
+tech_id,enabled,percent,rationale
+ElectrothermalPropulsion,true,0.5,Propulsion-only spillover cap
+AdvancedMagnetics,true,0.5,Low-cost energy enabling technology
+HighEnergyLasers,true,0.5,Weapon-only spillover cap
+MassDrivers,true,0.5,Weapon and launch spillover cap
+VacuumElectrostaticPrinciples,true,0.5,Early energy enabling technology
+ElectromagneticPropulsion,true,0.5,Propulsion-only spillover cap
+MagneticForceManipulation,true,0.5,Early energy enabling technology
+ElectrostaticPropulsion,true,0.5,Propulsion-only spillover cap
+ParticleCannon,true,0.5,Weapon-only spillover cap
+SolidCoreFissionSystems,true,1,Fission semantic override
+AntimatterContainment,true,1,General energy research cost tier
+MoltenCoreFissionSystems,true,1,Fission semantic override
+ElectrostaticPlasmaConfinement,true,1.5,General energy research cost tier
+GasCoreFissionSystems,true,1.5,Fission semantic override
+AdvancedFissionSystems,true,2,Fission semantic override
+ArcLasers,true,0.5,Weapon-only spillover cap
+Tokamaks,true,1.5,Major fusion enabling milestone
+MagneticPlasmaConfinementTechniques,true,2,Major fusion enabling milestone
+CleanEnergy,true,3,Direct economy-wide clean energy milestone
+DeuteriumTritiumFusion,true,3,Major fusion milestone
+MagneticNozzles,true,0.5,Propulsion-only spillover cap
+ZPinchTechniques,true,2,Major fusion enabling milestone
+InertialPlasmaConfinementTechniques,true,3,Major fusion enabling milestone
+PhasedArrayLasers,true,0.5,Weapon-only spillover cap
+AneutronicFusion,true,3,Major fusion milestone
+DeuteriumDeuteriumFusion,true,3,Major fusion milestone
+DeuteriumHelium3Fusion,true,3,Major fusion milestone
+FutureTechEnergy,true,4,Transformative late energy technology
+ProtonProtonFusion,true,4,Transformative fusion milestone
+TerawattFusionReactors,true,4,Commercial fusion economy proxy
+AntimatterMassProduction,true,4,Transformative mass production milestone
+AdvancedCarbonManipulation,true,0.5,Low-cost materials enabling technology
+AdvancedChemicalRocketry,true,1,Explicit launch technology override
+OrbitalShipbuilding,true,0.5,Spacecraft-only spillover cap
+AdvancedSuperconductors,true,1,Broad materials capability
+CarbonNanotubes,true,1,Broad production material
+NextGenerationAerospace,true,2,Explicit launch and aerospace override
+Superalloys,true,1,Broad production material
+AdvancedAtomicManipulation,true,1,Broad materials capability
+Supercapacitors,true,1,Broad energy storage material
+SuperconductingMagnets,true,1,Broad industrial material
+Diamondoids,true,1.5,Broad production material
+Neutronics,true,1.5,Nuclear materials capability
+AdvancedHydrogenContainment,true,1.5,Energy and industrial material
+ImprovedShipbuildingTechniques,true,0.5,Spacecraft-only spillover cap
+FissionPulseDrives,true,0.5,Propulsion-only spillover cap
+MolecularAssemblers,true,2,Direct general-purpose production breakthrough
+HighTemperatureSuperconductors,true,2,Broad industrial material
+Ultracapacitors,true,2,Broad energy storage material
+HeavyPulsedPropulsion,true,0.5,Propulsion-only spillover cap
+TitanicSpacecraft,true,0.5,Spacecraft-only spillover cap
+FutureTechMaterials,true,4,Transformative late materials technology
+PhotonicComputing,true,2,Direct advanced computing breakthrough
+AugmentedReality,true,0.5,Early general-purpose information technology
+AdvancedNeuralNetworks,true,2,Direct AI breakthrough
+Cybernetics,true,1,General-purpose human machine systems
+SelfRepairingSoftware,true,1,General-purpose software capability
+QuantumComputing,true,2,Direct advanced computing breakthrough
+QuantumEncryption,true,1.5,Computing infrastructure spillover
+AppliedArtificialIntelligence,true,2,Direct AI breakthrough
+WhiteCollarAutomation,true,2,Direct economy-wide automation
+AdministrationAlgorithms,true,2,Direct general-purpose automation
+FutureTechInformationScience,true,4,Transformative late computing technology
+Biotechnology,true,0.5,Early general-purpose biotechnology
+SpaceAgriculture,true,1,Direct agriculture improvement
+PredictiveGenetics,true,1,Agriculture and health productivity spillover
+TransformPhages,true,1,Biotechnology productivity spillover
+DesignerLifeforms,true,2,Advanced biotechnology production
+MindandMachine,true,2,General-purpose human machine breakthrough
+Genies,true,2,Advanced biotechnology productivity
+FutureTechLifeScience,true,4,Transformative late biotechnology
+ArrivalEconomics,true,0.5,Early economic-development theory
+ArrivalInternationalDevelopment,true,1,Direct economic-development institutions
+IndustrializationofSpace,true,3,Explicit space industrialization override
+SpaceCommerce,true,2,Explicit space commerce override
+IntegratedEarthSpaceEconomy,true,2,Direct integrated economy breakthrough
+FutureTechSocialScience,true,4,Transformative late social technology
+Accelerando,true,4,Transformative general-purpose economy breakthrough
+MissionToSpace,true,1,Explicit launch capability override
+SpaceMiningandRefining,true,2,Explicit space resource extraction override
+InSituResourceUtilization,true,2,Explicit local production override
