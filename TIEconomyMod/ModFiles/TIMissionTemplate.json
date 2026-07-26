@@ -1,0 +1,24 @@
+[
+  {
+    "dataName": "EnthrallElites",
+    "resolutionMethod": {
+      "defendingModifiers": [
+        {
+          "$type": "TIMissionModifier_FlatModifier",
+          "flatModifier": 3
+        }
+      ]
+    }
+  },
+  {
+    "dataName": "Purge",
+    "resolutionMethod": {
+      "defendingModifiers": [
+        {
+          "$type": "TIMissionModifier_FlatModifier",
+          "flatModifier": 4
+        }
+      ]
+    }
+  }
+]

@@ -30,7 +30,7 @@ namespace TIEconomyMod
                 string weightPath = Path.Combine(modEntry.Path, "Config", "economy-tech-weights.csv");
                 techWeights = TechWeightCatalog.Load(weightPath, Log, IsKnownTechnology);
                 new Harmony(modEntry.Info.Id).PatchAll();
-                Log("Loaded TI Economic Equalization Overhaul 0.6.1 for the TI 1.0.47 API surface.");
+                Log("Loaded TI Economic Equalization Overhaul 0.6.4 for the TI 1.0.47 API surface.");
                 return true;
             }
             catch (Exception exception)
@@ -192,6 +192,7 @@ namespace TIEconomyMod
         public float gdpPerInvestmentPointBillions = 100f;
         public float lowIncomeMultiplierAtZero = 0.70f;
         public float lowIncomeThreshold = 15000f;
+        public float outputMultiplier = 1.05f;
     }
 
     [DrawFields(DrawFieldMask.Public)]
@@ -199,6 +200,7 @@ namespace TIEconomyMod
     {
         public bool enabled = true;
         public float baseGainBillions = 0.330f;
+        public float outputMultiplier = 0.40f;
         public float educationPerLevel = 0.15f;
         public float governmentPerLevel = 0.05f;
         public float cohesionCenter = 5f;
@@ -216,6 +218,8 @@ namespace TIEconomyMod
     {
         public bool enabled = true;
         public float maximumMultiplier = 4f;
+        public bool researchCostEnabled = true;
+        public float researchCostMultiplier = 1.20f;
     }
 
     [DrawFields(DrawFieldMask.Public)]
@@ -249,9 +253,10 @@ namespace TIEconomyMod
         public float exponent = 2f;
         public float referenceGdpBillions = 100f;
         public float minimumGdpBillions = 1f;
-        public float economyChangeAtReferenceGdp = 0.00025f;
-        public float welfareChangeAtReferenceGdp = -0.00333333f;
-        public float spoilsChangeAtReferenceGdp = 0.00166667f;
+        public float economyChangeAtReferenceGdp = 0.0005f;
+        public float welfareChangeAtReferenceGdp = -0.00666666f;
+        public float spoilsChangeAtReferenceGdp = 0.00333334f;
+        public float climateChangeMultiplier = 2f;
         public float economyMaximumResourceMultiplier = 0.60f;
         public float spoilsMaximumResourceMultiplier = 1f;
     }
@@ -275,6 +280,8 @@ namespace TIEconomyMod
         public float awayBaseCost = 1f;
         public float technologyBaseline = 3f;
         public float costPerTechnologyLevel = 2f;
+        public bool megafaunaEnabled = true;
+        public float megafaunaMaximumTechLevel = 5f;
     }
 
     [DrawFields(DrawFieldMask.Public)]
@@ -448,7 +455,9 @@ namespace TIEconomyMod
             RepairPositive(ref value.investment.gdpPerInvestmentPointBillions, defaults.investment.gdpPerInvestmentPointBillions, "investment.gdpPerInvestmentPointBillions", log);
             RepairRange(ref value.investment.lowIncomeMultiplierAtZero, defaults.investment.lowIncomeMultiplierAtZero, 0f, 1f, "investment.lowIncomeMultiplierAtZero", log);
             RepairPositive(ref value.investment.lowIncomeThreshold, defaults.investment.lowIncomeThreshold, "investment.lowIncomeThreshold", log);
+            RepairPositive(ref value.investment.outputMultiplier, defaults.investment.outputMultiplier, "investment.outputMultiplier", log);
             RepairPositive(ref value.economy.baseGainBillions, defaults.economy.baseGainBillions, "economy.baseGainBillions", log);
+            RepairPositive(ref value.economy.outputMultiplier, defaults.economy.outputMultiplier, "economy.outputMultiplier", log);
             RepairNonNegative(ref value.economy.educationPerLevel, defaults.economy.educationPerLevel, "economy.educationPerLevel", log);
             RepairNonNegative(ref value.economy.governmentPerLevel, defaults.economy.governmentPerLevel, "economy.governmentPerLevel", log);
             RepairFinite(ref value.economy.cohesionCenter, defaults.economy.cohesionCenter, "economy.cohesionCenter", log);
@@ -460,6 +469,7 @@ namespace TIEconomyMod
             RepairNonNegative(ref value.economy.coreRegionMaximumBonus, defaults.economy.coreRegionMaximumBonus, "economy.coreRegionMaximumBonus", log);
             RepairPositive(ref value.economy.coreRegionHalfSaturation, defaults.economy.coreRegionHalfSaturation, "economy.coreRegionHalfSaturation", log);
             RepairRange(ref value.technology.maximumMultiplier, defaults.technology.maximumMultiplier, 1f, 100f, "technology.maximumMultiplier", log);
+            RepairPositive(ref value.technology.researchCostMultiplier, defaults.technology.researchCostMultiplier, "technology.researchCostMultiplier", log);
             RepairPositive(ref value.abundance.referenceGdpPerResourceRegionBillions, defaults.abundance.referenceGdpPerResourceRegionBillions, "abundance.referenceGdpPerResourceRegionBillions", log);
             RepairPositive(ref value.abundance.minimumGdpBillions, defaults.abundance.minimumGdpBillions, "abundance.minimumGdpBillions", log);
             RepairNonNegative(ref value.abundance.resourceMaximumBonus, defaults.abundance.resourceMaximumBonus, "abundance.resourceMaximumBonus", log);
@@ -473,6 +483,7 @@ namespace TIEconomyMod
             RepairPositive(ref value.abundance.unrestExponent, defaults.abundance.unrestExponent, "abundance.unrestExponent", log);
             RepairPositive(ref value.abundance.maximumUnrest, defaults.abundance.maximumUnrest, "abundance.maximumUnrest", log);
             RepairRange(ref value.inequality.exponent, defaults.inequality.exponent, 1f, 10f, "inequality.exponent", log);
+            RepairNonNegative(ref value.inequality.climateChangeMultiplier, defaults.inequality.climateChangeMultiplier, "inequality.climateChangeMultiplier", log);
             if (!IsFinite(value.inequality.minimum) || !IsFinite(value.inequality.neutral) ||
                 !IsFinite(value.inequality.maximum) || value.inequality.minimum >= value.inequality.neutral ||
                 value.inequality.neutral >= value.inequality.maximum)
@@ -498,6 +509,7 @@ namespace TIEconomyMod
             RepairNonNegative(ref value.army.awayBaseCost, defaults.army.awayBaseCost, "army.awayBaseCost", log);
             RepairFinite(ref value.army.technologyBaseline, defaults.army.technologyBaseline, "army.technologyBaseline", log);
             RepairNonNegative(ref value.army.costPerTechnologyLevel, defaults.army.costPerTechnologyLevel, "army.costPerTechnologyLevel", log);
+            RepairPositive(ref value.army.megafaunaMaximumTechLevel, defaults.army.megafaunaMaximumTechLevel, "army.megafaunaMaximumTechLevel", log);
             RepairPositive(ref value.research.coefficient, defaults.research.coefficient, "research.coefficient", log);
             RepairPositive(ref value.research.referencePcgdp, defaults.research.referencePcgdp, "research.referencePcgdp", log);
             RepairNonNegative(ref value.research.minimumPcgdpMultiplier, defaults.research.minimumPcgdpMultiplier, "research.minimumPcgdpMultiplier", log);

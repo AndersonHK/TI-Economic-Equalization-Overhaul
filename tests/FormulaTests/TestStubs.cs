@@ -21,6 +21,11 @@ namespace HarmonyLib
 
 namespace PavonisInteractive.TerraInvicta
 {
+    public sealed class TIMegafaunaArmyState
+    {
+        public float bonusTechLevel;
+    }
+
     public sealed class GlobalResearchState
     {
         public readonly HashSet<string> finishedTechsNames = new HashSet<string>(StringComparer.Ordinal);
@@ -52,6 +57,7 @@ namespace PavonisInteractive.TerraInvicta
         public int numControlPoints;
         public float population_Millions;
         public float population;
+        public float economyPriorityPerCapitaIncomeChange;
         public float education;
         public float democracy;
         public float cohesion;
@@ -70,7 +76,18 @@ namespace PavonisInteractive.TerraInvicta
 
         public enum InequalityChangeReason
         {
+            InqReason_ClimateChange,
             InqReason_Annexation
+        }
+
+        public enum GDPChangeReason
+        {
+            GDPReason_EconomyPriority
+        }
+
+        public void ModifyGDP(double value, GDPChangeReason reason)
+        {
+            GDP += value;
         }
 
         public void AddToMilitaryTechLevel(float value)
@@ -172,12 +189,14 @@ namespace TIEconomyMod
         public float gdpPerInvestmentPointBillions = 100f;
         public float lowIncomeMultiplierAtZero = 0.70f;
         public float lowIncomeThreshold = 15000f;
+        public float outputMultiplier = 1.05f;
     }
 
     public sealed class EconomySettings
     {
         public bool enabled = true;
         public float baseGainBillions = 0.330f;
+        public float outputMultiplier = 0.40f;
         public float educationPerLevel = 0.15f;
         public float governmentPerLevel = 0.05f;
         public float cohesionCenter = 5f;
@@ -194,6 +213,8 @@ namespace TIEconomyMod
     {
         public bool enabled = true;
         public float maximumMultiplier = 4f;
+        public bool researchCostEnabled = true;
+        public float researchCostMultiplier = 1.20f;
     }
 
     public sealed class AbundanceSettings
@@ -225,9 +246,10 @@ namespace TIEconomyMod
         public float exponent = 2f;
         public float referenceGdpBillions = 100f;
         public float minimumGdpBillions = 1f;
-        public float economyChangeAtReferenceGdp = 0.00025f;
-        public float welfareChangeAtReferenceGdp = -0.00333333f;
-        public float spoilsChangeAtReferenceGdp = 0.00166667f;
+        public float economyChangeAtReferenceGdp = 0.0005f;
+        public float welfareChangeAtReferenceGdp = -0.00666666f;
+        public float spoilsChangeAtReferenceGdp = 0.00333334f;
+        public float climateChangeMultiplier = 2f;
         public float economyMaximumResourceMultiplier = 0.60f;
         public float spoilsMaximumResourceMultiplier = 1f;
     }
@@ -249,6 +271,8 @@ namespace TIEconomyMod
         public float awayBaseCost = 1f;
         public float technologyBaseline = 3f;
         public float costPerTechnologyLevel = 2f;
+        public bool megafaunaEnabled = true;
+        public float megafaunaMaximumTechLevel = 5f;
     }
 
     public sealed class ResearchSettings
@@ -362,4 +386,8 @@ namespace TIEconomyMod
         public float governmentPenaltyPerLevel = 0.03f;
         public float fullGovernment = 10f;
     }
+}
+
+public sealed class TITechTemplate
+{
 }

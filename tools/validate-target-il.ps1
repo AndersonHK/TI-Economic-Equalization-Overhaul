@@ -87,6 +87,12 @@ try {
     $controlCost = Read-MethodIl $nation 'get_ControlPointMaintenanceCost'
     Assert-Count $controlCost 'ldfld\s+float32 TIStartTimeTemplate::CPMaintenanceModifier' 1 'Control-point scenario multiplier'
 
+    $megafauna = Read-MethodIl 'PavonisInteractive.TerraInvicta.TIMegafaunaArmyState' 'get_techLevel'
+    Assert-Count $megafauna 'ldc\.r4\s+6\.' 1 'Xenofauna vanilla technology ceiling'
+
+    $technologyCost = Read-MethodIl 'TITechTemplate' 'GetResearchCost'
+    Assert-Count $technologyCost 'ldfld\s+float32 TIGenericTechTemplate::researchCost' 1 'Global technology research cost'
+
     Write-Host 'PASS: target IL contains every guarded TI 1.0.47 patch point.'
 }
 finally {

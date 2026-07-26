@@ -1,0 +1,14 @@
+[
+  {
+    "dataName": "ModernDayStart",
+    "startingTechs": [
+      "Skywatch",
+      "WeAreNotAlone",
+      "OutpostHabs"
+    ],
+    "globalTechsCompleted": [
+      "MissionToSpace",
+      "AdvancedChemicalRocketry"
+    ]
+  }
+]

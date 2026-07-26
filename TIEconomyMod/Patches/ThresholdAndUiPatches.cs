@@ -327,6 +327,7 @@ namespace TIEconomyMod.Patches
                     .Append("; income x").Append(income.ToString("0.###")).AppendLine()
                     .Append("Weighted technology x").Append(technology.ToString("0.###"))
                     .Append(" / x").Append(Main.settings.technology.maximumMultiplier.ToString("0.###"))
+                    .Append("; output x").Append(economy.outputMultiplier.ToString("0.###"))
                     .Append("; resources +").Append(resourceBonus.ToString("P1"))
                     .Append("; land +").Append(landBonus.ToString("P1")).AppendLine();
 
@@ -355,7 +356,8 @@ namespace TIEconomyMod.Patches
                         resourceMultiplier;
                     float bounded = nation.economyPriorityInequalityChange;
                     section.Append("Inequality raw ").Append(raw.ToString("+0.####;-0.####;0"))
-                        .Append("; bounded x").Append((bounded / raw).ToString("0.###"))
+                        .Append("; bounded x")
+                        .Append((raw == 0f ? 0f : bounded / raw).ToString("0.###"))
                         .Append(" = ").Append(bounded.ToString("+0.####;-0.####;0")).AppendLine();
                 }
                 else
@@ -391,7 +393,8 @@ namespace TIEconomyMod.Patches
                         inequality.referenceGdpBillions / gdpBillions;
                     float bounded = nation.welfarePriorityInequalityChange;
                     section.Append("Inequality raw ").Append(raw.ToString("+0.####;-0.####;0"))
-                        .Append("; bounded x").Append((bounded / raw).ToString("0.###"))
+                        .Append("; bounded x")
+                        .Append((raw == 0f ? 0f : bounded / raw).ToString("0.###"))
                         .Append(" = ").Append(bounded.ToString("+0.####;-0.####;0")).AppendLine();
                 }
                 else
@@ -429,7 +432,8 @@ namespace TIEconomyMod.Patches
                         resourceMultiplier;
                     float bounded = nation.spoilsPriorityInequalityChange;
                     section.Append("Inequality raw ").Append(raw.ToString("+0.####;-0.####;0"))
-                        .Append("; bounded x").Append((bounded / raw).ToString("0.###"))
+                        .Append("; bounded x")
+                        .Append((raw == 0f ? 0f : bounded / raw).ToString("0.###"))
                         .Append(" = ").Append(bounded.ToString("+0.####;-0.####;0")).AppendLine();
                 }
                 else
@@ -465,6 +469,10 @@ namespace TIEconomyMod.Patches
                 }
                 if (Main.FeatureEnabled(Main.settings.spoils.enabled))
                 {
+                    section.Append("GDP: same as Economy, $")
+                        .Append((nation.economyPriorityPerCapitaIncomeChange *
+                            nation.population_Millions / 1000f).ToString("0.###"))
+                        .AppendLine("B");
                     section.Append("Government ").Append(
                             nation.spoilsPriorityDemocracyChange.ToString("+0.####;-0.####;0"))
                         .Append("; Sustainability ").Append(
@@ -559,7 +567,7 @@ namespace TIEconomyMod.Patches
             if (Main.FeatureEnabled(investment.enabled))
             {
                 // This mirrors InvestmentPointsPatch. A $500B nation produces 5 GDP-base
-                // IP; at $7.5k PCGDP the halfway income multiplier is 85%, displaying 4.25.
+                // IP; at $7.5k PCGDP, x.85 income and x1.05 output display 4.46.
                 float basePoints = (float)(nation.GDP /
                     (investment.gdpPerInvestmentPointBillions * 1000000000d));
                 float incomeProgress = Math.Max(0f, Math.Min(1f,
@@ -568,7 +576,9 @@ namespace TIEconomyMod.Patches
                     (1f - investment.lowIncomeMultiplierAtZero) * incomeProgress;
                 section.Append("GDP base ").Append(basePoints.ToString("0.##"))
                     .Append("; low-income x").Append(incomeMultiplier.ToString("0.###"))
-                    .Append("; EEO base ").Append((basePoints * incomeMultiplier).ToString("0.##")).AppendLine();
+                    .Append("; output x").Append(investment.outputMultiplier.ToString("0.###"))
+                    .Append("; EEO base ").Append((basePoints * incomeMultiplier *
+                        investment.outputMultiplier).ToString("0.##")).AppendLine();
             }
             else
             {

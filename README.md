@@ -28,10 +28,15 @@ for the current patch-by-patch review.
 
 - Smooth total-GDP Economy growth with compounded technology weights and
   GDP-relative resource / density-relative land abundance.
-- GDP-normalized Economy, Welfare, and Spoils Inequality effects with smooth
-  bounded behavior on TI's 1-9 scale.
+- GDP-normalized Economy, Welfare, and Spoils Inequality effects at x2 baseline
+  strength, smooth bounded behavior on TI's 1-9 scale, and x2 climate impact.
 - GDP-only economy emissions; fixed atmospheric removal per completed IP;
   GDP-relative sustainability transition; no direct Spoils gas pulse; land-relative nuclear damage.
+- x1.05 Investment Point output; x0.40 Economy GDP growth, also applied to Spoils.
+- Spoils retains its full $60 base faction-cash payout and has no direct gas pulse.
+- Xenofauna capped at 5 base miltech; Purge and Enthrall Elites receive +1 defense.
+- 2022 starts with Mission to Space and Advanced Chemical Rocketry completed.
+- Global technologies cost x1.20 research; faction projects retain vanilla costs.
 - Population-normalized Unity, Knowledge, Government, Oppression, and selected
   Spoils social effects.
 - Army-count-normalized Military technology and per-army upkeep.
@@ -70,7 +75,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\verify.ps1
 Verification rebuilds with warnings as errors, runs dependency-free formula
 tests, validates the implementation matrix against settings and Harmony patches,
 checks the manifest/package layout, and creates
-`artifacts/TIEconomyMod-0.6.1-ti1.0.47.zip`.
+`artifacts/TIEconomyMod-0.6.4-ti1.0.47.zip`.
 
 ## Smoke test
 

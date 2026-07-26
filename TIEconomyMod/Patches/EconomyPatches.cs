@@ -107,10 +107,11 @@ namespace TIEconomyMod.Patches
             // This formula first calculates a total GDP gain, then divides it by population
             // because the patched getter returns per-capita change. For a 50M-person nation
             // at $20k PCGDP, Education 8, Government 7, Cohesion 5, one core and one
-            // resource region, defaults produce roughly $4.1B before land and technology.
+            // resource region, defaults produce roughly $1.8B before land and technology.
             // Installed vanilla 1.0.47 produces about $875M per completion for the same
             // demographic inputs because it uses a much smaller additive per-capita model.
-            float totalGainBillions = economy.baseGainBillions * coreRegionMultiplier *
+            float totalGainBillions = economy.baseGainBillions * economy.outputMultiplier *
+                coreRegionMultiplier *
                 educationMultiplier * governmentMultiplier * cohesionMultiplier *
                 incomeMultiplier * technologyMultiplier *
                 (1f + resourceBonus + landBonus);
@@ -124,6 +125,39 @@ namespace TIEconomyMod.Patches
             }
             __result = calculated;
             return false;
+        }
+    }
+
+    [HarmonyPatch(typeof(TINationState), "OnSpoilsPriorityComplete")]
+    public static class SpoilsGdpGrowthPatch
+    {
+        [HarmonyPrefix]
+        public static void Prefix(TINationState __instance, out double __state)
+        {
+            // Spoils represents rapid, extractive economic expansion: it adds exactly
+            // the same total GDP as one Economy completion, but keeps Spoils' separate
+            // inequality, Government, Sustainability, propaganda, and faction-cash costs.
+            // Capture before those effects run so a Spoils Government loss cannot alter
+            // this completion's output. Example: $10 PCGDP growth in a 100M-person nation
+            // is $1B GDP. TI 1.0.47 has no Spoils GDP effect, so this is an added behavior.
+            __state = 0d;
+            if (Main.FeatureEnabled(Main.settings.spoils.enabled))
+            {
+                __state = __instance.economyPriorityPerCapitaIncomeChange *
+                    __instance.population_Millions * 1000000d;
+            }
+        }
+
+        [HarmonyPostfix]
+        public static void Postfix(TINationState __instance, double __state)
+        {
+            if (!double.IsNaN(__state) && !double.IsInfinity(__state) && __state > 0d)
+            {
+                // TI has no Spoils GDP tracking enum; EconomyPriority is the accurate
+                // ledger category because the added quantity uses that exact formula.
+                __instance.ModifyGDP(__state,
+                    TINationState.GDPChangeReason.GDPReason_EconomyPriority);
+            }
         }
     }
 
@@ -159,8 +193,8 @@ namespace TIEconomyMod.Patches
             float resourceMultiplier = 1f +
                 settings.economyMaximumResourceMultiplier * resourceCurve;
             // Inequality is a proportional economic outcome, so the affected stock is
-            // GDP rather than headcount. Defaults give +0.00025 in a $100B economy and
-            // +0.000025 in a $1T economy before resources/bounds. Since the latter also
+            // GDP rather than headcount. Defaults give +0.0005 in a $100B economy and
+            // +0.00005 in a $1T economy before resources/bounds. Since the latter also
             // produces about 10x the IP, equal priority allocation produces the same
             // monthly national change instead of rewarding either union or breakup.
             float gdpBillions = Math.Max(settings.minimumGdpBillions,

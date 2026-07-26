@@ -6,11 +6,14 @@ from making a proportional effect scale incorrectly.
 
 | Patch | Stock / unit | Sanity result |
 |---|---|---|
-| `InvestmentPointsPatch` | GDP / $100B | Aligned. Output is legible and linear; the low-income ramp models capital constraints without a discontinuity. |
+| `InvestmentPointsPatch` | GDP / $100B | Aligned. Output remains legible and linear; the low-income ramp models capital constraints without a discontinuity, and the configurable x1.05 output adjustment is uniform at every national scale. |
 | `ControlPointCostPatch` | National economy score per CP | Aligned. It retains the configured technology exponent sequence and free alien CPs, then applies TI 1.0.47's live scenario maintenance multiplier. It deliberately does not adopt vanilla's global-GDP normalization. |
 | `ArmyUpkeepPatch` | Fixed cost per army | Aligned. Every army pays its own home/away and miltech-dependent upkeep; large nations only benefit by having more IP to support more units. |
+| `XenofaunaStrengthPatch` | Megafauna combat rating | Aligned. It changes only the configured maximum from 6 to 5 while preserving TI's abduction-driven progression and any explicit bonus technology level. |
 | `ResearchPatch` | Population, human capital, institutions | Aligned. This is national productive output rather than an IP completion, so linear population with Education squared is economically legible. |
-| `EconomyGrowthPatch` | Fixed total GDP gain per IP | Aligned. The getter converts the total gain to per-capita form only because TI expects that unit; GDP-linear IP makes aggregate monthly growth approximately scale-neutral. |
+| `EconomyGrowthPatch` | Fixed total GDP gain per IP | Aligned. The getter converts the total gain to per-capita form only because TI expects that unit; GDP-linear IP makes aggregate monthly growth approximately scale-neutral. The configurable x0.40 output adjustment uniformly moderates growth without changing its structural multipliers. |
+| `SpoilsGdpGrowthPatch` | Fixed total GDP gain per IP | Aligned. It captures exactly one Economy completion's aggregate GDP before Spoils changes other national values, then applies that amount alongside Spoils' distinct social, environmental, and cash effects. |
+| `ClimateInequalityPatch` | Vanilla climate-driven Inequality delta | Aligned. It doubles only changes tagged `InqReason_ClimateChange`; GDP loss, Education damage, priorities, events, revolution, secession, and annexation remain untouched. |
 | `EconomyInequalityPatch` | GDP | Aligned after stock correction. Resources/GDP affects the raw change only while Abundance is enabled, and the continuous 1-9 boundary transform makes extremes progressively harder. |
 | `WelfareInequalityPatch` | GDP | Aligned after stock correction. A tenfold economy gets one tenth the per-IP rating change and approximately tenfold IP. |
 | `SpoilsInequalityPatch` | GDP | Aligned after stock correction. Resource dependence matters strongly in small economies and weakly in diversified large economies; disabling Abundance removes that premium. |
@@ -32,12 +35,16 @@ from making a proportional effect scale incorrectly.
 | `SpoilsGovernmentPatch` | Population / institutions | Aligned with the selected inverse-population behavior. |
 | `SpoilsSustainabilityPatch` | GDP | Aligned. Spoils damages carbon intensity, so its per-IP change falls with the economy and rises with resource dependence while Abundance is enabled. |
 | `SpoilsPropagandaPatch` | Vanilla demographic effect × configured strength | Aligned. It preserves payout, CP, corruption, and Sustainability, scales propaganda, then deletes vanilla's final direct atmospheric-emissions block. |
-| `SpoilsMoneyPatch` | Fixed payout × resources/GDP × Government | Aligned. The curve is continuous from no resource premium toward the configured maximum; no region-count table remains, and disabling Abundance leaves the base/Government payout. |
+| `SpoilsMoneyPatch` | Fixed payout × resources/GDP × Government | Aligned. The full $60 base is retained. The curve is continuous from no resource premium toward the configured maximum; no region-count table remains, and disabling Abundance leaves the base/Government payout. |
+| `GlobalTechnologyResearchCostPatch` | Global technology research cost | Aligned. It applies a uniform configurable x1.20 multiplier after TI computes the cost; faction projects use a different template and remain unchanged. |
 | `EconomyRegionThresholdPatch` | Fixed accumulated IP | Aligned. Region conversion is a fixed capital project; default x5 makes it harder without border-sensitive scaling. |
 | `DecolonizationThresholdPatch` | Fixed accumulated IP | Aligned. The threshold is a political project cost and uses the same guarded multiplier. |
 | `FalloutCleanupThresholdPatch` | Fixed accumulated IP per detonation | Aligned. Every blast costs the same to clean; damage concentration is handled separately by land area. |
 | `PriorityTooltipPatch` | UI mirror | Aligned. It appends live calculations and replaces exactly the same five threshold loads as gameplay. |
 | `InvestmentTooltipPatch` | UI mirror | Aligned. It exposes GDP base IP, the low-income multiplier, and fixed army/navy upkeep without replacing vanilla text. |
+| `TIMissionTemplate.json` Purge override | Mission difficulty | Aligned. The defender's flat modifier rises from 3 to 4 while all national-scale, support, councilor, and alien modifiers remain vanilla. |
+| `TIMissionTemplate.json` Enthrall Elites override | Mission difficulty | Aligned. The defender's flat modifier rises from 2 to 3 while retaining vanilla's GDP-based target-nation defense and all other mission modifiers. |
+| `TIStartTimeTemplate.json` 2022 override | Starting global technologies | Aligned. Mission to Space and Advanced Chemical Rocketry begin completed; Outpost Habs replaces Mission to Space in the active list so the scenario retains three valid research choices. |
 
 ## Compatibility risks deliberately guarded
 

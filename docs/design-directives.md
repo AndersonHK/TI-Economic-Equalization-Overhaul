@@ -47,6 +47,12 @@ persists only one Military technology value and one Inequality value, not the
 component force and income distributions. Keep that limitation explicit and do
 not introduce hidden historical state merely to make the operation associative.
 
+Economy, Welfare, and Spoils use a twofold per-completion increase inside their
+existing GDP-normalized Inequality formulas. Climate-driven Inequality is also
+doubled at its uniquely identified mutation reason. Events, secession, and
+revolution remain vanilla; annexation uses the country-merger distribution
+formula described above.
+
 ## Resources, land, and historical structure
 
 Resource importance is measured relative to GDP, not by a hardcoded region table.
@@ -63,8 +69,9 @@ technology fade.
 
 Economy emissions equal GDP times carbon intensity; population has no independent
 term. Economy growth therefore raises total emissions without mechanically
-changing emissions per unit of GDP. Spoils worsens both production incentives and
-carbon intensity.
+changing emissions per unit of GDP. Spoils adds the same fixed total GDP as an
+Economy completion while also worsening inequality, institutions, and carbon
+intensity; it does not inject a second direct atmospheric gas pulse.
 
 Sustainability transition divides by GDP: replacing ten times as much dirty
 capital takes roughly ten times the IP. Rich grids receive no automatic advantage

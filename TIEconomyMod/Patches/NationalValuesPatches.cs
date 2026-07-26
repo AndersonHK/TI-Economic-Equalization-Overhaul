@@ -17,9 +17,10 @@ namespace TIEconomyMod.Patches
                 return true;
             }
 
-            // Monthly IP is GDP / $100B, followed by a low-income multiplier that
-            // rises linearly from 70% at $0 PCGDP to 100% at $15k. For example,
-            // a $500B economy produces 3.5 IP at $0 PCGDP and 5 IP at $15k.
+            // Monthly IP is GDP / $100B. The low-income multiplier rises linearly
+            // from 70% at $0 PCGDP to 100% at $15k, then the configured x1.05 output
+            // adjustment applies. A $500B economy therefore produces 3.675 IP at
+            // $0 PCGDP and 5.25 IP at $15k instead of the previous 3.5 and 5.
             // Installed vanilla 1.0.47 instead exposes a cached nonlinear economy score,
             // so this patch deliberately makes national output directly legible from GDP.
             float baseInvestmentPoints = (float)(__instance.GDP /
@@ -28,7 +29,8 @@ namespace TIEconomyMod.Patches
                 __instance.perCapitaGDP / settings.lowIncomeThreshold));
             float incomeMultiplier = settings.lowIncomeMultiplierAtZero +
                 (1f - settings.lowIncomeMultiplierAtZero) * incomeProgress;
-            float calculated = baseInvestmentPoints * incomeMultiplier;
+            float calculated = baseInvestmentPoints * incomeMultiplier *
+                settings.outputMultiplier;
 
             if (float.IsNaN(calculated) || float.IsInfinity(calculated))
             {

@@ -22,6 +22,7 @@ namespace TIEconomyMod.FormulaTests
 
                 TestNationalValues();
                 TestEconomyAndTechnology();
+                TestBalanceTuning();
                 TestAbundance();
                 TestInequality();
                 TestSocialPriorities();
@@ -55,10 +56,10 @@ namespace TIEconomyMod.FormulaTests
             nation.perCapitaGDP = 0f;
             float result = 0f;
             True(!InvestmentPointsPatch.Prefix(ref result, nation), "IP prefix replaces vanilla");
-            Near(3.5f, result, 0.0001f, "IP zero-income penalty");
+            Near(3.675f, result, 0.0001f, "IP zero-income penalty and output increase");
             nation.perCapitaGDP = 15000f;
             InvestmentPointsPatch.Prefix(ref result, nation);
-            Near(5f, result, 0.0001f, "IP threshold");
+            Near(5.25f, result, 0.0001f, "IP threshold and output increase");
 
             nation.economyScore = 200f;
             nation.numControlPoints = 4;
@@ -99,7 +100,7 @@ namespace TIEconomyMod.FormulaTests
             TIEconomyMod.Main.settings.technology.enabled = false;
             float result = 0f;
             EconomyGrowthPatch.Prefix(ref result, nation);
-            float totalBillions = 0.330f * 1.36f * 2.2f * 1.3f * 1.2f *
+            float totalBillions = 0.330f * 0.40f * 1.36f * 2.2f * 1.3f * 1.2f *
                 6f * (float)Math.Pow(0.96f, 20f);
             Near(totalBillions * 1000000000f / nation.population, result, 0.0001f,
                 "base Economy formula with optional modifiers disabled");
@@ -130,6 +131,51 @@ namespace TIEconomyMod.FormulaTests
             EconomyGrowthPatch.Prefix(ref result, nation);
             Near(totalBillions * 1.01f * 1000000000f / nation.population,
                 result, 0.0001f, "technology cap");
+        }
+
+        private static void TestBalanceTuning()
+        {
+            Reset();
+            float technologyCost = 1000f;
+            GlobalTechnologyResearchCostPatch.Postfix(ref technologyCost);
+            Near(1200f, technologyCost, 0.0001f,
+                "global technology costs increase by twenty percent");
+
+            float xenofaunaTech = 6f;
+            TIMegafaunaArmyState xenofauna = new TIMegafaunaArmyState();
+            XenofaunaStrengthPatch.Postfix(ref xenofaunaTech, xenofauna);
+            Near(5f, xenofaunaTech, 0.0001f, "xenofauna natural ceiling");
+            xenofauna.bonusTechLevel = 0.4f;
+            xenofaunaTech = 6.4f;
+            XenofaunaStrengthPatch.Postfix(ref xenofaunaTech, xenofauna);
+            Near(5.4f, xenofaunaTech, 0.0001f,
+                "xenofauna keeps post-control bonuses");
+
+            TIEconomyMod.Main.settings.technology.researchCostEnabled = false;
+            technologyCost = 1000f;
+            GlobalTechnologyResearchCostPatch.Postfix(ref technologyCost);
+            Near(1000f, technologyCost, 0.0001f,
+                "disabled technology-cost adjustment returns vanilla");
+            TIEconomyMod.Main.settings.army.megafaunaEnabled = false;
+            xenofaunaTech = 6f;
+            XenofaunaStrengthPatch.Postfix(ref xenofaunaTech, xenofauna);
+            Near(6f, xenofaunaTech, 0.0001f,
+                "disabled xenofauna adjustment returns vanilla");
+
+            TINationState nation = Nation();
+            nation.economyPriorityPerCapitaIncomeChange = 12f;
+            double spoilsGdp;
+            SpoilsGdpGrowthPatch.Prefix(nation, out spoilsGdp);
+            Near(1200000000f, (float)spoilsGdp, 1f,
+                "Spoils captures the same total GDP as Economy");
+            double startingGdp = nation.GDP;
+            SpoilsGdpGrowthPatch.Postfix(nation, spoilsGdp);
+            Near((float)(startingGdp + spoilsGdp), (float)nation.GDP, 1f,
+                "Spoils applies the captured Economy GDP gain");
+            TIEconomyMod.Main.settings.spoils.enabled = false;
+            SpoilsGdpGrowthPatch.Prefix(nation, out spoilsGdp);
+            Near(0f, (float)spoilsGdp, 0f,
+                "disabled Spoils adds no GDP");
         }
 
         private static void TestAbundance()
@@ -247,6 +293,23 @@ namespace TIEconomyMod.FormulaTests
             Reset();
             TINationState nation = Nation();
             nation.GDP = 100000000000d;
+            float economyDefault = 0f;
+            float welfareDefault = 0f;
+            float spoilsDefault = 0f;
+            EconomyInequalityPatch.Prefix(ref economyDefault, nation);
+            WelfareInequalityPatch.Prefix(ref welfareDefault, nation);
+            SpoilsInequalityPatch.Prefix(ref spoilsDefault, nation);
+            Near(0.0005f, economyDefault, 0.000001f, "Economy priority Inequality value");
+            Near(-0.00666666f, welfareDefault, 0.000001f, "Welfare priority Inequality value");
+            Near(0.00333334f, spoilsDefault, 0.000001f, "Spoils priority Inequality value");
+            float climateChange = 0.02f;
+            ClimateInequalityPatch.Prefix(ref climateChange,
+                TINationState.InequalityChangeReason.InqReason_ClimateChange);
+            Near(0.04f, climateChange, 0.000001f, "climate Inequality doubles");
+            float annexationChange = 0.02f;
+            ClimateInequalityPatch.Prefix(ref annexationChange,
+                TINationState.InequalityChangeReason.InqReason_Annexation);
+            Near(0.02f, annexationChange, 0f, "non-climate Inequality is unchanged");
             TIEconomyMod.Main.settings.inequality.economyChangeAtReferenceGdp = 0.1f;
             TIEconomyMod.Main.settings.inequality.welfareChangeAtReferenceGdp = -0.1f;
             TIEconomyMod.Main.settings.inequality.spoilsChangeAtReferenceGdp = 0.1f;
@@ -327,7 +390,7 @@ namespace TIEconomyMod.FormulaTests
             nation.GDP = 100000000000d;
             nation.democracy = 5f;
             SpoilsMoneyPatch.Prefix(ref result, nation);
-            Near(172.5f, result, 0.0001f, "spoils money formula");
+            Near(172.5f, result, 0.0001f, "spoils money retains the full base payout");
             float smallEconomyPayout = result;
             nation.GDP = 500000000000d;
             SpoilsMoneyPatch.Prefix(ref result, nation);

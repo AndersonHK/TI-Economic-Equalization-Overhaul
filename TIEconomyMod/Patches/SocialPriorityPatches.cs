@@ -4,6 +4,28 @@ using System;
 
 namespace TIEconomyMod.Patches
 {
+    [HarmonyPatch(typeof(TINationState), "AddToInequality")]
+    public static class ClimateInequalityPatch
+    {
+        [HarmonyPrefix]
+        public static void Prefix(ref float value,
+            TINationState.InequalityChangeReason reason)
+        {
+            InequalitySettings settings = Main.settings.inequality;
+            if (!Main.FeatureEnabled(settings.enabled) ||
+                reason != TINationState.InequalityChangeReason.InqReason_ClimateChange)
+            {
+                return;
+            }
+
+            // Vanilla converts climate damage into Inequality by adding one-fifth
+            // of the modeled annual GDP-loss fraction. A 10% loss therefore adds
+            // 0.02; the default x2 multiplier makes that 0.04. Priority, event,
+            // revolution, secession, and annexation changes never enter this branch.
+            value *= settings.climateChangeMultiplier;
+        }
+    }
+
     [HarmonyPatch(typeof(TINationState), "welfarePriorityInequalityChange", MethodType.Getter)]
     public static class WelfareInequalityPatch
     {
@@ -17,7 +39,7 @@ namespace TIEconomyMod.Patches
             }
 
             // Inequality is a proportional economic outcome, so Welfare divides by GDP.
-            // Defaults give -0.00333 at $100B and -0.000333 at $1T; ten times the IP in
+            // Defaults give -0.00667 at $100B and -0.000667 at $1T; ten times the IP in
             // the larger economy restores the same monthly movement at equal allocation.
             // The 1-9 transform is 0x at 1, 1x at 5, and 2x at 9 for this negative delta.
             float gdpBillions = Math.Max(settings.minimumGdpBillions,
@@ -71,8 +93,8 @@ namespace TIEconomyMod.Patches
             float resourceMultiplier = 1f +
                 settings.spoilsMaximumResourceMultiplier * resourceCurve;
             // Like the other Inequality changes, Spoils divides by GDP because it changes
-            // an economic distribution ratio. Defaults give +0.00167 at $100B and
-            // +0.000167 at $1T before resource/bound multipliers, exactly offsetting
+            // an economic distribution ratio. Defaults give +0.00333 at $100B and
+            // +0.000333 at $1T before resource/bound multipliers, exactly offsetting
             // the tenfold difference in GDP-linear IP production.
             float gdpBillions = Math.Max(settings.minimumGdpBillions,
                 (float)(__instance.GDP / 1000000000d));
@@ -81,7 +103,7 @@ namespace TIEconomyMod.Patches
 
             // The continuous boundary transform makes a positive Spoils delta 2x at
             // Inequality 1, 1x at 5, and 0x at 9. At 100M population, Inequality 5,
-            // one region, and $100B GDP, defaults give +0.0025; installed vanilla
+            // one region, and $100B GDP, defaults give +0.005; installed vanilla
             // 1.0.47 gives roughly +0.0031 for the same population and resource count.
             float position = (__instance.inequality - settings.neutral) /
                 ((settings.maximum - settings.minimum) / 2f);
@@ -263,9 +285,10 @@ namespace TIEconomyMod.Patches
                 return true;
             }
 
-            // Resource wealth multiplies the $60 base through the continuous resources/GDP
-            // curve. With a configured ceiling of x4, one region at $100B gives ratio 1,
-            // curve .5, and x2.5; at $1T it gives ratio .1, curve .091, and x1.273.
+            // Resource wealth multiplies the full $60 base through the continuous
+            // resources/GDP curve. With a configured ceiling of x4, one region at
+            // $100B gives ratio 1, curve .5, and x2.5;
+            // at $1T it gives ratio .1, curve .091, and x1.273.
             // Installed vanilla pays additive base-IP/resource/Government amounts instead.
             AbundanceSettings abundance = Main.settings.abundance;
             float resourceCurve = 0f;

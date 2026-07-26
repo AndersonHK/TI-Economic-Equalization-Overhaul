@@ -47,6 +47,8 @@ if ($LASTEXITCODE -ne 0) {
 }
 
 $weights = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\Config\economy-tech-weights.csv'
+$missionOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIMissionTemplate.json'
+$startOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIStartTimeTemplate.json'
 $testExecutable = Join-Path $repositoryRoot 'tests\FormulaTests\bin\Release\TIEconomyMod.FormulaTests.exe'
 & $testExecutable $weights
 if ($LASTEXITCODE -ne 0) {
@@ -58,11 +60,39 @@ $manifest = Get-Content -LiteralPath $manifestPath -Raw | ConvertFrom-Json
 if ($manifest.GameVersion -ne '1.0.47') {
     throw "ModInfo.json targets '$($manifest.GameVersion)' instead of TI 1.0.47."
 }
-if ($manifest.Version -ne '0.6.1') {
+if ($manifest.Version -ne '0.6.4') {
     throw "ModInfo.json version '$($manifest.Version)' does not match this release."
 }
 if ($manifest.AssemblyName -ne 'Assembly/TIEconomyMod.dll') {
     throw "ModInfo.json has unexpected AssemblyName '$($manifest.AssemblyName)'."
+}
+
+$missions = Get-Content -LiteralPath $missionOverrides -Raw | ConvertFrom-Json
+$enthrall = $null
+$purge = $null
+foreach ($mission in $missions) {
+    if ($mission.dataName -eq 'EnthrallElites') {
+        $enthrall = $mission
+    }
+    elseif ($mission.dataName -eq 'Purge') {
+        $purge = $mission
+    }
+}
+if ($enthrall.resolutionMethod.defendingModifiers[0].flatModifier -ne 3 -or
+    $purge.resolutionMethod.defendingModifiers[0].flatModifier -ne 4) {
+    throw 'Mission overrides must add one flat defense to Enthrall Elites and Purge.'
+}
+$starts = Get-Content -LiteralPath $startOverrides -Raw | ConvertFrom-Json
+$modernStart = $null
+foreach ($start in $starts) {
+    if ($start.dataName -eq 'ModernDayStart') {
+        $modernStart = $start
+    }
+}
+if (($modernStart.startingTechs -join ';') -ne 'Skywatch;WeAreNotAlone;OutpostHabs' -or
+    ($modernStart.globalTechsCompleted -join ';') -ne
+        'MissionToSpace;AdvancedChemicalRocketry') {
+    throw 'The 2022 start override has unexpected current or completed technologies.'
 }
 
 $assemblyPath = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\Assembly\TIEconomyMod.dll'
@@ -76,6 +106,8 @@ $requiredFiles = @(
     $manifestPath,
     $assemblyPath,
     $weights,
+    $missionOverrides,
+    $startOverrides,
     (Join-Path $repositoryRoot 'docs\current-implementation-matrix.xlsx')
 )
 foreach ($requiredFile in $requiredFiles) {
@@ -102,12 +134,14 @@ New-Item -ItemType Directory -Path (Join-Path $stagingDirectory 'Config') -Force
 Copy-Item -LiteralPath $manifestPath -Destination $stagingDirectory
 Copy-Item -LiteralPath $assemblyPath -Destination (Join-Path $stagingDirectory 'Assembly')
 Copy-Item -LiteralPath $weights -Destination (Join-Path $stagingDirectory 'Config')
+Copy-Item -LiteralPath $missionOverrides -Destination $stagingDirectory
+Copy-Item -LiteralPath $startOverrides -Destination $stagingDirectory
 $imagePath = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\Economic Equalization Overhaul.png'
 if (Test-Path -LiteralPath $imagePath) {
     Copy-Item -LiteralPath $imagePath -Destination $stagingDirectory
 }
 
-$zipPath = Join-Path $artifactDirectory 'TIEconomyMod-0.6.1-ti1.0.47.zip'
+$zipPath = Join-Path $artifactDirectory 'TIEconomyMod-0.6.4-ti1.0.47.zip'
 if (Test-Path -LiteralPath $zipPath) {
     Remove-Item -LiteralPath $zipPath
 }
