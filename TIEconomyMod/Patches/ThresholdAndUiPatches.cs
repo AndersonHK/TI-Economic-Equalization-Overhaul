@@ -49,7 +49,7 @@ namespace TIEconomyMod.Patches
             float result = configured * settings.multiplier;
             if (float.IsNaN(result) || float.IsInfinity(result) || result <= 0f)
             {
-                Main.Warn("Region threshold calculation was invalid; using the live TI 1.0.39 value.");
+                Main.Warn("Region threshold calculation was invalid; using the live TI 1.0.47 value.");
                 return vanilla;
             }
 
@@ -145,7 +145,7 @@ namespace TIEconomyMod.Patches
         [HarmonyTranspiler]
         public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
-            // TI 1.0.39 moved these values from IL constants to TIGlobalConfig fields.
+            // TI 1.0.47 keeps these values in TIGlobalConfig fields.
             // Replacing exactly those three field loads preserves the complete vanilla
             // completion method. Defaults multiply 500/750/1,200 by five, producing
             // 2,500/3,750/6,000 IP; missing fields fail loudly instead of silently no-op.
@@ -335,13 +335,17 @@ namespace TIEconomyMod.Patches
                 {
                     // One region at $100B GDP gives ratio 1 and curve 0.5, turning
                     // the default +60% maximum into a x1.30 raw-delta multiplier.
-                    float resourceRatio = nation.currentResourceRegions *
-                        abundance.referenceGdpPerResourceRegionBillions /
-                        Math.Max((float)(nation.GDP / 1000000000d), abundance.minimumGdpBillions);
-                    double powered = Math.Pow(resourceRatio, abundance.resourceCurveExponent);
-                    float curve = double.IsPositiveInfinity(powered)
-                        ? 1f
-                        : (float)(powered / (1d + powered));
+                    float curve = 0f;
+                    if (Main.FeatureEnabled(abundance.enabled))
+                    {
+                        float resourceRatio = nation.currentResourceRegions *
+                            abundance.referenceGdpPerResourceRegionBillions /
+                            Math.Max((float)(nation.GDP / 1000000000d), abundance.minimumGdpBillions);
+                        double powered = Math.Pow(resourceRatio, abundance.resourceCurveExponent);
+                        curve = double.IsPositiveInfinity(powered)
+                            ? 1f
+                            : (float)(powered / (1d + powered));
+                    }
                     float resourceMultiplier = 1f +
                         inequality.economyMaximumResourceMultiplier * curve;
                     float gdpBillions = Math.Max(inequality.minimumGdpBillions,
@@ -405,13 +409,17 @@ namespace TIEconomyMod.Patches
                     AbundanceSettings abundance = Main.settings.abundance;
                     // One region at $100B GDP gives ratio 1 and curve 0.5, turning
                     // the default +100% maximum into a x1.50 raw-delta multiplier.
-                    float resourceRatio = nation.currentResourceRegions *
-                        abundance.referenceGdpPerResourceRegionBillions /
-                        Math.Max((float)(nation.GDP / 1000000000d), abundance.minimumGdpBillions);
-                    double powered = Math.Pow(resourceRatio, abundance.resourceCurveExponent);
-                    float curve = double.IsPositiveInfinity(powered)
-                        ? 1f
-                        : (float)(powered / (1d + powered));
+                    float curve = 0f;
+                    if (Main.FeatureEnabled(abundance.enabled))
+                    {
+                        float resourceRatio = nation.currentResourceRegions *
+                            abundance.referenceGdpPerResourceRegionBillions /
+                            Math.Max((float)(nation.GDP / 1000000000d), abundance.minimumGdpBillions);
+                        double powered = Math.Pow(resourceRatio, abundance.resourceCurveExponent);
+                        curve = double.IsPositiveInfinity(powered)
+                            ? 1f
+                            : (float)(powered / (1d + powered));
+                    }
                     float resourceMultiplier = 1f +
                         inequality.spoilsMaximumResourceMultiplier * curve;
                     float gdpBillions = Math.Max(inequality.minimumGdpBillions,
@@ -434,13 +442,17 @@ namespace TIEconomyMod.Patches
                     // curve .5/x2.5; Government 5 gives x1.15 and a $172.50 payout.
                     AbundanceSettings abundance = Main.settings.abundance;
                     SpoilsMoneySettings money = Main.settings.spoilsMoney;
-                    float resourceRatio = nation.currentResourceRegions *
-                        abundance.referenceGdpPerResourceRegionBillions /
-                        Math.Max((float)(nation.GDP / 1000000000d), abundance.minimumGdpBillions);
-                    double powered = Math.Pow(resourceRatio, abundance.resourceCurveExponent);
-                    float curve = double.IsPositiveInfinity(powered)
-                        ? 1f
-                        : (float)(powered / (1d + powered));
+                    float curve = 0f;
+                    if (Main.FeatureEnabled(abundance.enabled))
+                    {
+                        float resourceRatio = nation.currentResourceRegions *
+                            abundance.referenceGdpPerResourceRegionBillions /
+                            Math.Max((float)(nation.GDP / 1000000000d), abundance.minimumGdpBillions);
+                        double powered = Math.Pow(resourceRatio, abundance.resourceCurveExponent);
+                        curve = double.IsPositiveInfinity(powered)
+                            ? 1f
+                            : (float)(powered / (1d + powered));
+                    }
                     float resourceMultiplier = 1f +
                         (money.maximumResourceMultiplier - 1f) * curve;
                     float governmentMultiplier = money.governmentBaseMultiplier -
@@ -466,7 +478,7 @@ namespace TIEconomyMod.Patches
                 section.AppendLine("EEO Unity");
                 if (Main.FeatureEnabled(Main.settings.unity.enabled))
                 {
-                    // These are the actual patched getters; TI's full 1.0.39 completion
+                    // These are the actual patched getters; TI's full 1.0.47 completion
                     // method remains in charge of claims and all other secondary behavior.
                     section.Append("Cohesion ").Append(
                             nation.unityPriorityCohesionChange.ToString("+0.####;-0.####;0"))

@@ -20,7 +20,7 @@ namespace TIEconomyMod.Patches
             // Monthly IP is GDP / $100B, followed by a low-income multiplier that
             // rises linearly from 70% at $0 PCGDP to 100% at $15k. For example,
             // a $500B economy produces 3.5 IP at $0 PCGDP and 5 IP at $15k.
-            // Installed vanilla 1.0.39 instead exposes a cached nonlinear economy score,
+            // Installed vanilla 1.0.47 instead exposes a cached nonlinear economy score,
             // so this patch deliberately makes national output directly legible from GDP.
             float baseInvestmentPoints = (float)(__instance.GDP /
                 (settings.gdpPerInvestmentPointBillions * 1000000000d));
@@ -66,8 +66,10 @@ namespace TIEconomyMod.Patches
 
             // The five listed social technologies lower the economy-score exponent through
             // 1, .98, .95, .90, .85, and .80; the result is divided evenly among CPs.
-            // With economy score 200 and four CPs, vanilla's unmodified 200 / 4 is 50,
-            // one technology gives 200^.98 / 4 = about 45, and all five give about 17.
+            // TI 1.0.47 then applies the active scenario's CP-maintenance multiplier,
+            // preserving the new-start balance knob without adopting vanilla's global-GDP
+            // normalization. With economy score 200, four CPs, and a x1.2 scenario,
+            // no technology costs 200 / 4 * 1.2 = 60 and all five cost about 21.
             float exponent;
             switch (completed)
             {
@@ -79,7 +81,8 @@ namespace TIEconomyMod.Patches
                 default: exponent = 1f; break;
             }
             float calculated = (float)Math.Pow(__instance.economyScore, exponent) /
-                Math.Max(1, __instance.numControlPoints);
+                Math.Max(1, __instance.numControlPoints) *
+                GameStateManager.Time().template.CPMaintenanceModifier;
 
             if (float.IsNaN(calculated) || float.IsInfinity(calculated))
             {
@@ -140,7 +143,7 @@ namespace TIEconomyMod.Patches
             // by PCGDP, Government, Cohesion, Unrest, and the live adviser bonus. PCGDP
             // bottoms out at 60% of the $20k reference. For a 50M nation at Education 8,
             // $10k PCGDP, Government 5, Cohesion 5, Unrest 2, and +10% adviser science,
-            // defaults produce about 13.5 research/month. Installed vanilla 1.0.39
+            // defaults produce about 13.5 research/month. Installed vanilla 1.0.47
             // produces about 51.6 because it uses a larger coefficient and an IP crutch.
             float income = Math.Max(
                 __instance.perCapitaGDP / settings.referencePcgdp,

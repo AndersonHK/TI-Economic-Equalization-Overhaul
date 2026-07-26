@@ -55,10 +55,10 @@ if ($LASTEXITCODE -ne 0) {
 
 $manifestPath = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\ModInfo.json'
 $manifest = Get-Content -LiteralPath $manifestPath -Raw | ConvertFrom-Json
-if ($manifest.GameVersion -ne '1.0.39') {
-    throw "ModInfo.json targets '$($manifest.GameVersion)' instead of TI 1.0.39."
+if ($manifest.GameVersion -ne '1.0.47') {
+    throw "ModInfo.json targets '$($manifest.GameVersion)' instead of TI 1.0.47."
 }
-if ($manifest.Version -ne '0.5.0') {
+if ($manifest.Version -ne '0.6.0') {
     throw "ModInfo.json version '$($manifest.Version)' does not match this release."
 }
 if ($manifest.AssemblyName -ne 'Assembly/TIEconomyMod.dll') {
@@ -107,7 +107,7 @@ if (Test-Path -LiteralPath $imagePath) {
     Copy-Item -LiteralPath $imagePath -Destination $stagingDirectory
 }
 
-$zipPath = Join-Path $artifactDirectory 'TIEconomyMod-0.5.0-ti1.0.39.zip'
+$zipPath = Join-Path $artifactDirectory 'TIEconomyMod-0.6.0-ti1.0.47.zip'
 if (Test-Path -LiteralPath $zipPath) {
     Remove-Item -LiteralPath $zipPath
 }
@@ -142,4 +142,4 @@ if ($packagedHash -ne $assemblyHash) {
 Write-Host "PASS: release verification completed."
 Write-Host "DLL SHA256: $assemblyHash"
 Write-Host "Artifact: $zipPath"
-Write-Host 'Forward-compatibility note: behavior/metadata target TI 1.0.39; this build also compiled against the installed TI 1.0.47 assemblies.'
+Write-Host 'Compatibility target: TI 1.0.47 installed assemblies and guarded IL patch points.'

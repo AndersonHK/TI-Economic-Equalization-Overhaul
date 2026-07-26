@@ -29,7 +29,19 @@ namespace PavonisInteractive.TerraInvicta
     public static class GameStateManager
     {
         public static readonly GlobalResearchState Research = new GlobalResearchState();
+        public static readonly TITimeState TimeState = new TITimeState();
         public static GlobalResearchState GlobalResearch() { return Research; }
+        public static TITimeState Time() { return TimeState; }
+    }
+
+    public sealed class TITimeState
+    {
+        public TIStartTimeTemplate template = new TIStartTimeTemplate();
+    }
+
+    public sealed class TIStartTimeTemplate
+    {
+        public float CPMaintenanceModifier = 1f;
     }
 
     public sealed class TINationState

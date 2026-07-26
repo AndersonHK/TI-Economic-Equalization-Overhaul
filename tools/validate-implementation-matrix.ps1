@@ -16,7 +16,7 @@ $requiredColumns = @(
     'feature_id',
     'category',
     'feature',
-    'vanilla_1_0_39',
+    'vanilla_1_0_47',
     'maintained_main_0_2_5',
     'current_mod',
     'config_keys',

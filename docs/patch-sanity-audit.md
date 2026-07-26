@@ -7,13 +7,13 @@ from making a proportional effect scale incorrectly.
 | Patch | Stock / unit | Sanity result |
 |---|---|---|
 | `InvestmentPointsPatch` | GDP / $100B | Aligned. Output is legible and linear; the low-income ramp models capital constraints without a discontinuity. |
-| `ControlPointCostPatch` | National economy score per CP | Aligned with the retained technology exponent sequence. It makes later governance technology reduce the burden smoothly while preserving free alien CPs. |
+| `ControlPointCostPatch` | National economy score per CP | Aligned. It retains the configured technology exponent sequence and free alien CPs, then applies TI 1.0.47's live scenario maintenance multiplier. It deliberately does not adopt vanilla's global-GDP normalization. |
 | `ArmyUpkeepPatch` | Fixed cost per army | Aligned. Every army pays its own home/away and miltech-dependent upkeep; large nations only benefit by having more IP to support more units. |
 | `ResearchPatch` | Population, human capital, institutions | Aligned. This is national productive output rather than an IP completion, so linear population with Education squared is economically legible. |
 | `EconomyGrowthPatch` | Fixed total GDP gain per IP | Aligned. The getter converts the total gain to per-capita form only because TI expects that unit; GDP-linear IP makes aggregate monthly growth approximately scale-neutral. |
-| `EconomyInequalityPatch` | GDP | Aligned after stock correction. Resources/GDP affects the raw change and the continuous 1-9 boundary transform makes extremes progressively harder. |
+| `EconomyInequalityPatch` | GDP | Aligned after stock correction. Resources/GDP affects the raw change only while Abundance is enabled, and the continuous 1-9 boundary transform makes extremes progressively harder. |
 | `WelfareInequalityPatch` | GDP | Aligned after stock correction. A tenfold economy gets one tenth the per-IP rating change and approximately tenfold IP. |
-| `SpoilsInequalityPatch` | GDP | Aligned after stock correction. Resource dependence matters strongly in small economies and weakly in diversified large economies. |
+| `SpoilsInequalityPatch` | GDP | Aligned after stock correction. Resource dependence matters strongly in small economies and weakly in diversified large economies; disabling Abundance removes that premium. |
 | `KnowledgeEducationPatch` | Population | Aligned. Education is a demographic stock and receives smooth diminishing returns at high Education. |
 | `KnowledgeCohesionPatch` | Population and distance to neutral | Aligned. It cannot jump across the target and larger populations require proportionally more completions. |
 | `GovernmentDemocracyPatch` | Population / institutions | Aligned. It changes a society-wide institutional score rather than buying a fixed asset. |
@@ -28,11 +28,11 @@ from making a proportional effect scale incorrectly.
 | `EconomyEmissionsPatch` | GDP × carbon intensity | Aligned. GDP, not population or borders, produces emissions; resources/GDP adds a bounded extractive-economy intensity premium. |
 | `UnityCohesionPatch` | Population | Aligned. Population scaling prevents unified countries becoming easier to homogenize; Education and Government reduce the effect with a floor. |
 | `UnityEducationPatch` | Population | Aligned. The small secondary Education loss scales with the people affected. |
-| `UnityPropagandaPatch` | Vanilla demographic effect × configured strength | Aligned. It changes only one config field load and preserves TI 1.0.39 claims and completion logic. |
+| `UnityPropagandaPatch` | Vanilla demographic effect × configured strength | Aligned. It changes only one config field load and preserves TI 1.0.47 claims and completion logic. |
 | `SpoilsGovernmentPatch` | Population / institutions | Aligned with the selected inverse-population behavior. |
-| `SpoilsSustainabilityPatch` | GDP | Aligned. Spoils damages carbon intensity, so its per-IP change falls with the economy and rises with resource dependence. |
+| `SpoilsSustainabilityPatch` | GDP | Aligned. Spoils damages carbon intensity, so its per-IP change falls with the economy and rises with resource dependence while Abundance is enabled. |
 | `SpoilsPropagandaPatch` | Vanilla demographic effect × configured strength | Aligned. It preserves payout, CP, corruption, sustainability, and emissions branches. |
-| `SpoilsMoneyPatch` | Fixed payout × resources/GDP × Government | Aligned. The curve is continuous from no resource premium toward the configured maximum; no region-count table remains. |
+| `SpoilsMoneyPatch` | Fixed payout × resources/GDP × Government | Aligned. The curve is continuous from no resource premium toward the configured maximum; no region-count table remains, and disabling Abundance leaves the base/Government payout. |
 | `EconomyRegionThresholdPatch` | Fixed accumulated IP | Aligned. Region conversion is a fixed capital project; default x5 makes it harder without border-sensitive scaling. |
 | `DecolonizationThresholdPatch` | Fixed accumulated IP | Aligned. The threshold is a political project cost and uses the same guarded multiplier. |
 | `FalloutCleanupThresholdPatch` | Fixed accumulated IP per detonation | Aligned. Every blast costs the same to clean; damage concentration is handled separately by land area. |
@@ -46,8 +46,13 @@ from making a proportional effect scale incorrectly.
 - Feature and global toggles return prefixes to vanilla and make transpiler helpers
   return live vanilla field values.
 - Invalid or non-finite calculations retain vanilla or use a documented safe value.
-- The metadata target is TI 1.0.39; compilation against installed TI 1.0.47 is a
-  forward check, not a claim that 1.0.47 behavior has been fully designed.
+- The metadata and assembly target TI 1.0.47. Verification compiles against the
+  installed 1.0.47 assemblies and confirms every guarded gameplay/UI IL anchor.
+- The control-cost patch reads `CPMaintenanceModifier` from the live start-time
+  template, so scenario balance changes are honored without hiding the mod's
+  economy-score/exponent formula.
+- Resource-dependent side effects consistently observe the Abundance feature
+  toggle in gameplay and tooltips.
 
 ## Deferred audit item
 

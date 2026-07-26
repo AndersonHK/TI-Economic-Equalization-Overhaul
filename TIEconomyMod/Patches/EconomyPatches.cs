@@ -18,7 +18,7 @@ namespace TIEconomyMod.Patches
 
             // Every completed global technology listed in the CSV multiplies the result;
             // two 2% technologies therefore give 1.02 * 1.02 = 1.0404, not 1.04.
-            // Installed vanilla 1.0.39 has no comparable global-technology multiplier:
+            // Installed vanilla 1.0.47 has no comparable global-technology multiplier:
             // it applies project/effect modifiers directly to its per-capita base instead.
             // Faction projects stay out of this calculation so those vanilla bonuses are
             // neither attributed to the wrong nation nor counted twice.
@@ -40,7 +40,7 @@ namespace TIEconomyMod.Patches
             // Core Economic regions follow one smooth saturating curve:
             //   1 + maximumBonus * cores / (halfSaturation + cores)
             // Defaults give x1.20, x1.30, x1.36, and x1.40 for one through four
-            // regions, approaching but never exceeding x1.60. Installed vanilla 1.0.39
+            // regions, approaching but never exceeding x1.60. Installed vanilla 1.0.47
             // instead adds a flat 1.5 dollars of per-capita growth per core region.
             int cores = Math.Max(0, __instance.numCoreEconomicRegions_dailyCache);
             float coreRegionMultiplier = 1f + economy.coreRegionMaximumBonus * cores /
@@ -72,7 +72,7 @@ namespace TIEconomyMod.Patches
                 // to poor resource-rich states without an artificial technology penalty.
                 // Example: 1 region and $100B GDP gives ratio 1, curve 0.5, and +50%
                 // growth at full stability. At $1T GDP the same region gives ratio 0.1,
-                // curve 0.091, and about +9.1%. Installed vanilla 1.0.39 instead adds the
+                // curve 0.091, and about +9.1%. Installed vanilla 1.0.47 instead adds the
                 // same flat 1.5 dollars of per-capita growth for that region at any GDP.
                 float resourceRatio = __instance.currentResourceRegions *
                     abundance.referenceGdpPerResourceRegionBillions /
@@ -89,7 +89,7 @@ namespace TIEconomyMod.Patches
                 // forestry's share without erasing cheap land's housing/industry value:
                 // at $30k PCGDP the default relevance is 62.5%, making the final full-
                 // stability bonus about +7.8%; at extreme wealth it approaches +3.1%.
-                // Installed vanilla 1.0.39 has no land-density Economy bonus.
+                // Installed vanilla 1.0.47 has no land-density Economy bonus.
                 float landRatio = abundance.referenceDensity /
                     Math.Max(__instance.populationDesnity_pop_km2, abundance.minimumDensity);
                 double poweredLandRatio = Math.Pow(landRatio, abundance.landCurveExponent);
@@ -108,7 +108,7 @@ namespace TIEconomyMod.Patches
             // because the patched getter returns per-capita change. For a 50M-person nation
             // at $20k PCGDP, Education 8, Government 7, Cohesion 5, one core and one
             // resource region, defaults produce roughly $4.1B before land and technology.
-            // Installed vanilla 1.0.39 produces about $875M per completion for the same
+            // Installed vanilla 1.0.47 produces about $875M per completion for the same
             // demographic inputs because it uses a much smaller additive per-capita model.
             float totalGainBillions = economy.baseGainBillions * coreRegionMultiplier *
                 educationMultiplier * governmentMultiplier * cohesionMultiplier *
@@ -142,16 +142,20 @@ namespace TIEconomyMod.Patches
             // Resource-driven inequality uses the same GDP-relative curve as Economy
             // growth. One region in a $100B economy gives ratio 1 and curve 0.5, so the
             // default +60% maximum becomes a x1.30 raw-delta multiplier. At $1T the
-            // ratio is 0.1 and the multiplier is only x1.055. Installed vanilla 1.0.39
+            // ratio is 0.1 and the multiplier is only x1.055. Installed vanilla 1.0.47
             // adds a flat 0.0001 per resource region before its population scaling.
             AbundanceSettings abundance = Main.settings.abundance;
-            float resourceRatio = __instance.currentResourceRegions *
-                abundance.referenceGdpPerResourceRegionBillions /
-                Math.Max((float)(__instance.GDP / 1000000000d), abundance.minimumGdpBillions);
-            double poweredResourceRatio = Math.Pow(resourceRatio, abundance.resourceCurveExponent);
-            float resourceCurve = double.IsPositiveInfinity(poweredResourceRatio)
-                ? 1f
-                : (float)(poweredResourceRatio / (1d + poweredResourceRatio));
+            float resourceCurve = 0f;
+            if (Main.FeatureEnabled(abundance.enabled))
+            {
+                float resourceRatio = __instance.currentResourceRegions *
+                    abundance.referenceGdpPerResourceRegionBillions /
+                    Math.Max((float)(__instance.GDP / 1000000000d), abundance.minimumGdpBillions);
+                double poweredResourceRatio = Math.Pow(resourceRatio, abundance.resourceCurveExponent);
+                resourceCurve = double.IsPositiveInfinity(poweredResourceRatio)
+                    ? 1f
+                    : (float)(poweredResourceRatio / (1d + poweredResourceRatio));
+            }
             float resourceMultiplier = 1f +
                 settings.economyMaximumResourceMultiplier * resourceCurve;
             // Inequality is a proportional economic outcome, so the affected stock is

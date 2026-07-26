@@ -44,6 +44,7 @@ namespace TIEconomyMod.FormulaTests
             TIEconomyMod.Main.enabled = true;
             TIEconomyMod.Main.settings = new Settings();
             GameStateManager.Research.finishedTechsNames.Clear();
+            GameStateManager.TimeState.template.CPMaintenanceModifier = 1f;
         }
 
         private static void TestNationalValues()
@@ -67,6 +68,10 @@ namespace TIEconomyMod.FormulaTests
             GameStateManager.Research.finishedTechsNames.Add("ArrivalInternationalRelations");
             ControlPointCostPatch.Postfix(ref result, nation);
             Near((float)Math.Pow(200f, 0.98f) / 4f, result, 0.0001f, "control exponent sequence");
+            GameStateManager.TimeState.template.CPMaintenanceModifier = 1.2f;
+            ControlPointCostPatch.Postfix(ref result, nation);
+            Near((float)Math.Pow(200f, 0.98f) / 4f * 1.2f, result, 0.0001f,
+                "TI 1.0.47 scenario control-maintenance multiplier");
 
             TIArmyState army = new TIArmyState { homeNation = nation, useHomeInvestmentFactor = true };
             nation.militaryTechLevel = 5f;
@@ -284,6 +289,12 @@ namespace TIEconomyMod.FormulaTests
             EconomyInequalityPatch.Prefix(ref largerEconomy, nation);
             True(twoResources > oneResource, "resource inequality curve is continuous and monotonic");
             True(largerEconomy < oneResource, "resource inequality is relative to GDP");
+            TIEconomyMod.Main.settings.abundance.enabled = false;
+            nation.GDP = 100000000000d;
+            float abundanceDisabled = 0f;
+            EconomyInequalityPatch.Prefix(ref abundanceDisabled, nation);
+            Near(0.1f, abundanceDisabled, 0.000001f,
+                "disabled abundance removes the Economy Inequality resource premium");
         }
 
         private static void TestSocialPriorities()
@@ -321,6 +332,10 @@ namespace TIEconomyMod.FormulaTests
             nation.GDP = 500000000000d;
             SpoilsMoneyPatch.Prefix(ref result, nation);
             True(result < smallEconomyPayout, "spoils resource payout is relative to GDP");
+            TIEconomyMod.Main.settings.abundance.enabled = false;
+            SpoilsMoneyPatch.Prefix(ref result, nation);
+            Near(69f, result, 0.0001f,
+                "disabled abundance removes the Spoils payout resource premium");
         }
 
         private static void TestEnvironmentUnitySpoilsAndEmissions()
@@ -399,6 +414,10 @@ namespace TIEconomyMod.FormulaTests
             SpoilsSustainabilityPatch.Prefix(ref result, nation);
             Near(0.075f, result, 0.000001f,
                 "Spoils carbon-intensity damage uses GDP and resource ratio");
+            TIEconomyMod.Main.settings.abundance.enabled = false;
+            SpoilsSustainabilityPatch.Prefix(ref result, nation);
+            Near(0.05f, result, 0.000001f,
+                "disabled abundance removes the Spoils sustainability resource premium");
         }
 
         private static void TestNationalMergers()

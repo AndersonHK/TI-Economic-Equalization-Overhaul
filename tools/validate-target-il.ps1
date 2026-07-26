@@ -84,7 +84,10 @@ try {
     Assert-Count $absorb 'TINationState::TransferRegionsControlTo\(' 1 'National merger region transfer'
     Assert-Count $absorb 'TINationState::ClearArmies\(\)' 1 'National merger joining-force cleanup'
 
-    Write-Host 'PASS: target IL contains every guarded TI 1.0.39/forward-compatible patch point.'
+    $controlCost = Read-MethodIl $nation 'get_ControlPointMaintenanceCost'
+    Assert-Count $controlCost 'ldfld\s+float32 TIStartTimeTemplate::CPMaintenanceModifier' 1 'Control-point scenario multiplier'
+
+    Write-Host 'PASS: target IL contains every guarded TI 1.0.47 patch point.'
 }
 finally {
     $resolvedProbe = (Resolve-Path -LiteralPath $probeDirectory).Path

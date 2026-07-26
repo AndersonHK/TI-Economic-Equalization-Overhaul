@@ -67,7 +67,7 @@ namespace TIEconomyMod.Patches
 
             // Direct atmospheric removal is a fixed physical return per IP, not a return
             // per citizen. A nation with 10x the GDP has about 10x the IP and therefore
-            // removes about 10x as much under equal priority allocation. Vanilla 1.0.39
+            // removes about 10x as much under equal priority allocation. Vanilla 1.0.47
             // divides this effect by its nonlinear population-scaling factor.
             float baseChange = TemplateManager.global.WelCO2_ppm;
             float calculated = (baseChange + TIEffectsState.SumEffectsModifiers(
@@ -160,7 +160,7 @@ namespace TIEconomyMod.Patches
             // Emissions are GDP times carbon intensity, with no independent population
             // term. At Sustainability 1, $100B emits 27.5M base tons/year and $1T emits
             // 275M: economic growth raises total emissions but not emissions per dollar.
-            // Vanilla 1.0.39 adds a large PCGDP-weighted population term, which makes two
+            // Vanilla 1.0.47 adds a large PCGDP-weighted population term, which makes two
             // equally sized economies emit differently merely because borders changed.
             double gdpBillions = Math.Max(0d, __instance.GDP / 1000000000d);
             double sustainability = Math.Max(0d,
@@ -313,13 +313,17 @@ namespace TIEconomyMod.Patches
             float gdpBillions = Math.Max(settings.minimumGdpBillions,
                 (float)(__instance.GDP / 1000000000d));
             AbundanceSettings abundance = Main.settings.abundance;
-            float resourceRatio = __instance.currentResourceRegions *
-                abundance.referenceGdpPerResourceRegionBillions /
-                Math.Max(gdpBillions, abundance.minimumGdpBillions);
-            double poweredRatio = Math.Pow(resourceRatio, abundance.resourceCurveExponent);
-            float resourceCurve = double.IsPositiveInfinity(poweredRatio)
-                ? 1f
-                : (float)(poweredRatio / (1d + poweredRatio));
+            float resourceCurve = 0f;
+            if (Main.FeatureEnabled(abundance.enabled))
+            {
+                float resourceRatio = __instance.currentResourceRegions *
+                    abundance.referenceGdpPerResourceRegionBillions /
+                    Math.Max(gdpBillions, abundance.minimumGdpBillions);
+                double poweredRatio = Math.Pow(resourceRatio, abundance.resourceCurveExponent);
+                resourceCurve = double.IsPositiveInfinity(poweredRatio)
+                    ? 1f
+                    : (float)(poweredRatio / (1d + poweredRatio));
+            }
             float resourceMultiplier = 1f +
                 (settings.maximumResourceSustainabilityMultiplier - 1f) * resourceCurve;
             float calculated = settings.sustainabilityChangeAtReferenceGdp *
