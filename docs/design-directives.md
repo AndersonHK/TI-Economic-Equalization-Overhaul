@@ -31,6 +31,22 @@ Splitting a country must not multiply national-ratio effects. Conversely, larger
 countries are intentionally advantaged at fixed-cost projects: they can devote
 more absolute capital to Mission Control, Boost, and Armies.
 
+Country mergers must also combine the stocks that national ratings summarize.
+Military technology is half the equipment/doctrine embodied in existing armies
+and navies and half the GDP-backed industrial base that can sustain them.
+Inequality represents the merged income distribution, not a simple average of
+two ratings: population sets the size of each distribution, GDP per capita its
+center, and existing Inequality its approximate width. Similar distributions
+should overlap with little change; large income gaps should form a disruptive
+second mode. The finite-population Gini correction is retained, so one rich and
+one poor individual approaches maximum Inequality while two equally sized mass
+populations at the same income extremes approach the midpoint.
+
+Sequential three-country mergers are not perfectly order-independent because TI
+persists only one Military technology value and one Inequality value, not the
+component force and income distributions. Keep that limitation explicit and do
+not introduce hidden historical state merely to make the operation associative.
+
 ## Resources, land, and historical structure
 
 Resource importance is measured relative to GDP, not by a hardcoded region table.

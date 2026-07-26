@@ -58,6 +58,9 @@ $manifest = Get-Content -LiteralPath $manifestPath -Raw | ConvertFrom-Json
 if ($manifest.GameVersion -ne '1.0.39') {
     throw "ModInfo.json targets '$($manifest.GameVersion)' instead of TI 1.0.39."
 }
+if ($manifest.Version -ne '0.5.0') {
+    throw "ModInfo.json version '$($manifest.Version)' does not match this release."
+}
 if ($manifest.AssemblyName -ne 'Assembly/TIEconomyMod.dll') {
     throw "ModInfo.json has unexpected AssemblyName '$($manifest.AssemblyName)'."
 }
@@ -104,11 +107,37 @@ if (Test-Path -LiteralPath $imagePath) {
     Copy-Item -LiteralPath $imagePath -Destination $stagingDirectory
 }
 
-$zipPath = Join-Path $artifactDirectory 'TIEconomyMod-0.4.0-ti1.0.39.zip'
+$zipPath = Join-Path $artifactDirectory 'TIEconomyMod-0.5.0-ti1.0.39.zip'
 if (Test-Path -LiteralPath $zipPath) {
     Remove-Item -LiteralPath $zipPath
 }
 Compress-Archive -LiteralPath $stagingDirectory -DestinationPath $zipPath -CompressionLevel Optimal
+
+Add-Type -AssemblyName System.IO.Compression.FileSystem
+$archive = [IO.Compression.ZipFile]::OpenRead($zipPath)
+try {
+    $packagedDll = $archive.Entries |
+        Where-Object { $_.FullName.Replace('\', '/') -eq 'TIEconomyMod/Assembly/TIEconomyMod.dll' } |
+        Select-Object -First 1
+    if ($null -eq $packagedDll) {
+        throw 'Release archive does not contain Assembly/TIEconomyMod.dll.'
+    }
+    $stream = $packagedDll.Open()
+    $sha256 = [Security.Cryptography.SHA256]::Create()
+    try {
+        $packagedHash = ([BitConverter]::ToString($sha256.ComputeHash($stream))).Replace('-', '')
+    }
+    finally {
+        $sha256.Dispose()
+        $stream.Dispose()
+    }
+}
+finally {
+    $archive.Dispose()
+}
+if ($packagedHash -ne $assemblyHash) {
+    throw 'Packaged DLL does not match the newly built binary.'
+}
 
 Write-Host "PASS: release verification completed."
 Write-Host "DLL SHA256: $assemblyHash"

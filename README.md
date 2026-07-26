@@ -36,6 +36,8 @@ for the current patch-by-patch review.
 - Population-normalized Unity, Knowledge, Government, Oppression, and selected
   Spoils social effects.
 - Army-count-normalized Military technology and per-army upkeep.
+- National mergers combine Military technology from 50% force structure and
+  50% GDP, while merged Inequality approximates the combined income distribution.
 - Surgical Unity and Spoils propaganda transpilers that preserve TI 1.0.39's
   complete priority-completion behavior.
 - Configurable region conversion, decolonization, and fallout thresholds,
@@ -69,11 +71,13 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\verify.ps1
 Verification rebuilds with warnings as errors, runs dependency-free formula
 tests, validates the implementation matrix against settings and Harmony patches,
 checks the manifest/package layout, and creates
-`artifacts/TIEconomyMod-0.4.0-ti1.0.39.zip`.
+`artifacts/TIEconomyMod-0.5.0-ti1.0.39.zip`.
 
 ## Smoke test
 
 Compare poor resource-rich/resource-poor, land-abundant/dense, stable/unstable,
 early/late technology, small/large GDP, and small/large army-count countries.
 Exercise all affected priorities at boundary and neutral values, then toggle each
-feature and confirm the appended tooltip agrees with the observed change.
+feature and confirm the appended tooltip agrees with the observed change. Merge
+countries with similar and dissimilar GDP/c, force structure, and population;
+verify Military technology and Inequality against the documented examples.

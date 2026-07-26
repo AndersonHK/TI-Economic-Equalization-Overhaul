@@ -51,9 +51,25 @@ namespace PavonisInteractive.TerraInvicta
         public float populationDesnity_pop_km2;
         public float militaryTechLevel;
         public float maxMilitaryTechLevel;
+        public int numNavies;
         public float sustainability;
         public readonly List<TIArmyState> armies = new List<TIArmyState>();
         public readonly List<TIRegionState> regions = new List<TIRegionState>();
+
+        public enum InequalityChangeReason
+        {
+            InqReason_Annexation
+        }
+
+        public void AddToMilitaryTechLevel(float value)
+        {
+            militaryTechLevel += value;
+        }
+
+        public void AddToInequality(float value, InequalityChangeReason reason)
+        {
+            inequality = Math.Max(1f, Math.Min(9f, inequality + value));
+        }
     }
 
     public sealed class TIRegionState
@@ -129,6 +145,7 @@ namespace TIEconomyMod
         public KnowledgeSettings knowledge = new KnowledgeSettings();
         public GovernmentSettings government = new GovernmentSettings();
         public MilitarySettings military = new MilitarySettings();
+        public NationalMergerSettings nationalMergers = new NationalMergerSettings();
         public OppressionSettings oppression = new OppressionSettings();
         public EnvironmentSettings environment = new EnvironmentSettings();
         public EmissionsSettings emissions = new EmissionsSettings();
@@ -259,6 +276,19 @@ namespace TIEconomyMod
         public bool enabled = true;
         public float technologyChangeForOneArmy = 0.00275f;
         public float catchupBonus = 0.5f;
+    }
+
+    public sealed class NationalMergerSettings
+    {
+        public bool enabled = true;
+        public bool militaryEnabled = true;
+        public float militaryForceShare = 0.5f;
+        public float navyArmyEquivalent = 1f;
+        public bool inequalityEnabled = true;
+        public float inequalityMinimum = 1f;
+        public float inequalityMaximum = 9f;
+        public float minimumPerCapitaGdp = 1f;
+        public float inequalityBoundaryEpsilon = 0.000001f;
     }
 
     public sealed class OppressionSettings

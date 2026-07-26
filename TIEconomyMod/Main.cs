@@ -142,6 +142,9 @@ namespace TIEconomyMod
         [Draw("Military")]
         public MilitarySettings military = new MilitarySettings();
 
+        [Draw("National Mergers")]
+        public NationalMergerSettings nationalMergers = new NationalMergerSettings();
+
         [Draw("Oppression")]
         public OppressionSettings oppression = new OppressionSettings();
 
@@ -318,6 +321,20 @@ namespace TIEconomyMod
     }
 
     [DrawFields(DrawFieldMask.Public)]
+    public sealed class NationalMergerSettings
+    {
+        public bool enabled = true;
+        public bool militaryEnabled = true;
+        public float militaryForceShare = 0.5f;
+        public float navyArmyEquivalent = 1f;
+        public bool inequalityEnabled = true;
+        public float inequalityMinimum = 1f;
+        public float inequalityMaximum = 9f;
+        public float minimumPerCapitaGdp = 1f;
+        public float inequalityBoundaryEpsilon = 0.000001f;
+    }
+
+    [DrawFields(DrawFieldMask.Public)]
     public sealed class OppressionSettings
     {
         public bool enabled = true;
@@ -418,6 +435,7 @@ namespace TIEconomyMod
             value.knowledge = value.knowledge ?? defaults.knowledge;
             value.government = value.government ?? defaults.government;
             value.military = value.military ?? defaults.military;
+            value.nationalMergers = value.nationalMergers ?? defaults.nationalMergers;
             value.oppression = value.oppression ?? defaults.oppression;
             value.environment = value.environment ?? defaults.environment;
             value.emissions = value.emissions ?? defaults.emissions;
@@ -499,6 +517,23 @@ namespace TIEconomyMod
             RepairPositive(ref value.government.democracyPopulationDivisor, defaults.government.democracyPopulationDivisor, "government.democracyPopulationDivisor", log);
             RepairPositive(ref value.military.technologyChangeForOneArmy, defaults.military.technologyChangeForOneArmy, "military.technologyChangeForOneArmy", log);
             RepairNonNegative(ref value.military.catchupBonus, defaults.military.catchupBonus, "military.catchupBonus", log);
+            RepairRange(ref value.nationalMergers.militaryForceShare, defaults.nationalMergers.militaryForceShare, 0f, 1f, "nationalMergers.militaryForceShare", log);
+            RepairNonNegative(ref value.nationalMergers.navyArmyEquivalent, defaults.nationalMergers.navyArmyEquivalent, "nationalMergers.navyArmyEquivalent", log);
+            if (!IsFinite(value.nationalMergers.inequalityMinimum) ||
+                !IsFinite(value.nationalMergers.inequalityMaximum) ||
+                value.nationalMergers.inequalityMaximum -
+                    value.nationalMergers.inequalityMinimum < 0.001f)
+            {
+                log("Invalid national-merger Inequality bounds; restored safe 1/9 defaults.");
+                value.nationalMergers.inequalityMinimum = defaults.nationalMergers.inequalityMinimum;
+                value.nationalMergers.inequalityMaximum = defaults.nationalMergers.inequalityMaximum;
+            }
+            RepairPositive(ref value.nationalMergers.minimumPerCapitaGdp, defaults.nationalMergers.minimumPerCapitaGdp, "nationalMergers.minimumPerCapitaGdp", log);
+            RepairRange(ref value.nationalMergers.inequalityBoundaryEpsilon,
+                defaults.nationalMergers.inequalityBoundaryEpsilon, 0.0000001f,
+                Math.Min(0.1f, (value.nationalMergers.inequalityMaximum -
+                    value.nationalMergers.inequalityMinimum) / 4f),
+                "nationalMergers.inequalityBoundaryEpsilon", log);
             RepairPositive(ref value.oppression.unrestPopulationDivisor, defaults.oppression.unrestPopulationDivisor, "oppression.unrestPopulationDivisor", log);
             RepairPositive(ref value.oppression.fullDemocracy, defaults.oppression.fullDemocracy, "oppression.fullDemocracy", log);
             RepairPositive(ref value.environment.cleanupAtReferenceGdp, defaults.environment.cleanupAtReferenceGdp, "environment.cleanupAtReferenceGdp", log);

@@ -33,6 +33,9 @@
     <Compile Include="..\..\TIEconomyMod\Patches\NationalValuesPatches.cs">
       <Link>NationalValuesPatches.cs</Link>
     </Compile>
+    <Compile Include="..\..\TIEconomyMod\Patches\NationalMergerPatches.cs">
+      <Link>NationalMergerPatches.cs</Link>
+    </Compile>
     <Compile Include="..\..\TIEconomyMod\Patches\SocialPriorityPatches.cs">
       <Link>SocialPriorityPatches.cs</Link>
     </Compile>

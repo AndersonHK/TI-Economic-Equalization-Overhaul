@@ -4,7 +4,7 @@
   "title": "Economic Equalization Overhaul",
   "Author": "Verdiss and contributors",
   "description": "Configurable, stock-normalized national economy and priority formulas for Terra Invicta 1.0.39.",
-  "Version": "0.4.0",
+  "Version": "0.5.0",
   "ManagerVersion": "0.27.14",
   "GameVersion": "1.0.39",
   "AssemblyName": "Assembly/TIEconomyMod.dll",

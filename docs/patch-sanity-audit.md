@@ -18,6 +18,8 @@ from making a proportional effect scale incorrectly.
 | `KnowledgeCohesionPatch` | Population and distance to neutral | Aligned. It cannot jump across the target and larger populations require proportionally more completions. |
 | `GovernmentDemocracyPatch` | Population / institutions | Aligned. It changes a society-wide institutional score rather than buying a fixed asset. |
 | `MilitaryTechnologyPatch` | Army count | Aligned after stock correction. One completion is divided among every army it upgrades; the catch-up multiplier remains smooth and never penalizes leaders. |
+| `MilitaryMergerPatch` | Army/navy force structure and GDP | Aligned. The 50/50 blend represents inherited doctrine/equipment and the industrial base that sustains modernization; it replaces only the final merged rating. |
+| `InequalityMergerPatch` | Two population income distributions | Aligned. Population shares, GDP/c separation, existing distribution width, and the finite-sample correction approximate the merged Gini without a step table or arbitrary disparity bonus. |
 | `OppressionUnrestPatch` | Population | Aligned. Repression has diminishing effectiveness in democratic systems and cannot drive Unrest below zero in one completion. |
 | `EnvironmentSustainabilityPatch` | GDP; fallout per land area | Aligned. Transition cost follows the dirty capital stock; concentrated nuclear damage makes progress harder without changing cleanup IP per blast. |
 | `EnvironmentCo2RemovalPatch` | Fixed atmospheric quantity per IP | Aligned. No demographic divisor; larger economies remove more only by spending more IP. |

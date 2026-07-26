@@ -25,6 +25,7 @@ namespace TIEconomyMod.FormulaTests
                 TestAbundance();
                 TestInequality();
                 TestSocialPriorities();
+                TestNationalMergers();
                 TestEnvironmentUnitySpoilsAndEmissions();
                 TestWeightValidation(weights);
                 TestDisabledFallback();
@@ -400,6 +401,171 @@ namespace TIEconomyMod.FormulaTests
                 "Spoils carbon-intensity damage uses GDP and resource ratio");
         }
 
+        private static void TestNationalMergers()
+        {
+            Reset();
+            TINationState absorbing = Nation();
+            TINationState joining = Nation();
+            absorbing.militaryTechLevel = 4f;
+            joining.militaryTechLevel = 6f;
+            absorbing.GDP = 300000000000d;
+            joining.GDP = 100000000000d;
+            absorbing.armies.Add(new TIArmyState());
+            absorbing.armies.Add(new TIArmyState());
+            absorbing.numNavies = 1;
+            joining.armies.Add(new TIArmyState());
+
+            MilitaryMergerPatch.Snapshot militaryState = null;
+            MilitaryMergerPatch.Prefix(absorbing, joining, ref militaryState);
+            absorbing.militaryTechLevel = 5.75f; // stand in for TI's region-by-region result
+            MilitaryMergerPatch.Postfix(absorbing, militaryState);
+            Near(4.5f, absorbing.militaryTechLevel, 0.000001f,
+                "merger miltech combines equal force and GDP averages");
+
+            absorbing = Nation();
+            joining = Nation();
+            absorbing.militaryTechLevel = 4f;
+            joining.militaryTechLevel = 8f;
+            absorbing.GDP = 100000000000d;
+            joining.GDP = 900000000000d;
+            absorbing.armies.Add(new TIArmyState());
+            absorbing.armies.Add(new TIArmyState());
+            absorbing.armies.Add(new TIArmyState());
+            absorbing.armies.Add(new TIArmyState());
+            joining.armies.Add(new TIArmyState());
+            militaryState = null;
+            MilitaryMergerPatch.Prefix(absorbing, joining, ref militaryState);
+            MilitaryMergerPatch.Postfix(absorbing, militaryState);
+            Near(6.2f, absorbing.militaryTechLevel, 0.000001f,
+                "merger miltech is exactly 50 percent force and 50 percent GDP");
+
+            absorbing.armies.Clear();
+            joining.armies.Clear();
+            absorbing.militaryTechLevel = 4f;
+            militaryState = null;
+            MilitaryMergerPatch.Prefix(absorbing, joining, ref militaryState);
+            MilitaryMergerPatch.Postfix(absorbing, militaryState);
+            Near(7.6f, absorbing.militaryTechLevel, 0.000001f,
+                "merger miltech without forces uses GDP");
+
+            absorbing = Nation();
+            joining = Nation();
+            absorbing.militaryTechLevel = 4f;
+            joining.militaryTechLevel = 8f;
+            absorbing.GDP = -1d;
+            joining.GDP = 0d;
+            absorbing.armies.Add(new TIArmyState());
+            joining.armies.Add(new TIArmyState());
+            joining.armies.Add(new TIArmyState());
+            joining.armies.Add(new TIArmyState());
+            militaryState = null;
+            MilitaryMergerPatch.Prefix(absorbing, joining, ref militaryState);
+            MilitaryMergerPatch.Postfix(absorbing, militaryState);
+            Near(7f, absorbing.militaryTechLevel, 0.000001f,
+                "merger miltech with invalid GDP uses forces");
+
+            absorbing.armies.Clear();
+            joining.armies.Clear();
+            absorbing.militaryTechLevel = 4f;
+            joining.militaryTechLevel = 8f;
+            militaryState = null;
+            MilitaryMergerPatch.Prefix(absorbing, joining, ref militaryState);
+            MilitaryMergerPatch.Postfix(absorbing, militaryState);
+            Near(6f, absorbing.militaryTechLevel, 0.000001f,
+                "merger miltech without forces or GDP uses the simple mean");
+
+            absorbing = MergerNation(1f, 1000000f, 1f);
+            joining = MergerNation(1f, 1f, 1f);
+            InequalityMergerPatch.Snapshot inequalityState = null;
+            InequalityMergerPatch.Prefix(absorbing, joining, ref inequalityState);
+            absorbing.inequality = 3f; // stand in for TI's population-only merge
+            InequalityMergerPatch.Postfix(absorbing, inequalityState);
+            Near(8.999984f, absorbing.inequality, 0.00001f,
+                "two-person extreme income split approaches Inequality 9");
+
+            absorbing = MergerNation(1000000000f, 1000000f, 1f);
+            joining = MergerNation(1000000000f, 1f, 1f);
+            inequalityState = null;
+            InequalityMergerPatch.Prefix(absorbing, joining, ref inequalityState);
+            InequalityMergerPatch.Postfix(absorbing, inequalityState);
+            Near(5f, absorbing.inequality, 0.00001f,
+                "two-billion-person extreme split approaches Inequality 5");
+
+            absorbing = MergerNation(84000000f, 55000f, 3.2f);
+            joining = MergerNation(68000000f, 48000f, 3.3f);
+            inequalityState = null;
+            InequalityMergerPatch.Prefix(absorbing, joining, ref inequalityState);
+            InequalityMergerPatch.Postfix(absorbing, inequalityState);
+            Near(3.273239f, absorbing.inequality, 0.00001f,
+                "Germany-France-like merger barely changes Inequality");
+
+            absorbing = MergerNation(340000000f, 80000f, 4f);
+            joining = MergerNation(110000000f, 4000f, 5.5f);
+            inequalityState = null;
+            InequalityMergerPatch.Prefix(absorbing, joining, ref inequalityState);
+            InequalityMergerPatch.Postfix(absorbing, inequalityState);
+            Near(5.234088f, absorbing.inequality, 0.00001f,
+                "US-Egypt-like merger creates a large bimodal Inequality increase");
+
+            TINationState reverseA = MergerNation(110000000f, 4000f, 5.5f);
+            TINationState reverseB = MergerNation(340000000f, 80000f, 4f);
+            inequalityState = null;
+            InequalityMergerPatch.Prefix(reverseA, reverseB, ref inequalityState);
+            InequalityMergerPatch.Postfix(reverseA, inequalityState);
+            Near(absorbing.inequality, reverseA.inequality, 0.00001f,
+                "merger Inequality is symmetric");
+
+            TINationState orderOne = MergeInequalityForTest(
+                MergeInequalityForTest(
+                    MergerNation(340000000f, 80000f, 4f),
+                    MergerNation(110000000f, 4000f, 5.5f)),
+                MergerNation(84000000f, 55000f, 3.2f));
+            TINationState orderTwo = MergeInequalityForTest(
+                MergerNation(340000000f, 80000f, 4f),
+                MergeInequalityForTest(
+                    MergerNation(110000000f, 4000f, 5.5f),
+                    MergerNation(84000000f, 55000f, 3.2f)));
+            True(Math.Abs(orderOne.inequality - orderTwo.inequality) < 0.5f,
+                "three-country merger order sensitivity remains bounded");
+
+            absorbing = MergerNation(100000000f, 50000f, 4f);
+            joining = MergerNation(200000000f, 50000f, 4f);
+            inequalityState = null;
+            InequalityMergerPatch.Prefix(absorbing, joining, ref inequalityState);
+            InequalityMergerPatch.Postfix(absorbing, inequalityState);
+            Near(4f, absorbing.inequality, 0.00001f,
+                "identical income distributions retain Inequality");
+
+            absorbing = MergerNation(100000000f, 1000000f, 9f);
+            joining = MergerNation(100000000f, 1f, 9f);
+            inequalityState = null;
+            InequalityMergerPatch.Prefix(absorbing, joining, ref inequalityState);
+            InequalityMergerPatch.Postfix(absorbing, inequalityState);
+            True(absorbing.inequality < 9f && absorbing.inequality > 8.99f,
+                "merger Inequality remains inside the configured upper bound");
+
+            TIEconomyMod.Main.settings.nationalMergers.enabled = false;
+            absorbing = MergerNation(100f, 1000f, 2f);
+            joining = MergerNation(100f, 100000f, 8f);
+            inequalityState = null;
+            InequalityMergerPatch.Prefix(absorbing, joining, ref inequalityState);
+            absorbing.inequality = 6f;
+            InequalityMergerPatch.Postfix(absorbing, inequalityState);
+            Near(6f, absorbing.inequality, 0f,
+                "disabled merger patch retains vanilla");
+
+            Reset();
+            TIEconomyMod.Main.settings.nationalMergers.militaryEnabled = false;
+            militaryState = null;
+            MilitaryMergerPatch.Prefix(absorbing, joining, ref militaryState);
+            True(militaryState == null, "disabled military merger retains vanilla");
+            TIEconomyMod.Main.settings.nationalMergers.militaryEnabled = true;
+            TIEconomyMod.Main.settings.nationalMergers.inequalityEnabled = false;
+            inequalityState = null;
+            InequalityMergerPatch.Prefix(absorbing, joining, ref inequalityState);
+            True(inequalityState == null, "disabled Inequality merger retains vanilla");
+        }
+
         private static void TestWeightValidation(string path)
         {
             TechWeightCatalog catalog = TechWeightCatalog.Load(path, delegate { }, delegate { return true; });
@@ -495,6 +661,29 @@ namespace TIEconomyMod.FormulaTests
                 militaryTechLevel = 4f,
                 maxMilitaryTechLevel = 5f
             };
+        }
+
+        private static TINationState MergerNation(float population, float income, float inequality)
+        {
+            TINationState nation = Nation();
+            nation.population = population;
+            nation.population_Millions = population / 1000000f;
+            nation.perCapitaGDP = income;
+            nation.GDP = population * (double)income;
+            nation.inequality = inequality;
+            return nation;
+        }
+
+        private static TINationState MergeInequalityForTest(TINationState absorbing, TINationState joining)
+        {
+            InequalityMergerPatch.Snapshot state = null;
+            InequalityMergerPatch.Prefix(absorbing, joining, ref state);
+            absorbing.GDP += joining.GDP;
+            absorbing.population += joining.population;
+            absorbing.population_Millions = absorbing.population / 1000000f;
+            absorbing.perCapitaGDP = (float)(absorbing.GDP / absorbing.population);
+            InequalityMergerPatch.Postfix(absorbing, state);
+            return absorbing;
         }
 
         private static float AbundanceMultiplier(TINationState nation)

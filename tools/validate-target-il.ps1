@@ -80,6 +80,10 @@ try {
     $emissions = Read-MethodIl $nation 'GHGsFromEconomy_tons'
     Assert-Count $emissions 'TINationState::get_GDP\(\)' 1 'Economy emissions GDP input'
 
+    $absorb = Read-MethodIl $nation 'AbsorbNation'
+    Assert-Count $absorb 'TINationState::TransferRegionsControlTo\(' 1 'National merger region transfer'
+    Assert-Count $absorb 'TINationState::ClearArmies\(\)' 1 'National merger joining-force cleanup'
+
     Write-Host 'PASS: target IL contains every guarded TI 1.0.39/forward-compatible patch point.'
 }
 finally {
