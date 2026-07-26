@@ -76,6 +76,8 @@
     <Compile Include="Core\TechWeightCatalog.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Patches\EconomyPatches.cs" />
+    <Compile Include="Patches\EnvironmentUnitySpoilsPatches.cs" />
+    <Compile Include="Patches\CompletionCompatibilityPatches.cs" />
     <Compile Include="Patches\NationalValuesPatches.cs" />
     <Compile Include="Patches\SocialPriorityPatches.cs" />
     <Compile Include="Patches\ThresholdAndUiPatches.cs" />

@@ -9,6 +9,7 @@ namespace HarmonyLib
     public sealed class HarmonyPatch : Attribute
     {
         public HarmonyPatch(Type type, string methodName, MethodType methodType) { }
+        public HarmonyPatch(Type type, string methodName) { }
     }
 
     [AttributeUsage(AttributeTargets.Method)]
@@ -50,12 +51,50 @@ namespace PavonisInteractive.TerraInvicta
         public float populationDesnity_pop_km2;
         public float militaryTechLevel;
         public float maxMilitaryTechLevel;
+        public float sustainability;
+        public readonly List<TIArmyState> armies = new List<TIArmyState>();
+        public readonly List<TIRegionState> regions = new List<TIRegionState>();
+    }
+
+    public sealed class TIRegionState
+    {
+        public float area_km2;
+        public int nuclearDetonations;
     }
 
     public sealed class TIArmyState
     {
         public bool useHomeInvestmentFactor;
         public TINationState homeNation;
+    }
+
+    public enum Context
+    {
+        Environment_SustainabilityChange,
+        Welfare_CO2_ppm,
+        Welfare_CH4_ppm,
+        Welfare_N2O_ppm
+    }
+
+    public sealed class TIGlobalConfig
+    {
+        public float WelCO2_ppm = -0.001f;
+        public float WelCH4_ppm = -0.002f;
+        public float WelN2O_ppm = -0.003f;
+    }
+
+    public static class TemplateManager
+    {
+        public static readonly TIGlobalConfig global = new TIGlobalConfig();
+    }
+
+    public static class TIEffectsState
+    {
+        public static float SumEffectsModifiers(
+            Context context, TINationState nation, float baseValue, object target)
+        {
+            return 0f;
+        }
     }
 }
 
@@ -91,6 +130,10 @@ namespace TIEconomyMod
         public GovernmentSettings government = new GovernmentSettings();
         public MilitarySettings military = new MilitarySettings();
         public OppressionSettings oppression = new OppressionSettings();
+        public EnvironmentSettings environment = new EnvironmentSettings();
+        public EmissionsSettings emissions = new EmissionsSettings();
+        public UnitySettings unity = new UnitySettings();
+        public SpoilsSettings spoils = new SpoilsSettings();
         public SpoilsMoneySettings spoilsMoney = new SpoilsMoneySettings();
     }
 
@@ -151,9 +194,11 @@ namespace TIEconomyMod
         public float neutral = 5f;
         public float maximum = 9f;
         public float exponent = 2f;
-        public float economyPopulationDivisor = 25000f;
-        public float welfarePopulationDivisor = -333333f;
-        public float spoilsPopulationDivisor = 166667f;
+        public float referenceGdpBillions = 100f;
+        public float minimumGdpBillions = 1f;
+        public float economyChangeAtReferenceGdp = 0.00025f;
+        public float welfareChangeAtReferenceGdp = -0.00333333f;
+        public float spoilsChangeAtReferenceGdp = 0.00166667f;
         public float economyMaximumResourceMultiplier = 0.60f;
         public float spoilsMaximumResourceMultiplier = 1f;
     }
@@ -212,7 +257,7 @@ namespace TIEconomyMod
     public sealed class MilitarySettings
     {
         public bool enabled = true;
-        public float technologyPopulationDivisor = 55000f;
+        public float technologyChangeForOneArmy = 0.00275f;
         public float catchupBonus = 0.5f;
     }
 
@@ -223,12 +268,56 @@ namespace TIEconomyMod
         public float fullDemocracy = 10f;
     }
 
+    public sealed class EnvironmentSettings
+    {
+        public bool enabled = true;
+        public float cleanupAtReferenceGdp = 0.10f;
+        public float referenceGdpBillions = 100f;
+        public float minimumGdpBillions = 1f;
+        public float falloutReferenceAreaKm2 = 100000f;
+        public float minimumLandAreaKm2 = 1f;
+        public float atmosphericRemovalMultiplier = 1f;
+    }
+
+    public sealed class EmissionsSettings
+    {
+        public bool enabled = true;
+        public float tonsPerGdpBillion = 275000f;
+        public float maximumResourceIntensityMultiplier = 1.25f;
+        public float co2TonsMultiplier = 0.3292f;
+        public float methaneTonsMultiplier = 0.00547619f;
+        public float nitrousOxideTonsMultiplier = 0.000214533f;
+        public float monthsPerYear = 12f;
+    }
+
+    public sealed class UnitySettings
+    {
+        public bool enabled = true;
+        public float cohesionPopulationDivisor = 3333333f;
+        public float educationPopulationDivisor = -33333f;
+        public float educationAndGovernmentPenaltyPerLevel = 0.025f;
+        public float minimumCohesionMultiplier = 0.50f;
+        public float propagandaMultiplier = 0.20f;
+    }
+
+    public sealed class SpoilsSettings
+    {
+        public bool enabled = true;
+        public float governmentPopulationDivisor = -66667f;
+        public float sustainabilityChangeAtReferenceGdp = 0.05f;
+        public float referenceGdpBillions = 100f;
+        public float minimumGdpBillions = 1f;
+        public float maximumResourceSustainabilityMultiplier = 2f;
+        public float propagandaMultiplier = 0.20f;
+    }
+
     public sealed class SpoilsMoneySettings
     {
         public bool enabled = true;
-        public float baseMoney = 240f;
-        public float maximumResourceBonus = 160f;
-        public float maximumLowGovernmentBonus = 0.30f;
+        public float baseMoney = 60f;
+        public float maximumResourceMultiplier = 4f;
+        public float governmentBaseMultiplier = 1.30f;
+        public float governmentPenaltyPerLevel = 0.03f;
         public float fullGovernment = 10f;
     }
 }

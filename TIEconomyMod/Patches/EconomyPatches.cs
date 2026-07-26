@@ -154,8 +154,15 @@ namespace TIEconomyMod.Patches
                 : (float)(poweredResourceRatio / (1d + poweredResourceRatio));
             float resourceMultiplier = 1f +
                 settings.economyMaximumResourceMultiplier * resourceCurve;
-            float rawDelta = settings.economyPopulationDivisor /
-                Math.Max(1f, __instance.population) * resourceMultiplier;
+            // Inequality is a proportional economic outcome, so the affected stock is
+            // GDP rather than headcount. Defaults give +0.00025 in a $100B economy and
+            // +0.000025 in a $1T economy before resources/bounds. Since the latter also
+            // produces about 10x the IP, equal priority allocation produces the same
+            // monthly national change instead of rewarding either union or breakup.
+            float gdpBillions = Math.Max(settings.minimumGdpBillions,
+                (float)(__instance.GDP / 1000000000d));
+            float rawDelta = settings.economyChangeAtReferenceGdp *
+                settings.referenceGdpBillions / gdpBillions * resourceMultiplier;
 
             // Map TI's 1–9 scale to a continuous -1..+1 position around neutral 5.
             // This single smooth transform makes positive Economy change 2x at 1, 1x

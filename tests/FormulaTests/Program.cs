@@ -25,6 +25,7 @@ namespace TIEconomyMod.FormulaTests
                 TestAbundance();
                 TestInequality();
                 TestSocialPriorities();
+                TestEnvironmentUnitySpoilsAndEmissions();
                 TestWeightValidation(weights);
                 TestDisabledFallback();
                 Console.WriteLine("PASS: " + assertions + " patch-formula assertions.");
@@ -239,10 +240,10 @@ namespace TIEconomyMod.FormulaTests
         {
             Reset();
             TINationState nation = Nation();
-            nation.population = 1000000f;
-            TIEconomyMod.Main.settings.inequality.economyPopulationDivisor = 100000f;
-            TIEconomyMod.Main.settings.inequality.welfarePopulationDivisor = -100000f;
-            TIEconomyMod.Main.settings.inequality.spoilsPopulationDivisor = 100000f;
+            nation.GDP = 100000000000d;
+            TIEconomyMod.Main.settings.inequality.economyChangeAtReferenceGdp = 0.1f;
+            TIEconomyMod.Main.settings.inequality.welfareChangeAtReferenceGdp = -0.1f;
+            TIEconomyMod.Main.settings.inequality.spoilsChangeAtReferenceGdp = 0.1f;
             float[] points = { 1f, 3f, 5f, 7f, 9f };
             float[] positive = { 0.2f, 0.125f, 0.1f, 0.075f, 0f };
             float[] negative = { 0f, -0.075f, -0.1f, -0.125f, -0.2f };
@@ -259,6 +260,16 @@ namespace TIEconomyMod.FormulaTests
             }
 
             nation.inequality = 5f;
+            nation.currentResourceRegions = 0;
+            nation.GDP = 100000000000d;
+            float referenceGdp = 0f;
+            EconomyInequalityPatch.Prefix(ref referenceGdp, nation);
+            nation.GDP = 1000000000000d;
+            float tenfoldGdp = 0f;
+            EconomyInequalityPatch.Prefix(ref tenfoldGdp, nation);
+            Near(referenceGdp / 10f, tenfoldGdp, 0.000001f,
+                "Inequality proportional effect divides by GDP");
+
             nation.GDP = 100000000000d;
             nation.currentResourceRegions = 1;
             float oneResource = 0f;
@@ -289,24 +300,104 @@ namespace TIEconomyMod.FormulaTests
             Near(166667f / nation.population, result, 0.000001f, "government democracy");
             nation.militaryTechLevel = 4f;
             nation.maxMilitaryTechLevel = 6f;
+            for (int index = 0; index < 5; index++)
+            {
+                nation.armies.Add(new TIArmyState { homeNation = nation });
+            }
             MilitaryTechnologyPatch.Prefix(ref result, nation);
-            Near(55000f / nation.population * 2f, result, 0.000001f, "military catchup");
+            Near(0.00275f / 5f * 2f, result, 0.000001f,
+                "military technology divides by affected armies");
             nation.democracy = 5f;
             nation.unrest = 3f;
             OppressionUnrestPatch.Prefix(ref result, nation);
             Near(-2222222f / nation.population * 0.5f, result, 0.000001f, "oppression unrest");
-            nation.currentResourceRegions = 3;
-            nation.democracy = 0f;
-            SpoilsMoneyPatch.Prefix(ref result, nation);
-            Near(360f, result, 0.0001f, "spoils money resource curve");
-
             nation.currentResourceRegions = 1;
             nation.GDP = 100000000000d;
+            nation.democracy = 5f;
             SpoilsMoneyPatch.Prefix(ref result, nation);
+            Near(172.5f, result, 0.0001f, "spoils money formula");
             float smallEconomyPayout = result;
             nation.GDP = 500000000000d;
             SpoilsMoneyPatch.Prefix(ref result, nation);
             True(result < smallEconomyPayout, "spoils resource payout is relative to GDP");
+        }
+
+        private static void TestEnvironmentUnitySpoilsAndEmissions()
+        {
+            Reset();
+            TINationState nation = Nation();
+            nation.GDP = 100000000000d;
+            nation.sustainability = 1f;
+            nation.regions.Add(new TIRegionState { area_km2 = 100000f });
+
+            float result = 0f;
+            EnvironmentSustainabilityPatch.Prefix(ref result, nation);
+            Near(-0.10f, result, 0.000001f, "environment cleanup at reference GDP");
+            nation.GDP = 1000000000000d;
+            EnvironmentSustainabilityPatch.Prefix(ref result, nation);
+            Near(-0.01f, result, 0.000001f, "environment cleanup divides by GDP");
+
+            nation.GDP = 100000000000d;
+            nation.regions[0].nuclearDetonations = 1;
+            EnvironmentSustainabilityPatch.Prefix(ref result, nation);
+            Near(-0.05f, result, 0.000001f, "fallout burden is proportional to land area");
+            nation.regions[0].area_km2 = 1000f;
+            EnvironmentSustainabilityPatch.Prefix(ref result, nation);
+            True(Math.Abs(result) < 0.001f, "small countries suffer denser nuclear damage");
+
+            EnvironmentCo2RemovalPatch.Prefix(ref result, nation);
+            Near(TemplateManager.global.WelCO2_ppm, result, 0f,
+                "atmospheric cleanup is fixed per IP");
+
+            nation.regions[0].nuclearDetonations = 0;
+            nation.currentResourceRegions = 0;
+            Tuple<double, double, double> emissions = null;
+            EconomyEmissionsPatch.Prefix(ref emissions, nation, false, 0f);
+            double smallEconomyCo2 = emissions.Item1;
+            nation.GDP = 1000000000000d;
+            EconomyEmissionsPatch.Prefix(ref emissions, nation, false, 0f);
+            Near(10f, (float)(emissions.Item1 / smallEconomyCo2), 0.0001f,
+                "economy emissions are linear in GDP");
+            nation.population *= 10f;
+            Tuple<double, double, double> sameGdpEmissions = null;
+            EconomyEmissionsPatch.Prefix(ref sameGdpEmissions, nation, false, 0f);
+            Near((float)emissions.Item1, (float)sameGdpEmissions.Item1, 0f,
+                "economy emissions have no independent population term");
+
+            nation.population = 100000000f;
+            nation.currentResourceRegions = 1;
+            nation.GDP = 100000000000d;
+            Tuple<double, double, double> resourceSmall = null;
+            EconomyEmissionsPatch.Prefix(ref resourceSmall, nation, false, 0f);
+            nation.GDP = 1000000000000d;
+            Tuple<double, double, double> resourceLarge = null;
+            EconomyEmissionsPatch.Prefix(ref resourceLarge, nation, false, 0f);
+            True(resourceSmall.Item1 / smallEconomyCo2 >
+                resourceLarge.Item1 / emissions.Item1,
+                "resource emissions intensity is relative to GDP");
+            Tuple<double, double, double> cleanerProposal = null;
+            EconomyEmissionsPatch.Prefix(ref cleanerProposal, nation, false, -0.5f);
+            Near(0.5f, (float)(cleanerProposal.Item1 / resourceLarge.Item1), 0.0001f,
+                "proposed Sustainability change updates emissions intensity");
+
+            nation.population = 100000000f;
+            nation.GDP = 100000000000d;
+            nation.education = 8f;
+            nation.democracy = 6f;
+            UnityCohesionPatch.Prefix(ref result, nation);
+            Near(3333333f / nation.population * 0.65f, result, 0.000001f,
+                "Unity cohesion demographic scaling and education/government penalty");
+            UnityEducationPatch.Prefix(ref result, nation);
+            Near(-33333f / nation.population, result, 0.000001f,
+                "Unity secondary education effect");
+            SpoilsGovernmentPatch.Prefix(ref result, nation);
+            Near(-66667f / nation.population, result, 0.000001f,
+                "Spoils Government demographic scaling");
+
+            nation.currentResourceRegions = 1;
+            SpoilsSustainabilityPatch.Prefix(ref result, nation);
+            Near(0.075f, result, 0.000001f,
+                "Spoils carbon-intensity damage uses GDP and resource ratio");
         }
 
         private static void TestWeightValidation(string path)
@@ -359,6 +450,23 @@ namespace TIEconomyMod.FormulaTests
             True(EconomyGrowthPatch.Prefix(ref result, nation), "feature toggle returns to vanilla");
             Near(123f, result, 0f, "disabled prefix leaves result untouched");
             TIEconomyMod.Main.settings.economy.enabled = true;
+            TIEconomyMod.Main.settings.environment.enabled = false;
+            True(EnvironmentSustainabilityPatch.Prefix(ref result, nation),
+                "disabled Environment returns to vanilla");
+            TIEconomyMod.Main.settings.environment.enabled = true;
+            TIEconomyMod.Main.settings.unity.enabled = false;
+            True(UnityCohesionPatch.Prefix(ref result, nation),
+                "disabled Unity returns to vanilla");
+            TIEconomyMod.Main.settings.unity.enabled = true;
+            TIEconomyMod.Main.settings.spoils.enabled = false;
+            True(SpoilsSustainabilityPatch.Prefix(ref result, nation),
+                "disabled Spoils returns to vanilla");
+            TIEconomyMod.Main.settings.spoils.enabled = true;
+            TIEconomyMod.Main.settings.emissions.enabled = false;
+            Tuple<double, double, double> gases = null;
+            True(EconomyEmissionsPatch.Prefix(ref gases, nation, false, 0f),
+                "disabled GDP emissions returns to vanilla");
+            TIEconomyMod.Main.settings.emissions.enabled = true;
             TIEconomyMod.Main.settings.enabled = false;
             True(EconomyGrowthPatch.Prefix(ref result, nation), "global toggle returns to vanilla");
             TIEconomyMod.Main.settings.enabled = true;

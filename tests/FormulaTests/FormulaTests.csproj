@@ -27,6 +27,9 @@
     <Compile Include="..\..\TIEconomyMod\Patches\EconomyPatches.cs">
       <Link>EconomyPatches.cs</Link>
     </Compile>
+    <Compile Include="..\..\TIEconomyMod\Patches\EnvironmentUnitySpoilsPatches.cs">
+      <Link>EnvironmentUnitySpoilsPatches.cs</Link>
+    </Compile>
     <Compile Include="..\..\TIEconomyMod\Patches\NationalValuesPatches.cs">
       <Link>NationalValuesPatches.cs</Link>
     </Compile>

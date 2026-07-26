@@ -116,7 +116,7 @@ namespace TIEconomyMod.Patches
 
             if (float.IsNaN(calculated) || float.IsInfinity(calculated))
             {
-                Main.Warn("Army upkeep produced an invalid value; using unscaled 1.0.32 upkeep.");
+                Main.Warn("Army upkeep produced an invalid value; using the configured unscaled base.");
                 calculated = baseCost;
             }
             __result = calculated;

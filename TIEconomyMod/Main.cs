@@ -30,7 +30,7 @@ namespace TIEconomyMod
                 string weightPath = Path.Combine(modEntry.Path, "Config", "economy-tech-weights.csv");
                 techWeights = TechWeightCatalog.Load(weightPath, Log, IsKnownTechnology);
                 new Harmony(modEntry.Info.Id).PatchAll();
-                Log("Loaded TI Economic Equalization Overhaul for the TI 1.0.32 API surface.");
+                Log("Loaded TI Economic Equalization Overhaul for the TI 1.0.39 API surface.");
                 return true;
             }
             catch (Exception exception)
@@ -145,6 +145,18 @@ namespace TIEconomyMod
         [Draw("Oppression")]
         public OppressionSettings oppression = new OppressionSettings();
 
+        [Draw("Environment")]
+        public EnvironmentSettings environment = new EnvironmentSettings();
+
+        [Draw("Economy Emissions")]
+        public EmissionsSettings emissions = new EmissionsSettings();
+
+        [Draw("Unity")]
+        public UnitySettings unity = new UnitySettings();
+
+        [Draw("Spoils Effects")]
+        public SpoilsSettings spoils = new SpoilsSettings();
+
         [Draw("Spoils Money")]
         public SpoilsMoneySettings spoilsMoney = new SpoilsMoneySettings();
 
@@ -232,9 +244,11 @@ namespace TIEconomyMod
         public float neutral = 5f;
         public float maximum = 9f;
         public float exponent = 2f;
-        public float economyPopulationDivisor = 25000f;
-        public float welfarePopulationDivisor = -333333f;
-        public float spoilsPopulationDivisor = 166667f;
+        public float referenceGdpBillions = 100f;
+        public float minimumGdpBillions = 1f;
+        public float economyChangeAtReferenceGdp = 0.00025f;
+        public float welfareChangeAtReferenceGdp = -0.00333333f;
+        public float spoilsChangeAtReferenceGdp = 0.00166667f;
         public float economyMaximumResourceMultiplier = 0.60f;
         public float spoilsMaximumResourceMultiplier = 1f;
     }
@@ -299,8 +313,7 @@ namespace TIEconomyMod
     public sealed class MilitarySettings
     {
         public bool enabled = true;
-        public float technologyPopulationDivisor = 55000f;
-        public float unrestReferencePopulation = 2222222f;
+        public float technologyChangeForOneArmy = 0.00275f;
         public float catchupBonus = 0.5f;
     }
 
@@ -313,12 +326,60 @@ namespace TIEconomyMod
     }
 
     [DrawFields(DrawFieldMask.Public)]
+    public sealed class EnvironmentSettings
+    {
+        public bool enabled = true;
+        public float cleanupAtReferenceGdp = 0.10f;
+        public float referenceGdpBillions = 100f;
+        public float minimumGdpBillions = 1f;
+        public float falloutReferenceAreaKm2 = 100000f;
+        public float minimumLandAreaKm2 = 1f;
+        public float atmosphericRemovalMultiplier = 1f;
+    }
+
+    [DrawFields(DrawFieldMask.Public)]
+    public sealed class EmissionsSettings
+    {
+        public bool enabled = true;
+        public float tonsPerGdpBillion = 275000f;
+        public float maximumResourceIntensityMultiplier = 1.25f;
+        public float co2TonsMultiplier = 0.3292f;
+        public float methaneTonsMultiplier = 0.00547619f;
+        public float nitrousOxideTonsMultiplier = 0.000214533f;
+        public float monthsPerYear = 12f;
+    }
+
+    [DrawFields(DrawFieldMask.Public)]
+    public sealed class UnitySettings
+    {
+        public bool enabled = true;
+        public float cohesionPopulationDivisor = 3333333f;
+        public float educationPopulationDivisor = -33333f;
+        public float educationAndGovernmentPenaltyPerLevel = 0.025f;
+        public float minimumCohesionMultiplier = 0.50f;
+        public float propagandaMultiplier = 0.20f;
+    }
+
+    [DrawFields(DrawFieldMask.Public)]
+    public sealed class SpoilsSettings
+    {
+        public bool enabled = true;
+        public float governmentPopulationDivisor = -66667f;
+        public float sustainabilityChangeAtReferenceGdp = 0.05f;
+        public float referenceGdpBillions = 100f;
+        public float minimumGdpBillions = 1f;
+        public float maximumResourceSustainabilityMultiplier = 2f;
+        public float propagandaMultiplier = 0.20f;
+    }
+
+    [DrawFields(DrawFieldMask.Public)]
     public sealed class SpoilsMoneySettings
     {
         public bool enabled = true;
-        public float baseMoney = 240f;
-        public float maximumResourceBonus = 160f;
-        public float maximumLowGovernmentBonus = 0.30f;
+        public float baseMoney = 60f;
+        public float maximumResourceMultiplier = 4f;
+        public float governmentBaseMultiplier = 1.30f;
+        public float governmentPenaltyPerLevel = 0.03f;
         public float fullGovernment = 10f;
     }
 
@@ -326,7 +387,7 @@ namespace TIEconomyMod
     public sealed class RegionThresholdSettings
     {
         public bool enabled = true;
-        public float multiplier = 1f;
+        public float multiplier = 5f;
         public float oilRemovalInvestmentPoints = 500f;
         public float miningRemovalInvestmentPoints = 750f;
         public float economicUpgradeInvestmentPoints = 1200f;
@@ -358,6 +419,10 @@ namespace TIEconomyMod
             value.government = value.government ?? defaults.government;
             value.military = value.military ?? defaults.military;
             value.oppression = value.oppression ?? defaults.oppression;
+            value.environment = value.environment ?? defaults.environment;
+            value.emissions = value.emissions ?? defaults.emissions;
+            value.unity = value.unity ?? defaults.unity;
+            value.spoils = value.spoils ?? defaults.spoils;
             value.spoilsMoney = value.spoilsMoney ?? defaults.spoilsMoney;
             value.regionThresholds = value.regionThresholds ?? defaults.regionThresholds;
             value.ui = value.ui ?? defaults.ui;
@@ -399,9 +464,11 @@ namespace TIEconomyMod
                 value.inequality.neutral = defaults.inequality.neutral;
                 value.inequality.maximum = defaults.inequality.maximum;
             }
-            RepairPositive(ref value.inequality.economyPopulationDivisor, defaults.inequality.economyPopulationDivisor, "inequality.economyPopulationDivisor", log);
-            RepairNegative(ref value.inequality.welfarePopulationDivisor, defaults.inequality.welfarePopulationDivisor, "inequality.welfarePopulationDivisor", log);
-            RepairPositive(ref value.inequality.spoilsPopulationDivisor, defaults.inequality.spoilsPopulationDivisor, "inequality.spoilsPopulationDivisor", log);
+            RepairPositive(ref value.inequality.referenceGdpBillions, defaults.inequality.referenceGdpBillions, "inequality.referenceGdpBillions", log);
+            RepairPositive(ref value.inequality.minimumGdpBillions, defaults.inequality.minimumGdpBillions, "inequality.minimumGdpBillions", log);
+            RepairPositive(ref value.inequality.economyChangeAtReferenceGdp, defaults.inequality.economyChangeAtReferenceGdp, "inequality.economyChangeAtReferenceGdp", log);
+            RepairNegative(ref value.inequality.welfareChangeAtReferenceGdp, defaults.inequality.welfareChangeAtReferenceGdp, "inequality.welfareChangeAtReferenceGdp", log);
+            RepairPositive(ref value.inequality.spoilsChangeAtReferenceGdp, defaults.inequality.spoilsChangeAtReferenceGdp, "inequality.spoilsChangeAtReferenceGdp", log);
             RepairNonNegative(ref value.inequality.economyMaximumResourceMultiplier, defaults.inequality.economyMaximumResourceMultiplier, "inequality.economyMaximumResourceMultiplier", log);
             RepairNonNegative(ref value.inequality.spoilsMaximumResourceMultiplier, defaults.inequality.spoilsMaximumResourceMultiplier, "inequality.spoilsMaximumResourceMultiplier", log);
             RepairRange(ref value.controlCost.exponentOneTech, defaults.controlCost.exponentOneTech, 0.01f, 1f, "controlCost.exponentOneTech", log);
@@ -430,13 +497,37 @@ namespace TIEconomyMod
             RepairPositive(ref value.knowledge.cohesionPopulationDivisor, defaults.knowledge.cohesionPopulationDivisor, "knowledge.cohesionPopulationDivisor", log);
             RepairFinite(ref value.knowledge.cohesionTarget, defaults.knowledge.cohesionTarget, "knowledge.cohesionTarget", log);
             RepairPositive(ref value.government.democracyPopulationDivisor, defaults.government.democracyPopulationDivisor, "government.democracyPopulationDivisor", log);
-            RepairPositive(ref value.military.technologyPopulationDivisor, defaults.military.technologyPopulationDivisor, "military.technologyPopulationDivisor", log);
+            RepairPositive(ref value.military.technologyChangeForOneArmy, defaults.military.technologyChangeForOneArmy, "military.technologyChangeForOneArmy", log);
             RepairNonNegative(ref value.military.catchupBonus, defaults.military.catchupBonus, "military.catchupBonus", log);
             RepairPositive(ref value.oppression.unrestPopulationDivisor, defaults.oppression.unrestPopulationDivisor, "oppression.unrestPopulationDivisor", log);
             RepairPositive(ref value.oppression.fullDemocracy, defaults.oppression.fullDemocracy, "oppression.fullDemocracy", log);
+            RepairPositive(ref value.environment.cleanupAtReferenceGdp, defaults.environment.cleanupAtReferenceGdp, "environment.cleanupAtReferenceGdp", log);
+            RepairPositive(ref value.environment.referenceGdpBillions, defaults.environment.referenceGdpBillions, "environment.referenceGdpBillions", log);
+            RepairPositive(ref value.environment.minimumGdpBillions, defaults.environment.minimumGdpBillions, "environment.minimumGdpBillions", log);
+            RepairPositive(ref value.environment.falloutReferenceAreaKm2, defaults.environment.falloutReferenceAreaKm2, "environment.falloutReferenceAreaKm2", log);
+            RepairPositive(ref value.environment.minimumLandAreaKm2, defaults.environment.minimumLandAreaKm2, "environment.minimumLandAreaKm2", log);
+            RepairNonNegative(ref value.environment.atmosphericRemovalMultiplier, defaults.environment.atmosphericRemovalMultiplier, "environment.atmosphericRemovalMultiplier", log);
+            RepairPositive(ref value.emissions.tonsPerGdpBillion, defaults.emissions.tonsPerGdpBillion, "emissions.tonsPerGdpBillion", log);
+            RepairRange(ref value.emissions.maximumResourceIntensityMultiplier, defaults.emissions.maximumResourceIntensityMultiplier, 1f, 100f, "emissions.maximumResourceIntensityMultiplier", log);
+            RepairNonNegative(ref value.emissions.co2TonsMultiplier, defaults.emissions.co2TonsMultiplier, "emissions.co2TonsMultiplier", log);
+            RepairNonNegative(ref value.emissions.methaneTonsMultiplier, defaults.emissions.methaneTonsMultiplier, "emissions.methaneTonsMultiplier", log);
+            RepairNonNegative(ref value.emissions.nitrousOxideTonsMultiplier, defaults.emissions.nitrousOxideTonsMultiplier, "emissions.nitrousOxideTonsMultiplier", log);
+            RepairPositive(ref value.emissions.monthsPerYear, defaults.emissions.monthsPerYear, "emissions.monthsPerYear", log);
+            RepairPositive(ref value.unity.cohesionPopulationDivisor, defaults.unity.cohesionPopulationDivisor, "unity.cohesionPopulationDivisor", log);
+            RepairNegative(ref value.unity.educationPopulationDivisor, defaults.unity.educationPopulationDivisor, "unity.educationPopulationDivisor", log);
+            RepairNonNegative(ref value.unity.educationAndGovernmentPenaltyPerLevel, defaults.unity.educationAndGovernmentPenaltyPerLevel, "unity.educationAndGovernmentPenaltyPerLevel", log);
+            RepairRange(ref value.unity.minimumCohesionMultiplier, defaults.unity.minimumCohesionMultiplier, 0f, 1f, "unity.minimumCohesionMultiplier", log);
+            RepairNonNegative(ref value.unity.propagandaMultiplier, defaults.unity.propagandaMultiplier, "unity.propagandaMultiplier", log);
+            RepairNegative(ref value.spoils.governmentPopulationDivisor, defaults.spoils.governmentPopulationDivisor, "spoils.governmentPopulationDivisor", log);
+            RepairPositive(ref value.spoils.sustainabilityChangeAtReferenceGdp, defaults.spoils.sustainabilityChangeAtReferenceGdp, "spoils.sustainabilityChangeAtReferenceGdp", log);
+            RepairPositive(ref value.spoils.referenceGdpBillions, defaults.spoils.referenceGdpBillions, "spoils.referenceGdpBillions", log);
+            RepairPositive(ref value.spoils.minimumGdpBillions, defaults.spoils.minimumGdpBillions, "spoils.minimumGdpBillions", log);
+            RepairRange(ref value.spoils.maximumResourceSustainabilityMultiplier, defaults.spoils.maximumResourceSustainabilityMultiplier, 1f, 100f, "spoils.maximumResourceSustainabilityMultiplier", log);
+            RepairNonNegative(ref value.spoils.propagandaMultiplier, defaults.spoils.propagandaMultiplier, "spoils.propagandaMultiplier", log);
             RepairNonNegative(ref value.spoilsMoney.baseMoney, defaults.spoilsMoney.baseMoney, "spoilsMoney.baseMoney", log);
-            RepairNonNegative(ref value.spoilsMoney.maximumResourceBonus, defaults.spoilsMoney.maximumResourceBonus, "spoilsMoney.maximumResourceBonus", log);
-            RepairRange(ref value.spoilsMoney.maximumLowGovernmentBonus, defaults.spoilsMoney.maximumLowGovernmentBonus, 0f, 1f, "spoilsMoney.maximumLowGovernmentBonus", log);
+            RepairRange(ref value.spoilsMoney.maximumResourceMultiplier, defaults.spoilsMoney.maximumResourceMultiplier, 1f, 100f, "spoilsMoney.maximumResourceMultiplier", log);
+            RepairPositive(ref value.spoilsMoney.governmentBaseMultiplier, defaults.spoilsMoney.governmentBaseMultiplier, "spoilsMoney.governmentBaseMultiplier", log);
+            RepairNonNegative(ref value.spoilsMoney.governmentPenaltyPerLevel, defaults.spoilsMoney.governmentPenaltyPerLevel, "spoilsMoney.governmentPenaltyPerLevel", log);
             RepairPositive(ref value.spoilsMoney.fullGovernment, defaults.spoilsMoney.fullGovernment, "spoilsMoney.fullGovernment", log);
             RepairPositive(ref value.regionThresholds.multiplier, defaults.regionThresholds.multiplier, "regionThresholds.multiplier", log);
             RepairPositive(ref value.regionThresholds.oilRemovalInvestmentPoints, defaults.regionThresholds.oilRemovalInvestmentPoints, "regionThresholds.oilRemovalInvestmentPoints", log);

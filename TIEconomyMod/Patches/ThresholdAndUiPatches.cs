@@ -10,19 +10,22 @@ namespace TIEconomyMod.Patches
 {
     public static class ThresholdValues
     {
-        public static int Oil()
+        public static int Oil(TIGlobalConfig config)
         {
-            return Current(500, Main.settings.regionThresholds.oilRemovalInvestmentPoints);
+            return Current(config.numEcosForCoreOilRegion,
+                Main.settings.regionThresholds.oilRemovalInvestmentPoints);
         }
 
-        public static int Mining()
+        public static int Mining(TIGlobalConfig config)
         {
-            return Current(750, Main.settings.regionThresholds.miningRemovalInvestmentPoints);
+            return Current(config.numEcosForCoreMiningRegion,
+                Main.settings.regionThresholds.miningRemovalInvestmentPoints);
         }
 
-        public static int Economic()
+        public static int Economic(TIGlobalConfig config)
         {
-            return Current(1200, Main.settings.regionThresholds.economicUpgradeInvestmentPoints);
+            return Current(config.numEcosForCoreEcoRegion,
+                Main.settings.regionThresholds.economicUpgradeInvestmentPoints);
         }
 
         public static int Decolonization()
@@ -46,7 +49,7 @@ namespace TIEconomyMod.Patches
             float result = configured * settings.multiplier;
             if (float.IsNaN(result) || float.IsInfinity(result) || result <= 0f)
             {
-                Main.Warn("Region threshold calculation was invalid; using the TI 1.0.32 value.");
+                Main.Warn("Region threshold calculation was invalid; using the live TI 1.0.39 value.");
                 return vanilla;
             }
 
@@ -58,25 +61,53 @@ namespace TIEconomyMod.Patches
     {
         public static IEnumerable<CodeInstruction> Replace(
             IEnumerable<CodeInstruction> instructions,
-            IDictionary<int, MethodInfo> replacements)
+            IDictionary<int, MethodInfo> constantReplacements,
+            IDictionary<FieldInfo, MethodInfo> fieldReplacements,
+            int expectedReplacements,
+            string patchName)
         {
+            List<CodeInstruction> patched = new List<CodeInstruction>();
+            int replacementCount = 0;
             foreach (CodeInstruction instruction in instructions)
             {
                 int loaded;
                 MethodInfo replacement;
                 if (TryGetLoadedInteger(instruction, out loaded) &&
-                    replacements.TryGetValue(loaded, out replacement))
+                    constantReplacements.TryGetValue(loaded, out replacement))
                 {
                     CodeInstruction replacementInstruction = new CodeInstruction(OpCodes.Call, replacement);
                     replacementInstruction.labels.AddRange(instruction.labels);
                     replacementInstruction.blocks.AddRange(instruction.blocks);
-                    yield return replacementInstruction;
+                    patched.Add(replacementInstruction);
+                    replacementCount++;
+                }
+                else if (instruction.opcode == OpCodes.Ldfld &&
+                    instruction.operand is FieldInfo &&
+                    fieldReplacements.TryGetValue((FieldInfo)instruction.operand, out replacement))
+                {
+                    // ldfld consumes TIGlobalConfig and pushes the integer. The helper
+                    // consumes the same config instance and pushes the configured integer,
+                    // so stack shape and every surrounding gameplay branch remain intact.
+                    CodeInstruction replacementInstruction = new CodeInstruction(OpCodes.Call, replacement);
+                    replacementInstruction.labels.AddRange(instruction.labels);
+                    replacementInstruction.blocks.AddRange(instruction.blocks);
+                    patched.Add(replacementInstruction);
+                    replacementCount++;
                 }
                 else
                 {
-                    yield return instruction;
+                    patched.Add(instruction);
                 }
             }
+            if (replacementCount != expectedReplacements)
+            {
+                string message = patchName + " IL changed: expected " +
+                    expectedReplacements + " threshold loads, found " +
+                    replacementCount + ". Refusing a partial compatibility patch.";
+                Main.Warn(message);
+                throw new InvalidOperationException(message);
+            }
+            return patched;
         }
 
         private static bool TryGetLoadedInteger(CodeInstruction instruction, out int value)
@@ -114,15 +145,24 @@ namespace TIEconomyMod.Patches
         [HarmonyTranspiler]
         public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
-            // The game normally upgrades regions after 500 oil, 750 mining, or 1,200
-            // economic completions. Replacing only those constants preserves the rest of
-            // the completion flow; multiplier 2 would make them 1,000/1,500/2,400.
-            return ThresholdTranspiler.Replace(instructions, new Dictionary<int, MethodInfo>
-            {
-                { 500, AccessTools.Method(typeof(ThresholdValues), nameof(ThresholdValues.Oil)) },
-                { 750, AccessTools.Method(typeof(ThresholdValues), nameof(ThresholdValues.Mining)) },
-                { 1200, AccessTools.Method(typeof(ThresholdValues), nameof(ThresholdValues.Economic)) }
-            });
+            // TI 1.0.39 moved these values from IL constants to TIGlobalConfig fields.
+            // Replacing exactly those three field loads preserves the complete vanilla
+            // completion method. Defaults multiply 500/750/1,200 by five, producing
+            // 2,500/3,750/6,000 IP; missing fields fail loudly instead of silently no-op.
+            return ThresholdTranspiler.Replace(
+                instructions,
+                new Dictionary<int, MethodInfo>(),
+                new Dictionary<FieldInfo, MethodInfo>
+                {
+                    { AccessTools.Field(typeof(TIGlobalConfig), "numEcosForCoreOilRegion"),
+                        AccessTools.Method(typeof(ThresholdValues), nameof(ThresholdValues.Oil)) },
+                    { AccessTools.Field(typeof(TIGlobalConfig), "numEcosForCoreMiningRegion"),
+                        AccessTools.Method(typeof(ThresholdValues), nameof(ThresholdValues.Mining)) },
+                    { AccessTools.Field(typeof(TIGlobalConfig), "numEcosForCoreEcoRegion"),
+                        AccessTools.Method(typeof(ThresholdValues), nameof(ThresholdValues.Economic)) }
+                },
+                3,
+                nameof(EconomyRegionThresholdPatch));
         }
     }
 
@@ -132,12 +172,17 @@ namespace TIEconomyMod.Patches
         [HarmonyTranspiler]
         public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
-            // Vanilla decolonization requires 1,000 Welfare completions. The configured
-            // base and multiplier alter only that threshold; e.g. 1,000 * 1.5 = 1,500.
-            return ThresholdTranspiler.Replace(instructions, new Dictionary<int, MethodInfo>
-            {
-                { 1000, AccessTools.Method(typeof(ThresholdValues), nameof(ThresholdValues.Decolonization)) }
-            });
+            // Vanilla requires 1,000 Welfare IP. The default x5 makes this 5,000,
+            // while replacing exactly one constant preserves every other completion effect.
+            return ThresholdTranspiler.Replace(
+                instructions,
+                new Dictionary<int, MethodInfo>
+                {
+                    { 1000, AccessTools.Method(typeof(ThresholdValues), nameof(ThresholdValues.Decolonization)) }
+                },
+                new Dictionary<FieldInfo, MethodInfo>(),
+                1,
+                nameof(DecolonizationThresholdPatch));
         }
     }
 
@@ -147,12 +192,17 @@ namespace TIEconomyMod.Patches
         [HarmonyTranspiler]
         public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
-            // Vanilla fallout cleanup requires 100 Environment completions. The configured
-            // base and multiplier alter only that number; e.g. 100 * 2 = 200.
-            return ThresholdTranspiler.Replace(instructions, new Dictionary<int, MethodInfo>
-            {
-                { 100, AccessTools.Method(typeof(ThresholdValues), nameof(ThresholdValues.FalloutCleanup)) }
-            });
+            // Vanilla charges 100 Environment IP per detonation. The default x5 charges
+            // 500 per nuke in every country; land area affects damage, not cleanup cost.
+            return ThresholdTranspiler.Replace(
+                instructions,
+                new Dictionary<int, MethodInfo>
+                {
+                    { 100, AccessTools.Method(typeof(ThresholdValues), nameof(ThresholdValues.FalloutCleanup)) }
+                },
+                new Dictionary<FieldInfo, MethodInfo>(),
+                1,
+                nameof(FalloutCleanupThresholdPatch));
         }
     }
 
@@ -162,14 +212,26 @@ namespace TIEconomyMod.Patches
         [HarmonyTranspiler]
         public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
-            return ThresholdTranspiler.Replace(instructions, new Dictionary<int, MethodInfo>
-            {
-                { 500, AccessTools.Method(typeof(ThresholdValues), nameof(ThresholdValues.Oil)) },
-                { 750, AccessTools.Method(typeof(ThresholdValues), nameof(ThresholdValues.Mining)) },
-                { 1200, AccessTools.Method(typeof(ThresholdValues), nameof(ThresholdValues.Economic)) },
-                { 1000, AccessTools.Method(typeof(ThresholdValues), nameof(ThresholdValues.Decolonization)) },
-                { 100, AccessTools.Method(typeof(ThresholdValues), nameof(ThresholdValues.FalloutCleanup)) }
-            });
+            // The tooltip uses the same three config fields and two constants as gameplay.
+            // Requiring all five replacements prevents a UI/gameplay mismatch after updates.
+            return ThresholdTranspiler.Replace(
+                instructions,
+                new Dictionary<int, MethodInfo>
+                {
+                    { 1000, AccessTools.Method(typeof(ThresholdValues), nameof(ThresholdValues.Decolonization)) },
+                    { 100, AccessTools.Method(typeof(ThresholdValues), nameof(ThresholdValues.FalloutCleanup)) }
+                },
+                new Dictionary<FieldInfo, MethodInfo>
+                {
+                    { AccessTools.Field(typeof(TIGlobalConfig), "numEcosForCoreOilRegion"),
+                        AccessTools.Method(typeof(ThresholdValues), nameof(ThresholdValues.Oil)) },
+                    { AccessTools.Field(typeof(TIGlobalConfig), "numEcosForCoreMiningRegion"),
+                        AccessTools.Method(typeof(ThresholdValues), nameof(ThresholdValues.Mining)) },
+                    { AccessTools.Field(typeof(TIGlobalConfig), "numEcosForCoreEcoRegion"),
+                        AccessTools.Method(typeof(ThresholdValues), nameof(ThresholdValues.Economic)) }
+                },
+                5,
+                nameof(PriorityTooltipPatch));
         }
 
         [HarmonyPostfix]
@@ -188,9 +250,9 @@ namespace TIEconomyMod.Patches
                 if (!Main.FeatureEnabled(Main.settings.economy.enabled))
                 {
                     section.AppendLine("EEO Economy formula disabled; vanilla applies.")
-                        .Append("Region thresholds: oil ").Append(ThresholdValues.Oil())
-                        .Append(", mining ").Append(ThresholdValues.Mining())
-                        .Append(", economic ").Append(ThresholdValues.Economic());
+                        .Append("Region thresholds: oil ").Append(ThresholdValues.Oil(TemplateManager.global))
+                        .Append(", mining ").Append(ThresholdValues.Mining(TemplateManager.global))
+                        .Append(", economic ").Append(ThresholdValues.Economic(TemplateManager.global));
                     __result = (__result ?? string.Empty).TrimEnd() + "\n\n" + section;
                     return;
                 }
@@ -282,8 +344,11 @@ namespace TIEconomyMod.Patches
                         : (float)(powered / (1d + powered));
                     float resourceMultiplier = 1f +
                         inequality.economyMaximumResourceMultiplier * curve;
-                    float raw = inequality.economyPopulationDivisor /
-                        Math.Max(1f, nation.population) * resourceMultiplier;
+                    float gdpBillions = Math.Max(inequality.minimumGdpBillions,
+                        (float)(nation.GDP / 1000000000d));
+                    float raw = inequality.economyChangeAtReferenceGdp *
+                        inequality.referenceGdpBillions / gdpBillions *
+                        resourceMultiplier;
                     float bounded = nation.economyPriorityInequalityChange;
                     section.Append("Inequality raw ").Append(raw.ToString("+0.####;-0.####;0"))
                         .Append("; bounded x").Append((bounded / raw).ToString("0.###"))
@@ -293,9 +358,22 @@ namespace TIEconomyMod.Patches
                 {
                     section.AppendLine("EEO bounded Inequality disabled; vanilla applies.");
                 }
-                section.Append("Region thresholds: oil ").Append(ThresholdValues.Oil())
-                    .Append(", mining ").Append(ThresholdValues.Mining())
-                    .Append(", economic ").Append(ThresholdValues.Economic());
+                section.Append("Region thresholds: oil ").Append(ThresholdValues.Oil(TemplateManager.global))
+                    .Append(", mining ").Append(ThresholdValues.Mining(TemplateManager.global))
+                    .Append(", economic ").Append(ThresholdValues.Economic(TemplateManager.global));
+
+                if (Main.FeatureEnabled(Main.settings.emissions.enabled))
+                {
+                    // This invokes the same patched gameplay getter, so the displayed
+                    // monthly emissions cannot drift from the GDP-only implementation.
+                    System.Tuple<double, double, double> gases =
+                        nation.GHGsFromEconomy_tons(true, 0f);
+                    section.AppendLine()
+                        .Append("GDP emissions/month: CO2 ")
+                        .Append(gases.Item1.ToString("N0"))
+                        .Append("t; CH4 ").Append(gases.Item2.ToString("N0"))
+                        .Append("t; N2O ").Append(gases.Item3.ToString("N0")).Append("t");
+                }
             }
             else if (priority == PriorityType.Welfare)
             {
@@ -303,8 +381,10 @@ namespace TIEconomyMod.Patches
                 InequalitySettings inequality = Main.settings.inequality;
                 if (Main.FeatureEnabled(inequality.enabled) && inequality.welfareEnabled)
                 {
-                    float raw = inequality.welfarePopulationDivisor /
-                        Math.Max(1f, nation.population);
+                    float gdpBillions = Math.Max(inequality.minimumGdpBillions,
+                        (float)(nation.GDP / 1000000000d));
+                    float raw = inequality.welfareChangeAtReferenceGdp *
+                        inequality.referenceGdpBillions / gdpBillions;
                     float bounded = nation.welfarePriorityInequalityChange;
                     section.Append("Inequality raw ").Append(raw.ToString("+0.####;-0.####;0"))
                         .Append("; bounded x").Append((bounded / raw).ToString("0.###"))
@@ -334,8 +414,11 @@ namespace TIEconomyMod.Patches
                         : (float)(powered / (1d + powered));
                     float resourceMultiplier = 1f +
                         inequality.spoilsMaximumResourceMultiplier * curve;
-                    float raw = inequality.spoilsPopulationDivisor /
-                        Math.Max(1f, nation.population) * resourceMultiplier;
+                    float gdpBillions = Math.Max(inequality.minimumGdpBillions,
+                        (float)(nation.GDP / 1000000000d));
+                    float raw = inequality.spoilsChangeAtReferenceGdp *
+                        inequality.referenceGdpBillions / gdpBillions *
+                        resourceMultiplier;
                     float bounded = nation.spoilsPriorityInequalityChange;
                     section.Append("Inequality raw ").Append(raw.ToString("+0.####;-0.####;0"))
                         .Append("; bounded x").Append((bounded / raw).ToString("0.###"))
@@ -345,10 +428,91 @@ namespace TIEconomyMod.Patches
                 {
                     section.AppendLine("EEO bounded Inequality disabled; vanilla applies.");
                 }
+                if (Main.FeatureEnabled(Main.settings.spoilsMoney.enabled))
+                {
+                    // Repeat the live one-line payout inputs: one resource at $100B gives
+                    // curve .5/x2.5; Government 5 gives x1.15 and a $172.50 payout.
+                    AbundanceSettings abundance = Main.settings.abundance;
+                    SpoilsMoneySettings money = Main.settings.spoilsMoney;
+                    float resourceRatio = nation.currentResourceRegions *
+                        abundance.referenceGdpPerResourceRegionBillions /
+                        Math.Max((float)(nation.GDP / 1000000000d), abundance.minimumGdpBillions);
+                    double powered = Math.Pow(resourceRatio, abundance.resourceCurveExponent);
+                    float curve = double.IsPositiveInfinity(powered)
+                        ? 1f
+                        : (float)(powered / (1d + powered));
+                    float resourceMultiplier = 1f +
+                        (money.maximumResourceMultiplier - 1f) * curve;
+                    float governmentMultiplier = money.governmentBaseMultiplier -
+                        money.governmentPenaltyPerLevel * Math.Max(0f,
+                            Math.Min(money.fullGovernment, nation.democracy));
+                    section.Append("Money: $").Append(nation.spoilsPriorityMoney.ToString("0.##"))
+                        .Append("M (resource x").Append(resourceMultiplier.ToString("0.###"))
+                        .Append(", Government x").Append(governmentMultiplier.ToString("0.###"))
+                        .AppendLine(")");
+                }
+                if (Main.FeatureEnabled(Main.settings.spoils.enabled))
+                {
+                    section.Append("Government ").Append(
+                            nation.spoilsPriorityDemocracyChange.ToString("+0.####;-0.####;0"))
+                        .Append("; Sustainability ").Append(
+                            nation.spoilsSustainabilityChange.ToString("+0.####;-0.####;0"))
+                        .Append("; propaganda x")
+                        .Append(Main.settings.spoils.propagandaMultiplier.ToString("0.###"));
+                }
+            }
+            else if (priority == PriorityType.Unity)
+            {
+                section.AppendLine("EEO Unity");
+                if (Main.FeatureEnabled(Main.settings.unity.enabled))
+                {
+                    // These are the actual patched getters; TI's full 1.0.39 completion
+                    // method remains in charge of claims and all other secondary behavior.
+                    section.Append("Cohesion ").Append(
+                            nation.unityPriorityCohesionChange.ToString("+0.####;-0.####;0"))
+                        .Append("; Education ").Append(
+                            nation.unityPriorityEducationChange.ToString("+0.####;-0.####;0"))
+                        .Append("; propaganda x")
+                        .Append(Main.settings.unity.propagandaMultiplier.ToString("0.###"));
+                }
+                else
+                {
+                    section.Append("EEO Unity formulas disabled; vanilla applies.");
+                }
             }
             else if (priority == PriorityType.Environment)
             {
-                section.Append("EEO fallout-cleanup threshold: ").Append(ThresholdValues.FalloutCleanup());
+                section.AppendLine("EEO Environment");
+                if (Main.FeatureEnabled(Main.settings.environment.enabled))
+                {
+                    EnvironmentSettings environment = Main.settings.environment;
+                    float landArea = 0f;
+                    int detonations = 0;
+                    foreach (TIRegionState region in nation.regions)
+                    {
+                        landArea += Math.Max(0f, region.area_km2);
+                        detonations += Math.Max(0, region.nuclearDetonations);
+                    }
+                    float falloutLoad = detonations * environment.falloutReferenceAreaKm2 /
+                        Math.Max(landArea, environment.minimumLandAreaKm2);
+                    section.Append("Sustainability ").Append(
+                            nation.environmentPrioritySustainabilityChange
+                                .ToString("+0.####;-0.####;0"))
+                        .Append(" (fallout x").Append((1f / (1f + falloutLoad)).ToString("0.###"))
+                        .Append("); fixed removal CO2 ")
+                        .Append(nation.EnvPriorityCO2Removed().ToString("+0.####;-0.####;0"))
+                        .Append(", CH4 ")
+                        .Append(nation.EnvPriorityCH4Removed().ToString("+0.####;-0.####;0"))
+                        .Append(", N2O ")
+                        .Append(nation.EnvPriorityN2ORemoved().ToString("+0.####;-0.####;0"))
+                        .AppendLine();
+                }
+                else
+                {
+                    section.AppendLine("EEO Environment formulas disabled; vanilla applies.");
+                }
+                section.Append("Fallout cleanup: ").Append(ThresholdValues.FalloutCleanup())
+                    .Append(" IP per detonation");
             }
 
             if (section.Length > 0)

@@ -16,12 +16,14 @@ namespace TIEconomyMod.Patches
                 return true;
             }
 
-            // Welfare starts at -333,333 / population, then maps TI's 1-9 Inequality
-            // range continuously to -1..+1 around 5. The smooth transform makes the
-            // reduction 0x at 1, 1x at 5, and 2x at 9. At 100M population and
-            // Inequality 5 this is -0.00333; installed vanilla 1.0.39 is about -0.00393.
-            float rawDelta = settings.welfarePopulationDivisor /
-                Math.Max(1f, __instance.population);
+            // Inequality is a proportional economic outcome, so Welfare divides by GDP.
+            // Defaults give -0.00333 at $100B and -0.000333 at $1T; ten times the IP in
+            // the larger economy restores the same monthly movement at equal allocation.
+            // The 1-9 transform is 0x at 1, 1x at 5, and 2x at 9 for this negative delta.
+            float gdpBillions = Math.Max(settings.minimumGdpBillions,
+                (float)(__instance.GDP / 1000000000d));
+            float rawDelta = settings.welfareChangeAtReferenceGdp *
+                settings.referenceGdpBillions / gdpBillions;
             float position = (__instance.inequality - settings.neutral) /
                 ((settings.maximum - settings.minimum) / 2f);
             float transformedDelta = rawDelta * (1f - Math.Sign(rawDelta) * position *
@@ -64,8 +66,14 @@ namespace TIEconomyMod.Patches
                 : (float)(poweredResourceRatio / (1d + poweredResourceRatio));
             float resourceMultiplier = 1f +
                 settings.spoilsMaximumResourceMultiplier * resourceCurve;
-            float rawDelta = settings.spoilsPopulationDivisor /
-                Math.Max(1f, __instance.population) * resourceMultiplier;
+            // Like the other Inequality changes, Spoils divides by GDP because it changes
+            // an economic distribution ratio. Defaults give +0.00167 at $100B and
+            // +0.000167 at $1T before resource/bound multipliers, exactly offsetting
+            // the tenfold difference in GDP-linear IP production.
+            float gdpBillions = Math.Max(settings.minimumGdpBillions,
+                (float)(__instance.GDP / 1000000000d));
+            float rawDelta = settings.spoilsChangeAtReferenceGdp *
+                settings.referenceGdpBillions / gdpBillions * resourceMultiplier;
 
             // The continuous boundary transform makes a positive Spoils delta 2x at
             // Inequality 1, 1x at 5, and 0x at 9. At 100M population, Inequality 5,
@@ -106,7 +114,8 @@ namespace TIEconomyMod.Patches
                 Math.Max(1f, __instance.population) *
                 settings.educationMaximumGain *
                 (float)Math.Pow(settings.educationDecay, __instance.education);
-            if (float.IsNaN(calculated) || float.IsInfinity(calculated))
+            if (float.IsNaN(calculated) || float.IsInfinity(calculated) ||
+                calculated < 0f)
             {
                 Main.Warn("Knowledge education produced an invalid value; using zero.");
                 calculated = 0f;
@@ -186,12 +195,13 @@ namespace TIEconomyMod.Patches
                 return true;
             }
 
-            // Military technology starts at 55,000 / population and gains 50% for each
-            // full level behind the global maximum; the multiplier never falls below 1.
-            // At 100M population, miltech 4, and global 6, this gives +0.0011.
-            // Installed vanilla 1.0.39 gives +0.001875 from 0.00125 * (6 / 4).
-            float baseChange = settings.technologyPopulationDivisor /
-                Math.Max(1f, __instance.population);
+            // Military technology upgrades every army, so army count—not population—is
+            // the affected stock. Defaults give +0.00275 with one army and +0.00055
+            // with five; multiplying the latter by five completions buys the same total
+            // force-wide modernization. A nation with no army uses one as the floor
+            // because its national doctrine still governs the first army it builds.
+            float baseChange = settings.technologyChangeForOneArmy /
+                Math.Max(1, __instance.armies.Count);
             float catchup = Math.Max(1f, 1f + settings.catchupBonus *
                 (__instance.maxMilitaryTechLevel - __instance.militaryTechLevel));
             float calculated = baseChange * catchup;
@@ -249,11 +259,10 @@ namespace TIEconomyMod.Patches
                 return true;
             }
 
-            // Money is a flat 240 plus a resource bonus proportional to resources/GDP.
-            // One region in a $100B economy gives ratio 1, curve 0.5, and +80; the
-            // same region in a $1T economy gives ratio 0.1 and about +14.55.
-            // Installed vanilla 1.0.39 instead pays 5 * base IP + 5 per resource region
-            // + 2.5 * (10 - Government), so a 5-IP, one-region autocracy receives 55.
+            // Resource wealth multiplies the $60 base through the continuous resources/GDP
+            // curve. With a configured ceiling of x4, one region at $100B gives ratio 1,
+            // curve .5, and x2.5; at $1T it gives ratio .1, curve .091, and x1.273.
+            // Installed vanilla pays additive base-IP/resource/Government amounts instead.
             AbundanceSettings abundance = Main.settings.abundance;
             float resourceRatio = __instance.currentResourceRegions *
                 abundance.referenceGdpPerResourceRegionBillions /
@@ -262,17 +271,21 @@ namespace TIEconomyMod.Patches
             float resourceCurve = double.IsPositiveInfinity(poweredResourceRatio)
                 ? 1f
                 : (float)(poweredResourceRatio / (1d + poweredResourceRatio));
-            float resourceMoney = settings.maximumResourceBonus * resourceCurve;
+            float resourceMultiplier = 1f +
+                (settings.maximumResourceMultiplier - 1f) * resourceCurve;
 
-            // Low Government multiplies the whole payout by 1.30 at 0, 1.15 at 5,
-            // and 1.00 at 10. Thus the $100B, one-region autocracy above receives 416.
-            float governmentProgress = Math.Max(0f, Math.Min(1f,
-                __instance.democracy / settings.fullGovernment));
-            float governmentMultiplier = 1f +
-                settings.maximumLowGovernmentBonus * (1f - governmentProgress);
-            float calculated = (settings.baseMoney + resourceMoney) * governmentMultiplier;
+            // Government applies the requested 1.30 - .03*Government term: scores 0, 5,
+            // and 10 give x1.30, x1.15, and x1.00. Thus one region, $100B, Government 5
+            // pays 60 * 2.5 * 1.15 = 172.5; at $1T it pays about 87.8.
+            float government = Math.Max(0f, Math.Min(
+                settings.fullGovernment, __instance.democracy));
+            float governmentMultiplier = settings.governmentBaseMultiplier -
+                settings.governmentPenaltyPerLevel * government;
+            float calculated = settings.baseMoney * resourceMultiplier *
+                governmentMultiplier;
 
-            if (float.IsNaN(calculated) || float.IsInfinity(calculated))
+            if (float.IsNaN(calculated) || float.IsInfinity(calculated) ||
+                calculated < 0f)
             {
                 Main.Warn("Spoils money produced an invalid value; using the configured base.");
                 calculated = settings.baseMoney;

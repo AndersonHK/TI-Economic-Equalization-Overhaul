@@ -7,8 +7,27 @@ $ErrorActionPreference = 'Stop'
 $scriptDirectory = Split-Path -Parent $MyInvocation.MyCommand.Path
 $repositoryRoot = Split-Path -Parent $scriptDirectory
 $buildStarted = Get-Date
+$managedPathFile = Join-Path ([IO.Path]::GetTempPath()) (
+    'ti-eeo-managed-' + [Guid]::NewGuid().ToString('N') + '.txt')
 
-& (Join-Path $scriptDirectory 'build.ps1') -Configuration Release -TargetManagedDir $TargetManagedDir
+try {
+    & (Join-Path $scriptDirectory 'build.ps1') -Configuration Release `
+        -TargetManagedDir $TargetManagedDir `
+        -WriteResolvedManagedDirPath $managedPathFile
+    if ($LASTEXITCODE -ne 0) {
+        exit $LASTEXITCODE
+    }
+    $resolvedManagedDir = Get-Content -LiteralPath $managedPathFile -Raw
+}
+finally {
+    if (Test-Path -LiteralPath $managedPathFile) {
+        Remove-Item -LiteralPath $managedPathFile
+    }
+}
+
+powershell -NoProfile -ExecutionPolicy Bypass -File `
+    (Join-Path $scriptDirectory 'validate-target-il.ps1') `
+    -TargetManagedDir $resolvedManagedDir
 if ($LASTEXITCODE -ne 0) {
     exit $LASTEXITCODE
 }
@@ -36,8 +55,8 @@ if ($LASTEXITCODE -ne 0) {
 
 $manifestPath = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\ModInfo.json'
 $manifest = Get-Content -LiteralPath $manifestPath -Raw | ConvertFrom-Json
-if ($manifest.GameVersion -ne '1.0.32') {
-    throw "ModInfo.json targets '$($manifest.GameVersion)' instead of TI 1.0.32."
+if ($manifest.GameVersion -ne '1.0.39') {
+    throw "ModInfo.json targets '$($manifest.GameVersion)' instead of TI 1.0.39."
 }
 if ($manifest.AssemblyName -ne 'Assembly/TIEconomyMod.dll') {
     throw "ModInfo.json has unexpected AssemblyName '$($manifest.AssemblyName)'."
@@ -85,7 +104,7 @@ if (Test-Path -LiteralPath $imagePath) {
     Copy-Item -LiteralPath $imagePath -Destination $stagingDirectory
 }
 
-$zipPath = Join-Path $artifactDirectory 'TIEconomyMod-0.3.0-ti1.0.32.zip'
+$zipPath = Join-Path $artifactDirectory 'TIEconomyMod-0.4.0-ti1.0.39.zip'
 if (Test-Path -LiteralPath $zipPath) {
     Remove-Item -LiteralPath $zipPath
 }
@@ -94,4 +113,4 @@ Compress-Archive -LiteralPath $stagingDirectory -DestinationPath $zipPath -Compr
 Write-Host "PASS: release verification completed."
 Write-Host "DLL SHA256: $assemblyHash"
 Write-Host "Artifact: $zipPath"
-Write-Host 'Forward-compatibility note: the build used the currently installed TI assemblies; game behavior remains targeted to 1.0.32.'
+Write-Host 'Forward-compatibility note: behavior/metadata target TI 1.0.39; this build also compiled against the installed TI 1.0.47 assemblies.'

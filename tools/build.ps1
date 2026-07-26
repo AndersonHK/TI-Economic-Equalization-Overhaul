@@ -2,7 +2,8 @@
 param(
     [ValidateSet('Debug', 'Release')]
     [string]$Configuration = 'Release',
-    [string]$TargetManagedDir
+    [string]$TargetManagedDir,
+    [string]$WriteResolvedManagedDirPath
 )
 
 $ErrorActionPreference = 'Stop'
@@ -97,6 +98,9 @@ function Find-MSBuild {
 }
 
 $managedDirectory = Find-TerraInvictaManagedDirectory -ExplicitPath $TargetManagedDir
+if (-not [string]::IsNullOrWhiteSpace($WriteResolvedManagedDirPath)) {
+    Set-Content -LiteralPath $WriteResolvedManagedDirPath -Value $managedDirectory -NoNewline
+}
 $msbuild = Find-MSBuild
 $project = Join-Path $repositoryRoot 'TIEconomyMod\TIEconomyMod.csproj'
 

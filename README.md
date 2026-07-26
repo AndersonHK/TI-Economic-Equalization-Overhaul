@@ -1,62 +1,79 @@
 # TI Economic Equalization Overhaul
 
-This branch is a selective Terra Invicta 1.0.32 compatibility and balance port. It preserves the intended economic behavior of the starting mod, adopts the maintained mod's current priority API and package structure, and adds configurable technology, abundance, inequality, threshold, and tooltip systems.
+This branch targets Terra Invicta 1.0.39. It replaces opaque, border-sensitive
+priority math with configurable formulas whose economic unit is visible in each
+patch. It also compiles against the currently installed TI 1.0.47 assemblies as
+a forward-compatibility check.
 
-## Implemented in this slice
+## Economic model
 
-- Investment Points, control-point cost, army upkeep, research, Knowledge, Military, and Spoils money retain the starting mod's intended behavior.
-- The former Knowledge democracy effect now patches Government.
-- The former Military unrest effect now patches Oppression; other Oppression behavior remains vanilla.
-- Economy growth uses a total-GDP formula, a smooth core-economic region curve, compounded global-technology weights, and saturating resource/land curves.
-- Economy, Welfare, and Spoils inequality changes use smooth directional scaling, with every resource effect measured against national GDP.
-- Region thresholds default to vanilla and can be configured.
-- Vanilla tooltips are preserved and receive live EEO sections.
-- A global toggle and per-feature toggles return execution to vanilla when disabled.
+Investment Points are linear in GDP: each $100B produces 1 monthly IP before
+the low-income modifier. Each completed IP then follows one stock rule:
 
-Environment balance, Unity, other Spoils behavior, event-driven inequality, and deliberate TI 1.0.39 adaptation are deferred. The authoritative feature-by-feature comparison is [docs/current-implementation-matrix.xlsx](docs/current-implementation-matrix.xlsx).
+- fixed assets and physical cleanup have a fixed effect per IP;
+- changes to economic ratios divide by GDP;
+- changes to demographic ratios divide by population;
+- Military technology divides by the number of armies it upgrades.
+
+This removes the vanilla incentive to split or merge countries solely to exploit
+per-capita effects. Large nations remain intentionally better at buying fixed-cost
+assets such as Mission Control, Boost, and Armies. Resource effects use resources
+relative to GDP, so oil is economically more important to Saudi Arabia than to the
+larger and more diversified United States.
+
+See [docs/design-directives.md](docs/design-directives.md) for the rules future
+patches must follow and [docs/patch-sanity-audit.md](docs/patch-sanity-audit.md)
+for the current patch-by-patch review.
+
+## Current scope
+
+- Smooth total-GDP Economy growth with compounded technology weights and
+  GDP-relative resource / density-relative land abundance.
+- GDP-normalized Economy, Welfare, and Spoils Inequality effects with smooth
+  bounded behavior on TI's 1-9 scale.
+- GDP-only economy emissions; fixed atmospheric removal per completed IP;
+  GDP-relative sustainability transition; land-relative nuclear damage.
+- Population-normalized Unity, Knowledge, Government, Oppression, and selected
+  Spoils social effects.
+- Army-count-normalized Military technology and per-army upkeep.
+- Surgical Unity and Spoils propaganda transpilers that preserve TI 1.0.39's
+  complete priority-completion behavior.
+- Configurable region conversion, decolonization, and fallout thresholds,
+  defaulting to 5x vanilla, with gameplay and tooltip IL guarded together.
+- Expanded tooltips that append live mod calculations to vanilla text.
+
+The authoritative feature comparison is
+[docs/current-implementation-matrix.xlsx](docs/current-implementation-matrix.xlsx).
 
 ## Configuration
 
-Normal formula settings are stored by Unity Mod Manager and exposed in grouped UI sections. The reset button restores all defaults.
-
-Technology weights live in [TIEconomyMod/ModFiles/Config/economy-tech-weights.csv](TIEconomyMod/ModFiles/Config/economy-tech-weights.csv). Its columns are:
-
-- `tech_id`: exact global technology data name
-- `enabled`: `true` or `false`
-- `percent`: contribution to the compounded Economy multiplier
-- `rationale`: short semantic classification
-
-Unknown IDs are logged and skipped. Duplicate IDs fail mod validation. Changes require a game restart.
+Unity Mod Manager exposes grouped settings and a reset-to-default button.
+Technology weights are tracked in
+[TIEconomyMod/ModFiles/Config/economy-tech-weights.csv](TIEconomyMod/ModFiles/Config/economy-tech-weights.csv).
+Unknown technology IDs are logged and skipped, duplicate IDs fail validation,
+and changes require restart.
 
 ## Build and verification
 
-The project targets .NET Framework 4.8. No game or mod-loader DLL is copied into the repository. `tools/build.ps1` resolves the selected Terra Invicta installation from `TI_TARGET_MANAGED_DIR` or Steam's library configuration, then uses the matched Unity Mod Manager and Harmony pair found in that installation.
+The project targets .NET Framework 4.8. Set `TI_TARGET_MANAGED_DIR`, or let the
+build script locate Steam. References come from one selected installation so
+Harmony and Unity Mod Manager are never mixed across versions.
+On this machine that matched pair is Harmony 2.3.1.1 and Unity Mod Manager
+0.27.14; the project does not copy either binary into the repository.
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\build.ps1
 powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\verify.ps1
 ```
 
-Verification:
+Verification rebuilds with warnings as errors, runs dependency-free formula
+tests, validates the implementation matrix against settings and Harmony patches,
+checks the manifest/package layout, and creates
+`artifacts/TIEconomyMod-0.4.0-ti1.0.39.zip`.
 
-- rebuilds with warnings treated as errors;
-- runs dependency-free formula tests;
-- validates the implementation matrix against every settings group and Harmony patch;
-- validates the manifest and package paths;
-- confirms the packaged DLL was just rebuilt;
-- creates `artifacts/TIEconomyMod-0.3.0-ti1.0.32.zip`.
+## Smoke test
 
-The currently installed TI 1.0.39 assemblies are used as an informational forward-compilation check. This slice intentionally keeps TI 1.0.32 behavior and metadata.
-
-## Install for a smoke test
-
-Extract the archive so the installed mod directory contains:
-
-```text
-TIEconomyMod/
-  Assembly/TIEconomyMod.dll
-  Config/economy-tech-weights.csv
-  ModInfo.json
-```
-
-Test poor resource-rich and resource-poor nations, land-abundant and dense nations, unstable nations, early/mid/late technology saves, all three bounded inequality priorities, Government/Knowledge/Military/Oppression completions, and feature toggles with the expanded tooltips.
+Compare poor resource-rich/resource-poor, land-abundant/dense, stable/unstable,
+early/late technology, small/large GDP, and small/large army-count countries.
+Exercise all affected priorities at boundary and neutral values, then toggle each
+feature and confirm the appended tooltip agrees with the observed change.
