@@ -53,6 +53,57 @@ doubled at its uniquely identified mutation reason. Events, secession, and
 revolution remain vanilla; annexation uses the country-merger distribution
 formula described above.
 
+## Economy growth is factor balance, not a wealth penalty
+
+National production is constrained by three complementary factors: capital,
+labor, and resources. If a balanced economy has one unit of each and produces
+one unit of output, adding capital alone must produce less than twice the output.
+Doubling capital, effective labor, and effective resources together should
+produce approximately twice the output. This is constant returns to national
+scale with diminishing returns to an input that outruns its complements.
+
+An Economy completion adds capital. TI does not expose a separate capital stock,
+so GDP per capita is the practical proxy for accumulated capital relative to
+labor. Education, Government, Cohesion, and Core Economic regions describe how
+effectively labor and institutions can support that capital. Resource regions
+relative to GDP and land per person describe the complementary physical inputs.
+The growth formula must compare these factors through scale-independent ratios;
+population or borders must not be added again as free output multipliers.
+
+The marginal return to capital follows a smooth logistical constraint:
+
+- capital-poor economies with adequate labor and resources receive high returns;
+- balanced economies remain on the productive middle of the curve;
+- capital-heavy economies approach a soft cap when labor or resources cannot
+  productively absorb more investment;
+- scaling all three factors together leaves the per-IP return approximately
+  unchanged, while the larger economy produces proportionally more IP.
+
+Technology changes both the height and shape of this return curve. It raises
+productivity for every factor combination and loosens the logistical constraint,
+preserving more marginal return when capital greatly exceeds labor or resources.
+At sufficiently advanced technology, the high-capital tail becomes nearly
+linear: automation substitutes for labor, and advanced energy, materials,
+agriculture, mining, and space industry substitute for scarce local resources.
+Advanced economies benefit disproportionately because they were constrained
+most strongly by the former soft cap.
+
+Every global technology participates, but with semantic weights. AI and
+automation primarily relax the labor constraint; energy, materials, mining, and
+space-industry technologies primarily relax land and resource constraints;
+biotechnology and agriculture primarily improve biological and land
+productivity; general-purpose technologies affect both. Narrow military or
+spacecraft technologies receive small spillovers rather than no effect. All also
+contribute some productivity lift. The 2022 curve is not a zero-technology
+curve: its baseline already embodies accumulated historical technology, while
+global technologies completed during play continue moving it toward
+post-scarcity behavior.
+
+Do not implement GDP per capita as an isolated exponential wealth penalty.
+High GDP per capita locates a nation on the capital-to-complements curve; its
+effect must depend on effective labor, resources, and the current technology-
+enabled degree of substitution.
+
 ## Resources, land, and historical structure
 
 Resource importance is measured relative to GDP, not by a hardcoded region table.
@@ -63,7 +114,9 @@ at high technology, but their economic share declines smoothly as GDP grows.
 Land abundance is land per person, gated by stability. Its agricultural and
 forestry significance falls with wealth, but cheap land retains a smaller housing
 and industrial benefit. Neither land nor resources receive an artificial
-technology fade.
+technology fade. Technologies may relax the production constraint created by
+scarcity; they do not subtract an abundance bonus from countries that possess
+useful land or resources.
 
 ## Environment and nuclear damage
 
