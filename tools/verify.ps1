@@ -49,6 +49,13 @@ if ($LASTEXITCODE -ne 0) {
     exit $LASTEXITCODE
 }
 
+powershell -NoProfile -ExecutionPolicy Bypass -File `
+    (Join-Path $scriptDirectory 'validate-hab-cost-rewrite.ps1') `
+    -ModAssemblyPath $assemblyPath
+if ($LASTEXITCODE -ne 0) {
+    exit $LASTEXITCODE
+}
+
 powershell -NoProfile -ExecutionPolicy Bypass -File (Join-Path $scriptDirectory 'validate-implementation-matrix.ps1') -RepositoryRoot $repositoryRoot
 if ($LASTEXITCODE -ne 0) {
     exit $LASTEXITCODE

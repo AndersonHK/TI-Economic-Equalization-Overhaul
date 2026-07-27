@@ -41,7 +41,9 @@ for the current patch-by-patch review.
 - 2022 starts with Mission to Space and Advanced Chemical Rocketry completed.
 - Human hab modules use approximately x1.5 physical mass, rounded to the nearest
   five tons, while retaining vanilla space-resource tonnage; all added mass must
-  always arrive from Earth.
+  always arrive from Earth. Local-material substitution is resolved before that
+  mandatory Boost is added, so an existing Boost shortage cannot be transfer-
+  scaled a second time.
 - Human T1 stations expose visible sectors 1-3/twelve facility slots and reuse the
   vanilla connector renderers between occupied arms while hab-list icon overlays
   remain tier-gated. The starting ISS and Tiangong layouts, T1 crews, and crew
@@ -91,7 +93,7 @@ Verification rebuilds with warnings as errors, runs dependency-free formula
 tests, validates all 110 hab-module overrides against the installed vanilla
 templates, validates the implementation matrix against settings and Harmony
 patches, verifies the guarded hab connector and list-icon transpilers, checks the
-manifest/package layout, and creates
+hab-cost substitution order, checks the manifest/package layout, and creates
 `artifacts/TIEconomyMod-0.7.0-ti1.0.49.zip`.
 
 ## Smoke test
@@ -103,7 +105,9 @@ feature and confirm the appended tooltip agrees with the observed change. Merge
 countries with similar and dissimilar GDP/c, force structure, and population;
 verify Military technology and Inequality against the documented examples.
 For habs, compare Earth-built, locally supplied, and upgraded modules; confirm
-the mandatory Boost floor and Earth delivery time, then load an older save and
+the mandatory Boost floor and Earth delivery time. At a distant base, verify that
+ample local materials plus insufficient Boost shows only the mandatory Boost
+cost and never exceeds the all-Earth Boost cost. Then load an older save and
 confirm human T1 stations expose visible sectors 1-3 while bases and alien
 stations do not. Confirm T1 hab-list icons show no peripheral sector overlays,
 while T2 and T3 icons retain their vanilla two- and four-overlay composites.

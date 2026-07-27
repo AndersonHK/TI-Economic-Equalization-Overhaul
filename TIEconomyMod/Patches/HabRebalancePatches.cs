@@ -401,14 +401,6 @@ namespace TIEconomyMod.Patches
                 faction,
                 rateMultiplier);
             TIResourcesCost cost = materials.ToResourcesCost(1f);
-            float mandatoryBoost =
-                HabConstructionCostRewrite.MandatoryBoost(
-                    __instance,
-                    spaceBody,
-                    faction,
-                    destinationState,
-                    rateMultiplier);
-            cost.AddCost(FactionResource.Boost, mandatoryBoost, false);
 
             if (substituteBoost &&
                 !cost.CanAfford(faction, 1f, null, float.PositiveInfinity) &&
@@ -421,6 +413,18 @@ namespace TIEconomyMod.Patches
                     true,
                     null);
             }
+
+            // Vanilla substitution treats every replaceable shortage as cargo
+            // mass. Add compulsory Boost only after that pass so an existing
+            // Boost shortage is not converted by the transfer formula again.
+            float mandatoryBoost =
+                HabConstructionCostRewrite.MandatoryBoost(
+                    __instance,
+                    spaceBody,
+                    faction,
+                    destinationState,
+                    rateMultiplier);
+            cost.AddCost(FactionResource.Boost, mandatoryBoost, false);
 
             float transferTime = HabRebalanceMath.HasEarthDelivery(
                 cost.GetSingleCostValue(FactionResource.Boost))
