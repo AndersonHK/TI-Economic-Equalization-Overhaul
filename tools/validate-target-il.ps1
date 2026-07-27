@@ -127,6 +127,14 @@ try {
         2 `
         'Hab internal-sector-four connector check'
 
+    $habListItem = Read-MethodIl `
+        'PavonisInteractive.TerraInvicta.HabListItem' `
+        'UpdateItem'
+    Assert-Count $habListItem `
+        'HabListItem::habState\s+IL_[^:]+:\s+ldfld.*TIHabState::sectors\s+IL_[^:]+:\s+ldloc\.1\s+IL_[^:]+:\s+callvirt.*get_Item\(int32\)\s+IL_[^:]+:\s+callvirt.*TISectorState::get_active\(\)\s+IL_[^:]+:\s+brfalse(?:\.s)?\s+IL_' `
+        1 `
+        'Hab-list station-sector icon loop'
+
     Write-Host 'PASS: target IL contains every guarded TI 1.0.47 patch point.'
 }
 finally {

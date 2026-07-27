@@ -621,6 +621,70 @@ namespace TIEconomyMod.Patches
         }
     }
 
+    [HarmonyPatch(typeof(HabListItem), nameof(HabListItem.UpdateItem))]
+    internal static class TierOneStationListIconPatch
+    {
+        [HarmonyTranspiler]
+        internal static IEnumerable<CodeInstruction> Transpiler(
+            IEnumerable<CodeInstruction> instructions)
+        {
+            List<CodeInstruction> codes =
+                new List<CodeInstruction>(instructions);
+            FieldInfo habStateField =
+                AccessTools.Field(typeof(HabListItem), "habState");
+            FieldInfo sectorsField =
+                AccessTools.Field(typeof(TIHabState), "sectors");
+            MethodInfo sectorItemGetter =
+                AccessTools.PropertyGetter(
+                    typeof(List<TISectorState>),
+                    "Item");
+            MethodInfo activeGetter =
+                AccessTools.PropertyGetter(typeof(TISectorState), "active");
+            MethodInfo tierGetter =
+                AccessTools.PropertyGetter(typeof(TIHabState), "tier");
+            int replacements = 0;
+
+            for (int index = 5; index + 1 < codes.Count; index++)
+            {
+                if (!codes[index].Calls(activeGetter) ||
+                    (codes[index + 1].opcode != OpCodes.Brfalse &&
+                     codes[index + 1].opcode != OpCodes.Brfalse_S) ||
+                    !codes[index - 1].Calls(sectorItemGetter) ||
+                    codes[index - 2].opcode != OpCodes.Ldloc_1 ||
+                    !codes[index - 3].LoadsField(sectorsField) ||
+                    !codes[index - 4].LoadsField(habStateField) ||
+                    codes[index - 5].opcode != OpCodes.Ldarg_0)
+                {
+                    continue;
+                }
+
+                codes.InsertRange(
+                    index + 1,
+                    new[]
+                    {
+                        new CodeInstruction(OpCodes.Ldarg_0),
+                        new CodeInstruction(OpCodes.Ldfld, habStateField),
+                        new CodeInstruction(OpCodes.Callvirt, tierGetter),
+                        new CodeInstruction(OpCodes.Ldc_I4_1),
+                        new CodeInstruction(OpCodes.Cgt),
+                        new CodeInstruction(OpCodes.And)
+                    });
+                replacements++;
+                index += 6;
+            }
+
+            if (replacements != 1)
+            {
+                throw new InvalidOperationException(
+                    "Expected exactly one station-sector icon loop in " +
+                    "HabListItem.UpdateItem; found " +
+                    replacements + ".");
+            }
+
+            return codes;
+        }
+    }
+
     [HarmonyPatch(typeof(TIHabState), nameof(TIHabState.InitializeNewHab))]
     internal static class InitializeNewHabSectorPatch
     {

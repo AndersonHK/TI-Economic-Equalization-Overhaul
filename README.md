@@ -40,8 +40,9 @@ for the current patch-by-patch review.
   five tons, while retaining vanilla space-resource tonnage; all added mass must
   always arrive from Earth.
 - Human T1 stations expose visible sectors 1-3/twelve facility slots and reuse the
-  vanilla connector renderers between occupied arms. The starting ISS and Tiangong
-  layouts, T1 crews, and crew consumables are historically rescaled.
+  vanilla connector renderers between occupied arms while hab-list icon overlays
+  remain tier-gated. The starting ISS and Tiangong layouts, T1 crews, and crew
+  consumables are historically rescaled.
 - Global technologies cost x1.20 research; faction projects retain vanilla costs.
 - Population-normalized Unity, Knowledge, Government, Oppression, and selected
   Spoils social effects.
@@ -56,6 +57,8 @@ for the current patch-by-patch review.
 
 The authoritative feature comparison is
 [docs/current-implementation-matrix.xlsx](docs/current-implementation-matrix.xlsx).
+The investigated path beyond the vanilla twenty-facility ceiling is documented
+in [docs/hab-slot-expansion-assessment.md](docs/hab-slot-expansion-assessment.md).
 
 ## Configuration
 
@@ -81,7 +84,8 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\verify.ps1
 Verification rebuilds with warnings as errors, runs dependency-free formula
 tests, validates all 110 hab-module overrides against the installed vanilla
 templates, validates the implementation matrix against settings and Harmony
-patches, checks the manifest/package layout, and creates
+patches, verifies the guarded hab connector and list-icon transpilers, checks the
+manifest/package layout, and creates
 `artifacts/TIEconomyMod-0.6.5-ti1.0.47.zip`.
 
 ## Smoke test
@@ -95,4 +99,5 @@ verify Military technology and Inequality against the documented examples.
 For habs, compare Earth-built, locally supplied, and upgraded modules; confirm
 the mandatory Boost floor and Earth delivery time, then load an older save and
 confirm human T1 stations expose visible sectors 1-3 while bases and alien
-stations do not.
+stations do not. Confirm T1 hab-list icons show no peripheral sector overlays,
+while T2 and T3 icons retain their vanilla two- and four-overlay composites.
