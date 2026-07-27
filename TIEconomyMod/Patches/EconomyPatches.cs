@@ -16,44 +16,78 @@ namespace TIEconomyMod.Patches
                 return true;
             }
 
-            // Every completed global technology listed in the CSV multiplies the result;
-            // two 2% technologies therefore give 1.02 * 1.02 = 1.0404, not 1.04.
-            // Installed vanilla 1.0.47 has no comparable global-technology multiplier:
-            // it applies project/effect modifiers directly to its per-capita base instead.
-            // Faction projects stay out of this calculation so those vanilla bonuses are
-            // neither attributed to the wrong nation nor counted twice.
-            double compoundedTechnology = 1d;
-            if (Main.FeatureEnabled(Main.settings.technology.enabled) && Main.techWeights != null)
+            // Technologies do three visible jobs. Their productivity percentages compound
+            // directly (two 1% starting technologies give 1.01 * 1.01 = x1.0201), while
+            // their labor and resource weights measure progress from 0 to 1 through the
+            // future tree. Mission to Space and Advanced Chemical Rocketry contribute to
+            // productivity but not progress because their substitution is already present
+            // in the modern starting floors. Faction projects remain vanilla and are not
+            // counted here, avoiding ownership ambiguity and double counting.
+            double productivity = 1d;
+            float completedLaborWeight = 0f;
+            float completedResourceWeight = 0f;
+            TechnologySettings technologySettings = Main.settings.technology;
+            bool technologyEnabled = Main.FeatureEnabled(technologySettings.enabled) &&
+                Main.techWeights != null && Main.techWeights.Count > 0;
+            if (technologyEnabled)
             {
                 foreach (string technologyId in GameStateManager.GlobalResearch().finishedTechsNames)
                 {
-                    float percent;
-                    if (Main.techWeights.TryGetPercent(technologyId, out percent))
+                    TechWeights technology;
+                    if (Main.techWeights.TryGetWeights(technologyId, out technology))
                     {
-                        compoundedTechnology *= 1d + percent / 100d;
+                        productivity *= 1d + technology.ProductivityPercent / 100d;
+                        if (!TechWeightCatalog.IsStartingTechnology(technologyId))
+                        {
+                            completedLaborWeight += technology.LaborSubstitution;
+                            completedResourceWeight += technology.ResourceSubstitution;
+                        }
                     }
                 }
             }
-            float technologyMultiplier = (float)Math.Max(1d, Math.Min(
-                Main.settings.technology.maximumMultiplier, compoundedTechnology));
+            float productivityMultiplier = (float)Math.Max(1d, Math.Min(
+                technologySettings.maximumMultiplier, productivity));
+            float laborProgress = technologyEnabled
+                ? Math.Max(0f, Math.Min(1f, completedLaborWeight /
+                    Main.techWeights.TotalFutureLaborWeight))
+                : 0f;
+            float resourceProgress = technologyEnabled
+                ? Math.Max(0f, Math.Min(1f, completedResourceWeight /
+                    Main.techWeights.TotalFutureResourceWeight))
+                : 0f;
 
-            // Core Economic regions follow one smooth saturating curve:
+            // Labor support combines the institutional and human factors that let capital
+            // be used productively. Core regions follow one smooth saturating curve:
             //   1 + maximumBonus * cores / (halfSaturation + cores)
-            // Defaults give x1.20, x1.30, x1.36, and x1.40 for one through four
-            // regions, approaching but never exceeding x1.60. Installed vanilla 1.0.47
-            // instead adds a flat 1.5 dollars of per-capita growth per core region.
+            // Defaults give x1.40, x1.60, x1.72, and x1.80 for one through four
+            // regions, approaching but never reaching x2.20. The full product is divided
+            // by the reference nation (one core, Education 7, Government 6, Cohesion 5),
+            // so that reference has labor support 1. Installed vanilla 1.0.49 instead adds
+            // a flat per-capita amount for every core region.
             int cores = Math.Max(0, __instance.numCoreEconomicRegions_dailyCache);
             float coreRegionMultiplier = 1f + economy.coreRegionMaximumBonus * cores /
                 (economy.coreRegionHalfSaturation + cores);
-
             float educationMultiplier = 1f + economy.educationPerLevel * __instance.education;
             float governmentMultiplier = 1f + economy.governmentPerLevel * __instance.democracy;
             float cohesionMultiplier = economy.cohesionPeak -
                 economy.cohesionPenaltyPerPoint *
                 Math.Abs(__instance.cohesion - economy.cohesionCenter);
-            float incomeMultiplier = economy.pcgdpScale * (float)Math.Pow(
-                economy.pcgdpDecay,
-                __instance.perCapitaGDP / economy.pcgdpDecayInterval);
+            float referenceCoreMultiplier = 1f + economy.coreRegionMaximumBonus *
+                economy.referenceCoreRegions /
+                (economy.coreRegionHalfSaturation + economy.referenceCoreRegions);
+            float referenceEducationMultiplier = 1f +
+                economy.educationPerLevel * economy.referenceEducation;
+            float referenceGovernmentMultiplier = 1f +
+                economy.governmentPerLevel * economy.referenceGovernment;
+            float referenceCohesionMultiplier = economy.cohesionPeak -
+                economy.cohesionPenaltyPerPoint *
+                Math.Abs(economy.referenceCohesion - economy.cohesionCenter);
+            float referenceLabor = referenceCoreMultiplier *
+                referenceEducationMultiplier * referenceGovernmentMultiplier *
+                referenceCohesionMultiplier;
+            float laborSupport = coreRegionMultiplier * educationMultiplier *
+                governmentMultiplier * cohesionMultiplier /
+                Math.Max(economy.minimumSupport, referenceLabor);
 
             float resourceBonus = 0f;
             float landBonus = 0f;
@@ -68,12 +102,13 @@ namespace TIEconomyMod.Patches
                     1f - __instance.unrest / abundance.maximumUnrest)),
                     abundance.unrestExponent);
 
-                // Resource abundance is measured against national GDP, so it matters most
-                // to poor resource-rich states without an artificial technology penalty.
-                // Example: 1 region and $100B GDP gives ratio 1, curve 0.5, and +50%
-                // growth at full stability. At $1T GDP the same region gives ratio 0.1,
-                // curve 0.091, and about +9.1%. Installed vanilla 1.0.47 instead adds the
-                // same flat 1.5 dollars of per-capita growth for that region at any GDP.
+                // Resource abundance is measured against national GDP and follows
+                // ratio^0.30 / (1 + ratio^0.30). At the defaults, one region in a $1T
+                // economy has ratio 1, curve 0.5, and a +50% bonus at unrest 0. The same
+                // region in a $100B economy has ratio 10 and about +66.6%; in a $10T
+                // economy it has ratio 0.1 and about +33.4%. Oil therefore matters much
+                // more to a Saudi-sized economy than a US-sized one without ever becoming
+                // irrelevant. Vanilla applies a flat region bonus unrelated to GDP.
                 float resourceRatio = __instance.currentResourceRegions *
                     abundance.referenceGdpPerResourceRegionBillions /
                     Math.Max(gdpBillions, abundance.minimumGdpBillions);
@@ -83,13 +118,12 @@ namespace TIEconomyMod.Patches
                     : (float)(poweredRatio / (1d + poweredRatio));
                 resourceBonus = abundance.resourceMaximumBonus * curve * stability;
 
-                // Population density is population / land, so inverting it measures land
-                // available per person. At 50 people/km2 the ratio is 1 and the density
-                // curve supplies half the 25% maximum. Wealth then reduces agriculture and
-                // forestry's share without erasing cheap land's housing/industry value:
-                // at $30k PCGDP the default relevance is 62.5%, making the final full-
-                // stability bonus about +7.8%; at extreme wealth it approaches +3.1%.
-                // Installed vanilla 1.0.47 has no land-density Economy bonus.
+                // Population density is population / land, so its inverse measures land
+                // per worker. At 50 people/km2 the ratio and curve are 1 and 0.5. At
+                // $30k GDP/c the wealth relevance is 62.5%, producing +7.8% at unrest 0;
+                // at extreme wealth it approaches +3.1%, retaining cheap housing and
+                // industrial land after agriculture becomes less important. Vanilla has
+                // no continuous land-density Economy term.
                 float landRatio = abundance.referenceDensity /
                     Math.Max(__instance.populationDesnity_pop_km2, abundance.minimumDensity);
                 double poweredLandRatio = Math.Pow(landRatio, abundance.landCurveExponent);
@@ -104,17 +138,45 @@ namespace TIEconomyMod.Patches
                     stability * wealthRelevance;
             }
 
-            // This formula first calculates a total GDP gain, then divides it by population
-            // because the patched getter returns per-capita change. For a 50M-person nation
-            // at $20k PCGDP, Education 8, Government 7, Cohesion 5, one core and one
-            // resource region, defaults produce roughly $1.8B before land and technology.
-            // Installed vanilla 1.0.47 produces about $875M per completion for the same
-            // demographic inputs because it uses a much smaller additive per-capita model.
-            float totalGainBillions = economy.baseGainBillions * economy.outputMultiplier *
-                coreRegionMultiplier *
-                educationMultiplier * governmentMultiplier * cohesionMultiplier *
-                incomeMultiplier * technologyMultiplier *
-                (1f + resourceBonus + landBonus);
+            // GDP/c is capital per worker. It creates labor and resource pressure relative
+            // to the support available. Technology relief p*(0.10 + 0.90p) raises each
+            // return floor smoothly from 0.35/0.45 to 1.00, so early capital has strongly
+            // diminishing returns but a completed tree makes further capital nearly
+            // linear. Better support shifts the knee rather than acting as an unrelated
+            // multiplier. Example: GDP/c $37,500 with labor support 1 has pressure 1 and
+            // a starting labor constraint 0.675; doubling support reduces pressure to 0.5
+            // and raises the constraint to about 0.821.
+            float laborRelief = laborProgress *
+                (economy.technologyReliefLinearShare +
+                 (1f - economy.technologyReliefLinearShare) * laborProgress);
+            float resourceRelief = resourceProgress *
+                (economy.technologyReliefLinearShare +
+                 (1f - economy.technologyReliefLinearShare) * resourceProgress);
+            float laborFloor = economy.startingLaborReturnFloor +
+                (1f - economy.startingLaborReturnFloor) * laborRelief;
+            float resourceFloor = economy.startingResourceReturnFloor +
+                (1f - economy.startingResourceReturnFloor) * resourceRelief;
+            float resourceSupport = 1f + resourceBonus + landBonus;
+            float perCapitaGdp = Math.Max(0f, __instance.perCapitaGDP);
+            float laborPressure = perCapitaGdp / economy.laborKneePcgdp /
+                Math.Max(economy.minimumSupport, laborSupport);
+            float resourcePressure = perCapitaGdp / economy.resourceKneePcgdp /
+                Math.Max(economy.minimumSupport, resourceSupport);
+            float laborConstraint = laborFloor + (1f - laborFloor) /
+                (1f + (float)Math.Pow(laborPressure, economy.laborPressureExponent));
+            float resourceConstraint = resourceFloor + (1f - resourceFloor) /
+                (1f + (float)Math.Pow(resourcePressure, economy.resourcePressureExponent));
+
+            // One completed IP first creates a national GDP gain. Productivity lifts the
+            // whole curve; labor and resource constraints limit returns when capital is
+            // abundant relative to the other factors; abundance also adds a modest direct
+            // lift. A proportional doubling of capital, labor, and resources therefore
+            // doubles the national return, while capital alone yields less than double.
+            // Only this getter boundary divides by population because TI asks for GDP/c.
+            float totalGainBillions = economy.baseGainBillions *
+                productivityMultiplier * laborConstraint * resourceConstraint *
+                (1f + economy.resourceDirectLift * resourceBonus +
+                 economy.landDirectLift * landBonus);
             float calculated = totalGainBillions * 1000000000f /
                 Math.Max(1f, __instance.population);
 
@@ -139,7 +201,7 @@ namespace TIEconomyMod.Patches
             // inequality, Government, Sustainability, propaganda, and faction-cash costs.
             // Capture before those effects run so a Spoils Government loss cannot alter
             // this completion's output. Example: $10 PCGDP growth in a 100M-person nation
-            // is $1B GDP. TI 1.0.47 has no Spoils GDP effect, so this is an added behavior.
+            // is $1B GDP. TI 1.0.49 has no Spoils GDP effect, so this is an added behavior.
             __state = 0d;
             if (Main.FeatureEnabled(Main.settings.spoils.enabled))
             {
@@ -174,9 +236,10 @@ namespace TIEconomyMod.Patches
             }
 
             // Resource-driven inequality uses the same GDP-relative curve as Economy
-            // growth. One region in a $100B economy gives ratio 1 and curve 0.5, so the
-            // default +60% maximum becomes a x1.30 raw-delta multiplier. At $1T the
-            // ratio is 0.1 and the multiplier is only x1.055. Installed vanilla 1.0.47
+            // growth. One region in a $1T economy gives ratio 1 and curve 0.5, so the
+            // default +60% maximum becomes a x1.30 raw-delta multiplier. At $100B the
+            // ratio is 10 and the exponent-0.30 curve is 0.666, making it x1.40.
+            // Installed vanilla 1.0.49
             // adds a flat 0.0001 per resource region before its population scaling.
             AbundanceSettings abundance = Main.settings.abundance;
             float resourceCurve = 0f;

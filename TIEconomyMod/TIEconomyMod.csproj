@@ -90,6 +90,7 @@
 
   <ItemGroup>
     <None Include="ModFiles\Config\economy-tech-weights.csv" />
+    <None Include="ModFiles\Settings.xml" />
     <None Include="ModFiles\TIGlobalConfig.json" />
     <None Include="ModFiles\TIHabModuleTemplate.json" />
     <None Include="ModFiles\TIHabTemplate.json" />

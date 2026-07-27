@@ -21,7 +21,7 @@ namespace TIEconomyMod.Patches
             // from 70% at $0 PCGDP to 100% at $15k, then the configured x1.05 output
             // adjustment applies. A $500B economy therefore produces 3.675 IP at
             // $0 PCGDP and 5.25 IP at $15k instead of the previous 3.5 and 5.
-            // Installed vanilla 1.0.47 instead exposes a cached nonlinear economy score,
+            // Installed vanilla 1.0.49 instead exposes a cached nonlinear economy score,
             // so this patch deliberately makes national output directly legible from GDP.
             float baseInvestmentPoints = (float)(__instance.GDP /
                 (settings.gdpPerInvestmentPointBillions * 1000000000d));
@@ -68,7 +68,7 @@ namespace TIEconomyMod.Patches
 
             // The five listed social technologies lower the economy-score exponent through
             // 1, .98, .95, .90, .85, and .80; the result is divided evenly among CPs.
-            // TI 1.0.47 then applies the active scenario's CP-maintenance multiplier,
+            // TI 1.0.49 then applies the active scenario's CP-maintenance multiplier,
             // preserving the new-start balance knob without adopting vanilla's global-GDP
             // normalization. With economy score 200, four CPs, and a x1.2 scenario,
             // no technology costs 200 / 4 * 1.2 = 60 and all five cost about 21.
@@ -145,7 +145,7 @@ namespace TIEconomyMod.Patches
             // by PCGDP, Government, Cohesion, Unrest, and the live adviser bonus. PCGDP
             // bottoms out at 60% of the $20k reference. For a 50M nation at Education 8,
             // $10k PCGDP, Government 5, Cohesion 5, Unrest 2, and +10% adviser science,
-            // defaults produce about 13.5 research/month. Installed vanilla 1.0.47
+            // defaults produce about 13.5 research/month. Installed vanilla 1.0.49
             // produces about 51.6 because it uses a larger coefficient and an IP crutch.
             float income = Math.Max(
                 __instance.perCapitaGDP / settings.referencePcgdp,

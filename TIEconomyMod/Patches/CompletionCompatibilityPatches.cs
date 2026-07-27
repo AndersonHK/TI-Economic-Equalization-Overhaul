@@ -18,7 +18,7 @@ namespace TIEconomyMod.Patches
         [HarmonyTranspiler]
         public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
-            // Keep TI 1.0.47's complete method—including its current propaganda signature,
+            // Keep TI 1.0.49's complete method—including its current propaganda signature,
             // Religion CP bonus, Cohesion/Education effects, and claim-legitimization flow.
             // Only the one field load is replaced, turning vanilla strength into 20%.
             // A maintained-main full prefix would silently delete later vanilla behavior.

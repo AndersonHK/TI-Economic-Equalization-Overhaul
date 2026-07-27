@@ -195,17 +195,27 @@ namespace TIEconomyMod
     public sealed class EconomySettings
     {
         public bool enabled = true;
-        public float baseGainBillions = 0.330f;
-        public float outputMultiplier = 0.40f;
+        public float baseGainBillions = 1f;
         public float educationPerLevel = 0.15f;
         public float governmentPerLevel = 0.05f;
         public float cohesionCenter = 5f;
         public float cohesionPeak = 1.20f;
         public float cohesionPenaltyPerPoint = 0.04f;
-        public float pcgdpScale = 6f;
-        public float pcgdpDecay = 0.96f;
-        public float pcgdpDecayInterval = 1000f;
-        public float coreRegionMaximumBonus = 0.60f;
+        public float referenceCoreRegions = 1f;
+        public float referenceEducation = 7f;
+        public float referenceGovernment = 6f;
+        public float referenceCohesion = 5f;
+        public float laborKneePcgdp = 37500f;
+        public float resourceKneePcgdp = 55000f;
+        public float startingLaborReturnFloor = 0.35f;
+        public float startingResourceReturnFloor = 0.45f;
+        public float technologyReliefLinearShare = 0.10f;
+        public float minimumSupport = 0.05f;
+        public float laborPressureExponent = 1.40f;
+        public float resourcePressureExponent = 1.20f;
+        public float resourceDirectLift = 1f;
+        public float landDirectLift = 0.25f;
+        public float coreRegionMaximumBonus = 1.20f;
         public float coreRegionHalfSaturation = 2f;
     }
 
@@ -220,10 +230,10 @@ namespace TIEconomyMod
     public sealed class AbundanceSettings
     {
         public bool enabled = true;
-        public float referenceGdpPerResourceRegionBillions = 100f;
+        public float referenceGdpPerResourceRegionBillions = 1000f;
         public float minimumGdpBillions = 1f;
         public float resourceMaximumBonus = 1f;
-        public float resourceCurveExponent = 1f;
+        public float resourceCurveExponent = 0.30f;
         public float referenceDensity = 50f;
         public float minimumDensity = 0.1f;
         public float landMaximumBonus = 0.25f;
@@ -343,6 +353,8 @@ namespace TIEconomyMod
         public float falloutReferenceAreaKm2 = 100000f;
         public float minimumLandAreaKm2 = 1f;
         public float atmosphericRemovalMultiplier = 1f;
+        public bool climateGdpDamageEnabled = true;
+        public float climateGdpDamageMultiplier = 0.90f;
     }
 
     public sealed class EmissionsSettings

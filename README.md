@@ -1,6 +1,6 @@
 # TI Economic Equalization Overhaul
 
-This branch targets Terra Invicta 1.0.47. It replaces opaque, border-sensitive
+This branch targets Terra Invicta 1.0.49. It replaces opaque, border-sensitive
 priority math with configurable formulas whose economic unit is visible in each
 patch.
 
@@ -26,13 +26,16 @@ for the current patch-by-patch review.
 
 ## Current scope
 
-- Smooth total-GDP Economy growth with compounded technology weights and
-  GDP-relative resource / density-relative land abundance.
+- Factor-balance Economy growth: capital returns are constrained by effective
+  labor and resources, while all 149 global technologies compound productivity
+  and progressively substitute for those constraints.
 - GDP-normalized Economy, Welfare, and Spoils Inequality effects at x2 baseline
   strength, smooth bounded behavior on TI's 1-9 scale, and x2 climate impact.
 - GDP-only economy emissions; fixed atmospheric removal per completed IP;
-  GDP-relative sustainability transition; no direct Spoils gas pulse; land-relative nuclear damage.
-- x1.05 Investment Point output; x0.40 Economy GDP growth, also applied to Spoils.
+  GDP-relative sustainability transition; x0.90 warm-climate GDP damage; no
+  direct Spoils gas pulse; land-relative nuclear damage.
+- x1.05 Investment Point output; Economy and Spoils share the same live
+  factor-balance GDP gain.
 - Spoils retains its full $60 base faction-cash payout and has no direct gas pulse.
 - Xenofauna capped at 5 base miltech; Purge and Enthrall Elites receive +1 defense.
 - 2022 starts with Mission to Space and Advanced Chemical Rocketry completed.
@@ -49,7 +52,7 @@ for the current patch-by-patch review.
 - Army-count-normalized Military technology and per-army upkeep.
 - National mergers combine Military technology from 50% force structure and
   50% GDP, while merged Inequality approximates the combined income distribution.
-- Surgical Unity and Spoils propaganda transpilers that preserve TI 1.0.47's
+- Surgical Unity and Spoils propaganda transpilers that preserve TI 1.0.49's
   complete priority-completion behavior.
 - Configurable region conversion, decolonization, and fallout thresholds,
   defaulting to 5x vanilla, with gameplay and tooltip IL guarded together.
@@ -65,8 +68,11 @@ in [docs/hab-slot-expansion-assessment.md](docs/hab-slot-expansion-assessment.md
 Unity Mod Manager exposes grouped settings and a reset-to-default button.
 Technology weights are tracked in
 [TIEconomyMod/ModFiles/Config/economy-tech-weights.csv](TIEconomyMod/ModFiles/Config/economy-tech-weights.csv).
-Unknown technology IDs are logged and skipped, duplicate IDs fail validation,
-and changes require restart.
+Every TI 1.0.49 global technology has productivity, labor-substitution, and
+resource-substitution weights. Unknown IDs are logged and skipped, duplicate
+IDs or zero future-axis totals fail validation, and changes require restart.
+The packaged [default settings](TIEconomyMod/ModFiles/Settings.xml) are copied
+on release deployment so a new balance version starts from its authored values.
 
 ## Build and verification
 
@@ -86,7 +92,7 @@ tests, validates all 110 hab-module overrides against the installed vanilla
 templates, validates the implementation matrix against settings and Harmony
 patches, verifies the guarded hab connector and list-icon transpilers, checks the
 manifest/package layout, and creates
-`artifacts/TIEconomyMod-0.6.5-ti1.0.47.zip`.
+`artifacts/TIEconomyMod-0.7.0-ti1.0.49.zip`.
 
 ## Smoke test
 

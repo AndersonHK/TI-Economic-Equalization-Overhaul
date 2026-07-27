@@ -74,9 +74,10 @@ namespace TIEconomyMod.Patches
             }
 
             // Resource inequality is proportional to resources relative to GDP:
-            // one region in a $100B economy gives ratio 1 and curve 0.5, so the
+            // one region in a $1T economy gives ratio 1 and curve 0.5, so the
             // configured +100% maximum becomes a x1.5 multiplier. The same region in
-            // a $1T economy gives ratio 0.1 and only x1.091. Installed vanilla 1.0.47
+            // a $100B economy gives ratio 10 and curve 0.666 for x1.666.
+            // Installed vanilla 1.0.49
             // adds a fixed 0.0015 per resource region before population scaling.
             AbundanceSettings abundance = Main.settings.abundance;
             float resourceCurve = 0f;
@@ -103,8 +104,8 @@ namespace TIEconomyMod.Patches
 
             // The continuous boundary transform makes a positive Spoils delta 2x at
             // Inequality 1, 1x at 5, and 0x at 9. At 100M population, Inequality 5,
-            // one region, and $100B GDP, defaults give +0.005; installed vanilla
-            // 1.0.47 gives roughly +0.0031 for the same population and resource count.
+            // one region, and $100B GDP, defaults give about +0.00556; installed vanilla
+            // 1.0.49 gives roughly +0.0031 for the same population and resource count.
             float position = (__instance.inequality - settings.neutral) /
                 ((settings.maximum - settings.minimum) / 2f);
             float transformedDelta = rawDelta * (1f - Math.Sign(rawDelta) * position *
@@ -135,7 +136,7 @@ namespace TIEconomyMod.Patches
             // Education change is (166,667 / population) * 4 * 0.87^Education, giving
             // inverse-population scaling and smooth diminishing returns. At 100M
             // population and Education 8 the result is about +0.00219 per completion;
-            // installed vanilla 1.0.47 gives roughly +0.00417 for the same nation.
+            // installed vanilla 1.0.49 gives roughly +0.00417 for the same nation.
             float calculated = settings.educationPopulationDivisor /
                 Math.Max(1f, __instance.population) *
                 settings.educationMaximumGain *
@@ -165,7 +166,7 @@ namespace TIEconomyMod.Patches
 
             // Knowledge moves Cohesion toward 5 by at most 333,333 / population and
             // never crosses the target. At 100M population and Cohesion 7 it applies
-            // -0.00333; installed vanilla 1.0.47 applies about -0.00785 because it uses
+            // -0.00333; installed vanilla 1.0.49 applies about -0.00785 because it uses
             // the shared population exponent rather than direct inverse population.
             float distance = Math.Abs(__instance.cohesion - settings.cohesionTarget);
             float step = Math.Min(distance,
@@ -194,7 +195,7 @@ namespace TIEconomyMod.Patches
             }
 
             // Government adds 166,667 / population with no Education multiplier. At
-            // 100M population this is +0.00167. Installed vanilla 1.0.47 multiplies its
+            // 100M population this is +0.00167. Installed vanilla 1.0.49 multiplies its
             // +0.01 base by population scaling and Education/10, giving about +0.00628
             // at Education 8; this formula intentionally makes population the sole driver.
             float calculated = settings.democracyPopulationDivisor /
@@ -256,7 +257,7 @@ namespace TIEconomyMod.Patches
             // Oppression removes up to 2,222,222 / population Unrest, fading linearly
             // from full strength at Government 0 to zero at 10, without crossing zero.
             // At 100M population, Government 5, and Unrest 3 this gives -0.0111.
-            // Installed vanilla 1.0.47 gives about -0.118 because it uses a much larger
+            // Installed vanilla 1.0.49 gives about -0.118 because it uses a much larger
             // shared population-scaled cap.
             float democracyMultiplier = Math.Max(0f, Math.Min(1f,
                 (settings.fullDemocracy - __instance.democracy) / settings.fullDemocracy));
@@ -287,8 +288,8 @@ namespace TIEconomyMod.Patches
 
             // Resource wealth multiplies the full $60 base through the continuous
             // resources/GDP curve. With a configured ceiling of x4, one region at
-            // $100B gives ratio 1, curve .5, and x2.5;
-            // at $1T it gives ratio .1, curve .091, and x1.273.
+            // $1T gives ratio 1, curve .5, and x2.5; at $100B it gives ratio 10,
+            // curve .666, and about x3.0.
             // Installed vanilla pays additive base-IP/resource/Government amounts instead.
             AbundanceSettings abundance = Main.settings.abundance;
             float resourceCurve = 0f;
@@ -306,8 +307,8 @@ namespace TIEconomyMod.Patches
                 (settings.maximumResourceMultiplier - 1f) * resourceCurve;
 
             // Government applies the requested 1.30 - .03*Government term: scores 0, 5,
-            // and 10 give x1.30, x1.15, and x1.00. Thus one region, $100B, Government 5
-            // pays 60 * 2.5 * 1.15 = 172.5; at $1T it pays about 87.8.
+            // and 10 give x1.30, x1.15, and x1.00. Thus one region, $1T, Government 5
+            // pays 60 * 2.5 * 1.15 = 172.5; at $100B it pays about $207.
             float government = Math.Max(0f, Math.Min(
                 settings.fullGovernment, __instance.democracy));
             float governmentMultiplier = settings.governmentBaseMultiplier -

@@ -6,9 +6,9 @@
 the Economy/Spoils growth redesign. It is not game code and it does not predict
 history. It compares three formulas under identical simplified national inputs:
 
-1. Terra Invicta 1.0.47 vanilla.
-2. The currently deployed Economic Equalization Overhaul.
-3. The proposed factor-balance formula.
+1. Terra Invicta 1.0.49 vanilla.
+2. The pre-0.7.0 deployed Economic Equalization Overhaul benchmark.
+3. The 0.7.0 factor-balance formula.
 
 The simulator exists to answer shape and balance questions before patch code is
 changed:
@@ -51,20 +51,20 @@ Optional arguments are:
 The script contains:
 
 - The extracted 2022 values for the representative countries.
-- Named parameter sets for the proposed and deployed formulas.
-- Separate gain and Investment Point calculations for proposed, deployed, and
+- Named parameter sets for the 0.7.0 and pre-0.7.0 formulas.
+- Separate gain and Investment Point calculations for 0.7.0, pre-0.7.0, and
   vanilla behavior.
-- TI 1.0.47's climate-damage equation.
+- TI 1.0.49's climate-damage equation.
 - The month-by-month projection loop.
 - A dependency-free command-line report.
 
-The in-conversation comparison mirrors this source, but the checked-in script
-is the durable calibration record. Any later visualization must be updated from
-the same parameters and equations.
+The checked-in script is the durable calibration record for the implemented
+0.7.0 defaults. Any later visualization or gameplay retuning must be updated
+from the same parameters and equations.
 
 ## Sources and Extraction
 
-The formulas were recovered from the locally installed Terra Invicta 1.0.47
+The formulas were recovered from the locally installed Terra Invicta 1.0.49
 assemblies and templates, not estimated from tooltip text:
 
 - `Assembly-CSharp.dll` supplied vanilla Economy, Investment Point, and climate
@@ -146,7 +146,7 @@ Each calibration round uses the following sequence:
    GDP-per-capita path; a plausible first year is insufficient if the formula
    later explodes or collapses.
 7. **Record decisions.** Update this document, the calibration plan, the script,
-   and the comparison together before gameplay implementation.
+   tests, and gameplay defaults together before release.
 
 ## Calibration History
 
@@ -254,15 +254,23 @@ isolates the stronger labor constraint and falls from `$230.3k` to `$226.3k`.
 
 ## Maintenance Rule
 
+The Round 3 constants are the implemented 0.7.0 defaults. Technology
+productivity is now authored from all 149 installed global technologies and
+normalized to the simulator's 3.40x full-tree target; the two completed 2022
+technologies retain their exact 1.0201x product and do not advance either
+future substitution axis.
+
 The simulator is successful only if another session can reproduce both the
 numbers and the reasoning without relying on conversation history. Whenever a
-formula or default changes, update all four of:
+formula or default changes, update all of:
 
 1. `tools/economy-growth-simulator.js`
 2. `docs/economy-growth-simulator.md`
 3. `docs/economy-growth-calibration-plan.md`
-4. The interactive comparison
+4. `TIEconomyMod/Patches/EconomyPatches.cs` and the default settings
+5. Formula tests and the implementation matrix
+6. The interactive comparison
 
-Do not copy the simulator into gameplay as an abstraction layer. The eventual
-C# patch should inline the accepted formula, use the same evaluation order, and
-explain representative numerical effects directly beside the math.
+Do not copy the simulator into gameplay as an abstraction layer. The C# patch
+must continue to inline the accepted formula, use the same evaluation order,
+and explain representative numerical effects directly beside the math.

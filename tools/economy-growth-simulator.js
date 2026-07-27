@@ -239,7 +239,7 @@ function parseArguments(argv) {
 }
 
 function printComparison(options) {
-  console.log("| Country | Proposed initial net | Current initial net | Vanilla initial net | Proposed end GDP/c | Current end GDP/c | Vanilla end GDP/c |");
+  console.log("| Country | 0.7.0 initial net | Pre-0.7.0 initial net | Vanilla initial net | 0.7.0 end GDP/c | Pre-0.7.0 end GDP/c | Vanilla end GDP/c |");
   console.log("|---|---:|---:|---:|---:|---:|---:|");
   for (const country of countries) {
     const proposed = simulate(country, "proposed", options);

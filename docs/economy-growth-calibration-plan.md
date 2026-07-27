@@ -1,5 +1,9 @@
 # Economy Growth Calibration Plan
 
+Status: implemented as the softly canonical 0.7.0 balance. The numerical
+defaults below are now mirrored by gameplay settings, the 149-technology CSV,
+formula tests, and `tools/economy-growth-simulator.js`.
+
 This plan replaces the isolated GDP-per-capita decay in `EconomyGrowthPatch`
 with the factor-balance model defined in `design-directives.md`. It is a
 calibrated proposal, not an implementation.
@@ -138,7 +142,7 @@ progress axes from zero toward one.
 
 ## Climate model and comparison baselines
 
-The comparison uses TI 1.0.47's installed climate-damage code. Temperature
+The comparison uses TI 1.0.49's installed climate-damage code. Temperature
 begins at `1.2601 C`, calculated from the 2022
 scenario's starting CO2, methane, and nitrous oxide values. It then follows a
 configurable linear path. The calibrated default reaches `2.7 C` in 2050; the
@@ -168,12 +172,12 @@ uses `1x`.
 
 The comparison baselines are:
 
-- **Vanilla 1.0.47:** monthly IP is `GDP_billions^0.35`; Economy adds
+- **Vanilla 1.0.49:** monthly IP is `GDP_billions^0.35`; Economy adds
   `(3 + 1.5 * resources + 1.5 * cores + 0.5 * Government + Education) *
   (population / 50M)^-0.35` dollars per person per IP.
-- **Current deployed mod:** monthly IP uses the mod's linear GDP formula and
+- **Pre-0.7.0 deployed benchmark:** monthly IP uses the mod's linear GDP formula and
   Economy uses the current `0.33 * 0.40`, `6 * 0.96^(GDP/c / 1000)` formula.
-- **Proposed:** the factor-balance formula above and the same linear-IP formula
+- **0.7.0:** the factor-balance formula above and the same linear-IP formula
   as the current mod.
 
 All three include TI's normal Unrest IP penalty. Advisers, army upkeep,
@@ -198,7 +202,7 @@ columns assume a path to `2.7 C` and 50% weighted technology completion. The
 deployed benchmark keeps its actual `3.7964x` full-tree productivity trajectory;
 only the proposal uses the newly calibrated `3.40x` trajectory:
 
-| Country | Proposed net | Current net | Vanilla net | Proposed 2050 GDP/c | Current 2050 GDP/c | Vanilla 2050 GDP/c |
+| Country | 0.7.0 net | Pre-0.7.0 net | Vanilla net | 0.7.0 2050 GDP/c | Pre-0.7.0 2050 GDP/c | Vanilla 2050 GDP/c |
 |---|---:|---:|---:|---:|---:|---:|
 | United States | 2.6% | 0.7% | 3.1% | $130,770 | $66,362 | $95,184 |
 | Canada | 5.4% | 3.9% | 3.9% | $226,334 | $92,273 | $114,324 |
@@ -233,25 +237,25 @@ midgame state. The calibrated tree finishes near `3.40x`, below the configured
 `4x` safety cap, and the more back-loaded relief curve keeps most of the
 campaign below the nearly linear tail.
 
-## Implementation sequence
+## Implemented release sequence
 
-1. Expand and validate the technology CSV. Reject duplicate IDs; log and skip
-   unknown IDs; require finite, non-negative weights and a positive total for
-   each axis.
-2. Add the new constants to the existing Economy settings group. Remove the old
+1. Expanded and validated the technology CSV. Duplicate IDs fail; unknown IDs
+   are logged and skipped; finite positive values and positive future-axis
+   totals are required.
+2. Added the new constants to the existing Economy settings group. Removed the old
    standalone GDP-per-capita decay and technology-fade settings rather than
    carrying dead compatibility switches.
-3. Inline the complete calculation in `EconomyGrowthPatch` in the order shown
+3. Inlined the complete calculation in `EconomyGrowthPatch` in the order shown
    above. Keep the patch readable end to end and comment the representative
    `$1T`/`$10T` resource examples and the 2022 versus maximum-technology shape.
-4. Make the Economy and historical-GDP tooltips call the same Economy getter
+4. Updated the Economy and Spoils tooltips to use the same Economy getter
    and display base gain, technology lift, labor constraint, resource
    constraint, resource/land lift, and the shared Economy/Spoils result.
-5. Add dependency-free sweeps for GDP/c from `$500` to `$1M`, zero to maximum
+5. Added dependency-free tests for GDP/c from low to extreme values, zero to maximum
    Unrest, zero resources, near-zero density, and technology progress from zero
    to one. Assert finite output, monotonic technology relief, decreasing
    marginal return when capital alone grows, scale neutrality when all factors
    grow together, and near-linearity at maximum substitution.
-6. Re-run the representative-country simulation using values extracted from the
-   installed 1.0.47 templates or a 2022 save before accepting defaults. Treat
+6. Re-ran the representative-country simulation using values extracted from the
+installed 1.0.49 templates or a 2022 save before accepting defaults. Treat
    the table above as the calibration envelope, not an exact snapshot contract.

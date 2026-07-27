@@ -4,6 +4,32 @@ using System;
 
 namespace TIEconomyMod.Patches
 {
+    [HarmonyPatch(typeof(TINationState), "MeanAnnualGDPDamage")]
+    public static class ClimateGdpDamagePatch
+    {
+        [HarmonyPostfix]
+        public static void Postfix(
+            float tempAnomaly_C,
+            ref float __result)
+        {
+            EnvironmentSettings settings = Main.settings.environment;
+            if (!Main.FeatureEnabled(settings.enabled) ||
+                !settings.climateGdpDamageEnabled ||
+                tempAnomaly_C <= 0.25f ||
+                __result >= 0f)
+            {
+                return;
+            }
+
+            // TI's common climate-damage method feeds both actual GDP loss and its UI
+            // displays, so scaling it here keeps them synchronized. Only negative damage
+            // above the game's 0.25 C warm threshold is reduced: a vanilla -2.0% result
+            // becomes -1.8% at the default x0.90. Cold benefits, neutral results, and
+            // climate-driven Inequality remain untouched.
+            __result *= settings.climateGdpDamageMultiplier;
+        }
+    }
+
     [HarmonyPatch(typeof(TINationState), "environmentPrioritySustainabilityChange", MethodType.Getter)]
     public static class EnvironmentSustainabilityPatch
     {
@@ -67,7 +93,7 @@ namespace TIEconomyMod.Patches
 
             // Direct atmospheric removal is a fixed physical return per IP, not a return
             // per citizen. A nation with 10x the GDP has about 10x the IP and therefore
-            // removes about 10x as much under equal priority allocation. Vanilla 1.0.47
+            // removes about 10x as much under equal priority allocation. Vanilla 1.0.49
             // divides this effect by its nonlinear population-scaling factor.
             float baseChange = TemplateManager.global.WelCO2_ppm;
             float calculated = (baseChange + TIEffectsState.SumEffectsModifiers(
@@ -160,15 +186,15 @@ namespace TIEconomyMod.Patches
             // Emissions are GDP times carbon intensity, with no independent population
             // term. At Sustainability 1, $100B emits 27.5M base tons/year and $1T emits
             // 275M: economic growth raises total emissions but not emissions per dollar.
-            // Vanilla 1.0.47 adds a large PCGDP-weighted population term, which makes two
+            // Vanilla 1.0.49 adds a large PCGDP-weighted population term, which makes two
             // equally sized economies emit differently merely because borders changed.
             double gdpBillions = Math.Max(0d, __instance.GDP / 1000000000d);
             double sustainability = Math.Max(0d,
                 __instance.sustainability + proposedSustainabilityChange);
 
             // Resource intensity uses the same resources/GDP curve as growth. One region
-            // at $100B gives ratio 1 and curve 0.5, so the default x1.25 ceiling yields
-            // x1.125 emissions; at $1T the same region gives only x1.023.
+            // at $1T gives ratio 1 and curve 0.5, so the default x1.25 ceiling yields
+            // x1.125 emissions; at $100B its ratio 10 and curve 0.666 yield x1.167.
             double resourceIntensity = 1d;
             AbundanceSettings abundance = Main.settings.abundance;
             if (Main.FeatureEnabled(abundance.enabled))
@@ -308,8 +334,9 @@ namespace TIEconomyMod.Patches
             // Spoils worsens carbon intensity by +0.05 at $100B GDP and +0.005 at
             // $1T, so GDP-linear IP gives the same base monthly damage at equal priority
             // allocation. Resources raise intensity through the resources/GDP curve:
-            // one region at $100B gives x1.5 and +0.075; at $1T it gives x1.091
-            // and +0.00545. Vanilla scales this national effect by population.
+            // one region at $1T gives curve 0.5 and therefore x1.5 and +0.0075;
+            // at $100B curve 0.666 gives x1.666 and about +0.0833.
+            // Vanilla scales this national effect by population.
             float gdpBillions = Math.Max(settings.minimumGdpBillions,
                 (float)(__instance.GDP / 1000000000d));
             AbundanceSettings abundance = Main.settings.abundance;

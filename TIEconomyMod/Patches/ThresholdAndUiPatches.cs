@@ -49,7 +49,7 @@ namespace TIEconomyMod.Patches
             float result = configured * settings.multiplier;
             if (float.IsNaN(result) || float.IsInfinity(result) || result <= 0f)
             {
-                Main.Warn("Region threshold calculation was invalid; using the live TI 1.0.47 value.");
+                Main.Warn("Region threshold calculation was invalid; using the live TI 1.0.49 value.");
                 return vanilla;
             }
 
@@ -145,7 +145,7 @@ namespace TIEconomyMod.Patches
         [HarmonyTranspiler]
         public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
-            // TI 1.0.47 keeps these values in TIGlobalConfig fields.
+            // TI 1.0.49 keeps these values in TIGlobalConfig fields.
             // Replacing exactly those three field loads preserves the complete vanilla
             // completion method. Defaults multiply 500/750/1,200 by five, producing
             // 2,500/3,750/6,000 IP; missing fields fail loudly instead of silently no-op.
@@ -259,20 +259,38 @@ namespace TIEconomyMod.Patches
 
                 // Recalculate the same visible components as EconomyGrowthPatch so the
                 // tooltip explains the live result without replacing vanilla tooltip text.
-                double compoundedTechnology = 1d;
-                if (Main.FeatureEnabled(Main.settings.technology.enabled) && Main.techWeights != null)
+                double productivity = 1d;
+                float completedLaborWeight = 0f;
+                float completedResourceWeight = 0f;
+                bool technologyEnabled =
+                    Main.FeatureEnabled(Main.settings.technology.enabled) &&
+                    Main.techWeights != null && Main.techWeights.Count > 0;
+                if (technologyEnabled)
                 {
                     foreach (string technologyId in GameStateManager.GlobalResearch().finishedTechsNames)
                     {
-                        float percent;
-                        if (Main.techWeights.TryGetPercent(technologyId, out percent))
+                        TechWeights weights;
+                        if (Main.techWeights.TryGetWeights(technologyId, out weights))
                         {
-                            compoundedTechnology *= 1d + percent / 100d;
+                            productivity *= 1d + weights.ProductivityPercent / 100d;
+                            if (!TechWeightCatalog.IsStartingTechnology(technologyId))
+                            {
+                                completedLaborWeight += weights.LaborSubstitution;
+                                completedResourceWeight += weights.ResourceSubstitution;
+                            }
                         }
                     }
                 }
-                float technology = (float)Math.Max(1d, Math.Min(
-                    Main.settings.technology.maximumMultiplier, compoundedTechnology));
+                float productivityMultiplier = (float)Math.Max(1d, Math.Min(
+                    Main.settings.technology.maximumMultiplier, productivity));
+                float laborProgress = technologyEnabled
+                    ? Math.Max(0f, Math.Min(1f, completedLaborWeight /
+                        Main.techWeights.TotalFutureLaborWeight))
+                    : 0f;
+                float resourceProgress = technologyEnabled
+                    ? Math.Max(0f, Math.Min(1f, completedResourceWeight /
+                        Main.techWeights.TotalFutureResourceWeight))
+                    : 0f;
 
                 EconomySettings economy = Main.settings.economy;
                 int cores = Math.Max(0, nation.numCoreEconomicRegions_dailyCache);
@@ -282,8 +300,19 @@ namespace TIEconomyMod.Patches
                 float government = 1f + economy.governmentPerLevel * nation.democracy;
                 float cohesion = economy.cohesionPeak - economy.cohesionPenaltyPerPoint *
                     Math.Abs(nation.cohesion - economy.cohesionCenter);
-                float income = economy.pcgdpScale * (float)Math.Pow(
-                    economy.pcgdpDecay, nation.perCapitaGDP / economy.pcgdpDecayInterval);
+                float referenceCore = 1f + economy.coreRegionMaximumBonus *
+                    economy.referenceCoreRegions /
+                    (economy.coreRegionHalfSaturation + economy.referenceCoreRegions);
+                float referenceEducation = 1f +
+                    economy.educationPerLevel * economy.referenceEducation;
+                float referenceGovernment = 1f +
+                    economy.governmentPerLevel * economy.referenceGovernment;
+                float referenceCohesion = economy.cohesionPeak -
+                    economy.cohesionPenaltyPerPoint *
+                    Math.Abs(economy.referenceCohesion - economy.cohesionCenter);
+                float laborSupport = coreRegions * education * government * cohesion /
+                    Math.Max(economy.minimumSupport, referenceCore * referenceEducation *
+                        referenceGovernment * referenceCohesion);
 
                 float resourceBonus = 0f;
                 float landBonus = 0f;
@@ -292,7 +321,7 @@ namespace TIEconomyMod.Patches
                 {
                     float stability = (float)Math.Pow(Math.Max(0f, Math.Min(1f,
                         1f - nation.unrest / abundance.maximumUnrest)), abundance.unrestExponent);
-                    // Match EconomyGrowthPatch: one resource region at $100B GDP gives
+                    // Match EconomyGrowthPatch: one resource region at $1T GDP gives
                     // ratio 1, curve 0.5, and half the configured maximum bonus.
                     float resourceRatio = nation.currentResourceRegions *
                         abundance.referenceGdpPerResourceRegionBillions /
@@ -319,22 +348,57 @@ namespace TIEconomyMod.Patches
                         stability * wealthRelevance;
                 }
 
+                float laborRelief = laborProgress *
+                    (economy.technologyReliefLinearShare +
+                     (1f - economy.technologyReliefLinearShare) * laborProgress);
+                float resourceRelief = resourceProgress *
+                    (economy.technologyReliefLinearShare +
+                     (1f - economy.technologyReliefLinearShare) * resourceProgress);
+                float laborFloor = economy.startingLaborReturnFloor +
+                    (1f - economy.startingLaborReturnFloor) * laborRelief;
+                float resourceFloor = economy.startingResourceReturnFloor +
+                    (1f - economy.startingResourceReturnFloor) * resourceRelief;
+                float laborPressure = Math.Max(0f, nation.perCapitaGDP) /
+                    economy.laborKneePcgdp /
+                    Math.Max(economy.minimumSupport, laborSupport);
+                float resourceSupport = 1f + resourceBonus + landBonus;
+                float resourcePressure = Math.Max(0f, nation.perCapitaGDP) /
+                    economy.resourceKneePcgdp /
+                    Math.Max(economy.minimumSupport, resourceSupport);
+                float laborConstraint = laborFloor + (1f - laborFloor) /
+                    (1f + (float)Math.Pow(laborPressure, economy.laborPressureExponent));
+                float resourceConstraint = resourceFloor + (1f - resourceFloor) /
+                    (1f + (float)Math.Pow(resourcePressure, economy.resourcePressureExponent));
+                float perCapitaGain = nation.economyPriorityPerCapitaIncomeChange;
+                float aggregateGainBillions = perCapitaGain *
+                    nation.population_Millions / 1000f;
+
                 section.AppendLine("EEO Economy")
-                    .Append("Core regions x").Append(coreRegions.ToString("0.###"))
-                    .Append("; education x").Append(education.ToString("0.###"))
-                    .Append("; government x").Append(government.ToString("0.###"))
-                    .Append("; cohesion x").Append(cohesion.ToString("0.###"))
-                    .Append("; income x").Append(income.ToString("0.###")).AppendLine()
-                    .Append("Weighted technology x").Append(technology.ToString("0.###"))
+                    .Append("Economy and Spoils +$")
+                    .Append(perCapitaGain.ToString("0.##"))
+                    .Append("/person (+$")
+                    .Append(aggregateGainBillions.ToString("0.###"))
+                    .AppendLine("B GDP)")
+                    .Append("Productivity x")
+                    .Append(productivityMultiplier.ToString("0.###"))
                     .Append(" / x").Append(Main.settings.technology.maximumMultiplier.ToString("0.###"))
-                    .Append("; output x").Append(economy.outputMultiplier.ToString("0.###"))
-                    .Append("; resources +").Append(resourceBonus.ToString("P1"))
-                    .Append("; land +").Append(landBonus.ToString("P1")).AppendLine();
+                    .AppendLine()
+                    .Append("Labor: support ").Append(laborSupport.ToString("0.###"))
+                    .Append("; progress ").Append(laborProgress.ToString("P1"))
+                    .Append("; pressure ").Append(laborPressure.ToString("0.###"))
+                    .Append("; constraint ").Append(laborConstraint.ToString("P1"))
+                    .AppendLine()
+                    .Append("Resources: +").Append(resourceBonus.ToString("P1"))
+                    .Append("; land +").Append(landBonus.ToString("P1"))
+                    .Append("; progress ").Append(resourceProgress.ToString("P1"))
+                    .Append("; pressure ").Append(resourcePressure.ToString("0.###"))
+                    .Append("; constraint ").Append(resourceConstraint.ToString("P1"))
+                    .AppendLine();
 
                 InequalitySettings inequality = Main.settings.inequality;
                 if (Main.FeatureEnabled(inequality.enabled) && inequality.economyEnabled)
                 {
-                    // One region at $100B GDP gives ratio 1 and curve 0.5, turning
+                    // One region at $1T GDP gives ratio 1 and curve 0.5, turning
                     // the default +60% maximum into a x1.30 raw-delta multiplier.
                     float curve = 0f;
                     if (Main.FeatureEnabled(abundance.enabled))
@@ -410,7 +474,7 @@ namespace TIEconomyMod.Patches
                 if (Main.FeatureEnabled(inequality.enabled) && inequality.spoilsEnabled)
                 {
                     AbundanceSettings abundance = Main.settings.abundance;
-                    // One region at $100B GDP gives ratio 1 and curve 0.5, turning
+                    // One region at $1T GDP gives ratio 1 and curve 0.5, turning
                     // the default +100% maximum into a x1.50 raw-delta multiplier.
                     float curve = 0f;
                     if (Main.FeatureEnabled(abundance.enabled))
@@ -442,7 +506,7 @@ namespace TIEconomyMod.Patches
                 }
                 if (Main.FeatureEnabled(Main.settings.spoilsMoney.enabled))
                 {
-                    // Repeat the live one-line payout inputs: one resource at $100B gives
+                    // Repeat the live one-line payout inputs: one resource at $1T gives
                     // curve .5/x2.5; Government 5 gives x1.15 and a $172.50 payout.
                     AbundanceSettings abundance = Main.settings.abundance;
                     SpoilsMoneySettings money = Main.settings.spoilsMoney;
@@ -469,10 +533,13 @@ namespace TIEconomyMod.Patches
                 }
                 if (Main.FeatureEnabled(Main.settings.spoils.enabled))
                 {
-                    section.Append("GDP: same as Economy, $")
-                        .Append((nation.economyPriorityPerCapitaIncomeChange *
-                            nation.population_Millions / 1000f).ToString("0.###"))
-                        .AppendLine("B");
+                    float perCapitaGain = nation.economyPriorityPerCapitaIncomeChange;
+                    section.Append("Economy and Spoils +$")
+                        .Append(perCapitaGain.ToString("0.##"))
+                        .Append("/person (+$")
+                        .Append((perCapitaGain * nation.population_Millions / 1000f)
+                            .ToString("0.###"))
+                        .AppendLine("B GDP)");
                     section.Append("Government ").Append(
                             nation.spoilsPriorityDemocracyChange.ToString("+0.####;-0.####;0"))
                         .Append("; Sustainability ").Append(
@@ -486,7 +553,7 @@ namespace TIEconomyMod.Patches
                 section.AppendLine("EEO Unity");
                 if (Main.FeatureEnabled(Main.settings.unity.enabled))
                 {
-                    // These are the actual patched getters; TI's full 1.0.47 completion
+            // These are the actual patched getters; TI's full 1.0.49 completion
                     // method remains in charge of claims and all other secondary behavior.
                     section.Append("Cohesion ").Append(
                             nation.unityPriorityCohesionChange.ToString("+0.####;-0.####;0"))
@@ -525,6 +592,11 @@ namespace TIEconomyMod.Patches
                         .Append(nation.EnvPriorityCH4Removed().ToString("+0.####;-0.####;0"))
                         .Append(", N2O ")
                         .Append(nation.EnvPriorityN2ORemoved().ToString("+0.####;-0.####;0"))
+                        .AppendLine()
+                        .Append("Warm-climate GDP damage x")
+                        .Append((environment.climateGdpDamageEnabled
+                            ? environment.climateGdpDamageMultiplier
+                            : 1f).ToString("0.###"))
                         .AppendLine();
                 }
                 else

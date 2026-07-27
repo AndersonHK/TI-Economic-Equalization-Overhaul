@@ -80,6 +80,14 @@ try {
     $emissions = Read-MethodIl $nation 'GHGsFromEconomy_tons'
     Assert-Count $emissions 'TINationState::get_GDP\(\)' 1 'Economy emissions GDP input'
 
+    $climateDamage = Read-MethodIl $nation 'MeanAnnualGDPDamage'
+    Assert-Count $climateDamage `
+        'MeanAnnualGDPDamage\(float32 tempAnomaly_C,\s+float32 inequality\)' `
+        1 `
+        'Climate GDP damage signature'
+    Assert-Count $climateDamage 'ldc\.r4\s+0\.25' 2 'Climate warm-damage threshold'
+    Assert-Count $climateDamage 'ldc\.r4\s+-0\.99000001' 1 'Climate damage floor'
+
     $absorb = Read-MethodIl $nation 'AbsorbNation'
     Assert-Count $absorb 'TINationState::TransferRegionsControlTo\(' 1 'National merger region transfer'
     Assert-Count $absorb 'TINationState::ClearArmies\(\)' 1 'National merger joining-force cleanup'
@@ -135,7 +143,7 @@ try {
         1 `
         'Hab-list station-sector icon loop'
 
-    Write-Host 'PASS: target IL contains every guarded TI 1.0.47 patch point.'
+    Write-Host 'PASS: target IL contains every guarded TI 1.0.49 patch point, including climate damage.'
 }
 finally {
     $resolvedProbe = (Resolve-Path -LiteralPath $probeDirectory).Path

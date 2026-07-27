@@ -30,7 +30,7 @@ namespace TIEconomyMod
                 string weightPath = Path.Combine(modEntry.Path, "Config", "economy-tech-weights.csv");
                 techWeights = TechWeightCatalog.Load(weightPath, Log, IsKnownTechnology);
                 new Harmony(modEntry.Info.Id).PatchAll();
-                Log("Loaded TI Economic Equalization Overhaul 0.6.5 for the TI 1.0.47 API surface.");
+                Log("Loaded TI Economic Equalization Overhaul 0.7.0 for the TI 1.0.49 API surface.");
                 return true;
             }
             catch (Exception exception)
@@ -199,17 +199,27 @@ namespace TIEconomyMod
     public sealed class EconomySettings
     {
         public bool enabled = true;
-        public float baseGainBillions = 0.330f;
-        public float outputMultiplier = 0.40f;
+        public float baseGainBillions = 1f;
         public float educationPerLevel = 0.15f;
         public float governmentPerLevel = 0.05f;
         public float cohesionCenter = 5f;
         public float cohesionPeak = 1.20f;
         public float cohesionPenaltyPerPoint = 0.04f;
-        public float pcgdpScale = 6f;
-        public float pcgdpDecay = 0.96f;
-        public float pcgdpDecayInterval = 1000f;
-        public float coreRegionMaximumBonus = 0.60f;
+        public float referenceCoreRegions = 1f;
+        public float referenceEducation = 7f;
+        public float referenceGovernment = 6f;
+        public float referenceCohesion = 5f;
+        public float laborKneePcgdp = 37500f;
+        public float resourceKneePcgdp = 55000f;
+        public float startingLaborReturnFloor = 0.35f;
+        public float startingResourceReturnFloor = 0.45f;
+        public float technologyReliefLinearShare = 0.10f;
+        public float minimumSupport = 0.05f;
+        public float laborPressureExponent = 1.40f;
+        public float resourcePressureExponent = 1.20f;
+        public float resourceDirectLift = 1f;
+        public float landDirectLift = 0.25f;
+        public float coreRegionMaximumBonus = 1.20f;
         public float coreRegionHalfSaturation = 2f;
     }
 
@@ -226,10 +236,10 @@ namespace TIEconomyMod
     public sealed class AbundanceSettings
     {
         public bool enabled = true;
-        public float referenceGdpPerResourceRegionBillions = 100f;
+        public float referenceGdpPerResourceRegionBillions = 1000f;
         public float minimumGdpBillions = 1f;
         public float resourceMaximumBonus = 1f;
-        public float resourceCurveExponent = 1f;
+        public float resourceCurveExponent = 0.30f;
         public float referenceDensity = 50f;
         public float minimumDensity = 0.1f;
         public float landMaximumBonus = 0.25f;
@@ -359,6 +369,8 @@ namespace TIEconomyMod
         public float falloutReferenceAreaKm2 = 100000f;
         public float minimumLandAreaKm2 = 1f;
         public float atmosphericRemovalMultiplier = 1f;
+        public bool climateGdpDamageEnabled = true;
+        public float climateGdpDamageMultiplier = 0.90f;
     }
 
     [DrawFields(DrawFieldMask.Public)]
@@ -457,15 +469,25 @@ namespace TIEconomyMod
             RepairPositive(ref value.investment.lowIncomeThreshold, defaults.investment.lowIncomeThreshold, "investment.lowIncomeThreshold", log);
             RepairPositive(ref value.investment.outputMultiplier, defaults.investment.outputMultiplier, "investment.outputMultiplier", log);
             RepairPositive(ref value.economy.baseGainBillions, defaults.economy.baseGainBillions, "economy.baseGainBillions", log);
-            RepairPositive(ref value.economy.outputMultiplier, defaults.economy.outputMultiplier, "economy.outputMultiplier", log);
             RepairNonNegative(ref value.economy.educationPerLevel, defaults.economy.educationPerLevel, "economy.educationPerLevel", log);
             RepairNonNegative(ref value.economy.governmentPerLevel, defaults.economy.governmentPerLevel, "economy.governmentPerLevel", log);
             RepairFinite(ref value.economy.cohesionCenter, defaults.economy.cohesionCenter, "economy.cohesionCenter", log);
             RepairPositive(ref value.economy.cohesionPeak, defaults.economy.cohesionPeak, "economy.cohesionPeak", log);
             RepairNonNegative(ref value.economy.cohesionPenaltyPerPoint, defaults.economy.cohesionPenaltyPerPoint, "economy.cohesionPenaltyPerPoint", log);
-            RepairPositive(ref value.economy.pcgdpScale, defaults.economy.pcgdpScale, "economy.pcgdpScale", log);
-            RepairRange(ref value.economy.pcgdpDecay, defaults.economy.pcgdpDecay, 0.0001f, 1f, "economy.pcgdpDecay", log);
-            RepairPositive(ref value.economy.pcgdpDecayInterval, defaults.economy.pcgdpDecayInterval, "economy.pcgdpDecayInterval", log);
+            RepairNonNegative(ref value.economy.referenceCoreRegions, defaults.economy.referenceCoreRegions, "economy.referenceCoreRegions", log);
+            RepairNonNegative(ref value.economy.referenceEducation, defaults.economy.referenceEducation, "economy.referenceEducation", log);
+            RepairNonNegative(ref value.economy.referenceGovernment, defaults.economy.referenceGovernment, "economy.referenceGovernment", log);
+            RepairFinite(ref value.economy.referenceCohesion, defaults.economy.referenceCohesion, "economy.referenceCohesion", log);
+            RepairPositive(ref value.economy.laborKneePcgdp, defaults.economy.laborKneePcgdp, "economy.laborKneePcgdp", log);
+            RepairPositive(ref value.economy.resourceKneePcgdp, defaults.economy.resourceKneePcgdp, "economy.resourceKneePcgdp", log);
+            RepairRange(ref value.economy.startingLaborReturnFloor, defaults.economy.startingLaborReturnFloor, 0f, 1f, "economy.startingLaborReturnFloor", log);
+            RepairRange(ref value.economy.startingResourceReturnFloor, defaults.economy.startingResourceReturnFloor, 0f, 1f, "economy.startingResourceReturnFloor", log);
+            RepairRange(ref value.economy.technologyReliefLinearShare, defaults.economy.technologyReliefLinearShare, 0f, 1f, "economy.technologyReliefLinearShare", log);
+            RepairPositive(ref value.economy.minimumSupport, defaults.economy.minimumSupport, "economy.minimumSupport", log);
+            RepairPositive(ref value.economy.laborPressureExponent, defaults.economy.laborPressureExponent, "economy.laborPressureExponent", log);
+            RepairPositive(ref value.economy.resourcePressureExponent, defaults.economy.resourcePressureExponent, "economy.resourcePressureExponent", log);
+            RepairNonNegative(ref value.economy.resourceDirectLift, defaults.economy.resourceDirectLift, "economy.resourceDirectLift", log);
+            RepairNonNegative(ref value.economy.landDirectLift, defaults.economy.landDirectLift, "economy.landDirectLift", log);
             RepairNonNegative(ref value.economy.coreRegionMaximumBonus, defaults.economy.coreRegionMaximumBonus, "economy.coreRegionMaximumBonus", log);
             RepairPositive(ref value.economy.coreRegionHalfSaturation, defaults.economy.coreRegionHalfSaturation, "economy.coreRegionHalfSaturation", log);
             RepairRange(ref value.technology.maximumMultiplier, defaults.technology.maximumMultiplier, 1f, 100f, "technology.maximumMultiplier", log);
@@ -554,6 +576,7 @@ namespace TIEconomyMod
             RepairPositive(ref value.environment.falloutReferenceAreaKm2, defaults.environment.falloutReferenceAreaKm2, "environment.falloutReferenceAreaKm2", log);
             RepairPositive(ref value.environment.minimumLandAreaKm2, defaults.environment.minimumLandAreaKm2, "environment.minimumLandAreaKm2", log);
             RepairNonNegative(ref value.environment.atmosphericRemovalMultiplier, defaults.environment.atmosphericRemovalMultiplier, "environment.atmosphericRemovalMultiplier", log);
+            RepairRange(ref value.environment.climateGdpDamageMultiplier, defaults.environment.climateGdpDamageMultiplier, 0f, 1f, "environment.climateGdpDamageMultiplier", log);
             RepairPositive(ref value.emissions.tonsPerGdpBillion, defaults.emissions.tonsPerGdpBillion, "emissions.tonsPerGdpBillion", log);
             RepairRange(ref value.emissions.maximumResourceIntensityMultiplier, defaults.emissions.maximumResourceIntensityMultiplier, 1f, 100f, "emissions.maximumResourceIntensityMultiplier", log);
             RepairNonNegative(ref value.emissions.co2TonsMultiplier, defaults.emissions.co2TonsMultiplier, "emissions.co2TonsMultiplier", log);

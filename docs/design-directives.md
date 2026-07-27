@@ -104,6 +104,14 @@ High GDP per capita locates a nation on the capital-to-complements curve; its
 effect must depend on effective labor, resources, and the current technology-
 enabled degree of substitution.
 
+The softly canonical 0.7.0 calibration uses a $1B national base gain, $37,500
+labor and $55,000 resource knees, starting return floors 0.35 and 0.45,
+pressure exponents 1.4 and 1.2, and technology relief
+`p * (0.10 + 0.90p)`. The 2022 starting technologies compound to 1.0201x; all
+149 TI 1.0.49 global technologies compound to 3.40x and complete both
+substitution axes. Change these together through the simulator rather than
+tuning one national example in isolation.
+
 ## Resources, land, and historical structure
 
 Resource importance is measured relative to GDP, not by a hardcoded region table.
@@ -135,6 +143,10 @@ Nuclear damage is proportional to detonations per land area, so a strike is more
 concentrated in Singapore than Kazakhstan. Cleanup cost remains fixed per
 detonation; land area changes the damage, not the price of removing one blast's
 fallout.
+
+The current climate calibration multiplies only negative GDP damage above TI's
+0.25 C warm threshold by 0.90. Cold benefits, neutral outcomes, regional
+exposure, and climate-driven Inequality retain their existing behavior.
 
 ## Formula and patch style
 

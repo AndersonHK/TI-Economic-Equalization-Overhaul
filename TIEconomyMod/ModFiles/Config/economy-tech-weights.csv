@@ -1,82 +1,150 @@
-tech_id,enabled,percent,rationale
-ElectrothermalPropulsion,true,0.5,Propulsion-only spillover cap
-AdvancedMagnetics,true,0.5,Low-cost energy enabling technology
-HighEnergyLasers,true,0.5,Weapon-only spillover cap
-MassDrivers,true,0.5,Weapon and launch spillover cap
-VacuumElectrostaticPrinciples,true,0.5,Early energy enabling technology
-ElectromagneticPropulsion,true,0.5,Propulsion-only spillover cap
-MagneticForceManipulation,true,0.5,Early energy enabling technology
-ElectrostaticPropulsion,true,0.5,Propulsion-only spillover cap
-ParticleCannon,true,0.5,Weapon-only spillover cap
-SolidCoreFissionSystems,true,1,Fission semantic override
-AntimatterContainment,true,1,General energy research cost tier
-MoltenCoreFissionSystems,true,1,Fission semantic override
-ElectrostaticPlasmaConfinement,true,1.5,General energy research cost tier
-GasCoreFissionSystems,true,1.5,Fission semantic override
-AdvancedFissionSystems,true,2,Fission semantic override
-ArcLasers,true,0.5,Weapon-only spillover cap
-Tokamaks,true,1.5,Major fusion enabling milestone
-MagneticPlasmaConfinementTechniques,true,2,Major fusion enabling milestone
-CleanEnergy,true,3,Direct economy-wide clean energy milestone
-DeuteriumTritiumFusion,true,3,Major fusion milestone
-MagneticNozzles,true,0.5,Propulsion-only spillover cap
-ZPinchTechniques,true,2,Major fusion enabling milestone
-InertialPlasmaConfinementTechniques,true,3,Major fusion enabling milestone
-PhasedArrayLasers,true,0.5,Weapon-only spillover cap
-AneutronicFusion,true,3,Major fusion milestone
-DeuteriumDeuteriumFusion,true,3,Major fusion milestone
-DeuteriumHelium3Fusion,true,3,Major fusion milestone
-FutureTechEnergy,true,4,Transformative late energy technology
-ProtonProtonFusion,true,4,Transformative fusion milestone
-TerawattFusionReactors,true,4,Commercial fusion economy proxy
-AntimatterMassProduction,true,4,Transformative mass production milestone
-AdvancedCarbonManipulation,true,0.5,Low-cost materials enabling technology
-AdvancedChemicalRocketry,true,1,Explicit launch technology override
-OrbitalShipbuilding,true,0.5,Spacecraft-only spillover cap
-AdvancedSuperconductors,true,1,Broad materials capability
-CarbonNanotubes,true,1,Broad production material
-NextGenerationAerospace,true,2,Explicit launch and aerospace override
-Superalloys,true,1,Broad production material
-AdvancedAtomicManipulation,true,1,Broad materials capability
-Supercapacitors,true,1,Broad energy storage material
-SuperconductingMagnets,true,1,Broad industrial material
-Diamondoids,true,1.5,Broad production material
-Neutronics,true,1.5,Nuclear materials capability
-AdvancedHydrogenContainment,true,1.5,Energy and industrial material
-ImprovedShipbuildingTechniques,true,0.5,Spacecraft-only spillover cap
-FissionPulseDrives,true,0.5,Propulsion-only spillover cap
-MolecularAssemblers,true,2,Direct general-purpose production breakthrough
-HighTemperatureSuperconductors,true,2,Broad industrial material
-Ultracapacitors,true,2,Broad energy storage material
-HeavyPulsedPropulsion,true,0.5,Propulsion-only spillover cap
-TitanicSpacecraft,true,0.5,Spacecraft-only spillover cap
-FutureTechMaterials,true,4,Transformative late materials technology
-PhotonicComputing,true,2,Direct advanced computing breakthrough
-AugmentedReality,true,0.5,Early general-purpose information technology
-AdvancedNeuralNetworks,true,2,Direct AI breakthrough
-Cybernetics,true,1,General-purpose human machine systems
-SelfRepairingSoftware,true,1,General-purpose software capability
-QuantumComputing,true,2,Direct advanced computing breakthrough
-QuantumEncryption,true,1.5,Computing infrastructure spillover
-AppliedArtificialIntelligence,true,2,Direct AI breakthrough
-WhiteCollarAutomation,true,2,Direct economy-wide automation
-AdministrationAlgorithms,true,2,Direct general-purpose automation
-FutureTechInformationScience,true,4,Transformative late computing technology
-Biotechnology,true,0.5,Early general-purpose biotechnology
-SpaceAgriculture,true,1,Direct agriculture improvement
-PredictiveGenetics,true,1,Agriculture and health productivity spillover
-TransformPhages,true,1,Biotechnology productivity spillover
-DesignerLifeforms,true,2,Advanced biotechnology production
-MindandMachine,true,2,General-purpose human machine breakthrough
-Genies,true,2,Advanced biotechnology productivity
-FutureTechLifeScience,true,4,Transformative late biotechnology
-ArrivalEconomics,true,0.5,Early economic-development theory
-ArrivalInternationalDevelopment,true,1,Direct economic-development institutions
-IndustrializationofSpace,true,3,Explicit space industrialization override
-SpaceCommerce,true,2,Explicit space commerce override
-IntegratedEarthSpaceEconomy,true,2,Direct integrated economy breakthrough
-FutureTechSocialScience,true,4,Transformative late social technology
-Accelerando,true,4,Transformative general-purpose economy breakthrough
-MissionToSpace,true,1,Explicit launch capability override
-SpaceMiningandRefining,true,2,Explicit space resource extraction override
-InSituResourceUtilization,true,2,Explicit local production override
+tech_id,enabled,productivity_percent,labor_substitution,resource_substitution,rationale
+Accelerando,true,2.430229,4.000,4.000,Direct general-purpose breakthrough
+AdAstra,true,0.607557,0.750,0.750,General economy social or governance spillover
+AdministrationAlgorithms,true,1.215114,2.000,0.500,Computing AI or automation with labor emphasis
+AdvancedAtomicManipulation,true,0.607557,0.250,1.000,Energy materials mining or space-industry resource emphasis
+AdvancedCarbonManipulation,true,0.303779,0.125,0.500,Energy materials mining or space-industry resource emphasis
+AdvancedChemicalRocketry,true,1.000000,0.125,0.125,Narrow military propulsion spacecraft or exploration spillover
+AdvancedFissionSystems,true,1.215114,0.500,2.000,Energy materials mining or space-industry resource emphasis
+AdvancedHeatManagementConcepts,true,0.303779,0.250,0.250,Broad secondary productivity spillover
+AdvancedHydrogenContainment,true,0.911336,0.375,1.500,Energy materials mining or space-industry resource emphasis
+AdvancedMagnetics,true,0.303779,0.125,0.500,Energy materials mining or space-industry resource emphasis
+AdvancedMissileWarfareDoctrine,true,0.303779,0.063,0.063,Narrow military propulsion spacecraft or exploration spillover
+AdvancedNeuralNetworks,true,1.215114,2.000,0.500,Computing AI or automation with labor emphasis
+AdvancedSuperconductors,true,0.607557,0.250,1.000,Energy materials mining or space-industry resource emphasis
+AneutronicFusion,true,1.822672,0.750,3.000,Energy materials mining or space-industry resource emphasis
+AntimatterContainment,true,0.607557,0.250,1.000,Energy materials mining or space-industry resource emphasis
+AntimatterMassProduction,true,2.430229,1.000,4.000,Energy materials mining or space-industry resource emphasis
+AntimatterPropulsion,true,0.303779,0.063,0.063,Narrow military propulsion spacecraft or exploration spillover
+AntimatterWeaponry,true,0.303779,0.063,0.063,Narrow military propulsion spacecraft or exploration spillover
+AppliedArtificialIntelligence,true,1.822672,3.000,0.750,Computing AI or automation with labor emphasis
+ArcLasers,true,0.303779,0.063,0.063,Narrow military propulsion spacecraft or exploration spillover
+ArrivalCulture,true,0.911336,1.125,1.125,General economy social or governance spillover
+ArrivalDomesticPolitics,true,0.303779,0.375,0.375,General economy social or governance spillover
+ArrivalEconomics,true,0.303779,0.375,0.375,General economy social or governance spillover
+ArrivalGovernance,true,1.215114,1.500,1.500,General economy social or governance spillover
+ArrivalInternationalDevelopment,true,0.607557,0.750,0.750,General economy social or governance spillover
+ArrivalInternationalRelations,true,0.607557,0.750,0.750,General economy social or governance spillover
+ArrivalLaw,true,0.607557,0.750,0.750,General economy social or governance spillover
+ArrivalMassCommunications,true,0.607557,0.750,0.750,General economy social or governance spillover
+ArrivalPsychology,true,0.607557,0.750,0.750,General economy social or governance spillover
+ArrivalSecurity,true,0.303779,0.063,0.063,Narrow military propulsion spacecraft or exploration spillover
+ArrivalSociology,true,0.303779,0.375,0.375,General economy social or governance spillover
+AugmentedReality,true,0.303779,0.500,0.125,Computing AI or automation with labor emphasis
+Biotechnology,true,0.303779,0.250,0.500,Biotechnology agriculture or life-science resource emphasis
+CarbonNanotubes,true,0.607557,0.250,1.000,Energy materials mining or space-industry resource emphasis
+CleanEnergy,true,1.822672,0.750,3.000,Energy materials mining or space-industry resource emphasis
+ClimateChangeMitigation,true,2.430229,2.000,4.000,Biotechnology agriculture or life-science resource emphasis
+Coilguns,true,0.303779,0.063,0.063,Narrow military propulsion spacecraft or exploration spillover
+ColonyHabs,true,1.215114,1.000,1.000,Broad secondary productivity spillover
+Cybernetics,true,0.607557,1.000,0.250,Computing AI or automation with labor emphasis
+DeepSpacePropulsionConcepts,true,0.303779,0.063,0.063,Narrow military propulsion spacecraft or exploration spillover
+DeepSystemSkywatch,true,0.303779,0.063,0.063,Narrow military propulsion spacecraft or exploration spillover
+DesignerLifeforms,true,1.215114,1.000,2.000,Biotechnology agriculture or life-science resource emphasis
+DeuteriumDeuteriumFusion,true,1.822672,0.750,3.000,Energy materials mining or space-industry resource emphasis
+DeuteriumHelium3Fusion,true,1.822672,0.750,3.000,Energy materials mining or space-industry resource emphasis
+DeuteriumTritiumFusion,true,1.822672,0.750,3.000,Energy materials mining or space-industry resource emphasis
+Diamondoids,true,0.911336,0.375,1.500,Energy materials mining or space-industry resource emphasis
+DirectedEnergyWarfareDoctrine,true,0.303779,0.063,0.063,Narrow military propulsion spacecraft or exploration spillover
+DirectedSpaceResearch,true,0.607557,0.750,0.750,General economy social or governance spillover
+ElectromagneticPropulsion,true,0.303779,0.063,0.063,Narrow military propulsion spacecraft or exploration spillover
+ElectrostaticPlasmaConfinement,true,0.911336,0.375,1.500,Energy materials mining or space-industry resource emphasis
+ElectrostaticPropulsion,true,0.303779,0.063,0.063,Narrow military propulsion spacecraft or exploration spillover
+ElectrothermalPropulsion,true,0.303779,0.063,0.063,Narrow military propulsion spacecraft or exploration spillover
+ExtendedSpaceSurvival,true,0.607557,0.500,0.500,Broad secondary productivity spillover
+FallofEmpires,true,0.607557,0.750,0.750,General economy social or governance spillover
+FissionPulseDrives,true,0.303779,0.063,0.063,Narrow military propulsion spacecraft or exploration spillover
+FleetLogistics,true,0.303779,0.063,0.063,Narrow military propulsion spacecraft or exploration spillover
+FutureTechEnergy,true,2.430229,1.000,4.000,Energy materials mining or space-industry resource emphasis
+FutureTechInformationScience,true,2.430229,4.000,1.000,Computing AI or automation with labor emphasis
+FutureTechLifeScience,true,2.430229,2.000,4.000,Biotechnology agriculture or life-science resource emphasis
+FutureTechMaterials,true,2.430229,1.000,4.000,Energy materials mining or space-industry resource emphasis
+FutureTechMilitaryScience,true,2.430229,2.000,2.000,Broad secondary productivity spillover
+FutureTechSocialScience,true,2.430229,3.000,3.000,General economy social or governance spillover
+FutureTechSpaceScience,true,2.430229,2.000,2.000,Broad secondary productivity spillover
+GasCoreFissionSystems,true,0.911336,0.375,1.500,Energy materials mining or space-industry resource emphasis
+Genies,true,1.215114,1.000,2.000,Biotechnology agriculture or life-science resource emphasis
+GreatNations,true,0.911336,1.125,1.125,General economy social or governance spillover
+HeavyPulsedPropulsion,true,0.303779,0.063,0.063,Narrow military propulsion spacecraft or exploration spillover
+HighEnergyElectromagneticPropulsion,true,0.303779,0.063,0.063,Narrow military propulsion spacecraft or exploration spillover
+HighEnergyLasers,true,0.303779,0.063,0.063,Narrow military propulsion spacecraft or exploration spillover
+HighTemperatureSuperconductors,true,1.215114,0.500,2.000,Energy materials mining or space-industry resource emphasis
+ImprovedShipbuildingTechniques,true,0.303779,0.063,0.063,Narrow military propulsion spacecraft or exploration spillover
+IndependenceMovements,true,0.607557,0.750,0.750,General economy social or governance spillover
+IndustrializationofSpace,true,1.822672,0.750,3.000,Energy materials mining or space-industry resource emphasis
+InertialPlasmaConfinementTechniques,true,1.822672,0.750,3.000,Energy materials mining or space-industry resource emphasis
+InfraredCombatLasers,true,0.303779,0.063,0.063,Narrow military propulsion spacecraft or exploration spillover
+InSituResourceUtilization,true,1.215114,0.500,2.000,Energy materials mining or space-industry resource emphasis
+IntegratedEarthSpaceEconomy,true,1.215114,2.000,2.000,Direct general-purpose breakthrough
+InterplanetaryPolities,true,1.215114,1.500,1.500,General economy social or governance spillover
+KineticsWarfareDoctrine,true,0.303779,0.063,0.063,Narrow military propulsion spacecraft or exploration spillover
+MagneticForceManipulation,true,0.303779,0.125,0.500,Energy materials mining or space-industry resource emphasis
+MagneticNozzles,true,0.303779,0.063,0.063,Narrow military propulsion spacecraft or exploration spillover
+MagneticPlasmaConfinementTechniques,true,1.215114,0.500,2.000,Energy materials mining or space-industry resource emphasis
+MassDrivers,true,0.303779,0.063,0.063,Narrow military propulsion spacecraft or exploration spillover
+MilitarizationofSpace,true,0.303779,0.063,0.063,Narrow military propulsion spacecraft or exploration spillover
+MindandMachine,true,1.215114,2.000,2.000,Direct general-purpose breakthrough
+MissileWarfareDoctrine,true,0.303779,0.063,0.063,Narrow military propulsion spacecraft or exploration spillover
+MissiontoJupiter,true,0.303779,0.063,0.063,Narrow military propulsion spacecraft or exploration spillover
+MissiontoMars,true,0.303779,0.063,0.063,Narrow military propulsion spacecraft or exploration spillover
+MissiontoSaturn,true,0.303779,0.063,0.063,Narrow military propulsion spacecraft or exploration spillover
+MissionToSpace,true,1.000000,0.500,0.500,Broad secondary productivity spillover
+MissiontotheAsteroids,true,0.303779,0.063,0.063,Narrow military propulsion spacecraft or exploration spillover
+MissiontotheInnerPlanets,true,0.303779,0.063,0.063,Narrow military propulsion spacecraft or exploration spillover
+MissiontotheMoon,true,0.303779,0.063,0.063,Narrow military propulsion spacecraft or exploration spillover
+MissiontotheOuterPlanets,true,0.303779,0.063,0.063,Narrow military propulsion spacecraft or exploration spillover
+MissiontoVenus,true,0.303779,0.063,0.063,Narrow military propulsion spacecraft or exploration spillover
+MolecularAssemblers,true,2.430229,4.000,4.000,Direct general-purpose breakthrough
+MoltenCoreFissionSystems,true,0.607557,0.250,1.000,Energy materials mining or space-industry resource emphasis
+NetworkedGlobalDefense,true,0.303779,0.063,0.063,Narrow military propulsion spacecraft or exploration spillover
+NetworkedPropaganda,true,0.607557,0.750,0.750,General economy social or governance spillover
+Neutronics,true,0.911336,0.375,1.500,Energy materials mining or space-industry resource emphasis
+NextGenerationAerospace,true,1.215114,0.500,2.000,Energy materials mining or space-industry resource emphasis
+NuclearFissioninSpace,true,0.303779,0.125,0.500,Energy materials mining or space-industry resource emphasis
+NuclearFusioninSpace,true,1.822672,0.750,3.000,Energy materials mining or space-industry resource emphasis
+OrbitalFighters,true,0.303779,0.063,0.063,Narrow military propulsion spacecraft or exploration spillover
+OrbitalRingHabs,true,0.607557,0.500,0.500,Broad secondary productivity spillover
+OrbitalShipbuilding,true,0.303779,0.125,0.500,Energy materials mining or space-industry resource emphasis
+OrbitalTorusHabs,true,1.215114,1.000,1.000,Broad secondary productivity spillover
+OurSpaceFuture,true,1.215114,1.500,1.500,General economy social or governance spillover
+OutpostHabs,true,0.303779,0.250,0.250,Broad secondary productivity spillover
+ParticleCannon,true,0.303779,0.063,0.063,Narrow military propulsion spacecraft or exploration spillover
+PhasedArrayLasers,true,0.303779,0.063,0.063,Narrow military propulsion spacecraft or exploration spillover
+PhotonicComputing,true,1.215114,2.000,0.500,Computing AI or automation with labor emphasis
+PlasmaWeapons,true,0.303779,0.063,0.063,Narrow military propulsion spacecraft or exploration spillover
+PredictiveGenetics,true,0.607557,0.500,1.000,Biotechnology agriculture or life-science resource emphasis
+PrinciplesofSpaceWarfare,true,0.303779,0.063,0.063,Narrow military propulsion spacecraft or exploration spillover
+ProtonProtonFusion,true,2.430229,1.000,4.000,Energy materials mining or space-industry resource emphasis
+QuantumComputing,true,1.215114,2.000,0.500,Computing AI or automation with labor emphasis
+QuantumEncryption,true,0.911336,0.750,0.750,Broad secondary productivity spillover
+Railguns,true,0.303779,0.063,0.063,Narrow military propulsion spacecraft or exploration spillover
+SelfRepairingSoftware,true,0.607557,1.000,0.250,Computing AI or automation with labor emphasis
+SettlementHabs,true,0.607557,0.500,0.500,Broad secondary productivity spillover
+Skywatch,true,0.303779,0.063,0.063,Narrow military propulsion spacecraft or exploration spillover
+SolidCoreFissionSystems,true,0.607557,0.250,1.000,Energy materials mining or space-industry resource emphasis
+SpaceAgriculture,true,0.303779,0.250,0.500,Biotechnology agriculture or life-science resource emphasis
+SpaceAssaultDoctrine,true,0.303779,0.063,0.063,Narrow military propulsion spacecraft or exploration spillover
+SpaceCommerce,true,1.215114,0.500,2.000,Energy materials mining or space-industry resource emphasis
+SpaceMedicine,true,0.303779,0.250,0.250,Broad secondary productivity spillover
+SpaceMiningandRefining,true,1.215114,0.500,2.000,Energy materials mining or space-industry resource emphasis
+SpaceNavies,true,0.303779,0.063,0.063,Narrow military propulsion spacecraft or exploration spillover
+SpaceResearch,true,0.303779,0.375,0.375,General economy social or governance spillover
+SpaceTourism,true,0.303779,0.375,0.375,General economy social or governance spillover
+Superalloys,true,0.607557,0.250,1.000,Energy materials mining or space-industry resource emphasis
+Supercapacitors,true,0.607557,0.250,1.000,Energy materials mining or space-industry resource emphasis
+SuperconductingMagnets,true,0.607557,0.250,1.000,Energy materials mining or space-industry resource emphasis
+TargetedBiologicalWarfare,true,0.303779,0.063,0.063,Narrow military propulsion spacecraft or exploration spillover
+TerawattFusionReactors,true,2.430229,1.000,4.000,Energy materials mining or space-industry resource emphasis
+TerrestrialMilitaryScience,true,0.303779,0.063,0.063,Narrow military propulsion spacecraft or exploration spillover
+TitanicSpacecraft,true,0.303779,0.063,0.063,Narrow military propulsion spacecraft or exploration spillover
+Tokamaks,true,0.911336,0.375,1.500,Energy materials mining or space-industry resource emphasis
+TransformPhages,true,0.607557,0.500,1.000,Biotechnology agriculture or life-science resource emphasis
+TransInterfaceWarfare,true,0.303779,0.063,0.063,Narrow military propulsion spacecraft or exploration spillover
+Ultracapacitors,true,1.215114,0.500,2.000,Energy materials mining or space-industry resource emphasis
+UltravioletCombatLasers,true,0.303779,0.063,0.063,Narrow military propulsion spacecraft or exploration spillover
+UnityMovements,true,0.607557,0.750,0.750,General economy social or governance spillover
+VacuumElectrostaticPrinciples,true,0.303779,0.125,0.500,Energy materials mining or space-industry resource emphasis
+VisibleCombatLasers,true,0.303779,0.063,0.063,Narrow military propulsion spacecraft or exploration spillover
+WeAreNotAlone,true,0.303779,0.375,0.375,General economy social or governance spillover
+WhiteCollarAutomation,true,1.822672,3.000,0.750,Computing AI or automation with labor emphasis
+ZPinchTechniques,true,1.215114,0.500,2.000,Energy materials mining or space-industry resource emphasis
