@@ -36,6 +36,10 @@ for the current patch-by-patch review.
 - Spoils retains its full $60 base faction-cash payout and has no direct gas pulse.
 - Xenofauna capped at 5 base miltech; Purge and Enthrall Elites receive +1 defense.
 - 2022 starts with Mission to Space and Advanced Chemical Rocketry completed.
+- Human hab modules use x1.5 physical mass while retaining vanilla space-resource
+  tonnage; the added one-third of revised mass must always arrive from Earth.
+- Human T1 stations expose two sectors/eight facility slots. The starting ISS
+  and Tiangong layouts, T1 crews, and crew consumables are historically rescaled.
 - Global technologies cost x1.20 research; faction projects retain vanilla costs.
 - Population-normalized Unity, Knowledge, Government, Oppression, and selected
   Spoils social effects.
@@ -73,8 +77,9 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\verify.ps1
 ```
 
 Verification rebuilds with warnings as errors, runs dependency-free formula
-tests, validates the implementation matrix against settings and Harmony patches,
-checks the manifest/package layout, and creates
+tests, validates all 110 hab-module overrides against the installed vanilla
+templates, validates the implementation matrix against settings and Harmony
+patches, checks the manifest/package layout, and creates
 `artifacts/TIEconomyMod-0.6.4-ti1.0.47.zip`.
 
 ## Smoke test
@@ -85,3 +90,6 @@ Exercise all affected priorities at boundary and neutral values, then toggle eac
 feature and confirm the appended tooltip agrees with the observed change. Merge
 countries with similar and dissimilar GDP/c, force structure, and population;
 verify Military technology and Inequality against the documented examples.
+For habs, compare Earth-built, locally supplied, and upgraded modules; confirm
+the mandatory Boost floor and Earth delivery time, then load an older save and
+confirm human T1 stations gain sector 2 while bases and alien stations do not.

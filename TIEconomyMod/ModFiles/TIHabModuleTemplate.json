@@ -1,0 +1,1471 @@
+[
+    {
+        "dataName":  "AdministrationNode",
+        "baseMass_tons":  45,
+        "weightedBuildMaterials":  {
+                                       "water":  0.053333333,
+                                       "volatiles":  0.266666667,
+                                       "metals":  0.333333333,
+                                       "nobleMetals":  0.013333333,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   },
+        "crew":  4
+    },
+    {
+        "dataName":  "AntimatterTrap",
+        "baseMass_tons":  30,
+        "weightedBuildMaterials":  {
+                                       "water":  0.033333333,
+                                       "volatiles":  0.166666667,
+                                       "metals":  0.333333333,
+                                       "nobleMetals":  0.133333333,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   },
+        "crew":  1
+    },
+    {
+        "dataName":  "AutomatedFissionPile",
+        "baseMass_tons":  45,
+        "weightedBuildMaterials":  {
+                                       "water":  0.05,
+                                       "volatiles":  0.2,
+                                       "metals":  0.316666667,
+                                       "nobleMetals":  0.066666667,
+                                       "fissiles":  0.033333333,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   },
+        "crew":  0
+    },
+    {
+        "dataName":  "AutomatedMiningComplex",
+        "baseMass_tons":  375,
+        "weightedBuildMaterials":  {
+                                       "water":  0.066666667,
+                                       "volatiles":  0.1,
+                                       "metals":  0.48,
+                                       "nobleMetals":  0.02,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   },
+        "crew":  0
+    },
+    {
+        "dataName":  "AutomatedOutpostCore",
+        "baseMass_tons":  30,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.266666667,
+                                       "metals":  0.333333333,
+                                       "nobleMetals":  0.066666667,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   },
+        "crew":  0
+    },
+    {
+        "dataName":  "AutomatedPlatformCore",
+        "baseMass_tons":  30,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.166666667,
+                                       "metals":  0.466666667,
+                                       "nobleMetals":  0.033333333,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   },
+        "crew":  0
+    },
+    {
+        "dataName":  "AutomatedSolarCollector",
+        "baseMass_tons":  22.5,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.133333333,
+                                       "metals":  0.5,
+                                       "nobleMetals":  0.033333333,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   },
+        "crew":  0
+    },
+    {
+        "dataName":  "AutomatedSolarMirror",
+        "baseMass_tons":  75,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.066666667,
+                                       "metals":  0.466666667,
+                                       "nobleMetals":  0.133333333,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   },
+        "crew":  0
+    },
+    {
+        "dataName":  "AutomatedSupplyDepot",
+        "baseMass_tons":  22.5,
+        "weightedBuildMaterials":  {
+                                       "water":  0.08,
+                                       "volatiles":  0.306666667,
+                                       "metals":  0.266666667,
+                                       "nobleMetals":  0.013333333,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   },
+        "crew":  0
+    },
+    {
+        "dataName":  "BroadcastOutlet",
+        "baseMass_tons":  45,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.233333333,
+                                       "metals":  0.4,
+                                       "nobleMetals":  0.033333333,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   },
+        "crew":  1
+    },
+    {
+        "dataName":  "ClimateLab",
+        "baseMass_tons":  30,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.133333333,
+                                       "metals":  0.5,
+                                       "nobleMetals":  0.033333333,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   },
+        "crew":  1
+    },
+    {
+        "dataName":  "ConstructionModule",
+        "baseMass_tons":  45,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.166666667,
+                                       "metals":  0.466666667,
+                                       "nobleMetals":  0.033333333,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   },
+        "crew":  2
+    },
+    {
+        "dataName":  "EnergyLab",
+        "baseMass_tons":  30,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.133333333,
+                                       "metals":  0.493333333,
+                                       "nobleMetals":  0.033333333,
+                                       "fissiles":  0.006666667,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   },
+        "crew":  1
+    },
+    {
+        "dataName":  "FissionPile",
+        "baseMass_tons":  30,
+        "weightedBuildMaterials":  {
+                                       "water":  0.066666667,
+                                       "volatiles":  0.133333333,
+                                       "metals":  0.366666667,
+                                       "nobleMetals":  0.066666667,
+                                       "fissiles":  0.033333333,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   },
+        "crew":  1
+    },
+    {
+        "dataName":  "FusionPile",
+        "baseMass_tons":  45,
+        "weightedBuildMaterials":  {
+                                       "water":  0.066666667,
+                                       "volatiles":  0.1,
+                                       "metals":  0.286666667,
+                                       "nobleMetals":  0.2,
+                                       "fissiles":  0.013333333,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   },
+        "crew":  1
+    },
+    {
+        "dataName":  "HeavyFissionPile",
+        "baseMass_tons":  60,
+        "weightedBuildMaterials":  {
+                                       "water":  0.066666667,
+                                       "volatiles":  0.133333333,
+                                       "metals":  0.333333333,
+                                       "nobleMetals":  0.1,
+                                       "fissiles":  0.033333333,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   },
+        "crew":  1
+    },
+    {
+        "dataName":  "HeavyFusionPile",
+        "baseMass_tons":  90,
+        "weightedBuildMaterials":  {
+                                       "water":  0.066666667,
+                                       "volatiles":  0.1,
+                                       "metals":  0.286666667,
+                                       "nobleMetals":  0.2,
+                                       "fissiles":  0.013333333,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   },
+        "crew":  2
+    },
+    {
+        "dataName":  "HydroponicsBay",
+        "baseMass_tons":  180,
+        "weightedBuildMaterials":  {
+                                       "water":  0.333333333,
+                                       "volatiles":  0.3,
+                                       "metals":  0.033333333,
+                                       "nobleMetals":  0,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   },
+        "crew":  1,
+        "specialRulesValue":  60
+    },
+    {
+        "dataName":  "InformationScienceLab",
+        "baseMass_tons":  30,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.266666667,
+                                       "metals":  0.366666667,
+                                       "nobleMetals":  0.033333333,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   },
+        "crew":  1
+    },
+    {
+        "dataName":  "LifeScienceLab",
+        "baseMass_tons":  30,
+        "weightedBuildMaterials":  {
+                                       "water":  0.033333333,
+                                       "volatiles":  0.466666667,
+                                       "metals":  0.16,
+                                       "nobleMetals":  0.006666667,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   },
+        "crew":  1
+    },
+    {
+        "dataName":  "ListeningPost",
+        "baseMass_tons":  37.5,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.066666667,
+                                       "metals":  0.5,
+                                       "nobleMetals":  0.1,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   },
+        "crew":  2
+    },
+    {
+        "dataName":  "MarinePlatoonBarracks",
+        "baseMass_tons":  180,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.133333333,
+                                       "metals":  0.52,
+                                       "nobleMetals":  0.013333333,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   },
+        "crew":  30
+    },
+    {
+        "dataName":  "MaterialsLab",
+        "baseMass_tons":  30,
+        "weightedBuildMaterials":  {
+                                       "water":  0.013333333,
+                                       "volatiles":  0.226666667,
+                                       "metals":  0.293333333,
+                                       "nobleMetals":  0.133333333,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   },
+        "crew":  1
+    },
+    {
+        "dataName":  "MilitaryScienceLab",
+        "baseMass_tons":  30,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.233333333,
+                                       "metals":  0.426666667,
+                                       "nobleMetals":  0.006666667,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   },
+        "crew":  1
+    },
+    {
+        "dataName":  "OutpostCore",
+        "baseMass_tons":  30,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.333333333,
+                                       "metals":  0.333333333,
+                                       "nobleMetals":  0,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   },
+        "crew":  2
+    },
+    {
+        "dataName":  "OutpostMiningComplex",
+        "baseMass_tons":  375,
+        "weightedBuildMaterials":  {
+                                       "water":  0.066666667,
+                                       "volatiles":  0.066666667,
+                                       "metals":  0.526666667,
+                                       "nobleMetals":  0.006666667,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   },
+        "crew":  4
+    },
+    {
+        "dataName":  "ParticleCollider",
+        "baseMass_tons":  300,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.133333333,
+                                       "metals":  0.233333333,
+                                       "nobleMetals":  0.266666667,
+                                       "fissiles":  0.033333333,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   },
+        "crew":  2
+    },
+    {
+        "dataName":  "PlatformCore",
+        "baseMass_tons":  22.5,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.333333333,
+                                       "metals":  0.333333333,
+                                       "nobleMetals":  0,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   },
+        "crew":  2
+    },
+    {
+        "dataName":  "PointDefenseArray",
+        "baseMass_tons":  150,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.146666667,
+                                       "metals":  0.506666667,
+                                       "nobleMetals":  0.013333333,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   },
+        "crew":  1
+    },
+    {
+        "dataName":  "Quarters",
+        "baseMass_tons":  90,
+        "weightedBuildMaterials":  {
+                                       "water":  0.066666667,
+                                       "volatiles":  0.2,
+                                       "metals":  0.4,
+                                       "nobleMetals":  0,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   },
+        "crew":  1
+    },
+    {
+        "dataName":  "SocialScienceLab",
+        "baseMass_tons":  22.5,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.166666667,
+                                       "metals":  0.5,
+                                       "nobleMetals":  0,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   },
+        "crew":  1
+    },
+    {
+        "dataName":  "SolarCollector",
+        "baseMass_tons":  22.5,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.133333333,
+                                       "metals":  0.5,
+                                       "nobleMetals":  0.033333333,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   },
+        "crew":  0
+    },
+    {
+        "dataName":  "SolarMirror",
+        "baseMass_tons":  75,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.066666667,
+                                       "metals":  0.466666667,
+                                       "nobleMetals":  0.133333333,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   },
+        "crew":  0
+    },
+    {
+        "dataName":  "SpaceDock",
+        "baseMass_tons":  120,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.133333333,
+                                       "metals":  0.466666667,
+                                       "nobleMetals":  0.066666667,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   },
+        "crew":  4
+    },
+    {
+        "dataName":  "SpaceScienceLab",
+        "baseMass_tons":  30,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.2,
+                                       "metals":  0.433333333,
+                                       "nobleMetals":  0.033333333,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   },
+        "crew":  1
+    },
+    {
+        "dataName":  "SupplyDepot",
+        "baseMass_tons":  22.5,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.066666667,
+                                       "metals":  0.6,
+                                       "nobleMetals":  0,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   },
+        "crew":  0
+    },
+    {
+        "dataName":  "TouristBerth",
+        "baseMass_tons":  22.5,
+        "weightedBuildMaterials":  {
+                                       "water":  0.1,
+                                       "volatiles":  0.166666667,
+                                       "metals":  0.4,
+                                       "nobleMetals":  0,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   },
+        "crew":  2
+    },
+    {
+        "dataName":  "XenologyLab",
+        "baseMass_tons":  30,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.2,
+                                       "metals":  0.433333333,
+                                       "nobleMetals":  0.033333333,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   },
+        "crew":  1
+    },
+    {
+        "dataName":  "AdministrationTower",
+        "baseMass_tons":  225,
+        "weightedBuildMaterials":  {
+                                       "water":  0.053333333,
+                                       "volatiles":  0.266666667,
+                                       "metals":  0.333333333,
+                                       "nobleMetals":  0.013333333,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "AntimatterHarvester",
+        "baseMass_tons":  150,
+        "weightedBuildMaterials":  {
+                                       "water":  0.033333333,
+                                       "volatiles":  0.166666667,
+                                       "metals":  0.333333333,
+                                       "nobleMetals":  0.133333333,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "Atomsmasher",
+        "baseMass_tons":  1500,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.133333333,
+                                       "metals":  0.233333333,
+                                       "nobleMetals":  0.266666667,
+                                       "fissiles":  0.033333333,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "ClimateResearchCenter",
+        "baseMass_tons":  150,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.133333333,
+                                       "metals":  0.5,
+                                       "nobleMetals":  0.033333333,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "CommunicationsHub",
+        "baseMass_tons":  225,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.233333333,
+                                       "metals":  0.4,
+                                       "nobleMetals":  0.033333333,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "DeepSpaceTelescope",
+        "baseMass_tons":  300,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.2,
+                                       "metals":  0.4,
+                                       "nobleMetals":  0.066666667,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "EnergyResearchCenter",
+        "baseMass_tons":  150,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.133333333,
+                                       "metals":  0.493333333,
+                                       "nobleMetals":  0.033333333,
+                                       "fissiles":  0.006666667,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "Farm",
+        "baseMass_tons":  900,
+        "weightedBuildMaterials":  {
+                                       "water":  0.333333333,
+                                       "volatiles":  0.3,
+                                       "metals":  0.033333333,
+                                       "nobleMetals":  0,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "FissionReactorArray",
+        "baseMass_tons":  150,
+        "weightedBuildMaterials":  {
+                                       "water":  0.066666667,
+                                       "volatiles":  0.133333333,
+                                       "metals":  0.366666667,
+                                       "nobleMetals":  0.066666667,
+                                       "fissiles":  0.033333333,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "FusionReactorArray",
+        "baseMass_tons":  225,
+        "weightedBuildMaterials":  {
+                                       "water":  0.066666667,
+                                       "volatiles":  0.1,
+                                       "metals":  0.286666667,
+                                       "nobleMetals":  0.2,
+                                       "fissiles":  0.013333333,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "HeavyFissionReactorArray",
+        "baseMass_tons":  300,
+        "weightedBuildMaterials":  {
+                                       "water":  0.066666667,
+                                       "volatiles":  0.133333333,
+                                       "metals":  0.333333333,
+                                       "nobleMetals":  0.1,
+                                       "fissiles":  0.033333333,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "HeavyFusionReactorArray",
+        "baseMass_tons":  450,
+        "weightedBuildMaterials":  {
+                                       "water":  0.066666667,
+                                       "volatiles":  0.1,
+                                       "metals":  0.286666667,
+                                       "nobleMetals":  0.2,
+                                       "fissiles":  0.013333333,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "InformationScienceResearchCenter",
+        "baseMass_tons":  150,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.266666667,
+                                       "metals":  0.366666667,
+                                       "nobleMetals":  0.033333333,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "LayeredDefenseArray",
+        "baseMass_tons":  750,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.146666667,
+                                       "metals":  0.506666667,
+                                       "nobleMetals":  0.013333333,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "LifeScienceResearchCenter",
+        "baseMass_tons":  150,
+        "weightedBuildMaterials":  {
+                                       "water":  0.033333333,
+                                       "volatiles":  0.466666667,
+                                       "metals":  0.16,
+                                       "nobleMetals":  0.006666667,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "MarineCompanyBarracks",
+        "baseMass_tons":  900,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.133333333,
+                                       "metals":  0.52,
+                                       "nobleMetals":  0.013333333,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "MaterialsResearchCenter",
+        "baseMass_tons":  150,
+        "weightedBuildMaterials":  {
+                                       "water":  0.013333333,
+                                       "volatiles":  0.226666667,
+                                       "metals":  0.293333333,
+                                       "nobleMetals":  0.133333333,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "MilitaryScienceResearchCenter",
+        "baseMass_tons":  150,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.233333333,
+                                       "metals":  0.426666667,
+                                       "nobleMetals":  0.006666667,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "Nanofactory",
+        "baseMass_tons":  225,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.166666667,
+                                       "metals":  0.433333333,
+                                       "nobleMetals":  0.066666667,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "OperationsCenter",
+        "baseMass_tons":  1500,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.066666667,
+                                       "metals":  0.5,
+                                       "nobleMetals":  0.1,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "OrbitalCore",
+        "baseMass_tons":  150,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.333333333,
+                                       "metals":  0.333333333,
+                                       "nobleMetals":  0,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "OrbitalHospital",
+        "baseMass_tons":  1200,
+        "weightedBuildMaterials":  {
+                                       "water":  0.246666667,
+                                       "volatiles":  0.133333333,
+                                       "metals":  0.266666667,
+                                       "nobleMetals":  0.02,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "ReconnaissanceArray",
+        "baseMass_tons":  187.5,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.066666667,
+                                       "metals":  0.5,
+                                       "nobleMetals":  0.1,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "ResearchCampus",
+        "baseMass_tons":  1500,
+        "weightedBuildMaterials":  {
+                                       "water":  0.1,
+                                       "volatiles":  0.2,
+                                       "metals":  0.333333333,
+                                       "nobleMetals":  0.033333333,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "ResidentialModule",
+        "baseMass_tons":  450,
+        "weightedBuildMaterials":  {
+                                       "water":  0.066666667,
+                                       "volatiles":  0.2,
+                                       "metals":  0.4,
+                                       "nobleMetals":  0,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "SettlementCore",
+        "baseMass_tons":  150,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.333333333,
+                                       "metals":  0.333333333,
+                                       "nobleMetals":  0,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "SettlementMiningComplex",
+        "baseMass_tons":  1875,
+        "weightedBuildMaterials":  {
+                                       "water":  0.066666667,
+                                       "volatiles":  0.066666667,
+                                       "metals":  0.526666667,
+                                       "nobleMetals":  0.006666667,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "Shipyard",
+        "baseMass_tons":  600,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.133333333,
+                                       "metals":  0.466666667,
+                                       "nobleMetals":  0.066666667,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "SkunkWorks",
+        "baseMass_tons":  750,
+        "weightedBuildMaterials":  {
+                                       "water":  0.033333333,
+                                       "volatiles":  0.133333333,
+                                       "metals":  0.433333333,
+                                       "nobleMetals":  0.066666667,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "SocialScienceResearchCenter",
+        "baseMass_tons":  112.5,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.166666667,
+                                       "metals":  0.5,
+                                       "nobleMetals":  0,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "SolarArray",
+        "baseMass_tons":  112.5,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.133333333,
+                                       "metals":  0.5,
+                                       "nobleMetals":  0.033333333,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "SolarMirrorArray",
+        "baseMass_tons":  375,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.066666667,
+                                       "metals":  0.466666667,
+                                       "nobleMetals":  0.133333333,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "SpaceHotel",
+        "baseMass_tons":  750,
+        "weightedBuildMaterials":  {
+                                       "water":  0.1,
+                                       "volatiles":  0.166666667,
+                                       "metals":  0.4,
+                                       "nobleMetals":  0,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "SpaceScienceResearchCenter",
+        "baseMass_tons":  150,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.2,
+                                       "metals":  0.433333333,
+                                       "nobleMetals":  0.033333333,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "XenoscienceResearchCenter",
+        "baseMass_tons":  150,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.2,
+                                       "metals":  0.433333333,
+                                       "nobleMetals":  0.033333333,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "AdministrationComplex",
+        "baseMass_tons":  1800,
+        "weightedBuildMaterials":  {
+                                       "water":  0.053333333,
+                                       "volatiles":  0.266666667,
+                                       "metals":  0.333333333,
+                                       "nobleMetals":  0.013333333,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "AgricultureComplex",
+        "baseMass_tons":  7200,
+        "weightedBuildMaterials":  {
+                                       "water":  0.333333333,
+                                       "volatiles":  0.3,
+                                       "metals":  0.033333333,
+                                       "nobleMetals":  0,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "AntimatterFarm",
+        "baseMass_tons":  1200,
+        "weightedBuildMaterials":  {
+                                       "water":  0.033333333,
+                                       "volatiles":  0.166666667,
+                                       "metals":  0.333333333,
+                                       "nobleMetals":  0.133333333,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "ArgusComplex",
+        "baseMass_tons":  1500,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.066666667,
+                                       "metals":  0.5,
+                                       "nobleMetals":  0.1,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "Battlestations",
+        "baseMass_tons":  6000,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.146666667,
+                                       "metals":  0.506666667,
+                                       "nobleMetals":  0.013333333,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "CivilianComplex",
+        "baseMass_tons":  3600,
+        "weightedBuildMaterials":  {
+                                       "water":  0.066666667,
+                                       "volatiles":  0.2,
+                                       "metals":  0.4,
+                                       "nobleMetals":  0,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "ClimateInstitute",
+        "baseMass_tons":  1200,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.133333333,
+                                       "metals":  0.5,
+                                       "nobleMetals":  0.033333333,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "ColonyCore",
+        "baseMass_tons":  1200,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.333333333,
+                                       "metals":  0.333333333,
+                                       "nobleMetals":  0,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "ColonyMiningComplex",
+        "baseMass_tons":  15000,
+        "weightedBuildMaterials":  {
+                                       "water":  0.066666667,
+                                       "volatiles":  0.066666667,
+                                       "metals":  0.526666667,
+                                       "nobleMetals":  0.006666667,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "CommandCenter",
+        "baseMass_tons":  12000,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.066666667,
+                                       "metals":  0.5,
+                                       "nobleMetals":  0.1,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "EnergyInstitute",
+        "baseMass_tons":  1200,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.133333333,
+                                       "metals":  0.493333333,
+                                       "nobleMetals":  0.033333333,
+                                       "fissiles":  0.006666667,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "FissionReactorFarm",
+        "baseMass_tons":  1200,
+        "weightedBuildMaterials":  {
+                                       "water":  0.066666667,
+                                       "volatiles":  0.133333333,
+                                       "metals":  0.366666667,
+                                       "nobleMetals":  0.066666667,
+                                       "fissiles":  0.033333333,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "Foundry",
+        "baseMass_tons":  6000,
+        "weightedBuildMaterials":  {
+                                       "water":  0.033333333,
+                                       "volatiles":  0.133333333,
+                                       "metals":  0.366666667,
+                                       "nobleMetals":  0.133333333,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "FusionReactorFarm",
+        "baseMass_tons":  1800,
+        "weightedBuildMaterials":  {
+                                       "water":  0.066666667,
+                                       "volatiles":  0.1,
+                                       "metals":  0.286666667,
+                                       "nobleMetals":  0.2,
+                                       "fissiles":  0.013333333,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "GeriatricsFacility",
+        "baseMass_tons":  9600,
+        "weightedBuildMaterials":  {
+                                       "water":  0.246666667,
+                                       "volatiles":  0.133333333,
+                                       "metals":  0.266666667,
+                                       "nobleMetals":  0.02,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "HeavyFissionReactorFarm",
+        "baseMass_tons":  2400,
+        "weightedBuildMaterials":  {
+                                       "water":  0.066666667,
+                                       "volatiles":  0.133333333,
+                                       "metals":  0.333333333,
+                                       "nobleMetals":  0.1,
+                                       "fissiles":  0.033333333,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "HeavyFusionReactorFarm",
+        "baseMass_tons":  3600,
+        "weightedBuildMaterials":  {
+                                       "water":  0.066666667,
+                                       "volatiles":  0.1,
+                                       "metals":  0.286666667,
+                                       "nobleMetals":  0.2,
+                                       "fissiles":  0.013333333,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "Helium-3Mine",
+        "baseMass_tons":  3600,
+        "weightedBuildMaterials":  {
+                                       "water":  0.033333333,
+                                       "volatiles":  0.1,
+                                       "metals":  0.333333333,
+                                       "nobleMetals":  0.2,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "InformationScienceInstitute",
+        "baseMass_tons":  1200,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.266666667,
+                                       "metals":  0.366666667,
+                                       "nobleMetals":  0.033333333,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "InterstellarLaunchingLaser",
+        "baseMass_tons":  375000,
+        "weightedBuildMaterials":  {
+                                       "water":  0.062666667,
+                                       "volatiles":  0.133333333,
+                                       "metals":  0.293333333,
+                                       "nobleMetals":  0.166666667,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0.010666667
+                                   }
+    },
+    {
+        "dataName":  "LifeScienceInstitute",
+        "baseMass_tons":  1200,
+        "weightedBuildMaterials":  {
+                                       "water":  0.033333333,
+                                       "volatiles":  0.466666667,
+                                       "metals":  0.16,
+                                       "nobleMetals":  0.006666667,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "MarineBattalionBarracks",
+        "baseMass_tons":  7200,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.133333333,
+                                       "metals":  0.52,
+                                       "nobleMetals":  0.013333333,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "MaterialsInstitute",
+        "baseMass_tons":  1200,
+        "weightedBuildMaterials":  {
+                                       "water":  0.013333333,
+                                       "volatiles":  0.226666667,
+                                       "metals":  0.293333333,
+                                       "nobleMetals":  0.133333333,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "MediaCenter",
+        "baseMass_tons":  1800,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.233333333,
+                                       "metals":  0.4,
+                                       "nobleMetals":  0.033333333,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "MilitaryScienceInstitute",
+        "baseMass_tons":  1200,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.233333333,
+                                       "metals":  0.426666667,
+                                       "nobleMetals":  0.006666667,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "NanofacturingComplex",
+        "baseMass_tons":  1800,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.166666667,
+                                       "metals":  0.4,
+                                       "nobleMetals":  0.1,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "ResearchUniversity",
+        "baseMass_tons":  12000,
+        "weightedBuildMaterials":  {
+                                       "water":  0.1,
+                                       "volatiles":  0.2,
+                                       "metals":  0.333333333,
+                                       "nobleMetals":  0.033333333,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "RingCore",
+        "baseMass_tons":  1200,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.333333333,
+                                       "metals":  0.333333333,
+                                       "nobleMetals":  0,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "SentinelComplex",
+        "baseMass_tons":  15000,
+        "weightedBuildMaterials":  {
+                                       "water":  0.013333333,
+                                       "volatiles":  0.253333333,
+                                       "metals":  0.266666667,
+                                       "nobleMetals":  0.133333333,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "SocialScienceInstitute",
+        "baseMass_tons":  900,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.166666667,
+                                       "metals":  0.5,
+                                       "nobleMetals":  0,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "SolarFarm",
+        "baseMass_tons":  900,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.133333333,
+                                       "metals":  0.5,
+                                       "nobleMetals":  0.033333333,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "Soletta",
+        "baseMass_tons":  3000,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.066666667,
+                                       "metals":  0.466666667,
+                                       "nobleMetals":  0.133333333,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "SpaceResort",
+        "baseMass_tons":  6000,
+        "weightedBuildMaterials":  {
+                                       "water":  0.1,
+                                       "volatiles":  0.166666667,
+                                       "metals":  0.4,
+                                       "nobleMetals":  0,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "SpaceScienceInstitute",
+        "baseMass_tons":  1200,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.2,
+                                       "metals":  0.433333333,
+                                       "nobleMetals":  0.033333333,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "Spaceworks",
+        "baseMass_tons":  4800,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.133333333,
+                                       "metals":  0.466666667,
+                                       "nobleMetals":  0.066666667,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "Supercollider",
+        "baseMass_tons":  12000,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.1,
+                                       "metals":  0.233333333,
+                                       "nobleMetals":  0.266666667,
+                                       "fissiles":  0.066666667,
+                                       "antimatter":  0,
+                                       "exotics":  0
+                                   }
+    },
+    {
+        "dataName":  "XenoscienceInstitute",
+        "baseMass_tons":  1200,
+        "weightedBuildMaterials":  {
+                                       "water":  0,
+                                       "volatiles":  0.2,
+                                       "metals":  0.433333333,
+                                       "nobleMetals":  0.026666667,
+                                       "fissiles":  0,
+                                       "antimatter":  0,
+                                       "exotics":  0.006666667
+                                   }
+    }
+]

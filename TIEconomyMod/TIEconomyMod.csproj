@@ -73,11 +73,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Include="Core\HabRebalanceMath.cs" />
     <Compile Include="Core\TechWeightCatalog.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Patches\EconomyPatches.cs" />
     <Compile Include="Patches\BalancePatches.cs" />
     <Compile Include="Patches\EnvironmentUnitySpoilsPatches.cs" />
+    <Compile Include="Patches\HabRebalancePatches.cs" />
     <Compile Include="Patches\CompletionCompatibilityPatches.cs" />
     <Compile Include="Patches\NationalValuesPatches.cs" />
     <Compile Include="Patches\NationalMergerPatches.cs" />
@@ -88,6 +90,9 @@
 
   <ItemGroup>
     <None Include="ModFiles\Config\economy-tech-weights.csv" />
+    <None Include="ModFiles\TIGlobalConfig.json" />
+    <None Include="ModFiles\TIHabModuleTemplate.json" />
+    <None Include="ModFiles\TIHabTemplate.json" />
     <None Include="ModFiles\TIMissionTemplate.json" />
     <None Include="ModFiles\TIStartTimeTemplate.json" />
     <None Include="ModFiles\ModInfo.json" />

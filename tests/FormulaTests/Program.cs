@@ -28,6 +28,7 @@ namespace TIEconomyMod.FormulaTests
                 TestSocialPriorities();
                 TestNationalMergers();
                 TestEnvironmentUnitySpoilsAndEmissions();
+                TestHabRebalanceMath();
                 TestWeightValidation(weights);
                 TestDisabledFallback();
                 Console.WriteLine("PASS: " + assertions + " patch-formula assertions.");
@@ -176,6 +177,31 @@ namespace TIEconomyMod.FormulaTests
             SpoilsGdpGrowthPatch.Prefix(nation, out spoilsGdp);
             Near(0f, (float)spoilsGdp, 0f,
                 "disabled Spoils adds no GDP");
+        }
+
+        private static void TestHabRebalanceMath()
+        {
+            Near(50f,
+                HabRebalanceMath.MandatoryEarthMass(150f, 2f / 3f, 1f),
+                0.0001f,
+                "new module mandatory Earth mass");
+            Near(100f / 3f,
+                HabRebalanceMath.MandatoryEarthMass(
+                    150f,
+                    2f / 3f,
+                    HabRebalanceMath.ConstructionRate(true)),
+                0.0001f,
+                "upgrade mandatory Earth mass");
+            Near(1f, HabRebalanceMath.ConstructionRate(false), 0f,
+                "new construction rate");
+            True(HabRebalanceMath.HasRebalancedMaterialFraction(0.6666667f),
+                "two-thirds material marker");
+            True(!HabRebalanceMath.HasRebalancedMaterialFraction(0.95f),
+                "vanilla alien partial materials are not marked");
+            True(HabRebalanceMath.NeedsEarthTransferDelay(0f),
+                "fully local materials add Earth transfer time");
+            True(!HabRebalanceMath.NeedsEarthTransferDelay(1f),
+                "existing boost avoids duplicate transfer time");
         }
 
         private static void TestAbundance()

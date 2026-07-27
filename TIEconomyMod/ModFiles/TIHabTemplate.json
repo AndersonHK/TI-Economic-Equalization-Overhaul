@@ -1,0 +1,105 @@
+[
+  {
+    "dataName": "InternationalSpaceStation",
+    "sectors": [
+      {
+        "faction": "CooperateCouncil",
+        "habModuleNames": [
+          "PlatformCore",
+          "SolarCollector",
+          "SpaceScienceLab",
+          "Quarters",
+          "SolarCollector"
+        ]
+      },
+      {
+        "faction": "",
+        "habModuleNames": ["", "", "", ""]
+      },
+      {
+        "faction": "CooperateCouncil",
+        "habModuleNames": [
+          "LifeScienceLab",
+          "MaterialsLab",
+          "Quarters",
+          "Quarters"
+        ]
+      },
+      {
+        "faction": "",
+        "habModuleNames": ["", "", "", ""]
+      },
+      {
+        "faction": "",
+        "habModuleNames": ["", "", "", ""]
+      }
+    ]
+  },
+  {
+    "dataName": "Tiangong",
+    "sectors": [
+      {
+        "faction": "EscapeCouncil",
+        "habModuleNames": [
+          "PlatformCore",
+          "SolarCollector",
+          "LifeScienceLab",
+          "",
+          ""
+        ]
+      },
+      {
+        "faction": "",
+        "habModuleNames": ["", "", "", ""]
+      },
+      {
+        "faction": "EscapeCouncil",
+        "habModuleNames": ["", "", "", ""]
+      },
+      {
+        "faction": "",
+        "habModuleNames": ["", "", "", ""]
+      },
+      {
+        "faction": "",
+        "habModuleNames": ["", "", "", ""]
+      }
+    ]
+  },
+  {
+    "dataName": "InternationalSpaceStationSkirmish",
+    "sectors": [
+      {
+        "faction": "ResistCouncil",
+        "habModuleNames": [
+          "PlatformCore",
+          "SolarCollector",
+          "SpaceScienceLab",
+          "Quarters",
+          "SolarCollector"
+        ]
+      },
+      {
+        "faction": "",
+        "habModuleNames": ["", "", "", ""]
+      },
+      {
+        "faction": "ResistCouncil",
+        "habModuleNames": [
+          "LifeScienceLab",
+          "MaterialsLab",
+          "Quarters",
+          "Quarters"
+        ]
+      },
+      {
+        "faction": "",
+        "habModuleNames": ["", "", "", ""]
+      },
+      {
+        "faction": "",
+        "habModuleNames": ["", "", "", ""]
+      }
+    ]
+  }
+]

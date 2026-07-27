@@ -93,6 +93,24 @@ try {
     $technologyCost = Read-MethodIl 'TITechTemplate' 'GetResearchCost'
     Assert-Count $technologyCost 'ldfld\s+float32 TIGenericTechTemplate::researchCost' 1 'Global technology research cost'
 
+    $habTemplate = 'TIHabModuleTemplate'
+    $boostCost = Read-MethodIl $habTemplate 'BoostCostFromEarth'
+    Assert-Count $boostCost 'TISpaceObjectState::GenericTransferBoostFromEarthSurface\(' 1 'Hab Earth boost conversion'
+
+    $spaceCost = Read-MethodIl $habTemplate 'CostFromSpace'
+    Assert-Count $spaceCost 'TISpaceObjectState::GenericTransferTimeFromEarthsSurface_d\(' 1 'Hab Earth transfer time'
+    Assert-Count $spaceCost 'TIEffectsState::SumEffectsModifiers\(' 1 'Hab transfer-time effect'
+
+    $habState = 'PavonisInteractive.TerraInvicta.TIHabState'
+    $newHab = Read-MethodIl $habState 'InitializeNewHab'
+    Assert-Count $newHab 'TIHabState::InitializeSector\(' 9 'Station and base sector initialization'
+
+    $completeModule = Read-MethodIl $habState 'CompleteModuleConstruction'
+    Assert-Count $completeModule 'TISectorState::SetFaction\(' 8 'Vanilla station and base upgrade sectors'
+
+    $repairHab = Read-MethodIl $habState 'PostEverythingSaveRepair_8'
+    Assert-Count $repairHab 'TIHabState::ActiveModules\(\)' 1 'Per-hab save repair hook'
+
     Write-Host 'PASS: target IL contains every guarded TI 1.0.47 patch point.'
 }
 finally {

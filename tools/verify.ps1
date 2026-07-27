@@ -49,8 +49,20 @@ if ($LASTEXITCODE -ne 0) {
 $weights = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\Config\economy-tech-weights.csv'
 $missionOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIMissionTemplate.json'
 $startOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIStartTimeTemplate.json'
+$globalOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIGlobalConfig.json'
+$habModuleOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIHabModuleTemplate.json'
+$habOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIHabTemplate.json'
 $testExecutable = Join-Path $repositoryRoot 'tests\FormulaTests\bin\Release\TIEconomyMod.FormulaTests.exe'
 & $testExecutable $weights
+if ($LASTEXITCODE -ne 0) {
+    exit $LASTEXITCODE
+}
+
+$templatesDirectory = Join-Path (Split-Path -Parent $resolvedManagedDir) 'StreamingAssets\Templates'
+powershell -NoProfile -ExecutionPolicy Bypass -File `
+    (Join-Path $scriptDirectory 'validate-hab-rebalance.ps1') `
+    -VanillaTemplatesDir $templatesDirectory `
+    -RepositoryRoot $repositoryRoot
 if ($LASTEXITCODE -ne 0) {
     exit $LASTEXITCODE
 }
@@ -108,6 +120,9 @@ $requiredFiles = @(
     $weights,
     $missionOverrides,
     $startOverrides,
+    $globalOverrides,
+    $habModuleOverrides,
+    $habOverrides,
     (Join-Path $repositoryRoot 'docs\current-implementation-matrix.xlsx')
 )
 foreach ($requiredFile in $requiredFiles) {
@@ -136,6 +151,9 @@ Copy-Item -LiteralPath $assemblyPath -Destination (Join-Path $stagingDirectory '
 Copy-Item -LiteralPath $weights -Destination (Join-Path $stagingDirectory 'Config')
 Copy-Item -LiteralPath $missionOverrides -Destination $stagingDirectory
 Copy-Item -LiteralPath $startOverrides -Destination $stagingDirectory
+Copy-Item -LiteralPath $globalOverrides -Destination $stagingDirectory
+Copy-Item -LiteralPath $habModuleOverrides -Destination $stagingDirectory
+Copy-Item -LiteralPath $habOverrides -Destination $stagingDirectory
 $imagePath = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\Economic Equalization Overhaul.png'
 if (Test-Path -LiteralPath $imagePath) {
     Copy-Item -LiteralPath $imagePath -Destination $stagingDirectory
