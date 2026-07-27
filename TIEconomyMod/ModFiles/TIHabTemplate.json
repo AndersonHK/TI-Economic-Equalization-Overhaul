@@ -6,9 +6,9 @@
         "faction": "CooperateCouncil",
         "habModuleNames": [
           "PlatformCore",
+          "Quarters",
           "SolarCollector",
           "SpaceScienceLab",
-          "Quarters",
           "SolarCollector"
         ]
       },
@@ -20,9 +20,9 @@
         "faction": "CooperateCouncil",
         "habModuleNames": [
           "LifeScienceLab",
-          "MaterialsLab",
+          "",
           "Quarters",
-          "Quarters"
+          ""
         ]
       },
       {
@@ -30,8 +30,13 @@
         "habModuleNames": ["", "", "", ""]
       },
       {
-        "faction": "",
-        "habModuleNames": ["", "", "", ""]
+        "faction": "CooperateCouncil",
+        "habModuleNames": [
+          "Quarters",
+          "",
+          "MaterialsLab",
+          ""
+        ]
       }
     ]
   },
@@ -61,7 +66,7 @@
         "habModuleNames": ["", "", "", ""]
       },
       {
-        "faction": "",
+        "faction": "EscapeCouncil",
         "habModuleNames": ["", "", "", ""]
       }
     ]
@@ -73,9 +78,9 @@
         "faction": "ResistCouncil",
         "habModuleNames": [
           "PlatformCore",
+          "Quarters",
           "SolarCollector",
           "SpaceScienceLab",
-          "Quarters",
           "SolarCollector"
         ]
       },
@@ -87,9 +92,9 @@
         "faction": "ResistCouncil",
         "habModuleNames": [
           "LifeScienceLab",
-          "MaterialsLab",
+          "",
           "Quarters",
-          "Quarters"
+          ""
         ]
       },
       {
@@ -97,8 +102,13 @@
         "habModuleNames": ["", "", "", ""]
       },
       {
-        "faction": "",
-        "habModuleNames": ["", "", "", ""]
+        "faction": "ResistCouncil",
+        "habModuleNames": [
+          "Quarters",
+          "",
+          "MaterialsLab",
+          ""
+        ]
       }
     ]
   }

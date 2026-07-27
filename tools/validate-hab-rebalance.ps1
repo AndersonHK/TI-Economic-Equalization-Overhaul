@@ -75,6 +75,7 @@ $materialNames = @(
     'antimatter',
     'exotics'
 )
+$cleanMassIncrementTons = 5.0
 
 $vanillaJson = Get-Content -LiteralPath $moduleSourcePath -Raw | ConvertFrom-Json
 $vanilla = @($vanillaJson | ForEach-Object { $_ })
@@ -111,9 +112,13 @@ $overrideByName = @{}
 foreach ($override in $overrides) {
     $overrideByName[$override.dataName] = $override
     $source = $vanillaByName[$override.dataName]
-    $expectedMass = [double]$source.baseMass_tons * 1.5
+    $vanillaMass = [double]$source.baseMass_tons
+    $expectedMass = [Math]::Round(
+        ($vanillaMass * 1.5) / $cleanMassIncrementTons,
+        0,
+        [MidpointRounding]::AwayFromZero) * $cleanMassIncrementTons
     if ([Math]::Abs([double]$override.baseMass_tons - $expectedMass) -gt 0.000001) {
-        throw "$($override.dataName) mass is not exactly 150 percent of vanilla."
+        throw "$($override.dataName) mass is not 150 percent of vanilla rounded to the nearest 5 tons."
     }
 
     $sum = 0.0
@@ -127,13 +132,17 @@ foreach ($override in $overrides) {
             throw "$($override.dataName) omits material '$materialName'."
         }
         $overrideValue = [double]$overrideProperty.Value
-        if ([Math]::Abs($overrideValue - $sourceValue * 2.0 / 3.0) -gt 0.00000001) {
-            throw "$($override.dataName) changes the vanilla '$materialName' material ratio."
+        $expectedWeight = [Math]::Round(
+            $sourceValue * $vanillaMass / $expectedMass,
+            9)
+        if ([Math]::Abs($overrideValue - $expectedWeight) -gt 0.00000001) {
+            throw "$($override.dataName) changes the vanilla '$materialName' tonnage."
         }
         $sum += $overrideValue
     }
-    if ([Math]::Abs($sum - 2.0 / 3.0) -gt 0.00000001) {
-        throw "$($override.dataName) material weights sum to $sum instead of two-thirds."
+    $expectedSum = $vanillaMass / $expectedMass
+    if ([Math]::Abs($sum - $expectedSum) -gt 0.00000001) {
+        throw "$($override.dataName) material weights sum to $sum instead of $expectedSum."
     }
 
     if ($source.tier -eq 1) {
@@ -170,6 +179,7 @@ function Assert-Station {
         [string]$Faction,
         [string[]]$SectorZero,
         [string[]]$SectorTwo,
+        [string[]]$SectorFour,
         [double]$ExpectedMass,
         [int]$ExpectedCrew
     )
@@ -177,11 +187,13 @@ function Assert-Station {
     if ($Station.sectors.Count -ne 5 -or
         $Station.sectors[0].faction -ne $Faction -or
         $Station.sectors[2].faction -ne $Faction -or
+        $Station.sectors[4].faction -ne $Faction -or
         ($Station.sectors[0].habModuleNames -join ';') -ne ($SectorZero -join ';') -or
-        ($Station.sectors[2].habModuleNames -join ';') -ne ($SectorTwo -join ';')) {
+        ($Station.sectors[2].habModuleNames -join ';') -ne ($SectorTwo -join ';') -or
+        ($Station.sectors[4].habModuleNames -join ';') -ne ($SectorFour -join ';')) {
         throw "$($Station.dataName) has an unexpected sector layout."
     }
-    foreach ($sectorIndex in @(1, 3, 4)) {
+    foreach ($sectorIndex in @(1, 3)) {
         if (-not [string]::IsNullOrEmpty($Station.sectors[$sectorIndex].faction)) {
             throw "$($Station.dataName) unexpectedly activates sector $sectorIndex."
         }
@@ -189,7 +201,7 @@ function Assert-Station {
 
     $mass = 0.0
     $crew = 0
-    foreach ($moduleName in @($SectorZero + $SectorTwo)) {
+    foreach ($moduleName in @($SectorZero + $SectorTwo + $SectorFour)) {
         if ([string]::IsNullOrEmpty($moduleName)) {
             continue
         }
@@ -209,18 +221,23 @@ foreach ($hab in $habOverrides) {
 }
 $issSectorZero = @(
     'PlatformCore',
+    'Quarters',
     'SolarCollector',
     'SpaceScienceLab',
-    'Quarters',
     'SolarCollector'
 )
-$issSectorTwo = @('LifeScienceLab', 'MaterialsLab', 'Quarters', 'Quarters')
+# StationGridCell positions from StreamingAssets/AssetBundles/ui:
+# internal 0: M1 north, M2 east, M3 south, M4 west
+# internal 2: M0 outer/east junction, M1 south, M2 inward/west, M3 north
+# internal 4: M0 outer/west junction, M1 north, M2 inward/east, M3 south
+$issSectorTwo = @('LifeScienceLab', '', 'Quarters', '')
+$issSectorFour = @('Quarters', '', 'MaterialsLab', '')
 Assert-Station $habByName.InternationalSpaceStation 'CooperateCouncil' `
-    $issSectorZero $issSectorTwo 427.5 8
+    $issSectorZero $issSectorTwo $issSectorFour 435 8
 Assert-Station $habByName.InternationalSpaceStationSkirmish 'ResistCouncil' `
-    $issSectorZero $issSectorTwo 427.5 8
+    $issSectorZero $issSectorTwo $issSectorFour 435 8
 Assert-Station $habByName.Tiangong 'EscapeCouncil' `
     @('PlatformCore', 'SolarCollector', 'LifeScienceLab', '', '') `
-    @('', '', '', '') 75 3
+    @('', '', '', '') @('', '', '', '') 80 3
 
 Write-Host 'PASS: 110 hab-module overrides, T1 crew, consumables, and starting stations validate.'

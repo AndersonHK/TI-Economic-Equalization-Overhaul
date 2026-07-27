@@ -185,23 +185,58 @@ namespace TIEconomyMod.FormulaTests
                 HabRebalanceMath.MandatoryEarthMass(150f, 2f / 3f, 1f),
                 0.0001f,
                 "new module mandatory Earth mass");
-            Near(100f / 3f,
+            Near(20f / 3f,
                 HabRebalanceMath.MandatoryEarthMass(
-                    150f,
-                    2f / 3f,
+                    25f,
+                    0.6f,
                     HabRebalanceMath.ConstructionRate(true)),
                 0.0001f,
-                "upgrade mandatory Earth mass");
+                "rounded-mass upgrade mandatory Earth mass");
+            Near(15f,
+                HabRebalanceMath.OrdinaryMaterialMass(25f, 0.6f, 1f),
+                0.0001f,
+                "rounded-mass module preserves vanilla material tonnage");
+            Near(2f,
+                HabRebalanceMath.NormalizeMaterialCost(
+                    0.6666666f,
+                    0.6666666f,
+                    2f),
+                0.0001f,
+                "material normalization removes JSON float dust");
+            Near(2.5f, HabRebalanceMath.RoundCost(2.5000002f), 0f,
+                "clean physical mass retains one-decimal Earth Boost");
             Near(1f, HabRebalanceMath.ConstructionRate(false), 0f,
                 "new construction rate");
             True(HabRebalanceMath.HasRebalancedMaterialFraction(0.6666667f),
                 "two-thirds material marker");
+            True(HabRebalanceMath.HasRebalancedMaterialFraction(0.6f),
+                "rounded-mass material marker");
             True(!HabRebalanceMath.HasRebalancedMaterialFraction(0.95f),
                 "vanilla alien partial materials are not marked");
-            True(HabRebalanceMath.NeedsEarthTransferDelay(0f),
-                "fully local materials add Earth transfer time");
-            True(!HabRebalanceMath.NeedsEarthTransferDelay(1f),
-                "existing boost avoids duplicate transfer time");
+            True(HabRebalanceMath.HasEarthDelivery(1f),
+                "mandatory equipment adds Earth transfer time");
+            True(!HabRebalanceMath.HasEarthDelivery(0f),
+                "zero Boost has no Earth transfer time");
+            Near(1f,
+                HabRebalanceMath.ConnectorTierRequirement(1, true, false, true),
+                0f,
+                "active human T1 station sector connects");
+            Near(2f,
+                HabRebalanceMath.ConnectorTierRequirement(1, true, false, false),
+                0f,
+                "inactive human T1 station sector stays gated");
+            Near(2f,
+                HabRebalanceMath.ConnectorTierRequirement(1, true, true, true),
+                0f,
+                "alien T1 station sector stays gated");
+            Near(2f,
+                HabRebalanceMath.ConnectorTierRequirement(1, false, false, true),
+                0f,
+                "T1 base sector stays gated");
+            Near(2f,
+                HabRebalanceMath.ConnectorTierRequirement(2, true, false, true),
+                0f,
+                "T2 station retains vanilla connector threshold");
         }
 
         private static void TestAbundance()

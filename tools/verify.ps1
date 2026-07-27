@@ -32,6 +32,15 @@ if ($LASTEXITCODE -ne 0) {
     exit $LASTEXITCODE
 }
 
+$assemblyPath = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\Assembly\TIEconomyMod.dll'
+powershell -NoProfile -ExecutionPolicy Bypass -File `
+    (Join-Path $scriptDirectory 'validate-hab-connector-transpiler.ps1') `
+    -TargetManagedDir $resolvedManagedDir `
+    -ModAssemblyPath $assemblyPath
+if ($LASTEXITCODE -ne 0) {
+    exit $LASTEXITCODE
+}
+
 powershell -NoProfile -ExecutionPolicy Bypass -File (Join-Path $scriptDirectory 'validate-implementation-matrix.ps1') -RepositoryRoot $repositoryRoot
 if ($LASTEXITCODE -ne 0) {
     exit $LASTEXITCODE
@@ -72,7 +81,7 @@ $manifest = Get-Content -LiteralPath $manifestPath -Raw | ConvertFrom-Json
 if ($manifest.GameVersion -ne '1.0.47') {
     throw "ModInfo.json targets '$($manifest.GameVersion)' instead of TI 1.0.47."
 }
-if ($manifest.Version -ne '0.6.4') {
+if ($manifest.Version -ne '0.6.5') {
     throw "ModInfo.json version '$($manifest.Version)' does not match this release."
 }
 if ($manifest.AssemblyName -ne 'Assembly/TIEconomyMod.dll') {
@@ -107,7 +116,6 @@ if (($modernStart.startingTechs -join ';') -ne 'Skywatch;WeAreNotAlone;OutpostHa
     throw 'The 2022 start override has unexpected current or completed technologies.'
 }
 
-$assemblyPath = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\Assembly\TIEconomyMod.dll'
 $assemblyFile = Get-Item -LiteralPath $assemblyPath
 if ($assemblyFile.LastWriteTime -lt $buildStarted.AddSeconds(-2)) {
     throw 'Packaged DLL predates this verification build.'
@@ -159,7 +167,7 @@ if (Test-Path -LiteralPath $imagePath) {
     Copy-Item -LiteralPath $imagePath -Destination $stagingDirectory
 }
 
-$zipPath = Join-Path $artifactDirectory 'TIEconomyMod-0.6.4-ti1.0.47.zip'
+$zipPath = Join-Path $artifactDirectory 'TIEconomyMod-0.6.5-ti1.0.47.zip'
 if (Test-Path -LiteralPath $zipPath) {
     Remove-Item -LiteralPath $zipPath
 }

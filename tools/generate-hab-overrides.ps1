@@ -82,14 +82,22 @@ $materialNames = @(
     'antimatter',
     'exotics'
 )
+$cleanMassIncrementTons = 5.0
 $overrides = foreach ($template in $targets) {
+    $vanillaMass = [double]$template.baseMass_tons
+    $rebalancedMass = [Math]::Round(
+        ($vanillaMass * 1.5) / $cleanMassIncrementTons,
+        0,
+        [MidpointRounding]::AwayFromZero) * $cleanMassIncrementTons
     $vanillaSum = 0.0
     $weights = [ordered]@{}
     foreach ($materialName in $materialNames) {
         $property = $template.weightedBuildMaterials.PSObject.Properties[$materialName]
         $value = if ($null -eq $property) { 0.0 } else { [double]$property.Value }
         $vanillaSum += $value
-        $weights[$materialName] = [Math]::Round($value * 2.0 / 3.0, 9)
+        $weights[$materialName] = [Math]::Round(
+            $value * $vanillaMass / $rebalancedMass,
+            9)
     }
     if ([Math]::Abs($vanillaSum - 1.0) -gt 0.0000001) {
         throw "$($template.dataName) has unexpected vanilla material sum $vanillaSum."
@@ -97,7 +105,7 @@ $overrides = foreach ($template in $targets) {
 
     $entry = [ordered]@{
         dataName = $template.dataName
-        baseMass_tons = [Math]::Round([double]$template.baseMass_tons * 1.5, 6)
+        baseMass_tons = $rebalancedMass
         weightedBuildMaterials = $weights
     }
     if ($template.tier -eq 1) {

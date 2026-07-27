@@ -85,12 +85,12 @@
     },
     {
         "dataName":  "AutomatedSolarCollector",
-        "baseMass_tons":  22.5,
+        "baseMass_tons":  25,
         "weightedBuildMaterials":  {
                                        "water":  0,
-                                       "volatiles":  0.133333333,
-                                       "metals":  0.5,
-                                       "nobleMetals":  0.033333333,
+                                       "volatiles":  0.12,
+                                       "metals":  0.45,
+                                       "nobleMetals":  0.03,
                                        "fissiles":  0,
                                        "antimatter":  0,
                                        "exotics":  0
@@ -113,12 +113,12 @@
     },
     {
         "dataName":  "AutomatedSupplyDepot",
-        "baseMass_tons":  22.5,
+        "baseMass_tons":  25,
         "weightedBuildMaterials":  {
-                                       "water":  0.08,
-                                       "volatiles":  0.306666667,
-                                       "metals":  0.266666667,
-                                       "nobleMetals":  0.013333333,
+                                       "water":  0.072,
+                                       "volatiles":  0.276,
+                                       "metals":  0.24,
+                                       "nobleMetals":  0.012,
                                        "fissiles":  0,
                                        "antimatter":  0,
                                        "exotics":  0
@@ -282,12 +282,12 @@
     },
     {
         "dataName":  "ListeningPost",
-        "baseMass_tons":  37.5,
+        "baseMass_tons":  40,
         "weightedBuildMaterials":  {
                                        "water":  0,
-                                       "volatiles":  0.066666667,
-                                       "metals":  0.5,
-                                       "nobleMetals":  0.1,
+                                       "volatiles":  0.0625,
+                                       "metals":  0.46875,
+                                       "nobleMetals":  0.09375,
                                        "fissiles":  0,
                                        "antimatter":  0,
                                        "exotics":  0
@@ -380,11 +380,11 @@
     },
     {
         "dataName":  "PlatformCore",
-        "baseMass_tons":  22.5,
+        "baseMass_tons":  25,
         "weightedBuildMaterials":  {
                                        "water":  0,
-                                       "volatiles":  0.333333333,
-                                       "metals":  0.333333333,
+                                       "volatiles":  0.3,
+                                       "metals":  0.3,
                                        "nobleMetals":  0,
                                        "fissiles":  0,
                                        "antimatter":  0,
@@ -422,11 +422,11 @@
     },
     {
         "dataName":  "SocialScienceLab",
-        "baseMass_tons":  22.5,
+        "baseMass_tons":  25,
         "weightedBuildMaterials":  {
                                        "water":  0,
-                                       "volatiles":  0.166666667,
-                                       "metals":  0.5,
+                                       "volatiles":  0.15,
+                                       "metals":  0.45,
                                        "nobleMetals":  0,
                                        "fissiles":  0,
                                        "antimatter":  0,
@@ -436,12 +436,12 @@
     },
     {
         "dataName":  "SolarCollector",
-        "baseMass_tons":  22.5,
+        "baseMass_tons":  25,
         "weightedBuildMaterials":  {
                                        "water":  0,
-                                       "volatiles":  0.133333333,
-                                       "metals":  0.5,
-                                       "nobleMetals":  0.033333333,
+                                       "volatiles":  0.12,
+                                       "metals":  0.45,
+                                       "nobleMetals":  0.03,
                                        "fissiles":  0,
                                        "antimatter":  0,
                                        "exotics":  0
@@ -492,11 +492,11 @@
     },
     {
         "dataName":  "SupplyDepot",
-        "baseMass_tons":  22.5,
+        "baseMass_tons":  25,
         "weightedBuildMaterials":  {
                                        "water":  0,
-                                       "volatiles":  0.066666667,
-                                       "metals":  0.6,
+                                       "volatiles":  0.06,
+                                       "metals":  0.54,
                                        "nobleMetals":  0,
                                        "fissiles":  0,
                                        "antimatter":  0,
@@ -506,11 +506,11 @@
     },
     {
         "dataName":  "TouristBerth",
-        "baseMass_tons":  22.5,
+        "baseMass_tons":  25,
         "weightedBuildMaterials":  {
-                                       "water":  0.1,
-                                       "volatiles":  0.166666667,
-                                       "metals":  0.4,
+                                       "water":  0.09,
+                                       "volatiles":  0.15,
+                                       "metals":  0.36,
                                        "nobleMetals":  0,
                                        "fissiles":  0,
                                        "antimatter":  0,
@@ -820,12 +820,12 @@
     },
     {
         "dataName":  "ReconnaissanceArray",
-        "baseMass_tons":  187.5,
+        "baseMass_tons":  190,
         "weightedBuildMaterials":  {
                                        "water":  0,
-                                       "volatiles":  0.066666667,
-                                       "metals":  0.5,
-                                       "nobleMetals":  0.1,
+                                       "volatiles":  0.065789474,
+                                       "metals":  0.493421053,
+                                       "nobleMetals":  0.098684211,
                                        "fissiles":  0,
                                        "antimatter":  0,
                                        "exotics":  0
@@ -911,11 +911,11 @@
     },
     {
         "dataName":  "SocialScienceResearchCenter",
-        "baseMass_tons":  112.5,
+        "baseMass_tons":  115,
         "weightedBuildMaterials":  {
                                        "water":  0,
-                                       "volatiles":  0.166666667,
-                                       "metals":  0.5,
+                                       "volatiles":  0.163043478,
+                                       "metals":  0.489130435,
                                        "nobleMetals":  0,
                                        "fissiles":  0,
                                        "antimatter":  0,
@@ -924,12 +924,12 @@
     },
     {
         "dataName":  "SolarArray",
-        "baseMass_tons":  112.5,
+        "baseMass_tons":  115,
         "weightedBuildMaterials":  {
                                        "water":  0,
-                                       "volatiles":  0.133333333,
-                                       "metals":  0.5,
-                                       "nobleMetals":  0.033333333,
+                                       "volatiles":  0.130434783,
+                                       "metals":  0.489130435,
+                                       "nobleMetals":  0.032608696,
                                        "fissiles":  0,
                                        "antimatter":  0,
                                        "exotics":  0

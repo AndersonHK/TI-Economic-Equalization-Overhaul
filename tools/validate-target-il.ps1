@@ -111,6 +111,22 @@ try {
     $repairHab = Read-MethodIl $habState 'PostEverythingSaveRepair_8'
     Assert-Count $repairHab 'TIHabState::ActiveModules\(\)' 1 'Per-hab save repair hook'
 
+    $connectorMap = Read-MethodIl `
+        'PavonisInteractive.TerraInvicta.TISectorState' `
+        'UpdateModuleConnectorMap'
+    Assert-Count $connectorMap `
+        'TIHabState::get_tier\(\)\s+IL_[^:]+:\s+ldc\.i4\.2\s+IL_[^:]+:\s+blt(?:\.s)?\s+IL_' `
+        4 `
+        'Hab connector tier-two gates'
+    Assert-Count $connectorMap `
+        'TIHabState::sectors\s+IL_[^:]+:\s+ldc\.i4\.2\s+IL_[^:]+:\s+callvirt.*get_Item\(int32\)\s+IL_[^:]+:\s+callvirt.*TISectorState::HasAnyModules\(\)' `
+        2 `
+        'Hab internal-sector-two connector checks'
+    Assert-Count $connectorMap `
+        'TIHabState::sectors\s+IL_[^:]+:\s+ldc\.i4\.4\s+IL_[^:]+:\s+callvirt.*get_Item\(int32\)\s+IL_[^:]+:\s+callvirt.*TISectorState::HasAnyModules\(\)' `
+        2 `
+        'Hab internal-sector-four connector check'
+
     Write-Host 'PASS: target IL contains every guarded TI 1.0.47 patch point.'
 }
 finally {
