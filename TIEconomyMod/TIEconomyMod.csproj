@@ -95,6 +95,7 @@
     <None Include="ModFiles\TIHabTemplate.json" />
     <None Include="ModFiles\TIMissionTemplate.json" />
     <None Include="ModFiles\TIStartTimeTemplate.json" />
+    <None Include="ModFiles\UINation.en" />
     <None Include="ModFiles\ModInfo.json" />
   </ItemGroup>
 

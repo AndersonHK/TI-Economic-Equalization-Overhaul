@@ -69,6 +69,7 @@ $startOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIStartTimeTe
 $globalOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIGlobalConfig.json'
 $habModuleOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIHabModuleTemplate.json'
 $habOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIHabTemplate.json'
+$nationLocalization = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\UINation.en'
 $testExecutable = Join-Path $repositoryRoot 'tests\FormulaTests\bin\Release\TIEconomyMod.FormulaTests.exe'
 & $testExecutable $weights
 if ($LASTEXITCODE -ne 0) {
@@ -139,6 +140,7 @@ $requiredFiles = @(
     $globalOverrides,
     $habModuleOverrides,
     $habOverrides,
+    $nationLocalization,
     (Join-Path $repositoryRoot 'docs\current-implementation-matrix.xlsx')
 )
 foreach ($requiredFile in $requiredFiles) {
@@ -170,6 +172,7 @@ Copy-Item -LiteralPath $startOverrides -Destination $stagingDirectory
 Copy-Item -LiteralPath $globalOverrides -Destination $stagingDirectory
 Copy-Item -LiteralPath $habModuleOverrides -Destination $stagingDirectory
 Copy-Item -LiteralPath $habOverrides -Destination $stagingDirectory
+Copy-Item -LiteralPath $nationLocalization -Destination $stagingDirectory
 $imagePath = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\Economic Equalization Overhaul.png'
 if (Test-Path -LiteralPath $imagePath) {
     Copy-Item -LiteralPath $imagePath -Destination $stagingDirectory
