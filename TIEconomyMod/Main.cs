@@ -30,7 +30,7 @@ namespace TIEconomyMod
                 string weightPath = Path.Combine(modEntry.Path, "Config", "economy-tech-weights.csv");
                 techWeights = TechWeightCatalog.Load(weightPath, Log, IsKnownTechnology);
                 new Harmony(modEntry.Info.Id).PatchAll();
-                Log("Loaded TI Economic Equalization Overhaul 0.7.0 for the TI 1.0.49 API surface.");
+                Log("Loaded TI Economic Equalization Overhaul 0.7.1 for the TI 1.0.49 API surface.");
                 return true;
             }
             catch (Exception exception)
@@ -275,6 +275,8 @@ namespace TIEconomyMod
     public sealed class ControlCostSettings
     {
         public bool enabled = true;
+        public bool projectBonusesAsPercent = true;
+        public float countryCostMultiplier = 1.20f;
         public float exponentOneTech = 0.98f;
         public float exponentTwoTechs = 0.95f;
         public float exponentThreeTechs = 0.90f;
@@ -522,6 +524,7 @@ namespace TIEconomyMod
             RepairPositive(ref value.inequality.spoilsChangeAtReferenceGdp, defaults.inequality.spoilsChangeAtReferenceGdp, "inequality.spoilsChangeAtReferenceGdp", log);
             RepairNonNegative(ref value.inequality.economyMaximumResourceMultiplier, defaults.inequality.economyMaximumResourceMultiplier, "inequality.economyMaximumResourceMultiplier", log);
             RepairNonNegative(ref value.inequality.spoilsMaximumResourceMultiplier, defaults.inequality.spoilsMaximumResourceMultiplier, "inequality.spoilsMaximumResourceMultiplier", log);
+            RepairPositive(ref value.controlCost.countryCostMultiplier, defaults.controlCost.countryCostMultiplier, "controlCost.countryCostMultiplier", log);
             RepairRange(ref value.controlCost.exponentOneTech, defaults.controlCost.exponentOneTech, 0.01f, 1f, "controlCost.exponentOneTech", log);
             RepairRange(ref value.controlCost.exponentTwoTechs, defaults.controlCost.exponentTwoTechs, 0.01f, 1f, "controlCost.exponentTwoTechs", log);
             RepairRange(ref value.controlCost.exponentThreeTechs, defaults.controlCost.exponentThreeTechs, 0.01f, 1f, "controlCost.exponentThreeTechs", log);

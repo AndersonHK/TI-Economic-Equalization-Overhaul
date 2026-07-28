@@ -78,6 +78,8 @@ $globalOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIGlobalConf
 $habModuleOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIHabModuleTemplate.json'
 $habOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIHabTemplate.json'
 $nationLocalization = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\UINation.en'
+$effectLocalization = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIEffectTemplate.en'
+$technologyLocalization = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TITechTemplate.en'
 $testExecutable = Join-Path $repositoryRoot 'tests\FormulaTests\bin\Release\TIEconomyMod.FormulaTests.exe'
 & $testExecutable $weights
 if ($LASTEXITCODE -ne 0) {
@@ -209,6 +211,49 @@ if (-not [bool]::Parse([string]$settingsXml.Settings.enabled)) {
     throw 'Default Settings.xml must enable the global mod toggle.'
 }
 
+$effectTemplates = Get-Content -LiteralPath (Join-Path $templatesDirectory 'TIEffectTemplate.json') -Raw |
+    ConvertFrom-Json
+$expectedControlEffects = [ordered]@{
+    Effect_ControlPointMaintenanceBonus160 = -120
+    Effect_ControlPointMaintenanceBonus40 = -40
+    Effect_ControlPointMaintenanceBonus20 = -20
+    Effect_ControlPointMaintenanceBonus10 = -10
+    Effect_ControlPointMaintenanceBonus3 = -5
+}
+$effectLocalizationText = Get-Content -LiteralPath $effectLocalization -Raw
+foreach ($entry in $expectedControlEffects.GetEnumerator()) {
+    $template = @($effectTemplates | Where-Object { $_.dataName -eq $entry.Key })
+    if ($template.Count -ne 1 -or $template[0].operation -ne 'Additive' -or
+        [double]$template[0].value -ne [double]$entry.Value -or
+        -not [bool]$template[0].stackable) {
+        throw "Installed control-capacity effect '$($entry.Key)' no longer matches the percentage conversion contract."
+    }
+    $key = "TIEffectTemplate.description.$($entry.Key)="
+    if ([regex]::Matches($effectLocalizationText, "(?m)^$([regex]::Escape($key))").Count -ne 1 -or
+        $effectLocalizationText -notmatch "(?m)^$([regex]::Escape($key)).*%") {
+        throw "Project localization is missing the percentage tooltip for '$($entry.Key)'."
+    }
+}
+
+$technologyLocalizationText = Get-Content -LiteralPath $technologyLocalization -Raw
+$controlTechnologies = @(
+    'ArrivalInternationalRelations',
+    'UnityMovements',
+    'GreatNations',
+    'ArrivalGovernance',
+    'Accelerando'
+)
+foreach ($technologyId in $controlTechnologies) {
+    $key = "TITechTemplate.summary.$technologyId="
+    $line = [regex]::Match(
+        $technologyLocalizationText,
+        "(?m)^$([regex]::Escape($key)).*$")
+    if (-not $line.Success -or $line.Value -notmatch '1\.00.*0\.98.*0\.95.*0\.90.*0\.85.*0\.80' -or
+        $line.Value -notmatch '1\.20') {
+        throw "Technology localization is missing the complete control-cost tooltip for '$technologyId'."
+    }
+}
+
 & node (Join-Path $repositoryRoot 'tools\economy-growth-simulator.js') | Out-Host
 if ($LASTEXITCODE -ne 0) {
     throw 'Economy growth simulator failed.'
@@ -227,7 +272,7 @@ $manifest = Get-Content -LiteralPath $manifestPath -Raw | ConvertFrom-Json
 if ($manifest.GameVersion -ne '1.0.49') {
     throw "ModInfo.json targets '$($manifest.GameVersion)' instead of TI 1.0.49."
 }
-if ($manifest.Version -ne '0.7.0') {
+if ($manifest.Version -ne '0.7.1') {
     throw "ModInfo.json version '$($manifest.Version)' does not match this release."
 }
 if ($manifest.AssemblyName -ne 'Assembly/TIEconomyMod.dll') {
@@ -266,6 +311,10 @@ $assemblyFile = Get-Item -LiteralPath $assemblyPath
 if ($assemblyFile.LastWriteTime -lt $buildStarted.AddSeconds(-2)) {
     throw 'Packaged DLL predates this verification build.'
 }
+$assemblyVersion = [Reflection.AssemblyName]::GetAssemblyName($assemblyPath).Version.ToString()
+if ($assemblyVersion -ne '0.7.1.0') {
+    throw "Assembly version '$assemblyVersion' does not match release 0.7.1."
+}
 $assemblyHash = (Get-FileHash -LiteralPath $assemblyPath -Algorithm SHA256).Hash
 
 $requiredFiles = @(
@@ -279,6 +328,8 @@ $requiredFiles = @(
     $habModuleOverrides,
     $habOverrides,
     $nationLocalization,
+    $effectLocalization,
+    $technologyLocalization,
     (Join-Path $repositoryRoot 'docs\current-implementation-matrix.xlsx')
 )
 foreach ($requiredFile in $requiredFiles) {
@@ -312,12 +363,14 @@ Copy-Item -LiteralPath $globalOverrides -Destination $stagingDirectory
 Copy-Item -LiteralPath $habModuleOverrides -Destination $stagingDirectory
 Copy-Item -LiteralPath $habOverrides -Destination $stagingDirectory
 Copy-Item -LiteralPath $nationLocalization -Destination $stagingDirectory
+Copy-Item -LiteralPath $effectLocalization -Destination $stagingDirectory
+Copy-Item -LiteralPath $technologyLocalization -Destination $stagingDirectory
 $imagePath = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\Economic Equalization Overhaul.png'
 if (Test-Path -LiteralPath $imagePath) {
     Copy-Item -LiteralPath $imagePath -Destination $stagingDirectory
 }
 
-$zipPath = Join-Path $artifactDirectory 'TIEconomyMod-0.7.0-ti1.0.49.zip'
+$zipPath = Join-Path $artifactDirectory 'TIEconomyMod-0.7.1-ti1.0.49.zip'
 if (Test-Path -LiteralPath $zipPath) {
     Remove-Item -LiteralPath $zipPath
 }
@@ -338,8 +391,15 @@ try {
     $packagedWeights = $archive.Entries |
         Where-Object { $_.FullName.Replace('\', '/') -eq 'TIEconomyMod/Config/economy-tech-weights.csv' } |
         Select-Object -First 1
-    if ($null -eq $packagedSettings -or $null -eq $packagedWeights) {
-        throw 'Release archive is missing default Settings.xml or economy-tech-weights.csv.'
+    $packagedEffectLocalization = $archive.Entries |
+        Where-Object { $_.FullName.Replace('\', '/') -eq 'TIEconomyMod/TIEffectTemplate.en' } |
+        Select-Object -First 1
+    $packagedTechnologyLocalization = $archive.Entries |
+        Where-Object { $_.FullName.Replace('\', '/') -eq 'TIEconomyMod/TITechTemplate.en' } |
+        Select-Object -First 1
+    if ($null -eq $packagedSettings -or $null -eq $packagedWeights -or
+        $null -eq $packagedEffectLocalization -or $null -eq $packagedTechnologyLocalization) {
+        throw 'Release archive is missing settings, technology weights, or control-point localization.'
     }
     $stream = $packagedDll.Open()
     $sha256 = [Security.Cryptography.SHA256]::Create()

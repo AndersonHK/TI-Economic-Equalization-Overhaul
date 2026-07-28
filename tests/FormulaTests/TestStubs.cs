@@ -113,8 +113,14 @@ namespace PavonisInteractive.TerraInvicta
         public TINationState homeNation;
     }
 
+    public sealed class TIFactionState
+    {
+        public bool IsAlienFaction;
+    }
+
     public enum Context
     {
+        ControlPointMaintenance,
         Environment_SustainabilityChange,
         Welfare_CO2_ppm,
         Welfare_CH4_ppm,
@@ -135,12 +141,27 @@ namespace PavonisInteractive.TerraInvicta
 
     public static class TIEffectsState
     {
+        public static readonly List<TIEffectTemplate> FactionEffects =
+            new List<TIEffectTemplate>();
+
+        public static List<TIEffectTemplate> GetFactionEffectsForContext(
+            Context context, TIFactionState faction)
+        {
+            return new List<TIEffectTemplate>(FactionEffects);
+        }
+
         public static float SumEffectsModifiers(
             Context context, TINationState nation, float baseValue, object target)
         {
             return 0f;
         }
     }
+}
+
+public sealed class TIEffectTemplate
+{
+    public string dataName;
+    public float value;
 }
 
 namespace TIEconomyMod
@@ -267,6 +288,8 @@ namespace TIEconomyMod
     public sealed class ControlCostSettings
     {
         public bool enabled = true;
+        public bool projectBonusesAsPercent = true;
+        public float countryCostMultiplier = 1.20f;
         public float exponentOneTech = 0.98f;
         public float exponentTwoTechs = 0.95f;
         public float exponentThreeTechs = 0.90f;

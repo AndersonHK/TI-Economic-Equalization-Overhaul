@@ -74,6 +74,8 @@
   </inequality>
   <controlCost>
     <enabled>true</enabled>
+    <projectBonusesAsPercent>true</projectBonusesAsPercent>
+    <countryCostMultiplier>1.2</countryCostMultiplier>
     <exponentOneTech>0.98</exponentOneTech>
     <exponentTwoTechs>0.95</exponentTwoTechs>
     <exponentThreeTechs>0.9</exponentThreeTechs>

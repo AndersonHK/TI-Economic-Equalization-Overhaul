@@ -47,6 +47,7 @@ namespace TIEconomyMod.FormulaTests
             TIEconomyMod.Main.settings = new Settings();
             GameStateManager.Research.finishedTechsNames.Clear();
             GameStateManager.TimeState.template.CPMaintenanceModifier = 1f;
+            TIEffectsState.FactionEffects.Clear();
         }
 
         private static void TestNationalValues()
@@ -66,14 +67,50 @@ namespace TIEconomyMod.FormulaTests
             nation.numControlPoints = 4;
             result = 50f;
             ControlPointCostPatch.Postfix(ref result, nation);
-            Near(50f, result, 0.0001f, "control cost no technology");
+            Near(60f, result, 0.0001f, "control cost 20 percent increase");
             GameStateManager.Research.finishedTechsNames.Add("ArrivalInternationalRelations");
             ControlPointCostPatch.Postfix(ref result, nation);
-            Near((float)Math.Pow(200f, 0.98f) / 4f, result, 0.0001f, "control exponent sequence");
+            Near((float)Math.Pow(200f, 0.98f) / 4f * 1.2f, result, 0.0001f,
+                "control exponent sequence and country-cost multiplier");
             GameStateManager.TimeState.template.CPMaintenanceModifier = 1.2f;
             ControlPointCostPatch.Postfix(ref result, nation);
-            Near((float)Math.Pow(200f, 0.98f) / 4f * 1.2f, result, 0.0001f,
+            Near((float)Math.Pow(200f, 0.98f) / 4f * 1.2f * 1.2f, result, 0.0001f,
                 "TI 1.0.49 scenario control-maintenance multiplier");
+
+            TIFactionState faction = new TIFactionState();
+            TIEffectsState.FactionEffects.Add(new TIEffectTemplate
+            {
+                dataName = "Effect_ControlPointMaintenanceBonus40",
+                value = -40f
+            });
+            result = 350f; // 310 from every non-project flat source, plus vanilla's 40.
+            ControlPointCapacityPatch.Postfix(ref result, faction);
+            Near(434f, result, 0.0001f,
+                "project percentage multiplies all non-project flat capacity");
+
+            TIEffectsState.FactionEffects.Clear();
+            TIEffectsState.FactionEffects.Add(new TIEffectTemplate
+            {
+                dataName = "Effect_ControlPointMaintenanceBonus3",
+                value = -5f
+            });
+            result = 315f;
+            ControlPointCapacityPatch.Postfix(ref result, faction);
+            Near(325.5f, result, 0.0001f, "Management Research remains five percent");
+
+            TIEffectsState.FactionEffects.Add(new TIEffectTemplate
+            {
+                dataName = "Effect_ControlPointMaintenanceBonus3",
+                value = -5f
+            });
+            result = 320f;
+            ControlPointCapacityPatch.Postfix(ref result, faction);
+            Near(341f, result, 0.0001f, "repeatable project percentages stack additively");
+
+            faction.IsAlienFaction = true;
+            result = 20000f;
+            ControlPointCapacityPatch.Postfix(ref result, faction);
+            Near(20000f, result, 0.0001f, "alien control capacity remains unchanged");
 
             TIArmyState army = new TIArmyState { homeNation = nation, useHomeInvestmentFactor = true };
             nation.militaryTechLevel = 5f;

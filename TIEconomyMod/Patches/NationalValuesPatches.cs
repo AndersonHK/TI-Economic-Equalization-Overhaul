@@ -1,6 +1,7 @@
 using HarmonyLib;
 using PavonisInteractive.TerraInvicta;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace TIEconomyMod.Patches
@@ -68,10 +69,11 @@ namespace TIEconomyMod.Patches
 
             // The five listed social technologies lower the economy-score exponent through
             // 1, .98, .95, .90, .85, and .80; the result is divided evenly among CPs.
-            // TI 1.0.49 then applies the active scenario's CP-maintenance multiplier,
-            // preserving the new-start balance knob without adopting vanilla's global-GDP
-            // normalization. With economy score 200, four CPs, and a x1.2 scenario,
-            // no technology costs 200 / 4 * 1.2 = 60 and all five cost about 21.
+            // TI 1.0.49 then applies both EEO's x1.20 country-cost increase and the
+            // active scenario's CP-maintenance multiplier, preserving the new-start
+            // balance knob without adopting vanilla's global-GDP normalization.
+            // With economy score 200, four CPs, and a x1.2 scenario, no technology
+            // costs 200 / 4 * 1.2 * 1.2 = 72 and all five cost about 25.
             float exponent;
             switch (completed)
             {
@@ -84,11 +86,66 @@ namespace TIEconomyMod.Patches
             }
             float calculated = (float)Math.Pow(__instance.economyScore, exponent) /
                 Math.Max(1, __instance.numControlPoints) *
+                settings.countryCostMultiplier *
                 GameStateManager.Time().template.CPMaintenanceModifier;
 
             if (float.IsNaN(calculated) || float.IsInfinity(calculated))
             {
                 Main.Warn("Control Point cost produced an invalid value; retaining vanilla.");
+                return;
+            }
+            __result = calculated;
+        }
+    }
+
+    [HarmonyPatch(typeof(TIFactionState), "GetControlPointMaintenanceFreebieCap")]
+    public static class ControlPointCapacityPatch
+    {
+        // These are the five stackable project effects used by TI 1.0.49. Their
+        // stored negative additive values become positive percentage points here.
+        // Restricting the conversion to known IDs preserves every unrelated
+        // ControlPointMaintenance modifier from the game or another mod.
+        private static readonly HashSet<string> PercentageProjectEffects =
+            new HashSet<string>(StringComparer.Ordinal)
+            {
+                "Effect_ControlPointMaintenanceBonus160",
+                "Effect_ControlPointMaintenanceBonus40",
+                "Effect_ControlPointMaintenanceBonus20",
+                "Effect_ControlPointMaintenanceBonus10",
+                "Effect_ControlPointMaintenanceBonus3"
+            };
+
+        [HarmonyPostfix]
+        public static void Postfix(ref float __result, TIFactionState __instance)
+        {
+            ControlCostSettings settings = Main.settings.controlCost;
+            if (!Main.FeatureEnabled(settings.enabled) ||
+                !settings.projectBonusesAsPercent ||
+                __instance.IsAlienFaction)
+            {
+                return;
+            }
+
+            float projectPercent = TIEffectsState
+                .GetFactionEffectsForContext(Context.ControlPointMaintenance, __instance)
+                .Where(effect =>
+                    effect != null &&
+                    effect.value < 0f &&
+                    PercentageProjectEffects.Contains(effect.dataName))
+                .Sum(effect => -effect.value);
+            if (projectPercent <= 0f)
+            {
+                return;
+            }
+
+            // Vanilla has already added these project values as flat capacity.
+            // Remove that contribution, then multiply the complete remaining base:
+            // campaign/scenario freebies, AI bonuses, councilors, and LEO modules.
+            float flatCapacity = __result - projectPercent;
+            float calculated = flatCapacity * (1f + projectPercent / 100f);
+            if (flatCapacity < 0f || float.IsNaN(calculated) || float.IsInfinity(calculated))
+            {
+                Main.Warn("Control Point capacity produced an invalid value; retaining vanilla.");
                 return;
             }
             __result = calculated;

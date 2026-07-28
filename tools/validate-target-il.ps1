@@ -95,6 +95,18 @@ try {
     $controlCost = Read-MethodIl $nation 'get_ControlPointMaintenanceCost'
     Assert-Count $controlCost 'ldfld\s+float32 TIStartTimeTemplate::CPMaintenanceModifier' 1 'Control-point scenario multiplier'
 
+    $controlCapacity = Read-MethodIl `
+        'PavonisInteractive.TerraInvicta.TIFactionState' `
+        'GetControlPointMaintenanceFreebieCap'
+    Assert-Count $controlCapacity 'TIEffectsState::SumEffectsModifiers\(' 1 'Control-point capacity effect total'
+    Assert-Count $controlCapacity 'System\.Linq\.Enumerable::Sum<' 2 'Control-point councilor and LEO capacity'
+    Assert-Count $controlCapacity 'ldc\.r4\s+20000\.' 1 'Alien control-point capacity'
+
+    $factionEffects = Read-MethodIl `
+        'PavonisInteractive.TerraInvicta.TIEffectsState' `
+        'GetFactionEffectsForContext'
+    Assert-Count $factionEffects 'System\.Linq\.Enumerable::ToList<class TIEffectTemplate>' 1 'Faction effect enumeration API'
+
     $megafauna = Read-MethodIl 'PavonisInteractive.TerraInvicta.TIMegafaunaArmyState' 'get_techLevel'
     Assert-Count $megafauna 'ldc\.r4\s+6\.' 1 'Xenofauna vanilla technology ceiling'
 
