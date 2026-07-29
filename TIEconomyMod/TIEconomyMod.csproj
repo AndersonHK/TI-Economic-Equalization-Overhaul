@@ -97,6 +97,7 @@
     <Compile Include="Patches\CompletionCompatibilityPatches.cs" />
     <Compile Include="Patches\CouncilorPatches.cs" />
     <Compile Include="Patches\NationalValuesPatches.cs" />
+    <Compile Include="Patches\NuclearEffectsPatches.cs" />
     <Compile Include="Patches\NationalMergerPatches.cs" />
     <Compile Include="Patches\SocialPriorityPatches.cs" />
     <Compile Include="Patches\ThresholdAndUiPatches.cs" />
@@ -111,6 +112,7 @@
     <None Include="ModFiles\TIHabTemplate.json" />
     <None Include="ModFiles\TIMissionTemplate.json" />
     <None Include="ModFiles\TIStartTimeTemplate.json" />
+    <None Include="ModFiles\TITechTemplate.json" />
     <None Include="ModFiles\UIScience.en" />
     <None Include="ModFiles\UINation.en" />
     <None Include="ModFiles\ModInfo.json" />

@@ -34,6 +34,14 @@ if ($LASTEXITCODE -ne 0) {
 
 $assemblyPath = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\Assembly\TIEconomyMod.dll'
 powershell -NoProfile -ExecutionPolicy Bypass -File `
+    (Join-Path $scriptDirectory 'validate-nuclear-gdp-transpiler.ps1') `
+    -TargetManagedDir $resolvedManagedDir `
+    -ModAssemblyPath $assemblyPath
+if ($LASTEXITCODE -ne 0) {
+    exit $LASTEXITCODE
+}
+
+powershell -NoProfile -ExecutionPolicy Bypass -File `
     (Join-Path $scriptDirectory 'validate-councilor-cap-transpiler.ps1') `
     -TargetManagedDir $resolvedManagedDir `
     -ModAssemblyPath $assemblyPath
@@ -82,6 +90,7 @@ $weights = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\Config\economy-tech-
 $defaultSettings = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\Settings.xml'
 $missionOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIMissionTemplate.json'
 $startOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIStartTimeTemplate.json'
+$technologyOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TITechTemplate.json'
 $globalOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIGlobalConfig.json'
 $habModuleOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIHabModuleTemplate.json'
 $habOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIHabTemplate.json'
@@ -282,7 +291,7 @@ $manifest = Get-Content -LiteralPath $manifestPath -Raw | ConvertFrom-Json
 if ($manifest.GameVersion -ne '1.0.49') {
     throw "ModInfo.json targets '$($manifest.GameVersion)' instead of TI 1.0.49."
 }
-if ($manifest.Version -ne '0.7.2') {
+if ($manifest.Version -ne '0.7.3') {
     throw "ModInfo.json version '$($manifest.Version)' does not match this release."
 }
 if ($manifest.AssemblyName -ne 'Assembly/TIEconomyMod.dll') {
@@ -306,15 +315,43 @@ if ($enthrall.resolutionMethod.defendingModifiers[0].flatModifier -ne 3 -or
 }
 $starts = Get-Content -LiteralPath $startOverrides -Raw | ConvertFrom-Json
 $modernStart = $null
+$start2026 = $null
 foreach ($start in $starts) {
     if ($start.dataName -eq 'ModernDayStart') {
         $modernStart = $start
     }
+    elseif ($start.dataName -eq '2026Start') {
+        $start2026 = $start
+    }
 }
-if (($modernStart.startingTechs -join ';') -ne 'Skywatch;WeAreNotAlone;OutpostHabs' -or
-    ($modernStart.globalTechsCompleted -join ';') -ne
-        'MissionToSpace;AdvancedChemicalRocketry') {
-    throw 'The 2022 start override has unexpected current or completed technologies.'
+foreach ($scenario in @($modernStart, $start2026)) {
+    if ($null -eq $scenario -or
+        ($scenario.startingTechs -join ';') -ne 'Skywatch;WeAreNotAlone;OutpostHabs' -or
+        ($scenario.globalTechsCompleted -join ';') -ne
+            'MissionToSpace;AdvancedChemicalRocketry') {
+        throw 'The 2022 and 2026 start overrides must have matching current and completed technologies.'
+    }
+}
+$vanillaTechnologyPath = Join-Path $templatesDirectory 'TITechTemplate.json'
+$vanillaTechnologies =
+    Get-Content -LiteralPath $vanillaTechnologyPath -Raw | ConvertFrom-Json
+$technologyCostOverrides =
+    Get-Content -LiteralPath $technologyOverrides -Raw | ConvertFrom-Json
+$expectedTechnologyIds = @('MissionToSpace', 'Skywatch', 'WeAreNotAlone')
+if ($technologyCostOverrides.Count -ne $expectedTechnologyIds.Count) {
+    throw 'The technology override must contain exactly the three doubled early technologies.'
+}
+foreach ($technologyId in $expectedTechnologyIds) {
+    $vanillaTechnology = @(
+        $vanillaTechnologies | Where-Object { $_.dataName -eq $technologyId })
+    $overrideTechnology = @(
+        $technologyCostOverrides | Where-Object { $_.dataName -eq $technologyId })
+    if ($vanillaTechnology.Count -ne 1 -or
+        $overrideTechnology.Count -ne 1 -or
+        [double]$overrideTechnology[0].researchCost -ne
+            2 * [double]$vanillaTechnology[0].researchCost) {
+        throw "Technology '$technologyId' must override the installed vanilla research cost at exactly x2."
+    }
 }
 $globals = @(Get-Content -LiteralPath $globalOverrides -Raw | ConvertFrom-Json)
 $globalConfig = @($globals | Where-Object { $_.dataName -eq 'globalConfig' })
@@ -330,8 +367,8 @@ if ($assemblyFile.LastWriteTime -lt $buildStarted.AddSeconds(-2)) {
     throw 'Packaged DLL predates this verification build.'
 }
 $assemblyVersion = [Reflection.AssemblyName]::GetAssemblyName($assemblyPath).Version.ToString()
-if ($assemblyVersion -ne '0.7.2.0') {
-    throw "Assembly version '$assemblyVersion' does not match release 0.7.2."
+if ($assemblyVersion -ne '0.7.3.0') {
+    throw "Assembly version '$assemblyVersion' does not match release 0.7.3."
 }
 $assemblyHash = (Get-FileHash -LiteralPath $assemblyPath -Algorithm SHA256).Hash
 
@@ -342,6 +379,7 @@ $requiredFiles = @(
     $defaultSettings,
     $missionOverrides,
     $startOverrides,
+    $technologyOverrides,
     $globalOverrides,
     $habModuleOverrides,
     $habOverrides,
@@ -378,6 +416,7 @@ Copy-Item -LiteralPath $weights -Destination (Join-Path $stagingDirectory 'Confi
 Copy-Item -LiteralPath $defaultSettings -Destination $stagingDirectory
 Copy-Item -LiteralPath $missionOverrides -Destination $stagingDirectory
 Copy-Item -LiteralPath $startOverrides -Destination $stagingDirectory
+Copy-Item -LiteralPath $technologyOverrides -Destination $stagingDirectory
 Copy-Item -LiteralPath $globalOverrides -Destination $stagingDirectory
 Copy-Item -LiteralPath $habModuleOverrides -Destination $stagingDirectory
 Copy-Item -LiteralPath $habOverrides -Destination $stagingDirectory
@@ -390,7 +429,7 @@ if (Test-Path -LiteralPath $imagePath) {
     Copy-Item -LiteralPath $imagePath -Destination $stagingDirectory
 }
 
-$zipPath = Join-Path $artifactDirectory 'TIEconomyMod-0.7.2-ti1.0.49.zip'
+$zipPath = Join-Path $artifactDirectory 'TIEconomyMod-0.7.3-ti1.0.49.zip'
 if (Test-Path -LiteralPath $zipPath) {
     Remove-Item -LiteralPath $zipPath
 }

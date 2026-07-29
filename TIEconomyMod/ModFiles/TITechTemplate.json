@@ -1,0 +1,14 @@
+[
+  {
+    "dataName": "MissionToSpace",
+    "researchCost": 500
+  },
+  {
+    "dataName": "Skywatch",
+    "researchCost": 500
+  },
+  {
+    "dataName": "WeAreNotAlone",
+    "researchCost": 1000
+  }
+]

@@ -33,7 +33,10 @@ for the current patch-by-patch review.
   strength, smooth bounded behavior on TI's 1-9 scale, and x2 climate impact.
 - GDP-only economy emissions; fixed atmospheric removal per completed IP;
   GDP-relative sustainability transition; x0.90 warm-climate GDP damage; no
-  direct Spoils gas pulse; land-relative nuclear damage.
+  direct Spoils gas pulse; land-relative nuclear damage. Nuclear strikes retain
+  local destruction but no longer apply an instantaneous GDP penalty to every
+  human nation. The proposed Nuclear Winter trigger change is
+  [documented and deferred](docs/nuclear-winter-deferred.md).
 - x1.05 Investment Point output; Economy and Spoils share the same live
   factor-balance GDP gain.
 - Country Control Point usage is x1.20 before the active scenario multiplier.
@@ -48,7 +51,8 @@ for the current patch-by-patch review.
   full modified Administration total up to 50.
 - Spoils retains its full $60 base faction-cash payout and has no direct gas pulse.
 - Xenofauna capped at 5 base miltech; Purge and Enthrall Elites receive +1 defense.
-- 2022 starts with Mission to Space and Advanced Chemical Rocketry completed.
+- The 2022 and 2026 scenarios start with Mission to Space and Advanced Chemical
+  Rocketry completed and Outpost Habs in the active global-technology lineup.
 - Human hab modules use approximately x1.5 physical mass, rounded to the nearest
   five tons, while retaining vanilla space-resource tonnage; all added mass must
   always arrive from Earth. Local-material substitution is resolved before that
@@ -66,7 +70,9 @@ for the current patch-by-patch review.
   receives a gray contribution segment in the research UI, cannot finish a
   technology until a faction has contributed, and never counts toward faction
   leadership or project unlocks.
-- Global technologies cost x1.40 research; faction projects retain vanilla costs.
+- Global technologies cost x1.40 research; Mission to Space, Skywatch, and We Are
+  Not Alone receive an additional x2.00 multiplier. Faction projects retain
+  vanilla costs.
 - Population-normalized Unity, Knowledge, Government, Oppression, and selected
   Spoils social effects.
 - Army-count-normalized Military technology and per-army upkeep.
@@ -113,7 +119,7 @@ templates, validates the implementation matrix against settings and Harmony
 patches, verifies the guarded councilor-cap, hab connector, and list-icon
 transpilers, checks the hab-cost substitution order, validates Control Point
 effects and localization, checks the manifest/package layout, and creates
-`artifacts/TIEconomyMod-0.7.2-ti1.0.49.zip`.
+`artifacts/TIEconomyMod-0.7.3-ti1.0.49.zip`.
 
 ## Smoke test
 

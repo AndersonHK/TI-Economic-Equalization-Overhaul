@@ -10,5 +10,17 @@
       "MissionToSpace",
       "AdvancedChemicalRocketry"
     ]
+  },
+  {
+    "dataName": "2026Start",
+    "startingTechs": [
+      "Skywatch",
+      "WeAreNotAlone",
+      "OutpostHabs"
+    ],
+    "globalTechsCompleted": [
+      "MissionToSpace",
+      "AdvancedChemicalRocketry"
+    ]
   }
 ]

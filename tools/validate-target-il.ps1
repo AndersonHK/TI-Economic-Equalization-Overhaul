@@ -266,7 +266,25 @@ try {
         1 `
         'Hab-list station-sector icon loop'
 
-    Write-Host 'PASS: target IL contains every guarded TI 1.0.49 patch point, including research ownership, councilor caps, and climate damage.'
+    $regionDamage = Read-MethodIl `
+        'PavonisInteractive.TerraInvicta.TIRegionState' `
+        'ApplyDamageToRegion'
+    Assert-Count $regionDamage 'AllExtantHumanNations\(\)' 3 'Nuclear global GDP enumerations'
+    Assert-Count $regionDamage 'TINationState::GDPPctChange\(' 3 'Nuclear global GDP calls'
+    Assert-Count $regionDamage `
+        'ldc\.i4\.3\s+IL_[^:]+:\s+callvirt.*TINationState::GDPPctChange\(' `
+        1 `
+        'Nuclear region-damage GDP reason'
+    Assert-Count $regionDamage `
+        'ldc\.i4\.7\s+IL_[^:]+:\s+callvirt.*TINationState::GDPPctChange\(' `
+        1 `
+        'Core-economic global GDP reason'
+    Assert-Count $regionDamage `
+        'ldc\.i4\.8\s+IL_[^:]+:\s+callvirt.*TINationState::GDPPctChange\(' `
+        1 `
+        'Core-resource global GDP reason'
+
+    Write-Host 'PASS: target IL contains every guarded TI 1.0.49 patch point, including research ownership, councilor caps, climate damage, and nuclear GDP effects.'
 }
 finally {
     $resolvedProbe = (Resolve-Path -LiteralPath $probeDirectory).Path
