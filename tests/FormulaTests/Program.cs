@@ -324,14 +324,21 @@ namespace TIEconomyMod.FormulaTests
                 "power-plant heat is input power minus delivered power");
             Near(3f,
                 PowerPlantThermalMath.PlantWasteHeat_GW(
-                    false, 4f, 2f, 2f / 3f),
+                    false, 4f, 2f, 2f / 3f, 0.01f),
                 0.0001f,
                 "closed-cycle drive load contributes to plant waste heat");
+            Near(1.02f,
+                PowerPlantThermalMath.PlantWasteHeat_GW(
+                    true, 4f, 2f, 2f / 3f, 0.01f),
+                0.0001f,
+                "open-cycle drive retains one percent of drive-associated heat");
             Near(1f,
                 PowerPlantThermalMath.PlantWasteHeat_GW(
-                    true, 4f, 2f, 2f / 3f),
+                    true, 4f, 2f, 2f / 3f, 0f),
                 0.0001f,
-                "open-cycle drive load remains excluded from plant waste heat");
+                "zero open-cycle coefficient reproduces the vanilla exemption");
+            Near(9f, ShipBalanceMath.CrewMass_tons(3, 3f), 0f,
+                "settled crew support mass is three tonnes per billet");
 
             TIPowerPlantTemplate plant = new TIPowerPlantTemplate();
             plant.efficiency = 0.70f;
@@ -341,6 +348,13 @@ namespace TIEconomyMod.FormulaTests
                 "enabled power-plant heat patch replaces vanilla");
             Near(0.002364214f, wasteHeat, 0.0000001f,
                 "power-plant heat patch returns corrected radiator load");
+            TISpaceShipTemplate ship = new TISpaceShipTemplate();
+            ship.crewBillets = 3;
+            float crewMass = 0f;
+            True(!ShipCrewSupportMassPatch.Prefix(ref crewMass, ship),
+                "enabled crew support patch replaces vanilla");
+            Near(9f, crewMass, 0f,
+                "crew support patch returns three tonnes per billet");
 
             TIEconomyMod.Main.settings.technology.researchCostEnabled = false;
             technologyCost = 1000f;
@@ -359,6 +373,12 @@ namespace TIEconomyMod.FormulaTests
                 "disabled power-plant heat correction returns vanilla");
             Near(123f, wasteHeat, 0f,
                 "disabled power-plant heat correction leaves result untouched");
+            TIEconomyMod.Main.settings.shipBalance.crewSupportMassEnabled = false;
+            crewMass = 123f;
+            True(ShipCrewSupportMassPatch.Prefix(ref crewMass, ship),
+                "disabled crew support patch returns vanilla");
+            Near(123f, crewMass, 0f,
+                "disabled crew support patch leaves result untouched");
 
             TINationState nation = Nation();
             nation.economyPriorityPerCapitaIncomeChange = 12f;

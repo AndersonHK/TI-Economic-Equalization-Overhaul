@@ -1,12 +1,16 @@
 # Ship rebalance planning changelog
 
 This is a decision log for the proposed ship rebalance. Entries here describe
-planning decisions only. They are not evidence that a template or runtime
-change has been applied.
+the balance decisions as well as their implementation status.
 
 ## 2026-07-29
 
 ### Settled for the first low-tech slice
+
+**Implementation status:** applied in Economic Equalization Overhaul 0.7.4.
+The four deferred starting engines remain unchanged. Items under “Still under
+research” remain unimplemented; in particular, this release does not adopt a
+hull-material recipe or change the vanilla crew construction-resource package.
 
 - **Apex, Meteor, Neutron, and Venture:** defer all changes. The four starting
   engines remain at their current values until the wider propulsion progression

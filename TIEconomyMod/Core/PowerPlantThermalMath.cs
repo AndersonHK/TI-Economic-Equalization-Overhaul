@@ -22,13 +22,16 @@ namespace TIEconomyMod
             bool openCycleDriveCooling,
             float drivePowerRequirement_GW,
             float systemsAndWeaponsRequirement_GW,
-            float efficiency)
+            float efficiency,
+            float openCycleDriveHeatFraction)
         {
-            float usefulPower_GW = systemsAndWeaponsRequirement_GW;
-            if (!openCycleDriveCooling)
-            {
-                usefulPower_GW += drivePowerRequirement_GW;
-            }
+            float boundedOpenCycleFraction = Math.Max(
+                0f, Math.Min(1f, openCycleDriveHeatFraction));
+            float driveHeatFraction = openCycleDriveCooling
+                ? boundedOpenCycleFraction
+                : 1f;
+            float usefulPower_GW = systemsAndWeaponsRequirement_GW +
+                drivePowerRequirement_GW * driveHeatFraction;
 
             return WasteHeatFromUsefulPower_GW(usefulPower_GW, efficiency);
         }

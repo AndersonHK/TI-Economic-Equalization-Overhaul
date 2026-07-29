@@ -31,6 +31,11 @@ namespace PavonisInteractive.TerraInvicta
         public float efficiency;
     }
 
+    public sealed class TISpaceShipTemplate
+    {
+        public int crewBillets;
+    }
+
     public sealed class GlobalResearchState
     {
         public readonly HashSet<string> finishedTechsNames = new HashSet<string>(StringComparer.Ordinal);
@@ -318,6 +323,10 @@ namespace TIEconomyMod
     {
         public bool enabled = true;
         public bool correctPowerPlantWasteHeat = true;
+        public bool openCycleResidualHeatEnabled = true;
+        public float openCycleDriveHeatFraction = 0.01f;
+        public bool crewSupportMassEnabled = true;
+        public float crewSupportMass_tons = 3f;
     }
 
     public sealed class ResearchSettings

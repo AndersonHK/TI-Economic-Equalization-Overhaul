@@ -1,0 +1,50 @@
+[
+  {
+    "dataName": "Gunship",
+    "length_m": 55,
+    "width_m": 15,
+    "volume": 9719,
+    "mass_tons": 171,
+    "crew": 3
+  },
+  {
+    "dataName": "Escort",
+    "length_m": 62,
+    "width_m": 15,
+    "volume": 10956,
+    "mass_tons": 338,
+    "crew": 4
+  },
+  {
+    "dataName": "Corvette",
+    "length_m": 65,
+    "width_m": 17,
+    "volume": 14754,
+    "mass_tons": 385,
+    "crew": 5
+  },
+  {
+    "dataName": "Frigate",
+    "length_m": 100,
+    "width_m": 18,
+    "volume": 25447,
+    "mass_tons": 576,
+    "crew": 8
+  },
+  {
+    "dataName": "Monitor",
+    "length_m": 100,
+    "width_m": 17,
+    "volume": 22698,
+    "mass_tons": 679,
+    "crew": 7
+  },
+  {
+    "dataName": "Destroyer",
+    "length_m": 100,
+    "width_m": 23,
+    "volume": 41548,
+    "mass_tons": 873,
+    "crew": 9
+  }
+]

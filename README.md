@@ -100,6 +100,13 @@ IDs or zero future-axis totals fail validation, and changes require restart.
 The packaged [default settings](TIEconomyMod/ModFiles/Settings.xml) are copied
 on release deployment so a new balance version starts from its authored values.
 
+Version 0.7.4 also implements the first settled low-tech ship slice: early fuel
+cells and solid-core reactor efficiencies, crew reductions for the two water
+heat sinks and selected guns, 3 t/crew support mass, a 1% open-cycle drive-heat
+residual, and the settled Gunship-through-Destroyer dimensions, masses, and
+crew counts. Draft module caps, weapon performance, heat-sink mass, hull
+materials, and starting-engine changes remain excluded.
+
 ## Build and verification
 
 The project targets .NET Framework 4.8. Set `TI_TARGET_MANAGED_DIR`, or let the
@@ -119,7 +126,7 @@ templates, validates the implementation matrix against settings and Harmony
 patches, verifies the guarded councilor-cap, hab connector, and list-icon
 transpilers, checks the hab-cost substitution order, validates Control Point
 effects and localization, checks the manifest/package layout, and creates
-`artifacts/TIEconomyMod-0.7.3-ti1.0.49.zip`.
+  `artifacts/TIEconomyMod-0.7.4-ti1.0.49.zip`.
 
 ## Smoke test
 

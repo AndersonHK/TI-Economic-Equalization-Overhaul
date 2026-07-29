@@ -69,7 +69,31 @@ namespace TIEconomyMod.Patches
                 openCycleDriveCooling,
                 drivePowerRequirement_GW,
                 systemsAndWeaponsRequirement_GW,
-                __instance.efficiency);
+                __instance.efficiency,
+                settings.openCycleResidualHeatEnabled
+                    ? settings.openCycleDriveHeatFraction
+                    : 0f);
+            return false;
+        }
+    }
+
+    [HarmonyPatch(
+        typeof(TISpaceShipTemplate), "crewMass_tons", MethodType.Getter)]
+    public static class ShipCrewSupportMassPatch
+    {
+        [HarmonyPrefix]
+        public static bool Prefix(
+            ref float __result, TISpaceShipTemplate __instance)
+        {
+            ShipBalanceSettings settings = Main.settings.shipBalance;
+            if (!Main.FeatureEnabled(
+                settings.enabled && settings.crewSupportMassEnabled))
+            {
+                return true;
+            }
+
+            __result = ShipBalanceMath.CrewMass_tons(
+                __instance.crewBillets, settings.crewSupportMass_tons);
             return false;
         }
     }

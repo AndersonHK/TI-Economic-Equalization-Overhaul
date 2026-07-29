@@ -32,7 +32,7 @@ namespace TIEconomyMod
                 techWeights = TechWeightCatalog.Load(weightPath, Log, IsKnownTechnology);
                 new Harmony(modEntry.Info.Id).PatchAll();
                 CouncilorRuntimeCaps.InitializeOrganizationCap();
-                Log("Loaded TI Economic Equalization Overhaul 0.7.3 for the TI 1.0.49 API surface.");
+                Log("Loaded TI Economic Equalization Overhaul 0.7.4 for the TI 1.0.49 API surface.");
                 return true;
             }
             catch (Exception exception)
@@ -321,6 +321,10 @@ namespace TIEconomyMod
     {
         public bool enabled = true;
         public bool correctPowerPlantWasteHeat = true;
+        public bool openCycleResidualHeatEnabled = true;
+        public float openCycleDriveHeatFraction = 0.01f;
+        public bool crewSupportMassEnabled = true;
+        public float crewSupportMass_tons = 3f;
     }
 
     [DrawFields(DrawFieldMask.Public)]
@@ -567,6 +571,8 @@ namespace TIEconomyMod
             RepairFinite(ref value.army.technologyBaseline, defaults.army.technologyBaseline, "army.technologyBaseline", log);
             RepairNonNegative(ref value.army.costPerTechnologyLevel, defaults.army.costPerTechnologyLevel, "army.costPerTechnologyLevel", log);
             RepairPositive(ref value.army.megafaunaMaximumTechLevel, defaults.army.megafaunaMaximumTechLevel, "army.megafaunaMaximumTechLevel", log);
+            RepairRange(ref value.shipBalance.openCycleDriveHeatFraction, defaults.shipBalance.openCycleDriveHeatFraction, 0f, 1f, "shipBalance.openCycleDriveHeatFraction", log);
+            RepairPositive(ref value.shipBalance.crewSupportMass_tons, defaults.shipBalance.crewSupportMass_tons, "shipBalance.crewSupportMass_tons", log);
             RepairPositive(ref value.research.coefficient, defaults.research.coefficient, "research.coefficient", log);
             RepairPositive(ref value.research.referencePcgdp, defaults.research.referencePcgdp, "research.referencePcgdp", log);
             RepairNonNegative(ref value.research.minimumPcgdpMultiplier, defaults.research.minimumPcgdpMultiplier, "research.minimumPcgdpMultiplier", log);

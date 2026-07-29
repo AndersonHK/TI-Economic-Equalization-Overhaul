@@ -94,6 +94,10 @@ $technologyOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TITechTe
 $globalOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIGlobalConfig.json'
 $habModuleOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIHabModuleTemplate.json'
 $habOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIHabTemplate.json'
+$powerPlantOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIPowerPlantTemplate.json'
+$heatSinkOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIHeatSinkTemplate.json'
+$gunOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIGunTemplate.json'
+$shipHullOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIShipHullTemplate.json'
 $nationLocalization = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\UINation.en'
 $effectLocalization = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIEffectTemplate.en'
 $technologyLocalization = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TITechTemplate.en'
@@ -286,12 +290,20 @@ if ($LASTEXITCODE -ne 0) {
     exit $LASTEXITCODE
 }
 
+powershell -NoProfile -ExecutionPolicy Bypass -File `
+    (Join-Path $scriptDirectory 'validate-ship-rebalance.ps1') `
+    -VanillaTemplatesDir $templatesDirectory `
+    -RepositoryRoot $repositoryRoot
+if ($LASTEXITCODE -ne 0) {
+    exit $LASTEXITCODE
+}
+
 $manifestPath = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\ModInfo.json'
 $manifest = Get-Content -LiteralPath $manifestPath -Raw | ConvertFrom-Json
 if ($manifest.GameVersion -ne '1.0.49') {
     throw "ModInfo.json targets '$($manifest.GameVersion)' instead of TI 1.0.49."
 }
-if ($manifest.Version -ne '0.7.3') {
+if ($manifest.Version -ne '0.7.4') {
     throw "ModInfo.json version '$($manifest.Version)' does not match this release."
 }
 if ($manifest.AssemblyName -ne 'Assembly/TIEconomyMod.dll') {
@@ -367,8 +379,8 @@ if ($assemblyFile.LastWriteTime -lt $buildStarted.AddSeconds(-2)) {
     throw 'Packaged DLL predates this verification build.'
 }
 $assemblyVersion = [Reflection.AssemblyName]::GetAssemblyName($assemblyPath).Version.ToString()
-if ($assemblyVersion -ne '0.7.3.0') {
-    throw "Assembly version '$assemblyVersion' does not match release 0.7.3."
+if ($assemblyVersion -ne '0.7.4.0') {
+    throw "Assembly version '$assemblyVersion' does not match release 0.7.4."
 }
 $assemblyHash = (Get-FileHash -LiteralPath $assemblyPath -Algorithm SHA256).Hash
 
@@ -383,6 +395,10 @@ $requiredFiles = @(
     $globalOverrides,
     $habModuleOverrides,
     $habOverrides,
+    $powerPlantOverrides,
+    $heatSinkOverrides,
+    $gunOverrides,
+    $shipHullOverrides,
     $nationLocalization,
     $effectLocalization,
     $technologyLocalization,
@@ -420,6 +436,10 @@ Copy-Item -LiteralPath $technologyOverrides -Destination $stagingDirectory
 Copy-Item -LiteralPath $globalOverrides -Destination $stagingDirectory
 Copy-Item -LiteralPath $habModuleOverrides -Destination $stagingDirectory
 Copy-Item -LiteralPath $habOverrides -Destination $stagingDirectory
+Copy-Item -LiteralPath $powerPlantOverrides -Destination $stagingDirectory
+Copy-Item -LiteralPath $heatSinkOverrides -Destination $stagingDirectory
+Copy-Item -LiteralPath $gunOverrides -Destination $stagingDirectory
+Copy-Item -LiteralPath $shipHullOverrides -Destination $stagingDirectory
 Copy-Item -LiteralPath $nationLocalization -Destination $stagingDirectory
 Copy-Item -LiteralPath $effectLocalization -Destination $stagingDirectory
 Copy-Item -LiteralPath $technologyLocalization -Destination $stagingDirectory
@@ -429,7 +449,7 @@ if (Test-Path -LiteralPath $imagePath) {
     Copy-Item -LiteralPath $imagePath -Destination $stagingDirectory
 }
 
-$zipPath = Join-Path $artifactDirectory 'TIEconomyMod-0.7.3-ti1.0.49.zip'
+$zipPath = Join-Path $artifactDirectory 'TIEconomyMod-0.7.4-ti1.0.49.zip'
 if (Test-Path -LiteralPath $zipPath) {
     Remove-Item -LiteralPath $zipPath
 }
@@ -456,6 +476,19 @@ try {
     $packagedTechnologyLocalization = $archive.Entries |
         Where-Object { $_.FullName.Replace('\', '/') -eq 'TIEconomyMod/TITechTemplate.en' } |
         Select-Object -First 1
+    $packagedShipFiles = @(
+        'TIEconomyMod/TIPowerPlantTemplate.json',
+        'TIEconomyMod/TIHeatSinkTemplate.json',
+        'TIEconomyMod/TIGunTemplate.json',
+        'TIEconomyMod/TIShipHullTemplate.json'
+    )
+    foreach ($packagedShipFile in $packagedShipFiles) {
+        if ($null -eq ($archive.Entries |
+            Where-Object { $_.FullName.Replace('\', '/') -eq $packagedShipFile } |
+            Select-Object -First 1)) {
+            throw "Release archive is missing $packagedShipFile."
+        }
+    }
     if ($null -eq $packagedSettings -or $null -eq $packagedWeights -or
         $null -eq $packagedEffectLocalization -or $null -eq $packagedTechnologyLocalization) {
         throw 'Release archive is missing settings, technology weights, or control-point localization.'

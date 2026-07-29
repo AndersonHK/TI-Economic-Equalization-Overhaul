@@ -99,6 +99,10 @@
   <shipBalance>
     <enabled>true</enabled>
     <correctPowerPlantWasteHeat>true</correctPowerPlantWasteHeat>
+    <openCycleResidualHeatEnabled>true</openCycleResidualHeatEnabled>
+    <openCycleDriveHeatFraction>0.01</openCycleDriveHeatFraction>
+    <crewSupportMassEnabled>true</crewSupportMassEnabled>
+    <crewSupportMass_tons>3</crewSupportMass_tons>
   </shipBalance>
   <research>
     <enabled>true</enabled>

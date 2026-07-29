@@ -88,6 +88,7 @@
     <Compile Include="Core\HabRebalanceMath.cs" />
     <Compile Include="Core\IndependentResearchMath.cs" />
     <Compile Include="Core\PowerPlantThermalMath.cs" />
+    <Compile Include="Core\ShipBalanceMath.cs" />
     <Compile Include="Core\TechWeightCatalog.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Patches\EconomyPatches.cs" />
@@ -111,7 +112,11 @@
     <None Include="ModFiles\TIGlobalConfig.json" />
     <None Include="ModFiles\TIHabModuleTemplate.json" />
     <None Include="ModFiles\TIHabTemplate.json" />
+    <None Include="ModFiles\TIHeatSinkTemplate.json" />
+    <None Include="ModFiles\TIGunTemplate.json" />
     <None Include="ModFiles\TIMissionTemplate.json" />
+    <None Include="ModFiles\TIPowerPlantTemplate.json" />
+    <None Include="ModFiles\TIShipHullTemplate.json" />
     <None Include="ModFiles\TIStartTimeTemplate.json" />
     <None Include="ModFiles\TITechTemplate.json" />
     <None Include="ModFiles\UIScience.en" />
