@@ -81,6 +81,7 @@
     <Compile Include="Patches\EnvironmentUnitySpoilsPatches.cs" />
     <Compile Include="Patches\HabRebalancePatches.cs" />
     <Compile Include="Patches\CompletionCompatibilityPatches.cs" />
+    <Compile Include="Patches\CouncilorPatches.cs" />
     <Compile Include="Patches\NationalValuesPatches.cs" />
     <Compile Include="Patches\NationalMergerPatches.cs" />
     <Compile Include="Patches\SocialPriorityPatches.cs" />

@@ -22,8 +22,13 @@ https://store.steampowered.com/news/app/1176470/view/696519283891505791
 | Patch | Stock / unit | Sanity result |
 |---|---|---|
 | `InvestmentPointsPatch` | GDP / $100B | Aligned. Output remains legible and linear; the low-income ramp models capital constraints without a discontinuity, and the configurable x1.05 output adjustment is uniform at every national scale. |
-| `ControlPointCostPatch` | National economy score per CP | Aligned. It retains the configured technology exponent sequence and free alien CPs, applies the selected x1.20 country-cost increase, then applies TI 1.0.49's live scenario maintenance multiplier. It deliberately does not adopt vanilla's global-GDP normalization. |
+| `ControlPointCostPatch` | National economy score per CP | Aligned. It sums explicit per-technology exponent reductions of 0.02/0.03/0.05/0.05/0.05, so granted or out-of-order technologies behave correctly while the normal path remains 1/.98/.95/.90/.85/.80. It preserves free alien CPs, applies the selected x1.20 country-cost increase, then applies TI 1.0.49's live scenario maintenance multiplier. |
 | `ControlPointCapacityPatch` | Complete non-project flat faction capacity | Aligned. It removes only the five known flat project-effect values from vanilla's result, then reinterprets their existing 5/10/20/40/120 values as additive percentage points over campaign/scenario, AI, councilor, and LEO capacity. Repeatable Management Research effects stack, unrelated modifiers and the alien 20,000 cap remain unchanged. |
+| `CouncilorTotalAttributeCapPatch` | Final modified councilor attribute | Aligned. Only the final clamp in `GetAttribute` rises from 25 to the configurable 50. Stored attributes, generation, training, augmentation eligibility, and negative-trait ceilings keep TI's vanilla 25-point base cap; organization and positive-trait bonuses can use the added headroom. Mission quality remains normalized to 25 so modified values above 25 retain their intended additional effect. |
+| `CouncilorAvailableAdministrationCapPatch` | Administration remaining for organizations | Aligned. The final `availableAdministration` ceiling now uses the configured total cap of 50 instead of the private 25-point base cap, allowing positive organization and trait bonuses to provide usable assignment capacity. |
+| `CouncilorOrganizationWeightCapPatch` | Total organization tier usage | Aligned. `SufficientCapacityForOrg` compares projected organization weight with the configured 50-point total ceiling rather than the 25-point augmentation ceiling. Its separate available-Administration check still accounts for organization tier cost, organization Administration bonuses, and negative modifiers. |
+| `CouncilorAttributeCapTooltipPatch` | Councilor stat-detail UI | Aligned. The tooltip keeps its councilor-specific base ceiling at 25 and changes only the absolute modified ceiling to the configured 50. |
+| `CouncilorRuntimeCaps` and `TIGlobalConfig.json` organization cap | Organization count, UI, and AI | Aligned. The global maximum rises from 15 to the configurable 18 and is synchronized into TI's live global object at runtime. Assignment rejection, its tooltip, org management, and AI all read that shared value; Administration capacity remains a separate constraint. |
 | `ArmyUpkeepPatch` | Fixed cost per army | Aligned. Every army pays its own home/away and miltech-dependent upkeep; large nations only benefit by having more IP to support more units. |
 | `XenofaunaStrengthPatch` | Megafauna combat rating | Aligned. It changes only the configured maximum from 6 to 5 while preserving TI's abduction-driven progression and any explicit bonus technology level. |
 | `ResearchPatch` | Population, human capital, institutions | Aligned. This is national productive output rather than an IP completion, so linear population with Education squared is economically legible. |
@@ -67,6 +72,10 @@ https://store.steampowered.com/news/app/1176470/view/696519283891505791
 
 - Threshold, Unity propaganda, and Spoils propaganda transpilers require exact
   replacement counts and throw during initialization if TI changes the expected IL.
+- The three councilor-cap transpilers each require exactly one replacement in
+  `GetAttribute`, `availableAdministration`, and `SufficientCapacityForOrg`;
+  verification also locks the separate base-stat, augmentation,
+  organization-count, rejection-tooltip, and stat-tooltip IL anchors.
 - Feature and global toggles return prefixes to vanilla and make transpiler helpers
   return live vanilla field values.
 - Invalid or non-finite calculations retain vanilla or use a documented safe value.

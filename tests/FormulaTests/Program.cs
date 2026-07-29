@@ -71,11 +71,33 @@ namespace TIEconomyMod.FormulaTests
             GameStateManager.Research.finishedTechsNames.Add("ArrivalInternationalRelations");
             ControlPointCostPatch.Postfix(ref result, nation);
             Near((float)Math.Pow(200f, 0.98f) / 4f * 1.2f, result, 0.0001f,
-                "control exponent sequence and country-cost multiplier");
+                "earliest technology reduces the exponent by 0.02");
+            GameStateManager.Research.finishedTechsNames.Add("UnityMovements");
+            ControlPointCostPatch.Postfix(ref result, nation);
+            Near((float)Math.Pow(200f, 0.95f) / 4f * 1.2f, result, 0.0001f,
+                "second technology reduces the exponent by 0.03");
             GameStateManager.TimeState.template.CPMaintenanceModifier = 1.2f;
             ControlPointCostPatch.Postfix(ref result, nation);
-            Near((float)Math.Pow(200f, 0.98f) / 4f * 1.2f * 1.2f, result, 0.0001f,
+            Near((float)Math.Pow(200f, 0.95f) / 4f * 1.2f * 1.2f, result, 0.0001f,
                 "TI 1.0.49 scenario control-maintenance multiplier");
+
+            GameStateManager.Research.finishedTechsNames.Clear();
+            GameStateManager.Research.finishedTechsNames.Add("Accelerando");
+            GameStateManager.TimeState.template.CPMaintenanceModifier = 1f;
+            ControlPointCostPatch.Postfix(ref result, nation);
+            Near((float)Math.Pow(200f, 0.95f) / 4f * 1.2f, result, 0.0001f,
+                "late technology independently reduces the exponent by 0.05");
+
+            GameStateManager.Research.finishedTechsNames.UnionWith(new[]
+            {
+                "ArrivalInternationalRelations",
+                "UnityMovements",
+                "GreatNations",
+                "ArrivalGovernance"
+            });
+            ControlPointCostPatch.Postfix(ref result, nation);
+            Near((float)Math.Pow(200f, 0.80f) / 4f * 1.2f, result, 0.0001f,
+                "all five explicit reductions total 0.20");
 
             TIFactionState faction = new TIFactionState();
             TIEffectsState.FactionEffects.Add(new TIEffectTemplate

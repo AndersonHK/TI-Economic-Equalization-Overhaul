@@ -76,12 +76,17 @@
     <enabled>true</enabled>
     <projectBonusesAsPercent>true</projectBonusesAsPercent>
     <countryCostMultiplier>1.2</countryCostMultiplier>
-    <exponentOneTech>0.98</exponentOneTech>
-    <exponentTwoTechs>0.95</exponentTwoTechs>
-    <exponentThreeTechs>0.9</exponentThreeTechs>
-    <exponentFourTechs>0.85</exponentFourTechs>
-    <exponentFiveTechs>0.8</exponentFiveTechs>
+    <arrivalInternationalRelationsReduction>0.02</arrivalInternationalRelationsReduction>
+    <unityMovementsReduction>0.03</unityMovementsReduction>
+    <greatNationsReduction>0.05</greatNationsReduction>
+    <arrivalGovernanceReduction>0.05</arrivalGovernanceReduction>
+    <accelerandoReduction>0.05</accelerandoReduction>
   </controlCost>
+  <councilors>
+    <enabled>true</enabled>
+    <totalAttributeCap>50</totalAttributeCap>
+    <maximumOrganizations>18</maximumOrganizations>
+  </councilors>
   <army>
     <enabled>true</enabled>
     <homeBaseCost>0.5</homeBaseCost>

@@ -107,6 +107,81 @@ try {
         'GetFactionEffectsForContext'
     Assert-Count $factionEffects 'System\.Linq\.Enumerable::ToList<class TIEffectTemplate>' 1 'Faction effect enumeration API'
 
+    $councilor = 'PavonisInteractive.TerraInvicta.TICouncilorState'
+    $councilorAttribute = Read-MethodIl $councilor 'GetAttribute'
+    Assert-Count $councilorAttribute `
+        'TICouncilorState::get_maxCouncilorAttribute\(\)' `
+        1 `
+        'Councilor final attribute cap'
+
+    $availableAdministration = Read-MethodIl $councilor 'get_availableAdministration'
+    Assert-Count $availableAdministration `
+        'TICouncilorState::get_maxCouncilorAttribute\(\)' `
+        1 `
+        'Councilor available-Administration cap'
+    Assert-Count $availableAdministration `
+        'TICouncilorState::GetAttribute\(' `
+        1 `
+        'Councilor available-Administration total'
+
+    $sufficientOrgCapacity = Read-MethodIl $councilor 'SufficientCapacityForOrg'
+    Assert-Count $sufficientOrgCapacity `
+        'TICouncilorState::GetClampedMaxStatValue\(' `
+        1 `
+        'Councilor organization-weight cap'
+    Assert-Count $sufficientOrgCapacity `
+        'ldfld\s+int32 TIGlobalConfig::councilorMaxOrgs' `
+        1 `
+        'Councilor assignment organization-count cap'
+
+    $prospectiveOrgCapacity = Read-MethodIl $councilor 'AreProspectiveOrgsValid'
+    Assert-Count $prospectiveOrgCapacity `
+        'ldfld\s+int32 TIGlobalConfig::councilorMaxOrgs' `
+        1 `
+        'Councilor prospective organization-count cap'
+
+    $modifyCouncilorAttribute = Read-MethodIl $councilor 'ModifyAttribute'
+    Assert-Count $modifyCouncilorAttribute `
+        'TICouncilorState::get_maxCouncilorAttribute\(\)' `
+        1 `
+        'Councilor stored attribute cap'
+
+    $clampedCouncilorMaximum = Read-MethodIl $councilor 'GetClampedMaxStatValue'
+    Assert-Count $clampedCouncilorMaximum `
+        'TICouncilorState::get_maxCouncilorAttribute\(\)' `
+        1 `
+        'Councilor augmentation cap'
+
+    $councilorOrgCapacity = Read-MethodIl $councilor 'SpareCapacityForOrgs'
+    Assert-Count $councilorOrgCapacity `
+        'ldfld\s+int32 TIGlobalConfig::councilorMaxOrgs' `
+        1 `
+        'Councilor organization-count cap'
+
+    $councilorStatDetail = Read-MethodIl `
+        'PavonisInteractive.TerraInvicta.CouncilGridController' `
+        'StatDetail'
+    Assert-Count $councilorStatDetail `
+        'TICouncilorState::GetClampedMaxStatValue\(' `
+        1 `
+        'Councilor base-cap tooltip'
+    Assert-Count $councilorStatDetail `
+        'ldflda\s+int32 TIGlobalConfig::maxCouncilorAttribute' `
+        1 `
+        'Councilor hard-cap tooltip'
+
+    $orgPurchase = Read-MethodIl `
+        'PavonisInteractive.TerraInvicta.CouncilGridController' `
+        'StartOrgPurchase'
+    Assert-Count $orgPurchase `
+        'ldstr\s+"UI\.Councilor\.Orgs\.InsufficientAdminStat"' `
+        1 `
+        'Councilor organization rejection tooltip'
+    Assert-Count $orgPurchase `
+        'ldflda\s+int32 TIGlobalConfig::councilorMaxOrgs' `
+        1 `
+        'Councilor organization rejection limit'
+
     $megafauna = Read-MethodIl 'PavonisInteractive.TerraInvicta.TIMegafaunaArmyState' 'get_techLevel'
     Assert-Count $megafauna 'ldc\.r4\s+6\.' 1 'Xenofauna vanilla technology ceiling'
 
@@ -155,7 +230,7 @@ try {
         1 `
         'Hab-list station-sector icon loop'
 
-    Write-Host 'PASS: target IL contains every guarded TI 1.0.49 patch point, including climate damage.'
+    Write-Host 'PASS: target IL contains every guarded TI 1.0.49 patch point, including councilor caps and climate damage.'
 }
 finally {
     $resolvedProbe = (Resolve-Path -LiteralPath $probeDirectory).Path

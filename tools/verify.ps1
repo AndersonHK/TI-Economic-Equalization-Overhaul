@@ -34,6 +34,14 @@ if ($LASTEXITCODE -ne 0) {
 
 $assemblyPath = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\Assembly\TIEconomyMod.dll'
 powershell -NoProfile -ExecutionPolicy Bypass -File `
+    (Join-Path $scriptDirectory 'validate-councilor-cap-transpiler.ps1') `
+    -TargetManagedDir $resolvedManagedDir `
+    -ModAssemblyPath $assemblyPath
+if ($LASTEXITCODE -ne 0) {
+    exit $LASTEXITCODE
+}
+
+powershell -NoProfile -ExecutionPolicy Bypass -File `
     (Join-Path $scriptDirectory 'validate-hab-connector-transpiler.ps1') `
     -TargetManagedDir $resolvedManagedDir `
     -ModAssemblyPath $assemblyPath
@@ -236,21 +244,22 @@ foreach ($entry in $expectedControlEffects.GetEnumerator()) {
 }
 
 $technologyLocalizationText = Get-Content -LiteralPath $technologyLocalization -Raw
-$controlTechnologies = @(
-    'ArrivalInternationalRelations',
-    'UnityMovements',
-    'GreatNations',
-    'ArrivalGovernance',
-    'Accelerando'
-)
-foreach ($technologyId in $controlTechnologies) {
+$controlTechnologies = [ordered]@{
+    ArrivalInternationalRelations = '0.02'
+    UnityMovements = '0.03'
+    GreatNations = '0.05'
+    ArrivalGovernance = '0.05'
+    Accelerando = '0.05'
+}
+foreach ($entry in $controlTechnologies.GetEnumerator()) {
+    $technologyId = $entry.Key
     $key = "TITechTemplate.summary.$technologyId="
     $line = [regex]::Match(
         $technologyLocalizationText,
         "(?m)^$([regex]::Escape($key)).*$")
-    if (-not $line.Success -or $line.Value -notmatch '1\.00.*0\.98.*0\.95.*0\.90.*0\.85.*0\.80' -or
-        $line.Value -notmatch '1\.20') {
-        throw "Technology localization is missing the complete control-cost tooltip for '$technologyId'."
+    $expectedSentence = "Reduces the Control Point economy-exponent score by $($entry.Value)."
+    if (-not $line.Success -or $line.Value -notmatch [regex]::Escape($expectedSentence)) {
+        throw "Technology localization has the wrong control-cost tooltip for '$technologyId'."
     }
 }
 
@@ -305,6 +314,14 @@ if (($modernStart.startingTechs -join ';') -ne 'Skywatch;WeAreNotAlone;OutpostHa
     ($modernStart.globalTechsCompleted -join ';') -ne
         'MissionToSpace;AdvancedChemicalRocketry') {
     throw 'The 2022 start override has unexpected current or completed technologies.'
+}
+$globals = @(Get-Content -LiteralPath $globalOverrides -Raw | ConvertFrom-Json)
+$globalConfig = @($globals | Where-Object { $_.dataName -eq 'globalConfig' })
+if ($globalConfig.Count -ne 1 -or
+    [int]$globalConfig[0].councilorMaxOrgs -ne 18 -or
+    [double]$globalConfig[0].crewWaterConsumptionTons_year -ne 3 -or
+    [double]$globalConfig[0].crewVolatilesConsumptionTons_year -ne 3) {
+    throw 'Global configuration must set the councilor organization cap to 18 and preserve the 3-ton crew-resource overrides.'
 }
 
 $assemblyFile = Get-Item -LiteralPath $assemblyPath

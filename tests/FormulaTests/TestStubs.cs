@@ -290,11 +290,11 @@ namespace TIEconomyMod
         public bool enabled = true;
         public bool projectBonusesAsPercent = true;
         public float countryCostMultiplier = 1.20f;
-        public float exponentOneTech = 0.98f;
-        public float exponentTwoTechs = 0.95f;
-        public float exponentThreeTechs = 0.90f;
-        public float exponentFourTechs = 0.85f;
-        public float exponentFiveTechs = 0.80f;
+        public float arrivalInternationalRelationsReduction = 0.02f;
+        public float unityMovementsReduction = 0.03f;
+        public float greatNationsReduction = 0.05f;
+        public float arrivalGovernanceReduction = 0.05f;
+        public float accelerandoReduction = 0.05f;
     }
 
     public sealed class ArmySettings

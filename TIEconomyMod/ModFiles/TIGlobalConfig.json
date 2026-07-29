@@ -1,6 +1,7 @@
 [
   {
     "dataName": "globalConfig",
+    "councilorMaxOrgs": 18,
     "crewWaterConsumptionTons_year": 3,
     "crewVolatilesConsumptionTons_year": 3
   }

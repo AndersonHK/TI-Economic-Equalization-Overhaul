@@ -46,15 +46,6 @@ namespace TIEconomyMod.Patches
     [HarmonyPatch(typeof(TINationState), "ControlPointMaintenanceCost", MethodType.Getter)]
     public static class ControlPointCostPatch
     {
-        private static readonly string[] LegacyTechnologies =
-        {
-            "ArrivalInternationalRelations",
-            "UnityMovements",
-            "GreatNations",
-            "ArrivalGovernance",
-            "Accelerando"
-        };
-
         [HarmonyPostfix]
         public static void Postfix(ref float __result, TINationState __instance)
         {
@@ -64,26 +55,39 @@ namespace TIEconomyMod.Patches
                 return; // Alien control points have zero vanilla cost and must remain free.
             }
 
-            int completed = LegacyTechnologies.Count(
-                id => GameStateManager.GlobalResearch().finishedTechsNames.Contains(id));
+            // Each technology contributes its own explicit reduction instead of merely
+            // advancing a count-based sequence. This produces the same intended path
+            // (1, .98, .95, .90, .85, .80) in normal research order while remaining
+            // correct if technologies are granted or completed out of order.
+            float exponentReduction = 0f;
+            if (GameStateManager.GlobalResearch().finishedTechsNames.Contains(
+                "ArrivalInternationalRelations"))
+            {
+                exponentReduction += settings.arrivalInternationalRelationsReduction;
+            }
+            if (GameStateManager.GlobalResearch().finishedTechsNames.Contains("UnityMovements"))
+            {
+                exponentReduction += settings.unityMovementsReduction;
+            }
+            if (GameStateManager.GlobalResearch().finishedTechsNames.Contains("GreatNations"))
+            {
+                exponentReduction += settings.greatNationsReduction;
+            }
+            if (GameStateManager.GlobalResearch().finishedTechsNames.Contains("ArrivalGovernance"))
+            {
+                exponentReduction += settings.arrivalGovernanceReduction;
+            }
+            if (GameStateManager.GlobalResearch().finishedTechsNames.Contains("Accelerando"))
+            {
+                exponentReduction += settings.accelerandoReduction;
+            }
+            float exponent = Math.Max(0.01f, 1f - exponentReduction);
 
-            // The five listed social technologies lower the economy-score exponent through
-            // 1, .98, .95, .90, .85, and .80; the result is divided evenly among CPs.
             // TI 1.0.49 then applies both EEO's x1.20 country-cost increase and the
             // active scenario's CP-maintenance multiplier, preserving the new-start
             // balance knob without adopting vanilla's global-GDP normalization.
             // With economy score 200, four CPs, and a x1.2 scenario, no technology
             // costs 200 / 4 * 1.2 * 1.2 = 72 and all five cost about 25.
-            float exponent;
-            switch (completed)
-            {
-                case 1: exponent = settings.exponentOneTech; break;
-                case 2: exponent = settings.exponentTwoTechs; break;
-                case 3: exponent = settings.exponentThreeTechs; break;
-                case 4: exponent = settings.exponentFourTechs; break;
-                case 5: exponent = settings.exponentFiveTechs; break;
-                default: exponent = 1f; break;
-            }
             float calculated = (float)Math.Pow(__instance.economyScore, exponent) /
                 Math.Max(1, __instance.numControlPoints) *
                 settings.countryCostMultiplier *

@@ -2,6 +2,7 @@ using HarmonyLib;
 using PavonisInteractive.TerraInvicta;
 using System;
 using System.IO;
+using TIEconomyMod.Patches;
 using UnityEngine;
 using UnityModManagerNet;
 
@@ -30,6 +31,7 @@ namespace TIEconomyMod
                 string weightPath = Path.Combine(modEntry.Path, "Config", "economy-tech-weights.csv");
                 techWeights = TechWeightCatalog.Load(weightPath, Log, IsKnownTechnology);
                 new Harmony(modEntry.Info.Id).PatchAll();
+                CouncilorRuntimeCaps.InitializeOrganizationCap();
                 Log("Loaded TI Economic Equalization Overhaul 0.7.1 for the TI 1.0.49 API surface.");
                 return true;
             }
@@ -62,6 +64,7 @@ namespace TIEconomyMod
         private static bool OnToggle(UnityModManager.ModEntry modEntry, bool value)
         {
             enabled = value;
+            CouncilorRuntimeCaps.ApplyOrganizationCap();
             return true;
         }
 
@@ -73,12 +76,14 @@ namespace TIEconomyMod
             {
                 settings = new Settings();
                 settings.ValidateAndRepair(Log);
+                CouncilorRuntimeCaps.ApplyOrganizationCap();
             }
         }
 
         private static void OnSaveGUI(UnityModManager.ModEntry modEntry)
         {
             settings.ValidateAndRepair(Log);
+            CouncilorRuntimeCaps.ApplyOrganizationCap();
             settings.Save(modEntry);
         }
 
@@ -127,6 +132,9 @@ namespace TIEconomyMod
         [Draw("Control Point Cost")]
         public ControlCostSettings controlCost = new ControlCostSettings();
 
+        [Draw("Councilors")]
+        public CouncilorSettings councilors = new CouncilorSettings();
+
         [Draw("Army Upkeep")]
         public ArmySettings army = new ArmySettings();
 
@@ -172,6 +180,7 @@ namespace TIEconomyMod
         public void OnChange()
         {
             ValidateAndRepair(Main.Log);
+            CouncilorRuntimeCaps.ApplyOrganizationCap();
         }
 
         public void ValidateAndRepair(Action<string> log)
@@ -277,11 +286,19 @@ namespace TIEconomyMod
         public bool enabled = true;
         public bool projectBonusesAsPercent = true;
         public float countryCostMultiplier = 1.20f;
-        public float exponentOneTech = 0.98f;
-        public float exponentTwoTechs = 0.95f;
-        public float exponentThreeTechs = 0.90f;
-        public float exponentFourTechs = 0.85f;
-        public float exponentFiveTechs = 0.80f;
+        public float arrivalInternationalRelationsReduction = 0.02f;
+        public float unityMovementsReduction = 0.03f;
+        public float greatNationsReduction = 0.05f;
+        public float arrivalGovernanceReduction = 0.05f;
+        public float accelerandoReduction = 0.05f;
+    }
+
+    [DrawFields(DrawFieldMask.Public)]
+    public sealed class CouncilorSettings
+    {
+        public bool enabled = true;
+        public float totalAttributeCap = 50f;
+        public float maximumOrganizations = 18f;
     }
 
     [DrawFields(DrawFieldMask.Public)]
@@ -451,6 +468,7 @@ namespace TIEconomyMod
             value.abundance = value.abundance ?? defaults.abundance;
             value.inequality = value.inequality ?? defaults.inequality;
             value.controlCost = value.controlCost ?? defaults.controlCost;
+            value.councilors = value.councilors ?? defaults.councilors;
             value.army = value.army ?? defaults.army;
             value.research = value.research ?? defaults.research;
             value.knowledge = value.knowledge ?? defaults.knowledge;
@@ -525,11 +543,13 @@ namespace TIEconomyMod
             RepairNonNegative(ref value.inequality.economyMaximumResourceMultiplier, defaults.inequality.economyMaximumResourceMultiplier, "inequality.economyMaximumResourceMultiplier", log);
             RepairNonNegative(ref value.inequality.spoilsMaximumResourceMultiplier, defaults.inequality.spoilsMaximumResourceMultiplier, "inequality.spoilsMaximumResourceMultiplier", log);
             RepairPositive(ref value.controlCost.countryCostMultiplier, defaults.controlCost.countryCostMultiplier, "controlCost.countryCostMultiplier", log);
-            RepairRange(ref value.controlCost.exponentOneTech, defaults.controlCost.exponentOneTech, 0.01f, 1f, "controlCost.exponentOneTech", log);
-            RepairRange(ref value.controlCost.exponentTwoTechs, defaults.controlCost.exponentTwoTechs, 0.01f, 1f, "controlCost.exponentTwoTechs", log);
-            RepairRange(ref value.controlCost.exponentThreeTechs, defaults.controlCost.exponentThreeTechs, 0.01f, 1f, "controlCost.exponentThreeTechs", log);
-            RepairRange(ref value.controlCost.exponentFourTechs, defaults.controlCost.exponentFourTechs, 0.01f, 1f, "controlCost.exponentFourTechs", log);
-            RepairRange(ref value.controlCost.exponentFiveTechs, defaults.controlCost.exponentFiveTechs, 0.01f, 1f, "controlCost.exponentFiveTechs", log);
+            RepairRange(ref value.controlCost.arrivalInternationalRelationsReduction, defaults.controlCost.arrivalInternationalRelationsReduction, 0f, 0.99f, "controlCost.arrivalInternationalRelationsReduction", log);
+            RepairRange(ref value.controlCost.unityMovementsReduction, defaults.controlCost.unityMovementsReduction, 0f, 0.99f, "controlCost.unityMovementsReduction", log);
+            RepairRange(ref value.controlCost.greatNationsReduction, defaults.controlCost.greatNationsReduction, 0f, 0.99f, "controlCost.greatNationsReduction", log);
+            RepairRange(ref value.controlCost.arrivalGovernanceReduction, defaults.controlCost.arrivalGovernanceReduction, 0f, 0.99f, "controlCost.arrivalGovernanceReduction", log);
+            RepairRange(ref value.controlCost.accelerandoReduction, defaults.controlCost.accelerandoReduction, 0f, 0.99f, "controlCost.accelerandoReduction", log);
+            RepairRange(ref value.councilors.totalAttributeCap, defaults.councilors.totalAttributeCap, 25f, 100f, "councilors.totalAttributeCap", log);
+            RepairRange(ref value.councilors.maximumOrganizations, defaults.councilors.maximumOrganizations, 1f, 100f, "councilors.maximumOrganizations", log);
             RepairNonNegative(ref value.army.homeBaseCost, defaults.army.homeBaseCost, "army.homeBaseCost", log);
             RepairNonNegative(ref value.army.awayBaseCost, defaults.army.awayBaseCost, "army.awayBaseCost", log);
             RepairFinite(ref value.army.technologyBaseline, defaults.army.technologyBaseline, "army.technologyBaseline", log);

@@ -36,12 +36,16 @@ for the current patch-by-patch review.
   direct Spoils gas pulse; land-relative nuclear damage.
 - x1.05 Investment Point output; Economy and Spoils share the same live
   factor-balance GDP gain.
-- Country Control Point usage is x1.20 before the active scenario multiplier,
-  while the five management technologies retain the
-  1.00/0.98/0.95/0.90/0.85/0.80 exponent progression.
+- Country Control Point usage is x1.20 before the active scenario multiplier.
+  The five management technologies apply explicit exponent reductions of
+  0.02/0.03/0.05/0.05/0.05, totaling 0.20 regardless of completion order.
 - Project Control Point capacity values become additive percentages at their
   existing 5/10/20/40/120 values and multiply the complete non-project flat
   capacity base, including LEO and fixed scenario bonuses.
+- Councilor attributes retain the vanilla 25-point unmodified/base ceiling,
+  while traits and organizations can raise the modified total to 50. Councilors
+  may equip up to 18 organizations, and organization tier usage may consume the
+  full modified Administration total up to 50.
 - Spoils retains its full $60 base faction-cash payout and has no direct gas pulse.
 - Xenofauna capped at 5 base miltech; Purge and Enthrall Elites receive +1 defense.
 - 2022 starts with Mission to Space and Advanced Chemical Rocketry completed.
@@ -98,9 +102,9 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\verify.ps1
 Verification rebuilds with warnings as errors, runs dependency-free formula
 tests, validates all 110 hab-module overrides against the installed vanilla
 templates, validates the implementation matrix against settings and Harmony
-patches, verifies the guarded hab connector and list-icon transpilers, checks the
-hab-cost substitution order, validates Control Point effects and localization,
-checks the manifest/package layout, and creates
+patches, verifies the guarded councilor-cap, hab connector, and list-icon
+transpilers, checks the hab-cost substitution order, validates Control Point
+effects and localization, checks the manifest/package layout, and creates
 `artifacts/TIEconomyMod-0.7.1-ti1.0.49.zip`.
 
 ## Smoke test
