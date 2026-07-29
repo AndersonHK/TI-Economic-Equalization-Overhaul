@@ -245,7 +245,7 @@ namespace TIEconomyMod
         public bool enabled = true;
         public float maximumMultiplier = 4f;
         public bool researchCostEnabled = true;
-        public float researchCostMultiplier = 1.20f;
+        public float researchCostMultiplier = 1.40f;
     }
 
     public sealed class AbundanceSettings
@@ -311,6 +311,7 @@ namespace TIEconomyMod
     public sealed class ResearchSettings
     {
         public bool enabled = true;
+        public bool neutralControlPointResearchEnabled = true;
         public float coefficient = 0.0037f;
         public float referencePcgdp = 20000f;
         public float minimumPcgdpMultiplier = 0.60f;

@@ -38,8 +38,8 @@ namespace TIEconomyMod.Patches
             }
 
             // This method exists only on global technologies; faction projects use
-            // TIProjectTemplate and are untouched. The default x1.20 changes a 1,000
-            // research technology to 1,200 after vanilla applies difficulty and speed.
+            // TIProjectTemplate and are untouched. The default x1.40 changes a 1,000
+            // research technology to 1,400 after vanilla applies difficulty and speed.
             __result *= settings.researchCostMultiplier;
         }
     }

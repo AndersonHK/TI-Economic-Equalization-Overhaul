@@ -58,7 +58,15 @@ for the current patch-by-patch review.
   vanilla connector renderers between occupied arms while hab-list icon overlays
   remain tier-gated. The starting ISS and Tiangong layouts, T1 crews, and crew
   consumables are historically rescaled.
-- Global technologies cost x1.20 research; faction projects retain vanilla costs.
+- Research from every national Control Point share that cannot currently benefit
+  a faction—including unowned and cracked-down points—is conserved as
+  unattributed neutral research and divided evenly among the three global
+  technology slots. Faction-active and neutral shares form an exclusive
+  partition, so every base share is allocated exactly once. Neutral progress
+  receives a gray contribution segment in the research UI, cannot finish a
+  technology until a faction has contributed, and never counts toward faction
+  leadership or project unlocks.
+- Global technologies cost x1.40 research; faction projects retain vanilla costs.
 - Population-normalized Unity, Knowledge, Government, Oppression, and selected
   Spoils social effects.
 - Army-count-normalized Military technology and per-army upkeep.
@@ -105,7 +113,7 @@ templates, validates the implementation matrix against settings and Harmony
 patches, verifies the guarded councilor-cap, hab connector, and list-icon
 transpilers, checks the hab-cost substitution order, validates Control Point
 effects and localization, checks the manifest/package layout, and creates
-`artifacts/TIEconomyMod-0.7.1-ti1.0.49.zip`.
+`artifacts/TIEconomyMod-0.7.2-ti1.0.49.zip`.
 
 ## Smoke test
 
@@ -115,6 +123,14 @@ Exercise all affected priorities at boundary and neutral values, then toggle eac
 feature and confirm the appended tooltip agrees with the observed change. Merge
 countries with similar and dissimilar GDP/c, force structure, and population;
 verify Military technology and Inequality against the documented examples.
+For global research, compare the neutral daily rate against the sum of
+`research_month / numControlPoints` for every unowned or benefits-disabled
+Control Point, confirm all three technologies receive the same amount, and
+verify the gray UI segment is not included in any faction's contribution.
+Crack down an owned point and confirm its share moves from faction allocation
+to neutral allocation without changing the combined base amount. Set every
+faction's weight in one slot to zero and confirm neutral research waits just
+below completion until a faction contributes.
 For habs, compare Earth-built, locally supplied, and upgraded modules; confirm
 the mandatory Boost floor and Earth delivery time. At a distant base, verify that
 ample local materials plus insufficient Boost shows only the mandatory Boost

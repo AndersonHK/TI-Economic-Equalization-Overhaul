@@ -21,6 +21,7 @@ namespace TIEconomyMod.FormulaTests
                     weights, delegate { }, delegate { return true; });
 
                 TestNationalValues();
+                TestIndependentResearch();
                 TestEconomyAndTechnology();
                 TestBalanceTuning();
                 TestAbundance();
@@ -255,13 +256,56 @@ namespace TIEconomyMod.FormulaTests
                 "full tree produces the normalized 3.40x productivity result");
         }
 
+        private static void TestIndependentResearch()
+        {
+            Near(75f, IndependentResearchMath.MonthlyNeutralShare(100f, 3, 4),
+                0.0001f, "neutral Control Point shares conserve national research");
+            Near(100f, IndependentResearchMath.MonthlyNeutralShare(100f, 9, 4),
+                0.0001f, "neutral Control Point count is bounded by the nation total");
+            Near(0f, IndependentResearchMath.MonthlyNeutralShare(100f, 0, 4),
+                0.0001f, "fully owned nations add no independent research");
+            Near(0f, IndependentResearchMath.MonthlyNeutralShare(-10f, 2, 4),
+                0.0001f, "negative national research cannot reduce global progress");
+            True(IndependentResearchMath.IsNeutralResearchControlPoint(false, false),
+                "an unowned Control Point contributes neutral research");
+            True(!IndependentResearchMath.IsNeutralResearchControlPoint(true, false),
+                "an ordinarily owned Control Point is not double counted");
+            True(IndependentResearchMath.IsNeutralResearchControlPoint(true, true),
+                "a cracked-down Control Point contributes neutral research because its owner receives none");
+            True(IndependentResearchMath.NeutralControlPointCount(4, 1) == 3,
+                "neutral shares are the exact complement of faction-allocatable shares");
+            True(IndependentResearchMath.NeutralControlPointCount(4, 9) == 0,
+                "invalid excess faction allocation cannot create negative neutral shares");
+            Near(100f,
+                IndependentResearchMath.MonthlyNeutralShare(100f, 1, 4) +
+                IndependentResearchMath.MonthlyNeutralShare(100f, 3, 4),
+                0.0001f,
+                "faction-allocatable and neutral shares partition national research exactly once");
+
+            float daily = IndependentResearchMath.DailyPerGlobalTechnology(
+                IndependentResearchMath.DaysPerYear / 12f * 3f);
+            Near(1f, daily, 0.0001f,
+                "monthly independent research divides evenly among three daily slots");
+            Near(40f, IndependentResearchMath.IndependentProgress(100f, 60f),
+                0.0001f, "independent progress is the unattributed remainder");
+            Near(0f, IndependentResearchMath.IndependentProgress(60f, 100f),
+                0.0001f, "rounding cannot produce negative independent progress");
+
+            Near(999.999f, IndependentResearchMath.GuardUnattributedCompletion(
+                1010f, 1000f, false), 0.0001f,
+                "unattributed research waits below completion for a faction");
+            Near(1010f, IndependentResearchMath.GuardUnattributedCompletion(
+                1010f, 1000f, true), 0.0001f,
+                "a real faction contribution permits completion");
+        }
+
         private static void TestBalanceTuning()
         {
             Reset();
             float technologyCost = 1000f;
             GlobalTechnologyResearchCostPatch.Postfix(ref technologyCost);
-            Near(1200f, technologyCost, 0.0001f,
-                "global technology costs increase by twenty percent");
+            Near(1400f, technologyCost, 0.0001f,
+                "global technology costs increase by forty percent");
 
             float xenofaunaTech = 6f;
             TIMegafaunaArmyState xenofauna = new TIMegafaunaArmyState();

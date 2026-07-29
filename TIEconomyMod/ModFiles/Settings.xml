@@ -37,7 +37,7 @@
     <enabled>true</enabled>
     <maximumMultiplier>4</maximumMultiplier>
     <researchCostEnabled>true</researchCostEnabled>
-    <researchCostMultiplier>1.2</researchCostMultiplier>
+    <researchCostMultiplier>1.4</researchCostMultiplier>
   </technology>
   <abundance>
     <enabled>true</enabled>
@@ -98,6 +98,7 @@
   </army>
   <research>
     <enabled>true</enabled>
+    <neutralControlPointResearchEnabled>true</neutralControlPointResearchEnabled>
     <coefficient>0.0037</coefficient>
     <referencePcgdp>20000</referencePcgdp>
     <minimumPcgdpMultiplier>0.6</minimumPcgdpMultiplier>

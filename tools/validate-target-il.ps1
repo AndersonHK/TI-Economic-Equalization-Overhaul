@@ -188,6 +188,42 @@ try {
     $technologyCost = Read-MethodIl 'TITechTemplate' 'GetResearchCost'
     Assert-Count $technologyCost 'ldfld\s+float32 TIGenericTechTemplate::researchCost' 1 'Global technology research cost'
 
+    $controlPoint = 'PavonisInteractive.TerraInvicta.TIControlPoint'
+    $controlPointOwned = Read-MethodIl $controlPoint 'get_owned'
+    Assert-Count $controlPointOwned 'TIControlPoint::get_faction\(\)' 1 'Control-point ownership faction source'
+    Assert-Count $controlPointOwned 'TIGameState::op_Inequality\(' 1 'Control-point ownership null comparison'
+
+    $crackdown = Read-MethodIl $controlPoint 'ResolveCrackdownEffect'
+    Assert-Count $crackdown 'TIControlPoint::set_benefitsDisabled\(bool\)' 1 'Crackdown benefit suppression'
+    Assert-Count $crackdown 'TIControlPoint::SetFaction\(' 0 'Crackdown ownership retention'
+
+    $nationalIncome = Read-MethodIl `
+        'PavonisInteractive.TerraInvicta.TIFactionState' `
+        'GetYearlyIncomeFromNations'
+    Assert-Count $nationalIncome `
+        'TINationState::GetMonthlyResearchFromControlPoint\(' `
+        2 `
+        'Faction national-research accounting'
+    Assert-Count $nationalIncome `
+        'TIControlPoint::get_benefitsDisabled\(\)' `
+        5 `
+        'Crackdown faction-benefit exclusions'
+
+    $jointResearch = Read-MethodIl `
+        'PavonisInteractive.TerraInvicta.Actions.JointResearchDailyUpdate' `
+        'Execute'
+    Assert-Count $jointResearch `
+        'TIGlobalResearchState::CheckForCompletedTechs\(\)' `
+        1 `
+        'Daily global-research completion update'
+
+    $globalResearch = 'PavonisInteractive.TerraInvicta.TIGlobalResearchState'
+    $completedTechs = Read-MethodIl $globalResearch 'CheckForCompletedTechs'
+    Assert-Count $completedTechs `
+        'TIGlobalResearchState::OnTechFinished\(int32\)' `
+        1 `
+        'Global-technology completion dispatcher'
+
     $habTemplate = 'TIHabModuleTemplate'
     $boostCost = Read-MethodIl $habTemplate 'BoostCostFromEarth'
     Assert-Count $boostCost 'TISpaceObjectState::GenericTransferBoostFromEarthSurface\(' 1 'Hab Earth boost conversion'
@@ -230,7 +266,7 @@ try {
         1 `
         'Hab-list station-sector icon loop'
 
-    Write-Host 'PASS: target IL contains every guarded TI 1.0.49 patch point, including councilor caps and climate damage.'
+    Write-Host 'PASS: target IL contains every guarded TI 1.0.49 patch point, including research ownership, councilor caps, and climate damage.'
 }
 finally {
     $resolvedProbe = (Resolve-Path -LiteralPath $probeDirectory).Path

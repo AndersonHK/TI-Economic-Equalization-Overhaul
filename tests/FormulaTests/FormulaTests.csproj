@@ -24,6 +24,9 @@
     <Compile Include="..\..\TIEconomyMod\Core\HabRebalanceMath.cs">
       <Link>HabRebalanceMath.cs</Link>
     </Compile>
+    <Compile Include="..\..\TIEconomyMod\Core\IndependentResearchMath.cs">
+      <Link>IndependentResearchMath.cs</Link>
+    </Compile>
     <Compile Include="..\..\TIEconomyMod\Core\TechWeightCatalog.cs">
       <Link>TechWeightCatalog.cs</Link>
     </Compile>

@@ -32,7 +32,7 @@ namespace TIEconomyMod
                 techWeights = TechWeightCatalog.Load(weightPath, Log, IsKnownTechnology);
                 new Harmony(modEntry.Info.Id).PatchAll();
                 CouncilorRuntimeCaps.InitializeOrganizationCap();
-                Log("Loaded TI Economic Equalization Overhaul 0.7.1 for the TI 1.0.49 API surface.");
+                Log("Loaded TI Economic Equalization Overhaul 0.7.2 for the TI 1.0.49 API surface.");
                 return true;
             }
             catch (Exception exception)
@@ -238,7 +238,7 @@ namespace TIEconomyMod
         public bool enabled = true;
         public float maximumMultiplier = 4f;
         public bool researchCostEnabled = true;
-        public float researchCostMultiplier = 1.20f;
+        public float researchCostMultiplier = 1.40f;
     }
 
     [DrawFields(DrawFieldMask.Public)]
@@ -317,6 +317,7 @@ namespace TIEconomyMod
     public sealed class ResearchSettings
     {
         public bool enabled = true;
+        public bool neutralControlPointResearchEnabled = true;
         public float coefficient = 0.0037f;
         public float referencePcgdp = 20000f;
         public float minimumPcgdpMultiplier = 0.60f;

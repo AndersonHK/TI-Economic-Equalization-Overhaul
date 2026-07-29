@@ -66,6 +66,18 @@
       <HintPath>$(TargetManagedDir)\UnityEngine.IMGUIModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.UIModule">
+      <HintPath>$(TargetManagedDir)\UnityEngine.UIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>$(TargetManagedDir)\UnityEngine.UI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>$(TargetManagedDir)\Unity.TextMeshPro.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="UnityModManager">
       <HintPath>$(TargetManagedDir)\UnityModManager\UnityModManager.dll</HintPath>
       <Private>False</Private>
@@ -74,11 +86,13 @@
 
   <ItemGroup>
     <Compile Include="Core\HabRebalanceMath.cs" />
+    <Compile Include="Core\IndependentResearchMath.cs" />
     <Compile Include="Core\TechWeightCatalog.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Patches\EconomyPatches.cs" />
     <Compile Include="Patches\BalancePatches.cs" />
     <Compile Include="Patches\EnvironmentUnitySpoilsPatches.cs" />
+    <Compile Include="Patches\GlobalResearchPatches.cs" />
     <Compile Include="Patches\HabRebalancePatches.cs" />
     <Compile Include="Patches\CompletionCompatibilityPatches.cs" />
     <Compile Include="Patches\CouncilorPatches.cs" />
@@ -97,6 +111,7 @@
     <None Include="ModFiles\TIHabTemplate.json" />
     <None Include="ModFiles\TIMissionTemplate.json" />
     <None Include="ModFiles\TIStartTimeTemplate.json" />
+    <None Include="ModFiles\UIScience.en" />
     <None Include="ModFiles\UINation.en" />
     <None Include="ModFiles\ModInfo.json" />
   </ItemGroup>
