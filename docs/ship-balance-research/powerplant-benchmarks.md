@@ -1,6 +1,6 @@
 # Power-plant benchmarks
 
-Last reviewed: 2026-07-28
+Last reviewed: 2026-07-29
 
 ## Unit normalization
 
@@ -8,11 +8,16 @@ The game field `specificPower_tGW` is named like a specific mass, not a specific
 
 `kg/kW = specificPower_tGW / 1,000`
 
-The implied plant mass is:
+Runtime inspection shows that the installed plant mass is:
 
-`plant mass in tonnes = maxOutput_GW × specificPower_tGW`
+`plant mass in tonnes = max(1, ship gross power requirement in GW × specificPower_tGW)`
 
-This document assumes `maxOutput_GW` is delivered power and `efficiency` determines the fraction that does not become waste heat. The runtime code should be checked before final balance changes.
+`maxOutput_GW` is a compatibility and capacity ceiling, not the output used to
+size every installation. Systems and weapon loads are divided by `efficiency`
+to obtain their gross generation requirement. Vanilla then calculates heat as
+`delivered × (1 - efficiency)`, which is too small. Input minus output is
+`delivered × (1 / efficiency - 1)`. The mod's targeted runtime correction is
+documented in [the low-tech rebalance slice](low-tech-rebalance-slice.md).
 
 ## Current game ranges
 
@@ -34,24 +39,47 @@ The outputs are not necessarily impossible energy totals for a far-future civili
 
 ## Fuel cells
 
+The full game localization identifies these as alkaline hydrogen/oxygen fuel
+cells **recharged by a solar array**. They are therefore regenerative
+fuel-cell systems with photovoltaic primary power, not bare stacks or
+unlimited consumable-reactant generators.
+
+NASA describes a regenerative fuel-cell system as a fuel cell, electrolyzer,
+reactant processing and storage, with external photovoltaic recharge
+([NASA TechPort regenerative fuel cells](https://techport.nasa.gov/projects/116307)).
+NASA's spacecraft solar-array survey reports actual mission hardware around
+30 W/kg, a ROSA product around 100 W/kg, and an empirical maximum near 200 W/kg
+([NASA Small Spacecraft State of the Art](https://www.nasa.gov/smallsat-institute/sst-soa/power-subsystems/)).
+
 DOE's automotive direct-hydrogen stack target is `2,000 W/kg`, equivalent to `0.5 kg/kW`, and explicitly excludes hydrogen storage, power electronics, electric drive, and thermal/water/air-management ancillaries ([DOE transportation fuel-cell targets](https://www.energy.gov/cmei/fuels/doe-technical-targets-fuel-cell-systems-and-stacks-transportation-applications)).
 
 DOE's solid-oxide program targets greater than `60%` electrical efficiency for stationary systems ([DOE Solid Oxide Fuel Cells](https://www.energy.gov/hgeo/solid-oxide-fuel-cells)). A NASA system study uses about `60%` stack efficiency for a 10 kW PEM fuel cell ([NASA fuel-cell thermal-management study](https://ntrs.nasa.gov/api/citations/20190001449/downloads/20190001449.pdf)).
 
 ### Game assessment
 
-- Fuel Cell I at `2.8 kg/kW` is not implausibly light compared with a complete system, though its `200 MW` scale and reactant inventory are extraordinary.
-- Fuel Cell II at `0.45 kg/kW` is around DOE's stack-only target and therefore too light for a complete space power plant unless tanks, reactants, radiators, pumps, and power conditioning are charged elsewhere.
-- Fuel Cell III at `0.12 kg/kW` is more than four times lighter than the DOE stack target before auxiliaries.
-- `70–72%` is aggressive but more defensible for a future fuel-cell stack than the game's fission efficiencies.
-- A fuel cell is an energy converter, not a primary energy source. Hydrogen and oxidizer mass or another reactant pair must be included for independent deep-space operation.
+- Fuel Cell I at `2.8 kg/kW` implies 357 W/kg for the **entire**
+  solar/regenerative system. That already exceeds the empirical solar-array
+  maximum before fuel-cell hardware is counted.
+- Fuel Cell II at `0.45 kg/kW` implies 2,222 W/kg, and Fuel Cell III at
+  `0.12 kg/kW` implies 8,333 W/kg. Neither can be reconciled with the described
+  solar array.
+- `70–72%` is aggressive for the complete regenerative cycle. A NASA
+  demonstration reported about 52% round-trip efficiency
+  ([NASA NTRS regenerative fuel-cell demonstration](https://ntrs.nasa.gov/citations/20070010455)).
+- The templates do not model stored-energy capacity or eclipse endurance, so
+  they cannot currently express the most important operating limitation.
 
 ### Balance opinion
 
 - Preserve zero operating crew.
-- Charge reactant mass and endurance explicitly.
-- Use about `0.5 kg/kW` as a hard modern stack anchor and a heavier complete-system value.
-- Do not give early fuel cells hundreds of megawatts without very large reactant and heat-rejection penalties.
+- Include solar arrays, electrolyzer, reactant tanks, deployment structure,
+  power conditioning, and thermal control in specific mass.
+- Add stored-energy capacity and eclipse endurance if a later code change can
+  support them.
+- Treat `0.5 kg/kW` only as a modern **stack** anchor, never as the complete
+  solar/regenerative system.
+- Do not give early fuel cells hundreds of megawatts without correspondingly
+  large collection area and heat-rejection penalties.
 
 ## Fission power
 
@@ -145,7 +173,11 @@ NASA describes direct conversion of charged fusion products as a research topic 
 
 No antimatter power reactor exists. Production and storage are laboratory-scale enabling problems. NASA design studies discuss containment, extraction, transport, and conversion as unresolved system elements ([NASA antimatter rocket concepts](https://ntrs.nasa.gov/search.jsp?R=19820013176)).
 
-The game Antimatter Beam Core Reactor produces `3,000,000 GW` at `0.00000002 kg/kW` and `99.9%` efficiency, for an implied plant mass of only 60 tonnes. This should be understood as setting technology, not a scientific extrapolation.
+The game Antimatter Beam Core Reactor is rated for `3,000,000 GW` at
+`0.00000002 kg/kW` and `99.9%` efficiency. A plant operating at that full
+rating would weigh only 60 tonnes; smaller installations scale down to the
+one-tonne runtime floor. This should be understood as setting technology, not a
+scientific extrapolation.
 
 ### Balance opinion
 
@@ -158,7 +190,7 @@ The game Antimatter Beam Core Reactor produces `3,000,000 GW` at `0.00000002 kg/
 | Technology tier | Suggested specific mass | Suggested delivered efficiency | Crew treatment |
 |---|---:|---:|---|
 | Fuel cell stack | 0.5–3 kg/kW before reactants | 50–70% | Automated; maintenance only |
-| Complete near-future fuel-cell system | 1–10 kg/kW before long-duration reactants | 45–65% | Shared engineering |
+| Complete solar/regenerative fuel-cell system | 10–30+ kg/kW with present arrays; lower only with explicit advanced-array assumptions | 45–60% round trip | Shared engineering |
 | Current/near-term space fission | 100–250 kg/kW | 20–30% | Remote/autonomous control, maintenance staff |
 | Aggressive mature multimegawatt fission | 5–20 kg/kW | 25–45% | Shared engineering |
 | First-generation fusion power | no defensible value; use ≥ mature fission as a placeholder | 30–50% for thermal conversion | High maintenance, automated plasma control |

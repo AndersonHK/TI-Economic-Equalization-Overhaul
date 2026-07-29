@@ -43,4 +43,34 @@ namespace TIEconomyMod.Patches
             __result *= settings.researchCostMultiplier;
         }
     }
+
+    [HarmonyPatch(typeof(TIPowerPlantTemplate), "WasteHeat_GW")]
+    public static class PowerPlantWasteHeatPatch
+    {
+        [HarmonyPrefix]
+        public static bool Prefix(
+            ref float __result,
+            TIPowerPlantTemplate __instance,
+            bool openCycleDriveCooling,
+            float drivePowerRequirement_GW,
+            float systemsAndWeaponsRequirement_GW)
+        {
+            ShipBalanceSettings settings = Main.settings.shipBalance;
+            if (!Main.FeatureEnabled(
+                settings.enabled && settings.correctPowerPlantWasteHeat))
+            {
+                return true;
+            }
+
+            // Vanilla multiplies delivered power by (1 - efficiency). Because the
+            // plant requirement is deliveredPower / efficiency, the rejected heat
+            // is input minus output: deliveredPower * (1 / efficiency - 1).
+            __result = PowerPlantThermalMath.PlantWasteHeat_GW(
+                openCycleDriveCooling,
+                drivePowerRequirement_GW,
+                systemsAndWeaponsRequirement_GW,
+                __instance.efficiency);
+            return false;
+        }
+    }
 }

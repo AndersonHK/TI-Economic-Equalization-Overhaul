@@ -166,6 +166,16 @@ These are balancing opinions, not claims about exact future staffing.
 | Spinal particle/plasma weapon | 0 | Central fire control; high engineering maintenance burden rather than gun crew |
 | Torpedo-like autonomous missile | 0 after launch | Human target authorization and optional updates; shared magazine handlers |
 
+### First-slice application
+
+| Game mount | Current crew | Proposed crew | Status |
+|---|---:|---:|---|
+| 30mm Autocannon | 1 | **0** | **Settled**; the mount is useful in point defense and should not carry a dedicated operator |
+
+This applies only the crew decision. Its mass, magazine, projectile, velocity,
+and firing cycle retain their current values until the wider weapon-performance
+review.
+
 ### Interpreting existing game crew values
 
 If removing the values would disrupt balance, reinterpret them as support billets:

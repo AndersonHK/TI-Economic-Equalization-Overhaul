@@ -96,6 +96,10 @@
     <megafaunaEnabled>true</megafaunaEnabled>
     <megafaunaMaximumTechLevel>5</megafaunaMaximumTechLevel>
   </army>
+  <shipBalance>
+    <enabled>true</enabled>
+    <correctPowerPlantWasteHeat>true</correctPowerPlantWasteHeat>
+  </shipBalance>
   <research>
     <enabled>true</enabled>
     <neutralControlPointResearchEnabled>true</neutralControlPointResearchEnabled>

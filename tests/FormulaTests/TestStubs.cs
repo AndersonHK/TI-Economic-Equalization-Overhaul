@@ -26,6 +26,11 @@ namespace PavonisInteractive.TerraInvicta
         public float bonusTechLevel;
     }
 
+    public sealed class TIPowerPlantTemplate
+    {
+        public float efficiency;
+    }
+
     public sealed class GlobalResearchState
     {
         public readonly HashSet<string> finishedTechsNames = new HashSet<string>(StringComparer.Ordinal);
@@ -191,6 +196,7 @@ namespace TIEconomyMod
         public InequalitySettings inequality = new InequalitySettings();
         public ControlCostSettings controlCost = new ControlCostSettings();
         public ArmySettings army = new ArmySettings();
+        public ShipBalanceSettings shipBalance = new ShipBalanceSettings();
         public ResearchSettings research = new ResearchSettings();
         public KnowledgeSettings knowledge = new KnowledgeSettings();
         public GovernmentSettings government = new GovernmentSettings();
@@ -306,6 +312,12 @@ namespace TIEconomyMod
         public float costPerTechnologyLevel = 2f;
         public bool megafaunaEnabled = true;
         public float megafaunaMaximumTechLevel = 5f;
+    }
+
+    public sealed class ShipBalanceSettings
+    {
+        public bool enabled = true;
+        public bool correctPowerPlantWasteHeat = true;
     }
 
     public sealed class ResearchSettings

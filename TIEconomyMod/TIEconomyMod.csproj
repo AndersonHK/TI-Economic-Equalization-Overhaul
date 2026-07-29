@@ -87,6 +87,7 @@
   <ItemGroup>
     <Compile Include="Core\HabRebalanceMath.cs" />
     <Compile Include="Core\IndependentResearchMath.cs" />
+    <Compile Include="Core\PowerPlantThermalMath.cs" />
     <Compile Include="Core\TechWeightCatalog.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Patches\EconomyPatches.cs" />

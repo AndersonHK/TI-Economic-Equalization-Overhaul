@@ -1,6 +1,6 @@
 # Ship balance research: first slice
 
-Last reviewed: 2026-07-28
+Last reviewed: 2026-07-29
 
 This dossier compares Terra Invicta's current ship-drive, power-plant, and weapon-crew values with demonstrated hardware, active prototypes, historical engineering programs, and explicitly speculative studies.
 
@@ -16,9 +16,16 @@ The game data used here comes from the installed templates:
 
 The comparison is organized into:
 
+- [Planning changelog](CHANGELOG.md)
 - [Propulsion benchmarks](propulsion-benchmarks.md)
 - [Power-plant benchmarks](powerplant-benchmarks.md)
 - [Weapon automation and crew](weapon-automation-and-crew.md)
+- [Low-tech rebalance: first planning slice](low-tech-rebalance-slice.md)
+- [Fundamental limits and six-month crew consumables](fundamental-limits-and-crew-consumables.md)
+- [Early power-plant localization and unlock audit](localization-and-unlock-audit.md)
+- [Early human hull geometry, mass, crew, power, and volume audit](gunship-and-escort-hull-analysis.md)
+- [Drive/reactor pairing, open-cycle cooling, and hull geometry](drive-reactor-pairing-and-hull-geometry.md)
+- [Hull resource-cost accounting and metal-use options](hull-resource-cost-accounting.md)
 
 ## Reading the confidence labels
 
@@ -61,10 +68,15 @@ These are design opinions derived from the evidence, not measured future facts.
 
 - A game's `mass` field may represent only the module and not shielding, radiators, propellant tanks, cabling, structural reinforcement, or maintenance access.
 - `specificPower_tGW` converts numerically to kilograms per kilowatt by dividing by 1,000.
+- Power-plant mass scales with the ship's required gross production rather than
+  automatically using the plant's maximum-output rating.
 - The drive-template fields imply a hardware-mass term of approximately:
 
   `flatMass_tons + specificPower_kgMW × requiredPower_GW`
 
   This follows from the units, but the game code should be checked before treating it as the exact runtime formula.
-- Reactor efficiency is interpreted here as delivered-power efficiency because it controls rejected heat in the game's design model. If the runtime uses a different definition, the efficiency comparisons must be revisited.
+- Runtime inspection confirms that systems and weapon requirements are divided
+  by plant efficiency to obtain gross generation. Vanilla then understates
+  rejected heat by using `delivered × (1 - efficiency)`; the corrected
+  input-minus-output expression is `delivered × (1 / efficiency - 1)`.
 - Scaling from kilowatts to gigawatts can improve specific mass, but it does not justify assuming that shielding, heat rejection, power conversion, and distribution approach zero mass.

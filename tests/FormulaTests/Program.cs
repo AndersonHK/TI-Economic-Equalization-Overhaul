@@ -317,6 +317,31 @@ namespace TIEconomyMod.FormulaTests
             Near(5.4f, xenofaunaTech, 0.0001f,
                 "xenofauna keeps post-control bonuses");
 
+            Near(0.002364214f,
+                PowerPlantThermalMath.WasteHeatFromUsefulPower_GW(
+                    0.0055165f, 0.70f),
+                0.0000001f,
+                "power-plant heat is input power minus delivered power");
+            Near(3f,
+                PowerPlantThermalMath.PlantWasteHeat_GW(
+                    false, 4f, 2f, 2f / 3f),
+                0.0001f,
+                "closed-cycle drive load contributes to plant waste heat");
+            Near(1f,
+                PowerPlantThermalMath.PlantWasteHeat_GW(
+                    true, 4f, 2f, 2f / 3f),
+                0.0001f,
+                "open-cycle drive load remains excluded from plant waste heat");
+
+            TIPowerPlantTemplate plant = new TIPowerPlantTemplate();
+            plant.efficiency = 0.70f;
+            float wasteHeat = 0f;
+            True(!PowerPlantWasteHeatPatch.Prefix(
+                    ref wasteHeat, plant, false, 0f, 0.0055165f),
+                "enabled power-plant heat patch replaces vanilla");
+            Near(0.002364214f, wasteHeat, 0.0000001f,
+                "power-plant heat patch returns corrected radiator load");
+
             TIEconomyMod.Main.settings.technology.researchCostEnabled = false;
             technologyCost = 1000f;
             GlobalTechnologyResearchCostPatch.Postfix(ref technologyCost);
@@ -327,6 +352,13 @@ namespace TIEconomyMod.FormulaTests
             XenofaunaStrengthPatch.Postfix(ref xenofaunaTech, xenofauna);
             Near(6f, xenofaunaTech, 0.0001f,
                 "disabled xenofauna adjustment returns vanilla");
+            TIEconomyMod.Main.settings.shipBalance.correctPowerPlantWasteHeat = false;
+            wasteHeat = 123f;
+            True(PowerPlantWasteHeatPatch.Prefix(
+                    ref wasteHeat, plant, false, 0f, 0.0055165f),
+                "disabled power-plant heat correction returns vanilla");
+            Near(123f, wasteHeat, 0f,
+                "disabled power-plant heat correction leaves result untouched");
 
             TINationState nation = Nation();
             nation.economyPriorityPerCapitaIncomeChange = 12f;

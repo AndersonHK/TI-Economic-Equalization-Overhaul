@@ -138,6 +138,9 @@ namespace TIEconomyMod
         [Draw("Army Upkeep")]
         public ArmySettings army = new ArmySettings();
 
+        [Draw("Ship Balance")]
+        public ShipBalanceSettings shipBalance = new ShipBalanceSettings();
+
         [Draw("Research")]
         public ResearchSettings research = new ResearchSettings();
 
@@ -314,6 +317,13 @@ namespace TIEconomyMod
     }
 
     [DrawFields(DrawFieldMask.Public)]
+    public sealed class ShipBalanceSettings
+    {
+        public bool enabled = true;
+        public bool correctPowerPlantWasteHeat = true;
+    }
+
+    [DrawFields(DrawFieldMask.Public)]
     public sealed class ResearchSettings
     {
         public bool enabled = true;
@@ -471,6 +481,7 @@ namespace TIEconomyMod
             value.controlCost = value.controlCost ?? defaults.controlCost;
             value.councilors = value.councilors ?? defaults.councilors;
             value.army = value.army ?? defaults.army;
+            value.shipBalance = value.shipBalance ?? defaults.shipBalance;
             value.research = value.research ?? defaults.research;
             value.knowledge = value.knowledge ?? defaults.knowledge;
             value.government = value.government ?? defaults.government;
