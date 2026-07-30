@@ -97,6 +97,8 @@ $habOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIHabTemplate.j
 $powerPlantOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIPowerPlantTemplate.json'
 $heatSinkOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIHeatSinkTemplate.json'
 $gunOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIGunTemplate.json'
+$laserWeaponOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TILaserWeaponTemplate.json'
+$magneticGunOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIMagneticGunTemplate.json'
 $shipHullOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIShipHullTemplate.json'
 $nationLocalization = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\UINation.en'
 $effectLocalization = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIEffectTemplate.en'
@@ -303,7 +305,7 @@ $manifest = Get-Content -LiteralPath $manifestPath -Raw | ConvertFrom-Json
 if ($manifest.GameVersion -ne '1.0.49') {
     throw "ModInfo.json targets '$($manifest.GameVersion)' instead of TI 1.0.49."
 }
-if ($manifest.Version -ne '0.7.4') {
+if ($manifest.Version -ne '0.7.5') {
     throw "ModInfo.json version '$($manifest.Version)' does not match this release."
 }
 if ($manifest.AssemblyName -ne 'Assembly/TIEconomyMod.dll') {
@@ -379,8 +381,8 @@ if ($assemblyFile.LastWriteTime -lt $buildStarted.AddSeconds(-2)) {
     throw 'Packaged DLL predates this verification build.'
 }
 $assemblyVersion = [Reflection.AssemblyName]::GetAssemblyName($assemblyPath).Version.ToString()
-if ($assemblyVersion -ne '0.7.4.0') {
-    throw "Assembly version '$assemblyVersion' does not match release 0.7.4."
+if ($assemblyVersion -ne '0.7.5.0') {
+    throw "Assembly version '$assemblyVersion' does not match release 0.7.5."
 }
 $assemblyHash = (Get-FileHash -LiteralPath $assemblyPath -Algorithm SHA256).Hash
 
@@ -398,6 +400,8 @@ $requiredFiles = @(
     $powerPlantOverrides,
     $heatSinkOverrides,
     $gunOverrides,
+    $laserWeaponOverrides,
+    $magneticGunOverrides,
     $shipHullOverrides,
     $nationLocalization,
     $effectLocalization,
@@ -439,6 +443,8 @@ Copy-Item -LiteralPath $habOverrides -Destination $stagingDirectory
 Copy-Item -LiteralPath $powerPlantOverrides -Destination $stagingDirectory
 Copy-Item -LiteralPath $heatSinkOverrides -Destination $stagingDirectory
 Copy-Item -LiteralPath $gunOverrides -Destination $stagingDirectory
+Copy-Item -LiteralPath $laserWeaponOverrides -Destination $stagingDirectory
+Copy-Item -LiteralPath $magneticGunOverrides -Destination $stagingDirectory
 Copy-Item -LiteralPath $shipHullOverrides -Destination $stagingDirectory
 Copy-Item -LiteralPath $nationLocalization -Destination $stagingDirectory
 Copy-Item -LiteralPath $effectLocalization -Destination $stagingDirectory
@@ -449,7 +455,7 @@ if (Test-Path -LiteralPath $imagePath) {
     Copy-Item -LiteralPath $imagePath -Destination $stagingDirectory
 }
 
-$zipPath = Join-Path $artifactDirectory 'TIEconomyMod-0.7.4-ti1.0.49.zip'
+$zipPath = Join-Path $artifactDirectory 'TIEconomyMod-0.7.5-ti1.0.49.zip'
 if (Test-Path -LiteralPath $zipPath) {
     Remove-Item -LiteralPath $zipPath
 }
@@ -480,6 +486,8 @@ try {
         'TIEconomyMod/TIPowerPlantTemplate.json',
         'TIEconomyMod/TIHeatSinkTemplate.json',
         'TIEconomyMod/TIGunTemplate.json',
+        'TIEconomyMod/TILaserWeaponTemplate.json',
+        'TIEconomyMod/TIMagneticGunTemplate.json',
         'TIEconomyMod/TIShipHullTemplate.json'
     )
     foreach ($packagedShipFile in $packagedShipFiles) {

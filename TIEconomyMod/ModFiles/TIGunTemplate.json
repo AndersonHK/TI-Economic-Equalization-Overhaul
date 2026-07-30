@@ -6,5 +6,17 @@
   {
     "dataName": "30mmAutocannon",
     "crew": 0
+  },
+  {
+    "dataName": "40mmAutocannon",
+    "crew": 0
+  },
+  {
+    "dataName": "6-inchCannon",
+    "crew": 2
+  },
+  {
+    "dataName": "8-inchCannon",
+    "crew": 2
   }
 ]

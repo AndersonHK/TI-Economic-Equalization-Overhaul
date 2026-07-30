@@ -128,6 +128,14 @@ Primary anchors:
 
 ## Regenerative fuel cells and solar arrays
 
+> Historical first-slice analysis: the proposed values in this section are
+> preserved as the basis for the initial implementation. Later planning
+> decisions supersede them with `58/60/62%` efficiency and
+> `5.6/3.6/0.96 kg/kW` specific mass. Under the current accounting rule, solar
+> arrays belong to fuel-cell power-plant mass while radiator panels are
+> separate ship modules. See the [planning changelog](CHANGELOG.md) and
+> [current detailed fuel-cell analysis](details/fuel-cells/catalysis-power-density-and-thermal-limits.md).
+
 NASA describes a regenerative fuel cell as a fuel cell, electrolyzer, reactant
 processing and storage system that is recharged by an external photovoltaic
 source. Demonstrated round-trip figures around 52% and a fundamental practical
@@ -138,7 +146,9 @@ shows actual missions clustering around 30 W/kg and about 100 W/kg for a ROSA
 product, with an empirical upper edge near 200 W/kg. Earlier deployable-array
 concept studies targeted more than 500 W/kg, but that is the array alone. The
 fuel cells, electrolyzer, tanks, pumps, power conditioning, deployment
-structure, and radiators still have mass.
+structure, and radiators still have mass. The current accounting boundary
+places the solar and regenerative hardware in the plant, but charges radiator
+panels separately.
 
 | Plant | Current cap | Current specific mass | Current efficiency | Evidence-led ideal | Proposed cap | Proposed specific mass | Proposed efficiency | Crew |
 |---|---:|---:|---:|---|---:|---:|---:|---:|

@@ -1,6 +1,6 @@
-# Ship balance research: first slice
+# Ship balance research
 
-Last reviewed: 2026-07-29
+Last reviewed: 2026-07-30
 
 This dossier compares Terra Invicta's current ship-drive, power-plant, and weapon-crew values with demonstrated hardware, active prototypes, historical engineering programs, and explicitly speculative studies.
 
@@ -26,6 +26,15 @@ The comparison is organized into:
 - [Early human hull geometry, mass, crew, power, and volume audit](gunship-and-escort-hull-analysis.md)
 - [Drive/reactor pairing, open-cycle cooling, and hull geometry](drive-reactor-pairing-and-hull-geometry.md)
 - [Hull resource-cost accounting and metal-use options](hull-resource-cost-accounting.md)
+- [Detailed research archive](details/README.md)
+
+## Documentation structure
+
+This file is the dense, composed overview. General topic reports sit beside
+it; narrower and more comprehensive analyses live under `details/`, where
+topic indexes summarize and reconcile their different perspectives. Earlier
+analyses are retained and cited when a later model adds another facet rather
+than being silently replaced.
 
 ## Reading the confidence labels
 
@@ -52,6 +61,33 @@ The label applies to the technology, not to whether an individual numerical esti
 5. **Per-mount weapon operators are unlikely.** Phalanx already performs search through kill assessment autonomously, while Aegis automates the engagement computation with human weapon selection. Modern torpedoes guide themselves after launch, although loading, tube preparation, maintenance, and command authorization still require people.
 
 6. **Automation does not remove the crew burden; it moves it.** A credible future model should distinguish combat-system supervision, maintenance, damage control, and ordnance handling instead of assigning several continuous operators to every installed weapon or reactor.
+
+7. **Reactor mass and reactor size require different models.** Ideal fission
+   fuel establishes a real `t/GW-year` lower bound, but it does not set the
+   largest cooled, controlled unit. The preferred planning model combines a
+   linear mass term, endurance fuel, fixed mass per repeated
+   reactor/loop/converter train, and a technology-specific output cap. See the
+   [reactor synthesis](details/reactors/README.md).
+
+8. **Gas Core Fission Reactor VI already reaches the earlier extreme mass
+   floor.** Its template is `1 t/GW`, `96%` efficient, and capped at
+   `1,650 GWe`; a one-year ideal fuel load at full rating would itself be about
+   `660 t`. Specific mass alone therefore cannot evaluate it.
+
+9. **Gigawatt alkaline fuel cells are limited by low-grade heat.** The planned
+   `58/60/62%` discharge efficiencies are possible, but a roughly `90°C`
+   stack needs about `691–816 m²` of ideal radiator per electric megawatt.
+   Radiator mass is accounted separately, while plant specific mass includes
+   the solar arrays described by the localization. After the later mass
+   doubling, Fuel Cell III supplies `1.04 kW/kg` before that separate radiator
+   burden. See the
+   [fuel-cell synthesis](details/fuel-cells/README.md).
+
+10. **The alien catalog is stronger than its predefined fleet makes it look.**
+    Reactor/drive mismatches, old magnetic weapons, uneven point defense,
+    light armor, and non-use of stronger modules justify a future integrated
+    design pass. Raw buffs remain deferred pending controlled tests. See the
+    [alien synthesis](details/aliens/README.md).
 
 ## Working balance recommendations
 

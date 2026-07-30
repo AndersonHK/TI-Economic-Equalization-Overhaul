@@ -507,6 +507,12 @@ far less.
 
 ### Fuel cells under the settled planning values
 
+> Historical first-slice calculation: this table preserves the values used for
+> the original hull comparison. Current planning uses `58/60/62%` and
+> `5.6/3.6/0.96 kg/kW`; solar-array mass is included in the plant while
+> radiator mass remains separate. See the
+> [planning changelog](CHANGELOG.md).
+
 For a bare Gunship's 5.5165 MW useful load:
 
 | Fuel cell | Efficiency | Gross production | Specific mass | Installed mass | 35%-efficient array area at 1 AU |

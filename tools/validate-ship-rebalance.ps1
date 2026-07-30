@@ -45,19 +45,24 @@ function Assert-Near {
 
 $powerOverrides = Read-JsonArray (Join-Path $modFiles 'TIPowerPlantTemplate.json')
 $expectedPower = [ordered]@{
-    FuelCellI = @(0.63, 2800)
-    FuelCellII = @(0.65, 1800)
-    FuelCellIII = @(0.67, 480)
-    SolidCoreFissionReactorI = @(0.70, $null)
-    SolidCoreFissionReactorII = @(0.725, $null)
-    SolidCoreFissionReactorIII = @(0.75, $null)
-    SolidCoreFissionReactorIV = @(0.775, $null)
-    SolidCoreFissionReactorV = @(0.80, $null)
-    SolidCoreFissionReactorVI = @(0.725, $null)
-    SolidCoreFissionReactorVII = @(0.75, $null)
-    SolidCoreFissionReactorVIII = @(0.775, $null)
-    SolidCoreFissionReactorIX = @(0.80, $null)
-    SolidCoreFissionReactorX = @(0.825, $null)
+    FuelCellI = @(0.58, 5600, $null, $null)
+    FuelCellII = @(0.60, 3600, $null, $null)
+    FuelCellIII = @(0.62, 960, $null, $null)
+    SolidCoreFissionReactorI = @(0.60, 80, 1, 80)
+    SolidCoreFissionReactorII = @(0.625, 68, 3, 204)
+    SolidCoreFissionReactorIII = @(0.65, 56, 10, 560)
+    SolidCoreFissionReactorIV = @(0.675, 24, 30, 720)
+    SolidCoreFissionReactorV = @(0.70, 16, 60, 960)
+    SolidCoreFissionReactorVI = @(0.625, 12, 0.75, 9)
+    SolidCoreFissionReactorVII = @(0.65, 10, 2, 20)
+    SolidCoreFissionReactorVIII = @(0.675, 8, 4, 32)
+    SolidCoreFissionReactorIX = @(0.70, 6, 6, 36)
+    SolidCoreFissionReactorX = @(0.725, 4, 10, 40)
+    MoltenSaltFissionReactorI = @(0.77, 4, 40, 160)
+    MoltenSaltFissionReactorII = @(0.78, 3.6, 400, 1440)
+    MoltenCoreFissionReactorI = @(0.70, 8, 4, 32)
+    MoltenCoreFissionReactorII = @(0.73, 7, 17, 119)
+    MoltenCoreFissionReactorIII = @(0.75, 6, 200, 1200)
 }
 if ($powerOverrides.Count -ne $expectedPower.Count) {
     throw "Power-plant override has $($powerOverrides.Count) rows instead of $($expectedPower.Count)."
@@ -67,14 +72,20 @@ foreach ($entry in $expectedPower.GetEnumerator()) {
     if ($row.Count -ne 1) {
         throw "Power-plant override must contain '$($entry.Key)' exactly once."
     }
-    $expectedSpecificMass = $entry.Value[1]
-    if ($null -eq $expectedSpecificMass) {
-        Assert-Properties $row[0] @('dataName', 'efficiency') $entry.Key
+    $expectedMaximumOutput = $entry.Value[2]
+    if ($null -eq $expectedMaximumOutput) {
+        Assert-Properties $row[0] @('dataName', 'efficiency', 'specificPower_tGW') $entry.Key
     }
     else {
-        Assert-Properties $row[0] @('dataName', 'efficiency', 'specificPower_tGW') $entry.Key
-        Assert-Near $row[0].specificPower_tGW $expectedSpecificMass "$($entry.Key) specific mass"
+        Assert-Properties $row[0] @(
+            'dataName', 'maxOutput_GW', 'specificPower_tGW', 'efficiency') $entry.Key
+        Assert-Near $row[0].maxOutput_GW $expectedMaximumOutput "$($entry.Key) maximum output"
+        Assert-Near `
+            ([double]$row[0].maxOutput_GW * [double]$row[0].specificPower_tGW) `
+            $entry.Value[3] `
+            "$($entry.Key) mass at maximum output"
     }
+    Assert-Near $row[0].specificPower_tGW $entry.Value[1] "$($entry.Key) specific mass"
     Assert-Near $row[0].efficiency $entry.Value[0] "$($entry.Key) efficiency"
 }
 
@@ -96,14 +107,49 @@ $gunOverrides = Read-JsonArray (Join-Path $modFiles 'TIGunTemplate.json')
 $expectedGunCrew = [ordered]@{
     '10-inchCannon' = 3
     '30mmAutocannon' = 0
+    '40mmAutocannon' = 0
+    '6-inchCannon' = 2
+    '8-inchCannon' = 2
 }
 if ($gunOverrides.Count -ne $expectedGunCrew.Count) {
-    throw 'Gun override must contain exactly the 10-inch Cannon and 30mm Autocannon.'
+    throw "Gun override has $($gunOverrides.Count) rows instead of $($expectedGunCrew.Count)."
 }
 foreach ($entry in $expectedGunCrew.GetEnumerator()) {
     $row = @($gunOverrides | Where-Object dataName -eq $entry.Key)
     if ($row.Count -ne 1) {
         throw "Gun override must contain '$($entry.Key)' exactly once."
+    }
+    Assert-Properties $row[0] @('dataName', 'crew') $entry.Key
+    Assert-Near $row[0].crew $entry.Value "$($entry.Key) crew"
+}
+
+$laserOverrides = Read-JsonArray (Join-Path $modFiles 'TILaserWeaponTemplate.json')
+if ($laserOverrides.Count -ne 1 -or
+    $laserOverrides[0].dataName -ne 'PointDefenseLaserTurret') {
+    throw 'Laser override must contain exactly the Point Defense Laser Turret.'
+}
+Assert-Properties $laserOverrides[0] @('dataName', 'crew') 'PointDefenseLaserTurret'
+Assert-Near $laserOverrides[0].crew 0 'PointDefenseLaserTurret crew'
+
+$magneticOverrides = Read-JsonArray (Join-Path $modFiles 'TIMagneticGunTemplate.json')
+$expectedMagneticCrew = [ordered]@{
+    LightRailgunBatteryMk1 = 2
+    LightRailgunBatteryMk2 = 2
+    LightRailgunBatteryMk3 = 2
+    RailgunBatteryMk1 = 2
+    RailgunBatteryMk2 = 2
+    RailgunBatteryMk3 = 2
+    LightRailCannonMk1 = 3
+    LightRailCannonMk2 = 3
+    LightRailCannonMk3 = 3
+}
+if ($magneticOverrides.Count -ne $expectedMagneticCrew.Count) {
+    throw "Magnetic-gun override has $($magneticOverrides.Count) rows instead of $($expectedMagneticCrew.Count)."
+}
+foreach ($entry in $expectedMagneticCrew.GetEnumerator()) {
+    $row = @($magneticOverrides | Where-Object dataName -eq $entry.Key)
+    if ($row.Count -ne 1) {
+        throw "Magnetic-gun override must contain '$($entry.Key)' exactly once."
     }
     Assert-Properties $row[0] @('dataName', 'crew') $entry.Key
     Assert-Near $row[0].crew $entry.Value "$($entry.Key) crew"
@@ -156,6 +202,22 @@ foreach ($id in $expectedPower.Keys) {
         throw "Installed game no longer contains power plant '$id'."
     }
 }
+$vanillaGuns = Read-JsonArray (Join-Path $VanillaTemplatesDir 'TIGunTemplate.json')
+foreach ($id in $expectedGunCrew.Keys) {
+    if (@($vanillaGuns | Where-Object dataName -eq $id).Count -ne 1) {
+        throw "Installed game no longer contains gun '$id'."
+    }
+}
+$vanillaLasers = Read-JsonArray (Join-Path $VanillaTemplatesDir 'TILaserWeaponTemplate.json')
+if (@($vanillaLasers | Where-Object dataName -eq 'PointDefenseLaserTurret').Count -ne 1) {
+    throw "Installed game no longer contains laser 'PointDefenseLaserTurret'."
+}
+$vanillaMagneticGuns = Read-JsonArray (Join-Path $VanillaTemplatesDir 'TIMagneticGunTemplate.json')
+foreach ($id in $expectedMagneticCrew.Keys) {
+    if (@($vanillaMagneticGuns | Where-Object dataName -eq $id).Count -ne 1) {
+        throw "Installed game no longer contains magnetic gun '$id'."
+    }
+}
 $vanillaHulls = Read-JsonArray (Join-Path $VanillaTemplatesDir 'TIShipHullTemplate.json')
 foreach ($id in $expectedHulls.Keys) {
     if (@($vanillaHulls | Where-Object dataName -eq $id).Count -ne 1) {
@@ -168,4 +230,4 @@ if (Test-Path -LiteralPath $driveOverride) {
     throw 'The settled slice defers drive changes; TIDriveTemplate.json must not be packaged.'
 }
 
-Write-Host 'PASS: settled low-tech ship rebalance overrides validated.'
+Write-Host 'PASS: settled ship-rebalance overrides validated.'

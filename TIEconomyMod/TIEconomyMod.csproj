@@ -114,6 +114,8 @@
     <None Include="ModFiles\TIHabTemplate.json" />
     <None Include="ModFiles\TIHeatSinkTemplate.json" />
     <None Include="ModFiles\TIGunTemplate.json" />
+    <None Include="ModFiles\TILaserWeaponTemplate.json" />
+    <None Include="ModFiles\TIMagneticGunTemplate.json" />
     <None Include="ModFiles\TIMissionTemplate.json" />
     <None Include="ModFiles\TIPowerPlantTemplate.json" />
     <None Include="ModFiles\TIShipHullTemplate.json" />

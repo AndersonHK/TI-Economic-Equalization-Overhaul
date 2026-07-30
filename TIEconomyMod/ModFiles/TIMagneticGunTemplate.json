@@ -1,0 +1,38 @@
+[
+  {
+    "dataName": "LightRailgunBatteryMk1",
+    "crew": 2
+  },
+  {
+    "dataName": "LightRailgunBatteryMk2",
+    "crew": 2
+  },
+  {
+    "dataName": "LightRailgunBatteryMk3",
+    "crew": 2
+  },
+  {
+    "dataName": "RailgunBatteryMk1",
+    "crew": 2
+  },
+  {
+    "dataName": "RailgunBatteryMk2",
+    "crew": 2
+  },
+  {
+    "dataName": "RailgunBatteryMk3",
+    "crew": 2
+  },
+  {
+    "dataName": "LightRailCannonMk1",
+    "crew": 3
+  },
+  {
+    "dataName": "LightRailCannonMk2",
+    "crew": 3
+  },
+  {
+    "dataName": "LightRailCannonMk3",
+    "crew": 3
+  }
+]

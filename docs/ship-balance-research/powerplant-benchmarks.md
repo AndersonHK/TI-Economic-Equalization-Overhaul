@@ -1,6 +1,6 @@
 # Power-plant benchmarks
 
-Last reviewed: 2026-07-29
+Last reviewed: 2026-07-30
 
 ## Unit normalization
 
@@ -18,6 +18,29 @@ to obtain their gross generation requirement. Vanilla then calculates heat as
 `delivered × (1 - efficiency)`, which is too small. Input minus output is
 `delivered × (1 / efficiency - 1)`. The mod's targeted runtime correction is
 documented in [the low-tech rebalance slice](low-tech-rebalance-slice.md).
+
+## How the detailed models fit together
+
+This overview uses demonstrated and proposed systems as engineering anchors.
+Three narrower reports preserve different theoretical facets:
+
+- [Thermodynamics and fuel inventory](details/reactors/thermodynamic-and-fuel-limits.md)
+  derives the ideal fission-energy floor. Its `1 t/GWe` example is an extreme
+  lower bound, not a standalone output cap.
+- [Structural scaling and output caps](details/reactors/structural-scaling-and-output-caps.md)
+  models solid-fuel conduction, coolant interfaces, thermal and pressure
+  stress, neutron flux, and repeated conversion trains. It recommends fixed
+  mass plus a per-train cap instead of one universal `t/GW` rule.
+- [Fuel-cell catalysis and thermal limits](details/fuel-cells/catalysis-power-density-and-thermal-limits.md)
+  separates reversible efficiency, electrode throughput, whole-system
+  specific power, low-temperature radiator area, and biological catalysts.
+
+The installed `GasCoreFissionReactorVI` demonstrates why the distinction
+matters: it is already `1 t/GW`, `96%` efficient, and capped at `1,650 GWe`.
+At full output, one year of ideal U-235 fuel would be roughly `660 t` before
+the rest of the plant. The next mass and output-cap pass should therefore
+specify endurance and repeated reactor trains rather than compare only
+specific mass.
 
 ## Current game ranges
 
@@ -73,7 +96,10 @@ DOE's solid-oxide program targets greater than `60%` electrical efficiency for s
 
 - Preserve zero operating crew.
 - Include solar arrays, electrolyzer, reactant tanks, deployment structure,
-  power conditioning, and thermal control in specific mass.
+  power conditioning, and local stack thermal hardware in specific mass.
+- Account radiator panels separately through the ship's radiator system.
+  Plant efficiency determines their required heat-rejection capacity but
+  their mass is not part of `specificPower_tGW`.
 - Add stored-energy capacity and eclipse endurance if a later code change can
   support them.
 - Treat `0.5 kg/kW` only as a modern **stack** anchor, never as the complete

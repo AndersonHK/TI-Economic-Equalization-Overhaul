@@ -100,12 +100,14 @@ IDs or zero future-axis totals fail validation, and changes require restart.
 The packaged [default settings](TIEconomyMod/ModFiles/Settings.xml) are copied
 on release deployment so a new balance version starts from its authored values.
 
-Version 0.7.4 also implements the first settled low-tech ship slice: early fuel
-cells and solid-core reactor efficiencies, crew reductions for the two water
-heat sinks and selected guns, 3 t/crew support mass, a 1% open-cycle drive-heat
-residual, and the settled Gunship-through-Destroyer dimensions, masses, and
-crew counts. Draft module caps, weapon performance, heat-sink mass, hull
-materials, and starting-engine changes remain excluded.
+Version 0.7.5 extends the settled ship slice. Fuel Cells I-III now use the
+revised efficiencies and solar-inclusive specific masses. Solid, compact-solid,
+molten-salt, and molten-core fission plants use the settled efficiencies,
+specific masses, and output caps. Crew reductions now cover the 40mm and first
+laser point-defense mounts, 6- and 8-inch batteries, and the Mk1-3 light
+railgun batteries, railgun batteries, and light rail cannons. Fuel-cell output
+caps, weapon performance, heat-sink mass, hull materials, starting engines,
+reactor crew, and alien combat changes remain deferred.
 
 ## Build and verification
 
@@ -126,7 +128,7 @@ templates, validates the implementation matrix against settings and Harmony
 patches, verifies the guarded councilor-cap, hab connector, and list-icon
 transpilers, checks the hab-cost substitution order, validates Control Point
 effects and localization, checks the manifest/package layout, and creates
-  `artifacts/TIEconomyMod-0.7.4-ti1.0.49.zip`.
+`artifacts/TIEconomyMod-0.7.5-ti1.0.49.zip`.
 
 ## Smoke test
 

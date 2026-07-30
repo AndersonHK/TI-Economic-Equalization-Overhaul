@@ -1,57 +1,107 @@
 [
   {
     "dataName": "FuelCellI",
-    "efficiency": 0.63,
-    "specificPower_tGW": 2800
+    "efficiency": 0.58,
+    "specificPower_tGW": 5600
   },
   {
     "dataName": "FuelCellII",
-    "efficiency": 0.65,
-    "specificPower_tGW": 1800
+    "efficiency": 0.6,
+    "specificPower_tGW": 3600
   },
   {
     "dataName": "FuelCellIII",
-    "efficiency": 0.67,
-    "specificPower_tGW": 480
+    "efficiency": 0.62,
+    "specificPower_tGW": 960
   },
   {
     "dataName": "SolidCoreFissionReactorI",
-    "efficiency": 0.7
+    "maxOutput_GW": 1,
+    "specificPower_tGW": 80,
+    "efficiency": 0.6
   },
   {
     "dataName": "SolidCoreFissionReactorII",
-    "efficiency": 0.725
+    "maxOutput_GW": 3,
+    "specificPower_tGW": 68,
+    "efficiency": 0.625
   },
   {
     "dataName": "SolidCoreFissionReactorIII",
-    "efficiency": 0.75
+    "maxOutput_GW": 10,
+    "specificPower_tGW": 56,
+    "efficiency": 0.65
   },
   {
     "dataName": "SolidCoreFissionReactorIV",
-    "efficiency": 0.775
+    "maxOutput_GW": 30,
+    "specificPower_tGW": 24,
+    "efficiency": 0.675
   },
   {
     "dataName": "SolidCoreFissionReactorV",
-    "efficiency": 0.8
+    "maxOutput_GW": 60,
+    "specificPower_tGW": 16,
+    "efficiency": 0.7
   },
   {
     "dataName": "SolidCoreFissionReactorVI",
-    "efficiency": 0.725
+    "maxOutput_GW": 0.75,
+    "specificPower_tGW": 12,
+    "efficiency": 0.625
   },
   {
     "dataName": "SolidCoreFissionReactorVII",
-    "efficiency": 0.75
+    "maxOutput_GW": 2,
+    "specificPower_tGW": 10,
+    "efficiency": 0.65
   },
   {
     "dataName": "SolidCoreFissionReactorVIII",
-    "efficiency": 0.775
+    "maxOutput_GW": 4,
+    "specificPower_tGW": 8,
+    "efficiency": 0.675
   },
   {
     "dataName": "SolidCoreFissionReactorIX",
-    "efficiency": 0.8
+    "maxOutput_GW": 6,
+    "specificPower_tGW": 6,
+    "efficiency": 0.7
   },
   {
     "dataName": "SolidCoreFissionReactorX",
-    "efficiency": 0.825
+    "maxOutput_GW": 10,
+    "specificPower_tGW": 4,
+    "efficiency": 0.725
+  },
+  {
+    "dataName": "MoltenSaltFissionReactorI",
+    "maxOutput_GW": 40,
+    "specificPower_tGW": 4,
+    "efficiency": 0.77
+  },
+  {
+    "dataName": "MoltenSaltFissionReactorII",
+    "maxOutput_GW": 400,
+    "specificPower_tGW": 3.6,
+    "efficiency": 0.78
+  },
+  {
+    "dataName": "MoltenCoreFissionReactorI",
+    "maxOutput_GW": 4,
+    "specificPower_tGW": 8,
+    "efficiency": 0.7
+  },
+  {
+    "dataName": "MoltenCoreFissionReactorII",
+    "maxOutput_GW": 17,
+    "specificPower_tGW": 7,
+    "efficiency": 0.73
+  },
+  {
+    "dataName": "MoltenCoreFissionReactorIII",
+    "maxOutput_GW": 200,
+    "specificPower_tGW": 6,
+    "efficiency": 0.75
   }
 ]
