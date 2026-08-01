@@ -1,12 +1,13 @@
 # Conventional-gun power-consumption patch plan
 
 Last reviewed: 2026-08-01  
-Game data and code path: installed Terra Invicta 1.0.49
+Current runtime/code-path validation: installed Terra Invicta 1.0.51  
+Original balance data provenance: installed Terra Invicta 1.0.49
 
 ## Status
 
-This document is an implementation plan only. No runtime patch or weapon power
-value has been added to the mod.
+The power-only portion of this plan is implemented in version 0.8.1. Gun mass,
+projectile, ammunition, damage, range, and cadence changes remain deferred.
 
 The objective is to make the 30mm, 40mm ETC, and 6-10-inch chemical guns use
 Terra Invicta's existing reactor, battery, heat, and weapon-UI systems without
@@ -29,6 +30,23 @@ the same way the powered-weapon classes do. Propellant continues to supply the
 chemical guns' muzzle energy; barrel and propellant heat remain outside this
 first electrical patch. Loader efficiencies for the ordinary guns are not yet
 settled.
+
+### Effective 0.8.1 power-only values
+
+Version 0.8.1 deliberately retains vanilla projectile and firing-cycle data.
+The ordinary guns use 100% module efficiency until loader losses are settled;
+this preserves the electrical-load targets without inventing additional heat.
+
+| Weapon | Vanilla cadence basis | `powerUse_MJ` | Efficiency | Electrical input/shot | Average input | Salvo-rate plant output | Module heat rate |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| 30mm | 10 shots; 4 s cooldown; 0.5 s intra | 0.085 MJ | 100% | 0.085 MJ | 0.100 MW | 0.170 MW | 0 MW |
+| 40mm ETC | 6 shots; 4 s cooldown; 0.75 s intra | 8.700 MJ | 90% | 9.6667 MJ | 7.484 MW | 12.889 MW | 1.289 MW |
+| 6-inch | 4 shots; 12 s cooldown; 2 s intra | 0.675 MJ | 100% | 0.675 MJ | 0.150 MW | 0.338 MW | 0 MW |
+| 8-inch | 4 shots; 15 s cooldown; 2.5 s intra | 1.40625 MJ | 100% | 1.40625 MJ | 0.250 MW | 0.563 MW | 0 MW |
+| 10-inch | 3 shots; 16 s cooldown; 3 s intra | 2.200 MJ | 100% | 2.200 MJ | 0.300 MW | 0.733 MW | 0 MW |
+
+The later 180/100-rpm autocannon figures below remain planning values and do
+not describe the 0.8.1 runtime cadence.
 
 ### 40mm ETC convention
 
@@ -113,8 +131,8 @@ The proposed JSON contract is:
 ```json
 {
   "dataName": "30mmAutocannon",
-  "powerUse_MJ": 0.026667,
-  "efficiency": 0.8
+  "powerUse_MJ": 0.085,
+  "efficiency": 1.0
 }
 ```
 
@@ -149,25 +167,23 @@ public override float HeatGeneration_GJ(float extraInput_MJ = 0f)
 That is the desired end state: one new serialized field and no downstream
 special cases.
 
-### Mod-feasible hydration adapter
+### Implemented mod hydration adapter
 
 Harmony cannot add a serializable CLR field to the already-compiled
 `TIGunTemplate`, and unknown JSON members are not retained on the deserialized
 object. Do **not** depend on patching the serializer: the mod normally loads
 after `TemplateManager.Initialize`, so such a patch can miss every gun template.
-Use one central post-template adapter instead:
+Version 0.8.1 uses one central runtime registry instead:
 
 1. Read `ModTemplateManager.GetModsForTemplate("TIGunTemplate")`, which retains
    each active mod's `JObject` records and load order.
 2. Reproduce the game's JSON merge/replacement order for the extension member,
    including later overrides and full-file replacement semantics.
-3. Associate each effective `powerUse_MJ` value with the corresponding active
-   `TIGunTemplate` instance in a
-   `ConditionalWeakTable<TIGunTemplate, GunPowerExtension>`.
-4. Immediately bind after `PatchAll()` when `TemplateManager.self.Initialized`
-   is already true. Also add a `TemplateManager.Initialize` postfix that binds
-   when an earlier startup order is encountered.
-5. Read the extension from the three `TIGunTemplate` members shown above.
+3. Store the effective values by `dataName` plus normalized scenario tags, with
+   an untagged fallback matching ordinary template-merge behavior.
+4. Refresh immediately after `PatchAll()` and from a
+   `TemplateManager.Initialize` postfix for the opposite startup order.
+5. Have the three `TIGunTemplate` patches query that registry directly.
 
 This is a hydration shim, not a weapon-profile database: it contains no gun
 names and accepts any present or future gun record carrying the generic field.
@@ -195,8 +211,13 @@ as well as guns, not through a gun-only exception.
 
 ### UI-consumer audit
 
-The 1.0.49 code audit found every direct UI consumer of weapon energy and power
-state. All are generic and therefore require no gun-specific patch:
+The original 1.0.49 code audit found every direct UI consumer of weapon energy
+and power state. The 1.0.51 compatibility audit found one additional invariant:
+`ShipModuleListItem` conditionally creates the Energy Usage cell, while
+`ShipModuleTable.ResizeColumns` assumes every visible row has the same number of
+cells. Version 0.8.2 therefore forces that cell to exist for every conventional
+gun row while displaying the gun's real value; the other consumers remain
+generic and require no gun-specific patch:
 
 - `TIShipWeaponTemplate.GetTruncatedDescriptionData` and
   `GetLocalizedEnergyUsage` supply the ordinary weapon/design description;
@@ -315,17 +336,18 @@ self-powered behavior. This must also be covered by a round-trip load test.
   ship. Do not ship until any newly exposed cache mismatch is either reconciled
   generically or documented as established base-game save behavior.
 
-## Recommended implementation sequence
+## Implemented sequence
 
-1. Add and test `GunPowerExtension` plus the load-order-safe post-template
-   binding adapter.
+1. Add and test `GunPowerRegistry` with load-order and scenario-tag handling.
 2. Patch the three `TIGunTemplate` power/heat members generically.
 3. Add `powerUse_MJ` and `efficiency` to the five mod gun JSON overrides.
-4. Verify ship design, UI, battery drain, and firing with the 30mm and 40mm.
-5. Verify the 6-, 8-, and 10-inch values without adding any new code cases.
-6. Run the old-save, enabled round-trip, and mod-removal save tests.
-7. Run controlled CIWS and unpowered/depleted-battery combat tests.
-8. Treat any remaining generation, storage, or heat-gating issue as a global
+4. Correct shared auxiliary generation, reactor heat, module radiator load, and
+   the pre-fire heat check for every powered weapon family.
+5. Verify ship design, UI, battery drain, and firing with the 30mm and 40mm.
+6. Verify the 6-, 8-, and 10-inch values without adding any new code cases.
+7. Reconcile loaded ship mass to refreshed template mass plus saved propellant.
+8. Run controlled CIWS, depleted-battery, and old-save smoke tests in game.
+9. Treat any remaining generation, storage, or heat-gating issue as a global
    powered-weapon defect rather than a gun-patch defect.
 
 The acceptance test for the architecture is simple: adding the two JSON fields

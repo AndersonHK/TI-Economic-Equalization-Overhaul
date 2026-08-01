@@ -72,6 +72,14 @@ if ($LASTEXITCODE -ne 0) {
     exit $LASTEXITCODE
 }
 
+powershell -NoProfile -ExecutionPolicy Bypass -File `
+    (Join-Path $scriptDirectory 'validate-ship-power-transpilers.ps1') `
+    -TargetManagedDir $resolvedManagedDir `
+    -ModAssemblyPath $assemblyPath
+if ($LASTEXITCODE -ne 0) {
+    exit $LASTEXITCODE
+}
+
 powershell -NoProfile -ExecutionPolicy Bypass -File (Join-Path $scriptDirectory 'validate-implementation-matrix.ps1') -RepositoryRoot $repositoryRoot
 if ($LASTEXITCODE -ne 0) {
     exit $LASTEXITCODE
@@ -90,6 +98,8 @@ $weights = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\Config\economy-tech-
 $defaultSettings = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\Settings.xml'
 $missionOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIMissionTemplate.json'
 $startOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIStartTimeTemplate.json'
+$armyOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIArmyTemplate.json'
+$metaOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIMetaTemplate.json'
 $technologyOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TITechTemplate.json'
 $globalOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIGlobalConfig.json'
 $habModuleOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIHabModuleTemplate.json'
@@ -111,6 +121,14 @@ if ($LASTEXITCODE -ne 0) {
 }
 
 $templatesDirectory = Join-Path (Split-Path -Parent $resolvedManagedDir) 'StreamingAssets\Templates'
+powershell -NoProfile -ExecutionPolicy Bypass -File `
+    (Join-Path $scriptDirectory 'validate-starting-forces.ps1') `
+    -VanillaTemplatesDir $templatesDirectory `
+    -RepositoryRoot $repositoryRoot
+if ($LASTEXITCODE -ne 0) {
+    exit $LASTEXITCODE
+}
+
 $technologyTemplates = Join-Path $templatesDirectory 'TITechTemplate.json'
 $installedTechnologyIds = @(
     Get-Content -LiteralPath $technologyTemplates -Raw |
@@ -307,10 +325,10 @@ if ($LASTEXITCODE -ne 0) {
 
 $manifestPath = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\ModInfo.json'
 $manifest = Get-Content -LiteralPath $manifestPath -Raw | ConvertFrom-Json
-if ($manifest.GameVersion -ne '1.0.49') {
-    throw "ModInfo.json targets '$($manifest.GameVersion)' instead of TI 1.0.49."
+if ($manifest.GameVersion -ne '1.0.51') {
+    throw "ModInfo.json targets '$($manifest.GameVersion)' instead of TI 1.0.51."
 }
-if ($manifest.Version -ne '0.8.0') {
+if ($manifest.Version -ne '0.8.2') {
     throw "ModInfo.json version '$($manifest.Version)' does not match this release."
 }
 if ($manifest.AssemblyName -ne 'Assembly/TIEconomyMod.dll') {
@@ -386,8 +404,8 @@ if ($assemblyFile.LastWriteTime -lt $buildStarted.AddSeconds(-2)) {
     throw 'Packaged DLL predates this verification build.'
 }
 $assemblyVersion = [Reflection.AssemblyName]::GetAssemblyName($assemblyPath).Version.ToString()
-if ($assemblyVersion -ne '0.8.0.0') {
-    throw "Assembly version '$assemblyVersion' does not match release 0.8.0."
+if ($assemblyVersion -ne '0.8.2.0') {
+    throw "Assembly version '$assemblyVersion' does not match release 0.8.2."
 }
 $assemblyHash = (Get-FileHash -LiteralPath $assemblyPath -Algorithm SHA256).Hash
 
@@ -398,6 +416,8 @@ $requiredFiles = @(
     $defaultSettings,
     $missionOverrides,
     $startOverrides,
+    $armyOverrides,
+    $metaOverrides,
     $technologyOverrides,
     $globalOverrides,
     $habModuleOverrides,
@@ -441,6 +461,8 @@ Copy-Item -LiteralPath $weights -Destination (Join-Path $stagingDirectory 'Confi
 Copy-Item -LiteralPath $defaultSettings -Destination $stagingDirectory
 Copy-Item -LiteralPath $missionOverrides -Destination $stagingDirectory
 Copy-Item -LiteralPath $startOverrides -Destination $stagingDirectory
+Copy-Item -LiteralPath $armyOverrides -Destination $stagingDirectory
+Copy-Item -LiteralPath $metaOverrides -Destination $stagingDirectory
 Copy-Item -LiteralPath $technologyOverrides -Destination $stagingDirectory
 Copy-Item -LiteralPath $globalOverrides -Destination $stagingDirectory
 Copy-Item -LiteralPath $habModuleOverrides -Destination $stagingDirectory
@@ -460,7 +482,7 @@ if (Test-Path -LiteralPath $imagePath) {
     Copy-Item -LiteralPath $imagePath -Destination $stagingDirectory
 }
 
-$zipPath = Join-Path $artifactDirectory 'TIEconomyMod-0.8.0-ti1.0.49.zip'
+$zipPath = Join-Path $artifactDirectory 'TIEconomyMod-0.8.2-ti1.0.51.zip'
 if (Test-Path -LiteralPath $zipPath) {
     Remove-Item -LiteralPath $zipPath
 }
@@ -487,6 +509,17 @@ try {
     $packagedTechnologyLocalization = $archive.Entries |
         Where-Object { $_.FullName.Replace('\', '/') -eq 'TIEconomyMod/TITechTemplate.en' } |
         Select-Object -First 1
+    $packagedStartingForceFiles = @(
+        'TIEconomyMod/TIArmyTemplate.json',
+        'TIEconomyMod/TIMetaTemplate.json'
+    )
+    foreach ($packagedStartingForceFile in $packagedStartingForceFiles) {
+        if ($null -eq ($archive.Entries |
+            Where-Object { $_.FullName.Replace('\', '/') -eq $packagedStartingForceFile } |
+            Select-Object -First 1)) {
+            throw "Release archive is missing $packagedStartingForceFile."
+        }
+    }
     $packagedShipFiles = @(
         'TIEconomyMod/TIPowerPlantTemplate.json',
         'TIEconomyMod/TIHeatSinkTemplate.json',
@@ -526,4 +559,4 @@ if ($packagedHash -ne $assemblyHash) {
 Write-Host "PASS: release verification completed."
 Write-Host "DLL SHA256: $assemblyHash"
 Write-Host "Artifact: $zipPath"
-Write-Host 'Compatibility target: TI 1.0.49 installed assemblies and guarded IL patch points.'
+Write-Host 'Compatibility target: TI 1.0.51 installed assemblies and guarded IL patch points.'

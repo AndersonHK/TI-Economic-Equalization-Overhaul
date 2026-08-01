@@ -77,7 +77,7 @@ namespace TIEconomyMod.Patches
             // one region in a $1T economy gives ratio 1 and curve 0.5, so the
             // configured +100% maximum becomes a x1.5 multiplier. The same region in
             // a $100B economy gives ratio 10 and curve 0.666 for x1.666.
-            // Installed vanilla 1.0.49
+            // Installed vanilla 1.0.51
             // adds a fixed 0.0015 per resource region before population scaling.
             AbundanceSettings abundance = Main.settings.abundance;
             float resourceCurve = 0f;
@@ -105,7 +105,7 @@ namespace TIEconomyMod.Patches
             // The continuous boundary transform makes a positive Spoils delta 2x at
             // Inequality 1, 1x at 5, and 0x at 9. At 100M population, Inequality 5,
             // one region, and $100B GDP, defaults give about +0.00556; installed vanilla
-            // 1.0.49 gives roughly +0.0031 for the same population and resource count.
+            // 1.0.51 gives roughly +0.0031 for the same population and resource count.
             float position = (__instance.inequality - settings.neutral) /
                 ((settings.maximum - settings.minimum) / 2f);
             float transformedDelta = rawDelta * (1f - Math.Sign(rawDelta) * position *
@@ -136,7 +136,7 @@ namespace TIEconomyMod.Patches
             // Education change is (166,667 / population) * 4 * 0.87^Education, giving
             // inverse-population scaling and smooth diminishing returns. At 100M
             // population and Education 8 the result is about +0.00219 per completion;
-            // installed vanilla 1.0.49 gives roughly +0.00417 for the same nation.
+            // installed vanilla 1.0.51 gives roughly +0.00417 for the same nation.
             float calculated = settings.educationPopulationDivisor /
                 Math.Max(1f, __instance.population) *
                 settings.educationMaximumGain *
@@ -166,7 +166,7 @@ namespace TIEconomyMod.Patches
 
             // Knowledge moves Cohesion toward 5 by at most 333,333 / population and
             // never crosses the target. At 100M population and Cohesion 7 it applies
-            // -0.00333; installed vanilla 1.0.49 applies about -0.00785 because it uses
+            // -0.00333; installed vanilla 1.0.51 applies about -0.00785 because it uses
             // the shared population exponent rather than direct inverse population.
             float distance = Math.Abs(__instance.cohesion - settings.cohesionTarget);
             float step = Math.Min(distance,
@@ -195,7 +195,7 @@ namespace TIEconomyMod.Patches
             }
 
             // Government adds 166,667 / population with no Education multiplier. At
-            // 100M population this is +0.00167. Installed vanilla 1.0.49 multiplies its
+            // 100M population this is +0.00167. Installed vanilla 1.0.51 multiplies its
             // +0.01 base by population scaling and Education/10, giving about +0.00628
             // at Education 8; this formula intentionally makes population the sole driver.
             float calculated = settings.democracyPopulationDivisor /
@@ -225,7 +225,7 @@ namespace TIEconomyMod.Patches
             // Oppression removes up to 2,222,222 / population Unrest, fading linearly
             // from full strength at Government 0 to zero at 10, without crossing zero.
             // At 100M population, Government 5, and Unrest 3 this gives -0.0111.
-            // Installed vanilla 1.0.49 gives about -0.118 because it uses a much larger
+            // Installed vanilla 1.0.51 gives about -0.118 because it uses a much larger
             // shared population-scaled cap.
             float democracyMultiplier = Math.Max(0f, Math.Min(1f,
                 (settings.fullDemocracy - __instance.democracy) / settings.fullDemocracy));

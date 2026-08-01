@@ -52,6 +52,10 @@
       <HintPath>$(TargetManagedDir)\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>$(TargetManagedDir)\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="UnityEngine">
@@ -89,9 +93,11 @@
     <Compile Include="Core\IndependentResearchMath.cs" />
     <Compile Include="Core\LandCombatMath.cs" />
     <Compile Include="Core\MilitaryMath.cs" />
+    <Compile Include="Core\GunPowerRegistry.cs" />
     <Compile Include="Core\PowerPlantThermalMath.cs" />
     <Compile Include="Core\ShipBalanceMath.cs" />
     <Compile Include="Core\TechWeightCatalog.cs" />
+    <Compile Include="Core\WeaponPowerMath.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Patches\EconomyPatches.cs" />
     <Compile Include="Patches\BalancePatches.cs" />
@@ -106,6 +112,7 @@
     <Compile Include="Patches\NuclearEffectsPatches.cs" />
     <Compile Include="Patches\NationalMergerPatches.cs" />
     <Compile Include="Patches\SocialPriorityPatches.cs" />
+    <Compile Include="Patches\ShipPowerPatches.cs" />
     <Compile Include="Patches\ThresholdAndUiPatches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -113,6 +120,7 @@
   <ItemGroup>
     <None Include="ModFiles\Config\economy-tech-weights.csv" />
     <None Include="ModFiles\Settings.xml" />
+    <None Include="ModFiles\TIArmyTemplate.json" />
     <None Include="ModFiles\TIGlobalConfig.json" />
     <None Include="ModFiles\TIHabModuleTemplate.json" />
     <None Include="ModFiles\TIHabTemplate.json" />
@@ -121,6 +129,7 @@
     <None Include="ModFiles\TILaserWeaponTemplate.json" />
     <None Include="ModFiles\TIMagneticGunTemplate.json" />
     <None Include="ModFiles\TIMissionTemplate.json" />
+    <None Include="ModFiles\TIMetaTemplate.json" />
     <None Include="ModFiles\TIPowerPlantTemplate.json" />
     <None Include="ModFiles\TIShipHullTemplate.json" />
     <None Include="ModFiles\TIStartTimeTemplate.json" />

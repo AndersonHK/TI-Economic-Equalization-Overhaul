@@ -284,7 +284,7 @@ try {
         1 `
         'Core-resource global GDP reason'
 
-    Write-Host 'PASS: target IL contains every guarded TI 1.0.49 patch point, including research ownership, councilor caps, climate damage, and nuclear GDP effects.'
+    Write-Host 'PASS: target IL contains every guarded TI 1.0.51 patch point, including research ownership, councilor caps, climate damage, and nuclear GDP effects.'
 }
 finally {
     $resolvedProbe = (Resolve-Path -LiteralPath $probeDirectory).Path

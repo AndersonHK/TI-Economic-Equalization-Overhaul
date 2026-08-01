@@ -111,6 +111,13 @@ $expectedGunCrew = [ordered]@{
     '6-inchCannon' = 2
     '8-inchCannon' = 2
 }
+$expectedGunPower = [ordered]@{
+    '10-inchCannon' = @(2.2, 1.0)
+    '30mmAutocannon' = @(0.085, 1.0)
+    '40mmAutocannon' = @(8.7, 0.9)
+    '6-inchCannon' = @(0.675, 1.0)
+    '8-inchCannon' = @(1.40625, 1.0)
+}
 if ($gunOverrides.Count -ne $expectedGunCrew.Count) {
     throw "Gun override has $($gunOverrides.Count) rows instead of $($expectedGunCrew.Count)."
 }
@@ -119,8 +126,13 @@ foreach ($entry in $expectedGunCrew.GetEnumerator()) {
     if ($row.Count -ne 1) {
         throw "Gun override must contain '$($entry.Key)' exactly once."
     }
-    Assert-Properties $row[0] @('dataName', 'crew') $entry.Key
+    Assert-Properties $row[0] @(
+        'dataName', 'crew', 'powerUse_MJ', 'efficiency') $entry.Key
     Assert-Near $row[0].crew $entry.Value "$($entry.Key) crew"
+    Assert-Near $row[0].powerUse_MJ $expectedGunPower[$entry.Key][0] `
+        "$($entry.Key) useful electrical work"
+    Assert-Near $row[0].efficiency $expectedGunPower[$entry.Key][1] `
+        "$($entry.Key) electrical efficiency"
 }
 
 $laserOverrides = Read-JsonArray (Join-Path $modFiles 'TILaserWeaponTemplate.json')

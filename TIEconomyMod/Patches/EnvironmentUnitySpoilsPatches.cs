@@ -93,7 +93,7 @@ namespace TIEconomyMod.Patches
 
             // Direct atmospheric removal is a fixed physical return per IP, not a return
             // per citizen. A nation with 10x the GDP has about 10x the IP and therefore
-            // removes about 10x as much under equal priority allocation. Vanilla 1.0.49
+            // removes about 10x as much under equal priority allocation. Vanilla 1.0.51
             // divides this effect by its nonlinear population-scaling factor.
             float baseChange = TemplateManager.global.WelCO2_ppm;
             float calculated = (baseChange + TIEffectsState.SumEffectsModifiers(
@@ -186,7 +186,7 @@ namespace TIEconomyMod.Patches
             // Emissions are GDP times carbon intensity, with no independent population
             // term. At Sustainability 1, $100B emits 27.5M base tons/year and $1T emits
             // 275M: economic growth raises total emissions but not emissions per dollar.
-            // Vanilla 1.0.49 adds a large PCGDP-weighted population term, which makes two
+            // Vanilla 1.0.51 adds a large PCGDP-weighted population term, which makes two
             // equally sized economies emit differently merely because borders changed.
             double gdpBillions = Math.Max(0d, __instance.GDP / 1000000000d);
             double sustainability = Math.Max(0d,

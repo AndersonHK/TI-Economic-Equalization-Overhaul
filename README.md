@@ -1,6 +1,6 @@
 # TI Economic Equalization Overhaul
 
-This branch targets Terra Invicta 1.0.49. It replaces opaque, border-sensitive
+This branch targets Terra Invicta 1.0.51. It replaces opaque, border-sensitive
 priority math with configurable formulas whose economic unit is visible in each
 patch.
 
@@ -78,7 +78,7 @@ for the current patch-by-patch review.
   Spoils social effects.
 - Continuous Military investment: doctrine uses a smooth logarithmic catch-up
   cost and every eligible army adds its exact equipment upgrade cost.
-- Army construction costs `2 × miltech²`; repair consumes half of actual healed
+- Army construction costs `2 × 2^miltech`; repair consumes half of actual healed
   army value as persistent Build Army debt; upkeep is `miltech / 10` at home and
   `miltech / 3` away.
 - Land combat uses an additive strength penalty of up to -1 rating, half-strength
@@ -88,7 +88,7 @@ for the current patch-by-patch review.
   armies and conserve doctrine/equipment investment. Human conquest destroys
   conquered armies. Merged Inequality still approximates the combined income
   distribution.
-- Surgical Unity and Spoils propaganda transpilers that preserve TI 1.0.49's
+- Surgical Unity and Spoils propaganda transpilers that preserve TI 1.0.51's
   complete priority-completion behavior.
 - Configurable region conversion, decolonization, and fallout thresholds,
   defaulting to 5x vanilla, with gameplay and tooltip IL guarded together.
@@ -104,13 +104,25 @@ in [docs/hab-slot-expansion-assessment.md](docs/hab-slot-expansion-assessment.md
 Unity Mod Manager exposes grouped settings and a reset-to-default button.
 Technology weights are tracked in
 [TIEconomyMod/ModFiles/Config/economy-tech-weights.csv](TIEconomyMod/ModFiles/Config/economy-tech-weights.csv).
-Every TI 1.0.49 global technology has productivity, labor-substitution, and
+Every TI 1.0.51 global technology has productivity, labor-substitution, and
 resource-substitution weights. Unknown IDs are logged and skipped, duplicate
 IDs or zero future-axis totals fail validation, and changes require restart.
 The packaged [default settings](TIEconomyMod/ModFiles/Settings.xml) are copied
 on release deployment so a new balance version starts from its authored values.
 
-Version 0.8.0 adds the land-warfare and Military-investment rework documented in
+Version 0.8.2 targets TI 1.0.51 and fixes late-save initialization when a
+faction has unlocked both powered and self-powered conventional guns. The ship
+designer now gives every conventional-gun comparison row the same Energy Usage
+column shape while retaining each gun's real zero or nonzero consumption.
+
+Version 0.8.1 added generic conventional-gun electrical demand and completed the
+powered-weapon thermal chain: reactor generation now credits net electrical
+output, reactor and module heat are counted once, radiator sizing includes
+weapon conversion losses, and the firing heat gate checks actual shot heat.
+Loaded ships rebuild power and mass caches without adding save fields. Gun mass,
+projectiles, ammunition, damage, range, and firing cycles remain unchanged.
+
+Version 0.8.0 added the land-warfare and Military-investment rework documented in
 [docs/land-warfare-and-military-investment.md](docs/land-warfare-and-military-investment.md).
 It also retains the 0.7.5 settled ship slice: Fuel Cells I-III use the
 revised efficiencies and solar-inclusive specific masses. Solid, compact-solid,
@@ -138,9 +150,29 @@ Verification rebuilds with warnings as errors, runs dependency-free formula
 tests, validates all 110 hab-module overrides against the installed vanilla
 templates, validates the implementation matrix against settings and Harmony
 patches, verifies the guarded councilor-cap, hab connector, and list-icon
-transpilers, checks the hab-cost substitution order, validates Control Point
-effects and localization, checks the manifest/package layout, and creates
-`artifacts/TIEconomyMod-0.8.0-ti1.0.49.zip`.
+transpilers, checks the hab-cost substitution order, validates the 2022/2026
+starting-force inventories and navy floors, validates Control Point effects and
+localization, checks the manifest/package layout, and creates
+`artifacts/TIEconomyMod-0.8.2-ti1.0.51.zip`.
+
+## Deployment
+
+In this repository, **deploy** means: run release verification, then mirror the
+contents of `TIEconomyMod/ModFiles` into
+`Mods/Enabled/Economic Equalization Overhaul` relative to the detected Terra
+Invicta install root. The destination is intentionally documented as a
+game-relative path, not as a machine-specific Steam-library path.
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\deploy.ps1
+```
+
+The script locates Terra Invicta through Steam library configuration or the
+`TI_GAME_INSTALL_DIR` / `TI_TARGET_MANAGED_DIR` environment variables. An
+explicit install root may be supplied with `-GameInstallDir`. Deployment mirrors
+the authored package, including release `Settings.xml`, removes stale files only
+inside the exact enabled-mod destination, and verifies every deployed file by
+SHA-256.
 
 ## Smoke test
 

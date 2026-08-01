@@ -1,22 +1,32 @@
 [
   {
     "dataName": "10-inchCannon",
-    "crew": 3
+    "crew": 3,
+    "powerUse_MJ": 2.2,
+    "efficiency": 1.0
   },
   {
     "dataName": "30mmAutocannon",
-    "crew": 0
+    "crew": 0,
+    "powerUse_MJ": 0.085,
+    "efficiency": 1.0
   },
   {
     "dataName": "40mmAutocannon",
-    "crew": 0
+    "crew": 0,
+    "powerUse_MJ": 8.7,
+    "efficiency": 0.9
   },
   {
     "dataName": "6-inchCannon",
-    "crew": 2
+    "crew": 2,
+    "powerUse_MJ": 0.675,
+    "efficiency": 1.0
   },
   {
     "dataName": "8-inchCannon",
-    "crew": 2
+    "crew": 2,
+    "powerUse_MJ": 1.40625,
+    "efficiency": 1.0
   }
 ]

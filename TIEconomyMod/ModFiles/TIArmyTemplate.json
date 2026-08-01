@@ -1,0 +1,1604 @@
+[
+  {
+    "dataName": "DZAArmy1",
+    "friendlyName": "1st Joint Force",
+    "startRegionStr": "Algeria",
+    "homeRegionStr": "Algeria",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "AUSArmy1",
+    "friendlyName": "1st Joint Force",
+    "startRegionStr": "Sydney",
+    "homeRegionStr": "Sydney",
+    "armyType": "Human",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "BRAArmy1",
+    "friendlyName": "1st Joint Force",
+    "startRegionStr": "Brasilia",
+    "homeRegionStr": "Brasilia",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "BRAArmy2",
+    "friendlyName": "2nd Joint Force",
+    "startRegionStr": "RiodeJaneiro",
+    "homeRegionStr": "RiodeJaneiro",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "BRAArmy3",
+    "friendlyName": "3rd Joint Force",
+    "startRegionStr": "SaoPaulo",
+    "homeRegionStr": "SaoPaulo",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "CHNArmy1",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "CHNArmy2",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "CHNArmy3",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "CHNArmy4",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "CHNArmy5",
+    "friendlyName": "5th Joint Force",
+    "startRegionStr": "Guangzhou",
+    "homeRegionStr": "Guangzhou",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "CHNArmy6",
+    "friendlyName": "6th Joint Force",
+    "startRegionStr": "Shanghai",
+    "homeRegionStr": "Shanghai",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "CHNArmy7",
+    "friendlyName": "7th Joint Force",
+    "startRegionStr": "Wuhan",
+    "homeRegionStr": "Wuhan",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "CHNArmy8",
+    "friendlyName": "8th Joint Force",
+    "startRegionStr": "Xian",
+    "homeRegionStr": "Xian",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "CHNArmy9",
+    "friendlyName": "9th Joint Force",
+    "startRegionStr": "Xinjiang",
+    "homeRegionStr": "Xinjiang",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "CHNArmy10",
+    "friendlyName": "10th Joint Force",
+    "startRegionStr": "Yunnan",
+    "homeRegionStr": "Yunnan",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "CHNArmy11",
+    "friendlyName": "11th Joint Force",
+    "startRegionStr": "Shandong",
+    "homeRegionStr": "Shandong",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "CHNArmy12",
+    "friendlyName": "12th Joint Force",
+    "startRegionStr": "Liaoning",
+    "homeRegionStr": "Liaoning",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "CHNArmy13",
+    "friendlyName": "13th Joint Force",
+    "startRegionStr": "Nanchang",
+    "homeRegionStr": "Nanchang",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "EGYArmy1",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "EGYArmy2",
+    "friendlyName": "2nd Joint Force",
+    "startRegionStr": "Alexandria",
+    "homeRegionStr": "Alexandria",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "ETHArmy1",
+    "friendlyName": "1st Joint Force",
+    "startRegionStr": "Ethiopia",
+    "homeRegionStr": "Ethiopia",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 0.8
+  },
+  {
+    "dataName": "EUAArmy1",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "EUAArmy2",
+    "friendlyName": "2nd Joint Force",
+    "startRegionStr": "Lyon",
+    "homeRegionStr": "Lyon",
+    "armyType": "Human",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "DEUArmy1",
+    "friendlyName": "1st Joint Force",
+    "startRegionStr": "Germany",
+    "homeRegionStr": "Germany",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "DEUArmy2",
+    "friendlyName": "2nd Joint Force",
+    "startRegionStr": "Bavaria",
+    "homeRegionStr": "Bavaria",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "GREArmy1",
+    "friendlyName": "1st Joint Force",
+    "startRegionStr": "Greece",
+    "homeRegionStr": "Greece",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "INDArmy1",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "INDArmy2",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "INDArmy3",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "INDArmy4",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "INDArmy5",
+    "friendlyName": "5th Joint Force",
+    "startRegionStr": "Mumbai",
+    "homeRegionStr": "Mumbai",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "INDArmy6",
+    "friendlyName": "6th Joint Force",
+    "startRegionStr": "Kolkata",
+    "homeRegionStr": "Kolkata",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "INDArmy7",
+    "friendlyName": "7th Joint Force",
+    "startRegionStr": "Bangalore",
+    "homeRegionStr": "Bangalore",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "INDArmy8",
+    "friendlyName": "8th Joint Force",
+    "startRegionStr": "Chennai",
+    "homeRegionStr": "Chennai",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "INDArmy9",
+    "friendlyName": "9th Joint Force",
+    "startRegionStr": "Hyderabad",
+    "homeRegionStr": "Hyderabad",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "INDArmy10",
+    "friendlyName": "10th Joint Force",
+    "startRegionStr": "Gujarat",
+    "homeRegionStr": "Gujarat",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "INDArmy11",
+    "friendlyName": "11th Joint Force",
+    "startRegionStr": "AndhraPradesh",
+    "homeRegionStr": "AndhraPradesh",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "IDNArmy1",
+    "friendlyName": "1st Joint Force",
+    "startRegionStr": "Java",
+    "homeRegionStr": "Java",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "IDNArmy2",
+    "friendlyName": "2nd Joint Force",
+    "startRegionStr": "Sumatra",
+    "homeRegionStr": "Sumatra",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "IRNArmy1",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "IRNArmy2",
+    "friendlyName": "2nd Joint Force",
+    "startRegionStr": "Isfahan",
+    "homeRegionStr": "Isfahan",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "IRNArmy3",
+    "friendlyName": "3rd Joint Force",
+    "startRegionStr": "Mashhad",
+    "homeRegionStr": "Mashhad",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "ISRArmy1",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "ISRArmy2",
+    "friendlyName": "2nd Joint Force",
+    "startRegionStr": "Israel",
+    "homeRegionStr": "Israel",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "ITAArmy1",
+    "friendlyName": "1st Joint Force",
+    "startRegionStr": "Italy",
+    "homeRegionStr": "Italy",
+    "armyType": "Human",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "ITAArmy2",
+    "friendlyName": "2nd Joint Force",
+    "startRegionStr": "Milan",
+    "homeRegionStr": "Milan",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "JPNArmy1",
+    "friendlyName": "1st Joint Force",
+    "startRegionStr": "SouthHonshu",
+    "homeRegionStr": "SouthHonshu",
+    "armyType": "Human",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "JPNArmy2",
+    "friendlyName": "2nd Joint Force",
+    "startRegionStr": "NorthHonshu",
+    "homeRegionStr": "NorthHonshu",
+    "armyType": "Human",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "MMRArmy1",
+    "friendlyName": "1st Joint Force",
+    "startRegionStr": "Myanmar",
+    "homeRegionStr": "Myanmar",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 0.7
+  },
+  {
+    "dataName": "PRKArmy1",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "PRKArmy2",
+    "friendlyName": "2nd Joint Force",
+    "startRegionStr": "NorthKorea",
+    "homeRegionStr": "NorthKorea",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "PRKArmy3",
+    "friendlyName": "3rd Joint Force",
+    "startRegionStr": "NorthKorea",
+    "homeRegionStr": "NorthKorea",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "PRKArmy4",
+    "friendlyName": "4th Joint Force",
+    "startRegionStr": "NorthKorea",
+    "homeRegionStr": "NorthKorea",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "PAKArmy1",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "PAKArmy2",
+    "friendlyName": "2nd Joint Force",
+    "startRegionStr": "Sindh",
+    "homeRegionStr": "Sindh",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "PAKArmy3",
+    "friendlyName": "3rd Joint Force",
+    "startRegionStr": "Peshawar",
+    "homeRegionStr": "Peshawar",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "PAKArmy4",
+    "friendlyName": "4th Joint Force",
+    "startRegionStr": "Baluchistan",
+    "homeRegionStr": "Baluchistan",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "POLArmy1",
+    "friendlyName": "1st Joint Force",
+    "startRegionStr": "Poland",
+    "homeRegionStr": "Poland",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "RUSArmy1",
+    "deploymentType": "Naval",
+    "startingStrength": 0.75
+  },
+  {
+    "dataName": "RUSArmy2",
+    "deploymentType": "Naval",
+    "startingStrength": 0.75
+  },
+  {
+    "dataName": "RUSArmy3",
+    "deploymentType": "Standard",
+    "startingStrength": 0.75
+  },
+  {
+    "dataName": "RUSArmy4",
+    "friendlyName": "4th Joint Force",
+    "startRegionStr": "Volga",
+    "homeRegionStr": "Volga",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 0.75
+  },
+  {
+    "dataName": "RUSArmy5",
+    "friendlyName": "5th Joint Force",
+    "startRegionStr": "Urals",
+    "homeRegionStr": "Urals",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 0.75
+  },
+  {
+    "dataName": "RUSArmy6",
+    "friendlyName": "6th Joint Force",
+    "startRegionStr": "WesternSiberia",
+    "homeRegionStr": "WesternSiberia",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 0.75
+  },
+  {
+    "dataName": "SAUArmy1",
+    "friendlyName": "1st Joint Force",
+    "startRegionStr": "Najd",
+    "homeRegionStr": "Najd",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "KORArmy1",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "KORArmy2",
+    "friendlyName": "2nd Joint Force",
+    "startRegionStr": "SouthKorea",
+    "homeRegionStr": "SouthKorea",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "KORArmy3",
+    "friendlyName": "3rd Joint Force",
+    "startRegionStr": "SouthKorea",
+    "homeRegionStr": "SouthKorea",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "ESPArmy1",
+    "friendlyName": "1st Joint Force",
+    "startRegionStr": "Spain",
+    "homeRegionStr": "Spain",
+    "armyType": "Human",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "THAArmy1",
+    "friendlyName": "1st Joint Force",
+    "startRegionStr": "Bangkok",
+    "homeRegionStr": "Bangkok",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "THAArmy2",
+    "friendlyName": "2nd Joint Force",
+    "startRegionStr": "ChiangMai",
+    "homeRegionStr": "ChiangMai",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "TURArmy1",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "TURArmy2",
+    "friendlyName": "2nd Joint Force",
+    "startRegionStr": "Diyarbakir",
+    "homeRegionStr": "Diyarbakir",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "TURArmy3",
+    "friendlyName": "3rd Joint Force",
+    "startRegionStr": "Istanbul",
+    "homeRegionStr": "Istanbul",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "UKRArmy1",
+    "deploymentType": "Standard",
+    "startingStrength": 0.75
+  },
+  {
+    "dataName": "UKRArmy2",
+    "friendlyName": "2nd Joint Force",
+    "startRegionStr": "Kharkiv",
+    "homeRegionStr": "Kharkiv",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 0.75
+  },
+  {
+    "dataName": "UKRArmy3",
+    "friendlyName": "3rd Joint Force",
+    "startRegionStr": "Odesa",
+    "homeRegionStr": "Odesa",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 0.75
+  },
+  {
+    "dataName": "UKRArmy4",
+    "friendlyName": "4th Joint Force",
+    "startRegionStr": "Donetsk",
+    "homeRegionStr": "Donetsk",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 0.75
+  },
+  {
+    "dataName": "UKRArmy5",
+    "friendlyName": "5th Joint Force",
+    "startRegionStr": "Kiev",
+    "homeRegionStr": "Kiev",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 0.75
+  },
+  {
+    "dataName": "GBRArmy1",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "GBRArmy2",
+    "friendlyName": "2nd Joint Force",
+    "startRegionStr": "EnglishMidlands",
+    "homeRegionStr": "EnglishMidlands",
+    "armyType": "Human",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "USAArmy1",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "USAArmy2",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "USAArmy3",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "USAArmy4",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "USAArmy5",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "USAArmy6",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "USAArmy7",
+    "friendlyName": "7th Joint Force",
+    "startRegionStr": "NewEngland",
+    "homeRegionStr": "NewEngland",
+    "armyType": "Human",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "USAArmy8",
+    "friendlyName": "8th Joint Force",
+    "startRegionStr": "NewYork",
+    "homeRegionStr": "NewYork",
+    "armyType": "Human",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "USAArmy9",
+    "friendlyName": "9th Joint Force",
+    "startRegionStr": "RustBelt",
+    "homeRegionStr": "RustBelt",
+    "armyType": "Human",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "USAArmy10",
+    "friendlyName": "10th Joint Force",
+    "startRegionStr": "RockyMountains",
+    "homeRegionStr": "RockyMountains",
+    "armyType": "Human",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "USAArmy11",
+    "friendlyName": "11th Joint Force",
+    "startRegionStr": "MississippiDelta",
+    "homeRegionStr": "MississippiDelta",
+    "armyType": "Human",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "USAArmy12",
+    "friendlyName": "12th Joint Force",
+    "startRegionStr": "Cumberland",
+    "homeRegionStr": "Cumberland",
+    "armyType": "Human",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "USAArmy13",
+    "friendlyName": "13th Joint Force",
+    "startRegionStr": "Boise",
+    "homeRegionStr": "Boise",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "VNMArmy1",
+    "friendlyName": "1st Joint Force",
+    "startRegionStr": "Hanoi",
+    "homeRegionStr": "Hanoi",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "VNMArmy2",
+    "friendlyName": "2nd Joint Force",
+    "startRegionStr": "HoChiMinhCity",
+    "homeRegionStr": "HoChiMinhCity",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "VNMArmy3",
+    "friendlyName": "3rd Joint Force",
+    "startRegionStr": "Hanoi",
+    "homeRegionStr": "Hanoi",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_DZAArmy1",
+    "friendlyName": "1st Joint Force",
+    "startRegionStr": "2026_Algeria",
+    "homeRegionStr": "2026_Algeria",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_AUSArmy1",
+    "friendlyName": "1st Joint Force",
+    "startRegionStr": "2026_Sydney",
+    "homeRegionStr": "2026_Sydney",
+    "armyType": "Human",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_BRAArmy1",
+    "friendlyName": "1st Joint Force",
+    "startRegionStr": "2026_Brasilia",
+    "homeRegionStr": "2026_Brasilia",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_BRAArmy2",
+    "friendlyName": "2nd Joint Force",
+    "startRegionStr": "2026_RiodeJaneiro",
+    "homeRegionStr": "2026_RiodeJaneiro",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_BRAArmy3",
+    "friendlyName": "3rd Joint Force",
+    "startRegionStr": "2026_SaoPaulo",
+    "homeRegionStr": "2026_SaoPaulo",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_CHNArmy1",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_CHNArmy2",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_CHNArmy3",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_CHNArmy4",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_CHNArmy5",
+    "friendlyName": "5th Joint Force",
+    "startRegionStr": "2026_Guangzhou",
+    "homeRegionStr": "2026_Guangzhou",
+    "armyType": "Human",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_CHNArmy6",
+    "friendlyName": "6th Joint Force",
+    "startRegionStr": "2026_Shanghai",
+    "homeRegionStr": "2026_Shanghai",
+    "armyType": "Human",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_CHNArmy7",
+    "friendlyName": "7th Joint Force",
+    "startRegionStr": "2026_Wuhan",
+    "homeRegionStr": "2026_Wuhan",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_CHNArmy8",
+    "friendlyName": "8th Joint Force",
+    "startRegionStr": "2026_Xian",
+    "homeRegionStr": "2026_Xian",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_CHNArmy9",
+    "friendlyName": "9th Joint Force",
+    "startRegionStr": "2026_Xinjiang",
+    "homeRegionStr": "2026_Xinjiang",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_CHNArmy10",
+    "friendlyName": "10th Joint Force",
+    "startRegionStr": "2026_Yunnan",
+    "homeRegionStr": "2026_Yunnan",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_CHNArmy11",
+    "friendlyName": "11th Joint Force",
+    "startRegionStr": "2026_Shandong",
+    "homeRegionStr": "2026_Shandong",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_CHNArmy12",
+    "friendlyName": "12th Joint Force",
+    "startRegionStr": "2026_Liaoning",
+    "homeRegionStr": "2026_Liaoning",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_CHNArmy13",
+    "friendlyName": "13th Joint Force",
+    "startRegionStr": "2026_Nanchang",
+    "homeRegionStr": "2026_Nanchang",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_CHNArmy14",
+    "friendlyName": "14th Joint Force",
+    "startRegionStr": "2026_InnerMongolia",
+    "homeRegionStr": "2026_InnerMongolia",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_EGYArmy1",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_EGYArmy2",
+    "friendlyName": "2nd Joint Force",
+    "startRegionStr": "2026_Alexandria",
+    "homeRegionStr": "2026_Alexandria",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_ETHArmy1",
+    "friendlyName": "1st Joint Force",
+    "startRegionStr": "2026_Ethiopia",
+    "homeRegionStr": "2026_Ethiopia",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 0.75
+  },
+  {
+    "dataName": "2026_EUAArmy1",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_EUAArmy2",
+    "friendlyName": "2nd Joint Force",
+    "startRegionStr": "2026_Lyon",
+    "homeRegionStr": "2026_Lyon",
+    "armyType": "Human",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_DEUArmy1",
+    "friendlyName": "1st Joint Force",
+    "startRegionStr": "2026_Germany",
+    "homeRegionStr": "2026_Germany",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_DEUArmy2",
+    "friendlyName": "2nd Joint Force",
+    "startRegionStr": "2026_Bavaria",
+    "homeRegionStr": "2026_Bavaria",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_GREArmy1",
+    "friendlyName": "1st Joint Force",
+    "startRegionStr": "2026_Greece",
+    "homeRegionStr": "2026_Greece",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_INDArmy1",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_INDArmy2",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_INDArmy3",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_INDArmy4",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_INDArmy5",
+    "friendlyName": "5th Joint Force",
+    "startRegionStr": "2026_Mumbai",
+    "homeRegionStr": "2026_Mumbai",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_INDArmy6",
+    "friendlyName": "6th Joint Force",
+    "startRegionStr": "2026_Kolkata",
+    "homeRegionStr": "2026_Kolkata",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_INDArmy7",
+    "friendlyName": "7th Joint Force",
+    "startRegionStr": "2026_Bangalore",
+    "homeRegionStr": "2026_Bangalore",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_INDArmy8",
+    "friendlyName": "8th Joint Force",
+    "startRegionStr": "2026_Chennai",
+    "homeRegionStr": "2026_Chennai",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_INDArmy9",
+    "friendlyName": "9th Joint Force",
+    "startRegionStr": "2026_Hyderabad",
+    "homeRegionStr": "2026_Hyderabad",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_INDArmy10",
+    "friendlyName": "10th Joint Force",
+    "startRegionStr": "2026_Gujarat",
+    "homeRegionStr": "2026_Gujarat",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_INDArmy11",
+    "friendlyName": "11th Joint Force",
+    "startRegionStr": "2026_AndhraPradesh",
+    "homeRegionStr": "2026_AndhraPradesh",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_IDNArmy1",
+    "friendlyName": "1st Joint Force",
+    "startRegionStr": "2026_Java",
+    "homeRegionStr": "2026_Java",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_IDNArmy2",
+    "friendlyName": "2nd Joint Force",
+    "startRegionStr": "2026_Sumatra",
+    "homeRegionStr": "2026_Sumatra",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_IRNArmy1",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_IRNArmy2",
+    "friendlyName": "2nd Joint Force",
+    "startRegionStr": "2026_Isfahan",
+    "homeRegionStr": "2026_Isfahan",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_IRNArmy3",
+    "friendlyName": "3rd Joint Force",
+    "startRegionStr": "2026_Mashhad",
+    "homeRegionStr": "2026_Mashhad",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_ISRArmy1",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_ISRArmy2",
+    "friendlyName": "2nd Joint Force",
+    "startRegionStr": "2026_Israel",
+    "homeRegionStr": "2026_Israel",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_ITAArmy1",
+    "friendlyName": "1st Joint Force",
+    "startRegionStr": "2026_Italy",
+    "homeRegionStr": "2026_Italy",
+    "armyType": "Human",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_ITAArmy2",
+    "friendlyName": "2nd Joint Force",
+    "startRegionStr": "2026_Milan",
+    "homeRegionStr": "2026_Milan",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_JPNArmy1",
+    "friendlyName": "1st Joint Force",
+    "startRegionStr": "2026_SouthHonshu",
+    "homeRegionStr": "2026_SouthHonshu",
+    "armyType": "Human",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_JPNArmy2",
+    "friendlyName": "2nd Joint Force",
+    "startRegionStr": "2026_NorthHonshu",
+    "homeRegionStr": "2026_NorthHonshu",
+    "armyType": "Human",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_JPNArmy3",
+    "friendlyName": "3rd Joint Force",
+    "startRegionStr": "2026_Hokkaido",
+    "homeRegionStr": "2026_Hokkaido",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_MMRArmy1",
+    "friendlyName": "1st Joint Force",
+    "startRegionStr": "2026_Myanmar",
+    "homeRegionStr": "2026_Myanmar",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 0.6
+  },
+  {
+    "dataName": "2026_PRKArmy1",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_PRKArmy2",
+    "friendlyName": "2nd Joint Force",
+    "startRegionStr": "2026_NorthKorea",
+    "homeRegionStr": "2026_NorthKorea",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_PRKArmy3",
+    "friendlyName": "3rd Joint Force",
+    "startRegionStr": "2026_NorthKorea",
+    "homeRegionStr": "2026_NorthKorea",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_PRKArmy4",
+    "friendlyName": "4th Joint Force",
+    "startRegionStr": "2026_NorthKorea",
+    "homeRegionStr": "2026_NorthKorea",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_PAKArmy1",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_PAKArmy2",
+    "friendlyName": "2nd Joint Force",
+    "startRegionStr": "2026_Sindh",
+    "homeRegionStr": "2026_Sindh",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_PAKArmy3",
+    "friendlyName": "3rd Joint Force",
+    "startRegionStr": "2026_Peshawar",
+    "homeRegionStr": "2026_Peshawar",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_PAKArmy4",
+    "friendlyName": "4th Joint Force",
+    "startRegionStr": "2026_Baluchistan",
+    "homeRegionStr": "2026_Baluchistan",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_POLArmy1",
+    "friendlyName": "1st Joint Force",
+    "startRegionStr": "2026_Poland",
+    "homeRegionStr": "2026_Poland",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_POLArmy2",
+    "friendlyName": "2nd Joint Force",
+    "startRegionStr": "2026_Gdansk",
+    "homeRegionStr": "2026_Gdansk",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_RUSArmy1",
+    "deploymentType": "Naval",
+    "startingStrength": 0.75
+  },
+  {
+    "dataName": "2026_RUSArmy2",
+    "deploymentType": "Standard",
+    "startingStrength": 0.75
+  },
+  {
+    "dataName": "2026_RUSArmy3",
+    "deploymentType": "Standard",
+    "startingStrength": 0.75
+  },
+  {
+    "dataName": "2026_RUSArmy4",
+    "friendlyName": "4th Joint Force",
+    "startRegionStr": "2026_Volga",
+    "homeRegionStr": "2026_Volga",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 0.75
+  },
+  {
+    "dataName": "2026_RUSArmy5",
+    "friendlyName": "5th Joint Force",
+    "startRegionStr": "2026_Urals",
+    "homeRegionStr": "2026_Urals",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 0.75
+  },
+  {
+    "dataName": "2026_RUSArmy6",
+    "friendlyName": "6th Joint Force",
+    "startRegionStr": "2026_WesternSiberia",
+    "homeRegionStr": "2026_WesternSiberia",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 0.75
+  },
+  {
+    "dataName": "2026_RUSArmy7",
+    "friendlyName": "7th Joint Force",
+    "startRegionStr": "2026_EasternSiberia",
+    "homeRegionStr": "2026_EasternSiberia",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 0.75
+  },
+  {
+    "dataName": "2026_RUSArmy8",
+    "friendlyName": "8th Joint Force",
+    "startRegionStr": "2026_RussianFarEast",
+    "homeRegionStr": "2026_RussianFarEast",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 0.75
+  },
+  {
+    "dataName": "2026_SAUArmy1",
+    "friendlyName": "1st Joint Force",
+    "startRegionStr": "2026_Najd",
+    "homeRegionStr": "2026_Najd",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_SAUArmy2",
+    "friendlyName": "2nd Joint Force",
+    "startRegionStr": "2026_Hijaz",
+    "homeRegionStr": "2026_Hijaz",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_KORArmy1",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_KORArmy2",
+    "friendlyName": "2nd Joint Force",
+    "startRegionStr": "2026_SouthKorea",
+    "homeRegionStr": "2026_SouthKorea",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_KORArmy3",
+    "friendlyName": "3rd Joint Force",
+    "startRegionStr": "2026_SouthKorea",
+    "homeRegionStr": "2026_SouthKorea",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_KORArmy4",
+    "friendlyName": "4th Joint Force",
+    "startRegionStr": "2026_SouthKorea",
+    "homeRegionStr": "2026_SouthKorea",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_ESPArmy1",
+    "friendlyName": "1st Joint Force",
+    "startRegionStr": "2026_Spain",
+    "homeRegionStr": "2026_Spain",
+    "armyType": "Human",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_THAArmy1",
+    "friendlyName": "1st Joint Force",
+    "startRegionStr": "2026_Bangkok",
+    "homeRegionStr": "2026_Bangkok",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_THAArmy2",
+    "friendlyName": "2nd Joint Force",
+    "startRegionStr": "2026_ChiangMai",
+    "homeRegionStr": "2026_ChiangMai",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_TURArmy1",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_TURArmy2",
+    "friendlyName": "2nd Joint Force",
+    "startRegionStr": "2026_Diyarbakir",
+    "homeRegionStr": "2026_Diyarbakir",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_TURArmy3",
+    "friendlyName": "3rd Joint Force",
+    "startRegionStr": "2026_Istanbul",
+    "homeRegionStr": "2026_Istanbul",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_UKRArmy1",
+    "deploymentType": "Standard",
+    "startingStrength": 0.75
+  },
+  {
+    "dataName": "2026_UKRArmy2",
+    "friendlyName": "2nd Joint Force",
+    "startRegionStr": "2026_Kharkiv",
+    "homeRegionStr": "2026_Kharkiv",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 0.75
+  },
+  {
+    "dataName": "2026_UKRArmy3",
+    "friendlyName": "3rd Joint Force",
+    "startRegionStr": "2026_Odesa",
+    "homeRegionStr": "2026_Odesa",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 0.75
+  },
+  {
+    "dataName": "2026_UKRArmy4",
+    "friendlyName": "4th Joint Force",
+    "startRegionStr": "2026_Donetsk",
+    "homeRegionStr": "2026_Donetsk",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 0.75
+  },
+  {
+    "dataName": "2026_UKRArmy5",
+    "friendlyName": "5th Joint Force",
+    "startRegionStr": "2026_Kiev",
+    "homeRegionStr": "2026_Kiev",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 0.75
+  },
+  {
+    "dataName": "2026_UKRArmy6",
+    "friendlyName": "6th Joint Force",
+    "startRegionStr": "2026_Kharkiv",
+    "homeRegionStr": "2026_Kharkiv",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 0.75
+  },
+  {
+    "dataName": "2026_GBRArmy1",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_GBRArmy2",
+    "friendlyName": "2nd Joint Force",
+    "startRegionStr": "2026_EnglishMidlands",
+    "homeRegionStr": "2026_EnglishMidlands",
+    "armyType": "Human",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_USAArmy1",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_USAArmy2",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_USAArmy3",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_USAArmy4",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_USAArmy5",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_USAArmy6",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_USAArmy7",
+    "friendlyName": "7th Joint Force",
+    "startRegionStr": "2026_NewEngland",
+    "homeRegionStr": "2026_NewEngland",
+    "armyType": "Human",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_USAArmy8",
+    "friendlyName": "8th Joint Force",
+    "startRegionStr": "2026_NewYork",
+    "homeRegionStr": "2026_NewYork",
+    "armyType": "Human",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_USAArmy9",
+    "friendlyName": "9th Joint Force",
+    "startRegionStr": "2026_RustBelt",
+    "homeRegionStr": "2026_RustBelt",
+    "armyType": "Human",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_USAArmy10",
+    "friendlyName": "10th Joint Force",
+    "startRegionStr": "2026_RockyMountains",
+    "homeRegionStr": "2026_RockyMountains",
+    "armyType": "Human",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_USAArmy11",
+    "friendlyName": "11th Joint Force",
+    "startRegionStr": "2026_MississippiDelta",
+    "homeRegionStr": "2026_MississippiDelta",
+    "armyType": "Human",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_USAArmy12",
+    "friendlyName": "12th Joint Force",
+    "startRegionStr": "2026_Cumberland",
+    "homeRegionStr": "2026_Cumberland",
+    "armyType": "Human",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_USAArmy13",
+    "friendlyName": "13th Joint Force",
+    "startRegionStr": "2026_Boise",
+    "homeRegionStr": "2026_Boise",
+    "armyType": "Human",
+    "deploymentType": "Naval",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_VNMArmy1",
+    "friendlyName": "1st Joint Force",
+    "startRegionStr": "2026_Hanoi",
+    "homeRegionStr": "2026_Hanoi",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_VNMArmy2",
+    "friendlyName": "2nd Joint Force",
+    "startRegionStr": "2026_HoChiMinhCity",
+    "homeRegionStr": "2026_HoChiMinhCity",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  },
+  {
+    "dataName": "2026_VNMArmy3",
+    "friendlyName": "3rd Joint Force",
+    "startRegionStr": "2026_Hanoi",
+    "homeRegionStr": "2026_Hanoi",
+    "armyType": "Human",
+    "deploymentType": "Standard",
+    "startingStrength": 1
+  }
+]

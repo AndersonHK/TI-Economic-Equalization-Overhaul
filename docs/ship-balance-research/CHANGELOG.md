@@ -5,6 +5,54 @@ the balance decisions as well as their implementation status.
 
 ## 2026-08-01
 
+### Implemented in 0.8.2: TI 1.0.51 compatibility and gun-table load fix
+
+- **Late-save initialization:** powered 0.8.1 gun rows conditionally gained an
+  Energy Usage cell while the 35mm, nose 40mm, and 12-inch rows remained
+  self-powered and one cell shorter. TI's ship-module table assumes every
+  visible row has the same cell count, so late saves with a mixed unlock set
+  failed in `ShipModuleTable.ResizeColumns` with a repeating
+  `ArgumentOutOfRangeException`.
+- **UI compatibility:** retain the intended five powered gun families and their
+  balance values. During module-row construction only, conventional guns that
+  still consume zero energy now participate in the Energy Usage column and
+  display their real zero value. Gameplay power, battery, heat, and self-powered
+  behavior are unchanged.
+- **Retarget:** build and validate against the installed Terra Invicta 1.0.51
+  assemblies. All guarded gameplay/UI IL anchors and the new module-row
+  transpiler match the installed binary.
+
+### Implemented in 0.8.1: powered guns and coherent thermal accounting
+
+- **Gun power only:** activate the existing powered-weapon path for the 30mm,
+  40mm, 6-inch, 8-inch, and 10-inch guns through generic `powerUse_MJ` data.
+  Retain every vanilla 1.0.49 mass, projectile, ammunition, velocity, range,
+  damage, cooldown, and salvo value. At vanilla cadence, use **0.085, 8.70,
+  0.675, 1.40625, and 2.20 MJ useful work per rendered shot**, respectively.
+  The ordinary chemical guns retain their inherited **100%** efficiency until
+  loader-loss values are settled; the 40mm uses **90%**, drawing **9.6667 MJ**
+  and producing **0.9667 MJ local heat** per rendered shot.
+- **Generic hydration:** retain the new field in a load-ordered runtime registry
+  sourced from active `TIGunTemplate` mod JSON. The C# behavior contains no gun
+  identifiers, supports scenario tags, observes full-template replacement, and
+  works whether Unity Mod Manager starts before or after template initialization.
+- **Reactor output and heat:** auxiliary generation now credits the ship power
+  pool with net electrical output rather than pre-efficiency reactor input.
+  Rejected plant heat is electrical output times
+  `(1 - plant efficiency) / plant efficiency` and is applied once when power is
+  generated. The redundant continuous systems-heat application is suppressed.
+- **Weapon heat and radiators:** radiator design load now adds each powered
+  weapon's own `HeatGeneration_GJ` at the same cooldown or intra-salvo interval
+  used by vanilla generator sizing. This applies uniformly to beams, magnetic
+  guns, plasma weapons, and newly powered conventional guns.
+- **Heat gate:** the retracted/destroyed-radiator pre-fire check now reserves
+  only the module heat that `FireWeapon` will actually apply. It no longer treats
+  total reactor input energy as instantaneous weapon heat.
+- **Save compatibility:** no custom value is serialized. Active gun power data
+  is rebuilt before save selection; the game's existing post-load power recache
+  consumes it. Loaded ship mass is reconciled to recalculated template dry mass
+  plus saved propellant and propulsion values are marked dirty.
+
 ### Settled conservative gun projectiles and early magnetic cadence
 
 **Implementation status:** planning and proposal-table update only; not
@@ -47,21 +95,10 @@ examples recorded on 2026-07-31.
   **0.9667 MJ local weapon heat per projectile** (**1.611 MW average**). This is
   a futuristic balance abstraction for controlled propellant combustion, not
   an experimentally established energy budget.
-- **Gun-power implementation status:** keep these as patch-plan values only.
-  Prefer a generic useful-work `powerUse_MJ` field alongside the
-  already-inherited `efficiency` field in `TIGunTemplate.json`, so input and heat
-  use the same division-by-efficiency semantics as lasers and magnetic weapons.
-  Because the mod normally starts after template initialization, bind the
-  extension values from the retained, load-ordered `TIGunTemplate` mod JSON and
-  also cover the earlier-startup case with an initialization postfix; do not
-  rely on intercepting deserialization. The generic weapon description,
-  fleet/module table, combat energy panel and tooltip, power-state display, and
-  ship-design aggregates already consume the common powered-weapon interface.
-  Save files gain no custom field, and loaded ships recache power statistics;
-  old-save round-trip, mod-removal, and ship-mass cache checks are release gates.
-  Do not add gun-specific patches to generator sizing, battery storage, firing,
-  heat gating, or UI. Any defects in those shared rules should be corrected
-  globally in a separate powered-weapon pass.
+- **Gun-power implementation status:** superseded by the 0.8.1 implementation
+  above. The power fields and shared thermal fixes are implemented; the planned
+  projectile, ammunition, mass, and cadence changes in this section remain
+  deferred.
 
 ## 2026-07-31
 

@@ -4,25 +4,24 @@ This audit checks each Harmony patch against the directives in
 `design-directives.md`. “Stock” names the quantity that prevents linear GDP/IP
 from making a proportional effect scale incorrectly.
 
-## TI 1.0.49 retarget
+## TI 1.0.51 retarget
 
-The 1.0.49 release is a compatibility hotfix over 1.0.47: its published scope is
-DLC support, save/load and notification crash guards, old-federation
-initialization, and technology-tree prerequisite display fixes. It does not
-announce national-priority or economic balance changes. The local compatibility
-audit still treats the installed binary as authoritative: all 149 global
-technology IDs match, the project compiles against the installed assemblies, and
-every guarded gameplay/UI IL anchor—including the climate-damage signature and
-threshold—matches exactly. No formula or configuration default changed for this
-retarget.
+The local 1.0.51 compatibility audit treats the installed binary as
+authoritative: all 149 global technology IDs match, the project compiles against
+the installed assemblies, and every guarded gameplay/UI IL anchor—including the
+climate-damage signature and threshold—matches exactly. No economy, social, or
+land-warfare formula changed for this retarget.
 
-Release notes:
-https://store.steampowered.com/news/app/1176470/view/696519283891505791
+The 0.8.1 conventional-gun power patch did expose a separate UI invariant on a
+late save: powered gun rows gained an Energy Usage cell while unpowered gun rows
+did not, and TI's `ShipModuleTable.ResizeColumns` indexed all visible rows using
+the longest row shape. Version 0.8.2 keeps actual energy values unchanged but
+ensures every conventional-gun comparison row creates that column.
 
 | Patch | Stock / unit | Sanity result |
 |---|---|---|
 | `InvestmentPointsPatch` | GDP / $100B | Aligned. Output remains legible and linear; the low-income ramp models capital constraints without a discontinuity, and the configurable x1.05 output adjustment is uniform at every national scale. |
-| `ControlPointCostPatch` | National economy score per CP | Aligned. It sums explicit per-technology exponent reductions of 0.02/0.03/0.05/0.05/0.05, so granted or out-of-order technologies behave correctly while the normal path remains 1/.98/.95/.90/.85/.80. It preserves free alien CPs, applies the selected x1.20 country-cost increase, then applies TI 1.0.49's live scenario maintenance multiplier. |
+| `ControlPointCostPatch` | National economy score per CP | Aligned. It sums explicit per-technology exponent reductions of 0.02/0.03/0.05/0.05/0.05, so granted or out-of-order technologies behave correctly while the normal path remains 1/.98/.95/.90/.85/.80. It preserves free alien CPs, applies the selected x1.20 country-cost increase, then applies TI 1.0.51's live scenario maintenance multiplier. |
 | `ControlPointCapacityPatch` | Complete non-project flat faction capacity | Aligned. It removes only the five known flat project-effect values from vanilla's result, then reinterprets their existing 5/10/20/40/120 values as additive percentage points over campaign/scenario, AI, councilor, and LEO capacity. Repeatable Management Research effects stack, unrelated modifiers and the alien 20,000 cap remain unchanged. |
 | `CouncilorTotalAttributeCapPatch` | Final modified councilor attribute | Aligned. Only the final clamp in `GetAttribute` rises from 25 to the configurable 50. Stored attributes, generation, training, augmentation eligibility, and negative-trait ceilings keep TI's vanilla 25-point base cap; organization and positive-trait bonuses can use the added headroom. Mission quality remains normalized to 25 so modified values above 25 retain their intended additional effect. |
 | `CouncilorAvailableAdministrationCapPatch` | Administration remaining for organizations | Aligned. The final `availableAdministration` ceiling now uses the configured total cap of 50 instead of the private 25-point base cap, allowing positive organization and trait bonuses to provide usable assignment capacity. |
@@ -53,7 +52,7 @@ https://store.steampowered.com/news/app/1176470/view/696519283891505791
 | `EconomyEmissionsPatch` | GDP × carbon intensity | Aligned. GDP, not population or borders, produces emissions; resources/GDP adds a bounded extractive-economy intensity premium. |
 | `UnityCohesionPatch` | Population | Aligned. Population scaling prevents unified countries becoming easier to homogenize; Education and Government reduce the effect with a floor. |
 | `UnityEducationPatch` | Population | Aligned. The small secondary Education loss scales with the people affected. |
-| `UnityPropagandaPatch` | Vanilla demographic effect × configured strength | Aligned. It changes only one config field load and preserves TI 1.0.49 claims and completion logic. |
+| `UnityPropagandaPatch` | Vanilla demographic effect × configured strength | Aligned. It changes only one config field load and preserves TI 1.0.51 claims and completion logic. |
 | `SpoilsGovernmentPatch` | Population / institutions | Aligned with the selected inverse-population behavior. |
 | `SpoilsSustainabilityPatch` | GDP | Aligned. Spoils damages carbon intensity, so its per-IP change falls with the economy and rises with resource dependence while Abundance is enabled. |
 | `SpoilsPropagandaPatch` | Vanilla demographic effect × configured strength | Aligned. It preserves payout, CP, corruption, and Sustainability, scales propaganda, then deletes vanilla's final direct atmospheric-emissions block. |
@@ -79,8 +78,9 @@ https://store.steampowered.com/news/app/1176470/view/696519283891505791
 - Feature and global toggles return prefixes to vanilla and make transpiler helpers
   return live vanilla field values.
 - Invalid or non-finite calculations retain vanilla or use a documented safe value.
-- The metadata and assembly target TI 1.0.49. Verification compiles against the
-  installed 1.0.49 assemblies and confirms every guarded gameplay/UI IL anchor.
+- The metadata and assembly target TI 1.0.51. Verification compiles against the
+  installed 1.0.51 assemblies and confirms every guarded gameplay/UI IL anchor,
+  including the conventional-gun module-row compatibility patch.
 - The control-cost patch reads `CPMaintenanceModifier` from the live start-time
   template, so scenario balance changes are honored without hiding the mod's
   economy-score/exponent formula.

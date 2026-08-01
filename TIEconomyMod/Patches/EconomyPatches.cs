@@ -62,7 +62,7 @@ namespace TIEconomyMod.Patches
             // Defaults give x1.40, x1.60, x1.72, and x1.80 for one through four
             // regions, approaching but never reaching x2.20. The full product is divided
             // by the reference nation (one core, Education 7, Government 6, Cohesion 5),
-            // so that reference has labor support 1. Installed vanilla 1.0.49 instead adds
+            // so that reference has labor support 1. Installed vanilla 1.0.51 instead adds
             // a flat per-capita amount for every core region.
             int cores = Math.Max(0, __instance.numCoreEconomicRegions_dailyCache);
             float coreRegionMultiplier = 1f + economy.coreRegionMaximumBonus * cores /
@@ -201,7 +201,7 @@ namespace TIEconomyMod.Patches
             // inequality, Government, Sustainability, propaganda, and faction-cash costs.
             // Capture before those effects run so a Spoils Government loss cannot alter
             // this completion's output. Example: $10 PCGDP growth in a 100M-person nation
-            // is $1B GDP. TI 1.0.49 has no Spoils GDP effect, so this is an added behavior.
+            // is $1B GDP. TI 1.0.51 has no Spoils GDP effect, so this is an added behavior.
             __state = 0d;
             if (Main.FeatureEnabled(Main.settings.spoils.enabled))
             {
@@ -239,7 +239,7 @@ namespace TIEconomyMod.Patches
             // growth. One region in a $1T economy gives ratio 1 and curve 0.5, so the
             // default +60% maximum becomes a x1.30 raw-delta multiplier. At $100B the
             // ratio is 10 and the exponent-0.30 curve is 0.666, making it x1.40.
-            // Installed vanilla 1.0.49
+            // Installed vanilla 1.0.51
             // adds a flat 0.0001 per resource region before its population scaling.
             AbundanceSettings abundance = Main.settings.abundance;
             float resourceCurve = 0f;

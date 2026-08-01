@@ -81,7 +81,7 @@ namespace TIEconomyMod.FormulaTests
             GameStateManager.TimeState.template.CPMaintenanceModifier = 1.2f;
             ControlPointCostPatch.Postfix(ref result, nation);
             Near((float)Math.Pow(200f, 0.95f) / 4f * 1.2f * 1.2f, result, 0.0001f,
-                "TI 1.0.49 scenario control-maintenance multiplier");
+            "TI 1.0.51 scenario control-maintenance multiplier");
 
             GameStateManager.Research.finishedTechsNames.Clear();
             GameStateManager.Research.finishedTechsNames.Add("Accelerando");
@@ -569,6 +569,28 @@ namespace TIEconomyMod.FormulaTests
                     true, 4f, 2f, 2f / 3f, 0f),
                 0.0001f,
                 "zero open-cycle coefficient reproduces the vanilla exemption");
+            float gunInput_GJ = WeaponPowerMath.ElectricalInput_GJ(
+                8.7f, 0f, 0.9f);
+            Near(0.009666667f, gunInput_GJ, 0.000000001f,
+                "gun useful work is divided by module efficiency");
+            float gunHeat_GJ = WeaponPowerMath.ModuleWasteHeat_GJ(
+                gunInput_GJ, 0.9f);
+            Near(0.000966667f, gunHeat_GJ, 0.000000001f,
+                "gun module heat is electrical input minus useful work");
+            Near(0.001288889f,
+                WeaponPowerMath.DesignHeatRate_GW(
+                    gunHeat_GJ, 6, 4f, 0.75f),
+                0.000000001f,
+                "salvo radiator heat follows the design burst interval");
+            Near(0.000193333f,
+                WeaponPowerMath.DesignHeatRate_GW(
+                    gunHeat_GJ, 1, 5f, 0f),
+                0.000000001f,
+                "single-shot radiator heat follows ordinary cooldown");
+            Near(0f,
+                WeaponPowerMath.ModuleWasteHeat_GJ(0.002f, 1f),
+                0f,
+                "perfectly efficient modules add no local weapon heat");
             Near(9f, ShipBalanceMath.CrewMass_tons(3, 3f), 0f,
                 "settled crew support mass is three tonnes per billet");
 
@@ -1096,7 +1118,7 @@ namespace TIEconomyMod.FormulaTests
         private static void TestWeightValidation(string path)
         {
             TechWeightCatalog catalog = TechWeightCatalog.Load(path, delegate { }, delegate { return true; });
-            True(catalog.Count == 149, "technology CSV covers all 149 TI 1.0.49 technologies");
+        True(catalog.Count == 149, "technology CSV covers all 149 TI 1.0.51 technologies");
 
             TechWeights solid = Weight(catalog, "SolidCoreFissionSystems");
             TechWeights gas = Weight(catalog, "GasCoreFissionSystems");

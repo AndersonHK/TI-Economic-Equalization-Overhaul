@@ -49,7 +49,7 @@ namespace TIEconomyMod.Patches
             float result = configured * settings.multiplier;
             if (float.IsNaN(result) || float.IsInfinity(result) || result <= 0f)
             {
-                Main.Warn("Region threshold calculation was invalid; using the live TI 1.0.49 value.");
+                Main.Warn("Region threshold calculation was invalid; using the live TI 1.0.51 value.");
                 return vanilla;
             }
 
@@ -145,7 +145,7 @@ namespace TIEconomyMod.Patches
         [HarmonyTranspiler]
         public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
-            // TI 1.0.49 keeps these values in TIGlobalConfig fields.
+            // TI 1.0.51 keeps these values in TIGlobalConfig fields.
             // Replacing exactly those three field loads preserves the complete vanilla
             // completion method. Defaults multiply 500/750/1,200 by five, producing
             // 2,500/3,750/6,000 IP; missing fields fail loudly instead of silently no-op.
@@ -553,7 +553,7 @@ namespace TIEconomyMod.Patches
                 section.AppendLine("EEO Unity");
                 if (Main.FeatureEnabled(Main.settings.unity.enabled))
                 {
-            // These are the actual patched getters; TI's full 1.0.49 completion
+            // These are the actual patched getters; TI's full 1.0.51 completion
                     // method remains in charge of claims and all other secondary behavior.
                     section.Append("Cohesion ").Append(
                             nation.unityPriorityCohesionChange.ToString("+0.####;-0.####;0"))
