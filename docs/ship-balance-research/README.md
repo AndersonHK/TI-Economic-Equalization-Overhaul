@@ -1,6 +1,6 @@
 # Ship balance research
 
-Last reviewed: 2026-07-30
+Last reviewed: 2026-08-01
 
 This dossier compares Terra Invicta's current ship-drive, power-plant, and weapon-crew values with demonstrated hardware, active prototypes, historical engineering programs, and explicitly speculative studies.
 
@@ -26,6 +26,7 @@ The comparison is organized into:
 - [Early human hull geometry, mass, crew, power, and volume audit](gunship-and-escort-hull-analysis.md)
 - [Drive/reactor pairing, open-cycle cooling, and hull geometry](drive-reactor-pairing-and-hull-geometry.md)
 - [Hull resource-cost accounting and metal-use options](hull-resource-cost-accounting.md)
+- [Skirmish roster performance investigation](skirmish-roster-performance-investigation.md)
 - [Detailed research archive](details/README.md)
 
 ## Documentation structure

@@ -5,6 +5,26 @@ the balance decisions as well as their implementation status.
 
 ## 2026-08-01
 
+### Field-test observations after 0.8.3
+
+- **Automatic gun allocation succeeded:** in repeated unattended skirmishes,
+  ten 10-inch gunships now defeat ten 6-inch escorts reliably. The result
+  reverses the earlier artificial advantage created by projectile collisions
+  and whole-fleet target saturation.
+- **Early combat triangle:** current testing supports the intended broad
+  relationship `missiles > guns > point defense > missiles`. Missiles remain
+  extremely effective, 10-inch guns are now dominant against competing gun
+  ships, and point defense retains its anti-missile role.
+- **Mk1 magnetic weapons remain weak:** none of the projectile-collision or
+  automatic-target-allocation changes made the human Mk1 railgun family
+  materially competitive. Its balance remains an open, separate problem.
+- **Open performance regression:** adding ships in the main-menu skirmish
+  roster now produces a large delay that grows with roster size. Static
+  inspection confirms that every add performs a full
+  `StartMenuController.PopulateSkirmishDropdowns` rebuild; every existing row
+  then repopulates the complete ship-design dropdown. See
+  [the skirmish roster performance investigation](skirmish-roster-performance-investigation.md).
+
 ### Implemented in 0.8.3: direct-fire commitment targeting
 
 - **Automatic fire allocation:** live ballistic projectiles now reserve their
