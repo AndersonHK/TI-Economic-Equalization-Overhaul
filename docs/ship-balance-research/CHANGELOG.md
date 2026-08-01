@@ -5,6 +5,29 @@ the balance decisions as well as their implementation status.
 
 ## 2026-08-01
 
+### Implemented in 0.8.3: direct-fire commitment targeting
+
+- **Automatic fire allocation:** live ballistic projectiles now reserve their
+  vanilla expected direct damage against their intended ship. Ordinary Offense
+  acquisition and nonmissile combat AI skip a target once aggregate committed
+  damage exceeds the same structural-integrity and total-armor threshold used
+  by vanilla missile saturation.
+- **Projectile lifecycle:** commitments are registered only after an actual
+  shot, removed on destruction, collision, impact, or battle cleanup, and
+  pruned when a projectile is no longer moving toward its intended target.
+  Per-target pruning is limited to once per rendered frame.
+- **Player intent:** player-controlled deliberate primary targets remain
+  authoritative. Focus, Bracket, Defense, Guardian, Idle, and Salvo behavior is
+  not redirected by the automatic-fire gate.
+- **Missile isolation:** missile target selection, saturation estimation,
+  point-defense discounting, 15-second retarget timing, and quarter-ammunition
+  salvo behavior are unchanged. Missile-carrier AI retains its vanilla target
+  eligibility path.
+- **Generic ballistic support:** the shared path covers conventional guns,
+  magnetic weapons, and plasma without caliber or template identifiers. No
+  projectile mass, velocity, cadence, damage, ammunition, or weapon power value
+  changes in this release.
+
 ### Implemented in 0.8.2: TI 1.0.51 compatibility and gun-table load fix
 
 - **Late-save initialization:** powered 0.8.1 gun rows conditionally gained an

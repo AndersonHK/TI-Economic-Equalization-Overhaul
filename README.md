@@ -110,6 +110,14 @@ IDs or zero future-axis totals fail validation, and changes require restart.
 The packaged [default settings](TIEconomyMod/ModFiles/Settings.xml) are copied
 on release deployment so a new balance version starts from its authored values.
 
+Version 0.8.3 adds size-weighted direct-fire coordination for automatic
+ballistic targeting. Live gun, rail, coil, and plasma shots now reserve their
+vanilla-estimated damage against a target; AI and ordinary automatic Offense
+acquisition move to another ship once the target exceeds the same hull-and-armor
+kill estimate used by vanilla missile saturation. Destroyed, collided, expired,
+or passed projectiles release that reservation. Missile behavior is unchanged,
+and deliberate player primary targets and Focus fire remain authoritative.
+
 Version 0.8.2 targets TI 1.0.51 and fixes late-save initialization when a
 faction has unlocked both powered and self-powered conventional guns. The ship
 designer now gives every conventional-gun comparison row the same Energy Usage
@@ -158,7 +166,7 @@ patches, verifies the guarded councilor-cap, hab connector, and list-icon
 transpilers, checks the hab-cost substitution order, validates the 2022/2026
 starting-force inventories and navy floors, validates Control Point effects and
 localization, checks the manifest/package layout, and creates
-`artifacts/TIEconomyMod-0.8.2-ti1.0.51.zip`.
+`artifacts/TIEconomyMod-0.8.3-ti1.0.51.zip`.
 
 ## Deployment
 

@@ -39,6 +39,9 @@
     <Compile Include="..\..\TIEconomyMod\Core\ProjectileCollisionMath.cs">
       <Link>ProjectileCollisionMath.cs</Link>
     </Compile>
+    <Compile Include="..\..\TIEconomyMod\Core\DirectFireCommitmentMath.cs">
+      <Link>DirectFireCommitmentMath.cs</Link>
+    </Compile>
     <Compile Include="..\..\TIEconomyMod\Core\ShipBalanceMath.cs">
       <Link>ShipBalanceMath.cs</Link>
     </Compile>

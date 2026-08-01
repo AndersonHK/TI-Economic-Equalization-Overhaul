@@ -100,6 +100,7 @@
     <Compile Include="Core\GunPowerRegistry.cs" />
     <Compile Include="Core\PowerPlantThermalMath.cs" />
     <Compile Include="Core\ProjectileCollisionMath.cs" />
+    <Compile Include="Core\DirectFireCommitmentMath.cs" />
     <Compile Include="Core\ProjectileGeometryRegistry.cs" />
     <Compile Include="Core\ShipBalanceMath.cs" />
     <Compile Include="Core\TemplateFloatExtensionReader.cs" />
@@ -119,6 +120,7 @@
     <Compile Include="Patches\NuclearEffectsPatches.cs" />
     <Compile Include="Patches\NationalMergerPatches.cs" />
     <Compile Include="Patches\ProjectileCollisionPatches.cs" />
+    <Compile Include="Patches\DirectFireCoordinationPatches.cs" />
     <Compile Include="Patches\SocialPriorityPatches.cs" />
     <Compile Include="Patches\ShipPowerPatches.cs" />
     <Compile Include="Patches\ThresholdAndUiPatches.cs" />

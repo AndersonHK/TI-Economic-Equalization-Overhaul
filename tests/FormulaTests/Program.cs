@@ -627,6 +627,30 @@ namespace TIEconomyMod.FormulaTests
                 ProjectileCollisionMath.MovementSweepMultiplier,
                 0f,
                 "ballistic movement sweep has no anticipatory margin");
+            Near(6f,
+                DirectFireCommitmentMath.EstimatedKillThreshold_points(
+                    1, 0f),
+                0f,
+                "unarmored direct-fire saturation mirrors the vanilla missile threshold");
+            Near(12f,
+                DirectFireCommitmentMath.EstimatedKillThreshold_points(
+                    1, 20f),
+                0f,
+                "armor scales direct-fire saturation like vanilla missile saturation");
+            Near(0f,
+                DirectFireCommitmentMath.EstimatedKillThreshold_points(
+                    -1, -20f),
+                0f,
+                "malformed negative target durability cannot create a negative threshold");
+            True(!DirectFireCommitmentMath.IsSaturated(6f, 6f),
+                "commitment equal to the threshold preserves vanilla strict comparison");
+            True(DirectFireCommitmentMath.IsSaturated(6.01f, 6f),
+                "commitment above the threshold saturates automatic direct fire");
+            Near(0f,
+                DirectFireCommitmentMath.SanitizeExpectedDamage_points(
+                    float.NaN),
+                0f,
+                "invalid expected projectile damage cannot saturate a target");
             Near(9f, ShipBalanceMath.CrewMass_tons(3, 3f), 0f,
                 "settled crew support mass is three tonnes per billet");
 
