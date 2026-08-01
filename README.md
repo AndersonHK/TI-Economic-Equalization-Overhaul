@@ -113,7 +113,12 @@ on release deployment so a new balance version starts from its authored values.
 Version 0.8.2 targets TI 1.0.51 and fixes late-save initialization when a
 faction has unlocked both powered and self-powered conventional guns. The ship
 designer now gives every conventional-gun comparison row the same Energy Usage
-column shape while retaining each gun's real zero or nonzero consumption.
+column shape while retaining each gun's real zero or nonzero consumption. It
+also replaces the shared oversized conventional-projectile collider with
+caliber-sized boxes, removes the 20% forward collision-sweep margin, and gives
+naval-gun projectiles a small cumulative mass-based durability pool. Physical
+projectile damage and beam damage use the game's existing randomized damage;
+no trajectory-deflection simulation is added.
 
 Version 0.8.1 added generic conventional-gun electrical demand and completed the
 powered-weapon thermal chain: reactor generation now credits net electrical

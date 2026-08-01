@@ -21,6 +21,25 @@ the balance decisions as well as their implementation status.
 - **Retarget:** build and validate against the installed Terra Invicta 1.0.51
   assemblies. All guarded gameplay/UI IL anchors and the new module-row
   transpiler match the installed binary.
+- **Physical projectile geometry:** add generic `projectileDiameter_mm` data
+  for all eight conventional-gun templates: **30, 35, 40, 40, 152.4, 203.2,
+  254, and 304.8 mm**. A fired projectile's collider now uses that diameter at
+  the same cinematic scale as ship models instead of retaining the shared
+  `BulletAutocannon` or `BulletGun` collider dimensions. The same data supplies
+  physical cross-sectional area to beam damage and targeting calculations.
+- **Collision sweep:** reduce the ballistic forward-ray sweep from **120% to
+  100%** of movement during the update. The guarded transpiler requires exactly
+  one matching TI 1.0.51 constant.
+- **Projectile durability:** conventional-gun projectiles now accumulate the
+  game's already-randomized direct plus chipping damage at **100 kg of effective
+  projectile mass per damage point**. Destruction occurs when accumulated mass
+  damage reaches `warheadMass_kg`. A head-on 6-inch hit comfortably neutralizes
+  a 10-inch round, while a 30mm hit does not do so by itself. The impacting
+  projectile still destroys itself through the existing impact path; no
+  post-impact trajectory or deflection state is simulated.
+- **Future magnetic support:** projectile-diameter hydration is shared between
+  `TIGunTemplate` and `TIMagneticGunTemplate`. No railgun or coilgun diameter,
+  mass, velocity, cadence, or durability value is changed in this pass.
 
 ### Implemented in 0.8.1: powered guns and coherent thermal accounting
 

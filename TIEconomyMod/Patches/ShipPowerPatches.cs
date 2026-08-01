@@ -54,6 +54,7 @@ namespace TIEconomyMod.Patches
         public static void Postfix()
         {
             GunPowerRegistry.Refresh();
+            ProjectileGeometryRegistry.Refresh();
             ShipPowerRuntime.RefreshTemplateMassCaches();
         }
     }

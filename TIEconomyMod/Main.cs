@@ -35,6 +35,7 @@ namespace TIEconomyMod
                     TemplateManager.self.Initialized)
                 {
                     GunPowerRegistry.Refresh();
+                    ProjectileGeometryRegistry.Refresh();
                     ShipPowerRuntime.RefreshTemplateMassCaches();
                 }
                 CouncilorRuntimeCaps.InitializeOrganizationCap();

@@ -30,6 +30,7 @@ foreach ($assemblyName in @(
     'UnityEngine.CoreModule.dll',
     'UnityEngine.dll',
     'UnityEngine.IMGUIModule.dll',
+    'UnityEngine.PhysicsModule.dll',
     'UnityEngine.UI.dll',
     'UnityEngine.UIModule.dll',
     'Unity.TextMeshPro.dll'

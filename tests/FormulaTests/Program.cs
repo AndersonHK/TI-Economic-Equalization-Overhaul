@@ -591,6 +591,42 @@ namespace TIEconomyMod.FormulaTests
                 WeaponPowerMath.ModuleWasteHeat_GJ(0.002f, 1f),
                 0f,
                 "perfectly efficient modules add no local weapon heat");
+            Near(0.05067075f,
+                ProjectileCollisionMath.CrossSectionalArea_m2(254f),
+                0.00000001f,
+                "10-inch projectile cross-section follows physical diameter");
+            Near(0.000706858f,
+                ProjectileCollisionMath.CrossSectionalArea_m2(30f),
+                0.00000001f,
+                "30mm projectile cross-section follows physical diameter");
+            Near(0.00254f,
+                ProjectileCollisionMath.WorldDiameter_gameUnits(254f, 0.01f),
+                0.00000001f,
+                "projectile collider uses the ship-model cinematic scale");
+            Near(90f,
+                ProjectileCollisionMath.MassDamage_kg(0.75f, 0.15f),
+                0.0001f,
+                "direct and chipping damage share projectile durability");
+            True(ProjectileCollisionMath.MassDamage_kg(
+                    0.6615f * 0.8f, 0f) < 90f,
+                "minimum current 30mm head-on damage does not erase a 10-inch projectile");
+            True(ProjectileCollisionMath.MassDamage_kg(
+                    4.41f * 0.8f, 0f) >= 90f,
+                "minimum current 6-inch head-on damage erases a 10-inch projectile");
+            True(ProjectileCollisionMath.MassDamage_kg(
+                    0.33075f * 0.8f, 0f) < 180f,
+                "planned lighter 30mm projectile does not erase a heavier 10-inch projectile");
+            True(ProjectileCollisionMath.MassDamage_kg(
+                    7.84f * 0.8f, 0f) >= 180f,
+                "planned 6-inch projectile still erases a heavier 10-inch projectile");
+            Near(0f,
+                ProjectileCollisionMath.MassDamage_kg(-1f, 0f),
+                0f,
+                "malformed negative damage cannot repair a projectile");
+            Near(1f,
+                ProjectileCollisionMath.MovementSweepMultiplier,
+                0f,
+                "ballistic movement sweep has no anticipatory margin");
             Near(9f, ShipBalanceMath.CrewMass_tons(3, 3f), 0f,
                 "settled crew support mass is three tonnes per billet");
 

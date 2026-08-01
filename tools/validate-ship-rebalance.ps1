@@ -118,21 +118,41 @@ $expectedGunPower = [ordered]@{
     '6-inchCannon' = @(0.675, 1.0)
     '8-inchCannon' = @(1.40625, 1.0)
 }
-if ($gunOverrides.Count -ne $expectedGunCrew.Count) {
-    throw "Gun override has $($gunOverrides.Count) rows instead of $($expectedGunCrew.Count)."
+$expectedGunDiameters = [ordered]@{
+    '10-inchCannon' = 254.0
+    '30mmAutocannon' = 30.0
+    '35mmAutocannon' = 35.0
+    '40mmNoseAutocannon' = 40.0
+    '40mmAutocannon' = 40.0
+    '6-inchCannon' = 152.4
+    '8-inchCannon' = 203.2
+    '12-inchCannon' = 304.8
 }
-foreach ($entry in $expectedGunCrew.GetEnumerator()) {
+if ($gunOverrides.Count -ne $expectedGunDiameters.Count) {
+    throw "Gun override has $($gunOverrides.Count) rows instead of $($expectedGunDiameters.Count)."
+}
+foreach ($entry in $expectedGunDiameters.GetEnumerator()) {
     $row = @($gunOverrides | Where-Object dataName -eq $entry.Key)
     if ($row.Count -ne 1) {
         throw "Gun override must contain '$($entry.Key)' exactly once."
     }
-    Assert-Properties $row[0] @(
-        'dataName', 'crew', 'powerUse_MJ', 'efficiency') $entry.Key
-    Assert-Near $row[0].crew $entry.Value "$($entry.Key) crew"
-    Assert-Near $row[0].powerUse_MJ $expectedGunPower[$entry.Key][0] `
-        "$($entry.Key) useful electrical work"
-    Assert-Near $row[0].efficiency $expectedGunPower[$entry.Key][1] `
-        "$($entry.Key) electrical efficiency"
+    if ($expectedGunCrew.Contains($entry.Key)) {
+        Assert-Properties $row[0] @(
+            'dataName', 'crew', 'powerUse_MJ', 'efficiency',
+            'projectileDiameter_mm') $entry.Key
+        Assert-Near $row[0].crew $expectedGunCrew[$entry.Key] `
+            "$($entry.Key) crew"
+        Assert-Near $row[0].powerUse_MJ $expectedGunPower[$entry.Key][0] `
+            "$($entry.Key) useful electrical work"
+        Assert-Near $row[0].efficiency $expectedGunPower[$entry.Key][1] `
+            "$($entry.Key) electrical efficiency"
+    }
+    else {
+        Assert-Properties $row[0] @(
+            'dataName', 'projectileDiameter_mm') $entry.Key
+    }
+    Assert-Near $row[0].projectileDiameter_mm $entry.Value `
+        "$($entry.Key) projectile diameter"
 }
 
 $laserOverrides = Read-JsonArray (Join-Path $modFiles 'TILaserWeaponTemplate.json')
@@ -215,7 +235,7 @@ foreach ($id in $expectedPower.Keys) {
     }
 }
 $vanillaGuns = Read-JsonArray (Join-Path $VanillaTemplatesDir 'TIGunTemplate.json')
-foreach ($id in $expectedGunCrew.Keys) {
+foreach ($id in $expectedGunDiameters.Keys) {
     if (@($vanillaGuns | Where-Object dataName -eq $id).Count -ne 1) {
         throw "Installed game no longer contains gun '$id'."
     }
