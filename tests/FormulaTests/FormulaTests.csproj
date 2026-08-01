@@ -42,6 +42,12 @@
     <Compile Include="..\..\TIEconomyMod\Core\DirectFireCommitmentMath.cs">
       <Link>DirectFireCommitmentMath.cs</Link>
     </Compile>
+    <Compile Include="..\..\TIEconomyMod\Core\ReferenceContextVariantCache.cs">
+      <Link>ReferenceContextVariantCache.cs</Link>
+    </Compile>
+    <Compile Include="..\..\TIEconomyMod\Core\ReferenceIdentityComparer.cs">
+      <Link>ReferenceIdentityComparer.cs</Link>
+    </Compile>
     <Compile Include="..\..\TIEconomyMod\Core\ShipBalanceMath.cs">
       <Link>ShipBalanceMath.cs</Link>
     </Compile>

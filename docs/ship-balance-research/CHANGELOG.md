@@ -5,6 +5,28 @@ the balance decisions as well as their implementation status.
 
 ## 2026-08-01
 
+### Implemented in 0.8.4: skirmish roster and gun-lookup performance
+
+- **Shared option catalogs:** main-menu skirmish rows now build localized ship
+  options once per controller, language, import set, and alien-eligibility
+  variant. Reinitialized rows retain their private option lists when the
+  catalog is unchanged instead of rebuilding every design entry.
+- **Vanilla behavior retained:** displayed combat scores, alien/import colors,
+  newly imported design selection, add-row notification behavior, tooltips,
+  damage images, and fleet-score calculation stay on their vanilla paths.
+- **Safe invalidation:** changed ship/import counts or identities, language,
+  and the imported-design setter invalidate the catalog. Disabling Ship Balance
+  returns `PopulateShipDropdown` to the complete vanilla implementation.
+- **Allocation-free gun fast path:** generic gun power data is resolved against
+  every loaded `TIGunTemplate` during hydration and stored by reference.
+  Ordinary `selfPowered`, energy, and heat getter calls no longer sort scenario
+  tags or construct string keys. Unexpected dynamic templates retain the
+  original scenario-aware lookup fallback.
+- **Coverage:** deterministic tests require 10,000 stable row-cache accesses to
+  invoke the option builder once and 100,000 identity lookups to retain the
+  hydrated value. Runtime IL validation guards the vanilla refresh call chain,
+  catalog-builder isolation, import invalidation, and both Harmony targets.
+
 ### Field-test observations after 0.8.3
 
 - **Automatic gun allocation succeeded:** in repeated unattended skirmishes,

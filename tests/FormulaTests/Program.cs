@@ -1,5 +1,6 @@
 using PavonisInteractive.TerraInvicta;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using TIEconomyMod.Patches;
 
@@ -25,6 +26,7 @@ namespace TIEconomyMod.FormulaTests
                 TestIndependentResearch();
                 TestEconomyAndTechnology();
                 TestBalanceTuning();
+                TestPerformanceCaches();
                 TestAbundance();
                 TestInequality();
                 TestSocialPriorities();
@@ -1334,6 +1336,101 @@ namespace TIEconomyMod.FormulaTests
             TIEconomyMod.Main.settings.enabled = true;
             TIEconomyMod.Main.enabled = false;
             True(EconomyGrowthPatch.Prefix(ref result, nation), "loader toggle returns to vanilla");
+        }
+
+        private static void TestPerformanceCaches()
+        {
+            ReferenceContextVariantCache<object> cache =
+                new ReferenceContextVariantCache<object>();
+            object ships = new object();
+            object imports = new object();
+            int builds = 0;
+            Func<object> build = delegate
+            {
+                builds++;
+                return new object();
+            };
+
+            object ordinary = cache.GetOrCreate(
+                ships, 46, imports, 0, "en", false, build);
+            bool stableHits = true;
+            for (int index = 0; index < 10000; index++)
+            {
+                stableHits = stableHits && ReferenceEquals(
+                    ordinary,
+                    cache.GetOrCreate(
+                        ships, 46, imports, 0, "en", false, build));
+            }
+            True(stableHits,
+                "skirmish option cache returns the ordinary catalog");
+            True(builds == 1,
+                "ten thousand stable roster rows build one ordinary catalog");
+
+            object alien = cache.GetOrCreate(
+                ships, 46, imports, 0, "en", true, build);
+            True(!ReferenceEquals(ordinary, alien) && builds == 2,
+                "human and alien-eligible dropdown variants cache separately");
+
+            cache.GetOrCreate(
+                ships, 47, imports, 0, "en", false, build);
+            True(builds == 3,
+                "ship-list count changes invalidate both dropdown variants");
+            cache.GetOrCreate(
+                ships, 47, imports, 1, "en", false, build);
+            True(builds == 4,
+                "import-list changes invalidate dropdown options");
+            cache.GetOrCreate(
+                ships, 47, imports, 1, "deu", false, build);
+            True(builds == 5,
+                "localization changes invalidate dropdown text");
+            cache.Invalidate();
+            cache.GetOrCreate(
+                ships, 47, imports, 1, "deu", false, build);
+            True(builds == 6,
+                "explicit dropdown invalidation rebuilds the catalog");
+
+            IdentityProbe first = new IdentityProbe(1);
+            IdentityProbe equalButDistinct = new IdentityProbe(1);
+            Dictionary<IdentityProbe, float> identityValues =
+                new Dictionary<IdentityProbe, float>(
+                    ReferenceIdentityComparer<IdentityProbe>.Instance);
+            identityValues.Add(first, 8.7f);
+            identityValues.Add(equalButDistinct, 2.2f);
+            True(identityValues.Count == 2,
+                "template identity lookup does not merge equal distinct instances");
+
+            float power = 0f;
+            for (int index = 0; index < 100000; index++)
+            {
+                if (!identityValues.TryGetValue(first, out power))
+                {
+                    throw new InvalidOperationException(
+                        "identity lookup lost a hydrated template");
+                }
+            }
+            Near(8.7f, power, 0f,
+                "one hundred thousand hydrated power lookups retain their value");
+        }
+
+        private sealed class IdentityProbe
+        {
+            private readonly int value;
+
+            public IdentityProbe(int value)
+            {
+                this.value = value;
+            }
+
+            public override bool Equals(object obj)
+            {
+                IdentityProbe other = obj as IdentityProbe;
+                return other != null && other.value == value;
+            }
+
+            public override int GetHashCode()
+            {
+                return value;
+            }
         }
 
         private static TINationState Nation()

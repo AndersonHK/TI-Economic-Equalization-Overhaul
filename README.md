@@ -110,6 +110,16 @@ IDs or zero future-axis totals fail validation, and changes require restart.
 The packaged [default settings](TIEconomyMod/ModFiles/Settings.xml) are copied
 on release deployment so a new balance version starts from its authored values.
 
+Version 0.8.4 removes the main-menu skirmish roster's repeated ship-option
+construction. Rows reuse a context-aware catalog of the same localized names,
+combat scores, import/alien coloring, and import option while retaining their
+own selection, tooltip, and damage-image state. Imports, localization, template
+sets, and alien eligibility invalidate the catalog. Gun power hydration also
+binds loaded `TIGunTemplate` instances by reference so ordinary power and heat
+getters avoid rebuilding and sorting scenario-tag strings; unexpected dynamic
+templates retain the scenario-aware fallback. No ship, weapon, power, heat, or
+combat balance value changes in this release.
+
 Version 0.8.3 adds size-weighted direct-fire coordination for automatic
 ballistic targeting. Live gun, rail, coil, and plasma shots now reserve their
 vanilla-estimated damage against a target; AI and ordinary automatic Offense
@@ -166,7 +176,7 @@ patches, verifies the guarded councilor-cap, hab connector, and list-icon
 transpilers, checks the hab-cost substitution order, validates the 2022/2026
 starting-force inventories and navy floors, validates Control Point effects and
 localization, checks the manifest/package layout, and creates
-`artifacts/TIEconomyMod-0.8.3-ti1.0.51.zip`.
+`artifacts/TIEconomyMod-0.8.4-ti1.0.51.zip`.
 
 ## Deployment
 

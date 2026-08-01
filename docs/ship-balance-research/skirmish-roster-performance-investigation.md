@@ -1,7 +1,7 @@
 # Skirmish roster performance investigation
 
 Date: 2026-08-01  
-Status: documented and explored; no implementation in this turn
+Status: optimized in 0.8.4; in-game performance confirmation pending
 
 ## Reported regression
 
@@ -81,20 +81,20 @@ initialization, not once for every roster addition. The skirmish log also shows
 the entire `PostGlobalInit2` phase completing in about 33 ms, so that load-time
 repair is not a good explanation for a delay that increases with each row.
 
-## Preferred correction
+## Implemented correction
 
-Preserve the vanilla roster lifecycle initially, but cache the common ship
+Version 0.8.4 preserves the vanilla roster lifecycle but caches the common ship
 dropdown options once per stable menu context instead of rebuilding them for
 every row.
 
-The cache key or invalidation state must include:
+The cache key and invalidation state include:
 
 - skirmish scenario and selected faction/side;
 - the available and imported ship-template set;
 - current localization; and
 - template-generation state after mod hydration.
 
-The cached option text must still be built from the real
+The cached option text is still built from the real
 `TISpaceShipTemplate.TemplateSpaceCombatValue` after EEO's power, radiator,
 mass, and crew values are active. Each row should then reuse or shallow-copy
 the common option entries, select its own current design, and retain vanilla
@@ -102,18 +102,18 @@ tooltip and damage-image setup. This changes repeated menu presentation work;
 it does not bypass or replace the ship-stat calculations that support the new
 power feature.
 
-This reduces the dominant dropdown work from approximately `O(R x S)` per
-addition to `O(S + R)`: build the design options once when invalidated, then do
-small per-row selection work. It is safer than replacing the entire 469-IL
-`PopulateSkirmishDropdowns` method or maintaining a parallel skirmish setup
-implementation.
+On a stable context, reused row controllers keep their existing private option
+lists and perform only selection, tooltip, and damage-image work. New rows copy
+the already-built option references without repeating localization, combat
+score calculation, coloring, or `OptionData` construction. This retains the
+vanilla 469-IL `PopulateSkirmishDropdowns` lifecycle without maintaining a
+parallel skirmish setup implementation.
 
-As a separate low-risk optimization, hydrate gun power into a dictionary keyed
-by `TIGunTemplate` identity (or precompute each template's stable lookup key)
-so hot getters perform an allocation-free lookup. This preserves every power
-and heat value and reduces the cost of legitimate ship-stat recalculation, but
-it should not be presented as the complete roster fix until profiling confirms
-its share.
+The same release also hydrates gun power into a dictionary keyed by
+`TIGunTemplate` identity so hot getters perform an allocation-free lookup.
+This preserves every power and heat value and reduces the cost of legitimate
+ship-stat recalculation. A
+scenario-aware string-key fallback remains for an unexpected dynamic template.
 
 ## Deferred higher-risk alternative
 

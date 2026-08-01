@@ -102,6 +102,8 @@
     <Compile Include="Core\ProjectileCollisionMath.cs" />
     <Compile Include="Core\DirectFireCommitmentMath.cs" />
     <Compile Include="Core\ProjectileGeometryRegistry.cs" />
+    <Compile Include="Core\ReferenceContextVariantCache.cs" />
+    <Compile Include="Core\ReferenceIdentityComparer.cs" />
     <Compile Include="Core\ShipBalanceMath.cs" />
     <Compile Include="Core\TemplateFloatExtensionReader.cs" />
     <Compile Include="Core\TechWeightCatalog.cs" />
@@ -123,6 +125,7 @@
     <Compile Include="Patches\DirectFireCoordinationPatches.cs" />
     <Compile Include="Patches\SocialPriorityPatches.cs" />
     <Compile Include="Patches\ShipPowerPatches.cs" />
+    <Compile Include="Patches\SkirmishPerformancePatches.cs" />
     <Compile Include="Patches\ThresholdAndUiPatches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
