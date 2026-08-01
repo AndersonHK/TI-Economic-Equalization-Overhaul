@@ -3,6 +3,117 @@
 This is a decision log for the proposed ship rebalance. Entries here describe
 the balance decisions as well as their implementation status.
 
+## 2026-08-01
+
+### Settled conservative gun projectiles and early magnetic cadence
+
+**Implementation status:** planning and proposal-table update only; not
+implemented in runtime weapon templates. These values supersede the overlapping
+projectile bands, autocannon cadence translations, and early-magnetic cadence
+examples recorded on 2026-07-31.
+
+- **6-, 8-, and 10-inch projectile mass:** settle the conservative ends of the
+  evidence-led bands at **40 kg, 90 kg, and 180 kg**, respectively. At the
+  retained 1.4 km/s muzzle velocity these produce **39.2, 88.2, and 176.4 MJ**
+  per rendered projectile. The 10-inch remains the largest relative improvement
+  over vanilla.
+- **30mm Autocannon cadence:** retain the settled **1.75 kg** damaging packet
+  and increase the target to **180 rendered rounds per minute** so that the
+  projectile-CIWS pass does not inadvertently strengthen already-powerful
+  early missiles. With ten-shot salvos and 0.25 s intra-salvo spacing, a
+  cooldown of approximately **1.0833 s** produces exactly 180 rpm.
+- **40mm Autocannon cadence:** retain the settled **3 kg** damaging packet and
+  increase the target to **100 rendered rounds per minute**. With six-shot
+  salvos and 0.375 s intra-salvo spacing, a cooldown of **1.725 s** produces
+  exactly 100 rpm.
+- **Human Mk1-Mk2 rail and coil cadence:** halve both `cooldown_s` and
+  `intraSalvoCooldown_s` for every human Mk1 and Mk2 railgun and coilgun. This
+  makes the Light Railgun Battery cooldowns **30 -> 15 s** at Mk1 and
+  **20 -> 10 s** at Mk2. Preserve exact halves for other mounts, including
+  **45 -> 22.5 s**, rather than adding a separate integer-rounding rule.
+- **Magnetic scope boundary:** this cadence pass changes no projectile mass,
+  ammunition mass, velocity, range, efficiency, or weapon mass. Human Mk3
+  weapons and all alien magnetic-weapon rows are untouched by this decision.
+- **Conventional-gun electrical-load targets:** plan average auxiliary loads at
+  the upper ends of the engineering bands: **0.100 MW** for the 30mm,
+  **0.150 MW** for the 6-inch, **0.250 MW** for the 8-inch, and **0.300 MW** for
+  the 10-inch. These loads represent feeds, autoloaders, mount machinery,
+  controls, and cooling rather than chemical muzzle energy.
+- **40mm ETC electrical convention:** represent the 3 kg packet's kinetic-energy
+  increment from a 1.0 km/s chemical reference to 2.6 km/s, plus its auxiliary
+  load, as **8.70 MJ useful work per rendered projectile**. Set the inherited
+  powered-weapon efficiency to **90%**. At 100 rpm this means **9.6667 MJ
+  electrical input per projectile**, **16.111 MW average electrical input**, and
+  **0.9667 MJ local weapon heat per projectile** (**1.611 MW average**). This is
+  a futuristic balance abstraction for controlled propellant combustion, not
+  an experimentally established energy budget.
+- **Gun-power implementation status:** keep these as patch-plan values only.
+  Prefer a generic useful-work `powerUse_MJ` field alongside the
+  already-inherited `efficiency` field in `TIGunTemplate.json`, so input and heat
+  use the same division-by-efficiency semantics as lasers and magnetic weapons.
+  Because the mod normally starts after template initialization, bind the
+  extension values from the retained, load-ordered `TIGunTemplate` mod JSON and
+  also cover the earlier-startup case with an initialization postfix; do not
+  rely on intercepting deserialization. The generic weapon description,
+  fleet/module table, combat energy panel and tooltip, power-state display, and
+  ship-design aggregates already consume the common powered-weapon interface.
+  Save files gain no custom field, and loaded ships recache power statistics;
+  old-save round-trip, mod-removal, and ship-mass cache checks are release gates.
+  Do not add gun-specific patches to generator sizing, battery storage, firing,
+  heat gating, or UI. Any defects in those shared rules should be corrected
+  globally in a separate powered-weapon pass.
+
+## 2026-07-31
+
+### Planned conventional-gun mass and projectile pass
+
+**Implementation status:** planning decision only; not implemented. No weapon
+template values are changed by this entry. Exact values not stated below remain
+subject to the railgun-progression and ammunition-endurance reviews.
+
+- **Weapon empty mass:** bring the conventional-gun base-mount masses toward
+  plausible empty automated-mount values. Keep empty mount mass distinct from
+  ammunition mass when setting and reporting the targets. The evidence review
+  does not support forcing the already-light 6-inch and 8-inch base mounts
+  below their present 25 t and 50 t merely to make every caliber lighter; their
+  final values remain open pending a consistent mounting-and-recoil model.
+- **10-inch Cannon empty-system mass:** use approximately **145 t** as the
+  evidence-led empty weapon-system target. This target refers to the complete
+  mount, autoloader, recoil structure, and associated machinery before
+  ammunition; it is not a loaded-mass target. Loaded mass must be calculated by
+  adding the separately revised magazine and complete-round mass. This
+  supersedes the earlier **110 t empty / 137.6 t loaded** working example in
+  `low-tech-rebalance-slice.md`.
+- **6-, 8-, and 10-inch projectile hierarchy:** increase effective damaging
+  projectile mass toward real full-caliber comparisons instead of retaining
+  the compressed vanilla values of **22.5, 50, and 90 kg**. Use approximate
+  planning bands of **40-45 kg, 90-115 kg, and 180-230 kg**, respectively. Give
+  the 10-inch Cannon the largest relative benefit so that it becomes the
+  decisive single-hit weapon of the chemical-gun family. Final damage, rate of
+  fire, magazine, and loaded-mass values remain to be reconciled together.
+- **30mm Autocannon projectile and cadence:** halve effective damaging
+  projectile mass from **3.5 to 1.75 kg** and double its rate of fire. With the
+  current ten-shot salvo structure, the direct cadence translation is
+  **0.5 to 0.25 s** intra-salvo spacing and **4 to 2 s** cooldown. This retains
+  approximately the same sustained kinetic throughput while halving damage per
+  rendered projectile and doubling the number of armor interactions.
+- **40mm Autocannon projectile and cadence:** halve effective damaging
+  projectile mass from **6 to 3 kg** and double its rate of fire. With the
+  current six-shot salvo structure, the direct cadence translation is
+  **0.75 to 0.375 s** intra-salvo spacing and **4 to 2 s** cooldown. This also
+  retains approximately the same sustained kinetic throughput while making the
+  abstraction a smaller packet of physical 40mm rounds.
+- **Autocannon ammunition accounting:** reassess complete-round mass and
+  magazine depth separately from damaging projectile mass. Halving
+  `warheadMass_kg` does not by itself settle `ammoMass_kg`, and the present
+  3,000- and 2,000-shot magazines should not be carried forward automatically
+  when the rendered-projectile packet size and cadence change.
+- **Gun electrical demand:** conventional chemical guns should not be charged
+  for muzzle kinetic energy as reactor output. A later code-supported pass may
+  assign autoloader, mount-drive, and cooling loads; the 40mm
+  electrothermal-chemical weapon should additionally pay for its electrically
+  assisted velocity gain and pulse-power losses.
+
 ## 2026-07-29
 
 ### Settled for the first low-tech slice

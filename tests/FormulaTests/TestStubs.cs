@@ -311,10 +311,14 @@ namespace TIEconomyMod
     public sealed class ArmySettings
     {
         public bool enabled = true;
-        public float homeBaseCost = 0.5f;
-        public float awayBaseCost = 1f;
-        public float technologyBaseline = 3f;
-        public float costPerTechnologyLevel = 2f;
+        public float costCoefficient = 2f;
+        public float costGrowthBase = 2f;
+        public float repairShare = 0.5f;
+        public float homeUpkeepDivisor = 10f;
+        public float awayUpkeepDivisor = 3f;
+        public float combatModifierScale = 0.5f;
+        public float maximumStrengthPenalty = 1f;
+        public float hitCurveBase = 2f;
         public bool megafaunaEnabled = true;
         public float megafaunaMaximumTechLevel = 5f;
     }
@@ -365,16 +369,15 @@ namespace TIEconomyMod
     public sealed class MilitarySettings
     {
         public bool enabled = true;
-        public float technologyChangeForOneArmy = 0.00275f;
-        public float catchupBonus = 0.5f;
+        public float doctrineBaseCostAtTechOne = 500f;
+        public float doctrineCostGrowthBase = 2f;
+        public float catchupGapCoefficient = 1f;
     }
 
     public sealed class NationalMergerSettings
     {
         public bool enabled = true;
         public bool militaryEnabled = true;
-        public float militaryForceShare = 0.5f;
-        public float navyArmyEquivalent = 1f;
         public bool inequalityEnabled = true;
         public float inequalityMinimum = 1f;
         public float inequalityMaximum = 9f;

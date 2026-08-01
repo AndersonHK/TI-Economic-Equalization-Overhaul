@@ -27,6 +27,12 @@
     <Compile Include="..\..\TIEconomyMod\Core\IndependentResearchMath.cs">
       <Link>IndependentResearchMath.cs</Link>
     </Compile>
+    <Compile Include="..\..\TIEconomyMod\Core\LandCombatMath.cs">
+      <Link>LandCombatMath.cs</Link>
+    </Compile>
+    <Compile Include="..\..\TIEconomyMod\Core\MilitaryMath.cs">
+      <Link>MilitaryMath.cs</Link>
+    </Compile>
     <Compile Include="..\..\TIEconomyMod\Core\PowerPlantThermalMath.cs">
       <Link>PowerPlantThermalMath.cs</Link>
     </Compile>

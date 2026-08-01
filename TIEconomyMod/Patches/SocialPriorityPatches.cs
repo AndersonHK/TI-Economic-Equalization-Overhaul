@@ -210,38 +210,6 @@ namespace TIEconomyMod.Patches
         }
     }
 
-    [HarmonyPatch(typeof(TINationState), "militaryPriorityTechLevelChange", MethodType.Getter)]
-    public static class MilitaryTechnologyPatch
-    {
-        [HarmonyPrefix]
-        public static bool Prefix(ref float __result, TINationState __instance)
-        {
-            MilitarySettings settings = Main.settings.military;
-            if (!Main.FeatureEnabled(settings.enabled))
-            {
-                return true;
-            }
-
-            // Military technology upgrades every army, so army count—not population—is
-            // the affected stock. Defaults give +0.00275 with one army and +0.00055
-            // with five; multiplying the latter by five completions buys the same total
-            // force-wide modernization. A nation with no army uses one as the floor
-            // because its national doctrine still governs the first army it builds.
-            float baseChange = settings.technologyChangeForOneArmy /
-                Math.Max(1, __instance.armies.Count);
-            float catchup = Math.Max(1f, 1f + settings.catchupBonus *
-                (__instance.maxMilitaryTechLevel - __instance.militaryTechLevel));
-            float calculated = baseChange * catchup;
-            if (float.IsNaN(calculated) || float.IsInfinity(calculated))
-            {
-                Main.Warn("Military technology produced an invalid value; using zero.");
-                calculated = 0f;
-            }
-            __result = calculated;
-            return false;
-        }
-    }
-
     [HarmonyPatch(typeof(TINationState), "OppressionPriorityUnrestChange", MethodType.Getter)]
     public static class OppressionUnrestPatch
     {

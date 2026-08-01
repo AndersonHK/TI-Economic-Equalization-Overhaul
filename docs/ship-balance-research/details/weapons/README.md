@@ -1,10 +1,21 @@
 # Weapon progression research
 
-Last reviewed: 2026-07-29
+Last reviewed: 2026-08-01
 
 The [gun and railgun progression report](gun-and-railgun-progression.md)
 compares the 6-inch, 8-inch, and 10-inch conventional weapons with the railgun
 families using equivalent mounts.
+
+The [Mk1 railgun and gun-power follow-up](mk1-railgun-and-gun-power-followup.md)
+tests the cadence-only human Mk1-Mk2 proposal against the settled chemical
+projectiles and audits the code path required to make ordinary guns consume
+ship power.
+
+The [conventional-gun power patch plan](gun-power-consumption-patch-plan.md)
+turns that audit into an implementation design with settled average loads,
+40mm ETC accounting at 90% efficiency, load-order-safe generic JSON binding,
+complete UI/save coverage, minimal Harmony patch boundaries, and regression
+tests.
 
 ## Current synthesis
 

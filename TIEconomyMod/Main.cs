@@ -32,7 +32,7 @@ namespace TIEconomyMod
                 techWeights = TechWeightCatalog.Load(weightPath, Log, IsKnownTechnology);
                 new Harmony(modEntry.Info.Id).PatchAll();
                 CouncilorRuntimeCaps.InitializeOrganizationCap();
-                Log("Loaded TI Economic Equalization Overhaul 0.7.5 for the TI 1.0.49 API surface.");
+                Log("Loaded TI Economic Equalization Overhaul 0.8.0 for the TI 1.0.49 API surface.");
                 return true;
             }
             catch (Exception exception)
@@ -135,7 +135,7 @@ namespace TIEconomyMod
         [Draw("Councilors")]
         public CouncilorSettings councilors = new CouncilorSettings();
 
-        [Draw("Army Upkeep")]
+        [Draw("Land Armies")]
         public ArmySettings army = new ArmySettings();
 
         [Draw("Ship Balance")]
@@ -308,10 +308,14 @@ namespace TIEconomyMod
     public sealed class ArmySettings
     {
         public bool enabled = true;
-        public float homeBaseCost = 0.5f;
-        public float awayBaseCost = 1f;
-        public float technologyBaseline = 3f;
-        public float costPerTechnologyLevel = 2f;
+        public float costCoefficient = 2f;
+        public float costGrowthBase = 2f;
+        public float repairShare = 0.5f;
+        public float homeUpkeepDivisor = 10f;
+        public float awayUpkeepDivisor = 3f;
+        public float combatModifierScale = 0.5f;
+        public float maximumStrengthPenalty = 1f;
+        public float hitCurveBase = 2f;
         public bool megafaunaEnabled = true;
         public float megafaunaMaximumTechLevel = 5f;
     }
@@ -367,8 +371,9 @@ namespace TIEconomyMod
     public sealed class MilitarySettings
     {
         public bool enabled = true;
-        public float technologyChangeForOneArmy = 0.00275f;
-        public float catchupBonus = 0.5f;
+        public float doctrineBaseCostAtTechOne = 500f;
+        public float doctrineCostGrowthBase = 2f;
+        public float catchupGapCoefficient = 1f;
     }
 
     [DrawFields(DrawFieldMask.Public)]
@@ -376,8 +381,6 @@ namespace TIEconomyMod
     {
         public bool enabled = true;
         public bool militaryEnabled = true;
-        public float militaryForceShare = 0.5f;
-        public float navyArmyEquivalent = 1f;
         public bool inequalityEnabled = true;
         public float inequalityMinimum = 1f;
         public float inequalityMaximum = 9f;
@@ -566,10 +569,19 @@ namespace TIEconomyMod
             RepairRange(ref value.controlCost.accelerandoReduction, defaults.controlCost.accelerandoReduction, 0f, 0.99f, "controlCost.accelerandoReduction", log);
             RepairRange(ref value.councilors.totalAttributeCap, defaults.councilors.totalAttributeCap, 25f, 100f, "councilors.totalAttributeCap", log);
             RepairRange(ref value.councilors.maximumOrganizations, defaults.councilors.maximumOrganizations, 1f, 100f, "councilors.maximumOrganizations", log);
-            RepairNonNegative(ref value.army.homeBaseCost, defaults.army.homeBaseCost, "army.homeBaseCost", log);
-            RepairNonNegative(ref value.army.awayBaseCost, defaults.army.awayBaseCost, "army.awayBaseCost", log);
-            RepairFinite(ref value.army.technologyBaseline, defaults.army.technologyBaseline, "army.technologyBaseline", log);
-            RepairNonNegative(ref value.army.costPerTechnologyLevel, defaults.army.costPerTechnologyLevel, "army.costPerTechnologyLevel", log);
+            RepairPositive(ref value.army.costCoefficient, defaults.army.costCoefficient, "army.costCoefficient", log);
+            RepairRange(ref value.army.costGrowthBase, defaults.army.costGrowthBase, 1f, 10f, "army.costGrowthBase", log);
+            RepairRange(ref value.army.repairShare, defaults.army.repairShare, 0f, 1f, "army.repairShare", log);
+            RepairPositive(ref value.army.homeUpkeepDivisor, defaults.army.homeUpkeepDivisor, "army.homeUpkeepDivisor", log);
+            RepairPositive(ref value.army.awayUpkeepDivisor, defaults.army.awayUpkeepDivisor, "army.awayUpkeepDivisor", log);
+            RepairRange(ref value.army.combatModifierScale, defaults.army.combatModifierScale, 0f, 1f, "army.combatModifierScale", log);
+            RepairNonNegative(ref value.army.maximumStrengthPenalty, defaults.army.maximumStrengthPenalty, "army.maximumStrengthPenalty", log);
+            RepairPositive(ref value.army.hitCurveBase, defaults.army.hitCurveBase, "army.hitCurveBase", log);
+            if (value.army.hitCurveBase <= 1f)
+            {
+                log("Invalid army.hitCurveBase; restored safe default.");
+                value.army.hitCurveBase = defaults.army.hitCurveBase;
+            }
             RepairPositive(ref value.army.megafaunaMaximumTechLevel, defaults.army.megafaunaMaximumTechLevel, "army.megafaunaMaximumTechLevel", log);
             RepairRange(ref value.shipBalance.openCycleDriveHeatFraction, defaults.shipBalance.openCycleDriveHeatFraction, 0f, 1f, "shipBalance.openCycleDriveHeatFraction", log);
             RepairPositive(ref value.shipBalance.crewSupportMass_tons, defaults.shipBalance.crewSupportMass_tons, "shipBalance.crewSupportMass_tons", log);
@@ -590,10 +602,9 @@ namespace TIEconomyMod
             RepairPositive(ref value.knowledge.cohesionPopulationDivisor, defaults.knowledge.cohesionPopulationDivisor, "knowledge.cohesionPopulationDivisor", log);
             RepairFinite(ref value.knowledge.cohesionTarget, defaults.knowledge.cohesionTarget, "knowledge.cohesionTarget", log);
             RepairPositive(ref value.government.democracyPopulationDivisor, defaults.government.democracyPopulationDivisor, "government.democracyPopulationDivisor", log);
-            RepairPositive(ref value.military.technologyChangeForOneArmy, defaults.military.technologyChangeForOneArmy, "military.technologyChangeForOneArmy", log);
-            RepairNonNegative(ref value.military.catchupBonus, defaults.military.catchupBonus, "military.catchupBonus", log);
-            RepairRange(ref value.nationalMergers.militaryForceShare, defaults.nationalMergers.militaryForceShare, 0f, 1f, "nationalMergers.militaryForceShare", log);
-            RepairNonNegative(ref value.nationalMergers.navyArmyEquivalent, defaults.nationalMergers.navyArmyEquivalent, "nationalMergers.navyArmyEquivalent", log);
+            RepairPositive(ref value.military.doctrineBaseCostAtTechOne, defaults.military.doctrineBaseCostAtTechOne, "military.doctrineBaseCostAtTechOne", log);
+            RepairRange(ref value.military.doctrineCostGrowthBase, defaults.military.doctrineCostGrowthBase, 1f, 10f, "military.doctrineCostGrowthBase", log);
+            RepairNonNegative(ref value.military.catchupGapCoefficient, defaults.military.catchupGapCoefficient, "military.catchupGapCoefficient", log);
             if (!IsFinite(value.nationalMergers.inequalityMinimum) ||
                 !IsFinite(value.nationalMergers.inequalityMaximum) ||
                 value.nationalMergers.inequalityMaximum -

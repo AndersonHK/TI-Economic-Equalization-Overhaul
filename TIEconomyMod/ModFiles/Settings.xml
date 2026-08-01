@@ -89,10 +89,14 @@
   </councilors>
   <army>
     <enabled>true</enabled>
-    <homeBaseCost>0.5</homeBaseCost>
-    <awayBaseCost>1</awayBaseCost>
-    <technologyBaseline>3</technologyBaseline>
-    <costPerTechnologyLevel>2</costPerTechnologyLevel>
+    <costCoefficient>2</costCoefficient>
+    <costGrowthBase>2</costGrowthBase>
+    <repairShare>0.5</repairShare>
+    <homeUpkeepDivisor>10</homeUpkeepDivisor>
+    <awayUpkeepDivisor>3</awayUpkeepDivisor>
+    <combatModifierScale>0.5</combatModifierScale>
+    <maximumStrengthPenalty>1</maximumStrengthPenalty>
+    <hitCurveBase>2</hitCurveBase>
     <megafaunaEnabled>true</megafaunaEnabled>
     <megafaunaMaximumTechLevel>5</megafaunaMaximumTechLevel>
   </army>
@@ -133,14 +137,13 @@
   </government>
   <military>
     <enabled>true</enabled>
-    <technologyChangeForOneArmy>0.00275</technologyChangeForOneArmy>
-    <catchupBonus>0.5</catchupBonus>
+    <doctrineBaseCostAtTechOne>500</doctrineBaseCostAtTechOne>
+    <doctrineCostGrowthBase>2</doctrineCostGrowthBase>
+    <catchupGapCoefficient>1</catchupGapCoefficient>
   </military>
   <nationalMergers>
     <enabled>true</enabled>
     <militaryEnabled>true</militaryEnabled>
-    <militaryForceShare>0.5</militaryForceShare>
-    <navyArmyEquivalent>1</navyArmyEquivalent>
     <inequalityEnabled>true</inequalityEnabled>
     <inequalityMinimum>1</inequalityMinimum>
     <inequalityMaximum>9</inequalityMaximum>

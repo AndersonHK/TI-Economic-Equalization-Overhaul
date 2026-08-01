@@ -17,12 +17,29 @@ changed:
 - Demographic proportions divide by population. Education, Cohesion,
   Government legitimacy, Unrest, and public-opinion effects should require more
   total IP when more people or institutions are being moved.
-- Force-wide effects divide by the affected force. Military technology divides
-  by army count because one completion upgrades every army.
+- Force-wide effects price the affected force explicitly. Military investment
+  contains a doctrine component plus the exact change in construction value for
+  every eligible army, evaluated continuously at fractional technology. Army
+  construction value follows `2 × 2^tech`, not a polynomial in technology.
+  Undiscounted doctrine intervals double each level from a 500-IP technology-1
+  base; the exponential extension and smooth catch-up discount are integrated
+  continuously rather than evaluated as integer bands.
 
 At equal priority allocation, `GDP-scaled IP × GDP-inverse effect` produces a
 roughly scale-neutral change to economic ratios. This is the core protection
 against unification and balkanization exploits.
+
+Priority weights are shares of redirectable national effort, not a statement
+that governments can continuously command all GDP. For calibration, a fully
+allocated priority bar represents roughly 50% of GDP. An observed activity's
+GDP share is therefore divided by 50% to estimate its priority share: US gross
+capital formation near 20% of GDP suggests an Economy weight near 40%, while
+military expenditure maps to army/navy upkeep plus Military and Build Army.
+Automatic upkeep must be credited before assigning discretionary military
+weights so the same effort is not counted twice. Welfare and Spoils use the
+same approximate national-accounts interpretation for health/social spending
+and extraction/rent capture, without pretending the categories are exhaustive
+or non-overlapping.
 
 ## Scale and unification
 
@@ -32,8 +49,11 @@ countries are intentionally advantaged at fixed-cost projects: they can devote
 more absolute capital to Mission Control, Boost, and Armies.
 
 Country mergers must also combine the stocks that national ratings summarize.
-Military technology is half the equipment/doctrine embodied in existing armies
-and navies and half the GDP-backed industrial base that can sustain them.
+Peaceful Military integration conserves doctrine and army equipment value:
+lower-tech armies consume modernization value while any high-tech armies that
+fall below their original level release equipment value. GDP is not a proxy for
+this stock. Navies do not add a second army equivalent because a naval-deployment
+army already appears once in the national army collection.
 Inequality represents the merged income distribution, not a simple average of
 two ratings: population sets the size of each distribution, GDP per capita its
 center, and existing Inequality its approximate width. Similar distributions
@@ -44,8 +64,9 @@ populations at the same income extremes approach the midpoint.
 
 Sequential three-country mergers are not perfectly order-independent because TI
 persists only one Military technology value and one Inequality value, not the
-component force and income distributions. Keep that limitation explicit and do
-not introduce hidden historical state merely to make the operation associative.
+component force and income distributions. Each merger snapshots only the two
+live pre-transfer cohorts. Keep that limitation explicit and do not introduce
+hidden historical state merely to make the operation associative.
 
 Economy, Welfare, and Spoils use a twofold per-completion increase inside their
 existing GDP-normalized Inequality formulas. Climate-driven Inequality is also

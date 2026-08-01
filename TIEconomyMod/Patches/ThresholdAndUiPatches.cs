@@ -567,6 +567,87 @@ namespace TIEconomyMod.Patches
                     section.Append("EEO Unity formulas disabled; vanilla applies.");
                 }
             }
+            else if (priority == PriorityType.Military)
+            {
+                if (!Main.FeatureEnabled(Main.settings.military.enabled))
+                {
+                    section.AppendLine("EEO Military formula disabled; vanilla applies.");
+                }
+                else
+                {
+                    ArmySettings army = Main.settings.army;
+                    MilitarySettings military = Main.settings.military;
+                    int armyCount = MilitaryRuntime.EligibleArmyCount(nation);
+                    double currentTech = nation.militaryTechLevel;
+                    double cap = nation.maxMilitaryTechLevel;
+                    double targetTech = Math.Min(
+                        cap, Math.Floor(currentTech + 0.0000001d) + 1d);
+                    double doctrine = MilitaryMath.DoctrineCost(
+                        currentTech, targetTech, cap,
+                        military.doctrineBaseCostAtTechOne,
+                        military.doctrineCostGrowthBase,
+                        military.catchupGapCoefficient);
+                    double upgrades = MilitaryMath.ArmyUpgradeCost(
+                        currentTech, targetTech, armyCount,
+                army.costCoefficient, army.costGrowthBase);
+                    double remaining = MilitaryRuntime.Cost(nation, currentTech, cap);
+                    double nextTech;
+                    double nextIp = Math.Min(1d, Math.Max(0d, remaining));
+                    bool solved =
+                        MilitaryRuntime.TryTechnologyAfter(nation, nextIp, out nextTech);
+
+                    section.AppendLine("EEO continuous Military investment")
+                        .Append("Current ").Append(currentTech.ToString("0.####"))
+                        .Append("; cap ").Append(cap.ToString("0.####"))
+                        .Append("; eligible armies ").Append(armyCount)
+                        .Append("; marginal catch-up x")
+                        .Append(MilitaryMath.CatchUpCostMultiplier(
+                            currentTech, cap,
+                            military.catchupGapCoefficient).ToString("0.####"))
+                        .AppendLine()
+                        .Append("Cost to ").Append(targetTech.ToString("0.####"))
+                        .Append(": doctrine ").Append(doctrine.ToString("0.##"))
+                        .Append(" + upgrades ").Append(upgrades.ToString("0.##"))
+                        .Append(" = ").Append((doctrine + upgrades).ToString("0.##"))
+                        .Append(" IP; remaining to cap ")
+                        .Append(remaining.ToString("0.##"));
+                    if (solved)
+                    {
+                        section.AppendLine()
+                            .Append("Next ").Append(nextIp.ToString("0.####"))
+                            .Append(" IP adds ")
+                            .Append((nextTech - currentTech).ToString("0.######"))
+                            .Append(" Military technology.");
+                    }
+                }
+            }
+            else if (priority == PriorityType.Military_BuildArmy)
+            {
+                if (!Main.FeatureEnabled(Main.settings.army.enabled))
+                {
+                    section.AppendLine(
+                        "EEO army construction and repair formula disabled; vanilla applies.");
+                }
+                else
+                {
+                    double cost = MilitaryMath.ArmyCost(
+                        nation.militaryTechLevel,
+                        Main.settings.army.costCoefficient,
+                Main.settings.army.costGrowthBase);
+                    float progress = nation.GetAccumulatedInvestmentPoints(
+                        PriorityType.Military_BuildArmy);
+                    section.Append("EEO army cost ").Append(cost.ToString("0.##"))
+                        .Append(" IP at Military technology ")
+                        .Append(nation.militaryTechLevel.ToString("0.####"));
+                    if (progress < 0f)
+                    {
+                        section.AppendLine()
+                            .Append("Repair debt ").Append((-progress).ToString("0.##"))
+                            .Append(
+                                " IP; new investment repays this before construction.");
+                    }
+                }
+            }
             else if (priority == PriorityType.Environment)
             {
                 section.AppendLine("EEO Environment");
@@ -657,6 +738,14 @@ namespace TIEconomyMod.Patches
                 section.AppendLine("EEO base-IP formula disabled; vanilla applies.");
             }
             section.Append("Army and navy upkeep ").Append(armyUpkeep.ToString("0.##"));
+            float repairDebt = nation.GetAccumulatedInvestmentPoints(
+                PriorityType.Military_BuildArmy);
+            if (Main.FeatureEnabled(Main.settings.army.enabled) && repairDebt < 0f)
+            {
+                section.AppendLine()
+                    .Append("Army repair debt ").Append((-repairDebt).ToString("0.##"))
+                    .Append(" IP");
+            }
             __result = (__result ?? string.Empty).TrimEnd() + "\n\n" + section;
         }
     }

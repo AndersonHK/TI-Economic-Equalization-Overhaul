@@ -284,6 +284,11 @@ if ($LASTEXITCODE -ne 0) {
     throw 'Economy growth simulator failed.'
 }
 
+& node (Join-Path $repositoryRoot 'tools\military-investment-simulator.js') '--verify' | Out-Host
+if ($LASTEXITCODE -ne 0) {
+    throw 'Military investment simulator failed.'
+}
+
 powershell -NoProfile -ExecutionPolicy Bypass -File `
     (Join-Path $scriptDirectory 'validate-hab-rebalance.ps1') `
     -VanillaTemplatesDir $templatesDirectory `
@@ -305,7 +310,7 @@ $manifest = Get-Content -LiteralPath $manifestPath -Raw | ConvertFrom-Json
 if ($manifest.GameVersion -ne '1.0.49') {
     throw "ModInfo.json targets '$($manifest.GameVersion)' instead of TI 1.0.49."
 }
-if ($manifest.Version -ne '0.7.5') {
+if ($manifest.Version -ne '0.8.0') {
     throw "ModInfo.json version '$($manifest.Version)' does not match this release."
 }
 if ($manifest.AssemblyName -ne 'Assembly/TIEconomyMod.dll') {
@@ -381,8 +386,8 @@ if ($assemblyFile.LastWriteTime -lt $buildStarted.AddSeconds(-2)) {
     throw 'Packaged DLL predates this verification build.'
 }
 $assemblyVersion = [Reflection.AssemblyName]::GetAssemblyName($assemblyPath).Version.ToString()
-if ($assemblyVersion -ne '0.7.5.0') {
-    throw "Assembly version '$assemblyVersion' does not match release 0.7.5."
+if ($assemblyVersion -ne '0.8.0.0') {
+    throw "Assembly version '$assemblyVersion' does not match release 0.8.0."
 }
 $assemblyHash = (Get-FileHash -LiteralPath $assemblyPath -Algorithm SHA256).Hash
 
@@ -455,7 +460,7 @@ if (Test-Path -LiteralPath $imagePath) {
     Copy-Item -LiteralPath $imagePath -Destination $stagingDirectory
 }
 
-$zipPath = Join-Path $artifactDirectory 'TIEconomyMod-0.7.5-ti1.0.49.zip'
+$zipPath = Join-Path $artifactDirectory 'TIEconomyMod-0.8.0-ti1.0.49.zip'
 if (Test-Path -LiteralPath $zipPath) {
     Remove-Item -LiteralPath $zipPath
 }

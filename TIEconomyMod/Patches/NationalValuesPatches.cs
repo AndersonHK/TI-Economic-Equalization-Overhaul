@@ -156,40 +156,6 @@ namespace TIEconomyMod.Patches
         }
     }
 
-    [HarmonyPatch(typeof(TIArmyState), "investmentArmyFactor", MethodType.Getter)]
-    public static class ArmyUpkeepPatch
-    {
-        [HarmonyPrefix]
-        public static bool Prefix(ref float __result, TIArmyState __instance)
-        {
-            ArmySettings settings = Main.settings.army;
-            if (!Main.FeatureEnabled(settings.enabled))
-            {
-                return true;
-            }
-
-            // Home and deployed armies start at the installed vanilla bases of 0.5 and
-            // 1 IP, then multiply by max(1, 1 + 2 * (miltech - 3)). A home army at
-            // miltech 5 therefore costs 0.5 * 5 = 2.5 IP instead of vanilla's 0.5;
-            // technology at or below 3 never reduces the base cost.
-            float baseCost = __instance.useHomeInvestmentFactor
-                ? settings.homeBaseCost
-                : settings.awayBaseCost;
-            float technologyMultiplier = Math.Max(1f,
-                1f + settings.costPerTechnologyLevel *
-                (__instance.homeNation.militaryTechLevel - settings.technologyBaseline));
-            float calculated = baseCost * technologyMultiplier;
-
-            if (float.IsNaN(calculated) || float.IsInfinity(calculated))
-            {
-                Main.Warn("Army upkeep produced an invalid value; using the configured unscaled base.");
-                calculated = baseCost;
-            }
-            __result = calculated;
-            return false;
-        }
-    }
-
     [HarmonyPatch(typeof(TINationState), "research_month", MethodType.Getter)]
     public static class ResearchPatch
     {

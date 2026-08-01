@@ -21,6 +21,7 @@ namespace TIEconomyMod.FormulaTests
                     weights, delegate { }, delegate { return true; });
 
                 TestNationalValues();
+                TestMilitaryMath();
                 TestIndependentResearch();
                 TestEconomyAndTechnology();
                 TestBalanceTuning();
@@ -135,10 +136,10 @@ namespace TIEconomyMod.FormulaTests
             ControlPointCapacityPatch.Postfix(ref result, faction);
             Near(20000f, result, 0.0001f, "alien control capacity remains unchanged");
 
-            TIArmyState army = new TIArmyState { homeNation = nation, useHomeInvestmentFactor = true };
-            nation.militaryTechLevel = 5f;
-            ArmyUpkeepPatch.Prefix(ref result, army);
-            Near(2.5f, result, 0.0001f, "army upkeep");
+            Near(0.5f, (float)MilitaryMath.Upkeep(5d, true, 10d, 3d), 0.0001f,
+                "home army upkeep");
+            Near(5f / 3f, (float)MilitaryMath.Upkeep(5d, false, 10d, 3d), 0.0001f,
+                "away army upkeep");
 
             nation.population_Millions = 50f;
             nation.education = 8f;
@@ -151,6 +152,237 @@ namespace TIEconomyMod.FormulaTests
             float expected = 0.0037f * 50f * 64f * 0.6f *
                 (float)Math.Pow(5f, 0.2f) * 1.25f * 1f * 1.1f;
             Near(expected, result, 0.0001f, "complete research formula");
+        }
+
+        private static void TestMilitaryMath()
+        {
+            const double armyCoefficient = 2d;
+            const double armyGrowthBase = 2d;
+            const double doctrineBaseCost = 500d;
+            const double doctrineGrowthBase = 2d;
+            const double catchUpCoefficient = 1d;
+
+            Near(8f, (float)MilitaryMath.ArmyCost(2d, armyCoefficient, armyGrowthBase),
+                0.000001f, "tech 2 army cost");
+            Near(16f, (float)MilitaryMath.ArmyCost(3d, armyCoefficient, armyGrowthBase),
+                0.000001f, "tech 3 army cost");
+            Near(32f, (float)MilitaryMath.ArmyCost(4d, armyCoefficient, armyGrowthBase),
+                0.000001f, "tech 4 army cost");
+            Near(64f, (float)MilitaryMath.ArmyCost(5d, armyCoefficient, armyGrowthBase),
+                0.000001f, "tech 5 army cost");
+            Near(22.627417f, (float)MilitaryMath.ArmyCost(3.5d, armyCoefficient, armyGrowthBase),
+                0.000001f, "fractional-tech army cost");
+            Near(32f, (float)MilitaryMath.ArmyUpgradeCost(
+                4d, 5d, 1, armyCoefficient, armyGrowthBase), 0.000001f,
+                "4 to 5 upgrade cost per army");
+
+            Near(0.5f, (float)MilitaryMath.CatchUpCostMultiplier(
+                4d, 5d, catchUpCoefficient), 0.000001f,
+                "tech 4 cap 5 catch-up multiplier");
+            for (int technology = 1; technology <= 5; technology++)
+            {
+                double intervalCost = MilitaryMath.DoctrineCost(
+                    technology, technology + 1d, technology + 1d,
+                    doctrineBaseCost, doctrineGrowthBase, 0d);
+                Near((float)(500d * Math.Pow(2d, technology - 1)),
+                    (float)intervalCost, 0.001f,
+                    "undiscounted doctrine cost at tech " + technology);
+            }
+            double doctrineFourToFive = MilitaryMath.DoctrineCost(
+                4d, 5d, 5d, doctrineBaseCost, doctrineGrowthBase,
+                catchUpCoefficient);
+            Near(2883.5919f, (float)doctrineFourToFive,
+                0.001f, "continuously discounted doctrine cost 4 to 5");
+            Near((float)(doctrineFourToFive + 32d * 3d),
+                (float)MilitaryMath.MiltechCost(
+                    4d, 5d, 3, 5d, armyCoefficient, armyGrowthBase,
+                    doctrineBaseCost, doctrineGrowthBase, catchUpCoefficient),
+                0.001f, "doctrine plus three army upgrades");
+
+            int[] armyCounts = { 0, 1, 12 };
+            foreach (int armyCount in armyCounts)
+            {
+                double invested = MilitaryMath.MiltechCost(
+                    2.75d, 4.35d, armyCount, 5d, armyCoefficient, armyGrowthBase,
+                    doctrineBaseCost, doctrineGrowthBase, catchUpCoefficient);
+                double solved;
+                True(MilitaryMath.TrySolveTechAfterInvestment(
+                    2.75d, 5d, armyCount, invested, armyCoefficient, armyGrowthBase,
+                    doctrineBaseCost, doctrineGrowthBase, catchUpCoefficient,
+                    out solved),
+                    "miltech inversion succeeds for " + armyCount + " armies");
+                True(Math.Abs(solved - 4.35d) < 1e-8d,
+                    "miltech inversion round trip for " + armyCount + " armies");
+            }
+
+            double firstTechnology;
+            True(MilitaryMath.TrySolveTechAfterInvestment(
+                3d, 5d, 1, 500d, armyCoefficient, armyGrowthBase,
+                doctrineBaseCost, doctrineGrowthBase, catchUpCoefficient,
+                out firstTechnology),
+                "first sequential military investment solves");
+            double secondTechnology;
+            True(MilitaryMath.TrySolveTechAfterInvestment(
+                firstTechnology, 5d, 8, 500d, armyCoefficient, armyGrowthBase,
+                doctrineBaseCost, doctrineGrowthBase, catchUpCoefficient,
+                out secondTechnology),
+                "army-count change reprices next military investment");
+            double sameCountTechnology;
+            True(MilitaryMath.TrySolveTechAfterInvestment(
+                firstTechnology, 5d, 1, 500d, armyCoefficient, armyGrowthBase,
+                doctrineBaseCost, doctrineGrowthBase, catchUpCoefficient,
+                out sameCountTechnology),
+                "comparison military investment solves");
+            True(secondTechnology < sameCountTechnology,
+                "more armies reduce later tech gain");
+
+            double cappedTechnology;
+            True(MilitaryMath.TrySolveTechAfterInvestment(
+                4.9999d, 5d, 20, 1d, armyCoefficient, armyGrowthBase,
+                doctrineBaseCost, doctrineGrowthBase, catchUpCoefficient,
+                out cappedTechnology),
+                "partial final cap investment solves");
+            Near(5f, (float)cappedTechnology, 0.000001f,
+                "partial final investment clamps exactly to cap");
+
+            Near(0.16f, (float)MilitaryMath.RepairCharge(
+                4d, 0.01d, 0.5d, armyCoefficient, armyGrowthBase),
+                0.000001f, "one-percent tech-4 repair charge");
+            Near(0.32f, (float)MilitaryMath.RepairCharge(
+                4d, 0.02d, 0.5d, armyCoefficient, armyGrowthBase),
+                0.000001f, "two-percent tech-4 repair charge");
+            Near(0.08f, (float)MilitaryMath.RepairCharge(
+                4d, 0.005d, 0.5d, armyCoefficient, armyGrowthBase),
+                0.000001f, "repair charge uses healing capped near full strength");
+            double progress;
+            True(MilitaryMath.TryApplyBuildArmyProgress(
+                0d, -0.32d, false, out progress),
+                "repair charge can create debt");
+            Near(-0.32f, (float)progress, 0.000001f,
+                "negative Build Army progress persists");
+            MilitaryMath.TryApplyBuildArmyProgress(
+                progress, 0.10d, false, out progress);
+            Near(-0.22f, (float)progress, 0.000001f,
+                "future investment first repays debt");
+            MilitaryMath.TryApplyBuildArmyProgress(
+                progress, 0.30d, false, out progress);
+            Near(0.08f, (float)progress, 0.000001f,
+                "investment creates construction progress only after debt");
+            MilitaryMath.TryApplyBuildArmyProgress(
+                -0.50d, 0.20d, false, out progress);
+            Near(-0.30f, (float)progress, 0.000001f,
+                "army destruction refund offsets debt");
+            MilitaryMath.TryApplyBuildArmyProgress(
+                -1d, -0.32d, false, out progress);
+            Near(-1.32f, (float)progress, 0.000001f,
+                "peaceful unification transfers all joining debt");
+
+            double previous = -1d;
+            for (int difference = -3; difference <= 3; difference++)
+            {
+                double chance = LandCombatMath.HitChance(difference, 0d, 2d);
+                True(chance > previous, "hit curve monotonic at " + difference);
+                previous = chance;
+                double opposite = LandCombatMath.HitChance(-difference, 0d, 2d);
+                True(Math.Abs(opposite - (1d - chance)) < 1e-12d,
+                    "hit curve symmetry at " + difference);
+            }
+            Near(0.25f, (float)LandCombatMath.HitChance(-1d, 0d, 2d),
+                0.000001f, "minus one hit chance");
+            Near(0.5f, (float)LandCombatMath.HitChance(0d, 0d, 2d),
+                0.000001f, "equal-rating hit chance");
+            Near(0.75f, (float)LandCombatMath.HitChance(1d, 0d, 2d),
+                0.000001f, "plus one hit chance");
+            True(MilitaryMath.IsFinite(LandCombatMath.HitChance(1000d, 0d, 2d)),
+                "positive extreme hit chance finite");
+            True(MilitaryMath.IsFinite(LandCombatMath.HitChance(-1000d, 0d, 2d)),
+                "negative extreme hit chance finite");
+            Near(5f, (float)LandCombatMath.RatingAfterStrength(5d, 1d, 1d),
+                0.000001f, "full-strength rating");
+            Near(4.5f, (float)LandCombatMath.RatingAfterStrength(5d, 0.5d, 1d),
+                0.000001f, "half-strength additive penalty");
+            Near(4f, (float)LandCombatMath.RatingAfterStrength(5d, 0d, 1d),
+                0.000001f, "zero-strength additive penalty");
+            Near(0.15f, (float)LandCombatMath.ScaleContribution(0.30d, 0.5d),
+                0.000001f, "adviser Command contribution halved");
+            Near(0.10f, (float)LandCombatMath.ScaleContribution(0.20d, 0.5d),
+                0.000001f, "LEO combat contribution halved");
+            Near(0.10f, (float)LandCombatMath.ScaleContribution(0.20d, 0.5d),
+                0.000001f, "own-region contribution halved");
+            Near(0.10f, (float)LandCombatMath.ScaleContribution(0.20d, 0.5d),
+                0.000001f, "rugged own-region contribution halved");
+            Near(0.05f, (float)LandCombatMath.ScaleContribution(0.10d, 0.5d),
+                0.000001f, "core-economic contribution halved");
+            Near(-0.10f, (float)LandCombatMath.ScaleContribution(-0.20d, 0.5d),
+                0.000001f, "crackdown penalty halved");
+            Near(0.125f, (float)LandCombatMath.ScaleContribution(0.25d, 0.5d),
+                0.000001f, "friendly cohesion contribution halved");
+            Near(0.20f, (float)LandCombatMath.ScaleContribution(0.40d, 0.5d),
+                0.000001f, "rugged project contribution halved");
+            Near(0.30f, (float)LandCombatMath.ScaleContribution(0.60d, 0.5d),
+                0.000001f, "urban project contribution halved");
+
+            double noLowArmies;
+            True(MilitaryMath.TrySolveConservedTechnology(
+                3d, 0, 5d, 4, 5d, armyCoefficient, armyGrowthBase,
+                doctrineBaseCost, doctrineGrowthBase, catchUpCoefficient,
+                out noLowArmies),
+                "no-lower-army conservation solves");
+            Near(5f, (float)noLowArmies, 0.000001f,
+                "no lower armies preserve high tech");
+
+            double balanced;
+            True(MilitaryMath.TrySolveConservedTechnology(
+                3d, 4, 5d, 4, 5d, armyCoefficient, armyGrowthBase,
+                doctrineBaseCost, doctrineGrowthBase, catchUpCoefficient,
+                out balanced),
+                "balanced conservation solves");
+            double moreLow;
+            MilitaryMath.TrySolveConservedTechnology(
+                3d, 12, 5d, 4, 5d, armyCoefficient, armyGrowthBase,
+                doctrineBaseCost, doctrineGrowthBase, catchUpCoefficient,
+                out moreLow);
+            double moreHigh;
+            MilitaryMath.TrySolveConservedTechnology(
+                3d, 4, 5d, 12, 5d, armyCoefficient, armyGrowthBase,
+                doctrineBaseCost, doctrineGrowthBase, catchUpCoefficient,
+                out moreHigh);
+            True(moreLow < balanced, "more lower-tech armies lower merger tech");
+            True(moreHigh > balanced, "more higher-tech armies raise merger tech");
+
+            double reversed;
+            MilitaryMath.TrySolveConservedTechnology(
+                5d, 4, 3d, 4, 5d, armyCoefficient, armyGrowthBase,
+                doctrineBaseCost, doctrineGrowthBase, catchUpCoefficient,
+                out reversed);
+            True(Math.Abs(reversed - balanced) < 1e-10d,
+                "absorption direction does not change merger tech");
+
+            double residual =
+                MilitaryMath.DoctrineCost(
+                    balanced, 5d, 5d, doctrineBaseCost, doctrineGrowthBase,
+                    catchUpCoefficient) +
+                MilitaryMath.ArmyUpgradeCost(
+                balanced, 5d, 4, armyCoefficient, armyGrowthBase) -
+                MilitaryMath.ArmyUpgradeCost(
+                3d, balanced, 4, armyCoefficient, armyGrowthBase);
+            True(Math.Abs(residual) < 1e-7d,
+                "merger conservation residual within tolerance");
+            True(!MilitaryMath.ResolveDestroyArmies(
+                true, true, true, false),
+                "peaceful unification preserves armies");
+            True(MilitaryMath.ResolveDestroyArmies(
+                false, false, true, false),
+                "human conquest absorption destroys armies");
+            True(!MilitaryMath.ResolveDestroyArmies(
+                true, false, true, true),
+                "Alien Nation territorial transfer preserves human armies");
+            True(!MilitaryMath.ResolveDestroyArmies(
+                false, false, false, false),
+                "unrelated preserving transfer remains vanilla");
+            True(MilitaryMath.ResolveDestroyArmies(
+                true, false, false, false),
+                "unrelated destructive transfer remains vanilla");
         }
 
         private static void TestEconomyAndTechnology()
@@ -648,15 +880,6 @@ namespace TIEconomyMod.FormulaTests
             Near(-333333f / nation.population, result, 0.000001f, "knowledge cohesion");
             GovernmentDemocracyPatch.Prefix(ref result, nation);
             Near(166667f / nation.population, result, 0.000001f, "government democracy");
-            nation.militaryTechLevel = 4f;
-            nation.maxMilitaryTechLevel = 6f;
-            for (int index = 0; index < 5; index++)
-            {
-                nation.armies.Add(new TIArmyState { homeNation = nation });
-            }
-            MilitaryTechnologyPatch.Prefix(ref result, nation);
-            Near(0.00275f / 5f * 2f, result, 0.000001f,
-                "military technology divides by affected armies");
             nation.democracy = 5f;
             nation.unrest = 3f;
             OppressionUnrestPatch.Prefix(ref result, nation);
@@ -783,78 +1006,8 @@ namespace TIEconomyMod.FormulaTests
         private static void TestNationalMergers()
         {
             Reset();
-            TINationState absorbing = Nation();
-            TINationState joining = Nation();
-            absorbing.militaryTechLevel = 4f;
-            joining.militaryTechLevel = 6f;
-            absorbing.GDP = 300000000000d;
-            joining.GDP = 100000000000d;
-            absorbing.armies.Add(new TIArmyState());
-            absorbing.armies.Add(new TIArmyState());
-            absorbing.numNavies = 1;
-            joining.armies.Add(new TIArmyState());
-
-            MilitaryMergerPatch.Snapshot militaryState = null;
-            MilitaryMergerPatch.Prefix(absorbing, joining, ref militaryState);
-            absorbing.militaryTechLevel = 5.75f; // stand in for TI's region-by-region result
-            MilitaryMergerPatch.Postfix(absorbing, militaryState);
-            Near(4.5f, absorbing.militaryTechLevel, 0.000001f,
-                "merger miltech combines equal force and GDP averages");
-
-            absorbing = Nation();
-            joining = Nation();
-            absorbing.militaryTechLevel = 4f;
-            joining.militaryTechLevel = 8f;
-            absorbing.GDP = 100000000000d;
-            joining.GDP = 900000000000d;
-            absorbing.armies.Add(new TIArmyState());
-            absorbing.armies.Add(new TIArmyState());
-            absorbing.armies.Add(new TIArmyState());
-            absorbing.armies.Add(new TIArmyState());
-            joining.armies.Add(new TIArmyState());
-            militaryState = null;
-            MilitaryMergerPatch.Prefix(absorbing, joining, ref militaryState);
-            MilitaryMergerPatch.Postfix(absorbing, militaryState);
-            Near(6.2f, absorbing.militaryTechLevel, 0.000001f,
-                "merger miltech is exactly 50 percent force and 50 percent GDP");
-
-            absorbing.armies.Clear();
-            joining.armies.Clear();
-            absorbing.militaryTechLevel = 4f;
-            militaryState = null;
-            MilitaryMergerPatch.Prefix(absorbing, joining, ref militaryState);
-            MilitaryMergerPatch.Postfix(absorbing, militaryState);
-            Near(7.6f, absorbing.militaryTechLevel, 0.000001f,
-                "merger miltech without forces uses GDP");
-
-            absorbing = Nation();
-            joining = Nation();
-            absorbing.militaryTechLevel = 4f;
-            joining.militaryTechLevel = 8f;
-            absorbing.GDP = -1d;
-            joining.GDP = 0d;
-            absorbing.armies.Add(new TIArmyState());
-            joining.armies.Add(new TIArmyState());
-            joining.armies.Add(new TIArmyState());
-            joining.armies.Add(new TIArmyState());
-            militaryState = null;
-            MilitaryMergerPatch.Prefix(absorbing, joining, ref militaryState);
-            MilitaryMergerPatch.Postfix(absorbing, militaryState);
-            Near(7f, absorbing.militaryTechLevel, 0.000001f,
-                "merger miltech with invalid GDP uses forces");
-
-            absorbing.armies.Clear();
-            joining.armies.Clear();
-            absorbing.militaryTechLevel = 4f;
-            joining.militaryTechLevel = 8f;
-            militaryState = null;
-            MilitaryMergerPatch.Prefix(absorbing, joining, ref militaryState);
-            MilitaryMergerPatch.Postfix(absorbing, militaryState);
-            Near(6f, absorbing.militaryTechLevel, 0.000001f,
-                "merger miltech without forces or GDP uses the simple mean");
-
-            absorbing = MergerNation(1f, 1000000f, 1f);
-            joining = MergerNation(1f, 1f, 1f);
+            TINationState absorbing = MergerNation(1f, 1000000f, 1f);
+            TINationState joining = MergerNation(1f, 1f, 1f);
             InequalityMergerPatch.Snapshot inequalityState = null;
             InequalityMergerPatch.Prefix(absorbing, joining, ref inequalityState);
             absorbing.inequality = 3f; // stand in for TI's population-only merge
@@ -934,11 +1087,6 @@ namespace TIEconomyMod.FormulaTests
                 "disabled merger patch retains vanilla");
 
             Reset();
-            TIEconomyMod.Main.settings.nationalMergers.militaryEnabled = false;
-            militaryState = null;
-            MilitaryMergerPatch.Prefix(absorbing, joining, ref militaryState);
-            True(militaryState == null, "disabled military merger retains vanilla");
-            TIEconomyMod.Main.settings.nationalMergers.militaryEnabled = true;
             TIEconomyMod.Main.settings.nationalMergers.inequalityEnabled = false;
             inequalityState = null;
             InequalityMergerPatch.Prefix(absorbing, joining, ref inequalityState);
