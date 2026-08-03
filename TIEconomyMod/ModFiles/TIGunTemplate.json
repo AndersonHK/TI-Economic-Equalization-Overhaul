@@ -4,14 +4,18 @@
     "crew": 3,
     "powerUse_MJ": 2.2,
     "efficiency": 1.0,
-    "projectileDiameter_mm": 254.0
+    "projectileDiameter_mm": 254.0,
+    "warheadMass_kg": 180.0
   },
   {
     "dataName": "30mmAutocannon",
     "crew": 0,
     "powerUse_MJ": 0.085,
     "efficiency": 1.0,
-    "projectileDiameter_mm": 30.0
+    "projectileDiameter_mm": 30.0,
+    "warheadMass_kg": 1.75,
+    "intraSalvoCooldown_s": 0.25,
+    "cooldown_s": 1.0
   },
   {
     "dataName": "35mmAutocannon",
@@ -26,21 +30,27 @@
     "crew": 0,
     "powerUse_MJ": 8.7,
     "efficiency": 0.9,
-    "projectileDiameter_mm": 40.0
+    "projectileDiameter_mm": 40.0,
+    "ammoMass_kg": 8.8,
+    "warheadMass_kg": 2.8,
+    "intraSalvoCooldown_s": 0.5,
+    "cooldown_s": 1.75
   },
   {
     "dataName": "6-inchCannon",
     "crew": 2,
     "powerUse_MJ": 0.675,
     "efficiency": 1.0,
-    "projectileDiameter_mm": 152.4
+    "projectileDiameter_mm": 152.4,
+    "warheadMass_kg": 40.0
   },
   {
     "dataName": "8-inchCannon",
     "crew": 2,
     "powerUse_MJ": 1.40625,
     "efficiency": 1.0,
-    "projectileDiameter_mm": 203.2
+    "projectileDiameter_mm": 203.2,
+    "warheadMass_kg": 90.0
   },
   {
     "dataName": "12-inchCannon",

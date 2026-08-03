@@ -128,6 +128,13 @@ $expectedGunDiameters = [ordered]@{
     '8-inchCannon' = 203.2
     '12-inchCannon' = 304.8
 }
+$expectedGunBalance = [ordered]@{
+    '10-inchCannon' = @(180.0, $null, $null, $null)
+    '30mmAutocannon' = @(1.75, 0.25, 1.0, $null)
+    '40mmAutocannon' = @(2.8, 0.5, 1.75, 8.8)
+    '6-inchCannon' = @(40.0, $null, $null, $null)
+    '8-inchCannon' = @(90.0, $null, $null, $null)
+}
 if ($gunOverrides.Count -ne $expectedGunDiameters.Count) {
     throw "Gun override has $($gunOverrides.Count) rows instead of $($expectedGunDiameters.Count)."
 }
@@ -137,15 +144,41 @@ foreach ($entry in $expectedGunDiameters.GetEnumerator()) {
         throw "Gun override must contain '$($entry.Key)' exactly once."
     }
     if ($expectedGunCrew.Contains($entry.Key)) {
-        Assert-Properties $row[0] @(
-            'dataName', 'crew', 'powerUse_MJ', 'efficiency',
-            'projectileDiameter_mm') $entry.Key
+        if ($null -eq $expectedGunBalance[$entry.Key][1]) {
+            Assert-Properties $row[0] @(
+                'dataName', 'crew', 'powerUse_MJ', 'efficiency',
+                'projectileDiameter_mm', 'warheadMass_kg') $entry.Key
+        }
+        elseif ($null -ne $expectedGunBalance[$entry.Key][3]) {
+            Assert-Properties $row[0] @(
+                'dataName', 'crew', 'powerUse_MJ', 'efficiency',
+                'projectileDiameter_mm', 'ammoMass_kg', 'warheadMass_kg',
+                'intraSalvoCooldown_s', 'cooldown_s') $entry.Key
+        }
+        else {
+            Assert-Properties $row[0] @(
+                'dataName', 'crew', 'powerUse_MJ', 'efficiency',
+                'projectileDiameter_mm', 'warheadMass_kg',
+                'intraSalvoCooldown_s', 'cooldown_s') $entry.Key
+        }
         Assert-Near $row[0].crew $expectedGunCrew[$entry.Key] `
             "$($entry.Key) crew"
         Assert-Near $row[0].powerUse_MJ $expectedGunPower[$entry.Key][0] `
             "$($entry.Key) useful electrical work"
         Assert-Near $row[0].efficiency $expectedGunPower[$entry.Key][1] `
             "$($entry.Key) electrical efficiency"
+        Assert-Near $row[0].warheadMass_kg $expectedGunBalance[$entry.Key][0] `
+            "$($entry.Key) damaging projectile mass"
+        if ($null -ne $expectedGunBalance[$entry.Key][3]) {
+            Assert-Near $row[0].ammoMass_kg $expectedGunBalance[$entry.Key][3] `
+                "$($entry.Key) complete projectile mass"
+        }
+        if ($null -ne $expectedGunBalance[$entry.Key][1]) {
+            Assert-Near $row[0].intraSalvoCooldown_s $expectedGunBalance[$entry.Key][1] `
+                "$($entry.Key) intra-salvo delay"
+            Assert-Near $row[0].cooldown_s $expectedGunBalance[$entry.Key][2] `
+                "$($entry.Key) cycle reload"
+        }
     }
     else {
         Assert-Properties $row[0] @(
@@ -164,27 +197,115 @@ Assert-Properties $laserOverrides[0] @('dataName', 'crew') 'PointDefenseLaserTur
 Assert-Near $laserOverrides[0].crew 0 'PointDefenseLaserTurret crew'
 
 $magneticOverrides = Read-JsonArray (Join-Path $modFiles 'TIMagneticGunTemplate.json')
-$expectedMagneticCrew = [ordered]@{
-    LightRailgunBatteryMk1 = 2
-    LightRailgunBatteryMk2 = 2
-    LightRailgunBatteryMk3 = 2
-    RailgunBatteryMk1 = 2
-    RailgunBatteryMk2 = 2
-    RailgunBatteryMk3 = 2
-    LightRailCannonMk1 = 3
-    LightRailCannonMk2 = 3
-    LightRailCannonMk3 = 3
+$expectedHumanRails = [ordered]@{
+    LightRailgunBatteryMk1 = @(2, 14.0, 10.5, 8.0)
+    LightRailgunBatteryMk2 = @(2, 14.0, 11.2, 6.0)
+    LightRailgunBatteryMk3 = @(2, 14.0, 12.25, 4.0)
+    RailgunBatteryMk1 = @(2, 30.0, 22.5, 12.0)
+    RailgunBatteryMk2 = @(2, 30.0, 24.0, 9.0)
+    RailgunBatteryMk3 = @(2, 30.0, 26.25, 6.0)
+    LightRailCannonMk1 = @(3, 37.5, 28.125, 16.0)
+    LightRailCannonMk2 = @(3, 37.5, 30.0, 12.0)
+    LightRailCannonMk3 = @(3, 37.5, 32.8125, 8.0)
 }
-if ($magneticOverrides.Count -ne $expectedMagneticCrew.Count) {
-    throw "Magnetic-gun override has $($magneticOverrides.Count) rows instead of $($expectedMagneticCrew.Count)."
+$expectedHumanCoils = [ordered]@{
+    LightCoilgunBatteryMk1 = @(13, 10, 28)
+    LightCoilgunBatteryMk2 = @(13, 10, 18)
+    LightCoilgunBatteryMk3 = @(13, 11, 8)
+    CoilgunBatteryMk1 = @(25, 19, 28)
+    CoilgunBatteryMk2 = @(25, 20, 18)
+    CoilgunBatteryMk3 = @(25, 22, 8)
+    HeavyCoilgunBatteryMk1 = @(50, 38, 28)
+    HeavyCoilgunBatteryMk2 = @(50, 40, 18)
+    HeavyCoilgunBatteryMk3 = @(50, 44, 8)
+    LightCoilCannonMk1 = @(31, 23, 34)
+    LightCoilCannonMk2 = @(31, 25, 22)
+    LightCoilCannonMk3 = @(31, 27, 10)
+    CoilCannonMk1 = @(63, 47, 34)
+    CoilCannonMk2 = @(63, 50, 22)
+    CoilCannonMk3 = @(63, 55, 10)
+    HeavyCoilCannonMk1 = @(94, 71, 34)
+    HeavyCoilCannonMk2 = @(94, 75, 22)
+    HeavyCoilCannonMk3 = @(94, 82, 10)
+    SpinalCoilerMk1 = @(125, 94, 34)
+    SpinalCoilerMk2 = @(125, 100, 22)
+    SpinalCoilerMk3 = @(125, 109, 10)
+    HeavySiegeCoilerMk1 = @(938, 704, 24)
+    HeavySiegeCoilerMk2 = @(938, 750, 19)
+    HeavySiegeCoilerMk3 = @(938, 821, 12)
+    SpinalSiegeCoilerMk1 = @(1250, 938, 24)
+    SpinalSiegeCoilerMk2 = @(1250, 1000, 19)
+    SpinalSiegeCoilerMk3 = @(1250, 1094, 12)
 }
-foreach ($entry in $expectedMagneticCrew.GetEnumerator()) {
+$expectedAlienMags = [ordered]@{
+    AlienLightMagBattery = @(4.6, 19, 16, 9)
+    AlienMagBattery = @(5.5, 38, 32, 11)
+    AlienHeavyMagBattery = @(6.4, 75, 64, 13)
+    AlienMiniLightMagCannon = @(5.5, 50, 43, 18)
+    AlienLightMagCannon = @(5.5, 50, 43, 18)
+    AlienMagCannon = @(6.7, 100, 85, 22)
+    AlienHeavyMagCannon = @(8.3, 150, 128, 32)
+    AlienSpinalMagCannon = @(10.0, 200, 170, 43)
+    AdvancedAlienLightMagBattery = @(6.2, 19, 17, 4)
+    AdvancedAlienMagBattery = @(7.8, 38, 34, 5)
+    AdvancedAlienHeavyMagBattery = @(9.4, 75, 68, 6)
+    AdvancedAlienLightMagCannon = @(8.2, 50, 45, 13)
+    AdvancedAlienMagCannon = @(10.0, 100, 90, 16)
+    AdvancedAlienHeavyMagCannon = @(12.5, 150, 135, 23)
+    AdvancedAlienSpinalMagCannon = @(15.0, 200, 180, 31)
+    Gen3AlienLightMagBattery = @(8.2, 35, 30, 4)
+    Gen3AlienMagBattery = @(10.3, 69, 60, 5)
+    Gen3AlienHeavyMagBattery = @(12.4, 138, 120, 6)
+    Gen3AlienLightMagCannon = @(10.8, 93, 80, 6)
+    Gen3AlienMagCannon = @(13.1, 184, 160, 8)
+    Gen3AlienHeavyMagCannon = @(16.5, 368, 320, 14)
+    Gen3AlienSpinalMagCannon = @(19.8, 736, 640, 23)
+}
+$expectedMagneticCount = $expectedHumanRails.Count + $expectedHumanCoils.Count + $expectedAlienMags.Count
+if ($magneticOverrides.Count -ne $expectedMagneticCount) {
+    throw "Magnetic-gun override has $($magneticOverrides.Count) rows instead of $expectedMagneticCount."
+}
+foreach ($entry in $expectedHumanRails.GetEnumerator()) {
     $row = @($magneticOverrides | Where-Object dataName -eq $entry.Key)
     if ($row.Count -ne 1) {
         throw "Magnetic-gun override must contain '$($entry.Key)' exactly once."
     }
-    Assert-Properties $row[0] @('dataName', 'crew') $entry.Key
-    Assert-Near $row[0].crew $entry.Value "$($entry.Key) crew"
+    Assert-Properties $row[0] @(
+        'dataName', 'crew', 'ammoMass_kg', 'warheadMass_kg', 'cooldown_s') $entry.Key
+    Assert-Near $row[0].crew $entry.Value[0] "$($entry.Key) crew"
+    Assert-Near $row[0].ammoMass_kg $entry.Value[1] "$($entry.Key) complete projectile mass"
+    Assert-Near $row[0].warheadMass_kg $entry.Value[2] "$($entry.Key) damaging projectile mass"
+    Assert-Near $row[0].cooldown_s $entry.Value[3] "$($entry.Key) cycle reload"
+}
+foreach ($entry in $expectedHumanCoils.GetEnumerator()) {
+    $row = @($magneticOverrides | Where-Object dataName -eq $entry.Key)
+    if ($row.Count -ne 1) {
+        throw "Magnetic-gun override must contain '$($entry.Key)' exactly once."
+    }
+    Assert-Properties $row[0] @(
+        'dataName', 'ammoMass_kg', 'warheadMass_kg', 'cooldown_s') $entry.Key
+    Assert-Near $row[0].ammoMass_kg $entry.Value[0] "$($entry.Key) complete projectile mass"
+    Assert-Near $row[0].warheadMass_kg $entry.Value[1] "$($entry.Key) damaging projectile mass"
+    Assert-Near $row[0].cooldown_s $entry.Value[2] "$($entry.Key) cycle reload"
+    if ([double]$row[0].warheadMass_kg -gt [double]$row[0].ammoMass_kg) {
+        throw "$($entry.Key) damaging mass exceeds complete projectile mass."
+    }
+}
+foreach ($entry in $expectedAlienMags.GetEnumerator()) {
+    $row = @($magneticOverrides | Where-Object dataName -eq $entry.Key)
+    if ($row.Count -ne 1) {
+        throw "Magnetic-gun override must contain '$($entry.Key)' exactly once."
+    }
+    Assert-Properties $row[0] @(
+        'dataName', 'muzzleVelocity_kps', 'ammoMass_kg',
+        'warheadMass_kg', 'cooldown_s') $entry.Key
+    Assert-Near $row[0].muzzleVelocity_kps $entry.Value[0] "$($entry.Key) muzzle velocity"
+    Assert-Near $row[0].ammoMass_kg $entry.Value[1] "$($entry.Key) complete projectile mass"
+    Assert-Near $row[0].warheadMass_kg $entry.Value[2] "$($entry.Key) damaging projectile mass"
+    Assert-Near $row[0].cooldown_s $entry.Value[3] "$($entry.Key) cycle reload"
+    if ([double]$row[0].warheadMass_kg -gt [double]$row[0].ammoMass_kg) {
+        throw "$($entry.Key) damaging mass exceeds complete projectile mass."
+    }
 }
 
 $hullOverrides = Read-JsonArray (Join-Path $modFiles 'TIShipHullTemplate.json')
@@ -245,9 +366,33 @@ if (@($vanillaLasers | Where-Object dataName -eq 'PointDefenseLaserTurret').Coun
     throw "Installed game no longer contains laser 'PointDefenseLaserTurret'."
 }
 $vanillaMagneticGuns = Read-JsonArray (Join-Path $VanillaTemplatesDir 'TIMagneticGunTemplate.json')
-foreach ($id in $expectedMagneticCrew.Keys) {
+foreach ($id in @($expectedHumanRails.Keys) + @($expectedHumanCoils.Keys) + @($expectedAlienMags.Keys)) {
     if (@($vanillaMagneticGuns | Where-Object dataName -eq $id).Count -ne 1) {
         throw "Installed game no longer contains magnetic gun '$id'."
+    }
+}
+$housekeepingIds = @($expectedHumanCoils.Keys) + @($expectedAlienMags.Keys)
+foreach ($id in $housekeepingIds) {
+    $vanilla = @($vanillaMagneticGuns | Where-Object dataName -eq $id)[0]
+    $override = @($magneticOverrides | Where-Object dataName -eq $id)[0]
+    $vanillaCycle = [double]$vanilla.cooldown_s +
+        ([double]$vanilla.salvo_shots - 1.0) * [double]$vanilla.intraSalvoCooldown_s
+    $proposedCycle = [double]$override.cooldown_s +
+        ([double]$vanilla.salvo_shots - 1.0) * [double]$vanilla.intraSalvoCooldown_s
+    $cycleDelta = $proposedCycle / $vanillaCycle - 1.0
+    if ($cycleDelta -lt -0.22 -or $cycleDelta -gt -0.18) {
+        throw "$id total cycle changes by $cycleDelta instead of approximately -20%."
+    }
+    $ammoDelta = [double]$override.ammoMass_kg / [double]$vanilla.ammoMass_kg - 1.0
+    $warheadDelta = [double]$override.warheadMass_kg / [double]$vanilla.warheadMass_kg - 1.0
+    if ($ammoDelta -lt 0.20 -or $ammoDelta -gt 0.34 -or
+        $warheadDelta -lt 0.20 -or $warheadDelta -gt 0.34) {
+        throw "$id projectile masses do not round to approximately +25%."
+    }
+    foreach ($field in @('ammoMass_kg', 'warheadMass_kg', 'cooldown_s')) {
+        if ([double]$override.$field -ne [Math]::Round([double]$override.$field)) {
+            throw "$id $field must be rounded to a whole unit."
+        }
     }
 }
 $vanillaHulls = Read-JsonArray (Join-Path $VanillaTemplatesDir 'TIShipHullTemplate.json')

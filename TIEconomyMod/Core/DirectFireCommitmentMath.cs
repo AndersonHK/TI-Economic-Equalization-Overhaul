@@ -28,5 +28,17 @@ namespace TIEconomyMod
             return SanitizeExpectedDamage_points(committedDamage_points) >
                 Math.Max(0f, killThreshold_points);
         }
+
+        public static bool IsAutomaticCandidateAvailable(
+            bool candidateIsSaturated, bool anyUnsaturatedTarget)
+        {
+            return !candidateIsSaturated || !anyUnsaturatedTarget;
+        }
+
+        public static bool ShouldSuppressSaturatedTarget(
+            bool targetIsSaturated, bool anyUnsaturatedTarget)
+        {
+            return targetIsSaturated && anyUnsaturatedTarget;
+        }
     }
 }

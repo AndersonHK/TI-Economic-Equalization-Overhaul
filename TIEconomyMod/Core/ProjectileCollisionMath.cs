@@ -6,6 +6,8 @@ namespace TIEconomyMod
     {
         public const float MovementSweepMultiplier = 1f;
         public const float DurabilityMassPerDamagePoint_kg = 100f;
+        public const float MagneticProjectileDensity_kgm3 = 19300f;
+        public const float MagneticProjectileLengthToDiameter = 10f;
 
         public static float CrossSectionalArea_m2(float diameter_mm)
         {
@@ -18,6 +20,23 @@ namespace TIEconomyMod
         {
             return Math.Max(0f, diameter_mm) / 1000f *
                 Math.Max(0f, modelScalingFactor);
+        }
+
+        public static float MagneticProjectileDiameter_mm(
+            float completeProjectileMass_kg)
+        {
+            float mass_kg = Math.Max(0f, completeProjectileMass_kg);
+            if (mass_kg <= 0f)
+            {
+                return 0f;
+            }
+
+            double diameter_m = Math.Pow(
+                4.0 * mass_kg /
+                    (Math.PI * MagneticProjectileDensity_kgm3 *
+                        MagneticProjectileLengthToDiameter),
+                1.0 / 3.0);
+            return (float)(diameter_m * 1000.0);
         }
 
         public static float MassDamage_kg(

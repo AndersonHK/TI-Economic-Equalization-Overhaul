@@ -252,7 +252,9 @@ namespace TIEconomyMod.Patches
                 return true;
             }
 
-            return !DirectFireCommitmentRegistry.IsSaturated(target);
+            return DirectFireCommitmentMath.IsAutomaticCandidateAvailable(
+                DirectFireCommitmentRegistry.IsSaturated(target),
+                HasUnsaturatedAutomaticShipTarget(shooter));
         }
 
         public static bool ShouldSuppressAutomaticFire(
@@ -275,14 +277,51 @@ namespace TIEconomyMod.Patches
 
             CombatShipController shooter =
                 weapon.combatant.ref_shipController;
-            if (shooter != null &&
-                !shooter.ShipState.combatAIControl &&
+            if (shooter == null || shooter.AI_IsMissileBoat)
+            {
+                return false;
+            }
+
+            if (!shooter.ShipState.combatAIControl &&
                 shooter.primaryTarget == targetShip)
             {
                 return false;
             }
 
-            return DirectFireCommitmentRegistry.IsSaturated(targetShip);
+            return DirectFireCommitmentMath.ShouldSuppressSaturatedTarget(
+                DirectFireCommitmentRegistry.IsSaturated(targetShip),
+                HasUnsaturatedAutomaticShipTarget(shooter));
+        }
+
+        private static bool HasUnsaturatedAutomaticShipTarget(
+            CombatShipController shooter)
+        {
+            if (shooter == null || shooter.enemyCombatants == null)
+            {
+                return false;
+            }
+
+            foreach (CombatantController combatant in shooter.enemyCombatants)
+            {
+                CombatShipController target =
+                    combatant as CombatShipController;
+                if (IsEligibleAutomaticShipTarget(target) &&
+                    !DirectFireCommitmentRegistry.IsSaturated(target))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private static bool IsEligibleAutomaticShipTarget(
+            CombatShipController target)
+        {
+            return target != null &&
+                !target.isDestroyed &&
+                !target.destructionTriggered &&
+                !target.departed;
         }
     }
 

@@ -3,7 +3,140 @@
 This is a decision log for the proposed ship rebalance. Entries here describe
 the balance decisions as well as their implementation status.
 
+## 2026-08-02
+
+### Implemented: revised 30mm and 40mm CIWS cadence and mass
+
+- **30mm:** retain the 10-shot salvo, **5.5 / 1.75 kg** complete/damaging
+  projectile masses, 1.35 km/s velocity, and **0.25 s** intra-salvo spacing;
+  round the inter-salvo reload to **1.0 s**. The 3.25-second total cycle yields
+  **184.62 effective rpm** and **4.907 MJ/s** sustained kinetic output.
+- **40mm ETC:** retain the six-shot salvo, 2.6 km/s velocity, and settled
+  8.7 MJ/shot electrical-work value. Reduce complete/damaging projectile mass
+  to **8.8 / 2.8 kg**, exactly 1.6 times the 30mm values; use **0.5 s**
+  intra-salvo spacing and **1.75 s** inter-salvo reload. The 4.25-second total
+  cycle yields **84.71 effective rpm** and **13.361 MJ/s** sustained output.
+- **Role comparison:** the revised 40mm retains 53.4% more sustained kinetic
+  output than the one-hull 6-inch cannon, but only 24.1% of its impact per shot
+  while requiring 13.647 MW average electrical input. Salvo sizes, ranges,
+  projectile velocities, weapon empty masses, and the 30mm power value remain
+  unchanged.
+
+### Implemented: coil and alien-mag projectile housekeeping
+
+- **Projectile mass, not weapon mass:** all 27 human coil weapons and all 22
+  alien magnetic weapons receive approximately **25% heavier projectiles**,
+  rounded to whole kilograms. Complete mass and damaging/durability mass move
+  together while preserving each projectile's vanilla composition as closely
+  as whole-kilogram rounding permits. Gun/mount empty mass is unchanged.
+- **Approximately 20% shorter total cycles:** every scoped weapon retains its
+  vanilla salvo size and intra-salvo delay. Only the inter-salvo reload is
+  reduced, producing actual total-cycle changes from **-18.8% to -20.8%** after
+  whole-second rounding.
+- **Alien velocity retained:** the previously implemented alien muzzle-velocity
+  increase remains in force and combines with the mass and cadence changes.
+- **Rails unchanged:** the staged human rail values are not altered by this
+  housekeeping slice; the other 12 human rail rows remain vanilla.
+- **Coverage:** the magnetic override now contains exactly 9 staged human rails,
+  27 human coils, and 22 alien mags. Validation requires exact fields and values,
+  preventing accidental salvo/intra-salvo overrides or damaging mass greater
+  than complete projectile mass.
+
 ## 2026-08-01
+
+### Implemented staged projectile and magnetic-weapon test slice
+
+- **Chemical projectiles:** use **40 / 90 / 180 kg** damaging masses for the
+  6-, 8-, and 10-inch guns while retaining their vanilla ammunition mass,
+  salvo size, intra-salvo delay, and reload. Use **1.75 kg at 180 rpm** for the
+  30mm and **3 kg at 100 rpm** for the hull 40mm; complete rounds remain at
+  their vanilla mass.
+- **Human rails:** change only the light rail battery, rail battery, and light
+  rail cannon Mk1-Mk3 projectile masses and reloads. Complete projectile mass
+  is **14 / 30 / 37.5 kg** by mount family; reloads are **8 / 6 / 4 s**,
+  **12 / 9 / 6 s**, and **16 / 12 / 8 s**, respectively. Damaging mass retains
+  each mark's vanilla damaging-to-complete-mass ratio. Salvo size and
+  intra-salvo delay remain vanilla, so these railguns remain single-shot for
+  this test.
+- **Alien mags:** apply only the settled muzzle-velocity increase to all 22
+  alien magnetic weapons. Their projectile mass, salvo, delay, reload, range,
+  power, and efficiency remain vanilla.
+- **Explicit exclusions:** human coils, all other human rail families, chemical
+  ammunition mass, and the proposed rail salvos remain deferred for campaign
+  testing.
+
+### Field-test observation: staged human rails
+
+- **Current rails are already decisive without salvos:** ships using the staged
+  light rail battery, rail battery, and light rail cannon values destroyed their
+  opposing ships easily. Their longer targeting range and higher projectile
+  velocity were tactically decisive even though all three families retained
+  vanilla one-shot salvos.
+- **Salvo proposal rejected:** the planned 3 / 4 / 5-shot rail salvos are no
+  longer required and should not be implemented. The next conservative test
+  should retain the staged projectile masses and move reloads back toward
+  vanilla before considering any other rail or coil change.
+
+### Field-test observation: direct-fire saturation fallback
+
+- **Long-range rails can saturate the entire enemy fleet before impact:** the
+  direct-fire commitment system distributed rail projectiles across every
+  hostile ship while the hostile fleet was still outside its own engagement
+  range. Once every target crossed the expected-overkill threshold, automatic
+  acquisition rejected all of them and the rail ships stopped firing. The
+  in-flight projectiles did not actually destroy every ship, leaving surviving
+  targets alive without continued fire.
+- **Saturation must be a preference, not a firing prohibition:** automatic
+  direct-fire targeting should prefer an eligible unsaturated target. If no
+  eligible unsaturated target exists, it should fall back to an eligible
+  saturated target and continue firing. Saturation alone must never reduce
+  expected damage to zero or leave a weapon without a target when saturated
+  enemies remain available.
+- **Scope remains direct fire only:** this fallback is intended for plentiful
+  gun, rail, coil, and plasma projectiles. Existing missile and torpedo
+  saturation behavior remains unchanged.
+
+### Implemented: direct-fire saturation as a priority malus
+
+- **Lexicographic target priority:** saturation is now the first automatic
+  direct-fire priority key rather than a binary eligibility gate. While any
+  eligible unsaturated enemy ship exists, saturated ships are skipped. When
+  every eligible enemy ship is saturated, all remain candidates and vanilla
+  Weakest, Closest, or Strongest ordering selects the highest-priority one.
+- **Continuous fallback fire:** expected direct-fire damage is suppressed on a
+  saturated target only while an eligible unsaturated ship exists. If all
+  eligible ships are saturated, guns, rails, coils, and plasma continue firing
+  at the selected saturated target until no eligible targets remain.
+- **Intent and missile isolation:** deliberate player primary targets still
+  bypass automatic suppression. Missile weapons, missile-boat acquisition,
+  missile saturation, and torpedo salvo behavior remain unchanged.
+- **Coverage:** formula tests exercise mixed and all-saturated fleets; guarded
+  IL validation requires both target acquisition and fire suppression to query
+  the shared unsaturated-target scan while retaining the three vanilla target
+  selection loops.
+
+### Implemented: magnetic projectile geometry and durability coupling
+
+- **All magnetic families covered:** every human railgun, human coilgun, siege
+  coiler, and alien magnetic weapon now receives a physical collider diameter
+  and cross-sectional area through the same generic geometry path used by
+  chemical projectiles.
+- **Mass-derived default:** an explicit `projectileDiameter_mm` template value
+  remains authoritative. Without one, magnetic diameter is derived from
+  `ammoMass_kg` as a 10:1 length-to-diameter tungsten-equivalent kinetic body
+  at **19,300 kg/m3**. This produces a monotonic cube-root relationship, so
+  future complete-projectile-mass edits automatically resize both the collider
+  and physical cross section without duplicating values across template rows.
+- **Durability remains natively coupled:** Terra Invicta already calculates a
+  magnetic projectile's remaining effective mass as `warheadMass_kg` minus
+  accumulated mass damage. Increasing damaging projectile mass therefore
+  increases magnetic projectile durability by the same percentage. The
+  comparison table now exposes both values and deltas so future mass proposals
+  can keep damage and durability synchronized.
+- **Coverage:** formula tests guard zero handling, the 10 kg reference diameter,
+  and monotonic mass scaling. Runtime IL validation requires the explicit-data
+  override, mass-derived magnetic fallback, and the game's
+  `warheadMass_kg - massDamage_kg` durability relationship.
 
 ### Implemented in 0.8.4: skirmish roster and gun-lookup performance
 
@@ -102,9 +235,10 @@ the balance decisions as well as their implementation status.
   a 10-inch round, while a 30mm hit does not do so by itself. The impacting
   projectile still destroys itself through the existing impact path; no
   post-impact trajectory or deflection state is simulated.
-- **Future magnetic support:** projectile-diameter hydration is shared between
-  `TIGunTemplate` and `TIMagneticGunTemplate`. No railgun or coilgun diameter,
-  mass, velocity, cadence, or durability value is changed in this pass.
+- **Future magnetic support at the time:** projectile-diameter hydration was
+  shared between `TIGunTemplate` and `TIMagneticGunTemplate`, but no magnetic
+  geometry was activated in 0.8.2. The mass-derived implementation recorded
+  above now supersedes that deferral.
 
 ### Implemented in 0.8.1: powered guns and coherent thermal accounting
 
@@ -137,18 +271,24 @@ the balance decisions as well as their implementation status.
   consumes it. Loaded ship mass is reconciled to recalculated template dry mass
   plus saved propellant and propulsion values are marked dirty.
 
-### Settled conservative gun projectiles and early magnetic cadence
+### Settled conservative gun projectiles and revised magnetic cadence
 
-**Implementation status:** planning and proposal-table update only; not
-implemented in runtime weapon templates. These values supersede the overlapping
-projectile bands, autocannon cadence translations, and early-magnetic cadence
-examples recorded on 2026-07-31.
+**Implementation status:** the chemical-projectile subset is implemented by the
+staged test slice above. The broader magnetic cadence proposal recorded below
+remains historical planning and is not the runtime configuration.
 
 - **6-, 8-, and 10-inch projectile mass:** settle the conservative ends of the
   evidence-led bands at **40 kg, 90 kg, and 180 kg**, respectively. At the
   retained 1.4 km/s muzzle velocity these produce **39.2, 88.2, and 176.4 MJ**
   per rendered projectile. The 10-inch remains the largest relative improvement
   over vanilla.
+- **Conventional naval-gun salvos retained:** keep the vanilla **4, 4, and 3
+  shots per salvo**, **2, 2.5, and 3 s** intra-salvo spacing, and **12, 15, and
+  16 s** between-salvo cooldowns for the 6-, 8-, and 10-inch guns. A single
+  barrel can represent a small ready-service ammunition group followed by a
+  longer magazine-handling cycle; retaining it also preserves the useful visual
+  rhythm of naval-gun fire. The earlier one-shot candidate is rejected and is
+  not to be implemented.
 - **30mm Autocannon cadence:** retain the settled **1.75 kg** damaging packet
   and increase the target to **180 rendered rounds per minute** so that the
   projectile-CIWS pass does not inadvertently strengthen already-powerful
@@ -158,14 +298,23 @@ examples recorded on 2026-07-31.
   increase the target to **100 rendered rounds per minute**. With six-shot
   salvos and 0.375 s intra-salvo spacing, a cooldown of **1.725 s** produces
   exactly 100 rpm.
-- **Human Mk1-Mk2 rail and coil cadence:** halve both `cooldown_s` and
-  `intraSalvoCooldown_s` for every human Mk1 and Mk2 railgun and coilgun. This
-  makes the Light Railgun Battery cooldowns **30 -> 15 s** at Mk1 and
-  **20 -> 10 s** at Mk2. Preserve exact halves for other mounts, including
-  **45 -> 22.5 s**, rather than adding a separate integer-rounding rule.
-- **Magnetic scope boundary:** this cadence pass changes no projectile mass,
-  ammunition mass, velocity, range, efficiency, or weapon mass. Human Mk3
-  weapons and all alien magnetic-weapon rows are untouched by this decision.
+- **Human Mk1-Mk2 rail and coil cadence:** reduce both `cooldown_s` and
+  `intraSalvoCooldown_s` by about **66%**, rounded to whole seconds. Rail-battery
+  cooldowns become **30 / 20 -> 10 / 7 s** for Mk1/Mk2; rail-cannon cooldowns
+  become **45 / 30 -> 15 / 10 s**.
+- **Human Mk3 rail and coil cadence:** start from a **40%** reduction, then
+  tighten only values needed to preserve each vanilla mark-to-mark improvement
+  by at least one second. Rail batteries become **10 -> 6 s** and rail cannons
+  **15 -> 9 s**. Coil-battery cooldowns become **13 / 10 / 9 s** across Mk1-3;
+  ordinary coil-cannon and siege-coiler cooldowns become **16 / 12 / 11 s**.
+- **Intra-salvo detail:** ordinary coil batteries use **3 / 3 / 6 s** and
+  ordinary coil cannons **4 / 4 / 7 s** across Mk1-3. Vanilla does not improve
+  these spacings between marks, so the Mk3 40% target is retained. Siege
+  coilers do improve in vanilla and therefore use **12 / 8 / 7 s**, preserving
+  at least a one-second improvement at each mark.
+- **Magnetic scope boundary:** this cadence pass changes no non-cadence proposal
+  field and no alien magnetic-weapon row. The proposal CSV contains typed
+  numeric cells without stray leading apostrophes.
 - **Conventional-gun electrical-load targets:** plan average auxiliary loads at
   the upper ends of the engineering bands: **0.100 MW** for the 30mm,
   **0.150 MW** for the 6-inch, **0.250 MW** for the 8-inch, and **0.300 MW** for
@@ -180,9 +329,9 @@ examples recorded on 2026-07-31.
   a futuristic balance abstraction for controlled propellant combustion, not
   an experimentally established energy budget.
 - **Gun-power implementation status:** superseded by the 0.8.1 implementation
-  above. The power fields and shared thermal fixes are implemented; the planned
-  projectile, ammunition, mass, and cadence changes in this section remain
-  deferred.
+  above. The power fields and shared thermal fixes are implemented; the staged
+  chemical projectile and cadence subset is now active, while all remaining
+  ammunition, mass, and cadence proposals stay deferred.
 
 ## 2026-07-31
 

@@ -26,7 +26,8 @@ namespace TIEconomyMod
             magneticDiameters = nextMagneticDiameters;
             Main.Log("Bound generic projectile diameter data for " +
                 (nextGunDiameters.Count + nextMagneticDiameters.Count) +
-                " weapon template record(s).");
+                " explicit weapon template record(s); magnetic templates " +
+                "without an explicit diameter use mass-derived geometry.");
         }
 
         public static bool TryGetDiameter_mm(
@@ -46,11 +47,24 @@ namespace TIEconomyMod
                 return false;
             }
 
-            return TemplateFloatExtensionReader.TryGet(
+            if (TemplateFloatExtensionReader.TryGet(
                 values,
                 template.dataName,
                 template.scenarioTags,
-                out diameter_mm);
+                out diameter_mm))
+            {
+                return true;
+            }
+
+            if (template.weaponClass == WeaponClass.Magnetic)
+            {
+                diameter_mm =
+                    ProjectileCollisionMath.MagneticProjectileDiameter_mm(
+                        template.ammoMass_kg);
+                return diameter_mm > 0f;
+            }
+
+            return false;
         }
     }
 }

@@ -64,6 +64,16 @@ if ($instructionReader.Count -ne 1) {
     throw "Expected one usable Harmony instruction reader, found $($instructionReader.Count)."
 }
 
+function Read-Instructions {
+    param([Reflection.MethodBase]$Method)
+
+    $arguments = [object[]]::new(2)
+    $arguments[0] = $Method
+    $arguments[1] = $null
+    return $instructionReader[0].PSObject.BaseObject.Invoke(
+        $null, $arguments)
+}
+
 $readerArguments = [object[]]::new(2)
 $readerArguments[0] = $target
 $readerArguments[1] = $null
@@ -129,4 +139,34 @@ foreach ($patchTypeName in $patchTypeNames) {
     }
 }
 
-Write-Host 'PASS: projectile geometry and durability targets exist and the guarded sweep rewrites exactly 120% to 100% for TI 1.0.51.'
+$geometryRegistryType = $modAssembly.GetType(
+    'TIEconomyMod.ProjectileGeometryRegistry', $true)
+$diameterLookup = $geometryRegistryType.GetMethod(
+    'TryGetDiameter_mm', [Reflection.BindingFlags]'Public,Static')
+$diameterInstructions = @(Read-Instructions $diameterLookup)
+$diameterCalls = @($diameterInstructions | Where-Object {
+    $_.operand -is [Reflection.MethodInfo]
+} | ForEach-Object { $_.operand.Name })
+$ammoMassReads = @($diameterInstructions | Where-Object {
+    $_.operand -is [Reflection.FieldInfo] -and
+    $_.operand.Name -eq 'ammoMass_kg'
+})
+if ($diameterCalls -notcontains 'TryGet' -or
+    $diameterCalls -notcontains 'MagneticProjectileDiameter_mm' -or
+    $ammoMassReads.Count -ne 1) {
+    throw 'Magnetic projectile geometry no longer prefers explicit diameter data and falls back to complete projectile mass.'
+}
+
+$effectiveMassGetter = $projectileStateType.GetProperty(
+    'effectiveMass_kg').GetGetMethod()
+$effectiveMassInstructions = @(Read-Instructions $effectiveMassGetter)
+$effectiveMassFields = @($effectiveMassInstructions | Where-Object {
+    $_.operand -is [Reflection.FieldInfo]
+} | ForEach-Object { $_.operand.Name })
+foreach ($requiredField in @('warheadMass_kg', 'massDamage_kg')) {
+    if ($effectiveMassFields -notcontains $requiredField) {
+        throw "Magnetic projectile durability no longer derives from '$requiredField'."
+    }
+}
+
+Write-Host 'PASS: projectile geometry covers explicit calibers and mass-derived magnetic rounds, magnetic durability follows damaging mass, and the guarded sweep rewrites exactly 120% to 100% for TI 1.0.51.'

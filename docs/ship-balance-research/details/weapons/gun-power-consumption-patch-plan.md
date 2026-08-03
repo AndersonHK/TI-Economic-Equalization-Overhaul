@@ -45,25 +45,26 @@ this preserves the electrical-load targets without inventing additional heat.
 | 8-inch | 4 shots; 15 s cooldown; 2.5 s intra | 1.40625 MJ | 100% | 1.40625 MJ | 0.250 MW | 0.563 MW | 0 MW |
 | 10-inch | 3 shots; 16 s cooldown; 3 s intra | 2.200 MJ | 100% | 2.200 MJ | 0.300 MW | 0.733 MW | 0 MW |
 
-The later 180/100-rpm autocannon figures below remain planning values and do
-not describe the 0.8.1 runtime cadence.
+The later autocannon figures below record the current post-0.8.1 balance and do
+not describe the original 0.8.1 runtime cadence.
 
 ### 40mm ETC convention
 
-The planned 40mm damaging packet is 3 kg at 2.6 km/s. Use 1.0 km/s as the
+The current 40mm damaging packet is 2.8 kg at 2.6 km/s. Use 1.0 km/s as the
 chemical-only reference velocity and represent the kinetic-energy increment as
 useful ETC work:
 
 `ETC electrical energy = 0.5 * m * (v_ETC^2 - v_chemical^2)`
 
-`= 0.5 * 3 kg * (2600^2 - 1000^2) = 8.64 MJ per rendered projectile`
+`= 0.5 * 2.8 kg * (2600^2 - 1000^2) = 8.064 MJ per rendered projectile`
 
-At 100 rpm this is 14.4 MW of useful work. Add 0.06 MJ per shot for the
-30mm-class feed and control load, giving **8.70 MJ useful work per rendered
-projectile**. Set the inherited generic efficiency to **90%**, matching the
-meaning of efficiency on lasers and magnetic weapons. The resulting electrical
-input is **9.6667 MJ per shot**, or **16.111 MW average**, and local weapon heat
-is **0.9667 MJ per shot**, or **1.611 MW average**.
+The runtime retains the settled conservative **8.70 MJ useful work per rendered
+projectile**, treating the remaining 0.636 MJ as feed, plasma-ignition, and
+control overhead. Set the inherited generic efficiency to **90%**, matching the
+meaning of efficiency on lasers and magnetic weapons. At the revised 84.71
+effective rpm, electrical input is **9.6667 MJ per shot** or **13.647 MW
+average**, and local weapon heat is **0.9667 MJ per shot** or **1.365 MW
+average**.
 
 The complete-combustion premise remains a deliberate balance abstraction: ETC
 is represented as using plasma ignition to achieve exceptionally complete and
@@ -101,8 +102,8 @@ electrical input in the same way it does for a laser or railgun.
 
 | Weapon | Planned cadence | JSON `powerUse_MJ` | Efficiency | Electrical input per shot | Average electrical input | Vanilla salvo-rate plant demand | Vanilla one-shot storage |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| 30mm | 180 rpm; 10 shots; 0.25 s intra | `0.0333 * eta30` | TBD | 0.0333 MJ | 0.100 MW | 0.133 MW | 0.0333 MJ |
-| 40mm ETC | 100 rpm; 6 shots; 0.375 s intra | 8.700 MJ | 90% | 9.6667 MJ | 16.111 MW | 25.778 MW | 9.6667 MJ |
+| 30mm | 184.62 rpm; 10 shots; 0.25 s intra | 0.085 MJ | 100% | 0.085 MJ | 0.262 MW | 0.340 MW | 0.085 MJ |
+| 40mm ETC | 84.71 rpm; 6 shots; 0.5 s intra | 8.700 MJ | 90% | 9.6667 MJ | 13.647 MW | 19.333 MW | 9.6667 MJ |
 | 6-inch | 13.33 rpm; 4 shots; 2 s intra | `0.675 * eta6` | TBD | 0.675 MJ | 0.150 MW | 0.338 MW | 0.675 MJ |
 | 8-inch | 10.67 rpm; 4 shots; 2.5 s intra | `1.40625 * eta8` | TBD | 1.4063 MJ | 0.250 MW | 0.563 MW | 1.4063 MJ |
 | 10-inch | 8.18 rpm; 3 shots; 3 s intra | `2.200 * eta10` | TBD | 2.200 MJ | 0.300 MW | 0.733 MW | 2.200 MJ |

@@ -605,6 +605,17 @@ namespace TIEconomyMod.FormulaTests
                 ProjectileCollisionMath.WorldDiameter_gameUnits(254f, 0.01f),
                 0.00000001f,
                 "projectile collider uses the ship-model cinematic scale");
+            Near(40.40647f,
+                ProjectileCollisionMath.MagneticProjectileDiameter_mm(10f),
+                0.0001f,
+                "10 kg magnetic projectile uses tungsten-equivalent 10-to-1 geometry");
+            True(ProjectileCollisionMath.MagneticProjectileDiameter_mm(14f) >
+                    ProjectileCollisionMath.MagneticProjectileDiameter_mm(12f),
+                "increased magnetic projectile mass increases physical diameter");
+            Near(0f,
+                ProjectileCollisionMath.MagneticProjectileDiameter_mm(-1f),
+                0f,
+                "invalid magnetic projectile mass cannot create a collider");
             Near(90f,
                 ProjectileCollisionMath.MassDamage_kg(0.75f, 0.15f),
                 0.0001f,
@@ -648,6 +659,21 @@ namespace TIEconomyMod.FormulaTests
                 "commitment equal to the threshold preserves vanilla strict comparison");
             True(DirectFireCommitmentMath.IsSaturated(6.01f, 6f),
                 "commitment above the threshold saturates automatic direct fire");
+            True(DirectFireCommitmentMath.IsAutomaticCandidateAvailable(
+                    false, true),
+                "unsaturated direct-fire candidates remain eligible");
+            True(!DirectFireCommitmentMath.IsAutomaticCandidateAvailable(
+                    true, true),
+                "saturated candidates receive a priority malus while an unsaturated target exists");
+            True(DirectFireCommitmentMath.IsAutomaticCandidateAvailable(
+                    true, false),
+                "all-saturated fleets retain every candidate for vanilla priority ordering");
+            True(DirectFireCommitmentMath.ShouldSuppressSaturatedTarget(
+                    true, true),
+                "automatic fire pauses on a saturated target when an unsaturated alternative exists");
+            True(!DirectFireCommitmentMath.ShouldSuppressSaturatedTarget(
+                    true, false),
+                "automatic fire continues when every eligible target is saturated");
             Near(0f,
                 DirectFireCommitmentMath.SanitizeExpectedDamage_points(
                     float.NaN),

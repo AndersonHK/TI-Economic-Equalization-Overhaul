@@ -1,38 +1,381 @@
 [
   {
     "dataName": "LightRailgunBatteryMk1",
-    "crew": 2
+    "crew": 2,
+    "ammoMass_kg": 14,
+    "warheadMass_kg": 10.5,
+    "cooldown_s": 8
   },
   {
     "dataName": "LightRailgunBatteryMk2",
-    "crew": 2
+    "crew": 2,
+    "ammoMass_kg": 14,
+    "warheadMass_kg": 11.2,
+    "cooldown_s": 6
   },
   {
     "dataName": "LightRailgunBatteryMk3",
-    "crew": 2
+    "crew": 2,
+    "ammoMass_kg": 14,
+    "warheadMass_kg": 12.25,
+    "cooldown_s": 4
   },
   {
     "dataName": "RailgunBatteryMk1",
-    "crew": 2
+    "crew": 2,
+    "ammoMass_kg": 30,
+    "warheadMass_kg": 22.5,
+    "cooldown_s": 12
   },
   {
     "dataName": "RailgunBatteryMk2",
-    "crew": 2
+    "crew": 2,
+    "ammoMass_kg": 30,
+    "warheadMass_kg": 24,
+    "cooldown_s": 9
   },
   {
     "dataName": "RailgunBatteryMk3",
-    "crew": 2
+    "crew": 2,
+    "ammoMass_kg": 30,
+    "warheadMass_kg": 26.25,
+    "cooldown_s": 6
   },
   {
     "dataName": "LightRailCannonMk1",
-    "crew": 3
+    "crew": 3,
+    "ammoMass_kg": 37.5,
+    "warheadMass_kg": 28.125,
+    "cooldown_s": 16
   },
   {
     "dataName": "LightRailCannonMk2",
-    "crew": 3
+    "crew": 3,
+    "ammoMass_kg": 37.5,
+    "warheadMass_kg": 30,
+    "cooldown_s": 12
   },
   {
     "dataName": "LightRailCannonMk3",
-    "crew": 3
+    "crew": 3,
+    "ammoMass_kg": 37.5,
+    "warheadMass_kg": 32.8125,
+    "cooldown_s": 8
+  },
+  {
+    "dataName": "LightCoilgunBatteryMk1",
+    "ammoMass_kg": 13,
+    "warheadMass_kg": 10,
+    "cooldown_s": 28
+  },
+  {
+    "dataName": "LightCoilgunBatteryMk2",
+    "ammoMass_kg": 13,
+    "warheadMass_kg": 10,
+    "cooldown_s": 18
+  },
+  {
+    "dataName": "LightCoilgunBatteryMk3",
+    "ammoMass_kg": 13,
+    "warheadMass_kg": 11,
+    "cooldown_s": 8
+  },
+  {
+    "dataName": "CoilgunBatteryMk1",
+    "ammoMass_kg": 25,
+    "warheadMass_kg": 19,
+    "cooldown_s": 28
+  },
+  {
+    "dataName": "CoilgunBatteryMk2",
+    "ammoMass_kg": 25,
+    "warheadMass_kg": 20,
+    "cooldown_s": 18
+  },
+  {
+    "dataName": "CoilgunBatteryMk3",
+    "ammoMass_kg": 25,
+    "warheadMass_kg": 22,
+    "cooldown_s": 8
+  },
+  {
+    "dataName": "HeavyCoilgunBatteryMk1",
+    "ammoMass_kg": 50,
+    "warheadMass_kg": 38,
+    "cooldown_s": 28
+  },
+  {
+    "dataName": "HeavyCoilgunBatteryMk2",
+    "ammoMass_kg": 50,
+    "warheadMass_kg": 40,
+    "cooldown_s": 18
+  },
+  {
+    "dataName": "HeavyCoilgunBatteryMk3",
+    "ammoMass_kg": 50,
+    "warheadMass_kg": 44,
+    "cooldown_s": 8
+  },
+  {
+    "dataName": "LightCoilCannonMk1",
+    "ammoMass_kg": 31,
+    "warheadMass_kg": 23,
+    "cooldown_s": 34
+  },
+  {
+    "dataName": "LightCoilCannonMk2",
+    "ammoMass_kg": 31,
+    "warheadMass_kg": 25,
+    "cooldown_s": 22
+  },
+  {
+    "dataName": "LightCoilCannonMk3",
+    "ammoMass_kg": 31,
+    "warheadMass_kg": 27,
+    "cooldown_s": 10
+  },
+  {
+    "dataName": "CoilCannonMk1",
+    "ammoMass_kg": 63,
+    "warheadMass_kg": 47,
+    "cooldown_s": 34
+  },
+  {
+    "dataName": "CoilCannonMk2",
+    "ammoMass_kg": 63,
+    "warheadMass_kg": 50,
+    "cooldown_s": 22
+  },
+  {
+    "dataName": "CoilCannonMk3",
+    "ammoMass_kg": 63,
+    "warheadMass_kg": 55,
+    "cooldown_s": 10
+  },
+  {
+    "dataName": "HeavyCoilCannonMk1",
+    "ammoMass_kg": 94,
+    "warheadMass_kg": 71,
+    "cooldown_s": 34
+  },
+  {
+    "dataName": "HeavyCoilCannonMk2",
+    "ammoMass_kg": 94,
+    "warheadMass_kg": 75,
+    "cooldown_s": 22
+  },
+  {
+    "dataName": "HeavyCoilCannonMk3",
+    "ammoMass_kg": 94,
+    "warheadMass_kg": 82,
+    "cooldown_s": 10
+  },
+  {
+    "dataName": "SpinalCoilerMk1",
+    "ammoMass_kg": 125,
+    "warheadMass_kg": 94,
+    "cooldown_s": 34
+  },
+  {
+    "dataName": "SpinalCoilerMk2",
+    "ammoMass_kg": 125,
+    "warheadMass_kg": 100,
+    "cooldown_s": 22
+  },
+  {
+    "dataName": "SpinalCoilerMk3",
+    "ammoMass_kg": 125,
+    "warheadMass_kg": 109,
+    "cooldown_s": 10
+  },
+  {
+    "dataName": "HeavySiegeCoilerMk1",
+    "ammoMass_kg": 938,
+    "warheadMass_kg": 704,
+    "cooldown_s": 24
+  },
+  {
+    "dataName": "HeavySiegeCoilerMk2",
+    "ammoMass_kg": 938,
+    "warheadMass_kg": 750,
+    "cooldown_s": 19
+  },
+  {
+    "dataName": "HeavySiegeCoilerMk3",
+    "ammoMass_kg": 938,
+    "warheadMass_kg": 821,
+    "cooldown_s": 12
+  },
+  {
+    "dataName": "SpinalSiegeCoilerMk1",
+    "ammoMass_kg": 1250,
+    "warheadMass_kg": 938,
+    "cooldown_s": 24
+  },
+  {
+    "dataName": "SpinalSiegeCoilerMk2",
+    "ammoMass_kg": 1250,
+    "warheadMass_kg": 1000,
+    "cooldown_s": 19
+  },
+  {
+    "dataName": "SpinalSiegeCoilerMk3",
+    "ammoMass_kg": 1250,
+    "warheadMass_kg": 1094,
+    "cooldown_s": 12
+  },
+  {
+    "dataName": "AlienLightMagBattery",
+    "muzzleVelocity_kps": 4.6,
+    "ammoMass_kg": 19,
+    "warheadMass_kg": 16,
+    "cooldown_s": 9
+  },
+  {
+    "dataName": "AlienMagBattery",
+    "muzzleVelocity_kps": 5.5,
+    "ammoMass_kg": 38,
+    "warheadMass_kg": 32,
+    "cooldown_s": 11
+  },
+  {
+    "dataName": "AlienHeavyMagBattery",
+    "muzzleVelocity_kps": 6.4,
+    "ammoMass_kg": 75,
+    "warheadMass_kg": 64,
+    "cooldown_s": 13
+  },
+  {
+    "dataName": "AlienMiniLightMagCannon",
+    "muzzleVelocity_kps": 5.5,
+    "ammoMass_kg": 50,
+    "warheadMass_kg": 43,
+    "cooldown_s": 18
+  },
+  {
+    "dataName": "AlienLightMagCannon",
+    "muzzleVelocity_kps": 5.5,
+    "ammoMass_kg": 50,
+    "warheadMass_kg": 43,
+    "cooldown_s": 18
+  },
+  {
+    "dataName": "AlienMagCannon",
+    "muzzleVelocity_kps": 6.7,
+    "ammoMass_kg": 100,
+    "warheadMass_kg": 85,
+    "cooldown_s": 22
+  },
+  {
+    "dataName": "AlienHeavyMagCannon",
+    "muzzleVelocity_kps": 8.3,
+    "ammoMass_kg": 150,
+    "warheadMass_kg": 128,
+    "cooldown_s": 32
+  },
+  {
+    "dataName": "AlienSpinalMagCannon",
+    "muzzleVelocity_kps": 10,
+    "ammoMass_kg": 200,
+    "warheadMass_kg": 170,
+    "cooldown_s": 43
+  },
+  {
+    "dataName": "AdvancedAlienLightMagBattery",
+    "muzzleVelocity_kps": 6.2,
+    "ammoMass_kg": 19,
+    "warheadMass_kg": 17,
+    "cooldown_s": 4
+  },
+  {
+    "dataName": "AdvancedAlienMagBattery",
+    "muzzleVelocity_kps": 7.8,
+    "ammoMass_kg": 38,
+    "warheadMass_kg": 34,
+    "cooldown_s": 5
+  },
+  {
+    "dataName": "AdvancedAlienHeavyMagBattery",
+    "muzzleVelocity_kps": 9.4,
+    "ammoMass_kg": 75,
+    "warheadMass_kg": 68,
+    "cooldown_s": 6
+  },
+  {
+    "dataName": "AdvancedAlienLightMagCannon",
+    "muzzleVelocity_kps": 8.2,
+    "ammoMass_kg": 50,
+    "warheadMass_kg": 45,
+    "cooldown_s": 13
+  },
+  {
+    "dataName": "AdvancedAlienMagCannon",
+    "muzzleVelocity_kps": 10,
+    "ammoMass_kg": 100,
+    "warheadMass_kg": 90,
+    "cooldown_s": 16
+  },
+  {
+    "dataName": "AdvancedAlienHeavyMagCannon",
+    "muzzleVelocity_kps": 12.5,
+    "ammoMass_kg": 150,
+    "warheadMass_kg": 135,
+    "cooldown_s": 23
+  },
+  {
+    "dataName": "AdvancedAlienSpinalMagCannon",
+    "muzzleVelocity_kps": 15,
+    "ammoMass_kg": 200,
+    "warheadMass_kg": 180,
+    "cooldown_s": 31
+  },
+  {
+    "dataName": "Gen3AlienLightMagBattery",
+    "muzzleVelocity_kps": 8.2,
+    "ammoMass_kg": 35,
+    "warheadMass_kg": 30,
+    "cooldown_s": 4
+  },
+  {
+    "dataName": "Gen3AlienMagBattery",
+    "muzzleVelocity_kps": 10.3,
+    "ammoMass_kg": 69,
+    "warheadMass_kg": 60,
+    "cooldown_s": 5
+  },
+  {
+    "dataName": "Gen3AlienHeavyMagBattery",
+    "muzzleVelocity_kps": 12.4,
+    "ammoMass_kg": 138,
+    "warheadMass_kg": 120,
+    "cooldown_s": 6
+  },
+  {
+    "dataName": "Gen3AlienLightMagCannon",
+    "muzzleVelocity_kps": 10.8,
+    "ammoMass_kg": 93,
+    "warheadMass_kg": 80,
+    "cooldown_s": 6
+  },
+  {
+    "dataName": "Gen3AlienMagCannon",
+    "muzzleVelocity_kps": 13.1,
+    "ammoMass_kg": 184,
+    "warheadMass_kg": 160,
+    "cooldown_s": 8
+  },
+  {
+    "dataName": "Gen3AlienHeavyMagCannon",
+    "muzzleVelocity_kps": 16.5,
+    "ammoMass_kg": 368,
+    "warheadMass_kg": 320,
+    "cooldown_s": 14
+  },
+  {
+    "dataName": "Gen3AlienSpinalMagCannon",
+    "muzzleVelocity_kps": 19.8,
+    "ammoMass_kg": 736,
+    "warheadMass_kg": 640,
+    "cooldown_s": 23
   }
 ]

@@ -114,10 +114,32 @@ if ($candidateCalls.Count -ne 3 -or
     throw "Automatic target transpiler mismatch: helper calls=$($candidateCalls.Count), instructions=$($original.Count)->$($patched.Count)."
 }
 
+$candidateRuntimeInstructions = @(Read-Instructions $candidateHelper)
+$candidateRuntimeCalls = @($candidateRuntimeInstructions | Where-Object {
+    $_.operand -is [Reflection.MethodInfo]
+} | ForEach-Object { $_.operand.Name })
+foreach ($requiredCall in @(
+    'IsSaturated',
+    'HasUnsaturatedAutomaticShipTarget',
+    'IsAutomaticCandidateAvailable'
+)) {
+    if ($candidateRuntimeCalls -notcontains $requiredCall) {
+        throw "Automatic target preference no longer calls '$requiredCall'."
+    }
+}
+$candidateMissileReads = @($candidateRuntimeInstructions | Where-Object {
+    $_.operand -is [Reflection.FieldInfo] -and
+    $_.operand.Name -eq 'AI_IsMissileBoat'
+})
+if ($candidateMissileReads.Count -ne 1) {
+    throw 'Automatic target preference no longer preserves the missile-boat bypass.'
+}
+
 $suppressMethod = $runtimeType.GetMethod(
     'ShouldSuppressAutomaticFire',
     [Reflection.BindingFlags]'Public,Static')
-$suppressCalls = @(Read-Instructions $suppressMethod | Where-Object {
+$suppressInstructions = @(Read-Instructions $suppressMethod)
+$suppressCalls = @($suppressInstructions | Where-Object {
     $_.operand -is [Reflection.MethodInfo]
 } | ForEach-Object { $_.operand.Name })
 foreach ($requiredCall in @(
@@ -125,11 +147,40 @@ foreach ($requiredCall in @(
     'get_currentFireMode',
     'get_combatAIControl',
     'get_primaryTarget',
-    'IsSaturated'
+    'IsSaturated',
+    'HasUnsaturatedAutomaticShipTarget',
+    'ShouldSuppressSaturatedTarget'
 )) {
     if ($suppressCalls -notcontains $requiredCall) {
         throw "Automatic fire gate no longer calls '$requiredCall'."
     }
+}
+$suppressMissileReads = @($suppressInstructions | Where-Object {
+    $_.operand -is [Reflection.FieldInfo] -and
+    $_.operand.Name -eq 'AI_IsMissileBoat'
+})
+if ($suppressMissileReads.Count -ne 1) {
+    throw 'Automatic fire gate no longer preserves the missile-boat bypass.'
+}
+
+$unsaturatedHelper = $runtimeType.GetMethod(
+    'HasUnsaturatedAutomaticShipTarget',
+    [Reflection.BindingFlags]'NonPublic,Static')
+if ($null -eq $unsaturatedHelper) {
+    throw 'Unsaturated-target fallback helper is missing.'
+}
+$unsaturatedInstructions = @(Read-Instructions $unsaturatedHelper)
+$enemyListReads = @($unsaturatedInstructions | Where-Object {
+    $_.operand -is [Reflection.FieldInfo] -and
+    $_.operand.Name -eq 'enemyCombatants'
+})
+$unsaturatedCalls = @($unsaturatedInstructions | Where-Object {
+    $_.operand -is [Reflection.MethodInfo]
+} | ForEach-Object { $_.operand.Name })
+if ($enemyListReads.Count -lt 1 -or
+    $unsaturatedCalls -notcontains 'IsEligibleAutomaticShipTarget' -or
+    $unsaturatedCalls -notcontains 'IsSaturated') {
+    throw 'Unsaturated-target helper no longer scans eligible enemy ships and their direct-fire commitments.'
 }
 
 $requiredTargets = @(
@@ -186,4 +237,4 @@ foreach ($missileTypeName in @(
     }
 }
 
-Write-Host 'PASS: direct-fire commitments patch actual ballistics and automatic acquisition while missile AI and deliberate fire paths remain untouched.'
+Write-Host 'PASS: direct-fire commitments prefer unsaturated ships, retain vanilla priority when all are saturated, and leave missile AI and deliberate fire paths untouched.'
