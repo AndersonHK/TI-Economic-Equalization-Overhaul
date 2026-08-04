@@ -5,6 +5,7 @@
     "powerUse_MJ": 2.2,
     "efficiency": 1.0,
     "projectileDiameter_mm": 254.0,
+    "ammoMass_kg": 400.0,
     "warheadMass_kg": 180.0
   },
   {
@@ -19,11 +20,19 @@
   },
   {
     "dataName": "35mmAutocannon",
-    "projectileDiameter_mm": 35.0
+    "projectileDiameter_mm": 35.0,
+    "ammoMass_kg": 8.8,
+    "warheadMass_kg": 2.6,
+    "intraSalvoCooldown_s": 0.4,
+    "cooldown_s": 1.75
   },
   {
     "dataName": "40mmNoseAutocannon",
-    "projectileDiameter_mm": 40.0
+    "projectileDiameter_mm": 40.0,
+    "ammoMass_kg": 8.8,
+    "warheadMass_kg": 2.8,
+    "intraSalvoCooldown_s": 0.4,
+    "cooldown_s": 1.75
   },
   {
     "dataName": "40mmAutocannon",
@@ -42,6 +51,7 @@
     "powerUse_MJ": 0.675,
     "efficiency": 1.0,
     "projectileDiameter_mm": 152.4,
+    "ammoMass_kg": 90.0,
     "warheadMass_kg": 40.0
   },
   {
@@ -50,10 +60,13 @@
     "powerUse_MJ": 1.40625,
     "efficiency": 1.0,
     "projectileDiameter_mm": 203.2,
+    "ammoMass_kg": 200.0,
     "warheadMass_kg": 90.0
   },
   {
     "dataName": "12-inchCannon",
-    "projectileDiameter_mm": 304.8
+    "projectileDiameter_mm": 304.8,
+    "ammoMass_kg": 640.0,
+    "warheadMass_kg": 320.0
   }
 ]

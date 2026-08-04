@@ -3,6 +3,33 @@
 This is a decision log for the proposed ship rebalance. Entries here describe
 the balance decisions as well as their implementation status.
 
+## 2026-08-04
+
+### Implemented: complete chemical ammunition and nose-autocannon cadence
+
+- **Large-caliber projectile progression:** retain the settled **40 / 90 /
+  180 kg** damaging masses for the 6-, 8-, and 10-inch guns and implement the
+  planned **320 kg** 12-inch projectile. The sequence remains within 5.1% of
+  cubic caliber scaling from the 6-inch reference.
+- **Complete ammunition mass:** increase `ammoMass_kg` to **90 / 200 / 400 /
+  640 kg** for the 6-, 8-, 10-, and 12-inch guns. These values cover the
+  projectile, an energy-scaled propellant charge for the shared 1.4 km/s
+  muzzle velocity, and cartridge or bag-handling allowance. They affect loaded
+  weapon mass and ammunition cost, not empty weapon mass or impact damage.
+- **35mm nose autocannon:** change complete/damaging masses from **10 / 5.5 kg
+  to 8.8 / 2.6 kg**, retain its four-shot salvo, and change intra/inter-salvo
+  timing from **0.5 / 4.0 s to 0.4 / 1.75 s**. Its cycle becomes 2.95 seconds,
+  effective cadence becomes 81.36 rpm, and sustained kinetic output becomes
+  7.051 MJ/s (**-11.9%** versus vanilla).
+- **40mm nose autocannon:** change complete/damaging masses from **10 / 6 kg
+  to 8.8 / 2.8 kg**, retain its four-shot salvo, and change intra/inter-salvo
+  timing from **0.5 / 4.0 s to 0.4 / 1.75 s**. Its cycle becomes 2.95 seconds,
+  effective cadence becomes 81.36 rpm, and sustained kinetic output becomes
+  12.833 MJ/s (**-13.0%** versus vanilla).
+- **Unchanged scope:** salvo sizes, muzzle velocities, ranges, empty weapon
+  masses, crew, and electrical values are unchanged. The existing hull 30mm
+  and 40mm values remain as implemented on 2026-08-02.
+
 ## 2026-08-02
 
 ### Implemented: revised 30mm and 40mm CIWS cadence and mass

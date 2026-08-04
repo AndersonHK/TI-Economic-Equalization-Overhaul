@@ -129,11 +129,14 @@ $expectedGunDiameters = [ordered]@{
     '12-inchCannon' = 304.8
 }
 $expectedGunBalance = [ordered]@{
-    '10-inchCannon' = @(180.0, $null, $null, $null)
+    '10-inchCannon' = @(180.0, $null, $null, 400.0)
     '30mmAutocannon' = @(1.75, 0.25, 1.0, $null)
+    '35mmAutocannon' = @(2.6, 0.4, 1.75, 8.8)
+    '40mmNoseAutocannon' = @(2.8, 0.4, 1.75, 8.8)
     '40mmAutocannon' = @(2.8, 0.5, 1.75, 8.8)
-    '6-inchCannon' = @(40.0, $null, $null, $null)
-    '8-inchCannon' = @(90.0, $null, $null, $null)
+    '6-inchCannon' = @(40.0, $null, $null, 90.0)
+    '8-inchCannon' = @(90.0, $null, $null, 200.0)
+    '12-inchCannon' = @(320.0, $null, $null, 640.0)
 }
 if ($gunOverrides.Count -ne $expectedGunDiameters.Count) {
     throw "Gun override has $($gunOverrides.Count) rows instead of $($expectedGunDiameters.Count)."
@@ -143,35 +146,54 @@ foreach ($entry in $expectedGunDiameters.GetEnumerator()) {
     if ($row.Count -ne 1) {
         throw "Gun override must contain '$($entry.Key)' exactly once."
     }
-    if ($expectedGunCrew.Contains($entry.Key)) {
+    if ($expectedGunBalance.Contains($entry.Key)) {
+        $hasCrewAndPower = $expectedGunCrew.Contains($entry.Key)
         if ($null -eq $expectedGunBalance[$entry.Key][1]) {
-            Assert-Properties $row[0] @(
-                'dataName', 'crew', 'powerUse_MJ', 'efficiency',
-                'projectileDiameter_mm', 'warheadMass_kg') $entry.Key
+            $expectedProperties = if ($hasCrewAndPower) {
+                @('dataName', 'crew', 'powerUse_MJ', 'efficiency',
+                    'projectileDiameter_mm', 'ammoMass_kg', 'warheadMass_kg')
+            }
+            else {
+                @('dataName', 'projectileDiameter_mm', 'ammoMass_kg',
+                    'warheadMass_kg')
+            }
         }
-        elseif ($null -ne $expectedGunBalance[$entry.Key][3]) {
-            Assert-Properties $row[0] @(
-                'dataName', 'crew', 'powerUse_MJ', 'efficiency',
-                'projectileDiameter_mm', 'ammoMass_kg', 'warheadMass_kg',
-                'intraSalvoCooldown_s', 'cooldown_s') $entry.Key
+        elseif ($hasCrewAndPower) {
+            $expectedProperties = if ($null -ne
+                $expectedGunBalance[$entry.Key][3]) {
+                @('dataName', 'crew', 'powerUse_MJ', 'efficiency',
+                    'projectileDiameter_mm', 'ammoMass_kg',
+                    'warheadMass_kg', 'intraSalvoCooldown_s', 'cooldown_s')
+            }
+            else {
+                @('dataName', 'crew', 'powerUse_MJ', 'efficiency',
+                    'projectileDiameter_mm', 'warheadMass_kg',
+                    'intraSalvoCooldown_s', 'cooldown_s')
+            }
         }
         else {
-            Assert-Properties $row[0] @(
-                'dataName', 'crew', 'powerUse_MJ', 'efficiency',
-                'projectileDiameter_mm', 'warheadMass_kg',
-                'intraSalvoCooldown_s', 'cooldown_s') $entry.Key
+            $expectedProperties = @(
+                'dataName', 'projectileDiameter_mm', 'ammoMass_kg',
+                'warheadMass_kg', 'intraSalvoCooldown_s', 'cooldown_s')
         }
-        Assert-Near $row[0].crew $expectedGunCrew[$entry.Key] `
-            "$($entry.Key) crew"
-        Assert-Near $row[0].powerUse_MJ $expectedGunPower[$entry.Key][0] `
-            "$($entry.Key) useful electrical work"
-        Assert-Near $row[0].efficiency $expectedGunPower[$entry.Key][1] `
-            "$($entry.Key) electrical efficiency"
+        Assert-Properties $row[0] $expectedProperties $entry.Key
+        if ($hasCrewAndPower) {
+            Assert-Near $row[0].crew $expectedGunCrew[$entry.Key] `
+                "$($entry.Key) crew"
+            Assert-Near $row[0].powerUse_MJ $expectedGunPower[$entry.Key][0] `
+                "$($entry.Key) useful electrical work"
+            Assert-Near $row[0].efficiency $expectedGunPower[$entry.Key][1] `
+                "$($entry.Key) electrical efficiency"
+        }
         Assert-Near $row[0].warheadMass_kg $expectedGunBalance[$entry.Key][0] `
             "$($entry.Key) damaging projectile mass"
         if ($null -ne $expectedGunBalance[$entry.Key][3]) {
             Assert-Near $row[0].ammoMass_kg $expectedGunBalance[$entry.Key][3] `
                 "$($entry.Key) complete projectile mass"
+            if ([double]$row[0].warheadMass_kg -gt
+                [double]$row[0].ammoMass_kg) {
+                throw "$($entry.Key) damaging mass exceeds complete ammunition mass."
+            }
         }
         if ($null -ne $expectedGunBalance[$entry.Key][1]) {
             Assert-Near $row[0].intraSalvoCooldown_s $expectedGunBalance[$entry.Key][1] `
@@ -179,10 +201,6 @@ foreach ($entry in $expectedGunDiameters.GetEnumerator()) {
             Assert-Near $row[0].cooldown_s $expectedGunBalance[$entry.Key][2] `
                 "$($entry.Key) cycle reload"
         }
-    }
-    else {
-        Assert-Properties $row[0] @(
-            'dataName', 'projectileDiameter_mm') $entry.Key
     }
     Assert-Near $row[0].projectileDiameter_mm $entry.Value `
         "$($entry.Key) projectile diameter"
@@ -359,6 +377,31 @@ $vanillaGuns = Read-JsonArray (Join-Path $VanillaTemplatesDir 'TIGunTemplate.jso
 foreach ($id in $expectedGunDiameters.Keys) {
     if (@($vanillaGuns | Where-Object dataName -eq $id).Count -ne 1) {
         throw "Installed game no longer contains gun '$id'."
+    }
+}
+foreach ($id in @('35mmAutocannon', '40mmNoseAutocannon')) {
+    $vanilla = @($vanillaGuns | Where-Object dataName -eq $id)[0]
+    $override = @($gunOverrides | Where-Object dataName -eq $id)[0]
+    $vanillaCycle = [double]$vanilla.cooldown_s +
+        ([double]$vanilla.salvo_shots - 1.0) *
+        [double]$vanilla.intraSalvoCooldown_s
+    $revisedCycle = [double]$override.cooldown_s +
+        ([double]$vanilla.salvo_shots - 1.0) *
+        [double]$override.intraSalvoCooldown_s
+    Assert-Near $vanillaCycle 5.5 "$id vanilla cycle"
+    Assert-Near $revisedCycle 2.95 "$id revised cycle"
+
+    $vanillaSustained =
+        0.5 * [double]$vanilla.warheadMass_kg *
+        [Math]::Pow([double]$vanilla.muzzleVelocity_kps, 2) *
+        [double]$vanilla.salvo_shots / $vanillaCycle
+    $revisedSustained =
+        0.5 * [double]$override.warheadMass_kg *
+        [Math]::Pow([double]$vanilla.muzzleVelocity_kps, 2) *
+        [double]$vanilla.salvo_shots / $revisedCycle
+    $sustainedDelta = $revisedSustained / $vanillaSustained - 1.0
+    if ($sustainedDelta -lt -0.14 -or $sustainedDelta -gt -0.11) {
+        throw "$id sustained output changes by $sustainedDelta instead of approximately -15%."
     }
 }
 $vanillaLasers = Read-JsonArray (Join-Path $VanillaTemplatesDir 'TILaserWeaponTemplate.json')
