@@ -740,21 +740,84 @@ namespace TIEconomyMod.FormulaTests
 
         private static void TestHabRebalanceMath()
         {
-            Near(50f,
-                HabRebalanceMath.MandatoryEarthMass(150f, 2f / 3f, 1f),
+            Near(150f,
+                HabRebalanceMath.FullMaterialMass(150f, 1f),
                 0.0001f,
-                "new module mandatory Earth mass");
-            Near(20f / 3f,
-                HabRebalanceMath.MandatoryEarthMass(
+                "new module charges its full physical material mass");
+            Near(50f,
+                HabRebalanceMath.MandatoryTransportMass(150f, 0f),
+                0.0001f,
+                "stocked construction transports one third");
+            Near(5f,
+                HabRebalanceMath.MandatoryTransportMass(30f, 5f),
+                0.0001f,
+                "Earth shortfall counts toward transported minimum");
+            Near(0f,
+                HabRebalanceMath.MandatoryTransportMass(30f, 15f),
+                0.0001f,
+                "30/15 case requires no additional factory payload");
+            Near(15f,
+                HabRebalanceMath.EarthFallbackMass(30f, 15f),
+                0.0001f,
+                "Earth fallback preserves larger shortfall");
+            Near(10f,
+                HabRebalanceMath.EarthFallbackMass(30f, 0f),
+                0.0001f,
+                "Earth fallback manufactures one third when fully stocked");
+            Near(50f / 3f,
+                HabRebalanceMath.FullMaterialMass(
                     25f,
-                    0.6f,
                     HabRebalanceMath.ConstructionRate(true)),
                 0.0001f,
-                "rounded-mass upgrade mandatory Earth mass");
-            Near(15f,
-                HabRebalanceMath.OrdinaryMaterialMass(25f, 0.6f, 1f),
+                "upgrades charge two thirds of full physical mass");
+            Near(0f,
+                HabRebalanceMath.PropellantMass(10f, 0d, 2.11d),
+                0f,
+                "same-hab manufacturing consumes no freight propellant");
+            Near(10f * (float)(Math.Exp(1d / 2.11d) - 1d),
+                HabRebalanceMath.PropellantMass(10f, 1d, 2.11d),
                 0.0001f,
-                "rounded-mass module preserves vanilla material tonnage");
+                "space freight uses the probe rocket equation");
+            Near(1f,
+                HabRebalanceMath.EffectiveExportTier(3, 1),
+                0f,
+                "dock tier caps factory exports");
+            Near(0f,
+                HabRebalanceMath.EffectiveExportTier(3, 0),
+                0f,
+                "undocked factory has no remote export tier");
+            Near(45f,
+                HabRebalanceMath.LogisticsPairPriority(
+                    false,
+                    true,
+                    true,
+                    1f),
+                0f,
+                "AI prioritizes its first Earth-Moon logistics pair");
+            Near(34f,
+                HabRebalanceMath.LogisticsPairPriority(
+                    false,
+                    true,
+                    false,
+                    1f),
+                0f,
+                "AI prioritizes its first logistics pair in another system");
+            Near(0f,
+                HabRebalanceMath.LogisticsPairPriority(
+                    true,
+                    true,
+                    true,
+                    1f),
+                0f,
+                "AI does not duplicate an existing logistics pair");
+            Near(0f,
+                HabRebalanceMath.LogisticsPairPriority(
+                    false,
+                    false,
+                    true,
+                    1f),
+                0f,
+                "AI only boosts candidates that complete a same-hab pair");
             Near(2f,
                 HabRebalanceMath.NormalizeMaterialCost(
                     0.6666666f,

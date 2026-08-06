@@ -1,12 +1,23 @@
 [CmdletBinding()]
 param(
     [Parameter(Mandatory = $true)]
+    [string]$TargetManagedDir,
+    [Parameter(Mandatory = $true)]
     [string]$ModAssemblyPath
 )
 
 $ErrorActionPreference = 'Stop'
 if (-not (Test-Path -LiteralPath $ModAssemblyPath)) {
     throw "Mod assembly not found: $ModAssemblyPath"
+}
+
+function Load-AssemblyBytes {
+    param([string]$Path)
+
+    if (-not (Test-Path -LiteralPath $Path)) {
+        throw "Required logistics validation assembly is missing: $Path"
+    }
+    return [Reflection.Assembly]::Load([IO.File]::ReadAllBytes($Path))
 }
 
 $ildasm = Get-ChildItem 'C:\Program Files (x86)\Microsoft SDKs\Windows' `
@@ -39,44 +50,91 @@ try {
         throw 'Could not locate HabCostFromSpaceRewritePatch.Prefix IL.'
     }
     $methodIl = $methodMatch.Value
-    $substitution = [regex]::Match(
-        $methodIl,
-        'TIResourcesCost::GetBoostSubstitutedCost\(')
-    $mandatoryBoost = [regex]::Match(
-        $methodIl,
-        'HabConstructionCostRewrite::MandatoryBoost\(')
-    $addCost = [regex]::Match(
-        $methodIl,
-        'TIResourcesCost::AddCost\(valuetype [^\r\n]*FactionResource,')
-
-    if (-not $substitution.Success -or
-        -not $mandatoryBoost.Success -or
-        -not $addCost.Success) {
-        throw 'Hab space-cost rewrite is missing substitution or mandatory-Boost IL.'
+    foreach ($requiredCall in @(
+        'HabLogistics::Quote\(',
+        'HabConstructionCostRewrite::ToResourcesCost\(')) {
+        if (-not [regex]::IsMatch($methodIl, $requiredCall)) {
+            throw "Hab space-cost rewrite is missing IL call '$requiredCall'."
+        }
     }
-    if ($substitution.Index -ge $mandatoryBoost.Index -or
-        $mandatoryBoost.Index -ge $addCost.Index) {
-        throw (
-            'Mandatory Boost must be calculated and added only after ordinary ' +
-            'material substitution.')
+    if ([regex]::IsMatch(
+        $methodIl,
+        'MandatoryBoost\(|GetBoostSubstitutedCost\(')) {
+        throw 'Legacy mandatory-Earth or direct vanilla substitution remains in the hab space-cost rewrite.'
     }
 
-    $getBoostSubstitutedCostCalls = [regex]::Matches(
-        $methodIl,
-        'TIResourcesCost::GetBoostSubstitutedCost\(').Count
-    $mandatoryBoostCalls = [regex]::Matches(
-        $methodIl,
-        'HabConstructionCostRewrite::MandatoryBoost\(').Count
-    if ($getBoostSubstitutedCostCalls -ne 1 -or $mandatoryBoostCalls -ne 1) {
-        throw (
-            'Expected exactly one ordinary-material substitution and one ' +
-            "mandatory-Boost calculation; found $getBoostSubstitutedCostCalls " +
-            "and $mandatoryBoostCalls.")
+    foreach ($patchType in @(
+        'ProbeManufacturingCostPatch',
+        'ProbeManufacturingOptionsPatch',
+        'HabLogisticsAiPriorityPatch',
+        'SystemAgnosticHabFoundingAvailabilityPatch',
+        'SystemAgnosticHabFoundingTierPatch',
+        'HabLogisticsModuleInvalidationPatch',
+        'HabLogisticsHabInvalidationPatch')) {
+        if (-not $assemblyIl.Contains("TIEconomyMod.Patches.$patchType")) {
+            throw "Missing logistics patch type '$patchType'."
+        }
     }
 
-    Write-Host (
-        'PASS: ordinary materials are substituted before mandatory Boost is ' +
-        'added, preventing double transfer scaling.')
+    if (-not $assemblyIl.Contains('TIEconomyMod.HabLogistics') -or
+        -not $assemblyIl.Contains('TIEconomyMod.HabFreightQuote')) {
+        throw 'Shared logistics route or freight cache types are missing.'
+    }
+    foreach ($removedType in @(
+        'TIEconomyMod.HabLogisticsTooltips',
+        'TIEconomyMod.Patches.HabEarthCostTooltipPatch',
+        'TIEconomyMod.Patches.ResourcesCostLogisticsTooltipPatch',
+        'TIEconomyMod.Patches.ProbeEarthCostTooltipPatch')) {
+        if ($assemblyIl.Contains($removedType)) {
+            throw "Removed multiline cost-label type '$removedType' is still present."
+        }
+    }
+
+    $harmonyAssembly = Load-AssemblyBytes (
+        Join-Path $TargetManagedDir 'UnityModManager\0Harmony.dll')
+    foreach ($unityAssembly in Get-ChildItem `
+        -LiteralPath $TargetManagedDir `
+        -File `
+        -Filter 'Unity*.dll') {
+        [void](Load-AssemblyBytes $unityAssembly.FullName)
+    }
+    [void](Load-AssemblyBytes (
+        Join-Path $TargetManagedDir 'FMODUnity.dll'))
+    [void](Load-AssemblyBytes (
+        Join-Path $TargetManagedDir 'UnityModManager\UnityModManager.dll'))
+    [void](Load-AssemblyBytes (
+        Join-Path $TargetManagedDir 'Assembly-CSharp.dll'))
+    $modAssembly = Load-AssemblyBytes $ModAssemblyPath
+    $harmonyType = $harmonyAssembly.GetType('HarmonyLib.Harmony', $true)
+    $harmonyId = 'ti.eeo.validate.hab-logistics.' +
+        [Guid]::NewGuid().ToString('N')
+    $harmony = [Activator]::CreateInstance($harmonyType, @($harmonyId))
+    try {
+        foreach ($patchTypeName in @(
+            'TIEconomyMod.Patches.HabBuildMaterialsRewritePatch',
+            'TIEconomyMod.Patches.HabBoostCostFromEarthRewritePatch',
+            'TIEconomyMod.Patches.HabCostFromSpaceRewritePatch',
+            'TIEconomyMod.Patches.SystemAgnosticHabFoundingAvailabilityPatch',
+            'TIEconomyMod.Patches.SystemAgnosticHabFoundingTierPatch',
+            'TIEconomyMod.Patches.ProbeManufacturingCostPatch',
+            'TIEconomyMod.Patches.ProbeManufacturingOptionsPatch',
+            'TIEconomyMod.Patches.HabLogisticsAiPriorityPatch',
+            'TIEconomyMod.Patches.HabLogisticsModuleInvalidationPatch',
+            'TIEconomyMod.Patches.HabLogisticsHabInvalidationPatch')) {
+            $patchType = $modAssembly.GetType($patchTypeName, $true)
+            try {
+                [void]$harmony.CreateClassProcessor($patchType).Patch()
+            }
+            catch {
+                throw "Failed applying '$patchTypeName': $($_.Exception.ToString())"
+            }
+        }
+    }
+    finally {
+        $harmony.UnpatchAll($harmonyId)
+    }
+
+    Write-Host 'PASS: hab, founding, probe, AI-priority, lazy-cache, and compact cost-label logistics IL is present.'
 }
 finally {
     $resolvedProbe = (Resolve-Path -LiteralPath $probeDirectory).Path

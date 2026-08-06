@@ -1,5 +1,8 @@
 # Military Investment: 2022-2030 Sanity Check
 
+Status: controlled calibration exercise for the implemented land-military
+formulas, not a historical forecast.
+
 This is a rough balance projection for the United States, China, and Russia
 under the version 0.8 land-military formulas. Its purpose is to test whether a
 plausible priority allocation again drives the largest powers to maximum armies
@@ -143,4 +146,3 @@ late-decade cap, not the near-automatic early saturation seen in version 0.7.
   every fractional tech change and every completed army.
 - The model shifts a blocked military allocation to the other military priority;
   once both caps are reached, additional military effort is unused.
-

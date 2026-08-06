@@ -1,6 +1,8 @@
 # Patch Sanity Audit
 
-This audit checks each Harmony patch against the directives in
+Status: current through Version 0.9.0 and Terra Invicta 1.0.51.
+
+This audit checks the major economic, national, and logistics patch families against the directives in
 `design-directives.md`. “Stock” names the quantity that prevents linear GDP/IP
 from making a proportional effect scale incorrectly.
 
@@ -57,7 +59,7 @@ ensures every conventional-gun comparison row creates that column.
 | `SpoilsSustainabilityPatch` | GDP | Aligned. Spoils damages carbon intensity, so its per-IP change falls with the economy and rises with resource dependence while Abundance is enabled. |
 | `SpoilsPropagandaPatch` | Vanilla demographic effect × configured strength | Aligned. It preserves payout, CP, corruption, and Sustainability, scales propaganda, then deletes vanilla's final direct atmospheric-emissions block. |
 | `SpoilsMoneyPatch` | Fixed payout × resources/GDP × Government | Aligned. The full $60 base is retained. The curve is continuous from no resource premium toward the configured maximum; no region-count table remains, and disabling Abundance leaves the base/Government payout. |
-| `GlobalTechnologyResearchCostPatch` | Global technology research cost | Aligned. It applies a uniform configurable x1.20 multiplier after TI computes the cost; faction projects use a different template and remain unchanged. |
+| `GlobalTechnologyResearchCostPatch` | Global technology research cost | Aligned. It applies the configurable x1.40 multiplier after TI computes the cost; faction projects use a different template and remain unchanged. |
 | `EconomyRegionThresholdPatch` | Fixed accumulated IP | Aligned. Region conversion is a fixed capital project; default x5 makes it harder without border-sensitive scaling. |
 | `DecolonizationThresholdPatch` | Fixed accumulated IP | Aligned. The threshold is a political project cost and uses the same guarded multiplier. |
 | `FalloutCleanupThresholdPatch` | Fixed accumulated IP per detonation | Aligned. Every blast costs the same to clean; damage concentration is handled separately by land area. |
@@ -66,6 +68,12 @@ ensures every conventional-gun comparison row creates that column.
 | `TIMissionTemplate.json` Purge override | Mission difficulty | Aligned. The defender's flat modifier rises from 3 to 4 while all national-scale, support, councilor, and alien modifiers remain vanilla. |
 | `TIMissionTemplate.json` Enthrall Elites override | Mission difficulty | Aligned. The defender's flat modifier rises from 2 to 3 while retaining vanilla's GDP-based target-nation defense and all other mission modifiers. |
 | `TIStartTimeTemplate.json` 2022 override | Starting global technologies | Aligned. Mission to Space and Advanced Chemical Rocketry begin completed; Outpost Habs replaces Mission to Space in the active list so the scenario retains three valid research choices. |
+| `HabBuildMaterialsRewritePatch` | Complete modified module mass | Aligned. Rebalanced human modules pay resources for their full physical mass, including upgrade and irradiation modifiers, rather than treating the former weighted share as the whole bill. |
+| `HabCostFromSpaceRewritePatch` and `HabLogistics` | Material stockpile, Earth shortage, mandatory freight, and propellant | Aligned. Materials are charged once; Earth shortages count toward the one-third transport floor; non-Earth freight pays Water/Volatiles propellant from route delta-v. Earth is the fallback only when no eligible space factory exists. |
+| Factory source registry and route resolver | Owned active factory/dock capability | Aligned. Exact-hab local manufacture uses factory tier; remote export requires a same-hab dock and uses the lower tier. Foreign, inactive, destroyed, unpowered, and decommissioning sources are excluded, and planetary-system borders do not restrict routing. |
+| Founding and probe logistics patches | Core or full probe payload | Aligned. Founding preserves non-logistics restrictions while sharing the system-agnostic network. Probes are full-payload T1 jobs and require a T1 factory-dock pair for space launch. |
+| Logistics route and cost caches | Topology/time generation and resource-balance generation | Aligned. Staleness is marked without scanning; the next request recomputes only the stale layer. Warm UI and planner calls are O(1) with respect to origin count, and no serialized cache state is added. |
+| `HabLogisticsAiPriorityPatch` | First export-capable pair per major colonized system | Aligned. The strategic bonus applies only when a factory or dock completes a same-hab pair, is strongest in Earth-Moon, and ends once a pair is present or committed. Existing dock/refueling priorities remain intact. |
 
 ## Compatibility risks deliberately guarded
 
@@ -88,6 +96,10 @@ ensures every conventional-gun comparison row creates that column.
   IDs and verification locks their additive values and the faction-effect API.
 - Resource-dependent side effects consistently observe the Abundance feature
   toggle in gameplay and tooltips.
+- Logistics validators dynamically apply the hab-cost, founding, probe,
+  AI-priority, and cache-invalidation Harmony classes against the installed
+  1.0.51 assemblies. They also reject the removed multiline cost-label patches;
+  localization packaging is checked separately.
 
 ## Deferred audit item
 

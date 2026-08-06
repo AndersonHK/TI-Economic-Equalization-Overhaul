@@ -4,9 +4,12 @@ Status: implemented as the softly canonical 0.7.0 balance. The numerical
 defaults below are now mirrored by gameplay settings, the 149-technology CSV,
 formula tests, and `tools/economy-growth-simulator.js`.
 
-This plan replaces the isolated GDP-per-capita decay in `EconomyGrowthPatch`
-with the factor-balance model defined in `design-directives.md`. It is a
-calibrated proposal, not an implementation.
+This document records the calibration that replaced the isolated GDP-per-capita
+decay in `EconomyGrowthPatch` with the factor-balance model defined in
+`design-directives.md`. The model is implemented; references to a "proposal"
+below describe its status during the historical comparison, not current scope.
+Current runtime authority is the patch, default settings, technology CSV, and
+formula tests.
 
 ## Model
 
@@ -142,7 +145,9 @@ progress axes from zero toward one.
 
 ## Climate model and comparison baselines
 
-The comparison uses TI 1.0.49's installed climate-damage code. Temperature
+The historical comparison uses TI 1.0.49's installed climate-damage code.
+Version 0.9 targets TI 1.0.51 and validates the live climate patch points
+separately. Temperature
 begins at `1.2601 C`, calculated from the 2022
 scenario's starting CO2, methane, and nitrous oxide values. It then follows a
 configurable linear path. The calibrated default reaches `2.7 C` in 2050; the
@@ -159,7 +164,8 @@ annualClimateDamage =
     * populationWeightedRegionExposure
 ```
 
-Vanilla and the deployed benchmark use that damage unchanged. The proposal
+Vanilla and the pre-0.7.0 benchmark use that damage unchanged. The implemented
+0.7.0 model
 multiplies only the resulting GDP damage by `0.90`; temperature, regional
 exposure, and Inequality feedback retain their normal meanings.
 
@@ -167,7 +173,7 @@ The installed region templates assign Beneficiary, Standard, and Vulnerable
 populations exposure weights `0`, `1`, and `2`. TI converts the annual loss to
 an equivalent compounded monthly GDP loss. Every month also adds one fifth of
 that monthly loss to Inequality; the deployed mod's existing `2x` climate
-Inequality setting is applied to the current and proposed models, while vanilla
+Inequality setting is applied to both mod benchmarks, while vanilla
 uses `1x`.
 
 The comparison baselines are:
@@ -176,9 +182,9 @@ The comparison baselines are:
   `(3 + 1.5 * resources + 1.5 * cores + 0.5 * Government + Education) *
   (population / 50M)^-0.35` dollars per person per IP.
 - **Pre-0.7.0 deployed benchmark:** monthly IP uses the mod's linear GDP formula and
-  Economy uses the current `0.33 * 0.40`, `6 * 0.96^(GDP/c / 1000)` formula.
+  Economy uses the former `0.33 * 0.40`, `6 * 0.96^(GDP/c / 1000)` formula.
 - **0.7.0:** the factor-balance formula above and the same linear-IP formula
-  as the current mod.
+  retained by the implemented mod.
 
 All three include TI's normal Unrest IP penalty. Advisers, army upkeep,
 occupation, population change, faction-project Economy modifiers, and
@@ -200,7 +206,7 @@ The following net 2022 annual rates assume 50% of monthly IP goes to a
 GDP-growing priority. They already deduct the starting climate loss. The 2050
 columns assume a path to `2.7 C` and 50% weighted technology completion. The
 deployed benchmark keeps its actual `3.7964x` full-tree productivity trajectory;
-only the proposal uses the newly calibrated `3.40x` trajectory:
+only the 0.7.0 model uses the newly calibrated `3.40x` trajectory:
 
 | Country | 0.7.0 net | Pre-0.7.0 net | Vanilla net | 0.7.0 2050 GDP/c | Pre-0.7.0 2050 GDP/c | Vanilla 2050 GDP/c |
 |---|---:|---:|---:|---:|---:|---:|
@@ -220,16 +226,16 @@ only the proposal uses the newly calibrated `3.40x` trajectory:
 The resource counterfactual is now visible in the calibration: at 50%
 allocation, resource endowment adds about `0.9` percentage points to US gross
 growth and materially more to Canada and Australia. After their different
-Unrest and TI climate-exposure penalties, the proposed net rates are about
+Unrest and TI climate-exposure penalties, the implemented net rates are about
 `2.6%`, `5.6%`, and `4.6%`, versus `2.4%` for Germany and `2.5%` for the UK.
 
 The comparison confirms that both old baselines are aggressive where it
 matters most. Even after roughly `1%` of starting climate drag, vanilla gives
-China and India about `8.6%` annual growth at 50% allocation; the current mod
+China and India about `8.6%` annual growth at 50% allocation; the pre-0.7.0 mod
 gives India `8.7%`, Brazil `8.5%`, and Indonesia `9.2%`. Vanilla has no
 GDP-per-capita return constraint at all, so its Economy effect remains
 mathematically unbounded even when the increasing climate loss eventually
-drives net growth toward zero. The current mod has a bound, but its starting
+drives net growth toward zero. The pre-0.7.0 mod has a bound, but its starting
 low-income return is too large and then collapses too sharply.
 
 Maximum technology is intentionally a post-scarcity boundary, not the expected

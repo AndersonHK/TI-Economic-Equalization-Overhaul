@@ -1,5 +1,8 @@
 # Station Slot Cardinal Map
 
+Status: implementation reference for the current T1 station-sector visibility
+patch. It maps vanilla UI topology; it does not propose additional capacity.
+
 Terra Invicta's `HabitatsScreenController.PreviewStationModule` selects each
 station cell by the key `S{sector}_M{slot}`. The corresponding
 `StationGridCell` RectTransforms are serialized in

@@ -68,6 +68,30 @@ component force and income distributions. Each merger snapshots only the two
 live pre-transfer cohorts. Keep that limitation explicit and do not introduce
 hidden historical state merely to make the operation associative.
 
+## Space construction is a logistics network
+
+The implementation authority and worked examples are in
+[Manufacturing Logistics](manufacturing-logistics.md). This section states the
+durable design rule.
+
+Hab construction pays resources for the complete physical mass. The Earth
+option purchases and launches the whole payload; the space option uses the
+faction stockpile, purchases shortages on Earth, and physically dispatches at
+least one-third of hab-module mass. Earth shipments count toward that minimum.
+Non-Earth freight consumes Water and Volatiles as rocket-equation propellant,
+including the launch and landing costs of surface origins and destinations.
+
+Factories manufacture locally through their own tier. Remote exports require a
+same-hab dock and are capped by the lower factory/dock tier; ownership must be
+explicit and planetary-system boundaries never constrain routing. Earth is the
+fallback root only when no valid space origin exists. Probes are full-payload
+Tier 1 manufacturing jobs. Route and quote caches invalidate on time, resource,
+or hab changes and refresh lazily so repeated UI and AI queries do not rescan
+every origin. Invalidation marks cached work stale; it must not perform the
+scan itself or create a daily/background rebuild. AI hab planning prioritizes
+one same-hab factory-dock pair per colonized major system, with the strongest
+priority in the Earth-Moon system.
+
 Economy, Welfare, and Spoils use a twofold per-completion increase inside their
 existing GDP-normalized Inequality formulas. Climate-driven Inequality is also
 doubled at its uniquely identified mutation reason. Events, secession, and
@@ -129,7 +153,7 @@ The softly canonical 0.7.0 calibration uses a $1B national base gain, $37,500
 labor and $55,000 resource knees, starting return floors 0.35 and 0.45,
 pressure exponents 1.4 and 1.2, and technology relief
 `p * (0.10 + 0.90p)`. The 2022 starting technologies compound to 1.0201x; all
-149 TI 1.0.49 global technologies compound to 3.40x and complete both
+149 TI 1.0.51 global technologies compound to 3.40x and complete both
 substitution axes. Change these together through the simulator rather than
 tuning one national example in isolation.
 
@@ -173,12 +197,17 @@ exposure, and climate-driven Inequality retain their existing behavior.
 ## Formula and patch style
 
 - Prefer one smooth, continuous high-school-level expression over step tables.
-- Put the complete economic logic in the patch, normally within 20-50 readable
-  lines; do not hide it behind a generic math utility.
+- Put compact economic formulas in the patch, normally within 20-50 readable
+  lines. Shared stateful systems such as logistics routing and caching belong in
+  a named service with fixed inputs and explicit invalidation.
 - Comment units, direction, representative inputs, approximate outputs, and the
   relevant vanilla contrast.
 - Prefixes return to vanilla when disabled or invalid.
 - Transpilers replace the smallest possible field/constant load, count expected
   replacements, and fail loudly if TI's IL changes.
 - Tooltip math must use the same getters or reproduce the same visible inputs as
-  gameplay. Preserve vanilla tooltip text and append the mod section.
+  gameplay. Preserve useful vanilla text and append only the concise rules and
+  live values a player needs. Fixed-height cost buttons retain their native
+  compact cost and duration labels; do not append multiline diagnostics. Do not
+  add mod labels, migration history, or comparisons with retired behavior to
+  gameplay text.

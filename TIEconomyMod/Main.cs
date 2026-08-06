@@ -31,6 +31,7 @@ namespace TIEconomyMod
                 string weightPath = Path.Combine(modEntry.Path, "Config", "economy-tech-weights.csv");
                 techWeights = TechWeightCatalog.Load(weightPath, Log, IsKnownTechnology);
                 new Harmony(modEntry.Info.Id).PatchAll();
+                HabLogistics.Clear();
                 if (TemplateManager.self != null &&
                     TemplateManager.self.Initialized)
                 {
@@ -39,7 +40,7 @@ namespace TIEconomyMod
                     ShipPowerRuntime.RefreshTemplateMassCaches();
                 }
                 CouncilorRuntimeCaps.InitializeOrganizationCap();
-                Log("Loaded TI Economic Equalization Overhaul 0.8.4 for the TI 1.0.51 API surface.");
+                Log("Loaded TI Economic Equalization Overhaul 0.9.0 for the TI 1.0.51 API surface.");
                 return true;
             }
             catch (Exception exception)

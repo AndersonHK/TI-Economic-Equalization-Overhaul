@@ -147,6 +147,19 @@ if ($duplicates) {
     throw "Duplicate feature IDs: $($duplicates.Name -join ', ')"
 }
 
+$requiredLogisticsFeatures = @(
+    'hab_logistics_cost',
+    'hab_logistics_origins',
+    'hab_logistics_founding',
+    'hab_logistics_probes',
+    'hab_logistics_cache_ui',
+    'hab_logistics_ai')
+foreach ($featureId in $requiredLogisticsFeatures) {
+    if ($featureId -notin $rows.feature_id) {
+        throw "Implementation matrix is missing Version 0.9 feature '$featureId'."
+    }
+}
+
 foreach ($row in $rows) {
     if ([string]::IsNullOrWhiteSpace($row.feature_id)) {
         throw 'A feature row has an empty feature_id.'

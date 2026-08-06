@@ -67,6 +67,7 @@ if ($LASTEXITCODE -ne 0) {
 
 powershell -NoProfile -ExecutionPolicy Bypass -File `
     (Join-Path $scriptDirectory 'validate-hab-cost-rewrite.ps1') `
+    -TargetManagedDir $resolvedManagedDir `
     -ModAssemblyPath $assemblyPath
 if ($LASTEXITCODE -ne 0) {
     exit $LASTEXITCODE
@@ -138,6 +139,10 @@ $nationLocalization = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\UINation.
 $effectLocalization = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIEffectTemplate.en'
 $technologyLocalization = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TITechTemplate.en'
 $scienceLocalization = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\UIScience.en'
+$habModuleLocalization = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIHabModuleTemplate.en'
+$projectLocalization = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIProjectTemplate.en'
+$operationLocalization = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIOperationTemplate.en'
+$codexLocalization = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\UICodex.en'
 $testExecutable = Join-Path $repositoryRoot 'tests\FormulaTests\bin\Release\TIEconomyMod.FormulaTests.exe'
 & $testExecutable $weights
 if ($LASTEXITCODE -ne 0) {
@@ -352,7 +357,7 @@ $manifest = Get-Content -LiteralPath $manifestPath -Raw | ConvertFrom-Json
 if ($manifest.GameVersion -ne '1.0.51') {
     throw "ModInfo.json targets '$($manifest.GameVersion)' instead of TI 1.0.51."
 }
-if ($manifest.Version -ne '0.8.4') {
+if ($manifest.Version -ne '0.9.0') {
     throw "ModInfo.json version '$($manifest.Version)' does not match this release."
 }
 if ($manifest.AssemblyName -ne 'Assembly/TIEconomyMod.dll') {
@@ -375,6 +380,46 @@ if ($enthrall.resolutionMethod.'$type' -ne 'TIMissionResolution_Contested' -or
     $enthrall.resolutionMethod.defendingModifiers[0].flatModifier -ne 3 -or
     $purge.resolutionMethod.defendingModifiers[0].flatModifier -ne 4) {
     throw 'Mission overrides must retain their contested resolution type and add one flat defense to Enthrall Elites and Purge.'
+}
+
+$logisticsLocalization = @(
+    $habModuleLocalization,
+    $projectLocalization,
+    $operationLocalization,
+    $codexLocalization)
+foreach ($localizationPath in $logisticsLocalization) {
+    if (-not (Test-Path -LiteralPath $localizationPath)) {
+        throw "Missing logistics localization '$localizationPath'."
+    }
+    $localizationText = Get-Content -LiteralPath $localizationPath -Raw
+    if ($localizationText -match 'same planetary system|additional Orbitals|nearby\.') {
+        throw "Legacy locality wording remains in '$localizationPath'."
+    }
+}
+if (-not (Get-Content -LiteralPath $habModuleLocalization -Raw).Contains('on the same hab') -or
+    -not (Get-Content -LiteralPath $operationLocalization -Raw).Contains('factory-dock pair in any system') -or
+    -not (Get-Content -LiteralPath $codexLocalization -Raw).Contains('reduce Boost use; Earth is the fallback')) {
+    throw 'Logistics localization does not concisely describe paired, system-agnostic routing.'
+}
+$documentationIndex = Join-Path $repositoryRoot 'docs\README.md'
+$logisticsDocumentation = Join-Path $repositoryRoot 'docs\manufacturing-logistics.md'
+foreach ($documentationPath in @($documentationIndex, $logisticsDocumentation)) {
+    if (-not (Test-Path -LiteralPath $documentationPath)) {
+        throw "Missing current documentation authority '$documentationPath'."
+    }
+}
+$logisticsDocumentationText = Get-Content -LiteralPath $logisticsDocumentation -Raw
+foreach ($requiredRule in @(
+    'P = max(0, M / 3 - E)',
+    'same-hab factory-dock pair',
+    'Earth-Moon receives the strongest priority',
+    'No invalidation performs a network scan')) {
+    if (-not $logisticsDocumentationText.Contains($requiredRule)) {
+        throw "Manufacturing logistics documentation is missing '$requiredRule'."
+    }
+}
+if ($logisticsDocumentationText -match 'same planetary system|additional Orbitals|nearby factory') {
+    throw 'Manufacturing logistics documentation retains obsolete routing wording.'
 }
 $starts = Get-Content -LiteralPath $startOverrides -Raw | ConvertFrom-Json
 $modernStart = $null
@@ -430,8 +475,8 @@ if ($assemblyFile.LastWriteTime -lt $buildStarted.AddSeconds(-2)) {
     throw 'Packaged DLL predates this verification build.'
 }
 $assemblyVersion = [Reflection.AssemblyName]::GetAssemblyName($assemblyPath).Version.ToString()
-if ($assemblyVersion -ne '0.8.4.0') {
-    throw "Assembly version '$assemblyVersion' does not match release 0.8.4."
+if ($assemblyVersion -ne '0.9.0.0') {
+    throw "Assembly version '$assemblyVersion' does not match release 0.9.0."
 }
 $assemblyHash = (Get-FileHash -LiteralPath $assemblyPath -Algorithm SHA256).Hash
 
@@ -503,12 +548,16 @@ Copy-Item -LiteralPath $nationLocalization -Destination $stagingDirectory
 Copy-Item -LiteralPath $effectLocalization -Destination $stagingDirectory
 Copy-Item -LiteralPath $technologyLocalization -Destination $stagingDirectory
 Copy-Item -LiteralPath $scienceLocalization -Destination $stagingDirectory
+Copy-Item -LiteralPath $habModuleLocalization -Destination $stagingDirectory
+Copy-Item -LiteralPath $projectLocalization -Destination $stagingDirectory
+Copy-Item -LiteralPath $operationLocalization -Destination $stagingDirectory
+Copy-Item -LiteralPath $codexLocalization -Destination $stagingDirectory
 $imagePath = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\Economic Equalization Overhaul.png'
 if (Test-Path -LiteralPath $imagePath) {
     Copy-Item -LiteralPath $imagePath -Destination $stagingDirectory
 }
 
-$zipPath = Join-Path $artifactDirectory 'TIEconomyMod-0.8.4-ti1.0.51.zip'
+$zipPath = Join-Path $artifactDirectory 'TIEconomyMod-0.9.0-ti1.0.51.zip'
 if (Test-Path -LiteralPath $zipPath) {
     Remove-Item -LiteralPath $zipPath
 }
@@ -559,6 +608,17 @@ try {
             Where-Object { $_.FullName.Replace('\', '/') -eq $packagedShipFile } |
             Select-Object -First 1)) {
             throw "Release archive is missing $packagedShipFile."
+        }
+    }
+    foreach ($packagedLogisticsLocalization in @(
+        'TIEconomyMod/TIHabModuleTemplate.en',
+        'TIEconomyMod/TIProjectTemplate.en',
+        'TIEconomyMod/TIOperationTemplate.en',
+        'TIEconomyMod/UICodex.en')) {
+        if ($null -eq ($archive.Entries |
+            Where-Object { $_.FullName.Replace('\', '/') -eq $packagedLogisticsLocalization } |
+            Select-Object -First 1)) {
+            throw "Release archive is missing $packagedLogisticsLocalization."
         }
     }
     if ($null -eq $packagedSettings -or $null -eq $packagedWeights -or

@@ -1,8 +1,16 @@
 # Ship balance research
 
-Last reviewed: 2026-08-01
+Status: evidence and planning archive. Use the dated
+[planning changelog](CHANGELOG.md) and the
+[current implementation matrix](../current-implementation-matrix.xlsx) to
+distinguish implemented values from proposals and deferred work.
 
-This dossier compares Terra Invicta's current ship-drive, power-plant, and weapon-crew values with demonstrated hardware, active prototypes, historical engineering programs, and explicitly speculative studies.
+Last reviewed: 2026-08-05
+
+This dossier compares dated Terra Invicta ship-drive, power-plant, and
+weapon-crew snapshots with demonstrated hardware, active prototypes, historical
+engineering programs, and explicitly speculative studies. Research findings do
+not change gameplay unless the changelog marks them implemented.
 
 The game data used here comes from the installed templates:
 

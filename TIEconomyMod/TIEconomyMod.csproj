@@ -93,6 +93,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Include="Core\HabLogistics.cs" />
     <Compile Include="Core\HabRebalanceMath.cs" />
     <Compile Include="Core\IndependentResearchMath.cs" />
     <Compile Include="Core\LandCombatMath.cs" />
@@ -113,6 +114,7 @@
     <Compile Include="Patches\BalancePatches.cs" />
     <Compile Include="Patches\EnvironmentUnitySpoilsPatches.cs" />
     <Compile Include="Patches\GlobalResearchPatches.cs" />
+    <Compile Include="Patches\HabLogisticsPatches.cs" />
     <Compile Include="Patches\HabRebalancePatches.cs" />
     <Compile Include="Patches\MilitaryPatches.cs" />
     <Compile Include="Patches\MilitaryIntegrationPatches.cs" />
@@ -140,6 +142,10 @@
     <None Include="ModFiles\TIHeatSinkTemplate.json" />
     <None Include="ModFiles\TIGunTemplate.json" />
     <None Include="ModFiles\TILaserWeaponTemplate.json" />
+    <None Include="ModFiles\TIHabModuleTemplate.en" />
+    <None Include="ModFiles\TIProjectTemplate.en" />
+    <None Include="ModFiles\TIOperationTemplate.en" />
+    <None Include="ModFiles\UICodex.en" />
     <None Include="ModFiles\TIMagneticGunTemplate.json" />
     <None Include="ModFiles\TIMissionTemplate.json" />
     <None Include="ModFiles\TIMetaTemplate.json" />

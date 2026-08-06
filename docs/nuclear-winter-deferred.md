@@ -1,5 +1,9 @@
 # Nuclear Winter modification — deferred
 
+Status: deferred in Version 0.9.0. Terra Invicta 1.0.51 vanilla threshold,
+cloud, and achievement behavior is preserved; the investigation below records
+the earlier 1.0.49 experiment.
+
 The proposed Nuclear Winter change is not active. Terra Invicta's vanilla
 particulate threshold, cloud behavior, and `nuclearWinter` achievement logic
 have been restored unchanged.

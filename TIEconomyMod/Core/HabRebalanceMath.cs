@@ -8,6 +8,9 @@ namespace TIEconomyMod
         internal const float MaximumRebalancedMaterialFraction = 0.75f;
         internal const float FractionTolerance = 0.0001f;
         internal const float UpgradeRate = 2f / 3f;
+        internal const float MandatoryTransportFraction = 1f / 3f;
+        internal const float EarthLogisticsPairPriority = 45f;
+        internal const float OtherLogisticsPairPriority = 34f;
         internal const int CostDecimalPlaces = 4;
 
         internal static bool HasRebalancedMaterialFraction(float materialFraction)
@@ -48,6 +51,92 @@ namespace TIEconomyMod
                 destinationAdjustedMass *
                 Math.Max(0f, materialFraction) *
                 rateMultiplier);
+        }
+
+        internal static float FullMaterialMass(
+            float destinationAdjustedMass,
+            float rateMultiplier)
+        {
+            if (destinationAdjustedMass <= 0f || rateMultiplier <= 0f)
+            {
+                return 0f;
+            }
+
+            return RoundCost(destinationAdjustedMass * rateMultiplier);
+        }
+
+        internal static float MandatoryTransportMass(
+            float materialMass,
+            float earthDeliveredMass)
+        {
+            if (materialMass <= 0f)
+            {
+                return 0f;
+            }
+
+            return RoundCost(Math.Max(
+                0f,
+                materialMass * MandatoryTransportFraction -
+                Math.Max(0f, earthDeliveredMass)));
+        }
+
+        internal static float EarthFallbackMass(
+            float materialMass,
+            float earthShortfallMass)
+        {
+            if (materialMass <= 0f)
+            {
+                return 0f;
+            }
+
+            return RoundCost(Math.Max(
+                Math.Max(0f, earthShortfallMass),
+                materialMass * MandatoryTransportFraction));
+        }
+
+        internal static float PropellantMass(
+            float payloadMass,
+            double deltaV_kps,
+            double exhaustVelocity_kps)
+        {
+            if (payloadMass <= 0f ||
+                deltaV_kps <= 0d ||
+                exhaustVelocity_kps <= 0d)
+            {
+                return 0f;
+            }
+
+            return RoundCost((float)(
+                payloadMass *
+                (Math.Exp(deltaV_kps / exhaustVelocity_kps) - 1d)));
+        }
+
+        internal static int EffectiveExportTier(int factoryTier, int dockTier)
+        {
+            if (factoryTier <= 0 || dockTier <= 0)
+            {
+                return 0;
+            }
+
+            return Math.Min(factoryTier, dockTier);
+        }
+
+        internal static float LogisticsPairPriority(
+            bool systemHasCommittedPair,
+            bool candidateCompletesPair,
+            bool earthSystem,
+            float preferenceWeight)
+        {
+            if (systemHasCommittedPair ||
+                !candidateCompletesPair ||
+                preferenceWeight <= 0f)
+            {
+                return 0f;
+            }
+
+            return (earthSystem
+                ? EarthLogisticsPairPriority
+                : OtherLogisticsPairPriority) * preferenceWeight;
         }
 
         internal static float NormalizeMaterialCost(

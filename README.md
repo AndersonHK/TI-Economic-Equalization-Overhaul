@@ -1,233 +1,259 @@
 # TI Economic Equalization Overhaul
 
-This branch targets Terra Invicta 1.0.51. It replaces opaque, border-sensitive
-priority math with configurable formulas whose economic unit is visible in each
-patch.
+Current release: **0.9.0**, targeting **Terra Invicta 1.0.51**.
 
-## Economic model
+The mod replaces opaque, border-sensitive scaling with economic units that
+remain understandable across countries, armies, habs, and spacecraft. It aims
+to preserve the structure of Terra Invicta while making scale, physical cost,
+and technological progression matter consistently.
+
+## Design direction
 
 Investment Points are linear in GDP: each $100B produces 1 monthly IP before
-the low-income modifier. Each completed IP then follows one stock rule:
+the low-income modifier. Each completion then follows the stock it changes:
 
-- fixed assets and physical cleanup have a fixed effect per IP;
-- changes to economic ratios divide by GDP;
-- changes to demographic ratios divide by population;
-- Military technology prices doctrine and every surviving army modernization
-  continuously from the current fractional technology level.
+- fixed assets and physical work have a fixed effect per IP;
+- economic ratios divide by GDP;
+- demographic ratios divide by population;
+- force-wide effects price the affected force;
+- space construction pays for material mass and physical freight.
 
-This removes the vanilla incentive to split or merge countries solely to exploit
-per-capita effects. Large nations remain intentionally better at buying fixed-cost
-assets such as Mission Control, Boost, and Armies. Resource effects use resources
-relative to GDP, so oil is economically more important to Saudi Arabia than to the
-larger and more diversified United States.
+This removes incentives to split or merge countries merely to multiply
+per-capita effects. Large nations remain intentionally better at fixed-cost
+projects such as Mission Control, Boost, and Armies. Resources are evaluated
+relative to GDP, so the same physical endowment matters more to a smaller,
+less-diversified economy.
 
-See [docs/design-directives.md](docs/design-directives.md) for the rules future
-patches must follow and [docs/patch-sanity-audit.md](docs/patch-sanity-audit.md)
-for the current patch-by-patch review.
+The durable rules are in [the design directives](docs/design-directives.md).
+The [documentation map](docs/README.md) distinguishes current authorities from
+historical research and deferred work.
 
-## Current scope
+## Implemented scope
+
+### Economy, society, and environment
 
 - Factor-balance Economy growth: capital returns are constrained by effective
   labor and resources, while all 149 global technologies compound productivity
   and progressively substitute for those constraints.
-- GDP-normalized Economy, Welfare, and Spoils Inequality effects at x2 baseline
-  strength, smooth bounded behavior on TI's 1-9 scale, and x2 climate impact.
-- GDP-only economy emissions; no direct atmospheric removal from Environment IP;
-  GDP-relative national sustainability transition; x0.90 warm-climate GDP damage; no
-  direct Spoils gas pulse; land-relative nuclear damage. Nuclear strikes retain
-  local destruction but no longer apply an instantaneous GDP penalty to every
-  human nation. The proposed Nuclear Winter trigger change is
-  [documented and deferred](docs/nuclear-winter-deferred.md).
-- x1.05 Investment Point output; Economy and Spoils share the same live
-  factor-balance GDP gain.
-- Country Control Point usage is x1.20 before the active scenario multiplier.
-  The five management technologies apply explicit exponent reductions of
-  0.02/0.03/0.05/0.05/0.05, totaling 0.20 regardless of completion order.
-- Project Control Point capacity values become additive percentages at their
-  existing 5/10/20/40/120 values and multiply the complete non-project flat
-  capacity base, including LEO and fixed scenario bonuses.
-- Councilor attributes retain the vanilla 25-point unmodified/base ceiling,
-  while traits and organizations can raise the modified total to 50. Councilors
-  may equip up to 18 organizations, and organization tier usage may consume the
-  full modified Administration total up to 50.
-- Spoils retains its full $60 base faction-cash payout and has no direct gas pulse.
-- Xenofauna capped at 5 base miltech; Purge and Enthrall Elites receive +1 defense.
-- The 2022 and 2026 scenarios start with Mission to Space and Advanced Chemical
-  Rocketry completed and Outpost Habs in the active global-technology lineup.
-- Human hab modules use approximately x1.5 physical mass, rounded to the nearest
-  five tons, while retaining vanilla space-resource tonnage; all added mass must
-  always arrive from Earth. Local-material substitution is resolved before that
-  mandatory Boost is added, so an existing Boost shortage cannot be transfer-
-  scaled a second time.
-- Human T1 stations expose visible sectors 1-3/twelve facility slots and reuse the
-  vanilla connector renderers between occupied arms while hab-list icon overlays
-  remain tier-gated. The starting ISS and Tiangong layouts, T1 crews, and crew
-  consumables are historically rescaled.
-- Research from every national Control Point share that cannot currently benefit
-  a faction—including unowned and cracked-down points—is conserved as
-  unattributed neutral research and divided evenly among the three global
-  technology slots. Faction-active and neutral shares form an exclusive
-  partition, so every base share is allocated exactly once. Neutral progress
-  receives a gray contribution segment in the research UI, cannot finish a
-  technology until a faction has contributed, and never counts toward faction
-  leadership or project unlocks.
-- Global technologies cost x1.40 research; Mission to Space, Skywatch, and We Are
-  Not Alone receive an additional x2.00 multiplier. Faction projects retain
-  vanilla costs.
+- GDP-normalized Economy, Welfare, and Spoils Inequality effects at twice
+  baseline strength, with smooth bounded behavior on TI's 1-9 scale; climate-
+  tagged Inequality changes are also doubled.
+- GDP-only Economy emissions; no direct atmospheric removal from Environment
+  IP; GDP-relative sustainability transition; 0.90 warm-climate GDP damage; no
+  direct Spoils gas pulse; land-relative nuclear damage.
+- Nuclear strikes retain local destruction but do not apply an instantaneous
+  GDP penalty to every human nation. The proposed Nuclear Winter trigger remains
+  [explicitly deferred](docs/nuclear-winter-deferred.md).
+- Economy and Spoils share the same live factor-balance GDP gain. Spoils keeps
+  its full $60 base faction-cash payout.
 - Population-normalized Unity, Knowledge, Government, Oppression, and selected
   Spoils social effects.
-- Continuous Military investment: doctrine uses a smooth logarithmic catch-up
-  cost and every eligible army adds its exact equipment upgrade cost.
-- Army construction costs `2 × 2^miltech`; repair consumes half of actual healed
-  army value as persistent Build Army debt; upkeep is `miltech / 10` at home and
-  `miltech / 3` away.
-- Land combat uses an additive strength penalty of up to -1 rating, half-strength
-  army rating modifiers, and a symmetric base-2 hit curve (25%/50%/75% at rating
-  differences -1/0/+1).
-- Peaceful unification and human-army transfer into the Alien Nation preserve
-  armies and conserve doctrine/equipment investment. Human conquest destroys
-  conquered armies. Merged Inequality still approximates the combined income
-  distribution.
-- Surgical Unity and Spoils propaganda transpilers that preserve TI 1.0.51's
-  complete priority-completion behavior.
 - Configurable region conversion, decolonization, and fallout thresholds,
-  defaulting to 5x vanilla, with gameplay and tooltip IL guarded together.
-- Expanded tooltips that append live mod calculations to vanilla text.
+  defaulting to five times vanilla.
 
-The authoritative feature comparison is
-[docs/current-implementation-matrix.xlsx](docs/current-implementation-matrix.xlsx).
-The investigated path beyond the vanilla twenty-facility ceiling is documented
-in [docs/hab-slot-expansion-assessment.md](docs/hab-slot-expansion-assessment.md).
+### Control, research, and councilors
+
+- Country Control Point usage is multiplied by 1.20 before the active scenario
+  modifier. The five management technologies independently reduce the exponent
+  by 0.02/0.03/0.05/0.05/0.05.
+- Project Control Point capacity values become additive percentages at their
+  existing 5/10/20/40/120 values and multiply the complete non-project flat
+  capacity base.
+- Councilor base attributes retain the vanilla 25-point cap; traits and
+  organizations may raise modified totals to 50. Councilors may equip up to 18
+  organizations and use the full modified Administration total.
+- National research from unowned, cracked-down, or otherwise unusable Control
+  Point shares is conserved as neutral research divided evenly among the three
+  global technology slots. It is displayed in gray and cannot finish a
+  technology without faction contribution.
+- Global technologies cost 1.40 times research. Mission to Space, Skywatch, and
+  We Are Not Alone receive an additional 2.00 multiplier; faction projects keep
+  vanilla costs.
+
+### Military and starting scenarios
+
+- Continuous Military investment combines a smooth doctrine cost with the exact
+  equipment upgrade cost of every eligible army.
+- Army construction costs `2 × 2^miltech`; upkeep is `miltech / 10` at home and
+  `miltech / 3` away. Repair creates persistent Build Army debt equal to half
+  the value actually restored.
+- Land combat uses up to a -1 additive strength penalty, half-strength situational
+  modifiers, and a symmetric base-2 hit curve: 25%/50%/75% at rating differences
+  -1/0/+1.
+- Peaceful unification and transfer into the Alien Nation preserve eligible
+  human armies and conserve doctrine/equipment value. Human conquest destroys
+  conquered armies.
+- Xenofauna is capped at 5 base Military technology; Purge and Enthrall Elites
+  receive +1 defense.
+- The 2022 and 2026 scenarios begin with Mission to Space and Advanced Chemical
+  Rocketry completed, Outpost Habs in the active global-technology lineup, and
+  the implemented historically rescaled army/navy inventories.
+
+### Habs and manufacturing logistics
+
+- Human hab modules use approximately 1.5 times physical mass, rounded to the
+  nearest five tonnes, and consume resources for that complete modified mass.
+- The full-Earth option buys all materials with Money and Boosts the complete
+  payload.
+- The space option reserves stockpile materials, purchases and Boosts shortages
+  from Earth, and transports at least one-third of construction mass. Earth
+  shortages count toward that minimum.
+- T1/T2/T3 factories manufacture through their tier. A factory serves its exact
+  hab without a dock; remote export requires an active dock or shipyard on the
+  same owned hab and is capped by the lower facility tier.
+- Routes are system-agnostic and include surface launch, transfer, and landing
+  delta-v. Non-Earth freight consumes Water/Volatiles propellant using the probe
+  rocket equation; Earth remains the fallback.
+- Hab founding and probes share the same origin rules. Probes are full-payload
+  T1 jobs and require a T1 factory-dock pair for space launch.
+- Route and cost results are cached separately and refreshed lazily. Resource
+  changes do not rescan origins; warm tooltip and planner calls are average O(1)
+  with respect to origin count.
+- AI factions prioritize completing one same-hab factory-dock pair in each major
+  colonized system, with the strongest priority in Earth-Moon.
+- Human T1 stations expose visible sectors 1-3 and twelve facility slots. T1
+  hab-list icons remain free of peripheral sector overlays; T2/T3 retain their
+  vanilla composites. Starting ISS/Tiangong layouts, T1 crews, and consumables
+  are rescaled.
+
+The complete logistics rules and examples are in
+[Manufacturing Logistics](docs/manufacturing-logistics.md).
+
+### Ships and weapons
+
+- Conventional guns may draw template-authored electrical power; reactor output,
+  module heat, radiator sizing, and firing heat gates use one coherent thermal
+  accounting chain.
+- Projectile colliders follow caliber and damaging mass, magnetic durability
+  follows damaging mass, and direct-fire AI avoids oversaturating targets while
+  preserving deliberate player targeting and missile behavior.
+- The skirmish roster reuses cached option catalogs, and gun lookup uses
+  allocation-free template identity on ordinary paths.
+- The settled fuel-cell, fission-plant, crew, hull, gun, rail, coil, and alien
+  magnetic slices are documented in the
+  [ship balance research log](docs/ship-balance-research/CHANGELOG.md). Items
+  explicitly marked proposed or deferred there are not current gameplay.
+
+The authoritative patch-by-patch comparison is the
+[current implementation matrix](docs/current-implementation-matrix.xlsx), and
+the [patch sanity audit](docs/patch-sanity-audit.md) reviews scale and
+compatibility assumptions.
 
 ## Configuration
 
 Unity Mod Manager exposes grouped settings and a reset-to-default button.
-Technology weights are tracked in
-[TIEconomyMod/ModFiles/Config/economy-tech-weights.csv](TIEconomyMod/ModFiles/Config/economy-tech-weights.csv).
+Technology weights are stored in
+[economy-tech-weights.csv](TIEconomyMod/ModFiles/Config/economy-tech-weights.csv).
 Every TI 1.0.51 global technology has productivity, labor-substitution, and
-resource-substitution weights. Unknown IDs are logged and skipped, duplicate
-IDs or zero future-axis totals fail validation, and changes require restart.
+resource-substitution weights. Unknown IDs are logged and skipped; duplicate
+IDs, invalid values, or zero future-axis totals fail validation. CSV changes
+require a restart.
+
 The packaged [default settings](TIEconomyMod/ModFiles/Settings.xml) are copied
-on release deployment so a new balance version starts from its authored values.
+during release deployment so a new balance version begins from its authored
+defaults.
 
-Version 0.8.4 removes the main-menu skirmish roster's repeated ship-option
-construction. Rows reuse a context-aware catalog of the same localized names,
-combat scores, import/alien coloring, and import option while retaining their
-own selection, tooltip, and damage-image state. Imports, localization, template
-sets, and alien eligibility invalidate the catalog. Gun power hydration also
-binds loaded `TIGunTemplate` instances by reference so ordinary power and heat
-getters avoid rebuilding and sorting scenario-tag strings; unexpected dynamic
-templates retain the scenario-aware fallback. No ship, weapon, power, heat, or
-combat balance value changes in this release.
+## Compatibility and save behavior
 
-Version 0.8.3 adds size-weighted direct-fire coordination for automatic
-ballistic targeting. Live gun, rail, coil, and plasma shots now reserve their
-vanilla-estimated damage against a target; AI and ordinary automatic Offense
-acquisition move to another ship once the target exceeds the same hull-and-armor
-kill estimate used by vanilla missile saturation. Destroyed, collided, expired,
-or passed projectiles release that reservation. Missile behavior is unchanged,
-and deliberate player primary targets and Focus fire remain authoritative.
+Version 0.9.0 is built and guarded against the installed Terra Invicta 1.0.51
+assemblies. Transpilers validate their expected IL shapes and fail verification
+when the target changes.
 
-Version 0.8.2 targets TI 1.0.51 and fixes late-save initialization when a
-faction has unlocked both powered and self-powered conventional guns. The ship
-designer now gives every conventional-gun comparison row the same Energy Usage
-column shape while retaining each gun's real zero or nonzero consumption. It
-also replaces the shared oversized conventional-projectile collider with
-caliber-sized boxes, removes the 20% forward collision-sweep margin, and gives
-naval-gun projectiles a small cumulative mass-based durability pool. Physical
-projectile damage and beam damage use the game's existing randomized damage;
-no trajectory-deflection simulation is added.
+The manufacturing source registry, cache generations, routes, and quotes are
+runtime-derived. They add no serialized state and rebuild lazily after loading,
+so existing saves remain compatible. Other affected systems likewise avoid new
+save fields unless a document explicitly says otherwise.
 
-Version 0.8.1 added generic conventional-gun electrical demand and completed the
-powered-weapon thermal chain: reactor generation now credits net electrical
-output, reactor and module heat are counted once, radiator sizing includes
-weapon conversion losses, and the firing heat gate checks actual shot heat.
-Loaded ships rebuild power and mass caches without adding save fields. Gun mass,
-projectiles, ammunition, damage, range, and firing cycles remain unchanged.
+The current release archive is:
 
-Version 0.8.0 added the land-warfare and Military-investment rework documented in
-[docs/land-warfare-and-military-investment.md](docs/land-warfare-and-military-investment.md).
-It also retains the 0.7.5 settled ship slice: Fuel Cells I-III use the
-revised efficiencies and solar-inclusive specific masses. Solid, compact-solid,
-molten-salt, and molten-core fission plants use the settled efficiencies,
-specific masses, and output caps. Crew reductions now cover the 40mm and first
-laser point-defense mounts, 6- and 8-inch batteries, and the Mk1-3 light
-railgun batteries, railgun batteries, and light rail cannons. Fuel-cell output
-caps, weapon performance, heat-sink mass, hull materials, starting engines,
-reactor crew, and alien combat changes remain deferred.
+```text
+artifacts/TIEconomyMod-0.9.0-ti1.0.51.zip
+```
 
 ## Build and verification
 
 The project targets .NET Framework 4.8. Set `TI_TARGET_MANAGED_DIR`, or let the
 build script locate Steam. References come from one selected installation so
-Harmony and Unity Mod Manager are never mixed across versions.
-On this machine that matched pair is Harmony 2.3.1.1 and Unity Mod Manager
-0.27.14; the project does not copy either binary into the repository.
+Harmony and Unity Mod Manager are not mixed across versions.
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\build.ps1
 powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\verify.ps1
 ```
 
-Verification rebuilds with warnings as errors, runs dependency-free formula
-tests, validates all 110 hab-module overrides against the installed vanilla
-templates, validates the implementation matrix against settings and Harmony
-patches, verifies the guarded councilor-cap, hab connector, and list-icon
-transpilers, checks the hab-cost substitution order, validates the 2022/2026
-starting-force inventories and navy floors, validates Control Point effects and
-localization, checks the manifest/package layout, and creates
-`artifacts/TIEconomyMod-0.8.4-ti1.0.51.zip`.
+Verification rebuilds with warnings as errors and checks:
+
+- dependency-free formula assertions;
+- every guarded TI 1.0.51 IL patch point and dynamic Harmony application;
+- all 110 hab-module overrides and logistics localization;
+- construction, founding, probe, AI-priority, lazy-cache, and compact cost-label patches;
+- the implementation matrix against settings and patch references;
+- 2022/2026 starting forces and navy floors;
+- package layout, version metadata, and release archive contents.
 
 ## Deployment
 
-In this repository, **deploy** means: run release verification, then mirror the
-contents of `TIEconomyMod/ModFiles` into
-`Mods/Enabled/Economic Equalization Overhaul` relative to the detected Terra
-Invicta install root. The destination is intentionally documented as a
-game-relative path, not as a machine-specific Steam-library path.
+In this repository, deploy means: run release verification, then mirror
+`TIEconomyMod/ModFiles` into `Mods/Enabled/Economic Equalization Overhaul`
+relative to the detected Terra Invicta install root.
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\deploy.ps1
 ```
 
-The script locates Terra Invicta through Steam library configuration or the
-`TI_GAME_INSTALL_DIR` / `TI_TARGET_MANAGED_DIR` environment variables. An
-explicit install root may be supplied with `-GameInstallDir`. Deployment mirrors
-the authored package, including release `Settings.xml`, removes stale files only
-inside the exact enabled-mod destination, and verifies every deployed file by
-SHA-256.
+The script locates the game through Steam configuration or
+`TI_GAME_INSTALL_DIR` / `TI_TARGET_MANAGED_DIR`. An explicit install root may be
+supplied with `-GameInstallDir`. It removes stale files only inside the exact
+enabled-mod destination and verifies every deployed file by SHA-256.
 
-## Smoke test
+## Smoke-test checklist
 
-Compare poor resource-rich/resource-poor, land-abundant/dense, stable/unstable,
-early/late technology, small/large GDP, and small/large army-count countries.
-Exercise all affected priorities at boundary and neutral values, then toggle each
-feature and confirm the appended tooltip agrees with the observed change. Merge
-countries with similar and dissimilar GDP/c, force structure, and population;
-verify Military technology and Inequality against the documented examples.
-For land warfare, verify undiscounted doctrine intervals at technologies 1-5
-are 500/1,000/2,000/4,000/8,000 IP and tech-4/cap-5 Military shows about
-2,883.59 discounted doctrine IP plus 32 IP per army. Build Army should cost
-32 IP at tech 4, and healing should create debt that future Build Army allocation
-repays. Compare healthy and damaged attack/defense
-ratings and verify -1/0/+1 differences show 25%/50%/75% hit odds. Peacefully
-unify unequal-tech nations and confirm surviving armies transfer and the result
-lies between their technologies; repeat through conquest and confirm conquered
-armies are destroyed. Transfer a human army's home territory into the Alien
-Nation and confirm the army survives while unrelated transfers retain vanilla
-behavior.
-For global research, compare the neutral daily rate against the sum of
-`research_month / numControlPoints` for every unowned or benefits-disabled
-Control Point, confirm all three technologies receive the same amount, and
-verify the gray UI segment is not included in any faction's contribution.
-Crack down an owned point and confirm its share moves from faction allocation
-to neutral allocation without changing the combined base amount. Set every
-faction's weight in one slot to zero and confirm neutral research waits just
-below completion until a faction contributes.
-For habs, compare Earth-built, locally supplied, and upgraded modules; confirm
-the mandatory Boost floor and Earth delivery time. At a distant base, verify that
-ample local materials plus insufficient Boost shows only the mandatory Boost
-cost and never exceeds the all-Earth Boost cost. Then load an older save and
-confirm human T1 stations expose visible sectors 1-3 while bases and alien
-stations do not. Confirm T1 hab-list icons show no peripheral sector overlays,
-while T2 and T3 icons retain their vanilla two- and four-overlay composites.
+### Economy and national systems
+
+- Compare poor/resource-rich, poor/resource-poor, land-abundant/dense,
+  stable/unstable, early/late technology, and small/large economies.
+- Exercise affected priorities at boundary and neutral values; compare each
+  appended calculation with the observed result.
+- Merge similar and dissimilar countries and verify Military technology,
+  surviving armies, and Inequality against the authoritative formulas.
+- At Military technology 4/cap 5, confirm doctrine from 4 to 5 costs about
+  2,883.59 IP plus 32 IP per army; Build Army costs 32 IP and healing creates
+  debt repaid by later Build Army investment.
+- Confirm -1/0/+1 land-combat rating differences show 25%/50%/75% hit odds.
+- Verify neutral research equals the sum of unusable national Control Point
+  shares, appears gray in all three slots, and waits below completion until a
+  faction contributes.
+
+### Habs, founding, and probes
+
+- Compare a full-Earth quote with the mixed space quote for the same module;
+  verify full material mass is charged exactly once.
+- For a 30-ton substitutable payload with 30/25/15/0 tonnes available, verify
+  Earth purchases are 0/5/15/30 tonnes and additional factory dispatch is
+  10/5/0/0 tonnes.
+- Confirm an undocked factory serves only its exact hab. Add a dock on the same
+  hab and verify remote construction works across Earth-Moon, Mars, and another
+  planetary system, subject to the lower facility tier.
+- Depower, destroy, decommission, or transfer the source and verify it is no
+  longer eligible. Allied or merely non-hostile foreign facilities must never
+  qualify.
+- Exercise orbit-to-orbit, surface-to-orbit, orbit-to-surface, and surface-to-
+  surface routes. Same-hab freight should consume zero propellant; other routes
+  should include the appropriate launch and landing delta-v.
+- Found each supported hab tier through Earth fallback, a valid remote pair, and
+  a ship kit while confirming technology, Mission Control, survey, site, and
+  capacity restrictions remain active.
+- Launch single and multiple probes from Earth and from a T1 factory-dock pair;
+  the entire space-built probe payload must travel from its origin.
+- Repeat planner and cost requests before and after resource spending, time
+  advancement, and hab changes; stale results should refresh only when requested.
+
+### Compatibility and UI
+
+- Load an older save and verify caches rebuild without save errors.
+- Confirm T1 human stations expose sectors 1-3 while bases and alien stations do
+  not, and T1/T2/T3 hab-list overlays retain their intended tier behavior.
+- Review module, project, operation, and Codex text for the concise rule: local
+  factory; same-hab dock for export; lower tier caps; any-system route; less
+  Boost; Earth fallback. Earth and space purchase buttons should retain their
+  native compact costs and duration without appended route diagnostics.

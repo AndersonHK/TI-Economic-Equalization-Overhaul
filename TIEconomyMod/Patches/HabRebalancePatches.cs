@@ -70,44 +70,6 @@ namespace TIEconomyMod.Patches
             return spaceBody;
         }
 
-        internal static float MandatoryEarthMass(
-            TIHabModuleTemplate template,
-            TISpaceBodyState spaceBody,
-            TIFactionState faction,
-            TIGameState destination,
-            float rateMultiplier)
-        {
-            float nominalMass = template.Mass_tons(
-                1f,
-                spaceBody,
-                destination.ref_naturalSpaceObject,
-                faction);
-            return HabRebalanceMath.MandatoryEarthMass(
-                nominalMass,
-                MaterialFraction(template.weightedBuildMaterials),
-                rateMultiplier);
-        }
-
-        internal static float MandatoryBoost(
-            TIHabModuleTemplate template,
-            TISpaceBodyState spaceBody,
-            TIFactionState faction,
-            TIGameState destination,
-            float rateMultiplier)
-        {
-            float earthMass = MandatoryEarthMass(
-                template,
-                spaceBody,
-                faction,
-                destination,
-                rateMultiplier);
-            return HabRebalanceMath.RoundCost(
-                (float)TISpaceObjectState.GenericTransferBoostFromEarthSurface(
-                    faction,
-                    destination,
-                    earthMass));
-        }
-
         internal static float MaterialValue(
             ResourceCostBuilder materials,
             FactionResource resource)
@@ -203,17 +165,55 @@ namespace TIEconomyMod.Patches
             TIFactionState faction,
             TIGameState destination)
         {
-            float transferDays =
-                TISpaceObjectState.GenericTransferTimeFromEarthsSurface_d(
-                    faction,
-                    destination);
-            transferDays += TIEffectsState.SumEffectsModifiers(
-                Context.GenericModuleTransferTime,
-                faction,
-                transferDays,
-                null);
-            return transferDays;
+            return HabLogistics.EarthTransferTime(faction, destination);
         }
+
+        internal static TIResourcesCost ToResourcesCost(
+            TIFactionState faction,
+            TIGameState destination,
+            HabFreightQuote quote)
+        {
+            TIResourcesCost cost = new TIResourcesCost();
+            float money = 0f;
+            for (int index = 0;
+                index < HabLogistics.MaterialResources.Length;
+                index++)
+            {
+                FactionResource resource =
+                    HabLogistics.MaterialResources[index];
+                if (quote.StockpileCosts[index] > 0f)
+                {
+                    cost.AddCost(resource, quote.StockpileCosts[index], false);
+                }
+
+                if (quote.EarthPurchaseCosts[index] > 0f)
+                {
+                    money += quote.EarthPurchaseCosts[index] *
+                        TIGlobalValuesState.GlobalValues
+                            .GetPurchaseResourceMarketValue(resource);
+                }
+            }
+
+            if (money > 0f)
+            {
+                cost.AddCost(FactionResource.Money, money, false);
+            }
+
+            if (quote.EarthFreightMass_tons > 0f)
+            {
+                cost.AddCost(
+                    FactionResource.Boost,
+                    HabRebalanceMath.RoundCost((float)
+                        TISpaceObjectState.GenericTransferBoostFromEarthSurface(
+                            faction,
+                            destination,
+                            quote.EarthFreightMass_tons)),
+                    false);
+            }
+
+            return cost;
+        }
+
     }
 
     [HarmonyPatch(typeof(TIHabModuleTemplate), nameof(TIHabModuleTemplate.BuildMaterials))]
@@ -250,9 +250,8 @@ namespace TIEconomyMod.Patches
                 HabConstructionCostRewrite.MaterialFraction(
                     __instance.weightedBuildMaterials);
             float ordinaryMaterialCost =
-                HabRebalanceMath.OrdinaryMaterialMass(
+                HabRebalanceMath.FullMaterialMass(
                     nominalMass,
-                    materialWeightSum,
                     multiplier) *
                 TemplateManager.global.spaceResourceToTons;
 
@@ -346,19 +345,12 @@ namespace TIEconomyMod.Patches
             float ordinaryMass =
                 HabConstructionCostRewrite.SumMaterials(ordinaryMaterials) /
                 TemplateManager.global.spaceResourceToTons;
-            float mandatoryMass =
-                HabConstructionCostRewrite.MandatoryEarthMass(
-                    __instance,
-                    spaceBody,
-                    faction,
-                    destination,
-                    rateMultiplier);
 
             __result = HabRebalanceMath.RoundCost(
                 (float)TISpaceObjectState.GenericTransferBoostFromEarthSurface(
                     faction,
                     destination,
-                    ordinaryMass + mandatoryMass));
+                    ordinaryMass));
             return false;
         }
     }
@@ -400,38 +392,42 @@ namespace TIEconomyMod.Patches
                 destinationState.ref_naturalSpaceObject,
                 faction,
                 rateMultiplier);
-            TIResourcesCost cost = materials.ToResourcesCost(1f);
+            HabFreightQuote quote = HabLogistics.Quote(
+                faction,
+                destinationState,
+                __instance.tier,
+                materials,
+                false,
+                true,
+                substituteBoost &&
+                    (faction.IsActiveHumanFaction ||
+                     GameStateManager.AlienNation().extant));
+            TIResourcesCost cost = HabConstructionCostRewrite.ToResourcesCost(
+                faction,
+                destinationState,
+                quote);
 
-            if (substituteBoost &&
-                !cost.CanAfford(faction, 1f, null, float.PositiveInfinity) &&
-                (faction.IsActiveHumanFaction ||
-                 GameStateManager.AlienNation().extant))
-            {
-                cost = cost.GetBoostSubstitutedCost(
-                    faction,
-                    destinationState,
-                    true,
-                    null);
-            }
-
-            // Vanilla substitution treats every replaceable shortage as cargo
-            // mass. Add compulsory Boost only after that pass so an existing
-            // Boost shortage is not converted by the transfer formula again.
-            float mandatoryBoost =
-                HabConstructionCostRewrite.MandatoryBoost(
-                    __instance,
-                    spaceBody,
-                    faction,
-                    destinationState,
-                    rateMultiplier);
-            cost.AddCost(FactionResource.Boost, mandatoryBoost, false);
-
-            float transferTime = HabRebalanceMath.HasEarthDelivery(
-                cost.GetSingleCostValue(FactionResource.Boost))
+            float earthTransferTime = quote.EarthFreightMass_tons > 0f
                 ? HabConstructionCostRewrite.EarthTransferTime(
                     faction,
                     destinationState)
                 : 0f;
+            float spaceTransferTime = 0f;
+            if (!quote.Route.IsEarthFallback &&
+                quote.SpacePayloadMass_tons > 0f)
+            {
+                float baseTransferTime = quote.Route.TransferTime_days;
+                spaceTransferTime = baseTransferTime +
+                    TIEffectsState.SumEffectsModifiers(
+                        Context.GenericModuleTransferTime,
+                        faction,
+                        baseTransferTime,
+                        null);
+            }
+
+            float transferTime = Mathf.Max(
+                earthTransferTime,
+                spaceTransferTime);
             float completionTime =
                 __instance.buildTime_Days *
                 TIGlobalValuesState.GetHabModuleConstructionTimeSettingsModifier(

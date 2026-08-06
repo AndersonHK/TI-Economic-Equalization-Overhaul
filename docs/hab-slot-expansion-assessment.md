@@ -1,5 +1,9 @@
 # Hab Facility Capacity Beyond 20
 
+Status: feasibility assessment, not implemented in Version 0.9. The current mod
+reveals the existing T1 station sectors and twelve T1 facility slots; it does
+not expand the vanilla maximum facility count.
+
 ## Current structural limit
 
 Vanilla station state is organized as five sectors:

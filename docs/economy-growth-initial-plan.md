@@ -1,6 +1,14 @@
-Documented in [design-directives.md](C:/Users/imper/Documents/GitHub/TI-Economic-Equalization-Overhaul/docs/design-directives.md:56). I also marked the current exponential formula as needing revision in [patch-sanity-audit.md](C:/Users/imper/Documents/GitHub/TI-Economic-Equalization-Overhaul/docs/patch-sanity-audit.md:14).
+# Initial Economy Growth Plan
 
-## New Economy growth plan
+Status: historical and superseded. The implemented model and accepted constants
+are documented in [Economy Growth Calibration](economy-growth-calibration-plan.md)
+and [Design Directives](design-directives.md).
+
+This file preserves the exploratory sequence that led to the factor-balance
+model. Future work should not treat its tentative ranges or future-tense tasks
+as current implementation requirements.
+
+## Proposed model at the time
 
 ### 1. Represent the two complementary constraints
 
@@ -40,9 +48,9 @@ Then:
 ```text
 GDP gain per IP =
     calibrated base gain
-    × technology productivity
-    × laborConstraint
-    × resourceConstraint
+    Ã— technology productivity
+    Ã— laborConstraint
+    Ã— resourceConstraint
 ```
 
 This produces the intended behavior:
@@ -89,7 +97,7 @@ axisProgress =
     completed axis weight / total available axis weight
 
 axisFloor =
-    modernFloor + (1 - modernFloor) × axisProgress
+    modernFloor + (1 - modernFloor) Ã— axisProgress
 ```
 
 As labor substitution approaches 100%, `laborFloor` approaches `1`, making the labor constraint flat. Resource substitution behaves the same way. Only when both approach one does capital become effectively independent of both constraints.
@@ -100,19 +108,19 @@ Technology productivity remains the compounded lift applied to the entire curve.
 
 Initial calibration ranges:
 
-- Strong growth should remain readily available through roughly $15k–$25k GDP/c.
-- The modern logistical knee should begin around $30k–$50k effective GDP/c, depending on labor quality and resources.
-- Developed economies should face noticeable—not catastrophic—diminishing returns.
+- Strong growth should remain readily available through roughly $15kâ€“$25k GDP/c.
+- The modern logistical knee should begin around $30kâ€“$50k effective GDP/c, depending on labor quality and resources.
+- Developed economies should face noticeableâ€”not catastrophicâ€”diminishing returns.
 - Resource-rich or highly educated countries should reach the knee later.
 - Unstable countries should be unable to exploit their nominal factor abundance fully.
 
-Target Economy-only growth at approximately 20–25% priority allocation:
+Target Economy-only growth at approximately 20â€“25% priority allocation:
 
 | Country type | Initial annual target |
 |---|---:|
-| Stable developed | 2–3% |
-| Stable middle-income | 3–5% |
-| Stable developing/catch-up | 4–7% |
+| Stable developed | 2â€“3% |
+| Stable middle-income | 3â€“5% |
+| Stable developing/catch-up | 4â€“7% |
 | Unstable or institutionally weak | Below comparable stable countries |
 
 Spoils allocation adds the same GDP growth and must be included when evaluating actual national outcomes.
@@ -120,7 +128,7 @@ Spoils allocation adds the same GDP growth and must be included when evaluating 
 At maximum economic technology:
 
 - Holding other factors equal, GDP/c should change marginal capital return by less than roughly 5%.
-- Sustained 20% Economy allocation may produce approximately 10–20% annual growth.
+- Sustained 20% Economy allocation may produce approximately 10â€“20% annual growth.
 - Earlier technology levels must not reach post-scarcity growth accidentally.
 
 ### 6. Build the simulator before patching gameplay
@@ -140,7 +148,7 @@ It will chart:
 - GDP/c gained per IP.
 - Annual growth at selected Economy/Spoils allocations.
 - Labor and resource constraint contributions.
-- Technology’s benefit at different capital intensities.
+- Technologyâ€™s benefit at different capital intensities.
 
 We will select constants from these results before changing gameplay.
 
@@ -163,7 +171,7 @@ The final patch should remain readable in one place:
 
 - Remove the old `pcgdpScale`, `pcgdpDecay`, and `pcgdpDecayInterval`.
 - Calculate the two pressures and logistic constraints inline in `EconomyGrowthPatch`.
-- Keep the patch around 30–50 readable lines with representative numerical comments.
+- Keep the patch around 30â€“50 readable lines with representative numerical comments.
 - Do not add a generic math helper.
 - Update the Economy tooltip to show the final Economy/Spoils return plus labor, resource, and technology factors.
 - Update the simulator, tests, settings defaults, technology CSV validation, and implementation matrix together.

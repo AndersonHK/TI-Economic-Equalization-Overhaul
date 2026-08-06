@@ -1,5 +1,9 @@
 # Economy Growth Simulator
 
+Status: reproducible calibration record for the implemented factor-balance
+defaults. Its vanilla 1.0.49 comparison is a historical benchmark; Version 0.9
+runtime compatibility is validated against Terra Invicta 1.0.51.
+
 ## Purpose
 
 `tools/economy-growth-simulator.js` is the reproducible calibration harness for
@@ -125,15 +129,15 @@ forecast.
 
 For vanilla, all selected growth allocation is treated as Economy because
 vanilla Spoils does not add GDP. This gives vanilla the favorable comparison.
-The current and proposed models allow the allocation to represent any mix of
+Both mod models allow the allocation to represent any mix of
 Economy and Spoils because both are intended to buy the same fixed GDP gain.
 
 ## Calibration Process
 
 Each calibration round uses the following sequence:
 
-1. **Preserve the benchmarks.** Vanilla and deployed formulas remain unchanged;
-   only the proposal and scenario assumptions may be tuned.
+1. **Preserve the benchmarks.** Vanilla and pre-0.7.0 formulas remain unchanged;
+   only the 0.7.0 candidate and scenario assumptions may be tuned.
 2. **Run shape tests.** Compare capital-only doubling, proportional doubling of
    all factors, zero resources, extreme density, zero/max technology, and high
    GDP per capita.
@@ -202,7 +206,7 @@ At 25%, 50%, and 75% weighted progress, the new curve supplies approximately
 `61%`. Every technology still helps immediately, but the earliest part of the
 tree is less linear and the strongest substitution effects remain late-game.
 
-With 50% progress and the milder `2.7 C` climate path, the proposal reaches
+With 50% progress and the milder `2.7 C` climate path, the 0.7.0 candidate reaches
 approximately `$127k` US GDP/c, `$230k` Canadian GDP/c, `$164k` Australian
 GDP/c, `$108k` German GDP/c, `$96k` UK GDP/c, `$71k` Chinese GDP/c, and `$25k`
 Indian GDP/c in 2050. Starting rates are unchanged because both rounds begin

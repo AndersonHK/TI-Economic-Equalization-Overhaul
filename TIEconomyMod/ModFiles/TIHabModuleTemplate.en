@@ -1,0 +1,6 @@
+TIHabModuleTemplate.description.ConstructionModule=Speeds construction and manufactures Tier 1 modules at this hab. Pair with an active Space Dock on the same hab to export Tier 1 construction and probes from space resources, reducing Boost use.
+TIHabModuleTemplate.description.Nanofactory=Speeds construction and manufactures Tier 1-2 modules at this hab. Pair with an active dock or shipyard on the same hab to export; export tier is the lower facility tier.
+TIHabModuleTemplate.description.NanofacturingComplex=Speeds construction and manufactures Tier 1-3 modules at this hab. Pair with an active dock, shipyard, or spaceworks on the same hab to export; export tier is the lower facility tier.
+HabModuleSpecialRule.CanFoundTier1Habs=-Manufactures Tier 1 payloads here; remote export requires a dock on this hab
+HabModuleSpecialRule.CanFoundTier2Habs=-Manufactures Tier 2 payloads here; remote export requires a dock or shipyard on this hab
+HabModuleSpecialRule.CanFoundTier3Habs=-Manufactures Tier 3 payloads here; remote export requires a dock, shipyard, or spaceworks on this hab
