@@ -83,7 +83,7 @@ namespace TIEconomyMod.Patches
     public static class EnvironmentCo2RemovalPatch
     {
         [HarmonyPrefix]
-        public static bool Prefix(ref float __result, TINationState __instance)
+        public static bool Prefix(ref float __result)
         {
             EnvironmentSettings settings = Main.settings.environment;
             if (!Main.FeatureEnabled(settings.enabled))
@@ -91,20 +91,10 @@ namespace TIEconomyMod.Patches
                 return true;
             }
 
-            // Direct atmospheric removal is a fixed physical return per IP, not a return
-            // per citizen. A nation with 10x the GDP has about 10x the IP and therefore
-            // removes about 10x as much under equal priority allocation. Vanilla 1.0.51
-            // divides this effect by its nonlinear population-scaling factor.
-            float baseChange = TemplateManager.global.WelCO2_ppm;
-            float calculated = (baseChange + TIEffectsState.SumEffectsModifiers(
-                Context.Welfare_CO2_ppm, __instance, baseChange, null)) *
-                settings.atmosphericRemovalMultiplier;
-            if (float.IsNaN(calculated) || float.IsInfinity(calculated))
-            {
-                Main.Warn("Environment CO2 removal produced an invalid value; retaining vanilla.");
-                return true;
-            }
-            __result = calculated;
+            // Environment IP changes national Sustainability until it reaches zero.
+            // Vanilla calls this getter for subsequent completions and subtracts the
+            // result directly from the shared atmosphere; suppress that global pulse.
+            __result = 0f;
             return false;
         }
     }
@@ -113,7 +103,7 @@ namespace TIEconomyMod.Patches
     public static class EnvironmentMethaneRemovalPatch
     {
         [HarmonyPrefix]
-        public static bool Prefix(ref float __result, TINationState __instance)
+        public static bool Prefix(ref float __result)
         {
             EnvironmentSettings settings = Main.settings.environment;
             if (!Main.FeatureEnabled(settings.enabled))
@@ -121,19 +111,7 @@ namespace TIEconomyMod.Patches
                 return true;
             }
 
-            // Methane follows the same fixed-capital rule as CO2: the configured vanilla
-            // amount and project modifiers apply once per completed IP, with no population
-            // divisor. Ten times the available IP therefore buys ten times the cleanup.
-            float baseChange = TemplateManager.global.WelCH4_ppm;
-            float calculated = (baseChange + TIEffectsState.SumEffectsModifiers(
-                Context.Welfare_CH4_ppm, __instance, baseChange, null)) *
-                settings.atmosphericRemovalMultiplier;
-            if (float.IsNaN(calculated) || float.IsInfinity(calculated))
-            {
-                Main.Warn("Environment methane removal produced an invalid value; retaining vanilla.");
-                return true;
-            }
-            __result = calculated;
+            __result = 0f;
             return false;
         }
     }
@@ -142,7 +120,7 @@ namespace TIEconomyMod.Patches
     public static class EnvironmentNitrousOxideRemovalPatch
     {
         [HarmonyPrefix]
-        public static bool Prefix(ref float __result, TINationState __instance)
+        public static bool Prefix(ref float __result)
         {
             EnvironmentSettings settings = Main.settings.environment;
             if (!Main.FeatureEnabled(settings.enabled))
@@ -150,19 +128,7 @@ namespace TIEconomyMod.Patches
                 return true;
             }
 
-            // Nitrous oxide also remains a fixed cleanup return per IP. This preserves
-            // live TI and project modifiers while removing vanilla's population divisor,
-            // so national size changes total spending rather than the value of each IP.
-            float baseChange = TemplateManager.global.WelN2O_ppm;
-            float calculated = (baseChange + TIEffectsState.SumEffectsModifiers(
-                Context.Welfare_N2O_ppm, __instance, baseChange, null)) *
-                settings.atmosphericRemovalMultiplier;
-            if (float.IsNaN(calculated) || float.IsInfinity(calculated))
-            {
-                Main.Warn("Environment nitrous-oxide removal produced an invalid value; retaining vanilla.");
-                return true;
-            }
-            __result = calculated;
+            __result = 0f;
             return false;
         }
     }

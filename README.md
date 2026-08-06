@@ -32,8 +32,8 @@ for the current patch-by-patch review.
   and progressively substitute for those constraints.
 - GDP-normalized Economy, Welfare, and Spoils Inequality effects at x2 baseline
   strength, smooth bounded behavior on TI's 1-9 scale, and x2 climate impact.
-- GDP-only economy emissions; fixed atmospheric removal per completed IP;
-  GDP-relative sustainability transition; x0.90 warm-climate GDP damage; no
+- GDP-only economy emissions; no direct atmospheric removal from Environment IP;
+  GDP-relative national sustainability transition; x0.90 warm-climate GDP damage; no
   direct Spoils gas pulse; land-relative nuclear damage. Nuclear strikes retain
   local destruction but no longer apply an instantaneous GDP penalty to every
   human nation. The proposed Nuclear Winter trigger change is

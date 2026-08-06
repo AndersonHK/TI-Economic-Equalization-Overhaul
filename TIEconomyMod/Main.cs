@@ -412,7 +412,6 @@ namespace TIEconomyMod
         public float minimumGdpBillions = 1f;
         public float falloutReferenceAreaKm2 = 100000f;
         public float minimumLandAreaKm2 = 1f;
-        public float atmosphericRemovalMultiplier = 1f;
         public bool climateGdpDamageEnabled = true;
         public float climateGdpDamageMultiplier = 0.90f;
     }
@@ -634,7 +633,6 @@ namespace TIEconomyMod
             RepairPositive(ref value.environment.minimumGdpBillions, defaults.environment.minimumGdpBillions, "environment.minimumGdpBillions", log);
             RepairPositive(ref value.environment.falloutReferenceAreaKm2, defaults.environment.falloutReferenceAreaKm2, "environment.falloutReferenceAreaKm2", log);
             RepairPositive(ref value.environment.minimumLandAreaKm2, defaults.environment.minimumLandAreaKm2, "environment.minimumLandAreaKm2", log);
-            RepairNonNegative(ref value.environment.atmosphericRemovalMultiplier, defaults.environment.atmosphericRemovalMultiplier, "environment.atmosphericRemovalMultiplier", log);
             RepairRange(ref value.environment.climateGdpDamageMultiplier, defaults.environment.climateGdpDamageMultiplier, 0f, 1f, "environment.climateGdpDamageMultiplier", log);
             RepairPositive(ref value.emissions.tonsPerGdpBillion, defaults.emissions.tonsPerGdpBillion, "emissions.tonsPerGdpBillion", log);
             RepairRange(ref value.emissions.maximumResourceIntensityMultiplier, defaults.emissions.maximumResourceIntensityMultiplier, 1f, 100f, "emissions.maximumResourceIntensityMultiplier", log);

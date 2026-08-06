@@ -10,7 +10,7 @@ therefore buy a legible quantity, and any divisor must describe the stock being
 changed:
 
 - Fixed assets or physical work use a fixed effect per IP. Mission Control,
-  Boost, Armies, direct atmospheric removal, and fallout cleanup are examples.
+  Boost, Armies, and fallout cleanup are examples.
 - Economic proportions divide by GDP. Sustainability/carbon intensity,
   Inequality, and similar national economic ratios must not change faster merely
   because a large economy produces more IP.
@@ -157,8 +157,9 @@ intensity; it does not inject a second direct atmospheric gas pulse.
 
 Sustainability transition divides by GDP: replacing ten times as much dirty
 capital takes roughly ten times the IP. Rich grids receive no automatic advantage
-over poorer economies that can leapfrog legacy infrastructure. Direct atmospheric
-removal is fixed physical work per IP.
+over poorer economies that can leapfrog legacy infrastructure. Environment IP
+reduces national carbon intensity only; once Sustainability reaches zero, further
+completions do not remove gases directly from the shared atmosphere.
 
 Nuclear damage is proportional to detonations per land area, so a strike is more
 concentrated in Singapore than Kazakhstan. Cleanup cost remains fixed per

@@ -663,18 +663,21 @@ namespace TIEconomyMod.Patches
                     }
                     float falloutLoad = detonations * environment.falloutReferenceAreaKm2 /
                         Math.Max(landArea, environment.minimumLandAreaKm2);
-                    section.Append("Sustainability ").Append(
-                            nation.environmentPrioritySustainabilityChange
-                                .ToString("+0.####;-0.####;0"))
-                        .Append(" (fallout x").Append((1f / (1f + falloutLoad)).ToString("0.###"))
-                        .Append("); fixed removal CO2 ")
-                        .Append(nation.EnvPriorityCO2Removed().ToString("+0.####;-0.####;0"))
-                        .Append(", CH4 ")
-                        .Append(nation.EnvPriorityCH4Removed().ToString("+0.####;-0.####;0"))
-                        .Append(", N2O ")
-                        .Append(nation.EnvPriorityN2ORemoved().ToString("+0.####;-0.####;0"))
-                        .AppendLine()
-                        .Append("Warm-climate GDP damage x")
+                    if (nation.sustainability > 0f)
+                    {
+                        section.Append("Sustainability ").Append(
+                                nation.environmentPrioritySustainabilityChange
+                                    .ToString("+0.####;-0.####;0"))
+                            .Append(" (fallout x")
+                            .Append((1f / (1f + falloutLoad)).ToString("0.###"))
+                            .AppendLine("); reduces national economy emissions only.");
+                    }
+                    else
+                    {
+                        section.AppendLine(
+                            "Sustainability is zero; additional Environment IP does not remove atmospheric gases.");
+                    }
+                    section.Append("Warm-climate GDP damage x")
                         .Append((environment.climateGdpDamageEnabled
                             ? environment.climateGdpDamageMultiplier
                             : 1f).ToString("0.###"))

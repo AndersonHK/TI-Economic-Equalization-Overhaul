@@ -400,7 +400,6 @@ namespace TIEconomyMod
         public float minimumGdpBillions = 1f;
         public float falloutReferenceAreaKm2 = 100000f;
         public float minimumLandAreaKm2 = 1f;
-        public float atmosphericRemovalMultiplier = 1f;
         public bool climateGdpDamageEnabled = true;
         public float climateGdpDamageMultiplier = 0.90f;
     }

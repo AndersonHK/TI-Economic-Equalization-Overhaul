@@ -45,9 +45,9 @@ ensures every conventional-gun comparison row creates that column.
 | `InequalityMergerPatch` | Two population income distributions | Aligned. Population shares, GDP/c separation, existing distribution width, and the finite-sample correction approximate the merged Gini without a step table or arbitrary disparity bonus. |
 | `OppressionUnrestPatch` | Population | Aligned. Repression has diminishing effectiveness in democratic systems and cannot drive Unrest below zero in one completion. |
 | `EnvironmentSustainabilityPatch` | GDP; fallout per land area | Aligned. Transition cost follows the dirty capital stock; concentrated nuclear damage makes progress harder without changing cleanup IP per blast. |
-| `EnvironmentCo2RemovalPatch` | Fixed atmospheric quantity per IP | Aligned. No demographic divisor; larger economies remove more only by spending more IP. |
-| `EnvironmentMethaneRemovalPatch` | Fixed atmospheric quantity per IP | Aligned for the same reason as CO2. |
-| `EnvironmentNitrousOxideRemovalPatch` | Fixed atmospheric quantity per IP | Aligned for the same reason as CO2. |
+| `EnvironmentCo2RemovalPatch` | No direct atmospheric removal | Aligned. Environment IP reduces national carbon intensity; completions at zero Sustainability return no global CO2 pulse. |
+| `EnvironmentMethaneRemovalPatch` | No direct atmospheric removal | Aligned. Completions at zero Sustainability return no global methane pulse. |
+| `EnvironmentNitrousOxideRemovalPatch` | No direct atmospheric removal | Aligned. Completions at zero Sustainability return no global nitrous-oxide pulse. |
 | `ClimateGdpDamagePatch` | Vanilla warm-climate GDP damage | Aligned. It scales only negative common-method results above 0.25 C by the configured x0.90, keeping gameplay and climate displays synchronized while leaving cold/neutral outcomes and climate Inequality unchanged. |
 | `EconomyEmissionsPatch` | GDP × carbon intensity | Aligned. GDP, not population or borders, produces emissions; resources/GDP adds a bounded extractive-economy intensity premium. |
 | `UnityCohesionPatch` | Population | Aligned. Population scaling prevents unified countries becoming easier to homogenize; Education and Government reduce the effect with a floor. |

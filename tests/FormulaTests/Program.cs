@@ -1051,9 +1051,18 @@ namespace TIEconomyMod.FormulaTests
             EnvironmentSustainabilityPatch.Prefix(ref result, nation);
             True(Math.Abs(result) < 0.001f, "small countries suffer denser nuclear damage");
 
-            EnvironmentCo2RemovalPatch.Prefix(ref result, nation);
-            Near(TemplateManager.global.WelCO2_ppm, result, 0f,
-                "atmospheric cleanup is fixed per IP");
+            result = 123f;
+            True(!EnvironmentCo2RemovalPatch.Prefix(ref result),
+                "CO2 atmospheric cleanup is suppressed");
+            Near(0f, result, 0f, "Environment IP does not remove global CO2");
+            result = 123f;
+            True(!EnvironmentMethaneRemovalPatch.Prefix(ref result),
+                "methane atmospheric cleanup is suppressed");
+            Near(0f, result, 0f, "Environment IP does not remove global methane");
+            result = 123f;
+            True(!EnvironmentNitrousOxideRemovalPatch.Prefix(ref result),
+                "nitrous-oxide atmospheric cleanup is suppressed");
+            Near(0f, result, 0f, "Environment IP does not remove global nitrous oxide");
 
             nation.regions[0].nuclearDetonations = 0;
             nation.currentResourceRegions = 0;
@@ -1343,6 +1352,11 @@ namespace TIEconomyMod.FormulaTests
             TIEconomyMod.Main.settings.environment.enabled = false;
             True(EnvironmentSustainabilityPatch.Prefix(ref result, nation),
                 "disabled Environment returns to vanilla");
+            result = 123f;
+            True(EnvironmentCo2RemovalPatch.Prefix(ref result),
+                "disabled Environment restores vanilla atmospheric cleanup");
+            Near(123f, result, 0f,
+                "disabled atmospheric-cleanup prefix leaves the vanilla result untouched");
             TIEconomyMod.Main.settings.environment.enabled = true;
             TIEconomyMod.Main.settings.unity.enabled = false;
             True(UnityCohesionPatch.Prefix(ref result, nation),

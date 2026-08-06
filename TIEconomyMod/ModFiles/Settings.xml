@@ -162,7 +162,6 @@
     <minimumGdpBillions>1</minimumGdpBillions>
     <falloutReferenceAreaKm2>100000</falloutReferenceAreaKm2>
     <minimumLandAreaKm2>1</minimumLandAreaKm2>
-    <atmosphericRemovalMultiplier>1</atmosphericRemovalMultiplier>
     <climateGdpDamageEnabled>true</climateGdpDamageEnabled>
     <climateGdpDamageMultiplier>0.9</climateGdpDamageMultiplier>
   </environment>
