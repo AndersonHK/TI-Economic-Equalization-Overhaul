@@ -2,6 +2,7 @@
   {
     "dataName": "EnthrallElites",
     "resolutionMethod": {
+      "$type": "TIMissionResolution_Contested",
       "defendingModifiers": [
         {
           "$type": "TIMissionModifier_FlatModifier",
@@ -13,6 +14,7 @@
   {
     "dataName": "Purge",
     "resolutionMethod": {
+      "$type": "TIMissionResolution_Contested",
       "defendingModifiers": [
         {
           "$type": "TIMissionModifier_FlatModifier",

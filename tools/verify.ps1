@@ -370,9 +370,11 @@ foreach ($mission in $missions) {
         $purge = $mission
     }
 }
-if ($enthrall.resolutionMethod.defendingModifiers[0].flatModifier -ne 3 -or
+if ($enthrall.resolutionMethod.'$type' -ne 'TIMissionResolution_Contested' -or
+    $purge.resolutionMethod.'$type' -ne 'TIMissionResolution_Contested' -or
+    $enthrall.resolutionMethod.defendingModifiers[0].flatModifier -ne 3 -or
     $purge.resolutionMethod.defendingModifiers[0].flatModifier -ne 4) {
-    throw 'Mission overrides must add one flat defense to Enthrall Elites and Purge.'
+    throw 'Mission overrides must retain their contested resolution type and add one flat defense to Enthrall Elites and Purge.'
 }
 $starts = Get-Content -LiteralPath $startOverrides -Raw | ConvertFrom-Json
 $modernStart = $null
