@@ -12,9 +12,11 @@ manual testing, then finish any remaining analysis and documentation while that
 testing proceeds. Manual in-game testing is part of the critical iteration path
 and frequently exposes behavior that static analysis cannot anticipate.
 
-Never deploy while Terra Invicta is open or while the user is manually testing.
-Wait until the user confirms the game is closed before replacing the DLL. If any
-command rebuilds the mod after the last successful deployment, the task is not
-ready for handoff until that new build has passed the normal `deploy.ps1` flow.
+Never deploy while Terra Invicta is open. Do not ask the user to confirm that it
+is closed: `tools\deploy.ps1` must assert this programmatically before validation
+and again immediately before replacing any files. Treat a failed assertion as a
+safe deployment blocker. If any command rebuilds the mod after the last
+successful deployment, the task is not ready for handoff until that new build
+has passed the normal `deploy.ps1` flow.
 
 `rg` and `gh` are not installed in this environment.

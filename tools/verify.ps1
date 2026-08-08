@@ -113,6 +113,14 @@ if ($LASTEXITCODE -ne 0) {
     exit $LASTEXITCODE
 }
 
+powershell -NoProfile -ExecutionPolicy Bypass -File `
+    (Join-Path $scriptDirectory 'validate-mine-mc-patches.ps1') `
+    -TargetManagedDir $resolvedManagedDir `
+    -ModAssemblyPath $assemblyPath
+if ($LASTEXITCODE -ne 0) {
+    exit $LASTEXITCODE
+}
+
 powershell -NoProfile -ExecutionPolicy Bypass -File (Join-Path $scriptDirectory 'validate-implementation-matrix.ps1') -RepositoryRoot $repositoryRoot
 if ($LASTEXITCODE -ne 0) {
     exit $LASTEXITCODE
@@ -134,6 +142,7 @@ $startOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIStartTimeTe
 $armyOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIArmyTemplate.json'
 $metaOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIMetaTemplate.json'
 $technologyOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TITechTemplate.json'
+$projectOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIProjectTemplate.json'
 $globalOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIGlobalConfig.json'
 $habModuleOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIHabModuleTemplate.json'
 $habOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIHabTemplate.json'
@@ -151,6 +160,8 @@ $habModuleLocalization = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIHabM
 $projectLocalization = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIProjectTemplate.en'
 $operationLocalization = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIOperationTemplate.en'
 $codexLocalization = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\UICodex.en'
+$generalControlsLocalization = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\UIGeneralControls.en'
+$habUiLocalization = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\UIHabs.en'
 $testExecutable = Join-Path $repositoryRoot 'tests\FormulaTests\bin\Release\TIEconomyMod.FormulaTests.exe'
 & $testExecutable $weights
 if ($LASTEXITCODE -ne 0) {
@@ -454,9 +465,6 @@ $vanillaTechnologies =
 $technologyCostOverrides =
     Get-Content -LiteralPath $technologyOverrides -Raw | ConvertFrom-Json
 $expectedTechnologyIds = @('MissionToSpace', 'Skywatch', 'WeAreNotAlone')
-if ($technologyCostOverrides.Count -ne $expectedTechnologyIds.Count) {
-    throw 'The technology override must contain exactly the three doubled early technologies.'
-}
 foreach ($technologyId in $expectedTechnologyIds) {
     $vanillaTechnology = @(
         $vanillaTechnologies | Where-Object { $_.dataName -eq $technologyId })
@@ -468,6 +476,69 @@ foreach ($technologyId in $expectedTechnologyIds) {
             2 * [double]$vanillaTechnology[0].researchCost) {
         throw "Technology '$technologyId' must override the installed vanilla research cost at exactly x2."
     }
+}
+$mineEffectByTechnology = [ordered]@{
+    FutureTechSpaceScience = 'Effect_SpaceMineFreebies1'
+    MissiontoJupiter = 'Effect_SpaceMineFreebies6'
+    MissiontoMars = 'Effect_SpaceMineFreebies6'
+    MissiontoSaturn = 'Effect_SpaceMineFreebies6'
+    MissiontotheAsteroids = 'Effect_SpaceMineFreebies6'
+    MissiontotheInnerPlanets = 'Effect_SpaceMineFreebies3'
+    MissiontotheMoon = 'Effect_SpaceMineFreebies3'
+    MissiontotheOuterPlanets = 'Effect_SpaceMineFreebies6'
+}
+$expectedOverrideIds = @($expectedTechnologyIds) + @($mineEffectByTechnology.Keys)
+if ($technologyCostOverrides.Count -ne $expectedOverrideIds.Count -or
+    @($technologyCostOverrides | Where-Object {
+        $_.dataName -notin $expectedOverrideIds
+    }).Count -ne 0) {
+    throw 'Technology overrides must contain the three doubled starts and eight retired free-mine effect edits.'
+}
+foreach ($entry in $mineEffectByTechnology.GetEnumerator()) {
+    $vanillaTechnology = @($vanillaTechnologies | Where-Object {
+        $_.dataName -eq $entry.Key
+    })
+    $overrideTechnology = @($technologyCostOverrides | Where-Object {
+        $_.dataName -eq $entry.Key
+    })
+    $expectedEffects = @($vanillaTechnology[0].effects | Where-Object {
+        $_ -ne $entry.Value
+    })
+    if ($vanillaTechnology.Count -ne 1 -or
+        $overrideTechnology.Count -ne 1 -or
+        ($overrideTechnology[0].effects -join ';') -ne
+            ($expectedEffects -join ';') -or
+        ($overrideTechnology[0].effects -join ';') -match
+            'Effect_SpaceMineFreebies') {
+        throw "Technology '$($entry.Key)' does not preserve every effect except its retired free-mine bonus."
+    }
+}
+$vanillaProjects = Get-Content -LiteralPath (
+    Join-Path $templatesDirectory 'TIProjectTemplate.json') -Raw | ConvertFrom-Json
+$projectTemplateOverrides = @(
+    Get-Content -LiteralPath $projectOverrides -Raw | ConvertFrom-Json)
+$vanillaGoldRush = @($vanillaProjects | Where-Object {
+    $_.dataName -eq 'Project_GoldRush'
+})
+$goldRushOverride = @($projectTemplateOverrides | Where-Object {
+    $_.dataName -eq 'Project_GoldRush'
+})
+$expectedGoldRushEffects = @($vanillaGoldRush[0].effects | Where-Object {
+    $_ -ne 'Effect_SpaceMineFreebies6_SingleFaction'
+})
+if ($projectTemplateOverrides.Count -ne 1 -or
+    $vanillaGoldRush.Count -ne 1 -or
+    $goldRushOverride.Count -ne 1 -or
+    ($goldRushOverride[0].effects -join ';') -ne
+        ($expectedGoldRushEffects -join ';')) {
+    throw 'Gold Rush must preserve its mining bonus while removing only the free-mine effect.'
+}
+$mineUiText = (Get-Content -LiteralPath $generalControlsLocalization -Raw) +
+    (Get-Content -LiteralPath $habUiLocalization -Raw)
+if ($mineUiText -match 'allowed mines|free.mine|quadratic|network of mines and catapults' -or
+    $mineUiText -notmatch 'Tier 1 costs 1' -or
+    $mineUiText -notmatch 'equal to their tier') {
+    throw 'Mine Mission Control localization must describe tier costs without a free-mine allowance.'
 }
 $globals = @(Get-Content -LiteralPath $globalOverrides -Raw | ConvertFrom-Json)
 $globalConfig = @($globals | Where-Object { $_.dataName -eq 'globalConfig' })
@@ -498,6 +569,7 @@ $requiredFiles = @(
     $armyOverrides,
     $metaOverrides,
     $technologyOverrides,
+    $projectOverrides,
     $globalOverrides,
     $habModuleOverrides,
     $habOverrides,
@@ -511,6 +583,8 @@ $requiredFiles = @(
     $effectLocalization,
     $technologyLocalization,
     $scienceLocalization,
+    $generalControlsLocalization,
+    $habUiLocalization,
     (Join-Path $repositoryRoot 'docs\current-implementation-matrix.xlsx')
 )
 foreach ($requiredFile in $requiredFiles) {
@@ -543,6 +617,7 @@ Copy-Item -LiteralPath $startOverrides -Destination $stagingDirectory
 Copy-Item -LiteralPath $armyOverrides -Destination $stagingDirectory
 Copy-Item -LiteralPath $metaOverrides -Destination $stagingDirectory
 Copy-Item -LiteralPath $technologyOverrides -Destination $stagingDirectory
+Copy-Item -LiteralPath $projectOverrides -Destination $stagingDirectory
 Copy-Item -LiteralPath $globalOverrides -Destination $stagingDirectory
 Copy-Item -LiteralPath $habModuleOverrides -Destination $stagingDirectory
 Copy-Item -LiteralPath $habOverrides -Destination $stagingDirectory
@@ -556,6 +631,8 @@ Copy-Item -LiteralPath $nationLocalization -Destination $stagingDirectory
 Copy-Item -LiteralPath $effectLocalization -Destination $stagingDirectory
 Copy-Item -LiteralPath $technologyLocalization -Destination $stagingDirectory
 Copy-Item -LiteralPath $scienceLocalization -Destination $stagingDirectory
+Copy-Item -LiteralPath $generalControlsLocalization -Destination $stagingDirectory
+Copy-Item -LiteralPath $habUiLocalization -Destination $stagingDirectory
 Copy-Item -LiteralPath $habModuleLocalization -Destination $stagingDirectory
 Copy-Item -LiteralPath $projectLocalization -Destination $stagingDirectory
 Copy-Item -LiteralPath $operationLocalization -Destination $stagingDirectory
@@ -627,6 +704,16 @@ try {
             Where-Object { $_.FullName.Replace('\', '/') -eq $packagedLogisticsLocalization } |
             Select-Object -First 1)) {
             throw "Release archive is missing $packagedLogisticsLocalization."
+        }
+    }
+    foreach ($packagedMineMcFile in @(
+        'TIEconomyMod/TIProjectTemplate.json',
+        'TIEconomyMod/UIGeneralControls.en',
+        'TIEconomyMod/UIHabs.en')) {
+        if ($null -eq ($archive.Entries |
+            Where-Object { $_.FullName.Replace('\', '/') -eq $packagedMineMcFile } |
+            Select-Object -First 1)) {
+            throw "Release archive is missing $packagedMineMcFile."
         }
     }
     if ($null -eq $packagedSettings -or $null -eq $packagedWeights -or

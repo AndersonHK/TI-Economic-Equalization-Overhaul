@@ -98,6 +98,7 @@
     <Compile Include="Core\IndependentResearchMath.cs" />
     <Compile Include="Core\LandCombatMath.cs" />
     <Compile Include="Core\MilitaryMath.cs" />
+    <Compile Include="Core\MineMissionControlMath.cs" />
     <Compile Include="Core\GunPowerRegistry.cs" />
     <Compile Include="Core\PowerPlantThermalMath.cs" />
     <Compile Include="Core\ProjectileCollisionMath.cs" />
@@ -118,6 +119,7 @@
     <Compile Include="Patches\HabLogisticsPatches.cs" />
     <Compile Include="Patches\HabRebalancePatches.cs" />
     <Compile Include="Patches\MilitaryPatches.cs" />
+    <Compile Include="Patches\MineMissionControlPatches.cs" />
     <Compile Include="Patches\MilitaryIntegrationPatches.cs" />
     <Compile Include="Patches\CompletionCompatibilityPatches.cs" />
     <Compile Include="Patches\CouncilorPatches.cs" />
@@ -146,6 +148,7 @@
     <None Include="ModFiles\TILaserWeaponTemplate.json" />
     <None Include="ModFiles\TIHabModuleTemplate.en" />
     <None Include="ModFiles\TIProjectTemplate.en" />
+    <None Include="ModFiles\TIProjectTemplate.json" />
     <None Include="ModFiles\TIOperationTemplate.en" />
     <None Include="ModFiles\UICodex.en" />
     <None Include="ModFiles\TIMagneticGunTemplate.json" />
@@ -157,6 +160,8 @@
     <None Include="ModFiles\TITechTemplate.json" />
     <None Include="ModFiles\UIScience.en" />
     <None Include="ModFiles\UINation.en" />
+    <None Include="ModFiles\UIGeneralControls.en" />
+    <None Include="ModFiles\UIHabs.en" />
     <None Include="ModFiles\ModInfo.json" />
   </ItemGroup>
 

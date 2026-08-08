@@ -81,8 +81,17 @@ function Find-TerraInvictaInstall {
     throw 'Could not locate the Terra Invicta install root. Set TI_GAME_INSTALL_DIR, TI_TARGET_MANAGED_DIR, or pass -GameInstallDir.'
 }
 
+function Assert-TerraInvictaClosed {
+    $runningProcesses = @(Get-Process -Name 'TerraInvicta' -ErrorAction SilentlyContinue)
+    if ($runningProcesses.Count -gt 0) {
+        $processIds = ($runningProcesses | Select-Object -ExpandProperty Id) -join ', '
+        throw "Refusing to deploy while Terra Invicta is running (PID: $processIds). Close the game and rerun tools\deploy.ps1."
+    }
+}
+
 $gameRoot = Find-TerraInvictaInstall -ExplicitGameDir $GameInstallDir -ExplicitManagedDir $TargetManagedDir
 $managedDirectory = Join-Path $gameRoot 'TerraInvicta_Data\Managed'
+Assert-TerraInvictaClosed
 if (-not $SkipVerification) {
     & (Join-Path $scriptDirectory 'verify.ps1') -TargetManagedDir $managedDirectory
     if ($LASTEXITCODE -ne 0) {
@@ -99,6 +108,11 @@ if (-not $destination.StartsWith($requiredPrefix, [StringComparison]::OrdinalIgn
     (Split-Path -Leaf (Split-Path -Parent $destination)) -ne 'Enabled') {
     throw "Refusing to deploy outside '$relativeDestination' under the detected game install."
 }
+
+# Verification rebuilds the package and may take long enough for the game to be
+# launched afterward. Recheck at the final mutation boundary before touching the
+# enabled mod directory.
+Assert-TerraInvictaClosed
 
 $enabledDirectory = Split-Path -Parent $destination
 if (-not (Test-Path -LiteralPath $enabledDirectory)) {

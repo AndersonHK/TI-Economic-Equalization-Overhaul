@@ -14,6 +14,8 @@ when prose and runtime behavior disagree.
 - [Manufacturing logistics](manufacturing-logistics.md): authoritative Version
   0.9 behavior for hab construction, founding, probes, routing, caching, AI
   planning, and player-facing explanations.
+- [Mine Mission Control](mine-mission-control.md): authoritative tier-based mine
+  MC formula, retired free-mine bonuses, and UI/AI integration.
 - [Current implementation matrix](current-implementation-matrix.xlsx):
   patch-by-patch comparison with Terra Invicta 1.0.51 and the maintained-main
   baseline.

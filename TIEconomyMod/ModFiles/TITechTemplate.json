@@ -10,5 +10,60 @@
   {
     "dataName": "WeAreNotAlone",
     "researchCost": 1000
+  },
+  {
+    "dataName": "FutureTechSpaceScience",
+    "effects": []
+  },
+  {
+    "dataName": "MissiontoJupiter",
+    "effects": [
+      "Effect_ExploreJupiter",
+      "Effect_TechProbeSpeed"
+    ]
+  },
+  {
+    "dataName": "MissiontoMars",
+    "effects": [
+      "Effect_ExploreMars",
+      "Effect_ExploreEarthLagrangePoints",
+      "Effect_TechProbeSpeed"
+    ]
+  },
+  {
+    "dataName": "MissiontoSaturn",
+    "effects": [
+      "Effect_ExploreSaturn",
+      "Effect_TechProbeSpeed"
+    ]
+  },
+  {
+    "dataName": "MissiontotheAsteroids",
+    "effects": [
+      "Effect_ExploreAsteroids",
+      "Effect_TechProbeSpeed"
+    ]
+  },
+  {
+    "dataName": "MissiontotheInnerPlanets",
+    "effects": [
+      "Effect_ExploreInnerPlanets",
+      "Effect_TechProbeSpeed"
+    ]
+  },
+  {
+    "dataName": "MissiontotheMoon",
+    "effects": [
+      "Effect_ExploreLuna",
+      "Effect_TechProbeSpeed"
+    ]
+  },
+  {
+    "dataName": "MissiontotheOuterPlanets",
+    "effects": [
+      "Effect_ExploreOuterPlanets",
+      "Effect_ExploreKuiperBelt",
+      "Effect_TechProbeSpeed"
+    ]
   }
 ]

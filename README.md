@@ -91,6 +91,9 @@ historical research and deferred work.
 
 ### Habs and manufacturing logistics
 
+- Active mines consume Mission Control equal to their tier: 1/2/3 MC for
+  T1/T2/T3. The free-mine allowance and quadratic mine-network surcharge are
+  removed.
 - Human hab modules use approximately 1.5 times physical mass, rounded to the
   nearest five tonnes, and consume resources for that complete modified mass.
 - The full-Earth option buys all materials with Money and Boosts the complete

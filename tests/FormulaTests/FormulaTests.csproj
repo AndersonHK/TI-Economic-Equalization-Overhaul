@@ -33,6 +33,9 @@
     <Compile Include="..\..\TIEconomyMod\Core\MilitaryMath.cs">
       <Link>MilitaryMath.cs</Link>
     </Compile>
+    <Compile Include="..\..\TIEconomyMod\Core\MineMissionControlMath.cs">
+      <Link>MineMissionControlMath.cs</Link>
+    </Compile>
     <Compile Include="..\..\TIEconomyMod\Core\PowerPlantThermalMath.cs">
       <Link>PowerPlantThermalMath.cs</Link>
     </Compile>

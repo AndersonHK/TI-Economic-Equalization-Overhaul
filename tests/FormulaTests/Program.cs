@@ -23,6 +23,7 @@ namespace TIEconomyMod.FormulaTests
 
                 TestNationalValues();
                 TestMilitaryMath();
+                TestMineMissionControl();
                 TestIndependentResearch();
                 TestEconomyAndTechnology();
                 TestBalanceTuning();
@@ -1514,6 +1515,40 @@ namespace TIEconomyMod.FormulaTests
             }
             Near(8.7f, power, 0f,
                 "one hundred thousand hydrated power lookups retain their value");
+        }
+
+        private static void TestMineMissionControl()
+        {
+            Near(0f, MineMissionControlMath.NetworkCost(new int[0]), 0f,
+                "empty mine network costs no MC");
+            Near(1f, MineMissionControlMath.TierCost(1), 0f,
+                "Tier 1 mine costs one MC");
+            Near(2f, MineMissionControlMath.TierCost(2), 0f,
+                "Tier 2 mine costs two MC");
+            Near(3f, MineMissionControlMath.TierCost(3), 0f,
+                "Tier 3 mine costs three MC");
+            Near(10f, MineMissionControlMath.NetworkCost(
+                new[] { 1, 1, 2, 3, 3 }), 0f,
+                "mine network cost is the sum of active tiers");
+            Near(0f, MineMissionControlMath.NetworkCost(null), 0f,
+                "missing mine list costs no MC");
+            Near(0f, MineMissionControlMath.TierCost(-1), 0f,
+                "invalid negative mine tier is clamped to zero");
+            True(MineMissionControlMath.UsageDisplayState(75f, 100f) ==
+                    MissionControlUsageDisplayState.Normal,
+                "Mission Control usage at exactly 75 percent stays normal");
+            True(MineMissionControlMath.UsageDisplayState(75.01f, 100f) ==
+                    MissionControlUsageDisplayState.Warning,
+                "Mission Control usage above 75 percent turns orange");
+            True(MineMissionControlMath.UsageDisplayState(100f, 100f) ==
+                    MissionControlUsageDisplayState.Warning,
+                "Mission Control usage at the limit stays orange");
+            True(MineMissionControlMath.UsageDisplayState(100.01f, 100f) ==
+                    MissionControlUsageDisplayState.OverCapacity,
+                "Mission Control usage above the limit turns red");
+            True(MineMissionControlMath.UsageDisplayState(0f, 0f) ==
+                    MissionControlUsageDisplayState.Normal,
+                "zero usage with zero capacity stays normal");
         }
 
         private static void TestWeaponCadence()
