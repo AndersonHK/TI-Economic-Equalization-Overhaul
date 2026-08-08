@@ -371,6 +371,7 @@ namespace TIEconomyMod.Patches
         public static void Prefix()
         {
             DirectFireCommitmentRegistry.Clear();
+            WeaponCadenceRuntime.Clear();
         }
     }
 

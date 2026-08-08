@@ -126,7 +126,9 @@ The complete logistics rules and examples are in
   accounting chain.
 - Projectile colliders follow caliber and damaging mass, magnetic durability
   follows damaging mass, and direct-fire AI avoids oversaturating targets while
-  preserving deliberate player targeting and missile behavior.
+  preserving deliberate player targeting and missile behavior. All ship and hab
+  weapons run their native acquisition and fire checks on a 50 ms combat-time
+  grid, so authored intra-salvo intervals in 50 ms increments are respected.
 - The skirmish roster reuses cached option catalogs, and gun lookup uses
   allocation-free template identity on ordinary paths.
 - The settled fuel-cell, fission-plant, crew, hull, gun, rail, coil, and alien

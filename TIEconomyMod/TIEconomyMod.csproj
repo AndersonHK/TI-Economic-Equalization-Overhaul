@@ -109,6 +109,7 @@
     <Compile Include="Core\TemplateFloatExtensionReader.cs" />
     <Compile Include="Core\TechWeightCatalog.cs" />
     <Compile Include="Core\WeaponPowerMath.cs" />
+    <Compile Include="Core\WeaponCadenceMath.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Patches\EconomyPatches.cs" />
     <Compile Include="Patches\BalancePatches.cs" />
@@ -127,6 +128,7 @@
     <Compile Include="Patches\DirectFireCoordinationPatches.cs" />
     <Compile Include="Patches\SocialPriorityPatches.cs" />
     <Compile Include="Patches\ShipPowerPatches.cs" />
+    <Compile Include="Patches\WeaponCadencePatches.cs" />
     <Compile Include="Patches\SkirmishPerformancePatches.cs" />
     <Compile Include="Patches\ThresholdAndUiPatches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

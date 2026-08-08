@@ -57,6 +57,9 @@
     <Compile Include="..\..\TIEconomyMod\Core\WeaponPowerMath.cs">
       <Link>WeaponPowerMath.cs</Link>
     </Compile>
+    <Compile Include="..\..\TIEconomyMod\Core\WeaponCadenceMath.cs">
+      <Link>WeaponCadenceMath.cs</Link>
+    </Compile>
     <Compile Include="..\..\TIEconomyMod\Patches\EconomyPatches.cs">
       <Link>EconomyPatches.cs</Link>
     </Compile>

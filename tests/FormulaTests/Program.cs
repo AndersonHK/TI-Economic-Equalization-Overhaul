@@ -27,6 +27,7 @@ namespace TIEconomyMod.FormulaTests
                 TestEconomyAndTechnology();
                 TestBalanceTuning();
                 TestPerformanceCaches();
+                TestWeaponCadence();
                 TestAbundance();
                 TestInequality();
                 TestSocialPriorities();
@@ -1513,6 +1514,38 @@ namespace TIEconomyMod.FormulaTests
             }
             Near(8.7f, power, 0f,
                 "one hundred thousand hydrated power lookups retain their value");
+        }
+
+        private static void TestWeaponCadence()
+        {
+            double accumulated = 0.0;
+            True(WeaponCadenceMath.AccumulateChecks(
+                    ref accumulated, 0.049) == 0,
+                "weapon cadence waits for a complete 50 ms interval");
+            True(WeaponCadenceMath.AccumulateChecks(
+                    ref accumulated, 0.001) == 1,
+                "weapon cadence checks exactly at 50 ms");
+            Near(0f, (float)accumulated, 0.000001f,
+                "weapon cadence consumes the complete interval");
+
+            True(WeaponCadenceMath.AccumulateChecks(
+                    ref accumulated, 0.26) == 5,
+                "weapon cadence catches up each elapsed 50 ms interval");
+            Near(0.01f, (float)accumulated, 0.000001f,
+                "weapon cadence preserves sub-interval remainder");
+            Near(0.21f,
+                (float)WeaponCadenceMath.OldestCheckOffset_s(
+                    accumulated, 5),
+                0.000001f,
+                "weapon cadence dates catch-up checks on the 50 ms grid");
+
+            accumulated = 0.0;
+            True(WeaponCadenceMath.AccumulateChecks(
+                    ref accumulated, 5.0) ==
+                WeaponCadenceMath.MaximumChecksPerUpdate,
+                "weapon cadence bounds anomalous catch-up work");
+            Near(0f, (float)accumulated, 0.000001f,
+                "weapon cadence drops backlog beyond its safety bound");
         }
 
         private sealed class IdentityProbe
