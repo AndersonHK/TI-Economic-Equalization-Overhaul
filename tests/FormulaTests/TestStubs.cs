@@ -29,11 +29,77 @@ namespace PavonisInteractive.TerraInvicta
     public sealed class TIPowerPlantTemplate
     {
         public float efficiency;
+        public float maxOutput_GW;
     }
 
     public sealed class TISpaceShipTemplate
     {
         public int crewBillets;
+        public TIShipHullTemplate hullTemplate;
+        public TIDriveTemplate driveTemplate;
+        public TIPowerPlantTemplate powerPlantTemplate;
+        public TIRadiatorTemplate radiatorTemplate;
+        public TIFactionState designingFaction;
+    }
+
+    public sealed class TIShipHullTemplate
+    {
+        public string dataName;
+        public bool alien;
+    }
+
+    public sealed class TIDriveTemplate
+    {
+        public float mass_tons;
+        public float powerRequirement_GW;
+        public TIResourcesCost cost = new TIResourcesCost();
+
+        public float buildMass_tons()
+        {
+            return mass_tons;
+        }
+
+        public TIResourcesCost buildCost()
+        {
+            return new TIResourcesCost(cost);
+        }
+    }
+
+    public sealed class TIRadiatorTemplate { }
+
+    public sealed class TIHabModuleState { }
+
+    public sealed class TIResourcesCost
+    {
+        public float value;
+
+        public TIResourcesCost() { }
+
+        public TIResourcesCost(TIResourcesCost other)
+        {
+            value = other == null ? 0f : other.value;
+        }
+
+        public TIResourcesCost MultiplyCost(float modifier)
+        {
+            return new TIResourcesCost { value = value * modifier };
+        }
+
+        public void SumCosts_NoDuration(TIResourcesCost other)
+        {
+            if (other != null)
+            {
+                value += other.value;
+            }
+        }
+
+        public void SubtractRefitDiscountCost(TIResourcesCost other)
+        {
+            if (other != null)
+            {
+                value -= other.value * 0.5f;
+            }
+        }
     }
 
     public sealed class GlobalResearchState
@@ -142,6 +208,12 @@ namespace PavonisInteractive.TerraInvicta
         public float WelCO2_ppm = -0.001f;
         public float WelCH4_ppm = -0.002f;
         public float WelN2O_ppm = -0.003f;
+
+        public float GetAIShipbuildingCostDifficultyScaling(
+            TIFactionState faction)
+        {
+            return 1f;
+        }
     }
 
     public static class TemplateManager
@@ -337,6 +409,7 @@ namespace TIEconomyMod
         public float openCycleDriveHeatFraction = 0.01f;
         public bool crewSupportMassEnabled = true;
         public float crewSupportMass_tons = 3f;
+        public bool hullDriveScalingEnabled = true;
     }
 
     public sealed class ResearchSettings

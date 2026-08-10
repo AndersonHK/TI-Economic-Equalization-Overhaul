@@ -334,6 +334,12 @@ $expectedHulls = [ordered]@{
     Frigate = @(100, 18, 25447, 576, 8)
     Monitor = @(100, 17, 22698, 679, 7)
     Destroyer = @(100, 23, 41548, 873, 9)
+    Cruiser = @($null, $null, $null, 964, 12)
+    Battlecruiser = @($null, $null, $null, 1170, 10)
+    Lancer = @($null, $null, $null, 1958, 14)
+    Battleship = @($null, $null, $null, 1558, 14)
+    Dreadnought = @($null, $null, $null, 2346, 18)
+    Titan = @($null, $null, $null, 3143, 19)
 }
 if ($hullOverrides.Count -ne $expectedHulls.Count) {
     throw "Hull override has $($hullOverrides.Count) rows instead of $($expectedHulls.Count)."
@@ -343,17 +349,24 @@ foreach ($entry in $expectedHulls.GetEnumerator()) {
     if ($row.Count -ne 1) {
         throw "Hull override must contain '$($entry.Key)' exactly once."
     }
-    Assert-Properties $row[0] @(
-        'dataName', 'length_m', 'width_m', 'volume', 'mass_tons', 'crew') $entry.Key
-    $fields = @('length_m', 'width_m', 'volume', 'mass_tons', 'crew')
-    for ($i = 0; $i -lt $fields.Count; $i++) {
-        Assert-Near $row[0].($fields[$i]) $entry.Value[$i] "$($entry.Key) $($fields[$i])"
+    if ($null -eq $entry.Value[0]) {
+        Assert-Properties $row[0] @('dataName', 'mass_tons', 'crew') $entry.Key
+        Assert-Near $row[0].mass_tons $entry.Value[3] "$($entry.Key) mass_tons"
+        Assert-Near $row[0].crew $entry.Value[4] "$($entry.Key) crew"
     }
-    $runtimeVolume = [Math]::PI *
-        [Math]::Pow([double]$row[0].width_m / 2.0, 2) *
-        [double]$row[0].length_m
-    if ([Math]::Abs($runtimeVolume - [double]$row[0].volume) -gt 1.0) {
-        throw "$($entry.Key) planning volume does not round to its runtime cylinder."
+    else {
+        Assert-Properties $row[0] @(
+            'dataName', 'length_m', 'width_m', 'volume', 'mass_tons', 'crew') $entry.Key
+        $fields = @('length_m', 'width_m', 'volume', 'mass_tons', 'crew')
+        for ($i = 0; $i -lt $fields.Count; $i++) {
+            Assert-Near $row[0].($fields[$i]) $entry.Value[$i] "$($entry.Key) $($fields[$i])"
+        }
+        $runtimeVolume = [Math]::PI *
+            [Math]::Pow([double]$row[0].width_m / 2.0, 2) *
+            [double]$row[0].length_m
+        if ([Math]::Abs($runtimeVolume - [double]$row[0].volume) -gt 1.0) {
+            throw "$($entry.Key) planning volume does not round to its runtime cylinder."
+        }
     }
     $emptyMass = [double]$row[0].mass_tons + 3.0 * [double]$row[0].crew
     $expectedEmptyMass = switch ($entry.Key) {
@@ -363,6 +376,12 @@ foreach ($entry in $expectedHulls.GetEnumerator()) {
         Frigate { 600 }
         Monitor { 700 }
         Destroyer { 900 }
+        Cruiser { 1000 }
+        Battlecruiser { 1200 }
+        Lancer { 2000 }
+        Battleship { 1600 }
+        Dreadnought { 2400 }
+        Titan { 3200 }
     }
     Assert-Near $emptyMass $expectedEmptyMass "$($entry.Key) empty mass"
 }

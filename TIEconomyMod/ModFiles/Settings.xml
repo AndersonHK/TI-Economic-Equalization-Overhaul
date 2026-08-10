@@ -113,6 +113,7 @@
     <openCycleDriveHeatFraction>0.01</openCycleDriveHeatFraction>
     <crewSupportMassEnabled>true</crewSupportMassEnabled>
     <crewSupportMass_tons>3</crewSupportMass_tons>
+    <hullDriveScalingEnabled>true</hullDriveScalingEnabled>
   </shipBalance>
   <research>
     <enabled>true</enabled>

@@ -92,6 +92,7 @@ namespace TIEconomyMod
         {
             settings.ValidateAndRepair(Log);
             CouncilorRuntimeCaps.ApplyOrganizationCap();
+            ShipPowerRuntime.RefreshTemplateMassCaches();
             settings.Save(modEntry);
         }
 
@@ -343,6 +344,7 @@ namespace TIEconomyMod
         public float openCycleDriveHeatFraction = 0.01f;
         public bool crewSupportMassEnabled = true;
         public float crewSupportMass_tons = 3f;
+        public bool hullDriveScalingEnabled = true;
     }
 
     [DrawFields(DrawFieldMask.Public)]

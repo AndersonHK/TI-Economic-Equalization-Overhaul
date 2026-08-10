@@ -784,6 +784,21 @@ namespace TIEconomyMod.FormulaTests
                 "invalid expected projectile damage cannot saturate a target");
             Near(9f, ShipBalanceMath.CrewMass_tons(3, 3f), 0f,
                 "settled crew support mass is three tonnes per billet");
+            Near(1f,
+                ShipBalanceMath.HumanHullDriveScale("Destroyer", false),
+                0f, "Destroyer retains the baseline drive scale");
+            Near(1.3f,
+                ShipBalanceMath.HumanHullDriveScale("Cruiser", false),
+                0f, "Cruiser receives its provisional drive scale");
+            Near(1.72f,
+                ShipBalanceMath.HumanHullDriveScale("Lancer", false),
+                0f, "Lancer receives its provisional drive scale");
+            Near(2.5f,
+                ShipBalanceMath.HumanHullDriveScale("Titan", false),
+                0f, "Titan receives its provisional drive scale");
+            Near(1f,
+                ShipBalanceMath.HumanHullDriveScale("Titan", true),
+                0f, "alien hulls do not receive human drive scaling");
 
             TIPowerPlantTemplate plant = new TIPowerPlantTemplate();
             plant.efficiency = 0.70f;
@@ -800,6 +815,57 @@ namespace TIEconomyMod.FormulaTests
                 "enabled crew support patch replaces vanilla");
             Near(9f, crewMass, 0f,
                 "crew support patch returns three tonnes per billet");
+            ship.hullTemplate = new TIShipHullTemplate
+            {
+                dataName = "Cruiser",
+                alien = false
+            };
+            ship.driveTemplate = new TIDriveTemplate
+            {
+                mass_tons = 100f,
+                powerRequirement_GW = 20f,
+                cost = new TIResourcesCost { value = 40f }
+            };
+            ship.powerPlantTemplate = new TIPowerPlantTemplate
+            {
+                maxOutput_GW = 30f
+            };
+            float scaledThrust = 10f;
+            HullScaledDriveThrustPatch.Postfix(ref scaledThrust, ship);
+            Near(13f, scaledThrust, 0.0001f,
+                "Cruiser drive thrust scales after vanilla modifiers");
+            float scaledPower = 20f;
+            HullScaledDrivePowerPatch.Postfix(ref scaledPower, ship);
+            Near(26f, scaledPower, 0.0001f,
+                "Cruiser drive power scales at constant exhaust velocity");
+            float scaledDryMass = 1000f;
+            HullScaledDriveMassPatch.Postfix(ref scaledDryMass, ship);
+            Near(1030f, scaledDryMass, 0.0001f,
+                "Cruiser dry mass includes the larger drive hardware");
+            TIResourcesCost scaledCost = new TIResourcesCost { value = 400f };
+            HullScaledDriveConstructionCostPatch.Postfix(
+                ref scaledCost, ship, null);
+            Near(412f, scaledCost.value, 0.0001f,
+                "Cruiser construction cost includes the larger drive");
+            bool compatible = true;
+            HullScaledDriveCompatibilityPatch.Postfix(
+                ref compatible, ship, ship.driveTemplate);
+            True(compatible,
+                "scaled Cruiser drive remains within a 30 GW plant cap");
+            ship.powerPlantTemplate.maxOutput_GW = 24f;
+            compatible = true;
+            HullScaledDriveCompatibilityPatch.Postfix(
+                ref compatible, ship, ship.driveTemplate);
+            True(!compatible,
+                "scaled drive power respects the existing plant output cap");
+            TIEconomyMod.Main.settings.shipBalance.hullDriveScalingEnabled =
+                false;
+            scaledThrust = 10f;
+            HullScaledDriveThrustPatch.Postfix(ref scaledThrust, ship);
+            Near(10f, scaledThrust, 0f,
+                "disabled hull drive scaling returns vanilla thrust");
+            TIEconomyMod.Main.settings.shipBalance.hullDriveScalingEnabled =
+                true;
 
             TIEconomyMod.Main.settings.technology.researchCostEnabled = false;
             technologyCost = 1000f;

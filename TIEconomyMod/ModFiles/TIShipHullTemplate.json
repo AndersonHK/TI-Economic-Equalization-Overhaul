@@ -46,5 +46,35 @@
     "volume": 41548,
     "mass_tons": 873,
     "crew": 9
+  },
+  {
+    "dataName": "Cruiser",
+    "mass_tons": 964,
+    "crew": 12
+  },
+  {
+    "dataName": "Battlecruiser",
+    "mass_tons": 1170,
+    "crew": 10
+  },
+  {
+    "dataName": "Lancer",
+    "mass_tons": 1958,
+    "crew": 14
+  },
+  {
+    "dataName": "Battleship",
+    "mass_tons": 1558,
+    "crew": 14
+  },
+  {
+    "dataName": "Dreadnought",
+    "mass_tons": 2346,
+    "crew": 18
+  },
+  {
+    "dataName": "Titan",
+    "mass_tons": 3143,
+    "crew": 19
   }
 ]

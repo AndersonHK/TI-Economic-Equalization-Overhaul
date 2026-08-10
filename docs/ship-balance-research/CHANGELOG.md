@@ -3,6 +3,66 @@
 This is a decision log for the proposed ship rebalance. Entries here describe
 the balance decisions as well as their implementation status.
 
+## 2026-08-10
+
+### Implemented: remaining human-hull crew and rounded empty masses
+
+- **One base crew per weapon or utility slot:** Cruiser, Battlecruiser, Lancer,
+  Battleship, Dreadnought, and Titan now carry **12 / 10 / 14 / 14 / 18 / 19**
+  base crew respectively. Together with the previously changed six hulls, all
+  twelve standard human combat hulls now follow the same balance rule.
+- **Three-tonne support allowance retained:** hull masses become **964 / 1,170 /
+  1,958 / 1,558 / 2,346 / 3,143 t**. Adding three tonnes per base crew billet
+  produces rounded hull-plus-crew empty masses of **1,000 / 1,200 / 2,000 /
+  1,600 / 2,400 / 3,200 t**.
+- **Geometry unchanged for the new six:** this pass does not override their
+  length, diameter, or stored volume. The earlier Gunship-through-Destroyer
+  model-informed geometry remains in force.
+
+### Implemented: provisional hull-specific drive capacity
+
+- **Human-hull multipliers:** Cruiser **1.30**, Battlecruiser **1.50**, Lancer
+  **1.72**, Battleship **1.75**, Dreadnought **2.00**, and Titan **2.50**.
+  Gunship through Destroyer and all alien hulls remain at **1.00**.
+- **Constant exhaust velocity:** ship thrust, physical mass flow, powered-drive
+  electrical demand, drive hardware mass, and drive material cost scale by the
+  hull multiplier. Exhaust velocity and therefore delta-v per unit propellant
+  remain unchanged. The game has no hull-level burn-duration/fuel-flow state,
+  so mass flow is the physical `thrust / exhaust velocity` consequence rather
+  than a separate runtime consumption variable.
+- **Dependent burdens retained:** higher drive power feeds the existing reactor,
+  waste-heat, and radiator calculations. Drive construction and refit costs
+  include the larger hardware, and existing reactor maximum-output
+  compatibility checks use the scaled drive demand.
+- **Appearance-sensitive follow-up audited:** the selected appearance index,
+  hull utility capacity, base and complete crew, rounded empty hull mass, and
+  runtime cylinder volume are all reachable from the existing ship and hull
+  templates without a save-format change. A future implementation should use
+  stable hull properties for the class factor, a bounded normalized appearance
+  modifier, and must not use free utility slots or patched complete dry mass.
+- **Reactor caps deferred:** no hull-size reactor mass/output cap and no reactor
+  template change are included in this pass.
+- **Configuration:** `shipBalance.hullDriveScalingEnabled` independently returns
+  the new runtime scaling to vanilla while leaving the other ship-balance
+  features active.
+
+### Documented: hull density, naval references, hardpoints, and drive assets
+
+- Added the consolidated
+  [human hull and drive-scaling report](human-hull-slots-and-drive-scaling.md),
+  including per-hull and per-tier tonnes/slot, volume/slot, tonnes/crew, and
+  volume/crew tables; Arleigh Burke, Ticonderoga, Zumwalt, Type 45, and Iowa-
+  class context; hardpoint and multi-slot feasibility; the drive-asset method;
+  nozzle-area ratios; and the reference Meteor x6 thrust-to-mass table.
+- Moved the maintained UnityPy measurement program to
+  `scripts/ship-balance/measure_ship_prefabs.py`. Its original hull measurement
+  function remains independent of the added drive-resource and individual-
+  nozzle functions.
+- Full deployment validation passed against TI 1.0.51: **667 formula
+  assertions**, 101 Harmony patches in the implementation matrix, guarded
+  target-IL checks, ship-rebalance validation, package build, and enabled-mod
+  deployment.
+
 ## 2026-08-04
 
 ### Implemented: complete chemical ammunition and nose-autocannon cadence
