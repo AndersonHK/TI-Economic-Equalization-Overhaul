@@ -380,7 +380,9 @@ namespace TIEconomyMod
     public sealed class GovernmentSettings
     {
         public bool enabled = true;
-        public float democracyPopulationDivisor = 166667f;
+        public float democracyPopulationDivisor = 333333f;
+        public float boundaryCurveFactor = 3f;
+        public float passiveLowCohesionMultiplier = 0.50f;
     }
 
     [DrawFields(DrawFieldMask.Public)]
@@ -630,6 +632,8 @@ namespace TIEconomyMod
             RepairPositive(ref value.knowledge.cohesionPopulationDivisor, defaults.knowledge.cohesionPopulationDivisor, "knowledge.cohesionPopulationDivisor", log);
             RepairFinite(ref value.knowledge.cohesionTarget, defaults.knowledge.cohesionTarget, "knowledge.cohesionTarget", log);
             RepairPositive(ref value.government.democracyPopulationDivisor, defaults.government.democracyPopulationDivisor, "government.democracyPopulationDivisor", log);
+            RepairRange(ref value.government.boundaryCurveFactor, defaults.government.boundaryCurveFactor, 1f, 10f, "government.boundaryCurveFactor", log);
+            RepairRange(ref value.government.passiveLowCohesionMultiplier, defaults.government.passiveLowCohesionMultiplier, 0f, 1f, "government.passiveLowCohesionMultiplier", log);
             RepairPositive(ref value.military.doctrineBaseCostAtTechOne, defaults.military.doctrineBaseCostAtTechOne, "military.doctrineBaseCostAtTechOne", log);
             RepairRange(ref value.military.doctrineCostGrowthBase, defaults.military.doctrineCostGrowthBase, 1f, 10f, "military.doctrineCostGrowthBase", log);
             RepairNonNegative(ref value.military.catchupGapCoefficient, defaults.military.catchupGapCoefficient, "military.catchupGapCoefficient", log);

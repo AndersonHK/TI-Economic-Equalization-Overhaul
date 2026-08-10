@@ -48,6 +48,10 @@ historical research and deferred work.
   its full $60 base faction-cash payout.
 - Population-normalized Unity, Knowledge, Government, Oppression, and selected
   Spoils social effects.
+- Government investment uses a doubled demographic base and every Government
+  change follows a smooth reciprocal boundary curve: positive changes range
+  from x3 at Government 0 to x1/3 at 10, while negative changes range from
+  x1/3 to x3. Passive low-Cohesion Government loss is halved before the curve.
 - Configurable region conversion, decolonization, and fallout thresholds,
   defaulting to five times vanilla.
 

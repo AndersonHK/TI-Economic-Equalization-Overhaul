@@ -27,6 +27,9 @@
     <Compile Include="..\..\TIEconomyMod\Core\GlobalTechnologySelectionMath.cs">
       <Link>GlobalTechnologySelectionMath.cs</Link>
     </Compile>
+    <Compile Include="..\..\TIEconomyMod\Core\GovernmentMath.cs">
+      <Link>GovernmentMath.cs</Link>
+    </Compile>
     <Compile Include="..\..\TIEconomyMod\Core\IndependentResearchMath.cs">
       <Link>IndependentResearchMath.cs</Link>
     </Compile>

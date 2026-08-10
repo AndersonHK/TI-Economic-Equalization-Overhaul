@@ -2,6 +2,7 @@ using PavonisInteractive.TerraInvicta;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using TIEconomyMod.Core;
 using TIEconomyMod.Patches;
 
 namespace TIEconomyMod.FormulaTests
@@ -1225,8 +1226,54 @@ namespace TIEconomyMod.FormulaTests
             nation.cohesion = 7f;
             KnowledgeCohesionPatch.Prefix(ref result, nation);
             Near(-333333f / nation.population, result, 0.000001f, "knowledge cohesion");
+            nation.democracy = 5f;
             GovernmentDemocracyPatch.Prefix(ref result, nation);
-            Near(166667f / nation.population, result, 0.000001f, "government democracy");
+            GovernmentDemocracyPatch.Postfix(ref result, nation);
+            Near(333333f / nation.population, result, 0.000001f,
+                "government democracy doubled at curve midpoint");
+
+            float[] governmentPoints = { 0f, 2.5f, 5f, 7.5f, 10f };
+            float[] positiveMultipliers = { 3f, 1.7320508f, 1f, 0.5773503f, 0.3333333f };
+            float[] negativeMultipliers = { 0.3333333f, 0.5773503f, 1f, 1.7320508f, 3f };
+            for (int index = 0; index < governmentPoints.Length; index++)
+            {
+                Near(positiveMultipliers[index], GovernmentMath.TransformChange(
+                    1f, governmentPoints[index], 3f), 0.000001f,
+                    "positive Government curve at " + governmentPoints[index]);
+                Near(-negativeMultipliers[index], GovernmentMath.TransformChange(
+                    -1f, governmentPoints[index], 3f), 0.000001f,
+                    "negative Government curve at " + governmentPoints[index]);
+            }
+
+            nation.democracy = 0f;
+            result = 333333f / nation.population;
+            GovernmentDemocracyPatch.Postfix(ref result, nation);
+            Near(333333f / nation.population * 3f, result, 0.000001f,
+                "Government investment triples near zero");
+            nation.democracy = 10f;
+            result = 333333f / nation.population;
+            GovernmentDemocracyPatch.Postfix(ref result, nation);
+            Near(333333f / nation.population / 3f, result, 0.000001f,
+                "Government investment falls to one third near ten");
+
+            nation.democracy = 5f;
+            result = -0.01f;
+            GovernmentChangeCurvePatch.Prefix(ref result, nation,
+                TINationState.DemocracyChangeReason.DemReason_LowCohesion);
+            Near(-0.005f, result, 0.000001f,
+                "passive low-Cohesion Government loss is halved");
+            nation.democracy = 10f;
+            result = -0.01f;
+            GovernmentChangeCurvePatch.Prefix(ref result, nation,
+                TINationState.DemocracyChangeReason.DemReason_LowCohesion);
+            Near(-0.015f, result, 0.000001f,
+                "low-Cohesion loss is halved before the high-Government curve");
+            result = -0.01f;
+            GovernmentChangeCurvePatch.Prefix(ref result, nation,
+                TINationState.DemocracyChangeReason.DemReason_OppressionPriority);
+            Near(-0.01f, result, 0f,
+                "priority Government changes are not transformed twice");
+
             nation.democracy = 5f;
             nation.unrest = 3f;
             OppressionUnrestPatch.Prefix(ref result, nation);
@@ -1344,9 +1391,11 @@ namespace TIEconomyMod.FormulaTests
             UnityEducationPatch.Prefix(ref result, nation);
             Near(-33333f / nation.population, result, 0.000001f,
                 "Unity secondary education effect");
+            nation.democracy = 5f;
             SpoilsGovernmentPatch.Prefix(ref result, nation);
+            SpoilsGovernmentPatch.Postfix(ref result, nation);
             Near(-66667f / nation.population, result, 0.000001f,
-                "Spoils Government demographic scaling");
+                "Spoils Government demographic scaling at curve midpoint");
 
             nation.currentResourceRegions = 1;
             nation.GDP = 1000000000000d;

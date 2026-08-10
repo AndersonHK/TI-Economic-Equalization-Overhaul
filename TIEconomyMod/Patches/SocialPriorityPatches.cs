@@ -1,6 +1,7 @@
 using HarmonyLib;
 using PavonisInteractive.TerraInvicta;
 using System;
+using TIEconomyMod.Core;
 
 namespace TIEconomyMod.Patches
 {
@@ -194,10 +195,10 @@ namespace TIEconomyMod.Patches
                 return true;
             }
 
-            // Government adds 166,667 / population with no Education multiplier. At
-            // 100M population this is +0.00167. Installed vanilla 1.0.51 multiplies its
+            // Government adds 333,333 / population with no Education multiplier. At
+            // 100M population this is +0.00333 before the boundary curve. Installed vanilla 1.0.51 multiplies its
             // +0.01 base by population scaling and Education/10, giving about +0.00628
-            // at Education 8; this formula intentionally makes population the sole driver.
+            // at Education 8; this raw formula intentionally makes population the sole driver.
             float calculated = settings.democracyPopulationDivisor /
                 Math.Max(1f, __instance.population);
             if (float.IsNaN(calculated) || float.IsInfinity(calculated))
@@ -207,6 +208,64 @@ namespace TIEconomyMod.Patches
             }
             __result = calculated;
             return false;
+        }
+
+        [HarmonyPostfix]
+        public static void Postfix(ref float __result, TINationState __instance)
+        {
+            GovernmentChangeCurvePatch.Transform(ref __result, __instance);
+        }
+    }
+
+    [HarmonyPatch(typeof(TINationState), "OppressionPriorityDemocracyChange", MethodType.Getter)]
+    public static class OppressionDemocracyCurvePatch
+    {
+        [HarmonyPostfix]
+        public static void Postfix(ref float __result, TINationState __instance)
+        {
+            GovernmentChangeCurvePatch.Transform(ref __result, __instance);
+        }
+    }
+
+    [HarmonyPatch(typeof(TINationState), "AddToDemocracy")]
+    public static class GovernmentChangeCurvePatch
+    {
+        [HarmonyPrefix]
+        public static void Prefix(ref float value, TINationState __instance,
+            TINationState.DemocracyChangeReason reason)
+        {
+            GovernmentSettings settings = Main.settings.government;
+            if (!Main.FeatureEnabled(settings.enabled))
+            {
+                return;
+            }
+
+            // Priority getters are transformed before their values reach the UI,
+            // direct-investment pricing, and completion methods. Do not transform
+            // those three values again here.
+            if (reason == TINationState.DemocracyChangeReason.DemReason_GovernmentPriority ||
+                reason == TINationState.DemocracyChangeReason.DemReason_OppressionPriority ||
+                reason == TINationState.DemocracyChangeReason.DemReason_SpoilsPriority)
+            {
+                return;
+            }
+
+            if (reason == TINationState.DemocracyChangeReason.DemReason_LowCohesion)
+            {
+                value *= settings.passiveLowCohesionMultiplier;
+            }
+            Transform(ref value, __instance);
+        }
+
+        public static void Transform(ref float value, TINationState nation)
+        {
+            GovernmentSettings settings = Main.settings.government;
+            if (!Main.FeatureEnabled(settings.enabled))
+            {
+                return;
+            }
+            value = GovernmentMath.TransformChange(value, nation.democracy,
+                settings.boundaryCurveFactor);
         }
     }
 

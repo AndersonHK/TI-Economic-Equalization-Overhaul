@@ -140,7 +140,9 @@
   </knowledge>
   <government>
     <enabled>true</enabled>
-    <democracyPopulationDivisor>166667</democracyPopulationDivisor>
+    <democracyPopulationDivisor>333333</democracyPopulationDivisor>
+    <boundaryCurveFactor>3</boundaryCurveFactor>
+    <passiveLowCohesionMultiplier>0.5</passiveLowCohesionMultiplier>
   </government>
   <military>
     <enabled>true</enabled>

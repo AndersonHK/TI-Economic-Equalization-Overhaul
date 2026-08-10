@@ -101,6 +101,7 @@
     <Compile Include="Core\MineMissionControlMath.cs" />
     <Compile Include="Core\GunPowerRegistry.cs" />
     <Compile Include="Core\GlobalTechnologySelectionMath.cs" />
+    <Compile Include="Core\GovernmentMath.cs" />
     <Compile Include="Core\PowerPlantThermalMath.cs" />
     <Compile Include="Core\ProjectileCollisionMath.cs" />
     <Compile Include="Core\DirectFireCommitmentMath.cs" />

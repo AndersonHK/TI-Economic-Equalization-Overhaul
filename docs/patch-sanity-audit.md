@@ -42,11 +42,12 @@ ensures every conventional-gun comparison row creates that column.
 | `SpoilsInequalityPatch` | GDP | Aligned after stock correction. Resource dependence matters strongly in small economies and weakly in diversified large economies; disabling Abundance removes that premium. |
 | `KnowledgeEducationPatch` | Population | Aligned. Education is a demographic stock and receives smooth diminishing returns at high Education. |
 | `KnowledgeCohesionPatch` | Population and distance to neutral | Aligned. It cannot jump across the target and larger populations require proportionally more completions. |
-| `GovernmentDemocracyPatch` | Population / institutions | Aligned. It changes a society-wide institutional score rather than buying a fixed asset. |
+| `GovernmentDemocracyPatch`, `GovernmentChangeCurvePatch` | Population / institutions and bounded score | Aligned after interaction correction. Government investment uses `333,333 / population`, while every positive and negative Government change passes exactly once through the smooth reciprocal x3/x1/3 boundary curve. Passive low-Cohesion pressure is halved before transformation. |
 | `MilitaryTechnologyPatch` | Army count | Aligned after stock correction. One completion is divided among every army it upgrades; the catch-up multiplier remains smooth and never penalizes leaders. |
 | `MilitaryMergerPatch` | Army/navy force structure and GDP | Aligned. The 50/50 blend represents inherited doctrine/equipment and the industrial base that sustains modernization; it replaces only the final merged rating. |
 | `InequalityMergerPatch` | Two population income distributions | Aligned. Population shares, GDP/c separation, existing distribution width, and the finite-sample correction approximate the merged Gini without a step table or arbitrary disparity bonus. |
 | `OppressionUnrestPatch` | Population | Aligned. Repression has diminishing effectiveness in democratic systems and cannot drive Unrest below zero in one completion. |
+| `OppressionDemocracyCurvePatch` | Bounded Government score | Aligned with the shared Government curve. The vanilla raw Oppression Government loss is resisted near zero, unchanged at five, and amplified near ten; UI and direct-investment pricing see the transformed getter value. |
 | `EnvironmentSustainabilityPatch` | GDP; fallout per land area | Aligned. Transition cost follows the dirty capital stock; concentrated nuclear damage makes progress harder without changing cleanup IP per blast. |
 | `EnvironmentCo2RemovalPatch` | No direct atmospheric removal | Aligned. Environment IP reduces national carbon intensity; completions at zero Sustainability return no global CO2 pulse. |
 | `EnvironmentMethaneRemovalPatch` | No direct atmospheric removal | Aligned. Completions at zero Sustainability return no global methane pulse. |
@@ -56,7 +57,7 @@ ensures every conventional-gun comparison row creates that column.
 | `UnityCohesionPatch` | Population | Aligned. Population scaling prevents unified countries becoming easier to homogenize; Education and Government reduce the effect with a floor. |
 | `UnityEducationPatch` | Population | Aligned. The small secondary Education loss scales with the people affected. |
 | `UnityPropagandaPatch` | Vanilla demographic effect × configured strength | Aligned. It changes only one config field load and preserves TI 1.0.51 claims and completion logic. |
-| `SpoilsGovernmentPatch` | Population / institutions | Aligned with the selected inverse-population behavior. |
+| `SpoilsGovernmentPatch` | Population / institutions and bounded score | Aligned with inverse-population behavior followed by the shared reciprocal Government curve. |
 | `SpoilsSustainabilityPatch` | GDP | Aligned. Spoils damages carbon intensity, so its per-IP change falls with the economy and rises with resource dependence while Abundance is enabled. |
 | `SpoilsPropagandaPatch` | Vanilla demographic effect × configured strength | Aligned. It preserves payout, CP, corruption, and Sustainability, scales propaganda, then deletes vanilla's final direct atmospheric-emissions block. |
 | `SpoilsMoneyPatch` | Fixed payout × resources/GDP × Government | Aligned. The full $60 base is retained. The curve is continuous from no resource premium toward the configured maximum; no region-count table remains, and disabling Abundance leaves the base/Government payout. |

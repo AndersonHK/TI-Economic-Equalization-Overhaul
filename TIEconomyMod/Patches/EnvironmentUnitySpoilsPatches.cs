@@ -283,6 +283,12 @@ namespace TIEconomyMod.Patches
             __result = calculated;
             return false;
         }
+
+        [HarmonyPostfix]
+        public static void Postfix(ref float __result, TINationState __instance)
+        {
+            GovernmentChangeCurvePatch.Transform(ref __result, __instance);
+        }
     }
 
     [HarmonyPatch(typeof(TINationState), "spoilsSustainabilityChange", MethodType.Getter)]

@@ -161,6 +161,16 @@ namespace PavonisInteractive.TerraInvicta
             GDPReason_EconomyPriority
         }
 
+        public enum DemocracyChangeReason
+        {
+            DemReason_GovernmentPriority,
+            DemReason_OppressionPriority,
+            DemReason_SpoilsPriority,
+            DemReason_LowCohesion,
+            DemReason_ZeroCohesion,
+            DemReason_EventEffect
+        }
+
         public void ModifyGDP(double value, GDPChangeReason reason)
         {
             GDP += value;
@@ -442,7 +452,9 @@ namespace TIEconomyMod
     public sealed class GovernmentSettings
     {
         public bool enabled = true;
-        public float democracyPopulationDivisor = 166667f;
+        public float democracyPopulationDivisor = 333333f;
+        public float boundaryCurveFactor = 3f;
+        public float passiveLowCohesionMultiplier = 0.50f;
     }
 
     public sealed class MilitarySettings
