@@ -249,7 +249,13 @@ namespace TIEconomyMod
         public bool enabled = true;
         public float maximumMultiplier = 4f;
         public bool researchCostEnabled = true;
-        public float researchCostMultiplier = 1.40f;
+        public float researchCostMultiplier = 2.00f;
+        public bool projectResearchCostEnabled = true;
+        public float projectResearchCostMultiplier = 1.40f;
+        public bool aiSelectionEnabled = true;
+        public float aiSelectionCostExponent = 0.75f;
+        public float aiSelectionMinimumCostMultiplier = 0.25f;
+        public float aiSelectionMaximumCostMultiplier = 4f;
     }
 
     [DrawFields(DrawFieldMask.Public)]
@@ -344,9 +350,9 @@ namespace TIEconomyMod
     {
         public bool enabled = true;
         public bool neutralControlPointResearchEnabled = true;
-        public float coefficient = 0.0037f;
+        public float coefficient = 0.0038f;
         public float referencePcgdp = 20000f;
-        public float minimumPcgdpMultiplier = 0.60f;
+        public float pcgdpOffset = 12000f;
         public float educationExponent = 2f;
         public float democracyFloor = 0.10f;
         public float democracyExponent = 0.20f;
@@ -538,6 +544,19 @@ namespace TIEconomyMod
             RepairPositive(ref value.economy.coreRegionHalfSaturation, defaults.economy.coreRegionHalfSaturation, "economy.coreRegionHalfSaturation", log);
             RepairRange(ref value.technology.maximumMultiplier, defaults.technology.maximumMultiplier, 1f, 100f, "technology.maximumMultiplier", log);
             RepairPositive(ref value.technology.researchCostMultiplier, defaults.technology.researchCostMultiplier, "technology.researchCostMultiplier", log);
+            RepairPositive(ref value.technology.projectResearchCostMultiplier, defaults.technology.projectResearchCostMultiplier, "technology.projectResearchCostMultiplier", log);
+            RepairRange(ref value.technology.aiSelectionCostExponent, defaults.technology.aiSelectionCostExponent, 0.1f, 2f, "technology.aiSelectionCostExponent", log);
+            RepairPositive(ref value.technology.aiSelectionMinimumCostMultiplier, defaults.technology.aiSelectionMinimumCostMultiplier, "technology.aiSelectionMinimumCostMultiplier", log);
+            RepairPositive(ref value.technology.aiSelectionMaximumCostMultiplier, defaults.technology.aiSelectionMaximumCostMultiplier, "technology.aiSelectionMaximumCostMultiplier", log);
+            if (value.technology.aiSelectionMaximumCostMultiplier <
+                value.technology.aiSelectionMinimumCostMultiplier)
+            {
+                log("Invalid technology AI selection cost-multiplier bounds; restored safe 0.25/4 defaults.");
+                value.technology.aiSelectionMinimumCostMultiplier =
+                    defaults.technology.aiSelectionMinimumCostMultiplier;
+                value.technology.aiSelectionMaximumCostMultiplier =
+                    defaults.technology.aiSelectionMaximumCostMultiplier;
+            }
             RepairPositive(ref value.abundance.referenceGdpPerResourceRegionBillions, defaults.abundance.referenceGdpPerResourceRegionBillions, "abundance.referenceGdpPerResourceRegionBillions", log);
             RepairPositive(ref value.abundance.minimumGdpBillions, defaults.abundance.minimumGdpBillions, "abundance.minimumGdpBillions", log);
             RepairNonNegative(ref value.abundance.resourceMaximumBonus, defaults.abundance.resourceMaximumBonus, "abundance.resourceMaximumBonus", log);
@@ -594,7 +613,7 @@ namespace TIEconomyMod
             RepairPositive(ref value.shipBalance.crewSupportMass_tons, defaults.shipBalance.crewSupportMass_tons, "shipBalance.crewSupportMass_tons", log);
             RepairPositive(ref value.research.coefficient, defaults.research.coefficient, "research.coefficient", log);
             RepairPositive(ref value.research.referencePcgdp, defaults.research.referencePcgdp, "research.referencePcgdp", log);
-            RepairNonNegative(ref value.research.minimumPcgdpMultiplier, defaults.research.minimumPcgdpMultiplier, "research.minimumPcgdpMultiplier", log);
+            RepairNonNegative(ref value.research.pcgdpOffset, defaults.research.pcgdpOffset, "research.pcgdpOffset", log);
             RepairPositive(ref value.research.educationExponent, defaults.research.educationExponent, "research.educationExponent", log);
             RepairPositive(ref value.research.democracyFloor, defaults.research.democracyFloor, "research.democracyFloor", log);
             RepairPositive(ref value.research.democracyExponent, defaults.research.democracyExponent, "research.democracyExponent", log);

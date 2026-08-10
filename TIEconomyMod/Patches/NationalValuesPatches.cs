@@ -169,14 +169,12 @@ namespace TIEconomyMod.Patches
             }
 
             // Research is coefficient * population(millions) * Education^2, then scaled
-            // by PCGDP, Government, Cohesion, Unrest, and the live adviser bonus. PCGDP
-            // bottoms out at 60% of the $20k reference. For a 50M nation at Education 8,
-            // $10k PCGDP, Government 5, Cohesion 5, Unrest 2, and +10% adviser science,
-            // defaults produce about 13.5 research/month. Installed vanilla 1.0.51
-            // produces about 51.6 because it uses a larger coefficient and an IP crutch.
-            float income = Math.Max(
-                __instance.perCapitaGDP / settings.referencePcgdp,
-                settings.minimumPcgdpMultiplier);
+            // by PCGDP, Government, Cohesion, Unrest, and the live adviser bonus. The
+            // continuous income term (PCGDP + $12k) / $20k equals 60% at zero income.
+            // For a 50M nation at Education 8, $10k PCGDP, Government 5, Cohesion 5,
+            // Unrest 2, and +10% adviser science, defaults produce about 25.4/month.
+            float income = (__instance.perCapitaGDP + settings.pcgdpOffset) /
+                settings.referencePcgdp;
             float democracy = (float)Math.Pow(
                 Math.Max(__instance.democracy, settings.democracyFloor),
                 settings.democracyExponent);

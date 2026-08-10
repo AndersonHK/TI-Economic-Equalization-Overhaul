@@ -144,6 +144,14 @@ curve: its baseline already embodies accumulated historical technology, while
 global technologies completed during play continue moving it toward
 post-scarcity behavior.
 
+AI selection of the next global technology is also soft rather than exclusive.
+TI's critical, forced, enabling, and expansion tiers become bounded priority
+multipliers, while a bounded relative-cost term lets inexpensive backlog
+technologies compete. Candidate count intentionally adds aggregate probability,
+so a large backlog corrects faster than a small one. The authoritative formula
+and its global-tech-only scope are in
+[Global Technology AI Selection](global-technology-ai-selection.md).
+
 Do not implement GDP per capita as an isolated exponential wealth penalty.
 High GDP per capita locates a nation on the capital-to-complements curve; its
 effect must depend on effective labor, resources, and the current technology-

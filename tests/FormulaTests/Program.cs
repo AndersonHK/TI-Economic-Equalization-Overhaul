@@ -25,6 +25,7 @@ namespace TIEconomyMod.FormulaTests
                 TestMilitaryMath();
                 TestMineMissionControl();
                 TestIndependentResearch();
+                TestGlobalTechnologySelection();
                 TestEconomyAndTechnology();
                 TestBalanceTuning();
                 TestPerformanceCaches();
@@ -153,9 +154,104 @@ namespace TIEconomyMod.FormulaTests
             nation.unrest = 2f;
             nation.adviserScienceBonus = 0.1f;
             ResearchPatch.Prefix(ref result, nation);
-            float expected = 0.0037f * 50f * 64f * 0.6f *
+            float expected = 0.0038f * 50f * 64f * 1.1f *
                 (float)Math.Pow(5f, 0.2f) * 1.25f * 1f * 1.1f;
-            Near(expected, result, 0.0001f, "complete research formula");
+            Near(expected, result, 0.0001f,
+                "complete research formula uses offset PCGDP multiplier");
+
+            nation.perCapitaGDP = 0f;
+            ResearchPatch.Prefix(ref result, nation);
+            expected = 0.0038f * 50f * 64f * 0.6f *
+                (float)Math.Pow(5f, 0.2f) * 1.25f * 1f * 1.1f;
+            Near(expected, result, 0.0001f,
+                "zero PCGDP retains a sixty-percent income multiplier");
+        }
+
+        private static void TestGlobalTechnologySelection()
+        {
+            Near(2000f, (float)GlobalTechnologySelectionMath.Median(
+                new double[] { 3000d, 1000d, 2000d }), 0.000001f,
+                "technology selection odd median");
+            Near(2500f, (float)GlobalTechnologySelectionMath.Median(
+                new double[] { 4000d, 1000d }), 0.000001f,
+                "technology selection even median");
+            Near(0f, (float)GlobalTechnologySelectionMath.Median(
+                new double[] { 1000d, double.NaN }), 0.000001f,
+                "technology selection rejects invalid median input");
+
+            Near(1f, (float)GlobalTechnologySelectionMath.PriorityMultiplier(-2),
+                0.000001f, "technology selection nonpositive tier multiplier");
+            Near(2f, (float)GlobalTechnologySelectionMath.PriorityMultiplier(1),
+                0.000001f, "technology selection tier one multiplier");
+            Near(4f, (float)GlobalTechnologySelectionMath.PriorityMultiplier(2),
+                0.000001f, "technology selection tier two multiplier");
+            Near(10f, (float)GlobalTechnologySelectionMath.PriorityMultiplier(5),
+                0.000001f, "technology selection tier five multiplier");
+            Near(14f, (float)GlobalTechnologySelectionMath.PriorityMultiplier(7),
+                0.000001f, "technology selection tier seven multiplier");
+
+            double exponent = 0.75d;
+            double minimum = 0.25d;
+            double maximum = 4d;
+            Near(1f, (float)GlobalTechnologySelectionMath.CostMultiplier(
+                10000d, 10000d, exponent, minimum, maximum), 0.000001f,
+                "technology selection median cost is neutral");
+            Near((float)Math.Pow(0.25d, exponent),
+                (float)GlobalTechnologySelectionMath.CostMultiplier(
+                    4000d, 1000d, exponent, minimum, maximum), 0.000001f,
+                "technology selection fourfold cost penalty");
+            Near(4f, (float)GlobalTechnologySelectionMath.CostMultiplier(
+                250d, 10000d, exponent, minimum, maximum), 0.000001f,
+                "technology selection cheap-cost multiplier is capped");
+            Near(0.25f, (float)GlobalTechnologySelectionMath.CostMultiplier(
+                1000000d, 10000d, exponent, minimum, maximum), 0.000001f,
+                "technology selection expensive-cost multiplier is floored");
+            Near(
+                (float)GlobalTechnologySelectionMath.CostMultiplier(
+                    4000d, 10000d, exponent, minimum, maximum),
+                (float)GlobalTechnologySelectionMath.CostMultiplier(
+                    5600d, 14000d, exponent, minimum, maximum),
+                0.000001f,
+                "technology selection ignores uniform research-cost scaling");
+
+            double cheapCostMultiplier =
+                GlobalTechnologySelectionMath.CostMultiplier(
+                    1000d, 2500d, exponent, minimum, maximum);
+            double expensiveCostMultiplier =
+                GlobalTechnologySelectionMath.CostMultiplier(
+                    4000d, 2500d, exponent, minimum, maximum);
+            double cheapWeight = GlobalTechnologySelectionMath.SelectionWeight(
+                1d, 1d, 0, cheapCostMultiplier, 1d);
+            double expensiveWeight =
+                GlobalTechnologySelectionMath.SelectionWeight(
+                    1d, 1d, 0, expensiveCostMultiplier, 1d);
+            Near(0.2612039f,
+                (float)(expensiveWeight / (cheapWeight + expensiveWeight)),
+                0.000001f,
+                "fourfold-cost peer retains meaningful selection probability");
+
+            cheapCostMultiplier = GlobalTechnologySelectionMath.CostMultiplier(
+                1000d, 10000d, exponent, minimum, maximum);
+            double strategicCostMultiplier =
+                GlobalTechnologySelectionMath.CostMultiplier(
+                    20000d, 10000d, exponent, minimum, maximum);
+            cheapWeight = GlobalTechnologySelectionMath.SelectionWeight(
+                1d, 1d, 0, cheapCostMultiplier, 1d);
+            double strategicWeight =
+                GlobalTechnologySelectionMath.SelectionWeight(
+                    1d, 1d, 5, strategicCostMultiplier, 1d);
+            True(cheapWeight > 0d && strategicWeight > 0d,
+                "soft tiers keep cheap and strategic technologies eligible");
+            True(strategicWeight / cheapWeight > 1d &&
+                strategicWeight / cheapWeight < 2d,
+                "soft tier balances 1k tier zero against 20k tier five");
+            Near((float)GlobalTechnologySelectionMath.MinimumSelectionWeight,
+                (float)GlobalTechnologySelectionMath.SelectionWeight(
+                    0d, 1d, 0, 1d, 1d), 0f,
+                "zero-valued technology retains minimum lottery weight");
+            Near(0f, (float)GlobalTechnologySelectionMath.SelectionWeight(
+                double.NaN, 1d, 0, 1d, 1d), 0f,
+                "invalid technology score requests vanilla fallback");
         }
 
         private static void TestMilitaryMath()
@@ -540,8 +636,13 @@ namespace TIEconomyMod.FormulaTests
             Reset();
             float technologyCost = 1000f;
             GlobalTechnologyResearchCostPatch.Postfix(ref technologyCost);
-            Near(1400f, technologyCost, 0.0001f,
-                "global technology costs increase by forty percent");
+            Near(2000f, technologyCost, 0.0001f,
+                "global technology costs double");
+
+            float projectCost = 1000f;
+            FactionProjectResearchCostPatch.Postfix(ref projectCost);
+            Near(1400f, projectCost, 0.0001f,
+                "faction project costs increase by forty percent");
 
             float xenofaunaTech = 6f;
             TIMegafaunaArmyState xenofauna = new TIMegafaunaArmyState();
@@ -705,6 +806,11 @@ namespace TIEconomyMod.FormulaTests
             GlobalTechnologyResearchCostPatch.Postfix(ref technologyCost);
             Near(1000f, technologyCost, 0.0001f,
                 "disabled technology-cost adjustment returns vanilla");
+            TIEconomyMod.Main.settings.technology.projectResearchCostEnabled = false;
+            projectCost = 1000f;
+            FactionProjectResearchCostPatch.Postfix(ref projectCost);
+            Near(1000f, projectCost, 0.0001f,
+                "disabled project-cost adjustment returns vanilla");
             TIEconomyMod.Main.settings.army.megafaunaEnabled = false;
             xenofaunaTech = 6f;
             XenofaunaStrengthPatch.Postfix(ref xenofaunaTech, xenofauna);

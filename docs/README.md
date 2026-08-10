@@ -16,6 +16,9 @@ when prose and runtime behavior disagree.
   planning, and player-facing explanations.
 - [Mine Mission Control](mine-mission-control.md): authoritative tier-based mine
   MC formula, retired free-mine bonuses, and UI/AI integration.
+- [Global technology AI selection](global-technology-ai-selection.md):
+  authoritative soft-priority, relative-cost, and weighted-selection formula
+  for AI replacement of completed global technologies.
 - [Current implementation matrix](current-implementation-matrix.xlsx):
   patch-by-patch comparison with Terra Invicta 1.0.51 and the maintained-main
   baseline.
@@ -29,6 +32,12 @@ when prose and runtime behavior disagree.
   model, calibration envelope, and reproducibility rules.
 - [Starting-force rebalance](starting-force-rebalance-2022-2026.md): implemented
   2022 and 2026 army/navy inventories and their source methodology.
+- [Starting technology and project audit](starting-technology-2022-2026.md):
+  authoritative 2022/2026 active research, completed technologies, starting
+  projects, dependency audit, and 2026 Skywatch progression decision.
+- [2003 starting technology audit](starting-technology-2003.md): Dark Skies
+  opening technologies, completed projects, alien pacing, and current Economic
+  Equalization compatibility limits.
 
 ## Historical, exploratory, and deferred material
 

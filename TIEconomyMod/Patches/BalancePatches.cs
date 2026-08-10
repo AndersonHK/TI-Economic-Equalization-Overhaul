@@ -37,10 +37,27 @@ namespace TIEconomyMod.Patches
                 return;
             }
 
-            // This method exists only on global technologies; faction projects use
-            // TIProjectTemplate and are untouched. The default x1.40 changes a 1,000
-            // research technology to 1,400 after vanilla applies difficulty and speed.
+            // This method exists only on global technologies. The default x2.00 changes
+            // a 1,000 research technology to 2,000 after vanilla applies its modifiers.
             __result *= settings.researchCostMultiplier;
+        }
+    }
+
+    [HarmonyPatch(typeof(TIProjectTemplate), "GetResearchCost")]
+    public static class FactionProjectResearchCostPatch
+    {
+        [HarmonyPostfix]
+        public static void Postfix(ref float __result)
+        {
+            TechnologySettings settings = Main.settings.technology;
+            if (!Main.FeatureEnabled(settings.projectResearchCostEnabled))
+            {
+                return;
+            }
+
+            // Applied after vanilla accounts for repeatables and faction research speed.
+            // The default x1.40 turns a resulting 1,000-point project into 1,400 points.
+            __result *= settings.projectResearchCostMultiplier;
         }
     }
 

@@ -37,7 +37,13 @@
     <enabled>true</enabled>
     <maximumMultiplier>4</maximumMultiplier>
     <researchCostEnabled>true</researchCostEnabled>
-    <researchCostMultiplier>1.4</researchCostMultiplier>
+    <researchCostMultiplier>2</researchCostMultiplier>
+    <projectResearchCostEnabled>true</projectResearchCostEnabled>
+    <projectResearchCostMultiplier>1.4</projectResearchCostMultiplier>
+    <aiSelectionEnabled>true</aiSelectionEnabled>
+    <aiSelectionCostExponent>0.75</aiSelectionCostExponent>
+    <aiSelectionMinimumCostMultiplier>0.25</aiSelectionMinimumCostMultiplier>
+    <aiSelectionMaximumCostMultiplier>4</aiSelectionMaximumCostMultiplier>
   </technology>
   <abundance>
     <enabled>true</enabled>
@@ -111,9 +117,9 @@
   <research>
     <enabled>true</enabled>
     <neutralControlPointResearchEnabled>true</neutralControlPointResearchEnabled>
-    <coefficient>0.0037</coefficient>
+    <coefficient>0.0038</coefficient>
     <referencePcgdp>20000</referencePcgdp>
-    <minimumPcgdpMultiplier>0.6</minimumPcgdpMultiplier>
+    <pcgdpOffset>12000</pcgdpOffset>
     <educationExponent>2</educationExponent>
     <democracyFloor>0.1</democracyFloor>
     <democracyExponent>0.2</democracyExponent>

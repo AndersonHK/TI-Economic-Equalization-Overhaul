@@ -100,6 +100,7 @@
     <Compile Include="Core\MilitaryMath.cs" />
     <Compile Include="Core\MineMissionControlMath.cs" />
     <Compile Include="Core\GunPowerRegistry.cs" />
+    <Compile Include="Core\GlobalTechnologySelectionMath.cs" />
     <Compile Include="Core\PowerPlantThermalMath.cs" />
     <Compile Include="Core\ProjectileCollisionMath.cs" />
     <Compile Include="Core\DirectFireCommitmentMath.cs" />
@@ -113,6 +114,7 @@
     <Compile Include="Core\WeaponCadenceMath.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Patches\EconomyPatches.cs" />
+    <Compile Include="Patches\AiTechnologySelectionPatches.cs" />
     <Compile Include="Patches\BalancePatches.cs" />
     <Compile Include="Patches\EnvironmentUnitySpoilsPatches.cs" />
     <Compile Include="Patches\GlobalResearchPatches.cs" />

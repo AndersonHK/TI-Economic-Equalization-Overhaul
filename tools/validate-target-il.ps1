@@ -188,6 +188,9 @@ try {
     $technologyCost = Read-MethodIl 'TITechTemplate' 'GetResearchCost'
     Assert-Count $technologyCost 'ldfld\s+float32 TIGenericTechTemplate::researchCost' 1 'Global technology research cost'
 
+    $projectCost = Read-MethodIl 'TIProjectTemplate' 'GetResearchCost'
+    Assert-Count $projectCost 'ldfld\s+float32 TIGenericTechTemplate::researchCost' 2 'Faction project research cost'
+
     $controlPoint = 'PavonisInteractive.TerraInvicta.TIControlPoint'
     $controlPointOwned = Read-MethodIl $controlPoint 'get_owned'
     Assert-Count $controlPointOwned 'TIControlPoint::get_faction\(\)' 1 'Control-point ownership faction source'

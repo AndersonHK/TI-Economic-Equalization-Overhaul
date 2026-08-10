@@ -66,9 +66,15 @@ historical research and deferred work.
   Point shares is conserved as neutral research divided evenly among the three
   global technology slots. It is displayed in gray and cannot finish a
   technology without faction contribution.
-- Global technologies cost 1.40 times research. Mission to Space, Skywatch, and
-  We Are Not Alone receive an additional 2.00 multiplier; faction projects keep
-  vanilla costs.
+- Monthly national research uses a 0.0038 coefficient and the continuous
+  per-capita-GDP factor `(perCapitaGDP + 12000) / 20000`, followed by the
+  configured Education, Government, Cohesion, Unrest, and adviser factors.
+- Global technologies cost 2.00 times research. Mission to Space, Skywatch, and
+  We Are Not Alone receive an additional 2.00 multiplier. Faction projects cost
+  1.40 times their vanilla research cost.
+- AI global-technology choices keep every available candidate eligible. Native
+  priority tiers become `1/2/4/10/14` weight multipliers, combined with a
+  bounded `(median available cost / candidate cost)^0.75` cost factor.
 
 ### Military and starting scenarios
 

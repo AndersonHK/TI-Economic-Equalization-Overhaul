@@ -256,7 +256,13 @@ namespace TIEconomyMod
         public bool enabled = true;
         public float maximumMultiplier = 4f;
         public bool researchCostEnabled = true;
-        public float researchCostMultiplier = 1.40f;
+        public float researchCostMultiplier = 2.00f;
+        public bool projectResearchCostEnabled = true;
+        public float projectResearchCostMultiplier = 1.40f;
+        public bool aiSelectionEnabled = true;
+        public float aiSelectionCostExponent = 0.75f;
+        public float aiSelectionMinimumCostMultiplier = 0.25f;
+        public float aiSelectionMaximumCostMultiplier = 4f;
     }
 
     public sealed class AbundanceSettings
@@ -337,9 +343,9 @@ namespace TIEconomyMod
     {
         public bool enabled = true;
         public bool neutralControlPointResearchEnabled = true;
-        public float coefficient = 0.0037f;
+        public float coefficient = 0.0038f;
         public float referencePcgdp = 20000f;
-        public float minimumPcgdpMultiplier = 0.60f;
+        public float pcgdpOffset = 12000f;
         public float educationExponent = 2f;
         public float democracyFloor = 0.10f;
         public float democracyExponent = 0.20f;
@@ -448,5 +454,9 @@ namespace TIEconomyMod
 }
 
 public sealed class TITechTemplate
+{
+}
+
+public sealed class TIProjectTemplate
 {
 }

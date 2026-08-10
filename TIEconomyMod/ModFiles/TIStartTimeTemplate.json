@@ -9,18 +9,41 @@
     "globalTechsCompleted": [
       "MissionToSpace",
       "AdvancedChemicalRocketry"
+    ],
+    "projectsCompleted": [
+      "Project_Solid-FuelSpaceRockets",
+      "Project_Liquid-FuelRockets",
+      "Project_CryogenicLiquid-FuelRockets",
+      "Project_LifeScienceLab",
+      "Project_MaterialsLab",
+      "Project_PlatformCore",
+      "Project_SolarCollector",
+      "Project_SpaceScienceLab",
+      "Project_ReusableRockets"
     ]
   },
   {
     "dataName": "2026Start",
     "startingTechs": [
-      "Skywatch",
+      "DeepSystemSkywatch",
       "WeAreNotAlone",
       "OutpostHabs"
     ],
     "globalTechsCompleted": [
       "MissionToSpace",
-      "AdvancedChemicalRocketry"
+      "AdvancedChemicalRocketry",
+      "Skywatch"
+    ],
+    "projectsCompleted": [
+      "Project_Solid-FuelSpaceRockets",
+      "Project_Liquid-FuelRockets",
+      "Project_CryogenicLiquid-FuelRockets",
+      "Project_LifeScienceLab",
+      "Project_MaterialsLab",
+      "Project_PlatformCore",
+      "Project_SolarCollector",
+      "Project_SpaceScienceLab",
+      "Project_ReusableRockets"
     ]
   }
 ]

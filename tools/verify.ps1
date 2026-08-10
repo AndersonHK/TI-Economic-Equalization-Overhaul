@@ -121,6 +121,14 @@ if ($LASTEXITCODE -ne 0) {
     exit $LASTEXITCODE
 }
 
+powershell -NoProfile -ExecutionPolicy Bypass -File `
+    (Join-Path $scriptDirectory 'validate-ai-technology-selection.ps1') `
+    -TargetManagedDir $resolvedManagedDir `
+    -ModAssemblyPath $assemblyPath
+if ($LASTEXITCODE -ne 0) {
+    exit $LASTEXITCODE
+}
+
 powershell -NoProfile -ExecutionPolicy Bypass -File (Join-Path $scriptDirectory 'validate-implementation-matrix.ps1') -RepositoryRoot $repositoryRoot
 if ($LASTEXITCODE -ne 0) {
     exit $LASTEXITCODE
@@ -451,12 +459,43 @@ foreach ($start in $starts) {
         $start2026 = $start
     }
 }
+if ($null -eq $modernStart -or
+    ($modernStart.startingTechs -join ';') -ne
+        'Skywatch;WeAreNotAlone;OutpostHabs' -or
+    ($modernStart.globalTechsCompleted -join ';') -ne
+        'MissionToSpace;AdvancedChemicalRocketry') {
+    throw 'The 2022 start must retain Skywatch as active research and the two baseline completed technologies.'
+}
+if ($null -eq $start2026 -or
+    ($start2026.startingTechs -join ';') -ne
+        'DeepSystemSkywatch;WeAreNotAlone;OutpostHabs' -or
+    ($start2026.globalTechsCompleted -join ';') -ne
+        'MissionToSpace;AdvancedChemicalRocketry;Skywatch') {
+    throw 'The 2026 start must complete Skywatch and replace it with Deep System Skywatch as active research.'
+}
 foreach ($scenario in @($modernStart, $start2026)) {
-    if ($null -eq $scenario -or
-        ($scenario.startingTechs -join ';') -ne 'Skywatch;WeAreNotAlone;OutpostHabs' -or
-        ($scenario.globalTechsCompleted -join ';') -ne
-            'MissionToSpace;AdvancedChemicalRocketry') {
-        throw 'The 2022 and 2026 start overrides must have matching current and completed technologies.'
+    $duplicateStartingTechnologies = @(
+        $scenario.startingTechs |
+            Where-Object { $_ -in $scenario.globalTechsCompleted })
+    if ($duplicateStartingTechnologies.Count -gt 0) {
+        throw "Start '$($scenario.dataName)' has technologies both active and completed: $($duplicateStartingTechnologies -join ', ')."
+    }
+}
+$expectedCompletedStartProjects = @(
+    'Project_Solid-FuelSpaceRockets',
+    'Project_Liquid-FuelRockets',
+    'Project_CryogenicLiquid-FuelRockets',
+    'Project_LifeScienceLab',
+    'Project_MaterialsLab',
+    'Project_PlatformCore',
+    'Project_SolarCollector',
+    'Project_SpaceScienceLab',
+    'Project_ReusableRockets'
+)
+foreach ($scenario in @($modernStart, $start2026)) {
+    if (($scenario.projectsCompleted -join ';') -ne
+        ($expectedCompletedStartProjects -join ';')) {
+        throw "Start '$($scenario.dataName)' must complete the eight baseline projects and Reusable Rockets."
     }
 }
 $vanillaTechnologyPath = Join-Path $templatesDirectory 'TITechTemplate.json'
@@ -515,6 +554,14 @@ foreach ($entry in $mineEffectByTechnology.GetEnumerator()) {
 }
 $vanillaProjects = Get-Content -LiteralPath (
     Join-Path $templatesDirectory 'TIProjectTemplate.json') -Raw | ConvertFrom-Json
+$reusableRockets = @($vanillaProjects | Where-Object {
+    $_.dataName -eq 'Project_ReusableRockets'
+})
+if ($reusableRockets.Count -ne 1 -or
+    ($reusableRockets[0].prereqs -join ';') -ne
+        'AdvancedChemicalRocketry') {
+    throw 'Reusable Rockets must retain Advanced Chemical Rocketry as its sole installed prerequisite.'
+}
 $projectTemplateOverrides = @(
     Get-Content -LiteralPath $projectOverrides -Raw | ConvertFrom-Json)
 $vanillaGoldRush = @($vanillaProjects | Where-Object {
