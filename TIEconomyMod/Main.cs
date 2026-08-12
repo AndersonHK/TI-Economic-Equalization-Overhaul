@@ -326,6 +326,7 @@ namespace TIEconomyMod
         public float costCoefficient = 2f;
         public float costGrowthBase = 2f;
         public float repairShare = 0.5f;
+        public bool repairDebtMergedDisplayEnabled = true;
         public float homeUpkeepDivisor = 10f;
         public float awayUpkeepDivisor = 3f;
         public float combatModifierScale = 0.5f;

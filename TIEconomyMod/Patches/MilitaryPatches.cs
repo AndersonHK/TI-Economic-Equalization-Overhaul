@@ -301,6 +301,11 @@ namespace TIEconomyMod.Patches
     [HarmonyPatch(typeof(PriorityListItemController), "priorityAccumulationStr")]
     public static class ArmyRepairDebtDisplayPatch
     {
+        public static string RepairDebtText(float progress)
+        {
+            return "Repair debt " + (-progress).ToString("0.##") + " IP";
+        }
+
         [HarmonyPrefix]
         public static bool Prefix(
             ref string __result,
@@ -320,7 +325,7 @@ namespace TIEconomyMod.Patches
                 return true;
             }
 
-            __result = "Repair debt " + (-progress).ToString("0.##") + " IP";
+            __result = RepairDebtText(progress);
             return false;
         }
     }

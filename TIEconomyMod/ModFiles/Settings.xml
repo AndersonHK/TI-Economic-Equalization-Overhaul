@@ -98,6 +98,7 @@
     <costCoefficient>2</costCoefficient>
     <costGrowthBase>2</costGrowthBase>
     <repairShare>0.5</repairShare>
+    <repairDebtMergedDisplayEnabled>true</repairDebtMergedDisplayEnabled>
     <homeUpkeepDivisor>10</homeUpkeepDivisor>
     <awayUpkeepDivisor>3</awayUpkeepDivisor>
     <combatModifierScale>0.5</combatModifierScale>

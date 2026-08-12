@@ -88,7 +88,8 @@ historical research and deferred work.
   `miltech / 3` away. Repair creates persistent Build Army debt equal to half
   the value actually restored; positive Build Army, Military, Build Navy, and
   Nuclear Weapons IP repay it first, with any overshoot continuing into the
-  selected priority.
+  selected priority. While debt remains, those priorities share one spanning
+  repair-debt display in the investment column.
 - Land combat uses up to a -1 additive strength penalty, half-strength situational
   modifiers, and a symmetric base-2 hit curve: 25%/50%/75% at rating differences
   -1/0/+1.

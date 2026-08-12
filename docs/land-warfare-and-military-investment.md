@@ -108,6 +108,15 @@ purchase limit, so repayment is not artificially capped by miltech progress.
 Healing is never blocked by debt. Healing capped near full strength is charged
 only for the amount actually restored.
 
+While repair debt is negative, the nation-priorities panel replaces the separate
+investment-value cells for each currently available debt-funding priority with
+one centered display spanning their combined investment-column area. The source
+set is Military, Build Army, Build Navy, and Nuclear Weapons. Hidden or invalid
+priority rows do not reserve space in the span. The overlay is display-only: its
+background blocks the internal row dividers in that column, it does not intercept
+input, and the original per-priority values are restored when debt reaches zero,
+the nation changes, or the panel closes.
+
 On peaceful unification, the absorbing nation's debt remains and 100% of the
 joining nation's negative debt transfers. Vanilla continues to govern positive
 joining progress.
