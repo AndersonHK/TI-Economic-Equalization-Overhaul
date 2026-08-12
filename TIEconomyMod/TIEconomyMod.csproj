@@ -94,6 +94,7 @@
 
   <ItemGroup>
     <Compile Include="Core\HabLogistics.cs" />
+    <Compile Include="Core\AlienFloraAssaultMath.cs" />
     <Compile Include="Core\HabRebalanceMath.cs" />
     <Compile Include="Core\IndependentResearchMath.cs" />
     <Compile Include="Core\LandCombatMath.cs" />
@@ -115,6 +116,7 @@
     <Compile Include="Core\WeaponCadenceMath.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Patches\EconomyPatches.cs" />
+    <Compile Include="Patches\AlienFloraAssaultPatches.cs" />
     <Compile Include="Patches\AiTechnologySelectionPatches.cs" />
     <Compile Include="Patches\BalancePatches.cs" />
     <Compile Include="Patches\EnvironmentUnitySpoilsPatches.cs" />

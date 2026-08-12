@@ -158,19 +158,29 @@ namespace TIEconomyMod.Patches
                 __instance,
                 __instance.militaryTechLevel,
                 __instance.maxMilitaryTechLevel);
-            if (!MilitaryMath.IsFinite(remaining) || remaining < 0d)
+            double repairDebt = Main.FeatureEnabled(Main.settings.army.enabled)
+                ? MilitaryMath.RepairDebtAmount(
+                    __instance.GetAccumulatedInvestmentPoints(
+                        PriorityType.Military_BuildArmy))
+                : 0d;
+            if (!MilitaryMath.IsFinite(remaining) || remaining < 0d ||
+                !MilitaryMath.IsFinite(repairDebt))
             {
                 return;
             }
 
             // Direct investment is integer-valued in TI. Truncation prevents charging
-            // more than the exact integrated remainder; ordinary national IP can supply
-            // any final sub-IP completion.
-            int exactLimit = remaining >= int.MaxValue
+            // more than repair debt plus the exact integrated miltech remainder;
+            // ordinary national IP can supply any final sub-IP completion. If Military
+            // itself is capped, direct investment may still pay whole-IP repair debt,
+            // but it cannot overshoot into an invalid priority.
+            bool canApplyNormally = __instance.ValidPriority(priority);
+            double totalCapacity = repairDebt + (canApplyNormally ? remaining : 0d);
+            int exactLimit = totalCapacity >= int.MaxValue
                 ? int.MaxValue
-                : Math.Max(0, (int)Math.Floor(remaining + 1e-7d));
+                : Math.Max(0, (int)Math.Floor(totalCapacity + 1e-7d));
             maxAllowed = Math.Min(__instance.MaxDirectInvestIPsRemainingThisYear(), exactLimit);
-            __result = maxAllowed > 0 && __instance.ValidPriority(priority) &&
+            __result = maxAllowed > 0 &&
                 (!__instance.policy_closedBorders || __instance.FactionHasControlPoint(faction));
         }
     }
@@ -213,12 +223,54 @@ namespace TIEconomyMod.Patches
         public static bool Prefix(
             TINationState __instance,
             PriorityType priority,
-            float by,
+            ref float by,
             bool multiply,
             bool triggerUpdate)
         {
-            if (priority != PriorityType.Military_BuildArmy ||
-                !Main.FeatureEnabled(Main.settings.army.enabled))
+            if (!Main.FeatureEnabled(Main.settings.army.enabled))
+            {
+                return true;
+            }
+
+            bool divertsToRepairDebt = priority == PriorityType.Military ||
+                priority == PriorityType.Military_BuildNavy ||
+                priority == PriorityType.Military_BuildNuclearWeapons;
+            if (divertsToRepairDebt && !multiply && by > 0f)
+            {
+                PriorityType debtPriority = PriorityType.Military_BuildArmy;
+                float currentDebtProgress =
+                    __instance.GetAccumulatedInvestmentPoints(debtPriority);
+                double updatedDebtProgress;
+                double remainingInvestment;
+                if (!MilitaryMath.TryDivertRepairDebt(
+                    currentDebtProgress,
+                    by,
+                    out updatedDebtProgress,
+                    out remainingInvestment) ||
+                    updatedDebtProgress < -float.MaxValue ||
+                    updatedDebtProgress > float.MaxValue ||
+                    remainingInvestment < 0d ||
+                    remainingInvestment > float.MaxValue)
+                {
+                    Main.Warn("Military investment repair-debt diversion was invalid; retaining vanilla.");
+                    return true;
+                }
+
+                if (updatedDebtProgress != currentDebtProgress)
+                {
+                    __instance.SetAccumulatedInvestmentPoints(
+                        debtPriority,
+                        (float)updatedDebtProgress,
+                        triggerUpdate);
+                    by = (float)remainingInvestment;
+                    if (by <= 0f)
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            if (priority != PriorityType.Military_BuildArmy)
             {
                 return true;
             }

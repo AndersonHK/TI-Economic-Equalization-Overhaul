@@ -93,14 +93,42 @@ RepairCharge = 0.5 × ArmyCost(current technology)
 ```
 
 Build Army accumulation may become negative. This is persistent national repair
-debt, not a negative construction bar: future Build Army investment and existing
-army-destruction refunds repay it before positive construction progress appears.
+debt, not a negative construction bar. Positive additive investment entering
+Build Army, Military, Build Navy, or Nuclear Weapons repays that debt before it
+can advance its selected priority. If one investment is larger than the remaining
+debt, the debt is set to zero and the exact remainder advances the originally
+selected priority normally. Existing army-destruction refunds continue to offset
+debt through Build Army accumulation.
+
+Multiplicative changes and nonpositive adjustments are not diverted. This keeps
+priority damage, completion-cost subtraction, and other reductions attached to
+their original priority. Direct Military investment counts repair debt plus the
+remaining integrated Military-technology cost when calculating its integer
+purchase limit, so repayment is not artificially capped by miltech progress.
 Healing is never blocked by debt. Healing capped near full strength is charged
 only for the amount actually restored.
 
 On peaceful unification, the absorbing nation's debt remains and 100% of the
 joining nation's negative debt transfers. Vanilla continues to govern positive
 joining progress.
+
+## Alien-flora assault damage
+
+Army assaults against alien flora retain TI's existing success chance, outcome
+table, technology mitigation, seven-day duration, and flora-removal formula.
+Only the damage received by the army is scaled by the infestation present when
+the assault resolves:
+
+```text
+FloraDamageScale = clamp(xenoforming level / 100, 0, 1)
+ArmyDamage = VanillaFloraAssaultDamage × FloraDamageScale
+```
+
+An infestation at level 100 therefore remains fully dangerous. Levels 65, 30,
+10, and 1 deal 65%, 30%, 10%, and 1% of the damage TI would otherwise roll for
+the same outcome. Alien facilities and landed craft retain their vanilla army
+assault damage. Surviving flora may still hide, regrow, spread, and be selected
+again by an army's standing hunt order.
 
 ## Combat ratings and hit probability
 

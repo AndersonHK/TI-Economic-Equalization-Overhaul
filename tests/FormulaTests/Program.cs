@@ -378,6 +378,37 @@ namespace TIEconomyMod.FormulaTests
             Near(-1.32f, (float)progress, 0.000001f,
                 "peaceful unification transfers all joining debt");
 
+            double updatedDebt;
+            double remainder;
+            True(MilitaryMath.TryDivertRepairDebt(
+                -5d, 3d, out updatedDebt, out remainder),
+                "Military investment can partially repay repair debt");
+            Near(-2f, (float)updatedDebt, 0.000001f,
+                "partial diversion leaves the unpaid repair debt");
+            Near(0f, (float)remainder, 0.000001f,
+                "partial repayment consumes the entire investment");
+            True(MilitaryMath.TryDivertRepairDebt(
+                -3d, 5d, out updatedDebt, out remainder),
+                "Navy or Nuclear Weapons investment can overshoot repair debt");
+            Near(0f, (float)updatedDebt, 0.000001f,
+                "overshoot clears repair debt exactly");
+            Near(2f, (float)remainder, 0.000001f,
+                "overshoot preserves investment for the selected priority");
+            True(MilitaryMath.TryDivertRepairDebt(
+                4d, 3d, out updatedDebt, out remainder),
+                "investment without repair debt remains unchanged");
+            Near(4f, (float)updatedDebt, 0.000001f,
+                "positive Build Army progress is not redirected");
+            Near(3f, (float)remainder, 0.000001f,
+                "no-debt investment remains available to its priority");
+            Near(5f, (float)MilitaryMath.RepairDebtAmount(-5d), 0.000001f,
+                "negative Build Army progress exposes direct-investment debt capacity");
+            Near(0f, (float)MilitaryMath.RepairDebtAmount(2d), 0.000001f,
+                "positive Build Army progress exposes no repair debt");
+            True(!MilitaryMath.TryDivertRepairDebt(
+                -3d, -1d, out updatedDebt, out remainder),
+                "negative adjustments are rejected by debt diversion math");
+
             double previous = -1d;
             for (int difference = -3; difference <= 3; difference++)
             {
@@ -635,6 +666,20 @@ namespace TIEconomyMod.FormulaTests
         private static void TestBalanceTuning()
         {
             Reset();
+            Near(1f, (float)AlienFloraAssaultMath.DamageScale(100d, 100d),
+                0.0001f, "mature alien flora retains full assault damage");
+            Near(0.3f, (float)AlienFloraAssaultMath.DamageScale(30d, 100d),
+                0.0001f, "light alien flora deals proportionally less damage");
+            Near(0.008f, (float)AlienFloraAssaultMath.ScaledDamage(
+                0.08d, 10d, 100d), 0.0001f,
+                "flora level scales the completed vanilla damage roll");
+            Near(0f, (float)AlienFloraAssaultMath.ScaledDamage(
+                0.08d, -5d, 100d), 0.0001f,
+                "negative flora state cannot produce negative damage");
+            True(double.IsNaN(AlienFloraAssaultMath.ScaledDamage(
+                0.08d, 10d, 0d)),
+                "invalid full-damage level is rejected");
+
             float technologyCost = 1000f;
             GlobalTechnologyResearchCostPatch.Postfix(ref technologyCost);
             Near(2000f, technologyCost, 0.0001f,

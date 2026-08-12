@@ -331,6 +331,8 @@ namespace TIEconomyMod
         public float combatModifierScale = 0.5f;
         public float maximumStrengthPenalty = 1f;
         public float hitCurveBase = 2f;
+        public bool alienFloraDamageScalingEnabled = true;
+        public float alienFloraFullDamageLevel = 100f;
         public bool megafaunaEnabled = true;
         public float megafaunaMaximumTechLevel = 5f;
     }
@@ -612,6 +614,7 @@ namespace TIEconomyMod
                 log("Invalid army.hitCurveBase; restored safe default.");
                 value.army.hitCurveBase = defaults.army.hitCurveBase;
             }
+            RepairPositive(ref value.army.alienFloraFullDamageLevel, defaults.army.alienFloraFullDamageLevel, "army.alienFloraFullDamageLevel", log);
             RepairPositive(ref value.army.megafaunaMaximumTechLevel, defaults.army.megafaunaMaximumTechLevel, "army.megafaunaMaximumTechLevel", log);
             RepairRange(ref value.shipBalance.openCycleDriveHeatFraction, defaults.shipBalance.openCycleDriveHeatFraction, 0f, 1f, "shipBalance.openCycleDriveHeatFraction", log);
             RepairPositive(ref value.shipBalance.crewSupportMass_tons, defaults.shipBalance.crewSupportMass_tons, "shipBalance.crewSupportMass_tons", log);

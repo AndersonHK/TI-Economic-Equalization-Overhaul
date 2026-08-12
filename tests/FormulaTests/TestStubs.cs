@@ -407,6 +407,8 @@ namespace TIEconomyMod
         public float combatModifierScale = 0.5f;
         public float maximumStrengthPenalty = 1f;
         public float hitCurveBase = 2f;
+        public bool alienFloraDamageScalingEnabled = true;
+        public float alienFloraFullDamageLevel = 100f;
         public bool megafaunaEnabled = true;
         public float megafaunaMaximumTechLevel = 5f;
     }

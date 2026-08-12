@@ -342,6 +342,35 @@ namespace TIEconomyMod
             return IsFinite(progress);
         }
 
+        public static double RepairDebtAmount(double buildArmyProgress)
+        {
+            return IsFinite(buildArmyProgress)
+                ? Math.Max(0d, -buildArmyProgress)
+                : double.NaN;
+        }
+
+        public static bool TryDivertRepairDebt(
+            double buildArmyProgress,
+            double investment,
+            out double updatedBuildArmyProgress,
+            out double remainingInvestment)
+        {
+            updatedBuildArmyProgress = buildArmyProgress;
+            remainingInvestment = investment;
+            if (!IsFinite(buildArmyProgress) || !IsFinite(investment) || investment < 0d)
+            {
+                return false;
+            }
+
+            double debt = RepairDebtAmount(buildArmyProgress);
+            double repayment = Math.Min(debt, investment);
+            updatedBuildArmyProgress = repayment >= debt
+                ? Math.Max(0d, buildArmyProgress)
+                : buildArmyProgress + repayment;
+            remainingInvestment = investment - repayment;
+            return IsFinite(updatedBuildArmyProgress) && IsFinite(remainingInvestment);
+        }
+
         private static double ExponentialIntegralE1(double value)
         {
             if (!IsFinite(value) || value <= 0d)

@@ -103,6 +103,8 @@
     <combatModifierScale>0.5</combatModifierScale>
     <maximumStrengthPenalty>1</maximumStrengthPenalty>
     <hitCurveBase>2</hitCurveBase>
+    <alienFloraDamageScalingEnabled>true</alienFloraDamageScalingEnabled>
+    <alienFloraFullDamageLevel>100</alienFloraFullDamageLevel>
     <megafaunaEnabled>true</megafaunaEnabled>
     <megafaunaMaximumTechLevel>5</megafaunaMaximumTechLevel>
   </army>

@@ -86,7 +86,9 @@ historical research and deferred work.
   equipment upgrade cost of every eligible army.
 - Army construction costs `2 × 2^miltech`; upkeep is `miltech / 10` at home and
   `miltech / 3` away. Repair creates persistent Build Army debt equal to half
-  the value actually restored.
+  the value actually restored; positive Build Army, Military, Build Navy, and
+  Nuclear Weapons IP repay it first, with any overshoot continuing into the
+  selected priority.
 - Land combat uses up to a -1 additive strength penalty, half-strength situational
   modifiers, and a symmetric base-2 hit curve: 25%/50%/75% at rating differences
   -1/0/+1.
@@ -94,7 +96,8 @@ historical research and deferred work.
   human armies and conserve doctrine/equipment value. Human conquest destroys
   conquered armies.
 - Xenofauna is capped at 5 base Military technology; Purge and Enthrall Elites
-  receive +1 defense.
+  receive +1 defense. Damage to an army clearing alien flora scales linearly
+  with the infestation level, reaching the vanilla amount at level 100.
 - The 2022 and 2026 scenarios begin with Mission to Space and Advanced Chemical
   Rocketry completed, Outpost Habs in the active global-technology lineup, and
   the implemented historically rescaled army/navy inventories.
@@ -233,7 +236,8 @@ enabled-mod destination and verifies every deployed file by SHA-256.
   surviving armies, and Inequality against the authoritative formulas.
 - At Military technology 4/cap 5, confirm doctrine from 4 to 5 costs about
   2,883.59 IP plus 32 IP per army; Build Army costs 32 IP and healing creates
-  debt repaid by later Build Army investment.
+  debt repaid first by later Build Army, Military, Build Navy, or Nuclear Weapons
+  investment.
 - Confirm -1/0/+1 land-combat rating differences show 25%/50%/75% hit odds.
 - Verify neutral research equals the sum of unusable national Control Point
   shares, appears gray in all three slots, and waits below completion until a
