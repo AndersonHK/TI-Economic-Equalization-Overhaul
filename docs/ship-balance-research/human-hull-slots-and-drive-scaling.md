@@ -1,7 +1,7 @@
 # Human hull slots, crew, naval references, and drive scaling
 
-Status: measurement record and implemented balance specification for the
-deployed 2026-08-10 human-hull pass.
+Status: measurement record and implementation specification for the 2026-08-12
+graphical-variant drive-scaling pass.
 
 This report brings together the tier 1-3 hull comparison, the real-world naval
 cross-check, the weapon/utility-slot code audit, and the rendered drive-asset
@@ -33,9 +33,14 @@ measured art from provisional gameplay multipliers.
   placement has none of the weapon adjacency/core-slot machinery.
 - Rendered drives clearly scale with hull. The six-nozzle Titan has roughly
   **8.11 times** the default Gunship De Laval transverse bounding area and
-  **6.59 times** its default magnetic area. Applying those art ratios directly
-  would be an aggressive balance change, so this pass uses the smaller
-  provisional multipliers specified below.
+  **6.59 times** its default magnetic area. Human measurements remain research
+  evidence for a later balance pass; current human gameplay retains the
+  previously approved conservative hull factors.
+- Alien drive resources are hull-specific but not nozzle-family-specific. The
+  installed standard alien hulls each have one graphical appearance and one
+  corresponding drive-resource family, so their measured factor is stable
+  across alien drive physics types. The Salamander has no standalone alien
+  drive resource and deliberately retains factor 1.00.
 - Reactor hull-size caps remain deferred. Existing reactor mass, output limits,
   and engine-section geometry need their own rebalance before adding a second
   hull-dependent constraint.
@@ -84,6 +89,8 @@ path remains separate from the drive-resource path:
   serialized `ThrusterPoint`;
 - `measure_drive_resources` enumerates default and alternate De Laval,
   magnetic, and pulse resources without changing the hull result.
+- `measure_alien_drive_resources` measures the hull-specific alien x1 and x6
+  resources and records unavailable resources explicitly.
 
 The old hull output was compared before and after the drive functions were
 added and remained byte-for-byte equivalent. Bounds are axis-aligned mesh
@@ -309,9 +316,51 @@ The alternate Titan reaches 7.854 times the Gunship De Laval reference and
 11.524 times the magnetic reference. Appearance dependence is one reason not to
 treat art area as a precise physical thrust law.
 
-## Provisional hull drive scaling
+### Measured per-engine scaling: alien graphical variants
 
-The implemented factors are intentionally below most rendered-area estimates:
+Alien `TIDriveTemplate.modelResource` ignores De Laval/magnetic classification
+and constructs a hull-specific resource name. Each standard alien hull in the
+installed 1.0.51 templates has exactly one model resource at resolved
+appearance index 0. Consequently, separate De Laval and magnetic rows would be
+duplicates; the one factor below applies to both engine types for that visual
+variant.
+
+The standalone x1 prefab is the reproducible per-drive-unit reference. For a
+normal resource its transverse proxy is the smaller transverse dimension
+squared, which avoids treating small asymmetry as meaningful. The Mothership x1
+resource contains three serialized thruster points spread across one cluster,
+so its proxy is `min(x, y)^2 x 3`; this counts its three visible drive units
+without counting the empty spacing between them as nozzle area. Every row is
+normalized to the Alien Gunship x1 proxy of 32.490 m2. Gameplay never reduces a
+drive below its template baseline, so the Corvette's measured 0.758 becomes an
+effective factor of 1.000.
+
+| Hull | Variant | x1 resource bounds (m) | Thruster points | Proxy (m2) | Measured ratio | Implemented factor |
+|---|---:|---:|---:|---:|---:|---:|
+| Alien Gunship | 0 | 5.700 x 5.710 x 17.165 | 1 | 32.490 | 1.000 | **1.000** |
+| Alien Escort | 0 | 5.700 x 5.710 x 17.165 | 1 | 32.490 | 1.000 | **1.000** |
+| Alien Corvette | 0 | 4.962 x 4.970 x 14.942 | 1 | 24.621 | 0.758 | **1.000** |
+| Alien Frigate | 0 | 6.096 x 6.106 x 18.358 | 1 | 37.161 | 1.144 | **1.144** |
+| Alien Monitor | 0 | 8.458 x 8.472 x 25.469 | 1 | 71.538 | 2.202 | **2.202** |
+| Alien Destroyer | 0 | 10.485 x 10.503 x 31.575 | 1 | 109.935 | 3.384 | **3.384** |
+| Alien Cruiser | 0 | 10.340 x 10.357 x 31.136 | 1 | 106.916 | 3.291 | **3.291** |
+| Alien Battlecruiser | 0 | 10.579 x 10.597 x 31.856 | 1 | 111.915 | 3.445 | **3.445** |
+| Alien Lancer | 0 | 10.340 x 10.357 x 31.136 | 1 | 106.916 | 3.291 | **3.291** |
+| Alien Battleship | 0 | 10.579 x 10.597 x 31.856 | 1 | 111.915 | 3.445 | **3.445** |
+| Alien Dreadnought | 0 | 10.579 x 10.597 x 31.856 | 1 | 111.915 | 3.445 | **3.445** |
+| Alien Titan | 0 | 15.642 x 15.668 x 47.102 | 1 | 244.672 | 7.531 | **7.531** |
+| Alien Assault Carrier | 0 | 10.579 x 10.597 x 31.856 | 1 | 111.915 | 3.445 | **3.445** |
+| Alien Mothership | 0 | 166.849 x 16.850 x 95.160 | 3 | 851.768 | 26.216 | **26.216** |
+| Salamander Gunship | 0 | unavailable: no standalone alien drive prefab | - | - | - | **1.000 fallback** |
+
+These are graphical ratios, not claims about nozzle exit area or propulsion
+technology. In particular, the Mothership result is exceptional and should be
+treated as a high-risk balance value during manual testing.
+
+## Alien graphical-variant scaling and approved human factors
+
+Human ships retain these approved hull-only factors for every graphical
+appearance and drive nozzle family:
 
 | Hull | Thrust, flow, powered-drive requirement, and drive-module factor |
 |---|---:|
@@ -323,7 +372,11 @@ The implemented factors are intentionally below most rendered-area estimates:
 | Dreadnought | **2.00** |
 | Titan | **2.50** |
 
-For a hull factor `k`:
+The default and alternate human De Laval/magnetic measurements above are not
+yet gameplay multipliers. They remain available for a later human graphical
+balance pass after the engine-section method is settled. This implementation
+changes only alien graphical scaling; alien authored resources do not
+distinguish De Laval from magnetic nozzles. For a selected factor `k`:
 
 - thrust becomes `k × template thrust`;
 - exhaust velocity is unchanged;
@@ -343,16 +396,29 @@ not a separate fuel-per-second state variable to patch. Constant exhaust
 velocity also means a given propellant mass provides the same delta-v while the
 higher thrust expends it in less physical burn time.
 
-The runtime applies scaling only to non-alien human hulls. Existing reactor
+The runtime passes hull data name, alien status, the DLC-aware resolved
+appearance index, and the candidate or installed drive's nozzle to the lookup.
+Human hulls deliberately ignore appearance and nozzle and use the approved
+hull table. Alien hulls use their measured appearance table and ignore nozzle
+because their resource path is nozzle-independent. Existing reactor
 `maxOutput_GW` compatibility remains respected after drive power is scaled, but
 this pass adds no hull-size reactor cap and changes no reactor template.
 
+The live-ship `currentThrust_N` calculation and every designer presentation use
+the same lookup. Cached module-browser rows refresh whenever the designer
+re-filters part availability, including hull changes and design loads. The
+selected-module side panel and hover tooltip resolve the current design live and
+replace localized thrust, combat thrust, required power, drive mass, and
+material cost with scaled values. Exhaust velocity and efficiency stay at
+template values. This prevents the browser from continuing to advertise the
+108 kN Burner Drive baseline, for example, when a Cruiser design is selected.
+
 ### Feasibility of appearance- and hull-data-driven scaling
 
-The current implementation receives the complete `TISpaceShipTemplate`, but
-uses only `ship.hullTemplate.dataName`. All of the proposed inputs are already
-available at that point; none requires a new save field. Their balance meaning
-and update behavior differ, however:
+The implementation receives the complete `TISpaceShipTemplate` and passes the
+hull data name, alien status, resolved appearance index, and candidate or
+installed drive nozzle to the lookup. No new save field is required. Other hull
+inputs remain available but are deliberately excluded from the lookup:
 
 | Candidate input | Existing runtime source | Technical availability | Main limitation |
 |---|---|---|---|
@@ -364,40 +430,25 @@ and update behavior differ, however:
 | Rounded empty hull mass | `hullTemplate.mass_tons` plus the configured base-crew support mass | **Very high** | This is stable and already balanced, but it is a gameplay mass rather than a direct engine-section measurement. Calling patched `dryMass_tons` from the multiplier would be recursive and must be avoided. |
 | Runtime cylinder volume | `hullTemplate.volume_m3`, computed from `length_m` and `width_m` | **Very high** | It is the full statistical cylinder, not usable interior or aft machinery volume, and may differ substantially from the prefab. |
 
-Appearance-sensitive scaling is therefore feasible as a bounded extension of
-the existing lookup. The game already serializes the selected appearance on
-each design, the visualizer uses the DLC-aware appearance getter, and
-`TIDriveTemplate.modelResource(hull, appearanceIndex)` chooses matching drive
-art. A future multiplier can key on `(hull dataName, resolved appearanceIndex)`
-without changing the save format. Formula tests should cover invalid indices,
-missing resources, alien hulls, DLC fallback, designer appearance cycling, and
-refit cost differences.
+The game already serializes the selected appearance on each design, the
+visualizer uses the DLC-aware appearance getter, and
+`TIDriveTemplate.modelResource(hull, appearanceIndex)` chooses matching human
+drive art. Those human resources are measured here but do not affect current
+gameplay. Invalid alien appearances, unknown future alien hulls, and the
+Salamander use the safe 1.00 baseline and emit a one-time configuration error.
+Known Gunship/Escort 1.00 values and the Corvette's measured below-baseline
+clamp are intentional and do not log errors.
 
-The safest balance architecture is a stable hull-capacity factor followed by a
-small appearance modifier:
+This deliberately does not use free utilities, complete design crew, patched
+dry mass, or full-cylinder volume. Those values either change with unrelated
+module choices, recurse through the scaled drive mass, or represent the whole
+hull rather than the engine section. A later engine-section measurement can
+replace the nozzle-envelope proxy without changing the runtime key.
 
-`scale = hull capacity factor × bounded appearance modifier`
+### Approved human thrust-to-mass table
 
-Hull capacity should use base crew/slot capacity, rounded empty mass, and the
-runtime cylinder only as documented priors. It should not use installed-module
-crew, complete dry mass, or free utility slots. Appearance modifiers should be
-normalized so their geometric mean is 1.00 within a hull and should initially
-be capped near **0.90-1.10** (at most **0.85-1.15** after testing). That preserves
-the class's intended average capacity and prevents a cosmetic selection from
-becoming an overwhelming optimization choice. The much wider measured art
-ranges—for example the Cruiser's **2.04-4.15** Gunship-relative span—are useful
-evidence that the variants differ, but are too strong to apply directly as
-thrust multipliers.
-
-Before implementing this extension, measure appearance indices 2 and 3, record
-an explicit per-appearance table keyed by the resolved index, and verify that
-cycling an appearance invalidates or force-recomputes every affected designer
-value. A later engine-section measurement can replace the broad cylinder and
-utility-capacity proxies without changing that two-layer structure.
-
-### Reference thrust-to-mass table
-
-For a reproducible educated module-mass estimate, this table uses the installed
+This is the active human comparison for every appearance and nozzle family.
+For a reproducible educated module-mass estimate, it uses the installed
 six-thruster Meteor liquid rocket: **92.886 MN**, **2.98 km/s**, and **102 t**.
 Its existing template mass is preferable to inventing a new engine density.
 The scaled module mass is 102 t × `k`; the reference ship mass is the new empty

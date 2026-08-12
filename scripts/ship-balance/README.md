@@ -22,14 +22,22 @@ measurements. Change `BUNDLE` locally when Terra Invicta is installed elsewhere.
 
 ## Output
 
-Running the script writes one JSON document to standard output. Each human hull
-contains:
+Running the script writes one JSON document to standard output. Each measured
+human or alien hull contains:
 
 - visual hull and raycast-collider envelopes;
 - the combined hull-plus-default-drive envelope;
 - default embedded-drive bounds;
 - standalone default and alternate drive-resource bounds; and
 - separate connected-component estimates for individual six-engine nozzles.
+
+Human drive resources are grouped into the installed default and alternate
+appearances and De Laval, magnetic, and pulse families. Alien hull templates
+have one installed graphical appearance and one hull-specific alien thruster
+family, so their output records appearance index 0 and measures the x1 and x6
+resources. The Salamander Gunship has no standalone drive resource in the
+installed `ships` bundle and is reported as unavailable rather than assigned a
+manufactured measurement.
 
 Example:
 

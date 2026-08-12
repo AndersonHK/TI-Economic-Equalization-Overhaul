@@ -845,6 +845,93 @@ namespace TIEconomyMod.FormulaTests
             Near(1f,
                 ShipBalanceMath.HumanHullDriveScale("Titan", true),
                 0f, "alien hulls do not receive human drive scaling");
+            Near(1.3f,
+                ShipBalanceMath.DriveScale(
+                    "Cruiser", false, 0, "DeLaval"),
+                0f, "default Cruiser art retains its approved hull scale");
+            Near(1.3f,
+                ShipBalanceMath.DriveScale(
+                    "Cruiser", false, 1, "Magnetic"),
+                0f, "alternate Cruiser art retains its approved hull scale");
+            string humanDriveDiagnostic;
+            Near(1.3f,
+                ShipBalanceMath.DriveScale(
+                    "Cruiser", false, 2, "Magnetic",
+                    out humanDriveDiagnostic),
+                0f, "all Cruiser appearances use the approved hull scale");
+            True(string.IsNullOrEmpty(humanDriveDiagnostic),
+                "known human appearances do not require a fallback");
+            Near(1.3f,
+                ShipBalanceMath.DriveScale(
+                    "Cruiser", false, 0, "Pulsed",
+                    out humanDriveDiagnostic),
+                0f, "pulse art uses the conservative hull fallback");
+            True(string.IsNullOrEmpty(humanDriveDiagnostic),
+                "intentional pulse-drive policy is not an error");
+            Near(7.531f,
+                ShipBalanceMath.DriveScale(
+                    "AlienTitan", true, 0, "DeLaval"),
+                0f, "alien Titan uses its hull-specific visual factor");
+            Near(26.216f,
+                ShipBalanceMath.DriveScale(
+                    "AlienMothership", true, 0, "Magnetic"),
+                0f, "alien factors are independent of nozzle physics");
+            Near(1f,
+                ShipBalanceMath.DriveScale(
+                    "AlienCorvette", true, 0, "Magnetic"),
+                0f, "alien Corvette never scales below baseline");
+            string driveDiagnostic;
+            Near(1f,
+                ShipBalanceMath.DriveScale(
+                    "FutureAlienHull", true, 0, "Magnetic",
+                    out driveDiagnostic),
+                0f, "unknown alien hull uses safe baseline");
+            True(!string.IsNullOrEmpty(driveDiagnostic),
+                "unknown alien hull reports a drive-scale diagnostic");
+            Near(1f,
+                ShipBalanceMath.DriveScale(
+                    "AlienTitan", true, 2, "Magnetic",
+                    out driveDiagnostic),
+                0f, "unknown alien appearance uses safe baseline");
+            True(!string.IsNullOrEmpty(driveDiagnostic),
+                "unknown alien appearance reports a drive-scale diagnostic");
+            Near(1f,
+                ShipBalanceMath.DriveScale(
+                    "AlienCorvette", true, 0, "Magnetic",
+                    out driveDiagnostic),
+                0f, "known clamped alien factor remains baseline");
+            True(string.IsNullOrEmpty(driveDiagnostic),
+                "intentional alien Corvette clamp is not an error");
+            string[] alienDriveHulls =
+            {
+                "AlienGunship", "AlienEscort", "AlienCorvette",
+                "AlienFrigate", "AlienMonitor", "AlienDestroyer",
+                "AlienCruiser", "AlienBattlecruiser", "AlienLancer",
+                "AlienBattleship", "AlienDreadnought", "AlienTitan",
+                "AlienAssaultCarrier", "AlienMothership",
+                "SalamanderGunship"
+            };
+            float[] alienDriveScales =
+            {
+                1f, 1f, 1f, 1.144f, 2.202f, 3.384f, 3.291f,
+                3.445f, 3.291f, 3.445f, 3.445f, 7.531f, 3.445f,
+                26.216f, 1f
+            };
+            for (int alienHullIndex = 0;
+                alienHullIndex < alienDriveHulls.Length;
+                alienHullIndex++)
+            {
+                Near(
+                    alienDriveScales[alienHullIndex],
+                    ShipBalanceMath.DriveScale(
+                        alienDriveHulls[alienHullIndex],
+                        true,
+                        0,
+                        "DeLaval"),
+                    0f,
+                    alienDriveHulls[alienHullIndex] +
+                        " locks its measured graphical drive scale");
+            }
 
             TIPowerPlantTemplate plant = new TIPowerPlantTemplate();
             plant.efficiency = 0.70f;
@@ -874,12 +961,12 @@ namespace TIEconomyMod.FormulaTests
             };
             ship.powerPlantTemplate = new TIPowerPlantTemplate
             {
-                maxOutput_GW = 30f
+                maxOutput_GW = 90f
             };
             float scaledThrust = 10f;
             HullScaledDriveThrustPatch.Postfix(ref scaledThrust, ship);
             Near(13f, scaledThrust, 0.0001f,
-                "Cruiser drive thrust scales after vanilla modifiers");
+                "Cruiser drive thrust retains the approved hull factor");
             float scaledPower = 20f;
             HullScaledDrivePowerPatch.Postfix(ref scaledPower, ship);
             Near(26f, scaledPower, 0.0001f,
@@ -897,13 +984,29 @@ namespace TIEconomyMod.FormulaTests
             HullScaledDriveCompatibilityPatch.Postfix(
                 ref compatible, ship, ship.driveTemplate);
             True(compatible,
-                "scaled Cruiser drive remains within a 30 GW plant cap");
-            ship.powerPlantTemplate.maxOutput_GW = 24f;
+                "scaled Cruiser drive remains within a 90 GW plant cap");
+            ship.powerPlantTemplate.maxOutput_GW = 25f;
             compatible = true;
             HullScaledDriveCompatibilityPatch.Postfix(
                 ref compatible, ship, ship.driveTemplate);
             True(!compatible,
                 "scaled drive power respects the existing plant output cap");
+            TIDriveTemplate magneticCandidate = new TIDriveTemplate
+            {
+                nozzle = Nozzle.Magnetic,
+                powerRequirement_GW = 20f
+            };
+            ship.powerPlantTemplate.maxOutput_GW = 60f;
+            compatible = true;
+            HullScaledDriveCompatibilityPatch.Postfix(
+                ref compatible, ship, magneticCandidate);
+            True(compatible,
+                "candidate drive compatibility uses the human hull factor");
+            TISpaceShipState liveShip = new TISpaceShipState { template = ship };
+            float liveThrust = 10f;
+            HullScaledLiveShipThrustPatch.Postfix(ref liveThrust, liveShip);
+            Near(13f, liveThrust, 0.0001f,
+                "live ship thrust uses the same approved hull factor");
             TIEconomyMod.Main.settings.shipBalance.hullDriveScalingEnabled =
                 false;
             scaledThrust = 10f;

@@ -5,6 +5,41 @@ the balance decisions as well as their implementation status.
 
 ## 2026-08-12
 
+### Implemented: graphical-variant and alien drive scaling
+
+- Mod initialization now rolls back every Harmony patch from the EEO owner if
+  any patch class fails, then disables the mod and logs the initialization
+  error. This avoids leaving a silently partial balance patch set active.
+- Extended the drive lookup with alien status, DLC-aware resolved graphical
+  appearance, and the candidate or installed drive's nozzle family. Only alien
+  hulls consume the new graphical factors. Human ships retain the approved
+  pre-pass hull factors for every appearance and nozzle family: Cruiser 1.30,
+  Battlecruiser 1.50, Lancer 1.72, Battleship 1.75, Dreadnought 2.00, and Titan
+  2.50, with smaller hulls at 1.00.
+- All fourteen standard alien hulls were measured from their standalone x1
+  drive resources. Alien factors range from **1.000** for Gunship, Escort, and
+  the below-baseline Corvette to **7.531** for Titan and **26.216** for
+  Mothership. Alien resource naming is hull-specific and ignores nozzle family,
+  so the measured factor is shared by magnetic and De Laval physics. The
+  Salamander has no standalone alien drive prefab and retains **1.000**.
+  Invalid alien appearances, unknown hulls, and this missing Salamander
+  measurement emit one-time configuration errors that include the safe
+  fallback value. Intentional authored 1.00 values do not produce errors.
+- Scaled thrust now reaches live `TISpaceShipState.currentThrust_N`, not only
+  design-template acceleration. The ship designer refreshes its cached drive
+  table when the designer re-filters modules, and both the selected-module side
+  panel and hover tooltip display scaled thrust, combat thrust, required power,
+  drive mass, and material cost. Exhaust velocity and efficiency remain
+  unchanged.
+- Extended the maintained prefab-measurement script without changing its hull
+  measurement path. Alien missing-resource results are recorded explicitly, and
+  the measurement method and complete alien variant table are maintained in
+  the hull/drive report.
+- Full deployment validation passed against TI 1.0.51 with **731 formula
+  assertions**, **111 Harmony patches** in the implementation matrix, guarded
+  drive-display transpiler and live-description patch validation, release
+  packaging, and **32-file** enabled-mod deployment.
+
 ### Implemented in 0.9.2: conservative alien propulsion and armor allocation
 
 - Alien drive thrust becomes **1.2 / 3.8 / 10.5 MN**, exhaust velocity becomes

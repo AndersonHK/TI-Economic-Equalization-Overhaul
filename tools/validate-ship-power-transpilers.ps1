@@ -138,22 +138,43 @@ $uiTranspiler = $uiPatchType.GetMethod(
 $uiHelper = $uiPatchType.GetMethod(
     'EnergyUsageForTableVisibility',
     [Reflection.BindingFlags]'Public,Static')
+$driveDisplayHelpers = @(
+    'GetHullScaledDriveThrust',
+    'GetHullScaledDrivePower',
+    'GetHullScaledDriveCost'
+) | ForEach-Object {
+    $helperName = $_
+    @($uiPatchType.GetMethods([Reflection.BindingFlags]'Public,Static') |
+        Where-Object {
+            $_.Name -eq $helperName -and
+            $_.GetParameters().Count -eq 2 -and
+            $_.GetParameters()[1].ParameterType.Name -eq 'ShipModuleListItem'
+        })[0]
+}
 try {
     $transpilerArguments = [object[]]::new(1)
     $transpilerArguments[0] = $original
     $patched = @($uiTranspiler.Invoke($null, $transpilerArguments))
 }
 catch {
-    if ($_.Exception.InnerException) {
-        throw $_.Exception.InnerException
+    $messages = [Collections.Generic.List[string]]::new()
+    $patchException = $_.Exception
+    while ($null -ne $patchException) {
+        $messages.Add($patchException.ToString())
+        $patchException = $patchException.InnerException
     }
-    throw
+    throw ($messages -join "`nCaused by:`n")
 }
 $uiHelperCalls = @($patched | Where-Object {
     $_.opcode.Name -eq 'call' -and $_.operand -eq $uiHelper
 })
-if ($patched.Count -ne @($original).Count -or $uiHelperCalls.Count -ne 1) {
-    throw 'GenerateEntries must replace exactly one EnergyUsage_GJ visibility call without changing instruction count.'
+$driveDisplayCalls = @($patched | Where-Object {
+    $_.opcode.Name -eq 'call' -and $driveDisplayHelpers -contains $_.operand
+})
+if ($patched.Count -ne (@($original).Count + 3) -or
+    $uiHelperCalls.Count -ne 1 -or
+    $driveDisplayCalls.Count -ne 3) {
+    throw 'GenerateEntries must replace one EnergyUsage_GJ visibility call and add exactly three hull-scaled drive display calls.'
 }
 
 $harmonyType = $harmonyAssembly.GetType('HarmonyLib.Harmony', $true)
@@ -168,6 +189,9 @@ $patchTypeNames = @(
     'TIEconomyMod.Patches.GunEnergyUsagePatch',
     'TIEconomyMod.Patches.GunHeatGenerationPatch',
     'TIEconomyMod.Patches.ShipModuleEnergyColumnCompatibilityPatch',
+    'TIEconomyMod.Patches.HullScaledDriveDescriptionPatch',
+    'TIEconomyMod.Patches.HullScaledDriveTooltipPatch',
+    'TIEconomyMod.Patches.HullScaledDriveTableRefreshPatch',
     'TIEconomyMod.Patches.PoweredWeaponRadiatorHeatPatch',
     'TIEconomyMod.Patches.WeaponHeatCapacityPrecheckPatch',
     'TIEconomyMod.Patches.AuxiliaryElectricalGenerationPatch',
@@ -182,10 +206,13 @@ try {
     }
 }
 catch {
-    if ($_.Exception.InnerException) {
-        throw $_.Exception.InnerException
+    $messages = [Collections.Generic.List[string]]::new()
+    $patchException = $_.Exception
+    while ($null -ne $patchException) {
+        $messages.Add($patchException.ToString())
+        $patchException = $patchException.InnerException
     }
-    throw
+    throw ($messages -join "`nCaused by:`n")
 }
 finally {
     $harmony.UnpatchAll($harmonyId)

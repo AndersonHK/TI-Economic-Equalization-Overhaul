@@ -1,12 +1,18 @@
 using HarmonyLib;
 using PavonisInteractive.TerraInvicta;
 using System;
+using System.Collections.Generic;
 
 namespace TIEconomyMod.Patches
 {
     internal static class HullDriveScalingFeature
     {
-        public static float Multiplier(TISpaceShipTemplate ship)
+        private static readonly object diagnosticLock = new object();
+        private static readonly HashSet<string> reportedDiagnostics =
+            new HashSet<string>(StringComparer.Ordinal);
+
+        public static float Multiplier(
+            TISpaceShipTemplate ship, TIDriveTemplate driveToCheck = null)
         {
             ShipBalanceSettings settings = Main.settings.shipBalance;
             if (!Main.FeatureEnabled(
@@ -16,8 +22,43 @@ namespace TIEconomyMod.Patches
                 return 1f;
             }
 
-            return ShipBalanceMath.HumanHullDriveScale(
-                ship.hullTemplate.dataName, ship.hullTemplate.alien);
+            TIDriveTemplate drive = driveToCheck ?? ship.driveTemplate;
+            if (drive == null)
+            {
+                return 1f;
+            }
+
+            string diagnostic;
+            float scale = ShipBalanceMath.DriveScale(
+                ship.hullTemplate.dataName,
+                ship.hullTemplate.alien,
+                ship.GetHullAppearanceIndex,
+                drive.nozzle.ToString(),
+                out diagnostic);
+            ReportDiagnosticOnce(diagnostic, scale);
+            return scale;
+        }
+
+        private static void ReportDiagnosticOnce(
+            string diagnostic, float fallbackScale)
+        {
+            if (string.IsNullOrEmpty(diagnostic))
+            {
+                return;
+            }
+
+            lock (diagnosticLock)
+            {
+                if (!reportedDiagnostics.Add(diagnostic))
+                {
+                    return;
+                }
+            }
+
+            Main.Error(
+                "Drive scaling configuration error: " + diagnostic +
+                " Safe fallback scale " + fallbackScale.ToString("0.###") +
+                " is being used.");
         }
     }
 
@@ -146,6 +187,24 @@ namespace TIEconomyMod.Patches
     }
 
     [HarmonyPatch(
+        typeof(TISpaceShipState), "currentThrust_N", MethodType.Getter)]
+    public static class HullScaledLiveShipThrustPatch
+    {
+        [HarmonyPostfix]
+        public static void Postfix(
+            ref float __result, TISpaceShipState __instance)
+        {
+            if (__instance == null)
+            {
+                return;
+            }
+
+            __result = ShipBalanceMath.ScaledDriveValue(
+                __result, HullDriveScalingFeature.Multiplier(__instance.template));
+        }
+    }
+
+    [HarmonyPatch(
         typeof(TISpaceShipTemplate), "drivePowerRequirement_GW",
         MethodType.Getter)]
     public static class HullScaledDrivePowerPatch
@@ -269,7 +328,7 @@ namespace TIEconomyMod.Patches
 
             float requiredPower = ShipBalanceMath.ScaledDriveValue(
                 driveToCheck.powerRequirement_GW,
-                HullDriveScalingFeature.Multiplier(__instance));
+                HullDriveScalingFeature.Multiplier(__instance, driveToCheck));
             __result = requiredPower <=
                 __instance.powerPlantTemplate.maxOutput_GW;
         }

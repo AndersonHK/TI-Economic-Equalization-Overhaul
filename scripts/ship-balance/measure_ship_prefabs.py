@@ -37,6 +37,23 @@ PREFABS = {
     "Monitor": "assets/artresources/ships/earth/monitor/monitor.prefab",
     "Titan": "assets/artresources/ships/earth/titan/titan.prefab",
 }
+ALIEN_PREFABS = {
+    "AlienAssaultCarrier": "assets/artresources/ships/alien/assault_carrier/alienassaultcarrier.prefab",
+    "AlienBattlecruiser": "assets/artresources/ships/alien/battlecruiser/alienbattlecruiser.prefab",
+    "AlienBattleship": "assets/artresources/ships/alien/battleship/alienbattleship.prefab",
+    "AlienCorvette": "assets/artresources/ships/alien/corvette/aliencorvette.prefab",
+    "AlienCruiser": "assets/artresources/ships/alien/cruiser/aliencruiser.prefab",
+    "AlienDestroyer": "assets/artresources/ships/alien/destroyer/aliendestroyer.prefab",
+    "AlienDreadnought": "assets/artresources/ships/alien/dreadnought/aliendreadnought.prefab",
+    "AlienEscort": "assets/artresources/ships/alien/escort/alienescort.prefab",
+    "AlienFrigate": "assets/artresources/ships/alien/frigate/alienfrigate.prefab",
+    "AlienGunship": "assets/artresources/ships/alien/gunship/aliengunship.prefab",
+    "AlienLancer": "assets/artresources/ships/alien/lancer/alienlancer.prefab",
+    "AlienMonitor": "assets/artresources/ships/alien/monitor/alienmonitor.prefab",
+    "AlienMothership": "assets/artresources/ships/alien/mothership/alienmothership.prefab",
+    "AlienTitan": "assets/artresources/ships/alien/titan/alientitan.prefab",
+    "SalamanderGunship": "assets/artresources/ships/alien/salamander_gunship/salamandergunship.prefab",
+}
 RAYCAST_LAYER = 17
 MESH_COMPONENT_CACHE = {}
 ALT_DRIVE_STEMS = {
@@ -52,6 +69,22 @@ ALT_DRIVE_STEMS = {
     "Lancer": "earth_lan_alt",
     "Monitor": "earth_mo_alt",
     "Titan": "earth_ti_alt",
+}
+ALIEN_DRIVE_RESOURCE_PARTS = {
+    "AlienAssaultCarrier": ("assault_carrier", "thrusters_assault_carrier", "alienassaultcarrier"),
+    "AlienBattlecruiser": ("battlecruiser", "thrusters_battlecruiser", "alienbattlecruiser"),
+    "AlienBattleship": ("battleship", "thrusters_battleship", "alienbattleship"),
+    "AlienCorvette": ("corvette", "thrusters_corvette", "aliencorvette"),
+    "AlienCruiser": ("cruiser", "thrusters", "aliencruiser"),
+    "AlienDestroyer": ("destroyer", "thrusters_aliendestroyer", "aliendestroyer"),
+    "AlienDreadnought": ("dreadnought", "thrusters_dreadnought", "aliendreadnought"),
+    "AlienEscort": ("escort", "thrusters_escort", "alienescort"),
+    "AlienFrigate": ("frigate", "thrusters_frigate", "alienfrigate"),
+    "AlienGunship": ("gunship", "thrusters_gunship", "aliengunship"),
+    "AlienLancer": ("lancer", "thrusters", "alienlancer"),
+    "AlienMonitor": ("monitor", "thrusters", "alienmonitor"),
+    "AlienMothership": ("mothership", "thrusters", "alienmothership"),
+    "AlienTitan": ("titan", "thrusters", "alientitan"),
 }
 
 
@@ -177,7 +210,9 @@ def walk(transform_ptr, parent_matrix, parent_active, path, records):
 
 def is_hull_path(path):
     parts = path.split("/")
-    return len(parts) > 1 and "hull_" in parts[1].lower()
+    return len(parts) > 1 and any(
+        "hull_" in part.lower() for part in parts[1:]
+    )
 
 
 def is_drive_path(path):
@@ -528,6 +563,23 @@ def measure_drive_resources(env, ship):
     return output
 
 
+def measure_alien_drive_resources(env, ship):
+    ship_path, prefab_root, resource_stem = ALIEN_DRIVE_RESOURCE_PARTS[ship]
+    output = {"appearance_index": 0, "resource_family": "alien", "resources": {}}
+    for count in (1, 6):
+        asset_path = (
+            "assets/artresources/ships/alien/"
+            f"{ship_path}/prefabs/{prefab_root}/"
+            f"thruster_{resource_stem}x{count}.prefab"
+        )
+        output["resources"][f"x{count}"] = measure_drive_resource(
+            env,
+            asset_path,
+            measure_individual_nozzles=(count == 6),
+        )
+    return output
+
+
 def summarize(records, ship):
     hull = measure_hull(records)
     drive = measure_drive(records)
@@ -559,7 +611,16 @@ def summarize(records, ship):
 def main():
     env = UnityPy.load(BUNDLE)
     output = {}
-    for ship, asset_path in PREFABS.items():
+    for ship, asset_path in {**PREFABS, **ALIEN_PREFABS}.items():
+        if ship not in PREFABS and ship not in ALIEN_DRIVE_RESOURCE_PARTS:
+            output[ship] = {
+                "drive_resource_measurements": {
+                    "appearance_index": 0,
+                    "status": "unavailable",
+                    "reason": "No standalone drive resource is present in the installed ships bundle.",
+                }
+            }
+            continue
         root_ptr = env.container[asset_path]
         root = root_ptr.read()
         root_transform = next(
@@ -574,10 +635,18 @@ def main():
         for category in records.values():
             for record in category:
                 record["points"] -= root_offset
-        output[ship] = summarize(records, ship)
-        output[ship]["drive_resource_measurements"] = (
-            measure_drive_resources(env, ship)
-        )
+        try:
+            output[ship] = summarize(records, ship)
+        except RuntimeError as exception:
+            raise RuntimeError(f"{ship}: {exception}") from exception
+        if ship in PREFABS:
+            output[ship]["drive_resource_measurements"] = (
+                measure_drive_resources(env, ship)
+            )
+        elif ship in ALIEN_DRIVE_RESOURCE_PARTS:
+            output[ship]["drive_resource_measurements"] = (
+                measure_alien_drive_resources(env, ship)
+            )
     print(json.dumps(output, indent=2))
 
 

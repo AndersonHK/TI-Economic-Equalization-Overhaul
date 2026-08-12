@@ -30,7 +30,28 @@ namespace TIEconomyMod
             {
                 string weightPath = Path.Combine(modEntry.Path, "Config", "economy-tech-weights.csv");
                 techWeights = TechWeightCatalog.Load(weightPath, Log, IsKnownTechnology);
-                new Harmony(modEntry.Info.Id).PatchAll();
+                Harmony harmony = new Harmony(modEntry.Info.Id);
+                try
+                {
+                    harmony.PatchAll();
+                }
+                catch (Exception patchException)
+                {
+                    try
+                    {
+                        harmony.UnpatchAll(modEntry.Info.Id);
+                    }
+                    catch (Exception rollbackException)
+                    {
+                        throw new AggregateException(
+                            "EEO patching failed and its partial-patch " +
+                            "rollback also failed.",
+                            patchException,
+                            rollbackException);
+                    }
+
+                    throw;
+                }
                 HabLogistics.Clear();
                 if (TemplateManager.self != null &&
                     TemplateManager.self.Initialized)
@@ -114,6 +135,14 @@ namespace TIEconomyMod
             if (mod != null)
             {
                 mod.Logger.Warning(message);
+            }
+        }
+
+        public static void Error(string message)
+        {
+            if (mod != null)
+            {
+                mod.Logger.Error(message);
             }
         }
     }

@@ -1,6 +1,13 @@
 using System;
 using System.Collections.Generic;
 
+public enum Nozzle
+{
+    DeLaval,
+    Magnetic,
+    Pulsed
+}
+
 namespace HarmonyLib
 {
     public enum MethodType { Getter }
@@ -35,11 +42,22 @@ namespace PavonisInteractive.TerraInvicta
     public sealed class TISpaceShipTemplate
     {
         public int crewBillets;
+        public int hullAppearanceIndex;
         public TIShipHullTemplate hullTemplate;
         public TIDriveTemplate driveTemplate;
         public TIPowerPlantTemplate powerPlantTemplate;
         public TIRadiatorTemplate radiatorTemplate;
         public TIFactionState designingFaction;
+
+        public int GetHullAppearanceIndex
+        {
+            get { return hullAppearanceIndex; }
+        }
+    }
+
+    public sealed class TISpaceShipState
+    {
+        public TISpaceShipTemplate template;
     }
 
     public sealed class TIShipHullTemplate
@@ -52,6 +70,7 @@ namespace PavonisInteractive.TerraInvicta
     {
         public float mass_tons;
         public float powerRequirement_GW;
+        public Nozzle nozzle;
         public TIResourcesCost cost = new TIResourcesCost();
 
         public float buildMass_tons()
@@ -271,6 +290,7 @@ namespace TIEconomyMod
         }
 
         public static void Warn(string value) { Warnings.Add(value); }
+        public static void Error(string value) { Warnings.Add(value); }
     }
 
     public sealed class Settings

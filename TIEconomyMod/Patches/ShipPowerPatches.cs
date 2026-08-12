@@ -4,8 +4,10 @@ using PavonisInteractive.TerraInvicta.Ship;
 using PavonisInteractive.TerraInvicta.UI.Canvas_Prefabs.FleetsScreen;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
+using System.Text.RegularExpressions;
 
 namespace TIEconomyMod.Patches
 {
@@ -161,25 +163,73 @@ namespace TIEconomyMod.Patches
             MethodInfo visibilityValue = AccessTools.Method(
                 typeof(ShipModuleEnergyColumnCompatibilityPatch),
                 "EnergyUsageForTableVisibility");
+            MethodInfo localizedThrust = AccessTools.Method(
+                typeof(TIDriveTemplate), "GetLocalizedThrust");
+            MethodInfo localizedPower = AccessTools.Method(
+                typeof(TIDriveTemplate), "GetLocalizedRequiredPower");
+            MethodInfo localizedCost = AccessTools.Method(
+                typeof(TIShipPartTemplate), "GetLocalizedCost");
+            MethodInfo scaledThrust = AccessTools.Method(
+                typeof(ShipModuleEnergyColumnCompatibilityPatch),
+                "GetHullScaledDriveThrust",
+                new[] { typeof(TIDriveTemplate), typeof(ShipModuleListItem) });
+            MethodInfo scaledPower = AccessTools.Method(
+                typeof(ShipModuleEnergyColumnCompatibilityPatch),
+                "GetHullScaledDrivePower",
+                new[] { typeof(TIDriveTemplate), typeof(ShipModuleListItem) });
+            MethodInfo scaledCost = AccessTools.Method(
+                typeof(ShipModuleEnergyColumnCompatibilityPatch),
+                "GetHullScaledDriveCost",
+                new[] { typeof(TIShipPartTemplate), typeof(ShipModuleListItem) });
             int energyUsageCalls = 0;
             int replacements = 0;
+            int localizedCostCalls = 0;
+            int driveDisplayReplacements = 0;
+            List<CodeInstruction> result = new List<CodeInstruction>();
 
             foreach (CodeInstruction instruction in patched)
             {
-                if (!instruction.Calls(energyUsage))
+                if (instruction.Calls(energyUsage))
                 {
-                    continue;
+                    energyUsageCalls++;
+                    if (energyUsageCalls == 1)
+                    {
+                        // The first call controls whether the Energy Usage cell is
+                        // created; the second supplies the displayed real value.
+                        instruction.opcode = OpCodes.Call;
+                        instruction.operand = visibilityValue;
+                        replacements++;
+                    }
                 }
 
-                energyUsageCalls++;
-                if (energyUsageCalls == 1)
+                if (instruction.Calls(localizedThrust))
                 {
-                    // The first call controls whether the Energy Usage cell is
-                    // created; the second supplies the displayed real value.
+                    AddListItemLoad(result, instruction);
                     instruction.opcode = OpCodes.Call;
-                    instruction.operand = visibilityValue;
-                    replacements++;
+                    instruction.operand = scaledThrust;
+                    driveDisplayReplacements++;
                 }
+                else if (instruction.Calls(localizedPower))
+                {
+                    AddListItemLoad(result, instruction);
+                    instruction.opcode = OpCodes.Call;
+                    instruction.operand = scaledPower;
+                    driveDisplayReplacements++;
+                }
+                else if (instruction.Calls(localizedCost))
+                {
+                    localizedCostCalls++;
+                    if (localizedCostCalls == 3)
+                    {
+                        // The third part-cost call is in the drive branch.
+                        AddListItemLoad(result, instruction);
+                        instruction.opcode = OpCodes.Call;
+                        instruction.operand = scaledCost;
+                        driveDisplayReplacements++;
+                    }
+                }
+
+                result.Add(instruction);
             }
 
             if (energyUsageCalls != 2 || replacements != 1)
@@ -190,7 +240,266 @@ namespace TIEconomyMod.Patches
                     energyUsageCalls + " and " + replacements + ".");
             }
 
-            return patched;
+            if (localizedCostCalls != 3 || driveDisplayReplacements != 3)
+            {
+                throw new InvalidOperationException(
+                    "Expected one drive thrust, one drive power, and the third " +
+                    "of three localized cost calls in " +
+                    "ShipModuleListItem.GenerateEntries; found " +
+                    localizedCostCalls + " cost calls and " +
+                    driveDisplayReplacements + " replacements.");
+            }
+
+            return result;
+        }
+
+        private static void AddListItemLoad(
+            List<CodeInstruction> result, CodeInstruction originalCall)
+        {
+            CodeInstruction loadListItem =
+                new CodeInstruction(OpCodes.Ldarg_0);
+            loadListItem.labels.AddRange(originalCall.labels);
+            loadListItem.blocks.AddRange(originalCall.blocks);
+            originalCall.labels.Clear();
+            originalCall.blocks.Clear();
+            result.Add(loadListItem);
+        }
+
+        public static string GetHullScaledDriveThrust(
+            TIDriveTemplate drive, ShipModuleListItem listItem)
+        {
+            float scale = DriveDisplayScale(drive, listItem);
+            if (scale <= 1f)
+            {
+                return drive.GetLocalizedThrust();
+            }
+
+            float thrust_N = ShipBalanceMath.ScaledDriveValue(
+                drive.thrust_N, scale);
+            float thrustRating = 1f +
+                (float)(Math.Log(thrust_N / 1000f) / Math.Log(2d));
+            return Loc.T(
+                "TIDriveTemplate.Thrust",
+                thrust_N.ToString("N0"),
+                thrustRating.ToString("N1"));
+        }
+
+        public static string GetHullScaledDrivePower(
+            TIDriveTemplate drive, ShipModuleListItem listItem)
+        {
+            float power_GW = ShipBalanceMath.ScaledDriveValue(
+                drive.powerRequirement_GW,
+                DriveDisplayScale(drive, listItem));
+            return TIUtilities.LocalizeGW(
+                "UI.Fleets.RequiredPowerGW", power_GW);
+        }
+
+        public static string GetHullScaledDriveMass(
+            TIDriveTemplate drive, TISpaceShipTemplate ship)
+        {
+            float mass_tons = ShipBalanceMath.ScaledDriveValue(
+                drive.buildMass_tons(), DriveDisplayScale(drive, ship));
+            return Loc.T(
+                "UI.Fleets.Mass",
+                TIUtilities.FormatBigOrSmallNumber(
+                    mass_tons, 1, 7, 0, false, false));
+        }
+
+        public static string GetHullScaledCombatThrust(
+            TIDriveTemplate drive,
+            TISpaceShipTemplate shipTemplate,
+            TISpaceShipState ship)
+        {
+            float thrust_N = ShipBalanceMath.ScaledDriveValue(
+                drive.thrust_N, DriveDisplayScale(drive, shipTemplate));
+            float thrustCap = ship == null
+                ? drive.thrustCap
+                : ship.modifiedThrustCap;
+            return Loc.T(
+                "TIDriveTemplate.CombatThrust",
+                TIUtilities.FormatBigOrSmallNumber(thrustCap),
+                TIUtilities.FormatBigOrSmallNumber(
+                    thrust_N * thrustCap).ToString());
+        }
+
+        public static string GetHullScaledDriveCost(
+            TIShipPartTemplate part, ShipModuleListItem listItem)
+        {
+            TIDriveTemplate drive = part as TIDriveTemplate;
+            if (drive == null)
+            {
+                return part.GetLocalizedCost();
+            }
+
+            float scale = DriveDisplayScale(drive, listItem);
+            if (scale <= 1f)
+            {
+                return drive.GetLocalizedCost();
+            }
+
+            TIResourcesCost cost = drive.buildCost().MultiplyCost(scale);
+            return Loc.T(
+                "UI.Fleets.Cost",
+                cost.ToString(
+                    "Relevant", false, false, null, false,
+                    default(FactionResource)));
+        }
+
+        private static float DriveDisplayScale(
+            TIDriveTemplate drive, ShipModuleListItem listItem)
+        {
+            TISpaceShipTemplate ship = listItem == null ||
+                listItem.controller == null
+                    ? null
+                    : listItem.controller.newShipTemplate;
+            return DriveDisplayScale(drive, ship);
+        }
+
+        private static float DriveDisplayScale(
+            TIDriveTemplate drive, TISpaceShipTemplate ship)
+        {
+            return HullDriveScalingFeature.Multiplier(ship, drive);
+        }
+
+        public static string GetHullScaledDriveDescription(
+            string description,
+            TIDriveTemplate drive,
+            TISpaceShipTemplate shipTemplate,
+            TISpaceShipState ship)
+        {
+            if (string.IsNullOrEmpty(description) || drive == null ||
+                DriveDisplayScale(drive, shipTemplate) <= 1f)
+            {
+                return description;
+            }
+
+            string baselineCombatThrust = drive.GetLocalizedCombatThrust(ship);
+            string baselineThrust = drive.GetLocalizedThrust();
+            string baselinePower = drive.GetLocalizedRequiredPower();
+            string baselineMass = drive.GetLocalizedMass();
+            string baselineCost = drive.GetLocalizedCost();
+            return description
+                .Replace(
+                    baselineCombatThrust,
+                    GetHullScaledCombatThrust(
+                        drive, shipTemplate, ship))
+                .Replace(
+                    baselineThrust,
+                    GetHullScaledDriveThrust(drive, shipTemplate))
+                .Replace(
+                    baselinePower,
+                    GetHullScaledDrivePower(drive, shipTemplate))
+                .Replace(
+                    baselineMass,
+                    GetHullScaledDriveMass(drive, shipTemplate))
+                .Replace(
+                    baselineCost,
+                    GetHullScaledDriveCost(drive, shipTemplate));
+        }
+
+        public static string GetHullScaledDriveThrust(
+            TIDriveTemplate drive, TISpaceShipTemplate ship)
+        {
+            float scale = DriveDisplayScale(drive, ship);
+            if (scale <= 1f)
+            {
+                return drive.GetLocalizedThrust();
+            }
+
+            float thrust_N = ShipBalanceMath.ScaledDriveValue(
+                drive.thrust_N, scale);
+            float thrustRating = 1f +
+                (float)(Math.Log(thrust_N / 1000f) / Math.Log(2d));
+            return Loc.T(
+                "TIDriveTemplate.Thrust",
+                thrust_N.ToString("N0"),
+                thrustRating.ToString("N1"));
+        }
+
+        public static string GetHullScaledDrivePower(
+            TIDriveTemplate drive, TISpaceShipTemplate ship)
+        {
+            float power_GW = ShipBalanceMath.ScaledDriveValue(
+                drive.powerRequirement_GW, DriveDisplayScale(drive, ship));
+            return TIUtilities.LocalizeGW(
+                "UI.Fleets.RequiredPowerGW", power_GW);
+        }
+
+        public static string GetHullScaledDriveCost(
+            TIDriveTemplate drive, TISpaceShipTemplate ship)
+        {
+            float scale = DriveDisplayScale(drive, ship);
+            if (scale <= 1f)
+            {
+                return drive.GetLocalizedCost();
+            }
+
+            TIResourcesCost cost = drive.buildCost().MultiplyCost(scale);
+            return Loc.T(
+                "UI.Fleets.Cost",
+                cost.ToString(
+                    "Relevant", false, false, null, false,
+                    default(FactionResource)));
+        }
+
+        public static void RefreshHullScaledDriveRow(
+            ShipModuleListItem row, TISpaceShipTemplate ship)
+        {
+            if (row == null || row.GetModuleTemplate() == null ||
+                row.GetModuleTemplate().ref_drive == null)
+            {
+                return;
+            }
+
+            List<ShipModuleListItemEntry> entries = row.entries.ToList();
+            if (entries.Count < 6)
+            {
+                return;
+            }
+
+            TIDriveTemplate drive = row.GetModuleTemplate().ref_drive;
+            float scale = DriveDisplayScale(drive, ship);
+            entries[1].textElement.text = SanitizeModuleTableText(
+                GetHullScaledDriveThrust(drive, ship), false);
+            entries[1].value = ShipBalanceMath.ScaledDriveValue(
+                drive.thrust_N, scale);
+            entries[4].textElement.text = SanitizeModuleTableText(
+                GetHullScaledDrivePower(drive, ship), false);
+            entries[4].value = ShipBalanceMath.ScaledDriveValue(
+                drive.powerRequirement_GW, scale);
+            entries[5].textElement.text = SanitizeModuleTableText(
+                GetHullScaledDriveCost(drive, ship), true);
+            entries[5].value = drive.buildCost().resourceCosts
+                .Sum(resourceCost => resourceCost.value) * scale;
+        }
+
+        private static string SanitizeModuleTableText(
+            string text, bool resourceCost)
+        {
+            text = Regex.Replace(text, "\\t|\\n|\\r", "");
+            if (!resourceCost)
+            {
+                text = Regex.Replace(text, "<.*?>", "");
+            }
+            else
+            {
+                text = Regex.Replace(text, "</?align.*?>", "");
+                text = Regex.Replace(text, "</?line-height.*?>", "");
+                text = Regex.Replace(
+                    text,
+                    "(<sprite.*?>.*?){3}.*?[0-9.]+",
+                    match => match.Value + "\n");
+            }
+
+            if (text.Contains(":"))
+            {
+                text = text.Split(new[] { ':' }, 2).Last();
+            }
+
+            return Regex.Replace(
+                text,
+                ".*?,.*?, ",
+                match => match.Value.Trim(' ') + "\n");
         }
 
         public static float EnergyUsageForTableVisibility(
@@ -214,6 +523,62 @@ namespace TIEconomyMod.Patches
             // powered, retain a zero-valued cell on the remaining conventional
             // guns so late-game unlock sets keep a consistent column shape.
             return float.Epsilon;
+        }
+    }
+
+    [HarmonyPatch(typeof(TIDriveTemplate), "GetDescriptionData")]
+    public static class HullScaledDriveDescriptionPatch
+    {
+        [HarmonyPostfix]
+        public static void Postfix(
+            ref string __result,
+            TIDriveTemplate __instance,
+            TISpaceShipState ship,
+            TISpaceShipTemplate shipTemplate)
+        {
+            __result = ShipModuleEnergyColumnCompatibilityPatch
+                .GetHullScaledDriveDescription(
+                    __result, __instance, shipTemplate, ship);
+        }
+    }
+
+    [HarmonyPatch(typeof(ShipModuleListItem), "ModuleTTString")]
+    public static class HullScaledDriveTooltipPatch
+    {
+        [HarmonyPostfix]
+        public static void Postfix(
+            ref string __result,
+            ShipModuleListItem __instance,
+            TIShipPartTemplate module)
+        {
+            TIDriveTemplate drive = module == null
+                ? null
+                : module.ref_drive;
+            TISpaceShipTemplate ship = __instance == null ||
+                __instance.controller == null
+                    ? null
+                    : __instance.controller.newShipTemplate;
+            __result = ShipModuleEnergyColumnCompatibilityPatch
+                .GetHullScaledDriveDescription(
+                    __result, drive, ship, null);
+        }
+    }
+
+    [HarmonyPatch(typeof(ShipModuleListItem), "SetAlpha")]
+    public static class HullScaledDriveTableRefreshPatch
+    {
+        [HarmonyPostfix]
+        public static void Postfix(ShipModuleListItem __instance)
+        {
+            if (__instance == null || !__instance.isRow ||
+                __instance.controller == null)
+            {
+                return;
+            }
+
+            ShipModuleEnergyColumnCompatibilityPatch
+                .RefreshHullScaledDriveRow(
+                    __instance, __instance.controller.newShipTemplate);
         }
     }
 
