@@ -1,6 +1,6 @@
 # TI Economic Equalization Overhaul
 
-Current release: **0.9.0**, targeting **Terra Invicta 1.0.51**.
+Current release: **0.9.2**, targeting **Terra Invicta 1.0.51**.
 
 The mod replaces opaque, border-sensitive scaling with economic units that
 remain understandable across countries, armies, habs, and spacecraft. It aims
@@ -174,7 +174,7 @@ defaults.
 
 ## Compatibility and save behavior
 
-Version 0.9.0 is built and guarded against the installed Terra Invicta 1.0.51
+Version 0.9.2 is built and guarded against the installed Terra Invicta 1.0.51
 assemblies. Transpilers validate their expected IL shapes and fail verification
 when the target changes.
 
@@ -186,7 +186,7 @@ save fields unless a document explicitly says otherwise.
 The current release archive is:
 
 ```text
-artifacts/TIEconomyMod-0.9.0-ti1.0.51.zip
+artifacts/TIEconomyMod-0.9.2-ti1.0.51.zip
 ```
 
 ## Build and verification

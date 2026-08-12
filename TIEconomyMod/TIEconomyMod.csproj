@@ -118,6 +118,7 @@
     <Compile Include="Patches\EconomyPatches.cs" />
     <Compile Include="Patches\AlienFloraAssaultPatches.cs" />
     <Compile Include="Patches\AiTechnologySelectionPatches.cs" />
+    <Compile Include="Patches\AlienShipDesignPatches.cs" />
     <Compile Include="Patches\BalancePatches.cs" />
     <Compile Include="Patches\EnvironmentUnitySpoilsPatches.cs" />
     <Compile Include="Patches\GlobalResearchPatches.cs" />
@@ -161,6 +162,7 @@
     <None Include="ModFiles\TIMissionTemplate.json" />
     <None Include="ModFiles\TIMetaTemplate.json" />
     <None Include="ModFiles\TIPowerPlantTemplate.json" />
+    <None Include="ModFiles\TIDriveTemplate.json" />
     <None Include="ModFiles\TIShipHullTemplate.json" />
     <None Include="ModFiles\TIStartTimeTemplate.json" />
     <None Include="ModFiles\TITechTemplate.json" />

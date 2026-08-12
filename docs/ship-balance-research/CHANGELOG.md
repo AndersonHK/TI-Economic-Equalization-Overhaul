@@ -3,6 +3,70 @@
 This is a decision log for the proposed ship rebalance. Entries here describe
 the balance decisions as well as their implementation status.
 
+## 2026-08-12
+
+### Implemented in 0.9.2: conservative alien propulsion and armor allocation
+
+- Alien drive thrust becomes **1.2 / 3.8 / 10.5 MN**, exhaust velocity becomes
+  **1,200 / 2,350 / 3,000 km/s**, and installed drive efficiency remains
+  unchanged at **95 / 97 / 98%**.
+- Alien reactor maximum output receives a flat **+400%** increase to **5,000 /
+  32,000 / 107,550 GW**. Specific mass is halved to **0.50 / 0.175 / 0.025
+  t/GW**, while efficiency becomes **99.5 / 99.8 / 99.95%**.
+- The alien designer's armor-density numerator changes from **3,500** to
+  **10,000 kg/m3**, requesting about **2.86x** its prior armor points for the
+  same material. All existing role delta-v targets remain unchanged.
+- Matching-tier reactor caps exceed six-drive electrical demand by roughly
+  **9.9% / 15.9% / 11.5%**. Strict reactor selection and predefined-loadout
+  normalization remain separate follow-up work.
+- Full deployment validation passed against TI 1.0.51: **699 formula
+  assertions**, **107 Harmony patches** in the implementation matrix, guarded
+  `DesignAlienShip` IL validation, release packaging, and **32-file**
+  enabled-mod deployment.
+
+### Implemented in 0.9.1: alien magnetic progression
+
+- Added the
+  [alien magnetic, propulsion, and armor-design proposal](alien-weapons-propulsion-and-armor-proposal.md),
+  based on installed templates layered with the mod's current magnetic
+  overrides.
+- Alien tier 1 receives modest velocity increases where its lead over human
+  Mk1 is only marginal. Alien tier 2 receives the missing velocity and range
+  leads over human Mk3 plus **75% efficiency**. Alien tier 3 receives monotonic
+  range corrections plus **85% efficiency**; its already extreme projectile
+  masses and velocities are retained.
+- The half-nose Alien Mini Light Mag Cannon follows the tier-1 light-cannon
+  velocity at **6.0 km/s** while retaining its existing range and efficiency.
+- Release validation locks all **22 alien magnetic rows** and proves strict
+  tier-1-over-human-Mk1 and tier-2-over-human-Mk3 dominance for projectile
+  mass, damaging mass/durability, velocity, range, and efficiency.
+- Full deployment validation passed against TI 1.0.51: **699 formula
+  assertions**, 106 Harmony patches in the implementation matrix, guarded
+  target-IL checks, ship-rebalance validation, release packaging, and
+  **31-file** enabled-mod deployment.
+
+### Proposed: matched alien propulsion progression and armor headroom
+
+- The proposed drive ladder is **1.2 / 3.8 / 10.5 MN**, **1,200 / 3,600 /
+  10,800 km/s**, and **98 / 99 / 99.9%** efficiency. The matched reactor caps
+  are **5,000 / 42,000 / 350,000 GW**, with **0.10 / 0.014 / 0.0018 t/GW**
+  specific mass and **99.5 / 99.8 / 99.95%** efficiency.
+- Better templates do not by themselves repair reactor undersizing.
+  Predefined designs retain explicit reactor assignments, while dynamic power-
+  plant selection does not explicitly require output cap to meet design load.
+  Both paths require pairing validation.
+- Stronger propulsion creates physical armor headroom, but the current alien
+  designer may exit before spending it and may stop filling all armor when one
+  facing caps. A future implementation may correct that allocator while
+  preserving every existing performance floor.
+
+### Explicitly deferred: lower alien AI delta-v targets
+
+- Retain the existing **800 / 900 / 600 / 200 / 300 km/s** role-group targets.
+- The previously explored half-target concept is not part of the active
+  proposal. Any reduction requires a later update after propulsion-first armor,
+  generated-design, combat, and campaign evidence.
+
 ## 2026-08-10
 
 ### Implemented: remaining human-hull crew and rounded empty masses

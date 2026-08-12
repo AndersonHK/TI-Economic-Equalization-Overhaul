@@ -103,5 +103,23 @@
     "maxOutput_GW": 200,
     "specificPower_tGW": 6,
     "efficiency": 0.75
+  },
+  {
+    "dataName": "AlienHybridConfinementFusionReactor",
+    "maxOutput_GW": 5000,
+    "specificPower_tGW": 0.5,
+    "efficiency": 0.995
+  },
+  {
+    "dataName": "AlienAdvancedHybridConfinementFusionReactor",
+    "maxOutput_GW": 32000,
+    "specificPower_tGW": 0.175,
+    "efficiency": 0.998
+  },
+  {
+    "dataName": "AlienSuperAdvancedHybridConfinementFusionReactor",
+    "maxOutput_GW": 107550,
+    "specificPower_tGW": 0.025,
+    "efficiency": 0.9995
   }
 ]

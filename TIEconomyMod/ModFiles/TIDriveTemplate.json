@@ -1,0 +1,146 @@
+[
+  {
+    "dataName": "AlienFusionLanternx1",
+    "thrust_N": 1200000,
+    "EV_kps": 1200,
+    "efficiency": 0.95,
+    "thrustRating_GW": "720.000",
+    "req power": "757.895"
+  },
+  {
+    "dataName": "AlienFusionLanternx2",
+    "thrust_N": 2400000,
+    "EV_kps": 1200,
+    "efficiency": 0.95,
+    "thrustRating_GW": "1,440.000",
+    "req power": "1,515.789"
+  },
+  {
+    "dataName": "AlienFusionLanternx3",
+    "thrust_N": 3600000,
+    "EV_kps": 1200,
+    "efficiency": 0.95,
+    "thrustRating_GW": "2,160.000",
+    "req power": "2,273.684"
+  },
+  {
+    "dataName": "AlienFusionLanternx4",
+    "thrust_N": 4800000,
+    "EV_kps": 1200,
+    "efficiency": 0.95,
+    "thrustRating_GW": "2,880.000",
+    "req power": "3,031.579"
+  },
+  {
+    "dataName": "AlienFusionLanternx5",
+    "thrust_N": 6000000,
+    "EV_kps": 1200,
+    "efficiency": 0.95,
+    "thrustRating_GW": "3,600.000",
+    "req power": "3,789.474"
+  },
+  {
+    "dataName": "AlienFusionLanternx6",
+    "thrust_N": 7200000,
+    "EV_kps": 1200,
+    "efficiency": 0.95,
+    "thrustRating_GW": "4,320.000",
+    "req power": "4,547.368"
+  },
+  {
+    "dataName": "AlienFusionTorchx1",
+    "thrust_N": 3800000,
+    "EV_kps": 2350,
+    "efficiency": 0.97,
+    "thrustRating_GW": "4,465.000",
+    "req power": "4,603.093"
+  },
+  {
+    "dataName": "AlienFusionTorchx2",
+    "thrust_N": 7600000,
+    "EV_kps": 2350,
+    "efficiency": 0.97,
+    "thrustRating_GW": "8,930.000",
+    "req power": "9,206.186"
+  },
+  {
+    "dataName": "AlienFusionTorchx3",
+    "thrust_N": 11400000,
+    "EV_kps": 2350,
+    "efficiency": 0.97,
+    "thrustRating_GW": "13,395.000",
+    "req power": "13,809.278"
+  },
+  {
+    "dataName": "AlienFusionTorchx4",
+    "thrust_N": 15200000,
+    "EV_kps": 2350,
+    "efficiency": 0.97,
+    "thrustRating_GW": "17,860.000",
+    "req power": "18,412.371"
+  },
+  {
+    "dataName": "AlienFusionTorchx5",
+    "thrust_N": 19000000,
+    "EV_kps": 2350,
+    "efficiency": 0.97,
+    "thrustRating_GW": "22,325.000",
+    "req power": "23,015.464"
+  },
+  {
+    "dataName": "AlienFusionTorchx6",
+    "thrust_N": 22800000,
+    "EV_kps": 2350,
+    "efficiency": 0.97,
+    "thrustRating_GW": "26,790.000",
+    "req power": "27,618.557"
+  },
+  {
+    "dataName": "AdvancedAlienFusionTorchx1",
+    "thrust_N": 10500000,
+    "EV_kps": 3000,
+    "efficiency": 0.98,
+    "thrustRating_GW": "15,750.000",
+    "req power": "16,071.429"
+  },
+  {
+    "dataName": "AdvancedAlienFusionTorchx2",
+    "thrust_N": 21000000,
+    "EV_kps": 3000,
+    "efficiency": 0.98,
+    "thrustRating_GW": "31,500.000",
+    "req power": "32,142.857"
+  },
+  {
+    "dataName": "AdvancedAlienFusionTorchx3",
+    "thrust_N": 31500000,
+    "EV_kps": 3000,
+    "efficiency": 0.98,
+    "thrustRating_GW": "47,250.000",
+    "req power": "48,214.286"
+  },
+  {
+    "dataName": "AdvancedAlienFusionTorchx4",
+    "thrust_N": 42000000,
+    "EV_kps": 3000,
+    "efficiency": 0.98,
+    "thrustRating_GW": "63,000.000",
+    "req power": "64,285.714"
+  },
+  {
+    "dataName": "AdvancedAlienFusionTorchx5",
+    "thrust_N": 52500000,
+    "EV_kps": 3000,
+    "efficiency": 0.98,
+    "thrustRating_GW": "78,750.000",
+    "req power": "80,357.143"
+  },
+  {
+    "dataName": "AdvancedAlienFusionTorchx6",
+    "thrust_N": 63000000,
+    "EV_kps": 3000,
+    "efficiency": 0.98,
+    "thrustRating_GW": "94,500.000",
+    "req power": "96,428.571"
+  }
+]

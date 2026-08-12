@@ -82,6 +82,14 @@ if ($LASTEXITCODE -ne 0) {
 }
 
 powershell -NoProfile -ExecutionPolicy Bypass -File `
+    (Join-Path $scriptDirectory 'validate-alien-ship-design-patch.ps1') `
+    -TargetManagedDir $resolvedManagedDir `
+    -ModAssemblyPath $assemblyPath
+if ($LASTEXITCODE -ne 0) {
+    exit $LASTEXITCODE
+}
+
+powershell -NoProfile -ExecutionPolicy Bypass -File `
     (Join-Path $scriptDirectory 'validate-skirmish-performance-patches.ps1') `
     -TargetManagedDir $resolvedManagedDir `
     -ModAssemblyPath $assemblyPath
@@ -155,6 +163,7 @@ $globalOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIGlobalConf
 $habModuleOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIHabModuleTemplate.json'
 $habOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIHabTemplate.json'
 $powerPlantOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIPowerPlantTemplate.json'
+$driveOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIDriveTemplate.json'
 $heatSinkOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIHeatSinkTemplate.json'
 $gunOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIGunTemplate.json'
 $laserWeaponOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TILaserWeaponTemplate.json'
@@ -384,7 +393,7 @@ $manifest = Get-Content -LiteralPath $manifestPath -Raw | ConvertFrom-Json
 if ($manifest.GameVersion -ne '1.0.51') {
     throw "ModInfo.json targets '$($manifest.GameVersion)' instead of TI 1.0.51."
 }
-if ($manifest.Version -ne '0.9.0') {
+if ($manifest.Version -ne '0.9.2') {
     throw "ModInfo.json version '$($manifest.Version)' does not match this release."
 }
 if ($manifest.AssemblyName -ne 'Assembly/TIEconomyMod.dll') {
@@ -601,8 +610,8 @@ if ($assemblyFile.LastWriteTime -lt $buildStarted.AddSeconds(-2)) {
     throw 'Packaged DLL predates this verification build.'
 }
 $assemblyVersion = [Reflection.AssemblyName]::GetAssemblyName($assemblyPath).Version.ToString()
-if ($assemblyVersion -ne '0.9.0.0') {
-    throw "Assembly version '$assemblyVersion' does not match release 0.9.0."
+if ($assemblyVersion -ne '0.9.2.0') {
+    throw "Assembly version '$assemblyVersion' does not match release 0.9.2."
 }
 $assemblyHash = (Get-FileHash -LiteralPath $assemblyPath -Algorithm SHA256).Hash
 
@@ -621,6 +630,7 @@ $requiredFiles = @(
     $habModuleOverrides,
     $habOverrides,
     $powerPlantOverrides,
+    $driveOverrides,
     $heatSinkOverrides,
     $gunOverrides,
     $laserWeaponOverrides,
@@ -669,6 +679,7 @@ Copy-Item -LiteralPath $globalOverrides -Destination $stagingDirectory
 Copy-Item -LiteralPath $habModuleOverrides -Destination $stagingDirectory
 Copy-Item -LiteralPath $habOverrides -Destination $stagingDirectory
 Copy-Item -LiteralPath $powerPlantOverrides -Destination $stagingDirectory
+Copy-Item -LiteralPath $driveOverrides -Destination $stagingDirectory
 Copy-Item -LiteralPath $heatSinkOverrides -Destination $stagingDirectory
 Copy-Item -LiteralPath $gunOverrides -Destination $stagingDirectory
 Copy-Item -LiteralPath $laserWeaponOverrides -Destination $stagingDirectory
@@ -689,7 +700,7 @@ if (Test-Path -LiteralPath $imagePath) {
     Copy-Item -LiteralPath $imagePath -Destination $stagingDirectory
 }
 
-$zipPath = Join-Path $artifactDirectory 'TIEconomyMod-0.9.0-ti1.0.51.zip'
+$zipPath = Join-Path $artifactDirectory 'TIEconomyMod-0.9.2-ti1.0.51.zip'
 if (Test-Path -LiteralPath $zipPath) {
     Remove-Item -LiteralPath $zipPath
 }
@@ -729,6 +740,7 @@ try {
     }
     $packagedShipFiles = @(
         'TIEconomyMod/TIPowerPlantTemplate.json',
+        'TIEconomyMod/TIDriveTemplate.json',
         'TIEconomyMod/TIHeatSinkTemplate.json',
         'TIEconomyMod/TIGunTemplate.json',
         'TIEconomyMod/TILaserWeaponTemplate.json',

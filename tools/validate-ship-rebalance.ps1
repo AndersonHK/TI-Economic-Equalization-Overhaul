@@ -63,6 +63,9 @@ $expectedPower = [ordered]@{
     MoltenCoreFissionReactorI = @(0.70, 8, 4, 32)
     MoltenCoreFissionReactorII = @(0.73, 7, 17, 119)
     MoltenCoreFissionReactorIII = @(0.75, 6, 200, 1200)
+    AlienHybridConfinementFusionReactor = @(0.995, 0.5, 5000, 2500)
+    AlienAdvancedHybridConfinementFusionReactor = @(0.998, 0.175, 32000, 5600)
+    AlienSuperAdvancedHybridConfinementFusionReactor = @(0.9995, 0.025, 107550, 2688.75)
 }
 if ($powerOverrides.Count -ne $expectedPower.Count) {
     throw "Power-plant override has $($powerOverrides.Count) rows instead of $($expectedPower.Count)."
@@ -256,28 +259,28 @@ $expectedHumanCoils = [ordered]@{
     SpinalSiegeCoilerMk3 = @(1250, 1094, 12)
 }
 $expectedAlienMags = [ordered]@{
-    AlienLightMagBattery = @(4.6, 19, 16, 9)
-    AlienMagBattery = @(5.5, 38, 32, 11)
-    AlienHeavyMagBattery = @(6.4, 75, 64, 13)
-    AlienMiniLightMagCannon = @(5.5, 50, 43, 18)
-    AlienLightMagCannon = @(5.5, 50, 43, 18)
-    AlienMagCannon = @(6.7, 100, 85, 22)
-    AlienHeavyMagCannon = @(8.3, 150, 128, 32)
-    AlienSpinalMagCannon = @(10.0, 200, 170, 43)
-    AdvancedAlienLightMagBattery = @(6.2, 19, 17, 4)
-    AdvancedAlienMagBattery = @(7.8, 38, 34, 5)
-    AdvancedAlienHeavyMagBattery = @(9.4, 75, 68, 6)
-    AdvancedAlienLightMagCannon = @(8.2, 50, 45, 13)
-    AdvancedAlienMagCannon = @(10.0, 100, 90, 16)
-    AdvancedAlienHeavyMagCannon = @(12.5, 150, 135, 23)
-    AdvancedAlienSpinalMagCannon = @(15.0, 200, 180, 31)
-    Gen3AlienLightMagBattery = @(8.2, 35, 30, 4)
-    Gen3AlienMagBattery = @(10.3, 69, 60, 5)
-    Gen3AlienHeavyMagBattery = @(12.4, 138, 120, 6)
-    Gen3AlienLightMagCannon = @(10.8, 93, 80, 6)
-    Gen3AlienMagCannon = @(13.1, 184, 160, 8)
-    Gen3AlienHeavyMagCannon = @(16.5, 368, 320, 14)
-    Gen3AlienSpinalMagCannon = @(19.8, 736, 640, 23)
+    AlienLightMagBattery = @(5.0, 550, 0.60, 19, 16, 9)
+    AlienMagBattery = @(6.0, 700, 0.60, 38, 32, 11)
+    AlienHeavyMagBattery = @(7.0, 850, 0.60, 75, 64, 13)
+    AlienMiniLightMagCannon = @(6.0, 600, 0.60, 50, 43, 18)
+    AlienLightMagCannon = @(6.0, 600, 0.60, 50, 43, 18)
+    AlienMagCannon = @(7.0, 750, 0.60, 100, 85, 22)
+    AlienHeavyMagCannon = @(8.3, 850, 0.60, 150, 128, 32)
+    AlienSpinalMagCannon = @(10.0, 950, 0.60, 200, 170, 43)
+    AdvancedAlienLightMagBattery = @(6.7, 650, 0.75, 19, 17, 4)
+    AdvancedAlienMagBattery = @(7.8, 800, 0.75, 38, 34, 5)
+    AdvancedAlienHeavyMagBattery = @(9.4, 950, 0.75, 75, 68, 6)
+    AdvancedAlienLightMagCannon = @(8.6, 700, 0.75, 50, 45, 13)
+    AdvancedAlienMagCannon = @(10.0, 850, 0.75, 100, 90, 16)
+    AdvancedAlienHeavyMagCannon = @(12.5, 950, 0.75, 150, 135, 23)
+    AdvancedAlienSpinalMagCannon = @(15.0, 1050, 0.75, 200, 180, 31)
+    Gen3AlienLightMagBattery = @(8.2, 700, 0.85, 35, 30, 4)
+    Gen3AlienMagBattery = @(10.3, 850, 0.85, 69, 60, 5)
+    Gen3AlienHeavyMagBattery = @(12.4, 1000, 0.85, 138, 120, 6)
+    Gen3AlienLightMagCannon = @(10.8, 800, 0.85, 93, 80, 6)
+    Gen3AlienMagCannon = @(13.1, 900, 0.85, 184, 160, 8)
+    Gen3AlienHeavyMagCannon = @(16.5, 1000, 0.85, 368, 320, 14)
+    Gen3AlienSpinalMagCannon = @(19.8, 1100, 0.85, 736, 640, 23)
 }
 $expectedMagneticCount = $expectedHumanRails.Count + $expectedHumanCoils.Count + $expectedAlienMags.Count
 if ($magneticOverrides.Count -ne $expectedMagneticCount) {
@@ -315,12 +318,14 @@ foreach ($entry in $expectedAlienMags.GetEnumerator()) {
         throw "Magnetic-gun override must contain '$($entry.Key)' exactly once."
     }
     Assert-Properties $row[0] @(
-        'dataName', 'muzzleVelocity_kps', 'ammoMass_kg',
-        'warheadMass_kg', 'cooldown_s') $entry.Key
+        'dataName', 'muzzleVelocity_kps', 'targetingRange_km', 'efficiency',
+        'ammoMass_kg', 'warheadMass_kg', 'cooldown_s') $entry.Key
     Assert-Near $row[0].muzzleVelocity_kps $entry.Value[0] "$($entry.Key) muzzle velocity"
-    Assert-Near $row[0].ammoMass_kg $entry.Value[1] "$($entry.Key) complete projectile mass"
-    Assert-Near $row[0].warheadMass_kg $entry.Value[2] "$($entry.Key) damaging projectile mass"
-    Assert-Near $row[0].cooldown_s $entry.Value[3] "$($entry.Key) cycle reload"
+    Assert-Near $row[0].targetingRange_km $entry.Value[1] "$($entry.Key) targeting range"
+    Assert-Near $row[0].efficiency $entry.Value[2] "$($entry.Key) efficiency"
+    Assert-Near $row[0].ammoMass_kg $entry.Value[3] "$($entry.Key) complete projectile mass"
+    Assert-Near $row[0].warheadMass_kg $entry.Value[4] "$($entry.Key) damaging projectile mass"
+    Assert-Near $row[0].cooldown_s $entry.Value[5] "$($entry.Key) cycle reload"
     if ([double]$row[0].warheadMass_kg -gt [double]$row[0].ammoMass_kg) {
         throw "$($entry.Key) damaging mass exceeds complete projectile mass."
     }
@@ -433,6 +438,52 @@ foreach ($id in @($expectedHumanRails.Keys) + @($expectedHumanCoils.Keys) + @($e
         throw "Installed game no longer contains magnetic gun '$id'."
     }
 }
+
+function Get-EffectiveMagneticValue {
+    param(
+        [string]$DataName,
+        [string]$Property
+    )
+
+    $override = @($magneticOverrides | Where-Object dataName -eq $DataName)[0]
+    if ($override.PSObject.Properties.Name -contains $Property) {
+        return [double]$override.$Property
+    }
+    $vanilla = @($vanillaMagneticGuns | Where-Object dataName -eq $DataName)[0]
+    return [double]$vanilla.$Property
+}
+
+$alienDominanceComparisons = @(
+    [pscustomobject]@{ Alien = 'AlienLightMagBattery'; Rail = 'LightRailgunBatteryMk1'; Coil = 'LightCoilgunBatteryMk1' }
+    [pscustomobject]@{ Alien = 'AlienMagBattery'; Rail = 'RailgunBatteryMk1'; Coil = 'CoilgunBatteryMk1' }
+    [pscustomobject]@{ Alien = 'AlienHeavyMagBattery'; Rail = 'HeavyRailgunBatteryMk1'; Coil = 'HeavyCoilgunBatteryMk1' }
+    [pscustomobject]@{ Alien = 'AlienMiniLightMagCannon'; Rail = 'LightRailCannonMk1'; Coil = 'LightCoilCannonMk1' }
+    [pscustomobject]@{ Alien = 'AlienLightMagCannon'; Rail = 'LightRailCannonMk1'; Coil = 'LightCoilCannonMk1' }
+    [pscustomobject]@{ Alien = 'AlienMagCannon'; Rail = 'RailCannonMk1'; Coil = 'CoilCannonMk1' }
+    [pscustomobject]@{ Alien = 'AlienHeavyMagCannon'; Rail = 'HeavyRailCannonMk1'; Coil = 'HeavyCoilCannonMk1' }
+    [pscustomobject]@{ Alien = 'AlienSpinalMagCannon'; Rail = 'SpinalRailgunMk1'; Coil = 'SpinalCoilerMk1' }
+    [pscustomobject]@{ Alien = 'AdvancedAlienLightMagBattery'; Rail = 'LightRailgunBatteryMk3'; Coil = 'LightCoilgunBatteryMk3' }
+    [pscustomobject]@{ Alien = 'AdvancedAlienMagBattery'; Rail = 'RailgunBatteryMk3'; Coil = 'CoilgunBatteryMk3' }
+    [pscustomobject]@{ Alien = 'AdvancedAlienHeavyMagBattery'; Rail = 'HeavyRailgunBatteryMk3'; Coil = 'HeavyCoilgunBatteryMk3' }
+    [pscustomobject]@{ Alien = 'AdvancedAlienLightMagCannon'; Rail = 'LightRailCannonMk3'; Coil = 'LightCoilCannonMk3' }
+    [pscustomobject]@{ Alien = 'AdvancedAlienMagCannon'; Rail = 'RailCannonMk3'; Coil = 'CoilCannonMk3' }
+    [pscustomobject]@{ Alien = 'AdvancedAlienHeavyMagCannon'; Rail = 'HeavyRailCannonMk3'; Coil = 'HeavyCoilCannonMk3' }
+    [pscustomobject]@{ Alien = 'AdvancedAlienSpinalMagCannon'; Rail = 'SpinalRailgunMk3'; Coil = 'SpinalCoilerMk3' }
+)
+foreach ($comparison in $alienDominanceComparisons) {
+    foreach ($property in @(
+        'ammoMass_kg', 'warheadMass_kg', 'muzzleVelocity_kps',
+        'targetingRange_km', 'efficiency')) {
+        $alienValue = Get-EffectiveMagneticValue $comparison.Alien $property
+        $humanMaximum = [Math]::Max(
+            (Get-EffectiveMagneticValue $comparison.Rail $property),
+            (Get-EffectiveMagneticValue $comparison.Coil $property))
+        if ($alienValue -le $humanMaximum) {
+            throw "$($comparison.Alien) $property is $alienValue and does not strictly exceed the matching human maximum $humanMaximum."
+        }
+    }
+}
+
 $housekeepingIds = @($expectedHumanCoils.Keys) + @($expectedAlienMags.Keys)
 foreach ($id in $housekeepingIds) {
     $vanilla = @($vanillaMagneticGuns | Where-Object dataName -eq $id)[0]
@@ -464,9 +515,46 @@ foreach ($id in $expectedHulls.Keys) {
     }
 }
 
-$driveOverride = Join-Path $modFiles 'TIDriveTemplate.json'
-if (Test-Path -LiteralPath $driveOverride) {
-    throw 'The settled slice defers drive changes; TIDriveTemplate.json must not be packaged.'
+$driveOverrides = Read-JsonArray (Join-Path $modFiles 'TIDriveTemplate.json')
+$vanillaDrives = Read-JsonArray (Join-Path $VanillaTemplatesDir 'TIDriveTemplate.json')
+$driveFamilies = [ordered]@{
+    AlienFusionLantern = @(1200000, 1200, 0.95, 5000)
+    AlienFusionTorch = @(3800000, 2350, 0.97, 32000)
+    AdvancedAlienFusionTorch = @(10500000, 3000, 0.98, 107550)
+}
+if ($driveOverrides.Count -ne 18) {
+    throw "Alien drive override has $($driveOverrides.Count) rows instead of 18."
+}
+foreach ($family in $driveFamilies.GetEnumerator()) {
+    for ($thrusters = 1; $thrusters -le 6; $thrusters++) {
+        $id = "$($family.Key)x$thrusters"
+        $row = @($driveOverrides | Where-Object dataName -eq $id)
+        $vanilla = @($vanillaDrives | Where-Object dataName -eq $id)
+        if ($row.Count -ne 1 -or $vanilla.Count -ne 1) {
+            throw "Drive '$id' must exist exactly once in both override and installed data."
+        }
+        Assert-Properties $row[0] @(
+            'dataName', 'thrust_N', 'EV_kps', 'efficiency',
+            'thrustRating_GW', 'req power') $id
+        $expectedThrust = [double]$family.Value[0] * $thrusters
+        $expectedEv = [double]$family.Value[1]
+        $expectedEfficiency = [double]$family.Value[2]
+        $expectedJetPower = $expectedThrust * $expectedEv / 1000000 / 2
+        $expectedRequiredPower = $expectedJetPower / $expectedEfficiency
+        $jetPower = [double](([string]$row[0].thrustRating_GW).Replace(',', ''))
+        $requiredPower = [double](([string]$row[0].'req power').Replace(',', ''))
+        Assert-Near $row[0].thrust_N $expectedThrust "$id thrust"
+        Assert-Near $row[0].EV_kps $expectedEv "$id exhaust velocity"
+        Assert-Near $row[0].efficiency $expectedEfficiency "$id efficiency"
+        Assert-Near $row[0].efficiency $vanilla[0].efficiency "$id unchanged efficiency"
+        if ([Math]::Abs($jetPower - $expectedJetPower) -gt 0.0005 -or
+            [Math]::Abs($requiredPower - $expectedRequiredPower) -gt 0.0005) {
+            throw "$id power fields do not match thrust, EV, and efficiency."
+        }
+        if ($thrusters -eq 6 -and $requiredPower -ge [double]$family.Value[3]) {
+            throw "$id requires $requiredPower GW, exceeding its matched reactor cap."
+        }
+    }
 }
 
 Write-Host 'PASS: settled ship-rebalance overrides validated.'

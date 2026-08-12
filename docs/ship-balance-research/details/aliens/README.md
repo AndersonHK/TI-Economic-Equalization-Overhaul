@@ -1,9 +1,13 @@
 # Alien fleet research
 
-Last reviewed: 2026-07-29
+Last reviewed: 2026-08-12
 
 The [fleet and module audit](fleet-and-module-audit.md) inventories alien
 hulls, power plants, drives, weapons, utilities, and predefined designs.
+The later
+[magnetic, propulsion, and armor-design proposal](../../alien-weapons-propulsion-and-armor-proposal.md)
+defines candidate numerical tiers and records the decision to leave alien AI
+delta-v targets unchanged in the first propulsion slice.
 
 ## Current synthesis
 
@@ -22,5 +26,10 @@ findings:
   weapons, repairing power-plant pairings, and rearranging modules may matter
   more than a uniform numerical buff.
 
-All alien changes remain deferred until a future slice can combine campaign
-experience with controlled missile-saturation and equal-cost tests.
+The alien magnetic progression is implemented in version 0.9.1. A conservative
+0.9.2 slice is implemented with `1.2 / 3.8 / 10.5 MN` drives, `1,200 / 2,350 /
+3,000 km/s` exhaust velocity, five-times-current reactor output, half-current
+reactor specific mass, and a `3,500 -> 10,000 kg/m3` armor-allocation scalar.
+Strict reactor-cap selection and predefined-loadout normalization remain
+follow-up work. Lower AI delta-v targets remain explicitly deferred pending
+generated-design, equal-cost combat, and campaign tests.

@@ -5,7 +5,7 @@ Status: evidence and planning archive. Use the dated
 [current implementation matrix](../current-implementation-matrix.xlsx) to
 distinguish implemented values from proposals and deferred work.
 
-Last reviewed: 2026-08-10
+Last reviewed: 2026-08-12
 
 This dossier compares dated Terra Invicta ship-drive, power-plant, and
 weapon-crew snapshots with demonstrated hardware, active prototypes, historical
@@ -36,6 +36,7 @@ The comparison is organized into:
 - [Hull resource-cost accounting and metal-use options](hull-resource-cost-accounting.md)
 - [Skirmish roster performance investigation](skirmish-roster-performance-investigation.md)
 - [Human hull slots, crew, naval references, and drive scaling](human-hull-slots-and-drive-scaling.md)
+- [Alien magnetic weapons, propulsion, and armor-design proposal](alien-weapons-propulsion-and-armor-proposal.md)
 - [Detailed research archive](details/README.md)
 
 ## Documentation structure
@@ -95,8 +96,11 @@ The label applies to the technology, not to whether an individual numerical esti
 
 10. **The alien catalog is stronger than its predefined fleet makes it look.**
     Reactor/drive mismatches, old magnetic weapons, uneven point defense,
-    light armor, and non-use of stronger modules justify a future integrated
-    design pass. Raw buffs remain deferred pending controlled tests. See the
+    light armor, and non-use of stronger modules justify an integrated design
+    pass. Alien magnetic weapons are implemented in 0.9.1; the conservative
+    propulsion, reactor, and armor-allocation slice is implemented in 0.9.2.
+    Lower alien AI delta-v targets remain explicitly deferred. See the
+    [alien proposal](alien-weapons-propulsion-and-armor-proposal.md) and
     [alien synthesis](details/aliens/README.md).
 
 ## Working balance recommendations
