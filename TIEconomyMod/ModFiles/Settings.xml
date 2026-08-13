@@ -118,6 +118,7 @@
     <crewSupportMassEnabled>true</crewSupportMassEnabled>
     <crewSupportMass_tons>3</crewSupportMass_tons>
     <hullDriveScalingEnabled>true</hullDriveScalingEnabled>
+    <reactorBayCapacityEnabled>true</reactorBayCapacityEnabled>
   </shipBalance>
   <research>
     <enabled>true</enabled>

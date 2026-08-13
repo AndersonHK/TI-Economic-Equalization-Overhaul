@@ -126,6 +126,36 @@ $generateEntries = $moduleListItemType.GetMethod(
 if ($null -eq $generateEntries) {
     throw 'ShipModuleListItem.GenerateEntries was not found.'
 }
+$fleetsControllerType = $gameAssembly.GetType(
+    'PavonisInteractive.TerraInvicta.FleetsScreenController', $true)
+$setAltHull = $fleetsControllerType.GetMethod(
+    'SetAltHull', [Reflection.BindingFlags]'Public,Instance')
+$onCycleAltHull = $fleetsControllerType.GetMethod(
+    'OnCycleAltHull', [Reflection.BindingFlags]'Public,Instance')
+if ($null -eq $setAltHull -or $null -eq $onCycleAltHull) {
+    throw 'FleetsScreenController appearance mutation methods were not found.'
+}
+$readerArguments = [object[]]::new(2)
+foreach ($appearanceMethod in @($onCycleAltHull, $setAltHull)) {
+    $readerArguments[0] = $appearanceMethod
+    $readerArguments[1] = $null
+    $appearanceInstructions = @(
+        $instructionReader[0].PSObject.BaseObject.Invoke(
+            $null, $readerArguments))
+    $appearanceWrites = @($appearanceInstructions | Where-Object {
+        $_.opcode.Name -eq 'stfld' -and
+        $_.operand -is [Reflection.FieldInfo] -and
+        $_.operand.Name -eq 'hullAppearanceIndex'
+    })
+    $panelRefreshCalls = @($appearanceInstructions | Where-Object {
+        $_.opcode.Name -eq 'call' -and
+        $_.operand -is [Reflection.MethodInfo] -and
+        $_.operand.Name -eq 'UpdateShipDesignDataPanelAndImage'
+    })
+    if ($appearanceWrites.Count -ne 1 -or $panelRefreshCalls.Count -ne 1) {
+        throw "$($appearanceMethod.Name) must commit one appearance index and perform one designer-panel refresh before reactor-bay reconciliation."
+    }
+}
 $readerArguments = [object[]]::new(2)
 $readerArguments[0] = $generateEntries
 $readerArguments[1] = $null
@@ -151,6 +181,12 @@ $driveDisplayHelpers = @(
             $_.GetParameters()[1].ParameterType.Name -eq 'ShipModuleListItem'
         })[0]
 }
+$reactorDisplayHelper = @($uiPatchType.GetMethods(
+    [Reflection.BindingFlags]'Public,Static') | Where-Object {
+        $_.Name -eq 'GetHullEffectivePowerPlantOutput' -and
+        $_.GetParameters().Count -eq 2 -and
+        $_.GetParameters()[1].ParameterType.Name -eq 'ShipModuleListItem'
+    })[0]
 try {
     $transpilerArguments = [object[]]::new(1)
     $transpilerArguments[0] = $original
@@ -171,10 +207,109 @@ $uiHelperCalls = @($patched | Where-Object {
 $driveDisplayCalls = @($patched | Where-Object {
     $_.opcode.Name -eq 'call' -and $driveDisplayHelpers -contains $_.operand
 })
-if ($patched.Count -ne (@($original).Count + 3) -or
+$reactorDisplayCalls = @($patched | Where-Object {
+    $_.opcode.Name -eq 'call' -and $_.operand -eq $reactorDisplayHelper
+})
+if ($patched.Count -ne (@($original).Count + 4) -or
     $uiHelperCalls.Count -ne 1 -or
-    $driveDisplayCalls.Count -ne 3) {
-    throw 'GenerateEntries must replace one EnergyUsage_GJ visibility call and add exactly three hull-scaled drive display calls.'
+    $driveDisplayCalls.Count -ne 3 -or
+    $reactorDisplayCalls.Count -ne 1) {
+    throw 'GenerateEntries must replace one EnergyUsage_GJ visibility call, add exactly three hull-scaled drive display calls, and replace one power-plant output display.'
+}
+
+$appearancePatchType = $modAssembly.GetType(
+    'TIEconomyMod.Patches.ReactorBayAppearanceRefreshPatch', $true)
+$targetMethods = $appearancePatchType.GetMethod(
+    'TargetMethods', [Reflection.BindingFlags]'Public,Static')
+$appearanceTargets = @($targetMethods.Invoke($null, $null))
+$appearanceTargetNames = @($appearanceTargets |
+    ForEach-Object { $_.Name } | Sort-Object) -join ','
+if ($appearanceTargetNames -ne 'OnCycleAltHull,SetAltHull') {
+    throw 'Reactor-bay appearance reconciliation must target both OnCycleAltHull and SetAltHull.'
+}
+$reconcileDrive = $appearancePatchType.GetMethod(
+    'ReconcileDriveCluster', [Reflection.BindingFlags]'NonPublic,Static')
+if ($null -eq $reconcileDrive) {
+    throw 'Reactor-bay appearance patch is missing drive reconciliation.'
+}
+$readerArguments[0] = $reconcileDrive
+$readerArguments[1] = $null
+$reconcileInstructions = @($instructionReader[0].PSObject.BaseObject.Invoke(
+    $null, $readerArguments))
+$setModuleCalls = @($reconcileInstructions | Where-Object {
+    $_.operand -is [Reflection.MethodInfo] -and
+    $_.operand.Name -eq 'SetModuleInSlot'
+})
+$removeModuleCalls = @($reconcileInstructions | Where-Object {
+    $_.operand -is [Reflection.MethodInfo] -and
+    $_.operand.Name -eq 'RemoveModuleFromSlot'
+})
+$variationCalls = @($reconcileInstructions | Where-Object {
+    $_.operand -is [Reflection.MethodInfo] -and
+    $_.operand.Name -eq 'GetVariation'
+})
+$directCapacityCalls = @($reconcileInstructions | Where-Object {
+    $_.operand -is [Reflection.MethodInfo] -and
+    $_.operand.Name -eq 'DriveFitsEffectiveOutput'
+})
+if ($setModuleCalls.Count -ne 1 -or $removeModuleCalls.Count -ne 1 -or
+    $variationCalls.Count -ne 1 -or $directCapacityCalls.Count -lt 1) {
+    throw 'Appearance reconciliation must directly test effective output, inspect installed-count drive variations, and use exactly one normal replacement/removal path.'
+}
+
+$appearancePostfix = $appearancePatchType.GetMethod(
+    'Postfix', [Reflection.BindingFlags]'Public,Static')
+$readerArguments[0] = $appearancePostfix
+$readerArguments[1] = $null
+$appearancePostfixInstructions = @(
+    $instructionReader[0].PSObject.BaseObject.Invoke($null, $readerArguments))
+$postfixCalls = @($appearancePostfixInstructions | Where-Object {
+    $_.operand -is [Reflection.MethodInfo]
+} | ForEach-Object { $_.operand.Name })
+if (@($postfixCalls | Where-Object { $_ -eq 'RefreshDesignerState' }).Count -ne 1 -or
+    @($postfixCalls | Where-Object { $_ -eq 'RefreshRows' }).Count -ne 2 -or
+    @($postfixCalls | Where-Object { $_ -eq 'RefreshModulePanels' }).Count -ne 1) {
+    throw 'Appearance postfix must refresh designer state, both module tables, and contextual module panels.'
+}
+
+$refreshDesignerState = $appearancePatchType.GetMethod(
+    'RefreshDesignerState', [Reflection.BindingFlags]'NonPublic,Static')
+$readerArguments[0] = $refreshDesignerState
+$readerArguments[1] = $null
+$refreshStateInstructions = @(
+    $instructionReader[0].PSObject.BaseObject.Invoke($null, $readerArguments))
+$refreshStateCalls = @($refreshStateInstructions | Where-Object {
+    $_.operand -is [Reflection.MethodInfo]
+} | ForEach-Object { $_.operand.Name })
+foreach ($requiredRefresh in @(
+    'CacheTemplateValues',
+    'UpdateShipDesignDataPanelAndImage',
+    'UpdateTransferInfo')) {
+    if ($refreshStateCalls -notcontains $requiredRefresh) {
+        throw "Appearance designer refresh is missing $requiredRefresh."
+    }
+}
+$filterField = $appearancePatchType.GetField(
+    'filterAvailableShipModules',
+    [Reflection.BindingFlags]'NonPublic,Static')
+$filterMethod = $filterField.GetValue($null)
+if ($null -eq $filterMethod -or
+    $filterMethod.Name -ne 'FilterAvailableShipModules') {
+    throw 'Appearance designer refresh must resolve FilterAvailableShipModules.'
+}
+
+$refreshModulePanels = $appearancePatchType.GetMethod(
+    'RefreshModulePanels', [Reflection.BindingFlags]'NonPublic,Static')
+$readerArguments[0] = $refreshModulePanels
+$readerArguments[1] = $null
+$modulePanelInstructions = @(
+    $instructionReader[0].PSObject.BaseObject.Invoke($null, $readerArguments))
+$modulePanelCalls = @($modulePanelInstructions | Where-Object {
+    $_.operand -is [Reflection.MethodInfo] -and
+    $_.operand.Name -eq 'UpdateModuleDataPanel'
+})
+if ($modulePanelCalls.Count -ne 2) {
+    throw 'Appearance refresh must update installed and selected module detail panels.'
 }
 
 $harmonyType = $harmonyAssembly.GetType('HarmonyLib.Harmony', $true)
@@ -190,8 +325,12 @@ $patchTypeNames = @(
     'TIEconomyMod.Patches.GunHeatGenerationPatch',
     'TIEconomyMod.Patches.ShipModuleEnergyColumnCompatibilityPatch',
     'TIEconomyMod.Patches.HullScaledDriveDescriptionPatch',
+    'TIEconomyMod.Patches.ReactorBayPowerPlantDescriptionPatch',
     'TIEconomyMod.Patches.HullScaledDriveTooltipPatch',
     'TIEconomyMod.Patches.HullScaledDriveTableRefreshPatch',
+    'TIEconomyMod.Patches.ReactorBayAppearanceRefreshPatch',
+    'TIEconomyMod.Patches.HullScaledDriveCompatibilityPatch',
+    'TIEconomyMod.Patches.HullScaledPowerPlantCompatibilityPatch',
     'TIEconomyMod.Patches.PoweredWeaponRadiatorHeatPatch',
     'TIEconomyMod.Patches.WeaponHeatCapacityPrecheckPatch',
     'TIEconomyMod.Patches.AuxiliaryElectricalGenerationPatch',
@@ -218,4 +357,4 @@ finally {
     $harmony.UnpatchAll($harmonyId)
 }
 
-Write-Host 'PASS: ship-power transpilers replace the validated heat and module-table calls and all 0.8.2 ship-power patch classes apply.'
+Write-Host 'PASS: ship-power transpilers replace the validated heat and module-table calls, reactor-bay compatibility targets apply, and all ship-power patch classes apply.'

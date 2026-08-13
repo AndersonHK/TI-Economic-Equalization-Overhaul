@@ -587,4 +587,63 @@ foreach ($family in $driveFamilies.GetEnumerator()) {
     }
 }
 
-Write-Host 'PASS: settled ship-rebalance overrides validated.'
+$reactorBayCsvPath = Join-Path $RepositoryRoot `
+    'docs\ship-balance-research\reactor-bay-variant-volumes.csv'
+$reactorBayRows = @(Import-Csv -LiteralPath $reactorBayCsvPath)
+$reactorBayHulls = @(
+    'Gunship', 'Escort', 'Corvette', 'Frigate', 'Monitor', 'Destroyer',
+    'Cruiser', 'Battlecruiser', 'Lancer', 'Battleship', 'Dreadnought', 'Titan'
+)
+$expectedBayVolumes = @(
+    @(264.240616, 452.197326, 317.310118, 712.241612),
+    @(264.240558, 452.197326, 317.310118, 712.241612),
+    @(264.240616, 452.197235, 604.707011, 837.587811),
+    @(332.341240, 675.443739, 1246.492028, 1233.527032),
+    @(384.582064, 675.443717, 2617.607109, 2028.674504),
+    @(384.582064, 675.443717, 2617.606700, 2028.674504),
+    @(1989.241734, 1384.983819, 3930.637720, 3505.550347),
+    @(1989.242548, 1384.983819, 3930.637720, 3505.550347),
+    @(2365.773019, 2090.292333, 10223.879025, 8072.643840),
+    @(5648.074162, 2090.291983, 5464.773080, 6945.700026),
+    @(11476.330412, 2090.293033, 10223.879025, 10952.622272),
+    @(15955.575747, 6290.836709, 16549.539439, 15840.889300)
+)
+if ($reactorBayRows.Count -ne 48) {
+    throw "Reactor-bay measurement artifact has $($reactorBayRows.Count) rows instead of 48."
+}
+for ($hullIndex = 0; $hullIndex -lt $reactorBayHulls.Count; $hullIndex++) {
+    for ($appearanceIndex = 0; $appearanceIndex -lt 4; $appearanceIndex++) {
+        $hull = $reactorBayHulls[$hullIndex]
+        $row = @($reactorBayRows | Where-Object {
+            $_.hull -eq $hull -and
+            [int]$_.appearanceIndex -eq $appearanceIndex
+        })
+        if ($row.Count -ne 1) {
+            throw "Reactor-bay artifact must contain $hull appearance $appearanceIndex exactly once."
+        }
+        Assert-Near `
+            ([double]$row[0].inscribedCylinder_m3) `
+            ([double]$expectedBayVolumes[$hullIndex][$appearanceIndex]) `
+            "$hull appearance $appearanceIndex reactor-bay volume"
+        if ([double]$row[0].transverseX_m -le 0 -or
+            [double]$row[0].transverseY_m -le 0 -or
+            [double]$row[0].longitudinalLength_m -le 0 -or
+            [string]::IsNullOrWhiteSpace($row[0].modelResource) -or
+            [string]::IsNullOrWhiteSpace($row[0].meshName)) {
+            throw "$hull appearance $appearanceIndex has incomplete source geometry."
+        }
+    }
+}
+
+$measurementToolPath = Join-Path $RepositoryRoot `
+    'scripts\ship-balance\measure_ship_prefabs.py'
+$measurementTool = Get-Content -LiteralPath $measurementToolPath -Raw
+foreach ($requiredToken in @(
+    'DLC_BUNDLE', '"radiator" in leaf', 'leaf.endswith("_rads")',
+    'measure_reactor_bay_variants', 'reactor_bay_variant_measurements')) {
+    if (-not $measurementTool.Contains($requiredToken)) {
+        throw "Ship measurement tool is missing reactor-bay token '$requiredToken'."
+    }
+}
+
+Write-Host 'PASS: settled ship-rebalance overrides and all 48 graphical reactor-bay measurements validated.'

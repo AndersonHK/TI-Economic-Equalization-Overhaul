@@ -1025,6 +1025,177 @@ namespace TIEconomyMod.FormulaTests
                         " locks its measured graphical drive scale");
             }
 
+            string[] reactorBayHulls =
+            {
+                "Gunship", "Escort", "Corvette", "Frigate", "Monitor",
+                "Destroyer", "Cruiser", "Battlecruiser", "Lancer",
+                "Battleship", "Dreadnought", "Titan"
+            };
+            float[,] reactorBayVolumes =
+            {
+                { 264.240616f, 452.197326f, 317.310118f, 712.241612f },
+                { 264.240558f, 452.197326f, 317.310118f, 712.241612f },
+                { 264.240616f, 452.197235f, 604.707011f, 837.587811f },
+                { 332.341240f, 675.443739f, 1246.492028f, 1233.527032f },
+                { 384.582064f, 675.443717f, 2617.607109f, 2028.674504f },
+                { 384.582064f, 675.443717f, 2617.606700f, 2028.674504f },
+                { 1989.241734f, 1384.983819f, 3930.637720f, 3505.550347f },
+                { 1989.242548f, 1384.983819f, 3930.637720f, 3505.550347f },
+                { 2365.773019f, 2090.292333f, 10223.879025f, 8072.643840f },
+                { 5648.074162f, 2090.291983f, 5464.773080f, 6945.700026f },
+                { 11476.330412f, 2090.293033f, 10223.879025f, 10952.622272f },
+                { 15955.575747f, 6290.836709f, 16549.539439f, 15840.889300f }
+            };
+            for (int hullIndex = 0; hullIndex < reactorBayHulls.Length;
+                hullIndex++)
+            {
+                for (int appearanceIndex = 0; appearanceIndex < 4;
+                    appearanceIndex++)
+                {
+                    float measuredVolume;
+                    True(ShipBalanceMath.TryGetMeasuredReactorBayVolume_m3(
+                            reactorBayHulls[hullIndex], appearanceIndex,
+                            out measuredVolume),
+                        reactorBayHulls[hullIndex] + " appearance " +
+                        appearanceIndex + " has a maintained bay measurement");
+                    Near(reactorBayVolumes[hullIndex, appearanceIndex],
+                        measuredVolume, 0.002f,
+                        reactorBayHulls[hullIndex] + " appearance " +
+                        appearanceIndex + " locks measured reactor-bay volume");
+                }
+            }
+            float absentVolume;
+            True(!ShipBalanceMath.TryGetMeasuredReactorBayVolume_m3(
+                    "FutureHull", 0, out absentVolume),
+                "unknown hulls do not masquerade as measured variants");
+            True(!ShipBalanceMath.TryGetMeasuredReactorBayVolume_m3(
+                    "Gunship", 4, out absentVolume),
+                "unknown appearances do not masquerade as measured variants");
+
+            bool usedBayFallback;
+            string baySizeBand;
+            Near(2617.607109f, ShipBalanceMath.ReactorBayVolume_m3(
+                    "FutureSmall", 9, true, false, false, false,
+                    out usedBayFallback, out baySizeBand), 0.002f,
+                "unknown small hull uses the maximum measured small fallback");
+            True(usedBayFallback && baySizeBand == "Small",
+                "small fallback reports its diagnostic size band");
+            Near(3930.637720f, ShipBalanceMath.ReactorBayVolume_m3(
+                    "FutureMedium", 9, false, true, false, false,
+                    out usedBayFallback, out baySizeBand), 0.002f,
+                "unknown medium hull uses the maximum measured medium fallback");
+            Near(16549.539439f, ShipBalanceMath.ReactorBayVolume_m3(
+                    "FutureLarge", 9, false, false, true, false,
+                    out usedBayFallback, out baySizeBand), 0.002f,
+                "unknown large hull uses the maximum measured large fallback");
+            Near(16549.539439f, ShipBalanceMath.ReactorBayVolume_m3(
+                    "FutureHuge", 9, false, false, false, true,
+                    out usedBayFallback, out baySizeBand), 0.002f,
+                "unknown huge hull uses the maximum measured huge fallback");
+
+            string[] reactorClasses =
+            {
+                "Fuel_Cell", "Solid_Core_Fission", "Molten_Salt_Core_Fission",
+                "Liquid_Core_Fission", "Gas_Core_Fission",
+                "Electrostatic_Confinement_Fusion",
+                "Mirrored_Magnetic_Confinement_Fusion",
+                "Any_Magnetic_Confinement_Fusion",
+                "Toroid_Magnetic_Confinement_Fusion",
+                "Hybrid_Confinement_Fusion", "Z_Pinch_Fusion",
+                "Inertial_Confinement_Fusion", "Antimatter_Plasma_Core",
+                "Antimatter_Beam_Core", "Antimatter_Solid_Core",
+                "Antimatter_Gas_Core", "Future_Reactor_Class"
+            };
+            float[] reactorDensities =
+            {
+                1.2f, 2.5f, 3.5f, 2.5f, 2f, 1f, 1.2f, 2f, 2f, 2f,
+                2.5f, 1.5f, 2.5f, 3f, 2.5f, 2f, 2f
+            };
+            float[] reactorBayFractions =
+            {
+                0.25f, 0.5f, 0.55f, 0.55f, 0.45f, 0.75f, 0.75f,
+                0.75f, 0.75f, 0.75f, 0.6f, 0.6f, 0.6f, 0.4f, 0.5f,
+                0.45f, 0.75f
+            };
+            for (int reactorClassIndex = 0;
+                reactorClassIndex < reactorClasses.Length;
+                reactorClassIndex++)
+            {
+                Near(reactorDensities[reactorClassIndex],
+                    ShipBalanceMath.ReactorInstalledDensity_tonsPerM3(
+                        reactorClasses[reactorClassIndex]), 0f,
+                    reactorClasses[reactorClassIndex] +
+                        " locks its installed density");
+                Near(reactorBayFractions[reactorClassIndex],
+                    ShipBalanceMath.ReactorReportedMassBayFraction(
+                        reactorClasses[reactorClassIndex]), 0f,
+                    reactorClasses[reactorClassIndex] +
+                        " locks its reactor-bay mass fraction");
+            }
+
+            float moltenSaltGunship0 = ShipBalanceMath.ReactorBayOutputLimit_GW(
+                264.240616f, "Molten_Salt_Core_Fission", 8f, 400f);
+            float moltenSaltGunship1 = ShipBalanceMath.ReactorBayOutputLimit_GW(
+                452.197326f, "Molten_Salt_Core_Fission", 8f, 400f);
+            float moltenSaltGunship2 = ShipBalanceMath.ReactorBayOutputLimit_GW(
+                317.310118f, "Molten_Salt_Core_Fission", 8f, 400f);
+            float moltenSaltGunship3 = ShipBalanceMath.EffectiveReactorOutput_GW(
+                400f, ShipBalanceMath.ReactorBayOutputLimit_GW(
+                    712.241612f, "Molten_Salt_Core_Fission", 8f, 400f));
+            True(moltenSaltGunship0 >= 3f * 65.8824f &&
+                    moltenSaltGunship0 < 4f * 65.8824f,
+                "Molten Salt II Gunship appearance 0 fits Pegasus x3 only");
+            True(moltenSaltGunship1 >= 5f * 65.8824f &&
+                    moltenSaltGunship1 < 6f * 65.8824f,
+                "Molten Salt II Gunship appearance 1 fits Pegasus x5 only");
+            True(moltenSaltGunship2 >= 3f * 65.8824f &&
+                    moltenSaltGunship2 < 4f * 65.8824f,
+                "Molten Salt II Gunship appearance 2 fits Pegasus x3 only");
+            True(moltenSaltGunship3 >= 6f * 65.8824f,
+                "Molten Salt II Gunship appearance 3 reaches Pegasus x6");
+            Near(400f, moltenSaltGunship3, 0.001f,
+                "large Molten Salt II bay remains capped by reactor rating");
+            float moltenSaltFrigate0 =
+                ShipBalanceMath.ReactorBayOutputLimit_GW(
+                    332.341240f, "Molten_Salt_Core_Fission", 8f, 400f);
+            True(moltenSaltFrigate0 >= 4f * 65.8824f &&
+                    moltenSaltFrigate0 < 5f * 65.8824f,
+                "Molten Salt II Frigate appearance 0 fits Pegasus x4 only");
+            foreach (float moltenSaltLargeFrigate in new[]
+            {
+                675.443739f, 1246.492028f, 1233.527032f
+            })
+            {
+                Near(400f, ShipBalanceMath.EffectiveReactorOutput_GW(
+                        400f, ShipBalanceMath.ReactorBayOutputLimit_GW(
+                            moltenSaltLargeFrigate,
+                            "Molten_Salt_Core_Fission", 8f, 400f)),
+                    0.001f,
+                    "Molten Salt II Frigate appearances 1-3 fit Pegasus x6");
+            }
+            float solidVGunship0 = ShipBalanceMath.ReactorBayOutputLimit_GW(
+                264.240616f, "Solid_Core_Fission", 32f, 60f);
+            float solidVGunship1 = ShipBalanceMath.EffectiveReactorOutput_GW(
+                60f, ShipBalanceMath.ReactorBayOutputLimit_GW(
+                    452.197326f, "Solid_Core_Fission", 32f, 60f));
+            True(solidVGunship0 < 3f * 19.5347f,
+                "Solid V Gunship appearance 0 rejects Heavy Dumbo x3 by bay");
+            Near(60f, solidVGunship1, 0.001f,
+                "Solid V Gunship appearance 1 becomes reactor-rating limited");
+            Near(400f, ShipBalanceMath.ReactorBayOutputLimit_GW(
+                    100f, "Molten_Salt_Core_Fission", 0f, 400f), 0f,
+                "invalid specific mass safely preserves theoretical output");
+            Near(248.47075f, ShipBalanceMath.ReactorBayVolumeUsed_m3(
+                    3f * 65.8824f, "Molten_Salt_Core_Fission", 8f),
+                0.001f,
+                "Molten Salt II Pegasus x3 reports occupied bay volume");
+            Near(0f, ShipBalanceMath.ReactorBayVolumeUsed_m3(
+                    100f, "Molten_Salt_Core_Fission", 0f), 0f,
+                "invalid specific mass cannot report occupied bay volume");
+            Near(0f, ShipBalanceMath.ReactorBayVolumeUsed_m3(
+                    0f, "Molten_Salt_Core_Fission", 8f), 0f,
+                "a design without drive demand uses no reactor bay volume");
+
             TIPowerPlantTemplate plant = new TIPowerPlantTemplate();
             plant.efficiency = 0.70f;
             float wasteHeat = 0f;
@@ -1053,7 +1224,10 @@ namespace TIEconomyMod.FormulaTests
             };
             ship.powerPlantTemplate = new TIPowerPlantTemplate
             {
-                maxOutput_GW = 90f
+                dataName = "TestSolidCorePlant",
+                maxOutput_GW = 90f,
+                specificPower_tGW = 1f,
+                powerPlantClass = PowerPlantRequirement.Solid_Core_Fission
             };
             float scaledThrust = 10f;
             HullScaledDriveThrustPatch.Postfix(ref scaledThrust, ship);
@@ -1094,6 +1268,102 @@ namespace TIEconomyMod.FormulaTests
                 ref compatible, ship, magneticCandidate);
             True(compatible,
                 "candidate drive compatibility uses the human hull factor");
+
+            TIShipHullTemplate cruiserHull = ship.hullTemplate;
+            TIDriveTemplate cruiserDrive = ship.driveTemplate;
+            TIPowerPlantTemplate cruiserPlant = ship.powerPlantTemplate;
+            ship.hullTemplate = new TIShipHullTemplate
+            {
+                dataName = "Gunship",
+                alien = false,
+                smallHull = true
+            };
+            ship.powerPlantTemplate = new TIPowerPlantTemplate
+            {
+                dataName = "MoltenSaltFissionReactorII",
+                maxOutput_GW = 400f,
+                specificPower_tGW = 8f,
+                powerPlantClass = PowerPlantRequirement.Molten_Salt_Core_Fission
+            };
+            TIDriveTemplate pegasusX3 = new TIDriveTemplate
+            {
+                powerRequirement_GW = 3f * 65.8824f
+            };
+            TIDriveTemplate pegasusX4 = new TIDriveTemplate
+            {
+                powerRequirement_GW = 4f * 65.8824f
+            };
+            TIDriveTemplate pegasusX5 = new TIDriveTemplate
+            {
+                powerRequirement_GW = 5f * 65.8824f
+            };
+            TIDriveTemplate pegasusX6 = new TIDriveTemplate
+            {
+                powerRequirement_GW = 6f * 65.8824f
+            };
+            ship.hullAppearanceIndex = 0;
+            compatible = true;
+            HullScaledDriveCompatibilityPatch.Postfix(
+                ref compatible, ship, pegasusX3);
+            True(compatible,
+                "Gunship appearance 0 accepts Pegasus x3 with Molten Salt II");
+            compatible = true;
+            HullScaledDriveCompatibilityPatch.Postfix(
+                ref compatible, ship, pegasusX4);
+            True(!compatible,
+                "Gunship appearance 0 rejects Pegasus x4 by reactor bay");
+            ship.hullAppearanceIndex = 1;
+            compatible = true;
+            HullScaledDriveCompatibilityPatch.Postfix(
+                ref compatible, ship, pegasusX5);
+            True(compatible,
+                "Gunship appearance 1 accepts Pegasus x5 with Molten Salt II");
+            compatible = true;
+            HullScaledDriveCompatibilityPatch.Postfix(
+                ref compatible, ship, pegasusX6);
+            True(!compatible,
+                "Gunship appearance 1 rejects Pegasus x6 by reactor bay");
+            ship.hullAppearanceIndex = 2;
+            compatible = true;
+            HullScaledDriveCompatibilityPatch.Postfix(
+                ref compatible, ship, pegasusX4);
+            True(!compatible,
+                "resolved premium Gunship appearance uses its distinct bay");
+            ship.hullAppearanceIndex = 3;
+            compatible = true;
+            HullScaledDriveCompatibilityPatch.Postfix(
+                ref compatible, ship, pegasusX6);
+            True(compatible,
+                "resolved DLCA Gunship appearance accepts Pegasus x6");
+
+            ship.hullAppearanceIndex = 0;
+            ship.driveTemplate = pegasusX4;
+            compatible = true;
+            HullScaledPowerPlantCompatibilityPatch.Postfix(
+                ref compatible, ship, ship.powerPlantTemplate);
+            True(!compatible,
+                "power-plant selection applies the same appearance-0 bay cap");
+            ship.driveTemplate = pegasusX3;
+            compatible = true;
+            HullScaledPowerPlantCompatibilityPatch.Postfix(
+                ref compatible, ship, ship.powerPlantTemplate);
+            True(compatible,
+                "power-plant selection accepts a demand within the bay cap");
+            TIEconomyMod.Main.settings.shipBalance.reactorBayCapacityEnabled =
+                false;
+            ship.driveTemplate = pegasusX4;
+            compatible = true;
+            HullScaledPowerPlantCompatibilityPatch.Postfix(
+                ref compatible, ship, ship.powerPlantTemplate);
+            True(compatible,
+                "disabled reactor-bay capacity restores theoretical output");
+            TIEconomyMod.Main.settings.shipBalance.reactorBayCapacityEnabled =
+                true;
+            ship.hullTemplate = cruiserHull;
+            ship.hullAppearanceIndex = 0;
+            ship.driveTemplate = cruiserDrive;
+            ship.powerPlantTemplate = cruiserPlant;
+
             TISpaceShipState liveShip = new TISpaceShipState { template = ship };
             float liveThrust = 10f;
             HullScaledLiveShipThrustPatch.Postfix(ref liveThrust, liveShip);

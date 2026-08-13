@@ -5,6 +5,92 @@ the balance decisions as well as their implementation status.
 
 ## 2026-08-13
 
+### Third correction deployed: clamp on the actual art-cycle action
+
+- Manual testing proved that the second correction prevented the null-reference
+  crash but did not reconcile the installed cluster: x5 remained installed on
+  art whose bay supports only x3, and decrement produced a confirmation sound
+  followed by no state change.
+- The failure was a lifecycle-target error. The arrow buttons invoke
+  `OnCycleAltHull`, while the correction patched `SetAltHull`, which is used by
+  template loading. Reconcile after both appearance mutation paths, with the
+  interactive `OnCycleAltHull` path as the required acceptance target.
+- Remove the null-module prefix from `SetModuleInSlot`. Silently cancelling an
+  action after vanilla has played its confirmation sound is not valid behavior
+  and is not a substitute for maintaining a valid installed drive.
+- After clamping or removing the drive, force-refresh template caches, the ship
+  performance panel, both module-table collections, and the selected/installed
+  module detail panels. Appearance-dependent volume and output values must
+  never remain stale after an art change.
+- Guarded validation now requires both `OnCycleAltHull` and `SetAltHull`, the
+  installed-count `GetVariation` path, the normal replacement/removal paths,
+  cache/performance/filter refreshes, and both module-detail refreshes. The
+  null-suppression prefix is explicitly forbidden.
+- The correction passed **906 formula assertions**, all **123 Harmony patches**,
+  and the full TI 1.0.51 validation suite, then deployed **33 files**. Deployed
+  DLL SHA-256:
+  `83553DF2FD25F8393D7BCE939F8DADED5506FC31247C1AE04CFC9DC68CA897FD`.
+
+### Second correction deployed: reconcile drive clusters after appearance changes
+
+- Reproduced the invalid state: a larger-bay appearance can install a drive
+  cluster that remains serialized after cycling to smaller art; decrementing
+  that now-invalid cluster enters a vanilla designer path that assumes the
+  currently installed drive is valid and can crash.
+- On `SetAltHull`, clamp the installed drive to the largest valid variation no
+  larger than its current thruster count. If the new bay cannot fit even the
+  x1 variation, remove the drive through the designer's normal slot-removal
+  path.
+- Replace the diagnostic-style contextual bay block with two presentation
+  rows: `Reactor bay volume used / available` and `{used} / {available} m³`.
+  Keep effective-output comparison behavior internal to selection.
+- Verified and deployed against TI 1.0.51 with **906 formula assertions**, the
+  guarded reconciliation IL requiring exactly one normal replacement and one
+  normal removal path, all **123 Harmony patches**, and **33 deployed files**.
+  The deployed DLL SHA-256 is
+  `9D41A29288BC873CE0A9961AD9665ADAC8E4459ABB9155C0BF9D59CBF8A8E4BE`.
+- Manual retest showed that the first correction still retained x5 and crashed
+  when vanilla attempted x4. `Player.log` confirms the null reference remains
+  in `ShipModuleDragDestination.OnDecreasePressed` -> `SetModuleInSlot`, while
+  no reconciliation error was emitted. Replace the indirect patched-predicate
+  check with a direct demand/effective-output comparison after `SetAltHull` has
+  committed the new appearance and refreshed the panel.
+- The installed method commits `hullAppearanceIndex` before its panel refresh
+  and postfix. Keep the compatible `SetAltHull` hook, but directly compare each
+  variation's hull-scaled demand with `ReactorBayCapacityFeature` effective
+  output instead of recursively consulting the patched vanilla predicate.
+- Add a defensive null-module prefix to `SetModuleInSlot`; the crash log showed
+  that unavailable x4 was arriving as null, which vanilla and the utility
+  footprint postfix could dereference. Null selections are now ignored safely.
+- The second correction passed **906 formula assertions**, explicit `SetAltHull`
+  target-IL validation, direct-capacity/replacement/removal IL validation, all
+  **123 Harmony patches**, and **33-file** deployment. Deployed DLL SHA-256:
+  `9161DA31B26B4F72E1F7071AD0F062E13F967639081EC55E652C0F4109AFE695`.
+
+### Implemented: graphical-variant reactor-bay capacity
+
+- Measure all four human graphical appearances and key reactor-bay capacity by
+  `(hull dataName, resolved appearance index)` rather than statistical hull
+  class. Preserve the full implementation contract and future hull-size
+  dependency in
+  [the reactor-bay capacity plan](reactor-bay-capacity-implementation-plan.md).
+- Use size-class maximums only as explicit, diagnosed fallbacks for unmeasured
+  alien, third-party, or future pairs.
+- Limit both final drive/plant compatibility directions to the minimum of
+  theoretical reactor output and graphical-bay output. Preserve hull-less
+  catalogue and research scoring, loaded designs, and vanilla weapon/auxiliary
+  semantics.
+- Add contextual power-plant descriptions, effective-output module-table rows,
+  and an explicit refresh when the player cycles the graphical hull appearance.
+- Extend the asset tool for base and Dark Skies bundles and maintain all 48
+  source measurements in `reactor-bay-variant-volumes.csv`.
+- Release validation passed against TI 1.0.51 with **903 formula assertions**,
+  **123 Harmony patches**, all 48 measured pairs, guarded module-table and
+  compatibility IL, packaging, and **33-file** enabled-mod deployment. Manual
+  designer verification remains the final visual/interaction check. The final
+  four post-deployment assertions explicitly lock the Frigate x4/x6 acceptance
+  boundary and do not alter the deployed assembly.
+
 ### Documented: rebalanced fission mass against measured reactor bays
 
 - Refresh the reactor-bay planning report with the doubled fission specific

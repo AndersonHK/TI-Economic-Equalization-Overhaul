@@ -82,6 +82,55 @@ The repeated dimensions form recognizable art families:
 - the late large hulls then grow through Lancer, Battleship, Dreadnought, and
   Titan scales.
 
+## Graphical-variant measurements selected for implementation
+
+The initial table above describes appearance index 0 only. The runtime reactor
+bay rule is keyed by `(hull dataName, resolved appearance index)`, using the same
+`TISpaceShipTemplate.GetHullAppearanceIndex` value already supplied to drive
+scaling. This distinction is material: several alternate and Dark Skies hulls
+depict substantially larger or smaller aft machinery sections than the default
+art for the same statistical hull.
+
+The maintained raw dimensions and asset identifiers are in
+[`reactor-bay-variant-volumes.csv`](reactor-bay-variant-volumes.csv). The
+inscribed-cylinder volumes selected for gameplay are:
+
+| Hull | Appearance 0 | Appearance 1 | Appearance 2 | Appearance 3 |
+|---|---:|---:|---:|---:|
+| Gunship | 264.241 m3 | 452.197 m3 | 317.310 m3 | 712.242 m3 |
+| Escort | 264.241 m3 | 452.197 m3 | 317.310 m3 | 712.242 m3 |
+| Corvette | 264.241 m3 | 452.197 m3 | 604.707 m3 | 837.588 m3 |
+| Frigate | 332.341 m3 | 675.444 m3 | 1,246.492 m3 | 1,233.527 m3 |
+| Monitor | 384.582 m3 | 675.444 m3 | 2,617.607 m3 | 2,028.675 m3 |
+| Destroyer | 384.582 m3 | 675.444 m3 | 2,617.607 m3 | 2,028.675 m3 |
+| Cruiser | 1,989.242 m3 | 1,384.984 m3 | 3,930.638 m3 | 3,505.550 m3 |
+| Battlecruiser | 1,989.243 m3 | 1,384.984 m3 | 3,930.638 m3 | 3,505.550 m3 |
+| Lancer | 2,365.773 m3 | 2,090.292 m3 | 10,223.879 m3 | 8,072.644 m3 |
+| Battleship | 5,648.074 m3 | 2,090.292 m3 | 5,464.773 m3 | 6,945.700 m3 |
+| Dreadnought | 11,476.330 m3 | 2,090.293 m3 | 10,223.879 m3 | 10,952.622 m3 |
+| Titan | 15,955.576 m3 | 6,290.837 m3 | 16,549.539 m3 | 15,840.889 m3 |
+
+Indices 0 and 1 come from the base `ships` bundle. Indices 2 and 3 come from
+the Dark Skies `ships_prm` bundle. If that DLC bundle is unavailable, vanilla
+resolves requested index 2 to 0 and index 3 to 1 before selecting the model;
+the capacity lookup deliberately consumes that resolved index and therefore
+follows the art actually instantiated.
+
+For an alien, modded, future, or otherwise unmeasured `(hull, appearance)`
+pair, use the largest measured variant in the corresponding vanilla size band:
+
+| Runtime size band | Fallback bay volume |
+|---|---:|
+| Small | 2,617.607 m3 |
+| Medium | 3,930.638 m3 |
+| Large | 16,549.539 m3 |
+| Huge | 16,549.539 m3 |
+
+Huge saturates at the largest measured Titan bay rather than extrapolating
+beyond available human art. A fallback is a compatibility policy, not a claim
+that the unmeasured asset has that volume, and should emit a one-time runtime
+diagnostic naming the hull, appearance, size band, and selected value.
+
 The progression is deliberately stepped and nonlinear. For example, Titan's
 outer elliptical envelope is about `51.5` times Gunship's. These measurements
 are therefore evidence for art-authored machinery-capacity tiers, not a reason
@@ -193,7 +242,7 @@ the entire geometric envelope as homogeneous reactor material:
 - fuel cells are canonically rechargeable by externally attached solar arrays,
   so the complete fuel-cell power-system mass cannot be assumed to live inside
   this cylinder;
-- alternate and DLC hull appearances have not yet been measured;
+- alien and third-party hull appearances have not been directly measured;
 - collider envelopes are useful cross-checks but are not reliable interior
   volumes. The Frigate collider is an especially obvious outlier relative to
   its visible radiator mesh.
@@ -633,7 +682,7 @@ most plausible reading of the art.
 Do not implement one rule of the form `reactor mass <= density * bay volume`
 without attribution and technology context. A safer sequence is:
 
-1. Key a maintained bay-volume table by human hull and, eventually, appearance.
+1. Key the maintained bay-volume table by human hull and resolved appearance.
 2. Give each plant architecture an effective installed-density range and use a
    reviewed upper bound for permissive fit validation.
 3. Give each drive/plant architecture a reported-mass bay fraction, or better,

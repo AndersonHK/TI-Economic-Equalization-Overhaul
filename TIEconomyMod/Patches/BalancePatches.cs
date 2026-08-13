@@ -62,6 +62,142 @@ namespace TIEconomyMod.Patches
         }
     }
 
+    public struct ReactorBayCapacitySnapshot
+    {
+        public float BayVolume_m3;
+        public float BayVolumeUsed_m3;
+        public float BayMassAllowance_tons;
+        public float BayOutputLimit_GW;
+        public float EffectiveOutput_GW;
+        public bool BayLimited;
+        public bool UsedFallback;
+        public int AppearanceIndex;
+        public string SizeBand;
+    }
+
+    internal static class ReactorBayCapacityFeature
+    {
+        private static readonly object diagnosticLock = new object();
+        private static readonly HashSet<string> reportedDiagnostics =
+            new HashSet<string>(StringComparer.Ordinal);
+
+        public static bool Enabled
+        {
+            get
+            {
+                ShipBalanceSettings settings = Main.settings.shipBalance;
+                return Main.FeatureEnabled(
+                    settings.enabled && settings.reactorBayCapacityEnabled);
+            }
+        }
+
+        public static bool TryGetSnapshot(
+            TISpaceShipTemplate ship,
+            TIPowerPlantTemplate powerPlant,
+            out ReactorBayCapacitySnapshot snapshot)
+        {
+            snapshot = default(ReactorBayCapacitySnapshot);
+            if (!Enabled || ship == null || ship.hullTemplate == null ||
+                powerPlant == null)
+            {
+                return false;
+            }
+
+            TIShipHullTemplate hull = ship.hullTemplate;
+            int appearanceIndex = ship.GetHullAppearanceIndex;
+            bool usedFallback;
+            string sizeBand;
+            float bayVolume_m3 = ShipBalanceMath.ReactorBayVolume_m3(
+                hull.dataName,
+                appearanceIndex,
+                hull.smallHull,
+                hull.mediumHull,
+                hull.largeHull,
+                hull.hugeHull,
+                out usedFallback,
+                out sizeBand);
+            string plantClass = powerPlant.powerPlantClass.ToString();
+            float massAllowance_tons =
+                ShipBalanceMath.ReactorBayMassAllowance_tons(
+                    bayVolume_m3, plantClass);
+            float bayOutputLimit_GW =
+                ShipBalanceMath.ReactorBayOutputLimit_GW(
+                    bayVolume_m3,
+                    plantClass,
+                    powerPlant.specificPower_tGW,
+                    powerPlant.maxOutput_GW);
+            float effectiveOutput_GW =
+                ShipBalanceMath.EffectiveReactorOutput_GW(
+                    powerPlant.maxOutput_GW, bayOutputLimit_GW);
+            TIDriveTemplate drive = ship.driveTemplate;
+            float requiredPower_GW = drive == null
+                ? 0f
+                : ShipBalanceMath.ScaledDriveValue(
+                    drive.powerRequirement_GW,
+                    HullDriveScalingFeature.Multiplier(ship, drive));
+            float bayVolumeUsed_m3 =
+                ShipBalanceMath.ReactorBayVolumeUsed_m3(
+                    requiredPower_GW,
+                    plantClass,
+                    powerPlant.specificPower_tGW);
+
+            snapshot.BayVolume_m3 = bayVolume_m3;
+            snapshot.BayVolumeUsed_m3 = bayVolumeUsed_m3;
+            snapshot.BayMassAllowance_tons = massAllowance_tons;
+            snapshot.BayOutputLimit_GW = bayOutputLimit_GW;
+            snapshot.EffectiveOutput_GW = effectiveOutput_GW;
+            snapshot.BayLimited = bayOutputLimit_GW + 0.0001f <
+                Math.Max(0f, powerPlant.maxOutput_GW);
+            snapshot.UsedFallback = usedFallback;
+            snapshot.AppearanceIndex = appearanceIndex;
+            snapshot.SizeBand = sizeBand;
+
+            if (usedFallback)
+            {
+                ReportDiagnosticOnce(
+                    "No measured reactor bay is configured for hull '" +
+                    hull.dataName + "' appearance " + appearanceIndex +
+                    ". Using the " + sizeBand + " class-maximum fallback " +
+                    bayVolume_m3.ToString("0.###") + " m3.");
+            }
+            if (powerPlant.specificPower_tGW <= 0f ||
+                float.IsNaN(powerPlant.specificPower_tGW) ||
+                float.IsInfinity(powerPlant.specificPower_tGW))
+            {
+                ReportDiagnosticOnce(
+                    "Power plant '" + powerPlant.dataName +
+                    "' has invalid specificPower_tGW " +
+                    powerPlant.specificPower_tGW +
+                    "; its theoretical maximum remains in use.");
+            }
+
+            return true;
+        }
+
+        public static float EffectiveOutput_GW(
+            TISpaceShipTemplate ship, TIPowerPlantTemplate powerPlant)
+        {
+            ReactorBayCapacitySnapshot snapshot;
+            return TryGetSnapshot(ship, powerPlant, out snapshot)
+                ? snapshot.EffectiveOutput_GW
+                : Math.Max(0f, powerPlant == null
+                    ? 0f
+                    : powerPlant.maxOutput_GW);
+        }
+
+        private static void ReportDiagnosticOnce(string diagnostic)
+        {
+            lock (diagnosticLock)
+            {
+                if (!reportedDiagnostics.Add(diagnostic))
+                {
+                    return;
+                }
+            }
+            Main.Error("Reactor-bay capacity configuration: " + diagnostic);
+        }
+    }
+
     [HarmonyPatch(typeof(TIMegafaunaArmyState), "techLevel", MethodType.Getter)]
     public static class XenofaunaStrengthPatch
     {
@@ -330,7 +466,8 @@ namespace TIEconomyMod.Patches
                 driveToCheck.powerRequirement_GW,
                 HullDriveScalingFeature.Multiplier(__instance, driveToCheck));
             __result = requiredPower <=
-                __instance.powerPlantTemplate.maxOutput_GW;
+                ReactorBayCapacityFeature.EffectiveOutput_GW(
+                    __instance, __instance.powerPlantTemplate);
         }
     }
 
@@ -353,7 +490,9 @@ namespace TIEconomyMod.Patches
             float requiredPower = ShipBalanceMath.ScaledDriveValue(
                 __instance.driveTemplate.powerRequirement_GW,
                 HullDriveScalingFeature.Multiplier(__instance));
-            __result = requiredPower <= powerPlantToCheck.maxOutput_GW;
+            __result = requiredPower <=
+                ReactorBayCapacityFeature.EffectiveOutput_GW(
+                    __instance, powerPlantToCheck);
         }
     }
 }

@@ -258,10 +258,14 @@ namespace TIEconomyMod.Patches
             TIShipPartTemplate module,
             ShipModuleDragDestination dropDestination)
         {
+            if (module == null)
+            {
+                return;
+            }
+
             UtilityFootprintKind footprint =
                 UtilityFootprintRegistry.GetFootprint(module);
-            if (module == null ||
-                footprint == UtilityFootprintKind.Single ||
+            if (footprint == UtilityFootprintKind.Single ||
                 __instance.newShipTemplate == null ||
                 UtilityFootprintRuntime.IsLegacyLayout(
                     __instance.newShipTemplate))

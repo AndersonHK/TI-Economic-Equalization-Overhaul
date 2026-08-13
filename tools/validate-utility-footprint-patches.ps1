@@ -168,6 +168,13 @@ foreach ($entry in $patchMethods.GetEnumerator()) {
     }
 }
 
+$placementPatchType = $modAssembly.GetType(
+    'TIEconomyMod.Patches.MultiSlotUtilityDesignerPlacementPatch', $true)
+if ($null -ne $placementPatchType.GetMethod(
+    'Prefix', [Reflection.BindingFlags]'Public,Static')) {
+    throw 'SetModuleInSlot must not silently suppress null module selections.'
+}
+
 $availabilityPatchType = $modAssembly.GetType(
     'TIEconomyMod.Patches.MultiSlotUtilityDesignAvailabilityPatch',
     $true)

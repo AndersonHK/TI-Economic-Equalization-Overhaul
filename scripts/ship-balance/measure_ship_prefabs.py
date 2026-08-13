@@ -23,6 +23,10 @@ BUNDLE = (
     r"D:\Games\SteamLibrary\steamapps\common\Terra Invicta"
     r"\TerraInvicta_Data\StreamingAssets\AssetBundles\ships"
 )
+DLC_BUNDLE = (
+    r"D:\Games\SteamLibrary\steamapps\common\Terra Invicta"
+    r"\DLC_Content\DarkSkies\AssetBundles\ships_prm"
+)
 PREFABS = {
     "Battlecruiser": "assets/artresources/ships/earth/battlecruiser/battlecruiser.prefab",
     "Battleship": "assets/artresources/ships/earth/battleship/battleship.prefab",
@@ -287,6 +291,96 @@ def measure_drive(records):
             ),
         },
     }
+
+
+def is_reactor_bay_mesh_path(path):
+    leaf = path.rsplit("/", 1)[-1].lower()
+    return (
+        "radiator" in leaf
+        or leaf.endswith("_rads")
+        or "_rad_" in leaf
+    )
+
+
+def measure_reactor_bay_prefab(env, asset_path, appearance_index):
+    root = env.container[asset_path].read()
+    root_transform = next(
+        pointer
+        for pointer in component_ptrs(root)
+        if pointer.type.name == "Transform"
+    )
+    records = {"meshes": [], "colliders": []}
+    walk(root_transform, np.eye(4), True, [], records)
+    root_offset = xyz(root_transform.read().m_LocalPosition)
+
+    bounds = None
+    mesh_paths = []
+    for record in records["meshes"]:
+        record["points"] -= root_offset
+        if not is_reactor_bay_mesh_path(record["path"]):
+            continue
+        bounds = include_bounds(bounds, record["points"])
+        mesh_paths.append(record["path"])
+
+    if bounds is None:
+        raise RuntimeError(
+            f"No reactor/radiator machinery mesh found in {asset_path}"
+        )
+
+    size = bounds[1] - bounds[0]
+    diameter = min(float(size[0]), float(size[1]))
+    inscribed_volume = np.pi / 4 * diameter * diameter * float(size[2])
+    elliptical_volume = (
+        np.pi / 4 * float(size[0]) * float(size[1]) * float(size[2])
+    )
+    return {
+        "appearance_index": appearance_index,
+        "asset_path": asset_path,
+        "mesh_paths": mesh_paths,
+        "bounds": bound_record(bounds),
+        "inscribed_circular_cylinder_m3": round(
+            float(inscribed_volume), 6
+        ),
+        "elliptical_cylinder_m3": round(float(elliptical_volume), 6),
+    }
+
+
+def measure_reactor_bay_variants(base_env, dlc_env, ship):
+    ship_path = ship.lower()
+    variants = {
+        0: (
+            base_env,
+            PREFABS[ship],
+        ),
+        1: (
+            base_env,
+            "assets/artresources/ships/earth_alt/"
+            f"{ship_path}/{ship_path}_1.prefab",
+        ),
+        2: (
+            dlc_env,
+            "assets/artresources/ships/earth_prm/"
+            f"{ship_path}/{ship_path}_2.prefab",
+        ),
+        3: (
+            dlc_env,
+            "assets/artresources/ships/dlca/"
+            f"{ship_path}/{ship_path}_3.prefab",
+        ),
+    }
+    output = {}
+    for appearance_index, (env, asset_path) in variants.items():
+        if env is None or asset_path not in env.container:
+            output[str(appearance_index)] = {
+                "appearance_index": appearance_index,
+                "asset_path": asset_path,
+                "status": "unavailable",
+            }
+            continue
+        output[str(appearance_index)] = measure_reactor_bay_prefab(
+            env, asset_path, appearance_index
+        )
+    return output
 
 
 def walk_drive_resource(transform_ptr, parent_matrix, path, records):
@@ -610,6 +704,7 @@ def summarize(records, ship):
 
 def main():
     env = UnityPy.load(BUNDLE)
+    dlc_env = UnityPy.load(DLC_BUNDLE) if os.path.isfile(DLC_BUNDLE) else None
     output = {}
     for ship, asset_path in {**PREFABS, **ALIEN_PREFABS}.items():
         if ship not in PREFABS and ship not in ALIEN_DRIVE_RESOURCE_PARTS:
@@ -640,6 +735,9 @@ def main():
         except RuntimeError as exception:
             raise RuntimeError(f"{ship}: {exception}") from exception
         if ship in PREFABS:
+            output[ship]["reactor_bay_variant_measurements"] = (
+                measure_reactor_bay_variants(env, dlc_env, ship)
+            )
             output[ship]["drive_resource_measurements"] = (
                 measure_drive_resources(env, ship)
             )

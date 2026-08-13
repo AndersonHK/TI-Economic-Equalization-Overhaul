@@ -379,6 +379,7 @@ namespace TIEconomyMod
         public bool crewSupportMassEnabled = true;
         public float crewSupportMass_tons = 3f;
         public bool hullDriveScalingEnabled = true;
+        public bool reactorBayCapacityEnabled = true;
     }
 
     [DrawFields(DrawFieldMask.Public)]

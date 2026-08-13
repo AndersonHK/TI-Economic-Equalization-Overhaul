@@ -1,6 +1,7 @@
 using HarmonyLib;
 using PavonisInteractive.TerraInvicta;
 using PavonisInteractive.TerraInvicta.Ship;
+using PavonisInteractive.TerraInvicta.UI;
 using PavonisInteractive.TerraInvicta.UI.Canvas_Prefabs.FleetsScreen;
 using System;
 using System.Collections.Generic;
@@ -167,6 +168,8 @@ namespace TIEconomyMod.Patches
                 typeof(TIDriveTemplate), "GetLocalizedThrust");
             MethodInfo localizedPower = AccessTools.Method(
                 typeof(TIDriveTemplate), "GetLocalizedRequiredPower");
+            MethodInfo localizedMaximumOutput = AccessTools.Method(
+                typeof(TIPowerPlantTemplate), "GetLocalizedMaximumOutput");
             MethodInfo localizedCost = AccessTools.Method(
                 typeof(TIShipPartTemplate), "GetLocalizedCost");
             MethodInfo scaledThrust = AccessTools.Method(
@@ -181,10 +184,15 @@ namespace TIEconomyMod.Patches
                 typeof(ShipModuleEnergyColumnCompatibilityPatch),
                 "GetHullScaledDriveCost",
                 new[] { typeof(TIShipPartTemplate), typeof(ShipModuleListItem) });
+            MethodInfo effectiveMaximumOutput = AccessTools.Method(
+                typeof(ShipModuleEnergyColumnCompatibilityPatch),
+                "GetHullEffectivePowerPlantOutput",
+                new[] { typeof(TIPowerPlantTemplate), typeof(ShipModuleListItem) });
             int energyUsageCalls = 0;
             int replacements = 0;
             int localizedCostCalls = 0;
             int driveDisplayReplacements = 0;
+            int powerPlantDisplayReplacements = 0;
             List<CodeInstruction> result = new List<CodeInstruction>();
 
             foreach (CodeInstruction instruction in patched)
@@ -215,6 +223,13 @@ namespace TIEconomyMod.Patches
                     instruction.opcode = OpCodes.Call;
                     instruction.operand = scaledPower;
                     driveDisplayReplacements++;
+                }
+                else if (instruction.Calls(localizedMaximumOutput))
+                {
+                    AddListItemLoad(result, instruction);
+                    instruction.opcode = OpCodes.Call;
+                    instruction.operand = effectiveMaximumOutput;
+                    powerPlantDisplayReplacements++;
                 }
                 else if (instruction.Calls(localizedCost))
                 {
@@ -248,6 +263,14 @@ namespace TIEconomyMod.Patches
                     "ShipModuleListItem.GenerateEntries; found " +
                     localizedCostCalls + " cost calls and " +
                     driveDisplayReplacements + " replacements.");
+            }
+
+            if (powerPlantDisplayReplacements != 1)
+            {
+                throw new InvalidOperationException(
+                    "Expected one power-plant maximum-output display " +
+                    "replacement in ShipModuleListItem.GenerateEntries; found " +
+                    powerPlantDisplayReplacements + ".");
             }
 
             return result;
@@ -343,6 +366,56 @@ namespace TIEconomyMod.Patches
                 cost.ToString(
                     "Relevant", false, false, null, false,
                     default(FactionResource)));
+        }
+
+        public static string GetHullEffectivePowerPlantOutput(
+            TIPowerPlantTemplate powerPlant, ShipModuleListItem listItem)
+        {
+            TISpaceShipTemplate ship = listItem == null ||
+                listItem.controller == null
+                    ? null
+                    : listItem.controller.newShipTemplate;
+            return GetHullEffectivePowerPlantOutput(powerPlant, ship);
+        }
+
+        public static string GetHullEffectivePowerPlantOutput(
+            TIPowerPlantTemplate powerPlant, TISpaceShipTemplate ship)
+        {
+            ReactorBayCapacitySnapshot snapshot;
+            if (powerPlant == null ||
+                !ReactorBayCapacityFeature.TryGetSnapshot(
+                    ship, powerPlant, out snapshot))
+            {
+                return powerPlant == null
+                    ? string.Empty
+                    : powerPlant.GetLocalizedMaximumOutput();
+            }
+
+            return TIUtilities.LocalizeGW(
+                "TIPowerPlantTemplate.MaximumOutputGW",
+                snapshot.EffectiveOutput_GW);
+        }
+
+        public static string GetReactorBayDescription(
+            string description,
+            TIPowerPlantTemplate powerPlant,
+            TISpaceShipTemplate ship)
+        {
+            ReactorBayCapacitySnapshot snapshot;
+            string header = Loc.T("UI.Fleets.ReactorBayCapacityHeader");
+            if (string.IsNullOrEmpty(description) || powerPlant == null ||
+                description.Contains(header) ||
+                !ReactorBayCapacityFeature.TryGetSnapshot(
+                    ship, powerPlant, out snapshot))
+            {
+                return description;
+            }
+
+            return description + "\n" + header + "\n" +
+                Loc.T(
+                    "UI.Fleets.ReactorBayCapacityVolume",
+                    snapshot.BayVolumeUsed_m3.ToString("N1"),
+                    snapshot.BayVolume_m3.ToString("N1"));
         }
 
         private static float DriveDisplayScale(
@@ -473,6 +546,38 @@ namespace TIEconomyMod.Patches
                 .Sum(resourceCost => resourceCost.value) * scale;
         }
 
+        public static void RefreshReactorBayRow(
+            ShipModuleListItem row, TISpaceShipTemplate ship)
+        {
+            if (row == null || row.GetModuleTemplate() == null ||
+                row.GetModuleTemplate().ref_powerPlant == null)
+            {
+                return;
+            }
+
+            List<ShipModuleListItemEntry> entries = row.entries.ToList();
+            if (entries.Count < 4)
+            {
+                return;
+            }
+
+            TIPowerPlantTemplate powerPlant =
+                row.GetModuleTemplate().ref_powerPlant;
+            ReactorBayCapacitySnapshot snapshot;
+            if (!ReactorBayCapacityFeature.TryGetSnapshot(
+                ship, powerPlant, out snapshot))
+            {
+                entries[2].textElement.text = SanitizeModuleTableText(
+                    powerPlant.GetLocalizedMaximumOutput(), false);
+                entries[2].value = Math.Max(0f, powerPlant.maxOutput_GW);
+                return;
+            }
+
+            entries[2].textElement.text = SanitizeModuleTableText(
+                GetHullEffectivePowerPlantOutput(powerPlant, ship), false);
+            entries[2].value = snapshot.EffectiveOutput_GW;
+        }
+
         private static string SanitizeModuleTableText(
             string text, bool resourceCost)
         {
@@ -542,6 +647,23 @@ namespace TIEconomyMod.Patches
         }
     }
 
+    [HarmonyPatch(typeof(TIPowerPlantTemplate), "GetDescriptionData")]
+    public static class ReactorBayPowerPlantDescriptionPatch
+    {
+        [HarmonyPostfix]
+        public static void Postfix(
+            ref string __result,
+            TIPowerPlantTemplate __instance,
+            TISpaceShipState ship,
+            TISpaceShipTemplate shipTemplate)
+        {
+            TISpaceShipTemplate context = shipTemplate ??
+                (ship == null ? null : ship.template);
+            __result = ShipModuleEnergyColumnCompatibilityPatch
+                .GetReactorBayDescription(__result, __instance, context);
+        }
+    }
+
     [HarmonyPatch(typeof(ShipModuleListItem), "ModuleTTString")]
     public static class HullScaledDriveTooltipPatch
     {
@@ -561,6 +683,12 @@ namespace TIEconomyMod.Patches
             __result = ShipModuleEnergyColumnCompatibilityPatch
                 .GetHullScaledDriveDescription(
                     __result, drive, ship, null);
+            TIPowerPlantTemplate powerPlant = module == null
+                ? null
+                : module.ref_powerPlant;
+            __result = ShipModuleEnergyColumnCompatibilityPatch
+                .GetReactorBayDescription(
+                    __result, powerPlant, ship);
         }
     }
 
@@ -579,6 +707,207 @@ namespace TIEconomyMod.Patches
             ShipModuleEnergyColumnCompatibilityPatch
                 .RefreshHullScaledDriveRow(
                     __instance, __instance.controller.newShipTemplate);
+            ShipModuleEnergyColumnCompatibilityPatch
+                .RefreshReactorBayRow(
+                    __instance, __instance.controller.newShipTemplate);
+        }
+    }
+
+    [HarmonyPatch]
+    public static class ReactorBayAppearanceRefreshPatch
+    {
+        [ThreadStatic]
+        private static bool reconcilingDrive;
+
+        private static readonly FieldInfo primaryRows = AccessTools.Field(
+            typeof(FleetsScreenController), "shipModuleListItems");
+        private static readonly FieldInfo comparisonRows = AccessTools.Field(
+            typeof(FleetsScreenController), "shipModuleListItemsB");
+        private static readonly FieldInfo currentlyInstalledModule =
+            AccessTools.Field(
+                typeof(FleetsScreenController), "currentlyInstalledModule");
+        private static readonly FieldInfo currentlySelectedModule =
+            AccessTools.Field(
+                typeof(FleetsScreenController), "currentlySelectedModule");
+        private static readonly MethodInfo filterAvailableShipModules =
+            AccessTools.Method(
+                typeof(FleetsScreenController),
+                "FilterAvailableShipModules");
+
+        public static IEnumerable<MethodBase> TargetMethods()
+        {
+            yield return AccessTools.Method(
+                typeof(FleetsScreenController), "OnCycleAltHull",
+                new[] { typeof(int) });
+            yield return AccessTools.Method(
+                typeof(FleetsScreenController), "SetAltHull",
+                new[] { typeof(int) });
+        }
+
+        [HarmonyPostfix]
+        public static void Postfix(FleetsScreenController __instance)
+        {
+            if (__instance == null || reconcilingDrive)
+            {
+                return;
+            }
+
+            try
+            {
+                reconcilingDrive = true;
+                bool driveChanged = ReconcileDriveCluster(__instance);
+                RefreshDesignerState(__instance, driveChanged);
+                RefreshRows(__instance, primaryRows);
+                RefreshRows(__instance, comparisonRows);
+                RefreshModulePanels(__instance);
+            }
+            finally
+            {
+                reconcilingDrive = false;
+            }
+        }
+
+        private static bool ReconcileDriveCluster(
+            FleetsScreenController controller)
+        {
+            TISpaceShipTemplate ship = controller.newShipTemplate;
+            TIDriveTemplate currentDrive = ship == null
+                ? null
+                : ship.driveTemplate;
+            if (!ReactorBayCapacityFeature.Enabled || currentDrive == null ||
+                ship.powerPlantTemplate == null ||
+                DriveFitsEffectiveOutput(ship, currentDrive))
+            {
+                return false;
+            }
+
+            var destination = controller.FindModuleLocation(currentDrive);
+            if (destination == null)
+            {
+                Main.Error(
+                    "Reactor-bay appearance reconciliation could not locate " +
+                    "installed drive '" + currentDrive.dataName + "'.");
+                return false;
+            }
+
+            TIDriveTemplate replacement = null;
+            for (int count = Math.Min(currentDrive.thrusters, 6);
+                count >= 1;
+                count--)
+            {
+                TIDriveTemplate candidate = currentDrive.GetVariation(count);
+                if (candidate != null &&
+                    DriveFitsEffectiveOutput(ship, candidate))
+                {
+                    replacement = candidate;
+                    break;
+                }
+            }
+            if (replacement == null)
+            {
+                Main.Log(
+                    "Reactor bay appearance reconciliation removed drive '" +
+                    currentDrive.dataName + "' from " +
+                    ship.hullTemplate.dataName + " appearance " +
+                    ship.GetHullAppearanceIndex +
+                    " because even its x1 variation does not fit.");
+                controller.RemoveModuleFromSlot(
+                    destination.SlotCoordinates, true, false);
+                return true;
+            }
+
+            Main.Log(
+                "Reactor bay appearance reconciliation clamped drive '" +
+                currentDrive.dataName + "' to '" + replacement.dataName +
+                "' on " + ship.hullTemplate.dataName + " appearance " +
+                ship.GetHullAppearanceIndex + ".");
+            controller.SetModuleInSlot(replacement, destination, true);
+            return true;
+        }
+
+        private static bool DriveFitsEffectiveOutput(
+            TISpaceShipTemplate ship, TIDriveTemplate drive)
+        {
+            float requiredPower_GW = ShipBalanceMath.ScaledDriveValue(
+                drive.powerRequirement_GW,
+                HullDriveScalingFeature.Multiplier(ship, drive));
+            float effectiveOutput_GW =
+                ReactorBayCapacityFeature.EffectiveOutput_GW(
+                    ship, ship.powerPlantTemplate);
+            return requiredPower_GW <= effectiveOutput_GW + 0.0001f;
+        }
+
+        private static void RefreshDesignerState(
+            FleetsScreenController controller, bool driveChanged)
+        {
+            TISpaceShipTemplate ship = controller.newShipTemplate;
+            if (ship == null)
+            {
+                return;
+            }
+
+            ship.CacheTemplateValues();
+            if (filterAvailableShipModules != null)
+            {
+                filterAvailableShipModules.Invoke(controller, null);
+            }
+            controller.UpdateShipDesignDataPanelAndImage(
+                driveChanged, false, false);
+            controller.UpdateTransferInfo();
+        }
+
+        private static void RefreshModulePanels(
+            FleetsScreenController controller)
+        {
+            TIShipPartTemplate installed = currentlyInstalledModule == null
+                ? null
+                : currentlyInstalledModule.GetValue(controller)
+                    as TIShipPartTemplate;
+            ShipModuleDragDestination destination =
+                controller.selectedDragDestination;
+            if (installed != null)
+            {
+                if (installed.isDrive)
+                {
+                    installed = controller.newShipTemplate.driveTemplate;
+                }
+                controller.UpdateModuleDataPanel(
+                    false, installed, false,
+                    destination == null
+                        ? ShipModuleSlotType.None
+                        : destination.shipModuleSlotType);
+            }
+
+            TIShipPartTemplate selected = currentlySelectedModule == null
+                ? null
+                : currentlySelectedModule.GetValue(controller)
+                    as TIShipPartTemplate;
+            if (selected != null)
+            {
+                controller.UpdateModuleDataPanel(
+                    true, selected, true, ShipModuleSlotType.None);
+            }
+        }
+
+        private static void RefreshRows(
+            FleetsScreenController controller, FieldInfo rowsField)
+        {
+            List<ShipModuleListItem> rows = rowsField == null
+                ? null
+                : rowsField.GetValue(controller) as List<ShipModuleListItem>;
+            if (rows == null)
+            {
+                return;
+            }
+
+            foreach (ShipModuleListItem row in rows)
+            {
+                ShipModuleEnergyColumnCompatibilityPatch
+                    .RefreshHullScaledDriveRow(
+                        row, controller.newShipTemplate);
+                ShipModuleEnergyColumnCompatibilityPatch.RefreshReactorBayRow(
+                    row, controller.newShipTemplate);
+            }
         }
     }
 
