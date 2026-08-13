@@ -5,7 +5,7 @@ Status: evidence and planning archive. Use the dated
 [current implementation matrix](../current-implementation-matrix.xlsx) to
 distinguish implemented values from proposals and deferred work.
 
-Last reviewed: 2026-08-12
+Last reviewed: 2026-08-13
 
 This dossier compares dated Terra Invicta ship-drive, power-plant, and
 weapon-crew snapshots with demonstrated hardware, active prototypes, historical
@@ -27,6 +27,8 @@ The comparison is organized into:
 - [Planning changelog](CHANGELOG.md)
 - [Propulsion benchmarks](propulsion-benchmarks.md)
 - [Power-plant benchmarks](powerplant-benchmarks.md)
+- Power-plant data: [installed snapshot](powerplant.csv) and
+  [current values with live overrides merged](powerplant-current.csv)
 - [Weapon automation and crew](weapon-automation-and-crew.md)
 - [Low-tech rebalance: first planning slice](low-tech-rebalance-slice.md)
 - [Fundamental limits and six-month crew consumables](fundamental-limits-and-crew-consumables.md)
@@ -47,6 +49,10 @@ it; narrower and more comprehensive analyses live under `details/`, where
 topic indexes summarize and reconcile their different perspectives. Earlier
 analyses are retained and cited when a later model adds another facet rather
 than being silently replaced.
+
+Persistent research outputs, including generated CSVs, workbooks, reports, and
+charts, belong under `docs/` in the relevant topic directory. The repository's
+`outputs/` directory is reserved for disposable build or run products.
 
 ## Reading the confidence labels
 

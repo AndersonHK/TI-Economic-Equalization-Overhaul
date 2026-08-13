@@ -3,7 +3,7 @@
 Status: asset-measurement record and planning analysis. No gameplay rule is
 implemented by this document.
 
-Last reviewed: 2026-08-12
+Last reviewed: 2026-08-13
 
 ## Conclusions from the asset measurement
 
@@ -353,6 +353,7 @@ hardware once in hull mass, again in drive mass, and a third time in plant mass.
 | Grid Drive + Fuel Cell III | **0.25** | 0.25-0.50 | Canonical regenerative solar array is externally attached; electric-drive hardware, array deployment, distribution and some conditioning are outside the bay. This is the most generous case. |
 | Nerva Drive + Solid Core Fission I | **0.50** | 0.45-0.65 | Zero drive mass means the integrated nozzle, turbopumps, valves and thrust hardware must be carried somewhere. Core, reflector and directional shield remain in or against the bay. |
 | Pegasus Drive + Molten Core Fission III | **0.55** | 0.50-0.70 | Fluid-core feed, nozzle and aft containment form part of the drive, while much of the core plant and shielding remain enclosed. |
+| Pegasus Drive + Molten Salt Fission II | **0.55** | 0.50-0.70 | The runtime explicitly permits molten-salt plants to substitute for liquid-core plants. Pegasus still has zero drive mass, so feed, nozzle and thrust hardware require the same substantial off-bay attribution. |
 | Firestar Fission Lantern + Gas Core Fission VI | **0.45** | 0.40-0.60 | A fission lantern is strongly integrated with its aft propulsive hardware; the zero-mass drive entry makes a low bay share reasonable. |
 | Zeta Deuteron Torch + Flow-Stabilized Z-Pinch | **0.60** | 0.55-0.75 | Pulsed-power plant and chamber remain enclosed, while magnetic nozzle, feed and thrust interfaces extend aft. |
 | Protium Converter Torch + Inertial Fusion VII | **0.60** | 0.55-0.75 | Drivers, chamber and conversion occupy the bay; target feed, magnetic exhaust and thrust hardware account for a material external share. |
@@ -371,10 +372,10 @@ Alien hybrid plants are excluded.
 | Power-plant class | Current output range | Current t/GW range | Full-rating mass range |
 |---|---:|---:|---:|
 | Fuel cell | 0.2-1.5 GW | 960-5,600 t/GW | 1,120-2,880 t |
-| Solid-core fission | 0.75-60 GW | 4-80 t/GW | 9-960 t |
-| Molten-salt fission | 40-400 GW | 3.6-4 t/GW | 160-1,440 t |
-| Liquid/molten-core fission | 4-200 GW | 6-8 t/GW | 32-1,200 t |
-| Vapor/gas-core fission | 6.5-1,650 GW | 1-10 t/GW | 26-16,500 t |
+| Solid-core fission | 0.75-60 GW | 8-160 t/GW | 18-1,920 t |
+| Molten-salt fission | 40-400 GW | 8-10 t/GW | 400-3,200 t |
+| Liquid/molten-core fission | 4-200 GW | 12-16 t/GW | 64-2,400 t |
+| Vapor/gas-core fission | 6.5-1,650 GW | 4-20 t/GW | 52-11,550 t |
 | Electrostatic-confinement fusion | 46-310 GW | 0.005-1 t/GW | 1.55-46 t |
 | Mirror magnetic-confinement fusion | 120-256 GW | 0.8-5 t/GW | 204.8-860 t |
 | Toroidal magnetic-confinement fusion | 128-5,060 GW | 0.1-4 t/GW | 506-802 t |
@@ -429,9 +430,9 @@ output before the human hull multiplier.
 | Selected pairing | Drive power x1 | Current plant max | Current t/GW | Plant mass at full rating | Requested mass across hull factors 1.00-2.50 | Output compatibility |
 |---|---:|---:|---:|---:|---:|---|
 | Grid + Fuel Cell III | 1.105 GW | 1.5 GW | 960 t/GW | 1,440 t | 1,061-2,652 t theoretical | Gunship through Cruiser only; larger factors exceed output before volume |
-| Nerva + Solid Core Fission I | 0.283 GW | 1 GW | 80 t/GW | 80 t | 22.6-56.6 t | All listed hulls |
-| Pegasus + Molten Core Fission III | 65.882 GW | 200 GW | 6 t/GW | 1,200 t | 395.3-988.2 t | All listed hulls |
-| Firestar Fission Lantern + Gas Core Fission VI | 147.059 GW | 1,650 GW | 1 t/GW | 1,650 t | 147.1-367.6 t | All listed hulls |
+| Nerva + Solid Core Fission I | 0.283 GW | 1 GW | 160 t/GW | 160 t | 45.3-113.2 t | All listed hulls |
+| Pegasus + Molten Core Fission III | 65.882 GW | 200 GW | 12 t/GW | 2,400 t | 790.6-1,976.5 t | All listed hulls |
+| Firestar Fission Lantern + Gas Core Fission VI | 147.059 GW | 1,650 GW | 4 t/GW | 6,600 t | 588.2-1,470.6 t | All listed hulls |
 | Zeta Deuteron Torch + Flow-Stabilized Z-Pinch | 1,263.411 GW | 7,590 GW | 0.0068 t/GW | 51.6 t | 8.6-21.5 t | All listed hulls |
 | Protium Converter Torch + Inertial Fusion VII | 51,070.694 GW | 306,430 GW | 0.002 t/GW | 612.9 t | 102.1-255.4 t | All listed hulls |
 | Pion Torch + Antimatter Beam Core | 73,747.495 GW | 3,000,000 GW | 0.00002 t/GW | 60 t | 1.47-3.69 t | All listed hulls |
@@ -454,37 +455,178 @@ considered.
 
 | Hull | Grid + FC III | Nerva + SC I | Pegasus + MC III | Firestar + GC VI | Zeta + FS Z-pinch | Protium + ICF VII | Pion + AM beam |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| Gunship | 1.2x | 58.3x | 3.0x | 8.0x | 128.0x | 6.5x | 1,342.4x |
-| Escort | 1.2x | 58.3x | 3.0x | 8.0x | 128.0x | 6.5x | 1,342.4x |
-| Corvette | 1.2x | 58.3x | 3.0x | 8.0x | 128.0x | 6.5x | 1,342.4x |
-| Frigate | 1.5x | 73.3x | 3.8x | 10.0x | 161.0x | 8.1x | 1,688.2x |
-| Monitor | 1.7x | 85.0x | 4.4x | 11.6x | 186.7x | 9.4x | 1,957.7x |
-| Destroyer | 1.7x | 85.0x | 4.4x | 11.6x | 186.7x | 9.4x | 1,957.7x |
-| Cruiser | 6.9x | 337.9x | 17.6x | 46.2x | 742.0x | 37.4x | 7,779.9x |
-| Battlecruiser | OUT | 292.8x | 15.2x | 40.1x | 643.1x | 32.5x | 6,742.6x |
-| Lancer | OUT | 303.8x | 15.8x | 41.6x | 667.1x | 33.7x | 6,994.7x |
-| Battleship | OUT | 712.8x | 37.1x | 97.5x | 1,565.3x | 79.0x | 16,411.2x |
-| Dreadnought | OUT | 1,267.2x | 66.0x | 173.4x | 2,782.9x | 140.4x | 29,177.3x |
-| Titan | OUT | 1,409.5x | 73.4x | 192.9x | 3,095.2x | 156.2x | 32,451.9x |
+| Gunship | 1.2x | 29.2x | 1.5x | 2.0x | 128.2x | 6.5x | 1,343.7x |
+| Escort | 1.2x | 29.2x | 1.5x | 2.0x | 128.2x | 6.5x | 1,343.7x |
+| Corvette | 1.2x | 29.2x | 1.5x | 2.0x | 128.2x | 6.5x | 1,343.7x |
+| Frigate | 1.5x | 36.7x | 1.9x | 2.5x | 161.2x | 8.1x | 1,689.8x |
+| Monitor | 1.7x | 42.5x | 2.2x | 2.9x | 186.5x | 9.4x | 1,955.6x |
+| Destroyer | 1.7x | 42.5x | 2.2x | 2.9x | 186.5x | 9.4x | 1,955.6x |
+| Cruiser | 6.9x | 169.0x | 8.8x | 11.6x | 742.2x | 37.5x | 7,781.4x |
+| Battlecruiser | OUT | 146.5x | 7.6x | 10.0x | 643.2x | 32.5x | 6,743.9x |
+| Lancer | OUT | 151.9x | 7.9x | 10.4x | 667.0x | 33.7x | 6,993.6x |
+| Battleship | OUT | 356.4x | 18.6x | 24.4x | 1,565.4x | 79.0x | 16,412.3x |
+| Dreadnought | OUT | 633.6x | 33.0x | 43.4x | 2,783.0x | 140.4x | 29,178.2x |
+| Titan | OUT | 704.7x | 36.7x | 48.2x | 3,095.2x | 156.2x | 32,451.8x |
 
 The result is diagnostic:
 
 - Fuel Cell III nearly fills the small-hull allowance even after assigning 75%
   of its reported mass outside the bay. Its output ceiling, not bay volume,
   rejects the Battlecruiser and larger hull-scaled Grid fits.
-- Molten Core III happens to reach a `1,200 t` full-rating mass, essentially the
-  generous small-bay module cap for the Pegasus attribution. Both its output
-  and its geometry can therefore matter on early hulls.
-- Gas Core VI's `1,650 t` full-rating mass exceeds the small-hull Firestar cap
-  of about `1,173 t`, giving a small-hull geometry ceiling near `1,173 GW` at
-  the current `1 t/GW`. The selected one-drive fit itself uses only `147 GW`.
+- Molten Core III now reaches a `2,400 t` full-rating mass. The generous
+  small-bay Pegasus cap remains about `1,201 t`, so geometry limits that pairing
+  to about `100 GW` at the current `12 t/GW`. The selected one-drive fit uses
+  about `66 GW` before hull scaling.
+- Gas Core VI's full-rating mass is now `6,600 t`. The small-hull Firestar cap
+  is about `1,174 t`, giving a geometry ceiling near `294 GW` at the current
+  `4 t/GW`. The selected one-drive fit itself uses about `147 GW`.
 - Solid-core output ceilings bind long before these generous geometric caps.
-  This indicates that a later solid-core pass needs minimum core/train logic,
-  not just a mass-per-volume limit.
+  Solid IV only marginally reaches the bay ceiling on the three smallest hulls.
+  Solid V is the first standard solid-core plant for which volume produces a
+  useful set of distinct hull/drive examples, so it receives the focused table
+  below; Solid I-IV are not enumerated separately.
 - Current late Z-pinch, inertial-fusion and antimatter specific masses make the
   geometry almost irrelevant. A Pion plant requesting tens of thousands of GW
   weighs only a few tonnes. Increasing their t/GW values is prerequisite to a
   meaningful reactor-bay constraint.
+
+## Solid Core Fission Reactor V: largest drive-load examples
+
+The rebalanced Solid Core Fission Reactor V has:
+
+| Maximum output | Specific mass | Efficiency | Full-rating mass |
+|---:|---:|---:|---:|
+| 60 GW | 32 t/GW | 67.5% | 1,920 t |
+
+For this table, the solid-core planning assumptions remain `2.5 t/m3` and
+`f_bay = 0.50`. The maximum game-reported module mass is consequently five
+times the inscribed circular bay volume:
+
+```text
+Solid V reported mass allowance = Vbay * 2.5 / 0.50 = Vbay * 5 t/m3
+geometry-derived output ceiling = reported mass allowance / 32 t/GW
+effective ceiling               = min(60 GW, geometry-derived ceiling)
+```
+
+"Largest" means the compatible drive configuration with the highest unscaled
+`req power` in the current `drives.csv`, after multiplying that demand by the
+hull's implemented drive factor. This selects the fit that loads Solid V most
+heavily. It does not mean highest thrust, latest technology, or best combat
+drive. Unlock chronology is deliberately ignored: this is a physical and
+runtime compatibility exercise across all drive templates that require the
+`Solid_Core_Fission` class.
+
+| Hull | Hull factor | Solid V mass allowance | Geometry ceiling | Binding ceiling | Highest-power fitting drive | Scaled demand | Plant mass | Allowance used |
+|---|---:|---:|---:|---|---|---:|---:|---:|
+| Gunship | 1.00 | 1,321 t | 41.29 GW | bay | Heavy Dumbo x2 | 39.070 GW | 1,250.2 t | 94.6% |
+| Escort | 1.00 | 1,321 t | 41.29 GW | bay | Heavy Dumbo x2 | 39.070 GW | 1,250.2 t | 94.6% |
+| Corvette | 1.00 | 1,321 t | 41.29 GW | bay | Heavy Dumbo x2 | 39.070 GW | 1,250.2 t | 94.6% |
+| Frigate | 1.00 | 1,662 t | 51.92 GW | bay | Heavy Dumbo x2 | 39.070 GW | 1,250.2 t | 75.2% |
+| Monitor | 1.00 | 1,923 t | 60.09 GW | 60 GW output | Heavy Dumbo x3 | 58.604 GW | 1,875.3 t | 97.5% |
+| Destroyer | 1.00 | 1,923 t | 60.09 GW | 60 GW output | Heavy Dumbo x3 | 58.604 GW | 1,875.3 t | 97.5% |
+| Cruiser | 1.30 | 9,947 t | 310.84 GW | 60 GW output | Heavy Dumbo x2 | 50.791 GW | 1,625.3 t | 16.3% |
+| Battlecruiser | 1.50 | 9,947 t | 310.84 GW | 60 GW output | Heavy Dumbo x2 | 58.605 GW | 1,875.4 t | 18.9% |
+| Lancer | 1.72 | 11,828 t | 369.63 GW | 60 GW output | Advanced Pulsar Drive x6 | 44.032 GW | 1,409.0 t | 11.9% |
+| Battleship | 1.75 | 28,242 t | 882.56 GW | 60 GW output | Advanced Pulsar Drive x6 | 44.800 GW | 1,433.6 t | 5.1% |
+| Dreadnought | 2.00 | 57,382 t | 1,793.19 GW | 60 GW output | Advanced Pulsar Drive x6 | 51.200 GW | 1,638.4 t | 2.9% |
+| Titan | 2.50 | 79,775 t | 2,492.95 GW | 60 GW output | Advanced Pulsar Drive x5 | 53.333 GW | 1,706.6 t | 2.1% |
+
+Four examples show how to read the table:
+
+- **Gunship:** Heavy Dumbo x2 requests `39.070 GW` and gives a `1,250.2 t`
+  plant. Heavy Dumbo x3 requests `58.604 GW`, below the reactor's nominal
+  `60 GW` output but above the Gunship bay's `41.29 GW` geometry ceiling. This
+  is a genuinely volume-limited pairing.
+- **Monitor:** Heavy Dumbo x3 requests `58.604 GW` and gives a `1,875.3 t`
+  plant, consuming `97.5%` of the generous mass allowance. Both constraints are
+  close, but the plant's `60 GW` output is slightly lower than the bay-derived
+  `60.09 GW` ceiling.
+- **Battlecruiser:** hull scaling turns Heavy Dumbo x2's base `39.070 GW` into
+  `58.605 GW`, producing a `1,875.4 t` plant. Heavy Dumbo x3 would require
+  `87.906 GW`, so output rejects it even though the bay could accommodate much
+  more mass.
+- **Titan:** the `2.50` hull factor makes Advanced Pulsar x5 request
+  `53.333 GW`. Its `1,706.6 t` plant uses only `2.1%` of the very large bay
+  allowance; Solid V's output is overwhelmingly the constraint.
+
+The apparent inversion on large hulls is a consequence of the current hull
+drive multiplier: the same drive resource becomes more powerful and more
+power-hungry on a larger hull. A Titan therefore reaches the fixed `60 GW`
+plant ceiling with a lower unscaled drive configuration than a Monitor. The
+bay itself is not forcing the Titan down to Advanced Pulsar x5.
+
+## Molten Salt Fission Reactor II + Pegasus follow-up
+
+This is a valid game pairing. `Pegasus Drive` declares
+`Liquid_Core_Fission`, but the runtime compatibility rule contains an explicit
+exception allowing a `Molten_Salt_Core_Fission` plant to power drives requiring
+either solid-core or liquid-core fission. The same exception is used when the
+designer builds its list of valid drives.
+
+The rebalanced Molten Salt Fission Reactor II has:
+
+| Maximum output | Specific mass | Efficiency | Full-rating mass |
+|---:|---:|---:|---:|
+| 400 GW | 8 t/GW | 75% | 3,200 t |
+
+The follow-up uses the molten-salt upper density of `3.5 t/m3` and the existing
+Pegasus `f_bay = 0.55`. This is generous: 45% of the reported module mass may
+be in the zero-mass drive, nozzle, feed system, thrust interface, or other
+off-bay hardware.
+
+```text
+MS II reported mass allowance  = Vbay * 3.5 / 0.55
+geometry-derived output ceiling = reported mass allowance / 8 t/GW
+effective ceiling               = min(400 GW, geometry-derived ceiling)
+```
+
+The candidate set here is deliberately limited to Pegasus x1-x6. The table
+selects the largest Pegasus cluster whose hull-scaled demand fits both the bay
+and the plant output.
+
+| Hull | Hull factor | MS II mass allowance | Geometry ceiling | Binding ceiling | Largest Pegasus cluster | Scaled demand | Plant mass | Allowance used |
+|---|---:|---:|---:|---|---|---:|---:|---:|
+| Gunship | 1.00 | 1,682 t | 210.20 GW | bay | Pegasus x3 | 197.647 GW | 1,581.2 t | 94.0% |
+| Escort | 1.00 | 1,682 t | 210.20 GW | bay | Pegasus x3 | 197.647 GW | 1,581.2 t | 94.0% |
+| Corvette | 1.00 | 1,682 t | 210.20 GW | bay | Pegasus x3 | 197.647 GW | 1,581.2 t | 94.0% |
+| Frigate | 1.00 | 2,115 t | 264.34 GW | bay | Pegasus x4 | 263.529 GW | 2,108.2 t | 99.7% |
+| Monitor | 1.00 | 2,447 t | 305.93 GW | bay | Pegasus x4 | 263.529 GW | 2,108.2 t | 86.1% |
+| Destroyer | 1.00 | 2,447 t | 305.93 GW | bay | Pegasus x4 | 263.529 GW | 2,108.2 t | 86.1% |
+| Cruiser | 1.30 | 12,660 t | 1,582.47 GW | 400 GW output | Pegasus x4 | 342.588 GW | 2,740.7 t | 21.6% |
+| Battlecruiser | 1.50 | 12,660 t | 1,582.47 GW | 400 GW output | Pegasus x4 | 395.294 GW | 3,162.3 t | 25.0% |
+| Lancer | 1.72 | 15,054 t | 1,881.74 GW | 400 GW output | Pegasus x3 | 339.953 GW | 2,719.6 t | 18.1% |
+| Battleship | 1.75 | 35,944 t | 4,493.02 GW | 400 GW output | Pegasus x3 | 345.882 GW | 2,767.1 t | 7.7% |
+| Dreadnought | 2.00 | 73,032 t | 9,128.94 GW | 400 GW output | Pegasus x3 | 395.294 GW | 3,162.4 t | 4.3% |
+| Titan | 2.50 | 101,531 t | 12,691.41 GW | 400 GW output | Pegasus x2 | 329.413 GW | 2,635.3 t | 2.6% |
+
+This produces stronger bay binding than Solid V:
+
+- Gunship, Escort, and Corvette fit Pegasus x3. Pegasus x4 remains below the
+  reactor's `400 GW` rating at 1x scaling but exceeds their `210.20 GW` bay
+  ceiling.
+- Frigate fits Pegasus x4 by only about `6.5 t` of reported mass under this
+  model. Pegasus x5 is rejected by volume.
+- Monitor and Destroyer also stop at Pegasus x4; their `305.93 GW` geometry
+  ceiling rejects Pegasus x5's `329.412 GW` demand.
+- Cruiser and larger hulls have ample volume. Their selected cluster is set by
+  the `400 GW` output cap after hull scaling.
+
+Pegasus x6 illustrates the interaction especially well. At 1x scaling it asks
+for `395.294 GW` and produces a `3,162.4 t` plant, nearly maximizing Molten Salt
+II without exceeding its output. None of the existing hulls can actually use
+that combination under the current model:
+
+- all six 1x-scaling hulls have bays too small for it;
+- Cruiser and every larger bay has enough volume, but the hull multiplier
+  pushes Pegasus x6 above `400 GW`.
+
+At the generous `3.5 t/m3` density, a 1x Pegasus x6 fit would require the bay
+to contain no more than approximately `29.2%` of reported mass on
+Gunship/Escort/Corvette, `36.8%` on Frigate, or `42.6%` on Monitor/Destroyer.
+The planning assumption is `55%`. Allowing x6 on one of those small hulls would
+therefore require attributing most of a nominally `3,162 t` plant outside the
+reactor enclosure, which is possible as a game abstraction but no longer the
+most plausible reading of the art.
 
 ## Recommended interpretation for a later implementation
 

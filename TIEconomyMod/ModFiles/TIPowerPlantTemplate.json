@@ -17,92 +17,137 @@
   {
     "dataName": "SolidCoreFissionReactorI",
     "maxOutput_GW": 1,
-    "specificPower_tGW": 80,
-    "efficiency": 0.6
+    "specificPower_tGW": 160,
+    "efficiency": 0.575
   },
   {
     "dataName": "SolidCoreFissionReactorII",
     "maxOutput_GW": 3,
-    "specificPower_tGW": 68,
-    "efficiency": 0.625
+    "specificPower_tGW": 136,
+    "efficiency": 0.6
   },
   {
     "dataName": "SolidCoreFissionReactorIII",
     "maxOutput_GW": 10,
-    "specificPower_tGW": 56,
-    "efficiency": 0.65
+    "specificPower_tGW": 112,
+    "efficiency": 0.625
   },
   {
     "dataName": "SolidCoreFissionReactorIV",
     "maxOutput_GW": 30,
-    "specificPower_tGW": 24,
-    "efficiency": 0.675
+    "specificPower_tGW": 48,
+    "efficiency": 0.65
   },
   {
     "dataName": "SolidCoreFissionReactorV",
     "maxOutput_GW": 60,
-    "specificPower_tGW": 16,
-    "efficiency": 0.7
+    "specificPower_tGW": 32,
+    "efficiency": 0.675
   },
   {
     "dataName": "SolidCoreFissionReactorVI",
     "maxOutput_GW": 0.75,
-    "specificPower_tGW": 12,
-    "efficiency": 0.625
+    "specificPower_tGW": 24,
+    "efficiency": 0.6
   },
   {
     "dataName": "SolidCoreFissionReactorVII",
     "maxOutput_GW": 2,
-    "specificPower_tGW": 10,
-    "efficiency": 0.65
+    "specificPower_tGW": 20,
+    "efficiency": 0.625
   },
   {
     "dataName": "SolidCoreFissionReactorVIII",
     "maxOutput_GW": 4,
-    "specificPower_tGW": 8,
-    "efficiency": 0.675
+    "specificPower_tGW": 16,
+    "efficiency": 0.65
   },
   {
     "dataName": "SolidCoreFissionReactorIX",
     "maxOutput_GW": 6,
-    "specificPower_tGW": 6,
-    "efficiency": 0.7
+    "specificPower_tGW": 12,
+    "efficiency": 0.675
   },
   {
     "dataName": "SolidCoreFissionReactorX",
     "maxOutput_GW": 10,
-    "specificPower_tGW": 4,
-    "efficiency": 0.725
-  },
-  {
-    "dataName": "MoltenSaltFissionReactorI",
-    "maxOutput_GW": 40,
-    "specificPower_tGW": 4,
-    "efficiency": 0.77
-  },
-  {
-    "dataName": "MoltenSaltFissionReactorII",
-    "maxOutput_GW": 400,
-    "specificPower_tGW": 3.6,
-    "efficiency": 0.78
-  },
-  {
-    "dataName": "MoltenCoreFissionReactorI",
-    "maxOutput_GW": 4,
     "specificPower_tGW": 8,
     "efficiency": 0.7
   },
   {
+    "dataName": "MoltenSaltFissionReactorI",
+    "maxOutput_GW": 40,
+    "specificPower_tGW": 10,
+    "efficiency": 0.725
+  },
+  {
+    "dataName": "MoltenSaltFissionReactorII",
+    "maxOutput_GW": 400,
+    "specificPower_tGW": 8,
+    "efficiency": 0.75
+  },
+  {
+    "dataName": "MoltenCoreFissionReactorI",
+    "maxOutput_GW": 4,
+    "specificPower_tGW": 16,
+    "efficiency": 0.675
+  },
+  {
     "dataName": "MoltenCoreFissionReactorII",
     "maxOutput_GW": 17,
-    "specificPower_tGW": 7,
-    "efficiency": 0.73
+    "specificPower_tGW": 14,
+    "efficiency": 0.705
   },
   {
     "dataName": "MoltenCoreFissionReactorIII",
     "maxOutput_GW": 200,
-    "specificPower_tGW": 6,
-    "efficiency": 0.75
+    "specificPower_tGW": 12,
+    "efficiency": 0.725
+  },
+  {
+    "dataName": "VaporCoreFissionReactorI",
+    "efficiency": 0.87,
+    "specificPower_tGW": 8
+  },
+  {
+    "dataName": "VaporCoreFissionReactorII",
+    "efficiency": 0.88,
+    "specificPower_tGW": 6
+  },
+  {
+    "dataName": "VaporCoreFissionReactorIII",
+    "efficiency": 0.89,
+    "specificPower_tGW": 5
+  },
+  {
+    "dataName": "GasCoreFissionReactorI",
+    "efficiency": 0.87,
+    "specificPower_tGW": 20
+  },
+  {
+    "dataName": "GasCoreFissionReactorII",
+    "efficiency": 0.89,
+    "specificPower_tGW": 16
+  },
+  {
+    "dataName": "GasCoreFissionReactorIII",
+    "efficiency": 0.91,
+    "specificPower_tGW": 10
+  },
+  {
+    "dataName": "GasCoreFissionReactorIV",
+    "efficiency": 0.92,
+    "specificPower_tGW": 7
+  },
+  {
+    "dataName": "GasCoreFissionReactorV",
+    "efficiency": 0.93,
+    "specificPower_tGW": 6
+  },
+  {
+    "dataName": "GasCoreFissionReactorVI",
+    "efficiency": 0.94,
+    "specificPower_tGW": 4
   },
   {
     "dataName": "AlienHybridConfinementFusionReactor",

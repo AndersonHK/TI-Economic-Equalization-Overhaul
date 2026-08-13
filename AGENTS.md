@@ -20,3 +20,11 @@ successful deployment, the task is not ready for handoff until that new build
 has passed the normal `deploy.ps1` flow.
 
 `rg` and `gh` are not installed in this environment.
+
+# Documentation artifacts
+
+Place persistent documentation and research artifacts under `docs/` in the
+appropriate topic directory. This includes generated CSV snapshots, workbooks,
+reports, charts, and other files intended for later reference. Do not place
+documentation under `outputs/`; reserve `outputs/` for disposable build or run
+products. Temporary verification files belong under `.tmp/`.

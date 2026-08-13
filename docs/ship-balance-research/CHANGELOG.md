@@ -5,6 +5,58 @@ the balance decisions as well as their implementation status.
 
 ## 2026-08-13
 
+### Documented: rebalanced fission mass against measured reactor bays
+
+- Refresh the reactor-bay planning report with the doubled fission specific
+  masses, revised efficiencies, and the new explicit gas-core overrides.
+- Use Solid Core Fission Reactor V as the focused hull-fit example: measured bay
+  volume limits Gunship, Escort, Corvette, and Frigate; the `60 GW` plant output
+  limits Monitor and every larger hull.
+- Record the highest-power fitting Solid V drive configuration for all twelve
+  human hulls after applying the implemented hull drive multipliers. This is a
+  planning calculation only; no reactor-bay gameplay restriction is added.
+- Add a Molten Salt Fission Reactor II + Pegasus follow-up. The runtime
+  compatibility exception makes the pairing valid; measured bay volume binds
+  through Destroyer, while reactor output binds Cruiser and larger hulls. Under
+  the current assumptions, no hull can use Pegasus x6 without exceeding either
+  its bay allowance or the plant's `400 GW` output cap.
+
+### Implemented follow-up: heavier, less efficient molten-salt reactors
+
+- Set Molten Salt Fission Reactor I–II efficiency to `0.725` and `0.750`.
+- Increase their `specificPower_tGW` to `10` and `8`, producing maximum-rated
+  masses of `400 t` and `3,200 t` at the unchanged `40 GW` and `400 GW` caps.
+- Release validation passed against TI 1.0.51 with **745 formula assertions**,
+  **121 Harmony patches**, settled ship-rebalance validation, release
+  packaging, and **33-file** enabled-mod deployment.
+
+### Implemented: heavier fission-reactor progression and lower conversion efficiency
+
+- Interpret the requested flat `2.5%` efficiency reduction as **2.5 percentage
+  points** (`efficiency - 0.025`). This applies to Solid Core I–V, Compact Solid
+  Core I–V, Molten Core I–III, and Molten Salt I–II.
+- Double `specificPower_tGW` for those 15 reactors and for Vapor Core I–III.
+- Set Vapor Core I–III efficiency to `0.87`, `0.88`, and `0.89`.
+- Set Gas Core I–VI efficiency to `0.87`, `0.89`, `0.91`, `0.92`, `0.93`, and
+  `0.94`, with `specificPower_tGW` of `20`, `16`, `10`, `7`, `6`, and `4`.
+- Preserve maximum-output caps. Add a derived `massAtCap_tons` column to both
+  power-plant CSVs, calculated as `maxOutput_GW × specificPower_tGW`. Keep
+  `powerplant.csv` as the installed vanilla snapshot and update
+  `powerplant-current.csv` with the live override-merged values.
+- Release validation passed against TI 1.0.51 with **745 formula assertions**,
+  **121 Harmony patches**, settled ship-rebalance validation, release
+  packaging, and **33-file** enabled-mod deployment.
+
+### Corrected: gas-core thermodynamic reference and research artifact location
+
+- Record the installed component localization's explicit gas-core maximum of
+  `25,000 °C` (`25,273 K`) rather than treating only NASA's `10,000–20,000 K`
+  concept-study range as the available temperature reference.
+- At an `800 K` sink, the localized maximum gives a **96.83% Carnot ceiling**
+  and an **82.21% Curzon–Ahlborn reference**.
+- Keep persistent generated research artifacts under `docs/`; reserve
+  `outputs/` for disposable build or run products.
+
 ### Implemented: expanded horizontal 2x1 utility slice
 
 - Return ISRU Module to its native 1x1 footprint.
