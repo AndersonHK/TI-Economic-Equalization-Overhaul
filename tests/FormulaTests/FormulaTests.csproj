@@ -66,6 +66,9 @@
     <Compile Include="..\..\TIEconomyMod\Core\TechWeightCatalog.cs">
       <Link>TechWeightCatalog.cs</Link>
     </Compile>
+    <Compile Include="..\..\TIEconomyMod\Core\UtilityFootprintMath.cs">
+      <Link>UtilityFootprintMath.cs</Link>
+    </Compile>
     <Compile Include="..\..\TIEconomyMod\Core\WeaponPowerMath.cs">
       <Link>WeaponPowerMath.cs</Link>
     </Compile>

@@ -58,6 +58,7 @@ namespace TIEconomyMod
                 {
                     GunPowerRegistry.Refresh();
                     ProjectileGeometryRegistry.Refresh();
+                    UtilityFootprintRegistry.Refresh();
                     ShipPowerRuntime.RefreshTemplateMassCaches();
                 }
                 CouncilorRuntimeCaps.InitializeOrganizationCap();
@@ -371,6 +372,7 @@ namespace TIEconomyMod
     public sealed class ShipBalanceSettings
     {
         public bool enabled = true;
+        public bool multiSlotUtilitiesEnabled = true;
         public bool correctPowerPlantWasteHeat = true;
         public bool openCycleResidualHeatEnabled = true;
         public float openCycleDriveHeatFraction = 0.01f;

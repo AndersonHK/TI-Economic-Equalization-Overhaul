@@ -87,7 +87,7 @@ namespace TIEconomyMod
                 BuildKey(dataName, null), out value) && value > 0f;
         }
 
-        private static IEnumerable<string> ReadScenarioTags(JObject record)
+        internal static IEnumerable<string> ReadScenarioTags(JObject record)
         {
             JToken tags = record["scenarioTags"];
             return tags == null || tags.Type == JTokenType.Null
@@ -95,7 +95,7 @@ namespace TIEconomyMod
                 : tags.Values<string>();
         }
 
-        private static string BuildKey(
+        internal static string BuildKey(
             string dataName, IEnumerable<string> scenarioTags)
         {
             IEnumerable<string> orderedTags = (scenarioTags ??

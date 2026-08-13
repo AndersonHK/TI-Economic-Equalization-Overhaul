@@ -94,16 +94,37 @@ foreach ($entry in $expectedPower.GetEnumerator()) {
 
 $heatOverrides = Read-JsonArray (Join-Path $modFiles 'TIHeatSinkTemplate.json')
 $expectedHeatIds = @('WaterHeatSink', 'HeavyWaterHeatSink')
-if ($heatOverrides.Count -ne $expectedHeatIds.Count) {
-    throw 'Heat-sink override must contain exactly Water and Heavy Water.'
+$expectedFootprintHeatIds = @(
+    'HeavyWaterHeatSink',
+    'HeavyPotassiumHeatSink',
+    'HeavySodiumHeatSink',
+    'HeavyLithiumHeatSink',
+    'HeavyMoltenSaltHeatSink',
+    'HeavyExoticHeatSink'
+)
+if ($heatOverrides.Count -ne 7) {
+    throw 'Heat-sink override must contain two crew overrides and six large-footprint overrides.'
 }
 foreach ($id in $expectedHeatIds) {
     $row = @($heatOverrides | Where-Object dataName -eq $id)
     if ($row.Count -ne 1) {
         throw "Heat-sink override must contain '$id' exactly once."
     }
-    Assert-Properties $row[0] @('dataName', 'crew') $id
+    $expectedProperties = @('dataName', 'crew')
+    if ($id -eq 'HeavyWaterHeatSink') {
+        $expectedProperties += 'utilityFootprint'
+    }
+    Assert-Properties $row[0] $expectedProperties $id
     Assert-Near $row[0].crew 0 "$id crew"
+}
+foreach ($id in $expectedFootprintHeatIds) {
+    $row = @($heatOverrides | Where-Object dataName -eq $id)
+    if ($row.Count -ne 1 -or $row[0].utilityFootprint -ne 'TwoHorizontal') {
+        throw "Large heat sink '$id' must have a TwoHorizontal footprint."
+    }
+    if ($id -ne 'HeavyWaterHeatSink') {
+        Assert-Properties $row[0] @('dataName', 'utilityFootprint') $id
+    }
 }
 
 $gunOverrides = Read-JsonArray (Join-Path $modFiles 'TIGunTemplate.json')

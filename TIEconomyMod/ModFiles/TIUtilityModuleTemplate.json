@@ -1,0 +1,122 @@
+[
+  {
+    "dataName": "MobileSpaceScienceLab",
+    "utilityFootprint": "TwoHorizontal"
+  },
+  {
+    "dataName": "FlagBridge",
+    "utilityFootprint": "TwoHorizontal"
+  },
+  {
+    "dataName": "MarineAssaultUnit",
+    "utilityFootprint": "TwoHorizontal"
+  },
+  {
+    "dataName": "AdvancedMarineAssaultUnit",
+    "utilityFootprint": "TwoHorizontal"
+  },
+  {
+    "dataName": "EliteMarineAssaultUnit",
+    "utilityFootprint": "TwoHorizontal"
+  },
+  {
+    "dataName": "SolarPlatformKit",
+    "utilityFootprint": "TwoHorizontal"
+  },
+  {
+    "dataName": "SolarOutpostKit",
+    "utilityFootprint": "TwoHorizontal"
+  },
+  {
+    "dataName": "FissionPlatformKit",
+    "utilityFootprint": "TwoHorizontal"
+  },
+  {
+    "dataName": "FissionOutpostKit",
+    "utilityFootprint": "TwoHorizontal"
+  },
+  {
+    "dataName": "FusionPlatformKit",
+    "utilityFootprint": "TwoHorizontal"
+  },
+  {
+    "dataName": "FusionOutpostKit",
+    "utilityFootprint": "TwoHorizontal"
+  },
+  {
+    "dataName": "AutomatedSolarOutpostKit",
+    "utilityFootprint": "TwoHorizontal"
+  },
+  {
+    "dataName": "AutomatedFissionOutpostKit",
+    "utilityFootprint": "TwoHorizontal"
+  },
+  {
+    "dataName": "RepairBay",
+    "utilityFootprint": "TwoHorizontal"
+  },
+  {
+    "dataName": "SalvageBay",
+    "utilityFootprint": "TwoHorizontal"
+  },
+  {
+    "dataName": "Spartans",
+    "utilityFootprint": "TwoHorizontal"
+  },
+  {
+    "dataName": "Rangers",
+    "utilityFootprint": "TwoHorizontal"
+  },
+  {
+    "dataName": "Immortals",
+    "utilityFootprint": "TwoHorizontal"
+  },
+  {
+    "dataName": "ComponentArmor",
+    "utilityFootprint": "TwoHorizontal"
+  },
+  {
+    "dataName": "AutomatedSolarPlatformKit",
+    "utilityFootprint": "TwoHorizontal"
+  },
+  {
+    "dataName": "AutomatedFissionPlatformKit",
+    "utilityFootprint": "TwoHorizontal"
+  },
+  {
+    "dataName": "SalamanderTerrorUnitPod",
+    "utilityFootprint": "TwoHorizontal"
+  },
+  {
+    "dataName": "AlienArmyPod",
+    "utilityFootprint": "TwoHorizontal"
+  },
+  {
+    "dataName": "AlienFusionPlatformKit",
+    "utilityFootprint": "TwoHorizontal"
+  },
+  {
+    "dataName": "AlienFusionOutpostKit",
+    "utilityFootprint": "TwoHorizontal"
+  },
+  {
+    "dataName": "AlienRepairBay",
+    "utilityFootprint": "TwoHorizontal"
+  },
+  {
+    "dataName": "AlienSurveillanceOrbital",
+    "utilityFootprint": "TwoHorizontal"
+  },
+  {
+    "dataName": "AlienSurveillanceRing",
+    "utilityFootprint": "TwoHorizontal"
+  },
+  {
+    "dataName": "ISRUModule",
+    "utilityFootprint": "Single"
+  },
+  {
+    "dataName": "Cyclotron",
+    "utilityFootprint": "Single"
+  }
+]

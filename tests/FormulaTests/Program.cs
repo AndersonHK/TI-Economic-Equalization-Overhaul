@@ -29,6 +29,7 @@ namespace TIEconomyMod.FormulaTests
                 TestGlobalTechnologySelection();
                 TestEconomyAndTechnology();
                 TestBalanceTuning();
+                TestUtilityFootprints();
                 TestPerformanceCaches();
                 TestWeaponCadence();
                 TestAbundance();
@@ -253,6 +254,97 @@ namespace TIEconomyMod.FormulaTests
             Near(0f, (float)GlobalTechnologySelectionMath.SelectionWeight(
                 double.NaN, 1d, 0, 1d, 1d), 0f,
                 "invalid technology score requests vanilla fallback");
+        }
+
+        private static void TestUtilityFootprints()
+        {
+            UtilityGridCell anchor = new UtilityGridCell(5, 1);
+            List<UtilityGridCell> horizontal =
+                UtilityFootprintMath.GetCells(
+                    anchor, UtilityFootprintKind.TwoHorizontal);
+            True(horizontal.Count == 2,
+                "two-horizontal footprint cell count");
+            True(horizontal[0].Equals(new UtilityGridCell(5, 1)),
+                "two-horizontal anchor cell");
+            True(horizontal[1].Equals(new UtilityGridCell(6, 1)),
+                "two-horizontal secondary cell");
+
+            List<UtilityGridCell> vertical = UtilityFootprintMath.GetCells(
+                anchor, UtilityFootprintKind.TwoVertical);
+            True(vertical[1].Equals(new UtilityGridCell(5, 3)),
+                "vertical utility rows follow hull y-step");
+
+            List<UtilityGridCell> four = UtilityFootprintMath.GetCells(
+                anchor, UtilityFootprintKind.Four);
+            True(four.Count == 4, "four-slot footprint cell count");
+            True(new HashSet<UtilityGridCell>(four).Count == 4,
+                "four-slot footprint has unique cells");
+            True(four.Contains(new UtilityGridCell(6, 3)),
+                "four-slot footprint includes lower-right cell");
+
+            List<UtilityGridCell> candidates = new List<UtilityGridCell>
+            {
+                new UtilityGridCell(5, 1),
+                new UtilityGridCell(6, 1),
+                new UtilityGridCell(7, 1)
+            };
+            HashSet<UtilityGridCell> available =
+                new HashSet<UtilityGridCell>(candidates);
+            HashSet<UtilityGridCell> occupied =
+                new HashSet<UtilityGridCell>();
+            UtilityGridCell resolved;
+            True(UtilityFootprintMath.TryResolveAnchor(
+                    new UtilityGridCell(6, 1),
+                    UtilityFootprintKind.TwoHorizontal,
+                    candidates,
+                    available,
+                    occupied,
+                    true,
+                    out resolved),
+                "drop on a covered cell resolves a two-slot anchor");
+            True(resolved.Equals(new UtilityGridCell(6, 1)),
+                "alternate placement prefers dropped cell as anchor");
+
+            available.Remove(new UtilityGridCell(7, 1));
+            True(UtilityFootprintMath.TryResolveAnchor(
+                    new UtilityGridCell(6, 1),
+                    UtilityFootprintKind.TwoHorizontal,
+                    candidates,
+                    available,
+                    occupied,
+                    true,
+                    out resolved),
+                "drop on right cell resolves the only containing pair");
+            True(resolved.Equals(new UtilityGridCell(5, 1)),
+                "right-cell drop shifts to the valid left anchor");
+
+            occupied.Add(new UtilityGridCell(5, 1));
+            True(!UtilityFootprintMath.TryResolveAnchor(
+                    new UtilityGridCell(6, 1),
+                    UtilityFootprintKind.TwoHorizontal,
+                    candidates,
+                    available,
+                    occupied,
+                    true,
+                    out resolved),
+                "occupied primary rejects the whole footprint");
+
+            True(UtilityFootprintMath.HasCompatibleAnchor(
+                    UtilityFootprintKind.TwoHorizontal,
+                    candidates,
+                    available),
+                "catalog compatibility ignores current occupancy");
+
+            occupied.Clear();
+            True(!UtilityFootprintMath.TryResolveAnchor(
+                    new UtilityGridCell(6, 1),
+                    UtilityFootprintKind.TwoHorizontal,
+                    candidates,
+                    available,
+                    occupied,
+                    false,
+                    out resolved),
+                "strict placement does not shift from an invalid anchor");
         }
 
         private static void TestMilitaryMath()

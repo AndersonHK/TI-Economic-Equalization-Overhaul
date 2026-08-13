@@ -90,6 +90,15 @@ if ($LASTEXITCODE -ne 0) {
 }
 
 powershell -NoProfile -ExecutionPolicy Bypass -File `
+    (Join-Path $scriptDirectory 'validate-utility-footprint-patches.ps1') `
+    -TargetManagedDir $resolvedManagedDir `
+    -ModAssemblyPath $assemblyPath `
+    -RepositoryRoot $repositoryRoot
+if ($LASTEXITCODE -ne 0) {
+    exit $LASTEXITCODE
+}
+
+powershell -NoProfile -ExecutionPolicy Bypass -File `
     (Join-Path $scriptDirectory 'validate-skirmish-performance-patches.ps1') `
     -TargetManagedDir $resolvedManagedDir `
     -ModAssemblyPath $assemblyPath
@@ -169,6 +178,7 @@ $gunOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIGunTemplate.j
 $laserWeaponOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TILaserWeaponTemplate.json'
 $magneticGunOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIMagneticGunTemplate.json'
 $shipHullOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIShipHullTemplate.json'
+$utilityModuleOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIUtilityModuleTemplate.json'
 $nationLocalization = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\UINation.en'
 $effectLocalization = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIEffectTemplate.en'
 $technologyLocalization = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TITechTemplate.en'
@@ -636,6 +646,7 @@ $requiredFiles = @(
     $laserWeaponOverrides,
     $magneticGunOverrides,
     $shipHullOverrides,
+    $utilityModuleOverrides,
     $nationLocalization,
     $effectLocalization,
     $technologyLocalization,
@@ -685,6 +696,7 @@ Copy-Item -LiteralPath $gunOverrides -Destination $stagingDirectory
 Copy-Item -LiteralPath $laserWeaponOverrides -Destination $stagingDirectory
 Copy-Item -LiteralPath $magneticGunOverrides -Destination $stagingDirectory
 Copy-Item -LiteralPath $shipHullOverrides -Destination $stagingDirectory
+Copy-Item -LiteralPath $utilityModuleOverrides -Destination $stagingDirectory
 Copy-Item -LiteralPath $nationLocalization -Destination $stagingDirectory
 Copy-Item -LiteralPath $effectLocalization -Destination $stagingDirectory
 Copy-Item -LiteralPath $technologyLocalization -Destination $stagingDirectory
@@ -745,7 +757,8 @@ try {
         'TIEconomyMod/TIGunTemplate.json',
         'TIEconomyMod/TILaserWeaponTemplate.json',
         'TIEconomyMod/TIMagneticGunTemplate.json',
-        'TIEconomyMod/TIShipHullTemplate.json'
+        'TIEconomyMod/TIShipHullTemplate.json',
+        'TIEconomyMod/TIUtilityModuleTemplate.json'
     )
     foreach ($packagedShipFile in $packagedShipFiles) {
         if ($null -eq ($archive.Entries |

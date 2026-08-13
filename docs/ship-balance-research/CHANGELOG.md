@@ -3,7 +3,91 @@
 This is a decision log for the proposed ship rebalance. Entries here describe
 the balance decisions as well as their implementation status.
 
+## 2026-08-13
+
+### Implemented: expanded horizontal 2x1 utility slice
+
+- Return ISRU Module to its native 1x1 footprint.
+- Add horizontal 2x1 footprints to Repair Bay, Salvage Bay, Spartans, Rangers,
+  Immortals, Component Armor, automated Solar/Fission Platform Kits,
+  Salamander Terror Unit Pod, Alien Army Pod, Alien Fusion Platform/Outpost
+  Kits, Alien Repair Bay, Alien Surveillance Orbital, and Alien Surveillance
+  Ring.
+- Keep 2x2 balance assignments deferred. The runtime remains capable of 2x2
+  occupancy, but this slice uses only 1x1 and horizontal 2x1 assignments.
+- Render top-strip utility icons by scaling the icon child inside its
+  layout-controlled catalog cell so a 2x1 module is visibly wide before it is
+  selected or dragged.
+- Release validation passed against TI 1.0.51 with **745 formula assertions**,
+  **121 Harmony patches**, exact validation of all **30 utility footprint
+  declarations**, release packaging, and **33-file** enabled-mod deployment.
+  The deployed DLL SHA-256 is
+  `EBC53087189CB18D53967B81C263F3FC574EE12C60F768493A643FAE0F874082`.
+
+### Implemented: hull-weapon-equivalent catalog behavior and 2x1 expansion
+
+- Multi-slot catalog eligibility now tests only the selected hull's slot
+  geometry, not its current occupancy. A two- or four-cell part remains
+  selectable after compatible cells are filled, matching hull weapons; a hull
+  that cannot geometrically support the footprint greys it to the native 30%
+  alpha and disables dragging. Actual drop legality still requires every cell
+  in the resolved footprint to be empty.
+- Catalog, selected-detail, drag, and installed graphics now reshape the
+  existing game icon to advertise its footprint before placement. Horizontal
+  parts are wide, vertical parts are narrow, and four-cell parts retain a
+  square frame with a subtle 2x2 divider. No replacement icon art is included.
+- Added horizontal 2x1 footprints to Flag Bridge, all Marine Assault Units, all
+  six manual Solar/Fission/Fusion Platform and Outpost Kits, the automated
+  Solar/Fission Outpost Kits, ISRU Module, and the six human heavy heat sinks.
+  `MobileSpaceScienceLab` remains the horizontal 2x1 canary. Hull slot layouts
+  remain untouched for the separately tracked hull-layout work.
+- Validation now guards the hull-geometry/occupancy split, list-item alpha and
+  icon patch surfaces, the complete utility and heat-sink assignment lists,
+  and preservation of the original icon resources.
+- Catalog footprint resizing is re-applied in the final list-item alpha pass,
+  after module assignment and list layout, so the top module strip now displays
+  the footprint rather than only the selected and installed views.
+- Cyclotron remains explicitly single-slot. Its vanilla particle-beam-support
+  prerequisite is ignored only while validating prospective placement, allowing
+  the support module to be installed before a particle-beam weapon without
+  bypassing any other native design rule.
+- Release validation passed against TI 1.0.51 with **745 formula assertions**,
+  **120 Harmony patches** in the implementation matrix, release packaging, and
+  **33-file** enabled-mod deployment. Live designer and save/reopen behavior
+  remain the manual acceptance gate.
+- The horizontal-orientation and Cyclotron follow-up passed **745 formula
+  assertions**, **121 Harmony patches**, release packaging, and **33-file**
+  enabled-mod deployment. Top-strip rendering and live designer behavior remain
+  the manual acceptance gate.
+
 ## 2026-08-12
+
+### Implemented: multi-slot utility footprint runtime (playable 2x1 slice)
+
+- Utility templates can now declare fixed `Single`, `TwoHorizontal`,
+  `TwoVertical`, or `Four` footprints through the mod-owned
+  `utilityFootprint` field. A design still stores one functional module at one
+  anchor; every secondary cell is derived and resolves back to that anchor.
+- Dragging a multi-cell utility onto any cell of a compatible empty utility
+  region resolves a deterministic legal anchor. The designer blocks the full
+  footprint, removes it as one part, and uses the game's native multi-slot
+  frame while stretching the module's existing game icon to fill it. Removal
+  explicitly restores the anchor's original size and position because native
+  `SetEmpty()` does not undo the multi-slot position offset.
+- The designer's native `ValidPartForDesign` catalog predicate was extended for
+  multi-slot utilities. The initial occupancy-sensitive implementation was
+  corrected on 2026-08-13 to match hull-weapon geometry-only availability.
+- `MobileSpaceScienceLab` is the first playable canary and occupies a
+  horizontal 2x1 pair. Four-cell runtime support is present, but no hull-layout
+  changes are included in this slice.
+- AI-selected utility lists are repacked into legal hull anchors. Existing
+  designs that cannot accommodate newly enlarged utilities retain legacy 1x1
+  interpretation instead of silently losing or moving parts.
+- Full deployment validation passed against TI 1.0.51 with **744 formula
+  assertions**, **117 Harmony patches** in the implementation matrix, guarded
+  utility target-surface validation, release packaging, and **33-file**
+  enabled-mod deployment. Live designer, save/reopen, and construction checks
+  remain the manual acceptance gate.
 
 ### Implemented: graphical-variant and alien drive scaling
 

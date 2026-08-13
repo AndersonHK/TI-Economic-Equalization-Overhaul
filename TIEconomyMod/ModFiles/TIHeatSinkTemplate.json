@@ -5,6 +5,27 @@
   },
   {
     "dataName": "HeavyWaterHeatSink",
-    "crew": 0
+    "crew": 0,
+    "utilityFootprint": "TwoHorizontal"
+  },
+  {
+    "dataName": "HeavyPotassiumHeatSink",
+    "utilityFootprint": "TwoHorizontal"
+  },
+  {
+    "dataName": "HeavySodiumHeatSink",
+    "utilityFootprint": "TwoHorizontal"
+  },
+  {
+    "dataName": "HeavyLithiumHeatSink",
+    "utilityFootprint": "TwoHorizontal"
+  },
+  {
+    "dataName": "HeavyMoltenSaltHeatSink",
+    "utilityFootprint": "TwoHorizontal"
+  },
+  {
+    "dataName": "HeavyExoticHeatSink",
+    "utilityFootprint": "TwoHorizontal"
   }
 ]

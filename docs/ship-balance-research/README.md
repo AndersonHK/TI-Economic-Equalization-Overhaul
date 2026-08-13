@@ -37,6 +37,7 @@ The comparison is organized into:
 - [Skirmish roster performance investigation](skirmish-roster-performance-investigation.md)
 - [Human hull slots, crew, naval references, and drive scaling](human-hull-slots-and-drive-scaling.md)
 - [Alien magnetic weapons, propulsion, and armor-design proposal](alien-weapons-propulsion-and-armor-proposal.md)
+- [Multi-slot utility implementation](multi-slot-utility-implementation.md)
 - [Detailed research archive](details/README.md)
 
 ## Documentation structure

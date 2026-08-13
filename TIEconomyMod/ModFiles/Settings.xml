@@ -111,6 +111,7 @@
   </army>
   <shipBalance>
     <enabled>true</enabled>
+    <multiSlotUtilitiesEnabled>true</multiSlotUtilitiesEnabled>
     <correctPowerPlantWasteHeat>true</correctPowerPlantWasteHeat>
     <openCycleResidualHeatEnabled>true</openCycleResidualHeatEnabled>
     <openCycleDriveHeatFraction>0.01</openCycleDriveHeatFraction>

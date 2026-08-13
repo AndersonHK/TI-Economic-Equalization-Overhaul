@@ -111,6 +111,11 @@
     <Compile Include="Core\ReferenceIdentityComparer.cs" />
     <Compile Include="Core\ShipBalanceMath.cs" />
     <Compile Include="Core\TemplateFloatExtensionReader.cs" />
+    <Compile Include="Core\TemplateStringExtensionReader.cs" />
+    <Compile Include="Core\UtilityFootprintMath.cs" />
+    <Compile Include="Core\UtilityFootprintIconVisuals.cs" />
+    <Compile Include="Core\UtilityFootprintRegistry.cs" />
+    <Compile Include="Core\UtilityFootprintRuntime.cs" />
     <Compile Include="Core\TechWeightCatalog.cs" />
     <Compile Include="Core\WeaponPowerMath.cs" />
     <Compile Include="Core\WeaponCadenceMath.cs" />
@@ -140,6 +145,7 @@
     <Compile Include="Patches\WeaponCadencePatches.cs" />
     <Compile Include="Patches\SkirmishPerformancePatches.cs" />
     <Compile Include="Patches\ThresholdAndUiPatches.cs" />
+    <Compile Include="Patches\UtilityFootprintPatches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
 
@@ -164,6 +170,7 @@
     <None Include="ModFiles\TIPowerPlantTemplate.json" />
     <None Include="ModFiles\TIDriveTemplate.json" />
     <None Include="ModFiles\TIShipHullTemplate.json" />
+    <None Include="ModFiles\TIUtilityModuleTemplate.json" />
     <None Include="ModFiles\TIStartTimeTemplate.json" />
     <None Include="ModFiles\TITechTemplate.json" />
     <None Include="ModFiles\UIScience.en" />
