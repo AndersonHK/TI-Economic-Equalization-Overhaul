@@ -44,6 +44,10 @@ when prose and runtime behavior disagree.
 
 ## Historical, exploratory, and deferred material
 
+- [National harmonization eligibility plan](national-harmonization-eligibility-plan.md)
+  traces the current dynamic claim-hostility and peaceful-unification gates,
+  evaluates the proposed score, and records the not-yet-implemented patch and
+  test plan.
 - [Initial Economy plan](economy-growth-initial-plan.md) is a superseded design
   record. The calibration document and source describe the implemented model.
 - [Hab capacity beyond twenty facilities](hab-slot-expansion-assessment.md) is a

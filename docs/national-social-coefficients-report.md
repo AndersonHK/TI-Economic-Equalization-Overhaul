@@ -175,8 +175,8 @@ The component formulas and current TI coefficients are:
 | Elite/public ideological distance | `-2 * vectorDistance * clamp(Government/10, 0, 1)`; full force at Government `10`, one-tenth force at `1` |
 | Public-opinion dispersion | `-0.5 - 6*(antipathyRatio-0.5)` |
 | Autocracy (`Government <4.0`) | `(4^1.285 - Government^1.285) * (10-Unrest)/10` |
-| Anocracy (`4.0 <= Government <=6.5`) | `2*abs(5-Government)-3` |
-| High democracy (`Government >6.5`) | Pull the accumulated rest value toward 5 by up to `democracyCoefficient * (Government-6.5)`, still stopping at 5; default coefficient `1.0`, vanilla coefficient `0.5` |
+| Anocracy (`4.0 <= Government <=6.0`) | `3*abs(5-Government)-2` |
+| Democracy (`Government >=6.0`) | Pull the accumulated rest value toward 5 by up to `democracyCoefficient * (Government-6.0)`, still stopping at 5; default coefficient `1.0`, vanilla coefficient `0.5` |
 
 The overridden rest-state components are controlled by:
 
@@ -185,6 +185,7 @@ The overridden rest-state components are controlled by:
 | `cohesionRest.baseValue` | `10.5` |
 | `cohesionRest.autocracyAnocracyBoundary` | `4.0` |
 | `cohesionRest.autocracyExponent` | `1.285` |
+| `cohesionRest.anocracyDemocracyBoundary` | `6.0` |
 | `cohesionRest.democracyCoefficient` | `1.0` |
 | `cohesionRest.inequalityEducationBaseMultiplier` | `0.50` |
 | `cohesionRest.inequalityEducationDivisor` | `20` |

@@ -440,6 +440,7 @@ namespace TIEconomyMod
         public float baseValue = 10.5f;
         public float autocracyAnocracyBoundary = 4f;
         public float autocracyExponent = 1.285f;
+        public float anocracyDemocracyBoundary = 6f;
         public float democracyCoefficient = 1f;
         public float inequalityEducationBaseMultiplier = 0.5f;
         public float inequalityEducationDivisor = 20f;

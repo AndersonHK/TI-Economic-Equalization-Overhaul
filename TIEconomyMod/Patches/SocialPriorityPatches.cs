@@ -214,7 +214,8 @@ namespace TIEconomyMod.Patches
             }
 
             __result = CohesionRestMath.AnocracyImpact(__instance.democracy,
-                settings.autocracyAnocracyBoundary, 6.5f);
+                settings.autocracyAnocracyBoundary,
+                settings.anocracyDemocracyBoundary);
             return false;
         }
     }
@@ -233,7 +234,8 @@ namespace TIEconomyMod.Patches
             }
 
             __result = CohesionRestMath.DemocracyImpact(
-                __instance.democracy, originalValue, 5f, 6.5f,
+                __instance.democracy, originalValue, 5f,
+                settings.anocracyDemocracyBoundary,
                 settings.democracyCoefficient);
             return false;
         }

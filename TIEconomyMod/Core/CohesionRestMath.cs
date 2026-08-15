@@ -42,14 +42,14 @@ namespace TIEconomyMod.Core
                 return 0f;
             }
 
-            return 2f * Math.Abs(5f - government) - 3f;
+            return 3f * Math.Abs(5f - government) - 2f;
         }
 
         public static float DemocracyImpact(float government,
             float originalValue, float target, float threshold,
             float coefficient)
         {
-            if (government <= threshold)
+            if (government < threshold)
             {
                 return 0f;
             }

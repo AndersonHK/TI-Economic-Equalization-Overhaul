@@ -339,6 +339,7 @@ namespace TIEconomyMod
         public float baseValue = 10.5f;
         public float autocracyAnocracyBoundary = 4f;
         public float autocracyExponent = 1.285f;
+        public float anocracyDemocracyBoundary = 6f;
         public float democracyCoefficient = 1f;
         public float inequalityEducationBaseMultiplier = 0.5f;
         public float inequalityEducationDivisor = 20f;
@@ -648,7 +649,8 @@ namespace TIEconomyMod
             RepairNonNegative(ref value.inequality.economyMaximumResourceMultiplier, defaults.inequality.economyMaximumResourceMultiplier, "inequality.economyMaximumResourceMultiplier", log);
             RepairNonNegative(ref value.inequality.spoilsMaximumResourceMultiplier, defaults.inequality.spoilsMaximumResourceMultiplier, "inequality.spoilsMaximumResourceMultiplier", log);
             RepairNonNegative(ref value.cohesionRest.baseValue, defaults.cohesionRest.baseValue, "cohesionRest.baseValue", log);
-            RepairRange(ref value.cohesionRest.autocracyAnocracyBoundary, defaults.cohesionRest.autocracyAnocracyBoundary, 0f, 6.5f, "cohesionRest.autocracyAnocracyBoundary", log);
+            RepairRange(ref value.cohesionRest.anocracyDemocracyBoundary, defaults.cohesionRest.anocracyDemocracyBoundary, 0f, 10f, "cohesionRest.anocracyDemocracyBoundary", log);
+            RepairRange(ref value.cohesionRest.autocracyAnocracyBoundary, defaults.cohesionRest.autocracyAnocracyBoundary, 0f, value.cohesionRest.anocracyDemocracyBoundary, "cohesionRest.autocracyAnocracyBoundary", log);
             RepairPositive(ref value.cohesionRest.autocracyExponent, defaults.cohesionRest.autocracyExponent, "cohesionRest.autocracyExponent", log);
             RepairNonNegative(ref value.cohesionRest.democracyCoefficient, defaults.cohesionRest.democracyCoefficient, "cohesionRest.democracyCoefficient", log);
             RepairRange(ref value.cohesionRest.inequalityEducationBaseMultiplier, defaults.cohesionRest.inequalityEducationBaseMultiplier, 0f, 1f, "cohesionRest.inequalityEducationBaseMultiplier", log);

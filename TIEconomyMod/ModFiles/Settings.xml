@@ -84,6 +84,7 @@
     <baseValue>10.5</baseValue>
     <autocracyAnocracyBoundary>4</autocracyAnocracyBoundary>
     <autocracyExponent>1.285</autocracyExponent>
+    <anocracyDemocracyBoundary>6</anocracyDemocracyBoundary>
     <democracyCoefficient>1</democracyCoefficient>
     <inequalityEducationBaseMultiplier>0.5</inequalityEducationBaseMultiplier>
     <inequalityEducationDivisor>20</inequalityEducationDivisor>

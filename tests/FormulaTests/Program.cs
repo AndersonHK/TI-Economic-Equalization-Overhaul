@@ -1763,6 +1763,9 @@ namespace TIEconomyMod.FormulaTests
                 0f, "Autocracy-Anocracy boundary default");
             Near(1.285f, TIEconomyMod.Main.settings.cohesionRest.autocracyExponent,
                 0f, "Autocracy Cohesion exponent default");
+            Near(6f,
+                TIEconomyMod.Main.settings.cohesionRest.anocracyDemocracyBoundary,
+                0f, "Anocracy-Democracy boundary default");
             nation.democracy = 1f;
             nation.unrest = 2f;
             result = 99f;
@@ -1777,12 +1780,24 @@ namespace TIEconomyMod.FormulaTests
                 "Autocracy Cohesion ends at Government four");
             True(!CohesionRestAnocracyPatch.Prefix(ref result, nation),
                 "Anocracy Cohesion prefix replaces vanilla");
-            Near(-1f, result, 0f,
+            Near(1f, result, 0f,
                 "Anocracy Cohesion starts at Government four");
             nation.democracy = 3.9f;
             CohesionRestAnocracyPatch.Prefix(ref result, nation);
             Near(0f, result, 0f,
                 "Anocracy Cohesion is absent below Government four");
+            nation.democracy = 6f;
+            CohesionRestAnocracyPatch.Prefix(ref result, nation);
+            Near(1f, result, 0f,
+                "Anocracy Cohesion includes Government six");
+            nation.democracy = 5f;
+            CohesionRestAnocracyPatch.Prefix(ref result, nation);
+            Near(-2f, result, 0f,
+                "Anocracy Cohesion reaches negative two at Government five");
+            nation.democracy = 6.01f;
+            CohesionRestAnocracyPatch.Prefix(ref result, nation);
+            Near(0f, result, 0f,
+                "Anocracy Cohesion ends above Government six");
             Near(1f,
                 TIEconomyMod.Main.settings.cohesionRest.democracyCoefficient,
                 0f, "Democracy Cohesion coefficient default");
@@ -1790,8 +1805,8 @@ namespace TIEconomyMod.FormulaTests
             result = 99f;
             True(!CohesionRestDemocracyPatch.Prefix(ref result, nation, 8f),
                 "Democracy Cohesion prefix replaces vanilla");
-            Near(-1.5f, result, 0.000001f,
-                "Democracy Cohesion uses coefficient times score above 6.5");
+            Near(-2f, result, 0.000001f,
+                "Democracy Cohesion uses coefficient times score above six");
             nation.democracy = 10f;
             CohesionRestDemocracyPatch.Prefix(ref result, nation, 5.2f);
             Near(-0.2f, result, 0.000001f,
@@ -1799,10 +1814,11 @@ namespace TIEconomyMod.FormulaTests
             CohesionRestDemocracyPatch.Prefix(ref result, nation, 2f);
             Near(3f, result, 0.000001f,
                 "Democracy Cohesion pull reaches but does not cross five");
-            nation.democracy = 6.5f;
-            CohesionRestDemocracyPatch.Prefix(ref result, nation, 8f);
+            nation.democracy = 6f;
+            True(!CohesionRestDemocracyPatch.Prefix(ref result, nation, 8f),
+                "Democracy Cohesion begins at Government six");
             Near(0f, result, 0f,
-                "Anocracy boundary has no Democracy Cohesion pull");
+                "Shared boundary has zero Democracy Cohesion magnitude");
 
             nation = Nation();
             KnowledgeEducationPatch.Prefix(ref result, nation);

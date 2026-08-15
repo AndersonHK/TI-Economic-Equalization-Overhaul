@@ -111,10 +111,10 @@ The Cohesion rest-state base is `10.5`. Below Government `4.0`, Autocracy's
 regime contribution is
 `(4^1.285 - Government^1.285) * (10-Unrest)/10`. Anocracy begins at Government
 `4.0`, matching the government-type labels shown in the UI, and retains its
-existing `2*abs(5-Government)-3` contribution through Government `6.5`. For
-Government above `6.5`, democracy pulls the
+the `3*abs(5-Government)-2` contribution through Government `6.0`.
+Democracy begins at the same shared `6.0` boundary and pulls the
 accumulated rest value toward Cohesion 5 by
-`cohesionRest.democracyCoefficient * (Government - 6.5)`, with a default
+`cohesionRest.democracyCoefficient * (Government - 6.0)`, with a default
 coefficient of `1.0` (vanilla is `0.5`). The result remains clamped at 5 so the
 stronger pull cannot overshoot its target. The tooltip breakdown must use the
 same configured base and patched component getters as gameplay.
