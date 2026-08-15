@@ -172,9 +172,10 @@ exposure, and Inequality feedback retain their normal meanings.
 The installed region templates assign Beneficiary, Standard, and Vulnerable
 populations exposure weights `0`, `1`, and `2`. TI converts the annual loss to
 an equivalent compounded monthly GDP loss. Every month also adds one fifth of
-that monthly loss to Inequality; the deployed mod's existing `2x` climate
-Inequality setting is applied to both mod benchmarks, while vanilla
-uses `1x`.
+that monthly loss to Inequality. The recorded mod benchmarks use the then-current
+`2x` climate Inequality setting, while vanilla uses `1x`. The deployed default
+is now `4x`; the historical projection table has not been recalculated for that
+later social-score tuning change.
 
 The comparison baselines are:
 

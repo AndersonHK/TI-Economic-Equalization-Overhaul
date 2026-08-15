@@ -69,15 +69,28 @@
     <neutral>5</neutral>
     <maximum>9</maximum>
     <exponent>2</exponent>
+    <maximumDirectionalMultiplier>3</maximumDirectionalMultiplier>
     <referenceGdpBillions>100</referenceGdpBillions>
     <minimumGdpBillions>1</minimumGdpBillions>
-    <economyChangeAtReferenceGdp>0.0005</economyChangeAtReferenceGdp>
-    <welfareChangeAtReferenceGdp>-0.00666666</welfareChangeAtReferenceGdp>
-    <spoilsChangeAtReferenceGdp>0.00333334</spoilsChangeAtReferenceGdp>
-    <climateChangeMultiplier>2</climateChangeMultiplier>
+    <economyChangeAtReferenceGdp>0.0015</economyChangeAtReferenceGdp>
+    <welfareChangeAtReferenceGdp>-0.01333332</welfareChangeAtReferenceGdp>
+    <spoilsChangeAtReferenceGdp>0.00666668</spoilsChangeAtReferenceGdp>
+    <climateChangeMultiplier>4</climateChangeMultiplier>
     <economyMaximumResourceMultiplier>0.6</economyMaximumResourceMultiplier>
     <spoilsMaximumResourceMultiplier>1</spoilsMaximumResourceMultiplier>
   </inequality>
+  <cohesionRest>
+    <enabled>true</enabled>
+    <baseValue>10.5</baseValue>
+    <autocracyAnocracyBoundary>4</autocracyAnocracyBoundary>
+    <autocracyExponent>1.285</autocracyExponent>
+    <democracyCoefficient>1</democracyCoefficient>
+    <inequalityEducationBaseMultiplier>0.5</inequalityEducationBaseMultiplier>
+    <inequalityEducationDivisor>20</inequalityEducationDivisor>
+    <inequalityOffset>6.75</inequalityOffset>
+    <inequalityCoefficient>2.25</inequalityCoefficient>
+    <publicEliteGovernmentDivisor>10</publicEliteGovernmentDivisor>
+  </cohesionRest>
   <controlCost>
     <enabled>true</enabled>
     <projectBonusesAsPercent>true</projectBonusesAsPercent>

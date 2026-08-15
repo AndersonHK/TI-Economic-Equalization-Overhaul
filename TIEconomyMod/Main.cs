@@ -168,6 +168,9 @@ namespace TIEconomyMod
         [Draw("Bounded Inequality")]
         public InequalitySettings inequality = new InequalitySettings();
 
+        [Draw("Cohesion Rest State")]
+        public CohesionRestSettings cohesionRest = new CohesionRestSettings();
+
         [Draw("Control Point Cost")]
         public ControlCostSettings controlCost = new ControlCostSettings();
 
@@ -318,14 +321,30 @@ namespace TIEconomyMod
         public float neutral = 5f;
         public float maximum = 9f;
         public float exponent = 2f;
+        public float maximumDirectionalMultiplier = 3f;
         public float referenceGdpBillions = 100f;
         public float minimumGdpBillions = 1f;
-        public float economyChangeAtReferenceGdp = 0.0005f;
-        public float welfareChangeAtReferenceGdp = -0.00666666f;
-        public float spoilsChangeAtReferenceGdp = 0.00333334f;
-        public float climateChangeMultiplier = 2f;
+        public float economyChangeAtReferenceGdp = 0.0015f;
+        public float welfareChangeAtReferenceGdp = -0.01333332f;
+        public float spoilsChangeAtReferenceGdp = 0.00666668f;
+        public float climateChangeMultiplier = 4f;
         public float economyMaximumResourceMultiplier = 0.60f;
         public float spoilsMaximumResourceMultiplier = 1f;
+    }
+
+    [DrawFields(DrawFieldMask.Public)]
+    public sealed class CohesionRestSettings
+    {
+        public bool enabled = true;
+        public float baseValue = 10.5f;
+        public float autocracyAnocracyBoundary = 4f;
+        public float autocracyExponent = 1.285f;
+        public float democracyCoefficient = 1f;
+        public float inequalityEducationBaseMultiplier = 0.5f;
+        public float inequalityEducationDivisor = 20f;
+        public float inequalityOffset = 6.75f;
+        public float inequalityCoefficient = 2.25f;
+        public float publicEliteGovernmentDivisor = 10f;
     }
 
     [DrawFields(DrawFieldMask.Public)]
@@ -537,6 +556,7 @@ namespace TIEconomyMod
             value.technology = value.technology ?? defaults.technology;
             value.abundance = value.abundance ?? defaults.abundance;
             value.inequality = value.inequality ?? defaults.inequality;
+            value.cohesionRest = value.cohesionRest ?? defaults.cohesionRest;
             value.controlCost = value.controlCost ?? defaults.controlCost;
             value.councilors = value.councilors ?? defaults.councilors;
             value.army = value.army ?? defaults.army;
@@ -609,6 +629,7 @@ namespace TIEconomyMod
             RepairPositive(ref value.abundance.unrestExponent, defaults.abundance.unrestExponent, "abundance.unrestExponent", log);
             RepairPositive(ref value.abundance.maximumUnrest, defaults.abundance.maximumUnrest, "abundance.maximumUnrest", log);
             RepairRange(ref value.inequality.exponent, defaults.inequality.exponent, 1f, 10f, "inequality.exponent", log);
+            RepairRange(ref value.inequality.maximumDirectionalMultiplier, defaults.inequality.maximumDirectionalMultiplier, 1f, 100f, "inequality.maximumDirectionalMultiplier", log);
             RepairNonNegative(ref value.inequality.climateChangeMultiplier, defaults.inequality.climateChangeMultiplier, "inequality.climateChangeMultiplier", log);
             if (!IsFinite(value.inequality.minimum) || !IsFinite(value.inequality.neutral) ||
                 !IsFinite(value.inequality.maximum) || value.inequality.minimum >= value.inequality.neutral ||
@@ -626,6 +647,15 @@ namespace TIEconomyMod
             RepairPositive(ref value.inequality.spoilsChangeAtReferenceGdp, defaults.inequality.spoilsChangeAtReferenceGdp, "inequality.spoilsChangeAtReferenceGdp", log);
             RepairNonNegative(ref value.inequality.economyMaximumResourceMultiplier, defaults.inequality.economyMaximumResourceMultiplier, "inequality.economyMaximumResourceMultiplier", log);
             RepairNonNegative(ref value.inequality.spoilsMaximumResourceMultiplier, defaults.inequality.spoilsMaximumResourceMultiplier, "inequality.spoilsMaximumResourceMultiplier", log);
+            RepairNonNegative(ref value.cohesionRest.baseValue, defaults.cohesionRest.baseValue, "cohesionRest.baseValue", log);
+            RepairRange(ref value.cohesionRest.autocracyAnocracyBoundary, defaults.cohesionRest.autocracyAnocracyBoundary, 0f, 6.5f, "cohesionRest.autocracyAnocracyBoundary", log);
+            RepairPositive(ref value.cohesionRest.autocracyExponent, defaults.cohesionRest.autocracyExponent, "cohesionRest.autocracyExponent", log);
+            RepairNonNegative(ref value.cohesionRest.democracyCoefficient, defaults.cohesionRest.democracyCoefficient, "cohesionRest.democracyCoefficient", log);
+            RepairRange(ref value.cohesionRest.inequalityEducationBaseMultiplier, defaults.cohesionRest.inequalityEducationBaseMultiplier, 0f, 1f, "cohesionRest.inequalityEducationBaseMultiplier", log);
+            RepairPositive(ref value.cohesionRest.inequalityEducationDivisor, defaults.cohesionRest.inequalityEducationDivisor, "cohesionRest.inequalityEducationDivisor", log);
+            RepairFinite(ref value.cohesionRest.inequalityOffset, defaults.cohesionRest.inequalityOffset, "cohesionRest.inequalityOffset", log);
+            RepairPositive(ref value.cohesionRest.inequalityCoefficient, defaults.cohesionRest.inequalityCoefficient, "cohesionRest.inequalityCoefficient", log);
+            RepairPositive(ref value.cohesionRest.publicEliteGovernmentDivisor, defaults.cohesionRest.publicEliteGovernmentDivisor, "cohesionRest.publicEliteGovernmentDivisor", log);
             RepairPositive(ref value.controlCost.countryCostMultiplier, defaults.controlCost.countryCostMultiplier, "controlCost.countryCostMultiplier", log);
             RepairRange(ref value.controlCost.arrivalInternationalRelationsReduction, defaults.controlCost.arrivalInternationalRelationsReduction, 0f, 0.99f, "controlCost.arrivalInternationalRelationsReduction", log);
             RepairRange(ref value.controlCost.unityMovementsReduction, defaults.controlCost.unityMovementsReduction, 0f, 0.99f, "controlCost.unityMovementsReduction", log);

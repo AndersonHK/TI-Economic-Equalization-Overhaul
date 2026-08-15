@@ -588,7 +588,7 @@ foreach ($family in $driveFamilies.GetEnumerator()) {
 }
 
 $reactorBayCsvPath = Join-Path $RepositoryRoot `
-    'docs\ship-balance-research\reactor-bay-variant-volumes.csv'
+    'docs\ship-balance-research\tables\reactor-bay-variant-volumes.csv'
 $reactorBayRows = @(Import-Csv -LiteralPath $reactorBayCsvPath)
 $reactorBayHulls = @(
     'Gunship', 'Escort', 'Corvette', 'Frigate', 'Monitor', 'Destroyer',

@@ -92,11 +92,32 @@ scan itself or create a daily/background rebuild. AI hab planning prioritizes
 one same-hab factory-dock pair per colonized major system, with the strongest
 priority in the Earth-Moon system.
 
-Economy, Welfare, and Spoils use a twofold per-completion increase inside their
-existing GDP-normalized Inequality formulas. Climate-driven Inequality is also
-doubled at its uniquely identified mutation reason. Events, secession, and
-revolution remain vanilla; annexation uses the country-merger distribution
-formula described above.
+Economy's reference-GDP Inequality change is three times its original EEO
+coefficient; Welfare and Spoils are twice their original EEO coefficients.
+Climate-driven Inequality is multiplied by four at its uniquely identified
+mutation reason. Priority changes moving inward from an Inequality boundary
+reach a directional `x3` multiplier, while outward changes fall to zero at the
+boundary. Events, secession, and revolution remain vanilla; annexation uses the
+country-merger distribution formula described above.
+
+The Cohesion rest state treats Inequality 3 (the Gini 0.30 low/medium threshold)
+as neutral: `min(1, 0.5 + Education/20) * (6.75 - 2.25*Inequality)`. Lower
+Inequality strengthens Cohesion and higher Inequality weakens it. The
+elite/public ideological-distance penalty is multiplied by Government divided
+by 10, clamped to `[0,1]`, so it has full force at Government 10 and one-tenth
+force at Government 1.
+
+The Cohesion rest-state base is `10.5`. Below Government `4.0`, Autocracy's
+regime contribution is
+`(4^1.285 - Government^1.285) * (10-Unrest)/10`. Anocracy begins at Government
+`4.0`, matching the government-type labels shown in the UI, and retains its
+existing `2*abs(5-Government)-3` contribution through Government `6.5`. For
+Government above `6.5`, democracy pulls the
+accumulated rest value toward Cohesion 5 by
+`cohesionRest.democracyCoefficient * (Government - 6.5)`, with a default
+coefficient of `1.0` (vanilla is `0.5`). The result remains clamped at 5 so the
+stronger pull cannot overshoot its target. The tooltip breakdown must use the
+same configured base and patched component getters as gameplay.
 
 ## Economy growth is factor balance, not a wealth penalty
 

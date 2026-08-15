@@ -329,6 +329,7 @@ namespace TIEconomyMod
         public TechnologySettings technology = new TechnologySettings();
         public AbundanceSettings abundance = new AbundanceSettings();
         public InequalitySettings inequality = new InequalitySettings();
+        public CohesionRestSettings cohesionRest = new CohesionRestSettings();
         public ControlCostSettings controlCost = new ControlCostSettings();
         public ArmySettings army = new ArmySettings();
         public ShipBalanceSettings shipBalance = new ShipBalanceSettings();
@@ -422,14 +423,29 @@ namespace TIEconomyMod
         public float neutral = 5f;
         public float maximum = 9f;
         public float exponent = 2f;
+        public float maximumDirectionalMultiplier = 3f;
         public float referenceGdpBillions = 100f;
         public float minimumGdpBillions = 1f;
-        public float economyChangeAtReferenceGdp = 0.0005f;
-        public float welfareChangeAtReferenceGdp = -0.00666666f;
-        public float spoilsChangeAtReferenceGdp = 0.00333334f;
-        public float climateChangeMultiplier = 2f;
+        public float economyChangeAtReferenceGdp = 0.0015f;
+        public float welfareChangeAtReferenceGdp = -0.01333332f;
+        public float spoilsChangeAtReferenceGdp = 0.00666668f;
+        public float climateChangeMultiplier = 4f;
         public float economyMaximumResourceMultiplier = 0.60f;
         public float spoilsMaximumResourceMultiplier = 1f;
+    }
+
+    public sealed class CohesionRestSettings
+    {
+        public bool enabled = true;
+        public float baseValue = 10.5f;
+        public float autocracyAnocracyBoundary = 4f;
+        public float autocracyExponent = 1.285f;
+        public float democracyCoefficient = 1f;
+        public float inequalityEducationBaseMultiplier = 0.5f;
+        public float inequalityEducationDivisor = 20f;
+        public float inequalityOffset = 6.75f;
+        public float inequalityCoefficient = 2.25f;
+        public float publicEliteGovernmentDivisor = 10f;
     }
 
     public sealed class ControlCostSettings

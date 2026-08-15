@@ -21,7 +21,7 @@ namespace TIEconomyMod.Patches
 
             // Vanilla converts climate damage into Inequality by adding one-fifth
             // of the modeled annual GDP-loss fraction. A 10% loss therefore adds
-            // 0.02; the default x2 multiplier makes that 0.04. Priority, event,
+            // 0.02; the default x4 multiplier makes that 0.08. Priority, event,
             // revolution, secession, and annexation changes never enter this branch.
             value *= settings.climateChangeMultiplier;
         }
@@ -40,17 +40,17 @@ namespace TIEconomyMod.Patches
             }
 
             // Inequality is a proportional economic outcome, so Welfare divides by GDP.
-            // Defaults give -0.00667 at $100B and -0.000667 at $1T; ten times the IP in
+            // Defaults give -0.01333 at $100B and -0.001333 at $1T; ten times the IP in
             // the larger economy restores the same monthly movement at equal allocation.
-            // The 1-9 transform is 0x at 1, 1x at 5, and 2x at 9 for this negative delta.
+            // The 1-9 transform is 0x at 1, 1x at 5, and 3x at 9 for this negative delta.
             float gdpBillions = Math.Max(settings.minimumGdpBillions,
                 (float)(__instance.GDP / 1000000000d));
             float rawDelta = settings.welfareChangeAtReferenceGdp *
                 settings.referenceGdpBillions / gdpBillions;
-            float position = (__instance.inequality - settings.neutral) /
-                ((settings.maximum - settings.minimum) / 2f);
-            float transformedDelta = rawDelta * (1f - Math.Sign(rawDelta) * position *
-                (float)Math.Pow(Math.Abs(position), settings.exponent - 1f));
+            float transformedDelta = InequalityMath.TransformPriorityChange(rawDelta,
+                __instance.inequality, settings.minimum, settings.neutral,
+                settings.maximum, settings.exponent,
+                settings.maximumDirectionalMultiplier);
 
             if (float.IsNaN(transformedDelta) || float.IsInfinity(transformedDelta))
             {
@@ -95,22 +95,22 @@ namespace TIEconomyMod.Patches
             float resourceMultiplier = 1f +
                 settings.spoilsMaximumResourceMultiplier * resourceCurve;
             // Like the other Inequality changes, Spoils divides by GDP because it changes
-            // an economic distribution ratio. Defaults give +0.00333 at $100B and
-            // +0.000333 at $1T before resource/bound multipliers, exactly offsetting
+            // an economic distribution ratio. Defaults give +0.00667 at $100B and
+            // +0.000667 at $1T before resource/bound multipliers, exactly offsetting
             // the tenfold difference in GDP-linear IP production.
             float gdpBillions = Math.Max(settings.minimumGdpBillions,
                 (float)(__instance.GDP / 1000000000d));
             float rawDelta = settings.spoilsChangeAtReferenceGdp *
                 settings.referenceGdpBillions / gdpBillions * resourceMultiplier;
 
-            // The continuous boundary transform makes a positive Spoils delta 2x at
+            // The continuous boundary transform makes a positive Spoils delta 3x at
             // Inequality 1, 1x at 5, and 0x at 9. At 100M population, Inequality 5,
-            // one region, and $100B GDP, defaults give about +0.00556; installed vanilla
+            // one region, and $100B GDP, defaults give about +0.01111; installed vanilla
             // 1.0.51 gives roughly +0.0031 for the same population and resource count.
-            float position = (__instance.inequality - settings.neutral) /
-                ((settings.maximum - settings.minimum) / 2f);
-            float transformedDelta = rawDelta * (1f - Math.Sign(rawDelta) * position *
-                (float)Math.Pow(Math.Abs(position), settings.exponent - 1f));
+            float transformedDelta = InequalityMath.TransformPriorityChange(rawDelta,
+                __instance.inequality, settings.minimum, settings.neutral,
+                settings.maximum, settings.exponent,
+                settings.maximumDirectionalMultiplier);
 
             if (float.IsNaN(transformedDelta) || float.IsInfinity(transformedDelta))
             {
@@ -118,6 +118,123 @@ namespace TIEconomyMod.Patches
                 transformedDelta = 0f;
             }
             __result = transformedDelta;
+            return false;
+        }
+    }
+
+    [HarmonyPatch(typeof(TINationState), "inequalityImpactOnCohesion", MethodType.Getter)]
+    public static class CohesionRestInequalityPatch
+    {
+        [HarmonyPrefix]
+        public static bool Prefix(ref float __result, TINationState __instance)
+        {
+            CohesionRestSettings settings = Main.settings.cohesionRest;
+            if (!Main.FeatureEnabled(settings.enabled))
+            {
+                return true;
+            }
+
+            float calculated = CohesionRestMath.InequalityImpact(
+                __instance.education, __instance.inequality,
+                settings.inequalityEducationBaseMultiplier,
+                settings.inequalityEducationDivisor,
+                settings.inequalityOffset, settings.inequalityCoefficient);
+            if (float.IsNaN(calculated) || float.IsInfinity(calculated))
+            {
+                Main.Warn("Cohesion-rest Inequality impact produced an invalid value; retaining vanilla.");
+                return true;
+            }
+
+            __result = calculated;
+            return false;
+        }
+    }
+
+    [HarmonyPatch(typeof(TINationState), "publicEliteDivideImpactOnCohesion", MethodType.Getter)]
+    public static class CohesionRestPublicElitePatch
+    {
+        [HarmonyPostfix]
+        public static void Postfix(ref float __result, TINationState __instance)
+        {
+            CohesionRestSettings settings = Main.settings.cohesionRest;
+            if (!Main.FeatureEnabled(settings.enabled))
+            {
+                return;
+            }
+
+            float calculated = CohesionRestMath.ScalePublicEliteImpact(__result,
+                __instance.democracy, settings.publicEliteGovernmentDivisor);
+            if (float.IsNaN(calculated) || float.IsInfinity(calculated))
+            {
+                Main.Warn("Cohesion-rest public/elite impact produced an invalid value; retaining vanilla.");
+                return;
+            }
+
+            __result = calculated;
+        }
+    }
+
+    [HarmonyPatch(typeof(TINationState), "autocracyImpactOnCohesion", MethodType.Getter)]
+    public static class CohesionRestAutocracyPatch
+    {
+        [HarmonyPrefix]
+        public static bool Prefix(ref float __result, TINationState __instance)
+        {
+            CohesionRestSettings settings = Main.settings.cohesionRest;
+            if (!Main.FeatureEnabled(settings.enabled))
+            {
+                return true;
+            }
+
+            float calculated = CohesionRestMath.AutocracyImpact(
+                __instance.democracy, __instance.unrest,
+                settings.autocracyAnocracyBoundary,
+                settings.autocracyExponent);
+            if (float.IsNaN(calculated) || float.IsInfinity(calculated))
+            {
+                Main.Warn("Cohesion-rest Autocracy impact produced an invalid value; retaining vanilla.");
+                return true;
+            }
+
+            __result = calculated;
+            return false;
+        }
+    }
+
+    [HarmonyPatch(typeof(TINationState), "anocracyImpactOnCohesion", MethodType.Getter)]
+    public static class CohesionRestAnocracyPatch
+    {
+        [HarmonyPrefix]
+        public static bool Prefix(ref float __result, TINationState __instance)
+        {
+            CohesionRestSettings settings = Main.settings.cohesionRest;
+            if (!Main.FeatureEnabled(settings.enabled))
+            {
+                return true;
+            }
+
+            __result = CohesionRestMath.AnocracyImpact(__instance.democracy,
+                settings.autocracyAnocracyBoundary, 6.5f);
+            return false;
+        }
+    }
+
+    [HarmonyPatch(typeof(TINationState), "DemocracyImpactOnCohesion")]
+    public static class CohesionRestDemocracyPatch
+    {
+        [HarmonyPrefix]
+        public static bool Prefix(ref float __result, TINationState __instance,
+            float originalValue)
+        {
+            CohesionRestSettings settings = Main.settings.cohesionRest;
+            if (!Main.FeatureEnabled(settings.enabled))
+            {
+                return true;
+            }
+
+            __result = CohesionRestMath.DemocracyImpact(
+                __instance.democracy, originalValue, 5f, 6.5f,
+                settings.democracyCoefficient);
             return false;
         }
     }

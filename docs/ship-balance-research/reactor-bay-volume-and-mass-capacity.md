@@ -92,7 +92,7 @@ depict substantially larger or smaller aft machinery sections than the default
 art for the same statistical hull.
 
 The maintained raw dimensions and asset identifiers are in
-[`reactor-bay-variant-volumes.csv`](reactor-bay-variant-volumes.csv). The
+[`reactor-bay-variant-volumes.csv`](tables/reactor-bay-variant-volumes.csv). The
 inscribed-cylinder volumes selected for gameplay are:
 
 | Hull | Appearance 0 | Appearance 1 | Appearance 2 | Appearance 3 |
@@ -414,9 +414,10 @@ should not become a universal loophole.
 
 ## Current plant ranges after the mod override
 
-The following combines the installed-game inventory in `powerplant.csv` with
-the current overrides in `TIEconomyMod/ModFiles/TIPowerPlantTemplate.json`.
-Alien hybrid plants are excluded.
+The following combines the installed-game inventory in
+`tables/powerplant.csv` with the current overrides in
+`TIEconomyMod/ModFiles/TIPowerPlantTemplate.json`. Alien hybrid plants are
+excluded.
 
 | Power-plant class | Current output range | Current t/GW range | Full-rating mass range |
 |---|---:|---:|---:|
@@ -558,9 +559,9 @@ effective ceiling               = min(60 GW, geometry-derived ceiling)
 ```
 
 "Largest" means the compatible drive configuration with the highest unscaled
-`req power` in the current `drives.csv`, after multiplying that demand by the
-hull's implemented drive factor. This selects the fit that loads Solid V most
-heavily. It does not mean highest thrust, latest technology, or best combat
+`req power` in the current `tables/drives.csv`, after multiplying that demand
+by the hull's implemented drive factor. This selects the fit that loads Solid V
+most heavily. It does not mean highest thrust, latest technology, or best combat
 drive. Unlock chronology is deliberately ignored: this is a physical and
 runtime compatibility exercise across all drive templates that require the
 `Solid_Core_Fission` class.
@@ -709,10 +710,10 @@ Repository inputs:
 
 - [`measure_ship_prefabs.py`](../../scripts/ship-balance/measure_ship_prefabs.py)
   for asset transforms, mesh bounds and collider extraction;
-- [`powerplant.csv`](powerplant.csv) for the installed-game plant inventory;
+- [`powerplant.csv`](tables/powerplant.csv) for the installed-game plant inventory;
 - [`TIPowerPlantTemplate.json`](../../TIEconomyMod/ModFiles/TIPowerPlantTemplate.json)
   for current mod overrides;
-- [`drives.csv`](drives.csv) for drive requirements and mass fields;
+- [`drives.csv`](tables/drives.csv) for drive requirements and mass fields;
 - [`human-hull-slots-and-drive-scaling.md`](human-hull-slots-and-drive-scaling.md)
   for current human hull factors;
 - [`powerplant-benchmarks.md`](powerplant-benchmarks.md) and

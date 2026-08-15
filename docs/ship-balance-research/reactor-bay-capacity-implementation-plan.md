@@ -29,7 +29,7 @@ future pair. Radiator mass remains separate.
 These values are inscribed circular cylinders derived from the named aft
 radiator/machinery mesh. Raw mesh dimensions, asset identifiers, and additional
 precision are maintained in
-[`reactor-bay-variant-volumes.csv`](reactor-bay-variant-volumes.csv).
+[`reactor-bay-variant-volumes.csv`](tables/reactor-bay-variant-volumes.csv).
 
 | Hull | Appearance 0 | Appearance 1 | Appearance 2 | Appearance 3 |
 |---|---:|---:|---:|---:|

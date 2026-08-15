@@ -1659,13 +1659,13 @@ namespace TIEconomyMod.FormulaTests
             EconomyInequalityPatch.Prefix(ref economyDefault, nation);
             WelfareInequalityPatch.Prefix(ref welfareDefault, nation);
             SpoilsInequalityPatch.Prefix(ref spoilsDefault, nation);
-            Near(0.0005f, economyDefault, 0.000001f, "Economy priority Inequality value");
-            Near(-0.00666666f, welfareDefault, 0.000001f, "Welfare priority Inequality value");
-            Near(0.00333334f, spoilsDefault, 0.000001f, "Spoils priority Inequality value");
+            Near(0.0015f, economyDefault, 0.000001f, "Economy priority Inequality value");
+            Near(-0.01333332f, welfareDefault, 0.000001f, "Welfare priority Inequality value");
+            Near(0.00666668f, spoilsDefault, 0.000001f, "Spoils priority Inequality value");
             float climateChange = 0.02f;
             ClimateInequalityPatch.Prefix(ref climateChange,
                 TINationState.InequalityChangeReason.InqReason_ClimateChange);
-            Near(0.04f, climateChange, 0.000001f, "climate Inequality doubles");
+            Near(0.08f, climateChange, 0.000001f, "climate Inequality quadruples");
             float annexationChange = 0.02f;
             ClimateInequalityPatch.Prefix(ref annexationChange,
                 TINationState.InequalityChangeReason.InqReason_Annexation);
@@ -1674,8 +1674,8 @@ namespace TIEconomyMod.FormulaTests
             TIEconomyMod.Main.settings.inequality.welfareChangeAtReferenceGdp = -0.1f;
             TIEconomyMod.Main.settings.inequality.spoilsChangeAtReferenceGdp = 0.1f;
             float[] points = { 1f, 3f, 5f, 7f, 9f };
-            float[] positive = { 0.2f, 0.125f, 0.1f, 0.075f, 0f };
-            float[] negative = { 0f, -0.075f, -0.1f, -0.125f, -0.2f };
+            float[] positive = { 0.3f, 0.15f, 0.1f, 0.075f, 0f };
+            float[] negative = { 0f, -0.075f, -0.1f, -0.15f, -0.3f };
 
             for (int index = 0; index < points.Length; index++)
             {
@@ -1730,6 +1730,81 @@ namespace TIEconomyMod.FormulaTests
             Reset();
             TINationState nation = Nation();
             float result = 0f;
+            nation.education = 0f;
+            nation.inequality = 1f;
+            True(!CohesionRestInequalityPatch.Prefix(ref result, nation),
+                "Cohesion-rest Inequality prefix replaces vanilla");
+            Near(2.25f, result, 0.000001f,
+                "low Inequality strengthens Cohesion rest state");
+            nation.education = 10f;
+            nation.inequality = 3f;
+            CohesionRestInequalityPatch.Prefix(ref result, nation);
+            Near(0f, result, 0f,
+                "Inequality 3 is neutral for Cohesion rest state");
+            nation.inequality = 5f;
+            CohesionRestInequalityPatch.Prefix(ref result, nation);
+            Near(-4.5f, result, 0.000001f,
+                "higher Inequality penalizes Cohesion rest state");
+
+            nation.democracy = 1f;
+            result = -2f;
+            CohesionRestPublicElitePatch.Postfix(ref result, nation);
+            Near(-0.2f, result, 0.000001f,
+                "elite-public divide has one-tenth force at Government 1");
+            nation.democracy = 10f;
+            result = -2f;
+            CohesionRestPublicElitePatch.Postfix(ref result, nation);
+            Near(-2f, result, 0.000001f,
+                "elite-public divide has full force at Government 10");
+
+            Near(10.5f, TIEconomyMod.Main.settings.cohesionRest.baseValue,
+                0f, "Cohesion rest-state base default");
+            Near(4f, TIEconomyMod.Main.settings.cohesionRest.autocracyAnocracyBoundary,
+                0f, "Autocracy-Anocracy boundary default");
+            Near(1.285f, TIEconomyMod.Main.settings.cohesionRest.autocracyExponent,
+                0f, "Autocracy Cohesion exponent default");
+            nation.democracy = 1f;
+            nation.unrest = 2f;
+            result = 99f;
+            True(!CohesionRestAutocracyPatch.Prefix(ref result, nation),
+                "Autocracy Cohesion prefix replaces vanilla");
+            Near((float)((Math.Pow(4f, 1.285f) - Math.Pow(1f, 1.285f)) * 0.8f),
+                result, 0.000001f,
+                "Autocracy Cohesion uses the four-point boundary formula");
+            nation.democracy = 4f;
+            CohesionRestAutocracyPatch.Prefix(ref result, nation);
+            Near(0f, result, 0f,
+                "Autocracy Cohesion ends at Government four");
+            True(!CohesionRestAnocracyPatch.Prefix(ref result, nation),
+                "Anocracy Cohesion prefix replaces vanilla");
+            Near(-1f, result, 0f,
+                "Anocracy Cohesion starts at Government four");
+            nation.democracy = 3.9f;
+            CohesionRestAnocracyPatch.Prefix(ref result, nation);
+            Near(0f, result, 0f,
+                "Anocracy Cohesion is absent below Government four");
+            Near(1f,
+                TIEconomyMod.Main.settings.cohesionRest.democracyCoefficient,
+                0f, "Democracy Cohesion coefficient default");
+            nation.democracy = 8f;
+            result = 99f;
+            True(!CohesionRestDemocracyPatch.Prefix(ref result, nation, 8f),
+                "Democracy Cohesion prefix replaces vanilla");
+            Near(-1.5f, result, 0.000001f,
+                "Democracy Cohesion uses coefficient times score above 6.5");
+            nation.democracy = 10f;
+            CohesionRestDemocracyPatch.Prefix(ref result, nation, 5.2f);
+            Near(-0.2f, result, 0.000001f,
+                "Democracy Cohesion pull does not overshoot five");
+            CohesionRestDemocracyPatch.Prefix(ref result, nation, 2f);
+            Near(3f, result, 0.000001f,
+                "Democracy Cohesion pull reaches but does not cross five");
+            nation.democracy = 6.5f;
+            CohesionRestDemocracyPatch.Prefix(ref result, nation, 8f);
+            Near(0f, result, 0f,
+                "Anocracy boundary has no Democracy Cohesion pull");
+
+            nation = Nation();
             KnowledgeEducationPatch.Prefix(ref result, nation);
             Near(166667f / nation.population * 4f * (float)Math.Pow(0.87f, 8f),
                 result, 0.000001f, "knowledge education");

@@ -24,6 +24,9 @@ when prose and runtime behavior disagree.
   baseline.
 - [Patch sanity audit](patch-sanity-audit.md): scale, unit, and compatibility
   review of the implemented Harmony patches.
+- [Cohesion, Inequality, and Government coefficient report](national-social-coefficients-report.md):
+  comprehensive formula, coefficient, retained-vanilla, priority-speed, event,
+  and cross-effect inventory for tuning the three national social scores.
 - [Land warfare and Military investment](land-warfare-and-military-investment.md):
   authoritative formulas for army value, upkeep, modernization, repair debt,
   combat ratings, and force-preserving transfers.

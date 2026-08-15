@@ -5,7 +5,7 @@ Status: evidence and planning archive. Use the dated
 [current implementation matrix](../current-implementation-matrix.xlsx) to
 distinguish implemented values from proposals and deferred work.
 
-Last reviewed: 2026-08-13
+Last reviewed: 2026-08-15
 
 This dossier compares dated Terra Invicta ship-drive, power-plant, and
 weapon-crew snapshots with demonstrated hardware, active prototypes, historical
@@ -27,8 +27,11 @@ The comparison is organized into:
 - [Planning changelog](CHANGELOG.md)
 - [Propulsion benchmarks](propulsion-benchmarks.md)
 - [Power-plant benchmarks](powerplant-benchmarks.md)
-- Power-plant data: [installed snapshot](powerplant.csv) and
-  [current values with live overrides merged](powerplant-current.csv)
+- Data tables: [installed drive snapshot](tables/drives.csv),
+  [installed power-plant snapshot](tables/powerplant.csv),
+  [power plants with live overrides merged](tables/powerplant-current.csv),
+  [installed laser-weapon snapshot](tables/lasers.csv), and the
+  [magnetic-gun rebalance proposal](tables/magnetic-gun-rebalance-proposal.csv)
 - [Weapon automation and crew](weapon-automation-and-crew.md)
 - [Low-tech rebalance: first planning slice](low-tech-rebalance-slice.md)
 - [Fundamental limits and six-month crew consumables](fundamental-limits-and-crew-consumables.md)
@@ -53,6 +56,12 @@ than being silently replaced.
 Persistent research outputs, including generated CSVs, workbooks, reports, and
 charts, belong under `docs/` in the relevant topic directory. The repository's
 `outputs/` directory is reserved for disposable build or run products.
+
+The laser table is a 2026-08-15 snapshot of all 125 entries in the installed
+`TILaserWeaponTemplate.json` (88 ship weapons and 37 base/region-defense
+weapons). It preserves template order and values, expands the nested
+`weightedBuildMaterials` object into slash-delimited columns, and leaves fields
+that are absent from a source entry blank.
 
 ## Reading the confidence labels
 

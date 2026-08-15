@@ -1,6 +1,7 @@
 using HarmonyLib;
 using PavonisInteractive.TerraInvicta;
 using System;
+using TIEconomyMod.Core;
 
 namespace TIEconomyMod.Patches
 {
@@ -256,8 +257,8 @@ namespace TIEconomyMod.Patches
             float resourceMultiplier = 1f +
                 settings.economyMaximumResourceMultiplier * resourceCurve;
             // Inequality is a proportional economic outcome, so the affected stock is
-            // GDP rather than headcount. Defaults give +0.0005 in a $100B economy and
-            // +0.00005 in a $1T economy before resources/bounds. Since the latter also
+            // GDP rather than headcount. Defaults give +0.0015 in a $100B economy and
+            // +0.00015 in a $1T economy before resources/bounds. Since the latter also
             // produces about 10x the IP, equal priority allocation produces the same
             // monthly national change instead of rewarding either union or breakup.
             float gdpBillions = Math.Max(settings.minimumGdpBillions,
@@ -266,12 +267,12 @@ namespace TIEconomyMod.Patches
                 settings.referenceGdpBillions / gdpBillions * resourceMultiplier;
 
             // Map TI's 1–9 scale to a continuous -1..+1 position around neutral 5.
-            // This single smooth transform makes positive Economy change 2x at 1, 1x
-            // at 5, and 0x at 9. Negative deltas would naturally behave in reverse.
-            float position = (__instance.inequality - settings.neutral) /
-                ((settings.maximum - settings.minimum) / 2f);
-            float transformedDelta = rawDelta * (1f - Math.Sign(rawDelta) * position *
-                (float)Math.Pow(Math.Abs(position), settings.exponent - 1f));
+            // The directional curve makes an inward change x3 at either endpoint,
+            // stays x1 at 5, and suppresses outward change to zero at the boundary.
+            float transformedDelta = InequalityMath.TransformPriorityChange(rawDelta,
+                __instance.inequality, settings.minimum, settings.neutral,
+                settings.maximum, settings.exponent,
+                settings.maximumDirectionalMultiplier);
 
             if (float.IsNaN(transformedDelta) || float.IsInfinity(transformedDelta))
             {
