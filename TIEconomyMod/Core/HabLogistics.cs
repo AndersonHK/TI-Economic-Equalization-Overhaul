@@ -6,6 +6,12 @@ using System.Runtime.CompilerServices;
 
 namespace TIEconomyMod
 {
+    internal enum LogisticsDeliveryKind
+    {
+        HabModule,
+        Probe
+    }
+
     internal sealed class HabLogisticsRoute
     {
         internal TIHabState OriginHab;
@@ -17,7 +23,9 @@ namespace TIEconomyMod
         internal double TransferDeltaV_kps;
         internal double LandingDeltaV_kps;
         internal double TotalDeltaV_kps;
-        internal float TransferTime_days;
+        // Includes trajectory physics and Solar Steamers' off-window effect,
+        // but not payload-specific module or probe transfer-time effects.
+        internal float TrajectoryTime_days;
 
         internal string OriginName
         {
@@ -82,27 +90,56 @@ namespace TIEconomyMod
             internal double ExtraDeltaV_kps;
         }
 
+        private struct LogisticsEffectSnapshot
+        {
+            internal float GenericTransferEV_kps;
+            internal int GenericTransferEVBits;
+            internal int OffDateModifierBits;
+
+            internal static LogisticsEffectSnapshot Capture(
+                TIFactionState faction)
+            {
+                float genericTransferEV =
+                    TISpaceObjectState.ModifiedGenericTransferEV_kps(faction);
+                float offDateModifier = TIEffectsState.SumEffectsModifiers(
+                    Context.GenericTransfer_OffDate_PCT,
+                    faction,
+                    1f,
+                    null);
+                return new LogisticsEffectSnapshot
+                {
+                    GenericTransferEV_kps = genericTransferEV,
+                    GenericTransferEVBits = FloatBits(genericTransferEV),
+                    OffDateModifierBits = FloatBits(offDateModifier)
+                };
+            }
+        }
+
         private struct RouteKey : IEquatable<RouteKey>
         {
             private readonly TIFactionState faction;
             private readonly TIGameState destination;
             private readonly int tier;
+            private readonly int offDateModifierBits;
 
             internal RouteKey(
                 TIFactionState faction,
                 TIGameState destination,
-                int tier)
+                int tier,
+                int offDateModifierBits)
             {
                 this.faction = faction;
                 this.destination = destination;
                 this.tier = tier;
+                this.offDateModifierBits = offDateModifierBits;
             }
 
             public bool Equals(RouteKey other)
             {
                 return ReferenceEquals(faction, other.faction) &&
                     ReferenceEquals(destination, other.destination) &&
-                    tier == other.tier;
+                    tier == other.tier &&
+                    offDateModifierBits == other.offDateModifierBits;
             }
 
             public override bool Equals(object obj)
@@ -116,7 +153,8 @@ namespace TIEconomyMod
                 {
                     int hash = RuntimeHelpers.GetHashCode(faction);
                     hash = hash * 397 + RuntimeHelpers.GetHashCode(destination);
-                    return hash * 397 + tier;
+                    hash = hash * 397 + tier;
+                    return hash * 397 + offDateModifierBits;
                 }
             }
         }
@@ -128,6 +166,8 @@ namespace TIEconomyMod
             private readonly int tier;
             private readonly int materialsHash;
             private readonly int resourcesHash;
+            private readonly int genericTransferEVBits;
+            private readonly int offDateModifierBits;
             private readonly bool fullPayload;
             private readonly bool allowEarthFallback;
             private readonly bool substitute;
@@ -138,6 +178,8 @@ namespace TIEconomyMod
                 int tier,
                 int materialsHash,
                 int resourcesHash,
+                int genericTransferEVBits,
+                int offDateModifierBits,
                 bool fullPayload,
                 bool allowEarthFallback,
                 bool substitute)
@@ -147,6 +189,8 @@ namespace TIEconomyMod
                 this.tier = tier;
                 this.materialsHash = materialsHash;
                 this.resourcesHash = resourcesHash;
+                this.genericTransferEVBits = genericTransferEVBits;
+                this.offDateModifierBits = offDateModifierBits;
                 this.fullPayload = fullPayload;
                 this.allowEarthFallback = allowEarthFallback;
                 this.substitute = substitute;
@@ -159,6 +203,8 @@ namespace TIEconomyMod
                     tier == other.tier &&
                     materialsHash == other.materialsHash &&
                     resourcesHash == other.resourcesHash &&
+                    genericTransferEVBits == other.genericTransferEVBits &&
+                    offDateModifierBits == other.offDateModifierBits &&
                     fullPayload == other.fullPayload &&
                     allowEarthFallback == other.allowEarthFallback &&
                     substitute == other.substitute;
@@ -178,6 +224,8 @@ namespace TIEconomyMod
                     hash = hash * 397 + tier;
                     hash = hash * 397 + materialsHash;
                     hash = hash * 397 + resourcesHash;
+                    hash = hash * 397 + genericTransferEVBits;
+                    hash = hash * 397 + offDateModifierBits;
                     hash = hash * 397 + (fullPayload ? 1 : 0);
                     hash = hash * 397 + (allowEarthFallback ? 1 : 0);
                     return hash * 397 + (substitute ? 1 : 0);
@@ -239,10 +287,13 @@ namespace TIEconomyMod
             bool allowEarthFallback)
         {
             EnsureRouteCacheCurrent();
+            LogisticsEffectSnapshot effects =
+                LogisticsEffectSnapshot.Capture(faction);
             RouteKey key = new RouteKey(
                 faction,
                 destination,
-                Math.Max(1, requiredTier));
+                Math.Max(1, requiredTier),
+                effects.OffDateModifierBits);
             HabLogisticsRoute cached;
             if (RouteCache.TryGetValue(key, out cached))
             {
@@ -296,7 +347,10 @@ namespace TIEconomyMod
                     FactoryTier = 3,
                     DockTier = 3,
                     ExportTier = 3,
-                    TransferTime_days = EarthTransferTime(faction, destination)
+                    TrajectoryTime_days = TISpaceObjectState
+                        .GenericTransferTimeFromEarthsSurface_d(
+                            faction,
+                            destination)
                 };
             }
 
@@ -318,6 +372,8 @@ namespace TIEconomyMod
             bool allowEarthFallback,
             bool substitute)
         {
+            LogisticsEffectSnapshot effects =
+                LogisticsEffectSnapshot.Capture(faction);
             HabLogisticsRoute route = ResolveRoute(
                 faction,
                 destination,
@@ -346,6 +402,8 @@ namespace TIEconomyMod
                 requiredTier,
                 materialsHash,
                 resourcesHash,
+                effects.GenericTransferEVBits,
+                effects.OffDateModifierBits,
                 fullPayload,
                 allowEarthFallback,
                 substitute);
@@ -361,7 +419,8 @@ namespace TIEconomyMod
                 materials,
                 route,
                 fullPayload,
-                substitute);
+                substitute,
+                effects.GenericTransferEV_kps);
             FreightCache[key] = quote;
             return quote;
         }
@@ -370,14 +429,39 @@ namespace TIEconomyMod
             TIFactionState faction,
             TIGameState destination)
         {
-            float transferDays =
-                TISpaceObjectState.GenericTransferTimeFromEarthsSurface_d(
+            return EarthDeliveryTime(
+                faction,
+                destination,
+                LogisticsDeliveryKind.HabModule);
+        }
+
+        internal static float EarthDeliveryTime(
+            TIFactionState faction,
+            TIGameState destination,
+            LogisticsDeliveryKind deliveryKind)
+        {
+            float trajectoryDays = TISpaceObjectState
+                .GenericTransferTimeFromEarthsSurface_d(
                     faction,
                     destination);
-            return transferDays + TIEffectsState.SumEffectsModifiers(
-                Context.GenericModuleTransferTime,
+            return EffectiveDeliveryTime(
                 faction,
-                transferDays,
+                trajectoryDays,
+                deliveryKind);
+        }
+
+        internal static float EffectiveDeliveryTime(
+            TIFactionState faction,
+            float trajectoryDays,
+            LogisticsDeliveryKind deliveryKind)
+        {
+            Context context = deliveryKind == LogisticsDeliveryKind.Probe
+                ? Context.ProbeTransferTime
+                : Context.GenericModuleTransferTime;
+            return trajectoryDays + TIEffectsState.SumEffectsModifiers(
+                context,
+                faction,
+                trajectoryDays,
                 null);
         }
 
@@ -628,7 +712,7 @@ namespace TIEconomyMod
                 TransferDeltaV_kps = bestTransfer,
                 LandingDeltaV_kps = bestLanding,
                 TotalDeltaV_kps = bestTotal,
-                TransferTime_days = bestTime
+                TrajectoryTime_days = bestTime
             };
         }
 
@@ -648,12 +732,12 @@ namespace TIEconomyMod
                 return false;
             }
 
-            if (candidate.TransferTime_days < current.TransferTime_days)
+            if (candidate.TrajectoryTime_days < current.TrajectoryTime_days)
             {
                 return true;
             }
 
-            if (candidate.TransferTime_days > current.TransferTime_days)
+            if (candidate.TrajectoryTime_days > current.TrajectoryTime_days)
             {
                 return false;
             }
@@ -668,7 +752,8 @@ namespace TIEconomyMod
             ResourceCostBuilder materials,
             HabLogisticsRoute route,
             bool fullPayload,
-            bool substitute)
+            bool substitute,
+            float genericTransferEV_kps)
         {
             float conversion = TemplateManager.global.spaceResourceToTons;
             HabFreightQuote quote = new HabFreightQuote(
@@ -730,7 +815,7 @@ namespace TIEconomyMod
                 quote.PropellantMass_tons = HabRebalanceMath.PropellantMass(
                     quote.SpacePayloadMass_tons,
                     route.TotalDeltaV_kps,
-                    TISpaceObjectState.ModifiedGenericTransferEV_kps(faction));
+                    genericTransferEV_kps);
                 AddPropellant(
                     faction,
                     quote,
@@ -884,6 +969,11 @@ namespace TIEconomyMod
 
                 return hash;
             }
+        }
+
+        private static int FloatBits(float value)
+        {
+            return BitConverter.ToInt32(BitConverter.GetBytes(value), 0);
         }
 
         private static int ResourceBalancesHash(TIFactionState faction)

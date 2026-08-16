@@ -66,360 +66,463 @@
     "dataName": "LightCoilgunBatteryMk1",
     "ammoMass_kg": 13,
     "warheadMass_kg": 10,
-    "cooldown_s": 28
+    "muzzleVelocity_kps": 5.6,
+    "targetingRange_km": 600,
+    "cooldown_s": 28,
+    "intraSalvoCooldown_s": 4
   },
   {
     "dataName": "LightCoilgunBatteryMk2",
     "ammoMass_kg": 13,
     "warheadMass_kg": 10,
-    "cooldown_s": 18
+    "muzzleVelocity_kps": 6.8,
+    "targetingRange_km": 650,
+    "cooldown_s": 18,
+    "intraSalvoCooldown_s": 4
   },
   {
     "dataName": "LightCoilgunBatteryMk3",
     "ammoMass_kg": 13,
-    "warheadMass_kg": 11,
-    "cooldown_s": 8
+    "warheadMass_kg": 10,
+    "muzzleVelocity_kps": 7.9,
+    "targetingRange_km": 750,
+    "cooldown_s": 8,
+    "intraSalvoCooldown_s": 4
   },
   {
     "dataName": "CoilgunBatteryMk1",
     "ammoMass_kg": 25,
     "warheadMass_kg": 19,
-    "cooldown_s": 28
+    "muzzleVelocity_kps": 6.8,
+    "targetingRange_km": 800,
+    "cooldown_s": 28,
+    "intraSalvoCooldown_s": 6
   },
   {
     "dataName": "CoilgunBatteryMk2",
     "ammoMass_kg": 25,
     "warheadMass_kg": 20,
-    "cooldown_s": 18
+    "muzzleVelocity_kps": 7.9,
+    "targetingRange_km": 850,
+    "cooldown_s": 18,
+    "intraSalvoCooldown_s": 6
   },
   {
     "dataName": "CoilgunBatteryMk3",
     "ammoMass_kg": 25,
     "warheadMass_kg": 22,
-    "cooldown_s": 8
+    "muzzleVelocity_kps": 9,
+    "targetingRange_km": 900,
+    "cooldown_s": 8,
+    "intraSalvoCooldown_s": 6
   },
   {
     "dataName": "HeavyCoilgunBatteryMk1",
     "ammoMass_kg": 50,
     "warheadMass_kg": 38,
-    "cooldown_s": 28
+    "muzzleVelocity_kps": 7.9,
+    "targetingRange_km": 1000,
+    "cooldown_s": 28,
+    "intraSalvoCooldown_s": 6
   },
   {
     "dataName": "HeavyCoilgunBatteryMk2",
     "ammoMass_kg": 50,
     "warheadMass_kg": 40,
-    "cooldown_s": 18
+    "muzzleVelocity_kps": 9,
+    "targetingRange_km": 1050,
+    "cooldown_s": 18,
+    "intraSalvoCooldown_s": 6
   },
   {
     "dataName": "HeavyCoilgunBatteryMk3",
     "ammoMass_kg": 50,
     "warheadMass_kg": 44,
-    "cooldown_s": 8
+    "muzzleVelocity_kps": 10.1,
+    "targetingRange_km": 1100,
+    "cooldown_s": 8,
+    "intraSalvoCooldown_s": 6
   },
   {
     "dataName": "LightCoilCannonMk1",
     "ammoMass_kg": 31,
     "warheadMass_kg": 23,
-    "cooldown_s": 34
+    "muzzleVelocity_kps": 6.8,
+    "targetingRange_km": 650,
+    "cooldown_s": 34,
+    "intraSalvoCooldown_s": 5
   },
   {
     "dataName": "LightCoilCannonMk2",
     "ammoMass_kg": 31,
     "warheadMass_kg": 25,
-    "cooldown_s": 22
+    "muzzleVelocity_kps": 7.9,
+    "targetingRange_km": 750,
+    "cooldown_s": 22,
+    "intraSalvoCooldown_s": 5
   },
   {
     "dataName": "LightCoilCannonMk3",
     "ammoMass_kg": 31,
     "warheadMass_kg": 27,
-    "cooldown_s": 10
+    "muzzleVelocity_kps": 10.1,
+    "targetingRange_km": 800,
+    "cooldown_s": 10,
+    "intraSalvoCooldown_s": 5
   },
   {
     "dataName": "CoilCannonMk1",
     "ammoMass_kg": 63,
     "warheadMass_kg": 47,
-    "cooldown_s": 34
+    "muzzleVelocity_kps": 7.9,
+    "targetingRange_km": 850,
+    "cooldown_s": 34,
+    "intraSalvoCooldown_s": 8
   },
   {
     "dataName": "CoilCannonMk2",
     "ammoMass_kg": 63,
     "warheadMass_kg": 50,
-    "cooldown_s": 22
+    "muzzleVelocity_kps": 9,
+    "targetingRange_km": 900,
+    "cooldown_s": 22,
+    "intraSalvoCooldown_s": 8
   },
   {
     "dataName": "CoilCannonMk3",
     "ammoMass_kg": 63,
     "warheadMass_kg": 55,
-    "cooldown_s": 10
+    "muzzleVelocity_kps": 11.3,
+    "targetingRange_km": 1000,
+    "cooldown_s": 10,
+    "intraSalvoCooldown_s": 8
   },
   {
     "dataName": "HeavyCoilCannonMk1",
     "ammoMass_kg": 94,
     "warheadMass_kg": 71,
-    "cooldown_s": 34
+    "muzzleVelocity_kps": 8.5,
+    "targetingRange_km": 1000,
+    "cooldown_s": 34,
+    "intraSalvoCooldown_s": 8
   },
   {
     "dataName": "HeavyCoilCannonMk2",
     "ammoMass_kg": 94,
     "warheadMass_kg": 75,
-    "cooldown_s": 22
+    "muzzleVelocity_kps": 9.6,
+    "targetingRange_km": 1050,
+    "cooldown_s": 22,
+    "intraSalvoCooldown_s": 8
   },
   {
     "dataName": "HeavyCoilCannonMk3",
     "ammoMass_kg": 94,
     "warheadMass_kg": 82,
-    "cooldown_s": 10
+    "muzzleVelocity_kps": 11.9,
+    "targetingRange_km": 1100,
+    "cooldown_s": 10,
+    "intraSalvoCooldown_s": 8
   },
   {
     "dataName": "SpinalCoilerMk1",
     "ammoMass_kg": 125,
     "warheadMass_kg": 94,
-    "cooldown_s": 34
+    "muzzleVelocity_kps": 9,
+    "targetingRange_km": 1100,
+    "cooldown_s": 34,
+    "intraSalvoCooldown_s": 8
   },
   {
     "dataName": "SpinalCoilerMk2",
     "ammoMass_kg": 125,
     "warheadMass_kg": 100,
-    "cooldown_s": 22
+    "muzzleVelocity_kps": 10.1,
+    "targetingRange_km": 1150,
+    "cooldown_s": 22,
+    "intraSalvoCooldown_s": 8
   },
   {
     "dataName": "SpinalCoilerMk3",
     "ammoMass_kg": 125,
     "warheadMass_kg": 109,
-    "cooldown_s": 10
+    "muzzleVelocity_kps": 12.4,
+    "targetingRange_km": 1250,
+    "cooldown_s": 10,
+    "intraSalvoCooldown_s": 8
   },
   {
     "dataName": "HeavySiegeCoilerMk1",
     "ammoMass_kg": 938,
     "warheadMass_kg": 704,
-    "cooldown_s": 24
+    "muzzleVelocity_kps": 4.3,
+    "targetingRange_km": 1000,
+    "cooldown_s": 24,
+    "intraSalvoCooldown_s": 22
   },
   {
     "dataName": "HeavySiegeCoilerMk2",
     "ammoMass_kg": 938,
     "warheadMass_kg": 750,
-    "cooldown_s": 19
+    "muzzleVelocity_kps": 4.8,
+    "targetingRange_km": 1050,
+    "cooldown_s": 19,
+    "intraSalvoCooldown_s": 15
   },
   {
     "dataName": "HeavySiegeCoilerMk3",
     "ammoMass_kg": 938,
     "warheadMass_kg": 821,
-    "cooldown_s": 12
+    "muzzleVelocity_kps": 5.9,
+    "targetingRange_km": 1100,
+    "cooldown_s": 12,
+    "intraSalvoCooldown_s": 11
   },
   {
     "dataName": "SpinalSiegeCoilerMk1",
     "ammoMass_kg": 1250,
     "warheadMass_kg": 938,
-    "cooldown_s": 24
+    "muzzleVelocity_kps": 4.5,
+    "targetingRange_km": 1100,
+    "cooldown_s": 24,
+    "intraSalvoCooldown_s": 22
   },
   {
     "dataName": "SpinalSiegeCoilerMk2",
     "ammoMass_kg": 1250,
     "warheadMass_kg": 1000,
-    "cooldown_s": 19
+    "muzzleVelocity_kps": 5.1,
+    "targetingRange_km": 1150,
+    "cooldown_s": 19,
+    "intraSalvoCooldown_s": 15
   },
   {
     "dataName": "SpinalSiegeCoilerMk3",
     "ammoMass_kg": 1250,
     "warheadMass_kg": 1094,
-    "cooldown_s": 12
+    "muzzleVelocity_kps": 6.3,
+    "targetingRange_km": 1250,
+    "cooldown_s": 12,
+    "intraSalvoCooldown_s": 11
   },
   {
     "dataName": "AlienLightMagBattery",
-    "muzzleVelocity_kps": 5,
-    "targetingRange_km": 550,
+    "muzzleVelocity_kps": 6.3,
+    "targetingRange_km": 650,
     "efficiency": 0.6,
     "ammoMass_kg": 19,
     "warheadMass_kg": 16,
-    "cooldown_s": 9
+    "cooldown_s": 9,
+    "intraSalvoCooldown_s": 3
   },
   {
     "dataName": "AlienMagBattery",
-    "muzzleVelocity_kps": 6,
-    "targetingRange_km": 700,
+    "muzzleVelocity_kps": 7.5,
+    "targetingRange_km": 850,
     "efficiency": 0.6,
     "ammoMass_kg": 38,
     "warheadMass_kg": 32,
-    "cooldown_s": 11
+    "cooldown_s": 11,
+    "intraSalvoCooldown_s": 4
   },
   {
     "dataName": "AlienHeavyMagBattery",
-    "muzzleVelocity_kps": 7,
-    "targetingRange_km": 850,
+    "muzzleVelocity_kps": 8.8,
+    "targetingRange_km": 1050,
     "efficiency": 0.6,
     "ammoMass_kg": 75,
     "warheadMass_kg": 64,
-    "cooldown_s": 13
+    "cooldown_s": 13,
+    "intraSalvoCooldown_s": 5
   },
   {
     "dataName": "AlienMiniLightMagCannon",
-    "muzzleVelocity_kps": 6,
-    "targetingRange_km": 600,
+    "muzzleVelocity_kps": 7.5,
+    "targetingRange_km": 750,
     "efficiency": 0.6,
     "ammoMass_kg": 50,
     "warheadMass_kg": 43,
-    "cooldown_s": 18
+    "cooldown_s": 18,
+    "intraSalvoCooldown_s": 3
   },
   {
     "dataName": "AlienLightMagCannon",
-    "muzzleVelocity_kps": 6,
-    "targetingRange_km": 600,
+    "muzzleVelocity_kps": 7.5,
+    "targetingRange_km": 750,
     "efficiency": 0.6,
     "ammoMass_kg": 50,
     "warheadMass_kg": 43,
-    "cooldown_s": 18
+    "cooldown_s": 18,
+    "intraSalvoCooldown_s": 3
   },
   {
     "dataName": "AlienMagCannon",
-    "muzzleVelocity_kps": 7,
-    "targetingRange_km": 750,
+    "muzzleVelocity_kps": 8.8,
+    "targetingRange_km": 900,
     "efficiency": 0.6,
     "ammoMass_kg": 100,
     "warheadMass_kg": 85,
-    "cooldown_s": 22
+    "cooldown_s": 22,
+    "intraSalvoCooldown_s": 4
   },
   {
     "dataName": "AlienHeavyMagCannon",
-    "muzzleVelocity_kps": 8.3,
-    "targetingRange_km": 850,
+    "muzzleVelocity_kps": 10.4,
+    "targetingRange_km": 1050,
     "efficiency": 0.6,
     "ammoMass_kg": 150,
     "warheadMass_kg": 128,
-    "cooldown_s": 32
+    "cooldown_s": 32,
+    "intraSalvoCooldown_s": 6
   },
   {
     "dataName": "AlienSpinalMagCannon",
-    "muzzleVelocity_kps": 10,
-    "targetingRange_km": 950,
+    "muzzleVelocity_kps": 12.5,
+    "targetingRange_km": 1150,
     "efficiency": 0.6,
     "ammoMass_kg": 200,
     "warheadMass_kg": 170,
-    "cooldown_s": 43
+    "cooldown_s": 43,
+    "intraSalvoCooldown_s": 8
   },
   {
     "dataName": "AdvancedAlienLightMagBattery",
-    "muzzleVelocity_kps": 6.7,
-    "targetingRange_km": 650,
+    "muzzleVelocity_kps": 8.4,
+    "targetingRange_km": 800,
     "efficiency": 0.75,
     "ammoMass_kg": 19,
     "warheadMass_kg": 17,
-    "cooldown_s": 4
+    "cooldown_s": 4,
+    "intraSalvoCooldown_s": 3
   },
   {
     "dataName": "AdvancedAlienMagBattery",
-    "muzzleVelocity_kps": 7.8,
-    "targetingRange_km": 800,
+    "muzzleVelocity_kps": 9.8,
+    "targetingRange_km": 1000,
     "efficiency": 0.75,
     "ammoMass_kg": 38,
     "warheadMass_kg": 34,
-    "cooldown_s": 5
+    "cooldown_s": 5,
+    "intraSalvoCooldown_s": 4
   },
   {
     "dataName": "AdvancedAlienHeavyMagBattery",
-    "muzzleVelocity_kps": 9.4,
-    "targetingRange_km": 950,
+    "muzzleVelocity_kps": 11.8,
+    "targetingRange_km": 1150,
     "efficiency": 0.75,
     "ammoMass_kg": 75,
     "warheadMass_kg": 68,
-    "cooldown_s": 6
+    "cooldown_s": 6,
+    "intraSalvoCooldown_s": 5
   },
   {
     "dataName": "AdvancedAlienLightMagCannon",
-    "muzzleVelocity_kps": 8.6,
-    "targetingRange_km": 700,
+    "muzzleVelocity_kps": 10.8,
+    "targetingRange_km": 850,
     "efficiency": 0.75,
     "ammoMass_kg": 50,
     "warheadMass_kg": 45,
-    "cooldown_s": 13
+    "cooldown_s": 13,
+    "intraSalvoCooldown_s": 3
   },
   {
     "dataName": "AdvancedAlienMagCannon",
-    "muzzleVelocity_kps": 10,
-    "targetingRange_km": 850,
+    "muzzleVelocity_kps": 12.5,
+    "targetingRange_km": 1050,
     "efficiency": 0.75,
     "ammoMass_kg": 100,
     "warheadMass_kg": 90,
-    "cooldown_s": 16
+    "cooldown_s": 16,
+    "intraSalvoCooldown_s": 4
   },
   {
     "dataName": "AdvancedAlienHeavyMagCannon",
-    "muzzleVelocity_kps": 12.5,
-    "targetingRange_km": 950,
+    "muzzleVelocity_kps": 15.6,
+    "targetingRange_km": 1150,
     "efficiency": 0.75,
     "ammoMass_kg": 150,
     "warheadMass_kg": 135,
-    "cooldown_s": 23
+    "cooldown_s": 23,
+    "intraSalvoCooldown_s": 6
   },
   {
     "dataName": "AdvancedAlienSpinalMagCannon",
-    "muzzleVelocity_kps": 15,
-    "targetingRange_km": 1050,
+    "muzzleVelocity_kps": 18.8,
+    "targetingRange_km": 1300,
     "efficiency": 0.75,
     "ammoMass_kg": 200,
     "warheadMass_kg": 180,
-    "cooldown_s": 31
+    "cooldown_s": 31,
+    "intraSalvoCooldown_s": 8
   },
   {
     "dataName": "Gen3AlienLightMagBattery",
-    "muzzleVelocity_kps": 8.2,
-    "targetingRange_km": 700,
-    "efficiency": 0.85,
-    "ammoMass_kg": 35,
-    "warheadMass_kg": 30,
-    "cooldown_s": 4
-  },
-  {
-    "dataName": "Gen3AlienMagBattery",
     "muzzleVelocity_kps": 10.3,
     "targetingRange_km": 850,
     "efficiency": 0.85,
+    "ammoMass_kg": 35,
+    "warheadMass_kg": 30,
+    "cooldown_s": 4,
+    "intraSalvoCooldown_s": 3
+  },
+  {
+    "dataName": "Gen3AlienMagBattery",
+    "muzzleVelocity_kps": 12.9,
+    "targetingRange_km": 1050,
+    "efficiency": 0.85,
     "ammoMass_kg": 69,
     "warheadMass_kg": 60,
-    "cooldown_s": 5
+    "cooldown_s": 5,
+    "intraSalvoCooldown_s": 3
   },
   {
     "dataName": "Gen3AlienHeavyMagBattery",
-    "muzzleVelocity_kps": 12.4,
-    "targetingRange_km": 1000,
+    "muzzleVelocity_kps": 15.5,
+    "targetingRange_km": 1250,
     "efficiency": 0.85,
     "ammoMass_kg": 138,
     "warheadMass_kg": 120,
-    "cooldown_s": 6
+    "cooldown_s": 6,
+    "intraSalvoCooldown_s": 4
   },
   {
     "dataName": "Gen3AlienLightMagCannon",
-    "muzzleVelocity_kps": 10.8,
-    "targetingRange_km": 800,
+    "muzzleVelocity_kps": 13.5,
+    "targetingRange_km": 1000,
     "efficiency": 0.85,
     "ammoMass_kg": 93,
     "warheadMass_kg": 80,
-    "cooldown_s": 6
+    "cooldown_s": 6,
+    "intraSalvoCooldown_s": 3
   },
   {
     "dataName": "Gen3AlienMagCannon",
-    "muzzleVelocity_kps": 13.1,
-    "targetingRange_km": 900,
+    "muzzleVelocity_kps": 16.4,
+    "targetingRange_km": 1100,
     "efficiency": 0.85,
     "ammoMass_kg": 184,
     "warheadMass_kg": 160,
-    "cooldown_s": 8
+    "cooldown_s": 8,
+    "intraSalvoCooldown_s": 3
   },
   {
     "dataName": "Gen3AlienHeavyMagCannon",
-    "muzzleVelocity_kps": 16.5,
-    "targetingRange_km": 1000,
+    "muzzleVelocity_kps": 20.6,
+    "targetingRange_km": 1250,
     "efficiency": 0.85,
     "ammoMass_kg": 368,
     "warheadMass_kg": 320,
-    "cooldown_s": 14
+    "cooldown_s": 14,
+    "intraSalvoCooldown_s": 4
   },
   {
     "dataName": "Gen3AlienSpinalMagCannon",
-    "muzzleVelocity_kps": 19.8,
-    "targetingRange_km": 1100,
+    "muzzleVelocity_kps": 24.8,
+    "targetingRange_km": 1350,
     "efficiency": 0.85,
     "ammoMass_kg": 736,
     "warheadMass_kg": 640,
-    "cooldown_s": 23
+    "cooldown_s": 23,
+    "intraSalvoCooldown_s": 5
   }
 ]

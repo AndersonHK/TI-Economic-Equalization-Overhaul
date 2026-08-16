@@ -67,10 +67,15 @@ Rocketry are completed.
 ## Alien pacing associated with the technology reset
 
 The start gives the aliens a 15-year quiet period, a 20-year setup duration,
-0.75x progression, and -5 starting progression years. The five initial alien
-councilor fleets use the same fleet IDs as the modern scenarios, but strategic
-progression is deliberately delayed while humanity completes the expensive
-opening technologies.
+0.75x progression, and -5 starting progression years. The start-time template
+retains the five modern alien councilor-fleet IDs, but the 2003 scenario selects
+the `NoStartFleets` meta-group, so those fleets are not instantiated. The
+scenario begins with a single alien councilor at the initial crashdown and a
+skeletal HQ/station; strategic progression and fleet construction are
+deliberately delayed while humanity completes the expensive opening
+technologies. See the
+[alien start, wormhole, and Earth-invasion audit](alien-start-wormhole-and-earth-invasion.md)
+for the complete force and pacing trace.
 
 ## Economic Equalization compatibility finding
 
@@ -86,4 +91,3 @@ effects but currently contributes no Economic Equalization productivity,
 labor-substitution, or resource-substitution weight. Base technologies reached
 after them resume normal catalog progress. This is an identified compatibility
 gap, not silently treated as balanced behavior.
-

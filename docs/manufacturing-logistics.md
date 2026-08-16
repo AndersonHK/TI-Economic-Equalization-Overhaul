@@ -112,6 +112,19 @@ propellantMass = payloadMass × (exp(totalDeltaV / modifiedExhaustVelocity) - 1)
 Propellant uses the existing probe Water/Volatiles proportions. A zero-delta-v
 same-hab job consumes zero freight propellant.
 
+Rocket projects change `modifiedExhaustVelocity`; they never change route
+delta-v. Their vanilla `GenericTransferEV_kps` progression therefore reduces
+Water/Volatiles propellant for space freight and Boost for any Earth-supplied
+portion of a mixed delivery. Route and freight caches include the faction's
+current off-window-time and exhaust-velocity effect values so a completed
+project changes a quote immediately, without waiting for time to advance.
+
+Trajectory time comes from the vanilla generic-transfer calculation.
+Solar Steamers reduces only an applicable off-launch-window penalty inside that
+calculation. Afterward, hab and module deliveries apply
+`GenericModuleTransferTime` exactly once, including Space Tugs, Nuclear
+Freighters, and Fusion Freighters.
+
 ## Founding habs
 
 Habs may be founded by full Earth purchase and launch, a ship-carried kit, or
@@ -135,6 +148,13 @@ Probes are full-payload T1 manufacturing jobs.
 - Material composition remains the vanilla probe composition.
 - Non-Earth freight consumes Water/Volatiles propellant.
 - Earth purchase and Boost substitution cover shortages.
+- Rocket projects reduce probe freight propellant and Earth Boost through the
+  vanilla generic-transfer exhaust velocity; they do not alter route delta-v.
+- Solar Steamers reduces applicable off-window trajectory penalties, and High
+  Thrust Probes applies `ProbeTransferTime` exactly once to the resulting flight
+  time. Hab-module freighter effects do not apply to probes.
+- Faction contribution to the applicable Mission-to-* global technology reduces
+  survey time after arrival; it does not change flight time or freight cost.
 - Multi-probe operations inherit the single-probe calculation.
 
 ## AI network planning

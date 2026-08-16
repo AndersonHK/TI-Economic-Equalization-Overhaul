@@ -85,22 +85,17 @@ namespace TIEconomyMod.Patches
                 faction,
                 target,
                 quote);
-            float spaceDays = quote.Route.TransferTime_days;
-            spaceDays += TIEffectsState.SumEffectsModifiers(
-                Context.ProbeTransferTime,
+            float spaceDays = HabLogistics.EffectiveDeliveryTime(
                 faction,
-                spaceDays,
-                null);
+                quote.Route.TrajectoryTime_days,
+                LogisticsDeliveryKind.Probe);
             float earthDays = 0f;
             if (quote.EarthFreightMass_tons > 0f)
             {
-                earthDays = TISpaceObjectState
-                    .GenericTransferTimeFromEarthsSurface_d(faction, target);
-                earthDays += TIEffectsState.SumEffectsModifiers(
-                    Context.ProbeTransferTime,
+                earthDays = HabLogistics.EarthDeliveryTime(
                     faction,
-                    earthDays,
-                    null);
+                    target,
+                    LogisticsDeliveryKind.Probe);
             }
 
             float deliveryDays = Math.Max(spaceDays, earthDays);

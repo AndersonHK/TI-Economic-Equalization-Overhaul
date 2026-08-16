@@ -41,6 +41,9 @@ when prose and runtime behavior disagree.
 - [2003 starting technology audit](starting-technology-2003.md): Dark Skies
   opening technologies, completed projects, alien pacing, and current Economic
   Equalization compatibility limits.
+- [Alien start, wormhole, and Earth-invasion audit](alien-start-wormhole-and-earth-invasion.md):
+  scenario-by-scenario alien day-one assets, campaign-setting effects,
+  wormhole income formulas, invasion timing, and assault-carrier landing AI.
 
 ## Historical, exploratory, and deferred material
 

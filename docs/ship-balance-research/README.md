@@ -5,7 +5,7 @@ Status: evidence and planning archive. Use the dated
 [current implementation matrix](../current-implementation-matrix.xlsx) to
 distinguish implemented values from proposals and deferred work.
 
-Last reviewed: 2026-08-15
+Last reviewed: 2026-08-16
 
 This dossier compares dated Terra Invicta ship-drive, power-plant, and
 weapon-crew snapshots with demonstrated hardware, active prototypes, historical
@@ -30,8 +30,10 @@ The comparison is organized into:
 - Data tables: [installed drive snapshot](tables/drives.csv),
   [installed power-plant snapshot](tables/powerplant.csv),
   [power plants with live overrides merged](tables/powerplant-current.csv),
-  [installed laser-weapon snapshot](tables/lasers.csv), and the
-  [magnetic-gun rebalance proposal](tables/magnetic-gun-rebalance-proposal.csv)
+  [installed laser-weapon snapshot](tables/lasers.csv), the historical
+  [magnetic-gun rebalance proposal](tables/magnetic-gun-rebalance-proposal.csv),
+  and the
+  [current magnetic tier-progression comparison](tables/magnetic-tier-progression-rework.csv)
 - [Weapon automation and crew](weapon-automation-and-crew.md)
 - [Low-tech rebalance: first planning slice](low-tech-rebalance-slice.md)
 - [Fundamental limits and six-month crew consumables](fundamental-limits-and-crew-consumables.md)

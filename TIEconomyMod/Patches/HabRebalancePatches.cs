@@ -416,13 +416,10 @@ namespace TIEconomyMod.Patches
             if (!quote.Route.IsEarthFallback &&
                 quote.SpacePayloadMass_tons > 0f)
             {
-                float baseTransferTime = quote.Route.TransferTime_days;
-                spaceTransferTime = baseTransferTime +
-                    TIEffectsState.SumEffectsModifiers(
-                        Context.GenericModuleTransferTime,
-                        faction,
-                        baseTransferTime,
-                        null);
+                spaceTransferTime = HabLogistics.EffectiveDeliveryTime(
+                    faction,
+                    quote.Route.TrajectoryTime_days,
+                    LogisticsDeliveryKind.HabModule);
             }
 
             float transferTime = Mathf.Max(

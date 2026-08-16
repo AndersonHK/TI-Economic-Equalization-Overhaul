@@ -3,6 +3,39 @@
 This is a decision log for the proposed ship rebalance. Entries here describe
 the balance decisions as well as their implementation status.
 
+## 2026-08-16
+
+### Implemented and deployed: coil and alien magnetic tier progression cadence revision
+
+- Correct the technology handoff so Coilgun Mk1 strictly exceeds the matching
+  Railgun Mk2 in range and modeled sustained damage, and Coilgun Mk2 strictly
+  exceeds Railgun Mk3. All 18 regular and siege comparisons now pass.
+- Scale all human coil and alien magnetic muzzle velocities by `1.25`, rounded
+  to `0.1 km/s`; scale range by `1.25` and floor it to the nearest `50 km`;
+  inter-salvo reload is unchanged.
+- Apply a 60% intra-salvo reduction to human light coils with
+  `ceil(previous intra-salvo × 0.40)`. Apply a 40% reduction to every other
+  human coil and alien magnetic weapon with
+  `ceil(previous intra-salvo × 0.60)`.
+- Require every affected intra-salvo interval to be no longer than its own
+  inter-salvo reload, and every Coil I/II interval to be no longer than the
+  mapped Rail II/III inter-salvo reload, including siege coils.
+- Require the modeled sustained damage of every regular Coilgun Battery mark to
+  be more than twice its Light Coilgun Battery peer. Light Coilgun Battery Mk3
+  damaging mass changes from 11 to 10 kg to clear the Mk3 threshold without
+  changing the locked speed or range.
+- Record the full 49-row original/proposed/delta analysis in
+  [`magnetic-tier-progression-rework.csv`](tables/magnetic-tier-progression-rework.csv)
+  and the detailed rationale in the
+  [magnetic tier-progression report](details/weapons/magnetic-tier-progression-rework.md).
+- The cadence revision passed **938 formula assertions**, all **130 Harmony
+  patches**, the full TI 1.0.51 validation suite, packaging, and **33-file**
+  enabled-mod deployment. Deployed DLL SHA-256:
+  `6840F6CE9450D64C896CE00C3446B7B7BCDDA233158DFF5287AAA23768F610FD`.
+- The deployed magnetic template is byte-identical to the repository template
+  (SHA-256 `09870E5530E7B51FD8D9D08DA985B17C7E20B98E547651DE7B4269A2C0C49176`).
+  Manual combat testing remains pending.
+
 ## 2026-08-13
 
 ### Third correction deployed: clamp on the actual art-cycle action

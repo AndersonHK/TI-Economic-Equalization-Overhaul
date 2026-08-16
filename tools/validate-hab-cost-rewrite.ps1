@@ -62,6 +62,62 @@ try {
         'MandatoryBoost\(|GetBoostSubstitutedCost\(')) {
         throw 'Legacy mandatory-Earth or direct vanilla substitution remains in the hab space-cost rewrite.'
     }
+    if ([regex]::Matches(
+            $methodIl,
+            'HabLogistics::EffectiveDeliveryTime\(').Count -ne 1 -or
+        [regex]::IsMatch(
+            $methodIl,
+            'TIEffectsState::SumEffectsModifiers\(')) {
+        throw 'Hab delivery time must use the centralized payload-specific modifier exactly once.'
+    }
+
+    $probeMethodMatch = [regex]::Match(
+        $assemblyIl,
+        '(?s)\.class private abstract auto ansi sealed beforefieldinit ' +
+        'TIEconomyMod\.Patches\.ProbeManufacturingCostPatch.*?' +
+        '// end of method ProbeManufacturingCostPatch::Prefix')
+    if (-not $probeMethodMatch.Success) {
+        throw 'Could not locate ProbeManufacturingCostPatch.Prefix IL.'
+    }
+    $probeMethodIl = $probeMethodMatch.Value
+    foreach ($requiredCall in @(
+        'HabLogistics::EffectiveDeliveryTime\(',
+        'HabLogistics::EarthDeliveryTime\(')) {
+        if ([regex]::Matches($probeMethodIl, $requiredCall).Count -ne 1) {
+            throw "Probe delivery time must contain one IL call '$requiredCall'."
+        }
+    }
+    if ([regex]::IsMatch(
+            $probeMethodIl,
+            'TIEffectsState::SumEffectsModifiers\(')) {
+        throw 'Probe transfer effects must not be applied outside the centralized delivery-time helper.'
+    }
+
+    $deliveryTimeMatch = [regex]::Match(
+        $assemblyIl,
+        '(?s)\.method assembly hidebysig static float32\s+' +
+        'EffectiveDeliveryTime\(.*?' +
+        '// end of method HabLogistics::EffectiveDeliveryTime')
+    if (-not $deliveryTimeMatch.Success -or
+        [regex]::Matches(
+            $deliveryTimeMatch.Value,
+            'TIEffectsState::SumEffectsModifiers\(').Count -ne 1) {
+        throw 'Centralized logistics delivery time must apply exactly one effects context.'
+    }
+
+    $effectSnapshotMatch = [regex]::Match(
+        $assemblyIl,
+        '(?s)\.method assembly hidebysig static valuetype ' +
+        'TIEconomyMod\.HabLogistics/LogisticsEffectSnapshot\s+' +
+        'Capture\(.*?' +
+        '// end of method LogisticsEffectSnapshot::Capture')
+    if (-not $effectSnapshotMatch.Success -or
+        -not $effectSnapshotMatch.Value.Contains(
+            'TISpaceObjectState::ModifiedGenericTransferEV_kps') -or
+        -not $effectSnapshotMatch.Value.Contains(
+            'TIEffectsState::SumEffectsModifiers')) {
+        throw 'Logistics cache identity is missing rocket-EV or off-window effect state.'
+    }
 
     foreach ($patchType in @(
         'ProbeManufacturingCostPatch',
@@ -134,7 +190,7 @@ try {
         $harmony.UnpatchAll($harmonyId)
     }
 
-    Write-Host 'PASS: hab, founding, probe, AI-priority, lazy-cache, and compact cost-label logistics IL is present.'
+    Write-Host 'PASS: hab, founding, probe, effect-aware cache, payload-time, AI-priority, lazy-cache, and compact cost-label logistics IL is present.'
 }
 finally {
     $resolvedProbe = (Resolve-Path -LiteralPath $probeDirectory).Path

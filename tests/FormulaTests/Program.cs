@@ -1463,6 +1463,29 @@ namespace TIEconomyMod.FormulaTests
                 HabRebalanceMath.PropellantMass(10f, 1d, 2.11d),
                 0.0001f,
                 "space freight uses the probe rocket equation");
+            float priorRocketPropellant = HabRebalanceMath.PropellantMass(
+                10f,
+                10d,
+                2.11d);
+            foreach (double rocketExhaustVelocity in new[]
+            {
+                2.6d,
+                3.3d,
+                4.44d,
+                5.6d,
+                10d,
+                21.6d
+            })
+            {
+                float improvedRocketPropellant =
+                    HabRebalanceMath.PropellantMass(
+                        10f,
+                        10d,
+                        rocketExhaustVelocity);
+                True(improvedRocketPropellant < priorRocketPropellant,
+                    "each Rocket project EV step reduces freight propellant");
+                priorRocketPropellant = improvedRocketPropellant;
+            }
             Near(1f,
                 HabRebalanceMath.EffectiveExportTier(3, 1),
                 0f,

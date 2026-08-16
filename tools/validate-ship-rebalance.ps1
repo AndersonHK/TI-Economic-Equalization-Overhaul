@@ -259,58 +259,59 @@ $expectedHumanRails = [ordered]@{
     LightRailCannonMk2 = @(3, 37.5, 30.0, 12.0)
     LightRailCannonMk3 = @(3, 37.5, 32.8125, 8.0)
 }
+
 $expectedHumanCoils = [ordered]@{
-    LightCoilgunBatteryMk1 = @(13, 10, 28)
-    LightCoilgunBatteryMk2 = @(13, 10, 18)
-    LightCoilgunBatteryMk3 = @(13, 11, 8)
-    CoilgunBatteryMk1 = @(25, 19, 28)
-    CoilgunBatteryMk2 = @(25, 20, 18)
-    CoilgunBatteryMk3 = @(25, 22, 8)
-    HeavyCoilgunBatteryMk1 = @(50, 38, 28)
-    HeavyCoilgunBatteryMk2 = @(50, 40, 18)
-    HeavyCoilgunBatteryMk3 = @(50, 44, 8)
-    LightCoilCannonMk1 = @(31, 23, 34)
-    LightCoilCannonMk2 = @(31, 25, 22)
-    LightCoilCannonMk3 = @(31, 27, 10)
-    CoilCannonMk1 = @(63, 47, 34)
-    CoilCannonMk2 = @(63, 50, 22)
-    CoilCannonMk3 = @(63, 55, 10)
-    HeavyCoilCannonMk1 = @(94, 71, 34)
-    HeavyCoilCannonMk2 = @(94, 75, 22)
-    HeavyCoilCannonMk3 = @(94, 82, 10)
-    SpinalCoilerMk1 = @(125, 94, 34)
-    SpinalCoilerMk2 = @(125, 100, 22)
-    SpinalCoilerMk3 = @(125, 109, 10)
-    HeavySiegeCoilerMk1 = @(938, 704, 24)
-    HeavySiegeCoilerMk2 = @(938, 750, 19)
-    HeavySiegeCoilerMk3 = @(938, 821, 12)
-    SpinalSiegeCoilerMk1 = @(1250, 938, 24)
-    SpinalSiegeCoilerMk2 = @(1250, 1000, 19)
-    SpinalSiegeCoilerMk3 = @(1250, 1094, 12)
+    LightCoilgunBatteryMk1 = @(13, 10, 5.6, 600, 28, 4)
+    LightCoilgunBatteryMk2 = @(13, 10, 6.8, 650, 18, 4)
+    LightCoilgunBatteryMk3 = @(13, 10, 7.9, 750, 8, 4)
+    CoilgunBatteryMk1 = @(25, 19, 6.8, 800, 28, 6)
+    CoilgunBatteryMk2 = @(25, 20, 7.9, 850, 18, 6)
+    CoilgunBatteryMk3 = @(25, 22, 9, 900, 8, 6)
+    HeavyCoilgunBatteryMk1 = @(50, 38, 7.9, 1000, 28, 6)
+    HeavyCoilgunBatteryMk2 = @(50, 40, 9, 1050, 18, 6)
+    HeavyCoilgunBatteryMk3 = @(50, 44, 10.1, 1100, 8, 6)
+    LightCoilCannonMk1 = @(31, 23, 6.8, 650, 34, 5)
+    LightCoilCannonMk2 = @(31, 25, 7.9, 750, 22, 5)
+    LightCoilCannonMk3 = @(31, 27, 10.1, 800, 10, 5)
+    CoilCannonMk1 = @(63, 47, 7.9, 850, 34, 8)
+    CoilCannonMk2 = @(63, 50, 9, 900, 22, 8)
+    CoilCannonMk3 = @(63, 55, 11.3, 1000, 10, 8)
+    HeavyCoilCannonMk1 = @(94, 71, 8.5, 1000, 34, 8)
+    HeavyCoilCannonMk2 = @(94, 75, 9.6, 1050, 22, 8)
+    HeavyCoilCannonMk3 = @(94, 82, 11.9, 1100, 10, 8)
+    SpinalCoilerMk1 = @(125, 94, 9, 1100, 34, 8)
+    SpinalCoilerMk2 = @(125, 100, 10.1, 1150, 22, 8)
+    SpinalCoilerMk3 = @(125, 109, 12.4, 1250, 10, 8)
+    HeavySiegeCoilerMk1 = @(938, 704, 4.3, 1000, 24, 22)
+    HeavySiegeCoilerMk2 = @(938, 750, 4.8, 1050, 19, 15)
+    HeavySiegeCoilerMk3 = @(938, 821, 5.9, 1100, 12, 11)
+    SpinalSiegeCoilerMk1 = @(1250, 938, 4.5, 1100, 24, 22)
+    SpinalSiegeCoilerMk2 = @(1250, 1000, 5.1, 1150, 19, 15)
+    SpinalSiegeCoilerMk3 = @(1250, 1094, 6.3, 1250, 12, 11)
 }
 $expectedAlienMags = [ordered]@{
-    AlienLightMagBattery = @(5.0, 550, 0.60, 19, 16, 9)
-    AlienMagBattery = @(6.0, 700, 0.60, 38, 32, 11)
-    AlienHeavyMagBattery = @(7.0, 850, 0.60, 75, 64, 13)
-    AlienMiniLightMagCannon = @(6.0, 600, 0.60, 50, 43, 18)
-    AlienLightMagCannon = @(6.0, 600, 0.60, 50, 43, 18)
-    AlienMagCannon = @(7.0, 750, 0.60, 100, 85, 22)
-    AlienHeavyMagCannon = @(8.3, 850, 0.60, 150, 128, 32)
-    AlienSpinalMagCannon = @(10.0, 950, 0.60, 200, 170, 43)
-    AdvancedAlienLightMagBattery = @(6.7, 650, 0.75, 19, 17, 4)
-    AdvancedAlienMagBattery = @(7.8, 800, 0.75, 38, 34, 5)
-    AdvancedAlienHeavyMagBattery = @(9.4, 950, 0.75, 75, 68, 6)
-    AdvancedAlienLightMagCannon = @(8.6, 700, 0.75, 50, 45, 13)
-    AdvancedAlienMagCannon = @(10.0, 850, 0.75, 100, 90, 16)
-    AdvancedAlienHeavyMagCannon = @(12.5, 950, 0.75, 150, 135, 23)
-    AdvancedAlienSpinalMagCannon = @(15.0, 1050, 0.75, 200, 180, 31)
-    Gen3AlienLightMagBattery = @(8.2, 700, 0.85, 35, 30, 4)
-    Gen3AlienMagBattery = @(10.3, 850, 0.85, 69, 60, 5)
-    Gen3AlienHeavyMagBattery = @(12.4, 1000, 0.85, 138, 120, 6)
-    Gen3AlienLightMagCannon = @(10.8, 800, 0.85, 93, 80, 6)
-    Gen3AlienMagCannon = @(13.1, 900, 0.85, 184, 160, 8)
-    Gen3AlienHeavyMagCannon = @(16.5, 1000, 0.85, 368, 320, 14)
-    Gen3AlienSpinalMagCannon = @(19.8, 1100, 0.85, 736, 640, 23)
+    AlienLightMagBattery = @(6.3, 650, 0.60, 19, 16, 9, 3)
+    AlienMagBattery = @(7.5, 850, 0.60, 38, 32, 11, 4)
+    AlienHeavyMagBattery = @(8.8, 1050, 0.60, 75, 64, 13, 5)
+    AlienMiniLightMagCannon = @(7.5, 750, 0.60, 50, 43, 18, 3)
+    AlienLightMagCannon = @(7.5, 750, 0.60, 50, 43, 18, 3)
+    AlienMagCannon = @(8.8, 900, 0.60, 100, 85, 22, 4)
+    AlienHeavyMagCannon = @(10.4, 1050, 0.60, 150, 128, 32, 6)
+    AlienSpinalMagCannon = @(12.5, 1150, 0.60, 200, 170, 43, 8)
+    AdvancedAlienLightMagBattery = @(8.4, 800, 0.75, 19, 17, 4, 3)
+    AdvancedAlienMagBattery = @(9.8, 1000, 0.75, 38, 34, 5, 4)
+    AdvancedAlienHeavyMagBattery = @(11.8, 1150, 0.75, 75, 68, 6, 5)
+    AdvancedAlienLightMagCannon = @(10.8, 850, 0.75, 50, 45, 13, 3)
+    AdvancedAlienMagCannon = @(12.5, 1050, 0.75, 100, 90, 16, 4)
+    AdvancedAlienHeavyMagCannon = @(15.6, 1150, 0.75, 150, 135, 23, 6)
+    AdvancedAlienSpinalMagCannon = @(18.8, 1300, 0.75, 200, 180, 31, 8)
+    Gen3AlienLightMagBattery = @(10.3, 850, 0.85, 35, 30, 4, 3)
+    Gen3AlienMagBattery = @(12.9, 1050, 0.85, 69, 60, 5, 3)
+    Gen3AlienHeavyMagBattery = @(15.5, 1250, 0.85, 138, 120, 6, 4)
+    Gen3AlienLightMagCannon = @(13.5, 1000, 0.85, 93, 80, 6, 3)
+    Gen3AlienMagCannon = @(16.4, 1100, 0.85, 184, 160, 8, 3)
+    Gen3AlienHeavyMagCannon = @(20.6, 1250, 0.85, 368, 320, 14, 4)
+    Gen3AlienSpinalMagCannon = @(24.8, 1350, 0.85, 736, 640, 23, 5)
 }
 $expectedMagneticCount = $expectedHumanRails.Count + $expectedHumanCoils.Count + $expectedAlienMags.Count
 if ($magneticOverrides.Count -ne $expectedMagneticCount) {
@@ -334,10 +335,14 @@ foreach ($entry in $expectedHumanCoils.GetEnumerator()) {
         throw "Magnetic-gun override must contain '$($entry.Key)' exactly once."
     }
     Assert-Properties $row[0] @(
-        'dataName', 'ammoMass_kg', 'warheadMass_kg', 'cooldown_s') $entry.Key
+        'dataName', 'ammoMass_kg', 'warheadMass_kg', 'muzzleVelocity_kps',
+        'targetingRange_km', 'cooldown_s', 'intraSalvoCooldown_s') $entry.Key
     Assert-Near $row[0].ammoMass_kg $entry.Value[0] "$($entry.Key) complete projectile mass"
     Assert-Near $row[0].warheadMass_kg $entry.Value[1] "$($entry.Key) damaging projectile mass"
-    Assert-Near $row[0].cooldown_s $entry.Value[2] "$($entry.Key) cycle reload"
+    Assert-Near $row[0].muzzleVelocity_kps $entry.Value[2] "$($entry.Key) muzzle velocity"
+    Assert-Near $row[0].targetingRange_km $entry.Value[3] "$($entry.Key) targeting range"
+    Assert-Near $row[0].cooldown_s $entry.Value[4] "$($entry.Key) cycle reload"
+    Assert-Near $row[0].intraSalvoCooldown_s $entry.Value[5] "$($entry.Key) intra-salvo reload"
     if ([double]$row[0].warheadMass_kg -gt [double]$row[0].ammoMass_kg) {
         throw "$($entry.Key) damaging mass exceeds complete projectile mass."
     }
@@ -349,13 +354,15 @@ foreach ($entry in $expectedAlienMags.GetEnumerator()) {
     }
     Assert-Properties $row[0] @(
         'dataName', 'muzzleVelocity_kps', 'targetingRange_km', 'efficiency',
-        'ammoMass_kg', 'warheadMass_kg', 'cooldown_s') $entry.Key
+        'ammoMass_kg', 'warheadMass_kg', 'cooldown_s',
+        'intraSalvoCooldown_s') $entry.Key
     Assert-Near $row[0].muzzleVelocity_kps $entry.Value[0] "$($entry.Key) muzzle velocity"
     Assert-Near $row[0].targetingRange_km $entry.Value[1] "$($entry.Key) targeting range"
     Assert-Near $row[0].efficiency $entry.Value[2] "$($entry.Key) efficiency"
     Assert-Near $row[0].ammoMass_kg $entry.Value[3] "$($entry.Key) complete projectile mass"
     Assert-Near $row[0].warheadMass_kg $entry.Value[4] "$($entry.Key) damaging projectile mass"
     Assert-Near $row[0].cooldown_s $entry.Value[5] "$($entry.Key) cycle reload"
+    Assert-Near $row[0].intraSalvoCooldown_s $entry.Value[6] "$($entry.Key) intra-salvo reload"
     if ([double]$row[0].warheadMass_kg -gt [double]$row[0].ammoMass_kg) {
         throw "$($entry.Key) damaging mass exceeds complete projectile mass."
     }
@@ -483,6 +490,156 @@ function Get-EffectiveMagneticValue {
     return [double]$vanilla.$Property
 }
 
+function Get-EffectiveMagneticSustainedDamage {
+    param([string]$DataName)
+
+    $vanilla = @($vanillaMagneticGuns | Where-Object dataName -eq $DataName)[0]
+    $salvoShots = if ($null -ne $vanilla.salvo_shots) {
+        [double]$vanilla.salvo_shots
+    }
+    else {
+        1.0
+    }
+    $intraSalvoCooldown = Get-EffectiveMagneticValue `
+        $DataName 'intraSalvoCooldown_s'
+    $cycle = (Get-EffectiveMagneticValue $DataName 'cooldown_s') +
+        ($salvoShots - 1.0) * $intraSalvoCooldown
+    $damage = 0.5 *
+        (Get-EffectiveMagneticValue $DataName 'warheadMass_kg') *
+        [Math]::Pow(
+            (Get-EffectiveMagneticValue $DataName 'muzzleVelocity_kps'), 2)
+    return $damage * $salvoShots / $cycle
+}
+
+$coilTierComparisons = @(
+    [pscustomobject]@{ Coil = 'LightCoilgunBatteryMk1'; Rail = 'LightRailgunBatteryMk2' }
+    [pscustomobject]@{ Coil = 'LightCoilgunBatteryMk2'; Rail = 'LightRailgunBatteryMk3' }
+    [pscustomobject]@{ Coil = 'CoilgunBatteryMk1'; Rail = 'RailgunBatteryMk2' }
+    [pscustomobject]@{ Coil = 'CoilgunBatteryMk2'; Rail = 'RailgunBatteryMk3' }
+    [pscustomobject]@{ Coil = 'HeavyCoilgunBatteryMk1'; Rail = 'HeavyRailgunBatteryMk2' }
+    [pscustomobject]@{ Coil = 'HeavyCoilgunBatteryMk2'; Rail = 'HeavyRailgunBatteryMk3' }
+    [pscustomobject]@{ Coil = 'LightCoilCannonMk1'; Rail = 'LightRailCannonMk2' }
+    [pscustomobject]@{ Coil = 'LightCoilCannonMk2'; Rail = 'LightRailCannonMk3' }
+    [pscustomobject]@{ Coil = 'CoilCannonMk1'; Rail = 'RailCannonMk2' }
+    [pscustomobject]@{ Coil = 'CoilCannonMk2'; Rail = 'RailCannonMk3' }
+    [pscustomobject]@{ Coil = 'HeavyCoilCannonMk1'; Rail = 'HeavyRailCannonMk2' }
+    [pscustomobject]@{ Coil = 'HeavyCoilCannonMk2'; Rail = 'HeavyRailCannonMk3' }
+    [pscustomobject]@{ Coil = 'SpinalCoilerMk1'; Rail = 'SpinalRailgunMk2' }
+    [pscustomobject]@{ Coil = 'SpinalCoilerMk2'; Rail = 'SpinalRailgunMk3' }
+    [pscustomobject]@{ Coil = 'HeavySiegeCoilerMk1'; Rail = 'HeavyRailCannonMk2' }
+    [pscustomobject]@{ Coil = 'HeavySiegeCoilerMk2'; Rail = 'HeavyRailCannonMk3' }
+    [pscustomobject]@{ Coil = 'SpinalSiegeCoilerMk1'; Rail = 'SpinalRailgunMk2' }
+    [pscustomobject]@{ Coil = 'SpinalSiegeCoilerMk2'; Rail = 'SpinalRailgunMk3' }
+)
+foreach ($comparison in $coilTierComparisons) {
+    $coilRange = Get-EffectiveMagneticValue $comparison.Coil 'targetingRange_km'
+    $railRange = Get-EffectiveMagneticValue $comparison.Rail 'targetingRange_km'
+    if ($coilRange -le $railRange) {
+        throw "$($comparison.Coil) range $coilRange does not exceed $($comparison.Rail) range $railRange."
+    }
+    $coilSustained = Get-EffectiveMagneticSustainedDamage $comparison.Coil
+    $railSustained = Get-EffectiveMagneticSustainedDamage $comparison.Rail
+    if ($coilSustained -le $railSustained) {
+        throw "$($comparison.Coil) sustained damage $coilSustained does not exceed $($comparison.Rail) sustained damage $railSustained."
+    }
+    $coilIntraSalvo = Get-EffectiveMagneticValue $comparison.Coil 'intraSalvoCooldown_s'
+    $railInterSalvo = Get-EffectiveMagneticValue $comparison.Rail 'cooldown_s'
+    if ($coilIntraSalvo -gt $railInterSalvo) {
+        throw "$($comparison.Coil) intra-salvo reload $coilIntraSalvo exceeds $($comparison.Rail) inter-salvo reload $railInterSalvo."
+    }
+}
+
+foreach ($tier in 1..3) {
+    $lightBatteryDps = Get-EffectiveMagneticSustainedDamage `
+        "LightCoilgunBatteryMk$tier"
+    $coilBatteryDps = Get-EffectiveMagneticSustainedDamage `
+        "CoilgunBatteryMk$tier"
+    if ($coilBatteryDps -le 2.0 * $lightBatteryDps) {
+        throw "Coilgun Battery Mk$tier sustained damage $coilBatteryDps does not exceed twice Light Coilgun Battery Mk$tier sustained damage $lightBatteryDps."
+    }
+}
+
+$coilProgressionFamilies = @(
+    'LightCoilgunBattery', 'CoilgunBattery', 'HeavyCoilgunBattery',
+    'LightCoilCannon', 'CoilCannon', 'HeavyCoilCannon', 'SpinalCoiler')
+foreach ($family in $coilProgressionFamilies) {
+    $vanillaMk2 = @($vanillaMagneticGuns | Where-Object dataName -eq "${family}Mk2")[0]
+    $vanillaMk3 = @($vanillaMagneticGuns | Where-Object dataName -eq "${family}Mk3")[0]
+    $oldVelocityRatio = [double]$vanillaMk3.muzzleVelocity_kps /
+        [double]$vanillaMk2.muzzleVelocity_kps
+    $newVelocityRatio =
+        (Get-EffectiveMagneticValue "${family}Mk3" 'muzzleVelocity_kps') /
+        (Get-EffectiveMagneticValue "${family}Mk2" 'muzzleVelocity_kps')
+    if ([Math]::Abs($newVelocityRatio / $oldVelocityRatio - 1.0) -gt 0.01) {
+        throw "$family Mk2-to-Mk3 velocity ratio changed by more than 1%."
+    }
+    $oldIntraRatio = [double]$vanillaMk3.intraSalvoCooldown_s /
+        [double]$vanillaMk2.intraSalvoCooldown_s
+    $newIntraRatio =
+        (Get-EffectiveMagneticValue "${family}Mk3" 'intraSalvoCooldown_s') /
+        (Get-EffectiveMagneticValue "${family}Mk2" 'intraSalvoCooldown_s')
+    Assert-Near $newIntraRatio $oldIntraRatio "$family Mk2-to-Mk3 intra-salvo ratio"
+}
+
+foreach ($id in $expectedHumanCoils.Keys) {
+    $vanilla = @($vanillaMagneticGuns | Where-Object dataName -eq $id)[0]
+    $expectedScaledRange = [Math]::Floor(
+        ([double]$vanilla.targetingRange_km * 1.25) / 50.0) * 50.0
+    $actualRange = Get-EffectiveMagneticValue $id 'targetingRange_km'
+    Assert-Near $actualRange $expectedScaledRange "$id percentage-scaled targeting range"
+}
+
+$magneticProgressionCsvPath = Join-Path $RepositoryRoot `
+    'docs\ship-balance-research\tables\magnetic-tier-progression-rework.csv'
+$magneticProgressionRows = @(Import-Csv -LiteralPath $magneticProgressionCsvPath)
+if ($magneticProgressionRows.Count -ne 49) {
+    throw "Magnetic progression artifact has $($magneticProgressionRows.Count) rows instead of 49."
+}
+foreach ($row in $magneticProgressionRows) {
+    $id = [string]$row.dataName
+    $expectedInterSalvo = [double]$row.original_cooldown_s
+    $isLightHumanCoil = $id -match `
+        '^(LightCoilgunBattery|LightCoilCannon)Mk[123]$'
+    $retainedIntraFraction = if ($isLightHumanCoil) { 0.40 } else { 0.60 }
+    $expectedIntraSalvo = [Math]::Ceiling(
+        [double]$row.original_intraSalvoCooldown_s * $retainedIntraFraction)
+    $expectedWarheadMass = if ($id -eq 'LightCoilgunBatteryMk3') {
+        10.0
+    }
+    else {
+        [double]$row.original_warheadMass_kg
+    }
+    Assert-Near `
+        ([double]$row.proposed_cooldown_s) $expectedInterSalvo `
+        "$id artifact unchanged inter-salvo reload"
+    Assert-Near `
+        ([double]$row.proposed_intraSalvoCooldown_s) $expectedIntraSalvo `
+        "$id artifact percentage-scaled intra-salvo reload"
+    Assert-Near `
+        (Get-EffectiveMagneticValue $id 'cooldown_s') $expectedInterSalvo `
+        "$id runtime unchanged inter-salvo reload"
+    Assert-Near `
+        (Get-EffectiveMagneticValue $id 'intraSalvoCooldown_s') $expectedIntraSalvo `
+        "$id runtime percentage-scaled intra-salvo reload"
+    Assert-Near `
+        (Get-EffectiveMagneticValue $id 'muzzleVelocity_kps') `
+        ([double]$row.proposed_muzzleVelocity_kps) `
+        "$id locked muzzle velocity"
+    Assert-Near `
+        (Get-EffectiveMagneticValue $id 'targetingRange_km') `
+        ([double]$row.proposed_targetingRange_km) `
+        "$id locked targeting range"
+    Assert-Near `
+        ([double]$row.proposed_warheadMass_kg) $expectedWarheadMass `
+        "$id artifact proposed damaging mass"
+    Assert-Near `
+        (Get-EffectiveMagneticValue $id 'warheadMass_kg') $expectedWarheadMass `
+        "$id runtime proposed damaging mass"
+    if ($expectedIntraSalvo -gt $expectedInterSalvo) {
+        throw "$id intra-salvo reload $expectedIntraSalvo exceeds its own inter-salvo reload $expectedInterSalvo."
+    }
+}
+
 $alienDominanceComparisons = @(
     [pscustomobject]@{ Alien = 'AlienLightMagBattery'; Rail = 'LightRailgunBatteryMk1'; Coil = 'LightCoilgunBatteryMk1' }
     [pscustomobject]@{ Alien = 'AlienMagBattery'; Rail = 'RailgunBatteryMk1'; Coil = 'CoilgunBatteryMk1' }
@@ -521,21 +678,31 @@ foreach ($id in $housekeepingIds) {
     $vanillaCycle = [double]$vanilla.cooldown_s +
         ([double]$vanilla.salvo_shots - 1.0) * [double]$vanilla.intraSalvoCooldown_s
     $proposedCycle = [double]$override.cooldown_s +
-        ([double]$vanilla.salvo_shots - 1.0) * [double]$vanilla.intraSalvoCooldown_s
+        ([double]$vanilla.salvo_shots - 1.0) *
+        [double]$override.intraSalvoCooldown_s
     $cycleDelta = $proposedCycle / $vanillaCycle - 1.0
-    if ($cycleDelta -lt -0.22 -or $cycleDelta -gt -0.18) {
-        throw "$id total cycle changes by $cycleDelta instead of approximately -20%."
+    if ($cycleDelta -lt -0.6000001 -or $cycleDelta -ge 0.0) {
+        throw "$id total cycle changes by $cycleDelta instead of remaining faster than vanilla without exceeding a 60% reduction."
     }
     $ammoDelta = [double]$override.ammoMass_kg / [double]$vanilla.ammoMass_kg - 1.0
     $warheadDelta = [double]$override.warheadMass_kg / [double]$vanilla.warheadMass_kg - 1.0
+    $warheadMassException = $id -eq 'LightCoilgunBatteryMk3' -and
+        [double]$override.warheadMass_kg -eq 10.0 -and
+        [double]$vanilla.warheadMass_kg -eq 8.75
     if ($ammoDelta -lt 0.20 -or $ammoDelta -gt 0.34 -or
-        $warheadDelta -lt 0.20 -or $warheadDelta -gt 0.34) {
+        (-not $warheadMassException -and
+            ($warheadDelta -lt 0.20 -or $warheadDelta -gt 0.34))) {
         throw "$id projectile masses do not round to approximately +25%."
     }
-    foreach ($field in @('ammoMass_kg', 'warheadMass_kg', 'cooldown_s')) {
+    foreach ($field in @(
+        'ammoMass_kg', 'warheadMass_kg', 'targetingRange_km', 'cooldown_s')) {
         if ([double]$override.$field -ne [Math]::Round([double]$override.$field)) {
             throw "$id $field must be rounded to a whole unit."
         }
+    }
+    $velocityTenths = 10.0 * [double]$override.muzzleVelocity_kps
+    if ([Math]::Abs($velocityTenths - [Math]::Round($velocityTenths)) -gt 0.0000001) {
+        throw "$id muzzleVelocity_kps must be rounded to 0.1 km/s."
     }
 }
 $vanillaHulls = Read-JsonArray (Join-Path $VanillaTemplatesDir 'TIShipHullTemplate.json')

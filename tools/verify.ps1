@@ -466,6 +466,8 @@ $logisticsDocumentationText = Get-Content -LiteralPath $logisticsDocumentation -
 foreach ($requiredRule in @(
     'P = max(0, M / 3 - E)',
     'same-hab factory-dock pair',
+    'Rocket projects change `modifiedExhaustVelocity`',
+    'Solar Steamers reduces only an applicable off-launch-window penalty',
     'Earth-Moon receives the strongest priority',
     'No invalidation performs a network scan')) {
     if (-not $logisticsDocumentationText.Contains($requiredRule)) {
