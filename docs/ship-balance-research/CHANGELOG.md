@@ -5,6 +5,100 @@ the balance decisions as well as their implementation status.
 
 ## 2026-08-16
 
+### Implemented and deployed: minimum AI fuel, reactor, and engine-bay enforcement
+
+- Move the existing faction drive-class appearance mapping into provisional AI
+  design construction. Each human candidate now locks its deterministic art
+  before power-plant selection; aliens use appearance 0 and refits preserve the
+  original resolved appearance. The deferred role-aware, top-two randomized
+  art-selection design remains documentation only.
+- Cap `GetIdealPropellentTankCount` to the legal appearance/propellant capacity
+  and recompute `actualDV` at that tank count. Human AI candidates and refits
+  are therefore evaluated using performance the completed vessel can attain.
+- Bound all direct alien tank assignments and the STO fighter increment. The
+  alien's initial delta-v target and recurring 250 kps floor are both limited
+  by current maximum achievable delta-v, preventing small ships from chasing
+  an impossible tank count until their design-pass limit.
+- Enforce reactor size and engine-bay volume through the same shared
+  appearance-specific drive/power-plant compatibility methods during early
+  plant selection, later drive variation, completed-design validation, fighter
+  repair, and the final generated-design save guard.
+- Add rocket-equation edge tests, guarded installed-game IL validation for the
+  alien/STO tank paths, and Harmony application coverage for all seven new AI
+  boundary patch classes.
+- The normal TI 1.0.51 deployment passed **1,059 formula assertions**, all
+  **142 Harmony patches**, release packaging, and the **35-file** enabled-mod
+  deployment. DLL SHA-256:
+  `FEB4910D517EEABD590DCC8B0CA7C64FDB9C19171E6C7AC5CB0DEF54DD0C3873`.
+- Manual human-AI, alien, refit, and STO generation testing remains pending.
+
+### Implemented and deployed: measured human drive art and flat variant masses
+
+- Replaced the provisional human hull-only drive factors with the measured
+  De Laval and magnetic factor for every graphical appearance. Pulsed/Orion
+  drives remain fixed-size and fixed-mass at **1x**.
+- The art-selection overlay now reports the same drive factors used by thrust,
+  powered-drive requirement, module mass, material cost, and reactor
+  compatibility logic.
+- Added explicit flat empty structural masses for all **48 human hull
+  appearances**. No main-volume, engine-bay, reactor-bay, or component-derived
+  structural mass formula is applied; installed non-pulsed drive hardware is
+  the only component weight scaled by the drive-art factor.
+- Verified **1,059 formula assertions**, **142 Harmony patches**, all **48
+  reactor-bay measurements**, all 28 hull templates, all 64 appearances, and
+  both runtime geometry catalogs.
+
+### Implemented and deployed: Solid Core Fission Reactor I capacity restoration
+
+- Raise `SolidCoreFissionReactorI.maxOutput_GW` from **1 GW to 2 GW**.
+- Retain the current **160 t/GW** specific mass and **57.5%** efficiency. The
+  plant therefore reaches **320 t** at its full 2 GW rating; installations
+  below the cap remain sized from their actual gross power requirement.
+- This restores the installed vanilla output ceiling while preserving the
+  mod's mass and efficiency rebalance. Reactor-bay geometry remains an
+  independent effective-output limit.
+- The normal TI 1.0.51 deployment passed **1,059 formula assertions**, all
+  **142 Harmony patches**, the complete ship/reactor validation suite, release
+  packaging, and **35-file** enabled-mod deployment. DLL SHA-256:
+  `FEB4910D517EEABD590DCC8B0CA7C64FDB9C19171E6C7AC5CB0DEF54DD0C3873`.
+
+### Implemented and deployed: density-aware hull-volume fuel capacity
+
+- Added a runtime catalog for all **28 hull templates** and **64 graphical
+  appearances**, generated from the maintained main-hull measurements. The
+  selected art now directly controls the usable fuel envelope.
+- Implemented the requested capacity order:
+  `ceil(max(0, hull volume - module volume - total crew * 50 m3))`, followed by
+  a whole-tank floor using the drive propellant's density and the vanilla
+  **100-ton** tank mass.
+- Default module allowances are **200 m3 per utility cell**, **250 m3 per hull
+  weapon cell**, and **400 m3 per nose weapon cell**. Utility footprints use
+  the multi-slot registry and weapons use their vanilla internal size.
+- Added density defaults for liquid hydrogen, water, liquid xenon, liquid
+  methane, liquid lithium, and the water-equivalent broad propellant classes.
+  An optional `propellantDensity_kgm3` drive-template extension supports exact
+  drive-family overrides without changing saves or the game's propellant enum.
+- Clamp tank count before every designer refresh and again before saving. This
+  covers drive changes, both art-change methods, module/crew changes, tank
+  edits, and design loading. The propellant spinner displays current / maximum.
+- Added a two-line overlay to the 3D model pane. Follow-up visual testing
+  corrected the hull line to show independently measured De Laval/Magnetic art
+  scales, the selected appearance's measured engine-bay volume, hull mass, and
+  the hull template's base repair crew. The fuel line retains propellant,
+  current/maximum tanks, and usable fuel volume; capacity continues to reserve
+  the complete fitted design crew.
+- Added the implementation report, compact runtime CSV, generator/export path,
+  catalog reconciliation, settings/package validation, implementation-matrix
+  entry, and **10 fuel formula assertions**.
+- After the display correction, the normal TI 1.0.51 deployment passed **1,056
+  formula assertions**, all **135 Harmony patches**, all **48 reactor-bay
+  measurements**, the complete **64-appearance** volume/drive-scale catalog,
+  release packaging, and **35-file** enabled-mod deployment. DLL SHA-256:
+  `10B3B2BF6F6FF54FE2BE6CF5D2463A17CE94A108BEC586A958609D3F9FDCE901`.
+- Manual Ship Designer testing of the corrected De Laval/Magnetic scales,
+  measured bay volume, repair crew, and drive/art/module transitions remains
+  pending.
+
 ### Documented and deployed: complete hull-appearance volume and slot inventory
 
 - Added a generated inventory of all **28 installed human and alien hull

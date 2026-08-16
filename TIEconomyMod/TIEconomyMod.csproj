@@ -102,6 +102,8 @@
     <Compile Include="Core\MineMissionControlMath.cs" />
     <Compile Include="Core\GunPowerRegistry.cs" />
     <Compile Include="Core\GlobalTechnologySelectionMath.cs" />
+    <Compile Include="Core\HullVolumeCatalog.cs" />
+    <Compile Include="Core\HullDriveScaleCatalog.cs" />
     <Compile Include="Core\GovernmentMath.cs" />
     <Compile Include="Core\InequalityMath.cs" />
     <Compile Include="Core\CohesionRestMath.cs" />
@@ -109,6 +111,7 @@
     <Compile Include="Core\ProjectileCollisionMath.cs" />
     <Compile Include="Core\DirectFireCommitmentMath.cs" />
     <Compile Include="Core\ProjectileGeometryRegistry.cs" />
+    <Compile Include="Core\PropellantDensityRegistry.cs" />
     <Compile Include="Core\ReferenceContextVariantCache.cs" />
     <Compile Include="Core\ReferenceIdentityComparer.cs" />
     <Compile Include="Core\ShipBalanceMath.cs" />
@@ -128,6 +131,7 @@
     <Compile Include="Patches\AlienShipDesignPatches.cs" />
     <Compile Include="Patches\BalancePatches.cs" />
     <Compile Include="Patches\EnvironmentUnitySpoilsPatches.cs" />
+    <Compile Include="Patches\FuelCapacityPatches.cs" />
     <Compile Include="Patches\GlobalResearchPatches.cs" />
     <Compile Include="Patches\HabLogisticsPatches.cs" />
     <Compile Include="Patches\HabRebalancePatches.cs" />
@@ -154,6 +158,8 @@
 
   <ItemGroup>
     <None Include="ModFiles\Config\economy-tech-weights.csv" />
+    <None Include="ModFiles\Config\hull-variant-main-volumes.csv" />
+    <None Include="ModFiles\Config\hull-variant-drive-scales.csv" />
     <None Include="ModFiles\Settings.xml" />
     <None Include="ModFiles\TIArmyTemplate.json" />
     <None Include="ModFiles\TIGlobalConfig.json" />

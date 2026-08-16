@@ -3,6 +3,13 @@
 Status: measurement record and implementation specification for the 2026-08-12
 graphical-variant drive-scaling pass.
 
+Implementation note (2026-08-16): the conservative human hull-only factors in
+the historical sections below have been superseded. Human De Laval and magnetic
+drives now use the measured factor for each graphical appearance, while
+Pulsed/Orion drives remain fixed at 1x. See
+`human-drive-art-scaling-and-structural-mass-plan.md` for the current tables and
+validation record.
+
 This report brings together the tier 1-3 hull comparison, the real-world naval
 cross-check, the weapon/utility-slot code audit, and the rendered drive-asset
 measurements. It distinguishes geometric envelopes from usable volume and
@@ -357,7 +364,7 @@ These are graphical ratios, not claims about nozzle exit area or propulsion
 technology. In particular, the Mothership result is exceptional and should be
 treated as a high-risk balance value during manual testing.
 
-## Alien graphical-variant scaling and approved human factors
+## Historical: alien graphical-variant scaling and conservative human factors
 
 Human ships retain these approved hull-only factors for every graphical
 appearance and drive nozzle family:
@@ -445,7 +452,7 @@ module choices, recurse through the scaled drive mass, or represent the whole
 hull rather than the engine section. A later engine-section measurement can
 replace the nozzle-envelope proxy without changing the runtime key.
 
-### Approved human thrust-to-mass table
+### Historical conservative human thrust-to-mass table
 
 This is the active human comparison for every appearance and nozzle family.
 For a reproducible educated module-mass estimate, it uses the installed

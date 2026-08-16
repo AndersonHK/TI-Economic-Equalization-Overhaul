@@ -11,33 +11,6 @@ namespace TIEconomyMod
                 Math.Max(0f, massPerCrew_tons);
         }
 
-        public static float HumanHullDriveScale(
-            string hullDataName, bool alien)
-        {
-            if (alien || string.IsNullOrEmpty(hullDataName))
-            {
-                return 1f;
-            }
-
-            switch (hullDataName)
-            {
-                case "Cruiser":
-                    return 1.3f;
-                case "Battlecruiser":
-                    return 1.5f;
-                case "Lancer":
-                    return 1.72f;
-                case "Battleship":
-                    return 1.75f;
-                case "Dreadnought":
-                    return 2f;
-                case "Titan":
-                    return 2.5f;
-                default:
-                    return 1f;
-            }
-        }
-
         public static float DriveScale(
             string hullDataName,
             bool alien,
@@ -67,6 +40,12 @@ namespace TIEconomyMod
                 return 1f;
             }
 
+            if (string.Equals(
+                    nozzleFamily, "Pulsed", StringComparison.Ordinal))
+            {
+                return 1f;
+            }
+
             if (alien)
             {
                 return AlienDriveScale(
@@ -80,10 +59,10 @@ namespace TIEconomyMod
                 return 1f;
             }
 
-            // Preserve the approved pre-variant human balance exactly. Human
-            // appearance and nozzle measurements remain research inputs only;
-            // this pass changes graphical scaling for alien hulls.
-            return HumanHullDriveScale(hullDataName, false);
+            diagnostic = "Human drive scale for hull '" + hullDataName +
+                "' appearance " + appearanceIndex + " and nozzle '" +
+                nozzleFamily + "' requires the measured drive-art catalog.";
+            return 1f;
         }
 
         private static bool IsKnownHumanHull(string hullDataName)
@@ -435,16 +414,170 @@ namespace TIEconomyMod
                 Math.Max(0f, bayOutputLimit_GW));
         }
 
+        public static float FuelVolume_m3(
+            float hullVolume_m3,
+            float moduleVolume_m3,
+            int totalCrew,
+            float volumePerCrew_m3)
+        {
+            double remaining = Math.Max(0d,
+                Math.Max(0d, hullVolume_m3) -
+                Math.Max(0d, moduleVolume_m3) -
+                Math.Max(0, totalCrew) *
+                Math.Max(0d, volumePerCrew_m3));
+            if (double.IsNaN(remaining) || remaining <= 0d)
+            {
+                return 0f;
+            }
+            if (double.IsInfinity(remaining) ||
+                remaining >= float.MaxValue)
+            {
+                return float.MaxValue;
+            }
+
+            return (float)Math.Ceiling(remaining);
+        }
+
+        public static float PropellantTankVolume_m3(
+            float tankMass_tons, float propellantDensity_kgm3)
+        {
+            if (tankMass_tons <= 0f || propellantDensity_kgm3 <= 0f ||
+                float.IsNaN(tankMass_tons) ||
+                float.IsNaN(propellantDensity_kgm3) ||
+                float.IsInfinity(tankMass_tons) ||
+                float.IsInfinity(propellantDensity_kgm3))
+            {
+                return 0f;
+            }
+
+            double volume = tankMass_tons * 1000d /
+                propellantDensity_kgm3;
+            return volume >= float.MaxValue
+                ? float.MaxValue
+                : (float)volume;
+        }
+
+        public static int MaximumPropellantTanks(
+            float fuelVolume_m3, float tankVolume_m3)
+        {
+            if (fuelVolume_m3 <= 0f || tankVolume_m3 <= 0f ||
+                float.IsNaN(fuelVolume_m3) ||
+                float.IsNaN(tankVolume_m3) ||
+                float.IsInfinity(tankVolume_m3))
+            {
+                return 0;
+            }
+
+            double tanks = Math.Floor(
+                (double)fuelVolume_m3 / tankVolume_m3);
+            if (double.IsNaN(tanks) || tanks <= 0d)
+            {
+                return 0;
+            }
+            return double.IsInfinity(tanks) || tanks >= int.MaxValue
+                ? int.MaxValue
+                : (int)tanks;
+        }
+
+        public static float DeltaVForPropellantTanks_kps(
+            float exhaustVelocity_kps,
+            float dryMass_tons,
+            float propellantTankMass_tons,
+            int propellantTanks)
+        {
+            if (exhaustVelocity_kps <= 0f || dryMass_tons <= 0f ||
+                propellantTankMass_tons <= 0f || propellantTanks <= 0 ||
+                float.IsNaN(exhaustVelocity_kps) ||
+                float.IsNaN(dryMass_tons) ||
+                float.IsNaN(propellantTankMass_tons) ||
+                float.IsInfinity(exhaustVelocity_kps) ||
+                float.IsInfinity(dryMass_tons) ||
+                float.IsInfinity(propellantTankMass_tons))
+            {
+                return 0f;
+            }
+
+            double wetMass_tons = dryMass_tons +
+                (double)propellantTankMass_tons * propellantTanks;
+            double deltaV_kps = exhaustVelocity_kps *
+                Math.Log(wetMass_tons / dryMass_tons);
+            return double.IsNaN(deltaV_kps) || deltaV_kps <= 0d
+                ? 0f
+                : deltaV_kps >= float.MaxValue
+                    ? float.MaxValue
+                    : (float)deltaV_kps;
+        }
+
         public static float ScaledDriveValue(float baseValue, float scale)
         {
-            return Math.Max(0f, baseValue) * Math.Max(1f, scale);
+            return Math.Max(0f, baseValue) * Math.Max(0f, scale);
         }
 
         public static float AdditionalScaledDriveValue(
             float baseValue, float scale)
         {
             return Math.Max(0f, baseValue) *
-                (Math.Max(1f, scale) - 1f);
+                (Math.Max(0f, scale) - 1f);
+        }
+
+        public static bool TryGetVariantEmptyHullMass_tons(
+            string hullDataName,
+            int appearanceIndex,
+            out float mass_tons)
+        {
+            mass_tons = 0f;
+            switch (hullDataName)
+            {
+                case "Gunship":
+                    mass_tons = VariantValue(
+                        appearanceIndex, 171f, 187f, 174f, 205f);
+                    break;
+                case "Escort":
+                    mass_tons = VariantValue(
+                        appearanceIndex, 338f, 375f, 345f, 406f);
+                    break;
+                case "Corvette":
+                    mass_tons = VariantValue(
+                        appearanceIndex, 385f, 599f, 708f, 677f);
+                    break;
+                case "Frigate":
+                    mass_tons = VariantValue(
+                        appearanceIndex, 576f, 633f, 802f, 891f);
+                    break;
+                case "Monitor":
+                    mass_tons = VariantValue(
+                        appearanceIndex, 679f, 980f, 1622f, 1595f);
+                    break;
+                case "Destroyer":
+                    mass_tons = VariantValue(
+                        appearanceIndex, 873f, 1730f, 1858f, 2055f);
+                    break;
+                case "Cruiser":
+                    mass_tons = VariantValue(
+                        appearanceIndex, 964f, 1788f, 1549f, 2286f);
+                    break;
+                case "Battlecruiser":
+                    mass_tons = VariantValue(
+                        appearanceIndex, 1170f, 2460f, 1900f, 3024f);
+                    break;
+                case "Lancer":
+                    mass_tons = VariantValue(
+                        appearanceIndex, 1958f, 2472f, 3848f, 3865f);
+                    break;
+                case "Battleship":
+                    mass_tons = VariantValue(
+                        appearanceIndex, 1558f, 1961f, 1854f, 2251f);
+                    break;
+                case "Dreadnought":
+                    mass_tons = VariantValue(
+                        appearanceIndex, 2346f, 2906f, 2521f, 3559f);
+                    break;
+                case "Titan":
+                    mass_tons = VariantValue(
+                        appearanceIndex, 3143f, 4208f, 3408f, 5089f);
+                    break;
+            }
+            return mass_tons > 0f;
         }
     }
 }

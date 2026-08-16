@@ -65,7 +65,13 @@ volume. Exact included and excluded mesh paths are retained in JSON evidence.
 
 The generator requires Pillow in addition to the dependencies above and writes
 the maintained report, CSV, JSON, thumbnails, and contact sheets under
-`docs/ship-balance-research/`:
+`docs/ship-balance-research/`. It also refreshes the compact runtime catalog at
+`TIEconomyMod/ModFiles/Config/hull-variant-main-volumes.csv`, keeping the fuel
+capacity implementation on the same measured source. It also measures each
+standard human art variant's complete x6 De Laval and Magnetic drive-resource
+envelope, normalizes each family to its default Gunship resource, and refreshes
+`TIEconomyMod/ModFiles/Config/hull-variant-drive-scales.csv` for the designer
+overlay:
 
 ```powershell
 python scripts/ship-balance/generate_hull_variant_report.py `

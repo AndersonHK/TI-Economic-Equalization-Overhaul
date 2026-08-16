@@ -480,7 +480,7 @@ output before the human hull multiplier.
 | Selected pairing | Drive power x1 | Current plant max | Current t/GW | Plant mass at full rating | Requested mass across hull factors 1.00-2.50 | Output compatibility |
 |---|---:|---:|---:|---:|---:|---|
 | Grid + Fuel Cell III | 1.105 GW | 1.5 GW | 960 t/GW | 1,440 t | 1,061-2,652 t theoretical | Gunship through Cruiser only; larger factors exceed output before volume |
-| Nerva + Solid Core Fission I | 0.283 GW | 1 GW | 160 t/GW | 160 t | 45.3-113.2 t | All listed hulls |
+| Nerva + Solid Core Fission I | 0.283 GW | 2 GW | 160 t/GW | 320 t | 45.3-113.2 t | All listed hulls |
 | Pegasus + Molten Core Fission III | 65.882 GW | 200 GW | 12 t/GW | 2,400 t | 790.6-1,976.5 t | All listed hulls |
 | Firestar Fission Lantern + Gas Core Fission VI | 147.059 GW | 1,650 GW | 4 t/GW | 6,600 t | 588.2-1,470.6 t | All listed hulls |
 | Zeta Deuteron Torch + Flow-Stabilized Z-Pinch | 1,263.411 GW | 7,590 GW | 0.0068 t/GW | 51.6 t | 8.6-21.5 t | All listed hulls |

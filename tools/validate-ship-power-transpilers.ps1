@@ -257,6 +257,42 @@ if ($setModuleCalls.Count -ne 1 -or $removeModuleCalls.Count -ne 1 -or
     throw 'Appearance reconciliation must directly test effective output, inspect installed-count drive variations, and use exactly one normal replacement/removal path.'
 }
 
+$fuelRefreshPatchType = $modAssembly.GetType(
+    'TIEconomyMod.Patches.FuelCapacityDesignerRefreshPatch', $true)
+$fuelRefreshPrefix = $fuelRefreshPatchType.GetMethod(
+    'Prefix', [Reflection.BindingFlags]'Public,Static')
+$fuelRefreshPostfix = $fuelRefreshPatchType.GetMethod(
+    'Postfix', [Reflection.BindingFlags]'Public,Static')
+$fuelUiType = $modAssembly.GetType(
+    'TIEconomyMod.Patches.FuelCapacityDesignerUi', $true)
+$enforceFuel = $fuelUiType.GetMethod(
+    'EnforceAndRefreshSpinner', [Reflection.BindingFlags]'Public,Static')
+$refreshFuelOverlay = $fuelUiType.GetMethod(
+    'RefreshOverlay', [Reflection.BindingFlags]'Public,Static')
+if ($null -eq $fuelRefreshPrefix -or $null -eq $fuelRefreshPostfix -or
+    $null -eq $enforceFuel -or $null -eq $refreshFuelOverlay) {
+    throw 'Fuel-capacity designer refresh patch is incomplete.'
+}
+foreach ($fuelRefreshMethod in @($fuelRefreshPrefix, $fuelRefreshPostfix)) {
+    $readerArguments[0] = $fuelRefreshMethod
+    $readerArguments[1] = $null
+    $fuelRefreshInstructions = @(
+        $instructionReader[0].PSObject.BaseObject.Invoke(
+            $null, $readerArguments))
+    $expectedHelper = if ($fuelRefreshMethod.Name -eq 'Prefix') {
+        $enforceFuel
+    }
+    else {
+        $refreshFuelOverlay
+    }
+    $helperCalls = @($fuelRefreshInstructions | Where-Object {
+        $_.opcode.Name -eq 'call' -and $_.operand -eq $expectedHelper
+    })
+    if ($helperCalls.Count -ne 1) {
+        throw "Fuel-capacity $($fuelRefreshMethod.Name) must call its lifecycle helper exactly once."
+    }
+}
+
 $appearancePostfix = $appearancePatchType.GetMethod(
     'Postfix', [Reflection.BindingFlags]'Public,Static')
 $readerArguments[0] = $appearancePostfix
@@ -317,6 +353,9 @@ $harmonyId = 'ti-eeo.ship-power-validation.' +
     [Guid]::NewGuid().ToString('N')
 $harmony = [Activator]::CreateInstance(
     $harmonyType, [object[]]@($harmonyId))
+# UpdateShipDesignDataPanelAndImage is structurally validated above; the
+# PowerShell/CoreCLR harness cannot detour that Unity method because Harmony's
+# generated wrapper trips the host's ECall restriction. Unity Mono patches it.
 $patchTypeNames = @(
     'TIEconomyMod.Patches.GunPowerTemplateInitializationPatch',
     'TIEconomyMod.Patches.ShipPowerSaveLoadCachePatch',
@@ -329,6 +368,16 @@ $patchTypeNames = @(
     'TIEconomyMod.Patches.HullScaledDriveTooltipPatch',
     'TIEconomyMod.Patches.HullScaledDriveTableRefreshPatch',
     'TIEconomyMod.Patches.ReactorBayAppearanceRefreshPatch',
+    'TIEconomyMod.Patches.PropellantDensityTemplateInitializationPatch',
+    'TIEconomyMod.Patches.FuelCapacitySpinnerLabelPatch',
+    'TIEconomyMod.Patches.FuelCapacitySaveGuardPatch',
+    'TIEconomyMod.Patches.AiShipDesignCapacityBoundaryPatch',
+    'TIEconomyMod.Patches.AiShipRefitCapacityBoundaryPatch',
+    'TIEconomyMod.Patches.AiShipEarlyAppearanceSelectionPatch',
+    'TIEconomyMod.Patches.FuelCapacityIdealTankCountPatch',
+    'TIEconomyMod.Patches.AlienShipFuelCapacityPatch',
+    'TIEconomyMod.Patches.StoFighterFuelCapacityPatch',
+    'TIEconomyMod.Patches.SavedShipCapacityInvariantPatch',
     'TIEconomyMod.Patches.HullScaledDriveCompatibilityPatch',
     'TIEconomyMod.Patches.HullScaledPowerPlantCompatibilityPatch',
     'TIEconomyMod.Patches.PoweredWeaponRadiatorHeatPatch',

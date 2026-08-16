@@ -13,6 +13,8 @@ $csvPath = Join-Path $reportRoot 'tables\hull-variant-volume-and-slots.csv'
 $jsonPath = Join-Path $reportRoot 'tables\hull-variant-volume-and-slots.json'
 $reportPath = Join-Path $reportRoot 'hull-utility-slot-volume-report.md'
 $imageRoot = Join-Path $reportRoot 'hull-variants'
+$runtimeVolumePath = Join-Path $RepositoryRoot 'TIEconomyMod\ModFiles\Config\hull-variant-main-volumes.csv'
+$runtimeDriveScalePath = Join-Path $RepositoryRoot 'TIEconomyMod\ModFiles\Config\hull-variant-drive-scales.csv'
 $templatePath = Join-Path $VanillaTemplatesDir 'TIShipHullTemplate.json'
 $overridePath = Join-Path $RepositoryRoot 'TIEconomyMod\ModFiles\TIShipHullTemplate.json'
 $streamingAssetsDir = Split-Path -Parent $VanillaTemplatesDir
@@ -24,6 +26,8 @@ foreach ($requiredPath in @(
     $csvPath,
     $jsonPath,
     $reportPath,
+    $runtimeVolumePath,
+    $runtimeDriveScalePath,
     $templatePath,
     $overridePath,
     $shipsBundlePath,
@@ -86,6 +90,56 @@ foreach ($template in $templates) {
     }
 }
 
+$runtimeDriveScales = @{}
+foreach ($line in Get-Content -LiteralPath $runtimeDriveScalePath) {
+    $trimmed = $line.Trim()
+    if ([string]::IsNullOrWhiteSpace($trimmed) -or $trimmed.StartsWith('#') -or
+        $trimmed.StartsWith('dataName,')) {
+        continue
+    }
+    $columns = @($trimmed.Split(','))
+    if ($columns.Count -ne 3 -or $runtimeDriveScales.ContainsKey($columns[0])) {
+        throw "Malformed or duplicate runtime drive-scale row '$trimmed'."
+    }
+    $runtimeDriveScales[$columns[0]] = [pscustomobject]@{
+        DeLaval = @($columns[1].Split('|'))
+        Magnetic = @($columns[2].Split('|'))
+    }
+}
+$humanDriveTemplates = @($templates | Where-Object {
+    -not [bool]$_.alien -and [string]$_.dataName -ne 'STOFighter'
+})
+if ($runtimeDriveScales.Count -ne 12 -or
+    $runtimeDriveScales.Count -ne $humanDriveTemplates.Count) {
+    throw "Runtime drive-scale catalog has $($runtimeDriveScales.Count) hulls; expected 12."
+}
+foreach ($template in $humanDriveTemplates) {
+    $dataName = [string]$template.dataName
+    if (-not $runtimeDriveScales.ContainsKey($dataName)) {
+        throw "Runtime drive-scale catalog is missing '$dataName'."
+    }
+    $entry = $runtimeDriveScales[$dataName]
+    $appearanceCount = @($template.modelResource).Count
+    if ($entry.DeLaval.Count -ne $appearanceCount -or
+        $entry.Magnetic.Count -ne $appearanceCount) {
+        throw "Runtime drive-scale appearance count mismatch for '$dataName'."
+    }
+    foreach ($family in @('DeLaval', 'Magnetic')) {
+        foreach ($valueText in @($entry.$family)) {
+            if ([double]::Parse([string]$valueText, $culture) -le 0) {
+                throw "Runtime drive-scale catalog has a non-positive $family value for '$dataName'."
+            }
+        }
+    }
+}
+$gunshipScales = $runtimeDriveScales['Gunship']
+if ([Math]::Abs([double]::Parse($gunshipScales.DeLaval[0], $culture) - 1.0) -gt 0.000001 -or
+    [Math]::Abs([double]::Parse($gunshipScales.Magnetic[0], $culture) - 1.0) -gt 0.000001 -or
+    [Math]::Abs([double]::Parse($gunshipScales.DeLaval[2], $culture) - 0.668230) -gt 0.000001 -or
+    [Math]::Abs([double]::Parse($gunshipScales.Magnetic[2], $culture) - 0.397033) -gt 0.000001) {
+    throw 'Runtime drive-scale catalog does not preserve the measured Gunship references.'
+}
+
 $seenPairs = @{}
 foreach ($row in $csvRows) {
     $key = "$($row.dataName)|$($row.appearanceIndex)"
@@ -134,6 +188,48 @@ if ($seenPairs.Count -ne $expectedPairs.Count) {
     throw 'Hull-variant CSV does not cover every installed hull appearance.'
 }
 
+$runtimeVolumes = @{}
+foreach ($line in Get-Content -LiteralPath $runtimeVolumePath) {
+    $trimmed = $line.Trim()
+    if ([string]::IsNullOrWhiteSpace($trimmed) -or $trimmed.StartsWith('#') -or
+        $trimmed.StartsWith('dataName,')) {
+        continue
+    }
+    $separator = $trimmed.IndexOf(',')
+    if ($separator -le 0) {
+        throw "Malformed runtime hull-volume row '$trimmed'."
+    }
+    $dataName = $trimmed.Substring(0, $separator)
+    if ($runtimeVolumes.ContainsKey($dataName)) {
+        throw "Runtime hull-volume catalog duplicates '$dataName'."
+    }
+    $runtimeVolumes[$dataName] = @($trimmed.Substring($separator + 1).Split('|'))
+}
+if ($runtimeVolumes.Count -ne $templates.Count) {
+    throw "Runtime hull-volume catalog has $($runtimeVolumes.Count) hulls; expected $($templates.Count)."
+}
+foreach ($template in $templates) {
+    $dataName = [string]$template.dataName
+    if (-not $runtimeVolumes.ContainsKey($dataName)) {
+        throw "Runtime hull-volume catalog is missing '$dataName'."
+    }
+    $values = @($runtimeVolumes[$dataName])
+    $sourceRows = @($csvRows | Where-Object { $_.dataName -eq $dataName } |
+        Sort-Object { [int]$_.appearanceIndex })
+    if ($values.Count -ne $sourceRows.Count) {
+        throw "Runtime hull-volume appearance count mismatch for '$dataName'."
+    }
+    for ($appearanceIndex = 0; $appearanceIndex -lt $values.Count; $appearanceIndex++) {
+        $runtimeValue = [double]::Parse([string]$values[$appearanceIndex], $culture)
+        $sourceValue = [double]::Parse(
+            [string]$sourceRows[$appearanceIndex].mainHullEllipticalEnvelope_m3,
+            $culture)
+        if ([Math]::Abs($runtimeValue - $sourceValue) -gt 0.000001) {
+            throw "Runtime hull-volume value mismatch for '$dataName|$appearanceIndex'."
+        }
+    }
+}
+
 foreach ($row in $evidenceRows) {
     $key = "$($row.data_name)|$($row.appearance_index)"
     if (-not $expectedPairs.ContainsKey($key)) {
@@ -166,4 +262,4 @@ foreach ($requiredText in @(
     }
 }
 
-Write-Host 'PASS: 28 hull templates, 64 graphical appearances, source hashes, slots, volumes, mesh exclusions, and 66 PNGs validated.'
+Write-Host 'PASS: 28 hull templates, 64 graphical appearances, runtime volume and drive-scale catalogs, source hashes, slots, volumes, mesh exclusions, and 66 PNGs validated.'

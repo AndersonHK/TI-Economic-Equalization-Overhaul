@@ -2,7 +2,7 @@ dataName,friendlyName,maxOutput_GW,specificPower_tGW,massAtCap_tons,powerPlantCl
 FuelCellI,Fuel Cell I,0.2,5600,1120,Fuel_Cell,0.58,0,0.35,0.3,0.3,0.05,shipbuildericons/ICO_FuelCellI,,,,
 FuelCellII,Fuel Cell II,0.8,3600,2880,Fuel_Cell,0.6,0,0.35,0.3,0.3,0.05,shipbuildericons/ICO_FuelCellII,Project_FuelCellII,,,
 FuelCellIII,Fuel Cell III,1.5,960,1440,Fuel_Cell,0.62,0,0.35,0.3,0.3,0.05,shipbuildericons/ICO_FuelCellIII,Project_FuelCellIII,,,
-SolidCoreFissionReactorI,Solid Core Fission Reactor I,1,160,160,Solid_Core_Fission,0.575,6,0.1,0.1,0.65,0.1,shipbuildericons/ICO_SolidCoreFissionReactorI,Project_SolidCoreFissionReactorI,0.05,,
+SolidCoreFissionReactorI,Solid Core Fission Reactor I,2,160,320,Solid_Core_Fission,0.575,6,0.1,0.1,0.65,0.1,shipbuildericons/ICO_SolidCoreFissionReactorI,Project_SolidCoreFissionReactorI,0.05,,
 SolidCoreFissionReactorII,Solid Core Fission Reactor II,3,136,408,Solid_Core_Fission,0.6,6,0.1,0.1,0.65,0.1,shipbuildericons/ICO_SolidCoreFissionReactorII,Project_SolidCoreFissionReactorII,0.05,,
 SolidCoreFissionReactorIII,Solid Core Fission Reactor III,10,112,1120,Solid_Core_Fission,0.625,6,0.1,0.1,0.65,0.1,shipbuildericons/ICO_SolidCoreFissionReactorIII,Project_SolidCoreFissionReactorIII,0.05,,
 SolidCoreFissionReactorIV,Solid Core Fission Reactor IV,30,48,1440,Solid_Core_Fission,0.65,6,0.1,0.1,0.65,0.1,shipbuildericons/ICO_SolidCoreFissionReactorIV,Project_SolidCoreFissionReactorIV,0.05,,

@@ -14,6 +14,8 @@ namespace TIEconomyMod
         public static UnityModManager.ModEntry mod;
         public static Settings settings;
         public static TechWeightCatalog techWeights;
+        public static HullVolumeCatalog hullVolumes;
+        public static HullDriveScaleCatalog hullDriveScales;
 
         public static bool Load(UnityModManager.ModEntry modEntry)
         {
@@ -30,6 +32,13 @@ namespace TIEconomyMod
             {
                 string weightPath = Path.Combine(modEntry.Path, "Config", "economy-tech-weights.csv");
                 techWeights = TechWeightCatalog.Load(weightPath, Log, IsKnownTechnology);
+                string hullVolumePath = Path.Combine(
+                    modEntry.Path, "Config", "hull-variant-main-volumes.csv");
+                hullVolumes = HullVolumeCatalog.Load(hullVolumePath, Log);
+                string hullDriveScalePath = Path.Combine(
+                    modEntry.Path, "Config", "hull-variant-drive-scales.csv");
+                hullDriveScales = HullDriveScaleCatalog.Load(
+                    hullDriveScalePath, Log);
                 Harmony harmony = new Harmony(modEntry.Info.Id);
                 try
                 {
@@ -59,6 +68,7 @@ namespace TIEconomyMod
                     GunPowerRegistry.Refresh();
                     ProjectileGeometryRegistry.Refresh();
                     UtilityFootprintRegistry.Refresh();
+                    PropellantDensityRegistry.Refresh();
                     ShipPowerRuntime.RefreshTemplateMassCaches();
                 }
                 CouncilorRuntimeCaps.InitializeOrganizationCap();
@@ -400,6 +410,11 @@ namespace TIEconomyMod
         public float crewSupportMass_tons = 3f;
         public bool hullDriveScalingEnabled = true;
         public bool reactorBayCapacityEnabled = true;
+        public bool fuelVolumeCapacityEnabled = true;
+        public float utilitySlotVolume_m3 = 200f;
+        public float hullWeaponSlotVolume_m3 = 250f;
+        public float noseWeaponSlotVolume_m3 = 400f;
+        public float crewPressurizedVolume_m3 = 50f;
     }
 
     [DrawFields(DrawFieldMask.Public)]
@@ -683,6 +698,10 @@ namespace TIEconomyMod
             RepairPositive(ref value.army.megafaunaMaximumTechLevel, defaults.army.megafaunaMaximumTechLevel, "army.megafaunaMaximumTechLevel", log);
             RepairRange(ref value.shipBalance.openCycleDriveHeatFraction, defaults.shipBalance.openCycleDriveHeatFraction, 0f, 1f, "shipBalance.openCycleDriveHeatFraction", log);
             RepairPositive(ref value.shipBalance.crewSupportMass_tons, defaults.shipBalance.crewSupportMass_tons, "shipBalance.crewSupportMass_tons", log);
+            RepairPositive(ref value.shipBalance.utilitySlotVolume_m3, defaults.shipBalance.utilitySlotVolume_m3, "shipBalance.utilitySlotVolume_m3", log);
+            RepairPositive(ref value.shipBalance.hullWeaponSlotVolume_m3, defaults.shipBalance.hullWeaponSlotVolume_m3, "shipBalance.hullWeaponSlotVolume_m3", log);
+            RepairPositive(ref value.shipBalance.noseWeaponSlotVolume_m3, defaults.shipBalance.noseWeaponSlotVolume_m3, "shipBalance.noseWeaponSlotVolume_m3", log);
+            RepairPositive(ref value.shipBalance.crewPressurizedVolume_m3, defaults.shipBalance.crewPressurizedVolume_m3, "shipBalance.crewPressurizedVolume_m3", log);
             RepairPositive(ref value.research.coefficient, defaults.research.coefficient, "research.coefficient", log);
             RepairPositive(ref value.research.referencePcgdp, defaults.research.referencePcgdp, "research.referencePcgdp", log);
             RepairNonNegative(ref value.research.pcgdpOffset, defaults.research.pcgdpOffset, "research.pcgdpOffset", log);

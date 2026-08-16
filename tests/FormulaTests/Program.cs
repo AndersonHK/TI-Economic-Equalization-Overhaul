@@ -21,6 +21,18 @@ namespace TIEconomyMod.FormulaTests
                         "economy-tech-weights.csv"));
                 TIEconomyMod.Main.techWeights = TechWeightCatalog.Load(
                     weights, delegate { }, delegate { return true; });
+                string configDirectory = Path.GetDirectoryName(weights);
+                TIEconomyMod.Main.hullDriveScales =
+                    HullDriveScaleCatalog.Load(
+                        Path.Combine(
+                            configDirectory,
+                            "hull-variant-drive-scales.csv"),
+                        delegate { });
+                TIEconomyMod.Main.hullVolumes = HullVolumeCatalog.Load(
+                    Path.Combine(
+                        configDirectory,
+                        "hull-variant-main-volumes.csv"),
+                    delegate { });
 
                 TestNationalValues();
                 TestMilitaryMath();
@@ -922,44 +934,95 @@ namespace TIEconomyMod.FormulaTests
                 "invalid expected projectile damage cannot saturate a target");
             Near(9f, ShipBalanceMath.CrewMass_tons(3, 3f), 0f,
                 "settled crew support mass is three tonnes per billet");
-            Near(1f,
-                ShipBalanceMath.HumanHullDriveScale("Destroyer", false),
-                0f, "Destroyer retains the baseline drive scale");
-            Near(1.3f,
-                ShipBalanceMath.HumanHullDriveScale("Cruiser", false),
-                0f, "Cruiser receives its provisional drive scale");
-            Near(1.72f,
-                ShipBalanceMath.HumanHullDriveScale("Lancer", false),
-                0f, "Lancer receives its provisional drive scale");
-            Near(2.5f,
-                ShipBalanceMath.HumanHullDriveScale("Titan", false),
-                0f, "Titan receives its provisional drive scale");
-            Near(1f,
-                ShipBalanceMath.HumanHullDriveScale("Titan", true),
-                0f, "alien hulls do not receive human drive scaling");
-            Near(1.3f,
-                ShipBalanceMath.DriveScale(
-                    "Cruiser", false, 0, "DeLaval"),
-                0f, "default Cruiser art retains its approved hull scale");
-            Near(1.3f,
-                ShipBalanceMath.DriveScale(
-                    "Cruiser", false, 1, "Magnetic"),
-                0f, "alternate Cruiser art retains its approved hull scale");
+            float catalogDeLaval;
+            float catalogMagnetic;
+            True(TIEconomyMod.Main.hullDriveScales.TryGetScales(
+                    "Cruiser", 0, out catalogDeLaval, out catalogMagnetic),
+                "Cruiser appearance 0 has measured drive-art scales");
+            Near(4.150085f, catalogDeLaval, 0.000001f,
+                "default Cruiser De Laval uses measured art scale");
+            Near(2.859339f, catalogMagnetic, 0.000001f,
+                "default Cruiser magnetic uses measured art scale");
+            True(TIEconomyMod.Main.hullDriveScales.TryGetScales(
+                    "Gunship", 2, out catalogDeLaval, out catalogMagnetic),
+                "premium Gunship art has measured drive-art scales");
+            Near(0.397033f, catalogMagnetic, 0.000001f,
+                "measured human art can scale below the Gunship reference");
             string humanDriveDiagnostic;
-            Near(1.3f,
+            Near(1f,
                 ShipBalanceMath.DriveScale(
                     "Cruiser", false, 2, "Magnetic",
                     out humanDriveDiagnostic),
-                0f, "all Cruiser appearances use the approved hull scale");
-            True(string.IsNullOrEmpty(humanDriveDiagnostic),
-                "known human appearances do not require a fallback");
-            Near(1.3f,
+                0f, "human scale lookup without its catalog uses vanilla");
+            True(!string.IsNullOrEmpty(humanDriveDiagnostic),
+                "catalog-free human lookup reports a diagnostic");
+            Near(1f,
                 ShipBalanceMath.DriveScale(
                     "Cruiser", false, 0, "Pulsed",
                     out humanDriveDiagnostic),
-                0f, "pulse art uses the conservative hull fallback");
+                0f, "pulsed drive remains a fixed-size appendage");
             True(string.IsNullOrEmpty(humanDriveDiagnostic),
                 "intentional pulse-drive policy is not an error");
+            Near(3.97033f,
+                ShipBalanceMath.ScaledDriveValue(10f, 0.397033f),
+                0.00001f,
+                "drive values honor measured scales below one");
+            Near(-6.02967f,
+                ShipBalanceMath.AdditionalScaledDriveValue(
+                    10f, 0.397033f),
+                0.00001f,
+                "smaller drive art removes the unused hardware mass");
+            float flatVariantMass;
+            True(ShipBalanceMath.TryGetVariantEmptyHullMass_tons(
+                    "Cruiser", 1, out flatVariantMass),
+                "Cruiser appearance 1 has an authored empty-hull mass");
+            Near(1788f, flatVariantMass, 0f,
+                "Cruiser appearance 1 uses its flat empty-hull mass");
+            string[] humanVariantHulls =
+            {
+                "Gunship", "Escort", "Corvette", "Frigate",
+                "Monitor", "Destroyer", "Cruiser", "Battlecruiser",
+                "Lancer", "Battleship", "Dreadnought", "Titan"
+            };
+            float[,] humanVariantMasses =
+            {
+                { 171f, 187f, 174f, 205f },
+                { 338f, 375f, 345f, 406f },
+                { 385f, 599f, 708f, 677f },
+                { 576f, 633f, 802f, 891f },
+                { 679f, 980f, 1622f, 1595f },
+                { 873f, 1730f, 1858f, 2055f },
+                { 964f, 1788f, 1549f, 2286f },
+                { 1170f, 2460f, 1900f, 3024f },
+                { 1958f, 2472f, 3848f, 3865f },
+                { 1558f, 1961f, 1854f, 2251f },
+                { 2346f, 2906f, 2521f, 3559f },
+                { 3143f, 4208f, 3408f, 5089f }
+            };
+            for (int hullIndex = 0;
+                hullIndex < humanVariantHulls.Length;
+                hullIndex++)
+            {
+                for (int appearanceIndex = 0;
+                    appearanceIndex < 4;
+                    appearanceIndex++)
+                {
+                    True(ShipBalanceMath.TryGetVariantEmptyHullMass_tons(
+                            humanVariantHulls[hullIndex],
+                            appearanceIndex,
+                            out flatVariantMass),
+                        humanVariantHulls[hullIndex] + " appearance " +
+                            appearanceIndex + " has a flat hull mass");
+                    Near(humanVariantMasses[hullIndex, appearanceIndex],
+                        flatVariantMass,
+                        0f,
+                        humanVariantHulls[hullIndex] + " appearance " +
+                            appearanceIndex + " flat mass is locked");
+                }
+            }
+            True(!ShipBalanceMath.TryGetVariantEmptyHullMass_tons(
+                    "Cruiser", 4, out flatVariantMass),
+                "unknown human appearance has no silent mass fallback");
             Near(7.531f,
                 ShipBalanceMath.DriveScale(
                     "AlienTitan", true, 0, "DeLaval"),
@@ -1196,6 +1259,53 @@ namespace TIEconomyMod.FormulaTests
                     0f, "Molten_Salt_Core_Fission", 8f), 0f,
                 "a design without drive demand uses no reactor bay volume");
 
+            Near(9920f, ShipBalanceMath.FuelVolume_m3(
+                    11019.2f, 800f, 6, 50f), 0f,
+                "fuel volume rounds up after module and crew reservations");
+            Near(0f, ShipBalanceMath.FuelVolume_m3(
+                    500f, 400f, 3, 50f), 0f,
+                "module and crew reservations cannot produce negative fuel volume");
+            Near(1001f, ShipBalanceMath.FuelVolume_m3(
+                    1000.01f, 0f, 0, 50f), 0f,
+                "fractional remaining hull volume rounds upward");
+            float hydrogenTankVolume =
+                ShipBalanceMath.PropellantTankVolume_m3(100f, 70.85f);
+            Near(1411.4326f, hydrogenTankVolume, 0.001f,
+                "one hundred tons of liquid hydrogen uses its bulk volume");
+            Near(100f, ShipBalanceMath.PropellantTankVolume_m3(
+                    100f, 1000f), 0.0001f,
+                "water-equivalent propellant preserves one cubic metre per ton");
+            True(ShipBalanceMath.MaximumPropellantTanks(
+                    9920f, hydrogenTankVolume) == 7,
+                "liquid hydrogen capacity floors to complete 100-ton tanks");
+            True(ShipBalanceMath.MaximumPropellantTanks(
+                    9920f, 100f) == 99,
+                "water-equivalent capacity floors to complete 100-ton tanks");
+            True(ShipBalanceMath.MaximumPropellantTanks(
+                    99.99f, 100f) == 0,
+                "partial tank volume does not create a tank");
+            Near(0f, ShipBalanceMath.PropellantTankVolume_m3(
+                    100f, 0f), 0f,
+                "invalid propellant density produces no tank volume");
+            True(ShipBalanceMath.MaximumPropellantTanks(
+                    float.PositiveInfinity, 100f) == int.MaxValue,
+                "unbounded valid fuel volume saturates the tank count");
+            Near(69.31472f,
+                ShipBalanceMath.DeltaVForPropellantTanks_kps(
+                    100f, 1000f, 100f, 10),
+                0.0001f,
+                "capped AI delta-v uses the rocket equation at the legal tank count");
+            Near(0f,
+                ShipBalanceMath.DeltaVForPropellantTanks_kps(
+                    100f, 1000f, 100f, 0),
+                0f,
+                "zero legal tanks safely reports zero achievable delta-v");
+            Near(0f,
+                ShipBalanceMath.DeltaVForPropellantTanks_kps(
+                    100f, 0f, 100f, 10),
+                0f,
+                "invalid dry mass cannot produce an AI delta-v estimate");
+
             TIPowerPlantTemplate plant = new TIPowerPlantTemplate();
             plant.efficiency = 0.70f;
             float wasteHeat = 0f;
@@ -1214,7 +1324,8 @@ namespace TIEconomyMod.FormulaTests
             ship.hullTemplate = new TIShipHullTemplate
             {
                 dataName = "Cruiser",
-                alien = false
+                alien = false,
+                mass_tons = 964f
             };
             ship.driveTemplate = new TIDriveTemplate
             {
@@ -1231,32 +1342,32 @@ namespace TIEconomyMod.FormulaTests
             };
             float scaledThrust = 10f;
             HullScaledDriveThrustPatch.Postfix(ref scaledThrust, ship);
-            Near(13f, scaledThrust, 0.0001f,
-                "Cruiser drive thrust retains the approved hull factor");
+            Near(41.50085f, scaledThrust, 0.0001f,
+                "Cruiser drive thrust uses default De Laval art");
             float scaledPower = 20f;
             HullScaledDrivePowerPatch.Postfix(ref scaledPower, ship);
-            Near(26f, scaledPower, 0.0001f,
+            Near(83.0017f, scaledPower, 0.0001f,
                 "Cruiser drive power scales at constant exhaust velocity");
             float scaledDryMass = 1000f;
             HullScaledDriveMassPatch.Postfix(ref scaledDryMass, ship);
-            Near(1030f, scaledDryMass, 0.0001f,
+            Near(1315.0085f, scaledDryMass, 0.001f,
                 "Cruiser dry mass includes the larger drive hardware");
             TIResourcesCost scaledCost = new TIResourcesCost { value = 400f };
             HullScaledDriveConstructionCostPatch.Postfix(
                 ref scaledCost, ship, null);
-            Near(412f, scaledCost.value, 0.0001f,
+            Near(526.0034f, scaledCost.value, 0.001f,
                 "Cruiser construction cost includes the larger drive");
             bool compatible = true;
             HullScaledDriveCompatibilityPatch.Postfix(
                 ref compatible, ship, ship.driveTemplate);
             True(compatible,
                 "scaled Cruiser drive remains within a 90 GW plant cap");
-            ship.powerPlantTemplate.maxOutput_GW = 25f;
+            ship.powerPlantTemplate.maxOutput_GW = 80f;
             compatible = true;
             HullScaledDriveCompatibilityPatch.Postfix(
                 ref compatible, ship, ship.driveTemplate);
             True(!compatible,
-                "scaled drive power respects the existing plant output cap");
+                "scaled De Laval drive power respects the existing plant output cap");
             TIDriveTemplate magneticCandidate = new TIDriveTemplate
             {
                 nozzle = Nozzle.Magnetic,
@@ -1267,11 +1378,54 @@ namespace TIEconomyMod.FormulaTests
             HullScaledDriveCompatibilityPatch.Postfix(
                 ref compatible, ship, magneticCandidate);
             True(compatible,
-                "candidate drive compatibility uses the human hull factor");
+                "candidate compatibility uses magnetic art rather than the installed nozzle");
 
             TIShipHullTemplate cruiserHull = ship.hullTemplate;
             TIDriveTemplate cruiserDrive = ship.driveTemplate;
             TIPowerPlantTemplate cruiserPlant = ship.powerPlantTemplate;
+            ship.hullAppearanceIndex = 1;
+            float variantMass = 1000f;
+            HullVariantEmptyMassPatch.Postfix(ref variantMass, ship);
+            Near(1824f, variantMass, 0.001f,
+                "Cruiser appearance 1 adds its 824-ton structural penalty");
+
+            ship.hullTemplate = new TIShipHullTemplate
+            {
+                dataName = "Gunship",
+                alien = false,
+                smallHull = true,
+                mass_tons = 171f
+            };
+            ship.hullAppearanceIndex = 2;
+            ship.driveTemplate = new TIDriveTemplate
+            {
+                nozzle = Nozzle.Magnetic,
+                mass_tons = 100f,
+                powerRequirement_GW = 20f,
+                cost = new TIResourcesCost { value = 40f }
+            };
+            scaledThrust = 10f;
+            HullScaledDriveThrustPatch.Postfix(ref scaledThrust, ship);
+            Near(3.97033f, scaledThrust, 0.0001f,
+                "small magnetic art reduces runtime thrust below baseline");
+            scaledDryMass = 1000f;
+            HullScaledDriveMassPatch.Postfix(ref scaledDryMass, ship);
+            Near(939.7033f, scaledDryMass, 0.001f,
+                "small magnetic art reduces installed drive hardware mass");
+            HullVariantEmptyMassPatch.Postfix(ref scaledDryMass, ship);
+            Near(942.7033f, scaledDryMass, 0.001f,
+                "flat hull mass and scaled drive mass remain independent");
+            scaledCost = new TIResourcesCost { value = 400f };
+            HullScaledDriveConstructionCostPatch.Postfix(
+                ref scaledCost, ship, null);
+            Near(375.88132f, scaledCost.value, 0.001f,
+                "small magnetic art removes unused drive construction cost");
+            ship.driveTemplate.nozzle = Nozzle.Pulsed;
+            scaledThrust = 10f;
+            HullScaledDriveThrustPatch.Postfix(ref scaledThrust, ship);
+            Near(10f, scaledThrust, 0f,
+                "pulsed runtime thrust remains exactly vanilla");
+
             ship.hullTemplate = new TIShipHullTemplate
             {
                 dataName = "Gunship",
@@ -1315,26 +1469,46 @@ namespace TIEconomyMod.FormulaTests
             ship.hullAppearanceIndex = 1;
             compatible = true;
             HullScaledDriveCompatibilityPatch.Postfix(
-                ref compatible, ship, pegasusX5);
+                ref compatible, ship, pegasusX3);
             True(compatible,
-                "Gunship appearance 1 accepts Pegasus x5 with Molten Salt II");
+                "Gunship appearance 1 accepts scaled Pegasus x3");
             compatible = true;
             HullScaledDriveCompatibilityPatch.Postfix(
-                ref compatible, ship, pegasusX6);
+                ref compatible, ship, pegasusX4);
+            True(compatible,
+                "Gunship appearance 1 accepts scaled Pegasus x4");
+            compatible = true;
+            HullScaledDriveCompatibilityPatch.Postfix(
+                ref compatible, ship, pegasusX5);
             True(!compatible,
-                "Gunship appearance 1 rejects Pegasus x6 by reactor bay");
+                "Gunship appearance 1 rejects scaled Pegasus x5 by reactor bay");
             ship.hullAppearanceIndex = 2;
             compatible = true;
             HullScaledDriveCompatibilityPatch.Postfix(
                 ref compatible, ship, pegasusX4);
-            True(!compatible,
-                "resolved premium Gunship appearance uses its distinct bay");
+            True(compatible,
+                "smaller premium Gunship De Laval art fits scaled Pegasus x4");
             ship.hullAppearanceIndex = 3;
             compatible = true;
             HullScaledDriveCompatibilityPatch.Postfix(
-                ref compatible, ship, pegasusX6);
+                ref compatible, ship, pegasusX3);
             True(compatible,
-                "resolved DLCA Gunship appearance accepts Pegasus x6");
+                "DLCA Gunship appearance accepts scaled Pegasus x3");
+            compatible = true;
+            HullScaledDriveCompatibilityPatch.Postfix(
+                ref compatible, ship, pegasusX4);
+            True(!compatible,
+                "DLCA Gunship appearance rejects scaled Pegasus x4");
+            TIDriveTemplate pulsedPegasusX6 = new TIDriveTemplate
+            {
+                nozzle = Nozzle.Pulsed,
+                powerRequirement_GW = 6f * 65.8824f
+            };
+            compatible = true;
+            HullScaledDriveCompatibilityPatch.Postfix(
+                ref compatible, ship, pulsedPegasusX6);
+            True(compatible,
+                "pulsed x6 remains vanilla and fits the DLCA reactor bay");
 
             ship.hullAppearanceIndex = 0;
             ship.driveTemplate = pegasusX4;
@@ -1367,8 +1541,8 @@ namespace TIEconomyMod.FormulaTests
             TISpaceShipState liveShip = new TISpaceShipState { template = ship };
             float liveThrust = 10f;
             HullScaledLiveShipThrustPatch.Postfix(ref liveThrust, liveShip);
-            Near(13f, liveThrust, 0.0001f,
-                "live ship thrust uses the same approved hull factor");
+            Near(41.50085f, liveThrust, 0.0001f,
+                "live ship thrust uses the same measured art factor");
             TIEconomyMod.Main.settings.shipBalance.hullDriveScalingEnabled =
                 false;
             scaledThrust = 10f;

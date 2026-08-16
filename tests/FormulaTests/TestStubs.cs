@@ -92,6 +92,12 @@ namespace PavonisInteractive.TerraInvicta
         public bool mediumHull;
         public bool largeHull;
         public bool hugeHull;
+        public float mass_tons;
+
+        public float buildMass_tons()
+        {
+            return mass_tons;
+        }
     }
 
     public sealed class TIDriveTemplate
@@ -310,6 +316,8 @@ namespace TIEconomyMod
         public static bool enabled = true;
         public static Settings settings = new Settings();
         public static TechWeightCatalog techWeights;
+        public static HullDriveScaleCatalog hullDriveScales;
+        public static HullVolumeCatalog hullVolumes;
         public static readonly List<string> Warnings = new List<string>();
 
         public static bool FeatureEnabled(bool featureEnabled)

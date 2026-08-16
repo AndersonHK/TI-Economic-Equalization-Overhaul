@@ -133,6 +133,11 @@
     <crewSupportMass_tons>3</crewSupportMass_tons>
     <hullDriveScalingEnabled>true</hullDriveScalingEnabled>
     <reactorBayCapacityEnabled>true</reactorBayCapacityEnabled>
+    <fuelVolumeCapacityEnabled>true</fuelVolumeCapacityEnabled>
+    <utilitySlotVolume_m3>200</utilitySlotVolume_m3>
+    <hullWeaponSlotVolume_m3>250</hullWeaponSlotVolume_m3>
+    <noseWeaponSlotVolume_m3>400</noseWeaponSlotVolume_m3>
+    <crewPressurizedVolume_m3>50</crewPressurizedVolume_m3>
   </shipBalance>
   <research>
     <enabled>true</enabled>

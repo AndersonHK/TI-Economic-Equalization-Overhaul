@@ -28,13 +28,58 @@ namespace TIEconomyMod.Patches
                 return 1f;
             }
 
-            string diagnostic;
-            float scale = ShipBalanceMath.DriveScale(
+            return GraphicalMultiplier(
                 ship.hullTemplate.dataName,
                 ship.hullTemplate.alien,
                 ship.GetHullAppearanceIndex,
-                drive.nozzle.ToString(),
-                out diagnostic);
+                drive.nozzle.ToString());
+        }
+
+        public static float GraphicalMultiplier(
+            string hullDataName,
+            bool alien,
+            int appearanceIndex,
+            string nozzleFamily)
+        {
+            if (string.Equals(
+                    nozzleFamily, "Pulsed", StringComparison.Ordinal))
+            {
+                return 1f;
+            }
+
+            string diagnostic = null;
+            float scale;
+            if (!alien)
+            {
+                if (Main.hullDriveScales == null)
+                {
+                    diagnostic = "Measured human drive-art catalog is not " +
+                        "loaded.";
+                    scale = 1f;
+                }
+                else if (!Main.hullDriveScales.TryGetScale(
+                    hullDataName,
+                    appearanceIndex,
+                    nozzleFamily,
+                    out scale))
+                {
+                    diagnostic = "No measured human drive-art scale is " +
+                        "configured for hull '" + hullDataName +
+                        "' appearance " + appearanceIndex + " and nozzle '" +
+                        nozzleFamily + "'.";
+                    scale = 1f;
+                }
+            }
+            else
+            {
+                scale = ShipBalanceMath.DriveScale(
+                    hullDataName,
+                    true,
+                    appearanceIndex,
+                    nozzleFamily,
+                    out diagnostic);
+            }
+
             ReportDiagnosticOnce(diagnostic, scale);
             return scale;
         }
@@ -59,6 +104,67 @@ namespace TIEconomyMod.Patches
                 "Drive scaling configuration error: " + diagnostic +
                 " Safe fallback scale " + fallbackScale.ToString("0.###") +
                 " is being used.");
+        }
+    }
+
+    internal static class HullVariantEmptyMassFeature
+    {
+        private static readonly object diagnosticLock = new object();
+        private static readonly HashSet<string> reportedDiagnostics =
+            new HashSet<string>(StringComparer.Ordinal);
+
+        public static float EmptyHullMass_tons(TISpaceShipTemplate ship)
+        {
+            if (ship == null || ship.hullTemplate == null)
+            {
+                return 0f;
+            }
+
+            float baseMass_tons = ship.hullTemplate.buildMass_tons();
+            return baseMass_tons + AdditionalMass_tons(ship);
+        }
+
+        public static float AdditionalMass_tons(TISpaceShipTemplate ship)
+        {
+            if (ship == null || ship.hullTemplate == null ||
+                ship.hullTemplate.alien ||
+                !Main.FeatureEnabled(
+                    Main.settings.shipBalance.enabled &&
+                    Main.settings.shipBalance.hullDriveScalingEnabled))
+            {
+                return 0f;
+            }
+
+            TIShipHullTemplate hull = ship.hullTemplate;
+            int appearanceIndex = ship.GetHullAppearanceIndex;
+            float mass_tons;
+            if (!ShipBalanceMath.TryGetVariantEmptyHullMass_tons(
+                    hull.dataName, appearanceIndex, out mass_tons))
+            {
+                ReportDiagnosticOnce(
+                    "No flat empty-hull mass is configured for hull '" +
+                    hull.dataName +
+                    "' appearance " + appearanceIndex +
+                    "; vanilla empty hull mass is being used.");
+                return 0f;
+            }
+
+            float baseMass_tons = hull.buildMass_tons();
+            return mass_tons - baseMass_tons;
+        }
+
+        private static void ReportDiagnosticOnce(string diagnostic)
+        {
+            lock (diagnosticLock)
+            {
+                if (!reportedDiagnostics.Add(diagnostic))
+                {
+                    return;
+                }
+            }
+
+            Main.Error("Hull variant mass configuration error: " +
+                diagnostic);
         }
     }
 
@@ -372,6 +478,18 @@ namespace TIEconomyMod.Patches
         }
     }
 
+    [HarmonyPatch(typeof(TISpaceShipTemplate), "dryMass_tons")]
+    public static class HullVariantEmptyMassPatch
+    {
+        [HarmonyPostfix]
+        public static void Postfix(
+            ref float __result, TISpaceShipTemplate __instance)
+        {
+            __result += HullVariantEmptyMassFeature.AdditionalMass_tons(
+                __instance);
+        }
+    }
+
     [HarmonyPatch(
         typeof(TISpaceShipTemplate), "spaceResourceConstructionCost")]
     public static class HullScaledDriveConstructionCostPatch
@@ -389,7 +507,7 @@ namespace TIEconomyMod.Patches
 
             float extraFactor =
                 HullDriveScalingFeature.Multiplier(__instance) - 1f;
-            if (extraFactor <= 0f)
+            if (Math.Abs(extraFactor) <= 0.0001f)
             {
                 return;
             }

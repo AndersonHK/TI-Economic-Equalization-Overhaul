@@ -169,6 +169,8 @@ if ($LASTEXITCODE -ne 0) {
 }
 
 $weights = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\Config\economy-tech-weights.csv'
+$hullVolumes = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\Config\hull-variant-main-volumes.csv'
+$hullDriveScales = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\Config\hull-variant-drive-scales.csv'
 $defaultSettings = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\Settings.xml'
 $missionOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIMissionTemplate.json'
 $startOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIStartTimeTemplate.json'
@@ -697,6 +699,8 @@ New-Item -ItemType Directory -Path (Join-Path $stagingDirectory 'Config') -Force
 Copy-Item -LiteralPath $manifestPath -Destination $stagingDirectory
 Copy-Item -LiteralPath $assemblyPath -Destination (Join-Path $stagingDirectory 'Assembly')
 Copy-Item -LiteralPath $weights -Destination (Join-Path $stagingDirectory 'Config')
+Copy-Item -LiteralPath $hullVolumes -Destination (Join-Path $stagingDirectory 'Config')
+Copy-Item -LiteralPath $hullDriveScales -Destination (Join-Path $stagingDirectory 'Config')
 Copy-Item -LiteralPath $defaultSettings -Destination $stagingDirectory
 Copy-Item -LiteralPath $missionOverrides -Destination $stagingDirectory
 Copy-Item -LiteralPath $startOverrides -Destination $stagingDirectory
@@ -750,6 +754,12 @@ try {
         Select-Object -First 1
     $packagedWeights = $archive.Entries |
         Where-Object { $_.FullName.Replace('\', '/') -eq 'TIEconomyMod/Config/economy-tech-weights.csv' } |
+        Select-Object -First 1
+    $packagedHullVolumes = $archive.Entries |
+        Where-Object { $_.FullName.Replace('\', '/') -eq 'TIEconomyMod/Config/hull-variant-main-volumes.csv' } |
+        Select-Object -First 1
+    $packagedHullDriveScales = $archive.Entries |
+        Where-Object { $_.FullName.Replace('\', '/') -eq 'TIEconomyMod/Config/hull-variant-drive-scales.csv' } |
         Select-Object -First 1
     $packagedEffectLocalization = $archive.Entries |
         Where-Object { $_.FullName.Replace('\', '/') -eq 'TIEconomyMod/TIEffectTemplate.en' } |
@@ -807,8 +817,9 @@ try {
         }
     }
     if ($null -eq $packagedSettings -or $null -eq $packagedWeights -or
+        $null -eq $packagedHullVolumes -or $null -eq $packagedHullDriveScales -or
         $null -eq $packagedEffectLocalization -or $null -eq $packagedTechnologyLocalization) {
-        throw 'Release archive is missing settings, technology weights, or control-point localization.'
+        throw 'Release archive is missing settings, measured hull volumes/drive scales, technology weights, or control-point localization.'
     }
     $stream = $packagedDll.Open()
     $sha256 = [Security.Cryptography.SHA256]::Create()

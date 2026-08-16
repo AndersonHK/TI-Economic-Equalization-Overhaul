@@ -292,7 +292,7 @@ namespace TIEconomyMod.Patches
             TIDriveTemplate drive, ShipModuleListItem listItem)
         {
             float scale = DriveDisplayScale(drive, listItem);
-            if (scale <= 1f)
+            if (Math.Abs(scale - 1f) <= 0.0001f)
             {
                 return drive.GetLocalizedThrust();
             }
@@ -355,7 +355,7 @@ namespace TIEconomyMod.Patches
             }
 
             float scale = DriveDisplayScale(drive, listItem);
-            if (scale <= 1f)
+            if (Math.Abs(scale - 1f) <= 0.0001f)
             {
                 return drive.GetLocalizedCost();
             }
@@ -441,7 +441,8 @@ namespace TIEconomyMod.Patches
             TISpaceShipState ship)
         {
             if (string.IsNullOrEmpty(description) || drive == null ||
-                DriveDisplayScale(drive, shipTemplate) <= 1f)
+                Math.Abs(
+                    DriveDisplayScale(drive, shipTemplate) - 1f) <= 0.0001f)
             {
                 return description;
             }
@@ -474,7 +475,7 @@ namespace TIEconomyMod.Patches
             TIDriveTemplate drive, TISpaceShipTemplate ship)
         {
             float scale = DriveDisplayScale(drive, ship);
-            if (scale <= 1f)
+            if (Math.Abs(scale - 1f) <= 0.0001f)
             {
                 return drive.GetLocalizedThrust();
             }
@@ -502,7 +503,7 @@ namespace TIEconomyMod.Patches
             TIDriveTemplate drive, TISpaceShipTemplate ship)
         {
             float scale = DriveDisplayScale(drive, ship);
-            if (scale <= 1f)
+            if (Math.Abs(scale - 1f) <= 0.0001f)
             {
                 return drive.GetLocalizedCost();
             }

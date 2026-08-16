@@ -16,7 +16,7 @@
   },
   {
     "dataName": "SolidCoreFissionReactorI",
-    "maxOutput_GW": 1,
+    "maxOutput_GW": 2,
     "specificPower_tGW": 160,
     "efficiency": 0.575
   },
