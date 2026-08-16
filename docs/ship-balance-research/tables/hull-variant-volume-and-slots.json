@@ -1,0 +1,3475 @@
+{
+  "metadata": {
+    "alien_template_count": 15,
+    "appearance_count": 64,
+    "human_template_count": 13,
+    "method": "pi / 4 * main hull mesh AABB X * Y * longitudinal L",
+    "source_sha256": {
+      "hull_templates": "36952BDDFFCBEBE1C3AB2C2141B7D7DF53F985C0EED326C5A43A9B52BD86826B",
+      "mod_hull_overrides": "589F168B1819CAA2351612A4416DE31D8D7B7BE7F2AFB512D5D9338D0C3095E4",
+      "ships_bundle": "F1804254B5C6F2C2FFBF78C333738F462BAA18023AC5AACF9A8EACAA4D9F09A4",
+      "ships_prm_bundle": "9035AD167BC1371462D0FAFC709764B446BA21D4B5C7F41917465483706A31BC"
+    },
+    "template_count": 28
+  },
+  "rows": [
+    {
+      "alien": false,
+      "appearance_index": 0,
+      "counted_slots": 3,
+      "data_name": "Gunship",
+      "excluded_machinery": [
+        {
+          "path": "Gunship/Drive",
+          "reason": "drive subtree"
+        },
+        {
+          "path": "Gunship/Hull_Gunship/Earth_Gunship_Radiators",
+          "reason": "radiator/reactor-bay mesh"
+        }
+      ],
+      "hull_hardpoints": 0,
+      "image_file": "gunship-appearance-0.png",
+      "included_mesh_paths": [
+        "Gunship/Hull_Gunship/Earth_Gunship_Bridge",
+        "Gunship/Hull_Gunship/Earth_Gunship_Bridge_Detail",
+        "Gunship/Hull_Gunship/Earth_Gunship_Crew"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          7.108,
+          15.147,
+          24.776
+        ],
+        "minimum_xyz_m": [
+          -7.108,
+          -15.047,
+          -7.912
+        ],
+        "size_xyz_m": [
+          14.216,
+          30.194,
+          32.687
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 11019.664214,
+      "model_resource": "ships/Gunship",
+      "nose_hardpoints": 1,
+      "prefab_asset_path": "assets/artresources/ships/earth/gunship/gunship.prefab",
+      "runtime_cylinder_m3": 9719.302272,
+      "template_stored_volume_m3": 9719,
+      "utility_slots": 2,
+      "weapon_slots": 1
+    },
+    {
+      "alien": false,
+      "appearance_index": 1,
+      "counted_slots": 3,
+      "data_name": "Gunship",
+      "excluded_machinery": [
+        {
+          "path": "Gunship_1/Drive",
+          "reason": "drive subtree"
+        },
+        {
+          "path": "Gunship_1/Hull_Earth_Gunship_ALT/Earth_Gunship_ALT_Rads",
+          "reason": "radiator/reactor-bay mesh"
+        }
+      ],
+      "hull_hardpoints": 0,
+      "image_file": "gunship-appearance-1.png",
+      "included_mesh_paths": [
+        "Gunship_1/Hull_Earth_Gunship_ALT/Earth_Gunship_ALT_Body",
+        "Gunship_1/Hull_Earth_Gunship_ALT/Earth_Gunship_ALT_Head",
+        "Gunship_1/Hull_Earth_Gunship_ALT/Earth_Gunship_ALT_Middle"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          7.939,
+          7.491,
+          26.65
+        ],
+        "minimum_xyz_m": [
+          -7.925,
+          -7.523,
+          -7.96
+        ],
+        "size_xyz_m": [
+          15.864,
+          15.014,
+          34.61
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 6474.448755,
+      "model_resource": "ships/Gunship_1",
+      "nose_hardpoints": 1,
+      "prefab_asset_path": "assets/artresources/ships/earth_alt/gunship/gunship_1.prefab",
+      "runtime_cylinder_m3": 9719.302272,
+      "template_stored_volume_m3": 9719,
+      "utility_slots": 2,
+      "weapon_slots": 1
+    },
+    {
+      "alien": false,
+      "appearance_index": 2,
+      "counted_slots": 3,
+      "data_name": "Gunship",
+      "excluded_machinery": [
+        {
+          "path": "Gunship_2/Drive",
+          "reason": "drive subtree"
+        },
+        {
+          "path": "Gunship_2/Hull_Earth_Gunship_PRM/Earth_GS_PRM_Rads",
+          "reason": "radiator/reactor-bay mesh"
+        }
+      ],
+      "hull_hardpoints": 0,
+      "image_file": "gunship-appearance-2.png",
+      "included_mesh_paths": [
+        "Gunship_2/Hull_Earth_Gunship_PRM/Earth_GS_PRM_Body",
+        "Gunship_2/Hull_Earth_Gunship_PRM/Earth_GS_PRM_Head"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          5.433,
+          5.433,
+          32.11
+        ],
+        "minimum_xyz_m": [
+          -5.433,
+          -5.433,
+          -5.111
+        ],
+        "size_xyz_m": [
+          10.867,
+          10.867,
+          37.222
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 3452.257356,
+      "model_resource": "ships_prm/Gunship_2",
+      "nose_hardpoints": 1,
+      "prefab_asset_path": "assets/artresources/ships/earth_prm/gunship/gunship_2.prefab",
+      "runtime_cylinder_m3": 9719.302272,
+      "template_stored_volume_m3": 9719,
+      "utility_slots": 2,
+      "weapon_slots": 1
+    },
+    {
+      "alien": false,
+      "appearance_index": 3,
+      "counted_slots": 3,
+      "data_name": "Gunship",
+      "excluded_machinery": [
+        {
+          "path": "Gunship_3/Drive",
+          "reason": "drive subtree"
+        },
+        {
+          "path": "Gunship_3/Earth_DLCA_Hull_Gunship/Earth_DLCA_Radiator",
+          "reason": "radiator/reactor-bay mesh"
+        }
+      ],
+      "hull_hardpoints": 0,
+      "image_file": "gunship-appearance-3.png",
+      "included_mesh_paths": [
+        "Gunship_3/Earth_DLCA_Hull_Gunship/Earth_DLCA_GS_Front",
+        "Gunship_3/Earth_DLCA_Hull_Gunship/Earth_DLCA_GS_Details"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          6.518,
+          5.771,
+          25.115
+        ],
+        "minimum_xyz_m": [
+          -6.518,
+          -6.338,
+          -3.721
+        ],
+        "size_xyz_m": [
+          13.036,
+          12.109,
+          28.836
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 3574.852162,
+      "model_resource": "ships_prm/Gunship_3",
+      "nose_hardpoints": 1,
+      "prefab_asset_path": "assets/artresources/ships/dlca/gunship/gunship_3.prefab",
+      "runtime_cylinder_m3": 9719.302272,
+      "template_stored_volume_m3": 9719,
+      "utility_slots": 2,
+      "weapon_slots": 1
+    },
+    {
+      "alien": false,
+      "appearance_index": 0,
+      "counted_slots": 4,
+      "data_name": "Escort",
+      "excluded_machinery": [
+        {
+          "path": "Escort/Drive",
+          "reason": "drive subtree"
+        },
+        {
+          "path": "Escort/Hull_Escort/Earth_ES_Radiators",
+          "reason": "radiator/reactor-bay mesh"
+        }
+      ],
+      "hull_hardpoints": 2,
+      "image_file": "escort-appearance-0.png",
+      "included_mesh_paths": [
+        "Escort/Hull_Escort/Earth_ES_Crew",
+        "Escort/Hull_Escort/Earth_ES_Head",
+        "Escort/Hull_Escort/Earth_ES_Wings"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          7.47,
+          7.263,
+          31.433
+        ],
+        "minimum_xyz_m": [
+          -7.47,
+          -7.253,
+          -7.912
+        ],
+        "size_xyz_m": [
+          14.94,
+          14.516,
+          39.344
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 6701.582165,
+      "model_resource": "ships/Escort",
+      "nose_hardpoints": 0,
+      "prefab_asset_path": "assets/artresources/ships/earth/escort/escort.prefab",
+      "runtime_cylinder_m3": 10956.304379,
+      "template_stored_volume_m3": 10956,
+      "utility_slots": 2,
+      "weapon_slots": 2
+    },
+    {
+      "alien": false,
+      "appearance_index": 1,
+      "counted_slots": 4,
+      "data_name": "Escort",
+      "excluded_machinery": [
+        {
+          "path": "Escort_1/Drive",
+          "reason": "drive subtree"
+        },
+        {
+          "path": "Escort_1/Hull_Earth_Escort_ALT/Earth_ES_ALT_Rads",
+          "reason": "radiator/reactor-bay mesh"
+        }
+      ],
+      "hull_hardpoints": 2,
+      "image_file": "escort-appearance-1.png",
+      "included_mesh_paths": [
+        "Escort_1/Hull_Earth_Escort_ALT/Earth_ES_ALT_Body",
+        "Escort_1/Hull_Earth_Escort_ALT/Earth_ES_ALT_Head",
+        "Escort_1/Hull_Earth_Escort_ALT/Earth_ES_ALT_Middle"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          7.905,
+          6.895,
+          28.244
+        ],
+        "minimum_xyz_m": [
+          -7.905,
+          -6.901,
+          -12.303
+        ],
+        "size_xyz_m": [
+          15.809,
+          13.797,
+          40.547
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 6946.026661,
+      "model_resource": "ships/Escort_1",
+      "nose_hardpoints": 0,
+      "prefab_asset_path": "assets/artresources/ships/earth_alt/escort/escort_1.prefab",
+      "runtime_cylinder_m3": 10956.304379,
+      "template_stored_volume_m3": 10956,
+      "utility_slots": 2,
+      "weapon_slots": 2
+    },
+    {
+      "alien": false,
+      "appearance_index": 2,
+      "counted_slots": 4,
+      "data_name": "Escort",
+      "excluded_machinery": [
+        {
+          "path": "Escort_2/Drive",
+          "reason": "drive subtree"
+        },
+        {
+          "path": "Escort_2/Hull_Earth_Escort_PRM/Earth_ES_PRM_Rads",
+          "reason": "radiator/reactor-bay mesh"
+        }
+      ],
+      "hull_hardpoints": 2,
+      "image_file": "escort-appearance-2.png",
+      "included_mesh_paths": [
+        "Escort_2/Hull_Earth_Escort_PRM/Earth_ES_PRM_Body",
+        "Escort_2/Hull_Earth_Escort_PRM/Earth_ES_PRM_Head"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          6.62,
+          6.885,
+          34.71
+        ],
+        "minimum_xyz_m": [
+          -6.62,
+          -6.885,
+          -5.615
+        ],
+        "size_xyz_m": [
+          13.24,
+          13.771,
+          40.325
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 5774.458438,
+      "model_resource": "ships_prm/Escort_2",
+      "nose_hardpoints": 0,
+      "prefab_asset_path": "assets/artresources/ships/earth_prm/escort/escort_2.prefab",
+      "runtime_cylinder_m3": 10956.304379,
+      "template_stored_volume_m3": 10956,
+      "utility_slots": 2,
+      "weapon_slots": 2
+    },
+    {
+      "alien": false,
+      "appearance_index": 3,
+      "counted_slots": 4,
+      "data_name": "Escort",
+      "excluded_machinery": [
+        {
+          "path": "Escort_3/Drive",
+          "reason": "drive subtree"
+        },
+        {
+          "path": "Escort_3/Earth_DLCA_Hull_Escort/Earth_DLCA_Radiator",
+          "reason": "radiator/reactor-bay mesh"
+        }
+      ],
+      "hull_hardpoints": 2,
+      "image_file": "escort-appearance-3.png",
+      "included_mesh_paths": [
+        "Escort_3/Earth_DLCA_Hull_Escort/Earth_DLCA_ES_Details",
+        "Escort_3/Earth_DLCA_Hull_Escort/Earth_DLCA_ES_Main"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          11.358,
+          5.605,
+          24.698
+        ],
+        "minimum_xyz_m": [
+          -11.358,
+          -5.605,
+          -3.432
+        ],
+        "size_xyz_m": [
+          22.716,
+          11.209,
+          28.129
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 5625.382378,
+      "model_resource": "ships_prm/Escort_3",
+      "nose_hardpoints": 0,
+      "prefab_asset_path": "assets/artresources/ships/dlca/escort/escort_3.prefab",
+      "runtime_cylinder_m3": 10956.304379,
+      "template_stored_volume_m3": 10956,
+      "utility_slots": 2,
+      "weapon_slots": 2
+    },
+    {
+      "alien": false,
+      "appearance_index": 0,
+      "counted_slots": 5,
+      "data_name": "Corvette",
+      "excluded_machinery": [
+        {
+          "path": "Corvette/Drive",
+          "reason": "drive subtree"
+        },
+        {
+          "path": "Corvette/Hull_Corvette/Earth_CO_Radiators",
+          "reason": "radiator/reactor-bay mesh"
+        }
+      ],
+      "hull_hardpoints": 1,
+      "image_file": "corvette-appearance-0.png",
+      "included_mesh_paths": [
+        "Corvette/Hull_Corvette/Earth_CO_Bridge",
+        "Corvette/Hull_Corvette/Earth_CO_Bridge_Details",
+        "Corvette/Hull_Corvette/Earth_CO_Crew"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          8.399,
+          4.504,
+          34.76
+        ],
+        "minimum_xyz_m": [
+          -8.399,
+          -4.504,
+          -7.912
+        ],
+        "size_xyz_m": [
+          16.797,
+          9.008,
+          42.671
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 5070.771061,
+      "model_resource": "ships/Corvette",
+      "nose_hardpoints": 1,
+      "prefab_asset_path": "assets/artresources/ships/earth/corvette/corvette.prefab",
+      "runtime_cylinder_m3": 14753.704499,
+      "template_stored_volume_m3": 14754,
+      "utility_slots": 3,
+      "weapon_slots": 2
+    },
+    {
+      "alien": false,
+      "appearance_index": 1,
+      "counted_slots": 5,
+      "data_name": "Corvette",
+      "excluded_machinery": [
+        {
+          "path": "Corvette_1/Drive",
+          "reason": "drive subtree"
+        },
+        {
+          "path": "Corvette_1/Hull_Earth_Corvette_ALT/Earth_CO_ALT_Rads",
+          "reason": "radiator/reactor-bay mesh"
+        }
+      ],
+      "hull_hardpoints": 1,
+      "image_file": "corvette-appearance-1.png",
+      "included_mesh_paths": [
+        "Corvette_1/Hull_Earth_Corvette_ALT/Earth_CO_ALT_Core_A",
+        "Corvette_1/Hull_Earth_Corvette_ALT/Earth_CO_ALT_Core_B",
+        "Corvette_1/Hull_Earth_Corvette_ALT/Earth_CO_ALT_Head",
+        "Corvette_1/Hull_Earth_Corvette_ALT/Earth_CO_ALT_Shield_A",
+        "Corvette_1/Hull_Earth_Corvette_ALT/Earth_CO_ALT_Shield_B",
+        "Corvette_1/Hull_Earth_Corvette_ALT/Earth_CO_ALT_Tail"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          7.126,
+          8.164,
+          36.775
+        ],
+        "minimum_xyz_m": [
+          -7.126,
+          -8.164,
+          -20.381
+        ],
+        "size_xyz_m": [
+          14.252,
+          16.328,
+          57.156
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 10445.991443,
+      "model_resource": "ships/Corvette_1",
+      "nose_hardpoints": 1,
+      "prefab_asset_path": "assets/artresources/ships/earth_alt/corvette/corvette_1.prefab",
+      "runtime_cylinder_m3": 14753.704499,
+      "template_stored_volume_m3": 14754,
+      "utility_slots": 3,
+      "weapon_slots": 2
+    },
+    {
+      "alien": false,
+      "appearance_index": 2,
+      "counted_slots": 5,
+      "data_name": "Corvette",
+      "excluded_machinery": [
+        {
+          "path": "Corvette_2/Drive",
+          "reason": "drive subtree"
+        },
+        {
+          "path": "Corvette_2/Hull_Earth_Corvette_PRM/Earth_CO_PRM_Rads",
+          "reason": "radiator/reactor-bay mesh"
+        }
+      ],
+      "hull_hardpoints": 1,
+      "image_file": "corvette-appearance-2.png",
+      "included_mesh_paths": [
+        "Corvette_2/Hull_Earth_Corvette_PRM/Earth_CO_PRM_Back",
+        "Corvette_2/Hull_Earth_Corvette_PRM/Earth_CO_PRM_Head",
+        "Corvette_2/Hull_Earth_Corvette_PRM/Earth_CO_PRM_Mid"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          9.604,
+          7.833,
+          44.578
+        ],
+        "minimum_xyz_m": [
+          -9.604,
+          -7.832,
+          -14.197
+        ],
+        "size_xyz_m": [
+          19.208,
+          15.665,
+          58.775
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 13890.245741,
+      "model_resource": "ships_prm/Corvette_2",
+      "nose_hardpoints": 1,
+      "prefab_asset_path": "assets/artresources/ships/earth_prm/corvette/corvette_2.prefab",
+      "runtime_cylinder_m3": 14753.704499,
+      "template_stored_volume_m3": 14754,
+      "utility_slots": 3,
+      "weapon_slots": 2
+    },
+    {
+      "alien": false,
+      "appearance_index": 3,
+      "counted_slots": 5,
+      "data_name": "Corvette",
+      "excluded_machinery": [
+        {
+          "path": "Corvette_3/Drive",
+          "reason": "drive subtree"
+        },
+        {
+          "path": "Corvette_3/Earth_DLCA_Hull_Corvette/Earth_DLCA_Radiator",
+          "reason": "radiator/reactor-bay mesh"
+        }
+      ],
+      "hull_hardpoints": 1,
+      "image_file": "corvette-appearance-3.png",
+      "included_mesh_paths": [
+        "Corvette_3/Earth_DLCA_Hull_Corvette/Earth_DLCA_CO_Ends",
+        "Corvette_3/Earth_DLCA_Hull_Corvette/Earth_DLCA_CO_Head",
+        "Corvette_3/Earth_DLCA_Hull_Corvette/Earth_DLCA_CO_Top"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          9.686,
+          7.975,
+          34.313
+        ],
+        "minimum_xyz_m": [
+          -9.686,
+          -7.835,
+          -11.435
+        ],
+        "size_xyz_m": [
+          19.372,
+          15.81,
+          45.748
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 11004.382981,
+      "model_resource": "ships_prm/Corvette_3",
+      "nose_hardpoints": 1,
+      "prefab_asset_path": "assets/artresources/ships/dlca/corvette/corvette_3.prefab",
+      "runtime_cylinder_m3": 14753.704499,
+      "template_stored_volume_m3": 14754,
+      "utility_slots": 3,
+      "weapon_slots": 2
+    },
+    {
+      "alien": false,
+      "appearance_index": 0,
+      "counted_slots": 8,
+      "data_name": "Frigate",
+      "excluded_machinery": [
+        {
+          "path": "Frigate/Drive",
+          "reason": "drive subtree"
+        },
+        {
+          "path": "Frigate/Hull_Frigate/Earth_Frigate_Radiators",
+          "reason": "radiator/reactor-bay mesh"
+        }
+      ],
+      "hull_hardpoints": 2,
+      "image_file": "frigate-appearance-0.png",
+      "included_mesh_paths": [
+        "Frigate/Hull_Frigate/Earth_Frigate_Propellant_Tanks",
+        "Frigate/Hull_Frigate/Earth_Frigate_Crew",
+        "Frigate/Hull_Frigate/Earth_Frigate_Bridge",
+        "Frigate/Hull_Frigate/Earth_Frigate_Nose"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          9.216,
+          9.0,
+          50.623
+        ],
+        "minimum_xyz_m": [
+          -8.544,
+          -6.056,
+          -14.577
+        ],
+        "size_xyz_m": [
+          17.76,
+          15.056,
+          65.2
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 13692.464509,
+      "model_resource": "ships/Frigate",
+      "nose_hardpoints": 1,
+      "prefab_asset_path": "assets/artresources/ships/earth/frigate/frigate.prefab",
+      "runtime_cylinder_m3": 25446.900494,
+      "template_stored_volume_m3": 25447,
+      "utility_slots": 5,
+      "weapon_slots": 3
+    },
+    {
+      "alien": false,
+      "appearance_index": 1,
+      "counted_slots": 8,
+      "data_name": "Frigate",
+      "excluded_machinery": [
+        {
+          "path": "Frigate_1/Drive",
+          "reason": "drive subtree"
+        },
+        {
+          "path": "Frigate_1/Hull_Earth_Frigate_ALT/Earth_FR_ALT_Rads",
+          "reason": "radiator/reactor-bay mesh"
+        }
+      ],
+      "hull_hardpoints": 2,
+      "image_file": "frigate-appearance-1.png",
+      "included_mesh_paths": [
+        "Frigate_1/Hull_Earth_Frigate_ALT/Earth_FR_ALT_Back",
+        "Frigate_1/Hull_Earth_Frigate_ALT/Earth_FR_ALT_Front",
+        "Frigate_1/Hull_Earth_Frigate_ALT/Earth_FR_ALT_Head",
+        "Frigate_1/Hull_Earth_Frigate_ALT/Earth_FR_ALT_Middle_A",
+        "Frigate_1/Hull_Earth_Frigate_ALT/Earth_FR_ALT_Middle_B",
+        "Frigate_1/Hull_Earth_Frigate_ALT/Earth_FR_ALT_Middle_C",
+        "Frigate_1/Hull_Earth_Frigate_ALT/Earth_FR_ALT_Tail"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          7.759,
+          6.583,
+          50.211
+        ],
+        "minimum_xyz_m": [
+          -7.759,
+          -6.689,
+          -35.865
+        ],
+        "size_xyz_m": [
+          15.518,
+          13.272,
+          86.076
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 13923.55905,
+      "model_resource": "ships/Frigate_1",
+      "nose_hardpoints": 1,
+      "prefab_asset_path": "assets/artresources/ships/earth_alt/frigate/frigate_1.prefab",
+      "runtime_cylinder_m3": 25446.900494,
+      "template_stored_volume_m3": 25447,
+      "utility_slots": 5,
+      "weapon_slots": 3
+    },
+    {
+      "alien": false,
+      "appearance_index": 2,
+      "counted_slots": 8,
+      "data_name": "Frigate",
+      "excluded_machinery": [
+        {
+          "path": "Frigate_2/Drive",
+          "reason": "drive subtree"
+        },
+        {
+          "path": "Frigate_2/Hull_Earth_Frigate_PRM/Earth_FRI_PRM_Rads",
+          "reason": "radiator/reactor-bay mesh"
+        }
+      ],
+      "hull_hardpoints": 2,
+      "image_file": "frigate-appearance-2.png",
+      "included_mesh_paths": [
+        "Frigate_2/Hull_Earth_Frigate_PRM/Earth_FRI_PRM_Back",
+        "Frigate_2/Hull_Earth_Frigate_PRM/Earth_FRI_PRM_Detail",
+        "Frigate_2/Hull_Earth_Frigate_PRM/Earth_FRI_PRM_Head",
+        "Frigate_2/Hull_Earth_Frigate_PRM/Earth_FRI_PRM_Mid"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          9.147,
+          8.453,
+          53.538
+        ],
+        "minimum_xyz_m": [
+          -9.147,
+          -8.446,
+          -22.487
+        ],
+        "size_xyz_m": [
+          18.294,
+          16.899,
+          76.025
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 18459.201811,
+      "model_resource": "ships_prm/Frigate_2",
+      "nose_hardpoints": 1,
+      "prefab_asset_path": "assets/artresources/ships/earth_prm/frigate/frigate_2.prefab",
+      "runtime_cylinder_m3": 25446.900494,
+      "template_stored_volume_m3": 25447,
+      "utility_slots": 5,
+      "weapon_slots": 3
+    },
+    {
+      "alien": false,
+      "appearance_index": 3,
+      "counted_slots": 8,
+      "data_name": "Frigate",
+      "excluded_machinery": [
+        {
+          "path": "Frigate_3/Drive",
+          "reason": "drive subtree"
+        },
+        {
+          "path": "Frigate_3/Earth_DLCA_Hull_Frigate/Earth_DLCA_Radiator",
+          "reason": "radiator/reactor-bay mesh"
+        }
+      ],
+      "hull_hardpoints": 2,
+      "image_file": "frigate-appearance-3.png",
+      "included_mesh_paths": [
+        "Frigate_3/Earth_DLCA_Hull_Frigate/Earth_DLCA_FRI_Body_A",
+        "Frigate_3/Earth_DLCA_Hull_Frigate/Earth_DLCA_FRI_Body_B",
+        "Frigate_3/Earth_DLCA_Hull_Frigate/Earth_DLCA_FRI_End",
+        "Frigate_3/Earth_DLCA_Hull_Frigate/Earth_DLCA_FRI_Head"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          10.489,
+          8.108,
+          49.656
+        ],
+        "minimum_xyz_m": [
+          -10.489,
+          -8.108,
+          -33.936
+        ],
+        "size_xyz_m": [
+          20.978,
+          16.215,
+          83.591
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 22332.808913,
+      "model_resource": "ships_prm/Frigate_3",
+      "nose_hardpoints": 1,
+      "prefab_asset_path": "assets/artresources/ships/dlca/frigate/frigate_3.prefab",
+      "runtime_cylinder_m3": 25446.900494,
+      "template_stored_volume_m3": 25447,
+      "utility_slots": 5,
+      "weapon_slots": 3
+    },
+    {
+      "alien": false,
+      "appearance_index": 0,
+      "counted_slots": 7,
+      "data_name": "Monitor",
+      "excluded_machinery": [
+        {
+          "path": "Monitor/Drive",
+          "reason": "drive subtree"
+        },
+        {
+          "path": "Monitor/Hull_Monitor/Earth_Monitor_Radiators",
+          "reason": "radiator/reactor-bay mesh"
+        }
+      ],
+      "hull_hardpoints": 4,
+      "image_file": "monitor-appearance-0.png",
+      "included_mesh_paths": [
+        "Monitor/Hull_Monitor/Earth_Monitor_Bridge",
+        "Monitor/Hull_Monitor/Earth_Monitor_Crew_Details",
+        "Monitor/Hull_Monitor/Earth_Monitor_Crew",
+        "Monitor/Hull_Monitor/Earth_Monitor_Rear",
+        "Monitor/Hull_Monitor/Earth_Monitor_Tanks"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          8.283,
+          9.611,
+          36.873
+        ],
+        "minimum_xyz_m": [
+          -8.283,
+          -8.798,
+          -34.769
+        ],
+        "size_xyz_m": [
+          16.567,
+          18.409,
+          71.642
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 17160.430191,
+      "model_resource": "ships/Monitor",
+      "nose_hardpoints": 0,
+      "prefab_asset_path": "assets/artresources/ships/earth/monitor/monitor.prefab",
+      "runtime_cylinder_m3": 22698.006922,
+      "template_stored_volume_m3": 22698,
+      "utility_slots": 3,
+      "weapon_slots": 4
+    },
+    {
+      "alien": false,
+      "appearance_index": 1,
+      "counted_slots": 7,
+      "data_name": "Monitor",
+      "excluded_machinery": [
+        {
+          "path": "Monitor_1/Drive",
+          "reason": "drive subtree"
+        },
+        {
+          "path": "Monitor_1/Hull_Earth_Monitor_ALT/Earth_MO_ALT_Rads",
+          "reason": "radiator/reactor-bay mesh"
+        }
+      ],
+      "hull_hardpoints": 4,
+      "image_file": "monitor-appearance-1.png",
+      "included_mesh_paths": [
+        "Monitor_1/Hull_Earth_Monitor_ALT/Earth_MO_ALT_Back_A",
+        "Monitor_1/Hull_Earth_Monitor_ALT/Earth_MO_ALT_Back_B",
+        "Monitor_1/Hull_Earth_Monitor_ALT/Earth_MO_ALT_Details_A",
+        "Monitor_1/Hull_Earth_Monitor_ALT/Earth_MO_ALT_Front_A",
+        "Monitor_1/Hull_Earth_Monitor_ALT/Earth_MO_ALT_Front_B",
+        "Monitor_1/Hull_Earth_Monitor_ALT/Earth_MO_ALT_Front_C",
+        "Monitor_1/Hull_Earth_Monitor_ALT/Earth_MO_ALT_Head",
+        "Monitor_1/Hull_Earth_Monitor_ALT/Earth_MO_ALT_Middle",
+        "Monitor_1/Hull_Earth_Monitor_ALT/Earth_MO_ALT_Tail"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          10.359,
+          7.826,
+          68.205
+        ],
+        "minimum_xyz_m": [
+          -10.359,
+          -7.826,
+          -51.145
+        ],
+        "size_xyz_m": [
+          20.717,
+          15.652,
+          119.35
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 30394.7818,
+      "model_resource": "ships/Monitor_1",
+      "nose_hardpoints": 0,
+      "prefab_asset_path": "assets/artresources/ships/earth_alt/monitor/monitor_1.prefab",
+      "runtime_cylinder_m3": 22698.006922,
+      "template_stored_volume_m3": 22698,
+      "utility_slots": 3,
+      "weapon_slots": 4
+    },
+    {
+      "alien": false,
+      "appearance_index": 2,
+      "counted_slots": 7,
+      "data_name": "Monitor",
+      "excluded_machinery": [
+        {
+          "path": "Monitor_2/Drive",
+          "reason": "drive subtree"
+        },
+        {
+          "path": "Monitor_2/Hull_Earth_Monitor_PRM/Earth_MO_PRM_Rads",
+          "reason": "radiator/reactor-bay mesh"
+        }
+      ],
+      "hull_hardpoints": 4,
+      "image_file": "monitor-appearance-2.png",
+      "included_mesh_paths": [
+        "Monitor_2/Hull_Earth_Monitor_PRM/Earth_MO_PRM_Back",
+        "Monitor_2/Hull_Earth_Monitor_PRM/Earth_MO_PRM_Common_Details",
+        "Monitor_2/Hull_Earth_Monitor_PRM/Earth_MO_PRM_Head"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          13.86,
+          10.605,
+          68.454
+        ],
+        "minimum_xyz_m": [
+          -13.86,
+          -10.605,
+          -29.164
+        ],
+        "size_xyz_m": [
+          27.719,
+          21.209,
+          97.618
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 45073.216601,
+      "model_resource": "ships_prm/Monitor_2",
+      "nose_hardpoints": 0,
+      "prefab_asset_path": "assets/artresources/ships/earth_prm/monitor/monitor_2.prefab",
+      "runtime_cylinder_m3": 22698.006922,
+      "template_stored_volume_m3": 22698,
+      "utility_slots": 3,
+      "weapon_slots": 4
+    },
+    {
+      "alien": false,
+      "appearance_index": 3,
+      "counted_slots": 7,
+      "data_name": "Monitor",
+      "excluded_machinery": [
+        {
+          "path": "Monitor_3/Drive",
+          "reason": "drive subtree"
+        },
+        {
+          "path": "Monitor_3/Earth_DLCA_Hull_Monitor/Earth_DLCA_Radiator",
+          "reason": "radiator/reactor-bay mesh"
+        }
+      ],
+      "hull_hardpoints": 4,
+      "image_file": "monitor-appearance-3.png",
+      "included_mesh_paths": [
+        "Monitor_3/Earth_DLCA_Hull_Monitor/Earth_DLCA_MO_Back",
+        "Monitor_3/Earth_DLCA_Hull_Monitor/Earth_DLCA_MO_Center",
+        "Monitor_3/Earth_DLCA_Hull_Monitor/Earth_DLCA_MO_Head",
+        "Monitor_3/Earth_DLCA_Hull_Monitor/Earth_DLCA_MO_Mid",
+        "Monitor_3/Earth_DLCA_Hull_Monitor/Earth_DLCA_MO_Shoulder"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          11.855,
+          11.779,
+          69.792
+        ],
+        "minimum_xyz_m": [
+          -11.855,
+          -11.779,
+          -41.206
+        ],
+        "size_xyz_m": [
+          23.711,
+          23.557,
+          110.998
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 48694.693266,
+      "model_resource": "ships_prm/Monitor_3",
+      "nose_hardpoints": 0,
+      "prefab_asset_path": "assets/artresources/ships/dlca/monitor/monitor_3.prefab",
+      "runtime_cylinder_m3": 22698.006922,
+      "template_stored_volume_m3": 22698,
+      "utility_slots": 3,
+      "weapon_slots": 4
+    },
+    {
+      "alien": false,
+      "appearance_index": 0,
+      "counted_slots": 9,
+      "data_name": "Destroyer",
+      "excluded_machinery": [
+        {
+          "path": "Destroyer/Drive",
+          "reason": "drive subtree"
+        },
+        {
+          "path": "Destroyer/Hull_Destroyer/Earth_Destroyer_Radiators",
+          "reason": "radiator/reactor-bay mesh"
+        }
+      ],
+      "hull_hardpoints": 2,
+      "image_file": "destroyer-appearance-0.png",
+      "included_mesh_paths": [
+        "Destroyer/Hull_Destroyer/Earth_Destroyer_Back",
+        "Destroyer/Hull_Destroyer/Earth_Destroyer_Bridge",
+        "Destroyer/Hull_Destroyer/Earth_Destroyer_Crew",
+        "Destroyer/Hull_Destroyer/Earth_Destroyer_Crew_Detail",
+        "Destroyer/Hull_Destroyer/Earth_Destroyer_Tanks"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          11.221,
+          9.611,
+          35.925
+        ],
+        "minimum_xyz_m": [
+          -12.085,
+          -7.438,
+          -34.769
+        ],
+        "size_xyz_m": [
+          23.306,
+          17.049,
+          70.694
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 22061.954731,
+      "model_resource": "ships/Destroyer",
+      "nose_hardpoints": 2,
+      "prefab_asset_path": "assets/artresources/ships/earth/destroyer/destroyer.prefab",
+      "runtime_cylinder_m3": 41547.562844,
+      "template_stored_volume_m3": 41548,
+      "utility_slots": 5,
+      "weapon_slots": 4
+    },
+    {
+      "alien": false,
+      "appearance_index": 1,
+      "counted_slots": 9,
+      "data_name": "Destroyer",
+      "excluded_machinery": [
+        {
+          "path": "Destroyer_1/Drive",
+          "reason": "drive subtree"
+        },
+        {
+          "path": "Destroyer_1/Hull_Earth_Destroyer_ALT/Earth_DES_ALT_Rads",
+          "reason": "radiator/reactor-bay mesh"
+        }
+      ],
+      "hull_hardpoints": 2,
+      "image_file": "destroyer-appearance-1.png",
+      "included_mesh_paths": [
+        "Destroyer_1/Hull_Earth_Destroyer_ALT/Earth_DES_ALT_Front_A",
+        "Destroyer_1/Hull_Earth_Destroyer_ALT/Earth_DES_ALT_Front_B",
+        "Destroyer_1/Hull_Earth_Destroyer_ALT/Earth_DES_ALT_Head",
+        "Destroyer_1/Hull_Earth_Destroyer_ALT/Earth_DES_ALT_Middle",
+        "Destroyer_1/Hull_Earth_Destroyer_ALT/Earth_DES_ALT_Rear_A",
+        "Destroyer_1/Hull_Earth_Destroyer_ALT/Earth_DES_ALT_Rear_B"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          13.952,
+          12.729,
+          66.631
+        ],
+        "minimum_xyz_m": [
+          -13.952,
+          -12.729,
+          -51.909
+        ],
+        "size_xyz_m": [
+          27.903,
+          25.457,
+          118.54
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 66132.58393,
+      "model_resource": "ships/Destroyer_1",
+      "nose_hardpoints": 2,
+      "prefab_asset_path": "assets/artresources/ships/earth_alt/destroyer/destroyer_1.prefab",
+      "runtime_cylinder_m3": 41547.562844,
+      "template_stored_volume_m3": 41548,
+      "utility_slots": 5,
+      "weapon_slots": 4
+    },
+    {
+      "alien": false,
+      "appearance_index": 2,
+      "counted_slots": 9,
+      "data_name": "Destroyer",
+      "excluded_machinery": [
+        {
+          "path": "Destroyer_2/Drive",
+          "reason": "drive subtree"
+        },
+        {
+          "path": "Destroyer_2/Hull_Earth_Destroyer_PRM/Earth_DES_PRM_Rads",
+          "reason": "radiator/reactor-bay mesh"
+        }
+      ],
+      "hull_hardpoints": 2,
+      "image_file": "destroyer-appearance-2.png",
+      "included_mesh_paths": [
+        "Destroyer_2/Hull_Earth_Destroyer_PRM/Earth_DES_PRM_Back",
+        "Destroyer_2/Hull_Earth_Destroyer_PRM/Earth_DES_PRM_Common_Details",
+        "Destroyer_2/Hull_Earth_Destroyer_PRM/Earth_DES_PRM_Head",
+        "Destroyer_2/Hull_Earth_Destroyer_PRM/Earth_DES_PRM_Mid"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          13.435,
+          10.671,
+          65.656
+        ],
+        "minimum_xyz_m": [
+          -13.435,
+          -10.671,
+          -29.522
+        ],
+        "size_xyz_m": [
+          26.869,
+          21.342,
+          95.178
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 42867.288585,
+      "model_resource": "ships_prm/Destroyer_2",
+      "nose_hardpoints": 2,
+      "prefab_asset_path": "assets/artresources/ships/earth_prm/destroyer/destroyer_2.prefab",
+      "runtime_cylinder_m3": 41547.562844,
+      "template_stored_volume_m3": 41548,
+      "utility_slots": 5,
+      "weapon_slots": 4
+    },
+    {
+      "alien": false,
+      "appearance_index": 3,
+      "counted_slots": 9,
+      "data_name": "Destroyer",
+      "excluded_machinery": [
+        {
+          "path": "Destroyer_3/Drive",
+          "reason": "drive subtree"
+        },
+        {
+          "path": "Destroyer_3/Earth_DLCA_Hull_Destroyer/Earth_DLCA_Radiator",
+          "reason": "radiator/reactor-bay mesh"
+        }
+      ],
+      "hull_hardpoints": 2,
+      "image_file": "destroyer-appearance-3.png",
+      "included_mesh_paths": [
+        "Destroyer_3/Earth_DLCA_Hull_Destroyer/Earth_DLCA_DES_Common_Details",
+        "Destroyer_3/Earth_DLCA_Hull_Destroyer/Earth_DLCA_DES_Common_Head_B",
+        "Destroyer_3/Earth_DLCA_Hull_Destroyer/Earth_DLCA_DES_Common_Mid_B",
+        "Destroyer_3/Earth_DLCA_Hull_Destroyer/Earth_DLCA_DES_Head_A",
+        "Destroyer_3/Earth_DLCA_Hull_Destroyer/Earth_DLCA_DES_Low_A",
+        "Destroyer_3/Earth_DLCA_Hull_Destroyer/Earth_DLCA_DES_Mid_A",
+        "Destroyer_3/Earth_DLCA_Hull_Destroyer/Earth_DLCA_DES_Tail"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          14.0,
+          13.004,
+          70.124
+        ],
+        "minimum_xyz_m": [
+          -14.0,
+          -12.979,
+          -39.932
+        ],
+        "size_xyz_m": [
+          28.001,
+          25.982,
+          110.056
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 62885.428219,
+      "model_resource": "ships_prm/Destroyer_3",
+      "nose_hardpoints": 2,
+      "prefab_asset_path": "assets/artresources/ships/dlca/destroyer/destroyer_3.prefab",
+      "runtime_cylinder_m3": 41547.562844,
+      "template_stored_volume_m3": 41548,
+      "utility_slots": 5,
+      "weapon_slots": 4
+    },
+    {
+      "alien": false,
+      "appearance_index": 0,
+      "counted_slots": 12,
+      "data_name": "Cruiser",
+      "excluded_machinery": [
+        {
+          "path": "Cruiser/Drive",
+          "reason": "drive subtree"
+        },
+        {
+          "path": "Cruiser/Earth_Hull_LightCruiser/Earth_LC_Radiators",
+          "reason": "radiator/reactor-bay mesh"
+        }
+      ],
+      "hull_hardpoints": 3,
+      "image_file": "cruiser-appearance-0.png",
+      "included_mesh_paths": [
+        "Cruiser/Earth_Hull_LightCruiser/Earth_LC_Tanks",
+        "Cruiser/Earth_Hull_LightCruiser/Earth_LC_Mid_Module",
+        "Cruiser/Earth_Hull_LightCruiser/Earth_LC_Mid_HardPoint",
+        "Cruiser/Earth_Hull_LightCruiser/Earth_LC_Head",
+        "Cruiser/Earth_Hull_LightCruiser/Earth_LC_Crew_Detail",
+        "Cruiser/Earth_Hull_LightCruiser/Earth_LC_Crew"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          11.783,
+          13.402,
+          63.036
+        ],
+        "minimum_xyz_m": [
+          -11.783,
+          -7.29,
+          -56.601
+        ],
+        "size_xyz_m": [
+          23.566,
+          20.692,
+          119.637
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 45819.948385,
+      "model_resource": "ships/Cruiser",
+      "nose_hardpoints": 2,
+      "prefab_asset_path": "assets/artresources/ships/earth/cruiser/cruiser.prefab",
+      "runtime_cylinder_m3": 54977.871438,
+      "template_stored_volume_m3": 47124,
+      "utility_slots": 7,
+      "weapon_slots": 5
+    },
+    {
+      "alien": false,
+      "appearance_index": 1,
+      "counted_slots": 12,
+      "data_name": "Cruiser",
+      "excluded_machinery": [
+        {
+          "path": "Cruiser_1/Drive",
+          "reason": "drive subtree"
+        },
+        {
+          "path": "Cruiser_1/Hull_Earth_Cruiser_ALT/Earth_CR_ALT_Rads",
+          "reason": "radiator/reactor-bay mesh"
+        }
+      ],
+      "hull_hardpoints": 3,
+      "image_file": "cruiser-appearance-1.png",
+      "included_mesh_paths": [
+        "Cruiser_1/Hull_Earth_Cruiser_ALT/Earth_CR_ALT_Back",
+        "Cruiser_1/Hull_Earth_Cruiser_ALT/Earth_CR_ALT_Details",
+        "Cruiser_1/Hull_Earth_Cruiser_ALT/Earth_CR_ALT_Front_A",
+        "Cruiser_1/Hull_Earth_Cruiser_ALT/Earth_CR_ALT_Front_B",
+        "Cruiser_1/Hull_Earth_Cruiser_ALT/Earth_CR_ALT_Middle_A",
+        "Cruiser_1/Hull_Earth_Cruiser_ALT/Earth_CR_ALT_Middle_B",
+        "Cruiser_1/Hull_Earth_Cruiser_ALT/Earth_CR_ALT_Middle_C"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          20.718,
+          13.713,
+          97.418
+        ],
+        "minimum_xyz_m": [
+          -20.718,
+          -13.713,
+          -63.205
+        ],
+        "size_xyz_m": [
+          41.435,
+          27.426,
+          160.623
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 143362.034026,
+      "model_resource": "ships/Cruiser_1",
+      "nose_hardpoints": 2,
+      "prefab_asset_path": "assets/artresources/ships/earth_alt/cruiser/cruiser_1.prefab",
+      "runtime_cylinder_m3": 54977.871438,
+      "template_stored_volume_m3": 47124,
+      "utility_slots": 7,
+      "weapon_slots": 5
+    },
+    {
+      "alien": false,
+      "appearance_index": 2,
+      "counted_slots": 12,
+      "data_name": "Cruiser",
+      "excluded_machinery": [
+        {
+          "path": "Cruiser_2/Drive",
+          "reason": "drive subtree"
+        },
+        {
+          "path": "Cruiser_2/Hull_Earth_Cuiser_PRM/Earth_LC_PRM_Rads",
+          "reason": "radiator/reactor-bay mesh"
+        }
+      ],
+      "hull_hardpoints": 3,
+      "image_file": "cruiser-appearance-2.png",
+      "included_mesh_paths": [
+        "Cruiser_2/Hull_Earth_Cuiser_PRM/Earth_LC_PRM_Back",
+        "Cruiser_2/Hull_Earth_Cuiser_PRM/Earth_LC_PRM_Common_A",
+        "Cruiser_2/Hull_Earth_Cuiser_PRM/Earth_LC_PRM_Common_B",
+        "Cruiser_2/Hull_Earth_Cuiser_PRM/Earth_LC_PRM_Head",
+        "Cruiser_2/Hull_Earth_Cuiser_PRM/Earth_LC_PRM_Mid",
+        "Cruiser_2/Hull_Earth_Cuiser_PRM/Earth_LC_PRM_Mid_Details"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          16.861,
+          11.447,
+          102.797
+        ],
+        "minimum_xyz_m": [
+          -16.861,
+          -11.447,
+          -56.796
+        ],
+        "size_xyz_m": [
+          33.722,
+          22.894,
+          159.594
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 96768.961828,
+      "model_resource": "ships_prm/Cruiser_2",
+      "nose_hardpoints": 2,
+      "prefab_asset_path": "assets/artresources/ships/earth_prm/cruiser/cruiser_2.prefab",
+      "runtime_cylinder_m3": 54977.871438,
+      "template_stored_volume_m3": 47124,
+      "utility_slots": 7,
+      "weapon_slots": 5
+    },
+    {
+      "alien": false,
+      "appearance_index": 3,
+      "counted_slots": 12,
+      "data_name": "Cruiser",
+      "excluded_machinery": [
+        {
+          "path": "Cruiser_3/Drive",
+          "reason": "drive subtree"
+        },
+        {
+          "path": "Cruiser_3/Earth_DLCA_Hull_Cruiser/Earth_DLCA_Radiator",
+          "reason": "radiator/reactor-bay mesh"
+        }
+      ],
+      "hull_hardpoints": 3,
+      "image_file": "cruiser-appearance-3.png",
+      "included_mesh_paths": [
+        "Cruiser_3/Earth_DLCA_Hull_Cruiser/Earth_DLCA_CR_Back",
+        "Cruiser_3/Earth_DLCA_Hull_Cruiser/Earth_DLCA_CR_Center_A",
+        "Cruiser_3/Earth_DLCA_Hull_Cruiser/Earth_DLCA_CR_Common_Back_A",
+        "Cruiser_3/Earth_DLCA_Hull_Cruiser/Earth_DLCA_CR_Common_Back_B",
+        "Cruiser_3/Earth_DLCA_Hull_Cruiser/Earth_DLCA_CR_Common_Details",
+        "Cruiser_3/Earth_DLCA_Hull_Cruiser/Earth_DLCA_CR_Common_Shoulder_A",
+        "Cruiser_3/Earth_DLCA_Hull_Cruiser/Earth_DLCA_CR_Head",
+        "Cruiser_3/Earth_DLCA_Hull_Cruiser/Earth_DLCA_CR_Mid",
+        "Cruiser_3/Earth_DLCA_Hull_Cruiser/Earth_DLCA_CR_Shoulders"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          24.06,
+          17.451,
+          88.3
+        ],
+        "minimum_xyz_m": [
+          -24.06,
+          -17.451,
+          -64.891
+        ],
+        "size_xyz_m": [
+          48.12,
+          34.903,
+          153.191
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 202070.381704,
+      "model_resource": "ships_prm/Cruiser_3",
+      "nose_hardpoints": 2,
+      "prefab_asset_path": "assets/artresources/ships/dlca/cruiser/cruiser_3.prefab",
+      "runtime_cylinder_m3": 54977.871438,
+      "template_stored_volume_m3": 47124,
+      "utility_slots": 7,
+      "weapon_slots": 5
+    },
+    {
+      "alien": false,
+      "appearance_index": 0,
+      "counted_slots": 10,
+      "data_name": "Battlecruiser",
+      "excluded_machinery": [
+        {
+          "path": "Battlecruiser/Drive",
+          "reason": "drive subtree"
+        },
+        {
+          "path": "Battlecruiser/Earth_Hull_Battlecruiser/Earth_Battlecruiser_Radiators",
+          "reason": "radiator/reactor-bay mesh"
+        }
+      ],
+      "hull_hardpoints": 2,
+      "image_file": "battlecruiser-appearance-0.png",
+      "included_mesh_paths": [
+        "Battlecruiser/Earth_Hull_Battlecruiser/Earth_Battlecruiser_Crew",
+        "Battlecruiser/Earth_Hull_Battlecruiser/Earth_Battlecruiser_Crew_Detail",
+        "Battlecruiser/Earth_Hull_Battlecruiser/Earth_Battlecruiser_Head",
+        "Battlecruiser/Earth_Hull_Battlecruiser/Earth_Battlecruiser_Laser",
+        "Battlecruiser/Earth_Hull_Battlecruiser/Earth_Battlecruiser_Mid_HardPoint",
+        "Battlecruiser/Earth_Hull_Battlecruiser/Earth_Battlecruiser_Mid_Module",
+        "Battlecruiser/Earth_Hull_Battlecruiser/Earth_Battlecruiser_Shoulders_A",
+        "Battlecruiser/Earth_Hull_Battlecruiser/Earth_Battlecruiser_Shoulders_B",
+        "Battlecruiser/Earth_Hull_Battlecruiser/Earth_Battlecruiser_Tanks"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          11.457,
+          12.216,
+          61.296
+        ],
+        "minimum_xyz_m": [
+          -11.3,
+          -8.515,
+          -56.601
+        ],
+        "size_xyz_m": [
+          22.757,
+          20.731,
+          117.897
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 43684.422123,
+      "model_resource": "ships/Battlecruiser",
+      "nose_hardpoints": 3,
+      "prefab_asset_path": "assets/artresources/ships/earth/battlecruiser/battlecruiser.prefab",
+      "runtime_cylinder_m3": 54977.871438,
+      "template_stored_volume_m3": 47124,
+      "utility_slots": 5,
+      "weapon_slots": 5
+    },
+    {
+      "alien": false,
+      "appearance_index": 1,
+      "counted_slots": 10,
+      "data_name": "Battlecruiser",
+      "excluded_machinery": [
+        {
+          "path": "Battlecruiser_1/Drive",
+          "reason": "drive subtree"
+        },
+        {
+          "path": "Battlecruiser_1/Hull_Earth_Battlecruiser_ALT/Earth_BC_ALT_Rads",
+          "reason": "radiator/reactor-bay mesh"
+        }
+      ],
+      "hull_hardpoints": 2,
+      "image_file": "battlecruiser-appearance-1.png",
+      "included_mesh_paths": [
+        "Battlecruiser_1/Hull_Earth_Battlecruiser_ALT/Earth_BC_ALT_Front_A",
+        "Battlecruiser_1/Hull_Earth_Battlecruiser_ALT/Earth_BC_ALT_Front_B",
+        "Battlecruiser_1/Hull_Earth_Battlecruiser_ALT/Earth_BC_ALT_Middle_A",
+        "Battlecruiser_1/Hull_Earth_Battlecruiser_ALT/Earth_BC_ALT_Middle_B",
+        "Battlecruiser_1/Hull_Earth_Battlecruiser_ALT/Earth_BC_ALT_Middle_C"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          20.432,
+          16.25,
+          94.47
+        ],
+        "minimum_xyz_m": [
+          -20.432,
+          -16.25,
+          -61.429
+        ],
+        "size_xyz_m": [
+          40.865,
+          32.5,
+          155.899
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 162618.495218,
+      "model_resource": "ships/Battlecruiser_1",
+      "nose_hardpoints": 3,
+      "prefab_asset_path": "assets/artresources/ships/earth_alt/battlecruiser/battlecruiser_1.prefab",
+      "runtime_cylinder_m3": 54977.871438,
+      "template_stored_volume_m3": 47124,
+      "utility_slots": 5,
+      "weapon_slots": 5
+    },
+    {
+      "alien": false,
+      "appearance_index": 2,
+      "counted_slots": 10,
+      "data_name": "Battlecruiser",
+      "excluded_machinery": [
+        {
+          "path": "Battlecruiser_2/Drive",
+          "reason": "drive subtree"
+        },
+        {
+          "path": "Battlecruiser_2/Hull_Earth_Battlecruiser_PRM/Earth_BC_PRM_Rads",
+          "reason": "radiator/reactor-bay mesh"
+        }
+      ],
+      "hull_hardpoints": 2,
+      "image_file": "battlecruiser-appearance-2.png",
+      "included_mesh_paths": [
+        "Battlecruiser_2/Hull_Earth_Battlecruiser_PRM/Earth_BC_PRM_Back",
+        "Battlecruiser_2/Hull_Earth_Battlecruiser_PRM/Earth_BC_PRM_Common_A",
+        "Battlecruiser_2/Hull_Earth_Battlecruiser_PRM/Earth_BC_PRM_Head",
+        "Battlecruiser_2/Hull_Earth_Battlecruiser_PRM/Earth_BC_PRM_Mid",
+        "Battlecruiser_2/Hull_Earth_Battlecruiser_PRM/Earth_BC_PRM_Common_Tanks"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          13.728,
+          11.878,
+          102.185
+        ],
+        "minimum_xyz_m": [
+          -13.728,
+          -11.878,
+          -55.439
+        ],
+        "size_xyz_m": [
+          27.455,
+          23.755,
+          157.624
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 80740.993279,
+      "model_resource": "ships_prm/Battlecruiser_2",
+      "nose_hardpoints": 3,
+      "prefab_asset_path": "assets/artresources/ships/earth_prm/battlecruiser/battlecruiser_2.prefab",
+      "runtime_cylinder_m3": 54977.871438,
+      "template_stored_volume_m3": 47124,
+      "utility_slots": 5,
+      "weapon_slots": 5
+    },
+    {
+      "alien": false,
+      "appearance_index": 3,
+      "counted_slots": 10,
+      "data_name": "Battlecruiser",
+      "excluded_machinery": [
+        {
+          "path": "Battlecruiser_3/Drive",
+          "reason": "drive subtree"
+        },
+        {
+          "path": "Battlecruiser_3/Earth_DLCA_Hull_Battlecruiser/Earth_DLCA_Radiator",
+          "reason": "radiator/reactor-bay mesh"
+        }
+      ],
+      "hull_hardpoints": 2,
+      "image_file": "battlecruiser-appearance-3.png",
+      "included_mesh_paths": [
+        "Battlecruiser_3/Earth_DLCA_Hull_Battlecruiser/Earth_DLCA_BC_Center",
+        "Battlecruiser_3/Earth_DLCA_Hull_Battlecruiser/Earth_DLCA_BC_Common_Center",
+        "Battlecruiser_3/Earth_DLCA_Hull_Battlecruiser/Earth_DLCA_BC_Common_Details",
+        "Battlecruiser_3/Earth_DLCA_Hull_Battlecruiser/Earth_DLCA_BC_Common_Middle",
+        "Battlecruiser_3/Earth_DLCA_Hull_Battlecruiser/Earth_DLCA_BC_Head",
+        "Battlecruiser_3/Earth_DLCA_Hull_Battlecruiser/Earth_DLCA_BC_Shell_A",
+        "Battlecruiser_3/Earth_DLCA_Hull_Battlecruiser/Earth_DLCA_BC_Shell_B",
+        "Battlecruiser_3/Earth_DLCA_Hull_Battlecruiser/Earth_DLCA_BC_Tail_A",
+        "Battlecruiser_3/Earth_DLCA_Hull_Battlecruiser/Earth_DLCA_BC_Tail_B"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          22.882,
+          18.935,
+          88.38
+        ],
+        "minimum_xyz_m": [
+          -22.882,
+          -18.935,
+          -62.77
+        ],
+        "size_xyz_m": [
+          45.764,
+          37.869,
+          151.15
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 205738.660377,
+      "model_resource": "ships_prm/Battlecruiser_3",
+      "nose_hardpoints": 3,
+      "prefab_asset_path": "assets/artresources/ships/dlca/battlecruiser/battlecruiser_3.prefab",
+      "runtime_cylinder_m3": 54977.871438,
+      "template_stored_volume_m3": 47124,
+      "utility_slots": 5,
+      "weapon_slots": 5
+    },
+    {
+      "alien": false,
+      "appearance_index": 0,
+      "counted_slots": 14,
+      "data_name": "Battleship",
+      "excluded_machinery": [
+        {
+          "path": "Battleship/Drive",
+          "reason": "drive subtree"
+        },
+        {
+          "path": "Battleship/Earth_Hull_Battleship/Earth_Battleship_Radiators",
+          "reason": "radiator/reactor-bay mesh"
+        }
+      ],
+      "hull_hardpoints": 6,
+      "image_file": "battleship-appearance-0.png",
+      "included_mesh_paths": [
+        "Battleship/Earth_Hull_Battleship/Earth_Battleship_Crew",
+        "Battleship/Earth_Hull_Battleship/Earth_Battleship_Crew_Detail",
+        "Battleship/Earth_Hull_Battleship/Earth_Battleship_Head",
+        "Battleship/Earth_Hull_Battleship/Earth_Battleship_Laser",
+        "Battleship/Earth_Hull_Battleship/Earth_Battleship_Mid_HardPoint",
+        "Battleship/Earth_Hull_Battleship/Earth_Battleship_Mid_Module",
+        "Battleship/Earth_Hull_Battleship/Earth_Battleship_Shoulders",
+        "Battleship/Earth_Hull_Battleship/Earth_Battleship_Tanks"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          14.298,
+          15.56,
+          89.408
+        ],
+        "minimum_xyz_m": [
+          -14.38,
+          -11.854,
+          -80.877
+        ],
+        "size_xyz_m": [
+          28.678,
+          27.414,
+          170.285
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 105142.66767,
+      "model_resource": "ships/Battleship",
+      "nose_hardpoints": 2,
+      "prefab_asset_path": "assets/artresources/ships/earth/battleship/battleship.prefab",
+      "runtime_cylinder_m3": 98174.770425,
+      "template_stored_volume_m3": 85903,
+      "utility_slots": 6,
+      "weapon_slots": 8
+    },
+    {
+      "alien": false,
+      "appearance_index": 1,
+      "counted_slots": 14,
+      "data_name": "Battleship",
+      "excluded_machinery": [
+        {
+          "path": "Battleship_1/Drive",
+          "reason": "drive subtree"
+        },
+        {
+          "path": "Battleship_1/Hull_Earth_Battleship_ALT/Earth_BS_ALT_Rads",
+          "reason": "radiator/reactor-bay mesh"
+        }
+      ],
+      "hull_hardpoints": 6,
+      "image_file": "battleship-appearance-1.png",
+      "included_mesh_paths": [
+        "Battleship_1/Hull_Earth_Battleship_ALT/Earth_BS_ALT_Details",
+        "Battleship_1/Hull_Earth_Battleship_ALT/Earth_BS_ALT_Front",
+        "Battleship_1/Hull_Earth_Battleship_ALT/Earth_BS_ALT_Head",
+        "Battleship_1/Hull_Earth_Battleship_ALT/Earth_BS_ALT_Heart",
+        "Battleship_1/Hull_Earth_Battleship_ALT/Earth_BS_ALT_Middle_A",
+        "Battleship_1/Hull_Earth_Battleship_ALT/Earth_BS_ALT_Middle_B",
+        "Battleship_1/Hull_Earth_Battleship_ALT/Earth_BS_ALT_Middle_C",
+        "Battleship_1/Hull_Earth_Battleship_ALT/Earth_BS_ALT_Tail",
+        "Battleship_1/Hull_Earth_Battleship_ALT/Earth_BS_ALT_Wings"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          18.645,
+          15.502,
+          114.369
+        ],
+        "minimum_xyz_m": [
+          -18.645,
+          -15.502,
+          -66.297
+        ],
+        "size_xyz_m": [
+          37.29,
+          31.004,
+          180.665
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 164048.422723,
+      "model_resource": "ships/Battleship_1",
+      "nose_hardpoints": 2,
+      "prefab_asset_path": "assets/artresources/ships/earth_alt/battleship/battleship_1.prefab",
+      "runtime_cylinder_m3": 98174.770425,
+      "template_stored_volume_m3": 85903,
+      "utility_slots": 6,
+      "weapon_slots": 8
+    },
+    {
+      "alien": false,
+      "appearance_index": 2,
+      "counted_slots": 14,
+      "data_name": "Battleship",
+      "excluded_machinery": [
+        {
+          "path": "Battleship_2/Drive",
+          "reason": "drive subtree"
+        },
+        {
+          "path": "Battleship_2/Hull_Earth_Battleship_PRM/Earth_BS_PRM_Rads",
+          "reason": "radiator/reactor-bay mesh"
+        }
+      ],
+      "hull_hardpoints": 6,
+      "image_file": "battleship-appearance-2.png",
+      "included_mesh_paths": [
+        "Battleship_2/Hull_Earth_Battleship_PRM/Earth_BS_PRM_Common_A",
+        "Battleship_2/Hull_Earth_Battleship_PRM/Earth_BS_PRM_Common_B",
+        "Battleship_2/Hull_Earth_Battleship_PRM/Earth_BS_PRM_Head",
+        "Battleship_2/Hull_Earth_Battleship_PRM/Earth_BS_PRM_Mids",
+        "Battleship_2/Hull_Earth_Battleship_PRM/Earth_BS_PRM_Tanks"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          19.588,
+          12.361,
+          112.023
+        ],
+        "minimum_xyz_m": [
+          -19.588,
+          -12.361,
+          -64.749
+        ],
+        "size_xyz_m": [
+          39.177,
+          24.721,
+          176.773
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 134463.754304,
+      "model_resource": "ships_prm/Battleship_2",
+      "nose_hardpoints": 2,
+      "prefab_asset_path": "assets/artresources/ships/earth_prm/battleship/battleship_2.prefab",
+      "runtime_cylinder_m3": 98174.770425,
+      "template_stored_volume_m3": 85903,
+      "utility_slots": 6,
+      "weapon_slots": 8
+    },
+    {
+      "alien": false,
+      "appearance_index": 3,
+      "counted_slots": 14,
+      "data_name": "Battleship",
+      "excluded_machinery": [
+        {
+          "path": "Battleship_3/Drive",
+          "reason": "drive subtree"
+        },
+        {
+          "path": "Battleship_3/Earth_DLCA_Hull_Battleship/Earth_DLCA_Radiator",
+          "reason": "radiator/reactor-bay mesh"
+        }
+      ],
+      "hull_hardpoints": 6,
+      "image_file": "battleship-appearance-3.png",
+      "included_mesh_paths": [
+        "Battleship_3/Earth_DLCA_Hull_Battleship/Earth_DLCA_BS_Bottom",
+        "Battleship_3/Earth_DLCA_Hull_Battleship/Earth_DLCA_BS_Common_Details_A",
+        "Battleship_3/Earth_DLCA_Hull_Battleship/Earth_DLCA_BS_Common_Details_B",
+        "Battleship_3/Earth_DLCA_Hull_Battleship/Earth_DLCA_BS_Head",
+        "Battleship_3/Earth_DLCA_Hull_Battleship/Earth_DLCA_BS_Head_Sides",
+        "Battleship_3/Earth_DLCA_Hull_Battleship/Earth_DLCA_BS_Sides",
+        "Battleship_3/Earth_DLCA_Hull_Battleship/Earth_DLCA_BS_Top"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          23.917,
+          13.207,
+          102.231
+        ],
+        "minimum_xyz_m": [
+          -23.917,
+          -13.207,
+          -67.241
+        ],
+        "size_xyz_m": [
+          47.835,
+          26.415,
+          169.472
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 168180.615798,
+      "model_resource": "ships_prm/Battleship_3",
+      "nose_hardpoints": 2,
+      "prefab_asset_path": "assets/artresources/ships/dlca/battleship/battleship_3.prefab",
+      "runtime_cylinder_m3": 98174.770425,
+      "template_stored_volume_m3": 85903,
+      "utility_slots": 6,
+      "weapon_slots": 8
+    },
+    {
+      "alien": false,
+      "appearance_index": 0,
+      "counted_slots": 14,
+      "data_name": "Lancer",
+      "excluded_machinery": [
+        {
+          "path": "Lancer/Drive",
+          "reason": "drive subtree"
+        },
+        {
+          "path": "Lancer/Hull_Lancer/Earth_Lancer_Radiators",
+          "reason": "radiator/reactor-bay mesh"
+        }
+      ],
+      "hull_hardpoints": 3,
+      "image_file": "lancer-appearance-0.png",
+      "included_mesh_paths": [
+        "Lancer/Hull_Lancer/Earth_Lancer_Crew",
+        "Lancer/Hull_Lancer/Earth_Lancer_Crew_Details",
+        "Lancer/Hull_Lancer/Earth_Lancer_Head",
+        "Lancer/Hull_Lancer/Earth_Lancer_Mid_A",
+        "Lancer/Hull_Lancer/Earth_Lancer_Mid_B",
+        "Lancer/Hull_Lancer/Earth_Lancer_Tanks"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          22.055,
+          10.157,
+          123.646
+        ],
+        "minimum_xyz_m": [
+          -21.263,
+          -10.154,
+          -97.196
+        ],
+        "size_xyz_m": [
+          43.318,
+          20.31,
+          220.841
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 152598.424445,
+      "model_resource": "ships/Lancer",
+      "nose_hardpoints": 4,
+      "prefab_asset_path": "assets/artresources/ships/earth/lancer/lancer.prefab",
+      "runtime_cylinder_m3": 201061.92983,
+      "template_stored_volume_m3": 180956,
+      "utility_slots": 7,
+      "weapon_slots": 7
+    },
+    {
+      "alien": false,
+      "appearance_index": 1,
+      "counted_slots": 14,
+      "data_name": "Lancer",
+      "excluded_machinery": [
+        {
+          "path": "Lancer_1/Hull_Earth_Lancer_ALT/Earth_LAN_ALT_Rads",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "Lancer_1/Drive",
+          "reason": "drive subtree"
+        }
+      ],
+      "hull_hardpoints": 3,
+      "image_file": "lancer-appearance-1.png",
+      "included_mesh_paths": [
+        "Lancer_1/Hull_Earth_Lancer_ALT/Earth_LAN_ALT_Back_A",
+        "Lancer_1/Hull_Earth_Lancer_ALT/Earth_LAN_ALT_Back_B",
+        "Lancer_1/Hull_Earth_Lancer_ALT/Earth_LAN_ALT_Front_A",
+        "Lancer_1/Hull_Earth_Lancer_ALT/Earth_LAN_ALT_Front_B",
+        "Lancer_1/Hull_Earth_Lancer_ALT/Earth_LAN_ALT_Head",
+        "Lancer_1/Hull_Earth_Lancer_ALT/Earth_LAN_ALT_Middle_A",
+        "Lancer_1/Hull_Earth_Lancer_ALT/Earth_LAN_ALT_Middle_B"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          21.938,
+          12.356,
+          148.648
+        ],
+        "minimum_xyz_m": [
+          -21.938,
+          -12.356,
+          -104.233
+        ],
+        "size_xyz_m": [
+          43.876,
+          24.712,
+          252.881
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 215348.959487,
+      "model_resource": "ships/Lancer_1",
+      "nose_hardpoints": 4,
+      "prefab_asset_path": "assets/artresources/ships/earth_alt/lancer/lancer_1.prefab",
+      "runtime_cylinder_m3": 201061.92983,
+      "template_stored_volume_m3": 180956,
+      "utility_slots": 7,
+      "weapon_slots": 7
+    },
+    {
+      "alien": false,
+      "appearance_index": 2,
+      "counted_slots": 14,
+      "data_name": "Lancer",
+      "excluded_machinery": [
+        {
+          "path": "Lancer_2/Hull_Earth_Lancer_PRM/Earth_LAN_PRM_Rads",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "Lancer_2/Drive",
+          "reason": "drive subtree"
+        }
+      ],
+      "hull_hardpoints": 3,
+      "image_file": "lancer-appearance-2.png",
+      "included_mesh_paths": [
+        "Lancer_2/Hull_Earth_Lancer_PRM/Earth_LAN_PRM_Common_A",
+        "Lancer_2/Hull_Earth_Lancer_PRM/Earth_LAN_PRM_Common_B",
+        "Lancer_2/Hull_Earth_Lancer_PRM/Earth_LAN_PRM_Head",
+        "Lancer_2/Hull_Earth_Lancer_PRM/Earth_LAN_PRM_Mid",
+        "Lancer_2/Hull_Earth_Lancer_PRM/Earth_LAN_PRM_Tanks"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          23.386,
+          15.876,
+          139.855
+        ],
+        "minimum_xyz_m": [
+          -23.386,
+          -15.876,
+          -82.781
+        ],
+        "size_xyz_m": [
+          46.772,
+          31.752,
+          222.636
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 259685.278284,
+      "model_resource": "ships_prm/Lancer_2",
+      "nose_hardpoints": 4,
+      "prefab_asset_path": "assets/artresources/ships/earth_prm/lancer/lancer_2.prefab",
+      "runtime_cylinder_m3": 201061.92983,
+      "template_stored_volume_m3": 180956,
+      "utility_slots": 7,
+      "weapon_slots": 7
+    },
+    {
+      "alien": false,
+      "appearance_index": 3,
+      "counted_slots": 14,
+      "data_name": "Lancer",
+      "excluded_machinery": [
+        {
+          "path": "Lancer_3/Earth_DLCA_Hull_Lancer/Earth_DLCA_Radiator",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "Lancer_3/Drive",
+          "reason": "drive subtree"
+        }
+      ],
+      "hull_hardpoints": 3,
+      "image_file": "lancer-appearance-3.png",
+      "included_mesh_paths": [
+        "Lancer_3/Earth_DLCA_Hull_Lancer/Earth_DLCA_LC_Back",
+        "Lancer_3/Earth_DLCA_Hull_Lancer/Earth_DLCA_LC_Common_Back",
+        "Lancer_3/Earth_DLCA_Hull_Lancer/Earth_DLCA_LC_Common_Center",
+        "Lancer_3/Earth_DLCA_Hull_Lancer/Earth_DLCA_LC_Common_Mid",
+        "Lancer_3/Earth_DLCA_Hull_Lancer/Earth_DLCA_LC_Common_Mounts",
+        "Lancer_3/Earth_DLCA_Hull_Lancer/Earth_DLCA_LC_Head",
+        "Lancer_3/Earth_DLCA_Hull_Lancer/Earth_DLCA_LC_Shoulders"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          21.032,
+          17.877,
+          126.143
+        ],
+        "minimum_xyz_m": [
+          -21.032,
+          -17.877,
+          -91.159
+        ],
+        "size_xyz_m": [
+          42.064,
+          35.755,
+          217.303
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 256682.460941,
+      "model_resource": "ships_prm/Lancer_3",
+      "nose_hardpoints": 4,
+      "prefab_asset_path": "assets/artresources/ships/dlca/lancer/lancer_3.prefab",
+      "runtime_cylinder_m3": 201061.92983,
+      "template_stored_volume_m3": 180956,
+      "utility_slots": 7,
+      "weapon_slots": 7
+    },
+    {
+      "alien": false,
+      "appearance_index": 0,
+      "counted_slots": 18,
+      "data_name": "Dreadnought",
+      "excluded_machinery": [
+        {
+          "path": "Dreadnought/Drive",
+          "reason": "drive subtree"
+        },
+        {
+          "path": "Dreadnought/Hull_Dreadnought/Earth_DR_Radiators",
+          "reason": "radiator/reactor-bay mesh"
+        }
+      ],
+      "hull_hardpoints": 8,
+      "image_file": "dreadnought-appearance-0.png",
+      "included_mesh_paths": [
+        "Dreadnought/Hull_Dreadnought/Earth_DR_Head",
+        "Dreadnought/Hull_Dreadnought/Earth_DR_Mid_A",
+        "Dreadnought/Hull_Dreadnought/Earth_DR_Mid_B",
+        "Dreadnought/Hull_Dreadnought/Earth_DR_Neck",
+        "Dreadnought/Hull_Dreadnought/Earth_DR_Tanks",
+        "Dreadnought/Hull_Dreadnought/Earth_DR_Torso_A",
+        "Dreadnought/Hull_Dreadnought/Earth_DR_Torso_B",
+        "Dreadnought/Hull_Dreadnought/Earth_DR_Weapons"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          21.877,
+          15.053,
+          156.136
+        ],
+        "minimum_xyz_m": [
+          -21.732,
+          -15.053,
+          -107.88
+        ],
+        "size_xyz_m": [
+          43.609,
+          30.105,
+          264.017
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 272229.43595,
+      "model_resource": "ships/Dreadnought",
+      "nose_hardpoints": 3,
+      "prefab_asset_path": "assets/artresources/ships/earth/dreadnought/dreadnought.prefab",
+      "runtime_cylinder_m3": 264581.006295,
+      "template_stored_volume_m3": 240528,
+      "utility_slots": 7,
+      "weapon_slots": 11
+    },
+    {
+      "alien": false,
+      "appearance_index": 1,
+      "counted_slots": 18,
+      "data_name": "Dreadnought",
+      "excluded_machinery": [
+        {
+          "path": "Dreadnought_1/Hull_Earth_Dreadnought_ALT/Earth_DR_ALT_Rads",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "Dreadnought_1/Drive",
+          "reason": "drive subtree"
+        }
+      ],
+      "hull_hardpoints": 8,
+      "image_file": "dreadnought-appearance-1.png",
+      "included_mesh_paths": [
+        "Dreadnought_1/Hull_Earth_Dreadnought_ALT/Earth_DR_ALT_Back_A",
+        "Dreadnought_1/Hull_Earth_Dreadnought_ALT/Earth_DR_ALT_Common_Back_B",
+        "Dreadnought_1/Hull_Earth_Dreadnought_ALT/Earth_DR_ALT_Common_Back_C",
+        "Dreadnought_1/Hull_Earth_Dreadnought_ALT/Earth_DR_ALT_Common_Head_B",
+        "Dreadnought_1/Hull_Earth_Dreadnought_ALT/Earth_DR_ALT_Common_Heart",
+        "Dreadnought_1/Hull_Earth_Dreadnought_ALT/Earth_DR_ALT_Common_Mid_B",
+        "Dreadnought_1/Hull_Earth_Dreadnought_ALT/Earth_DR_ALT_Head_A",
+        "Dreadnought_1/Hull_Earth_Dreadnought_ALT/Earth_DR_ALT_Head_B",
+        "Dreadnought_1/Hull_Earth_Dreadnought_ALT/Earth_DR_ALT_Mid_A_A",
+        "Dreadnought_1/Hull_Earth_Dreadnought_ALT/Earth_DR_ALT_Mid_A_B",
+        "Dreadnought_1/Hull_Earth_Dreadnought_ALT/Earth_DR_ALT_Mid_C"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          28.003,
+          17.75,
+          168.216
+        ],
+        "minimum_xyz_m": [
+          -28.003,
+          -17.75,
+          -94.647
+        ],
+        "size_xyz_m": [
+          56.007,
+          35.501,
+          262.862
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 410481.618817,
+      "model_resource": "ships/Dreadnought_1",
+      "nose_hardpoints": 3,
+      "prefab_asset_path": "assets/artresources/ships/earth_alt/dreadnought/dreadnought_1.prefab",
+      "runtime_cylinder_m3": 264581.006295,
+      "template_stored_volume_m3": 240528,
+      "utility_slots": 7,
+      "weapon_slots": 11
+    },
+    {
+      "alien": false,
+      "appearance_index": 2,
+      "counted_slots": 18,
+      "data_name": "Dreadnought",
+      "excluded_machinery": [
+        {
+          "path": "Dreadnought_2/Hull_Earth_Dreadnought_PRM/Earth_DR_PRM_Rads",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "Dreadnought_2/Drive",
+          "reason": "drive subtree"
+        }
+      ],
+      "hull_hardpoints": 8,
+      "image_file": "dreadnought-appearance-2.png",
+      "included_mesh_paths": [
+        "Dreadnought_2/Hull_Earth_Dreadnought_PRM/Earth_DR_PRM_Common_A",
+        "Dreadnought_2/Hull_Earth_Dreadnought_PRM/Earth_DR_PRM_Common_B",
+        "Dreadnought_2/Hull_Earth_Dreadnought_PRM/Earth_DR_PRM_Front",
+        "Dreadnought_2/Hull_Earth_Dreadnought_PRM/Earth_DR_PRM_Head",
+        "Dreadnought_2/Hull_Earth_Dreadnought_PRM/Earth_DR_PRM_Mid",
+        "Dreadnought_2/Hull_Earth_Dreadnought_PRM/Earth_DR_PRM_Tanks"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          18.657,
+          14.056,
+          154.961
+        ],
+        "minimum_xyz_m": [
+          -18.657,
+          -14.056,
+          -96.784
+        ],
+        "size_xyz_m": [
+          37.315,
+          28.113,
+          251.745
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 207412.75456,
+      "model_resource": "ships_prm/Dreadnought_2",
+      "nose_hardpoints": 3,
+      "prefab_asset_path": "assets/artresources/ships/earth_prm/dreadnought/dreadnought_2.prefab",
+      "runtime_cylinder_m3": 264581.006295,
+      "template_stored_volume_m3": 240528,
+      "utility_slots": 7,
+      "weapon_slots": 11
+    },
+    {
+      "alien": false,
+      "appearance_index": 3,
+      "counted_slots": 18,
+      "data_name": "Dreadnought",
+      "excluded_machinery": [
+        {
+          "path": "Dreadnought_3/Earth_DLCA_Hull_Dreadnought/Earth_DLCA_Radiator",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "Dreadnought_3/Drive",
+          "reason": "drive subtree"
+        }
+      ],
+      "hull_hardpoints": 8,
+      "image_file": "dreadnought-appearance-3.png",
+      "included_mesh_paths": [
+        "Dreadnought_3/Earth_DLCA_Hull_Dreadnought/Earth_DLCA_DR_Back",
+        "Dreadnought_3/Earth_DLCA_Hull_Dreadnought/Earth_DLCA_DR_Center",
+        "Dreadnought_3/Earth_DLCA_Hull_Dreadnought/Earth_DLCA_DR_Common_Back_A",
+        "Dreadnought_3/Earth_DLCA_Hull_Dreadnought/Earth_DLCA_DR_Common_Back_B",
+        "Dreadnought_3/Earth_DLCA_Hull_Dreadnought/Earth_DLCA_DR_Common_Head",
+        "Dreadnought_3/Earth_DLCA_Hull_Dreadnought/Earth_DLCA_DR_Common_Mounts",
+        "Dreadnought_3/Earth_DLCA_Hull_Dreadnought/Earth_DLCA_DR_Head",
+        "Dreadnought_3/Earth_DLCA_Hull_Dreadnought/Earth_DLCA_DR_Shoulders",
+        "Dreadnought_3/Earth_DLCA_Hull_Dreadnought/Earth_DLCA_DR_Tail"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          31.919,
+          22.017,
+          144.109
+        ],
+        "minimum_xyz_m": [
+          -31.919,
+          -22.017,
+          -101.819
+        ],
+        "size_xyz_m": [
+          63.838,
+          44.033,
+          245.928
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 542945.652925,
+      "model_resource": "ships_prm/Dreadnought_3",
+      "nose_hardpoints": 3,
+      "prefab_asset_path": "assets/artresources/ships/dlca/dreadnought/dreadnought_3.prefab",
+      "runtime_cylinder_m3": 264581.006295,
+      "template_stored_volume_m3": 240528,
+      "utility_slots": 7,
+      "weapon_slots": 11
+    },
+    {
+      "alien": false,
+      "appearance_index": 0,
+      "counted_slots": 19,
+      "data_name": "Titan",
+      "excluded_machinery": [
+        {
+          "path": "Titan/Drive",
+          "reason": "drive subtree"
+        },
+        {
+          "path": "Titan/Hull_Titan/Earth_TI_Radiators",
+          "reason": "radiator/reactor-bay mesh"
+        }
+      ],
+      "hull_hardpoints": 6,
+      "image_file": "titan-appearance-0.png",
+      "included_mesh_paths": [
+        "Titan/Hull_Titan/Earth_TI_Body",
+        "Titan/Hull_Titan/Earth_TI_Central",
+        "Titan/Hull_Titan/Earth_TI_Details_A",
+        "Titan/Hull_Titan/Earth_TI_Details_B",
+        "Titan/Hull_Titan/Earth_TI_Head",
+        "Titan/Hull_Titan/Earth_TI_Modules",
+        "Titan/Hull_Titan/Earth_TI_Tanks",
+        "Titan/Hull_Titan/Earth_TI_Wings_A",
+        "Titan/Hull_Titan/Earth_TI_Wings_B"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          28.732,
+          20.255,
+          163.759
+        ],
+        "minimum_xyz_m": [
+          -28.732,
+          -20.255,
+          -117.673
+        ],
+        "size_xyz_m": [
+          57.464,
+          40.511,
+          281.432
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 514552.084509,
+      "model_resource": "ships/Titan",
+      "nose_hardpoints": 4,
+      "prefab_asset_path": "assets/artresources/ships/earth/titan/titan.prefab",
+      "runtime_cylinder_m3": 288633.825049,
+      "template_stored_volume_m3": 264581,
+      "utility_slots": 9,
+      "weapon_slots": 10
+    },
+    {
+      "alien": false,
+      "appearance_index": 1,
+      "counted_slots": 19,
+      "data_name": "Titan",
+      "excluded_machinery": [
+        {
+          "path": "Titan_1/Hull_Earth_Titan_ALT/Earth_TI_ALT_Rads",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "Titan_1/drive",
+          "reason": "drive subtree"
+        }
+      ],
+      "hull_hardpoints": 6,
+      "image_file": "titan-appearance-1.png",
+      "included_mesh_paths": [
+        "Titan_1/Hull_Earth_Titan_ALT/Earth_TI_ALT_Back",
+        "Titan_1/Hull_Earth_Titan_ALT/Earth_TI_ALT_Common_Back_A",
+        "Titan_1/Hull_Earth_Titan_ALT/Earth_TI_ALT_Common_Back_B",
+        "Titan_1/Hull_Earth_Titan_ALT/Earth_TI_ALT_Common_Front",
+        "Titan_1/Hull_Earth_Titan_ALT/Earth_TI_ALT_Common_Head",
+        "Titan_1/Hull_Earth_Titan_ALT/Earth_TI_ALT_Common_Heart_A",
+        "Titan_1/Hull_Earth_Titan_ALT/Earth_TI_ALT_Common_Heart_B",
+        "Titan_1/Hull_Earth_Titan_ALT/Earth_TI_ALT_Common_Wings",
+        "Titan_1/Hull_Earth_Titan_ALT/Earth_TI_ALT_Front",
+        "Titan_1/Hull_Earth_Titan_ALT/Earth_TI_ALT_Head",
+        "Titan_1/Hull_Earth_Titan_ALT/Earth_TI_ALT_Middle",
+        "Titan_1/Hull_Earth_Titan_ALT/Earth_TI_ALT_Middle_Back"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          37.351,
+          26.752,
+          182.526
+        ],
+        "minimum_xyz_m": [
+          -37.351,
+          -26.752,
+          -93.189
+        ],
+        "size_xyz_m": [
+          74.702,
+          53.503,
+          275.715
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 865494.884959,
+      "model_resource": "ships/Titan_1",
+      "nose_hardpoints": 4,
+      "prefab_asset_path": "assets/artresources/ships/earth_alt/titan/titan_1.prefab",
+      "runtime_cylinder_m3": 288633.825049,
+      "template_stored_volume_m3": 264581,
+      "utility_slots": 9,
+      "weapon_slots": 10
+    },
+    {
+      "alien": false,
+      "appearance_index": 2,
+      "counted_slots": 19,
+      "data_name": "Titan",
+      "excluded_machinery": [
+        {
+          "path": "Titan_2/Hull_Earth_Titan_PRM/Earth_TI_PRM_Rads",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "Titan_2/drive",
+          "reason": "drive subtree"
+        }
+      ],
+      "hull_hardpoints": 6,
+      "image_file": "titan-appearance-2.png",
+      "included_mesh_paths": [
+        "Titan_2/Hull_Earth_Titan_PRM/Earth_TI_PRM_Common_A",
+        "Titan_2/Hull_Earth_Titan_PRM/Earth_TI_PRM_Common_B",
+        "Titan_2/Hull_Earth_Titan_PRM/Earth_TI_PRM_Common_C",
+        "Titan_2/Hull_Earth_Titan_PRM/Earth_TI_PRM_Front",
+        "Titan_2/Hull_Earth_Titan_PRM/Earth_TI_PRM_Head",
+        "Titan_2/Hull_Earth_Titan_PRM/Earth_TI_PRM_Mid",
+        "Titan_2/Hull_Earth_Titan_PRM/Earth_TI_PRM_Tanks"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          24.411,
+          19.956,
+          166.021
+        ],
+        "minimum_xyz_m": [
+          -24.628,
+          -19.964,
+          -99.019
+        ],
+        "size_xyz_m": [
+          49.039,
+          39.921,
+          265.04
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 407508.818065,
+      "model_resource": "ships_prm/Titan_2",
+      "nose_hardpoints": 4,
+      "prefab_asset_path": "assets/artresources/ships/earth_prm/titan/titan_2.prefab",
+      "runtime_cylinder_m3": 288633.825049,
+      "template_stored_volume_m3": 264581,
+      "utility_slots": 9,
+      "weapon_slots": 10
+    },
+    {
+      "alien": false,
+      "appearance_index": 3,
+      "counted_slots": 19,
+      "data_name": "Titan",
+      "excluded_machinery": [
+        {
+          "path": "Titan_3/Earth_DLCA_Hull_Titan/Earth_DLCA_Radiator",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "Titan_3/drive",
+          "reason": "drive subtree"
+        }
+      ],
+      "hull_hardpoints": 6,
+      "image_file": "titan-appearance-3.png",
+      "included_mesh_paths": [
+        "Titan_3/Earth_DLCA_Hull_Titan/Earth_DLCA_TI_Common_Bottom",
+        "Titan_3/Earth_DLCA_Hull_Titan/Earth_DLCA_TI_Common_Center",
+        "Titan_3/Earth_DLCA_Hull_Titan/Earth_DLCA_TI_Common_Head",
+        "Titan_3/Earth_DLCA_Hull_Titan/Earth_DLCA_TI_Common_Mounts",
+        "Titan_3/Earth_DLCA_Hull_Titan/Earth_DLCA_TI_Common_Sides",
+        "Titan_3/Earth_DLCA_Hull_Titan/Earth_DLCA_TI_Head",
+        "Titan_3/Earth_DLCA_Hull_Titan/Earth_DLCA_TI_Shoulders_A",
+        "Titan_3/Earth_DLCA_Hull_Titan/Earth_DLCA_TI_Shoulders_B",
+        "Titan_3/Earth_DLCA_Hull_Titan/Earth_DLCA_TI_Sides",
+        "Titan_3/Earth_DLCA_Hull_Titan/Earth_DLCA_TI_Top"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          36.518,
+          31.112,
+          160.677
+        ],
+        "minimum_xyz_m": [
+          -36.518,
+          -31.112,
+          -116.031
+        ],
+        "size_xyz_m": [
+          73.037,
+          62.224,
+          276.707
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 987672.365761,
+      "model_resource": "ships_prm/Titan_3",
+      "nose_hardpoints": 4,
+      "prefab_asset_path": "assets/artresources/ships/dlca/titan/titan_3.prefab",
+      "runtime_cylinder_m3": 288633.825049,
+      "template_stored_volume_m3": 264581,
+      "utility_slots": 9,
+      "weapon_slots": 10
+    },
+    {
+      "alien": false,
+      "appearance_index": 0,
+      "counted_slots": 3,
+      "data_name": "STOFighter",
+      "excluded_machinery": [],
+      "hull_hardpoints": 1,
+      "image_file": "stofighter-appearance-0.png",
+      "included_mesh_paths": [
+        "STOFighter/Earth Jet Hull Container/Earth_Jet"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          12.922,
+          3.426,
+          14.673
+        ],
+        "minimum_xyz_m": [
+          -12.922,
+          -3.426,
+          -14.673
+        ],
+        "size_xyz_m": [
+          25.844,
+          6.852,
+          29.346
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 4081.717091,
+      "model_resource": "ships/STOFighter",
+      "nose_hardpoints": 1,
+      "prefab_asset_path": "assets/artresources/earthmapmodels/jets/stofighter.prefab",
+      "runtime_cylinder_m3": 1256.637061,
+      "template_stored_volume_m3": 628,
+      "utility_slots": 1,
+      "weapon_slots": 2
+    },
+    {
+      "alien": true,
+      "appearance_index": 0,
+      "counted_slots": 4,
+      "data_name": "AlienGunship",
+      "excluded_machinery": [
+        {
+          "path": "AlienGunship/Drive",
+          "reason": "drive subtree"
+        },
+        {
+          "path": "AlienGunship/Alien_Spikes_Radiator1030/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "AlienGunship/Alien_Spikes_Radiator130/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "AlienGunship/Alien_Spikes_Radiator6/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        }
+      ],
+      "hull_hardpoints": 0,
+      "image_file": "aliengunship-appearance-0.png",
+      "included_mesh_paths": [
+        "AlienGunship/Hull_AlienGunship/Alien_Gunship_Propellant",
+        "AlienGunship/Hull_AlienGunship/Alien_Gunship_Head",
+        "AlienGunship/Hull_AlienGunship/Alien_Gunship_Crew",
+        "AlienGunship/Hull_AlienGunship/Alien_Gunship_Bridge"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          7.887,
+          9.49,
+          35.936
+        ],
+        "minimum_xyz_m": [
+          -7.668,
+          -4.586,
+          -27.406
+        ],
+        "size_xyz_m": [
+          15.555,
+          14.076,
+          63.342
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 10892.207477,
+      "model_resource": "ships/AlienGunship",
+      "nose_hardpoints": 1,
+      "prefab_asset_path": "assets/artresources/ships/alien/gunship/aliengunship.prefab",
+      "runtime_cylinder_m3": 3926.990817,
+      "template_stored_volume_m3": 1963,
+      "utility_slots": 3,
+      "weapon_slots": 1
+    },
+    {
+      "alien": true,
+      "appearance_index": 0,
+      "counted_slots": 6,
+      "data_name": "AlienEscort",
+      "excluded_machinery": [
+        {
+          "path": "AlienEscort/Drive",
+          "reason": "drive subtree"
+        },
+        {
+          "path": "AlienEscort/Alien_Spikes_Radiator1030/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "AlienEscort/Alien_Spikes_Radiator730/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "AlienEscort/Alien_Spikes_Radiator430/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "AlienEscort/Alien_Spikes_Radiator130/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        }
+      ],
+      "hull_hardpoints": 2,
+      "image_file": "alienescort-appearance-0.png",
+      "included_mesh_paths": [
+        "AlienEscort/Hull_AlienEscort/Hydra_ES_Central",
+        "AlienEscort/Hull_AlienEscort/Hydra_ES_Front",
+        "AlienEscort/Hull_AlienEscort/Hydra_ES_Head",
+        "AlienEscort/Hull_AlienEscort/Hydra_ES_Ends"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          8.384,
+          5.056,
+          34.35
+        ],
+        "minimum_xyz_m": [
+          -8.384,
+          -5.039,
+          -20.998
+        ],
+        "size_xyz_m": [
+          16.768,
+          10.095,
+          55.348
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 7358.2291,
+      "model_resource": "ships/AlienEscort",
+      "nose_hardpoints": 0,
+      "prefab_asset_path": "assets/artresources/ships/alien/escort/alienescort.prefab",
+      "runtime_cylinder_m3": 5890.486225,
+      "template_stored_volume_m3": 3927,
+      "utility_slots": 4,
+      "weapon_slots": 2
+    },
+    {
+      "alien": true,
+      "appearance_index": 0,
+      "counted_slots": 6,
+      "data_name": "AlienCorvette",
+      "excluded_machinery": [
+        {
+          "path": "AlienCorvette/Drive",
+          "reason": "drive subtree"
+        },
+        {
+          "path": "AlienCorvette/Alien_Spikes_Radiator6/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "AlienCorvette/Alien_Spikes_Radiator1030/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "AlienCorvette/Alien_Spikes_Radiator130/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        }
+      ],
+      "hull_hardpoints": 1,
+      "image_file": "aliencorvette-appearance-0.png",
+      "included_mesh_paths": [
+        "AlienCorvette/Hull_AlienCorvette/Alien_Corvette_Bridge_A",
+        "AlienCorvette/Hull_AlienCorvette/Alien_Corvette_Bridge_B",
+        "AlienCorvette/Hull_AlienCorvette/Alien_Corvette_Crew",
+        "AlienCorvette/Hull_AlienCorvette/Alien_Corvette_Head",
+        "AlienCorvette/Hull_AlienCorvette/Alien_Corvette_Heart",
+        "AlienCorvette/Hull_AlienCorvette/Alien_Corvette_Sides",
+        "AlienCorvette/Hull_AlienCorvette/Alien_Corvette_Wings"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          7.279,
+          7.567,
+          43.906
+        ],
+        "minimum_xyz_m": [
+          -7.143,
+          -5.878,
+          -42.602
+        ],
+        "size_xyz_m": [
+          14.422,
+          13.445,
+          86.508
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 13174.451263,
+      "model_resource": "ships/AlienCorvette",
+      "nose_hardpoints": 1,
+      "prefab_asset_path": "assets/artresources/ships/alien/corvette/aliencorvette.prefab",
+      "runtime_cylinder_m3": 5890.486225,
+      "template_stored_volume_m3": 3927,
+      "utility_slots": 4,
+      "weapon_slots": 2
+    },
+    {
+      "alien": true,
+      "appearance_index": 0,
+      "counted_slots": 9,
+      "data_name": "AlienFrigate",
+      "excluded_machinery": [
+        {
+          "path": "AlienFrigate/Drive",
+          "reason": "drive subtree"
+        },
+        {
+          "path": "AlienFrigate/Alien_Spikes_Radiator1030/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "AlienFrigate/Alien_Spikes_Radiator730/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "AlienFrigate/Alien_Spikes_Radiator430/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "AlienFrigate/Alien_Spikes_Radiator130/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        }
+      ],
+      "hull_hardpoints": 3,
+      "image_file": "alienfrigate-appearance-0.png",
+      "included_mesh_paths": [
+        "AlienFrigate/Hull_AlienFrigate/Hydra_FRI_Back",
+        "AlienFrigate/Hull_AlienFrigate/Hydra_FRI_Back_Detail",
+        "AlienFrigate/Hull_AlienFrigate/Hydra_FRI_Back_Sides",
+        "AlienFrigate/Hull_AlienFrigate/Hydra_FRI_Front",
+        "AlienFrigate/Hull_AlienFrigate/Hydra_FRI_Front_Detail",
+        "AlienFrigate/Hull_AlienFrigate/Hydra_FRI_Head",
+        "AlienFrigate/Hull_AlienFrigate/Hydra_FRI_Heart"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          10.96,
+          6.731,
+          66.049
+        ],
+        "minimum_xyz_m": [
+          -11.001,
+          -6.372,
+          -69.615
+        ],
+        "size_xyz_m": [
+          21.961,
+          13.103,
+          135.664
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 30659.926821,
+      "model_resource": "ships/AlienFrigate",
+      "nose_hardpoints": 1,
+      "prefab_asset_path": "assets/artresources/ships/alien/frigate/alienfrigate.prefab",
+      "runtime_cylinder_m3": 22089.323346,
+      "template_stored_volume_m3": 17671,
+      "utility_slots": 5,
+      "weapon_slots": 4
+    },
+    {
+      "alien": true,
+      "appearance_index": 0,
+      "counted_slots": 10,
+      "data_name": "AlienMonitor",
+      "excluded_machinery": [
+        {
+          "path": "AlienMonitor/Drive",
+          "reason": "drive subtree"
+        },
+        {
+          "path": "AlienMonitor/Alien_Spikes_Radiator1030/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "AlienMonitor/Alien_Spikes_Radiator730/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "AlienMonitor/Alien_Spikes_Radiator430/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "AlienMonitor/Alien_Spikes_Radiator130/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        }
+      ],
+      "hull_hardpoints": 4,
+      "image_file": "alienmonitor-appearance-0.png",
+      "included_mesh_paths": [
+        "AlienMonitor/Hull_AlienMonitor/Hydra_Monitor_Front",
+        "AlienMonitor/Hull_AlienMonitor/Hydra_Monitor_Head",
+        "AlienMonitor/Hull_AlienMonitor/Hydra_Monitor_Mid_A",
+        "AlienMonitor/Hull_AlienMonitor/Hydra_Monitor_Mid_B",
+        "AlienMonitor/Hull_AlienMonitor/Hydra_Monitor_Tail"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          15.576,
+          10.736,
+          89.353
+        ],
+        "minimum_xyz_m": [
+          -15.605,
+          -8.547,
+          -70.468
+        ],
+        "size_xyz_m": [
+          31.182,
+          19.283,
+          159.821
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 75475.814818,
+      "model_resource": "ships/AlienMonitor",
+      "nose_hardpoints": 1,
+      "prefab_asset_path": "assets/artresources/ships/alien/monitor/alienmonitor.prefab",
+      "runtime_cylinder_m3": 26507.188015,
+      "template_stored_volume_m3": 22089,
+      "utility_slots": 5,
+      "weapon_slots": 5
+    },
+    {
+      "alien": true,
+      "appearance_index": 0,
+      "counted_slots": 9,
+      "data_name": "AlienDestroyer",
+      "excluded_machinery": [
+        {
+          "path": "AlienDestroyer/Drive",
+          "reason": "drive subtree"
+        },
+        {
+          "path": "AlienDestroyer/Alien_Spikes_Radiator1030/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "AlienDestroyer/Alien_Spikes_Radiator730/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "AlienDestroyer/Alien_Spikes_Radiator430/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "AlienDestroyer/Alien_Spikes_Radiator130/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        }
+      ],
+      "hull_hardpoints": 2,
+      "image_file": "aliendestroyer-appearance-0.png",
+      "included_mesh_paths": [
+        "AlienDestroyer/Hull_AlienDestroyer/Alien_Destroyer_Guts",
+        "AlienDestroyer/Hull_AlienDestroyer/Alien_Destroyer_Head",
+        "AlienDestroyer/Hull_AlienDestroyer/Alien_Destroyer_Mid",
+        "AlienDestroyer/Hull_AlienDestroyer/Alien_Destroyer_Shoulder",
+        "AlienDestroyer/Hull_AlienDestroyer/Alien_Destroyer_Body"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          11.198,
+          9.007,
+          87.17
+        ],
+        "minimum_xyz_m": [
+          -11.103,
+          -7.115,
+          -80.391
+        ],
+        "size_xyz_m": [
+          22.3,
+          16.122,
+          167.562
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 47314.412734,
+      "model_resource": "ships/AlienDestroyer",
+      "nose_hardpoints": 2,
+      "prefab_asset_path": "assets/artresources/ships/alien/destroyer/aliendestroyer.prefab",
+      "runtime_cylinder_m3": 26507.188015,
+      "template_stored_volume_m3": 22089,
+      "utility_slots": 5,
+      "weapon_slots": 4
+    },
+    {
+      "alien": true,
+      "appearance_index": 0,
+      "counted_slots": 13,
+      "data_name": "AlienCruiser",
+      "excluded_machinery": [
+        {
+          "path": "AlienCruiser/Drive",
+          "reason": "drive subtree"
+        },
+        {
+          "path": "AlienCruiser/Alien_Spikes_Radiator1030/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "AlienCruiser/Alien_Spikes_Radiator130/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "AlienCruiser/Alien_Spikes_Radiator730/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "AlienCruiser/Alien_Spikes_Radiator430/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        }
+      ],
+      "hull_hardpoints": 4,
+      "image_file": "aliencruiser-appearance-0.png",
+      "included_mesh_paths": [
+        "AlienCruiser/Hull_AlienCruiser/Alien_CR_Heart",
+        "AlienCruiser/Hull_AlienCruiser/Hydra_CR_Back",
+        "AlienCruiser/Hull_AlienCruiser/Hydra_CR_Central",
+        "AlienCruiser/Hull_AlienCruiser/Hydra_CR_Head",
+        "AlienCruiser/Hull_AlienCruiser/Hydra_CR_Sides"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          12.767,
+          8.351,
+          101.544
+        ],
+        "minimum_xyz_m": [
+          -12.613,
+          -8.351,
+          -72.504
+        ],
+        "size_xyz_m": [
+          25.38,
+          16.702,
+          174.049
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 57947.517795,
+      "model_resource": "ships/AlienCruiser",
+      "nose_hardpoints": 2,
+      "prefab_asset_path": "assets/artresources/ships/alien/cruiser/aliencruiser.prefab",
+      "runtime_cylinder_m3": 62831.853072,
+      "template_stored_volume_m3": 54978,
+      "utility_slots": 7,
+      "weapon_slots": 6
+    },
+    {
+      "alien": true,
+      "appearance_index": 0,
+      "counted_slots": 12,
+      "data_name": "AlienBattlecruiser",
+      "excluded_machinery": [
+        {
+          "path": "AlienBattlecruiser/Drive",
+          "reason": "drive subtree"
+        },
+        {
+          "path": "AlienBattlecruiser/Alien_Spikes_Radiator1030/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "AlienBattlecruiser/Alien_Spikes_Radiator730/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "AlienBattlecruiser/Alien_Spikes_Radiator430/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "AlienBattlecruiser/Alien_Spikes_Radiator130/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        }
+      ],
+      "hull_hardpoints": 3,
+      "image_file": "alienbattlecruiser-appearance-0.png",
+      "included_mesh_paths": [
+        "AlienBattlecruiser/Hull_AlienBattlecruiser/Hydra_Battlecruiser_Back",
+        "AlienBattlecruiser/Hull_AlienBattlecruiser/Hydra_Battlecruiser_Front_A",
+        "AlienBattlecruiser/Hull_AlienBattlecruiser/Hydra_Battlecruiser_Front_B",
+        "AlienBattlecruiser/Hull_AlienBattlecruiser/Hydra_Battlecruiser_Head",
+        "AlienBattlecruiser/Hull_AlienBattlecruiser/Hydra_Battlecruiser_Heart_A",
+        "AlienBattlecruiser/Hull_AlienBattlecruiser/Hydra_Battlecruiser_Heart_B",
+        "AlienBattlecruiser/Hull_AlienBattlecruiser/Hydra_Battlecruiser_Mid",
+        "AlienBattlecruiser/Hull_AlienBattlecruiser/Hydra_Battlecruiser_Tail"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          18.474,
+          11.47,
+          129.93
+        ],
+        "minimum_xyz_m": [
+          -18.44,
+          -11.838,
+          -125.799
+        ],
+        "size_xyz_m": [
+          36.914,
+          23.308,
+          255.729
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 172807.622187,
+      "model_resource": "ships/AlienBattlecruiser",
+      "nose_hardpoints": 3,
+      "prefab_asset_path": "assets/artresources/ships/alien/battlecruiser/alienbattlecruiser.prefab",
+      "runtime_cylinder_m3": 120264.09377,
+      "template_stored_volume_m3": 107992,
+      "utility_slots": 6,
+      "weapon_slots": 6
+    },
+    {
+      "alien": true,
+      "appearance_index": 0,
+      "counted_slots": 15,
+      "data_name": "AlienBattleship",
+      "excluded_machinery": [
+        {
+          "path": "AlienBattleship/Drive",
+          "reason": "drive subtree"
+        },
+        {
+          "path": "AlienBattleship/Alien_Spikes_Radiator1030/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "AlienBattleship/Alien_Spikes_Radiator730/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "AlienBattleship/Alien_Spikes_Radiator430/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "AlienBattleship/Alien_Spikes_Radiator130/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        }
+      ],
+      "hull_hardpoints": 6,
+      "image_file": "alienbattleship-appearance-0.png",
+      "included_mesh_paths": [
+        "AlienBattleship/Hull_AlienBattleship/Hydra_BS_Back",
+        "AlienBattleship/Hull_AlienBattleship/Hydra_BS_Back_Sides",
+        "AlienBattleship/Hull_AlienBattleship/Hydra_BS_Central_A",
+        "AlienBattleship/Hull_AlienBattleship/Hydra_BS_Central_B",
+        "AlienBattleship/Hull_AlienBattleship/Hydra_BS_Head",
+        "AlienBattleship/Hull_AlienBattleship/Hydra_BS_Heart",
+        "AlienBattleship/Hull_AlienBattleship/Hydra_BS_Wings_A",
+        "AlienBattleship/Hull_AlienBattleship/Hydra_BS_Wings_B"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          17.717,
+          12.549,
+          143.701
+        ],
+        "minimum_xyz_m": [
+          -17.717,
+          -12.549,
+          -144.541
+        ],
+        "size_xyz_m": [
+          35.435,
+          25.097,
+          288.243
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 201325.225328,
+      "model_resource": "ships/AlienBattleship",
+      "nose_hardpoints": 2,
+      "prefab_asset_path": "assets/artresources/ships/alien/battleship/alienbattleship.prefab",
+      "runtime_cylinder_m3": 122718.463031,
+      "template_stored_volume_m3": 110447,
+      "utility_slots": 7,
+      "weapon_slots": 8
+    },
+    {
+      "alien": true,
+      "appearance_index": 0,
+      "counted_slots": 17,
+      "data_name": "AlienLancer",
+      "excluded_machinery": [
+        {
+          "path": "AlienLancer/Drive",
+          "reason": "drive subtree"
+        },
+        {
+          "path": "AlienLancer/Alien_Spikes_Radiator1030/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "AlienLancer/Alien_Spikes_Radiator130/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "AlienLancer/Alien_Spikes_Radiator730/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "AlienLancer/Alien_Spikes_Radiator430/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        }
+      ],
+      "hull_hardpoints": 4,
+      "image_file": "alienlancer-appearance-0.png",
+      "included_mesh_paths": [
+        "AlienLancer/Hull_AlienLancer/Hydra_LC_Back",
+        "AlienLancer/Hull_AlienLancer/Hydra_LC_Central",
+        "AlienLancer/Hull_AlienLancer/Hydra_LC_Front",
+        "AlienLancer/Hull_AlienLancer/Hydra_LC_Heart",
+        "AlienLancer/Hull_AlienLancer/Hydra_LC_Tail"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          15.779,
+          12.574,
+          138.284
+        ],
+        "minimum_xyz_m": [
+          -15.778,
+          -11.904,
+          -136.436
+        ],
+        "size_xyz_m": [
+          31.557,
+          24.479,
+          274.719
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 166671.706039,
+      "model_resource": "ships/AlienLancer",
+      "nose_hardpoints": 6,
+      "prefab_asset_path": "assets/artresources/ships/alien/lancer/alienlancer.prefab",
+      "runtime_cylinder_m3": 134990.309334,
+      "template_stored_volume_m3": 122718,
+      "utility_slots": 7,
+      "weapon_slots": 10
+    },
+    {
+      "alien": true,
+      "appearance_index": 0,
+      "counted_slots": 21,
+      "data_name": "AlienDreadnought",
+      "excluded_machinery": [
+        {
+          "path": "AlienDreadnought/Drive",
+          "reason": "drive subtree"
+        },
+        {
+          "path": "AlienDreadnought/Alien_Spikes_Radiator1030/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "AlienDreadnought/Alien_Spikes_Radiator730/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "AlienDreadnought/Alien_Spikes_Radiator430/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "AlienDreadnought/Alien_Spikes_Radiator130/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        }
+      ],
+      "hull_hardpoints": 8,
+      "image_file": "aliendreadnought-appearance-0.png",
+      "included_mesh_paths": [
+        "AlienDreadnought/Hull_AlienDreadnought/Hydra_Dreadnought_Head_A",
+        "AlienDreadnought/Hull_AlienDreadnought/Hydra_Dreadnought_Heart_A",
+        "AlienDreadnought/Hull_AlienDreadnought/Hydra_Dreadnought_Heart_B",
+        "AlienDreadnought/Hull_AlienDreadnought/Hydra_Dreadnought_Mid_A",
+        "AlienDreadnought/Hull_AlienDreadnought/Hydra_Dreadnought_Mid_B",
+        "AlienDreadnought/Hull_AlienDreadnought/Hydra_Dreadnought_Mid_C",
+        "AlienDreadnought/Hull_AlienDreadnought/Hydra_Dreadnought_Mid_D",
+        "AlienDreadnought/Hull_AlienDreadnought/Hydra_Dreadnought_Shoulder_A",
+        "AlienDreadnought/Hull_AlienDreadnought/Hydra_Dreadnought_Shoulder_B",
+        "AlienDreadnought/Hull_AlienDreadnought/Hydra_Dreadnought_Shoulder_C",
+        "AlienDreadnought/Hull_AlienDreadnought/Hydra_Dreadnought_Shoulder_D",
+        "AlienDreadnought/Hull_AlienDreadnought/Hydra_Dreadnought_Tail_A",
+        "AlienDreadnought/Hull_AlienDreadnought/Hydra_Dreadnought_Tail_B",
+        "AlienDreadnought/Hull_AlienDreadnought/Hydra_Dreadnought_Tail_C",
+        "AlienDreadnought/Hull_AlienDreadnought/Hydra_Dreadnought_Tail_D",
+        "AlienDreadnought/Hull_AlienDreadnought/Hydra_Dreadnought_Tail_E",
+        "AlienDreadnought/Hull_AlienDreadnought/Hydra_Dreadnought_Tail_F"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          19.899,
+          15.359,
+          147.846
+        ],
+        "minimum_xyz_m": [
+          -19.899,
+          -15.359,
+          -167.718
+        ],
+        "size_xyz_m": [
+          39.797,
+          30.718,
+          315.564
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 302989.802622,
+      "model_resource": "ships/AlienDreadnought",
+      "nose_hardpoints": 4,
+      "prefab_asset_path": "assets/artresources/ships/alien/dreadnought/aliendreadnought.prefab",
+      "runtime_cylinder_m3": 212057.504117,
+      "template_stored_volume_m3": 194386,
+      "utility_slots": 9,
+      "weapon_slots": 12
+    },
+    {
+      "alien": true,
+      "appearance_index": 0,
+      "counted_slots": 21,
+      "data_name": "AlienTitan",
+      "excluded_machinery": [
+        {
+          "path": "AlienTitan/Drive",
+          "reason": "drive subtree"
+        },
+        {
+          "path": "AlienTitan/Alien_Spikes_Radiator1030/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "AlienTitan/Alien_Spikes_Radiator130/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "AlienTitan/Alien_Spikes_Radiator730/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "AlienTitan/Alien_Spikes_Radiator430/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        }
+      ],
+      "hull_hardpoints": 8,
+      "image_file": "alientitan-appearance-0.png",
+      "included_mesh_paths": [
+        "AlienTitan/Hull_AlienTitan/Hydra_TI_Body_A",
+        "AlienTitan/Hull_AlienTitan/Hydra_TI_Body_B",
+        "AlienTitan/Hull_AlienTitan/Hydra_TI_Head",
+        "AlienTitan/Hull_AlienTitan/Hydra_TI_Heart",
+        "AlienTitan/Hull_AlienTitan/Hydra_TI_Shoulders_A",
+        "AlienTitan/Hull_AlienTitan/Hydra_TI_Shoulders_B"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          19.73,
+          14.406,
+          233.333
+        ],
+        "minimum_xyz_m": [
+          -19.805,
+          -14.406,
+          -157.873
+        ],
+        "size_xyz_m": [
+          39.534,
+          28.813,
+          391.206
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 349989.244758,
+      "model_resource": "ships/AlienTitan",
+      "nose_hardpoints": 6,
+      "prefab_asset_path": "assets/artresources/ships/alien/titan/alientitan.prefab",
+      "runtime_cylinder_m3": 282743.338823,
+      "template_stored_volume_m3": 265072,
+      "utility_slots": 7,
+      "weapon_slots": 14
+    },
+    {
+      "alien": true,
+      "appearance_index": 0,
+      "counted_slots": 12,
+      "data_name": "AlienAssaultCarrier",
+      "excluded_machinery": [
+        {
+          "path": "AlienAssaultCarrier/Drive",
+          "reason": "drive subtree"
+        },
+        {
+          "path": "AlienAssaultCarrier/Alien_Spikes_Radiator1030/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "AlienAssaultCarrier/Alien_Spikes_Radiator730/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "AlienAssaultCarrier/Alien_Spikes_Radiator430/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "AlienAssaultCarrier/Alien_Spikes_Radiator130/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "AlienAssaultCarrier/Hull_AlienAssaultCarrier/Hydra_AssaultCarrier_Engine_A",
+          "reason": "engine-named mesh"
+        }
+      ],
+      "hull_hardpoints": 6,
+      "image_file": "alienassaultcarrier-appearance-0.png",
+      "included_mesh_paths": [
+        "AlienAssaultCarrier/Hull_AlienAssaultCarrier/Hydra_AssaultCarrier_Head_A",
+        "AlienAssaultCarrier/Hull_AlienAssaultCarrier/Hydra_AssaultCarrier_Head_B",
+        "AlienAssaultCarrier/Hull_AlienAssaultCarrier/Hydra_AssaultCarrier_Head_C",
+        "AlienAssaultCarrier/Hull_AlienAssaultCarrier/Hydra_AssaultCarrier_Heart",
+        "AlienAssaultCarrier/Hull_AlienAssaultCarrier/Hydra_AssaultCarrier_Mid_A",
+        "AlienAssaultCarrier/Hull_AlienAssaultCarrier/Hydra_AssaultCarrier_Mid_B",
+        "AlienAssaultCarrier/Hull_AlienAssaultCarrier/Hydra_AssaultCarrier_Mid_C",
+        "AlienAssaultCarrier/Hull_AlienAssaultCarrier/Hydra_AssaultCarrier_Mid_D",
+        "AlienAssaultCarrier/Hull_AlienAssaultCarrier/Hydra_AssaultCarrier_Mid_Details_A",
+        "AlienAssaultCarrier/Hull_AlienAssaultCarrier/Hydra_AssaultCarrier_Shoulder_Details_A",
+        "AlienAssaultCarrier/Hull_AlienAssaultCarrier/Hydra_AssaultCarrier_Tail_A",
+        "AlienAssaultCarrier/Hull_AlienAssaultCarrier/Hydra_AssaultCarrier_Tail_B",
+        "AlienAssaultCarrier/Hull_AlienAssaultCarrier/Hydra_AssaultCarrier_Tail_Details_B",
+        "AlienAssaultCarrier/Hull_AlienAssaultCarrier/Hydra_AssaultCarrier_Wings_A",
+        "AlienAssaultCarrier/Hull_AlienAssaultCarrier/Hydra_AssaultCarrier_Wings_B",
+        "AlienAssaultCarrier/Hull_AlienAssaultCarrier/Hydra_AssaultCarrier_Tail_Details_A",
+        "AlienAssaultCarrier/Hull_AlienAssaultCarrier/Hydra_AssaultCarrier_Tail_C"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          29.3,
+          16.512,
+          160.732
+        ],
+        "minimum_xyz_m": [
+          -29.3,
+          -16.512,
+          -115.068
+        ],
+        "size_xyz_m": [
+          58.6,
+          33.023,
+          275.8
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 419181.822345,
+      "model_resource": "ships/AlienAssaultCarrier",
+      "nose_hardpoints": 0,
+      "prefab_asset_path": "assets/artresources/ships/alien/assault_carrier/alienassaultcarrier.prefab",
+      "runtime_cylinder_m3": 212057.504117,
+      "template_stored_volume_m3": 194386,
+      "utility_slots": 6,
+      "weapon_slots": 6
+    },
+    {
+      "alien": true,
+      "appearance_index": 0,
+      "counted_slots": 27,
+      "data_name": "AlienMothership",
+      "excluded_machinery": [
+        {
+          "path": "AlienMothership/Drive",
+          "reason": "drive subtree"
+        },
+        {
+          "path": "AlienMothership/Alien_Spikes_RadiatorC1/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "AlienMothership/Alien_Spikes_RadiatorC2/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "AlienMothership/Alien_Spikes_RadiatorC3/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "AlienMothership/Alien_Spikes_RadiatorC4/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "AlienMothership/Alien_Spikes_RadiatorRightTopLeft/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "AlienMothership/Alien_Spikes_RadiatorRightDown/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "AlienMothership/Alien_Spikes_RadiatorRightTopRight/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "AlienMothership/Alien_Spikes_RadiatorLeftTopRight/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "AlienMothership/Alien_Spikes_RadiatorLeftDown/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "AlienMothership/Alien_Spikes_RadiatorLeftTopLeft/Alien_Spikes_Radiator_Model",
+          "reason": "radiator/reactor-bay mesh"
+        },
+        {
+          "path": "AlienMothership/Hull_AlienMothership/Hydra_Mothership_Engine_A",
+          "reason": "engine-named mesh"
+        }
+      ],
+      "hull_hardpoints": 16,
+      "image_file": "alienmothership-appearance-0.png",
+      "included_mesh_paths": [
+        "AlienMothership/Hull_AlienMothership/Hydra_Mothership_Antenna_A",
+        "AlienMothership/Hull_AlienMothership/Hydra_Mothership_Barriers",
+        "AlienMothership/Hull_AlienMothership/Hydra_Mothership_Central",
+        "AlienMothership/Hull_AlienMothership/Hydra_Mothership_Central_A",
+        "AlienMothership/Hull_AlienMothership/Hydra_Mothership_Head",
+        "AlienMothership/Hull_AlienMothership/Hydra_Mothership_Head_A",
+        "AlienMothership/Hull_AlienMothership/Hydra_Mothership_Mid_A",
+        "AlienMothership/Hull_AlienMothership/Hydra_Mothership_Mid_B",
+        "AlienMothership/Hull_AlienMothership/Hydra_Mothership_Mid_C",
+        "AlienMothership/Hull_AlienMothership/Hydra_Mothership_Outer_A",
+        "AlienMothership/Hull_AlienMothership/Hydra_Mothership_Outer_B",
+        "AlienMothership/Hull_AlienMothership/Hydra_Mothership_Outer_C",
+        "AlienMothership/Hull_AlienMothership/Hydra_Mothership_Spheres",
+        "AlienMothership/Hull_AlienMothership/Hydra_Mothership_Structure_A",
+        "AlienMothership/Hull_AlienMothership/Hydra_Mothership_Tail_Details_A",
+        "AlienMothership/Hull_AlienMothership/Hydra_Mothership_Tail_Sphere"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          239.17,
+          89.83,
+          303.356
+        ],
+        "minimum_xyz_m": [
+          -239.17,
+          -93.002,
+          -412.887
+        ],
+        "size_xyz_m": [
+          478.34,
+          182.832,
+          716.243
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 49197068.556474,
+      "model_resource": "ships/AlienMothership",
+      "nose_hardpoints": 4,
+      "prefab_asset_path": "assets/artresources/ships/alien/mothership/alienmothership.prefab",
+      "runtime_cylinder_m3": 1696460.032938,
+      "template_stored_volume_m3": 1625774,
+      "utility_slots": 7,
+      "weapon_slots": 20
+    },
+    {
+      "alien": true,
+      "appearance_index": 0,
+      "counted_slots": 3,
+      "data_name": "SalamanderGunship",
+      "excluded_machinery": [
+        {
+          "path": "SalamanderGunship/Salamander_Gunship/Sal_GS_Thrusterx1",
+          "reason": "thruster-named mesh"
+        }
+      ],
+      "hull_hardpoints": 1,
+      "image_file": "salamandergunship-appearance-0.png",
+      "included_mesh_paths": [
+        "SalamanderGunship/Salamander_Gunship/Sal_GS_Body_A",
+        "SalamanderGunship/Salamander_Gunship/Sal_GS_Body_B",
+        "SalamanderGunship/Salamander_Gunship/Sal_GS_Head",
+        "SalamanderGunship/Salamander_Gunship/Sal_GS_Wings"
+      ],
+      "main_hull_bounds": {
+        "maximum_xyz_m": [
+          15.848,
+          4.67,
+          35.975
+        ],
+        "minimum_xyz_m": [
+          -15.767,
+          -4.383,
+          -28.703
+        ],
+        "size_xyz_m": [
+          31.616,
+          9.053,
+          64.678
+        ]
+      },
+      "main_hull_elliptical_envelope_m3": 14539.464246,
+      "model_resource": "ships/SalamanderGunship",
+      "nose_hardpoints": 1,
+      "prefab_asset_path": "assets/artresources/ships/alien/salamander_gunship/salamandergunship.prefab",
+      "runtime_cylinder_m3": 1759.291886,
+      "template_stored_volume_m3": 880,
+      "utility_slots": 1,
+      "weapon_slots": 2
+    }
+  ]
+}

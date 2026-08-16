@@ -173,6 +173,13 @@ def walk(transform_ptr, parent_matrix, parent_active, path, records):
                     {
                         "path": "/".join(current_path),
                         "layer": game_object.m_Layer,
+                        "mesh_name": mesh.m_Name,
+                        "mesh": mesh,
+                        "mesh_cache_key": (
+                            mesh.assets_file.name,
+                            mesh.object_reader.path_id,
+                        ),
+                        "matrix": matrix,
                         "points": points,
                     }
                 )

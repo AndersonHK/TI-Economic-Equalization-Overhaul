@@ -5,6 +5,29 @@ the balance decisions as well as their implementation status.
 
 ## 2026-08-16
 
+### Documented and deployed: complete hull-appearance volume and slot inventory
+
+- Added a generated inventory of all **28 installed human and alien hull
+  templates** and all **64 graphical appearances**, including the special
+  `STOFighter` and `SalamanderGunship` hulls. Each appearance has side and top
+  orthographic renders, main-hull mesh bounds and an elliptical-envelope volume,
+  nose/hull/utility slot counts, and exact source-model identity.
+- The main-hull selection excludes the drive subtree, named radiator/reactor-bay
+  meshes, and separately named engine, thruster, and reactor meshes. The report
+  describes the result as an exterior comparison envelope rather than occupied
+  or usable interior volume; `STOFighter` is explicitly marked inseparable.
+- Added the maintained generator, CSV, JSON mesh-path evidence, 64 thumbnails,
+  two contact sheets, documentation links, and a deployment validator that
+  reconciles source hashes, installed template/model-resource coverage, slots,
+  positive measurements, machinery exclusions, and all **66 PNGs**.
+- A second complete asset run regenerated all **69 report artifacts
+  byte-for-byte**. The normal TI 1.0.51 deployment then passed **938 formula
+  assertions**, all **130 Harmony patches**, the full validation suite, release
+  packaging, and **33-file** enabled-mod deployment. DLL SHA-256:
+  `6840F6CE9450D64C896CE00C3446B7B7BCDDA233158DFF5287AAA23768F610FD`.
+- This is evidence and tooling only: no hull or utility-slot gameplay value was
+  changed. A normal mod-load regression smoke test remains pending.
+
 ### Implemented and deployed: coil and alien magnetic tier progression cadence revision
 
 - Correct the technology handoff so Coilgun Mk1 strictly exceeds the matching

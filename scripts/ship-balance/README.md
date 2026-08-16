@@ -48,3 +48,29 @@ python scripts/ship-balance/measure_ship_prefabs.py > ship-measurements.json
 The JSON is measurement evidence, not a gameplay override. Axis-aligned bounds
 and transverse bounding areas must not be described as occupied volume or true
 nozzle exit area.
+
+## Complete hull-variant report
+
+`generate_hull_variant_report.py` imports the shared prefab traversal above and
+combines it with the installed `TIShipHullTemplate.json` plus the mod's partial
+hull overrides. It generates one row and one orthographic thumbnail for every
+installed human or alien `(hull, modelResource)` pair, including `STOFighter`
+and `SalamanderGunship`.
+
+The reported art-space volume is an elliptical envelope around the selected
+main-hull mesh bounds. The selection excludes the drive subtree, named
+radiator/reactor-bay meshes, and separately named engine, thruster, or reactor
+meshes. It is intentionally not described as occupied or usable interior
+volume. Exact included and excluded mesh paths are retained in JSON evidence.
+
+The generator requires Pillow in addition to the dependencies above and writes
+the maintained report, CSV, JSON, thumbnails, and contact sheets under
+`docs/ship-balance-research/`:
+
+```powershell
+python scripts/ship-balance/generate_hull_variant_report.py `
+  --game-install-dir 'D:\Games\SteamLibrary\steamapps\common\Terra Invicta'
+```
+
+Outputs contain source SHA-256 hashes but no run timestamps, so two runs over
+identical templates and bundles are byte-for-byte comparable.

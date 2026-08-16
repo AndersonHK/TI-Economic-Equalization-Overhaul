@@ -64,7 +64,10 @@ when prose and runtime behavior disagree.
 - [Ship balance research](ship-balance-research/README.md) contains evidence,
   planning decisions, and a dated implementation log. Each document should be
   read according to its status language; research proposals are not current
-  gameplay merely because they remain useful design evidence.
+  gameplay merely because they remain useful design evidence. Its generated
+  [hull graphical-variant and utility-slot report](ship-balance-research/hull-utility-slot-volume-report.md)
+  inventories all installed human and alien appearances and separates the main
+  hull art envelope from named reactor/radiator and engine geometry.
 
 ## Maintenance rule
 
