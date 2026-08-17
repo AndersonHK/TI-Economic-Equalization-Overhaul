@@ -44,16 +44,15 @@ when prose and runtime behavior disagree.
 - [Alien start, wormhole, and Earth-invasion audit](alien-start-wormhole-and-earth-invasion.md):
   scenario-by-scenario alien day-one assets, campaign-setting effects,
   wormhole income formulas, invasion timing, and assault-carrier landing AI.
+- [Earth orbits, launch costs, and lunar resource semantics](orbits-and-lunar-resources/approved-design.md):
+  authoritative inclination-aware Earth launch costs, four additional LEO
+  bands, ISS/Tiangong migration, corrected resource semantics, and the
+  implemented thirty-site Luna roster. Its companion
+  [Luna yield comparison](orbits-and-lunar-resources/resource-yield-comparison.md)
+  records the approved mass-grounded bands and vanilla Luna/Mars comparisons.
 
 ## Historical, exploratory, and deferred material
 
-- [Earth orbits, launch costs, and lunar resource semantics](orbits-and-lunar-resources/approved-design.md)
-  records the approved design for inclination-aware Earth launch costs, four
-  additional LEO bands, the ISS/Tiangong migration, corrected resource
-  semantics, and the eventual implementation workflow. Its companion
-  [Luna yield comparison](orbits-and-lunar-resources/resource-yield-comparison.md)
-  compares vanilla Luna and Mars with a mass-grounded but not-yet-approved
-  thirty-site lunar proposal.
 - [National harmonization eligibility plan](national-harmonization-eligibility-plan.md)
   traces the current dynamic claim-hostility and peaceful-unification gates,
   evaluates the proposed score, and records the not-yet-implemented patch and

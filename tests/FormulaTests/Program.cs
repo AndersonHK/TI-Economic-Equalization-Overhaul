@@ -50,6 +50,7 @@ namespace TIEconomyMod.FormulaTests
                 TestNationalMergers();
                 TestEnvironmentUnitySpoilsAndEmissions();
                 TestHabRebalanceMath();
+                TestEarthLaunchCostMath();
                 TestWeightValidation(weights);
                 TestDisabledFallback();
                 Console.WriteLine("PASS: " + assertions + " patch-formula assertions.");
@@ -2294,6 +2295,100 @@ namespace TIEconomyMod.FormulaTests
             inequalityState = null;
             InequalityMergerPatch.Prefix(absorbing, joining, ref inequalityState);
             True(inequalityState == null, "disabled Inequality merger retains vanilla");
+        }
+
+        private static void TestEarthLaunchCostMath()
+        {
+            const double mu = 3.986004418e14;
+            const double radius = 6356751.107d;
+            const double rotationPeriod = 86164.0884d;
+            const double genericEv = 2.11d;
+            double reference = EarthLaunchCostMath.ReferenceAscentDeltaV_kps(
+                mu,
+                radius,
+                rotationPeriod);
+
+            Near(
+                1f,
+                (float)EarthLaunchCostMath.BoostCost(
+                    10d,
+                    0.1d,
+                    0d,
+                    genericEv),
+                0.000001f,
+                "reference Earth launch is one Boost per ten tonnes");
+
+            double plus40 = EarthLaunchCostMath.AscentDeltaV_kps(
+                mu, radius, rotationPeriod, 40d, 500d, 40d);
+            double minus40 = EarthLaunchCostMath.AscentDeltaV_kps(
+                mu, radius, rotationPeriod, -40d, 500d, -40d);
+            Near(
+                (float)plus40,
+                (float)minus40,
+                0.000001f,
+                "signed inclination and latitude symmetry");
+
+            double altitude500 = EarthLaunchCostMath.AscentDeltaV_kps(
+                mu, radius, rotationPeriod, 0d, 500d, 0d);
+            double altitude1000 = EarthLaunchCostMath.AscentDeltaV_kps(
+                mu, radius, rotationPeriod, 0d, 1000d, 0d);
+            True(
+                altitude1000 > altitude500,
+                "Earth launch cost increases with altitude");
+
+            double direct20 = EarthLaunchCostMath.AscentDeltaV_kps(
+                mu, radius, rotationPeriod, 20d, 500d, 20d);
+            double dogleg20 = EarthLaunchCostMath.AscentDeltaV_kps(
+                mu, radius, rotationPeriod, 60d, 500d, 20d);
+            True(
+                dogleg20 > direct20 + 2d,
+                "poleward launch site pays a large lower-inclination dogleg");
+
+            Near(
+                1.013f,
+                (float)Math.Exp((direct20 - reference) / genericEv),
+                0.002f,
+                "20-degree illustrative Boost calibration");
+            Near(
+                1.053f,
+                (float)Math.Exp((plus40 - reference) / genericEv),
+                0.002f,
+                "40-degree illustrative Boost calibration");
+            double polar = EarthLaunchCostMath.AscentDeltaV_kps(
+                mu, radius, rotationPeriod, 90d, 500d, 90d);
+            Near(
+                1.247f,
+                (float)Math.Exp((polar - reference) / genericEv),
+                0.003f,
+                "polar illustrative Boost calibration");
+            Near(
+                1.132f,
+                (float)Math.Exp((altitude1000 - reference) / genericEv),
+                0.003f,
+                "1000-kilometer illustrative Boost calibration");
+
+            List<EarthLaunchSite> sites = new List<EarthLaunchSite>
+            {
+                new EarthLaunchSite(60d),
+                new EarthLaunchSite(20d),
+                new EarthLaunchSite(0d)
+            };
+            List<EarthParkingOption> parking = new List<EarthParkingOption>
+            {
+                new EarthParkingOption(500d, 40d, 0.5d),
+                new EarthParkingOption(1000d, 0d, 0.1d)
+            };
+            double ordered = EarthLaunchCostMath.MinimumNormalizedRouteDeltaV_kps(
+                mu, radius, rotationPeriod, sites, parking);
+            sites.Reverse();
+            parking.Reverse();
+            double reversed = EarthLaunchCostMath.MinimumNormalizedRouteDeltaV_kps(
+                mu, radius, rotationPeriod, sites, parking);
+            Near(
+                (float)ordered,
+                (float)reversed,
+                0.000001f,
+                "launch-site and parking-orbit minimum ignores collection order");
         }
 
         private static void TestWeightValidation(string path)

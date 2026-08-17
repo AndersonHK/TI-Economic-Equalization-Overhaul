@@ -24,6 +24,9 @@
     <Compile Include="..\..\TIEconomyMod\Core\AlienFloraAssaultMath.cs">
       <Link>AlienFloraAssaultMath.cs</Link>
     </Compile>
+    <Compile Include="..\..\TIEconomyMod\Core\EarthLaunchCostMath.cs">
+      <Link>EarthLaunchCostMath.cs</Link>
+    </Compile>
     <Compile Include="..\..\TIEconomyMod\Core\HabRebalanceMath.cs">
       <Link>HabRebalanceMath.cs</Link>
     </Compile>

@@ -9,5 +9,8 @@
   "GameVersion": "1.0.51",
   "AssemblyName": "Assembly/TIEconomyMod.dll",
   "EntryMethod": "TIEconomyMod.Main.Load",
+  "TemplatesToReplaceArrays": [
+    "TISpaceBodyTemplate.json"
+  ],
   "mod url": "https://steamcommunity.com/sharedfiles/filedetails/?id=2876646709"
 }

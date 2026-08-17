@@ -133,6 +133,29 @@ historical research and deferred work.
   vanilla composites. Starting ISS/Tiangong layouts, T1 crews, and consumables
   are rescaled.
 
+### Earth launch orbits and Luna
+
+- Four 500 km Earth interface orbits add base inclinations of +20, +40, -20,
+  and -40 degrees while retaining Low Earth Orbit 1's authored variation.
+  ISS, skirmish ISS, and Tiangong begin in the +40-degree orbit; their bespoke
+  instantiated orbits are retired.
+- Earth launch Boost cost evaluates every operational launch site and chooses
+  the lowest-delta-v ascent for the destination altitude and inclination.
+  Destinations beyond LEO also choose the cheapest instantiated Earth parking
+  orbit instead of depending on template order.
+- Launch cost uses a two-impulse ascent, Earth's runtime rotation and gravity,
+  and the existing faction exhaust-velocity conversion. Boost-production
+  latitude bonuses remain separate from destination launch cost.
+- Luna has thirty named, geographically distributed sites with bounded,
+  site-specific mining profiles. Water is confined to supported polar cold
+  traps, Volatiles to cold traps and supported pyroclastic deposits, and trace
+  Fissiles to KREEP or thorium-related provinces.
+- Water localization now identifies both hydrogen and oxygen from water;
+  Volatiles no longer categorizes bulk mineral oxygen as a volatile resource.
+
+The design, formulas, geology rationale, and vanilla Luna/Mars comparison are
+in [Earth orbits, launch costs, and lunar resources](docs/orbits-and-lunar-resources/approved-design.md).
+
 The complete logistics rules and examples are in
 [Manufacturing Logistics](docs/manufacturing-logistics.md).
 
@@ -183,6 +206,10 @@ runtime-derived. They add no serialized state and rebuild lazily after loading,
 so existing saves remain compatible. Other affected systems likewise avoid new
 save fields unless a document explicitly says otherwise.
 
+The new Earth orbit-state roster, starting-station placement, and thirty-site
+Luna map are new-campaign features. Existing campaigns retain the orbit and site
+states serialized when they were created.
+
 The current release archive is:
 
 ```text
@@ -209,6 +236,9 @@ Verification rebuilds with warnings as errors and checks:
 - the implementation matrix against settings and patch references;
 - 2022/2026 starting forces and navy floors;
 - package layout, version metadata, and release archive contents.
+- Earth launch formula calibration and minimum-cost site/parking selection;
+- the four inclination bands, starting-station migration, thirty lunar sites,
+  site-specific resource bounds, and corrected resource localization.
 
 ## Deployment
 
@@ -267,6 +297,22 @@ enabled-mod destination and verifies every deployed file by SHA-256.
   the entire space-built probe payload must travel from its origin.
 - Repeat planner and cost requests before and after resource spending, time
   advancement, and hab changes; stale results should refresh only when requested.
+
+### Earth launch costs and Luna
+
+- Start a new campaign and inspect Earth interface orbits. Confirm the four new
+  +/-20- and +/-40-degree bands exist, Low Earth Orbit 3/4 do not instantiate,
+  and ISS/Tiangong use the +40-degree band without bespoke station orbits.
+- Compare previewed and charged Boost at 0, +/-20, and +/-40 degrees from
+  different launch-site distributions. Equal positive/negative inclination
+  magnitudes should cost the same; a poleward dogleg should be expensive.
+- Compare a destination beyond LEO and verify the selected launch path is not
+  tied to Low Earth Orbit 1. Exercise construction and crew resupply so their
+  costs agree with the shared authority.
+- Inspect all thirty Luna markers and prospect across several campaign seeds.
+  Every resource must remain inside its approved bounded band; dry sites must
+  never gain Water or Volatiles. Check small Fissiles values display, accumulate,
+  and affect AI mine valuation sensibly.
 
 ### Compatibility and UI
 

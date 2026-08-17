@@ -1,9 +1,8 @@
-# Luna Resource Yield Comparison and Working Revision
+# Luna Resource Yield Comparison and Approved Thirty-Site Revision
 
-Status: research and unapproved Part 4 proposal. This document compares the
-installed Terra Invicta 1.0.51 Luna and Mars profiles with a mass-grounded
-thirty-site lunar proposal. Numeric proposal bands require user approval before
-implementation.
+Status: approved and implemented Part 4 authority. This document compares the
+installed Terra Invicta 1.0.51 Luna and Mars profiles with the mass-grounded
+thirty-site lunar roster and its bounded resource bands.
 
 ## Units and generator behavior
 
@@ -106,7 +105,7 @@ prevents unlike resources from being assigned impossible mass ratios.
 
 | Resource | Representative lunar occurrence | Consequence for modeled output |
 |---|---|---|
-| Water | Effectively absent from ordinary sunlit regolith; roughly 3-10 wt% in the LCROSS Cabeus impact material, but heterogeneous | Only evidence-supported polar cold traps produce Water. Cabeus retains a 14-point expected yield but may roll from 2.5 to 25.5, still below vanilla Mars polar output. |
+| Water | Effectively absent from ordinary sunlit regolith; roughly 3-10 wt% in the LCROSS Cabeus impact material, but heterogeneous | Only evidence-supported polar cold traps produce Water. To keep map markers usable, the roster abstracts accessible polar deposits into Peary and Shackleton rather than placing several overlapping sites around one pole. |
 | Volatiles | Ordinary C about 100 ppm and N about 80 ppm; sulfur is higher in some basalts but diffuse. Cabeus cold-trap ice includes CO, CO2, NH3, H2S, SO2, methanol, and methane in addition to water | Generic sites are below the economic cutoff. Polar non-water output should usually be about one-tenth to one-third of Water. Pyroclastic output remains below 0.5 point. |
 | Base Metals | Representative soil includes about 21% Si, 13% Fe, and 7% Al; highlands exchange iron for more aluminum/calcium while maria are iron-rich | Useful feed is abundant, but separation and refining are limiting. Expected site yields remain 6-20 points, while the widened campaign rolls span 1-36 points. |
 | Noble Metals | True Au/Ag/PGE abundances are trace. High-Ti mare basalt contains 10-14 wt% TiO2, equivalent to roughly 6-8 wt% elemental Ti | Nonzero lunar Noble output is chiefly titanium. A high-Ti expected yield of 3.5 points may roll from 0.5 to 6.5; very-low-Ti sites remain much poorer. |
@@ -133,11 +132,10 @@ One resource point is ten tonnes. Thus:
 - A vanilla `0.5`-point lunar fissile roll means five tonnes per month and is
   inconsistent with a common-throughput mass comparison.
 
-## Working thirty-site proposal
+## Approved thirty-site distribution
 
 These are bounded base monthly resource points before mine multipliers. A dash
-means guaranteed zero. This table supersedes the first draft for discussion but
-is not yet approved for implementation.
+means guaranteed zero. This table is the approved implementation authority.
 
 | Site | Geological role | Water | Volatiles | Metals | Noble | Fissiles |
 |---|---|---:|---:|---:|---:|---:|
@@ -150,9 +148,9 @@ is not yet approved for implementation.
 | Tycho Crater | Young feldspathic highland ejecta | - | - | 2-19 | - | - |
 | Shackleton Crater | South-polar cold trap, less constrained than Cabeus | 0.75-10.25 | 0.2-3.1 | 1.25-12.75 | - | - |
 | Tsiolkovskiy Crater | Farside mare basalt floor | - | - | 2.75-26.25 | 0.0625-1.1875 | - |
-| Cabeus Crater | LCROSS-confirmed rich cold-trap material | 2.5-25.5 | 0.5-7.5 | 1-11 | - | - |
-| Haworth Crater | Evidence-supported south-polar ice | 1.25-15.75 | 0.25-4.75 | 1-11 | - | - |
-| Shoemaker Crater | Evidence-supported south-polar ice | 1-13 | 0.25-3.75 | 1-11 | - | - |
+| Plato Crater | Dark basalt-flooded near-side crater floor | - | - | 3-28 | 0.025-0.575 | - |
+| Humboldt Crater | Floor-fractured eastern-limb crater exposing mixed highland material | - | - | 2-20 | 0.0125-0.2875 | - |
+| Clavius Crater | Ancient heavily cratered southern highlands | - | - | 1.75-17.25 | - | - |
 | Aristarchus Plateau | Fe/Ti-rich pyroclastic deposit and KREEP vicinity | - | 0.025-0.575 | 4-36 | 0.25-3.75 | 0.00125-0.03375 |
 | Oceanus Procellarum | Mare basalt in the Procellarum KREEP Terrane | - | - | 3.5-32.5 | 0.125-2.375 | 0.00125-0.03375 |
 | Mare Serenitatis | High-Ti mare basalt | - | - | 3.5-32.5 | 0.375-5.125 | 0.00025-0.01075 |
@@ -161,7 +159,7 @@ is not yet approved for implementation.
 | South Pole-Aitken Basin | Mafic lower-crust/basin material with local Th | - | - | 2.5-24.5 | 0.025-0.575 | 0.00025-0.01075 |
 | Schrödinger Basin | Mafic basin and localized pyroclastic material | - | 0.0125-0.2875 | 3-29 | 0.0625-1.1875 | 0.00025-0.01075 |
 | Compton-Belkovich Volcanic Complex | Silicic thorium anomaly | - | - | 2-20 | 0.0125-0.2875 | 0.005-0.095 |
-| Faustini Crater | LRO-supported south-polar ice deposit | 1.25-15.75 | 0.25-4.75 | 1-11 | - | - |
+| Gagarin Crater | Large central-farside highlands crater | - | - | 1.75-17.25 | - | - |
 | Orientale Basin | Young multi-ring basin and mixed ejecta | - | - | 2.25-22.75 | 0.025-0.575 | - |
 | Mare Moscoviense | Largest farside mare deposit | - | - | 3-29 | 0.125-2.375 | - |
 | Gruithuisen Domes | Silicic volcanic domes | - | - | 2-20 | 0.0125-0.2875 | 0.00075-0.02225 |
@@ -172,11 +170,30 @@ is not yet approved for implementation.
 | Rima Bode | Regional Fe/Ti-rich pyroclastic deposit | - | 0.0125-0.2875 | 3.5-32.5 | 0.125-2.375 | 0.00075-0.02225 |
 | Reiner Gamma | High-priority lunar swirl over mare material | - | - | 3-28 | 0.025-0.575 | - |
 
-The ten-site expansion deliberately adds only one new Water site. LRO studies
-specifically identify Faustini among the south-polar craters with evidence or
-strong potential for ice; adding unrelated polar landmarks merely to preserve
-a numerical site ratio would violate the approved geography rule. See
-[NASA's 2024 LRO ice summary](https://science.nasa.gov/solar-system/moon/nasas-lro-lunar-ice-deposits-are-widespread/).
+### Spatial-separation revision
+
+Manual map inspection showed that Shackleton, Cabeus, Haworth, Shoemaker, and
+Faustini formed an unusable south-polar marker cluster. Their center-to-center
+great-circle separations ranged from 46 to 202 km. The two markers at roughly
+202 km were visually comfortable, so 200 km is the minimum accepted separation
+for any pair of lunar sites.
+
+Shackleton remains as the south-polar Water anchor. The other four clustered
+sites are replaced with globally distributed dry craters:
+
+| Replaced site | Replacement | Latitude | Longitude | Nearest retained neighbor |
+|---|---|---:|---:|---:|
+| Cabeus | Plato | +51.62 | -9.38 | 587 km |
+| Haworth | Humboldt | -27.02 | +80.96 | 1,344 km |
+| Shoemaker | Clavius | -58.62 | -14.73 | 469 km |
+| Faustini | Gagarin | -19.66 | +149.35 | 577 km |
+
+The final roster's closest pair is Marius Hills and Reiner Gamma at 324 km,
+comfortably above the validated floor. Coordinates use the IAU/USGS Gazetteer
+entries for [Plato](https://planetarynames.wr.usgs.gov/Feature/4757),
+[Humboldt](https://planetarynames.wr.usgs.gov/Feature/2582),
+[Clavius](https://planetarynames.wr.usgs.gov/Feature/1236), and
+[Gagarin](https://planetarynames.wr.usgs.gov/Feature/2054).
 
 The added dry sites expand the represented geology rather than adding generic
 duplicates. Gruithuisen represents uncommon silicic volcanism; Mare
@@ -198,21 +215,23 @@ listed upper values. Proposal totals are strictly bounded.
 | Body/profile set | Sites | Water total | Volatiles total | Metals total | Noble total | Fissiles total |
 |---|---:|---:|---:|---:|---:|---:|
 | Vanilla Luna, ordinary bands | 9 | 10-30 | 0-25.5 | 48-152.5 | 0.8-5 | 0.08-4.6 |
-| Working Luna proposal | 30 | 7-85 | 1.6-27.3 | 76-726 | 2.5125-39.6375 | 0.016-0.403 |
+| Approved Luna distribution | 30 | 1-15 | 0.35-6.55 | 80.5-764.5 | 2.55-40.5 | 0.016-0.403 |
 | Vanilla Mars, ordinary bands | 25 | 580-740 | 370-620 | 297.5-702.5 | 22.4-152.5 | 0.64-16.925 |
 
-The proposal's midpoint lunar metal output is about four times vanilla Luna's
-ordinary-band midpoint. Most of that is the increase from nine to thirty sites:
-mean metal output per site rises from about 11.1 to 13.4 points. Lunar Water
-rises because six rather than two named polar sites can contain ice, but average
-output per icy site falls. Proposed aggregate Volatiles remain close to vanilla
-Luna's ordinary midpoint despite the larger site count. Aggregate Fissiles fall
-by roughly 91% versus vanilla's ordinary midpoint.
+The distribution's midpoint lunar metal output is about 4.2 times vanilla
+Luna's ordinary-band midpoint. Most of that is the increase from nine to thirty
+sites: mean metal output per site rises from about 11.1 to 14.1 points. Water is
+restricted to the two geographically separated polar anchors and its aggregate
+midpoint falls from vanilla's 20 points to 8. Aggregate Volatiles also fall to a
+3.45-point midpoint because only the polar anchors and supported pyroclastic
+sites produce them. Aggregate Fissiles fall by roughly 91% versus vanilla's
+ordinary midpoint.
 
-Relative to vanilla Luna, the working proposal:
+Relative to vanilla Luna, the approved distribution:
 
 - increases the site count from 9 to 30;
-- keeps ordinary lunar Water at zero and restricts it to six polar sites;
+- keeps ordinary lunar Water at zero and restricts it to two separated polar
+  anchor sites;
 - removes accidental generic Volatiles and permits only polar or
   evidence-supported pyroclastic output;
 - keeps most lunar Metals inside vanilla's broad range while making geological
@@ -224,18 +243,22 @@ Relative to vanilla Luna, the working proposal:
 
 Relative to vanilla Mars:
 
-- no lunar site approaches Mars's ordinary Water or Volatiles, except that
-  Cabeus overlaps the bottom of ordinary Martian Water;
+- no lunar site approaches Mars's ordinary Water or Volatiles;
 - the richest lunar metal sites overlap ordinary Mars but remain below Martian
   lowland and volcanic profiles;
 - the best high-Ti lunar Noble sites remain below Martian volcanic output;
 - lunar Fissiles become much smaller than vanilla Mars because this proposal
   applies an explicit mass-abundance constraint that vanilla Mars does not.
 
-## Questions remaining before approval
+## Approval decision
 
-1. Is an approximately fourfold increase in aggregate expected lunar metal
-   output acceptable as the consequence of expanding from nine to thirty sites?
-2. Are sub-`0.01` fissile values acceptable for the interface and AI, assuming
-   automatic tests confirm they display, accumulate, and influence site
-   valuation correctly?
+The approximately fourfold increase in aggregate expected lunar metal output is
+accepted as the combined result of expanding from nine to thirty sites and
+representing more distinct mare, volcanic, basin, and highland geology. The
+mean output per site changes much less than the whole-Moon total.
+
+Sub-`0.01` Fissiles values are also accepted. They preserve the intended
+hundreds-of-kilograms rather than multi-tonne monthly scale at lesser anomalies.
+Automatic validation requires the authored decimal values and exact bounded
+ranges to survive template generation; manual testing must still confirm UI
+display, accumulation, and AI site valuation in a new campaign.

@@ -94,6 +94,8 @@
 
   <ItemGroup>
     <Compile Include="Core\HabLogistics.cs" />
+    <Compile Include="Core\EarthLaunchCost.cs" />
+    <Compile Include="Core\EarthLaunchCostMath.cs" />
     <Compile Include="Core\AlienFloraAssaultMath.cs" />
     <Compile Include="Core\HabRebalanceMath.cs" />
     <Compile Include="Core\IndependentResearchMath.cs" />
@@ -126,6 +128,7 @@
     <Compile Include="Core\WeaponCadenceMath.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Patches\EconomyPatches.cs" />
+    <Compile Include="Patches\EarthLaunchCostPatches.cs" />
     <Compile Include="Patches\AlienFloraAssaultPatches.cs" />
     <Compile Include="Patches\AiTechnologySelectionPatches.cs" />
     <Compile Include="Patches\AlienShipDesignPatches.cs" />
@@ -165,10 +168,17 @@
     <None Include="ModFiles\TIGlobalConfig.json" />
     <None Include="ModFiles\TIHabModuleTemplate.json" />
     <None Include="ModFiles\TIHabTemplate.json" />
+    <None Include="ModFiles\TIHabSiteTemplate.json" />
+    <None Include="ModFiles\TIMiningProfileTemplate.json" />
+    <None Include="ModFiles\TIOrbitTemplate.json" />
+    <None Include="ModFiles\TISpaceBodyTemplate.json" />
     <None Include="ModFiles\TIHeatSinkTemplate.json" />
     <None Include="ModFiles\TIGunTemplate.json" />
     <None Include="ModFiles\TILaserWeaponTemplate.json" />
     <None Include="ModFiles\TIHabModuleTemplate.en" />
+    <None Include="ModFiles\TIHabSiteTemplate.en" />
+    <None Include="ModFiles\TIMiningProfileTemplate.en" />
+    <None Include="ModFiles\TIOrbitTemplate.en" />
     <None Include="ModFiles\TIProjectTemplate.en" />
     <None Include="ModFiles\TIProjectTemplate.json" />
     <None Include="ModFiles\TIOperationTemplate.en" />

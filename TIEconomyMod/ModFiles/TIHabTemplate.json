@@ -1,6 +1,7 @@
 [
   {
     "dataName": "InternationalSpaceStation",
+    "orbitTemplateName": "LowEarthOrbitPlus40",
     "sectors": [
       {
         "faction": "CooperateCouncil",
@@ -42,6 +43,7 @@
   },
   {
     "dataName": "Tiangong",
+    "orbitTemplateName": "LowEarthOrbitPlus40",
     "sectors": [
       {
         "faction": "EscapeCouncil",
@@ -73,6 +75,7 @@
   },
   {
     "dataName": "InternationalSpaceStationSkirmish",
+    "orbitTemplateName": "LowEarthOrbitPlus40",
     "sectors": [
       {
         "faction": "ResistCouncil",

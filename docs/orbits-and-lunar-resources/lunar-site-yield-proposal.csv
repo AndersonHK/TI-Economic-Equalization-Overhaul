@@ -8,9 +8,9 @@ Korolev Crater,existing,Farside highlands/basin material,0,0,0,0,1.75,17.25,0,0,
 Tycho Crater,existing,Young feldspathic highland ejecta,0,0,0,0,2,19,0,0,0,0
 Shackleton Crater,existing,"South-polar cold trap, less constrained than Cabeus",0.75,10.25,0.2,3.1,1.25,12.75,0,0,0,0
 Tsiolkovskiy Crater,existing,Farside mare basalt floor,0,0,0,0,2.75,26.25,0.0625,1.1875,0,0
-Cabeus Crater,new,LCROSS-confirmed rich cold-trap material,2.5,25.5,0.5,7.5,1,11,0,0,0,0
-Haworth Crater,new,Evidence-supported south-polar ice,1.25,15.75,0.25,4.75,1,11,0,0,0,0
-Shoemaker Crater,new,Evidence-supported south-polar ice,1,13,0.25,3.75,1,11,0,0,0,0
+Plato Crater,new,Dark basalt-flooded near-side crater floor,0,0,0,0,3,28,0.025,0.575,0,0
+Humboldt Crater,new,Floor-fractured eastern-limb crater exposing mixed highland material,0,0,0,0,2,20,0.0125,0.2875,0,0
+Clavius Crater,new,Ancient heavily cratered southern highlands,0,0,0,0,1.75,17.25,0,0,0,0
 Aristarchus Plateau,new,Fe/Ti-rich pyroclastic deposit and KREEP vicinity,0,0,0.025,0.575,4,36,0.25,3.75,0.00125,0.03375
 Oceanus Procellarum,new,Mare basalt in the Procellarum KREEP Terrane,0,0,0,0,3.5,32.5,0.125,2.375,0.00125,0.03375
 Mare Serenitatis,new,High-Ti mare basalt,0,0,0,0,3.5,32.5,0.375,5.125,0.00025,0.01075
@@ -19,7 +19,7 @@ Marius Hills,new,Volcanic and pyroclastic province,0,0,0.0125,0.2875,3.5,32.5,0.
 South Pole-Aitken Basin,new,Mafic lower-crust/basin material with local Th,0,0,0,0,2.5,24.5,0.025,0.575,0.00025,0.01075
 Schrödinger Basin,new,Mafic basin and localized pyroclastic material,0,0,0.0125,0.2875,3,29,0.0625,1.1875,0.00025,0.01075
 Compton-Belkovich Volcanic Complex,new,Silicic thorium anomaly,0,0,0,0,2,20,0.0125,0.2875,0.005,0.095
-Faustini Crater,new,LRO-supported south-polar ice deposit,1.25,15.75,0.25,4.75,1,11,0,0,0,0
+Gagarin Crater,new,Large central-farside highlands crater,0,0,0,0,1.75,17.25,0,0,0,0
 Orientale Basin,new,Young multi-ring basin and mixed ejecta,0,0,0,0,2.25,22.75,0.025,0.575,0,0
 Mare Moscoviense,new,Largest farside mare deposit,0,0,0,0,3,29,0.125,2.375,0,0
 Gruithuisen Domes,new,Silicic volcanic domes,0,0,0,0,2,20,0.0125,0.2875,0.00075,0.02225

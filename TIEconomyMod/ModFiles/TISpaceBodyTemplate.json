@@ -1,0 +1,53 @@
+[
+  {
+    "dataName": "Earth",
+    "orbits": [
+      "LowEarthOrbit1",
+      "LowEarthOrbitPlus20",
+      "LowEarthOrbitPlus40",
+      "LowEarthOrbitMinus20",
+      "LowEarthOrbitMinus40",
+      "LowEarthOrbit2",
+      "MediumEarthOrbit",
+      "IntermediateEarthOrbit",
+      "SynchronousEarthOrbit",
+      "HighEarthOrbit",
+      "ExtremeEarthOrbit"
+    ]
+  },
+  {
+    "dataName": "Luna",
+    "habSites": [
+      "LunaSite1",
+      "LunaSite2",
+      "LunaSite3",
+      "LunaSite4",
+      "LunaSite5",
+      "LunaSite6",
+      "LunaSite7",
+      "LunaSite8",
+      "LunaSite9",
+      "LunaSite10",
+      "LunaSite11",
+      "LunaSite12",
+      "LunaSite13",
+      "LunaSite14",
+      "LunaSite15",
+      "LunaSite16",
+      "LunaSite17",
+      "LunaSite18",
+      "LunaSite19",
+      "LunaSite20",
+      "LunaSite21",
+      "LunaSite22",
+      "LunaSite23",
+      "LunaSite24",
+      "LunaSite25",
+      "LunaSite26",
+      "LunaSite27",
+      "LunaSite28",
+      "LunaSite29",
+      "LunaSite30"
+    ]
+  }
+]

@@ -139,6 +139,15 @@ if ($LASTEXITCODE -ne 0) {
 }
 
 powershell -NoProfile -ExecutionPolicy Bypass -File `
+    (Join-Path $scriptDirectory 'validate-earth-orbits-and-luna.ps1') `
+    -TargetManagedDir $resolvedManagedDir `
+    -ModAssemblyPath $assemblyPath `
+    -RepositoryRoot $repositoryRoot
+if ($LASTEXITCODE -ne 0) {
+    exit $LASTEXITCODE
+}
+
+powershell -NoProfile -ExecutionPolicy Bypass -File `
     (Join-Path $scriptDirectory 'validate-ai-technology-selection.ps1') `
     -TargetManagedDir $resolvedManagedDir `
     -ModAssemblyPath $assemblyPath
