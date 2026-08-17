@@ -1,0 +1,11 @@
+body,profile,site_count,water_ordinary_low,water_ordinary_high,water_jump,volatiles_ordinary_low,volatiles_ordinary_high,volatiles_jump,metals_ordinary_low,metals_ordinary_high,metals_jump,nobles_ordinary_low,nobles_ordinary_high,nobles_jump,fissiles_ordinary_low,fissiles_ordinary_high,fissiles_jump
+Luna,LunarMine,5,0,0,0,0,2.5,0,4,17.5,0.3,0,0,0,0,0.5,0.5
+Luna,LunarNorthPolarMine,1,5,15,0.15,0,4,0,5,15,0.2,0,0,0,0,0.375,0.4
+Luna,LunarSouthPolarMine,1,5,15,0.2,0,4,0,5,15,0.2,0,0,0,0,0.375,0.4
+Luna,LunarCopernicusMine,1,0,0,0,0,2.5,0,10,20,0.3,0,0,0,0.08,0.85,0.4
+Luna,LunarTranquilityMine,1,0,0,0,0,2.5,0,8,15,0.3,0.8,5,0.2,0,0.5,0.4
+Mars,MartianMine,13,17.5,22.5,0.1,15,25,0.2,10,30,0.4,0,5,0.2,0,0.625,0.3
+Mars,MartianLowMine,3,7.5,12.5,0.2,10,20,0.2,22.5,37.5,0.4,0.8,10,0.1,0,0.5,0.3
+Mars,MartianVolcanoMine,2,7.5,12.5,0.1,20,30,0.2,32.5,47.5,0.3,10,20,0.2,0,0.5,0.3
+Mars,MartianNorthPolarMine,4,45,55,0.2,15,25,0.2,5,15,0.2,0,2.5,0.1,0.16,1.2,0.3
+Mars,MartianSouthPolarMine,3,45,55,0.2,15,25,0.2,5,15,0.2,0,2.5,0.1,0,0.5,0.3

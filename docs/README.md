@@ -47,6 +47,13 @@ when prose and runtime behavior disagree.
 
 ## Historical, exploratory, and deferred material
 
+- [Earth orbits, launch costs, and lunar resource semantics](orbits-and-lunar-resources/approved-design.md)
+  records the approved design for inclination-aware Earth launch costs, four
+  additional LEO bands, the ISS/Tiangong migration, corrected resource
+  semantics, and the eventual implementation workflow. Its companion
+  [Luna yield comparison](orbits-and-lunar-resources/resource-yield-comparison.md)
+  compares vanilla Luna and Mars with a mass-grounded but not-yet-approved
+  thirty-site lunar proposal.
 - [National harmonization eligibility plan](national-harmonization-eligibility-plan.md)
   traces the current dynamic claim-hostility and peaceful-unification gates,
   evaluates the proposed score, and records the not-yet-implemented patch and
