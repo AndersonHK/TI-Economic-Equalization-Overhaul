@@ -41,6 +41,10 @@ when prose and runtime behavior disagree.
 - [2003 starting technology audit](starting-technology-2003.md): Dark Skies
   opening technologies, completed projects, alien pacing, and current Economic
   Equalization compatibility limits.
+- [Country economic normalization research](economic-data/2022-usd-normalization-research.md):
+  auditable 2003/2022/2026 vanilla, nominal, and PPP GDP-per-capita comparisons,
+  with populations, effective starting-GDP scaling, source coverage, the
+  scenario-scaled plausibility-clamp proposal, and its gap-fill audit.
 - [Alien start, wormhole, and Earth-invasion audit](alien-start-wormhole-and-earth-invasion.md):
   scenario-by-scenario alien day-one assets, campaign-setting effects,
   wormhole income formulas, invasion timing, and assault-carrier landing AI.

@@ -1,0 +1,174 @@
+country_id,country,iso_codes,2003_vanilla_gdp_per_capita,2003_nominal_gdp_per_capita_2022_usd,2003_ppp_gdp_per_capita_2022_intl_dollars,2022_vanilla_gdp_per_capita,2022_nominal_gdp_per_capita_2022_usd,2022_ppp_gdp_per_capita_2022_intl_dollars,2026_vanilla_gdp_per_capita,2026_nominal_gdp_per_capita_2022_usd,2026_ppp_gdp_per_capita_2022_intl_dollars,quality_flags,imf_source_url
+AFG,Afghanistan,AFG,1031,308,1706,1735,357,2123,1232,,,"2026: pop=missing, nominal=missing, ppp=missing",https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+SBK,Albania,ALB,4993,2804,8437,15308,6908,18588,17555,11112,22458,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+DZA,Algeria,DZA,8046,3532,13370,11318,4984,15899,13953,5896,17503,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+AGO,Angola,AGO,4139,1738,6924,6027,3905,9433,7656,3339,9292,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+ARG,Argentina,ARG,11835,5764,19793,22805,13702,29271,24800,12771,29521,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+ARM,Armenia,ARM,4160,1359,6609,13871,6539,19057,19407,9260,24038,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+AUS,Australia,AUS,29740,41899,49096,54007,65776,66104,55723,67290,66496,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+ALP,Austria,AUT+LIE,34101,49640,56201,56462,53340,72015,50516,60912,70148,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+AZE,Azerbaijan,AZE,3733,1349,6251,14973,7831,22724,19926,6642,23839,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+BAH,Bahamas,BHS,25813,42755,44853,34738,34802,36622,30315,36375,39234,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+BGD,Bangladesh,BGD,1722,816,2969,5820,2731,8493,7673,2590,9745,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+BLR,Belarus,BLR,6944,2882,11368,18828,7990,27871,26710,10039,31681,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+BGM,Belgium,BEL+LUX,31620,49318,55571,53925,54833,72796,58461,62507,73751,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+BEL,Belize,BLZ,7089,7444,11467,6684,7162,13637,11917,7235,13960,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+BEN,Benin,BEN,1793,1036,2972,3626,1267,3844,3508,1609,4526,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+BHU,Bhutan,BTN,3673,1496,6119,10970,3683,14229,13462,4329,17910,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+BOL,Bolivia,BOL,3953,1534,7828,8614,4250,12305,8653,5633,11290,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+BSM,Bosnia and Herzegovina,BIH,5302,3464,10008,16452,7078,19344,19336,9519,21458,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+BWA,Botswana,BWA,9256,6447,15257,16942,8329,19974,15575,7552,19605,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+BRA,Brazil,BRA,8387,4717,13766,15012,9256,19821,17829,10952,21729,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+BRU,Brunei,BRN,53764,32148,95190,74762,37459,83620,71435,32279,87047,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+BUL,Bulgaria,BGR,9109,4162,15020,28613,14069,35111,30394,21214,40600,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+BKF,Burkina Faso,BFA,1023,555,1686,2328,829,2645,2266,1173,2870,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+CPV,Cabo Verde,CPV,3508,3869,6253,6820,4445,9726,9105,5933,11843,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+KHM,Cambodia,KHM,1483,596,2394,4485,2294,6824,6364,2581,7908,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+CMR,Cameroon,CMR,2324,1512,3758,3841,1608,5188,4322,1891,5331,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+CAN,Canada,CAN,30454,43435,50571,50553,56609,61992,51512,53642,62272,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+CAF,Central African Republic,CAF,751,450,1327,964,500,1307,985,545,1306,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+TCD,Chad,TCD,1211,658,2035,1487,1037,2810,2012,1170,3076,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+CHL,Chile,CHL,11789,7383,19607,25971,15385,31624,27260,18004,33211,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+CHN,China,CHN,3239,1994,5462,18318,12989,23017,22225,13230,28105,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+COL,Colombia,COL,6813,3546,11307,16049,6688,20154,16884,8987,20971,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+RTK,Comoros,COM,2130,1470,3509,3089,1439,3570,3113,1735,3756,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+COD,Congo,COD,491,263,805,1166,727,1682,1320,998,1908,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+COS,Costa Rica,CRI,9662,6480,16130,21702,13576,26642,25008,18057,30383,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+CRS,Croatia,HRV,15711,12552,25922,31493,18479,42678,39712,26712,48353,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+CUB,Cuba,CUB,4557,,,12300,,,6815,,,"2003: pop=missing, nominal=missing, ppp=missing | 2022: pop=missing, nominal=missing, ppp=missing | 2026: pop=missing, nominal=missing, ppp=missing",https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+CZE,Czechia,CZE,19817,15108,32845,41782,27876,53440,47074,35399,56529,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+DEN,Denmark,DNK,34710,62183,58395,60070,68123,75046,66601,74226,79761,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+DJI,Djibouti,DJI,2166,1779,3823,5842,3506,7409,6346,3932,9043,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+DOM,Dominican Republic,DOM,6872,3771,11518,20237,10715,26033,22163,11035,28623,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+ECU,Ecuador,ECU,5838,3614,9799,11036,6556,15289,12458,6738,15762,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+EGY,Egypt,EGY,5761,1919,10873,12880,4587,19061,15181,3473,20745,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+ELS,El Salvador,SLV,4962,3384,8179,9298,5075,11874,10575,5511,13198,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+EQG,Equatorial Guinea,GNQ,14872,8236,29922,16605,9155,21832,12732,7251,16955,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+ERI,Eritrea,ERI,1267,397,2002,1839,,,1332,,,"2022: pop=missing, nominal=missing, ppp=missing | 2026: pop=missing, nominal=missing, ppp=missing",https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+EST,Estonia,EST,15927,11063,26256,39682,28363,47039,39247,33551,45946,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+ESW,Eswatini,SWZ,4279,3319,7444,8873,4216,11514,9841,4383,12671,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+ETH,Ethiopia,ETH,521,203,978,2495,1143,3460,2670,962,4424,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+FIN,Finland,FIN,30186,50507,49819,50871,50552,61818,50818,53487,61254,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+EUA,France,FRA+MCO+AND,28224,45540,47671,47310,41096,59169,49844,46331,61001,"2003: pop=partial, nominal=partial, ppp=partial | 2022: pop=partial, nominal=partial, ppp=partial | 2026: pop=partial, nominal=partial, ppp=partial",https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+LWG,Gabon,GAB,11298,7687,19854,14457,9478,22482,16612,8822,22992,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+GAM,Gambia,GMB,1546,819,2548,2316,805,3049,2746,848,3438,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+GEO,Georgia,GEO,4201,1586,7134,15343,6774,22604,22856,10295,30235,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+DEU,Germany,DEU,31545,47626,52383,55296,50944,69311,56325,58088,68268,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+GHA,Ghana,GHA,2191,1352,3611,5848,2230,7208,6329,2948,8109,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+GRE,Greece,GRC+CYP,21654,27865,38329,33373,21894,39789,31738,27640,43570,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+GTM,Guatemala,GTM,5552,2826,9151,8733,5359,13012,11416,6058,14251,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+GIN,Guinea,GIN,1428,792,2268,2798,1335,3890,3721,1644,4605,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+GNB,Guinea-Bissau,GNB,1274,667,2177,2235,908,2768,2206,1288,3109,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+GUS,Gulf States,QAT+BHR,45596,37931,82077,71360,63310,94373,77434,48907,87114,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+GUY,Guyana,GUY,5661,3286,9589,33517,16425,36406,68552,29503,84928,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+HTI,Haiti,HTI,2205,828,3538,2888,1643,3122,2429,2739,2662,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+HON,Honduras,HND,3111,1772,5128,5945,3003,6804,5886,3301,7314,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+HUN,Hungary,HUN,15925,12874,26162,36517,18500,43844,37092,25289,44983,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+ISL,Iceland,ISL,30848,61443,53152,69937,79953,75007,60442,97890,73590,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+IND,India,IND,2069,834,3357,7327,2280,8965,9184,2502,11387,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+IDN,Indonesia,IDN,4204,1818,7280,12558,4784,14444,13347,4769,16877,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+IRN,Iran,IRN,9047,4402,15726,16039,4761,18542,15440,3038,18039,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+IRQ,Iraq,IRQ,3485,933,5930,10627,6818,15051,11018,5050,12788,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+IRL,Ireland,IRL,38540,62745,63007,110806,104720,130402,105292,124698,141548,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+ISR,Israel,ISR,21582,30088,34412,46926,54984,51690,45232,62092,52566,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+ITA,Italy,ITA+MLT+SMR,31175,42304,52163,43589,35689,56831,47890,41440,58649,"2003: pop=partial, nominal=complete, ppp=complete",https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+IVO,Ivory Coast,CIV,2600,1837,4633,5667,2351,6755,6099,2947,7714,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+JAM,Jamaica,JAM,7054,5639,12105,9534,6820,12300,9370,7433,12362,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+JPN,Japan,JPN,26162,54918,43947,42560,35566,50439,41963,31759,52666,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+JOR,Jordan,JOR,6185,3318,11681,10433,4761,10881,8699,4982,11793,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+KAZ,Kazakhstan,KAZ,9473,3170,16492,26960,11484,36620,32845,15569,42919,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+KEN,Kenya,KEN,2297,1025,3981,4799,2266,6302,5248,2414,7134,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+KOS,Kosovo,KOS,4241,3380,8307,12531,5320,14824,14767,7968,19391,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+KUW,Kuwait,KWT,43353,31549,64835,49087,38289,52695,39085,29500,48303,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+KGZ,Kyrgyzstan,KGZ,2374,587,4028,4920,1806,6751,6565,2848,8917,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+LAO,Laos,LAO,2251,609,3716,8047,2022,8733,7570,2138,9752,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+LVA,Latvia,LVA,11876,7498,18395,33669,20276,39044,34716,25718,40776,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+LEB,Lebanon,LBN,11340,6630,18732,10864,4677,12247,8200,,,"2026: pop=missing, nominal=missing, ppp=missing",https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+LES,Lesotho,LSO,1420,970,2347,2586,995,2790,2374,1104,2936,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+CAB,Lesser Antilles States,TTO+BRB+LCA,14220,14380,24583,22263,19956,29561,35031,17676,30981,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+LBR,Liberia,LBR,878,355,1468,1445,740,1689,1493,857,1864,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+LBY,Libya,LBY,16337,7371,26929,15483,5991,12221,12590,6193,16678,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+LTU,Lithuania,LTU,12746,8437,20744,43000,24963,50568,45280,32507,54307,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+MDG,Madagascar,MDG,1051,593,1902,1541,530,1804,1467,583,1873,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+MAL,Malawi,MWI,723,529,1108,1531,567,1655,1437,652,1598,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+MYS,Malaysia,MYS,12411,7265,19941,28785,12490,36568,31102,13419,41795,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+MLD,Maldives,MDV,10798,5657,18562,18567,15782,30680,21649,17313,33647,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+MLI,Mali,MLI,1361,667,2696,2554,982,3021,2147,1157,3260,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+MRT,Mauritania,MRT,3182,1091,5100,5341,2207,7294,5616,2698,8255,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+MRS,Mauritius,MUS,9582,7775,16169,21892,10317,26794,25026,12286,31767,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+PCS,Melanesian States,FJI+SLB+VUT,4516,3376,7705,6725,3829,7452,6763,4081,8373,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+MEX,Mexico,MEX,13272,11327,21747,19276,11288,22948,19785,14036,23699,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+MCS,Micronesian States,FSM+KIR,2410,2664,3067,3375,3149,3658,4054,3631,3909,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+MOL,Moldova,MDA,3069,1043,7128,9323,5662,16217,11987,8321,18831,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+MNG,Mongolia,MNG,3665,980,6107,12039,4959,16286,15773,6985,19740,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+MNE,Montenegro,MNE,8972,4202,15299,21690,10046,27907,26051,14568,32319,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+MAR,Morocco,MAR,4025,2925,6646,7571,3579,9620,8392,4543,10973,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+MOZ,Mozambique,MOZ,530,522,876,1255,573,1567,1295,562,1512,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+MMR,Myanmar,MMR,1106,288,1981,4091,1254,4806,4535,1351,4728,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+SWA,Namibia,NAM,5521,4001,9160,9010,4407,10804,9160,4957,11267,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+HYS,Nepal,NPL,1546,431,2549,4000,1386,5102,4668,1377,5827,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+NET,Netherlands,NLD,33204,55114,56974,60201,59541,77717,61702,71088,78076,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+NZL,New Zealand,NZL,25031,31358,41214,46593,48165,52354,43247,46276,51866,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+NIC,Nicaragua,NIC,3026,1548,4934,6049,2346,7873,6883,3166,9083,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+NER,Niger,NER,701,410,1169,1248,593,1785,1622,731,1986,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+NGA,Nigeria,NGA,2393,1631,5596,5111,2893,8304,5005,1384,8890,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+PRK,North Korea,PRK,1952,,,1560,,,1305,,,"2003: pop=missing, nominal=missing, ppp=missing | 2022: pop=missing, nominal=missing, ppp=missing | 2026: pop=missing, nominal=missing, ppp=missing",https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+MKD,North Macedonia,MKD,7168,3741,12135,17259,7619,24697,22638,10644,28239,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+NOR,Norway,NOR,42290,76815,69501,67505,112748,101794,82152,94180,102783,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+OMN,Oman,OMN,25663,15009,39588,27275,22265,40851,31205,19254,40649,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+PAK,Pakistan,PAK,2538,1183,4796,5600,1651,6440,4935,,6524,"2026: pop=complete, nominal=missing, ppp=complete",https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+PAL,Palestine,WBG,2393,1835,4045,5032,3579,5804,4461,,,"2026: pop=missing, nominal=missing, ppp=missing",https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+PAN,Panama,PAN,11649,6462,18300,31244,17400,36372,33127,18292,41278,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+PNG,Papua New Guinea,PNG,1855,1525,3395,3704,2631,3260,3364,2341,3546,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+PRY,Paraguay,PRY,6469,2197,10588,12908,6658,17542,14722,8336,20770,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+PER,Peru,PER,5020,3294,8488,13383,7431,16972,14098,9749,17893,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+PHL,Philippines,PHL,3244,1629,5532,8911,3645,10406,9610,3952,12132,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+POL,Poland,POL,12405,8765,20572,36759,18860,47215,40862,27874,53187,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+PLS,Polynesian States,WSM+TON,3115,2996,5657,5857,4705,6452,6241,5962,7797,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+PRT,Portugal,PRT,21793,24206,36013,36446,24559,44079,39483,31519,47003,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+COR,Republic of the Congo,COG,3346,1729,5549,3392,2339,6083,4932,2272,5971,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+ROM,Romania,ROU,10314,4095,16982,32774,15538,42441,37740,22854,45172,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+RUS,Russia,RUS,12220,4852,20476,25924,15774,41251,37506,16479,46681,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+RWB,Rwanda-Burundi,BDI+RWA,662,295,1105,1597,665,2088,1863,771,2448,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+STP,Sao Tome and Principe,STP,1807,952,2984,4085,2412,6033,4856,4216,5970,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+SAU,Saudi Arabia,SAU,33693,16902,54258,48951,38510,71957,58532,33634,70108,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+SEG,Senegal,SEN,1896,1275,3179,3577,1575,4523,4168,1827,4950,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+SER,Serbia,SRB,7490,4841,13930,20955,10025,26702,24923,15346,31011,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+SYC,Seychelles,SYC,11506,13066,19932,30822,16820,29455,24212,15722,31894,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+SLE,Sierra Leone,SLE,1364,657,2248,1714,860,3143,2766,817,3477,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+SGP,Singapore,SGP,42067,36370,69953,103659,91228,144418,123497,95853,154517,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+SLO,Slovakia,SVK,12800,9656,21103,34027,21323,41463,36097,27790,44001,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+SLV,Slovenia,SVN,20431,22585,33633,43378,28449,50920,44697,36141,53962,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+SOM,Somalia,SOM,1833,,,1437,653,1695,1776,723,1740,"2003: pop=missing, nominal=missing, ppp=missing",https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+SOL,Somaliland,,,,,1301,,,1151,,,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+ZAF,South Africa,ZAF,7572,6424,13688,12828,6694,15113,11371,6674,14890,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+KOR,South Korea,KOR,19750,23313,32296,53292,34822,57193,49903,33279,61043,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+SSD,South Sudan,SSD,1298,,,1018,683,1336,701,434,1370,"2003: pop=missing, nominal=missing, ppp=missing",https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+ESP,Spain,ESP,26295,32698,43300,41625,30155,49536,45255,36971,52648,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+LKA,Sri Lanka,LKA,4508,1782,7712,13887,3363,14191,11234,,,"2026: pop=missing, nominal=missing, ppp=missing",https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+SDN,Sudan,SDN,3573,974,5240,3938,717,3827,1692,768,2180,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+SUR,Suriname,SUR,9981,5441,17108,15701,6057,19770,17493,7878,20446,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+SCA,Sweden,SWE,30822,57045,50710,57961,54656,67191,57213,62867,68576,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+SWI,Switzerland,CHE,41946,76820,70908,74305,98220,93150,75277,112237,94004,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+SYR,Syria,SYR,4221,1853,6934,2238,,,3944,,,"2022: pop=missing, nominal=missing, ppp=missing | 2026: pop=missing, nominal=missing, ppp=missing",https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+TWN,Taiwan,TWN,21504,21519,35477,67105,32909,71502,66217,37451,87218,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+TJK,Tajikistan,TJK,1130,362,1885,3998,1089,4672,4369,1725,5885,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+TZA,Tanzania,TZA,1073,610,1845,2846,1199,3709,3098,1212,4098,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+THA,Thailand,THA,8320,3598,13714,18520,6910,22256,19833,7210,24409,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+TLS,Timor-Leste,TLS,1910,826,3135,2921,2356,5761,3715,1352,4688,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+TGO,Togo,TGO,1241,788,2046,2276,952,2932,2548,1193,3342,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+TUN,Tunisia,TUN,6053,4382,9977,10867,3680,13531,11330,4352,14083,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+TUR,Turkey,TUR,10932,7282,18388,32981,10882,36248,32798,16917,41516,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+TKM,Turkmenistan,TKM,5340,3373,5151,16627,8813,19850,18417,10942,21659,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+UGA,Uganda,UGA,1025,554,1846,2333,1079,3314,2715,1313,3729,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+UKR,Ukraine,UKR,6497,1680,11328,12012,4694,16506,13363,6209,19964,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+UAE,United Arab Emirates,ARE,59496,49300,104886,67832,49704,73499,59876,48225,78077,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+GBR,United Kingdom,GBR+JEY+IMN,29343,53021,48626,48138,47206,59974,48770,54311,60118,"2003: pop=partial, nominal=partial, ppp=partial | 2022: pop=partial, nominal=partial, ppp=partial | 2026: pop=partial, nominal=partial, ppp=partial",https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+USA,United States of America,USA+PRI,36744,60004,60111,66506,77547,77642,67155,83559,83660,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+URY,Uruguay,URY,9481,6041,15360,23835,20347,31990,29471,24558,34718,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+UZB,Uzbekistan,UZB,2592,850,4135,8311,2618,10483,9535,4146,12612,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+VEN,Venezuela,VEN,9386,5006,15635,4782,3307,7266,5989,3682,8416,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+VNM,Vietnam,VNM,3240,935,5163,11338,4133,13934,13540,4550,17478,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+YEM,Yemen,YEM,2645,,,1494,647,1790,1247,341,1420,"2003: pop=missing, nominal=missing, ppp=missing",https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+ZMB,Zambia,ZMB,1603,684,2641,3391,1447,3840,3337,1629,4067,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
+ZWE,Zimbabwe,ZWE,2012,1862,4906,2279,2993,6781,4161,2846,7510,complete,https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.RES/WEO/9.0.0/
