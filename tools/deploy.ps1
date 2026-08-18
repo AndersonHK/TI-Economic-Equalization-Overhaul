@@ -153,6 +153,11 @@ foreach ($entry in $sourceRelative.GetEnumerator()) {
     if (-not (Test-Path -LiteralPath $targetDirectory)) {
         New-Item -ItemType Directory -Path $targetDirectory -Force | Out-Null
     }
+    if ((Test-Path -LiteralPath $targetFile) -and
+        (Get-FileHash -LiteralPath $entry.Value -Algorithm SHA256).Hash -eq
+            (Get-FileHash -LiteralPath $targetFile -Algorithm SHA256).Hash) {
+        continue
+    }
     Copy-Item -LiteralPath $entry.Value -Destination $targetFile -Force
 }
 

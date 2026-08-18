@@ -1,0 +1,2074 @@
+[
+    {
+        "dataName":  "2003_AFG",
+        "initialGDP":  14740350877
+    },
+    {
+        "dataName":  "2003_SBK",
+        "initialGDP":  9792397661
+    },
+    {
+        "dataName":  "2003_DZA",
+        "initialGDP":  162825146199
+    },
+    {
+        "dataName":  "2003_AGO",
+        "initialGDP":  46713450292
+    },
+    {
+        "dataName":  "2003_ARG",
+        "initialGDP":  285999430091
+    },
+    {
+        "dataName":  "2003_ARM",
+        "initialGDP":  7950877193
+    },
+    {
+        "dataName":  "2003_AUS",
+        "initialGDP":  542024446000
+    },
+    {
+        "dataName":  "2003_ALP",
+        "initialGDP":  264049322000
+    },
+    {
+        "dataName":  "2003_AZE",
+        "initialGDP":  19721637427
+    },
+    {
+        "dataName":  "2003_BGD",
+        "initialGDP":  152713450292
+    },
+    {
+        "dataName":  "2003_BAH",
+        "initialGDP":  8870087000
+    },
+    {
+        "dataName":  "2003_BLR",
+        "initialGDP":  42814619883
+    },
+    {
+        "dataName":  "2003_BGM",
+        "initialGDP":  347663641000
+    },
+    {
+        "dataName":  "2003_BEL",
+        "initialGDP":  1308280000
+    },
+    {
+        "dataName":  "2003_BEN",
+        "initialGDP":  8922222222
+    },
+    {
+        "dataName":  "2003_BHU",
+        "initialGDP":  1473099415
+    },
+    {
+        "dataName":  "2003_BOL",
+        "initialGDP":  22501754386
+    },
+    {
+        "dataName":  "2003_BSM",
+        "initialGDP":  13933918129
+    },
+    {
+        "dataName":  "2003_BWA",
+        "initialGDP":  10337426901
+    },
+    {
+        "dataName":  "2003_BRA",
+        "initialGDP":  952711695906
+    },
+    {
+        "dataName":  "2003_BRU",
+        "initialGDP":  11721052632
+    },
+    {
+        "dataName":  "2003_BUL",
+        "initialGDP":  44708771930
+    },
+    {
+        "dataName":  "2003_BKF",
+        "initialGDP":  8414035088
+    },
+    {
+        "dataName":  "2003_CPV",
+        "initialGDP":  1104857000
+    },
+    {
+        "dataName":  "2003_KHM",
+        "initialGDP":  12172514620
+    },
+    {
+        "dataName":  "2003_CMR",
+        "initialGDP":  23624561404
+    },
+    {
+        "dataName":  "2003_CAN",
+        "initialGDP":  895598837000
+    },
+    {
+        "dataName":  "2003_CAF",
+        "initialGDP":  1937426901
+    },
+    {
+        "dataName":  "2003_TCD",
+        "initialGDP":  7223391813
+    },
+    {
+        "dataName":  "2003_CHL",
+        "initialGDP":  118815789474
+    },
+    {
+        "dataName":  "2003_CHN",
+        "initialGDP":  2637080114922
+    },
+    {
+        "dataName":  "2003_COL",
+        "initialGDP":  175425146199
+    },
+    {
+        "dataName":  "2003_COD",
+        "initialGDP":  17094736842
+    },
+    {
+        "dataName":  "2003_COS",
+        "initialGDP":  25149707602
+    },
+    {
+        "dataName":  "2003_CRS",
+        "initialGDP":  42554970760
+    },
+    {
+        "dataName":  "2003_CUB",
+        "initialGDP":  35901200000
+    },
+    {
+        "dataName":  "2003_CZE",
+        "initialGDP":  127736257310
+    },
+    {
+        "dataName":  "2003_DEN",
+        "initialGDP":  208434198872
+    },
+    {
+        "dataName":  "2003_DJI",
+        "initialGDP":  1108187135
+    },
+    {
+        "dataName":  "2003_DOM",
+        "initialGDP":  38814619883
+    },
+    {
+        "dataName":  "2003_ECU",
+        "initialGDP":  49099415205
+    },
+    {
+        "dataName":  "2003_EGY",
+        "initialGDP":  282095325261
+    },
+    {
+        "dataName":  "2003_ELS",
+        "initialGDP":  18721052632
+    },
+    {
+        "dataName":  "2003_EQG",
+        "initialGDP":  7930409357
+    },
+    {
+        "dataName":  "2003_ERI",
+        "initialGDP":  1987134503
+    },
+    {
+        "dataName":  "2003_EST",
+        "initialGDP":  13732163743
+    },
+    {
+        "dataName":  "2003_ESW",
+        "initialGDP":  2870760234
+    },
+    {
+        "dataName":  "2003_ETH",
+        "initialGDP":  24199415205
+    },
+    {
+        "dataName":  "2003_FIN",
+        "initialGDP":  169233369000
+    },
+    {
+        "dataName":  "2003_EUA",
+        "initialGDP":  1855739454285
+    },
+    {
+        "dataName":  "2003_LWG",
+        "initialGDP":  9822807018
+    },
+    {
+        "dataName":  "2003_GAM",
+        "initialGDP":  1533918129
+    },
+    {
+        "dataName":  "2003_GEO",
+        "initialGDP":  10794736842
+    },
+    {
+        "dataName":  "2003_DEU",
+        "initialGDP":  2534080838000
+    },
+    {
+        "dataName":  "2003_GHA",
+        "initialGDP":  29340350877
+    },
+    {
+        "dataName":  "2003_GRE",
+        "initialGDP":  211433466000
+    },
+    {
+        "dataName":  "2003_GTM",
+        "initialGDP":  43738011696
+    },
+    {
+        "dataName":  "2003_GIN",
+        "initialGDP":  7964912281
+    },
+    {
+        "dataName":  "2003_GNB",
+        "initialGDP":  1056725146
+    },
+    {
+        "dataName":  "2003_GUS",
+        "initialGDP":  44619883041
+    },
+    {
+        "dataName":  "2003_GUY",
+        "initialGDP":  2716959064
+    },
+    {
+        "dataName":  "2003_HTI",
+        "initialGDP":  12150292398
+    },
+    {
+        "dataName":  "2003_HON",
+        "initialGDP":  13928654971
+    },
+    {
+        "dataName":  "2003_HUN",
+        "initialGDP":  101251461988
+    },
+    {
+        "dataName":  "2003_ISL",
+        "initialGDP":  10004103000
+    },
+    {
+        "dataName":  "2003_IND",
+        "initialGDP":  1453485380117
+    },
+    {
+        "dataName":  "2003_IDN",
+        "initialGDP":  594990342629
+    },
+    {
+        "dataName":  "2003_IRN",
+        "initialGDP":  391273689900
+    },
+    {
+        "dataName":  "2003_IRQ",
+        "initialGDP":  58739766082
+    },
+    {
+        "dataName":  "2003_IRL",
+        "initialGDP":  164629704000
+    },
+    {
+        "dataName":  "2003_ISR",
+        "initialGDP":  131277887000
+    },
+    {
+        "dataName":  "2003_ITA",
+        "initialGDP":  1589420909000
+    },
+    {
+        "dataName":  "2003_IVO",
+        "initialGDP":  31276608187
+    },
+    {
+        "dataName":  "2003_JAM",
+        "initialGDP":  11785964912
+    },
+    {
+        "dataName":  "2003_JPN",
+        "initialGDP":  3659771913000
+    },
+    {
+        "dataName":  "2003_JOR",
+        "initialGDP":  22336257310
+    },
+    {
+        "dataName":  "2003_KAZ",
+        "initialGDP":  93819883041
+    },
+    {
+        "dataName":  "2003_KEN",
+        "initialGDP":  48605263158
+    },
+    {
+        "dataName":  "2003_KOS",
+        "initialGDP":  4871345029
+    },
+    {
+        "dataName":  "2003_KUW",
+        "initialGDP":  57528070175
+    },
+    {
+        "dataName":  "2003_KGZ",
+        "initialGDP":  7704678363
+    },
+    {
+        "dataName":  "2003_LAO",
+        "initialGDP":  8066081871
+    },
+    {
+        "dataName":  "2003_LVA",
+        "initialGDP":  17097076023
+    },
+    {
+        "dataName":  "2003_LEB",
+        "initialGDP":  32277192982
+    },
+    {
+        "dataName":  "2003_LES",
+        "initialGDP":  1772514620
+    },
+    {
+        "dataName":  "2003_CAB",
+        "initialGDP":  19515136183
+    },
+    {
+        "dataName":  "2003_LBR",
+        "initialGDP":  1723391813
+    },
+    {
+        "dataName":  "2003_LBY",
+        "initialGDP":  57739766082
+    },
+    {
+        "dataName":  "2003_LTU",
+        "initialGDP":  27378362573
+    },
+    {
+        "dataName":  "2003_MDG",
+        "initialGDP":  11947953216
+    },
+    {
+        "dataName":  "2003_MAL",
+        "initialGDP":  5536842105
+    },
+    {
+        "dataName":  "2003_MYS",
+        "initialGDP":  192647953216
+    },
+    {
+        "dataName":  "2003_MLD",
+        "initialGDP":  2013450292
+    },
+    {
+        "dataName":  "2003_MLI",
+        "initialGDP":  10854385965
+    },
+    {
+        "dataName":  "2003_MRT",
+        "initialGDP":  5608187135
+    },
+    {
+        "dataName":  "2003_MRS",
+        "initialGDP":  7485380117
+    },
+    {
+        "dataName":  "2003_PCS",
+        "initialGDP":  4354385965
+    },
+    {
+        "dataName":  "2003_MEX",
+        "initialGDP":  859568421053
+    },
+    {
+        "dataName":  "2003_MCS",
+        "initialGDP":  650011441
+    },
+    {
+        "dataName":  "2003_MOL",
+        "initialGDP":  7904093567
+    },
+    {
+        "dataName":  "2003_MNG",
+        "initialGDP":  5813450292
+    },
+    {
+        "dataName":  "2003_MAR",
+        "initialGDP":  74854385965
+    },
+    {
+        "dataName":  "2003_MOZ",
+        "initialGDP":  6583519000
+    },
+    {
+        "dataName":  "2003_MMR",
+        "initialGDP":  32473099415
+    },
+    {
+        "dataName":  "2003_MNE",
+        "initialGDP":  3574853801
+    },
+    {
+        "dataName":  "2003_SWA",
+        "initialGDP":  6658479532
+    },
+    {
+        "dataName":  "2003_HYS",
+        "initialGDP":  24984210526
+    },
+    {
+        "dataName":  "2003_NET",
+        "initialGDP":  587153379356
+    },
+    {
+        "dataName":  "2003_NZL",
+        "initialGDP":  82408074000
+    },
+    {
+        "dataName":  "2003_NIC",
+        "initialGDP":  9916959064
+    },
+    {
+        "dataName":  "2003_NER",
+        "initialGDP":  5640350877
+    },
+    {
+        "dataName":  "2003_NGA",
+        "initialGDP":  206470760234
+    },
+    {
+        "dataName":  "2003_PRK",
+        "initialGDP":  57947272457
+    },
+    {
+        "dataName":  "2003_MKD",
+        "initialGDP":  9383040936
+    },
+    {
+        "dataName":  "2003_NOR",
+        "initialGDP":  207370090000
+    },
+    {
+        "dataName":  "2003_OMN",
+        "initialGDP":  38152046784
+    },
+    {
+        "dataName":  "2003_PAK",
+        "initialGDP":  266791812865
+    },
+    {
+        "dataName":  "2003_PAL",
+        "initialGDP":  5115204678
+    },
+    {
+        "dataName":  "2003_PAN",
+        "initialGDP":  23369590643
+    },
+    {
+        "dataName":  "2003_PNG",
+        "initialGDP":  7143859649
+    },
+    {
+        "dataName":  "2003_PRY",
+        "initialGDP":  21672514620
+    },
+    {
+        "dataName":  "2003_PER",
+        "initialGDP":  87084795322
+    },
+    {
+        "dataName":  "2003_PHL",
+        "initialGDP":  172892399701
+    },
+    {
+        "dataName":  "2003_POL",
+        "initialGDP":  298056140351
+    },
+    {
+        "dataName":  "2003_PLS",
+        "initialGDP":  616374269
+    },
+    {
+        "dataName":  "2003_PRT",
+        "initialGDP":  165184738000
+    },
+    {
+        "dataName":  "2003_RTK",
+        "initialGDP":  763157895
+    },
+    {
+        "dataName":  "2003_COR",
+        "initialGDP":  7251461988
+    },
+    {
+        "dataName":  "2003_ROM",
+        "initialGDP":  140076023392
+    },
+    {
+        "dataName":  "2003_RUS",
+        "initialGDP":  1120508736701
+    },
+    {
+        "dataName":  "2003_RWB",
+        "initialGDP":  6507017544
+    },
+    {
+        "dataName":  "2003_STP",
+        "initialGDP":  174853801
+    },
+    {
+        "dataName":  "2003_SAU",
+        "initialGDP":  398103508772
+    },
+    {
+        "dataName":  "2003_SEG",
+        "initialGDP":  12786549708
+    },
+    {
+        "dataName":  "2003_SER",
+        "initialGDP":  35756725146
+    },
+    {
+        "dataName":  "2003_SYC",
+        "initialGDP":  705703000
+    },
+    {
+        "dataName":  "2003_SLE",
+        "initialGDP":  4440350877
+    },
+    {
+        "dataName":  "2003_SGP",
+        "initialGDP":  109485380117
+    },
+    {
+        "dataName":  "2003_SLO",
+        "initialGDP":  43281286550
+    },
+    {
+        "dataName":  "2003_SLV",
+        "initialGDP":  29398810000
+    },
+    {
+        "dataName":  "2003_SOM",
+        "initialGDP":  4035468335
+    },
+    {
+        "dataName":  "2003_ZAF",
+        "initialGDP":  230958195939
+    },
+    {
+        "dataName":  "2003_KOR",
+        "initialGDP":  728497156000
+    },
+    {
+        "dataName":  "2003_SSD",
+        "initialGDP":  6799829681
+    },
+    {
+        "dataName":  "2003_ESP",
+        "initialGDP":  907735867000
+    },
+    {
+        "dataName":  "2003_LKA",
+        "initialGDP":  56567836257
+    },
+    {
+        "dataName":  "2003_SDN",
+        "initialGDP":  67181284303
+    },
+    {
+        "dataName":  "2003_SUR",
+        "initialGDP":  3178947368
+    },
+    {
+        "dataName":  "2003_SCA",
+        "initialGDP":  296975028000
+    },
+    {
+        "dataName":  "2003_SWI",
+        "initialGDP":  338384979000
+    },
+    {
+        "dataName":  "2003_SYR",
+        "initialGDP":  47493567251
+    },
+    {
+        "dataName":  "2003_TWN",
+        "initialGDP":  317381378000
+    },
+    {
+        "dataName":  "2003_TJK",
+        "initialGDP":  4730409357
+    },
+    {
+        "dataName":  "2003_TZA",
+        "initialGDP":  25028654971
+    },
+    {
+        "dataName":  "2003_THA",
+        "initialGDP":  339446198830
+    },
+    {
+        "dataName":  "2003_TLS",
+        "initialGDP":  1101169591
+    },
+    {
+        "dataName":  "2003_TGO",
+        "initialGDP":  4335087719
+    },
+    {
+        "dataName":  "2003_TUN",
+        "initialGDP":  38339766082
+    },
+    {
+        "dataName":  "2003_TUR",
+        "initialGDP":  466381286550
+    },
+    {
+        "dataName":  "2003_TKM",
+        "initialGDP":  16255045000
+    },
+    {
+        "dataName":  "2003_UGA",
+        "initialGDP":  16984210526
+    },
+    {
+        "dataName":  "2003_UKR",
+        "initialGDP":  197415200592
+    },
+    {
+        "dataName":  "2003_UAE",
+        "initialGDP":  156876608187
+    },
+    {
+        "dataName":  "2003_GBR",
+        "initialGDP":  1911541446629
+    },
+    {
+        "dataName":  "2003_USA",
+        "initialGDP":  11541059000000
+    },
+    {
+        "dataName":  "2003_URY",
+        "initialGDP":  19566081871
+    },
+    {
+        "dataName":  "2003_UZB",
+        "initialGDP":  41912280702
+    },
+    {
+        "dataName":  "2003_VEN",
+        "initialGDP":  152851461988
+    },
+    {
+        "dataName":  "2003_VNM",
+        "initialGDP":  162138011696
+    },
+    {
+        "dataName":  "2003_YEM",
+        "initialGDP":  35686549708
+    },
+    {
+        "dataName":  "2003_ZMB",
+        "initialGDP":  11070175439
+    },
+    {
+        "dataName":  "2003_ZWE",
+        "initialGDP":  15481286550
+    },
+    {
+        "dataName":  "AFG",
+        "initialGDP":  70395227904
+    },
+    {
+        "dataName":  "SBK",
+        "initialGDP":  43285188848
+    },
+    {
+        "dataName":  "DZA",
+        "initialGDP":  514692116917
+    },
+    {
+        "dataName":  "AGO",
+        "initialGDP":  214785492518
+    },
+    {
+        "dataName":  "ARG",
+        "initialGDP":  1035511948240
+    },
+    {
+        "dataName":  "ARM",
+        "initialGDP":  39959896757
+    },
+    {
+        "dataName":  "AUS",
+        "initialGDP":  1731233002000
+    },
+    {
+        "dataName":  "ALP",
+        "initialGDP":  514025398552
+    },
+    {
+        "dataName":  "AZE",
+        "initialGDP":  154155264045
+    },
+    {
+        "dataName":  "BGD",
+        "initialGDP":  985843364628
+    },
+    {
+        "dataName":  "BAH",
+        "initialGDP":  13896810000
+    },
+    {
+        "dataName":  "BLR",
+        "initialGDP":  172713564056
+    },
+    {
+        "dataName":  "BGM",
+        "initialGDP":  672415940000
+    },
+    {
+        "dataName":  "BEL",
+        "initialGDP":  2846604000
+    },
+    {
+        "dataName":  "BEN",
+        "initialGDP":  49887260570
+    },
+    {
+        "dataName":  "BHU",
+        "initialGDP":  8566319045
+    },
+    {
+        "dataName":  "BOL",
+        "initialGDP":  104031567281
+    },
+    {
+        "dataName":  "BSM",
+        "initialGDP":  52725146477
+    },
+    {
+        "dataName":  "BWA",
+        "initialGDP":  41336717600
+    },
+    {
+        "dataName":  "BRA",
+        "initialGDP":  3157102264603
+    },
+    {
+        "dataName":  "BRU",
+        "initialGDP":  34044363530
+    },
+    {
+        "dataName":  "BUL",
+        "initialGDP":  195309154854
+    },
+    {
+        "dataName":  "BKF",
+        "initialGDP":  52406207568
+    },
+    {
+        "dataName":  "CPV",
+        "initialGDP":  3544399294
+    },
+    {
+        "dataName":  "KHM",
+        "initialGDP":  77152442250
+    },
+    {
+        "dataName":  "CMR",
+        "initialGDP":  106132342139
+    },
+    {
+        "dataName":  "CAN",
+        "initialGDP":  2200567395000
+    },
+    {
+        "dataName":  "CAF",
+        "initialGDP":  4913450293
+    },
+    {
+        "dataName":  "TCD",
+        "initialGDP":  27435238978
+    },
+    {
+        "dataName":  "CHL",
+        "initialGDP":  507819180189
+    },
+    {
+        "dataName":  "CHN",
+        "initialGDP":  26106721555633
+    },
+    {
+        "dataName":  "COL",
+        "initialGDP":  830334475050
+    },
+    {
+        "dataName":  "COD",
+        "initialGDP":  119381225122
+    },
+    {
+        "dataName":  "COS",
+        "initialGDP":  110285666315
+    },
+    {
+        "dataName":  "CRS",
+        "initialGDP":  123043733951
+    },
+    {
+        "dataName":  "CUB",
+        "initialGDP":  136035787276
+    },
+    {
+        "dataName":  "CZE",
+        "initialGDP":  445951038765
+    },
+    {
+        "dataName":  "DEN",
+        "initialGDP":  406882222572
+    },
+    {
+        "dataName":  "DJI",
+        "initialGDP":  6642630202
+    },
+    {
+        "dataName":  "DOM",
+        "initialGDP":  227276819225
+    },
+    {
+        "dataName":  "ECU",
+        "initialGDP":  196711739685
+    },
+    {
+        "dataName":  "EGY",
+        "initialGDP":  1450484152484
+    },
+    {
+        "dataName":  "ELS",
+        "initialGDP":  58393132054
+    },
+    {
+        "dataName":  "EQG",
+        "initialGDP":  29947534870
+    },
+    {
+        "dataName":  "ERI",
+        "initialGDP":  6271101487
+    },
+    {
+        "dataName":  "EST",
+        "initialGDP":  53574270266
+    },
+    {
+        "dataName":  "ESW",
+        "initialGDP":  10815238479
+    },
+    {
+        "dataName":  "ETH",
+        "initialGDP":  312818084961
+    },
+    {
+        "dataName":  "FIN",
+        "initialGDP":  283313801103
+    },
+    {
+        "dataName":  "EUA",
+        "initialGDP":  3273372276209
+    },
+    {
+        "dataName":  "LWG",
+        "initialGDP":  35142219517
+    },
+    {
+        "dataName":  "GAM",
+        "initialGDP":  6105024565
+    },
+    {
+        "dataName":  "GEO",
+        "initialGDP":  58224271755
+    },
+    {
+        "dataName":  "DEU",
+        "initialGDP":  4649629703461
+    },
+    {
+        "dataName":  "GHA",
+        "initialGDP":  193866715413
+    },
+    {
+        "dataName":  "GRE",
+        "initialGDP":  391933193811
+    },
+    {
+        "dataName":  "GTM",
+        "initialGDP":  155874281909
+    },
+    {
+        "dataName":  "GIN",
+        "initialGDP":  39324071806
+    },
+    {
+        "dataName":  "GNB",
+        "initialGDP":  4705973776
+    },
+    {
+        "dataName":  "GUS",
+        "initialGDP":  315833275381
+    },
+    {
+        "dataName":  "GUY",
+        "initialGDP":  27538747557
+    },
+    {
+        "dataName":  "HTI",
+        "initialGDP":  33224408954
+    },
+    {
+        "dataName":  "HON",
+        "initialGDP":  62211232262
+    },
+    {
+        "dataName":  "HUN",
+        "initialGDP":  353640758478
+    },
+    {
+        "dataName":  "ISL",
+        "initialGDP":  27371478000
+    },
+    {
+        "dataName":  "IND",
+        "initialGDP":  10443494440949
+    },
+    {
+        "dataName":  "IDN",
+        "initialGDP":  3501429427548
+    },
+    {
+        "dataName":  "IRN",
+        "initialGDP":  1435835573245
+    },
+    {
+        "dataName":  "IRQ",
+        "initialGDP":  468325919732
+    },
+    {
+        "dataName":  "IRL",
+        "initialGDP":  566222861210
+    },
+    {
+        "dataName":  "ISR",
+        "initialGDP":  493701635000
+    },
+    {
+        "dataName":  "ITA",
+        "initialGDP":  2623269642672
+    },
+    {
+        "dataName":  "IVO",
+        "initialGDP":  172250002881
+    },
+    {
+        "dataName":  "JAM",
+        "initialGDP":  27067479358
+    },
+    {
+        "dataName":  "JPN",
+        "initialGDP":  5319860546876
+    },
+    {
+        "dataName":  "JOR",
+        "initialGDP":  117440309269
+    },
+    {
+        "dataName":  "KAZ",
+        "initialGDP":  540126931168
+    },
+    {
+        "dataName":  "KEN",
+        "initialGDP":  260353421965
+    },
+    {
+        "dataName":  "KOS",
+        "initialGDP":  21527297548
+    },
+    {
+        "dataName":  "KUW",
+        "initialGDP":  225286986053
+    },
+    {
+        "dataName":  "KGZ",
+        "initialGDP":  34223159016
+    },
+    {
+        "dataName":  "LAO",
+        "initialGDP":  60830648970
+    },
+    {
+        "dataName":  "LVA",
+        "initialGDP":  63333370900
+    },
+    {
+        "dataName":  "LEB",
+        "initialGDP":  62405755405
+    },
+    {
+        "dataName":  "LES",
+        "initialGDP":  5911382329
+    },
+    {
+        "dataName":  "CAB",
+        "initialGDP":  53038264355
+    },
+    {
+        "dataName":  "LBR",
+        "initialGDP":  7764638842
+    },
+    {
+        "dataName":  "LBY",
+        "initialGDP":  88281278000
+    },
+    {
+        "dataName":  "LTU",
+        "initialGDP":  121127245231
+    },
+    {
+        "dataName":  "MDG",
+        "initialGDP":  46913856193
+    },
+    {
+        "dataName":  "MAL",
+        "initialGDP":  31496187477
+    },
+    {
+        "dataName":  "MYS",
+        "initialGDP":  998696211058
+    },
+    {
+        "dataName":  "MLD",
+        "initialGDP":  9730833023
+    },
+    {
+        "dataName":  "MLI",
+        "initialGDP":  58918975685
+    },
+    {
+        "dataName":  "MRT",
+        "initialGDP":  26038686673
+    },
+    {
+        "dataName":  "MRS",
+        "initialGDP":  27936608138
+    },
+    {
+        "dataName":  "PCS",
+        "initialGDP":  13541637298
+    },
+    {
+        "dataName":  "MEX",
+        "initialGDP":  2479172957713
+    },
+    {
+        "dataName":  "MCS",
+        "initialGDP":  1373782670
+    },
+    {
+        "dataName":  "MOL",
+        "initialGDP":  28342441861
+    },
+    {
+        "dataName":  "MNG",
+        "initialGDP":  40762839080
+    },
+    {
+        "dataName":  "MAR",
+        "initialGDP":  282611262172
+    },
+    {
+        "dataName":  "MOZ",
+        "initialGDP":  40981290025
+    },
+    {
+        "dataName":  "MMR",
+        "initialGDP":  219904168384
+    },
+    {
+        "dataName":  "MNE",
+        "initialGDP":  13331725859
+    },
+    {
+        "dataName":  "SWA",
+        "initialGDP":  26037249527
+    },
+    {
+        "dataName":  "HYS",
+        "initialGDP":  118848371408
+    },
+    {
+        "dataName":  "NET",
+        "initialGDP":  1099778654074
+    },
+    {
+        "dataName":  "NZL",
+        "initialGDP":  245165136000
+    },
+    {
+        "dataName":  "NIC",
+        "initialGDP":  40710814361
+    },
+    {
+        "dataName":  "NER",
+        "initialGDP":  31589120625
+    },
+    {
+        "dataName":  "NGA",
+        "initialGDP":  1140428829301
+    },
+    {
+        "dataName":  "PRK",
+        "initialGDP":  175951330296
+    },
+    {
+        "dataName":  "MKD",
+        "initialGDP":  31759906809
+    },
+    {
+        "dataName":  "NOR",
+        "initialGDP":  557347395000
+    },
+    {
+        "dataName":  "OMN",
+        "initialGDP":  129017476993
+    },
+    {
+        "dataName":  "PAK",
+        "initialGDP":  1364683947957
+    },
+    {
+        "dataName":  "PAL",
+        "initialGDP":  26697015809
+    },
+    {
+        "dataName":  "PAN",
+        "initialGDP":  137497966872
+    },
+    {
+        "dataName":  "PNG",
+        "initialGDP":  37791845332
+    },
+    {
+        "dataName":  "PRY",
+        "initialGDP":  87263971559
+    },
+    {
+        "dataName":  "PER",
+        "initialGDP":  447999623331
+    },
+    {
+        "dataName":  "PHL",
+        "initialGDP":  1015501718850
+    },
+    {
+        "dataName":  "POL",
+        "initialGDP":  1411034882292
+    },
+    {
+        "dataName":  "PLS",
+        "initialGDP":  2020831579
+    },
+    {
+        "dataName":  "PRT",
+        "initialGDP":  379665513515
+    },
+    {
+        "dataName":  "RTK",
+        "initialGDP":  2576982160
+    },
+    {
+        "dataName":  "COR",
+        "initialGDP":  20471200301
+    },
+    {
+        "dataName":  "ROM",
+        "initialGDP":  628168275533
+    },
+    {
+        "dataName":  "RUS",
+        "initialGDP":  3773943578340
+    },
+    {
+        "dataName":  "RWB",
+        "initialGDP":  43073912896
+    },
+    {
+        "dataName":  "STP",
+        "initialGDP":  924378744
+    },
+    {
+        "dataName":  "SAU",
+        "initialGDP":  1575003869980
+    },
+    {
+        "dataName":  "SEG",
+        "initialGDP":  63134483396
+    },
+    {
+        "dataName":  "SER",
+        "initialGDP":  142309437831
+    },
+    {
+        "dataName":  "SYC",
+        "initialGDP":  3502185000
+    },
+    {
+        "dataName":  "SLE",
+        "initialGDP":  14184098977
+    },
+    {
+        "dataName":  "SGP",
+        "initialGDP":  585661871459
+    },
+    {
+        "dataName":  "SLO",
+        "initialGDP":  186234074772
+    },
+    {
+        "dataName":  "SLV",
+        "initialGDP":  91753887238
+    },
+    {
+        "dataName":  "SOM",
+        "initialGDP":  19026916427
+    },
+    {
+        "dataName":  "SOL",
+        "initialGDP":  5937513767
+    },
+    {
+        "dataName":  "ZAF",
+        "initialGDP":  800160322222
+    },
+    {
+        "dataName":  "KOR",
+        "initialGDP":  2759610612975
+    },
+    {
+        "dataName":  "SSD",
+        "initialGDP":  11222243803
+    },
+    {
+        "dataName":  "ESP",
+        "initialGDP":  1990839348656
+    },
+    {
+        "dataName":  "LKA",
+        "initialGDP":  314779282000
+    },
+    {
+        "dataName":  "SDN",
+        "initialGDP":  178632257000
+    },
+    {
+        "dataName":  "SUR",
+        "initialGDP":  9784230722
+    },
+    {
+        "dataName":  "SCA",
+        "initialGDP":  607859198327
+    },
+    {
+        "dataName":  "SWI",
+        "initialGDP":  814034308000
+    },
+    {
+        "dataName":  "SYR",
+        "initialGDP":  50278950097
+    },
+    {
+        "dataName":  "TWN",
+        "initialGDP":  1571607993780
+    },
+    {
+        "dataName":  "TJK",
+        "initialGDP":  40713315933
+    },
+    {
+        "dataName":  "TZA",
+        "initialGDP":  184177567498
+    },
+    {
+        "dataName":  "THA",
+        "initialGDP":  1328563071205
+    },
+    {
+        "dataName":  "TLS",
+        "initialGDP":  4000333734
+    },
+    {
+        "dataName":  "TGO",
+        "initialGDP":  20684152653
+    },
+    {
+        "dataName":  "TUN",
+        "initialGDP":  131697757875
+    },
+    {
+        "dataName":  "TUR",
+        "initialGDP":  2871316753141
+    },
+    {
+        "dataName":  "TKM",
+        "initialGDP":  120214431071
+    },
+    {
+        "dataName":  "UGA",
+        "initialGDP":  110377317605
+    },
+    {
+        "dataName":  "UKR",
+        "initialGDP":  493077499118
+    },
+    {
+        "dataName":  "UAE",
+        "initialGDP":  694739756888
+    },
+    {
+        "dataName":  "GBR",
+        "initialGDP":  3302589305196
+    },
+    {
+        "dataName":  "USA",
+        "initialGDP":  26181992700000
+    },
+    {
+        "dataName":  "URY",
+        "initialGDP":  80823988468
+    },
+    {
+        "dataName":  "UZB",
+        "initialGDP":  290362041493
+    },
+    {
+        "dataName":  "VEN",
+        "initialGDP":  134901565859
+    },
+    {
+        "dataName":  "VNM",
+        "initialGDP":  1130202656097
+    },
+    {
+        "dataName":  "YEM",
+        "initialGDP":  30788393000
+    },
+    {
+        "dataName":  "ZMB",
+        "initialGDP":  68333976727
+    },
+    {
+        "dataName":  "ZWE",
+        "initialGDP":  48570383000
+    },
+    {
+        "dataName":  "2026_AFG",
+        "initialGDP":  63810560000
+    },
+    {
+        "dataName":  "2026_SBK",
+        "initialGDP":  55510400000
+    },
+    {
+        "dataName":  "2026_DZA",
+        "initialGDP":  770293920000
+    },
+    {
+        "dataName":  "2026_AGO",
+        "initialGDP":  353896391200
+    },
+    {
+        "dataName":  "2026_ARG",
+        "initialGDP":  1311344377010
+    },
+    {
+        "dataName":  "2026_ARM",
+        "initialGDP":  65378720000
+    },
+    {
+        "dataName":  "2026_AUS",
+        "initialGDP":  2098888272000
+    },
+    {
+        "dataName":  "2026_ALP",
+        "initialGDP":  633160528000
+    },
+    {
+        "dataName":  "2026_AZE",
+        "initialGDP":  239448000000
+    },
+    {
+        "dataName":  "2026_BGD",
+        "initialGDP":  1568252391181
+    },
+    {
+        "dataName":  "2026_BAH",
+        "initialGDP":  17042467000
+    },
+    {
+        "dataName":  "2026_BLR",
+        "initialGDP":  274376080000
+    },
+    {
+        "dataName":  "2026_BGM",
+        "initialGDP":  887147231000
+    },
+    {
+        "dataName":  "2026_BEL",
+        "initialGDP":  5871346303
+    },
+    {
+        "dataName":  "2026_BEN",
+        "initialGDP":  61167915968
+    },
+    {
+        "dataName":  "2026_BHU",
+        "initialGDP":  12413280000
+    },
+    {
+        "dataName":  "2026_BOL",
+        "initialGDP":  126806240000
+    },
+    {
+        "dataName":  "2026_BSM",
+        "initialGDP":  69216400000
+    },
+    {
+        "dataName":  "2026_BWA",
+        "initialGDP":  46605680000
+    },
+    {
+        "dataName":  "2026_BRA",
+        "initialGDP":  4376578800000
+    },
+    {
+        "dataName":  "2026_BRU",
+        "initialGDP":  38573040000
+    },
+    {
+        "dataName":  "2026_BUL",
+        "initialGDP":  232935085065
+    },
+    {
+        "dataName":  "2026_BKF",
+        "initialGDP":  64081600000
+    },
+    {
+        "dataName":  "2026_CPV",
+        "initialGDP":  5543120000
+    },
+    {
+        "dataName":  "2026_KHM",
+        "initialGDP":  132041352685
+    },
+    {
+        "dataName":  "2026_CMR",
+        "initialGDP":  152217120000
+    },
+    {
+        "dataName":  "2026_CAN",
+        "initialGDP":  2507340482000
+    },
+    {
+        "dataName":  "2026_CAF",
+        "initialGDP":  6452160000
+    },
+    {
+        "dataName":  "2026_TCD",
+        "initialGDP":  49854640000
+    },
+    {
+        "dataName":  "2026_CHL",
+        "initialGDP":  624971600000
+    },
+    {
+        "dataName":  "2026_CHN",
+        "initialGDP":  36093925145546
+    },
+    {
+        "dataName":  "2026_COL",
+        "initialGDP":  1046729200000
+    },
+    {
+        "dataName":  "2026_COD",
+        "initialGDP":  176668800000
+    },
+    {
+        "dataName":  "2026_COS",
+        "initialGDP":  148749920000
+    },
+    {
+        "dataName":  "2026_CRS",
+        "initialGDP":  174475840000
+    },
+    {
+        "dataName":  "2026_CUB",
+        "initialGDP":  170488729101
+    },
+    {
+        "dataName":  "2026_CZE",
+        "initialGDP":  569643360000
+    },
+    {
+        "dataName":  "2026_DEN",
+        "initialGDP":  512902568226
+    },
+    {
+        "dataName":  "2026_DJI",
+        "initialGDP":  8748952706
+    },
+    {
+        "dataName":  "2026_DOM",
+        "initialGDP":  295752160000
+    },
+    {
+        "dataName":  "2026_ECU",
+        "initialGDP":  264107345681
+    },
+    {
+        "dataName":  "2026_EGY",
+        "initialGDP":  2095726160000
+    },
+    {
+        "dataName":  "2026_ELS",
+        "initialGDP":  77688147845
+    },
+    {
+        "dataName":  "2026_EQG",
+        "initialGDP":  29042640000
+    },
+    {
+        "dataName":  "2026_ERI",
+        "initialGDP":  5636400000
+    },
+    {
+        "dataName":  "2026_EST",
+        "initialGDP":  60046800000
+    },
+    {
+        "dataName":  "2026_ESW",
+        "initialGDP":  14363360000
+    },
+    {
+        "dataName":  "2026_ETH",
+        "initialGDP":  426279040000
+    },
+    {
+        "dataName":  "2026_FIN",
+        "initialGDP":  337668869000
+    },
+    {
+        "dataName":  "2026_EUA",
+        "initialGDP":  3994862415720
+    },
+    {
+        "dataName":  "2026_LWG",
+        "initialGDP":  50551580905
+    },
+    {
+        "dataName":  "2026_GAM",
+        "initialGDP":  9103596843
+    },
+    {
+        "dataName":  "2026_GEO",
+        "initialGDP":  99953040000
+    },
+    {
+        "dataName":  "2026_DEU",
+        "initialGDP":  5452857982000
+    },
+    {
+        "dataName":  "2026_GHA",
+        "initialGDP":  259703840000
+    },
+    {
+        "dataName":  "2026_GRE",
+        "initialGDP":  411479163520
+    },
+    {
+        "dataName":  "2026_GTM",
+        "initialGDP":  248893040000
+    },
+    {
+        "dataName":  "2026_GIN",
+        "initialGDP":  66045760000
+    },
+    {
+        "dataName":  "2026_GNB",
+        "initialGDP":  5825600000
+    },
+    {
+        "dataName":  "2026_GUS",
+        "initialGDP":  431595030995
+    },
+    {
+        "dataName":  "2026_GUY",
+        "initialGDP":  66258720000
+    },
+    {
+        "dataName":  "2026_HTI",
+        "initialGDP":  38084290000
+    },
+    {
+        "dataName":  "2026_HON",
+        "initialGDP":  75665920000
+    },
+    {
+        "dataName":  "2026_HUN",
+        "initialGDP":  408688720000
+    },
+    {
+        "dataName":  "2026_ISL",
+        "initialGDP":  32927624000
+    },
+    {
+        "dataName":  "2026_IND",
+        "initialGDP":  15588478389443
+    },
+    {
+        "dataName":  "2026_IDN",
+        "initialGDP":  4416614217992
+    },
+    {
+        "dataName":  "2026_IRN",
+        "initialGDP":  1653424960000
+    },
+    {
+        "dataName":  "2026_IRQ",
+        "initialGDP":  607993760000
+    },
+    {
+        "dataName":  "2026_IRL",
+        "initialGDP":  779381074000
+    },
+    {
+        "dataName":  "2026_ISR",
+        "initialGDP":  609410883000
+    },
+    {
+        "dataName":  "2026_ITA",
+        "initialGDP":  3275688282685
+    },
+    {
+        "dataName":  "2026_IVO",
+        "initialGDP":  234812160000
+    },
+    {
+        "dataName":  "2026_JAM",
+        "initialGDP":  30514869230
+    },
+    {
+        "dataName":  "2026_JPN",
+        "initialGDP":  5905118165464
+    },
+    {
+        "dataName":  "2026_JOR",
+        "initialGDP":  115875750002
+    },
+    {
+        "dataName":  "2026_KAZ",
+        "initialGDP":  795956480000
+    },
+    {
+        "dataName":  "2026_KEN",
+        "initialGDP":  353731846033
+    },
+    {
+        "dataName":  "2026_KOS",
+        "initialGDP":  28295520000
+    },
+    {
+        "dataName":  "2026_KUW",
+        "initialGDP":  229242640000
+    },
+    {
+        "dataName":  "2026_KGZ",
+        "initialGDP":  55840400000
+    },
+    {
+        "dataName":  "2026_LAO",
+        "initialGDP":  69387111298
+    },
+    {
+        "dataName":  "2026_LVA",
+        "initialGDP":  73260880000
+    },
+    {
+        "dataName":  "2026_LEB",
+        "initialGDP":  55587840000
+    },
+    {
+        "dataName":  "2026_LES",
+        "initialGDP":  6520800000
+    },
+    {
+        "dataName":  "2026_CAB",
+        "initialGDP":  78769821976
+    },
+    {
+        "dataName":  "2026_LBR",
+        "initialGDP":  10046960000
+    },
+    {
+        "dataName":  "2026_LBY",
+        "initialGDP":  109108560000
+    },
+    {
+        "dataName":  "2026_LTU",
+        "initialGDP":  145588960000
+    },
+    {
+        "dataName":  "2026_MDG",
+        "initialGDP":  56532960000
+    },
+    {
+        "dataName":  "2026_MAL",
+        "initialGDP":  37639360000
+    },
+    {
+        "dataName":  "2026_MYS",
+        "initialGDP":  1300762355750
+    },
+    {
+        "dataName":  "2026_MLD",
+        "initialGDP":  13226400000
+    },
+    {
+        "dataName":  "2026_MLI",
+        "initialGDP":  64009440000
+    },
+    {
+        "dataName":  "2026_MRT",
+        "initialGDP":  35252800000
+    },
+    {
+        "dataName":  "2026_MRS",
+        "initialGDP":  36389760000
+    },
+    {
+        "dataName":  "2026_PCS",
+        "initialGDP":  16621447774
+    },
+    {
+        "dataName":  "2026_MEX",
+        "initialGDP":  3024498400000
+    },
+    {
+        "dataName":  "2026_MCS",
+        "initialGDP":  1780080323
+    },
+    {
+        "dataName":  "2026_MOL",
+        "initialGDP":  40801186222
+    },
+    {
+        "dataName":  "2026_MNG",
+        "initialGDP":  64485520000
+    },
+    {
+        "dataName":  "2026_MAR",
+        "initialGDP":  373886480000
+    },
+    {
+        "dataName":  "2026_MOZ",
+        "initialGDP":  54518640000
+    },
+    {
+        "dataName":  "2026_MMR",
+        "initialGDP":  287666720000
+    },
+    {
+        "dataName":  "2026_MNE",
+        "initialGDP":  18751920000
+    },
+    {
+        "dataName":  "2026_SWA",
+        "initialGDP":  33200640000
+    },
+    {
+        "dataName":  "2026_HYS",
+        "initialGDP":  158963200000
+    },
+    {
+        "dataName":  "2026_NET",
+        "initialGDP":  1461721777253
+    },
+    {
+        "dataName":  "2026_NZL",
+        "initialGDP":  278636463000
+    },
+    {
+        "dataName":  "2026_NIC",
+        "initialGDP":  56152800000
+    },
+    {
+        "dataName":  "2026_NER",
+        "initialGDP":  53710800000
+    },
+    {
+        "dataName":  "2026_NGA",
+        "initialGDP":  1394763040000
+    },
+    {
+        "dataName":  "2026_PRK",
+        "initialGDP":  166232912817
+    },
+    {
+        "dataName":  "2026_MKD",
+        "initialGDP":  46943600000
+    },
+    {
+        "dataName":  "2026_NOR",
+        "initialGDP":  599406223000
+    },
+    {
+        "dataName":  "2026_OMN",
+        "initialGDP":  203420764133
+    },
+    {
+        "dataName":  "2026_PAK",
+        "initialGDP":  1470815274328
+    },
+    {
+        "dataName":  "2026_PAL",
+        "initialGDP":  26545546494
+    },
+    {
+        "dataName":  "2026_PAN",
+        "initialGDP":  176132000000
+    },
+    {
+        "dataName":  "2026_PNG",
+        "initialGDP":  42329760000
+    },
+    {
+        "dataName":  "2026_PRY",
+        "initialGDP":  120068943078
+    },
+    {
+        "dataName":  "2026_PER",
+        "initialGDP":  565885760000
+    },
+    {
+        "dataName":  "2026_PHL",
+        "initialGDP":  1300385668954
+    },
+    {
+        "dataName":  "2026_POL",
+        "initialGDP":  1777406353032
+    },
+    {
+        "dataName":  "2026_PLS",
+        "initialGDP":  2482039715
+    },
+    {
+        "dataName":  "2026_PRT",
+        "initialGDP":  471764480000
+    },
+    {
+        "dataName":  "2026_RTK",
+        "initialGDP":  3216400000
+    },
+    {
+        "dataName":  "2026_COR",
+        "initialGDP":  37631434331
+    },
+    {
+        "dataName":  "2026_ROM",
+        "initialGDP":  815547920000
+    },
+    {
+        "dataName":  "2026_RUS",
+        "initialGDP":  6181731284987
+    },
+    {
+        "dataName":  "2026_RWB",
+        "initialGDP":  63440960000
+    },
+    {
+        "dataName":  "2026_STP",
+        "initialGDP":  1367520000
+    },
+    {
+        "dataName":  "2026_SAU",
+        "initialGDP":  2365897600000
+    },
+    {
+        "dataName":  "2026_SEG",
+        "initialGDP":  92778400000
+    },
+    {
+        "dataName":  "2026_SER",
+        "initialGDP":  190274480000
+    },
+    {
+        "dataName":  "2026_SYC",
+        "initialGDP":  3755840000
+    },
+    {
+        "dataName":  "2026_SLE",
+        "initialGDP":  28604400000
+    },
+    {
+        "dataName":  "2026_SGP",
+        "initialGDP":  838326720000
+    },
+    {
+        "dataName":  "2026_SLO",
+        "initialGDP":  226177600000
+    },
+    {
+        "dataName":  "2026_SLV",
+        "initialGDP":  108638588624
+    },
+    {
+        "dataName":  "2026_SOM",
+        "initialGDP":  23534339506
+    },
+    {
+        "dataName":  "2026_SOL",
+        "initialGDP":  8324800000
+    },
+    {
+        "dataName":  "2026_ZAF",
+        "initialGDP":  855493129360
+    },
+    {
+        "dataName":  "2026_KOR",
+        "initialGDP":  2959808720000
+    },
+    {
+        "dataName":  "2026_SSD",
+        "initialGDP":  10019680000
+    },
+    {
+        "dataName":  "2026_ESP",
+        "initialGDP":  2489088800000
+    },
+    {
+        "dataName":  "2026_LKA",
+        "initialGDP":  301491520000
+    },
+    {
+        "dataName":  "2026_SDN",
+        "initialGDP":  103640241945
+    },
+    {
+        "dataName":  "2026_SUR",
+        "initialGDP":  12973819894
+    },
+    {
+        "dataName":  "2026_SCA",
+        "initialGDP":  760480743000
+    },
+    {
+        "dataName":  "2026_SWI",
+        "initialGDP":  960599038000
+    },
+    {
+        "dataName":  "2026_SYR",
+        "initialGDP":  120013520000
+    },
+    {
+        "dataName":  "2026_TWN",
+        "initialGDP":  1751435763888
+    },
+    {
+        "dataName":  "2026_TJK",
+        "initialGDP":  55137280000
+    },
+    {
+        "dataName":  "2026_TZA",
+        "initialGDP":  258360956440
+    },
+    {
+        "dataName":  "2026_THA",
+        "initialGDP":  1631318480000
+    },
+    {
+        "dataName":  "2026_TLS",
+        "initialGDP":  6136240000
+    },
+    {
+        "dataName":  "2026_TGO",
+        "initialGDP":  29081357072
+    },
+    {
+        "dataName":  "2026_TUN",
+        "initialGDP":  161677986977
+    },
+    {
+        "dataName":  "2026_TUR",
+        "initialGDP":  3314754042301
+    },
+    {
+        "dataName":  "2026_TKM",
+        "initialGDP":  163773280000
+    },
+    {
+        "dataName":  "2026_UGA",
+        "initialGDP":  164655916879
+    },
+    {
+        "dataName":  "2026_UKR",
+        "initialGDP":  607251920000
+    },
+    {
+        "dataName":  "2026_UAE",
+        "initialGDP":  796599760000
+    },
+    {
+        "dataName":  "2026_GBR",
+        "initialGDP":  4307551987855
+    },
+    {
+        "dataName":  "2026_USA",
+        "initialGDP":  32528234964400
+    },
+    {
+        "dataName":  "2026_URY",
+        "initialGDP":  114583920000
+    },
+    {
+        "dataName":  "2026_UZB",
+        "initialGDP":  413462720000
+    },
+    {
+        "dataName":  "2026_VEN",
+        "initialGDP":  197105920000
+    },
+    {
+        "dataName":  "2026_VNM",
+        "initialGDP":  1590204000000
+    },
+    {
+        "dataName":  "2026_YEM",
+        "initialGDP":  30926369000
+    },
+    {
+        "dataName":  "2026_ZMB",
+        "initialGDP":  86376396165
+    },
+    {
+        "dataName":  "2026_ZWE",
+        "initialGDP":  82606480000
+    }
+]

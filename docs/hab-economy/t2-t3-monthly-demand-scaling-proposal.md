@@ -1,7 +1,20 @@
 # T2 and T3 monthly demand scaling proposal
 
 Date: 2026-08-17  
-Status: research and planning draft; no template changes implemented
+Status: **implemented and deployed** with the approved T1 rules; manual
+in-game testing pending
+
+The machine-readable approved values are in
+[`hab-module-maintenance-proposals.csv`](hab-module-maintenance-proposals.csv).
+Direct generator output and crew are doubled in the template overrides, while
+the runtime hab-cost rewrite doubles their construction resources and Boost
+without changing physical mass or build time. Existing saves therefore retain
+valid layouts and gain power headroom on load. Money maintenance remains
+vanilla for every module.
+
+Deployment verification on 2026-08-17 passed the complete TI 1.0.51 release
+pipeline, including 1,070 formula assertions, guarded Harmony/IL checks, exact
+110-module proposal coverage, and hash verification of all 44 deployed files.
 
 ## Method
 

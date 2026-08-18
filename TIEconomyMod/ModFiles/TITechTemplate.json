@@ -12,6 +12,13 @@
     "researchCost": 1000
   },
   {
+    "dataName": "AugmentedReality",
+    "researchCost": 2000,
+    "effects": [
+      "Effect_IncreaseMaxArmyTechLevel"
+    ]
+  },
+  {
     "dataName": "FutureTechSpaceScience",
     "effects": []
   },

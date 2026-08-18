@@ -223,6 +223,14 @@ if ($LASTEXITCODE -ne 0) {
     exit $LASTEXITCODE
 }
 
+powershell -NoProfile -ExecutionPolicy Bypass -File `
+    (Join-Path $scriptDirectory 'validate-starting-economic-overrides.ps1') `
+    -VanillaTemplatesDir $templatesDirectory `
+    -RepositoryRoot $repositoryRoot
+if ($LASTEXITCODE -ne 0) {
+    exit $LASTEXITCODE
+}
+
 $technologyTemplates = Join-Path $templatesDirectory 'TITechTemplate.json'
 $installedTechnologyIds = @(
     Get-Content -LiteralPath $technologyTemplates -Raw |
@@ -511,15 +519,15 @@ if ($null -eq $modernStart -or
     ($modernStart.startingTechs -join ';') -ne
         'Skywatch;WeAreNotAlone;OutpostHabs' -or
     ($modernStart.globalTechsCompleted -join ';') -ne
-        'MissionToSpace;AdvancedChemicalRocketry') {
-    throw 'The 2022 start must retain Skywatch as active research and the two baseline completed technologies.'
+        'MissionToSpace;AdvancedChemicalRocketry;SpaceTourism;DeepSpacePropulsionConcepts;AugmentedReality') {
+    throw 'The 2022 start must retain Skywatch and Outpost Habs as active research and complete the five approved baseline technologies.'
 }
 if ($null -eq $start2026 -or
     ($start2026.startingTechs -join ';') -ne
-        'DeepSystemSkywatch;WeAreNotAlone;OutpostHabs' -or
+        'DeepSystemSkywatch;WeAreNotAlone;MissiontotheMoon' -or
     ($start2026.globalTechsCompleted -join ';') -ne
-        'MissionToSpace;AdvancedChemicalRocketry;Skywatch') {
-    throw 'The 2026 start must complete Skywatch and replace it with Deep System Skywatch as active research.'
+        'MissionToSpace;AdvancedChemicalRocketry;SpaceTourism;DeepSpacePropulsionConcepts;AugmentedReality;Skywatch;OutpostHabs') {
+    throw 'The 2026 start must complete the five approved baseline technologies plus Skywatch and Outpost Habs, replacing them with Deep System Skywatch and Mission to the Moon.'
 }
 foreach ($scenario in @($modernStart, $start2026)) {
     $duplicateStartingTechnologies = @(
@@ -574,12 +582,37 @@ $mineEffectByTechnology = [ordered]@{
     MissiontotheMoon = 'Effect_SpaceMineFreebies3'
     MissiontotheOuterPlanets = 'Effect_SpaceMineFreebies6'
 }
-$expectedOverrideIds = @($expectedTechnologyIds) + @($mineEffectByTechnology.Keys)
+$expectedOverrideIds = @($expectedTechnologyIds) +
+    @($mineEffectByTechnology.Keys) +
+    @('AugmentedReality')
 if ($technologyCostOverrides.Count -ne $expectedOverrideIds.Count -or
     @($technologyCostOverrides | Where-Object {
         $_.dataName -notin $expectedOverrideIds
     }).Count -ne 0) {
-    throw 'Technology overrides must contain the three doubled starts and eight retired free-mine effect edits.'
+    throw 'Technology overrides must contain the three doubled starts, eight retired free-mine effect edits, and the Augmented Reality cost and Military-cap edits.'
+}
+$vanillaAugmentedReality = @($vanillaTechnologies | Where-Object {
+    $_.dataName -eq 'AugmentedReality'
+})
+$augmentedRealityOverride = @($technologyCostOverrides | Where-Object {
+    $_.dataName -eq 'AugmentedReality'
+})
+$maximumArmyTechnologyEffect = @($effectTemplates | Where-Object {
+    $_.dataName -eq 'Effect_IncreaseMaxArmyTechLevel'
+})
+if ($vanillaAugmentedReality.Count -ne 1 -or
+    [double]$vanillaAugmentedReality[0].researchCost -ne 1500 -or
+    ($vanillaAugmentedReality[0].effects -join ';') -ne '' -or
+    $augmentedRealityOverride.Count -ne 1 -or
+    [double]$augmentedRealityOverride[0].researchCost -ne 2000 -or
+    ($augmentedRealityOverride[0].effects -join ';') -ne
+        'Effect_IncreaseMaxArmyTechLevel' -or
+    $maximumArmyTechnologyEffect.Count -ne 1 -or
+    $maximumArmyTechnologyEffect[0].instantEffect -ne 'NationMaxMiltechChange' -or
+    [double]$maximumArmyTechnologyEffect[0].value -ne 0.5 -or
+    $maximumArmyTechnologyEffect[0].effectTarget -ne 'AllNations' -or
+    $maximumArmyTechnologyEffect[0].effectDuration -ne 'instant') {
+    throw 'Augmented Reality must raise its authored research cost from 1,500 to 2,000 and add the native +0.5 all-nations maximum Military technology effect.'
 }
 foreach ($entry in $mineEffectByTechnology.GetEnumerator()) {
     $vanillaTechnology = @($vanillaTechnologies | Where-Object {

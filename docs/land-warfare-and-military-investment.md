@@ -28,6 +28,25 @@ Away upkeep = t / 3
 Alien invaders and megafauna retain their own vanilla army types and do not
 enter human construction, modernization, or repair-value counts.
 
+## Interpreting Military technology
+
+Military technology is the average quality of a nation's fielded joint force,
+not the generation of its newest prototype or best-equipped formation. It
+combines equipment, sensors, communications, electronic warfare, precision
+weapons, unmanned systems, training, command, logistics, and doctrine across the
+forces represented by every army counter.
+
+As a rough real-world shorthand, the score can be read like the average
+generation of the nation's operational combat-aircraft fleet. A nation near
+technology 4.5 should therefore have a mixed force whose average capability
+lies around the 4.5-generation level: mature fourth-generation aircraft,
+extensively modernized 4.5-generation aircraft, and some fifth-generation
+aircraft may all contribute. Possessing a few fifth-generation squadrons does
+not by itself make the whole force technology 5. This aircraft analogy is a
+calibration aid rather than a literal one-to-one formula; the national score
+also represents the quality and diffusion of the wider joint-force systems
+listed above.
+
 ## Interpreting national effort
 
 Priority weights represent shares of redirectable national effort, not literal

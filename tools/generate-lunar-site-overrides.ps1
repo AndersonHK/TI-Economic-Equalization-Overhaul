@@ -38,12 +38,19 @@ $siteMetadata = @(
     @{ Name = 'Taurus-Littrow'; Latitude = 20.2; Longitude = 30.8; Fabricated = '0' },
     @{ Name = 'Kepler Crater'; Latitude = 8.1; Longitude = -38.0; Fabricated = '0' },
     @{ Name = 'Rima Bode'; Latitude = 12.7; Longitude = -3.9; Fabricated = '0' },
-    @{ Name = 'Reiner Gamma'; Latitude = 7.5; Longitude = -59.0; Fabricated = '0' }
+    @{ Name = 'Reiner Gamma'; Latitude = 7.5; Longitude = -59.0; Fabricated = '0' },
+    @{ Name = 'Cabeus B Crater'; Latitude = -81.65; Longitude = -54.65; Fabricated = '0' },
+    @{ Name = 'Malapert C Crater'; Latitude = -82.1; Longitude = 10.95; Fabricated = '0' },
+    @{ Name = 'Wiechert U Crater'; Latitude = -83.25; Longitude = 149.5; Fabricated = '0' },
+    @{ Name = 'Lovelace E Crater'; Latitude = 81.95; Longitude = -96.8; Fabricated = '0' },
+    @{ Name = 'Nansen A Crater'; Latitude = 82.15; Longitude = 64.3; Fabricated = '0' }
 )
 
 $rows = @(Import-Csv -LiteralPath $sourceCsv)
-if ($rows.Count -ne 30 -or $siteMetadata.Count -ne 30) {
-    throw "Expected 30 approved yield rows and 30 site metadata rows."
+$expectedSiteCount = 35
+if ($rows.Count -ne $expectedSiteCount -or
+    $siteMetadata.Count -ne $expectedSiteCount) {
+    throw "Expected $expectedSiteCount approved yield rows and site metadata rows."
 }
 
 $profiles = New-Object System.Collections.Generic.List[object]
@@ -52,7 +59,7 @@ $siteLocalization = New-Object System.Collections.Generic.List[string]
 $profileLocalization = New-Object System.Collections.Generic.List[string]
 $resourceNames = @('water', 'volatiles', 'metals', 'nobles', 'fissiles')
 
-for ($index = 0; $index -lt 30; $index++) {
+for ($index = 0; $index -lt $expectedSiteCount; $index++) {
     $row = $rows[$index]
     $metadata = $siteMetadata[$index]
     if ($row.site -ne $metadata.Name) {
@@ -127,4 +134,4 @@ $utf8NoBom = New-Object System.Text.UTF8Encoding($false)
     (($profileLocalization -join [Environment]::NewLine) + [Environment]::NewLine),
     $utf8NoBom)
 
-Write-Host 'PASS: generated 30 lunar site and mining-profile overrides.'
+Write-Host "PASS: generated $expectedSiteCount lunar site and mining-profile overrides."

@@ -14,12 +14,15 @@ $moduleSourcePath = Join-Path $VanillaTemplatesDir 'TIHabModuleTemplate.json'
 $moduleOverridePath = Join-Path $RepositoryRoot 'TIEconomyMod\ModFiles\TIHabModuleTemplate.json'
 $habOverridePath = Join-Path $RepositoryRoot 'TIEconomyMod\ModFiles\TIHabTemplate.json'
 $globalOverridePath = Join-Path $RepositoryRoot 'TIEconomyMod\ModFiles\TIGlobalConfig.json'
+$maintenanceProposalPath = Join-Path $RepositoryRoot `
+    'docs\hab-economy\hab-module-maintenance-proposals.csv'
 
 foreach ($requiredPath in @(
     $moduleSourcePath,
     $moduleOverridePath,
     $habOverridePath,
-    $globalOverridePath
+    $globalOverridePath,
+    $maintenanceProposalPath
 )) {
     if (-not (Test-Path -LiteralPath $requiredPath)) {
         throw "Required hab-rebalance input is missing: $requiredPath"
@@ -75,6 +78,16 @@ $materialNames = @(
     'antimatter',
     'exotics'
 )
+$maintenanceResources = [ordered]@{
+    boost = 'boost'
+    water = 'water'
+    volatiles = 'volatiles'
+    metals = 'metals'
+    nobleMetals = 'noble_metals'
+    fissiles = 'fissiles'
+    antimatter = 'antimatter'
+    exotics = 'exotics'
+}
 $cleanMassIncrementTons = 5.0
 
 $vanillaJson = Get-Content -LiteralPath $moduleSourcePath -Raw | ConvertFrom-Json
@@ -89,9 +102,18 @@ $expected = @($vanilla | Where-Object {
 })
 $overrideJson = Get-Content -LiteralPath $moduleOverridePath -Raw | ConvertFrom-Json
 $overrides = @($overrideJson | ForEach-Object { $_ })
+$proposalRows = @(Import-Csv -LiteralPath $maintenanceProposalPath)
+$proposalByName = @{}
+foreach ($proposal in $proposalRows) {
+    if ($proposalByName.ContainsKey($proposal.data_name)) {
+        throw "Duplicate maintenance proposal for $($proposal.data_name)."
+    }
+    $proposalByName[$proposal.data_name] = $proposal
+}
 
-if ($expected.Count -ne 110 -or $overrides.Count -ne 110) {
-    throw "Expected 110 vanilla targets and overrides; found $($expected.Count) and $($overrides.Count)."
+if ($expected.Count -ne 110 -or $overrides.Count -ne 110 -or
+    $proposalRows.Count -ne 110) {
+    throw "Expected 110 vanilla targets, overrides, and maintenance proposals; found $($expected.Count), $($overrides.Count), and $($proposalRows.Count)."
 }
 $duplicates = $overrides | Group-Object dataName | Where-Object Count -ne 1
 if ($duplicates) {
@@ -104,11 +126,14 @@ foreach ($template in $vanilla) {
 }
 $expectedNames = @($expected.dataName | Sort-Object)
 $actualNames = @($overrides.dataName | Sort-Object)
-if (($expectedNames -join ';') -ne ($actualNames -join ';')) {
-    throw 'Hab-module overrides do not exactly match the human-buildable T1-T3 target set.'
+$proposalNames = @($proposalRows.data_name | Sort-Object)
+if (($expectedNames -join ';') -ne ($actualNames -join ';') -or
+    ($expectedNames -join ';') -ne ($proposalNames -join ';')) {
+    throw 'Hab-module overrides and maintenance proposals do not exactly match the human-buildable T1-T3 target set.'
 }
 
 $overrideByName = @{}
+$maintenanceTotalByTier = @{ 1 = 0.0; 2 = 0.0; 3 = 0.0 }
 foreach ($override in $overrides) {
     $overrideByName[$override.dataName] = $override
     $source = $vanillaByName[$override.dataName]
@@ -146,13 +171,99 @@ foreach ($override in $overrides) {
     }
 
     if ($source.tier -eq 1) {
+        $expectedCrew = $crewValues[$override.dataName]
+        if ([double]$source.power -gt 0) {
+            $expectedCrew *= 2
+        }
         if (-not $crewValues.ContainsKey($override.dataName) -or
-            [int]$override.crew -ne $crewValues[$override.dataName]) {
+            [int]$override.crew -ne $expectedCrew) {
             throw "$($override.dataName) does not match the reviewed T1 crew map."
         }
     }
+    elseif ([double]$source.power -gt 0) {
+        if (-not $override.PSObject.Properties['crew'] -or
+            [int]$override.crew -ne [int]$source.crew * 2) {
+            throw "$($override.dataName) does not double generator crew."
+        }
+    }
     elseif ($override.PSObject.Properties['crew']) {
-        throw "$($override.dataName) unexpectedly overrides non-T1 crew."
+        throw "$($override.dataName) unexpectedly overrides non-generator T2/T3 crew."
+    }
+
+    if ([double]$source.power -gt 0) {
+        if (-not $override.PSObject.Properties['power'] -or
+            [double]$override.power -ne [double]$source.power * 2) {
+            throw "$($override.dataName) does not double direct generator output."
+        }
+    }
+    elseif ($override.PSObject.Properties['power']) {
+        throw "$($override.dataName) unexpectedly overrides non-generator power."
+    }
+
+    $proposal = $proposalByName[$override.dataName]
+    $vanillaMaintenance = $source.supportMaterials_month
+    $overrideMaintenance = $override.supportMaterials_month
+    $vanillaResourceTotal = 0.0
+    $proposedResourceTotal = 0.0
+    foreach ($resource in $maintenanceResources.GetEnumerator()) {
+        $vanillaProperty = if ($null -eq $vanillaMaintenance) {
+            $null
+        }
+        else {
+            $vanillaMaintenance.PSObject.Properties[$resource.Key]
+        }
+        $vanillaValue = if ($null -eq $vanillaProperty) {
+            0.0
+        }
+        else {
+            [double]$vanillaProperty.Value
+        }
+        $proposedValue = [double]$proposal.($resource.Value)
+        $overrideProperty = if ($null -eq $overrideMaintenance) {
+            $null
+        }
+        else {
+            $overrideMaintenance.PSObject.Properties[$resource.Key]
+        }
+        $vanillaResourceTotal += $vanillaValue
+        $proposedResourceTotal += $proposedValue
+        if ($vanillaValue -gt 0) {
+            if ($proposedValue -le 0 -or
+                $null -eq $overrideProperty -or
+                [Math]::Abs([double]$overrideProperty.Value - $proposedValue) -gt 0.000001) {
+                throw "$($override.dataName) does not preserve '$($resource.Key)' at its approved maintenance value."
+            }
+        }
+        elseif ($proposedValue -ne 0 -or $null -ne $overrideProperty) {
+            throw "$($override.dataName) adds maintenance resource '$($resource.Key)'."
+        }
+    }
+    if ($vanillaResourceTotal -eq 0) {
+        if ($null -ne $overrideMaintenance) {
+            throw "$($override.dataName) adds a maintenance object to a zero-resource module."
+        }
+    }
+    else {
+        if ($null -eq $overrideMaintenance -or
+            [double]$overrideMaintenance.money -ne [double]$vanillaMaintenance.money) {
+            throw "$($override.dataName) does not preserve vanilla money maintenance."
+        }
+    }
+    if ($proposedResourceTotal -gt $vanillaResourceTotal + 0.000001 -or
+        [Math]::Abs(
+            $proposedResourceTotal * 10 -
+            [double]$proposal.proposed_tons_month) -gt 0.01) {
+        throw "$($override.dataName) maintenance violates the approved cap or total."
+    }
+    $maintenanceTotalByTier[[int]$source.tier] += $proposedResourceTotal * 10
+}
+
+$expectedMaintenanceTotalByTier = @{ 1 = 178.585; 2 = 890.425; 3 = 3346.3 }
+foreach ($tier in 1..3) {
+    if ([Math]::Abs(
+        $maintenanceTotalByTier[$tier] -
+        $expectedMaintenanceTotalByTier[$tier]) -gt 0.01) {
+        throw "T$tier maintenance totals $($maintenanceTotalByTier[$tier]) instead of $($expectedMaintenanceTotalByTier[$tier]) t/month."
     }
 }
 
@@ -240,4 +351,4 @@ Assert-Station $habByName.Tiangong 'EscapeCouncil' `
     @('PlatformCore', 'SolarCollector', 'LifeScienceLab', '', '') `
     @('', '', '', '') @('', '', '', '') 80 3
 
-Write-Host 'PASS: 110 hab-module overrides, T1 crew, consumables, and starting stations validate.'
+Write-Host 'PASS: 110 hab-module overrides, T1-T3 maintenance, doubled generators, consumables, and starting stations validate.'

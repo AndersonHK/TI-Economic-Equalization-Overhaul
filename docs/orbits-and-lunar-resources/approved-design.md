@@ -1,7 +1,7 @@
 # Earth Orbits, Launch Costs, and Lunar Resource Semantics
 
 Status: approved and implemented design authority for Parts 1-5 of the
-Earth-orbit and Luna-site change. The approved thirty-site roster, numeric
+Earth-orbit and Luna-site change. The approved thirty-five-site roster, numeric
 mining bands, vanilla comparisons, and mass rationale are recorded in
 [resource-yield-comparison.md](resource-yield-comparison.md).
 
@@ -196,7 +196,7 @@ much of it associated with solar-wind exposure. See
 Follow the repository's `Plan -> Document -> Implement -> Build -> Deploy ->
 Test -> Document` workflow.
 
-1. Complete and approve the thirty-site Luna roster, coordinates, profile
+1. Complete and approve the thirty-five-site Luna roster, coordinates, profile
    bands, and mass rationale in the companion resource document and CSV.
 2. Add a pure `EarthLaunchCostMath` authority and formula tests.
 3. Add Harmony patches for generic Earth launch cost and every remaining
@@ -205,12 +205,12 @@ Test -> Document` workflow.
 5. Update the three starting-habitat orbit references.
 6. Add site-specific lunar mining profiles rather than modifying broadly
    reused vanilla profiles.
-7. Add or override the thirty lunar site templates and their localization.
+7. Add or override the thirty-five lunar site templates and their localization.
 8. Replace Earth's orbit array and Luna's habitat-site array. Add
    `TISpaceBodyTemplate.json` to `TemplatesToReplaceArrays` so these arrays do
    not merge by index.
 9. Extend automatic validation to require:
-   - exactly thirty unique Luna sites;
+   - exactly thirty-five unique Luna sites;
    - valid and unique coordinates and grid positions;
    - at least 200 km great-circle separation between every pair of Luna sites;
    - resolvable mining-profile and localization references;
@@ -225,7 +225,7 @@ Test -> Document` workflow.
    - ISS, skirmish ISS, and Tiangong in the +40-degree orbit;
    - no instantiated Tiangong or ISS bespoke orbit;
    - comparison snapshots for vanilla Luna, vanilla Mars, and the approved
-     thirty-site proposal.
+     thirty-five-site proposal.
 10. Run `tools/deploy.ps1` without `-SkipVerification`. The script must perform
     the build, automated verification, game-process checks, and package copy.
 11. Immediately report that the deployed build is ready for manual testing.
@@ -234,7 +234,7 @@ Test -> Document` workflow.
     - compare displayed and charged Boost costs at 0, +/-20, and +/-40 degrees;
     - test a destination beyond LEO;
     - test construction and crew resupply cost consistency;
-    - inspect all thirty lunar map markers;
+    - inspect all thirty-five lunar map markers;
     - prospect the Moon across repeated seeds and confirm every output remains
       inside its approved band;
     - check that absent Water and Volatiles never appear;
@@ -248,16 +248,16 @@ The approved design was implemented and deployed on 2026-08-17 against Terra
 Invicta 1.0.51.
 
 - `tools/deploy.ps1` completed release verification without
-  `-SkipVerification` and deployed 42 hash-verified files.
+  `-SkipVerification` and deployed 44 hash-verified files.
 - The release DLL SHA-256 is
-  `F66FC744CDE60505284815B24921575424AA28F8EF0B6A9A41D6B342EB71CD8F`.
-- Formula tests passed 1,068 assertions.
+  `92DB6F63EB90BF86661E8C6A405D2BEB04D86C0CCA05A92D8B8ED94AE9123CCD`.
+- Formula tests passed 1,070 assertions.
 - Runtime validation applied all 142 maintained Harmony patches and specifically
   confirmed the three new Earth launch-cost patches against the installed game.
 - Data validation confirmed the four inclination templates, retired bespoke
-  station orbits, three migrated starting habitats, thirty unique lunar sites,
-  thirty site-specific profiles, exact approved bands, and corrected English
-  resource semantics.
+  station orbits, three migrated starting habitats, thirty-five unique lunar
+  sites, thirty-five site-specific profiles, 595 compliant pairwise distances,
+  exact approved bands, and corrected English resource semantics.
 - The enabled package is under
   `Mods/Enabled/Economic Equalization Overhaul` in the detected game install.
 
@@ -270,8 +270,8 @@ or AI-valuation issue should be appended here with its campaign conditions.
 - 2026-08-17: the Earth overview's Moon list displayed the unresolved key
   `TIMiningProfileTemplate.displayName.EEOLunarSite01Mine` in Luna's Type
   column. The site-profile generator supplied descriptions but omitted the
-  display-name localization required by that UI path. The corrective design is
-  to localize every site-specific profile as the vanilla-compatible type
+  display-name localization required by that UI path. The deployed correction
+  localizes every site-specific profile as the vanilla-compatible type
   `Lunar`, while retaining its geological role in the profile description, and
   to make this display-name key an automatic validation requirement.
 - 2026-08-17: in the new-campaign Luna map, Shackleton, Cabeus, Haworth,
@@ -281,3 +281,10 @@ or AI-valuation issue should be appended here with its campaign conditions.
   other four with Plato, Humboldt, Clavius, and Gagarin. Automatic validation
   now requires at least 200 km great-circle separation; the revised roster's
   actual minimum is 324 km.
+- 2026-08-17: the roster was expanded from thirty to thirty-five sites to
+  represent additional plausible polar ice deposits without relaxing the
+  200 km readability floor. Cabeus B, Malapert C, Wiechert U, Lovelace E, and
+  Nansen A use mapped PSR positions and modest high-variance Water/Volatiles
+  bands. The final minimum separation is 207 km. This roster and the preceding
+  Type/display-name correction were deployed after full verification on the
+  same date.

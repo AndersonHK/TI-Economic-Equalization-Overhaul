@@ -37,7 +37,9 @@ when prose and runtime behavior disagree.
   2022 and 2026 army/navy inventories and their source methodology.
 - [Starting technology and project audit](starting-technology-2022-2026.md):
   authoritative 2022/2026 active research, completed technologies, starting
-  projects, dependency audit, and 2026 Skywatch progression decision.
+  projects, dependency audit, shared Space Tourism, Deep Space Propulsion, and
+  Augmented Reality decisions, the Augmented Reality Military-cap effect, and
+  the 2026 Skywatch and Outpost Habs progression decisions.
 - [2003 starting technology audit](starting-technology-2003.md): Dark Skies
   opening technologies, completed projects, alien pacing, and current Economic
   Equalization compatibility limits.
@@ -45,13 +47,17 @@ when prose and runtime behavior disagree.
   auditable 2003/2022/2026 vanilla, nominal, and PPP GDP-per-capita comparisons,
   with populations, effective starting-GDP scaling, source coverage, the
   scenario-scaled plausibility-clamp proposal, and its gap-fill audit.
+- [Starting economic values implementation](economic-data/starting-economic-values-implementation.md):
+  authoritative JSON transformation, geography-audited population distribution,
+  validation, and deployment record for the implemented 2003/2022/2026 nation
+  GDP and regional population values.
 - [Alien start, wormhole, and Earth-invasion audit](alien-start-wormhole-and-earth-invasion.md):
   scenario-by-scenario alien day-one assets, campaign-setting effects,
   wormhole income formulas, invasion timing, and assault-carrier landing AI.
 - [Earth orbits, launch costs, and lunar resource semantics](orbits-and-lunar-resources/approved-design.md):
   authoritative inclination-aware Earth launch costs, four additional LEO
   bands, ISS/Tiangong migration, corrected resource semantics, and the
-  implemented thirty-site Luna roster. Its companion
+  implemented thirty-five-site Luna roster. Its companion
   [Luna yield comparison](orbits-and-lunar-resources/resource-yield-comparison.md)
   records the approved mass-grounded bands and vanilla Luna/Mars comparisons.
 

@@ -1,8 +1,21 @@
 # T1 monthly demand scaling proposal
 
 Date: 2026-08-17  
-Status: **approved for later implementation**, including the power-plant
-aggregation rule below; no template changes implemented yet
+Status: **implemented and deployed**, including the power-plant aggregation
+rule below; manual in-game testing pending
+
+The machine-readable approved values are in
+[`hab-module-maintenance-proposals.csv`](hab-module-maintenance-proposals.csv).
+The generator aggregation is deliberately save-compatible: existing placed
+generators gain 2x output while their crew and monthly resource burden also
+become 2x, so old layouts gain power headroom instead of shutting down. New
+generator construction pays 2x resources and Boost through the runtime cost
+rewrite; template mass and build time are unchanged. Money maintenance is
+unchanged for every module.
+
+Deployment verification on 2026-08-17 passed the complete TI 1.0.51 release
+pipeline, including 1,070 formula assertions, guarded Harmony/IL checks, exact
+110-module proposal coverage, and hash verification of all 44 deployed files.
 
 ## Scaling rule
 
@@ -236,8 +249,8 @@ change:
 - Space Dock: 5.5 t/month versus 3.5 t/month target.
 - Mining Complex: 12.5 t/month versus 10.5 t/month target.
 
-This is ready to implement together with the T2 and T3 decisions after those
-passes are approved. Post-deployment gameplay testing can determine whether
+This is implemented together with the T2 and T3 decisions. Post-deployment
+gameplay testing can determine whether
 the collider and construction module warrant a later second pass toward their
 scaled targets, with their balance burden moved principally into power,
 construction cost, and money. Reactor maintenance intentionally remains near

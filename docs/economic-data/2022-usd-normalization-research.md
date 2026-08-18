@@ -1,6 +1,8 @@
 # Country economic normalization research
 
-Status: research basis for review; no gameplay data has been changed.
+Status: research and provenance record. The geography-audited clamp proposal was
+implemented in scenario JSON and deployed on 2026-08-17; see
+`starting-economic-values-implementation.md` for implementation authority.
 
 This note documents the country comparison tables prepared for the 2003, 2022,
 and 2026 Terra Invicta starts. The compact CSV contains the requested nine GDP
@@ -277,10 +279,11 @@ Territorial exceptions are explicit:
   World Bank observations when available and otherwise follow the documented
   peer-inference hierarchy.
 
-This proposal remains a research artifact. It does not yet specify how a changed
-country population should be distributed among that country's individual region
-templates; proportional scaling of the existing regional shares is the simplest
-implementation rule, but should be approved before gameplay data is changed.
+The approved proposal is implemented in partial nation and region JSON
+overrides. Changed country populations are distributed proportionally across
+their existing region shares, with final-region decimal correction so each
+country total matches the reviewed proposal. The scenario GDP scalers remain
+unchanged.
 
 ## Interpretation for the tuning decision
 

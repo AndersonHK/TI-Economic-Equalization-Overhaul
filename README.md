@@ -99,9 +99,16 @@ historical research and deferred work.
 - Xenofauna is capped at 5 base Military technology; Purge and Enthrall Elites
   receive +1 defense. Damage to an army clearing alien flora scales linearly
   with the infestation level, reaching the vanilla amount at level 100.
-- The 2022 and 2026 scenarios begin with Mission to Space and Advanced Chemical
-  Rocketry completed, Outpost Habs in the active global-technology lineup, and
-  the implemented historically rescaled army/navy inventories.
+- The 2022 and 2026 scenarios begin with Mission to Space, Advanced Chemical
+  Rocketry, Space Tourism, Deep Space Propulsion Concepts, and Augmented Reality
+  completed. The 2022 lineup keeps Outpost Habs active; the 2026 lineup completes
+  it and continues that research lane with Mission to the Moon. Both starts also
+  include the implemented historically rescaled army/navy inventories.
+  Augmented Reality raises the maximum human Military technology level by 0.5,
+  representing networked sensors, digital communications, augmented displays,
+  and unmanned warfare without directly upgrading any nation's current level.
+  Its authored research cost is 2,000, or 4,000 after EEO's global multiplier,
+  keeping it below Space Research at 5,000.
 
 ### Habs and manufacturing logistics
 
@@ -146,7 +153,7 @@ historical research and deferred work.
 - Launch cost uses a two-impulse ascent, Earth's runtime rotation and gravity,
   and the existing faction exhaust-velocity conversion. Boost-production
   latitude bonuses remain separate from destination launch cost.
-- Luna has thirty named, geographically distributed sites with bounded,
+- Luna has thirty-five named, geographically distributed sites with bounded,
   site-specific mining profiles. Water is confined to supported polar cold
   traps, Volatiles to cold traps and supported pyroclastic deposits, and trace
   Fissiles to KREEP or thorium-related provinces.
@@ -206,7 +213,7 @@ runtime-derived. They add no serialized state and rebuild lazily after loading,
 so existing saves remain compatible. Other affected systems likewise avoid new
 save fields unless a document explicitly says otherwise.
 
-The new Earth orbit-state roster, starting-station placement, and thirty-site
+The new Earth orbit-state roster, starting-station placement, and thirty-five-site
 Luna map are new-campaign features. Existing campaigns retain the orbit and site
 states serialized when they were created.
 
@@ -237,8 +244,9 @@ Verification rebuilds with warnings as errors and checks:
 - 2022/2026 starting forces and navy floors;
 - package layout, version metadata, and release archive contents.
 - Earth launch formula calibration and minimum-cost site/parking selection;
-- the four inclination bands, starting-station migration, thirty lunar sites,
-  site-specific resource bounds, and corrected resource localization.
+- the four inclination bands, starting-station migration, thirty-five lunar sites,
+  site-specific resource bounds, 200 km minimum separation, and corrected
+  resource localization.
 
 ## Deployment
 
@@ -309,7 +317,7 @@ enabled-mod destination and verifies every deployed file by SHA-256.
 - Compare a destination beyond LEO and verify the selected launch path is not
   tied to Low Earth Orbit 1. Exercise construction and crew resupply so their
   costs agree with the shared authority.
-- Inspect all thirty Luna markers and prospect across several campaign seeds.
+- Inspect all thirty-five Luna markers and prospect across several campaign seeds.
   Every resource must remain inside its approved bounded band; dry sites must
   never gain Water or Volatiles. Check small Fissiles values display, accumulate,
   and affect AI mine valuation sensibly.

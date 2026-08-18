@@ -38,6 +38,11 @@ whether the result understates the ability to equip, support, and replace major
 formations. The US calibration is thirteen counters: about 1.3 million active
 personnel, exceptional joint support, and sufficient spending for thirteen
 sustained packages. Miltech still represents equipment and doctrinal quality.
+It is calibrated to average fielded joint-force capability rather than the
+country's newest equipment; combat-aircraft fleet generation is the primary
+real-world shorthand. A mixed fleet of fourth-, 4.5-, and fifth-generation
+aircraft therefore supports a fractional average rather than assigning the
+whole country its best aircraft's generation.
 
 ## Conversion method
 
@@ -78,7 +83,8 @@ headcount. See the [EDA Defence Data portal](https://eda.europa.eu/publications-
 Counts are whole counters. `startingStrength` is retained for forces damaged or
 seriously under-manned at the scenario date; it is not used as a substitute for
 low military technology. Equipment, training, command, and doctrine belong in
-`miltech`.
+`miltech`; so do the force-wide diffusion of sensors, digital communications,
+electronic warfare, precision weapons, drones, and helmet-mounted displays.
 
 ### Military-expenditure cross-check
 

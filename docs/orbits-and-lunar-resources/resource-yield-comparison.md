@@ -1,8 +1,8 @@
-# Luna Resource Yield Comparison and Approved Thirty-Site Revision
+# Luna Resource Yield Comparison and Approved Thirty-Five-Site Revision
 
 Status: approved and implemented Part 4 authority. This document compares the
 installed Terra Invicta 1.0.51 Luna and Mars profiles with the mass-grounded
-thirty-site lunar roster and its bounded resource bands.
+thirty-five-site lunar roster and its bounded resource bands.
 
 ## Units and generator behavior
 
@@ -132,7 +132,7 @@ One resource point is ten tonnes. Thus:
 - A vanilla `0.5`-point lunar fissile roll means five tonnes per month and is
   inconsistent with a common-throughput mass comparison.
 
-## Approved thirty-site distribution
+## Approved thirty-five-site distribution
 
 These are bounded base monthly resource points before mine multipliers. A dash
 means guaranteed zero. This table is the approved implementation authority.
@@ -169,6 +169,11 @@ means guaranteed zero. This table is the approved implementation authority.
 | Kepler Crater | Procellarum impact excavation | - | - | 2.75-26.25 | 0.025-0.575 | 0.00125-0.02875 |
 | Rima Bode | Regional Fe/Ti-rich pyroclastic deposit | - | 0.0125-0.2875 | 3.5-32.5 | 0.125-2.375 | 0.00075-0.02225 |
 | Reiner Gamma | High-priority lunar swirl over mare material | - | - | 3-28 | 0.025-0.575 | - |
+| Cabeus B Crater | Large south-polar permanently shadowed region | 0.25-6.75 | 0.05-1.35 | 1-11 | - | - |
+| Malapert C Crater | South-polar crater adjoining a large permanently shadowed region | 0.25-5.75 | 0.05-1.15 | 1-11 | - | - |
+| Wiechert U Crater | South-polar crater with a mapped permanently shadowed region | 0.05-2.95 | 0.0125-0.5875 | 1-11 | - | - |
+| Lovelace E Crater | North-polar crater with a mapped permanently shadowed region | 0.1-3.9 | 0.025-0.775 | 1-11 | - | - |
+| Nansen A Crater | North-polar crater with a mapped permanently shadowed region | 0.1-3.9 | 0.025-0.775 | 1-11 | - | - |
 
 ### Spatial-separation revision
 
@@ -188,12 +193,44 @@ sites are replaced with globally distributed dry craters:
 | Shoemaker | Clavius | -58.62 | -14.73 | 469 km |
 | Faustini | Gagarin | -19.66 | +149.35 | 577 km |
 
-The final roster's closest pair is Marius Hills and Reiner Gamma at 324 km,
-comfortably above the validated floor. Coordinates use the IAU/USGS Gazetteer
+The revised thirty-site roster's closest pair was Marius Hills and Reiner Gamma
+at 324 km, comfortably above the validated floor. Coordinates use the
+IAU/USGS Gazetteer
 entries for [Plato](https://planetarynames.wr.usgs.gov/Feature/4757),
 [Humboldt](https://planetarynames.wr.usgs.gov/Feature/2582),
 [Clavius](https://planetarynames.wr.usgs.gov/Feature/1236), and
 [Gagarin](https://planetarynames.wr.usgs.gov/Feature/2054).
+
+### Five-site polar expansion
+
+The 200 km rule still leaves room for large permanently shadowed regions farther
+from the exact poles. Five additional named satellite craters expand the roster
+to thirty-five without recreating the original pileup:
+
+| Added site | Modeled deposit position | Hemisphere | Nearest retained site |
+|---|---:|---|---:|
+| Cabeus B Crater | -81.65, -54.65 | South | Shackleton, 252 km |
+| Malapert C Crater | -82.10, +10.95 | South | Shackleton, 237 km |
+| Wiechert U Crater | -83.25, +149.50 | South | Shackleton, 207 km |
+| Lovelace E Crater | +81.95, -96.80 | North | Peary, 268 km |
+| Nansen A Crater | +82.15, +64.30 | North | Peary, 208 km |
+
+These coordinates represent the mapped PSR within or adjoining the named crater,
+not necessarily its geometric center. The LRO/LEND catalog explicitly includes
+all five among large permanently shadowed regions, but only three other PSRs in
+the complete study showed statistically significant local neutron suppression.
+The new profiles are therefore modest, high-variance prospects rather than
+Cabeus-class confirmed deposits. See the
+[LEND PSR study](https://ntrs.nasa.gov/citations/20140005994), the IAU/USGS
+entries for [Cabeus B](https://planetarynames.wr.usgs.gov/Feature/8058),
+[Malapert C](https://planetarynames.wr.usgs.gov/Feature/11083),
+[Lovelace E](https://planetarynames.wr.usgs.gov/Feature/10944), and
+[Nansen A](https://planetarynames.wr.usgs.gov/Feature/11531), and NASA's finding
+that [ice indications extend in PSRs to at least 77 degrees south latitude](https://science.nasa.gov/solar-system/moon/nasas-lro-lunar-ice-deposits-are-widespread/).
+
+The final thirty-five-site roster's minimum separation is 207 km between
+Shackleton and Wiechert U. Every one of the 595 site pairs is checked against
+the 200 km release threshold.
 
 The added dry sites expand the represented geology rather than adding generic
 duplicates. Gruithuisen represents uncommon silicic volcanism; Mare
@@ -215,23 +252,24 @@ listed upper values. Proposal totals are strictly bounded.
 | Body/profile set | Sites | Water total | Volatiles total | Metals total | Noble total | Fissiles total |
 |---|---:|---:|---:|---:|---:|---:|
 | Vanilla Luna, ordinary bands | 9 | 10-30 | 0-25.5 | 48-152.5 | 0.8-5 | 0.08-4.6 |
-| Approved Luna distribution | 30 | 1-15 | 0.35-6.55 | 80.5-764.5 | 2.55-40.5 | 0.016-0.403 |
+| Approved Luna distribution | 35 | 1.75-38.25 | 0.5125-11.1875 | 85.5-819.5 | 2.55-40.5 | 0.016-0.403 |
 | Vanilla Mars, ordinary bands | 25 | 580-740 | 370-620 | 297.5-702.5 | 22.4-152.5 | 0.64-16.925 |
 
-The distribution's midpoint lunar metal output is about 4.2 times vanilla
-Luna's ordinary-band midpoint. Most of that is the increase from nine to thirty
-sites: mean metal output per site rises from about 11.1 to 14.1 points. Water is
-restricted to the two geographically separated polar anchors and its aggregate
-midpoint falls from vanilla's 20 points to 8. Aggregate Volatiles also fall to a
-3.45-point midpoint because only the polar anchors and supported pyroclastic
+The distribution's midpoint lunar metal output is about 4.5 times vanilla
+Luna's ordinary-band midpoint. Most of that is the increase from nine to
+thirty-five sites: mean metal output per site rises from about 11.1 to 12.9
+points. The seven geographically separated polar prospects have a combined
+Water midpoint of 20 points, matching vanilla Luna's ordinary-band aggregate
+midpoint while adding much wider bounded variation. Aggregate Volatiles remain
+lower at a 5.85-point midpoint because only polar PSRs and supported pyroclastic
 sites produce them. Aggregate Fissiles fall by roughly 91% versus vanilla's
 ordinary midpoint.
 
 Relative to vanilla Luna, the approved distribution:
 
-- increases the site count from 9 to 30;
-- keeps ordinary lunar Water at zero and restricts it to two separated polar
-  anchor sites;
+- increases the site count from 9 to 35;
+- keeps ordinary lunar Water at zero and restricts it to seven separated polar
+  PSR sites;
 - removes accidental generic Volatiles and permits only polar or
   evidence-supported pyroclastic output;
 - keeps most lunar Metals inside vanilla's broad range while making geological

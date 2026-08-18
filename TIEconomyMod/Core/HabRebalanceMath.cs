@@ -168,6 +168,12 @@ namespace TIEconomyMod
             return isUpgrade ? UpgradeRate : 1f;
         }
 
+        internal static float GeneratorConstructionCostMultiplier(
+            bool directPowerGenerator)
+        {
+            return directPowerGenerator ? 2f : 1f;
+        }
+
         internal static bool HasEarthDelivery(float boost)
         {
             return boost > FractionTolerance;

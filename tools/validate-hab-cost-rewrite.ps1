@@ -71,6 +71,19 @@ try {
         throw 'Hab delivery time must use the centralized payload-specific modifier exactly once.'
     }
 
+    $buildMaterialsMatch = [regex]::Match(
+        $assemblyIl,
+        '(?s)\.class private abstract auto ansi sealed beforefieldinit ' +
+        'TIEconomyMod\.Patches\.HabBuildMaterialsRewritePatch.*?' +
+        '// end of method HabBuildMaterialsRewritePatch::Prefix')
+    if (-not $buildMaterialsMatch.Success -or
+        [regex]::Matches(
+            $buildMaterialsMatch.Value,
+            'HabRebalanceMath::GeneratorConstructionCostMultiplier\(').Count -ne 1 -or
+        -not $buildMaterialsMatch.Value.Contains('TIHabModuleTemplate::power')) {
+        throw 'Hab construction must apply the direct-generator 2x resource-cost multiplier exactly once.'
+    }
+
     $probeMethodMatch = [regex]::Match(
         $assemblyIl,
         '(?s)\.class private abstract auto ansi sealed beforefieldinit ' +

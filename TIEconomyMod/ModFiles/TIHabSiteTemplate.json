@@ -388,5 +388,70 @@
         "backgroundPath":  "habmodules/surface_09",
         "fabricatedData":  "0",
         "Density":  3.34
+    },
+    {
+        "friendlyName":  "Cabeus B Crater",
+        "dataName":  "LunaSite31",
+        "parentBodyName":  "Luna",
+        "X":  0,
+        "Y":  5,
+        "latitude":  -81.65,
+        "longitude":  -54.65,
+        "miningProfileName":  "EEOLunarSite31Mine",
+        "backgroundPath":  "habmodules/surface_09",
+        "fabricatedData":  "0",
+        "Density":  3.34
+    },
+    {
+        "friendlyName":  "Malapert C Crater",
+        "dataName":  "LunaSite32",
+        "parentBodyName":  "Luna",
+        "X":  1,
+        "Y":  5,
+        "latitude":  -82.1,
+        "longitude":  10.95,
+        "miningProfileName":  "EEOLunarSite32Mine",
+        "backgroundPath":  "habmodules/surface_09",
+        "fabricatedData":  "0",
+        "Density":  3.34
+    },
+    {
+        "friendlyName":  "Wiechert U Crater",
+        "dataName":  "LunaSite33",
+        "parentBodyName":  "Luna",
+        "X":  2,
+        "Y":  5,
+        "latitude":  -83.25,
+        "longitude":  149.5,
+        "miningProfileName":  "EEOLunarSite33Mine",
+        "backgroundPath":  "habmodules/surface_09",
+        "fabricatedData":  "0",
+        "Density":  3.34
+    },
+    {
+        "friendlyName":  "Lovelace E Crater",
+        "dataName":  "LunaSite34",
+        "parentBodyName":  "Luna",
+        "X":  3,
+        "Y":  5,
+        "latitude":  81.95,
+        "longitude":  -96.8,
+        "miningProfileName":  "EEOLunarSite34Mine",
+        "backgroundPath":  "habmodules/surface_09",
+        "fabricatedData":  "0",
+        "Density":  3.34
+    },
+    {
+        "friendlyName":  "Nansen A Crater",
+        "dataName":  "LunaSite35",
+        "parentBodyName":  "Luna",
+        "X":  4,
+        "Y":  5,
+        "latitude":  82.15,
+        "longitude":  64.3,
+        "miningProfileName":  "EEOLunarSite35Mine",
+        "backgroundPath":  "habmodules/surface_09",
+        "fabricatedData":  "0",
+        "Density":  3.34
     }
 ]

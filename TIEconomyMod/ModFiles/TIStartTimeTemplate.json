@@ -8,7 +8,10 @@
     ],
     "globalTechsCompleted": [
       "MissionToSpace",
-      "AdvancedChemicalRocketry"
+      "AdvancedChemicalRocketry",
+      "SpaceTourism",
+      "DeepSpacePropulsionConcepts",
+      "AugmentedReality"
     ],
     "projectsCompleted": [
       "Project_Solid-FuelSpaceRockets",
@@ -27,12 +30,16 @@
     "startingTechs": [
       "DeepSystemSkywatch",
       "WeAreNotAlone",
-      "OutpostHabs"
+      "MissiontotheMoon"
     ],
     "globalTechsCompleted": [
       "MissionToSpace",
       "AdvancedChemicalRocketry",
-      "Skywatch"
+      "SpaceTourism",
+      "DeepSpacePropulsionConcepts",
+      "AugmentedReality",
+      "Skywatch",
+      "OutpostHabs"
     ],
     "projectsCompleted": [
       "Project_Solid-FuelSpaceRockets",

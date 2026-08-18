@@ -103,16 +103,19 @@ $profiles = @(Read-Json (
     Join-Path $modFiles 'TIMiningProfileTemplate.json'))
 $approved = @(Import-Csv -LiteralPath (
     Join-Path $docs 'lunar-site-yield-proposal.csv'))
-if ($sites.Count -ne 30 -or $profiles.Count -ne 30 -or
-    $approved.Count -ne 30 -or @($luna[0].habSites).Count -ne 30) {
-    throw 'Luna must have exactly 30 sites, profiles, approved rows, and body references.'
+$expectedSiteCount = 35
+if ($sites.Count -ne $expectedSiteCount -or
+    $profiles.Count -ne $expectedSiteCount -or
+    $approved.Count -ne $expectedSiteCount -or
+    @($luna[0].habSites).Count -ne $expectedSiteCount) {
+    throw "Luna must have exactly $expectedSiteCount sites, profiles, approved rows, and body references."
 }
-if (@($sites.dataName | Sort-Object -Unique).Count -ne 30 -or
-    @($profiles.dataName | Sort-Object -Unique).Count -ne 30 -or
+if (@($sites.dataName | Sort-Object -Unique).Count -ne $expectedSiteCount -or
+    @($profiles.dataName | Sort-Object -Unique).Count -ne $expectedSiteCount -or
     @($sites | ForEach-Object { "$($_.X),$($_.Y)" } |
-        Sort-Object -Unique).Count -ne 30 -or
+        Sort-Object -Unique).Count -ne $expectedSiteCount -or
     @($sites | ForEach-Object { "$($_.latitude),$($_.longitude)" } |
-        Sort-Object -Unique).Count -ne 30) {
+        Sort-Object -Unique).Count -ne $expectedSiteCount) {
     throw 'Luna site IDs, profiles, grid positions, and coordinates must be unique.'
 }
 
@@ -121,7 +124,7 @@ $siteLoc = [IO.File]::ReadAllText((
 $profileLoc = [IO.File]::ReadAllText((
     Join-Path $modFiles 'TIMiningProfileTemplate.en'))
 $resources = @('water', 'volatiles', 'metals', 'nobles', 'fissiles')
-for ($index = 0; $index -lt 30; $index++) {
+for ($index = 0; $index -lt $expectedSiteCount; $index++) {
     $site = $sites[$index]
     $profile = @($profiles | Where-Object dataName -eq `
         $site.miningProfileName)
@@ -335,4 +338,4 @@ foreach ($typeName in @(
     }
 }
 
-Write-Host 'PASS: Earth orbits, launch-cost authority, station migration, and 30 Luna sites validated.'
+Write-Host "PASS: Earth orbits, launch-cost authority, station migration, and $expectedSiteCount Luna sites validated."

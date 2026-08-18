@@ -1,0 +1,4354 @@
+[
+    {
+        "dataName":  "2003_Afghanistan",
+        "population_Millions":  22.733049
+    },
+    {
+        "dataName":  "2003_Tirana",
+        "population_Millions":  3.118088
+    },
+    {
+        "dataName":  "2003_Algeria",
+        "population_Millions":  30.643664000
+    },
+    {
+        "dataName":  "2003_SaharanAlgeria",
+        "population_Millions":  1.532154000
+    },
+    {
+        "dataName":  "2003_Angola",
+        "population_Millions":  16.525948000
+    },
+    {
+        "dataName":  "2003_EastAngola",
+        "population_Millions":  1.417764000
+    },
+    {
+        "dataName":  "2003_GranChaco",
+        "population_Millions":  7.916257412
+    },
+    {
+        "dataName":  "2003_Pampas",
+        "population_Millions":  28.528333485
+    },
+    {
+        "dataName":  "2003_Patagonia",
+        "population_Millions":  1.979691103
+    },
+    {
+        "dataName":  "2003_Armenia",
+        "population_Millions":  3.038968
+    },
+    {
+        "dataName":  "2003_Brisbane",
+        "population_Millions":  4.061731615
+    },
+    {
+        "dataName":  "2003_Sydney",
+        "population_Millions":  6.554246992
+    },
+    {
+        "dataName":  "2003_Westralia",
+        "population_Millions":  2.143461324
+    },
+    {
+        "dataName":  "2003_Darwin",
+        "population_Millions":  0.187836028
+    },
+    {
+        "dataName":  "2003_Melbourne",
+        "population_Millions":  5.494534832
+    },
+    {
+        "dataName":  "2003_Adelaide",
+        "population_Millions":  1.377643209
+    },
+    {
+        "dataName":  "2003_Vienna",
+        "population_Millions":  8.156662
+    },
+    {
+        "dataName":  "2003_Azerbaijan",
+        "population_Millions":  8.40053
+    },
+    {
+        "dataName":  "2003_Bangladesh",
+        "population_Millions":  140.970351
+    },
+    {
+        "dataName":  "2003_Bahamas",
+        "population_Millions":  0.335618
+    },
+    {
+        "dataName":  "2003_Belarus",
+        "population_Millions":  9.803176
+    },
+    {
+        "dataName":  "2003_Belgium",
+        "population_Millions":  10.828098
+    },
+    {
+        "dataName":  "2003_Belize",
+        "population_Millions":  0.26378
+    },
+    {
+        "dataName":  "2003_TogoBenin",
+        "population_Millions":  7.91307
+    },
+    {
+        "dataName":  "2003_Bhutan",
+        "population_Millions":  0.637663
+    },
+    {
+        "dataName":  "2003_Bolivia",
+        "population_Millions":  9.0507
+    },
+    {
+        "dataName":  "2003_Sarajevo",
+        "population_Millions":  4.178523
+    },
+    {
+        "dataName":  "2003_Botswana",
+        "population_Millions":  1.775736
+    },
+    {
+        "dataName":  "2003_Amazonia",
+        "population_Millions":  4.995181000
+    },
+    {
+        "dataName":  "2003_Belem",
+        "population_Millions":  8.099575000
+    },
+    {
+        "dataName":  "2003_Brasilia",
+        "population_Millions":  10.268359000
+    },
+    {
+        "dataName":  "2003_Cuiaba",
+        "population_Millions":  6.884518000
+    },
+    {
+        "dataName":  "2003_Fortaleza",
+        "population_Millions":  23.163469000
+    },
+    {
+        "dataName":  "2003_PortoAlegre",
+        "population_Millions":  25.720084000
+    },
+    {
+        "dataName":  "2003_Recife",
+        "population_Millions":  25.956285000
+    },
+    {
+        "dataName":  "2003_RiodeJaneiro",
+        "population_Millions":  36.240372000
+    },
+    {
+        "dataName":  "2003_SaoPaulo",
+        "population_Millions":  39.294845000
+    },
+    {
+        "dataName":  "2003_Brunei",
+        "population_Millions":  0.346637
+    },
+    {
+        "dataName":  "2003_Bulgaria",
+        "population_Millions":  7.804409
+    },
+    {
+        "dataName":  "2003_BurkinaFaso",
+        "population_Millions":  13.082532
+    },
+    {
+        "dataName":  "2003_CaboVerde",
+        "population_Millions":  0.473383
+    },
+    {
+        "dataName":  "2003_Cambodia",
+        "population_Millions":  13.050968
+    },
+    {
+        "dataName":  "2003_Cameroon",
+        "population_Millions":  13.560132000
+    },
+    {
+        "dataName":  "2003_WestCameroon",
+        "population_Millions":  2.600208000
+    },
+    {
+        "dataName":  "2003_Alberta",
+        "population_Millions":  3.688094000
+    },
+    {
+        "dataName":  "2003_BritishColumbia",
+        "population_Millions":  4.379285000
+    },
+    {
+        "dataName":  "2003_CanadianArctic",
+        "population_Millions":  0.069635000
+    },
+    {
+        "dataName":  "2003_Halifax",
+        "population_Millions":  2.071616000
+    },
+    {
+        "dataName":  "2003_Laurentia",
+        "population_Millions":  7.090358000
+    },
+    {
+        "dataName":  "2003_Manitoba",
+        "population_Millions":  1.155600000
+    },
+    {
+        "dataName":  "2003_Ontario",
+        "population_Millions":  12.382522000
+    },
+    {
+        "dataName":  "2003_Prairies",
+        "population_Millions":  0.963475000
+    },
+    {
+        "dataName":  "2003_Yukon",
+        "population_Millions":  0.035897000
+    },
+    {
+        "dataName":  "2003_CentralAfricanRepublic",
+        "population_Millions":  2.994038000
+    },
+    {
+        "dataName":  "2003_Logone",
+        "population_Millions":  1.109048000
+    },
+    {
+        "dataName":  "2003_Chad",
+        "population_Millions":  7.204256000
+    },
+    {
+        "dataName":  "2003_NorthernChad",
+        "population_Millions":  2.283577000
+    },
+    {
+        "dataName":  "2003_Santiago",
+        "population_Millions":  12.370099000
+    },
+    {
+        "dataName":  "2003_Valparaiso",
+        "population_Millions":  3.654653000
+    },
+    {
+        "dataName":  "2003_Anhui",
+        "population_Millions":  55.734866957
+    },
+    {
+        "dataName":  "2003_Beijing",
+        "population_Millions":  100.840069922
+    },
+    {
+        "dataName":  "2003_Chongqing",
+        "population_Millions":  105.692949918
+    },
+    {
+        "dataName":  "2003_Fujian",
+        "population_Millions":  37.937710971
+    },
+    {
+        "dataName":  "2003_Gansu",
+        "population_Millions":  29.428135977
+    },
+    {
+        "dataName":  "2003_Guangzhou",
+        "population_Millions":  124.796033904
+    },
+    {
+        "dataName":  "2003_Guizhou",
+        "population_Millions":  35.218020973
+    },
+    {
+        "dataName":  "2003_Hangzhou",
+        "population_Millions":  58.968256954
+    },
+    {
+        "dataName":  "2003_HongKong",
+        "population_Millions":  6.448848995
+    },
+    {
+        "dataName":  "2003_Hunan",
+        "population_Millions":  60.682734953
+    },
+    {
+        "dataName":  "2003_InnerMongolia",
+        "population_Millions":  21.963600983
+    },
+    {
+        "dataName":  "2003_Jilin",
+        "population_Millions":  21.985791983
+    },
+    {
+        "dataName":  "2003_Liaoning",
+        "population_Millions":  38.897859970
+    },
+    {
+        "dataName":  "2003_Manchuria",
+        "population_Millions":  29.088033978
+    },
+    {
+        "dataName":  "2003_Nanchang",
+        "population_Millions":  41.269855968
+    },
+    {
+        "dataName":  "2003_Nanning",
+        "population_Millions":  45.779783965
+    },
+    {
+        "dataName":  "2003_Qinghai",
+        "population_Millions":  5.410228996
+    },
+    {
+        "dataName":  "2003_Shandong",
+        "population_Millions":  92.722944928
+    },
+    {
+        "dataName":  "2003_Shanghai",
+        "population_Millions":  100.112707923
+    },
+    {
+        "dataName":  "2003_Shanxi",
+        "population_Millions":  31.887717975
+    },
+    {
+        "dataName":  "2003_Tibet",
+        "population_Millions":  3.331734997
+    },
+    {
+        "dataName":  "2003_Wuhan",
+        "population_Millions":  52.744228959
+    },
+    {
+        "dataName":  "2003_Xian",
+        "population_Millions":  36.101025972
+    },
+    {
+        "dataName":  "2003_Xinjiang",
+        "population_Millions":  23.610417982
+    },
+    {
+        "dataName":  "2003_Yunnan",
+        "population_Millions":  43.115266967
+    },
+    {
+        "dataName":  "2003_Zhengzhou",
+        "population_Millions":  90.748494930
+    },
+    {
+        "dataName":  "2003_Colombia",
+        "population_Millions":  38.394924000
+    },
+    {
+        "dataName":  "2003_Villavicencio",
+        "population_Millions":  2.542505000
+    },
+    {
+        "dataName":  "2003_Kinshasa",
+        "population_Millions":  28.453926000
+    },
+    {
+        "dataName":  "2003_Kisangani",
+        "population_Millions":  14.775470000
+    },
+    {
+        "dataName":  "2003_Lubumbashi",
+        "population_Millions":  12.114471000
+    },
+    {
+        "dataName":  "2003_CostaRica",
+        "population_Millions":  4.138784
+    },
+    {
+        "dataName":  "2003_Zagreb",
+        "population_Millions":  4.306686
+    },
+    {
+        "dataName":  "2003_Cuba",
+        "population_Millions":  11.209383
+    },
+    {
+        "dataName":  "2003_Czechia",
+        "population_Millions":  10.248912
+    },
+    {
+        "dataName":  "2003_Denmark",
+        "population_Millions":  5.438043000
+    },
+    {
+        "dataName":  "2003_Greenland",
+        "population_Millions":  0.056761000
+    },
+    {
+        "dataName":  "2003_Djibouti",
+        "population_Millions":  0.813519
+    },
+    {
+        "dataName":  "2003_EastHispanola",
+        "population_Millions":  8.98062
+    },
+    {
+        "dataName":  "2003_Ecuador",
+        "population_Millions":  13.372306
+    },
+    {
+        "dataName":  "2003_Alexandria",
+        "population_Millions":  26.896315345
+    },
+    {
+        "dataName":  "2003_Cairo",
+        "population_Millions":  37.635125483
+    },
+    {
+        "dataName":  "2003_Luxor",
+        "population_Millions":  13.322107172
+    },
+    {
+        "dataName":  "2003_ElSalvador",
+        "population_Millions":  5.998599
+    },
+    {
+        "dataName":  "2003_EquatorialGuinea",
+        "population_Millions":  0.847862
+    },
+    {
+        "dataName":  "2003_Eritrea",
+        "population_Millions":  2.493903
+    },
+    {
+        "dataName":  "2003_Estonia",
+        "population_Millions":  1.37085
+    },
+    {
+        "dataName":  "2003_Eswatini",
+        "population_Millions":  1.0667
+    },
+    {
+        "dataName":  "2003_DireDiwa",
+        "population_Millions":  7.761533000
+    },
+    {
+        "dataName":  "2003_Ethiopia",
+        "population_Millions":  39.147942000
+    },
+    {
+        "dataName":  "2003_Mekelle",
+        "population_Millions":  26.923188000
+    },
+    {
+        "dataName":  "2003_Finland",
+        "population_Millions":  5.212955
+    },
+    {
+        "dataName":  "2003_FrenchGuiana",
+        "population_Millions":  0.185290029
+    },
+    {
+        "dataName":  "2003_FrenchPacific",
+        "population_Millions":  0.503909274
+    },
+    {
+        "dataName":  "2003_FrenchRatnakara",
+        "population_Millions":  0.963285713
+    },
+    {
+        "dataName":  "2003_FrenchWestIndies",
+        "population_Millions":  0.862803780
+    },
+    {
+        "dataName":  "2003_Lyon",
+        "population_Millions":  15.276490233
+    },
+    {
+        "dataName":  "2003_Nantes",
+        "population_Millions":  15.341961559
+    },
+    {
+        "dataName":  "2003_Paris",
+        "population_Millions":  21.580811016
+    },
+    {
+        "dataName":  "2003_Toulouse",
+        "population_Millions":  8.607178396
+    },
+    {
+        "dataName":  "2003_Libreville",
+        "population_Millions":  1.38235
+    },
+    {
+        "dataName":  "2003_Gambia",
+        "population_Millions":  1.577611
+    },
+    {
+        "dataName":  "2003_Georgia",
+        "population_Millions":  4.085483
+    },
+    {
+        "dataName":  "2003_Bavaria",
+        "population_Millions":  35.754032565
+    },
+    {
+        "dataName":  "2003_EastGermany",
+        "population_Millions":  15.963665806
+    },
+    {
+        "dataName":  "2003_Germany",
+        "population_Millions":  30.393916629
+    },
+    {
+        "dataName":  "2003_Accra",
+        "population_Millions":  21.296705
+    },
+    {
+        "dataName":  "2003_Greece",
+        "population_Millions":  11.918061
+    },
+    {
+        "dataName":  "2003_Guatemala",
+        "population_Millions":  12.525842
+    },
+    {
+        "dataName":  "2003_Guinea",
+        "population_Millions":  8.870781
+    },
+    {
+        "dataName":  "2003_GuineaBissau",
+        "population_Millions":  1.318806
+    },
+    {
+        "dataName":  "2003_GulfStates",
+        "population_Millions":  1.555958
+    },
+    {
+        "dataName":  "2003_Guyana",
+        "population_Millions":  0.763101
+    },
+    {
+        "dataName":  "2003_WestHispanola",
+        "population_Millions":  8.759912
+    },
+    {
+        "dataName":  "2003_Honduras",
+        "population_Millions":  7.119213
+    },
+    {
+        "dataName":  "2003_Hungary",
+        "population_Millions":  10.108963
+    },
+    {
+        "dataName":  "2003_Iceland",
+        "population_Millions":  0.289605
+    },
+    {
+        "dataName":  "2003_AndhraPradesh",
+        "population_Millions":  45.736708000
+    },
+    {
+        "dataName":  "2003_ArunchalPradesh",
+        "population_Millions":  1.276539000
+    },
+    {
+        "dataName":  "2003_Assam",
+        "population_Millions":  40.123428000
+    },
+    {
+        "dataName":  "2003_Bangalore",
+        "population_Millions":  56.362667000
+    },
+    {
+        "dataName":  "2003_Bihar",
+        "population_Millions":  96.035587000
+    },
+    {
+        "dataName":  "2003_Chennai",
+        "population_Millions":  98.587384000
+    },
+    {
+        "dataName":  "2003_Faridabad",
+        "population_Millions":  65.593430000
+    },
+    {
+        "dataName":  "2003_Gujarat",
+        "population_Millions":  56.298236000
+    },
+    {
+        "dataName":  "2003_Hyderabad",
+        "population_Millions":  32.292181000
+    },
+    {
+        "dataName":  "2003_Indore",
+        "population_Millions":  67.000912000
+    },
+    {
+        "dataName":  "2003_Jaipur",
+        "population_Millions":  63.238464000
+    },
+    {
+        "dataName":  "2003_JammuandKashmir",
+        "population_Millions":  11.569565000
+    },
+    {
+        "dataName":  "2003_Kolkata",
+        "population_Millions":  115.561962000
+    },
+    {
+        "dataName":  "2003_Mumbai",
+        "population_Millions":  105.015032000
+    },
+    {
+        "dataName":  "2003_NewDelhi",
+        "population_Millions":  199.821756000
+    },
+    {
+        "dataName":  "2003_Odisha",
+        "population_Millions":  38.722767000
+    },
+    {
+        "dataName":  "2003_Raipur",
+        "population_Millions":  23.566388000
+    },
+    {
+        "dataName":  "2003_Aceh",
+        "population_Millions":  5.486295494
+    },
+    {
+        "dataName":  "2003_Borneo",
+        "population_Millions":  13.863991719
+    },
+    {
+        "dataName":  "2003_Java",
+        "population_Millions":  125.028563724
+    },
+    {
+        "dataName":  "2003_LesserSundas",
+        "population_Millions":  12.478075366
+    },
+    {
+        "dataName":  "2003_MoluccasandSulawesi",
+        "population_Millions":  2.732473683
+    },
+    {
+        "dataName":  "2003_NewGuinea",
+        "population_Millions":  4.554657612
+    },
+    {
+        "dataName":  "2003_Sulawesi",
+        "population_Millions":  16.526820485
+    },
+    {
+        "dataName":  "2003_Sumatra",
+        "population_Millions":  44.377129917
+    },
+    {
+        "dataName":  "2003_Ahvaz",
+        "population_Millions":  10.912147159
+    },
+    {
+        "dataName":  "2003_Isfahan",
+        "population_Millions":  12.058744175
+    },
+    {
+        "dataName":  "2003_Mashhad",
+        "population_Millions":  12.218750178
+    },
+    {
+        "dataName":  "2003_Tabriz",
+        "population_Millions":  11.881885173
+    },
+    {
+        "dataName":  "2003_Tehran",
+        "population_Millions":  21.697813315
+    },
+    {
+        "dataName":  "2003_Baghdad",
+        "population_Millions":  16.871673000
+    },
+    {
+        "dataName":  "2003_Mosul",
+        "population_Millions":  9.930986000
+    },
+    {
+        "dataName":  "2003_Ireland",
+        "population_Millions":  3.992935
+    },
+    {
+        "dataName":  "2003_Israel",
+        "population_Millions":  6.50282
+    },
+    {
+        "dataName":  "2003_Italy",
+        "population_Millions":  14.272919038
+    },
+    {
+        "dataName":  "2003_Milan",
+        "population_Millions":  26.975701607
+    },
+    {
+        "dataName":  "2003_Naples",
+        "population_Millions":  16.927147355
+    },
+    {
+        "dataName":  "2003_IvoryCoast",
+        "population_Millions":  19.125542
+    },
+    {
+        "dataName":  "2003_Jamaica",
+        "population_Millions":  2.656623
+    },
+    {
+        "dataName":  "2003_Hokkaido",
+        "population_Millions":  5.141486356
+    },
+    {
+        "dataName":  "2003_KyushuandShikoku",
+        "population_Millions":  16.245054217
+    },
+    {
+        "dataName":  "2003_NorthHonshu",
+        "population_Millions":  53.346568425
+    },
+    {
+        "dataName":  "2003_Ryukus",
+        "population_Millions":  1.470500938
+    },
+    {
+        "dataName":  "2003_SouthHonshu",
+        "population_Millions":  51.467641064
+    },
+    {
+        "dataName":  "2003_Jordan",
+        "population_Millions":  5.741828
+    },
+    {
+        "dataName":  "2003_Almaty",
+        "population_Millions":  10.012640000
+    },
+    {
+        "dataName":  "2003_Astana",
+        "population_Millions":  5.734740000
+    },
+    {
+        "dataName":  "2003_Kenya",
+        "population_Millions":  28.312407000
+    },
+    {
+        "dataName":  "2003_Mombasa",
+        "population_Millions":  5.339816000
+    },
+    {
+        "dataName":  "2003_Kosovo",
+        "population_Millions":  1.826434
+    },
+    {
+        "dataName":  "2003_Kuwait",
+        "population_Millions":  2.109881
+    },
+    {
+        "dataName":  "2003_Kyrgyzstan",
+        "population_Millions":  5.159422
+    },
+    {
+        "dataName":  "2003_Laos",
+        "population_Millions":  5.697945
+    },
+    {
+        "dataName":  "2003_Latvia",
+        "population_Millions":  2.288984
+    },
+    {
+        "dataName":  "2003_Lebanon",
+        "population_Millions":  4.525508
+    },
+    {
+        "dataName":  "2003_Lesotho",
+        "population_Millions":  1.985059
+    },
+    {
+        "dataName":  "2003_WestIndies",
+        "population_Millions":  2.182077
+    },
+    {
+        "dataName":  "2003_Liberia",
+        "population_Millions":  3.119532
+    },
+    {
+        "dataName":  "2003_Cyrenaica",
+        "population_Millions":  1.629027000
+    },
+    {
+        "dataName":  "2003_Libya",
+        "population_Millions":  3.990371000
+    },
+    {
+        "dataName":  "2003_Lithuania",
+        "population_Millions":  3.415278
+    },
+    {
+        "dataName":  "2003_Madagascar",
+        "population_Millions":  18.071854
+    },
+    {
+        "dataName":  "2003_Malawi",
+        "population_Millions":  12.181574
+    },
+    {
+        "dataName":  "2003_MalayPeninsula",
+        "population_Millions":  19.972736000
+    },
+    {
+        "dataName":  "2003_SarawakandSabah",
+        "population_Millions":  4.706866000
+    },
+    {
+        "dataName":  "2003_Maldives",
+        "population_Millions":  0.296491
+    },
+    {
+        "dataName":  "2003_Gao",
+        "population_Millions":  1.179297000
+    },
+    {
+        "dataName":  "2003_Mali",
+        "population_Millions":  11.505658000
+    },
+    {
+        "dataName":  "2003_Mauritania",
+        "population_Millions":  2.802046
+    },
+    {
+        "dataName":  "2003_Mauritius",
+        "population_Millions":  1.242099
+    },
+    {
+        "dataName":  "2003_Melanesia",
+        "population_Millions":  1.533186
+    },
+    {
+        "dataName":  "2003_Merida",
+        "population_Millions":  10.752045000
+    },
+    {
+        "dataName":  "2003_MexicoCity",
+        "population_Millions":  62.968043000
+    },
+    {
+        "dataName":  "2003_Monterrey",
+        "population_Millions":  15.057399000
+    },
+    {
+        "dataName":  "2003_Tijuana",
+        "population_Millions":  14.201028000
+    },
+    {
+        "dataName":  "2003_Micronesia",
+        "population_Millions":  0.287817
+    },
+    {
+        "dataName":  "2003_Moldova",
+        "population_Millions":  4.095419
+    },
+    {
+        "dataName":  "2003_Mongolia",
+        "population_Millions":  2.521805
+    },
+    {
+        "dataName":  "2003_Rabat",
+        "population_Millions":  29.098272000
+    },
+    {
+        "dataName":  "2003_WesternSahara",
+        "population_Millions":  0.473143000
+    },
+    {
+        "dataName":  "2003_Mozambique",
+        "population_Millions":  9.036732000
+    },
+    {
+        "dataName":  "2003_NorthMozambique",
+        "population_Millions":  10.355743000
+    },
+    {
+        "dataName":  "2003_Myanmar",
+        "population_Millions":  25.757012000
+    },
+    {
+        "dataName":  "2003_UpperMyanmar",
+        "population_Millions":  20.910180000
+    },
+    {
+        "dataName":  "2003_Montenegro",
+        "population_Millions":  0.633559
+    },
+    {
+        "dataName":  "2003_Namibia",
+        "population_Millions":  1.917464
+    },
+    {
+        "dataName":  "2003_Himalayas",
+        "population_Millions":  25.688758
+    },
+    {
+        "dataName":  "2003_DutchCaribbean",
+        "population_Millions":  0.483671116
+    },
+    {
+        "dataName":  "2003_Netherlands",
+        "population_Millions":  16.170431884
+    },
+    {
+        "dataName":  "2003_NewZealand",
+        "population_Millions":  3.073045000
+    },
+    {
+        "dataName":  "2003_TeWaipounamu",
+        "population_Millions":  0.949541000
+    },
+    {
+        "dataName":  "2003_Nicaragua",
+        "population_Millions":  5.210963
+    },
+    {
+        "dataName":  "2003_Niger",
+        "population_Millions":  12.796984
+    },
+    {
+        "dataName":  "2003_Kano",
+        "population_Millions":  53.084550000
+    },
+    {
+        "dataName":  "2003_Lagos",
+        "population_Millions":  47.112659000
+    },
+    {
+        "dataName":  "2003_PortHarcourt",
+        "population_Millions":  37.005435000
+    },
+    {
+        "dataName":  "2003_NorthKorea",
+        "population_Millions":  24.09038
+    },
+    {
+        "dataName":  "2003_NorthMacedonia",
+        "population_Millions":  2.081411
+    },
+    {
+        "dataName":  "2003_Norway",
+        "population_Millions":  4.564669
+    },
+    {
+        "dataName":  "2003_Oman",
+        "population_Millions":  2.363796
+    },
+    {
+        "dataName":  "2003_Baluchistan",
+        "population_Millions":  11.211830000
+    },
+    {
+        "dataName":  "2003_Peshawar",
+        "population_Millions":  30.019184000
+    },
+    {
+        "dataName":  "2003_Punjab",
+        "population_Millions":  78.820072000
+    },
+    {
+        "dataName":  "2003_Sindh",
+        "population_Millions":  47.059162000
+    },
+    {
+        "dataName":  "2003_Palestine",
+        "population_Millions":  3.39807
+    },
+    {
+        "dataName":  "2003_Panama",
+        "population_Millions":  3.189807
+    },
+    {
+        "dataName":  "2003_PortMorseby",
+        "population_Millions":  6.123997
+    },
+    {
+        "dataName":  "2003_Paraguay",
+        "population_Millions":  5.326436
+    },
+    {
+        "dataName":  "2003_Arequipa",
+        "population_Millions":  6.929982000
+    },
+    {
+        "dataName":  "2003_Peru",
+        "population_Millions":  20.650508000
+    },
+    {
+        "dataName":  "2003_Luzon",
+        "population_Millions":  46.458583548
+    },
+    {
+        "dataName":  "2003_Visayas",
+        "population_Millions":  16.515527195
+    },
+    {
+        "dataName":  "2003_ViasyasyMindanao",
+        "population_Millions":  21.757724257
+    },
+    {
+        "dataName":  "2003_Gdansk",
+        "population_Millions":  9.352887000
+    },
+    {
+        "dataName":  "2003_Katowice",
+        "population_Millions":  10.999755000
+    },
+    {
+        "dataName":  "2003_Poland",
+        "population_Millions":  17.850882000
+    },
+    {
+        "dataName":  "2003_Polynesia",
+        "population_Millions":  0.314616
+    },
+    {
+        "dataName":  "2003_Azores",
+        "population_Millions":  0.492446000
+    },
+    {
+        "dataName":  "2003_Portugal",
+        "population_Millions":  9.961799000
+    },
+    {
+        "dataName":  "2003_Ratnakara",
+        "population_Millions":  0.569798
+    },
+    {
+        "dataName":  "2003_Brazzaville",
+        "population_Millions":  3.445753
+    },
+    {
+        "dataName":  "2003_Romania",
+        "population_Millions":  14.270396000
+    },
+    {
+        "dataName":  "2003_Transylvania",
+        "population_Millions":  7.323054000
+    },
+    {
+        "dataName":  "2003_Arkhangelsk",
+        "population_Millions":  1.772087760
+    },
+    {
+        "dataName":  "2003_Crimea",
+        "population_Millions":  2.377444642
+    },
+    {
+        "dataName":  "2003_EasternSiberia",
+        "population_Millions":  1.998389316
+    },
+    {
+        "dataName":  "2003_Kaliningrad",
+        "population_Millions":  1.038124805
+    },
+    {
+        "dataName":  "2003_Kamchatka",
+        "population_Millions":  0.479044782
+    },
+    {
+        "dataName":  "2003_Karelia",
+        "population_Millions":  1.210378325
+    },
+    {
+        "dataName":  "2003_Kirov",
+        "population_Millions":  11.919702792
+    },
+    {
+        "dataName":  "2003_Makhachkala",
+        "population_Millions":  10.252008482
+    },
+    {
+        "dataName":  "2003_Moskva",
+        "population_Millions":  28.155865793
+    },
+    {
+        "dataName":  "2003_Norilsk",
+        "population_Millions":  0.243796538
+    },
+    {
+        "dataName":  "2003_Novgorod",
+        "population_Millions":  9.966536801
+    },
+    {
+        "dataName":  "2003_Rostovskaya",
+        "population_Millions":  14.376986920
+    },
+    {
+        "dataName":  "2003_RussianFarEast",
+        "population_Millions":  4.087600067
+    },
+    {
+        "dataName":  "2003_Sakha",
+        "population_Millions":  1.003573568
+    },
+    {
+        "dataName":  "2003_SakhalinKurils",
+        "population_Millions":  0.470305653
+    },
+    {
+        "dataName":  "2003_Surgut",
+        "population_Millions":  2.239572181
+    },
+    {
+        "dataName":  "2003_Urals",
+        "population_Millions":  10.158663873
+    },
+    {
+        "dataName":  "2003_Volga",
+        "population_Millions":  17.252840344
+    },
+    {
+        "dataName":  "2003_Voronezh",
+        "population_Millions":  12.498254037
+    },
+    {
+        "dataName":  "2003_WesternSiberia",
+        "population_Millions":  14.293052321
+    },
+    {
+        "dataName":  "2003_Kigali",
+        "population_Millions":  15.630029
+    },
+    {
+        "dataName":  "2003_SaoTomePrincipe",
+        "population_Millions":  0.153814
+    },
+    {
+        "dataName":  "2003_Hijaz",
+        "population_Millions":  9.177861000
+    },
+    {
+        "dataName":  "2003_Najd",
+        "population_Millions":  7.959779000
+    },
+    {
+        "dataName":  "2003_Qassimah",
+        "population_Millions":  1.649127000
+    },
+    {
+        "dataName":  "2003_Senegambia",
+        "population_Millions":  10.721176
+    },
+    {
+        "dataName":  "2003_Belgrade",
+        "population_Millions":  7.590935
+    },
+    {
+        "dataName":  "2003_Seychelles",
+        "population_Millions":  0.087034
+    },
+    {
+        "dataName":  "2003_SierraLeone",
+        "population_Millions":  5.177687
+    },
+    {
+        "dataName":  "2003_Singapore",
+        "population_Millions":  4.138245
+    },
+    {
+        "dataName":  "2003_Slovakia",
+        "population_Millions":  5.376196
+    },
+    {
+        "dataName":  "2003_Slovenia",
+        "population_Millions":  1.99249
+    },
+    {
+        "dataName":  "2003_Somalia",
+        "population_Millions":  7.372413
+    },
+    {
+        "dataName":  "2003_CapeTown",
+        "population_Millions":  10.641343005
+    },
+    {
+        "dataName":  "2003_Johannesburg",
+        "population_Millions":  37.859004995
+    },
+    {
+        "dataName":  "2003_SouthKorea",
+        "population_Millions":  47.51416
+    },
+    {
+        "dataName":  "2003_SouthSudan",
+        "population_Millions":  6.903127
+    },
+    {
+        "dataName":  "2003_Barcelona",
+        "population_Millions":  13.670635678
+    },
+    {
+        "dataName":  "2003_BasqueCountry",
+        "population_Millions":  2.598886939
+    },
+    {
+        "dataName":  "2003_NorthernSpain",
+        "population_Millions":  6.305062852
+    },
+    {
+        "dataName":  "2003_CanaryIslands",
+        "population_Millions":  1.966195954
+    },
+    {
+        "dataName":  "2003_Spain",
+        "population_Millions":  17.965761577
+    },
+    {
+        "dataName":  "2003_SriLanka",
+        "population_Millions":  19.951521
+    },
+    {
+        "dataName":  "2003_Darfur",
+        "population_Millions":  9.936036668
+    },
+    {
+        "dataName":  "2003_NorthernSudan",
+        "population_Millions":  4.739286841
+    },
+    {
+        "dataName":  "2003_Sudan",
+        "population_Millions":  15.220711491
+    },
+    {
+        "dataName":  "2003_Suriname",
+        "population_Millions":  0.506414
+    },
+    {
+        "dataName":  "2003_Sweden",
+        "population_Millions":  8.958431
+    },
+    {
+        "dataName":  "2003_Zurich",
+        "population_Millions":  7.333447
+    },
+    {
+        "dataName":  "2003_Syria",
+        "population_Millions":  17.889296
+    },
+    {
+        "dataName":  "2003_Taiwan",
+        "population_Millions":  22.664125
+    },
+    {
+        "dataName":  "2003_Tajikistan",
+        "population_Millions":  6.658575
+    },
+    {
+        "dataName":  "2003_Tanzania",
+        "population_Millions":  14.957970000
+    },
+    {
+        "dataName":  "2003_WestTanzania",
+        "population_Millions":  20.996347000
+    },
+    {
+        "dataName":  "2003_Zanzibar",
+        "population_Millions":  1.135238000
+    },
+    {
+        "dataName":  "2003_Bangkok",
+        "population_Millions":  33.143981000
+    },
+    {
+        "dataName":  "2003_ChiangMai",
+        "population_Millions":  31.724185000
+    },
+    {
+        "dataName":  "2003_TimorLeste",
+        "population_Millions":  0.916878
+    },
+    {
+        "dataName":  "2003_Togo",
+        "population_Millions":  5.552167
+    },
+    {
+        "dataName":  "2003_Tunisia",
+        "population_Millions":  10.071632
+    },
+    {
+        "dataName":  "2003_Anatolia",
+        "population_Millions":  22.721644000
+    },
+    {
+        "dataName":  "2003_Diyarbakir",
+        "population_Millions":  14.621689000
+    },
+    {
+        "dataName":  "2003_Istanbul",
+        "population_Millions":  30.488397000
+    },
+    {
+        "dataName":  "2003_Turkmenistan",
+        "population_Millions":  4.863865
+    },
+    {
+        "dataName":  "2003_Uganda",
+        "population_Millions":  26.352124
+    },
+    {
+        "dataName":  "2003_Donetsk",
+        "population_Millions":  14.035051710
+    },
+    {
+        "dataName":  "2003_Kharkiv",
+        "population_Millions":  7.066254854
+    },
+    {
+        "dataName":  "2003_Kiev",
+        "population_Millions":  18.909288609
+    },
+    {
+        "dataName":  "2003_Odesa",
+        "population_Millions":  8.304540827
+    },
+    {
+        "dataName":  "2003_Dubai",
+        "population_Millions":  4.192457
+    },
+    {
+        "dataName":  "2003_EnglishMidlands",
+        "population_Millions":  23.743204345
+    },
+    {
+        "dataName":  "2003_BritishWestIndies",
+        "population_Millions":  0.150900035
+    },
+    {
+        "dataName":  "2003_England",
+        "population_Millions":  26.955130587
+    },
+    {
+        "dataName":  "2003_NorthernIreland",
+        "population_Millions":  1.706834656
+    },
+    {
+        "dataName":  "2003_Scotland",
+        "population_Millions":  4.822781598
+    },
+    {
+        "dataName":  "2003_Wales",
+        "population_Millions":  2.776406779
+    },
+    {
+        "dataName":  "2003_Alaska",
+        "population_Millions":  0.758524422
+    },
+    {
+        "dataName":  "2003_AmericanCaribbean",
+        "population_Millions":  2.638703620
+    },
+    {
+        "dataName":  "2003_AmericanPacific",
+        "population_Millions":  1.772644648
+    },
+    {
+        "dataName":  "2003_Boise",
+        "population_Millions":  2.205875003
+    },
+    {
+        "dataName":  "2003_California",
+        "population_Millions":  43.012303290
+    },
+    {
+        "dataName":  "2003_Cascadia",
+        "population_Millions":  10.520675997
+    },
+    {
+        "dataName":  "2003_Cumberland",
+        "population_Millions":  9.784780710
+    },
+    {
+        "dataName":  "2003_Dakota",
+        "population_Millions":  6.314397035
+    },
+    {
+        "dataName":  "2003_Dixie",
+        "population_Millions":  30.506611064
+    },
+    {
+        "dataName":  "2003_HighPlains",
+        "population_Millions":  12.739222950
+    },
+    {
+        "dataName":  "2003_MississippiDelta",
+        "population_Millions":  14.646395604
+    },
+    {
+        "dataName":  "2003_NewEngland",
+        "population_Millions":  13.520376507
+    },
+    {
+        "dataName":  "2003_NewYork",
+        "population_Millions":  37.260010882
+    },
+    {
+        "dataName":  "2003_RockyMountains",
+        "population_Millions":  14.806609392
+    },
+    {
+        "dataName":  "2003_RustBelt",
+        "population_Millions":  42.599550345
+    },
+    {
+        "dataName":  "2003_Shenandoah",
+        "population_Millions":  24.175016455
+    },
+    {
+        "dataName":  "2003_Texas",
+        "population_Millions":  26.846144076
+    },
+    {
+        "dataName":  "2003_Uruguay",
+        "population_Millions":  3.281186
+    },
+    {
+        "dataName":  "2003_Karakalpakstan",
+        "population_Millions":  2.721537000
+    },
+    {
+        "dataName":  "2003_Uzbekistan",
+        "population_Millions":  22.989722000
+    },
+    {
+        "dataName":  "2003_Venezuela",
+        "population_Millions":  25.892703
+    },
+    {
+        "dataName":  "2003_Hanoi",
+        "population_Millions":  37.479081000
+    },
+    {
+        "dataName":  "2003_HoChiMinhCity",
+        "population_Millions":  42.084696000
+    },
+    {
+        "dataName":  "2003_Aden",
+        "population_Millions":  4.041683000
+    },
+    {
+        "dataName":  "2003_Yemen",
+        "population_Millions":  17.414696000
+    },
+    {
+        "dataName":  "2003_Zambia",
+        "population_Millions":  10.983595
+    },
+    {
+        "dataName":  "2003_Zimbabwe",
+        "population_Millions":  12.232323
+    },
+    {
+        "dataName":  "Afghanistan",
+        "population_Millions":  40.578842
+    },
+    {
+        "dataName":  "Tirana",
+        "population_Millions":  2.827608
+    },
+    {
+        "dataName":  "Algeria",
+        "population_Millions":  43.311838436
+    },
+    {
+        "dataName":  "SaharanAlgeria",
+        "population_Millions":  2.165550564
+    },
+    {
+        "dataName":  "Angola",
+        "population_Millions":  32.819443164
+    },
+    {
+        "dataName":  "EastAngola",
+        "population_Millions":  2.815585836
+    },
+    {
+        "dataName":  "GranChaco",
+        "population_Millions":  9.355039044
+    },
+    {
+        "dataName":  "Pampas",
+        "population_Millions":  33.713364321
+    },
+    {
+        "dataName":  "Patagonia",
+        "population_Millions":  2.339500635
+    },
+    {
+        "dataName":  "Armenia",
+        "population_Millions":  2.880874
+    },
+    {
+        "dataName":  "Brisbane",
+        "population_Millions":  5.369540709
+    },
+    {
+        "dataName":  "Sydney",
+        "population_Millions":  8.664603599
+    },
+    {
+        "dataName":  "Westralia",
+        "population_Millions":  2.833620372
+    },
+    {
+        "dataName":  "Darwin",
+        "population_Millions":  0.248315935
+    },
+    {
+        "dataName":  "Melbourne",
+        "population_Millions":  7.263682115
+    },
+    {
+        "dataName":  "Adelaide",
+        "population_Millions":  1.821221270
+    },
+    {
+        "dataName":  "Vienna",
+        "population_Millions":  9.103994
+    },
+    {
+        "dataName":  "Azerbaijan",
+        "population_Millions":  10.295304
+    },
+    {
+        "dataName":  "Bangladesh",
+        "population_Millions":  169.384897
+    },
+    {
+        "dataName":  "Bahamas",
+        "population_Millions":  0.397538
+    },
+    {
+        "dataName":  "Belarus",
+        "population_Millions":  9.173237
+    },
+    {
+        "dataName":  "Belgium",
+        "population_Millions":  12.295133
+    },
+    {
+        "dataName":  "Belize",
+        "population_Millions":  0.402733
+    },
+    {
+        "dataName":  "TogoBenin",
+        "population_Millions":  13.759501
+    },
+    {
+        "dataName":  "Bhutan",
+        "population_Millions":  0.780914
+    },
+    {
+        "dataName":  "Bolivia",
+        "population_Millions":  12.077154
+    },
+    {
+        "dataName":  "Sarajevo",
+        "population_Millions":  3.204802
+    },
+    {
+        "dataName":  "Botswana",
+        "population_Millions":  2.439892
+    },
+    {
+        "dataName":  "Amazonia",
+        "population_Millions":  5.816094112
+    },
+    {
+        "dataName":  "Belem",
+        "population_Millions":  9.430668062
+    },
+    {
+        "dataName":  "Brasilia",
+        "population_Millions":  11.955872133
+    },
+    {
+        "dataName":  "Cuiaba",
+        "population_Millions":  8.015928137
+    },
+    {
+        "dataName":  "Fortaleza",
+        "population_Millions":  26.970178260
+    },
+    {
+        "dataName":  "PortoAlegre",
+        "population_Millions":  29.946950545
+    },
+    {
+        "dataName":  "Recife",
+        "population_Millions":  30.221968418
+    },
+    {
+        "dataName":  "RiodeJaneiro",
+        "population_Millions":  42.196153180
+    },
+    {
+        "dataName":  "SaoPaulo",
+        "population_Millions":  45.752602153
+    },
+    {
+        "dataName":  "Brunei",
+        "population_Millions":  0.45537
+    },
+    {
+        "dataName":  "Bulgaria",
+        "population_Millions":  6.825864
+    },
+    {
+        "dataName":  "BurkinaFaso",
+        "population_Millions":  22.509038
+    },
+    {
+        "dataName":  "CaboVerde",
+        "population_Millions":  0.519741
+    },
+    {
+        "dataName":  "Cambodia",
+        "population_Millions":  17.201724
+    },
+    {
+        "dataName":  "Cameroon",
+        "population_Millions":  23.186641471
+    },
+    {
+        "dataName":  "WestCameroon",
+        "population_Millions":  4.446129529
+    },
+    {
+        "dataName":  "Alberta",
+        "population_Millions":  4.497244818
+    },
+    {
+        "dataName":  "BritishColumbia",
+        "population_Millions":  5.340080367
+    },
+    {
+        "dataName":  "CanadianArctic",
+        "population_Millions":  0.084912347
+    },
+    {
+        "dataName":  "Halifax",
+        "population_Millions":  2.526118890
+    },
+    {
+        "dataName":  "Laurentia",
+        "population_Millions":  8.645950225
+    },
+    {
+        "dataName":  "Manitoba",
+        "population_Millions":  1.409133207
+    },
+    {
+        "dataName":  "Ontario",
+        "population_Millions":  15.099189885
+    },
+    {
+        "dataName":  "Prairies",
+        "population_Millions":  1.174857081
+    },
+    {
+        "dataName":  "Yukon",
+        "population_Millions":  0.043772180
+    },
+    {
+        "dataName":  "CentralAfricanRepublic",
+        "population_Millions":  3.720059126
+    },
+    {
+        "dataName":  "Logone",
+        "population_Millions":  1.377979874
+    },
+    {
+        "dataName":  "Chad",
+        "population_Millions":  14.013402561
+    },
+    {
+        "dataName":  "NorthernChad",
+        "population_Millions":  4.441913439
+    },
+    {
+        "dataName":  "Santiago",
+        "population_Millions":  15.093711328
+    },
+    {
+        "dataName":  "Valparaiso",
+        "population_Millions":  4.459324672
+    },
+    {
+        "dataName":  "Anhui",
+        "population_Millions":  61.360470969
+    },
+    {
+        "dataName":  "Beijing",
+        "population_Millions":  111.018372677
+    },
+    {
+        "dataName":  "Chongqing",
+        "population_Millions":  116.361079771
+    },
+    {
+        "dataName":  "Fujian",
+        "population_Millions":  41.766957115
+    },
+    {
+        "dataName":  "Gansu",
+        "population_Millions":  32.398468557
+    },
+    {
+        "dataName":  "Guangzhou",
+        "population_Millions":  137.392334451
+    },
+    {
+        "dataName":  "Guizhou",
+        "population_Millions":  38.772755172
+    },
+    {
+        "dataName":  "Hangzhou",
+        "population_Millions":  64.920223723
+    },
+    {
+        "dataName":  "HongKong",
+        "population_Millions":  7.099764669
+    },
+    {
+        "dataName":  "Hunan",
+        "population_Millions":  66.807753097
+    },
+    {
+        "dataName":  "InnerMongolia",
+        "population_Millions":  24.180500019
+    },
+    {
+        "dataName":  "Jilin",
+        "population_Millions":  24.204930057
+    },
+    {
+        "dataName":  "Liaoning",
+        "population_Millions":  42.824020515
+    },
+    {
+        "dataName":  "Manchuria",
+        "population_Millions":  32.024037499
+    },
+    {
+        "dataName":  "Nanchang",
+        "population_Millions":  45.435432435
+    },
+    {
+        "dataName":  "Nanning",
+        "population_Millions":  50.400571525
+    },
+    {
+        "dataName":  "Qinghai",
+        "population_Millions":  5.956310889
+    },
+    {
+        "dataName":  "Shandong",
+        "population_Millions":  102.081945137
+    },
+    {
+        "dataName":  "Shanghai",
+        "population_Millions":  110.217595133
+    },
+    {
+        "dataName":  "Shanxi",
+        "population_Millions":  35.106307906
+    },
+    {
+        "dataName":  "Tibet",
+        "population_Millions":  3.668024096
+    },
+    {
+        "dataName":  "Wuhan",
+        "population_Millions":  58.067973061
+    },
+    {
+        "dataName":  "Xian",
+        "population_Millions":  39.744887055
+    },
+    {
+        "dataName":  "Xinjiang",
+        "population_Millions":  25.993537978
+    },
+    {
+        "dataName":  "Yunnan",
+        "population_Millions":  47.467110929
+    },
+    {
+        "dataName":  "Zhengzhou",
+        "population_Millions":  99.908204565
+    },
+    {
+        "dataName":  "Colombia",
+        "population_Millions":  48.524650799
+    },
+    {
+        "dataName":  "Villavicencio",
+        "population_Millions":  3.213293201
+    },
+    {
+        "dataName":  "Kinshasa",
+        "population_Millions":  52.645322903
+    },
+    {
+        "dataName":  "Kisangani",
+        "population_Millions":  27.337506424
+    },
+    {
+        "dataName":  "Lubumbashi",
+        "population_Millions":  22.414138673
+    },
+    {
+        "dataName":  "CostaRica",
+        "population_Millions":  5.081765
+    },
+    {
+        "dataName":  "Zagreb",
+        "population_Millions":  3.907027
+    },
+    {
+        "dataName":  "Cuba",
+        "population_Millions":  11.05982
+    },
+    {
+        "dataName":  "Czechia",
+        "population_Millions":  10.673213
+    },
+    {
+        "dataName":  "Denmark",
+        "population_Millions":  5.955260639
+    },
+    {
+        "dataName":  "Greenland",
+        "population_Millions":  0.057644361
+    },
+    {
+        "dataName":  "Djibouti",
+        "population_Millions":  1.137096
+    },
+    {
+        "dataName":  "EastHispanola",
+        "population_Millions":  11.230734
+    },
+    {
+        "dataName":  "Ecuador",
+        "population_Millions":  17.823897
+    },
+    {
+        "dataName":  "Alexandria",
+        "population_Millions":  38.906588902
+    },
+    {
+        "dataName":  "Cairo",
+        "population_Millions":  54.440703694
+    },
+    {
+        "dataName":  "Luxor",
+        "population_Millions":  19.270957404
+    },
+    {
+        "dataName":  "ElSalvador",
+        "population_Millions":  6.280319
+    },
+    {
+        "dataName":  "EquatorialGuinea",
+        "population_Millions":  1.803545
+    },
+    {
+        "dataName":  "Eritrea",
+        "population_Millions":  3.409447
+    },
+    {
+        "dataName":  "Estonia",
+        "population_Millions":  1.350091
+    },
+    {
+        "dataName":  "Eswatini",
+        "population_Millions":  1.218917
+    },
+    {
+        "dataName":  "DireDiwa",
+        "population_Millions":  13.180810549
+    },
+    {
+        "dataName":  "Ethiopia",
+        "population_Millions":  66.481913747
+    },
+    {
+        "dataName":  "Mekelle",
+        "population_Millions":  45.721562704
+    },
+    {
+        "dataName":  "Finland",
+        "population_Millions":  5.569299
+    },
+    {
+        "dataName":  "FrenchGuiana",
+        "population_Millions":  0.319051936
+    },
+    {
+        "dataName":  "FrenchPacific",
+        "population_Millions":  0.591799501
+    },
+    {
+        "dataName":  "FrenchRatnakara",
+        "population_Millions":  1.207361211
+    },
+    {
+        "dataName":  "FrenchWestIndies",
+        "population_Millions":  0.830602348
+    },
+    {
+        "dataName":  "Lyon",
+        "population_Millions":  16.652369976
+    },
+    {
+        "dataName":  "Nantes",
+        "population_Millions":  16.683346684
+    },
+    {
+        "dataName":  "Paris",
+        "population_Millions":  23.467673996
+    },
+    {
+        "dataName":  "Toulouse",
+        "population_Millions":  9.437821348
+    },
+    {
+        "dataName":  "Libreville",
+        "population_Millions":  2.430747
+    },
+    {
+        "dataName":  "Gambia",
+        "population_Millions":  2.63647
+    },
+    {
+        "dataName":  "Georgia",
+        "population_Millions":  3.794784
+    },
+    {
+        "dataName":  "Bavaria",
+        "population_Millions":  36.613842158
+    },
+    {
+        "dataName":  "EastGermany",
+        "population_Millions":  16.347558519
+    },
+    {
+        "dataName":  "Germany",
+        "population_Millions":  31.124826323
+    },
+    {
+        "dataName":  "Accra",
+        "population_Millions":  33.149152
+    },
+    {
+        "dataName":  "Greece",
+        "population_Millions":  11.74385
+    },
+    {
+        "dataName":  "Guatemala",
+        "population_Millions":  17.847877
+    },
+    {
+        "dataName":  "Guinea",
+        "population_Millions":  14.055137
+    },
+    {
+        "dataName":  "GuineaBissau",
+        "population_Millions":  2.105529
+    },
+    {
+        "dataName":  "GulfStates",
+        "population_Millions":  4.425914
+    },
+    {
+        "dataName":  "Guyana",
+        "population_Millions":  0.821637
+    },
+    {
+        "dataName":  "WestHispanola",
+        "population_Millions":  11.503606
+    },
+    {
+        "dataName":  "Honduras",
+        "population_Millions":  10.463872
+    },
+    {
+        "dataName":  "Hungary",
+        "population_Millions":  9.684306
+    },
+    {
+        "dataName":  "Iceland",
+        "population_Millions":  0.380356
+    },
+    {
+        "dataName":  "AndhraPradesh",
+        "population_Millions":  58.375706599
+    },
+    {
+        "dataName":  "ArunchalPradesh",
+        "population_Millions":  1.629301035
+    },
+    {
+        "dataName":  "Assam",
+        "population_Millions":  51.211238590
+    },
+    {
+        "dataName":  "Bangalore",
+        "population_Millions":  71.938070760
+    },
+    {
+        "dataName":  "Bihar",
+        "population_Millions":  122.574307455
+    },
+    {
+        "dataName":  "Chennai",
+        "population_Millions":  125.831274670
+    },
+    {
+        "dataName":  "Faridabad",
+        "population_Millions":  83.719686563
+    },
+    {
+        "dataName":  "Gujarat",
+        "population_Millions":  71.855834963
+    },
+    {
+        "dataName":  "Hyderabad",
+        "population_Millions":  41.215886000
+    },
+    {
+        "dataName":  "Indore",
+        "population_Millions":  85.516116589
+    },
+    {
+        "dataName":  "Jaipur",
+        "population_Millions":  80.713942293
+    },
+    {
+        "dataName":  "JammuandKashmir",
+        "population_Millions":  14.766728373
+    },
+    {
+        "dataName":  "Kolkata",
+        "population_Millions":  147.496650617
+    },
+    {
+        "dataName":  "Mumbai",
+        "population_Millions":  134.035155348
+    },
+    {
+        "dataName":  "NewDelhi",
+        "population_Millions":  255.041012096
+    },
+    {
+        "dataName":  "Odisha",
+        "population_Millions":  49.423515325
+    },
+    {
+        "dataName":  "Raipur",
+        "population_Millions":  30.078784724
+    },
+    {
+        "dataName":  "Aceh",
+        "population_Millions":  5.489912568
+    },
+    {
+        "dataName":  "Borneo",
+        "population_Millions":  17.259804532
+    },
+    {
+        "dataName":  "Java",
+        "population_Millions":  155.652751877
+    },
+    {
+        "dataName":  "LesserSundas",
+        "population_Millions":  15.534424041
+    },
+    {
+        "dataName":  "MoluccasandSulawesi",
+        "population_Millions":  3.401758089
+    },
+    {
+        "dataName":  "NewGuinea",
+        "population_Millions":  5.670263771
+    },
+    {
+        "dataName":  "Sulawesi",
+        "population_Millions":  20.574858913
+    },
+    {
+        "dataName":  "Sumatra",
+        "population_Millions":  55.246755209
+    },
+    {
+        "dataName":  "Ahvaz",
+        "population_Millions":  14.205483551
+    },
+    {
+        "dataName":  "Isfahan",
+        "population_Millions":  15.698129332
+    },
+    {
+        "dataName":  "Mashhad",
+        "population_Millions":  15.906425672
+    },
+    {
+        "dataName":  "Tabriz",
+        "population_Millions":  15.467893908
+    },
+    {
+        "dataName":  "Tehran",
+        "population_Millions":  28.246313537
+    },
+    {
+        "dataName":  "Baghdad",
+        "population_Millions":  27.741424870
+    },
+    {
+        "dataName":  "Mosul",
+        "population_Millions":  16.329126130
+    },
+    {
+        "dataName":  "Ireland",
+        "population_Millions":  5.110016
+    },
+    {
+        "dataName":  "Israel",
+        "population_Millions":  9.103151
+    },
+    {
+        "dataName":  "Italy",
+        "population_Millions":  14.752758191
+    },
+    {
+        "dataName":  "Milan",
+        "population_Millions":  27.914918579
+    },
+    {
+        "dataName":  "Naples",
+        "population_Millions":  17.513720230
+    },
+    {
+        "dataName":  "IvoryCoast",
+        "population_Millions":  30.395002
+    },
+    {
+        "dataName":  "Jamaica",
+        "population_Millions":  2.839144
+    },
+    {
+        "dataName":  "Hokkaido",
+        "population_Millions":  5.033814697
+    },
+    {
+        "dataName":  "KyushuandShikoku",
+        "population_Millions":  15.904852100
+    },
+    {
+        "dataName":  "NorthHonshu",
+        "population_Millions":  52.229392163
+    },
+    {
+        "dataName":  "Ryukus",
+        "population_Millions":  1.439705702
+    },
+    {
+        "dataName":  "SouthHonshu",
+        "population_Millions":  50.389813338
+    },
+    {
+        "dataName":  "Jordan",
+        "population_Millions":  11.256263
+    },
+    {
+        "dataName":  "Almaty",
+        "population_Millions":  12.738584607
+    },
+    {
+        "dataName":  "Astana",
+        "population_Millions":  7.296024393
+    },
+    {
+        "dataName":  "Kenya",
+        "population_Millions":  45.643873014
+    },
+    {
+        "dataName":  "Mombasa",
+        "population_Millions":  8.608587986
+    },
+    {
+        "dataName":  "Kosovo",
+        "population_Millions":  1.717946
+    },
+    {
+        "dataName":  "Kuwait",
+        "population_Millions":  4.589511
+    },
+    {
+        "dataName":  "Kyrgyzstan",
+        "population_Millions":  6.955788
+    },
+    {
+        "dataName":  "Laos",
+        "population_Millions":  7.559007
+    },
+    {
+        "dataName":  "Latvia",
+        "population_Millions":  1.881063
+    },
+    {
+        "dataName":  "Lebanon",
+        "population_Millions":  5.744489
+    },
+    {
+        "dataName":  "Lesotho",
+        "population_Millions":  2.28611
+    },
+    {
+        "dataName":  "WestIndies",
+        "population_Millions":  2.382354
+    },
+    {
+        "dataName":  "Liberia",
+        "population_Millions":  5.373294
+    },
+    {
+        "dataName":  "Cyrenaica",
+        "population_Millions":  2.094134794
+    },
+    {
+        "dataName":  "Libya",
+        "population_Millions":  5.129670206
+    },
+    {
+        "dataName":  "Lithuania",
+        "population_Millions":  2.816919
+    },
+    {
+        "dataName":  "Madagascar",
+        "population_Millions":  30.437261
+    },
+    {
+        "dataName":  "Malawi",
+        "population_Millions":  20.568728
+    },
+    {
+        "dataName":  "MalayPeninsula",
+        "population_Millions":  28.078407870
+    },
+    {
+        "dataName":  "SarawakandSabah",
+        "population_Millions":  6.617085130
+    },
+    {
+        "dataName":  "Maldives",
+        "population_Millions":  0.524106
+    },
+    {
+        "dataName":  "Gao",
+        "population_Millions":  2.145021254
+    },
+    {
+        "dataName":  "Mali",
+        "population_Millions":  20.927618746
+    },
+    {
+        "dataName":  "Mauritania",
+        "population_Millions":  4.875637
+    },
+    {
+        "dataName":  "Mauritius",
+        "population_Millions":  1.27613
+    },
+    {
+        "dataName":  "Melanesia",
+        "population_Millions":  2.013534
+    },
+    {
+        "dataName":  "Merida",
+        "population_Millions":  13.428568128
+    },
+    {
+        "dataName":  "MexicoCity",
+        "population_Millions":  78.642776500
+    },
+    {
+        "dataName":  "Monterrey",
+        "population_Millions":  18.805661079
+    },
+    {
+        "dataName":  "Tijuana",
+        "population_Millions":  17.736111293
+    },
+    {
+        "dataName":  "Micronesia",
+        "population_Millions":  0.31222
+    },
+    {
+        "dataName":  "Moldova",
+        "population_Millions":  3.039985
+    },
+    {
+        "dataName":  "Mongolia",
+        "population_Millions":  3.386015
+    },
+    {
+        "dataName":  "Rabat",
+        "population_Millions":  36.718186844
+    },
+    {
+        "dataName":  "WesternSahara",
+        "population_Millions":  0.610877156
+    },
+    {
+        "dataName":  "Mozambique",
+        "population_Millions":  15.217538735
+    },
+    {
+        "dataName":  "NorthMozambique",
+        "population_Millions":  17.438707265
+    },
+    {
+        "dataName":  "Myanmar",
+        "population_Millions":  29.669971017
+    },
+    {
+        "dataName":  "UpperMyanmar",
+        "population_Millions":  24.086815983
+    },
+    {
+        "dataName":  "Montenegro",
+        "population_Millions":  0.614648
+    },
+    {
+        "dataName":  "Namibia",
+        "population_Millions":  2.889662
+    },
+    {
+        "dataName":  "Himalayas",
+        "population_Millions":  29.715436
+    },
+    {
+        "dataName":  "DutchCaribbean",
+        "population_Millions":  0.357455174
+    },
+    {
+        "dataName":  "Netherlands",
+        "population_Millions":  17.910858826
+    },
+    {
+        "dataName":  "NewZealand",
+        "population_Millions":  3.920776408
+    },
+    {
+        "dataName":  "TeWaipounamu",
+        "population_Millions":  1.210957592
+    },
+    {
+        "dataName":  "Nicaragua",
+        "population_Millions":  6.730654
+    },
+    {
+        "dataName":  "Niger",
+        "population_Millions":  25.311973
+    },
+    {
+        "dataName":  "Kano",
+        "population_Millions":  86.338458295
+    },
+    {
+        "dataName":  "Lagos",
+        "population_Millions":  76.625579788
+    },
+    {
+        "dataName":  "PortHarcourt",
+        "population_Millions":  60.186857917
+    },
+    {
+        "dataName":  "NorthKorea",
+        "population_Millions":  26.328845
+    },
+    {
+        "dataName":  "NorthMacedonia",
+        "population_Millions":  1.840233
+    },
+    {
+        "dataName":  "Norway",
+        "population_Millions":  5.456801
+    },
+    {
+        "dataName":  "Oman",
+        "population_Millions":  4.730226
+    },
+    {
+        "dataName":  "Baluchistan",
+        "population_Millions":  16.350466996
+    },
+    {
+        "dataName":  "Peshawar",
+        "population_Millions":  43.777657085
+    },
+    {
+        "dataName":  "Punjab",
+        "population_Millions":  114.945099462
+    },
+    {
+        "dataName":  "Sindh",
+        "population_Millions":  68.627443457
+    },
+    {
+        "dataName":  "Palestine",
+        "population_Millions":  5.30527
+    },
+    {
+        "dataName":  "Panama",
+        "population_Millions":  4.400773
+    },
+    {
+        "dataName":  "PortMorseby",
+        "population_Millions":  10.203169
+    },
+    {
+        "dataName":  "Paraguay",
+        "population_Millions":  6.760464
+    },
+    {
+        "dataName":  "Arequipa",
+        "population_Millions":  8.411169907
+    },
+    {
+        "dataName":  "Peru",
+        "population_Millions":  25.064268093
+    },
+    {
+        "dataName":  "Luzon",
+        "population_Millions":  62.486805532
+    },
+    {
+        "dataName":  "Visayas",
+        "population_Millions":  22.213388360
+    },
+    {
+        "dataName":  "ViasyasyMindanao",
+        "population_Millions":  29.264144108
+    },
+    {
+        "dataName":  "Gdansk",
+        "population_Millions":  9.397496547
+    },
+    {
+        "dataName":  "Katowice",
+        "population_Millions":  11.052219143
+    },
+    {
+        "dataName":  "Poland",
+        "population_Millions":  17.936023310
+    },
+    {
+        "dataName":  "Polynesia",
+        "population_Millions":  0.345018
+    },
+    {
+        "dataName":  "Azores",
+        "population_Millions":  0.490694868
+    },
+    {
+        "dataName":  "Portugal",
+        "population_Millions":  9.926378132
+    },
+    {
+        "dataName":  "Ratnakara",
+        "population_Millions":  0.834188
+    },
+    {
+        "dataName":  "Brazzaville",
+        "population_Millions":  6.035104
+    },
+    {
+        "dataName":  "Romania",
+        "population_Millions":  12.666684410
+    },
+    {
+        "dataName":  "Transylvania",
+        "population_Millions":  6.500087590
+    },
+    {
+        "dataName":  "Arkhangelsk",
+        "population_Millions":  1.769477895
+    },
+    {
+        "dataName":  "Crimea",
+        "population_Millions":  2.374297768
+    },
+    {
+        "dataName":  "EasternSiberia",
+        "population_Millions":  1.995446508
+    },
+    {
+        "dataName":  "Kaliningrad",
+        "population_Millions":  1.036596469
+    },
+    {
+        "dataName":  "Kamchatka",
+        "population_Millions":  0.478339969
+    },
+    {
+        "dataName":  "Karelia",
+        "population_Millions":  1.208595463
+    },
+    {
+        "dataName":  "Kirov",
+        "population_Millions":  11.902151228
+    },
+    {
+        "dataName":  "Makhachkala",
+        "population_Millions":  10.236912885
+    },
+    {
+        "dataName":  "Moskva",
+        "population_Millions":  28.114405769
+    },
+    {
+        "dataName":  "Norilsk",
+        "population_Millions":  0.243437491
+    },
+    {
+        "dataName":  "Novgorod",
+        "population_Millions":  9.951861308
+    },
+    {
+        "dataName":  "Rostovskaya",
+        "population_Millions":  14.355816371
+    },
+    {
+        "dataName":  "RussianFarEast",
+        "population_Millions":  4.081581466
+    },
+    {
+        "dataName":  "Sakha",
+        "population_Millions":  1.002095877
+    },
+    {
+        "dataName":  "SakhalinKurils",
+        "population_Millions":  0.469612406
+    },
+    {
+        "dataName":  "Surgut",
+        "population_Millions":  2.236273786
+    },
+    {
+        "dataName":  "Urals",
+        "population_Millions":  10.143705585
+    },
+    {
+        "dataName":  "Volga",
+        "population_Millions":  17.227434885
+    },
+    {
+        "dataName":  "Voronezh",
+        "population_Millions":  12.479850230
+    },
+    {
+        "dataName":  "WesternSiberia",
+        "population_Millions":  14.272005641
+    },
+    {
+        "dataName":  "Kigali",
+        "population_Millions":  26.972127
+    },
+    {
+        "dataName":  "SaoTomePrincipe",
+        "population_Millions":  0.226305
+    },
+    {
+        "dataName":  "Hijaz",
+        "population_Millions":  15.718559303
+    },
+    {
+        "dataName":  "Najd",
+        "population_Millions":  13.632398621
+    },
+    {
+        "dataName":  "Qassimah",
+        "population_Millions":  2.824394076
+    },
+    {
+        "dataName":  "Senegambia",
+        "population_Millions":  17.651103
+    },
+    {
+        "dataName":  "Belgrade",
+        "population_Millions":  6.791213
+    },
+    {
+        "dataName":  "Seychelles",
+        "population_Millions":  0.125522
+    },
+    {
+        "dataName":  "SierraLeone",
+        "population_Millions":  8.276807
+    },
+    {
+        "dataName":  "Singapore",
+        "population_Millions":  5.649885
+    },
+    {
+        "dataName":  "Slovakia",
+        "population_Millions":  5.473197
+    },
+    {
+        "dataName":  "Slovenia",
+        "population_Millions":  2.115228
+    },
+    {
+        "dataName":  "Somalia",
+        "population_Millions":  13.237883
+    },
+    {
+        "dataName":  "Somaliland",
+        "population_Millions":  4.564014
+    },
+    {
+        "dataName":  "CapeTown",
+        "population_Millions":  13.785706320
+    },
+    {
+        "dataName":  "Johannesburg",
+        "population_Millions":  48.592703680
+    },
+    {
+        "dataName":  "SouthKorea",
+        "population_Millions":  51.782512
+    },
+    {
+        "dataName":  "SouthSudan",
+        "population_Millions":  11.021177
+    },
+    {
+        "dataName":  "Barcelona",
+        "population_Millions":  15.382206102
+    },
+    {
+        "dataName":  "BasqueCountry",
+        "population_Millions":  2.924268454
+    },
+    {
+        "dataName":  "NorthernSpain",
+        "population_Millions":  7.094459587
+    },
+    {
+        "dataName":  "CanaryIslands",
+        "population_Millions":  2.212364419
+    },
+    {
+        "dataName":  "Spain",
+        "population_Millions":  20.215083438
+    },
+    {
+        "dataName":  "SriLanka",
+        "population_Millions":  22.834965
+    },
+    {
+        "dataName":  "Darfur",
+        "population_Millions":  16.412703382
+    },
+    {
+        "dataName":  "NorthernSudan",
+        "population_Millions":  7.828524348
+    },
+    {
+        "dataName":  "Sudan",
+        "population_Millions":  25.142118270
+    },
+    {
+        "dataName":  "Suriname",
+        "population_Millions":  0.623164
+    },
+    {
+        "dataName":  "Sweden",
+        "population_Millions":  10.487338
+    },
+    {
+        "dataName":  "Zurich",
+        "population_Millions":  8.792182
+    },
+    {
+        "dataName":  "Syria",
+        "population_Millions":  22.462173
+    },
+    {
+        "dataName":  "Taiwan",
+        "population_Millions":  23.420111
+    },
+    {
+        "dataName":  "Tajikistan",
+        "population_Millions":  10.182222
+    },
+    {
+        "dataName":  "Tanzania",
+        "population_Millions":  26.097846492
+    },
+    {
+        "dataName":  "WestTanzania",
+        "population_Millions":  36.633274640
+    },
+    {
+        "dataName":  "Zanzibar",
+        "population_Millions":  1.980699868
+    },
+    {
+        "dataName":  "Bangkok",
+        "population_Millions":  36.652714143
+    },
+    {
+        "dataName":  "ChiangMai",
+        "population_Millions":  35.082614857
+    },
+    {
+        "dataName":  "TimorLeste",
+        "population_Millions":  1.369295
+    },
+    {
+        "dataName":  "Togo",
+        "population_Millions":  9.089738
+    },
+    {
+        "dataName":  "Tunisia",
+        "population_Millions":  12.119334
+    },
+    {
+        "dataName":  "Anatolia",
+        "population_Millions":  29.162039840
+    },
+    {
+        "dataName":  "Diyarbakir",
+        "population_Millions":  18.766172281
+    },
+    {
+        "dataName":  "Istanbul",
+        "population_Millions":  39.130260879
+    },
+    {
+        "dataName":  "Turkmenistan",
+        "population_Millions":  7.230193
+    },
+    {
+        "dataName":  "Uganda",
+        "population_Millions":  47.312719
+    },
+    {
+        "dataName":  "Donetsk",
+        "population_Millions":  11.924246268
+    },
+    {
+        "dataName":  "Kharkiv",
+        "population_Millions":  6.003523107
+    },
+    {
+        "dataName":  "Kiev",
+        "population_Millions":  16.065420486
+    },
+    {
+        "dataName":  "Odesa",
+        "population_Millions":  7.055576139
+    },
+    {
+        "dataName":  "Dubai",
+        "population_Millions":  10.242086
+    },
+    {
+        "dataName":  "EnglishMidlands",
+        "population_Millions":  27.055065131
+    },
+    {
+        "dataName":  "BritishWestIndies",
+        "population_Millions":  0.226420207
+    },
+    {
+        "dataName":  "England",
+        "population_Millions":  30.720500936
+    },
+    {
+        "dataName":  "NorthernIreland",
+        "population_Millions":  1.944915710
+    },
+    {
+        "dataName":  "Scotland",
+        "population_Millions":  5.495494929
+    },
+    {
+        "dataName":  "Wales",
+        "population_Millions":  3.163679087
+    },
+    {
+        "dataName":  "Alaska",
+        "population_Millions":  0.890090896
+    },
+    {
+        "dataName":  "AmericanCaribbean",
+        "population_Millions":  3.096390234
+    },
+    {
+        "dataName":  "AmericanPacific",
+        "population_Millions":  2.080110927
+    },
+    {
+        "dataName":  "Boise",
+        "population_Millions":  2.588486742
+    },
+    {
+        "dataName":  "California",
+        "population_Millions":  50.472826808
+    },
+    {
+        "dataName":  "Cascadia",
+        "population_Millions":  12.345496844
+    },
+    {
+        "dataName":  "Cumberland",
+        "population_Millions":  11.481959960
+    },
+    {
+        "dataName":  "Dakota",
+        "population_Millions":  7.409635436
+    },
+    {
+        "dataName":  "Dixie",
+        "population_Millions":  35.798011615
+    },
+    {
+        "dataName":  "HighPlains",
+        "population_Millions":  14.948854039
+    },
+    {
+        "dataName":  "MississippiDelta",
+        "population_Millions":  17.186826792
+    },
+    {
+        "dataName":  "NewEngland",
+        "population_Millions":  15.865498946
+    },
+    {
+        "dataName":  "NewYork",
+        "population_Millions":  43.722793856
+    },
+    {
+        "dataName":  "RockyMountains",
+        "population_Millions":  17.374828786
+    },
+    {
+        "dataName":  "RustBelt",
+        "population_Millions":  49.988481834
+    },
+    {
+        "dataName":  "Shenandoah",
+        "population_Millions":  28.368194924
+    },
+    {
+        "dataName":  "Texas",
+        "population_Millions":  31.502632361
+    },
+    {
+        "dataName":  "Uruguay",
+        "population_Millions":  3.390913
+    },
+    {
+        "dataName":  "Karakalpakstan",
+        "population_Millions":  3.698287997
+    },
+    {
+        "dataName":  "Uzbekistan",
+        "population_Millions":  31.240667003
+    },
+    {
+        "dataName":  "Venezuela",
+        "population_Millions":  28.213017
+    },
+    {
+        "dataName":  "Hanoi",
+        "population_Millions":  46.955279335
+    },
+    {
+        "dataName":  "HoChiMinhCity",
+        "population_Millions":  52.725375665
+    },
+    {
+        "dataName":  "Aden",
+        "population_Millions":  7.199944586
+    },
+    {
+        "dataName":  "Yemen",
+        "population_Millions":  31.022931414
+    },
+    {
+        "dataName":  "Zambia",
+        "population_Millions":  20.152938
+    },
+    {
+        "dataName":  "Zimbabwe",
+        "population_Millions":  16.069056
+    },
+    {
+        "dataName":  "2026_Afghanistan",
+        "population_Millions":  45.047069
+    },
+    {
+        "dataName":  "2026_Tirana",
+        "population_Millions":  2.751025
+    },
+    {
+        "dataName":  "2026_Algeria",
+        "population_Millions":  45.741312000
+    },
+    {
+        "dataName":  "2026_SaharanAlgeria",
+        "population_Millions":  2.287022000
+    },
+    {
+        "dataName":  "2026_Angola",
+        "population_Millions":  37.037707079
+    },
+    {
+        "dataName":  "2026_EastAngola",
+        "population_Millions":  3.177471921
+    },
+    {
+        "dataName":  "2026_GranChaco",
+        "population_Millions":  9.477793412
+    },
+    {
+        "dataName":  "2026_Pampas",
+        "population_Millions":  34.155742485
+    },
+    {
+        "dataName":  "2026_Patagonia",
+        "population_Millions":  2.370198103
+    },
+    {
+        "dataName":  "2026_Armenia",
+        "population_Millions":  2.930915
+    },
+    {
+        "dataName":  "2026_Brisbane",
+        "population_Millions":  5.579828615
+    },
+    {
+        "dataName":  "2026_Sydney",
+        "population_Millions":  9.003935992
+    },
+    {
+        "dataName":  "2026_Westralia",
+        "population_Millions":  2.944593324
+    },
+    {
+        "dataName":  "2026_Darwin",
+        "population_Millions":  0.258041028
+    },
+    {
+        "dataName":  "2026_Melbourne",
+        "population_Millions":  7.548150832
+    },
+    {
+        "dataName":  "2026_Adelaide",
+        "population_Millions":  1.892546209
+    },
+    {
+        "dataName":  "2026_Vienna",
+        "population_Millions":  9.147634
+    },
+    {
+        "dataName":  "2026_Azerbaijan",
+        "population_Millions":  10.454855
+    },
+    {
+        "dataName":  "2026_Bangladesh",
+        "population_Millions":  177.818044
+    },
+    {
+        "dataName":  "2026_Bahamas",
+        "population_Millions":  0.404628
+    },
+    {
+        "dataName":  "2026_Belarus",
+        "population_Millions":  8.937018
+    },
+    {
+        "dataName":  "2026_Belgium",
+        "population_Millions":  12.46209
+    },
+    {
+        "dataName":  "2026_Belize",
+        "population_Millions":  0.428644
+    },
+    {
+        "dataName":  "2026_TogoBenin",
+        "population_Millions":  15.170419
+    },
+    {
+        "dataName":  "2026_Bhutan",
+        "population_Millions":  0.802214
+    },
+    {
+        "dataName":  "2026_Bolivia",
+        "population_Millions":  12.749291
+    },
+    {
+        "dataName":  "2026_Sarajevo",
+        "population_Millions":  3.114242
+    },
+    {
+        "dataName":  "2026_Botswana",
+        "population_Millions":  2.603388
+    },
+    {
+        "dataName":  "2026_Amazonia",
+        "population_Millions":  5.906147000
+    },
+    {
+        "dataName":  "2026_Belem",
+        "population_Millions":  9.576687000
+    },
+    {
+        "dataName":  "2026_Brasilia",
+        "population_Millions":  12.140989000
+    },
+    {
+        "dataName":  "2026_Cuiaba",
+        "population_Millions":  8.140041000
+    },
+    {
+        "dataName":  "2026_Fortaleza",
+        "population_Millions":  27.387768000
+    },
+    {
+        "dataName":  "2026_PortoAlegre",
+        "population_Millions":  30.410630000
+    },
+    {
+        "dataName":  "2026_Recife",
+        "population_Millions":  30.689906000
+    },
+    {
+        "dataName":  "2026_RiodeJaneiro",
+        "population_Millions":  42.849492000
+    },
+    {
+        "dataName":  "2026_SaoPaulo",
+        "population_Millions":  46.461006000
+    },
+    {
+        "dataName":  "2026_Brunei",
+        "population_Millions":  0.469775
+    },
+    {
+        "dataName":  "2026_Bulgaria",
+        "population_Millions":  6.667659
+    },
+    {
+        "dataName":  "2026_BurkinaFaso",
+        "population_Millions":  24.6017
+    },
+    {
+        "dataName":  "2026_CaboVerde",
+        "population_Millions":  0.52963
+    },
+    {
+        "dataName":  "2026_Cambodia",
+        "population_Millions":  18.051219
+    },
+    {
+        "dataName":  "2026_Cameroon",
+        "population_Millions":  25.710691000
+    },
+    {
+        "dataName":  "2026_WestCameroon",
+        "population_Millions":  4.930126000
+    },
+    {
+        "dataName":  "2026_Alberta",
+        "population_Millions":  4.687980000
+    },
+    {
+        "dataName":  "2026_BritishColumbia",
+        "population_Millions":  5.566561000
+    },
+    {
+        "dataName":  "2026_CanadianArctic",
+        "population_Millions":  0.088514000
+    },
+    {
+        "dataName":  "2026_Halifax",
+        "population_Millions":  2.633255000
+    },
+    {
+        "dataName":  "2026_Laurentia",
+        "population_Millions":  9.012638000
+    },
+    {
+        "dataName":  "2026_Manitoba",
+        "population_Millions":  1.468897000
+    },
+    {
+        "dataName":  "2026_Ontario",
+        "population_Millions":  15.739569000
+    },
+    {
+        "dataName":  "2026_Prairies",
+        "population_Millions":  1.224685000
+    },
+    {
+        "dataName":  "2026_Yukon",
+        "population_Millions":  0.045629000
+    },
+    {
+        "dataName":  "2026_CentralAfricanRepublic",
+        "population_Millions":  4.158572000
+    },
+    {
+        "dataName":  "2026_Logone",
+        "population_Millions":  1.540412000
+    },
+    {
+        "dataName":  "2026_Chad",
+        "population_Millions":  16.371125000
+    },
+    {
+        "dataName":  "2026_NorthernChad",
+        "population_Millions":  5.189255000
+    },
+    {
+        "dataName":  "2026_Santiago",
+        "population_Millions":  15.396939000
+    },
+    {
+        "dataName":  "2026_Valparaiso",
+        "population_Millions":  4.548911000
+    },
+    {
+        "dataName":  "2026_Anhui",
+        "population_Millions":  60.832386043
+    },
+    {
+        "dataName":  "2026_Beijing",
+        "population_Millions":  110.062919078
+    },
+    {
+        "dataName":  "2026_Chongqing",
+        "population_Millions":  115.359645082
+    },
+    {
+        "dataName":  "2026_Fujian",
+        "population_Millions":  41.407500029
+    },
+    {
+        "dataName":  "2026_Gansu",
+        "population_Millions":  32.119638023
+    },
+    {
+        "dataName":  "2026_Guangzhou",
+        "population_Millions":  136.209899096
+    },
+    {
+        "dataName":  "2026_Guizhou",
+        "population_Millions":  38.439067027
+    },
+    {
+        "dataName":  "2026_Hangzhou",
+        "population_Millions":  64.361503046
+    },
+    {
+        "dataName":  "2026_HongKong",
+        "population_Millions":  7.038662005
+    },
+    {
+        "dataName":  "2026_Hunan",
+        "population_Millions":  66.232787047
+    },
+    {
+        "dataName":  "2026_InnerMongolia",
+        "population_Millions":  23.972396017
+    },
+    {
+        "dataName":  "2026_Jilin",
+        "population_Millions":  23.996616017
+    },
+    {
+        "dataName":  "2026_Liaoning",
+        "population_Millions":  42.455465030
+    },
+    {
+        "dataName":  "2026_Manchuria",
+        "population_Millions":  31.748430022
+    },
+    {
+        "dataName":  "2026_Nanchang",
+        "population_Millions":  45.044403032
+    },
+    {
+        "dataName":  "2026_Nanning",
+        "population_Millions":  49.966811035
+    },
+    {
+        "dataName":  "2026_Qinghai",
+        "population_Millions":  5.905049004
+    },
+    {
+        "dataName":  "2026_Shandong",
+        "population_Millions":  101.203401072
+    },
+    {
+        "dataName":  "2026_Shanghai",
+        "population_Millions":  109.269033077
+    },
+    {
+        "dataName":  "2026_Shanxi",
+        "population_Millions":  34.804173025
+    },
+    {
+        "dataName":  "2026_Tibet",
+        "population_Millions":  3.636456003
+    },
+    {
+        "dataName":  "2026_Wuhan",
+        "population_Millions":  57.568224041
+    },
+    {
+        "dataName":  "2026_Xian",
+        "population_Millions":  39.402832028
+    },
+    {
+        "dataName":  "2026_Xinjiang",
+        "population_Millions":  25.769830018
+    },
+    {
+        "dataName":  "2026_Yunnan",
+        "population_Millions":  47.058596033
+    },
+    {
+        "dataName":  "2026_Zhengzhou",
+        "population_Millions":  99.048367070
+    },
+    {
+        "dataName":  "2026_Colombia",
+        "population_Millions":  50.586404000
+    },
+    {
+        "dataName":  "2026_Villavicencio",
+        "population_Millions":  3.349822000
+    },
+    {
+        "dataName":  "2026_Kinshasa",
+        "population_Millions":  59.871516000
+    },
+    {
+        "dataName":  "2026_Kisangani",
+        "population_Millions":  31.089902000
+    },
+    {
+        "dataName":  "2026_Lubumbashi",
+        "population_Millions":  25.490744000
+    },
+    {
+        "dataName":  "2026_CostaRica",
+        "population_Millions":  5.174789
+    },
+    {
+        "dataName":  "2026_Zagreb",
+        "population_Millions":  3.822345
+    },
+    {
+        "dataName":  "2026_Cuba",
+        "population_Millions":  10.892659
+    },
+    {
+        "dataName":  "2026_Czechia",
+        "population_Millions":  10.527781
+    },
+    {
+        "dataName":  "2026_Denmark",
+        "population_Millions":  6.080046009
+    },
+    {
+        "dataName":  "2026_Greenland",
+        "population_Millions":  0.055628991
+    },
+    {
+        "dataName":  "2026_Djibouti",
+        "population_Millions":  1.199459
+    },
+    {
+        "dataName":  "2026_EastHispanola",
+        "population_Millions":  11.6095
+    },
+    {
+        "dataName":  "2026_Ecuador",
+        "population_Millions":  18.444506
+    },
+    {
+        "dataName":  "2026_Alexandria",
+        "population_Millions":  41.491739000
+    },
+    {
+        "dataName":  "2026_Cairo",
+        "population_Millions":  58.058019000
+    },
+    {
+        "dataName":  "2026_Luxor",
+        "population_Millions":  20.551417000
+    },
+    {
+        "dataName":  "2026_ElSalvador",
+        "population_Millions":  6.391253
+    },
+    {
+        "dataName":  "2026_EquatorialGuinea",
+        "population_Millions":  1.984468
+    },
+    {
+        "dataName":  "2026_Eritrea",
+        "population_Millions":  3.682669
+    },
+    {
+        "dataName":  "2026_Estonia",
+        "population_Millions":  1.331062
+    },
+    {
+        "dataName":  "2026_Eswatini",
+        "population_Millions":  1.269859
+    },
+    {
+        "dataName":  "2026_DireDiwa",
+        "population_Millions":  14.601856000
+    },
+    {
+        "dataName":  "2026_Ethiopia",
+        "population_Millions":  73.649445000
+    },
+    {
+        "dataName":  "2026_Mekelle",
+        "population_Millions":  50.650884000
+    },
+    {
+        "dataName":  "2026_Finland",
+        "population_Millions":  5.621739
+    },
+    {
+        "dataName":  "2026_FrenchGuiana",
+        "population_Millions":  0.319292840
+    },
+    {
+        "dataName":  "2026_FrenchPacific",
+        "population_Millions":  0.592863416
+    },
+    {
+        "dataName":  "2026_FrenchRatnakara",
+        "population_Millions":  1.235462385
+    },
+    {
+        "dataName":  "2026_FrenchWestIndies",
+        "population_Millions":  0.746596041
+    },
+    {
+        "dataName":  "2026_Lyon",
+        "population_Millions":  16.790926059
+    },
+    {
+        "dataName":  "2026_Nantes",
+        "population_Millions":  16.862886906
+    },
+    {
+        "dataName":  "2026_Paris",
+        "population_Millions":  23.720226131
+    },
+    {
+        "dataName":  "2026_Toulouse",
+        "population_Millions":  9.460451222
+    },
+    {
+        "dataName":  "2026_Libreville",
+        "population_Millions":  2.647399
+    },
+    {
+        "dataName":  "2026_Gambia",
+        "population_Millions":  2.884079
+    },
+    {
+        "dataName":  "2026_Georgia",
+        "population_Millions":  3.804642
+    },
+    {
+        "dataName":  "2026_Bavaria",
+        "population_Millions":  36.421395000
+    },
+    {
+        "dataName":  "2026_EastGermany",
+        "population_Millions":  16.261633000
+    },
+    {
+        "dataName":  "2026_Germany",
+        "population_Millions":  30.961230000
+    },
+    {
+        "dataName":  "2026_Accra",
+        "population_Millions":  35.697557
+    },
+    {
+        "dataName":  "2026_Greece",
+        "population_Millions":  11.279449
+    },
+    {
+        "dataName":  "2026_Guatemala",
+        "population_Millions":  18.967978
+    },
+    {
+        "dataName":  "2026_Guinea",
+        "population_Millions":  15.441993
+    },
+    {
+        "dataName":  "2026_GuineaBissau",
+        "population_Millions":  2.297808
+    },
+    {
+        "dataName":  "2026_GulfStates",
+        "population_Millions":  4.849131
+    },
+    {
+        "dataName":  "2026_Guyana",
+        "population_Millions":  0.84089
+    },
+    {
+        "dataName":  "2026_WestHispanola",
+        "population_Millions":  12.037506
+    },
+    {
+        "dataName":  "2026_Honduras",
+        "population_Millions":  11.18476
+    },
+    {
+        "dataName":  "2026_Hungary",
+        "population_Millions":  9.585818
+    },
+    {
+        "dataName":  "2026_Iceland",
+        "population_Millions":  0.402329
+    },
+    {
+        "dataName":  "2026_AndhraPradesh",
+        "population_Millions":  60.472609959
+    },
+    {
+        "dataName":  "2026_ArunchalPradesh",
+        "population_Millions":  1.687826999
+    },
+    {
+        "dataName":  "2026_Assam",
+        "population_Millions":  53.050787964
+    },
+    {
+        "dataName":  "2026_Bangalore",
+        "population_Millions":  74.522144950
+    },
+    {
+        "dataName":  "2026_Bihar",
+        "population_Millions":  126.977276914
+    },
+    {
+        "dataName":  "2026_Chennai",
+        "population_Millions":  130.351236912
+    },
+    {
+        "dataName":  "2026_Faridabad",
+        "population_Millions":  86.726965941
+    },
+    {
+        "dataName":  "2026_Gujarat",
+        "population_Millions":  74.436954950
+    },
+    {
+        "dataName":  "2026_Hyderabad",
+        "population_Millions":  42.696393971
+    },
+    {
+        "dataName":  "2026_Indore",
+        "population_Millions":  88.587924940
+    },
+    {
+        "dataName":  "2026_Jaipur",
+        "population_Millions":  83.613252943
+    },
+    {
+        "dataName":  "2026_JammuandKashmir",
+        "population_Millions":  15.297160990
+    },
+    {
+        "dataName":  "2026_Kolkata",
+        "population_Millions":  152.794850897
+    },
+    {
+        "dataName":  "2026_Mumbai",
+        "population_Millions":  138.849806906
+    },
+    {
+        "dataName":  "2026_NewDelhi",
+        "population_Millions":  264.202293821
+    },
+    {
+        "dataName":  "2026_Odisha",
+        "population_Millions":  51.198847965
+    },
+    {
+        "dataName":  "2026_Raipur",
+        "population_Millions":  31.159238978
+    },
+    {
+        "dataName":  "2026_Aceh",
+        "population_Millions":  5.515645390
+    },
+    {
+        "dataName":  "2026_Borneo",
+        "population_Millions":  17.830027244
+    },
+    {
+        "dataName":  "2026_Java",
+        "population_Millions":  160.795147029
+    },
+    {
+        "dataName":  "2026_LesserSundas",
+        "population_Millions":  16.047644004
+    },
+    {
+        "dataName":  "2026_MoluccasandSulawesi",
+        "population_Millions":  3.514144032
+    },
+    {
+        "dataName":  "2026_NewGuinea",
+        "population_Millions":  5.857595814
+    },
+    {
+        "dataName":  "2026_Sulawesi",
+        "population_Millions":  21.254602635
+    },
+    {
+        "dataName":  "2026_Sumatra",
+        "population_Millions":  57.071975852
+    },
+    {
+        "dataName":  "2026_Ahvaz",
+        "population_Millions":  14.783744000
+    },
+    {
+        "dataName":  "2026_Isfahan",
+        "population_Millions":  16.337151000
+    },
+    {
+        "dataName":  "2026_Mashhad",
+        "population_Millions":  16.553926000
+    },
+    {
+        "dataName":  "2026_Tabriz",
+        "population_Millions":  16.097543000
+    },
+    {
+        "dataName":  "2026_Tehran",
+        "population_Millions":  29.396133000
+    },
+    {
+        "dataName":  "2026_Baghdad",
+        "population_Millions":  30.219606000
+    },
+    {
+        "dataName":  "2026_Mosul",
+        "population_Millions":  17.787831000
+    },
+    {
+        "dataName":  "2026_Ireland",
+        "population_Millions":  5.35695
+    },
+    {
+        "dataName":  "2026_Israel",
+        "population_Millions":  9.647689
+    },
+    {
+        "dataName":  "2026_Italy",
+        "population_Millions":  14.567462342
+    },
+    {
+        "dataName":  "2026_Milan",
+        "population_Millions":  27.532384718
+    },
+    {
+        "dataName":  "2026_Naples",
+        "population_Millions":  17.408934940
+    },
+    {
+        "dataName":  "2026_IvoryCoast",
+        "population_Millions":  33.494346
+    },
+    {
+        "dataName":  "2026_Jamaica",
+        "population_Millions":  2.833403
+    },
+    {
+        "dataName":  "2026_Hokkaido",
+        "population_Millions":  4.930322746
+    },
+    {
+        "dataName":  "2026_KyushuandShikoku",
+        "population_Millions":  15.577861806
+    },
+    {
+        "dataName":  "2026_NorthHonshu",
+        "population_Millions":  51.155599267
+    },
+    {
+        "dataName":  "2026_Ryukus",
+        "population_Millions":  1.410106775
+    },
+    {
+        "dataName":  "2026_SouthHonshu",
+        "population_Millions":  49.353840406
+    },
+    {
+        "dataName":  "2026_Jordan",
+        "population_Millions":  11.589532
+    },
+    {
+        "dataName":  "2026_Almaty",
+        "population_Millions":  13.405580000
+    },
+    {
+        "dataName":  "2026_Astana",
+        "population_Millions":  7.678046000
+    },
+    {
+        "dataName":  "2026_Kenya",
+        "population_Millions":  49.332193841
+    },
+    {
+        "dataName":  "2026_Mombasa",
+        "population_Millions":  9.304218159
+    },
+    {
+        "dataName":  "2026_Kosovo",
+        "population_Millions":  1.666992
+    },
+    {
+        "dataName":  "2026_Kuwait",
+        "population_Millions":  5.102773
+    },
+    {
+        "dataName":  "2026_Kyrgyzstan",
+        "population_Millions":  7.400465
+    },
+    {
+        "dataName":  "2026_Laos",
+        "population_Millions":  7.974017
+    },
+    {
+        "dataName":  "2026_Latvia",
+        "population_Millions":  1.835935
+    },
+    {
+        "dataName":  "2026_Lebanon",
+        "population_Millions":  5.897467
+    },
+    {
+        "dataName":  "2026_Lesotho",
+        "population_Millions":  2.389336
+    },
+    {
+        "dataName":  "2026_WestIndies",
+        "population_Millions":  2.400216
+    },
+    {
+        "dataName":  "2026_Liberia",
+        "population_Millions":  5.853949
+    },
+    {
+        "dataName":  "2026_Cyrenaica",
+        "population_Millions":  2.185754000
+    },
+    {
+        "dataName":  "2026_Libya",
+        "population_Millions":  5.354097000
+    },
+    {
+        "dataName":  "2026_Lithuania",
+        "population_Millions":  2.797338
+    },
+    {
+        "dataName":  "2026_Madagascar",
+        "population_Millions":  33.522052
+    },
+    {
+        "dataName":  "2026_Malawi",
+        "population_Millions":  22.785535
+    },
+    {
+        "dataName":  "2026_MalayPeninsula",
+        "population_Millions":  29.445786809
+    },
+    {
+        "dataName":  "2026_SarawakandSabah",
+        "population_Millions":  6.939328191
+    },
+    {
+        "dataName":  "2026_Maldives",
+        "population_Millions":  0.531517
+    },
+    {
+        "dataName":  "2026_Gao",
+        "population_Millions":  2.410876000
+    },
+    {
+        "dataName":  "2026_Mali",
+        "population_Millions":  23.521399000
+    },
+    {
+        "dataName":  "2026_Mauritania",
+        "population_Millions":  5.461319
+    },
+    {
+        "dataName":  "2026_Mauritius",
+        "population_Millions":  1.265059
+    },
+    {
+        "dataName":  "2026_Melanesia",
+        "population_Millions":  2.138134
+    },
+    {
+        "dataName":  "2026_Merida",
+        "population_Millions":  13.886360000
+    },
+    {
+        "dataName":  "2026_MexicoCity",
+        "population_Millions":  81.323782000
+    },
+    {
+        "dataName":  "2026_Monterrey",
+        "population_Millions":  19.446764000
+    },
+    {
+        "dataName":  "2026_Tijuana",
+        "population_Millions":  18.340752000
+    },
+    {
+        "dataName":  "2026_Micronesia",
+        "population_Millions":  0.317418
+    },
+    {
+        "dataName":  "2026_Moldova",
+        "population_Millions":  2.961253
+    },
+    {
+        "dataName":  "2026_Mongolia",
+        "population_Millions":  3.556798
+    },
+    {
+        "dataName":  "2026_Rabat",
+        "population_Millions":  38.151628000
+    },
+    {
+        "dataName":  "2026_WesternSahara",
+        "population_Millions":  0.610813000
+    },
+    {
+        "dataName":  "2026_Mozambique",
+        "population_Millions":  17.073865000
+    },
+    {
+        "dataName":  "2026_NorthMozambique",
+        "population_Millions":  19.565986000
+    },
+    {
+        "dataName":  "2026_Myanmar",
+        "population_Millions":  30.458144000
+    },
+    {
+        "dataName":  "2026_UpperMyanmar",
+        "population_Millions":  24.726675000
+    },
+    {
+        "dataName":  "2026_Montenegro",
+        "population_Millions":  0.626233
+    },
+    {
+        "dataName":  "2026_Namibia",
+        "population_Millions":  3.153246
+    },
+    {
+        "dataName":  "2026_Himalayas",
+        "population_Millions":  29.62941
+    },
+    {
+        "dataName":  "2026_DutchCaribbean",
+        "population_Millions":  0.369964961
+    },
+    {
+        "dataName":  "2026_Netherlands",
+        "population_Millions":  18.448774039
+    },
+    {
+        "dataName":  "2026_NewZealand",
+        "population_Millions":  4.040421396
+    },
+    {
+        "dataName":  "2026_TeWaipounamu",
+        "population_Millions":  1.247057604
+    },
+    {
+        "dataName":  "2026_Nicaragua",
+        "population_Millions":  7.097329
+    },
+    {
+        "dataName":  "2026_Niger",
+        "population_Millions":  28.814878
+    },
+    {
+        "dataName":  "2026_Kano",
+        "population_Millions":  93.798372000
+    },
+    {
+        "dataName":  "2026_Lagos",
+        "population_Millions":  83.246270000
+    },
+    {
+        "dataName":  "2026_PortHarcourt",
+        "population_Millions":  65.387190000
+    },
+    {
+        "dataName":  "2026_NorthKorea",
+        "population_Millions":  26.633691
+    },
+    {
+        "dataName":  "2026_NorthMacedonia",
+        "population_Millions":  1.804063
+    },
+    {
+        "dataName":  "2026_Norway",
+        "population_Millions":  5.652989
+    },
+    {
+        "dataName":  "2026_Oman",
+        "population_Millions":  5.671458
+    },
+    {
+        "dataName":  "2026_Baluchistan",
+        "population_Millions":  17.397049933
+    },
+    {
+        "dataName":  "2026_Peshawar",
+        "population_Millions":  46.579836820
+    },
+    {
+        "dataName":  "2026_Punjab",
+        "population_Millions":  122.302661528
+    },
+    {
+        "dataName":  "2026_Sindh",
+        "population_Millions":  73.020242719
+    },
+    {
+        "dataName":  "2026_Palestine",
+        "population_Millions":  5.69279
+    },
+    {
+        "dataName":  "2026_Panama",
+        "population_Millions":  4.625718
+    },
+    {
+        "dataName":  "2026_PortMorseby",
+        "population_Millions":  10.947848
+    },
+    {
+        "dataName":  "2026_Paraguay",
+        "population_Millions":  7.095279
+    },
+    {
+        "dataName":  "2026_Arequipa",
+        "population_Millions":  8.774676000
+    },
+    {
+        "dataName":  "2026_Peru",
+        "population_Millions":  26.147472000
+    },
+    {
+        "dataName":  "2026_Luzon",
+        "population_Millions":  64.548491452
+    },
+    {
+        "dataName":  "2026_Visayas",
+        "population_Millions":  22.946295805
+    },
+    {
+        "dataName":  "2026_ViasyasyMindanao",
+        "population_Millions":  30.229683743
+    },
+    {
+        "dataName":  "2026_Gdansk",
+        "population_Millions":  9.264670755
+    },
+    {
+        "dataName":  "2026_Katowice",
+        "population_Millions":  10.896004712
+    },
+    {
+        "dataName":  "2026_Poland",
+        "population_Millions":  17.682512533
+    },
+    {
+        "dataName":  "2026_Polynesia",
+        "population_Millions":  0.346007
+    },
+    {
+        "dataName":  "2026_Azores",
+        "population_Millions":  0.489672000
+    },
+    {
+        "dataName":  "2026_Portugal",
+        "population_Millions":  9.905690000
+    },
+    {
+        "dataName":  "2026_Ratnakara",
+        "population_Millions":  0.89901
+    },
+    {
+        "dataName":  "2026_Brazzaville",
+        "population_Millions":  6.637785
+    },
+    {
+        "dataName":  "2026_Romania",
+        "population_Millions":  12.424697000
+    },
+    {
+        "dataName":  "2026_Transylvania",
+        "population_Millions":  6.375908000
+    },
+    {
+        "dataName":  "2026_Arkhangelsk",
+        "population_Millions":  1.742443821
+    },
+    {
+        "dataName":  "2026_Crimea",
+        "population_Millions":  2.376796073
+    },
+    {
+        "dataName":  "2026_EasternSiberia",
+        "population_Millions":  1.964959412
+    },
+    {
+        "dataName":  "2026_Kaliningrad",
+        "population_Millions":  1.020758532
+    },
+    {
+        "dataName":  "2026_Kamchatka",
+        "population_Millions":  0.471030966
+    },
+    {
+        "dataName":  "2026_Karelia",
+        "population_Millions":  1.190129848
+    },
+    {
+        "dataName":  "2026_Kirov",
+        "population_Millions":  11.720306031
+    },
+    {
+        "dataName":  "2026_Makhachkala",
+        "population_Millions":  10.080510121
+    },
+    {
+        "dataName":  "2026_Moskva",
+        "population_Millions":  27.684865897
+    },
+    {
+        "dataName":  "2026_Norilsk",
+        "population_Millions":  0.239717657
+    },
+    {
+        "dataName":  "2026_Novgorod",
+        "population_Millions":  9.799814137
+    },
+    {
+        "dataName":  "2026_Rostovskaya",
+        "population_Millions":  14.136484333
+    },
+    {
+        "dataName":  "2026_RussianFarEast",
+        "population_Millions":  4.019221661
+    },
+    {
+        "dataName":  "2026_Sakha",
+        "population_Millions":  0.986785140
+    },
+    {
+        "dataName":  "2026_SakhalinKurils",
+        "population_Millions":  0.462437800
+    },
+    {
+        "dataName":  "2026_Surgut",
+        "population_Millions":  2.202107380
+    },
+    {
+        "dataName":  "2026_Urals",
+        "population_Millions":  9.988727086
+    },
+    {
+        "dataName":  "2026_Volga",
+        "population_Millions":  16.964229838
+    },
+    {
+        "dataName":  "2026_Voronezh",
+        "population_Millions":  12.289178911
+    },
+    {
+        "dataName":  "2026_WesternSiberia",
+        "population_Millions":  14.053953356
+    },
+    {
+        "dataName":  "2026_Kigali",
+        "population_Millions":  29.61885
+    },
+    {
+        "dataName":  "2026_SaoTomePrincipe",
+        "population_Millions":  0.244994
+    },
+    {
+        "dataName":  "2026_Hijaz",
+        "population_Millions":  17.179470000
+    },
+    {
+        "dataName":  "2026_Najd",
+        "population_Millions":  14.899418000
+    },
+    {
+        "dataName":  "2026_Qassimah",
+        "population_Millions":  3.086899000
+    },
+    {
+        "dataName":  "2026_Senegambia",
+        "population_Millions":  19.366548
+    },
+    {
+        "dataName":  "2026_Belgrade",
+        "population_Millions":  6.641964
+    },
+    {
+        "dataName":  "2026_Seychelles",
+        "population_Millions":  0.134959
+    },
+    {
+        "dataName":  "2026_SierraLeone",
+        "population_Millions":  8.996745
+    },
+    {
+        "dataName":  "2026_Singapore",
+        "population_Millions":  5.905748
+    },
+    {
+        "dataName":  "2026_Slovakia",
+        "population_Millions":  5.451342
+    },
+    {
+        "dataName":  "2026_Slovenia",
+        "population_Millions":  2.114573
+    },
+    {
+        "dataName":  "2026_Somalia",
+        "population_Millions":  14.011076
+    },
+    {
+        "dataName":  "2026_Somaliland",
+        "population_Millions":  6.294831
+    },
+    {
+        "dataName":  "2026_CapeTown",
+        "population_Millions":  14.456334699
+    },
+    {
+        "dataName":  "2026_Johannesburg",
+        "population_Millions":  50.996749301
+    },
+    {
+        "dataName":  "2026_SouthKorea",
+        "population_Millions":  51.600388
+    },
+    {
+        "dataName":  "2026_SouthSudan",
+        "population_Millions":  12.436037
+    },
+    {
+        "dataName":  "2026_Barcelona",
+        "population_Millions":  15.389413000
+    },
+    {
+        "dataName":  "2026_BasqueCountry",
+        "population_Millions":  2.925639000
+    },
+    {
+        "dataName":  "2026_NorthernSpain",
+        "population_Millions":  7.097784000
+    },
+    {
+        "dataName":  "2026_CanaryIslands",
+        "population_Millions":  2.213401000
+    },
+    {
+        "dataName":  "2026_Spain",
+        "population_Millions":  20.224556000
+    },
+    {
+        "dataName":  "2026_SriLanka",
+        "population_Millions":  23.348315
+    },
+    {
+        "dataName":  "2026_Darfur",
+        "population_Millions":  17.708671332
+    },
+    {
+        "dataName":  "2026_NorthernSudan",
+        "population_Millions":  8.446674159
+    },
+    {
+        "dataName":  "2026_Sudan",
+        "population_Millions":  27.127373509
+    },
+    {
+        "dataName":  "2026_Suriname",
+        "population_Millions":  0.645256
+    },
+    {
+        "dataName":  "2026_Sweden",
+        "population_Millions":  10.701047
+    },
+    {
+        "dataName":  "2026_Zurich",
+        "population_Millions":  9.007798
+    },
+    {
+        "dataName":  "2026_Syria",
+        "population_Millions":  26.472497
+    },
+    {
+        "dataName":  "2026_Taiwan",
+        "population_Millions":  23.011292
+    },
+    {
+        "dataName":  "2026_Tajikistan",
+        "population_Millions":  10.978599
+    },
+    {
+        "dataName":  "2026_Tanzania",
+        "population_Millions":  29.264488597
+    },
+    {
+        "dataName":  "2026_WestTanzania",
+        "population_Millions":  41.078258434
+    },
+    {
+        "dataName":  "2026_Zanzibar",
+        "population_Millions":  2.221032969
+    },
+    {
+        "dataName":  "2026_Bangkok",
+        "population_Millions":  36.562934000
+    },
+    {
+        "dataName":  "2026_ChiangMai",
+        "population_Millions":  34.996680000
+    },
+    {
+        "dataName":  "2026_TimorLeste",
+        "population_Millions":  1.436923
+    },
+    {
+        "dataName":  "2026_Togo",
+        "population_Millions":  9.930918
+    },
+    {
+        "dataName":  "2026_Tunisia",
+        "population_Millions":  12.415138
+    },
+    {
+        "dataName":  "2026_Anatolia",
+        "population_Millions":  29.452663665
+    },
+    {
+        "dataName":  "2026_Diyarbakir",
+        "population_Millions":  18.953192784
+    },
+    {
+        "dataName":  "2026_Istanbul",
+        "population_Millions":  39.520225551
+    },
+    {
+        "dataName":  "2026_Turkmenistan",
+        "population_Millions":  7.736632
+    },
+    {
+        "dataName":  "2026_Uganda",
+        "population_Millions":  52.761469
+    },
+    {
+        "dataName":  "2026_Donetsk",
+        "population_Millions":  11.484759000
+    },
+    {
+        "dataName":  "2026_Kharkiv",
+        "population_Millions":  5.782254000
+    },
+    {
+        "dataName":  "2026_Kiev",
+        "population_Millions":  15.473304000
+    },
+    {
+        "dataName":  "2026_Odesa",
+        "population_Millions":  6.795532000
+    },
+    {
+        "dataName":  "2026_Dubai",
+        "population_Millions":  11.574682
+    },
+    {
+        "dataName":  "2026_EnglishMidlands",
+        "population_Millions":  27.749717991
+    },
+    {
+        "dataName":  "2026_BritishWestIndies",
+        "population_Millions":  0.232234079
+    },
+    {
+        "dataName":  "2026_England",
+        "population_Millions":  31.509265688
+    },
+    {
+        "dataName":  "2026_NorthernIreland",
+        "population_Millions":  1.994852453
+    },
+    {
+        "dataName":  "2026_Scotland",
+        "population_Millions":  5.636595150
+    },
+    {
+        "dataName":  "2026_Wales",
+        "population_Millions":  3.244907639
+    },
+    {
+        "dataName":  "2026_Alaska",
+        "population_Millions":  0.909379103
+    },
+    {
+        "dataName":  "2026_AmericanCaribbean",
+        "population_Millions":  3.163489374
+    },
+    {
+        "dataName":  "2026_AmericanPacific",
+        "population_Millions":  2.125187969
+    },
+    {
+        "dataName":  "2026_Boise",
+        "population_Millions":  2.644579607
+    },
+    {
+        "dataName":  "2026_California",
+        "population_Millions":  51.566589416
+    },
+    {
+        "dataName":  "2026_Cascadia",
+        "population_Millions":  12.613027730
+    },
+    {
+        "dataName":  "2026_Cumberland",
+        "population_Millions":  11.730777882
+    },
+    {
+        "dataName":  "2026_Dakota",
+        "population_Millions":  7.570203770
+    },
+    {
+        "dataName":  "2026_Dixie",
+        "population_Millions":  36.573764823
+    },
+    {
+        "dataName":  "2026_HighPlains",
+        "population_Millions":  15.272799922
+    },
+    {
+        "dataName":  "2026_MississippiDelta",
+        "population_Millions":  17.559270329
+    },
+    {
+        "dataName":  "2026_NewEngland",
+        "population_Millions":  16.209308281
+    },
+    {
+        "dataName":  "2026_NewYork",
+        "population_Millions":  44.670280187
+    },
+    {
+        "dataName":  "2026_RockyMountains",
+        "population_Millions":  17.751347073
+    },
+    {
+        "dataName":  "2026_RustBelt",
+        "population_Millions":  51.071747961
+    },
+    {
+        "dataName":  "2026_Shenandoah",
+        "population_Millions":  28.982942617
+    },
+    {
+        "dataName":  "2026_Texas",
+        "population_Millions":  32.185303956
+    },
+    {
+        "dataName":  "2026_Uruguay",
+        "population_Millions":  3.382537
+    },
+    {
+        "dataName":  "2026_Karakalpakstan",
+        "population_Millions":  3.993109000
+    },
+    {
+        "dataName":  "2026_Uzbekistan",
+        "population_Millions":  33.731114000
+    },
+    {
+        "dataName":  "2026_Venezuela",
+        "population_Millions":  28.633711
+    },
+    {
+        "dataName":  "2026_Hanoi",
+        "population_Millions":  48.131403000
+    },
+    {
+        "dataName":  "2026_HoChiMinhCity",
+        "population_Millions":  54.046028000
+    },
+    {
+        "dataName":  "2026_Aden",
+        "population_Millions":  8.092575000
+    },
+    {
+        "dataName":  "2026_Yemen",
+        "population_Millions":  34.869078000
+    },
+    {
+        "dataName":  "2026_Zambia",
+        "population_Millions":  22.521915
+    },
+    {
+        "dataName":  "2026_Zimbabwe",
+        "population_Millions":  17.27358
+    }
+]

@@ -1712,6 +1712,14 @@ namespace TIEconomyMod.FormulaTests
                 "clean physical mass retains one-decimal Earth Boost");
             Near(1f, HabRebalanceMath.ConstructionRate(false), 0f,
                 "new construction rate");
+            Near(2f,
+                HabRebalanceMath.GeneratorConstructionCostMultiplier(true),
+                0f,
+                "direct generators represent two plants at construction");
+            Near(1f,
+                HabRebalanceMath.GeneratorConstructionCostMultiplier(false),
+                0f,
+                "non-generators retain ordinary construction cost");
             True(HabRebalanceMath.HasRebalancedMaterialFraction(0.6666667f),
                 "two-thirds material marker");
             True(HabRebalanceMath.HasRebalancedMaterialFraction(0.6f),
