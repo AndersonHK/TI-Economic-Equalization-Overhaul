@@ -142,9 +142,20 @@ for ($index = 0; $index -lt $expectedSiteCount; $index++) {
             "TIMiningProfileTemplate.displayName.$($profile[0].dataName)=Lunar")) {
         throw "$($profile[0].dataName) is missing the English display-name localization used by the planetoid Type column."
     }
-    if (-not $profileLoc.Contains(
-            "TIMiningProfileTemplate.description.$($profile[0].dataName)=")) {
-        throw "$($profile[0].dataName) is missing English localization."
+    $descriptionPrefix =
+        "TIMiningProfileTemplate.description.$($profile[0].dataName)="
+    $descriptionLines = @($profileLoc -split '\r?\n' | Where-Object {
+        $_.StartsWith($descriptionPrefix, [StringComparison]::Ordinal)
+    })
+    if ($descriptionLines.Count -ne 1) {
+        throw "$($profile[0].dataName) must have exactly one English description."
+    }
+    $description = $descriptionLines[0].Substring($descriptionPrefix.Length)
+    if ([String]::IsNullOrWhiteSpace($description) -or
+        $description.Length -gt 40 -or
+        $description.Contains('.') -or
+        $description.Contains('Resource outputs')) {
+        throw "$($profile[0].dataName) description must be a concise Mining Profile label: '$description'."
     }
     if ($site.friendlyName -ne $approved[$index].site) {
         throw "Site $($index + 1) does not match the approved roster order."

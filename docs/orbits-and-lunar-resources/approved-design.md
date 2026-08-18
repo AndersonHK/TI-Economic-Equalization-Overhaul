@@ -288,3 +288,13 @@ or AI-valuation issue should be appended here with its campaign conditions.
   bands. The final minimum separation is 207 km. This roster and the preceding
   Type/display-name correction were deployed after full verification on the
   same date.
+- 2026-08-18: the Intel screen's Mining Profile column showed the lunar
+  profiles as wrapped geological explanations with repeated resource-range
+  boilerplate, unlike vanilla's compact labels such as `Polar Regolith` and
+  `Wet Martian Regolith`. Lunar profile descriptions will instead be concise
+  geological-class labels no longer than 40 characters. The detailed geology
+  and resource rationale remain in the approved yield CSV and design notes.
+  All thirty-five replacements passed targeted data validation and full release
+  verification (1,078 formula assertions, 93 implementation-matrix rows, and
+  143 Harmony patches). Deployment remains pending because the process guard
+  found Terra Invicta running and made no changes to the installed package.

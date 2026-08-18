@@ -724,9 +724,6 @@ namespace TIEconomyMod.Patches
             typeof(FleetsScreenController), "shipModuleListItems");
         private static readonly FieldInfo comparisonRows = AccessTools.Field(
             typeof(FleetsScreenController), "shipModuleListItemsB");
-        private static readonly FieldInfo currentlyInstalledModule =
-            AccessTools.Field(
-                typeof(FleetsScreenController), "currentlyInstalledModule");
         private static readonly FieldInfo currentlySelectedModule =
             AccessTools.Field(
                 typeof(FleetsScreenController), "currentlySelectedModule");
@@ -860,34 +857,29 @@ namespace TIEconomyMod.Patches
         private static void RefreshModulePanels(
             FleetsScreenController controller)
         {
-            TIShipPartTemplate installed = currentlyInstalledModule == null
-                ? null
-                : currentlyInstalledModule.GetValue(controller)
-                    as TIShipPartTemplate;
-            ShipModuleDragDestination destination =
-                controller.selectedDragDestination;
-            if (installed != null)
-            {
-                if (installed.isDrive)
-                {
-                    installed = controller.newShipTemplate.driveTemplate;
-                }
-                controller.UpdateModuleDataPanel(
-                    false, installed, false,
-                    destination == null
-                        ? ShipModuleSlotType.None
-                        : destination.shipModuleSlotType);
-            }
-
             TIShipPartTemplate selected = currentlySelectedModule == null
                 ? null
                 : currentlySelectedModule.GetValue(controller)
                     as TIShipPartTemplate;
             if (selected != null)
             {
-                controller.UpdateModuleDataPanel(
-                    true, selected, true, ShipModuleSlotType.None);
+                controller.SetSelectedShipPartFromMenu(selected);
             }
+
+            ShipModuleDragDestination destination =
+                controller.selectedDragDestination;
+            if (destination == null)
+            {
+                return;
+            }
+
+            TIShipPartTemplate installed = destination.currentPart;
+            if (installed != null && installed.isDrive)
+            {
+                installed = controller.newShipTemplate.driveTemplate;
+            }
+            controller.UpdateModuleDataPanel(
+                false, installed, false, destination.shipModuleSlotType);
         }
 
         private static void RefreshRows(

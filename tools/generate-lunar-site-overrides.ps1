@@ -46,11 +46,50 @@ $siteMetadata = @(
     @{ Name = 'Nansen A Crater'; Latitude = 82.15; Longitude = 64.3; Fabricated = '0' }
 )
 
+$profileLabels = @(
+    'Low-Ti Mare Regolith',
+    'Icy Polar Regolith',
+    'Farside Highland Regolith',
+    'KREEP-Rich Regolith',
+    'High-Ti Mare Regolith',
+    'Farside Highland Regolith',
+    'Highland Ejecta',
+    'Icy Polar Regolith',
+    'Farside Mare Regolith',
+    'Basaltic Crater Regolith',
+    'Fractured Highland Regolith',
+    'Ancient Highland Regolith',
+    'Pyroclastic KREEP Regolith',
+    'KREEP-Terrane Regolith',
+    'High-Ti Mare Regolith',
+    'Very-Low-Ti Mare Regolith',
+    'Pyroclastic Mare Regolith',
+    'Mafic Basin Regolith',
+    'Pyroclastic Basin Regolith',
+    'Thorium-Rich Silicic Regolith',
+    'Farside Highland Regolith',
+    'Mixed Basin Ejecta',
+    'Farside Mare Regolith',
+    'Silicic Dome Regolith',
+    'Volcanic Dome Regolith',
+    'Mare-Highland Regolith',
+    'High-Ti Pyroclastic Regolith',
+    'KREEP-Rich Ejecta',
+    'Pyroclastic Mare Regolith',
+    'Swirl Mare Regolith',
+    'Icy Polar Regolith',
+    'Icy Polar Regolith',
+    'Icy Polar Regolith',
+    'Icy Polar Regolith',
+    'Icy Polar Regolith'
+)
+
 $rows = @(Import-Csv -LiteralPath $sourceCsv)
 $expectedSiteCount = 35
 if ($rows.Count -ne $expectedSiteCount -or
-    $siteMetadata.Count -ne $expectedSiteCount) {
-    throw "Expected $expectedSiteCount approved yield rows and site metadata rows."
+    $siteMetadata.Count -ne $expectedSiteCount -or
+    $profileLabels.Count -ne $expectedSiteCount) {
+    throw "Expected $expectedSiteCount approved yield rows, site metadata rows, and profile labels."
 }
 
 $profiles = New-Object System.Collections.Generic.List[object]
@@ -62,6 +101,7 @@ $resourceNames = @('water', 'volatiles', 'metals', 'nobles', 'fissiles')
 for ($index = 0; $index -lt $expectedSiteCount; $index++) {
     $row = $rows[$index]
     $metadata = $siteMetadata[$index]
+    $profileLabel = $profileLabels[$index]
     if ($row.site -ne $metadata.Name) {
         throw "Site order mismatch at row $($index + 1): '$($row.site)' versus '$($metadata.Name)'."
     }
@@ -113,7 +153,7 @@ for ($index = 0; $index -lt $expectedSiteCount; $index++) {
     $profileLocalization.Add(
         "TIMiningProfileTemplate.displayName.$profileId=Lunar")
     $profileLocalization.Add(
-        "TIMiningProfileTemplate.description.$profileId=$($row.geological_role). Resource outputs are bounded to the documented site-specific geological range.")
+        "TIMiningProfileTemplate.description.$profileId=$profileLabel")
 }
 
 $utf8NoBom = New-Object System.Text.UTF8Encoding($false)

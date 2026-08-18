@@ -344,8 +344,49 @@ $modulePanelCalls = @($modulePanelInstructions | Where-Object {
     $_.operand -is [Reflection.MethodInfo] -and
     $_.operand.Name -eq 'UpdateModuleDataPanel'
 })
-if ($modulePanelCalls.Count -ne 2) {
-    throw 'Appearance refresh must update installed and selected module detail panels.'
+$selectedModuleRefreshCalls = @($modulePanelInstructions | Where-Object {
+    $_.operand -is [Reflection.MethodInfo] -and
+    $_.operand.Name -eq 'SetSelectedShipPartFromMenu'
+})
+$destinationGetterCalls = @($modulePanelInstructions | Where-Object {
+    $_.operand -is [Reflection.MethodInfo] -and
+    $_.operand.Name -eq 'get_selectedDragDestination'
+})
+$destinationPartReads = @($modulePanelInstructions | Where-Object {
+    $_.operand -is [Reflection.FieldInfo] -and
+    $_.operand.Name -eq 'currentPart'
+})
+if ($modulePanelCalls.Count -ne 1 -or
+    $selectedModuleRefreshCalls.Count -ne 1 -or
+    $destinationGetterCalls.Count -ne 1 -or
+    $destinationPartReads.Count -ne 1) {
+    throw 'Appearance panel refresh must reconstruct the selected module destination and perform one destination-backed installed-panel refresh.'
+}
+$selectedRefreshIndex = [Array]::IndexOf(
+    $modulePanelInstructions, $selectedModuleRefreshCalls[0])
+$destinationGetterIndex = [Array]::IndexOf(
+    $modulePanelInstructions, $destinationGetterCalls[0])
+$destinationPartIndex = [Array]::IndexOf(
+    $modulePanelInstructions, $destinationPartReads[0])
+$modulePanelCallIndex = [Array]::IndexOf(
+    $modulePanelInstructions, $modulePanelCalls[0])
+$destinationNullBranches = @()
+for ($i = $destinationGetterIndex + 1; $i -lt $destinationPartIndex; $i++) {
+    if ($modulePanelInstructions[$i].opcode.Name -like 'brtrue*' -or
+        $modulePanelInstructions[$i].opcode.Name -like 'brfalse*') {
+        $destinationNullBranches += $modulePanelInstructions[$i]
+    }
+}
+if ($selectedRefreshIndex -ge $destinationGetterIndex -or
+    $destinationGetterIndex -ge $destinationPartIndex -or
+    $destinationPartIndex -ge $modulePanelCallIndex -or
+    $destinationNullBranches.Count -lt 1) {
+    throw 'Appearance panel refresh must rebuild selection before reading its destination and null-gate that destination before the installed-panel call.'
+}
+$staleInstalledModuleField = $appearancePatchType.GetField(
+    'currentlyInstalledModule', [Reflection.BindingFlags]'NonPublic,Static')
+if ($null -ne $staleInstalledModuleField) {
+    throw 'Appearance panel refresh must not reuse the stale currentlyInstalledModule field.'
 }
 
 $harmonyType = $harmonyAssembly.GetType('HarmonyLib.Harmony', $true)

@@ -1,6 +1,6 @@
 # Reactor research
 
-Last reviewed: 2026-07-29
+Last reviewed: 2026-08-18
 
 ## Current synthesis
 
@@ -17,11 +17,12 @@ reactor size.
   limited first by conduction, coolant interfaces, pressure loss, material
   damage, and conversion machinery—not by the raw neutron fission rate.
 
-The installed `GasCoreFissionReactorVI` is already `1 t/GW`, `96%` efficient,
-and capped at `1,650 GWe`. This confirms that the lower-bound ratio cannot be
-used as a late-game nerf by itself. At full rating, a one-year ideal fuel load
-would be roughly `660 t`, before containment, recovery, shielding, conversion,
-and cooling.
+The installed base-game `GasCoreFissionReactorVI` is `1 t/GW`, `96%`
+efficient, and capped at `1,650 GWe`. The live rebalance override is now
+`5 t/GW` and `94%`, with a display-safe `1,700 GWe` cap and an `8,500 t` plant
+at full rating. This confirms that a lower-bound ratio cannot be used as a
+late-game nerf by itself; containment, recovery, shielding, conversion,
+cooling, endurance, and repeated trains remain separate constraints.
 
 ## Most useful balance model
 

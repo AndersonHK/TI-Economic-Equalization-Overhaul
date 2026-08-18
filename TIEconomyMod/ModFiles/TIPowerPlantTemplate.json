@@ -17,73 +17,73 @@
   {
     "dataName": "SolidCoreFissionReactorI",
     "maxOutput_GW": 2,
-    "specificPower_tGW": 160,
+    "specificPower_tGW": 240,
     "efficiency": 0.575
   },
   {
     "dataName": "SolidCoreFissionReactorII",
     "maxOutput_GW": 3,
-    "specificPower_tGW": 136,
+    "specificPower_tGW": 204,
     "efficiency": 0.6
   },
   {
     "dataName": "SolidCoreFissionReactorIII",
     "maxOutput_GW": 10,
-    "specificPower_tGW": 112,
+    "specificPower_tGW": 168,
     "efficiency": 0.625
   },
   {
     "dataName": "SolidCoreFissionReactorIV",
     "maxOutput_GW": 30,
-    "specificPower_tGW": 48,
+    "specificPower_tGW": 72,
     "efficiency": 0.65
   },
   {
     "dataName": "SolidCoreFissionReactorV",
     "maxOutput_GW": 60,
-    "specificPower_tGW": 32,
+    "specificPower_tGW": 48,
     "efficiency": 0.675
   },
   {
     "dataName": "SolidCoreFissionReactorVI",
     "maxOutput_GW": 0.75,
-    "specificPower_tGW": 24,
+    "specificPower_tGW": 36,
     "efficiency": 0.6
   },
   {
     "dataName": "SolidCoreFissionReactorVII",
     "maxOutput_GW": 2,
-    "specificPower_tGW": 20,
+    "specificPower_tGW": 30,
     "efficiency": 0.625
   },
   {
     "dataName": "SolidCoreFissionReactorVIII",
     "maxOutput_GW": 4,
-    "specificPower_tGW": 16,
+    "specificPower_tGW": 24,
     "efficiency": 0.65
   },
   {
     "dataName": "SolidCoreFissionReactorIX",
     "maxOutput_GW": 6,
-    "specificPower_tGW": 12,
+    "specificPower_tGW": 18,
     "efficiency": 0.675
   },
   {
     "dataName": "SolidCoreFissionReactorX",
     "maxOutput_GW": 10,
-    "specificPower_tGW": 8,
+    "specificPower_tGW": 12,
     "efficiency": 0.7
   },
   {
     "dataName": "MoltenSaltFissionReactorI",
     "maxOutput_GW": 40,
-    "specificPower_tGW": 10,
+    "specificPower_tGW": 15,
     "efficiency": 0.725
   },
   {
     "dataName": "MoltenSaltFissionReactorII",
     "maxOutput_GW": 400,
-    "specificPower_tGW": 8,
+    "specificPower_tGW": 12,
     "efficiency": 0.75
   },
   {
@@ -107,17 +107,17 @@
   {
     "dataName": "VaporCoreFissionReactorI",
     "efficiency": 0.87,
-    "specificPower_tGW": 8
+    "specificPower_tGW": 9
   },
   {
     "dataName": "VaporCoreFissionReactorII",
     "efficiency": 0.88,
-    "specificPower_tGW": 6
+    "specificPower_tGW": 8
   },
   {
     "dataName": "VaporCoreFissionReactorIII",
     "efficiency": 0.89,
-    "specificPower_tGW": 5
+    "specificPower_tGW": 7
   },
   {
     "dataName": "GasCoreFissionReactorI",
@@ -136,18 +136,21 @@
   },
   {
     "dataName": "GasCoreFissionReactorIV",
-    "efficiency": 0.92,
-    "specificPower_tGW": 7
+    "maxOutput_GW": 1000,
+    "specificPower_tGW": 7,
+    "efficiency": 0.92
   },
   {
     "dataName": "GasCoreFissionReactorV",
-    "efficiency": 0.93,
-    "specificPower_tGW": 6
+    "maxOutput_GW": 1300,
+    "specificPower_tGW": 6,
+    "efficiency": 0.93
   },
   {
     "dataName": "GasCoreFissionReactorVI",
-    "efficiency": 0.94,
-    "specificPower_tGW": 4
+    "maxOutput_GW": 1700,
+    "specificPower_tGW": 5,
+    "efficiency": 0.94
   },
   {
     "dataName": "AlienHybridConfinementFusionReactor",

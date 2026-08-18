@@ -1,6 +1,6 @@
 # Power-plant benchmarks
 
-Last reviewed: 2026-07-30
+Last reviewed: 2026-08-18
 
 ## Unit normalization
 
@@ -35,12 +35,12 @@ Three narrower reports preserve different theoretical facets:
   separates reversible efficiency, electrode throughput, whole-system
   specific power, low-temperature radiator area, and biological catalysts.
 
-The installed `GasCoreFissionReactorVI` demonstrates why the distinction
-matters: it is already `1 t/GW`, `96%` efficient, and capped at `1,650 GWe`.
-At full output, one year of ideal U-235 fuel would be roughly `660 t` before
-the rest of the plant. The next mass and output-cap pass should therefore
-specify endurance and repeated reactor trains rather than compare only
-specific mass.
+The installed base-game `GasCoreFissionReactorVI` demonstrates why the
+distinction matters: it is `1 t/GW`, `96%` efficient, and capped at
+`1,650 GWe`. The live rebalance override is now `5 t/GW` and `94%`, with a
+display-safe `1,700 GWe` cap and an `8,500 t` plant at full rating. The mass
+and output-cap model should therefore continue to specify endurance and
+repeated reactor trains rather than compare only specific mass.
 
 ## Current game ranges
 

@@ -5,7 +5,7 @@ Status: evidence and planning archive. Use the dated
 [current implementation matrix](../current-implementation-matrix.xlsx) to
 distinguish implemented values from proposals and deferred work.
 
-Last reviewed: 2026-08-16
+Last reviewed: 2026-08-18
 
 This dossier compares dated Terra Invicta ship-drive, power-plant, and
 weapon-crew snapshots with demonstrated hardware, active prototypes, historical
@@ -27,6 +27,7 @@ The comparison is organized into:
 - [Planning changelog](CHANGELOG.md)
 - [Propulsion benchmarks](propulsion-benchmarks.md)
 - [Power-plant benchmarks](powerplant-benchmarks.md)
+- [2026-08-18 reactor progression adjustment](reactor-progression-adjustment-2026-08-18.md)
 - Data tables: [installed drive snapshot](tables/drives.csv),
   [installed power-plant snapshot](tables/powerplant.csv),
   [power plants with live overrides merged](tables/powerplant-current.csv),
@@ -103,10 +104,11 @@ The label applies to the technology, not to whether an individual numerical esti
    reactor/loop/converter train, and a technology-specific output cap. See the
    [reactor synthesis](details/reactors/README.md).
 
-8. **Gas Core Fission Reactor VI already reaches the earlier extreme mass
-   floor.** Its template is `1 t/GW`, `96%` efficient, and capped at
-   `1,650 GWe`; a one-year ideal fuel load at full rating would itself be about
-   `660 t`. Specific mass alone therefore cannot evaluate it.
+8. **The base-game Gas Core Fission Reactor VI reaches the earlier extreme
+   mass floor.** Its installed source template is `1 t/GW`, `96%` efficient,
+   and capped at `1,650 GWe`. The live rebalance override is now `5 t/GW` and
+   `94%`, with a display-safe `1,700 GWe` cap; its full-rating plant mass is
+   therefore `8,500 t`. Specific mass alone still cannot evaluate it.
 
 9. **Gigawatt alkaline fuel cells are limited by low-grade heat.** The planned
    `58/60/62%` discharge efficiencies are possible, but a roughly `90°C`

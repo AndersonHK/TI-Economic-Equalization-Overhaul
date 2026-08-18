@@ -3,6 +3,63 @@
 This is a decision log for the proposed ship rebalance. Entries here describe
 the balance decisions as well as their implementation status.
 
+## 2026-08-18
+
+### Implemented and deployed: held-drive art-cycle crash correction
+
+- Diagnose the reported hard crash from `Player.log`: the stack runs through
+  `OnCycleAltHull`, `ReactorBayAppearanceRefreshPatch.RefreshModulePanels`, and
+  vanilla `UpdateModuleDataPanel`, which closes the game after a null-reference
+  exception.
+- Confirm the triggering UI state with the user's reproduction: an unsupported
+  drive held by the cursor retains a selected preview but has no legal
+  `selectedDragDestination`. The appearance refresh passed `None` as a slot
+  type but still invoked vanilla's installed-panel path, which unconditionally
+  dereferences `selectedDragDestination.currentPart`.
+- Reconstruct the held selection through `SetSelectedShipPartFromMenu` after
+  the new art multiplier and availability filter are applied. If the selected
+  module still has no destination, return before the unsafe installed-panel
+  call.
+- When a destination exists, refresh its installed comparison from the
+  destination's authoritative `currentPart`; remove the stale
+  `currentlyInstalledModule` reflection field.
+- Replace validation that merely required two unconditional detail-panel calls
+  with guarded IL checks for selection reconstruction, lifecycle ordering, the
+  null-destination branch, destination-backed installed state, and exactly one
+  safe direct installed-panel call.
+- Record the evidence and correction in the
+  [art-style module-panel crash report](art-style-module-panel-crash-diagnosis-2026-08-18.md).
+- The normal TI 1.0.51 deployment passed **1,078 formula assertions**, all
+  **143 Harmony patches**, release packaging, and the **44-file** enabled-mod
+  deployment. DLL SHA-256:
+  `EC1FD2DB5BAA04D539825758F0D40EA30EA2015EC3F4BFF3FF99474E1DC46EFE`.
+  Manual reproduction testing remains pending.
+
+### Implemented and deployed: fission-reactor mass and gas-core capacity progression
+
+- Increase every regular and compact solid-core reactor specific mass by 50%:
+  regular I-V now use **240/204/168/72/48 t/GW**, and compact I-V
+  (`SolidCoreFissionReactorVI-X`) use **36/30/24/18/12 t/GW**.
+- Increase Molten Salt I/II from **10/8** to **15/12 t/GW** and Vapor Core
+  I/II/III from **8/6/5** to **9/8/7 t/GW**.
+- Establish a rising, display-safe top gas-core capacity ladder: Gas Core IV
+  falls from **1,650 to 1,000 GW**, Gas Core V falls from **1,650 to 1,300
+  GW**, and Gas Core VI rises from **1,650 to 1,700 GW** while increasing from
+  **4 to 5 t/GW**. The rounded caps display as **1.0/1.3/1.7 TW** without
+  clipping meaningful precision from the value.
+- At a common 1,000 GW load, Gas Core IV/V/VI now weigh **7,000/6,000/5,000
+  tonnes**. Their masses at their individual caps are **7,000/7,800/8,500
+  tonnes**, so each tier buys both better specific mass and a larger usable
+  output envelope.
+- Record every before/after value, percentage delta, full-rating mass delta,
+  and the resulting family progression in the
+  [reactor progression adjustment report](reactor-progression-adjustment-2026-08-18.md).
+- The normal TI 1.0.51 deployment passed **1,078 formula assertions**, all
+  guarded validation, release packaging, and the **44-file** enabled-mod
+  deployment. DLL SHA-256:
+  `B8A30A49F23C839DC9878B61CC62349AC1FDA6CA80B4476FD7E38550F1BFFD5D`.
+  Manual Ship Designer testing remains pending.
+
 ## 2026-08-16
 
 ### Implemented and deployed: minimum AI fuel, reactor, and engine-bay enforcement
