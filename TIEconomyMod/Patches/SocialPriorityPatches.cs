@@ -5,6 +5,45 @@ using TIEconomyMod.Core;
 
 namespace TIEconomyMod.Patches
 {
+    [HarmonyPatch(typeof(TINationState), "Coup")]
+    public static class CoupSocialResetPatch
+    {
+        [HarmonyPostfix]
+        public static void Postfix(TINationState __instance)
+        {
+            InequalitySettings settings = Main.settings.inequality;
+            if (!Main.FeatureEnabled(settings.enabled) || !settings.coupEnabled)
+            {
+                return;
+            }
+
+            // TI has no coup-specific Inequality reason. EventEffects is the
+            // neutral direct-change path and, unlike priority changes, does not
+            // pass through EEO's directional boundary curve.
+            __instance.AddToInequality(settings.coupInequalityChange,
+                TINationState.InequalityChangeReason.InqReason_EventEffects);
+
+            if (!settings.coupResetCohesionToRestState)
+            {
+                return;
+            }
+
+            // The postfix runs after TI's Government, Unrest, random Cohesion,
+            // GDP, and control-point changes. Reading the rest state here also
+            // includes the new Inequality, so the coup ends at its fully updated
+            // social equilibrium rather than drifting there over later months.
+            float target = Math.Max(0f, __instance.cohesionRestState);
+            if (float.IsNaN(target) || float.IsInfinity(target))
+            {
+                Main.Warn("Coup Cohesion rest state was invalid; retaining TI's coup Cohesion result.");
+                return;
+            }
+
+            __instance.AddToCohesion(target - __instance.cohesion,
+                TINationState.CohesionChangeReason.CohesionReason_Coup);
+        }
+    }
+
     [HarmonyPatch(typeof(TINationState), "AddToInequality")]
     public static class ClimateInequalityPatch
     {

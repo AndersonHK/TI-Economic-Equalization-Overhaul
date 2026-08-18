@@ -77,6 +77,17 @@ try {
     $spoils = Read-MethodIl $nation 'OnSpoilsPriorityComplete'
     Assert-Count $spoils 'ldfld\s+float32 TIGlobalConfig::spoilsPriorityPublicOpinionScaling' 1 'Spoils propaganda scaling'
 
+    $coup = Read-MethodIl $nation 'Coup'
+    Assert-Count $coup `
+        'Coup\(\[opt\] class .*TICouncilorState councilor,\s+\[opt\] int32 strength\)' `
+        1 `
+        'Coup signature'
+    Assert-Count $coup 'TINationState::AddToDemocracy\(' 1 'Coup Government change'
+    Assert-Count $coup 'TINationState::AddToUnrest\(' 1 'Coup Unrest change'
+    Assert-Count $coup 'TINationState::AddToCohesion\(' 1 'Coup Cohesion change'
+    Assert-Count $coup 'TINationState::GDPPctChange\(' 1 'Coup GDP change'
+    Assert-Count $coup 'TINationState::AddToInequality\(' 0 'Vanilla coup Inequality change'
+
     $emissions = Read-MethodIl $nation 'GHGsFromEconomy_tons'
     Assert-Count $emissions 'TINationState::get_GDP\(\)' 1 'Economy emissions GDP input'
 
@@ -287,7 +298,7 @@ try {
         1 `
         'Core-resource global GDP reason'
 
-    Write-Host 'PASS: target IL contains every guarded TI 1.0.51 patch point, including research ownership, councilor caps, climate damage, and nuclear GDP effects.'
+    Write-Host 'PASS: target IL contains every guarded TI 1.0.51 patch point, including coup effects, research ownership, councilor caps, climate damage, and nuclear GDP effects.'
 }
 finally {
     $resolvedProbe = (Resolve-Path -LiteralPath $probeDirectory).Path

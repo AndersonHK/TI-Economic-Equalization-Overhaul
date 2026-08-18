@@ -40,6 +40,7 @@ ensures every conventional-gun comparison row creates that column.
 | `EconomyInequalityPatch` | GDP | Aligned after stock correction. Resources/GDP affects the raw change only while Abundance is enabled, and the continuous 1-9 boundary transform reaches x3 for inward changes while suppressing outward changes at the extremes. |
 | `WelfareInequalityPatch` | GDP | Aligned after stock correction. A tenfold economy gets one tenth the per-IP rating change and approximately tenfold IP. |
 | `SpoilsInequalityPatch` | GDP | Aligned after stock correction. Resource dependence matters strongly in small economies and weakly in diversified large economies; disabling Abundance removes that premium. |
+| `CoupSocialResetPatch` | Failed-state social equilibrium | Aligned as a deliberate cycle breaker. Every completed coup applies one small `-0.10` Inequality change, then moves Cohesion to the rest state recalculated after TI's Government, Unrest, GDP, control-point, and randomized Cohesion effects. The zero floor preserves TI's lower bound when the revised equilibrium remains negative. |
 | `KnowledgeEducationPatch` | Population | Aligned. Education is a demographic stock and receives smooth diminishing returns at high Education. |
 | `KnowledgeCohesionPatch` | Population and distance to neutral | Aligned. It cannot jump across the target and larger populations require proportionally more completions. |
 | `CohesionRestBaseValuePatch`, `CohesionRestDetailBaseValuePatch` | Configured rest-state base | Aligned. Gameplay replaces one guarded base constant, while the detail breakdown replaces both its displayed-base and internal-total constants. Both paths reduce 16 to 10.5 without altering the remaining aggregation order. |
@@ -110,6 +111,7 @@ ensures every conventional-gun comparison row creates that column.
 
 ## Deferred audit item
 
-Event-driven Inequality changes still bypass the shared boundary curve. They
-remain the next logical extension because events can still make abrupt changes
-near the limits even though Economy, Welfare, and Spoils completions cannot.
+Other event-driven Inequality changes still bypass the shared boundary curve.
+They remain the next logical extension because events can still make abrupt
+changes near the limits even though Economy, Welfare, Spoils, and the fixed
+coup adjustment cannot.

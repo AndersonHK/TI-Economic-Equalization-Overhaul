@@ -1,6 +1,6 @@
 # TI Economic Equalization Overhaul
 
-Current release: **0.9.2**, targeting **Terra Invicta 1.0.51**.
+Current release: **0.9.3**, targeting **Terra Invicta 1.0.51**.
 
 The mod replaces opaque, border-sensitive scaling with economic units that
 remain understandable across countries, armies, habs, and spacecraft. It aims
@@ -52,6 +52,10 @@ historical research and deferred work.
   change follows a smooth reciprocal boundary curve: positive changes range
   from x3 at Government 0 to x1/3 at 10, while negative changes range from
   x1/3 to x3. Passive low-Cohesion Government loss is halved before the curve.
+- Every completed coup reduces Inequality by `0.10`, then sets Cohesion to the
+  newly calculated rest state with a floor of zero. This gives failed states an
+  immediate route out of the zero-Cohesion coup loop when their revised social
+  equilibrium is positive.
 - Configurable region conversion, decolonization, and fallout thresholds,
   defaulting to five times vanilla.
 
@@ -204,7 +208,7 @@ defaults.
 
 ## Compatibility and save behavior
 
-Version 0.9.2 is built and guarded against the installed Terra Invicta 1.0.51
+Version 0.9.3 is built and guarded against the installed Terra Invicta 1.0.51
 assemblies. Transpilers validate their expected IL shapes and fail verification
 when the target changes.
 
@@ -220,7 +224,7 @@ states serialized when they were created.
 The current release archive is:
 
 ```text
-artifacts/TIEconomyMod-0.9.2-ti1.0.51.zip
+artifacts/TIEconomyMod-0.9.3-ti1.0.51.zip
 ```
 
 ## Build and verification
@@ -273,6 +277,10 @@ enabled-mod destination and verifies every deployed file by SHA-256.
   appended calculation with the observed result.
 - Merge similar and dissimilar countries and verify Military technology,
   surviving armies, and Inequality against the authoritative formulas.
+- Trigger both an organic and councilor coup. Confirm Inequality falls by
+  exactly `0.10` and Cohesion immediately equals the post-coup rest value (or
+  zero if that value is negative); watch subsequent resting Unrest and repeat-
+  coup cadence.
 - At Military technology 4/cap 5, confirm doctrine from 4 to 5 costs about
   2,883.59 IP plus 32 IP per army; Build Army costs 32 IP and healing creates
   debt repaid first by later Build Army, Military, Build Navy, or Nuclear Weapons

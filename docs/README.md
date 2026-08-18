@@ -27,6 +27,9 @@ when prose and runtime behavior disagree.
 - [Cohesion, Inequality, and Government coefficient report](national-social-coefficients-report.md):
   comprehensive formula, coefficient, retained-vanilla, priority-speed, event,
   and cross-effect inventory for tuning the three national social scores.
+- [Coup frequency and Inequality stabilization](coup-inequality-stabilization-report.md):
+  zero-Cohesion organic-coup-loop analysis, implemented `-0.10` Inequality
+  change, immediate Cohesion-equilibrium reset, and manual-test plan.
 - [Land warfare and Military investment](land-warfare-and-military-investment.md):
   authoritative formulas for army value, upkeep, modernization, repair debt,
   combat ratings, and force-preserving transfers.

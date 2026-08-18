@@ -72,7 +72,7 @@ namespace TIEconomyMod
                     ShipPowerRuntime.RefreshTemplateMassCaches();
                 }
                 CouncilorRuntimeCaps.InitializeOrganizationCap();
-                Log("Loaded TI Economic Equalization Overhaul 0.9.2 for the TI 1.0.51 API surface.");
+                Log("Loaded TI Economic Equalization Overhaul 0.9.3 for the TI 1.0.51 API surface.");
                 return true;
             }
             catch (Exception exception)
@@ -327,6 +327,9 @@ namespace TIEconomyMod
         public bool economyEnabled = true;
         public bool welfareEnabled = true;
         public bool spoilsEnabled = true;
+        public bool coupEnabled = true;
+        public float coupInequalityChange = -0.10f;
+        public bool coupResetCohesionToRestState = true;
         public float minimum = 1f;
         public float neutral = 5f;
         public float maximum = 9f;
@@ -647,6 +650,7 @@ namespace TIEconomyMod
             RepairRange(ref value.inequality.exponent, defaults.inequality.exponent, 1f, 10f, "inequality.exponent", log);
             RepairRange(ref value.inequality.maximumDirectionalMultiplier, defaults.inequality.maximumDirectionalMultiplier, 1f, 100f, "inequality.maximumDirectionalMultiplier", log);
             RepairNonNegative(ref value.inequality.climateChangeMultiplier, defaults.inequality.climateChangeMultiplier, "inequality.climateChangeMultiplier", log);
+            RepairNegative(ref value.inequality.coupInequalityChange, defaults.inequality.coupInequalityChange, "inequality.coupInequalityChange", log);
             if (!IsFinite(value.inequality.minimum) || !IsFinite(value.inequality.neutral) ||
                 !IsFinite(value.inequality.maximum) || value.inequality.minimum >= value.inequality.neutral ||
                 value.inequality.neutral >= value.inequality.maximum)

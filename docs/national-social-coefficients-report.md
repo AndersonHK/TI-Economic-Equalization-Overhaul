@@ -2,7 +2,7 @@
 
 ## Scope and authority
 
-This is a tuning inventory for Economic Equalization Overhaul (EEO) `0.9.2`
+This is a tuning inventory for Economic Equalization Overhaul (EEO) `0.9.3`
 against Terra Invicta `1.0.51`. It covers:
 
 - every EEO path that changes Cohesion, Inequality, or Government;
@@ -27,8 +27,8 @@ priority-speed bonuses affect how quickly completions occur.
 
 | Score | Primary positive controls | Primary negative controls | Boundary behavior |
 |---|---|---|---|
-| Cohesion | Unity; Knowledge when below 5; monthly movement toward the rest value; war/rival/event gains | Knowledge when above 5; Oppression above Government 5; monthly movement; annexation, war outcomes, events | Hard clamp `[0,10]`; no EEO boundary curve |
-| Inequality | Economy; Spoils; climate damage; some events and territorial changes | Welfare; revolution/events; merger recomputation can move either way | Priority changes use EEO's smooth `[1,5,9]` curve; other reasons do not |
+| Cohesion | Unity; Knowledge when below 5; monthly movement toward the rest value; coup equilibrium reset; war/rival/event gains | Knowledge when above 5; Oppression above Government 5; monthly movement; coup equilibrium reset; annexation, war outcomes, events | Hard clamp `[0,10]`; no EEO boundary curve |
+| Inequality | Economy; Spoils; climate damage; some events and territorial changes | Welfare; coups; revolution/events; merger recomputation can move either way | Priority changes use EEO's smooth `[1,5,9]` curve; other reasons do not |
 | Government | Government priority; peaceful-neighbor diffusion; events/regime changes | Spoils; Oppression; war; low Cohesion; zero-Cohesion overflow; coups/revolutions/events | Every change uses the reciprocal EEO factor-3 curve exactly once |
 
 The most important hidden coupling for Cohesion tuning is Inequality. It enters
@@ -214,6 +214,20 @@ Thus Inequality `<=4` permits at most `-0.10` per month, while Inequality `5`
 or higher reaches the `-0.25` cap. These `0.10/0.25` caps and all rest-state
 coefficients are retained TI constants, not EEO settings.
 
+### Coup equilibrium reset
+
+After TI completes a coup's normal national-value and control-point effects,
+EEO reduces Inequality by `0.10`, recalculates `cohesionRestState`, and sets
+current Cohesion to that value with a floor of zero. This replaces the coup's
+randomized final Cohesion result with the updated equilibrium; it can therefore
+raise or lower Cohesion.
+
+| Setting | Default |
+|---|---:|
+| `inequality.coupEnabled` | `true` |
+| `inequality.coupInequalityChange` | `-0.10` |
+| `inequality.coupResetCohesionToRestState` | `true` |
+
 ### Hard bounds and zero-Cohesion spillover
 
 TI clamps Cohesion to `[0,10]`. When a negative change would push it below
@@ -237,7 +251,7 @@ These are not configurable in EEO:
 | Region annexation | `-0.25` per applicable region |
 | White peace/war end | Recaptures prior war Cohesion gains using war role multipliers `2.0` for attackers and `0.5` for defenders, plus annexed-region and Government terms |
 | Revolution | Randomized within TI's hardcoded `-3` to `+3` Cohesion range |
-| Other native reasons | Army lost, regime change, secession, coup, independence/release, breakaway, and scripted effects retain their TI formulas |
+| Other native reasons | Army lost, regime change, secession, independence/release, breakaway, and scripted effects retain their TI formulas |
 
 ### Installed event-effect templates
 
@@ -289,7 +303,7 @@ final delta = d * boundary
 | `inequality.exponent` | `2` |
 | `inequality.maximumDirectionalMultiplier` | `3` |
 
-This curve applies only to the three priority getters. Climate, events,
+This curve applies only to the three priority getters. Climate, coups, events,
 revolution, secession, and other direct `AddToInequality` calls bypass it.
 
 ### Economy
@@ -352,6 +366,14 @@ Inequality increase at one fifth of that fraction. EEO quadruples the resulting
 delta. The separate EEO `environment.climateGdpDamageMultiplier = 0.90` scales
 warm GDP damage but does not feed the Inequality call, so the two climate knobs
 are independent in the current implementation.
+
+### Coups
+
+Every completed coup applies the direct change
+`inequality.coupInequalityChange = -0.10`. The change uses TI's event-effect
+reason and therefore bypasses the priority boundary curve, while TI's ordinary
+`[1,9]` clamp still applies. The subsequent Cohesion reset reads the rest state
+after this updated Inequality value.
 
 ### National mergers
 
@@ -522,6 +544,7 @@ coefficient because they change incentives or feedback:
 |---|---|---|
 | Unity or Spoils priority | Cohesion rest state through public opinion | Each propaganda pulse is `0.20` of TI's normal public-opinion shift; opinion then enters the rest formula through `-0.5 - 6*(antipathyRatio-0.5)` |
 | Oppression priority | Cohesion rest state through Unrest | Unrest reduction uses `2,222,222 / population`, multiplied by `(10-Government)/10`; lower Unrest raises the autocracy contribution and reduces other instability risks |
+| Coup | Inequality and Cohesion target | Direct `-0.10` Inequality, then current Cohesion becomes `max(0, cohesionRestState)` after all coup effects |
 | Cohesion | Economy growth labor support | `1.20 - 0.04*abs(Cohesion-5)`; reference Cohesion `5` |
 | Cohesion | National research | `1.25 - 0.10*abs(Cohesion-5)` |
 | Cohesion | Passive Government loss | Below 4, monthly probability `(4-Cohesion)/4`; raw `-0.01*S(P)`, then EEO `x0.50` and boundary curve |
@@ -548,6 +571,9 @@ For isolated first-pass changes:
   `inequality.exponent` and `maximumDirectionalMultiplier`; change resource
   dependence with the two maximum resource multipliers. The GDP reference
   shifts all three together.
+- Change the coup cycle breaker with `inequality.coupInequalityChange`; disable
+  the full behavior with `coupEnabled`, or retain only the Inequality change by
+  disabling `coupResetCohesionToRestState`.
 - Change direct democratization with
   `government.democracyPopulationDivisor`. Change all Government gains and
   losses, including events, with `government.boundaryCurveFactor`. Change only

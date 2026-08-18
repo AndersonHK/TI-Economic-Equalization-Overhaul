@@ -193,6 +193,7 @@ namespace PavonisInteractive.TerraInvicta
         public float unrest;
         public float adviserScienceBonus;
         public float inequality;
+        public float cohesionRestState;
         public int numCoreEconomicRegions_dailyCache;
         public int currentResourceRegions;
         public float populationDesnity_pop_km2;
@@ -206,7 +207,13 @@ namespace PavonisInteractive.TerraInvicta
         public enum InequalityChangeReason
         {
             InqReason_ClimateChange,
-            InqReason_Annexation
+            InqReason_Annexation,
+            InqReason_EventEffects
+        }
+
+        public enum CohesionChangeReason
+        {
+            CohesionReason_Coup
         }
 
         public enum GDPChangeReason
@@ -237,6 +244,12 @@ namespace PavonisInteractive.TerraInvicta
         public void AddToInequality(float value, InequalityChangeReason reason)
         {
             inequality = Math.Max(1f, Math.Min(9f, inequality + value));
+        }
+
+        public float AddToCohesion(float value, CohesionChangeReason reason)
+        {
+            cohesion = Math.Max(0f, Math.Min(10f, cohesion + value));
+            return cohesion;
         }
     }
 
@@ -427,6 +440,9 @@ namespace TIEconomyMod
         public bool economyEnabled = true;
         public bool welfareEnabled = true;
         public bool spoilsEnabled = true;
+        public bool coupEnabled = true;
+        public float coupInequalityChange = -0.10f;
+        public bool coupResetCohesionToRestState = true;
         public float minimum = 1f;
         public float neutral = 5f;
         public float maximum = 9f;

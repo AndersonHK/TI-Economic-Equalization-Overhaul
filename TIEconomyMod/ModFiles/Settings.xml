@@ -65,6 +65,9 @@
     <economyEnabled>true</economyEnabled>
     <welfareEnabled>true</welfareEnabled>
     <spoilsEnabled>true</spoilsEnabled>
+    <coupEnabled>true</coupEnabled>
+    <coupInequalityChange>-0.1</coupInequalityChange>
+    <coupResetCohesionToRestState>true</coupResetCohesionToRestState>
     <minimum>1</minimum>
     <neutral>5</neutral>
     <maximum>9</maximum>

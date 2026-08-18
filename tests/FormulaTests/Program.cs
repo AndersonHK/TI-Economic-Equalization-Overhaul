@@ -1876,6 +1876,49 @@ namespace TIEconomyMod.FormulaTests
             ClimateInequalityPatch.Prefix(ref annexationChange,
                 TINationState.InequalityChangeReason.InqReason_Annexation);
             Near(0.02f, annexationChange, 0f, "non-climate Inequality is unchanged");
+
+            nation.inequality = 6f;
+            nation.cohesion = 0f;
+            nation.cohesionRestState = 2.4f;
+            CoupSocialResetPatch.Postfix(nation);
+            Near(5.9f, nation.inequality, 0.000001f,
+                "coup reduces Inequality by the configured amount");
+            Near(2.4f, nation.cohesion, 0.000001f,
+                "coup resets Cohesion to the updated rest state");
+
+            TIEconomyMod.Main.settings.inequality.coupResetCohesionToRestState = false;
+            nation.inequality = 6f;
+            nation.cohesion = 1f;
+            nation.cohesionRestState = 3f;
+            CoupSocialResetPatch.Postfix(nation);
+            Near(5.9f, nation.inequality, 0.000001f,
+                "coup can retain only the configured Inequality change");
+            Near(1f, nation.cohesion, 0f,
+                "disabled coup equilibrium reset retains Cohesion");
+            TIEconomyMod.Main.settings.inequality.coupResetCohesionToRestState = true;
+
+            nation.inequality = 1.05f;
+            nation.cohesion = 4f;
+            nation.cohesionRestState = -2f;
+            CoupSocialResetPatch.Postfix(nation);
+            Near(1f, nation.inequality, 0.000001f,
+                "coup Inequality respects the lower bound");
+            Near(0f, nation.cohesion, 0.000001f,
+                "coup Cohesion rest target is floored at zero");
+
+            TIEconomyMod.Main.settings.inequality.coupEnabled = false;
+            nation.inequality = 6f;
+            nation.cohesion = 1f;
+            nation.cohesionRestState = 3f;
+            CoupSocialResetPatch.Postfix(nation);
+            Near(6f, nation.inequality, 0f,
+                "disabled coup reset retains Inequality");
+            Near(1f, nation.cohesion, 0f,
+                "disabled coup reset retains Cohesion");
+
+            Reset();
+            nation = Nation();
+            nation.GDP = 100000000000d;
             TIEconomyMod.Main.settings.inequality.economyChangeAtReferenceGdp = 0.1f;
             TIEconomyMod.Main.settings.inequality.welfareChangeAtReferenceGdp = -0.1f;
             TIEconomyMod.Main.settings.inequality.spoilsChangeAtReferenceGdp = 0.1f;
