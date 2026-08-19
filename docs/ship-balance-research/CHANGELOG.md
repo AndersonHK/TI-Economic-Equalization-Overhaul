@@ -3,6 +3,29 @@
 This is a decision log for the proposed ship rebalance. Entries here describe
 the balance decisions as well as their implementation status.
 
+## 2026-08-19
+
+### Implemented and deployed: refit hull-appearance lock
+
+- Extend `TISpaceShipTemplate.IsAValidRefitFor` with a postfix that rejects an
+  otherwise-valid refit when its effective `GetHullAppearanceIndex` differs
+  from the original design.
+- Present `Hull appearance must match.` through the same localized red
+  invalid-refit reason path used by vanilla hull, power-plant-class, drive,
+  heat-sink, battery, utility, and weapon compatibility failures.
+- Keep the rule under EEO's global enable state and compare effective
+  appearance indices so vanilla's unavailable-DLC appearance resolution is
+  preserved. Existing AI refit generation already retains the original
+  effective appearance.
+- Record the design and manual test procedure in the
+  [refit hull-appearance lock](refit-hull-appearance-lock.md) report and add a
+  dedicated row to the current implementation matrix.
+- The TI 1.0.51 deployment passed **1,078 formula assertions**, all **144
+  Harmony patches**, the **95-row** implementation matrix, release packaging,
+  and the **44-file** enabled-mod deployment. DLL SHA-256:
+  `D81039EB982F2B2AA75F51428F41302DA2E99B5C4460E6093F37BE844A26B573`.
+  Manual in-game testing remains pending.
+
 ## 2026-08-18
 
 ### Implemented and deployed: held-drive art-cycle crash correction

@@ -47,6 +47,13 @@ EEO's global 2.0 research-cost multiplier produces displayed costs of 100,000
 for Deuterium-Tritium Fusion, 100,000 for Nuclear Fusion Methodologies, and
 150,000 for Deuterium-Deuterium Fusion.
 
+`DeuteriumHelium3Fusion` remains downstream of Deuterium-Deuterium Fusion,
+High-Temperature Superconductors, and Carbon Nanotubes. As part of the military
+technology ceiling progression, it additionally supplies the shared +0.25
+maximum Military technology effect. Its installed global fusion-technology and
+Economy effects remain unchanged. The complete ceiling decision and alien-army
+comparison are documented in `docs/military-technology-ceiling.md`.
+
 ## Localization
 
 The installed Nuclear Fusion Methodologies description predicts that practical

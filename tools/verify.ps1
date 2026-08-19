@@ -156,6 +156,15 @@ if ($LASTEXITCODE -ne 0) {
 }
 
 powershell -NoProfile -ExecutionPolicy Bypass -File `
+    (Join-Path $scriptDirectory 'validate-refit-appearance-lock.ps1') `
+    -TargetManagedDir $resolvedManagedDir `
+    -ModAssemblyPath $assemblyPath `
+    -RepositoryRoot $repositoryRoot
+if ($LASTEXITCODE -ne 0) {
+    exit $LASTEXITCODE
+}
+
+powershell -NoProfile -ExecutionPolicy Bypass -File `
     (Join-Path $scriptDirectory 'validate-cohesion-rest-patches.ps1') `
     -TargetManagedDir $resolvedManagedDir `
     -ModAssemblyPath $assemblyPath
@@ -186,6 +195,7 @@ $startOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIStartTimeTe
 $armyOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIArmyTemplate.json'
 $metaOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIMetaTemplate.json'
 $technologyOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TITechTemplate.json'
+$effectOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIEffectTemplate.json'
 $projectOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIProjectTemplate.json'
 $globalOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIGlobalConfig.json'
 $habModuleOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIHabModuleTemplate.json'
@@ -356,6 +366,8 @@ if (-not [bool]::Parse([string]$settingsXml.Settings.enabled)) {
 }
 
 $effectTemplates = Get-Content -LiteralPath (Join-Path $templatesDirectory 'TIEffectTemplate.json') -Raw |
+    ConvertFrom-Json
+$effectTemplateOverrides = Get-Content -LiteralPath $effectOverrides -Raw |
     ConvertFrom-Json
 $expectedControlEffects = [ordered]@{
     Effect_ControlPointMaintenanceBonus160 = -120
@@ -586,15 +598,18 @@ $expectedOverrideIds = @($expectedTechnologyIds) +
     @($mineEffectByTechnology.Keys) +
     @(
         'AugmentedReality',
+        'CarbonNanotubes',
+        'Superalloys',
         'DeuteriumTritiumFusion',
         'NuclearFusioninSpace',
-        'DeuteriumDeuteriumFusion'
+        'DeuteriumDeuteriumFusion',
+        'DeuteriumHelium3Fusion'
     )
 if ($technologyCostOverrides.Count -ne $expectedOverrideIds.Count -or
     @($technologyCostOverrides | Where-Object {
         $_.dataName -notin $expectedOverrideIds
     }).Count -ne 0) {
-    throw 'Technology overrides must contain the three doubled starts, eight retired free-mine effect edits, the Augmented Reality edits, and the three approved fusion-tree edits.'
+    throw 'Technology overrides must contain the three doubled starts, eight retired free-mine effect edits, the four Military-ceiling additions, and the three approved fusion-tree edits.'
 }
 $vanillaAugmentedReality = @($vanillaTechnologies | Where-Object {
     $_.dataName -eq 'AugmentedReality'
@@ -603,6 +618,9 @@ $augmentedRealityOverride = @($technologyCostOverrides | Where-Object {
     $_.dataName -eq 'AugmentedReality'
 })
 $maximumArmyTechnologyEffect = @($effectTemplates | Where-Object {
+    $_.dataName -eq 'Effect_IncreaseMaxArmyTechLevel'
+})
+$maximumArmyTechnologyEffectOverride = @($effectTemplateOverrides | Where-Object {
     $_.dataName -eq 'Effect_IncreaseMaxArmyTechLevel'
 })
 if ($vanillaAugmentedReality.Count -ne 1 -or
@@ -616,8 +634,70 @@ if ($vanillaAugmentedReality.Count -ne 1 -or
     $maximumArmyTechnologyEffect[0].instantEffect -ne 'NationMaxMiltechChange' -or
     [double]$maximumArmyTechnologyEffect[0].value -ne 0.5 -or
     $maximumArmyTechnologyEffect[0].effectTarget -ne 'AllNations' -or
-    $maximumArmyTechnologyEffect[0].effectDuration -ne 'instant') {
-    throw 'Augmented Reality must raise its authored research cost from 1,500 to 2,000 and add the native +0.5 all-nations maximum Military technology effect.'
+    $maximumArmyTechnologyEffect[0].effectDuration -ne 'instant' -or
+    $effectTemplateOverrides.Count -ne 1 -or
+    $maximumArmyTechnologyEffectOverride.Count -ne 1 -or
+    [double]$maximumArmyTechnologyEffectOverride[0].value -ne 0.25) {
+    throw 'Augmented Reality must cost 2,000 and use the native all-nations maximum Military technology effect, whose modded value must be +0.25.'
+}
+$expectedVanillaArmyTechnologyRecipients = @(
+    'AppliedArtificialIntelligence',
+    'Coilguns',
+    'Cybernetics',
+    'Diamondoids',
+    'FutureTechMilitaryScience',
+    'NetworkedGlobalDefense',
+    'NextGenerationAerospace',
+    'TerrestrialMilitaryScience',
+    'TransInterfaceWarfare'
+)
+$vanillaArmyTechnologyRecipients = @($vanillaTechnologies | Where-Object {
+    $_.effects -contains 'Effect_IncreaseMaxArmyTechLevel'
+} | Select-Object -ExpandProperty dataName | Sort-Object)
+if (($vanillaArmyTechnologyRecipients -join ';') -ne
+    (($expectedVanillaArmyTechnologyRecipients | Sort-Object) -join ';')) {
+    throw 'The installed finite and repeatable maximum Military technology recipients have changed from the pinned 1.0.51 baseline.'
+}
+$militaryTechnologyAdditions = [ordered]@{
+    CarbonNanotubes = [pscustomobject]@{
+        Cost = 3500
+        VanillaEffects = ''
+        ModEffects = 'Effect_IncreaseMaxArmyTechLevel'
+    }
+    Superalloys = [pscustomobject]@{
+        Cost = 5000
+        VanillaEffects = ''
+        ModEffects = 'Effect_IncreaseMaxArmyTechLevel'
+    }
+    DeuteriumHelium3Fusion = [pscustomobject]@{
+        Cost = 75000
+        VanillaEffects = 'Effect_GlobalFusionTechIncrease;Effect_Economy_BasePCGDPIncrease02'
+        ModEffects = 'Effect_GlobalFusionTechIncrease;Effect_Economy_BasePCGDPIncrease02;Effect_IncreaseMaxArmyTechLevel'
+    }
+}
+foreach ($addition in $militaryTechnologyAdditions.GetEnumerator()) {
+    $vanillaTechnology = @($vanillaTechnologies | Where-Object {
+        $_.dataName -eq $addition.Key
+    })
+    $overrideTechnology = @($technologyCostOverrides | Where-Object {
+        $_.dataName -eq $addition.Key
+    })
+    if ($vanillaTechnology.Count -ne 1 -or
+        [double]$vanillaTechnology[0].researchCost -ne [double]$addition.Value.Cost -or
+        ($vanillaTechnology[0].effects -join ';') -ne $addition.Value.VanillaEffects -or
+        $overrideTechnology.Count -ne 1 -or
+        ($overrideTechnology[0].effects -join ';') -ne $addition.Value.ModEffects) {
+        throw "Military technology ceiling addition '$($addition.Key)' does not preserve its pinned cost and existing effects."
+    }
+}
+$finiteArmyTechnologyRecipients = @(
+    $expectedVanillaArmyTechnologyRecipients | Where-Object {
+        $_ -ne 'FutureTechMilitaryScience'
+    }
+) + @('AugmentedReality') + @($militaryTechnologyAdditions.Keys)
+if ($finiteArmyTechnologyRecipients.Count -ne 12 -or
+    (5.0 + 0.25 * $finiteArmyTechnologyRecipients.Count) -ne 8.0) {
+    throw 'The authored non-repeatable global technologies must produce a human maximum Military technology ceiling of exactly 8.00.'
 }
 $fusionMethodPrerequisites = @(
     'MagneticPlasmaConfinementTechniques',
@@ -835,6 +915,7 @@ $requiredFiles = @(
     $armyOverrides,
     $metaOverrides,
     $technologyOverrides,
+    $effectOverrides,
     $projectOverrides,
     $globalOverrides,
     $habModuleOverrides,
@@ -887,6 +968,7 @@ Copy-Item -LiteralPath $startOverrides -Destination $stagingDirectory
 Copy-Item -LiteralPath $armyOverrides -Destination $stagingDirectory
 Copy-Item -LiteralPath $metaOverrides -Destination $stagingDirectory
 Copy-Item -LiteralPath $technologyOverrides -Destination $stagingDirectory
+Copy-Item -LiteralPath $effectOverrides -Destination $stagingDirectory
 Copy-Item -LiteralPath $projectOverrides -Destination $stagingDirectory
 Copy-Item -LiteralPath $globalOverrides -Destination $stagingDirectory
 Copy-Item -LiteralPath $habModuleOverrides -Destination $stagingDirectory
@@ -947,6 +1029,9 @@ try {
     $packagedTechnologyLocalization = $archive.Entries |
         Where-Object { $_.FullName.Replace('\', '/') -eq 'TIEconomyMod/TITechTemplate.en' } |
         Select-Object -First 1
+    $packagedEffectOverrides = $archive.Entries |
+        Where-Object { $_.FullName.Replace('\', '/') -eq 'TIEconomyMod/TIEffectTemplate.json' } |
+        Select-Object -First 1
     $packagedStartingForceFiles = @(
         'TIEconomyMod/TIArmyTemplate.json',
         'TIEconomyMod/TIMetaTemplate.json'
@@ -998,7 +1083,8 @@ try {
     }
     if ($null -eq $packagedSettings -or $null -eq $packagedWeights -or
         $null -eq $packagedHullVolumes -or $null -eq $packagedHullDriveScales -or
-        $null -eq $packagedEffectLocalization -or $null -eq $packagedTechnologyLocalization) {
+        $null -eq $packagedEffectLocalization -or $null -eq $packagedTechnologyLocalization -or
+        $null -eq $packagedEffectOverrides) {
         throw 'Release archive is missing settings, measured hull volumes/drive scales, technology weights, or control-point localization.'
     }
     $stream = $packagedDll.Open()

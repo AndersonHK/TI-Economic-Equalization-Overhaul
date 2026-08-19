@@ -19,6 +19,18 @@
     ]
   },
   {
+    "dataName": "CarbonNanotubes",
+    "effects": [
+      "Effect_IncreaseMaxArmyTechLevel"
+    ]
+  },
+  {
+    "dataName": "Superalloys",
+    "effects": [
+      "Effect_IncreaseMaxArmyTechLevel"
+    ]
+  },
+  {
     "dataName": "DeuteriumTritiumFusion",
     "AI_criticalTech": true,
     "prereqs": [
@@ -42,6 +54,14 @@
       "Tokamaks",
       "ZPinchTechniques",
       "Superalloys"
+    ]
+  },
+  {
+    "dataName": "DeuteriumHelium3Fusion",
+    "effects": [
+      "Effect_GlobalFusionTechIncrease",
+      "Effect_Economy_BasePCGDPIncrease02",
+      "Effect_IncreaseMaxArmyTechLevel"
     ]
   },
   {

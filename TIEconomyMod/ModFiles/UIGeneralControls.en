@@ -9,6 +9,7 @@ UI.Fleets.HullFuelStats=Fuel {0}  |  {1} / {2} tanks  |  {3} m³ available
 UI.Fleets.HullFuelStatsNoDrive=Fuel capacity: install a drive to select propellant density
 UI.Fleets.PropellantTanksWithCap={0} / {1}
 UI.Fleets.NotAvailableShort=—
+UI.Fleets.RefitFailHullAppearance=Hull appearance must match.
 UI.Fleets.FuelMaterial.Unknown=unknown
 UI.Fleets.FuelMaterial.Hydrogen=liquid hydrogen
 UI.Fleets.FuelMaterial.Water=water

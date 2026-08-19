@@ -5,7 +5,7 @@ Status: evidence and planning archive. Use the dated
 [current implementation matrix](../current-implementation-matrix.xlsx) to
 distinguish implemented values from proposals and deferred work.
 
-Last reviewed: 2026-08-18
+Last reviewed: 2026-08-19
 
 This dossier compares dated Terra Invicta ship-drive, power-plant, and
 weapon-crew snapshots with demonstrated hardware, active prototypes, historical
@@ -47,6 +47,7 @@ The comparison is organized into:
 - [Measured human drive-art scaling and flat variant hull masses](human-drive-art-scaling-and-structural-mass-plan.md)
 - [Hull-volume fuel capacity implementation](fuel-volume-capacity-implementation.md)
 - [Minimum AI fuel-capacity and appearance-lock plan](ai-fuel-capacity-minimum-plan.md)
+- [Refit hull-appearance lock](refit-hull-appearance-lock.md)
 - [Hypothetical role-aware AI hull-appearance selection](ai-hull-appearance-selection-hypothetical.md)
 - [Complete human and alien hull graphical-variant, measured-volume, and utility-slot report](hull-utility-slot-volume-report.md)
 - [Alien magnetic weapons, propulsion, and armor-design proposal](alien-weapons-propulsion-and-armor-proposal.md)

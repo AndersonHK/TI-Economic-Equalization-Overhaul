@@ -31,7 +31,7 @@ system by the 2022 start. Later consumer headsets improve usability and market
 reach but are not required to establish the underlying technology. Completing
 the global technology does not complete any of its dependent faction projects.
 The mod adds the native `Effect_IncreaseMaxArmyTechLevel` effect, increasing the
-maximum Military technology level for all human nations by 0.5. This represents
+maximum Military technology level for all human nations by 0.25. This represents
 the force-wide ceiling created by networked sensors and communications,
 helmet-mounted displays, augmented command interfaces, and contemporary drone
 warfare; it raises the attainable ceiling without instantly modernizing any
@@ -148,7 +148,7 @@ to the Asteroids. It does not directly complete or grant a ship component.
 Learning, Augmented Combat Training, Operations Center, Damage Control Drones,
 and Interrogation Techniques. Those projects retain their other prerequisites,
 unlock chances, and faction research costs. The technology also carries the
-native all-nations `Effect_IncreaseMaxArmyTechLevel` effect, valued at 0.5.
+native all-nations `Effect_IncreaseMaxArmyTechLevel` effect, valued at 0.25.
 
 In the 2026 start only, completed `OutpostHabs` directly opens
 `MissiontotheMoon`, `MissiontoMars`, and `SpaceMiningandRefining`. It also makes
