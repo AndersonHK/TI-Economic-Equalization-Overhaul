@@ -19,6 +19,32 @@
     ]
   },
   {
+    "dataName": "DeuteriumTritiumFusion",
+    "AI_criticalTech": true,
+    "prereqs": [
+      "AdvancedSuperconductors",
+      "NuclearFissioninSpace",
+      "AdvancedHeatManagementConcepts"
+    ]
+  },
+  {
+    "dataName": "NuclearFusioninSpace",
+    "prereqs": [
+      "DeuteriumTritiumFusion"
+    ]
+  },
+  {
+    "dataName": "DeuteriumDeuteriumFusion",
+    "prereqs": [
+      "MagneticPlasmaConfinementTechniques",
+      "ElectrostaticPlasmaConfinement",
+      "InertialPlasmaConfinementTechniques",
+      "Tokamaks",
+      "ZPinchTechniques",
+      "Superalloys"
+    ]
+  },
+  {
     "dataName": "FutureTechSpaceScience",
     "effects": []
   },

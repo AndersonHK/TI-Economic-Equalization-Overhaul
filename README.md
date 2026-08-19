@@ -83,6 +83,11 @@ historical research and deferred work.
 - AI global-technology choices keep every available candidate eligible. Native
   priority tiers become `1/2/4/10/14` weight multipliers, combined with a
   bounded `(median available cost / candidate cost)^0.75` cost factor.
+- Deuterium-Tritium Fusion retains its 50,000 authored cost, moves before
+  Nuclear Fusion Methodologies, inherits the former Methodologies prerequisites,
+  and becomes AI-critical. Methodologies then requires only D-T Fusion, while
+  Deuterium-Deuterium Fusion requires Superalloys plus magnetic, electrostatic,
+  inertial, tokamak, and Z-pinch methods.
 
 ### Military and starting scenarios
 

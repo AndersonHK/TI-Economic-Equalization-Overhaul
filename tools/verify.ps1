@@ -584,12 +584,17 @@ $mineEffectByTechnology = [ordered]@{
 }
 $expectedOverrideIds = @($expectedTechnologyIds) +
     @($mineEffectByTechnology.Keys) +
-    @('AugmentedReality')
+    @(
+        'AugmentedReality',
+        'DeuteriumTritiumFusion',
+        'NuclearFusioninSpace',
+        'DeuteriumDeuteriumFusion'
+    )
 if ($technologyCostOverrides.Count -ne $expectedOverrideIds.Count -or
     @($technologyCostOverrides | Where-Object {
         $_.dataName -notin $expectedOverrideIds
     }).Count -ne 0) {
-    throw 'Technology overrides must contain the three doubled starts, eight retired free-mine effect edits, and the Augmented Reality cost and Military-cap edits.'
+    throw 'Technology overrides must contain the three doubled starts, eight retired free-mine effect edits, the Augmented Reality edits, and the three approved fusion-tree edits.'
 }
 $vanillaAugmentedReality = @($vanillaTechnologies | Where-Object {
     $_.dataName -eq 'AugmentedReality'
@@ -613,6 +618,139 @@ if ($vanillaAugmentedReality.Count -ne 1 -or
     $maximumArmyTechnologyEffect[0].effectTarget -ne 'AllNations' -or
     $maximumArmyTechnologyEffect[0].effectDuration -ne 'instant') {
     throw 'Augmented Reality must raise its authored research cost from 1,500 to 2,000 and add the native +0.5 all-nations maximum Military technology effect.'
+}
+$fusionMethodPrerequisites = @(
+    'MagneticPlasmaConfinementTechniques',
+    'ElectrostaticPlasmaConfinement',
+    'InertialPlasmaConfinementTechniques',
+    'Tokamaks',
+    'ZPinchTechniques'
+)
+$vanillaDeuteriumTritiumFusion = @($vanillaTechnologies | Where-Object {
+    $_.dataName -eq 'DeuteriumTritiumFusion'
+})
+$deuteriumTritiumFusionOverride = @($technologyCostOverrides | Where-Object {
+    $_.dataName -eq 'DeuteriumTritiumFusion'
+})
+$vanillaFusionMethodologies = @($vanillaTechnologies | Where-Object {
+    $_.dataName -eq 'NuclearFusioninSpace'
+})
+$fusionMethodologiesOverride = @($technologyCostOverrides | Where-Object {
+    $_.dataName -eq 'NuclearFusioninSpace'
+})
+$vanillaDeuteriumDeuteriumFusion = @($vanillaTechnologies | Where-Object {
+    $_.dataName -eq 'DeuteriumDeuteriumFusion'
+})
+$deuteriumDeuteriumFusionOverride = @($technologyCostOverrides | Where-Object {
+    $_.dataName -eq 'DeuteriumDeuteriumFusion'
+})
+if ($vanillaDeuteriumTritiumFusion.Count -ne 1 -or
+    [double]$vanillaDeuteriumTritiumFusion[0].researchCost -ne 50000 -or
+    [bool]$vanillaDeuteriumTritiumFusion[0].AI_criticalTech -or
+    ($vanillaDeuteriumTritiumFusion[0].prereqs -join ';') -ne
+        'NuclearFusioninSpace;Neutronics' -or
+    ($vanillaDeuteriumTritiumFusion[0].effects -join ';') -ne
+        'Effect_GlobalFusionTechIncrease;Effect_Economy_BasePCGDPIncrease02' -or
+    $deuteriumTritiumFusionOverride.Count -ne 1 -or
+    -not [bool]$deuteriumTritiumFusionOverride[0].AI_criticalTech -or
+    ($deuteriumTritiumFusionOverride[0].prereqs -join ';') -ne
+        'AdvancedSuperconductors;NuclearFissioninSpace;AdvancedHeatManagementConcepts' -or
+    $deuteriumTritiumFusionOverride[0].PSObject.Properties.Name -contains
+        'researchCost' -or
+    $deuteriumTritiumFusionOverride[0].PSObject.Properties.Name -contains
+        'effects') {
+    throw 'D-T Fusion must retain its installed 50,000 cost and effects, become AI-critical, and inherit the three former Fusion Methodologies prerequisites.'
+}
+if ($vanillaFusionMethodologies.Count -ne 1 -or
+    [double]$vanillaFusionMethodologies[0].researchCost -ne 50000 -or
+    ($vanillaFusionMethodologies[0].prereqs -join ';') -ne
+        'AdvancedSuperconductors;NuclearFissioninSpace;AdvancedHeatManagementConcepts' -or
+    ($vanillaFusionMethodologies[0].effects -join ';') -ne
+        'Effect_GlobalFusionTechIncrease' -or
+    $fusionMethodologiesOverride.Count -ne 1 -or
+    ($fusionMethodologiesOverride[0].prereqs -join ';') -ne
+        'DeuteriumTritiumFusion' -or
+    $fusionMethodologiesOverride[0].PSObject.Properties.Name -contains
+        'researchCost' -or
+    $fusionMethodologiesOverride[0].PSObject.Properties.Name -contains
+        'effects') {
+    throw 'Nuclear Fusion Methodologies must retain its installed 50,000 cost and fusion effect and require only D-T Fusion.'
+}
+if ($vanillaDeuteriumDeuteriumFusion.Count -ne 1 -or
+    [double]$vanillaDeuteriumDeuteriumFusion[0].researchCost -ne 75000 -or
+    ($vanillaDeuteriumDeuteriumFusion[0].prereqs -join ';') -ne
+        'DeuteriumTritiumFusion;Superalloys' -or
+    ($vanillaDeuteriumDeuteriumFusion[0].effects -join ';') -ne
+        'Effect_GlobalFusionTechIncrease;Effect_Economy_BasePCGDPIncrease02' -or
+    $deuteriumDeuteriumFusionOverride.Count -ne 1 -or
+    ($deuteriumDeuteriumFusionOverride[0].prereqs -join ';') -ne
+        ((@($fusionMethodPrerequisites) + @('Superalloys')) -join ';') -or
+    $deuteriumDeuteriumFusionOverride[0].PSObject.Properties.Name -contains
+        'researchCost' -or
+    $deuteriumDeuteriumFusionOverride[0].PSObject.Properties.Name -contains
+        'effects') {
+    throw 'D-D Fusion must retain its installed 75,000 cost and effects and require Superalloys plus all five approved fusion methods.'
+}
+$fusionDescriptionKey = 'TITechTemplate.description.NuclearFusioninSpace='
+if ([regex]::Matches(
+        $technologyLocalizationText,
+        "(?m)^$([regex]::Escape($fusionDescriptionKey))").Count -ne 1 -or
+    $technologyLocalizationText -notmatch
+        'Practical deuterium-tritium fusion and tritium breeding' -or
+    $technologyLocalizationText -notmatch
+        'static electric fields, inertial ignition, toroidal tokamaks, and Z-pinch') {
+    throw 'Nuclear Fusion Methodologies localization must describe D-T Fusion as its completed foundation and the downstream method families.'
+}
+$technologyPrerequisites = @{}
+foreach ($technology in $vanillaTechnologies) {
+    $technologyPrerequisites[$technology.dataName] = @(
+        $technology.prereqs | Where-Object {
+            -not [string]::IsNullOrWhiteSpace([string]$_)
+        }
+    )
+}
+foreach ($technology in $technologyCostOverrides) {
+    if ($technology.PSObject.Properties.Name -contains 'prereqs') {
+        $technologyPrerequisites[$technology.dataName] = @(
+            $technology.prereqs | Where-Object {
+                -not [string]::IsNullOrWhiteSpace([string]$_)
+            }
+        )
+    }
+}
+$visitState = @{}
+function Test-TechnologyPrerequisiteGraph {
+    param(
+        [string]$TechnologyId,
+        [hashtable]$Prerequisites,
+        [hashtable]$State
+    )
+    if ($State[$TechnologyId] -eq 1) {
+        throw "Technology prerequisite graph contains a cycle at '$TechnologyId'."
+    }
+    if ($State[$TechnologyId] -eq 2) {
+        return
+    }
+    $State[$TechnologyId] = 1
+    foreach ($prerequisiteId in @(
+            $Prerequisites[$TechnologyId] | Where-Object {
+                -not [string]::IsNullOrWhiteSpace([string]$_)
+            })) {
+        if (-not $Prerequisites.ContainsKey($prerequisiteId)) {
+            throw "Technology '$TechnologyId' references missing prerequisite '$prerequisiteId'."
+        }
+        Test-TechnologyPrerequisiteGraph `
+            -TechnologyId $prerequisiteId `
+            -Prerequisites $Prerequisites `
+            -State $State
+    }
+    $State[$TechnologyId] = 2
+}
+foreach ($technologyId in @($technologyPrerequisites.Keys)) {
+    Test-TechnologyPrerequisiteGraph `
+        -TechnologyId $technologyId `
+        -Prerequisites $technologyPrerequisites `
+        -State $visitState
 }
 foreach ($entry in $mineEffectByTechnology.GetEnumerator()) {
     $vanillaTechnology = @($vanillaTechnologies | Where-Object {

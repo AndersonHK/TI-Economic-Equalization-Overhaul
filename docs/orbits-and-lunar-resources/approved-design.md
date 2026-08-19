@@ -296,5 +296,8 @@ or AI-valuation issue should be appended here with its campaign conditions.
   and resource rationale remain in the approved yield CSV and design notes.
   All thirty-five replacements passed targeted data validation and full release
   verification (1,078 formula assertions, 93 implementation-matrix rows, and
-  143 Harmony patches). Deployment remains pending because the process guard
-  found Terra Invicta running and made no changes to the installed package.
+  143 Harmony patches). After an initial safe refusal while Terra Invicta was
+  running, the guarded deployment completed on 2026-08-18 with 44 hash-verified
+  files. The deployed localization contains all 35 concise labels, has a maximum
+  label length of 29 characters, and matches the source SHA-256
+  `BF84CB932FE9239663EA7D34E9BD95A7C51ED5E5D59640BAB690D684AA323DF8`.

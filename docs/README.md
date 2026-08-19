@@ -19,6 +19,9 @@ when prose and runtime behavior disagree.
 - [Global technology AI selection](global-technology-ai-selection.md):
   authoritative soft-priority, relative-cost, and weighted-selection formula
   for AI replacement of completed global technologies.
+- [Fusion technology tree rebalance](fusion-technology-tree-rebalance.md):
+  authoritative D-T Fusion, Nuclear Fusion Methodologies, and D-D Fusion
+  prerequisite graph, localization, costs, and manual tree-layout target.
 - [Current implementation matrix](current-implementation-matrix.xlsx):
   patch-by-patch comparison with Terra Invicta 1.0.51 and the maintained-main
   baseline.
