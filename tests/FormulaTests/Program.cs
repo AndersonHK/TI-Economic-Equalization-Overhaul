@@ -70,6 +70,7 @@ namespace TIEconomyMod.FormulaTests
             GameStateManager.Research.finishedTechsNames.Clear();
             GameStateManager.TimeState.template.CPMaintenanceModifier = 1f;
             TIEffectsState.FactionEffects.Clear();
+            TIGlobalValuesState.GlobalValues = new TIGlobalValuesState();
         }
 
         private static void TestNationalValues()
@@ -2148,15 +2149,50 @@ namespace TIEconomyMod.FormulaTests
             Reset();
             TINationState nation = Nation();
             nation.GDP = 100000000000d;
-            nation.sustainability = 1f;
+            nation.sustainability = (float)EnvironmentMath.StoredFromRating(1d, 0.1d);
             nation.regions.Add(new TIRegionState { area_km2 = 100000f });
+
+            Near(0f, (float)EnvironmentMath.RatingFromStored(10d, 0.1d), 0.000001f,
+                "stored Environment carrier represents exact score zero");
+            Near(5f, (float)EnvironmentMath.RatingFromStored(
+                EnvironmentMath.StoredFromRating(5d, 0.1d), 0.1d), 0.000001f,
+                "Environment score storage round-trips");
+            Near(10f, (float)EnvironmentMath.RatingFromStored(
+                EnvironmentMath.StoredFromRating(10d, 0.1d), 0.1d), 0.000001f,
+                "carbon-neutral score storage round-trips");
+            Near(3f, (float)EnvironmentRuntime.TechnologyCap(), 0f,
+                "contemporary Environment technology starts at cap three");
+            GameStateManager.Research.finishedTechsNames.UnionWith(new[]
+            {
+                "ArrivalInternationalDevelopment", "CleanEnergy",
+                "ClimateChangeMitigation", "DesignerLifeforms",
+                "IntegratedEarthSpaceEconomy"
+            });
+            Near(10f, (float)EnvironmentRuntime.TechnologyCap(), 0f,
+                "five explicit technologies unlock cap ten");
+            GameStateManager.Research.finishedTechsNames.Clear();
+
+            double halfCapThree = EnvironmentMath.AdvancementCost(
+                0d, 1.5d, 3d, 100d, 100d, 0.125d, 1.5d);
+            double halfCapTen = EnvironmentMath.AdvancementCost(
+                0d, 5d, 10d, 100d, 100d, 0.125d, 1.5d);
+            Near((float)halfCapThree, (float)halfCapTen, 0.000001f,
+                "half of cap three costs exactly half of cap ten");
+            Near(10f, (float)(EnvironmentMath.AdvancementCost(
+                0d, 1.5d, 3d, 1000d, 100d, 0.125d, 1.5d) / halfCapThree),
+                0.000001f, "Environment advancement cost is linear in GDP");
 
             float result = 0f;
             EnvironmentSustainabilityPatch.Prefix(ref result, nation);
-            Near(-0.10f, result, 0.000001f, "environment cleanup at reference GDP");
+            double smallNext = EnvironmentMath.RatingFromStored(
+                nation.sustainability + result, 0.1d);
+            True(smallNext > 1d, "one Environment completion raises the rating");
             nation.GDP = 1000000000000d;
             EnvironmentSustainabilityPatch.Prefix(ref result, nation);
-            Near(-0.01f, result, 0.000001f, "environment cleanup divides by GDP");
+            double largeNext = EnvironmentMath.RatingFromStored(
+                nation.sustainability + result, 0.1d);
+            True(largeNext - 1d < smallNext - 1d,
+                "one IP advances a larger economy less while its IP output is larger");
 
             float climateDamage = -0.02f;
             ClimateGdpDamagePatch.Postfix(1.25f, ref climateDamage);
@@ -2180,56 +2216,87 @@ namespace TIEconomyMod.FormulaTests
             nation.GDP = 100000000000d;
             nation.regions[0].nuclearDetonations = 1;
             EnvironmentSustainabilityPatch.Prefix(ref result, nation);
-            Near(-0.05f, result, 0.000001f, "fallout burden is proportional to land area");
+            double falloutNext = EnvironmentMath.RatingFromStored(
+                nation.sustainability + result, 0.1d);
+            True(falloutNext - 1d < smallNext - 1d,
+                "fallout burden reduces Environment advancement");
             nation.regions[0].area_km2 = 1000f;
             EnvironmentSustainabilityPatch.Prefix(ref result, nation);
-            True(Math.Abs(result) < 0.001f, "small countries suffer denser nuclear damage");
+            double denseFalloutNext = EnvironmentMath.RatingFromStored(
+                nation.sustainability + result, 0.1d);
+            True(denseFalloutNext - 1d < falloutNext - 1d,
+                "small countries suffer denser nuclear damage");
 
             result = 123f;
             True(!EnvironmentCo2RemovalPatch.Prefix(ref result),
-                "CO2 atmospheric cleanup is suppressed");
-            Near(0f, result, 0f, "Environment IP does not remove global CO2");
+                "configured CO2 atmospheric cleanup replaces vanilla");
+            Near(-0.00008125f, result, 0.000000001f,
+                "post-cap CO2 packet is one quarter of vanilla");
             result = 123f;
             True(!EnvironmentMethaneRemovalPatch.Prefix(ref result),
-                "methane atmospheric cleanup is suppressed");
-            Near(0f, result, 0f, "Environment IP does not remove global methane");
+                "configured methane atmospheric cleanup replaces vanilla");
+            Near(-0.000000625f, result, 0.000000001f,
+                "post-cap methane packet is reduced");
             result = 123f;
             True(!EnvironmentNitrousOxideRemovalPatch.Prefix(ref result),
-                "nitrous-oxide atmospheric cleanup is suppressed");
-            Near(0f, result, 0f, "Environment IP does not remove global nitrous oxide");
+                "configured nitrous-oxide cleanup replaces vanilla");
+            Near(-0.000000625f, result, 0.000000001f,
+                "post-cap nitrous-oxide packet is reduced");
+            TIGlobalValuesState.GlobalValues.earthAtmosphericCO2_ppm =
+                TIGlobalValuesState.safeAtmosphericCO2_ppm + 0.00005f;
+            float clippedExpected = -(TIGlobalValuesState.GlobalValues.earthAtmosphericCO2_ppm -
+                TIGlobalValuesState.safeAtmosphericCO2_ppm);
+            EnvironmentCo2RemovalPatch.Prefix(ref result);
+            Near(clippedExpected, result, 0.000000001f,
+                "cleanup clips at the zero-warming CO2 concentration");
 
             nation.regions[0].nuclearDetonations = 0;
             nation.currentResourceRegions = 0;
+            nation.GDP = 100000000000d;
+            nation.population_Millions = 100f;
+            nation.sustainability = (float)EnvironmentMath.StoredFromRating(0d, 0.1d);
             Tuple<double, double, double> emissions = null;
             EconomyEmissionsPatch.Prefix(ref emissions, nation, false, 0f);
-            double smallEconomyCo2 = emissions.Item1;
+            Near(200000000f, (float)emissions.Item1, 1f,
+                "score-zero CO2 uses calibrated GDP intensity");
+            double scoreZeroMethane = emissions.Item2;
+            double scoreZeroN2O = emissions.Item3;
+            nation.sustainability = (float)EnvironmentMath.StoredFromRating(1d, 0.1d);
+            EconomyEmissionsPatch.Prefix(ref emissions, nation, false, 0f);
+            Near(0.25f, (float)(emissions.Item1 / 200000000d), 0.000001f,
+                "each CO2 rating point quarters emissions");
+            double scoreOneCo2 = emissions.Item1;
+            Near(0.90f, (float)(emissions.Item2 / scoreZeroMethane), 0.000001f,
+                "methane follows its gentler population curve");
+            Near(0.90f, (float)(emissions.Item3 / scoreZeroN2O), 0.000001f,
+                "nitrous oxide follows its gentler population curve");
+
             nation.GDP = 1000000000000d;
             EconomyEmissionsPatch.Prefix(ref emissions, nation, false, 0f);
-            Near(10f, (float)(emissions.Item1 / smallEconomyCo2), 0.0001f,
-                "economy emissions are linear in GDP");
-            nation.population *= 10f;
+            Near(10f, (float)(emissions.Item1 / scoreOneCo2), 0.000001f,
+                "CO2 emissions are linear in GDP at a fixed rating");
             Tuple<double, double, double> sameGdpEmissions = null;
+            nation.population_Millions = 200f;
             EconomyEmissionsPatch.Prefix(ref sameGdpEmissions, nation, false, 0f);
             Near((float)emissions.Item1, (float)sameGdpEmissions.Item1, 0f,
-                "economy emissions have no independent population term");
+                "population does not independently change CO2");
+            Near(2f, (float)(sameGdpEmissions.Item2 / emissions.Item2), 0.000001f,
+                "methane is linear in population at a fixed rating");
 
-            nation.population = 100000000f;
-            nation.currentResourceRegions = 1;
-            nation.GDP = 100000000000d;
-            Tuple<double, double, double> resourceSmall = null;
-            EconomyEmissionsPatch.Prefix(ref resourceSmall, nation, false, 0f);
-            nation.GDP = 1000000000000d;
-            Tuple<double, double, double> resourceLarge = null;
-            EconomyEmissionsPatch.Prefix(ref resourceLarge, nation, false, 0f);
-            Near(1.125f, (float)(resourceLarge.Item1 / emissions.Item1), 0.0001f,
-                "one resource in a one-trillion-dollar economy uses curve 0.5");
-            True(resourceSmall.Item1 / smallEconomyCo2 >
-                resourceLarge.Item1 / emissions.Item1,
-                "resource emissions intensity is relative to GDP");
+            nation.population_Millions = 100f;
+            nation.sustainability = (float)EnvironmentMath.StoredFromRating(1d, 0.1d);
             Tuple<double, double, double> cleanerProposal = null;
-            EconomyEmissionsPatch.Prefix(ref cleanerProposal, nation, false, -0.5f);
-            Near(0.5f, (float)(cleanerProposal.Item1 / resourceLarge.Item1), 0.0001f,
-                "proposed Sustainability change updates emissions intensity");
+            float scoreTwoStoredChange = (float)EnvironmentMath.StoredFromRating(2d, 0.1d) -
+                nation.sustainability;
+            EconomyEmissionsPatch.Prefix(
+                ref cleanerProposal, nation, false, scoreTwoStoredChange);
+            Near(0.25f, (float)(cleanerProposal.Item1 / emissions.Item1), 0.000001f,
+                "proposed Environment change is decoded as a rating change");
+            nation.sustainability = (float)EnvironmentMath.StoredFromRating(10d, 0.1d);
+            EconomyEmissionsPatch.Prefix(ref emissions, nation, false, 0f);
+            Near(0f, (float)emissions.Item1, 0f, "score ten has zero routine CO2");
+            Near(0f, (float)emissions.Item2, 0f, "score ten has zero routine methane");
+            Near(0f, (float)emissions.Item3, 0f, "score ten has zero routine nitrous oxide");
 
             nation.population = 100000000f;
             nation.GDP = 100000000000d;

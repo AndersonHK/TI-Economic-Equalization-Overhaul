@@ -491,9 +491,16 @@ namespace TIEconomyMod
     public sealed class EnvironmentSettings
     {
         public bool enabled = true;
-        public float cleanupAtReferenceGdp = 0.10f;
+        public float storageRatingOffset = 0.10f;
+        public float startingTechnologyCap = 3f;
+        public float maximumTechnologyCap = 10f;
+        public float advancementBaseIp = 0.125f;
+        public float advancementCostGrowthBase = 1.50f;
         public float referenceGdpBillions = 100f;
         public float minimumGdpBillions = 1f;
+        public float cleanupCO2_ppm = 0.00008125f;
+        public float cleanupCH4_ppm = 0.000000625f;
+        public float cleanupN2O_ppm = 0.000000625f;
         public float falloutReferenceAreaKm2 = 100000f;
         public float minimumLandAreaKm2 = 1f;
         public bool climateGdpDamageEnabled = true;
@@ -504,11 +511,14 @@ namespace TIEconomyMod
     public sealed class EmissionsSettings
     {
         public bool enabled = true;
-        public float tonsPerGdpBillion = 275000f;
-        public float maximumResourceIntensityMultiplier = 1.25f;
-        public float co2TonsMultiplier = 0.3292f;
-        public float methaneTonsMultiplier = 0.00547619f;
-        public float nitrousOxideTonsMultiplier = 0.000214533f;
+        public float neutralRating = 10f;
+        public float co2TonsPerGdpBillionAtScoreZero = 2000000f;
+        public float co2DecayBase = 0.25f;
+        public float maximumResourceIntensityMultiplier = 1f;
+        public float methaneTonsPerMillionPeopleAtScoreZero = 51248.90f;
+        public float methaneDecayBase = 0.90f;
+        public float nitrousOxideTonsPerMillionPeopleAtScoreZero = 1452.04f;
+        public float nitrousOxideDecayBase = 0.90f;
         public float monthsPerYear = 12f;
     }
 
@@ -745,17 +755,27 @@ namespace TIEconomyMod
                 "nationalMergers.inequalityBoundaryEpsilon", log);
             RepairPositive(ref value.oppression.unrestPopulationDivisor, defaults.oppression.unrestPopulationDivisor, "oppression.unrestPopulationDivisor", log);
             RepairPositive(ref value.oppression.fullDemocracy, defaults.oppression.fullDemocracy, "oppression.fullDemocracy", log);
-            RepairPositive(ref value.environment.cleanupAtReferenceGdp, defaults.environment.cleanupAtReferenceGdp, "environment.cleanupAtReferenceGdp", log);
+            RepairPositive(ref value.environment.storageRatingOffset, defaults.environment.storageRatingOffset, "environment.storageRatingOffset", log);
+            RepairRange(ref value.environment.startingTechnologyCap, defaults.environment.startingTechnologyCap, 0.1f, 10f, "environment.startingTechnologyCap", log);
+            RepairRange(ref value.environment.maximumTechnologyCap, defaults.environment.maximumTechnologyCap, value.environment.startingTechnologyCap, 10f, "environment.maximumTechnologyCap", log);
+            RepairPositive(ref value.environment.advancementBaseIp, defaults.environment.advancementBaseIp, "environment.advancementBaseIp", log);
+            RepairRange(ref value.environment.advancementCostGrowthBase, defaults.environment.advancementCostGrowthBase, 1f, 10f, "environment.advancementCostGrowthBase", log);
             RepairPositive(ref value.environment.referenceGdpBillions, defaults.environment.referenceGdpBillions, "environment.referenceGdpBillions", log);
             RepairPositive(ref value.environment.minimumGdpBillions, defaults.environment.minimumGdpBillions, "environment.minimumGdpBillions", log);
+            RepairNonNegative(ref value.environment.cleanupCO2_ppm, defaults.environment.cleanupCO2_ppm, "environment.cleanupCO2_ppm", log);
+            RepairNonNegative(ref value.environment.cleanupCH4_ppm, defaults.environment.cleanupCH4_ppm, "environment.cleanupCH4_ppm", log);
+            RepairNonNegative(ref value.environment.cleanupN2O_ppm, defaults.environment.cleanupN2O_ppm, "environment.cleanupN2O_ppm", log);
             RepairPositive(ref value.environment.falloutReferenceAreaKm2, defaults.environment.falloutReferenceAreaKm2, "environment.falloutReferenceAreaKm2", log);
             RepairPositive(ref value.environment.minimumLandAreaKm2, defaults.environment.minimumLandAreaKm2, "environment.minimumLandAreaKm2", log);
             RepairRange(ref value.environment.climateGdpDamageMultiplier, defaults.environment.climateGdpDamageMultiplier, 0f, 1f, "environment.climateGdpDamageMultiplier", log);
-            RepairPositive(ref value.emissions.tonsPerGdpBillion, defaults.emissions.tonsPerGdpBillion, "emissions.tonsPerGdpBillion", log);
+            RepairRange(ref value.emissions.neutralRating, defaults.emissions.neutralRating, 0.1f, 10f, "emissions.neutralRating", log);
+            RepairPositive(ref value.emissions.co2TonsPerGdpBillionAtScoreZero, defaults.emissions.co2TonsPerGdpBillionAtScoreZero, "emissions.co2TonsPerGdpBillionAtScoreZero", log);
+            RepairRange(ref value.emissions.co2DecayBase, defaults.emissions.co2DecayBase, 0.01f, 1f, "emissions.co2DecayBase", log);
             RepairRange(ref value.emissions.maximumResourceIntensityMultiplier, defaults.emissions.maximumResourceIntensityMultiplier, 1f, 100f, "emissions.maximumResourceIntensityMultiplier", log);
-            RepairNonNegative(ref value.emissions.co2TonsMultiplier, defaults.emissions.co2TonsMultiplier, "emissions.co2TonsMultiplier", log);
-            RepairNonNegative(ref value.emissions.methaneTonsMultiplier, defaults.emissions.methaneTonsMultiplier, "emissions.methaneTonsMultiplier", log);
-            RepairNonNegative(ref value.emissions.nitrousOxideTonsMultiplier, defaults.emissions.nitrousOxideTonsMultiplier, "emissions.nitrousOxideTonsMultiplier", log);
+            RepairPositive(ref value.emissions.methaneTonsPerMillionPeopleAtScoreZero, defaults.emissions.methaneTonsPerMillionPeopleAtScoreZero, "emissions.methaneTonsPerMillionPeopleAtScoreZero", log);
+            RepairRange(ref value.emissions.methaneDecayBase, defaults.emissions.methaneDecayBase, 0.01f, 1f, "emissions.methaneDecayBase", log);
+            RepairPositive(ref value.emissions.nitrousOxideTonsPerMillionPeopleAtScoreZero, defaults.emissions.nitrousOxideTonsPerMillionPeopleAtScoreZero, "emissions.nitrousOxideTonsPerMillionPeopleAtScoreZero", log);
+            RepairRange(ref value.emissions.nitrousOxideDecayBase, defaults.emissions.nitrousOxideDecayBase, 0.01f, 1f, "emissions.nitrousOxideDecayBase", log);
             RepairPositive(ref value.emissions.monthsPerYear, defaults.emissions.monthsPerYear, "emissions.monthsPerYear", log);
             RepairPositive(ref value.unity.cohesionPopulationDivisor, defaults.unity.cohesionPopulationDivisor, "unity.cohesionPopulationDivisor", log);
             RepairNegative(ref value.unity.educationPopulationDivisor, defaults.unity.educationPopulationDivisor, "unity.educationPopulationDivisor", log);

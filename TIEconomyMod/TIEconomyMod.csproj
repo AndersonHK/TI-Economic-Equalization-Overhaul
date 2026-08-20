@@ -96,6 +96,7 @@
     <Compile Include="Core\HabLogistics.cs" />
     <Compile Include="Core\EarthLaunchCost.cs" />
     <Compile Include="Core\EarthLaunchCostMath.cs" />
+    <Compile Include="Core\EnvironmentMath.cs" />
     <Compile Include="Core\AlienFloraAssaultMath.cs" />
     <Compile Include="Core\HabRebalanceMath.cs" />
     <Compile Include="Core\IndependentResearchMath.cs" />

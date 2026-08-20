@@ -2,6 +2,7 @@
 param(
     [string]$GameInstallDir,
     [string]$ProposalCsv,
+    [string]$EnvironmentCalibrationCsv,
     [string]$OutputDirectory
 )
 
@@ -11,6 +12,9 @@ $repositoryRoot = Split-Path -Parent $scriptDirectory
 
 if ([string]::IsNullOrWhiteSpace($ProposalCsv)) {
     $ProposalCsv = Join-Path $repositoryRoot 'docs\economic-data\country-economic-clamp-proposal-2022-usd.csv'
+}
+if ([string]::IsNullOrWhiteSpace($EnvironmentCalibrationCsv)) {
+    $EnvironmentCalibrationCsv = Join-Path $repositoryRoot 'docs\environment-calibration\historical-start-calibration.csv'
 }
 if ([string]::IsNullOrWhiteSpace($OutputDirectory)) {
     $OutputDirectory = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles'
@@ -88,6 +92,19 @@ $proposalRows = @(Import-Csv -LiteralPath $ProposalCsv -Encoding UTF8)
 if ($proposalRows.Count -ne 518) {
     throw "Expected 518 proposal rows, found $($proposalRows.Count)."
 }
+
+$environmentRows = @(Import-Csv -LiteralPath $EnvironmentCalibrationCsv -Encoding UTF8)
+if ($environmentRows.Count -ne 518) {
+    throw "Expected 518 environment calibration rows, found $($environmentRows.Count)."
+}
+$environmentIndex = @{}
+foreach ($row in $environmentRows) {
+    $key = [string]$row.data_name
+    if ($environmentIndex.ContainsKey($key)) {
+        throw "Duplicate environment calibration row: $key"
+    }
+    $environmentIndex[$key] = $row
+}
 $proposalIndex = @{}
 foreach ($row in $proposalRows) {
     $key = "$($row.country_id)|$($row.scenario_year)"
@@ -137,10 +154,20 @@ foreach ($spec in $scenarioSpecs) {
         if (-not $seenNations.Add([string]$nation.dataName)) {
             throw "Duplicate nation dataName across generated overrides: $($nation.dataName)"
         }
+        if (-not $environmentIndex.ContainsKey([string]$nation.dataName)) {
+            throw "Missing environment calibration row for $($nation.dataName)."
+        }
         $initialGdp = [long]::Parse($proposal.proposed_json_initial_gdp, [Globalization.CultureInfo]::InvariantCulture)
+        $storedGreenEconomy = [Math]::Round(
+            [double]::Parse(
+                $environmentIndex[[string]$nation.dataName].stored_green_economy,
+                [Globalization.CultureInfo]::InvariantCulture),
+            7,
+            [MidpointRounding]::AwayFromZero)
         $nationOverrides.Add([pscustomobject][ordered]@{
             dataName = [string]$nation.dataName
             initialGDP = $initialGdp
+            greenEconomy = $storedGreenEconomy
         })
 
         $targetPopulationMillions = [decimal]::Parse(

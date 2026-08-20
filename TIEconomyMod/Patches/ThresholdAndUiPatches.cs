@@ -654,6 +654,8 @@ namespace TIEconomyMod.Patches
                 if (Main.FeatureEnabled(Main.settings.environment.enabled))
                 {
                     EnvironmentSettings environment = Main.settings.environment;
+                    double rating = EnvironmentRuntime.Rating(nation);
+                    double cap = EnvironmentRuntime.TechnologyCap();
                     float landArea = 0f;
                     int detonations = 0;
                     foreach (TIRegionState region in nation.regions)
@@ -663,19 +665,44 @@ namespace TIEconomyMod.Patches
                     }
                     float falloutLoad = detonations * environment.falloutReferenceAreaKm2 /
                         Math.Max(landArea, environment.minimumLandAreaKm2);
-                    if (nation.sustainability > 0f)
+                    section.Append("Rating ").Append(rating.ToString("0.###"))
+                        .Append(" / technology cap ").Append(cap.ToString("0.###"))
+                        .AppendLine();
+                    if (rating < cap - 0.000001d)
                     {
-                        section.Append("Sustainability ").Append(
-                                nation.environmentPrioritySustainabilityChange
-                                    .ToString("+0.####;-0.####;0"))
+                        double nextStored = nation.sustainability +
+                            nation.environmentPrioritySustainabilityChange;
+                        double nextRating = EnvironmentMath.RatingFromStored(
+                            Math.Max(0.000001d, nextStored),
+                            environment.storageRatingOffset);
+                        section.Append("Next completion +")
+                            .Append((nextRating - rating).ToString("0.######"))
+                            .Append(" rating; remaining ")
+                            .Append(EnvironmentRuntime.RemainingCost(nation).ToString("0.##"))
+                            .Append(" IP")
                             .Append(" (fallout x")
                             .Append((1f / (1f + falloutLoad)).ToString("0.###"))
-                            .AppendLine("); reduces national economy emissions only.");
+                            .AppendLine(").");
+                    }
+                    else if (EnvironmentRuntime.AtAbsoluteCap(nation) &&
+                        EnvironmentRuntime.HasPersistentGreenhouseWarming())
+                    {
+                        section.Append("Carbon neutral; each completion removes up to ")
+                            .Append(environment.cleanupCO2_ppm.ToString("0.########"))
+                            .Append(" ppm CO2, ")
+                            .Append(environment.cleanupCH4_ppm.ToString("0.#########"))
+                            .Append(" ppm CH4, and ")
+                            .Append(environment.cleanupN2O_ppm.ToString("0.#########"))
+                            .AppendLine(" ppm N2O.");
+                    }
+                    else if (EnvironmentRuntime.AtAbsoluteCap(nation))
+                    {
+                        section.AppendLine(
+                            "Carbon neutral; persistent greenhouse warming is already 0 C.");
                     }
                     else
                     {
-                        section.AppendLine(
-                            "Sustainability is zero; additional Environment IP does not remove atmospheric gases.");
+                        section.AppendLine("Current technology ceiling reached.");
                     }
                     section.Append("Warm-climate GDP damage x")
                         .Append((environment.climateGdpDamageEnabled

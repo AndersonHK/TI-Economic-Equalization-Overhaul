@@ -1,2074 +1,2592 @@
 [
     {
         "dataName":  "2003_AFG",
-        "initialGDP":  14740350877
+        "initialGDP":  14740350877,
+        "greenEconomy":  0.3492794
     },
     {
         "dataName":  "2003_SBK",
-        "initialGDP":  9792397661
+        "initialGDP":  9792397661,
+        "greenEconomy":  0.6480204
     },
     {
         "dataName":  "2003_DZA",
-        "initialGDP":  162825146199
+        "initialGDP":  162825146199,
+        "greenEconomy":  0.7622954
     },
     {
         "dataName":  "2003_AGO",
-        "initialGDP":  46713450292
+        "initialGDP":  46713450292,
+        "greenEconomy":  0.6061304
     },
     {
         "dataName":  "2003_ARG",
-        "initialGDP":  285999430091
+        "initialGDP":  285999430091,
+        "greenEconomy":  0.6779676
     },
     {
         "dataName":  "2003_ARM",
-        "initialGDP":  7950877193
+        "initialGDP":  7950877193,
+        "greenEconomy":  0.6525545
     },
     {
         "dataName":  "2003_AUS",
-        "initialGDP":  542024446000
+        "initialGDP":  542024446000,
+        "greenEconomy":  0.8240187
     },
     {
         "dataName":  "2003_ALP",
-        "initialGDP":  264049322000
+        "initialGDP":  264049322000,
+        "greenEconomy":  0.5516997
     },
     {
         "dataName":  "2003_AZE",
-        "initialGDP":  19721637427
+        "initialGDP":  19721637427,
+        "greenEconomy":  1.5690184
     },
     {
         "dataName":  "2003_BGD",
-        "initialGDP":  152713450292
+        "initialGDP":  152713450292,
+        "greenEconomy":  0.5057866
     },
     {
         "dataName":  "2003_BAH",
-        "initialGDP":  8870087000
+        "initialGDP":  8870087000,
+        "greenEconomy":  0.3757536
     },
     {
         "dataName":  "2003_BLR",
-        "initialGDP":  42814619883
+        "initialGDP":  42814619883,
+        "greenEconomy":  1.3458404
     },
     {
         "dataName":  "2003_BGM",
-        "initialGDP":  347663641000
+        "initialGDP":  347663641000,
+        "greenEconomy":  0.6160735
     },
     {
         "dataName":  "2003_BEL",
-        "initialGDP":  1308280000
+        "initialGDP":  1308280000,
+        "greenEconomy":  0.4002593
     },
     {
         "dataName":  "2003_BEN",
-        "initialGDP":  8922222222
+        "initialGDP":  8922222222,
+        "greenEconomy":  0.5314357
     },
     {
         "dataName":  "2003_BHU",
-        "initialGDP":  1473099415
+        "initialGDP":  1473099415,
+        "greenEconomy":  0.581467
     },
     {
         "dataName":  "2003_BOL",
-        "initialGDP":  22501754386
+        "initialGDP":  22501754386,
+        "greenEconomy":  0.6273499
     },
     {
         "dataName":  "2003_BSM",
-        "initialGDP":  13933918129
+        "initialGDP":  13933918129,
+        "greenEconomy":  1.1463732
     },
     {
         "dataName":  "2003_BWA",
-        "initialGDP":  10337426901
+        "initialGDP":  10337426901,
+        "greenEconomy":  0.6267995
     },
     {
         "dataName":  "2003_BRA",
-        "initialGDP":  952711695906
+        "initialGDP":  952711695906,
+        "greenEconomy":  0.6009276
     },
     {
         "dataName":  "2003_BRU",
-        "initialGDP":  11721052632
+        "initialGDP":  11721052632,
+        "greenEconomy":  0.7325741
     },
     {
         "dataName":  "2003_BUL",
-        "initialGDP":  44708771930
+        "initialGDP":  44708771930,
+        "greenEconomy":  1.2414296
     },
     {
         "dataName":  "2003_BKF",
-        "initialGDP":  8414035088
+        "initialGDP":  8414035088,
+        "greenEconomy":  0.4281433
     },
     {
         "dataName":  "2003_CPV",
-        "initialGDP":  1104857000
+        "initialGDP":  1104857000,
+        "greenEconomy":  0.5757017
     },
     {
         "dataName":  "2003_KHM",
-        "initialGDP":  12172514620
+        "initialGDP":  12172514620,
+        "greenEconomy":  0.4761099
     },
     {
         "dataName":  "2003_CMR",
-        "initialGDP":  23624561404
+        "initialGDP":  23624561404,
+        "greenEconomy":  0.5113518
     },
     {
         "dataName":  "2003_CAN",
-        "initialGDP":  895598837000
+        "initialGDP":  895598837000,
+        "greenEconomy":  0.7962968
     },
     {
         "dataName":  "2003_CAF",
-        "initialGDP":  1937426901
+        "initialGDP":  1937426901,
+        "greenEconomy":  0.4217113
     },
     {
         "dataName":  "2003_TCD",
-        "initialGDP":  7223391813
+        "initialGDP":  7223391813,
+        "greenEconomy":  0.33039
     },
     {
         "dataName":  "2003_CHL",
-        "initialGDP":  118815789474
+        "initialGDP":  118815789474,
+        "greenEconomy":  0.665918
     },
     {
         "dataName":  "2003_CHN",
-        "initialGDP":  2637080114922
+        "initialGDP":  2637080114922,
+        "greenEconomy":  1.9742574
     },
     {
         "dataName":  "2003_COL",
-        "initialGDP":  175425146199
+        "initialGDP":  175425146199,
+        "greenEconomy":  0.5855457
     },
     {
         "dataName":  "2003_COD",
-        "initialGDP":  17094736842
+        "initialGDP":  17094736842,
+        "greenEconomy":  0.4209853
     },
     {
         "dataName":  "2003_COS",
-        "initialGDP":  25149707602
+        "initialGDP":  25149707602,
+        "greenEconomy":  0.5101943
     },
     {
         "dataName":  "2003_CRS",
-        "initialGDP":  42554970760
+        "initialGDP":  42554970760,
+        "greenEconomy":  0.721353
     },
     {
         "dataName":  "2003_CUB",
-        "initialGDP":  35901200000
+        "initialGDP":  35901200000,
+        "greenEconomy":  0.8525824
     },
     {
         "dataName":  "2003_CZE",
-        "initialGDP":  127736257310
+        "initialGDP":  127736257310,
+        "greenEconomy":  1.0891491
     },
     {
         "dataName":  "2003_DEN",
-        "initialGDP":  208434198872
+        "initialGDP":  208434198872,
+        "greenEconomy":  0.5445079
     },
     {
         "dataName":  "2003_DJI",
-        "initialGDP":  1108187135
+        "initialGDP":  1108187135,
+        "greenEconomy":  0.8728113
     },
     {
         "dataName":  "2003_DOM",
-        "initialGDP":  38814619883
+        "initialGDP":  38814619883,
+        "greenEconomy":  0.6860011
     },
     {
         "dataName":  "2003_ECU",
-        "initialGDP":  49099415205
+        "initialGDP":  49099415205,
+        "greenEconomy":  0.7026877
     },
     {
         "dataName":  "2003_EGY",
-        "initialGDP":  282095325261
+        "initialGDP":  282095325261,
+        "greenEconomy":  0.7140246
     },
     {
         "dataName":  "2003_ELS",
-        "initialGDP":  18721052632
+        "initialGDP":  18721052632,
+        "greenEconomy":  0.592129
     },
     {
         "dataName":  "2003_EQG",
-        "initialGDP":  7930409357
+        "initialGDP":  7930409357,
+        "greenEconomy":  0.6639645
     },
     {
         "dataName":  "2003_ERI",
-        "initialGDP":  1987134503
+        "initialGDP":  1987134503,
+        "greenEconomy":  0.592875
     },
     {
         "dataName":  "2003_EST",
-        "initialGDP":  13732163743
+        "initialGDP":  13732163743,
+        "greenEconomy":  1.4715704
     },
     {
         "dataName":  "2003_ESW",
-        "initialGDP":  2870760234
+        "initialGDP":  2870760234,
+        "greenEconomy":  0.5910736
     },
     {
         "dataName":  "2003_ETH",
-        "initialGDP":  24199415205
+        "initialGDP":  24199415205,
+        "greenEconomy":  0.4913186
     },
     {
         "dataName":  "2003_FIN",
-        "initialGDP":  169233369000
+        "initialGDP":  169233369000,
+        "greenEconomy":  0.6534698
     },
     {
         "dataName":  "2003_EUA",
-        "initialGDP":  1855739454285
+        "initialGDP":  1855739454285,
+        "greenEconomy":  0.4917772
     },
     {
         "dataName":  "2003_LWG",
-        "initialGDP":  9822807018
+        "initialGDP":  9822807018,
+        "greenEconomy":  0.873767
     },
     {
         "dataName":  "2003_GAM",
-        "initialGDP":  1533918129
+        "initialGDP":  1533918129,
+        "greenEconomy":  0.4819183
     },
     {
         "dataName":  "2003_GEO",
-        "initialGDP":  10794736842
+        "initialGDP":  10794736842,
+        "greenEconomy":  0.6029067
     },
     {
         "dataName":  "2003_DEU",
-        "initialGDP":  2534080838000
+        "initialGDP":  2534080838000,
+        "greenEconomy":  0.5885227
     },
     {
         "dataName":  "2003_GHA",
-        "initialGDP":  29340350877
+        "initialGDP":  29340350877,
+        "greenEconomy":  0.5135857
     },
     {
         "dataName":  "2003_GRE",
-        "initialGDP":  211433466000
+        "initialGDP":  211433466000,
+        "greenEconomy":  0.7102761
     },
     {
         "dataName":  "2003_GTM",
-        "initialGDP":  43738011696
+        "initialGDP":  43738011696,
+        "greenEconomy":  0.51149
     },
     {
         "dataName":  "2003_GIN",
-        "initialGDP":  7964912281
+        "initialGDP":  7964912281,
+        "greenEconomy":  0.4979969
     },
     {
         "dataName":  "2003_GNB",
-        "initialGDP":  1056725146
+        "initialGDP":  1056725146,
+        "greenEconomy":  0.5171362
     },
     {
         "dataName":  "2003_GUS",
-        "initialGDP":  44619883041
+        "initialGDP":  44619883041,
+        "greenEconomy":  1.3453931
     },
     {
         "dataName":  "2003_GUY",
-        "initialGDP":  2716959064
+        "initialGDP":  2716959064,
+        "greenEconomy":  0.7647203
     },
     {
         "dataName":  "2003_HTI",
-        "initialGDP":  12150292398
+        "initialGDP":  12150292398,
+        "greenEconomy":  0.4426924
     },
     {
         "dataName":  "2003_HON",
-        "initialGDP":  13928654971
+        "initialGDP":  13928654971,
+        "greenEconomy":  0.6930006
     },
     {
         "dataName":  "2003_HUN",
-        "initialGDP":  101251461988
+        "initialGDP":  101251461988,
+        "greenEconomy":  0.780985
     },
     {
         "dataName":  "2003_ISL",
-        "initialGDP":  10004103000
+        "initialGDP":  10004103000,
+        "greenEconomy":  0.5619145
     },
     {
         "dataName":  "2003_IND",
-        "initialGDP":  1453485380117
+        "initialGDP":  1453485380117,
+        "greenEconomy":  0.8720329
     },
     {
         "dataName":  "2003_IDN",
-        "initialGDP":  594990342629
+        "initialGDP":  594990342629,
+        "greenEconomy":  0.7634518
     },
     {
         "dataName":  "2003_IRN",
-        "initialGDP":  391273689900
+        "initialGDP":  391273689900,
+        "greenEconomy":  1.1006176
     },
     {
         "dataName":  "2003_IRQ",
-        "initialGDP":  58739766082
+        "initialGDP":  58739766082,
+        "greenEconomy":  1.4575207
     },
     {
         "dataName":  "2003_IRL",
-        "initialGDP":  164629704000
+        "initialGDP":  164629704000,
+        "greenEconomy":  0.5322835
     },
     {
         "dataName":  "2003_ISR",
-        "initialGDP":  131277887000
+        "initialGDP":  131277887000,
+        "greenEconomy":  0.6896851
     },
     {
         "dataName":  "2003_ITA",
-        "initialGDP":  1589420909000
+        "initialGDP":  1589420909000,
+        "greenEconomy":  0.5576754
     },
     {
         "dataName":  "2003_IVO",
-        "initialGDP":  31276608187
+        "initialGDP":  31276608187,
+        "greenEconomy":  0.4655056
     },
     {
         "dataName":  "2003_JAM",
-        "initialGDP":  11785964912
+        "initialGDP":  11785964912,
+        "greenEconomy":  0.9862462
     },
     {
         "dataName":  "2003_JPN",
-        "initialGDP":  3659771913000
+        "initialGDP":  3659771913000,
+        "greenEconomy":  0.589316
     },
     {
         "dataName":  "2003_JOR",
-        "initialGDP":  22336257310
+        "initialGDP":  22336257310,
+        "greenEconomy":  0.9053781
     },
     {
         "dataName":  "2003_KAZ",
-        "initialGDP":  93819883041
+        "initialGDP":  93819883041,
+        "greenEconomy":  1.8524988
     },
     {
         "dataName":  "2003_KEN",
-        "initialGDP":  48605263158
+        "initialGDP":  48605263158,
+        "greenEconomy":  0.4331042
     },
     {
         "dataName":  "2003_KOS",
-        "initialGDP":  4871345029
+        "initialGDP":  4871345029,
+        "greenEconomy":  0.9165228
     },
     {
         "dataName":  "2003_KUW",
-        "initialGDP":  57528070175
+        "initialGDP":  57528070175,
+        "greenEconomy":  1.1801796
     },
     {
         "dataName":  "2003_KGZ",
-        "initialGDP":  7704678363
+        "initialGDP":  7704678363,
+        "greenEconomy":  0.8643094
     },
     {
         "dataName":  "2003_LAO",
-        "initialGDP":  8066081871
+        "initialGDP":  8066081871,
+        "greenEconomy":  0.4331056
     },
     {
         "dataName":  "2003_LVA",
-        "initialGDP":  17097076023
+        "initialGDP":  17097076023,
+        "greenEconomy":  0.6711172
     },
     {
         "dataName":  "2003_LEB",
-        "initialGDP":  32277192982
+        "initialGDP":  32277192982,
+        "greenEconomy":  0.7043136
     },
     {
         "dataName":  "2003_LES",
-        "initialGDP":  1772514620
+        "initialGDP":  1772514620,
+        "greenEconomy":  0.4943199
     },
     {
         "dataName":  "2003_CAB",
-        "initialGDP":  19515136183
+        "initialGDP":  19515136183,
+        "greenEconomy":  1.4774375
     },
     {
         "dataName":  "2003_LBR",
-        "initialGDP":  1723391813
+        "initialGDP":  1723391813,
+        "greenEconomy":  0.5491202
     },
     {
         "dataName":  "2003_LBY",
-        "initialGDP":  57739766082
+        "initialGDP":  57739766082,
+        "greenEconomy":  1.0145788
     },
     {
         "dataName":  "2003_LTU",
-        "initialGDP":  27378362573
+        "initialGDP":  27378362573,
+        "greenEconomy":  0.6664429
     },
     {
         "dataName":  "2003_MDG",
-        "initialGDP":  11947953216
+        "initialGDP":  11947953216,
+        "greenEconomy":  0.4152963
     },
     {
         "dataName":  "2003_MAL",
-        "initialGDP":  5536842105
+        "initialGDP":  5536842105,
+        "greenEconomy":  0.7464568
     },
     {
         "dataName":  "2003_MYS",
-        "initialGDP":  192647953216
+        "initialGDP":  192647953216,
+        "greenEconomy":  0.9223397
     },
     {
         "dataName":  "2003_MLD",
-        "initialGDP":  2013450292
+        "initialGDP":  2013450292,
+        "greenEconomy":  0.5448414
     },
     {
         "dataName":  "2003_MLI",
-        "initialGDP":  10854385965
+        "initialGDP":  10854385965,
+        "greenEconomy":  0.3658828
     },
     {
         "dataName":  "2003_MRT",
-        "initialGDP":  5608187135
+        "initialGDP":  5608187135,
+        "greenEconomy":  0.5115331
     },
     {
         "dataName":  "2003_MRS",
-        "initialGDP":  7485380117
+        "initialGDP":  7485380117,
+        "greenEconomy":  0.6046553
     },
     {
         "dataName":  "2003_PCS",
-        "initialGDP":  4354385965
+        "initialGDP":  4354385965,
+        "greenEconomy":  0.6549409
     },
     {
         "dataName":  "2003_MEX",
-        "initialGDP":  859568421053
+        "initialGDP":  859568421053,
+        "greenEconomy":  0.6896995
     },
     {
         "dataName":  "2003_MCS",
-        "initialGDP":  650011441
+        "initialGDP":  650011441,
+        "greenEconomy":  0.3494068
     },
     {
         "dataName":  "2003_MOL",
-        "initialGDP":  7904093567
+        "initialGDP":  7904093567,
+        "greenEconomy":  1.0666017
     },
     {
         "dataName":  "2003_MNG",
-        "initialGDP":  5813450292
+        "initialGDP":  5813450292,
+        "greenEconomy":  1.6927183
     },
     {
         "dataName":  "2003_MAR",
-        "initialGDP":  74854385965
+        "initialGDP":  74854385965,
+        "greenEconomy":  0.7034524
     },
     {
         "dataName":  "2003_MOZ",
-        "initialGDP":  6583519000
+        "initialGDP":  6583519000,
+        "greenEconomy":  0.615145
     },
     {
         "dataName":  "2003_MMR",
-        "initialGDP":  32473099415
+        "initialGDP":  32473099415,
+        "greenEconomy":  0.5820329
     },
     {
         "dataName":  "2003_MNE",
-        "initialGDP":  3574853801
+        "initialGDP":  3574853801,
+        "greenEconomy":  0.9379248
     },
     {
         "dataName":  "2003_SWA",
-        "initialGDP":  6658479532
+        "initialGDP":  6658479532,
+        "greenEconomy":  0.5850958
     },
     {
         "dataName":  "2003_HYS",
-        "initialGDP":  24984210526
+        "initialGDP":  24984210526,
+        "greenEconomy":  0.420922
     },
     {
         "dataName":  "2003_NET",
-        "initialGDP":  587153379356
+        "initialGDP":  587153379356,
+        "greenEconomy":  0.5648402
     },
     {
         "dataName":  "2003_NZL",
-        "initialGDP":  82408074000
+        "initialGDP":  82408074000,
+        "greenEconomy":  0.6521165
     },
     {
         "dataName":  "2003_NIC",
-        "initialGDP":  9916959064
+        "initialGDP":  9916959064,
+        "greenEconomy":  0.6665979
     },
     {
         "dataName":  "2003_NER",
-        "initialGDP":  5640350877
+        "initialGDP":  5640350877,
+        "greenEconomy":  0.4262075
     },
     {
         "dataName":  "2003_NGA",
-        "initialGDP":  206470760234
+        "initialGDP":  206470760234,
+        "greenEconomy":  0.7119768
     },
     {
         "dataName":  "2003_PRK",
-        "initialGDP":  57947272457
+        "initialGDP":  57947272457,
+        "greenEconomy":  1.335807
     },
     {
         "dataName":  "2003_MKD",
-        "initialGDP":  9383040936
+        "initialGDP":  9383040936,
+        "greenEconomy":  1.0752808
     },
     {
         "dataName":  "2003_NOR",
-        "initialGDP":  207370090000
+        "initialGDP":  207370090000,
+        "greenEconomy":  0.4888639
     },
     {
         "dataName":  "2003_OMN",
-        "initialGDP":  38152046784
+        "initialGDP":  38152046784,
+        "greenEconomy":  0.9458467
     },
     {
         "dataName":  "2003_PAK",
-        "initialGDP":  266791812865
+        "initialGDP":  266791812865,
+        "greenEconomy":  0.6552844
     },
     {
         "dataName":  "2003_PAL",
-        "initialGDP":  5115204678
+        "initialGDP":  5115204678,
+        "greenEconomy":  0.530303
     },
     {
         "dataName":  "2003_PAN",
-        "initialGDP":  23369590643
+        "initialGDP":  23369590643,
+        "greenEconomy":  0.5049137
     },
     {
         "dataName":  "2003_PNG",
-        "initialGDP":  7143859649
+        "initialGDP":  7143859649,
+        "greenEconomy":  0.7916248
     },
     {
         "dataName":  "2003_PRY",
-        "initialGDP":  21672514620
+        "initialGDP":  21672514620,
+        "greenEconomy":  0.4679621
     },
     {
         "dataName":  "2003_PER",
-        "initialGDP":  87084795322
+        "initialGDP":  87084795322,
+        "greenEconomy":  0.5666954
     },
     {
         "dataName":  "2003_PHL",
-        "initialGDP":  172892399701
+        "initialGDP":  172892399701,
+        "greenEconomy":  0.6497118
     },
     {
         "dataName":  "2003_POL",
-        "initialGDP":  298056140351
+        "initialGDP":  298056140351,
+        "greenEconomy":  1.1186464
     },
     {
         "dataName":  "2003_PLS",
-        "initialGDP":  616374269
+        "initialGDP":  616374269,
+        "greenEconomy":  0.7330546
     },
     {
         "dataName":  "2003_PRT",
-        "initialGDP":  165184738000
+        "initialGDP":  165184738000,
+        "greenEconomy":  0.6127091
     },
     {
         "dataName":  "2003_RTK",
-        "initialGDP":  763157895
+        "initialGDP":  763157895,
+        "greenEconomy":  0.4527292
     },
     {
         "dataName":  "2003_COR",
-        "initialGDP":  7251461988
+        "initialGDP":  7251461988,
+        "greenEconomy":  0.6913813
     },
     {
         "dataName":  "2003_ROM",
-        "initialGDP":  140076023392
+        "initialGDP":  140076023392,
+        "greenEconomy":  0.8903748
     },
     {
         "dataName":  "2003_RUS",
-        "initialGDP":  1120508736701
+        "initialGDP":  1120508736701,
+        "greenEconomy":  1.6176344
     },
     {
         "dataName":  "2003_RWB",
-        "initialGDP":  6507017544
+        "initialGDP":  6507017544,
+        "greenEconomy":  0.4225338
     },
     {
         "dataName":  "2003_STP",
-        "initialGDP":  174853801
+        "initialGDP":  174853801,
+        "greenEconomy":  0.6390805
     },
     {
         "dataName":  "2003_SAU",
-        "initialGDP":  398103508772
+        "initialGDP":  398103508772,
+        "greenEconomy":  0.8937714
     },
     {
         "dataName":  "2003_SEG",
-        "initialGDP":  12786549708
+        "initialGDP":  12786549708,
+        "greenEconomy":  0.5949329
     },
     {
         "dataName":  "2003_SER",
-        "initialGDP":  35756725146
+        "initialGDP":  35756725146,
+        "greenEconomy":  0.8950196
     },
     {
         "dataName":  "2003_SYC",
-        "initialGDP":  705703000
+        "initialGDP":  705703000,
+        "greenEconomy":  1.141348
     },
     {
         "dataName":  "2003_SLE",
-        "initialGDP":  4440350877
+        "initialGDP":  4440350877,
+        "greenEconomy":  0.4240269
     },
     {
         "dataName":  "2003_SGP",
-        "initialGDP":  109485380117
+        "initialGDP":  109485380117,
+        "greenEconomy":  0.6180125
     },
     {
         "dataName":  "2003_SLO",
-        "initialGDP":  43281286550
+        "initialGDP":  43281286550,
+        "greenEconomy":  1.0532736
     },
     {
         "dataName":  "2003_SLV",
-        "initialGDP":  29398810000
+        "initialGDP":  29398810000,
+        "greenEconomy":  0.755085
     },
     {
         "dataName":  "2003_SOM",
-        "initialGDP":  4035468335
+        "initialGDP":  4035468335,
+        "greenEconomy":  0.465958
     },
     {
         "dataName":  "2003_ZAF",
-        "initialGDP":  230958195939
+        "initialGDP":  230958195939,
+        "greenEconomy":  1.8181548
     },
     {
         "dataName":  "2003_KOR",
-        "initialGDP":  728497156000
+        "initialGDP":  728497156000,
+        "greenEconomy":  0.8321434
     },
     {
         "dataName":  "2003_SSD",
-        "initialGDP":  6799829681
+        "initialGDP":  6799829681,
+        "greenEconomy":  2.8866126
     },
     {
         "dataName":  "2003_ESP",
-        "initialGDP":  907735867000
+        "initialGDP":  907735867000,
+        "greenEconomy":  0.6055141
     },
     {
         "dataName":  "2003_LKA",
-        "initialGDP":  56567836257
+        "initialGDP":  56567836257,
+        "greenEconomy":  0.4992248
     },
     {
         "dataName":  "2003_SDN",
-        "initialGDP":  67181284303
+        "initialGDP":  67181284303,
+        "greenEconomy":  0.4080897
     },
     {
         "dataName":  "2003_SUR",
-        "initialGDP":  3178947368
+        "initialGDP":  3178947368,
+        "greenEconomy":  0.6185575
     },
     {
         "dataName":  "2003_SCA",
-        "initialGDP":  296975028000
+        "initialGDP":  296975028000,
+        "greenEconomy":  0.4779468
     },
     {
         "dataName":  "2003_SWI",
-        "initialGDP":  338384979000
+        "initialGDP":  338384979000,
+        "greenEconomy":  0.4208368
     },
     {
         "dataName":  "2003_SYR",
-        "initialGDP":  47493567251
+        "initialGDP":  47493567251,
+        "greenEconomy":  1.0440083
     },
     {
         "dataName":  "2003_TWN",
-        "initialGDP":  317381378000
+        "initialGDP":  317381378000,
+        "greenEconomy":  0.9286772
     },
     {
         "dataName":  "2003_TJK",
-        "initialGDP":  4730409357
+        "initialGDP":  4730409357,
+        "greenEconomy":  0.7641785
     },
     {
         "dataName":  "2003_TZA",
-        "initialGDP":  25028654971
+        "initialGDP":  25028654971,
+        "greenEconomy":  0.4414281
     },
     {
         "dataName":  "2003_THA",
-        "initialGDP":  339446198830
+        "initialGDP":  339446198830,
+        "greenEconomy":  0.7659244
     },
     {
         "dataName":  "2003_TLS",
-        "initialGDP":  1101169591
+        "initialGDP":  1101169591,
+        "greenEconomy":  0.5089203
     },
     {
         "dataName":  "2003_TGO",
-        "initialGDP":  4335087719
+        "initialGDP":  4335087719,
+        "greenEconomy":  0.5777657
     },
     {
         "dataName":  "2003_TUN",
-        "initialGDP":  38339766082
+        "initialGDP":  38339766082,
+        "greenEconomy":  0.7409707
     },
     {
         "dataName":  "2003_TUR",
-        "initialGDP":  466381286550
+        "initialGDP":  466381286550,
+        "greenEconomy":  0.6918466
     },
     {
         "dataName":  "2003_TKM",
-        "initialGDP":  16255045000
+        "initialGDP":  16255045000,
+        "greenEconomy":  6.6157652
     },
     {
         "dataName":  "2003_UGA",
-        "initialGDP":  16984210526
+        "initialGDP":  16984210526,
+        "greenEconomy":  0.3873309
     },
     {
         "dataName":  "2003_UKR",
-        "initialGDP":  197415200592
+        "initialGDP":  197415200592,
+        "greenEconomy":  2.283644
     },
     {
         "dataName":  "2003_UAE",
-        "initialGDP":  156876608187
+        "initialGDP":  156876608187,
+        "greenEconomy":  0.8344741
     },
     {
         "dataName":  "2003_GBR",
-        "initialGDP":  1911541446629
+        "initialGDP":  1911541446629,
+        "greenEconomy":  0.5496972
     },
     {
         "dataName":  "2003_USA",
-        "initialGDP":  11541059000000
+        "initialGDP":  11541059000000,
+        "greenEconomy":  0.7000485
     },
     {
         "dataName":  "2003_URY",
-        "initialGDP":  19566081871
+        "initialGDP":  19566081871,
+        "greenEconomy":  0.5051557
     },
     {
         "dataName":  "2003_UZB",
-        "initialGDP":  41912280702
+        "initialGDP":  41912280702,
+        "greenEconomy":  8.0829368
     },
     {
         "dataName":  "2003_VEN",
-        "initialGDP":  152851461988
+        "initialGDP":  152851461988,
+        "greenEconomy":  1.0177428
     },
     {
         "dataName":  "2003_VNM",
-        "initialGDP":  162138011696
+        "initialGDP":  162138011696,
+        "greenEconomy":  0.6823005
     },
     {
         "dataName":  "2003_YEM",
-        "initialGDP":  35686549708
+        "initialGDP":  35686549708,
+        "greenEconomy":  0.730388
     },
     {
         "dataName":  "2003_ZMB",
-        "initialGDP":  11070175439
+        "initialGDP":  11070175439,
+        "greenEconomy":  0.4790834
     },
     {
         "dataName":  "2003_ZWE",
-        "initialGDP":  15481286550
+        "initialGDP":  15481286550,
+        "greenEconomy":  0.8433578
     },
     {
         "dataName":  "AFG",
-        "initialGDP":  70395227904
+        "initialGDP":  70395227904,
+        "greenEconomy":  0.5209127
     },
     {
         "dataName":  "SBK",
-        "initialGDP":  43285188848
+        "initialGDP":  43285188848,
+        "greenEconomy":  0.4486075
     },
     {
         "dataName":  "DZA",
-        "initialGDP":  514692116917
+        "initialGDP":  514692116917,
+        "greenEconomy":  0.7564628
     },
     {
         "dataName":  "AGO",
-        "initialGDP":  214785492518
+        "initialGDP":  214785492518,
+        "greenEconomy":  0.4751887
     },
     {
         "dataName":  "ARG",
-        "initialGDP":  1035511948240
+        "initialGDP":  1035511948240,
+        "greenEconomy":  0.5542478
     },
     {
         "dataName":  "ARM",
-        "initialGDP":  39959896757
+        "initialGDP":  39959896757,
+        "greenEconomy":  0.5615156
     },
     {
         "dataName":  "AUS",
-        "initialGDP":  1731233002000
+        "initialGDP":  1731233002000,
+        "greenEconomy":  0.5890854
     },
     {
         "dataName":  "ALP",
-        "initialGDP":  514025398552
+        "initialGDP":  514025398552,
+        "greenEconomy":  0.4720858
     },
     {
         "dataName":  "AZE",
-        "initialGDP":  154155264045
+        "initialGDP":  154155264045,
+        "greenEconomy":  0.6333585
     },
     {
         "dataName":  "BGD",
-        "initialGDP":  985843364628
+        "initialGDP":  985843364628,
+        "greenEconomy":  0.473042
     },
     {
         "dataName":  "BAH",
-        "initialGDP":  13896810000
+        "initialGDP":  13896810000,
+        "greenEconomy":  0.4438948
     },
     {
         "dataName":  "BLR",
-        "initialGDP":  172713564056
+        "initialGDP":  172713564056,
+        "greenEconomy":  0.7073128
     },
     {
         "dataName":  "BGM",
-        "initialGDP":  672415940000
+        "initialGDP":  672415940000,
+        "greenEconomy":  0.5007317
     },
     {
         "dataName":  "BEL",
-        "initialGDP":  2846604000
+        "initialGDP":  2846604000,
+        "greenEconomy":  0.4755935
     },
     {
         "dataName":  "BEN",
-        "initialGDP":  49887260570
+        "initialGDP":  49887260570,
+        "greenEconomy":  0.4973831
     },
     {
         "dataName":  "BHU",
-        "initialGDP":  8566319045
+        "initialGDP":  8566319045,
+        "greenEconomy":  0.5409377
     },
     {
         "dataName":  "BOL",
-        "initialGDP":  104031567281
+        "initialGDP":  104031567281,
+        "greenEconomy":  0.5963858
     },
     {
         "dataName":  "BSM",
-        "initialGDP":  52725146477
+        "initialGDP":  52725146477,
+        "greenEconomy":  0.8213264
     },
     {
         "dataName":  "BWA",
-        "initialGDP":  41336717600
+        "initialGDP":  41336717600,
+        "greenEconomy":  0.526892
     },
     {
         "dataName":  "BRA",
-        "initialGDP":  3157102264603
+        "initialGDP":  3157102264603,
+        "greenEconomy":  0.510243
     },
     {
         "dataName":  "BRU",
-        "initialGDP":  34044363530
+        "initialGDP":  34044363530,
+        "greenEconomy":  0.6588072
     },
     {
         "dataName":  "BUL",
-        "initialGDP":  195309154854
+        "initialGDP":  195309154854,
+        "greenEconomy":  0.6285515
     },
     {
         "dataName":  "BKF",
-        "initialGDP":  52406207568
+        "initialGDP":  52406207568,
+        "greenEconomy":  0.4746327
     },
     {
         "dataName":  "CPV",
-        "initialGDP":  3544399294
+        "initialGDP":  3544399294,
+        "greenEconomy":  0.5583978
     },
     {
         "dataName":  "KHM",
-        "initialGDP":  77152442250
+        "initialGDP":  77152442250,
+        "greenEconomy":  0.611772
     },
     {
         "dataName":  "CMR",
-        "initialGDP":  106132342139
+        "initialGDP":  106132342139,
+        "greenEconomy":  0.4398971
     },
     {
         "dataName":  "CAN",
-        "initialGDP":  2200567395000
+        "initialGDP":  2200567395000,
+        "greenEconomy":  0.638132
     },
     {
         "dataName":  "CAF",
-        "initialGDP":  4913450293
+        "initialGDP":  4913450293,
+        "greenEconomy":  0.3898957
     },
     {
         "dataName":  "TCD",
-        "initialGDP":  27435238978
+        "initialGDP":  27435238978,
+        "greenEconomy":  0.4484893
     },
     {
         "dataName":  "CHL",
-        "initialGDP":  507819180189
+        "initialGDP":  507819180189,
+        "greenEconomy":  0.5420826
     },
     {
         "dataName":  "CHN",
-        "initialGDP":  26106721555633
+        "initialGDP":  26106721555633,
+        "greenEconomy":  0.8848233
     },
     {
         "dataName":  "COL",
-        "initialGDP":  830334475050
+        "initialGDP":  830334475050,
+        "greenEconomy":  0.4512148
     },
     {
         "dataName":  "COD",
-        "initialGDP":  119381225122
+        "initialGDP":  119381225122,
+        "greenEconomy":  0.3665592
     },
     {
         "dataName":  "COS",
-        "initialGDP":  110285666315
+        "initialGDP":  110285666315,
+        "greenEconomy":  0.4040504
     },
     {
         "dataName":  "CRS",
-        "initialGDP":  123043733951
+        "initialGDP":  123043733951,
+        "greenEconomy":  0.4996634
     },
     {
         "dataName":  "CUB",
-        "initialGDP":  136035787276
+        "initialGDP":  136035787276,
+        "greenEconomy":  0.5021264
     },
     {
         "dataName":  "CZE",
-        "initialGDP":  445951038765
+        "initialGDP":  445951038765,
+        "greenEconomy":  0.5898627
     },
     {
         "dataName":  "DEN",
-        "initialGDP":  406882222572
+        "initialGDP":  406882222572,
+        "greenEconomy":  0.3971508
     },
     {
         "dataName":  "DJI",
-        "initialGDP":  6642630202
+        "initialGDP":  6642630202,
+        "greenEconomy":  0.4833354
     },
     {
         "dataName":  "DOM",
-        "initialGDP":  227276819225
+        "initialGDP":  227276819225,
+        "greenEconomy":  0.4971132
     },
     {
         "dataName":  "ECU",
-        "initialGDP":  196711739685
+        "initialGDP":  196711739685,
+        "greenEconomy":  0.5961312
     },
     {
         "dataName":  "EGY",
-        "initialGDP":  1450484152484
+        "initialGDP":  1450484152484,
+        "greenEconomy":  0.5426604
     },
     {
         "dataName":  "ELS",
-        "initialGDP":  58393132054
+        "initialGDP":  58393132054,
+        "greenEconomy":  0.5017455
     },
     {
         "dataName":  "EQG",
-        "initialGDP":  29947534870
+        "initialGDP":  29947534870,
+        "greenEconomy":  0.5323322
     },
     {
         "dataName":  "ERI",
-        "initialGDP":  6271101487
+        "initialGDP":  6271101487,
+        "greenEconomy":  0.4690534
     },
     {
         "dataName":  "EST",
-        "initialGDP":  53574270266
+        "initialGDP":  53574270266,
+        "greenEconomy":  0.6590167
     },
     {
         "dataName":  "ESW",
-        "initialGDP":  10815238479
+        "initialGDP":  10815238479,
+        "greenEconomy":  0.4416376
     },
     {
         "dataName":  "ETH",
-        "initialGDP":  312818084961
+        "initialGDP":  312818084961,
+        "greenEconomy":  0.3778817
     },
     {
         "dataName":  "FIN",
-        "initialGDP":  283313801103
+        "initialGDP":  283313801103,
+        "greenEconomy":  0.484029
     },
     {
         "dataName":  "EUA",
-        "initialGDP":  3273372276209
+        "initialGDP":  3273372276209,
+        "greenEconomy":  0.4337196
     },
     {
         "dataName":  "LWG",
-        "initialGDP":  35142219517
+        "initialGDP":  35142219517,
+        "greenEconomy":  0.5189396
     },
     {
         "dataName":  "GAM",
-        "initialGDP":  6105024565
+        "initialGDP":  6105024565,
+        "greenEconomy":  0.4145318
     },
     {
         "dataName":  "GEO",
-        "initialGDP":  58224271755
+        "initialGDP":  58224271755,
+        "greenEconomy":  0.603751
     },
     {
         "dataName":  "DEU",
-        "initialGDP":  4649629703461
+        "initialGDP":  4649629703461,
+        "greenEconomy":  0.4974181
     },
     {
         "dataName":  "GHA",
-        "initialGDP":  193866715413
+        "initialGDP":  193866715413,
+        "greenEconomy":  0.4731746
     },
     {
         "dataName":  "GRE",
-        "initialGDP":  391933193811
+        "initialGDP":  391933193811,
+        "greenEconomy":  0.5191584
     },
     {
         "dataName":  "GTM",
-        "initialGDP":  155874281909
+        "initialGDP":  155874281909,
+        "greenEconomy":  0.4717007
     },
     {
         "dataName":  "GIN",
-        "initialGDP":  39324071806
+        "initialGDP":  39324071806,
+        "greenEconomy":  0.4862547
     },
     {
         "dataName":  "GNB",
-        "initialGDP":  4705973776
+        "initialGDP":  4705973776,
+        "greenEconomy":  0.4020449
     },
     {
         "dataName":  "GUS",
-        "initialGDP":  315833275381
+        "initialGDP":  315833275381,
+        "greenEconomy":  0.9129256
     },
     {
         "dataName":  "GUY",
-        "initialGDP":  27538747557
+        "initialGDP":  27538747557,
+        "greenEconomy":  0.4875541
     },
     {
         "dataName":  "HTI",
-        "initialGDP":  33224408954
+        "initialGDP":  33224408954,
+        "greenEconomy":  0.4451207
     },
     {
         "dataName":  "HON",
-        "initialGDP":  62211232262
+        "initialGDP":  62211232262,
+        "greenEconomy":  0.5323246
     },
     {
         "dataName":  "HUN",
-        "initialGDP":  353640758478
+        "initialGDP":  353640758478,
+        "greenEconomy":  0.4885125
     },
     {
         "dataName":  "ISL",
-        "initialGDP":  27371478000
+        "initialGDP":  27371478000,
+        "greenEconomy":  0.4674131
     },
     {
         "dataName":  "IND",
-        "initialGDP":  10443494440949
+        "initialGDP":  10443494440949,
+        "greenEconomy":  0.6461071
     },
     {
         "dataName":  "IDN",
-        "initialGDP":  3501429427548
+        "initialGDP":  3501429427548,
+        "greenEconomy":  0.5752952
     },
     {
         "dataName":  "IRN",
-        "initialGDP":  1435835573245
+        "initialGDP":  1435835573245,
+        "greenEconomy":  0.9717177
     },
     {
         "dataName":  "IRQ",
-        "initialGDP":  468325919732
+        "initialGDP":  468325919732,
+        "greenEconomy":  0.8790647
     },
     {
         "dataName":  "IRL",
-        "initialGDP":  566222861210
+        "initialGDP":  566222861210,
+        "greenEconomy":  0.3855098
     },
     {
         "dataName":  "ISR",
-        "initialGDP":  493701635000
+        "initialGDP":  493701635000,
+        "greenEconomy":  0.4812648
     },
     {
         "dataName":  "ITA",
-        "initialGDP":  2623269642672
+        "initialGDP":  2623269642672,
+        "greenEconomy":  0.4786259
     },
     {
         "dataName":  "IVO",
-        "initialGDP":  172250002881
+        "initialGDP":  172250002881,
+        "greenEconomy":  0.4518833
     },
     {
         "dataName":  "JAM",
-        "initialGDP":  27067479358
+        "initialGDP":  27067479358,
+        "greenEconomy":  0.656017
     },
     {
         "dataName":  "JPN",
-        "initialGDP":  5319860546876
+        "initialGDP":  5319860546876,
+        "greenEconomy":  0.5649226
     },
     {
         "dataName":  "JOR",
-        "initialGDP":  117440309269
+        "initialGDP":  117440309269,
+        "greenEconomy":  0.5663833
     },
     {
         "dataName":  "KAZ",
-        "initialGDP":  540126931168
+        "initialGDP":  540126931168,
+        "greenEconomy":  0.8577987
     },
     {
         "dataName":  "KEN",
-        "initialGDP":  260353421965
+        "initialGDP":  260353421965,
+        "greenEconomy":  0.419578
     },
     {
         "dataName":  "KOS",
-        "initialGDP":  21527297548
+        "initialGDP":  21527297548,
+        "greenEconomy":  1.280844
     },
     {
         "dataName":  "KUW",
-        "initialGDP":  225286986053
+        "initialGDP":  225286986053,
+        "greenEconomy":  0.8567206
     },
     {
         "dataName":  "KGZ",
-        "initialGDP":  34223159016
+        "initialGDP":  34223159016,
+        "greenEconomy":  0.6886017
     },
     {
         "dataName":  "LAO",
-        "initialGDP":  60830648970
+        "initialGDP":  60830648970,
+        "greenEconomy":  0.7874419
     },
     {
         "dataName":  "LVA",
-        "initialGDP":  63333370900
+        "initialGDP":  63333370900,
+        "greenEconomy":  0.4552999
     },
     {
         "dataName":  "LEB",
-        "initialGDP":  62405755405
+        "initialGDP":  62405755405,
+        "greenEconomy":  0.529065
     },
     {
         "dataName":  "LES",
-        "initialGDP":  5911382329
+        "initialGDP":  5911382329,
+        "greenEconomy":  0.5275622
     },
     {
         "dataName":  "CAB",
-        "initialGDP":  53038264355
+        "initialGDP":  53038264355,
+        "greenEconomy":  0.9769864
     },
     {
         "dataName":  "LBR",
-        "initialGDP":  7764638842
+        "initialGDP":  7764638842,
+        "greenEconomy":  0.4587026
     },
     {
         "dataName":  "LBY",
-        "initialGDP":  88281278000
+        "initialGDP":  88281278000,
+        "greenEconomy":  1.1100329
     },
     {
         "dataName":  "LTU",
-        "initialGDP":  121127245231
+        "initialGDP":  121127245231,
+        "greenEconomy":  0.454425
     },
     {
         "dataName":  "MDG",
-        "initialGDP":  46913856193
+        "initialGDP":  46913856193,
+        "greenEconomy":  0.4329287
     },
     {
         "dataName":  "MAL",
-        "initialGDP":  31496187477
+        "initialGDP":  31496187477,
+        "greenEconomy":  0.5418456
     },
     {
         "dataName":  "MYS",
-        "initialGDP":  998696211058
+        "initialGDP":  998696211058,
+        "greenEconomy":  0.655686
     },
     {
         "dataName":  "MLD",
-        "initialGDP":  9730833023
+        "initialGDP":  9730833023,
+        "greenEconomy":  0.548992
     },
     {
         "dataName":  "MLI",
-        "initialGDP":  58918975685
+        "initialGDP":  58918975685,
+        "greenEconomy":  0.4790237
     },
     {
         "dataName":  "MRT",
-        "initialGDP":  26038686673
+        "initialGDP":  26038686673,
+        "greenEconomy":  0.5597386
     },
     {
         "dataName":  "MRS",
-        "initialGDP":  27936608138
+        "initialGDP":  27936608138,
+        "greenEconomy":  0.5017299
     },
     {
         "dataName":  "PCS",
-        "initialGDP":  13541637298
+        "initialGDP":  13541637298,
+        "greenEconomy":  0.5055322
     },
     {
         "dataName":  "MEX",
-        "initialGDP":  2479172957713
+        "initialGDP":  2479172957713,
+        "greenEconomy":  0.547582
     },
     {
         "dataName":  "MCS",
-        "initialGDP":  1373782670
+        "initialGDP":  1373782670,
+        "greenEconomy":  0.3719384
     },
     {
         "dataName":  "MOL",
-        "initialGDP":  28342441861
+        "initialGDP":  28342441861,
+        "greenEconomy":  0.6725317
     },
     {
         "dataName":  "MNG",
-        "initialGDP":  40762839080
+        "initialGDP":  40762839080,
+        "greenEconomy":  1.0482694
     },
     {
         "dataName":  "MAR",
-        "initialGDP":  282611262172
+        "initialGDP":  282611262172,
+        "greenEconomy":  0.6316639
     },
     {
         "dataName":  "MOZ",
-        "initialGDP":  40981290025
+        "initialGDP":  40981290025,
+        "greenEconomy":  0.6428783
     },
     {
         "dataName":  "MMR",
-        "initialGDP":  219904168384
+        "initialGDP":  219904168384,
+        "greenEconomy":  0.496883
     },
     {
         "dataName":  "MNE",
-        "initialGDP":  13331725859
+        "initialGDP":  13331725859,
+        "greenEconomy":  0.8265297
     },
     {
         "dataName":  "SWA",
-        "initialGDP":  26037249527
+        "initialGDP":  26037249527,
+        "greenEconomy":  0.4922966
     },
     {
         "dataName":  "HYS",
-        "initialGDP":  118848371408
+        "initialGDP":  118848371408,
+        "greenEconomy":  0.4782709
     },
     {
         "dataName":  "NET",
-        "initialGDP":  1099778654074
+        "initialGDP":  1099778654074,
+        "greenEconomy":  0.4709784
     },
     {
         "dataName":  "NZL",
-        "initialGDP":  245165136000
+        "initialGDP":  245165136000,
+        "greenEconomy":  0.4840265
     },
     {
         "dataName":  "NIC",
-        "initialGDP":  40710814361
+        "initialGDP":  40710814361,
+        "greenEconomy":  0.4817022
     },
     {
         "dataName":  "NER",
-        "initialGDP":  31589120625
+        "initialGDP":  31589120625,
+        "greenEconomy":  0.44491
     },
     {
         "dataName":  "NGA",
-        "initialGDP":  1140428829301
+        "initialGDP":  1140428829301,
+        "greenEconomy":  0.4604405
     },
     {
         "dataName":  "PRK",
-        "initialGDP":  175951330296
+        "initialGDP":  175951330296,
+        "greenEconomy":  0.7254599
     },
     {
         "dataName":  "MKD",
-        "initialGDP":  31759906809
+        "initialGDP":  31759906809,
+        "greenEconomy":  0.6343627
     },
     {
         "dataName":  "NOR",
-        "initialGDP":  557347395000
+        "initialGDP":  557347395000,
+        "greenEconomy":  0.41001
     },
     {
         "dataName":  "OMN",
-        "initialGDP":  129017476993
+        "initialGDP":  129017476993,
+        "greenEconomy":  1.1971529
     },
     {
         "dataName":  "PAK",
-        "initialGDP":  1364683947957
+        "initialGDP":  1364683947957,
+        "greenEconomy":  0.5353966
     },
     {
         "dataName":  "PAL",
-        "initialGDP":  26697015809
+        "initialGDP":  26697015809,
+        "greenEconomy":  2.6519215
     },
     {
         "dataName":  "PAN",
-        "initialGDP":  137497966872
+        "initialGDP":  137497966872,
+        "greenEconomy":  0.4178108
     },
     {
         "dataName":  "PNG",
-        "initialGDP":  37791845332
+        "initialGDP":  37791845332,
+        "greenEconomy":  0.5034164
     },
     {
         "dataName":  "PRY",
-        "initialGDP":  87263971559
+        "initialGDP":  87263971559,
+        "greenEconomy":  0.4304419
     },
     {
         "dataName":  "PER",
-        "initialGDP":  447999623331
+        "initialGDP":  447999623331,
+        "greenEconomy":  0.4983521
     },
     {
         "dataName":  "PHL",
-        "initialGDP":  1015501718850
+        "initialGDP":  1015501718850,
+        "greenEconomy":  0.5072414
     },
     {
         "dataName":  "POL",
-        "initialGDP":  1411034882292
+        "initialGDP":  1411034882292,
+        "greenEconomy":  0.5889401
     },
     {
         "dataName":  "PLS",
-        "initialGDP":  2020831579
+        "initialGDP":  2020831579,
+        "greenEconomy":  0.6186597
     },
     {
         "dataName":  "PRT",
-        "initialGDP":  379665513515
+        "initialGDP":  379665513515,
+        "greenEconomy":  0.4485645
     },
     {
         "dataName":  "RTK",
-        "initialGDP":  2576982160
+        "initialGDP":  2576982160,
+        "greenEconomy":  0.5285454
     },
     {
         "dataName":  "COR",
-        "initialGDP":  20471200301
+        "initialGDP":  20471200301,
+        "greenEconomy":  0.8024612
     },
     {
         "dataName":  "ROM",
-        "initialGDP":  628168275533
+        "initialGDP":  628168275533,
+        "greenEconomy":  0.4702282
     },
     {
         "dataName":  "RUS",
-        "initialGDP":  3773943578340
+        "initialGDP":  3773943578340,
+        "greenEconomy":  0.9117786
     },
     {
         "dataName":  "RWB",
-        "initialGDP":  43073912896
+        "initialGDP":  43073912896,
+        "greenEconomy":  0.4014475
     },
     {
         "dataName":  "STP",
-        "initialGDP":  924378744
+        "initialGDP":  924378744,
+        "greenEconomy":  0.5114266
     },
     {
         "dataName":  "SAU",
-        "initialGDP":  1575003869980
+        "initialGDP":  1575003869980,
+        "greenEconomy":  0.7861594
     },
     {
         "dataName":  "SEG",
-        "initialGDP":  63134483396
+        "initialGDP":  63134483396,
+        "greenEconomy":  0.6027682
     },
     {
         "dataName":  "SER",
-        "initialGDP":  142309437831
+        "initialGDP":  142309437831,
+        "greenEconomy":  0.845006
     },
     {
         "dataName":  "SYC",
-        "initialGDP":  3502185000
+        "initialGDP":  3502185000,
+        "greenEconomy":  0.6143135
     },
     {
         "dataName":  "SLE",
-        "initialGDP":  14184098977
+        "initialGDP":  14184098977,
+        "greenEconomy":  0.4470784
     },
     {
         "dataName":  "SGP",
-        "initialGDP":  585661871459
+        "initialGDP":  585661871459,
+        "greenEconomy":  0.4369039
     },
     {
         "dataName":  "SLO",
-        "initialGDP":  186234074772
+        "initialGDP":  186234074772,
+        "greenEconomy":  0.5422473
     },
     {
         "dataName":  "SLV",
-        "initialGDP":  91753887238
+        "initialGDP":  91753887238,
+        "greenEconomy":  0.5029306
     },
     {
         "dataName":  "SOM",
-        "initialGDP":  19026916427
+        "initialGDP":  19026916427,
+        "greenEconomy":  0.3500334
     },
     {
         "dataName":  "SOL",
-        "initialGDP":  5937513767
+        "initialGDP":  5937513767,
+        "greenEconomy":  3.5266701
     },
     {
         "dataName":  "ZAF",
-        "initialGDP":  800160322222
+        "initialGDP":  800160322222,
+        "greenEconomy":  0.9531942
     },
     {
         "dataName":  "KOR",
-        "initialGDP":  2759610612975
+        "initialGDP":  2759610612975,
+        "greenEconomy":  0.5936093
     },
     {
         "dataName":  "SSD",
-        "initialGDP":  11222243803
+        "initialGDP":  11222243803,
+        "greenEconomy":  4.6337537
     },
     {
         "dataName":  "ESP",
-        "initialGDP":  1990839348656
+        "initialGDP":  1990839348656,
+        "greenEconomy":  0.4694415
     },
     {
         "dataName":  "LKA",
-        "initialGDP":  314779282000
+        "initialGDP":  314779282000,
+        "greenEconomy":  0.3906339
     },
     {
         "dataName":  "SDN",
-        "initialGDP":  178632257000
+        "initialGDP":  178632257000,
+        "greenEconomy":  0.4696616
     },
     {
         "dataName":  "SUR",
-        "initialGDP":  9784230722
+        "initialGDP":  9784230722,
+        "greenEconomy":  0.6727159
     },
     {
         "dataName":  "SCA",
-        "initialGDP":  607859198327
+        "initialGDP":  607859198327,
+        "greenEconomy":  0.3839442
     },
     {
         "dataName":  "SWI",
-        "initialGDP":  814034308000
+        "initialGDP":  814034308000,
+        "greenEconomy":  0.3471478
     },
     {
         "dataName":  "SYR",
-        "initialGDP":  50278950097
+        "initialGDP":  50278950097,
+        "greenEconomy":  1.0582004
     },
     {
         "dataName":  "TWN",
-        "initialGDP":  1571607993780
+        "initialGDP":  1571607993780,
+        "greenEconomy":  0.5495834
     },
     {
         "dataName":  "TJK",
-        "initialGDP":  40713315933
+        "initialGDP":  40713315933,
+        "greenEconomy":  0.6078424
     },
     {
         "dataName":  "TZA",
-        "initialGDP":  184177567498
+        "initialGDP":  184177567498,
+        "greenEconomy":  0.4609708
     },
     {
         "dataName":  "THA",
-        "initialGDP":  1328563071205
+        "initialGDP":  1328563071205,
+        "greenEconomy":  0.5840593
     },
     {
         "dataName":  "TLS",
-        "initialGDP":  4000333734
+        "initialGDP":  4000333734,
+        "greenEconomy":  0.5368012
     },
     {
         "dataName":  "TGO",
-        "initialGDP":  20684152653
+        "initialGDP":  20684152653,
+        "greenEconomy":  0.4773866
     },
     {
         "dataName":  "TUN",
-        "initialGDP":  131697757875
+        "initialGDP":  131697757875,
+        "greenEconomy":  0.6029463
     },
     {
         "dataName":  "TUR",
-        "initialGDP":  2871316753141
+        "initialGDP":  2871316753141,
+        "greenEconomy":  0.5139067
     },
     {
         "dataName":  "TKM",
-        "initialGDP":  120214431071
+        "initialGDP":  120214431071,
+        "greenEconomy":  1.3816665
     },
     {
         "dataName":  "UGA",
-        "initialGDP":  110377317605
+        "initialGDP":  110377317605,
+        "greenEconomy":  0.4004328
     },
     {
         "dataName":  "UKR",
-        "initialGDP":  493077499118
+        "initialGDP":  493077499118,
+        "greenEconomy":  0.6160146
     },
     {
         "dataName":  "UAE",
-        "initialGDP":  694739756888
+        "initialGDP":  694739756888,
+        "greenEconomy":  0.6597094
     },
     {
         "dataName":  "GBR",
-        "initialGDP":  3302589305196
+        "initialGDP":  3302589305196,
+        "greenEconomy":  0.4400335
     },
     {
         "dataName":  "USA",
-        "initialGDP":  26181992700000
+        "initialGDP":  26181992700000,
+        "greenEconomy":  0.5496659
     },
     {
         "dataName":  "URY",
-        "initialGDP":  80823988468
+        "initialGDP":  80823988468,
+        "greenEconomy":  0.4424735
     },
     {
         "dataName":  "UZB",
-        "initialGDP":  290362041493
+        "initialGDP":  290362041493,
+        "greenEconomy":  0.8433449
     },
     {
         "dataName":  "VEN",
-        "initialGDP":  134901565859
+        "initialGDP":  134901565859,
+        "greenEconomy":  1.1414622
     },
     {
         "dataName":  "VNM",
-        "initialGDP":  1130202656097
+        "initialGDP":  1130202656097,
+        "greenEconomy":  0.6858472
     },
     {
         "dataName":  "YEM",
-        "initialGDP":  30788393000
+        "initialGDP":  30788393000,
+        "greenEconomy":  0.7443327
     },
     {
         "dataName":  "ZMB",
-        "initialGDP":  68333976727
+        "initialGDP":  68333976727,
+        "greenEconomy":  0.5138134
     },
     {
         "dataName":  "ZWE",
-        "initialGDP":  48570383000
+        "initialGDP":  48570383000,
+        "greenEconomy":  0.6113816
     },
     {
         "dataName":  "2026_AFG",
-        "initialGDP":  63810560000
+        "initialGDP":  63810560000,
+        "greenEconomy":  0.5879506
     },
     {
         "dataName":  "2026_SBK",
-        "initialGDP":  55510400000
+        "initialGDP":  55510400000,
+        "greenEconomy":  0.4247684
     },
     {
         "dataName":  "2026_DZA",
-        "initialGDP":  770293920000
+        "initialGDP":  770293920000,
+        "greenEconomy":  0.656509
     },
     {
         "dataName":  "2026_AGO",
-        "initialGDP":  353896391200
+        "initialGDP":  353896391200,
+        "greenEconomy":  0.4297606
     },
     {
         "dataName":  "2026_ARG",
-        "initialGDP":  1311344377010
+        "initialGDP":  1311344377010,
+        "greenEconomy":  0.5210945
     },
     {
         "dataName":  "2026_ARM",
-        "initialGDP":  65378720000
+        "initialGDP":  65378720000,
+        "greenEconomy":  0.484945
     },
     {
         "dataName":  "2026_AUS",
-        "initialGDP":  2098888272000
+        "initialGDP":  2098888272000,
+        "greenEconomy":  0.5794114
     },
     {
         "dataName":  "2026_ALP",
-        "initialGDP":  633160528000
+        "initialGDP":  633160528000,
+        "greenEconomy":  0.4497639
     },
     {
         "dataName":  "2026_AZE",
-        "initialGDP":  239448000000
+        "initialGDP":  239448000000,
+        "greenEconomy":  0.5522693
     },
     {
         "dataName":  "2026_BGD",
-        "initialGDP":  1568252391181
+        "initialGDP":  1568252391181,
+        "greenEconomy":  0.4294043
     },
     {
         "dataName":  "2026_BAH",
-        "initialGDP":  17042467000
+        "initialGDP":  17042467000,
+        "greenEconomy":  0.4400491
     },
     {
         "dataName":  "2026_BLR",
-        "initialGDP":  274376080000
+        "initialGDP":  274376080000,
+        "greenEconomy":  0.5990792
     },
     {
         "dataName":  "2026_BGM",
-        "initialGDP":  887147231000
+        "initialGDP":  887147231000,
+        "greenEconomy":  0.4716205
     },
     {
         "dataName":  "2026_BEL",
-        "initialGDP":  5871346303
+        "initialGDP":  5871346303,
+        "greenEconomy":  0.4069052
     },
     {
         "dataName":  "2026_BEN",
-        "initialGDP":  61167915968
+        "initialGDP":  61167915968,
+        "greenEconomy":  0.4858424
     },
     {
         "dataName":  "2026_BHU",
-        "initialGDP":  12413280000
+        "initialGDP":  12413280000,
+        "greenEconomy":  0.504776
     },
     {
         "dataName":  "2026_BOL",
-        "initialGDP":  126806240000
+        "initialGDP":  126806240000,
+        "greenEconomy":  0.6337252
     },
     {
         "dataName":  "2026_BSM",
-        "initialGDP":  69216400000
+        "initialGDP":  69216400000,
+        "greenEconomy":  0.7243465
     },
     {
         "dataName":  "2026_BWA",
-        "initialGDP":  46605680000
+        "initialGDP":  46605680000,
+        "greenEconomy":  0.5326813
     },
     {
         "dataName":  "2026_BRA",
-        "initialGDP":  4376578800000
+        "initialGDP":  4376578800000,
+        "greenEconomy":  0.4814962
     },
     {
         "dataName":  "2026_BRU",
-        "initialGDP":  38573040000
+        "initialGDP":  38573040000,
+        "greenEconomy":  0.6576635
     },
     {
         "dataName":  "2026_BUL",
-        "initialGDP":  232935085065
+        "initialGDP":  232935085065,
+        "greenEconomy":  0.5308654
     },
     {
         "dataName":  "2026_BKF",
-        "initialGDP":  64081600000
+        "initialGDP":  64081600000,
+        "greenEconomy":  0.4644798
     },
     {
         "dataName":  "2026_CPV",
-        "initialGDP":  5543120000
+        "initialGDP":  5543120000,
+        "greenEconomy":  0.4957582
     },
     {
         "dataName":  "2026_KHM",
-        "initialGDP":  132041352685
+        "initialGDP":  132041352685,
+        "greenEconomy":  0.5314859
     },
     {
         "dataName":  "2026_CMR",
-        "initialGDP":  152217120000
+        "initialGDP":  152217120000,
+        "greenEconomy":  0.4093748
     },
     {
         "dataName":  "2026_CAN",
-        "initialGDP":  2507340482000
+        "initialGDP":  2507340482000,
+        "greenEconomy":  0.6418131
     },
     {
         "dataName":  "2026_CAF",
-        "initialGDP":  6452160000
+        "initialGDP":  6452160000,
+        "greenEconomy":  0.3804954
     },
     {
         "dataName":  "2026_TCD",
-        "initialGDP":  49854640000
+        "initialGDP":  49854640000,
+        "greenEconomy":  0.3916738
     },
     {
         "dataName":  "2026_CHL",
-        "initialGDP":  624971600000
+        "initialGDP":  624971600000,
+        "greenEconomy":  0.4994235
     },
     {
         "dataName":  "2026_CHN",
-        "initialGDP":  36093925145546
+        "initialGDP":  36093925145546,
+        "greenEconomy":  0.8134857
     },
     {
         "dataName":  "2026_COL",
-        "initialGDP":  1046729200000
+        "initialGDP":  1046729200000,
+        "greenEconomy":  0.4484606
     },
     {
         "dataName":  "2026_COD",
-        "initialGDP":  176668800000
+        "initialGDP":  176668800000,
+        "greenEconomy":  0.3430837
     },
     {
         "dataName":  "2026_COS",
-        "initialGDP":  148749920000
+        "initialGDP":  148749920000,
+        "greenEconomy":  0.3883863
     },
     {
         "dataName":  "2026_CRS",
-        "initialGDP":  174475840000
+        "initialGDP":  174475840000,
+        "greenEconomy":  0.473644
     },
     {
         "dataName":  "2026_CUB",
-        "initialGDP":  170488729101
+        "initialGDP":  170488729101,
+        "greenEconomy":  0.4975103
     },
     {
         "dataName":  "2026_CZE",
-        "initialGDP":  569643360000
+        "initialGDP":  569643360000,
+        "greenEconomy":  0.516496
     },
     {
         "dataName":  "2026_DEN",
-        "initialGDP":  512902568226
+        "initialGDP":  512902568226,
+        "greenEconomy":  0.3755726
     },
     {
         "dataName":  "2026_DJI",
-        "initialGDP":  8748952706
+        "initialGDP":  8748952706,
+        "greenEconomy":  0.4663335
     },
     {
         "dataName":  "2026_DOM",
-        "initialGDP":  295752160000
+        "initialGDP":  295752160000,
+        "greenEconomy":  0.4865636
     },
     {
         "dataName":  "2026_ECU",
-        "initialGDP":  264107345681
+        "initialGDP":  264107345681,
+        "greenEconomy":  0.5780024
     },
     {
         "dataName":  "2026_EGY",
-        "initialGDP":  2095726160000
+        "initialGDP":  2095726160000,
+        "greenEconomy":  0.5202529
     },
     {
         "dataName":  "2026_ELS",
-        "initialGDP":  77688147845
+        "initialGDP":  77688147845,
+        "greenEconomy":  0.4969917
     },
     {
         "dataName":  "2026_EQG",
-        "initialGDP":  29042640000
+        "initialGDP":  29042640000,
+        "greenEconomy":  0.5573997
     },
     {
         "dataName":  "2026_ERI",
-        "initialGDP":  5636400000
+        "initialGDP":  5636400000,
+        "greenEconomy":  0.518664
     },
     {
         "dataName":  "2026_EST",
-        "initialGDP":  60046800000
+        "initialGDP":  60046800000,
+        "greenEconomy":  0.572325
     },
     {
         "dataName":  "2026_ESW",
-        "initialGDP":  14363360000
+        "initialGDP":  14363360000,
+        "greenEconomy":  0.4243028
     },
     {
         "dataName":  "2026_ETH",
-        "initialGDP":  426279040000
+        "initialGDP":  426279040000,
+        "greenEconomy":  0.3663424
     },
     {
         "dataName":  "2026_FIN",
-        "initialGDP":  337668869000
+        "initialGDP":  337668869000,
+        "greenEconomy":  0.4505149
     },
     {
         "dataName":  "2026_EUA",
-        "initialGDP":  3994862415720
+        "initialGDP":  3994862415720,
+        "greenEconomy":  0.4113013
     },
     {
         "dataName":  "2026_LWG",
-        "initialGDP":  50551580905
+        "initialGDP":  50551580905,
+        "greenEconomy":  0.4672167
     },
     {
         "dataName":  "2026_GAM",
-        "initialGDP":  9103596843
+        "initialGDP":  9103596843,
+        "greenEconomy":  0.3840294
     },
     {
         "dataName":  "2026_GEO",
-        "initialGDP":  99953040000
+        "initialGDP":  99953040000,
+        "greenEconomy":  0.5140244
     },
     {
         "dataName":  "2026_DEU",
-        "initialGDP":  5452857982000
+        "initialGDP":  5452857982000,
+        "greenEconomy":  0.4725747
     },
     {
         "dataName":  "2026_GHA",
-        "initialGDP":  259703840000
+        "initialGDP":  259703840000,
+        "greenEconomy":  0.4520177
     },
     {
         "dataName":  "2026_GRE",
-        "initialGDP":  411479163520
+        "initialGDP":  411479163520,
+        "greenEconomy":  0.5290322
     },
     {
         "dataName":  "2026_GTM",
-        "initialGDP":  248893040000
+        "initialGDP":  248893040000,
+        "greenEconomy":  0.4338262
     },
     {
         "dataName":  "2026_GIN",
-        "initialGDP":  66045760000
+        "initialGDP":  66045760000,
+        "greenEconomy":  0.4287731
     },
     {
         "dataName":  "2026_GNB",
-        "initialGDP":  5825600000
+        "initialGDP":  5825600000,
+        "greenEconomy":  0.393024
     },
     {
         "dataName":  "2026_GUS",
-        "initialGDP":  431595030995
+        "initialGDP":  431595030995,
+        "greenEconomy":  0.863548
     },
     {
         "dataName":  "2026_GUY",
-        "initialGDP":  66258720000
+        "initialGDP":  66258720000,
+        "greenEconomy":  0.3900567
     },
     {
         "dataName":  "2026_HTI",
-        "initialGDP":  38084290000
+        "initialGDP":  38084290000,
+        "greenEconomy":  0.4507367
     },
     {
         "dataName":  "2026_HON",
-        "initialGDP":  75665920000
+        "initialGDP":  75665920000,
+        "greenEconomy":  0.5523454
     },
     {
         "dataName":  "2026_HUN",
-        "initialGDP":  408688720000
+        "initialGDP":  408688720000,
+        "greenEconomy":  0.4694555
     },
     {
         "dataName":  "2026_ISL",
-        "initialGDP":  32927624000
+        "initialGDP":  32927624000,
+        "greenEconomy":  0.4628639
     },
     {
         "dataName":  "2026_IND",
-        "initialGDP":  15588478389443
+        "initialGDP":  15588478389443,
+        "greenEconomy":  0.6052552
     },
     {
         "dataName":  "2026_IDN",
-        "initialGDP":  4416614217992
+        "initialGDP":  4416614217992,
+        "greenEconomy":  0.5810383
     },
     {
         "dataName":  "2026_IRN",
-        "initialGDP":  1653424960000
+        "initialGDP":  1653424960000,
+        "greenEconomy":  1.0024465
     },
     {
         "dataName":  "2026_IRQ",
-        "initialGDP":  607993760000
+        "initialGDP":  607993760000,
+        "greenEconomy":  0.8517437
     },
     {
         "dataName":  "2026_IRL",
-        "initialGDP":  779381074000
+        "initialGDP":  779381074000,
+        "greenEconomy":  0.3584337
     },
     {
         "dataName":  "2026_ISR",
-        "initialGDP":  609410883000
+        "initialGDP":  609410883000,
+        "greenEconomy":  0.4544706
     },
     {
         "dataName":  "2026_ITA",
-        "initialGDP":  3275688282685
+        "initialGDP":  3275688282685,
+        "greenEconomy":  0.4501591
     },
     {
         "dataName":  "2026_IVO",
-        "initialGDP":  234812160000
+        "initialGDP":  234812160000,
+        "greenEconomy":  0.4309463
     },
     {
         "dataName":  "2026_JAM",
-        "initialGDP":  30514869230
+        "initialGDP":  30514869230,
+        "greenEconomy":  0.6855805
     },
     {
         "dataName":  "2026_JPN",
-        "initialGDP":  5905118165464
+        "initialGDP":  5905118165464,
+        "greenEconomy":  0.5553043
     },
     {
         "dataName":  "2026_JOR",
-        "initialGDP":  115875750002
+        "initialGDP":  115875750002,
+        "greenEconomy":  0.6131338
     },
     {
         "dataName":  "2026_KAZ",
-        "initialGDP":  795956480000
+        "initialGDP":  795956480000,
+        "greenEconomy":  0.7633825
     },
     {
         "dataName":  "2026_KEN",
-        "initialGDP":  353731846033
+        "initialGDP":  353731846033,
+        "greenEconomy":  0.3976097
     },
     {
         "dataName":  "2026_KOS",
-        "initialGDP":  28295520000
+        "initialGDP":  28295520000,
+        "greenEconomy":  1.0578557
     },
     {
         "dataName":  "2026_KUW",
-        "initialGDP":  229242640000
+        "initialGDP":  229242640000,
+        "greenEconomy":  1.0087291
     },
     {
         "dataName":  "2026_KGZ",
-        "initialGDP":  55840400000
+        "initialGDP":  55840400000,
+        "greenEconomy":  0.5922878
     },
     {
         "dataName":  "2026_LAO",
-        "initialGDP":  69387111298
+        "initialGDP":  69387111298,
+        "greenEconomy":  0.8292675
     },
     {
         "dataName":  "2026_LVA",
-        "initialGDP":  73260880000
+        "initialGDP":  73260880000,
+        "greenEconomy":  0.4517739
     },
     {
         "dataName":  "2026_LEB",
-        "initialGDP":  55587840000
+        "initialGDP":  55587840000,
+        "greenEconomy":  0.599554
     },
     {
         "dataName":  "2026_LES",
-        "initialGDP":  6520800000
+        "initialGDP":  6520800000,
+        "greenEconomy":  0.5400543
     },
     {
         "dataName":  "2026_CAB",
-        "initialGDP":  78769821976
+        "initialGDP":  78769821976,
+        "greenEconomy":  0.7997006
     },
     {
         "dataName":  "2026_LBR",
-        "initialGDP":  10046960000
+        "initialGDP":  10046960000,
+        "greenEconomy":  0.4411619
     },
     {
         "dataName":  "2026_LBY",
-        "initialGDP":  109108560000
+        "initialGDP":  109108560000,
+        "greenEconomy":  1.1300973
     },
     {
         "dataName":  "2026_LTU",
-        "initialGDP":  145588960000
+        "initialGDP":  145588960000,
+        "greenEconomy":  0.4456585
     },
     {
         "dataName":  "2026_MDG",
-        "initialGDP":  56532960000
+        "initialGDP":  56532960000,
+        "greenEconomy":  0.4354674
     },
     {
         "dataName":  "2026_MAL",
-        "initialGDP":  37639360000
+        "initialGDP":  37639360000,
+        "greenEconomy":  0.5035573
     },
     {
         "dataName":  "2026_MYS",
-        "initialGDP":  1300762355750
+        "initialGDP":  1300762355750,
+        "greenEconomy":  0.6379588
     },
     {
         "dataName":  "2026_MLD",
-        "initialGDP":  13226400000
+        "initialGDP":  13226400000,
+        "greenEconomy":  0.524676
     },
     {
         "dataName":  "2026_MLI",
-        "initialGDP":  64009440000
+        "initialGDP":  64009440000,
+        "greenEconomy":  0.4866876
     },
     {
         "dataName":  "2026_MRT",
-        "initialGDP":  35252800000
+        "initialGDP":  35252800000,
+        "greenEconomy":  0.5244564
     },
     {
         "dataName":  "2026_MRS",
-        "initialGDP":  36389760000
+        "initialGDP":  36389760000,
+        "greenEconomy":  0.4944067
     },
     {
         "dataName":  "2026_PCS",
-        "initialGDP":  16621447774
+        "initialGDP":  16621447774,
+        "greenEconomy":  0.5025965
     },
     {
         "dataName":  "2026_MEX",
-        "initialGDP":  3024498400000
+        "initialGDP":  3024498400000,
+        "greenEconomy":  0.5454386
     },
     {
         "dataName":  "2026_MCS",
-        "initialGDP":  1780080323
+        "initialGDP":  1780080323,
+        "greenEconomy":  0.3651575
     },
     {
         "dataName":  "2026_MOL",
-        "initialGDP":  40801186222
+        "initialGDP":  40801186222,
+        "greenEconomy":  0.603759
     },
     {
         "dataName":  "2026_MNG",
-        "initialGDP":  64485520000
+        "initialGDP":  64485520000,
+        "greenEconomy":  0.9007485
     },
     {
         "dataName":  "2026_MAR",
-        "initialGDP":  373886480000
+        "initialGDP":  373886480000,
+        "greenEconomy":  0.5855798
     },
     {
         "dataName":  "2026_MOZ",
-        "initialGDP":  54518640000
+        "initialGDP":  54518640000,
+        "greenEconomy":  0.5831467
     },
     {
         "dataName":  "2026_MMR",
-        "initialGDP":  287666720000
+        "initialGDP":  287666720000,
+        "greenEconomy":  0.4766038
     },
     {
         "dataName":  "2026_MNE",
-        "initialGDP":  18751920000
+        "initialGDP":  18751920000,
+        "greenEconomy":  0.5864633
     },
     {
         "dataName":  "2026_SWA",
-        "initialGDP":  33200640000
+        "initialGDP":  33200640000,
+        "greenEconomy":  0.4779654
     },
     {
         "dataName":  "2026_HYS",
-        "initialGDP":  158963200000
+        "initialGDP":  158963200000,
+        "greenEconomy":  0.4628108
     },
     {
         "dataName":  "2026_NET",
-        "initialGDP":  1461721777253
+        "initialGDP":  1461721777253,
+        "greenEconomy":  0.4328761
     },
     {
         "dataName":  "2026_NZL",
-        "initialGDP":  278636463000
+        "initialGDP":  278636463000,
+        "greenEconomy":  0.4842954
     },
     {
         "dataName":  "2026_NIC",
-        "initialGDP":  56152800000
+        "initialGDP":  56152800000,
+        "greenEconomy":  0.4662556
     },
     {
         "dataName":  "2026_NER",
-        "initialGDP":  53710800000
+        "initialGDP":  53710800000,
+        "greenEconomy":  0.3951206
     },
     {
         "dataName":  "2026_NGA",
-        "initialGDP":  1394763040000
+        "initialGDP":  1394763040000,
+        "greenEconomy":  0.4543926
     },
     {
         "dataName":  "2026_PRK",
-        "initialGDP":  166232912817
+        "initialGDP":  166232912817,
+        "greenEconomy":  0.8596486
     },
     {
         "dataName":  "2026_MKD",
-        "initialGDP":  46943600000
+        "initialGDP":  46943600000,
+        "greenEconomy":  0.5428031
     },
     {
         "dataName":  "2026_NOR",
-        "initialGDP":  599406223000
+        "initialGDP":  599406223000,
+        "greenEconomy":  0.4077832
     },
     {
         "dataName":  "2026_OMN",
-        "initialGDP":  203420764133
+        "initialGDP":  203420764133,
+        "greenEconomy":  0.9779021
     },
     {
         "dataName":  "2026_PAK",
-        "initialGDP":  1470815274328
+        "initialGDP":  1470815274328,
+        "greenEconomy":  0.5195959
     },
     {
         "dataName":  "2026_PAL",
-        "initialGDP":  26545546494
+        "initialGDP":  26545546494,
+        "greenEconomy":  1.0047675
     },
     {
         "dataName":  "2026_PAN",
-        "initialGDP":  176132000000
+        "initialGDP":  176132000000,
+        "greenEconomy":  0.4139581
     },
     {
         "dataName":  "2026_PNG",
-        "initialGDP":  42329760000
+        "initialGDP":  42329760000,
+        "greenEconomy":  0.5061041
     },
     {
         "dataName":  "2026_PRY",
-        "initialGDP":  120068943078
+        "initialGDP":  120068943078,
+        "greenEconomy":  0.4079761
     },
     {
         "dataName":  "2026_PER",
-        "initialGDP":  565885760000
+        "initialGDP":  565885760000,
+        "greenEconomy":  0.4963524
     },
     {
         "dataName":  "2026_PHL",
-        "initialGDP":  1300385668954
+        "initialGDP":  1300385668954,
+        "greenEconomy":  0.512831
     },
     {
         "dataName":  "2026_POL",
-        "initialGDP":  1777406353032
+        "initialGDP":  1777406353032,
+        "greenEconomy":  0.5426235
     },
     {
         "dataName":  "2026_PLS",
-        "initialGDP":  2482039715
+        "initialGDP":  2482039715,
+        "greenEconomy":  0.6143873
     },
     {
         "dataName":  "2026_PRT",
-        "initialGDP":  471764480000
+        "initialGDP":  471764480000,
+        "greenEconomy":  0.422928
     },
     {
         "dataName":  "2026_RTK",
-        "initialGDP":  3216400000
+        "initialGDP":  3216400000,
+        "greenEconomy":  0.5196755
     },
     {
         "dataName":  "2026_COR",
-        "initialGDP":  37631434331
+        "initialGDP":  37631434331,
+        "greenEconomy":  0.6343484
     },
     {
         "dataName":  "2026_ROM",
-        "initialGDP":  815547920000
+        "initialGDP":  815547920000,
+        "greenEconomy":  0.442151
     },
     {
         "dataName":  "2026_RUS",
-        "initialGDP":  6181731284987
+        "initialGDP":  6181731284987,
+        "greenEconomy":  0.7632102
     },
     {
         "dataName":  "2026_RWB",
-        "initialGDP":  63440960000
+        "initialGDP":  63440960000,
+        "greenEconomy":  0.3793137
     },
     {
         "dataName":  "2026_STP",
-        "initialGDP":  1367520000
+        "initialGDP":  1367520000,
+        "greenEconomy":  0.4750939
     },
     {
         "dataName":  "2026_SAU",
-        "initialGDP":  2365897600000
+        "initialGDP":  2365897600000,
+        "greenEconomy":  0.6999368
     },
     {
         "dataName":  "2026_SEG",
-        "initialGDP":  92778400000
+        "initialGDP":  92778400000,
+        "greenEconomy":  0.5395566
     },
     {
         "dataName":  "2026_SER",
-        "initialGDP":  190274480000
+        "initialGDP":  190274480000,
+        "greenEconomy":  0.7595639
     },
     {
         "dataName":  "2026_SYC",
-        "initialGDP":  3755840000
+        "initialGDP":  3755840000,
+        "greenEconomy":  0.6460834
     },
     {
         "dataName":  "2026_SLE",
-        "initialGDP":  28604400000
+        "initialGDP":  28604400000,
+        "greenEconomy":  0.378106
     },
     {
         "dataName":  "2026_SGP",
-        "initialGDP":  838326720000
+        "initialGDP":  838326720000,
+        "greenEconomy":  0.4139893
     },
     {
         "dataName":  "2026_SLO",
-        "initialGDP":  226177600000
+        "initialGDP":  226177600000,
+        "greenEconomy":  0.5103752
     },
     {
         "dataName":  "2026_SLV",
-        "initialGDP":  108638588624
+        "initialGDP":  108638588624,
+        "greenEconomy":  0.4968046
     },
     {
         "dataName":  "2026_SOM",
-        "initialGDP":  23534339506
+        "initialGDP":  23534339506,
+        "greenEconomy":  0.3469421
     },
     {
         "dataName":  "2026_SOL",
-        "initialGDP":  8324800000
+        "initialGDP":  8324800000,
+        "greenEconomy":  3.4900072
     },
     {
         "dataName":  "2026_ZAF",
-        "initialGDP":  855493129360
+        "initialGDP":  855493129360,
+        "greenEconomy":  1.02156
     },
     {
         "dataName":  "2026_KOR",
-        "initialGDP":  2959808720000
+        "initialGDP":  2959808720000,
+        "greenEconomy":  0.6004777
     },
     {
         "dataName":  "2026_SSD",
-        "initialGDP":  10019680000
+        "initialGDP":  10019680000,
+        "greenEconomy":  3.336443
     },
     {
         "dataName":  "2026_ESP",
-        "initialGDP":  2489088800000
+        "initialGDP":  2489088800000,
+        "greenEconomy":  0.4445848
     },
     {
         "dataName":  "2026_LKA",
-        "initialGDP":  301491520000
+        "initialGDP":  301491520000,
+        "greenEconomy":  0.4263794
     },
     {
         "dataName":  "2026_SDN",
-        "initialGDP":  103640241945
+        "initialGDP":  103640241945,
+        "greenEconomy":  0.6165628
     },
     {
         "dataName":  "2026_SUR",
-        "initialGDP":  12973819894
+        "initialGDP":  12973819894,
+        "greenEconomy":  0.6003783
     },
     {
         "dataName":  "2026_SCA",
-        "initialGDP":  760480743000
+        "initialGDP":  760480743000,
+        "greenEconomy":  0.3751975
     },
     {
         "dataName":  "2026_SWI",
-        "initialGDP":  960599038000
+        "initialGDP":  960599038000,
+        "greenEconomy":  0.3430046
     },
     {
         "dataName":  "2026_SYR",
-        "initialGDP":  120013520000
+        "initialGDP":  120013520000,
+        "greenEconomy":  0.6823238
     },
     {
         "dataName":  "2026_TWN",
-        "initialGDP":  1751435763888
+        "initialGDP":  1751435763888,
+        "greenEconomy":  0.54921
     },
     {
         "dataName":  "2026_TJK",
-        "initialGDP":  55137280000
+        "initialGDP":  55137280000,
+        "greenEconomy":  0.5721304
     },
     {
         "dataName":  "2026_TZA",
-        "initialGDP":  258360956440
+        "initialGDP":  258360956440,
+        "greenEconomy":  0.4350575
     },
     {
         "dataName":  "2026_THA",
-        "initialGDP":  1631318480000
+        "initialGDP":  1631318480000,
+        "greenEconomy":  0.5678377
     },
     {
         "dataName":  "2026_TLS",
-        "initialGDP":  6136240000
+        "initialGDP":  6136240000,
+        "greenEconomy":  0.4840087
     },
     {
         "dataName":  "2026_TGO",
-        "initialGDP":  29081357072
+        "initialGDP":  29081357072,
+        "greenEconomy":  0.4476908
     },
     {
         "dataName":  "2026_TUN",
-        "initialGDP":  161677986977
+        "initialGDP":  161677986977,
+        "greenEconomy":  0.6009658
     },
     {
         "dataName":  "2026_TUR",
-        "initialGDP":  3314754042301
+        "initialGDP":  3314754042301,
+        "greenEconomy":  0.5197239
     },
     {
         "dataName":  "2026_TKM",
-        "initialGDP":  163773280000
+        "initialGDP":  163773280000,
+        "greenEconomy":  0.9962419
     },
     {
         "dataName":  "2026_UGA",
-        "initialGDP":  164655916879
+        "initialGDP":  164655916879,
+        "greenEconomy":  0.3761411
     },
     {
         "dataName":  "2026_UKR",
-        "initialGDP":  607251920000
+        "initialGDP":  607251920000,
+        "greenEconomy":  0.5958117
     },
     {
         "dataName":  "2026_UAE",
-        "initialGDP":  796599760000
+        "initialGDP":  796599760000,
+        "greenEconomy":  0.6691389
     },
     {
         "dataName":  "2026_GBR",
-        "initialGDP":  4307551987855
+        "initialGDP":  4307551987855,
+        "greenEconomy":  0.4098491
     },
     {
         "dataName":  "2026_USA",
-        "initialGDP":  32528234964400
+        "initialGDP":  32528234964400,
+        "greenEconomy":  0.5254552
     },
     {
         "dataName":  "2026_URY",
-        "initialGDP":  114583920000
+        "initialGDP":  114583920000,
+        "greenEconomy":  0.4238091
     },
     {
         "dataName":  "2026_UZB",
-        "initialGDP":  413462720000
+        "initialGDP":  413462720000,
+        "greenEconomy":  0.8077529
     },
     {
         "dataName":  "2026_VEN",
-        "initialGDP":  197105920000
+        "initialGDP":  197105920000,
+        "greenEconomy":  0.984842
     },
     {
         "dataName":  "2026_VNM",
-        "initialGDP":  1590204000000
+        "initialGDP":  1590204000000,
+        "greenEconomy":  0.693687
     },
     {
         "dataName":  "2026_YEM",
-        "initialGDP":  30926369000
+        "initialGDP":  30926369000,
+        "greenEconomy":  0.7853794
     },
     {
         "dataName":  "2026_ZMB",
-        "initialGDP":  86376396165
+        "initialGDP":  86376396165,
+        "greenEconomy":  0.5129603
     },
     {
         "dataName":  "2026_ZWE",
-        "initialGDP":  82606480000
+        "initialGDP":  82606480000,
+        "greenEconomy":  0.5430396
     }
 ]

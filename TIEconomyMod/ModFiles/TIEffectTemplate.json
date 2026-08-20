@@ -1,6 +1,10 @@
 [
   {
     "dataName": "Effect_IncreaseMaxArmyTechLevel",
-    "value": 0.25
+    "instantEffect": "NationMaxMiltechChange",
+    "value": 0.25,
+    "effectTarget": "AllNations",
+    "effectDuration": "instant",
+    "duration_months": -1
   }
 ]

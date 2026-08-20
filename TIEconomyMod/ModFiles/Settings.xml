@@ -193,9 +193,16 @@
   </oppression>
   <environment>
     <enabled>true</enabled>
-    <cleanupAtReferenceGdp>0.1</cleanupAtReferenceGdp>
+    <storageRatingOffset>0.1</storageRatingOffset>
+    <startingTechnologyCap>3</startingTechnologyCap>
+    <maximumTechnologyCap>10</maximumTechnologyCap>
+    <advancementBaseIp>0.125</advancementBaseIp>
+    <advancementCostGrowthBase>1.5</advancementCostGrowthBase>
     <referenceGdpBillions>100</referenceGdpBillions>
     <minimumGdpBillions>1</minimumGdpBillions>
+    <cleanupCO2_ppm>0.00008125</cleanupCO2_ppm>
+    <cleanupCH4_ppm>0.000000625</cleanupCH4_ppm>
+    <cleanupN2O_ppm>0.000000625</cleanupN2O_ppm>
     <falloutReferenceAreaKm2>100000</falloutReferenceAreaKm2>
     <minimumLandAreaKm2>1</minimumLandAreaKm2>
     <climateGdpDamageEnabled>true</climateGdpDamageEnabled>
@@ -203,11 +210,14 @@
   </environment>
   <emissions>
     <enabled>true</enabled>
-    <tonsPerGdpBillion>275000</tonsPerGdpBillion>
-    <maximumResourceIntensityMultiplier>1.25</maximumResourceIntensityMultiplier>
-    <co2TonsMultiplier>0.3292</co2TonsMultiplier>
-    <methaneTonsMultiplier>0.00547619</methaneTonsMultiplier>
-    <nitrousOxideTonsMultiplier>0.000214533</nitrousOxideTonsMultiplier>
+    <neutralRating>10</neutralRating>
+    <co2TonsPerGdpBillionAtScoreZero>2000000</co2TonsPerGdpBillionAtScoreZero>
+    <co2DecayBase>0.25</co2DecayBase>
+    <maximumResourceIntensityMultiplier>1</maximumResourceIntensityMultiplier>
+    <methaneTonsPerMillionPeopleAtScoreZero>51248.9</methaneTonsPerMillionPeopleAtScoreZero>
+    <methaneDecayBase>0.9</methaneDecayBase>
+    <nitrousOxideTonsPerMillionPeopleAtScoreZero>1452.04</nitrousOxideTonsPerMillionPeopleAtScoreZero>
+    <nitrousOxideDecayBase>0.9</nitrousOxideDecayBase>
     <monthsPerYear>12</monthsPerYear>
   </emissions>
   <unity>

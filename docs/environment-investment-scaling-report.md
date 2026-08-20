@@ -1,287 +1,181 @@
-# Geometric environment score, emissions, and atmospheric cleanup
+# Environment investment and emissions implementation report
 
-## Status
+Status: implemented, automatically validated, and deployed for Terra Invicta 1.0.51 on 2026-08-19.
 
-Planning report only. No gameplay code, scenario data, build, or deployed package has been changed as part of this work.
+## Result
 
-This report supersedes the earlier proposal that every displayed Environment point should have the same cost. The revised design makes both emissions and advancement geometric, in the same broad structural spirit as Military technology, while retaining separate parameters for the two curves.
+The Environment system now treats the displayed 0-10 value as a technology-bounded sustainability rating. The reciprocal value remains only as an internal save-compatible carrier.
 
-## Executive decision
+- National emissions decline geometrically with the displayed rating.
+- Rating 10 is an exact carbon-neutral endpoint for routine CO2, CH4, and N2O emissions.
+- Environment advancement cost is geometric and normalized to the fraction of the current technology cap.
+- Required IP scales linearly with GDP, cancelling the mod's GDP-linear IP output for developed countries. Equal allocation shares therefore take equal time regardless of economy size.
+- The starting technology cap is 3 and rises independently of national ratings to an absolute cap of 10.
+- Only nations already at rating 10 can use Environment completions for fixed atmospheric removal.
+- Starting ratings for all 518 country-scenario entries were recalibrated against 2003, 2022, and 2024 emissions data, with 2024 used explicitly as the 2026 proxy.
 
-The Environment rating should be a bounded, technology-relative decarbonization score rather than the reciprocal of a hidden sustainability value.
+This directly fixes the reported late-game failure. A very large EU can no longer traverse the upper half of the rating in under a year simply because its GDP is enormous, and a country displayed at 10 no longer continues routine GDP-driven emissions.
 
-- The displayed score ranges from 0 to 10.
-- Emissions fall geometrically as the score rises. A preliminary decay factor of 0.5 per point gives the right physical order of magnitude: score 1 emits half as much as score 0, score 2 emits one quarter, and score 2.9 emits about 13.4%.
-- Advancement cost is geometric in the country's **fraction of the currently available technology range**, not in raw displayed points. Thus 0-to-1.5 under a cap of 3 costs exactly the same as 0-to-5 under a cap of 10, before country modifiers.
-- Investment time must be essentially independent of country size when countries devote the same fraction of their IP to Environment. Required IP therefore scales with GDP just as IP generation does.
-- The technology ceiling is separate from the score and from national starting conditions. Early scenarios can have an attainable ceiling near 3; future technology can raise it to 10.
-- Rating 10 means routine national greenhouse-gas emissions are zero: the country is effectively carbon neutral.
-- Only a country already at the absolute rating of 10 can use subsequent Environment completions for direct atmospheric removal. Removal is a fixed packet per completion, smaller than vanilla, and stops once the persistent greenhouse warming anomaly reaches 0 C.
+## Rating and save compatibility
 
-This gives the score a consistent meaning: ordinary investment moves a country along a decarbonization curve, while the post-10 priority represents industrial carbon removal rather than further growth of an unbounded rating.
-
-## What is failing now
-
-The current display is effectively:
+The runtime conversion is:
 
 ```text
-displayed rating = 1 / raw Sustainability
+rating = clamp(1 / storedSustainability - 0.1, 0, 10)
+storedSustainability = 1 / (rating + 0.1)
 ```
 
-The current late-game EU save has raw Sustainability `0.09398031`, which is a reciprocal score of `10.6405` before the UI caps it at `9.99+`. Raising it from displayed 5 to the cap only requires reducing the raw value from about `0.194` to `0.094`: just `0.10` of cleanup. That explains how an EU with roughly $168.6 trillion GDP can cross the apparent upper half of the scale in less than a year with under 10% of its IP.
+The `0.1` offset allows the existing strictly positive save field to represent rating 0 and preserves late-game saves without a destructive migration. The supplied EU's stored value of `0.09398031` converts to the absolute cap of 10. Old values are clamped at the new endpoints and all new UI paths show the real rating and current technology cap.
 
-The display is therefore not a real progression scale. Equal changes to the raw value become increasingly large displayed gains near zero. It also allows a nominally maximum country to continue producing substantial GDP-driven emissions. Under the current mod formula, the saved EU would still emit about 1.43 billion tonnes of CO2 per year at resource intensity 1 despite appearing to be beyond maximum rating.
+## Geometric emissions
 
-The mod currently suppresses vanilla Environment-priority removal of CO2, methane, and nitrous oxide. This avoided vanilla's excessive atmospheric removal, but it leaves no distinct post-carbon-neutral use for the priority.
-
-## Geometric emissions curve
-
-For score `R` below 10, the initial CO2 model should be:
+Below rating 10, annual routine emissions are:
 
 ```text
-CO2 tonnes/year =
-    GDP in billions
-  * score-zero CO2 tonnes per GDP-billion
-  * emissionDecayBase ^ R
-  * resource and sector adjustments
+CO2 tonnes = GDP_billions * 2,000,000 * 0.25^rating * resourceIntensity
+CH4 tonnes = population_millions * 51,248.90 * 0.90^rating
+N2O tonnes = population_millions * 1,452.04 * 0.90^rating
 ```
 
-At `R >= 10`, routine GDP-driven CO2, CH4, and N2O emissions take a hard branch to zero. The curve approaches neutrality; the endpoint guarantees it.
+At rating 10 all three getters take a hard branch to zero. The endpoint is therefore truly carbon neutral rather than merely close to neutral.
 
-An initial `emissionDecayBase` of 0.5 produces:
+CO2 uses the steep `0.25` base required to fit the observed contemporary range inside the starting cap of 3. It also makes the fuel-intensity yardsticks intuitive:
 
-| Score | Emissions relative to score 0 | Interpretation |
+| Rating | CO2 relative to rating 0 | Interpretation |
 |---:|---:|---|
-| 0 | 100% | highly carbon-intensive reference economy |
-| 0.415 | 75% | oil-versus-coal yardstick |
-| 1 | 50% | gas-versus-coal yardstick |
-| 2 | 25% | extensive fuel switching and efficiency |
-| 2.9 | 13.4% | plausible near-starting-tech frontier |
-| 3 | 12.5% | approximately one eighth of score 0 |
-| 5 | 3.125% | deeply decarbonized advanced economy |
-| 9 | 0.195% | residual emissions only |
-| 10 | 0% exactly | carbon neutral endpoint |
+| 0 | 100% | extremely carbon-intensive reference economy |
+| 0.208 | 75% | oil-versus-coal yardstick |
+| 0.5 | 50% | gas-versus-coal yardstick |
+| 1 | 25% | major fuel switching and efficiency |
+| 2 | 6.25% | deeply cleaned power and transport systems |
+| 2.9 | 1.79% | near the contemporary technology frontier |
+| 3 | 1.56% | starting-cap frontier |
+| 5 | 0.098% | advanced, residual-carbon economy |
+| 9 | 0.00038% | negligible residual CO2 |
+| 10 | 0% exactly | carbon neutral |
 
-The fuel labels are calibration yardsticks, not literal definitions of whole economies. A national score summarizes electricity, heating, transport, industry, agriculture, extraction, and land-use systems. Nevertheless, the curve captures the important physical fact that a score near the starting technology ceiling should emit a fraction of the pollution of an economy that burns coal and oil without restraint.
-
-The decay base should be tested over approximately 0.45-0.65. A value of 0.5 is a strong first hypothesis because it maps gas to one point and places 2.9 at 13.4%, but historical fit decides the final number.
-
-### Different gases need different calibration
-
-CO2 is closely connected to fuel and industrial energy. Much of CH4 and N2O instead comes from agriculture, waste, leakage, and fertilizer use. Applying one CO2-shaped multiplier to all three gases would produce an attractive curve but poor historical results.
-
-The implementation should therefore expose separate score-zero intensities and decay parameters for CO2, CH4, and N2O, or split each gas into reducible and hard-to-abate components. All routine components still reach zero at rating 10 to preserve the requested carbon-neutral endpoint. The design must also explicitly decide whether fluorinated gases remain outside the simulation or require representation; they should not be silently treated as CO2.
+The oil and gas rows are whole-economy calibration yardsticks, not claims that a nation's entire inventory consists of one fuel. CH4 and N2O use their own shallower `0.90` curves because their historical totals are much more strongly explained by population, agriculture, waste, and fertilizer use than by GDP. Keeping separate gas curves avoids forcing an attractive CO2 curve onto physically different inventories.
 
 ## Geometric advancement cost
 
-The cost curve should be defined independently from the emissions curve and normalized to the current technology ceiling. Let:
-
-```text
-R = current displayed Environment score
-C = current technology ceiling
-L = 10 * R / C
-```
-
-`L` is advancement position on a normalized 0-to-10 technology envelope. For a score increase from `a` to `b` while the ceiling is `C`:
+Let `R` be the current rating, `C` the current technology cap, and `L = 10R/C` the position on the normalized technology envelope. Moving from rating `a` to `b` costs:
 
 ```text
 required IP =
-    GDP / referenceGDP
-  * baseIP
-  * (costGrowthBase ^ (10 * b / C) - costGrowthBase ^ (10 * a / C))
-  / (costGrowthBase - 1)
+    GDP_billions / 100
+  * 0.125
+  * (1.5^(10b/C) - 1.5^(10a/C))
+  / (1.5 - 1)
 ```
 
-This creates the required invariant:
+The growth base of `1.5` makes later progress increasingly difficult. In particular, 9-to-10 is much harder than 0-to-1. Fractional IP is inverted through the cumulative curve, so progress is continuous even though Terra Invicta delivers priorities through completion events.
+
+Normalizing rating by the current cap provides the requested exact identity:
 
 ```text
-Cost(0 -> 1.5, ceiling 3) = Cost(0 -> 5, ceiling 10)
+Cost(0 -> 1.5, cap 3) = Cost(0 -> 5, cap 10)
 ```
 
-Both endpoints are 50% of the technology then available. More generally, any two movements through the same percentage of their respective ceilings have the same base cost. The inverse cumulative function converts fractional IP into fractional score progress, avoiding whole-completion quantization and making partial investment continuous.
+More generally, the same fractional movement through any cap has the same GDP-normalized cost. When technology raises the cap, the country's displayed rating does not fall; additional technological headroom simply becomes available.
 
-GDP appears in both required IP and national IP generation. Consequently, two countries at comparable development that spend the same percentage of their IP take approximately the same time to advance, regardless of absolute economy size. Rich countries retain advantages arising from better government, cohesion, technology, or priority bonuses, but not an unintended orders-of-magnitude advantage simply because GDP is large.
+At developed-country income, monthly national IP is `GDP_billions / 100 * 1.05`. Since advancement cost also scales with `GDP_billions / 100`, GDP cancels from the time equation. Before Environment project bonuses or nuclear-fallout penalties, a 10% allocation from 5 to 10 is:
 
-Military technology demonstrates the useful structure, but its approximate factor of 2 per normalized level would make completing the envelope excessively expensive. A preliminary factor of 1.5 gives the following costs, expressed relative to the first tenth of the available range:
+```text
+normalized cost factor = (1.5^10 - 1.5^5) / 0.5 = 100.142578125
+months = 0.125 * 100.142578125 / (1.05 * 0.10)
+       = 119.217 months
+       = 9.935 years
+```
 
-| Progress through current cap | Rating at cap 3 | Rating at cap 10 | Cumulative cost |
-|---:|---:|---:|---:|
-| 10% | 0.3 | 1 | 1.00 |
-| 30% | 0.9 | 3 | 4.75 |
-| 50% | 1.5 | 5 | 13.19 |
-| 90% | 2.7 | 9 | 74.89 |
-| 100% | 3 | 10 | 113.33 |
+## Technology cap
 
-The final tenth of either range costs 38.44 times the first tenth: 2.7-to-3 and 9-to-10 are equivalent advancement stages.
+The cap no longer depends on whichever country happens to have the cleanest starting value. It begins at 3 and gains explicit headroom from global technologies:
 
-When technology raises `C`, an existing country's displayed rating `R` does not fall. Its normalized position `L` becomes lower because a larger technological range has opened. Previously spent IP is neither refunded nor recomputed; subsequent marginal progress is priced using the new ceiling. The final `baseIP` and `costGrowthBase` should be selected from gameplay time targets, including the observed late-game EU case. The advancement and emissions bases remain separate configuration values even though both are geometric.
-
-## Technology-relative ceiling
-
-The scale describes progress relative to all technologies that can eventually be unlocked, but a country cannot invest through technology it does not possess.
-
-- Scenario and global technology define an explicit current ceiling, expected to be near 3 around contemporary starts and capable of reaching 10 in late game.
-- Advancement difficulty is measured as progress through that current ceiling: half of cap 3 and half of cap 10 are the same cost milestone.
-- A country at the current ceiling remains below carbon neutrality unless that ceiling is 10.
-- Reaching an early ceiling does not unlock atmospheric cleanup.
-- New technologies raise the ceiling and make more of the same geometric curve accessible; they do not redefine old scores.
-
-The current mechanism derives the global sustainability floor from the cleanest starting nation. That creates a circular dependency: recalibrating one nation's historical emissions can change the technology limit for the whole world. It also produces inconsistent inferred starting ceilings of roughly 4.05 in 2003, 2.91 in 2022, and 3.18 in 2026. The replacement must store or calculate the technology ceiling independently of starting national ratings.
-
-## Carbon neutrality and post-10 atmospheric cleanup
-
-Rating 10 is a hard semantic boundary:
-
-1. Routine GDP-driven national CO2, CH4, and N2O emissions are zero.
-2. The displayed rating remains exactly 10 and never becomes 10.4 or `9.99+`.
-3. Further completed Environment investment removes a fixed packet of greenhouse gases from the atmosphere.
-4. The packet is independent of GDP and population. Fractional investment receives a proportional fraction of the packet.
-5. Removal is clipped so CO2, CH4, and N2O cannot cross their zero-warming reference concentrations.
-6. Removal stops when persistent greenhouse forcing reaches a 0 C anomaly. Temporary negative aerosol forcing must not be used to justify continued removal.
-7. At rating 10 and zero persistent greenhouse warming, the priority has no remaining benefit and the AI should stop funding it.
-
-The game currently uses zero-warming reference concentrations of approximately 325.68 ppm CO2, 1.3 ppm CH4, and 0.29 ppm N2O. The removal packet should initially be tested at 25-50% of the corresponding vanilla priority packet, with 25% as the conservative first candidate. Its final magnitude is a gameplay parameter: it must produce useful multi-year cleanup without allowing a few large countries to erase centuries of accumulation in months.
-
-## Historical scenario audit
-
-The model must be evaluated against all three supported starting settings. Official EDGAR 2025 country inventories provide actual CO2, CH4, and N2O through 2024. Since 2026 emissions are not yet historical, the 2026 scenario must use 2024 country distribution plus the latest Global Carbon Budget projection as a documented proxy rather than claiming a nonexistent 2026 observation.
-
-The current scenario templates imply the following effective world GDP after scenario scaling:
-
-| Start | Effective world GDP |
+| Global technology | Cap increase |
 |---|---:|
-| 2003 | $71.37 trillion |
-| 2022 | $146.40 trillion |
-| 2026 | $165.24 trillion |
+| Arrival International Development | +1 |
+| Clean Energy | +2 |
+| Climate Change Mitigation | +2 |
+| Designer Lifeforms | +1 |
+| Integrated Earth-Space Economy | +1 |
+| **Maximum** | **10** |
 
-EDGAR totals and the subset mapped to the 167 represented Terra Invicta starting nations are:
+A nation at rating 3 while the cap is 3 is at the contemporary frontier, but it is not carbon neutral and cannot perform atmospheric removal. Cleanup is reserved for the absolute rating of 10.
 
-| Benchmark year | Coverage | CO2 | CH4 | N2O |
-|---|---|---:|---:|---:|
-| 2003 | EDGAR world | 27.642 Gt | 268.762 Mt | 7.720 Mt |
-| 2003 | TI-mapped nations | 26.647 Gt | 267.764 Mt | 7.615 Mt |
-| 2022 | EDGAR world | 38.548 Gt | 326.062 Mt | 9.328 Mt |
-| 2022 | TI-mapped nations | 37.307 Gt | 325.079 Mt | 9.195 Mt |
-| 2024 proxy for 2026 | EDGAR world | 39.633 Gt | 332.893 Mt | 9.538 Mt |
-| 2024 proxy for 2026 | TI-mapped nations | 38.209 Gt | 331.934 Mt | 9.392 Mt |
+## Rating-10 atmospheric removal
 
-The mapped totals are the appropriate target for summing simulated nations; the full world totals are a cross-check for mapping omissions and international categories. Global Carbon Budget 2025 estimates 2024 fossil CO2 at about 37.8 Gt and projects 2025 at about 38.1 Gt. Differences from EDGAR are expected because the inventories do not use identical scopes, particularly for non-fossil and process categories.
+Below rating 10, Environment investment changes the national rating and does not directly remove atmospheric gas. At rating 10, every completed Environment priority instead removes a fixed packet:
 
-### Existing scores cannot simply be retained
-
-A shared 0.5 emissions-decay curve fitted to the existing national ratings cannot reproduce all starts with one physical score-zero intensity. A preliminary country-weighted pass produced world ratios of approximately:
-
-| Start | Predicted / historical emissions using existing scores |
+| Gas | Removed per completion |
 |---|---:|
-| 2003 | 0.63 |
-| 2022 | 1.13 |
-| 2026 using 2024 proxy | 1.14 |
+| CO2 | 0.00008125 ppm |
+| CH4 | 0.000000625 ppm |
+| N2O | 0.000000625 ppm |
 
-The direction of the error changes by scenario. Tuning one global coefficient would merely move the mismatch elsewhere. The existing scenario ratings must therefore be back-solved from historical national emissions, and not treated as authoritative inputs.
+These are one quarter of the corresponding vanilla base packets and are independent of GDP and population. Each gas is clipped at the game's zero-warming reference concentration: 325.68 ppm CO2, 1.3 ppm CH4, and 0.29 ppm N2O. The priority remains valid while any persistent greenhouse concentration exceeds its reference and stops once all three have reached the zero-greenhouse-warming baseline. It cannot overshoot into artificial negative greenhouse forcing.
 
-Every back-solved national score must fit inside its scenario's explicit technology range without clipping:
+Fallout cleanup remains separate. A rating-10 country can still fund the priority for fallout/decontamination even when no greenhouse removal remains.
 
-```text
-0 <= starting national score <= scenario technology ceiling
-```
+## Historical calibration
 
-This is a hard calibration constraint across the entire dataset, with 2003 China and 2026 Switzerland serving as useful dirty-economy and clean-economy boundary checks. If either country—or any other represented country—would require a score below 0 or above its period cap, the score-zero baseline, decay, or justified sector/resource adjustment must be refitted. Silently clamping the score is not acceptable because it would conceal an emissions mismatch.
+The calibration tool combines the mod's reviewed scenario GDP and population data with EDGAR country inventories. CO2 back-solves the national rating using the `0.25` curve. CH4 and N2O use the same ratings with independently fitted population coefficients and `0.90` decay. Nations without a direct EDGAR mapping are small scenario aggregates and retain a bounded legacy-derived rating.
 
-For each country and gas, the calibration begins with:
+All 518 entries fit within the starting technology cap without clipping. The 167 EDGAR-matched nations in each scenario produce:
 
-```text
-R = log(actual emissions / (GDP * score-zero intensity * adjustments))
-    / log(emissionDecayBase)
-```
+| Scenario | Matched rating range | Predicted / observed CO2 | CH4 | N2O |
+|---:|---:|---:|---:|---:|
+| 2003 | 0.0237-2.9267 | 1.0000 | 1.0117 | 1.0079 |
+| 2022 | 0.6238-2.7806 | 1.0000 | 0.9914 | 0.9930 |
+| 2026 using 2024 proxy | 0.7849-2.8154 | 1.0000 | 0.9991 | 1.0004 |
 
-Resource extraction, sector composition, and unavoidable inventory-boundary differences must then be handled explicitly. A single GDP-plus-score formula cannot reproduce both petroleum exporters and service economies at country level. Adjustments should be few, legible, and derived from stable scenario data rather than individual unexplained fudge factors.
+CO2 totals match by construction because CO2 is the rating calibration target. The independent CH4 and N2O totals remain within 1.2% in every scenario.
 
-## Proposed acceptance margins
+The requested boundary examples both fit comfortably under cap 3:
 
-Historical agreement should be judged at both world and country scale:
+| Country-scenario | Calibrated rating | CO2 inventory |
+|---|---:|---:|
+| China 2003 | 0.4065 | 4.773 Gt/year |
+| Switzerland 2003 | 2.2762 | 45.86 Mt/year |
+| China 2026 | 1.1293 | 13.125 Gt/year |
+| Switzerland 2026 | 2.8154 | 33.73 Mt/year |
 
-- TI-mapped CO2 total within +/-10% for the 2003 and 2022 starts.
-- 2026 start within +/-10% of the documented 2024-2025 proxy band, labelled as a projection test rather than historical validation.
-- Major emitting countries within +/-25% for CO2, covering at least 80% of mapped emissions by weight.
-- Smaller, aggregated, or boundary-mismatched countries within +/-35-50%, with outliers documented.
-- Global CH4 and N2O within +/-15%; major country emitters within approximately +/-30-35% until agricultural and waste-sector structure is richer.
-- Oil-intensive and gas-intensive economies should fall near the 75% and 50% fuel yardsticks after controlling for their non-energy sectors.
-- A country near score 2.9 should normally emit only a fraction of an otherwise comparable score-0 country, with approximately 13% as the 0.5-decay starting hypothesis.
-- Every starting nation fits within `[0, scenario cap]` without score clipping, explicitly including 2003 China and 2026 Switzerland.
-- The advancement-cost identity `Cost(0 -> 1.5, cap 3) = Cost(0 -> 5, cap 10)` holds exactly before national modifiers.
-- A score-10 country emits zero routine greenhouse gases regardless of GDP.
-- Simulated atmospheric concentration change must also be checked. Matching emitted tonnes is insufficient if tonne-to-ppm conversion or natural sinks produce implausible one-year concentration growth.
+The persistent country-level audit is `docs/environment-calibration/historical-start-calibration.csv`. The economic override generator now consumes that audit, so later GDP/population regeneration cannot silently erase the calibrated ratings.
 
-## Planning and implementation sequence
+## EU save samples: 5 to 10 at 10% IP
 
-No implementation should begin until the curve parameters and historical targets are reviewed.
+The following samples use the EU GDP and population stored in the supplied saves. `Deployed formula` recomputes monthly IP through the currently deployed Economic Equalization formula. `Serialized snapshot` instead uses the older cached monthly IP value literally present in each save. Both exclude Environment project-effect bonuses and nuclear-fallout penalties.
 
-### 1. Freeze the calibration dataset
+| Save date | EU GDP | Per-capita GDP | Deployed formula | Serialized snapshot |
+|---|---:|---:|---:|---:|
+| 2041-11-03 | $73.165T | $79,034 | 9.93 years | 10.70 years |
+| 2044-10-01 | $97.337T | $104,872 | 9.93 years | 10.62 years |
+| 2046-09-08 | $121.382T | $129,877 | 9.93 years | 10.52 years |
+| 2047-10-01 | $140.125T | $149,150 | 9.93 years | 10.44 years |
+| 2048-03-10 | $147.931T | $156,894 | 9.93 years | 10.42 years |
+| 2049-02-16 | $168.552T | $177,418 | 9.93 years | 10.37 years |
 
-- Preserve EDGAR 2025 CO2, CH4, and N2O snapshots and the Global Carbon Budget proxy under `docs/` with source metadata.
-- Preserve the TI-to-ISO mapping, exclusions, scenario GDP scaling, and inventory-boundary notes.
-- Generate per-country comparison tables for 2003, 2022, and 2026/2024-proxy.
+The sample closest to the reported `$150k` per-capita case is 2047-10-01 at `$149,150`; it takes 119.2 months under the deployed formula, or 125.3 months if its serialized IP snapshot is used. The latest save requires 21,099.1 total Environment IP from 5 to 10 and supplies 176.98 Environment IP/month at a 10% allocation, again giving 119.2 months.
 
-### 2. Calibrate the physical curve
+The equality across the deployed-formula column is intentional, not rounding coincidence: all samples exceed the low-income threshold, so GDP cancels exactly. Poor countries below `$15,000` per capita retain the mod's existing 70%-to-100% income productivity ramp and will take modestly longer, but no longer take orders of magnitude longer merely because they have a small economy.
 
-- Fit CO2 decay over the proposed 0.45-0.65 range.
-- Fit score-zero intensity and a small set of resource/sector adjustments.
-- Determine whether CH4 and N2O need independent bases or reducible/residual components.
-- Back-solve starting national scores and require every result to remain within its scenario ceiling without clipping; use 2003 China and 2026 Switzerland as explicit boundary cases.
-- Define explicit technology ceilings for each scenario independently of those scores.
+## Verification and remaining manual checks
 
-### 3. Calibrate the advancement curve
+Automated release verification passed after implementation:
 
-- Test cost growth factors approximately 1.4, 1.5, 1.6, and 2.0.
-- Choose `baseIP` from target calendar times at representative priority shares.
-- Verify normalized-cap equivalence, especially 0-to-1.5 at cap 3 versus 0-to-5 at cap 10.
-- Verify equal-share advancement time across small, medium, and very large economies.
-- Reproduce the saved $168.6T EU case and ensure 5-to-10 takes an intentional late-game time rather than less than a year at under 10% allocation.
+- 1,092 formula assertions, including storage round trips, geometric inversion, cap normalization, GDP scaling, gas curves, hard neutrality, cleanup clipping, and fallout effects;
+- all 153 Harmony patches covered by the implementation matrix and emitted against installed TI 1.0.51 assemblies;
+- all 518 scenario nation overrides regenerated and verified with a calibrated Environment value;
+- aggregate 2003, 2022, and 2026-proxy emissions checks;
+- normal package build and deployment to the enabled mod directory.
 
-### 4. Implement pure model functions
+Manual in-game testing should now concentrate on UI readability, fractional progress across monthly priority completions, project-effect modifiers, AI behavior at the current cap and absolute cap, and whether roughly ten years at 10% feels correct in a real late-game campaign. The coefficients are deliberately exposed in `Settings.xml`, so the calendar target and cleanup packet can be tuned without redesigning the model.
 
-- Add explicit score, cumulative cost, inverse progress, gas emissions, technology ceiling, and cleanup eligibility functions.
-- Remove reciprocal display semantics and protect save migration.
-- Keep physical, cost, scenario, and cleanup parameters separately configurable.
+## Artifacts and sources
 
-### 5. Recalibrate scenario data
-
-- Apply reviewed starting scores for 2003, 2022, and 2026.
-- Add explicit starting technology ceilings.
-- Produce before/after country and world audit tables.
-
-### 6. Implement runtime behavior
-
-- Convert Environment investment to continuous geometric progress.
-- Route emissions through the per-gas curve with a hard score-10 neutral branch.
-- Enable only score-10 fixed-packet atmospheric cleanup.
-- Clip cleanup at the zero-warming references and update AI allocation logic.
-- Update UI text to show current score, ceiling, progress to the next point, emissions effect, and post-10 cleanup state.
-
-### 7. Verify, deploy, and manually test
-
-- Add unit tests for geometric cost inversion, fractional investment, normalized-cap equivalence, GDP-size neutrality, gas endpoints, ceiling behavior, cleanup gating, and concentration clipping.
-- Run scenario regression tests for 2003, 2022, and 2026 against the acceptance margins.
-- Test save migration using the supplied late-game save.
-- Only after implementation authorization, use the repository's normal build-and-deploy flow and announce the package for immediate in-game testing.
-- Record observed manual results and final calibrated parameters in this report.
-
-## Required design checks before implementation
-
-The following remain calibration choices rather than hidden assumptions:
-
-- final emissions decay base, initially 0.5;
-- separate CH4 and N2O curve structure;
-- final cost growth base and calendar-time target;
-- explicit 2003, 2022, and 2026 technology ceilings;
-- limited resource/sector adjustment model;
-- post-10 removal packet, initially tested at 25-50% of vanilla;
-- save conversion from reciprocal Sustainability to the new score;
-- treatment of fluorinated gases and land-use CO2.
-
-## Sources
-
-- European Commission Joint Research Centre, [EDGAR 2025 greenhouse-gas dataset](https://edgar.jrc.ec.europa.eu/dataset_ghg2025), providing country CO2, CH4, and N2O inventories through 2024.
-- Global Carbon Project, [Global Carbon Budget 2025](https://essd.copernicus.org/articles/18/3211/2026/index.html), providing the 2024 estimate, 2025 projection, uncertainty, and global fuel composition.
-- Local Terra Invicta 1.0.51 templates and decompiled game behavior for scenario atmosphere, GDP scaling, sustainability display, emissions conversion, temperature contribution, and vanilla priority packets.
-- Supplied late-game save for the EU progression and residual-emissions case.
+- `docs/environment-calibration/historical-start-calibration.csv`: country-scenario emissions and rating audit.
+- `docs/environment-calibration/eu-save-timing-samples.csv`: reproducible EU save calculations.
+- `tools/calibrate-environment-model.py`: calibration and scenario-rating generator.
+- `tools/sample-environment-save-timings.py`: save sampler and timing model.
+- European Commission Joint Research Centre, [EDGAR 2025 greenhouse-gas dataset](https://edgar.jrc.ec.europa.eu/dataset_ghg2025), country CO2, CH4, and N2O inventories through 2024.
+- Global Carbon Project, [Global Carbon Budget 2025](https://essd.copernicus.org/articles/18/3211/2026/index.html), used to contextualize the 2024/2025 proxy for the 2026 scenario.
+- Local Terra Invicta 1.0.51 templates, guarded patch points, safe atmospheric references, and priority behavior.

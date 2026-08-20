@@ -201,6 +201,7 @@ namespace PavonisInteractive.TerraInvicta
         public float maxMilitaryTechLevel;
         public int numNavies;
         public float sustainability;
+        public bool canAccumulateDecontaminateTriggers;
         public readonly List<TIArmyState> armies = new List<TIArmyState>();
         public readonly List<TIRegionState> regions = new List<TIRegionState>();
 
@@ -270,6 +271,11 @@ namespace PavonisInteractive.TerraInvicta
         public bool IsAlienFaction;
     }
 
+    public enum PriorityType
+    {
+        Environment
+    }
+
     public enum Context
     {
         ControlPointMaintenance,
@@ -281,9 +287,15 @@ namespace PavonisInteractive.TerraInvicta
 
     public sealed class TIGlobalConfig
     {
+        public static readonly TIGlobalConfig globalConfig = new TIGlobalConfig();
         public float WelCO2_ppm = -0.001f;
         public float WelCH4_ppm = -0.002f;
         public float WelN2O_ppm = -0.003f;
+        public string sustainabilityInlineSpritePath_Green = "green";
+        public string sustainabilityInlineSpritePath_Blue = "blue";
+        public string sustainabilityInlineSpritePath_Yellow = "yellow";
+        public string sustainabilityInlineSpritePath_Orange = "orange";
+        public string sustainabilityInlineSpritePath_Red = "red";
 
         public float GetAIShipbuildingCostDifficultyScaling(
             TIFactionState faction)
@@ -313,6 +325,19 @@ namespace PavonisInteractive.TerraInvicta
         {
             return 0f;
         }
+    }
+
+    public sealed class TIGlobalValuesState
+    {
+        public const float safeAtmosphericCO2_ppm = 325.68f;
+        public const float safeAtmosphericCH4_ppm = 1.3f;
+        public const float safeAtmosphericN2O_ppm = 0.29f;
+        public static TIGlobalValuesState GlobalValues = new TIGlobalValuesState();
+        public float earthAtmosphericCO2_ppm = 425f;
+        public float earthAtmosphericCH4_ppm = 1.93f;
+        public float earthAtmosphericN2O_ppm = 0.3392f;
+
+        public void AddEnvironmentPriorityEnvEffect(TINationState nation) { }
     }
 }
 
@@ -579,9 +604,16 @@ namespace TIEconomyMod
     public sealed class EnvironmentSettings
     {
         public bool enabled = true;
-        public float cleanupAtReferenceGdp = 0.10f;
+        public float storageRatingOffset = 0.10f;
+        public float startingTechnologyCap = 3f;
+        public float maximumTechnologyCap = 10f;
+        public float advancementBaseIp = 0.125f;
+        public float advancementCostGrowthBase = 1.50f;
         public float referenceGdpBillions = 100f;
         public float minimumGdpBillions = 1f;
+        public float cleanupCO2_ppm = 0.00008125f;
+        public float cleanupCH4_ppm = 0.000000625f;
+        public float cleanupN2O_ppm = 0.000000625f;
         public float falloutReferenceAreaKm2 = 100000f;
         public float minimumLandAreaKm2 = 1f;
         public bool climateGdpDamageEnabled = true;
@@ -591,11 +623,14 @@ namespace TIEconomyMod
     public sealed class EmissionsSettings
     {
         public bool enabled = true;
-        public float tonsPerGdpBillion = 275000f;
-        public float maximumResourceIntensityMultiplier = 1.25f;
-        public float co2TonsMultiplier = 0.3292f;
-        public float methaneTonsMultiplier = 0.00547619f;
-        public float nitrousOxideTonsMultiplier = 0.000214533f;
+        public float neutralRating = 10f;
+        public float co2TonsPerGdpBillionAtScoreZero = 2000000f;
+        public float co2DecayBase = 0.25f;
+        public float maximumResourceIntensityMultiplier = 1f;
+        public float methaneTonsPerMillionPeopleAtScoreZero = 51248.90f;
+        public float methaneDecayBase = 0.90f;
+        public float nitrousOxideTonsPerMillionPeopleAtScoreZero = 1452.04f;
+        public float nitrousOxideDecayBase = 0.90f;
         public float monthsPerYear = 12f;
     }
 

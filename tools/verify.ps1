@@ -241,6 +241,13 @@ if ($LASTEXITCODE -ne 0) {
     exit $LASTEXITCODE
 }
 
+powershell -NoProfile -ExecutionPolicy Bypass -File `
+    (Join-Path $scriptDirectory 'validate-environment-model.ps1') `
+    -RepositoryRoot $repositoryRoot
+if ($LASTEXITCODE -ne 0) {
+    exit $LASTEXITCODE
+}
+
 $technologyTemplates = Join-Path $templatesDirectory 'TITechTemplate.json'
 $installedTechnologyIds = @(
     Get-Content -LiteralPath $technologyTemplates -Raw |
@@ -637,7 +644,11 @@ if ($vanillaAugmentedReality.Count -ne 1 -or
     $maximumArmyTechnologyEffect[0].effectDuration -ne 'instant' -or
     $effectTemplateOverrides.Count -ne 1 -or
     $maximumArmyTechnologyEffectOverride.Count -ne 1 -or
-    [double]$maximumArmyTechnologyEffectOverride[0].value -ne 0.25) {
+    $maximumArmyTechnologyEffectOverride[0].instantEffect -ne 'NationMaxMiltechChange' -or
+    [double]$maximumArmyTechnologyEffectOverride[0].value -ne 0.25 -or
+    $maximumArmyTechnologyEffectOverride[0].effectTarget -ne 'AllNations' -or
+    $maximumArmyTechnologyEffectOverride[0].effectDuration -ne 'instant' -or
+    [int]$maximumArmyTechnologyEffectOverride[0].duration_months -ne -1) {
     throw 'Augmented Reality must cost 2,000 and use the native all-nations maximum Military technology effect, whose modded value must be +0.25.'
 }
 $expectedVanillaArmyTechnologyRecipients = @(
