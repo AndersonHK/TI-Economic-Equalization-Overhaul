@@ -1,4 +1,4 @@
-LaunchProbeOperation.description=Launch a probe from Earth, or from an owned Tier 1 factory and Tier 1 dock on the same hab to reduce Boost use. A space body must be prospected before building a base there.
+LaunchProbeOperation.description=Land a 0.325-ton survey drone at one selected surface site. Launch it from Earth, or from an owned Tier 1 factory and Tier 1 dock on the same hab to reduce Boost use. Only surveyed sites may host a new base.
 FoundPlatformOperation.description=Build a small station core in the selected orbit. Buy and launch it from Earth, or use an owned factory-dock pair in any system. Requires at least {0} free {1}.
 FoundAutomatedPlatformOperation.description=Build a small robotic station core. Buy and launch it from Earth, or use an owned factory-dock pair in any system. Requires at least {0} free {1}.
 FoundOrbitalOperation.description=Build a large station core in the selected orbit. Buy and launch it from Earth, or use an owned matching-tier factory-dock pair in any system. Requires at least {0} free {1} and a space object able to support Tier 2 habs.

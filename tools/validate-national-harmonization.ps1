@@ -28,12 +28,21 @@ foreach ($required in @(
     'GameControl.DLCValidated',
     'ModManager.dlcNames.Contains(DarkSkies)',
     'scenarioTemplate.requiredDLC.Contains',
+    'private static readonly object RefreshGate',
+    'lock (RefreshGate)',
+    'HashSet<string> rebuilt',
+    'historicalClaims = rebuilt',
+    'retaining " + historicalClaims.Count',
     'return !is2003',
     '"GTM"',
     '"ArunchalPradesh"')) {
     if (-not $source.Contains($required)) {
         throw "National harmonization source is missing required contract token '$required'."
     }
+}
+if ($source.Contains('historicalClaims.Clear()') -or
+    $source.Contains('HistoricalClaims.Clear()')) {
+    throw 'Historical claim refresh must not mutate a published snapshot in place.'
 }
 if ($source.Contains('claimant.GDP') -or $source.Contains('target.GDP')) {
     throw 'National harmonization must use GDP per capita, not total national GDP.'

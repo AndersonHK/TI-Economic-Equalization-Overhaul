@@ -58,6 +58,10 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="Unity.Entities">
+      <HintPath>$(TargetManagedDir)\Unity.Entities.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="UnityEngine">
       <HintPath>$(TargetManagedDir)\UnityEngine.dll</HintPath>
       <Private>False</Private>
@@ -99,6 +103,7 @@
     <Compile Include="Core\EnvironmentMath.cs" />
     <Compile Include="Core\AlienFloraAssaultMath.cs" />
     <Compile Include="Core\HabRebalanceMath.cs" />
+    <Compile Include="Core\HabEventExposureMath.cs" />
     <Compile Include="Core\IndependentResearchMath.cs" />
     <Compile Include="Core\LandCombatMath.cs" />
     <Compile Include="Core\MilitaryMath.cs" />
@@ -113,6 +118,7 @@
     <Compile Include="Core\CohesionRestMath.cs" />
     <Compile Include="Core\CampaignDifficultyDefaults.cs" />
     <Compile Include="Core\PowerPlantThermalMath.cs" />
+    <Compile Include="Core\ProbeSurveyRuntime.cs" />
     <Compile Include="Core\ProjectileCollisionMath.cs" />
     <Compile Include="Core\DirectFireCommitmentMath.cs" />
     <Compile Include="Core\ProjectileGeometryRegistry.cs" />
@@ -141,6 +147,7 @@
     <Compile Include="Patches\GlobalResearchPatches.cs" />
     <Compile Include="Patches\HabLogisticsPatches.cs" />
     <Compile Include="Patches\HabRebalancePatches.cs" />
+    <Compile Include="Patches\HabEventExposurePatches.cs" />
     <Compile Include="Patches\MilitaryPatches.cs" />
     <Compile Include="Patches\RepairDebtDisplayPatches.cs" />
     <Compile Include="Patches\RefitValidityPatches.cs" />
@@ -155,6 +162,7 @@
     <Compile Include="Patches\NationalMergerPatches.cs" />
     <Compile Include="Patches\NationalHarmonizationPatches.cs" />
     <Compile Include="Patches\ProjectileCollisionPatches.cs" />
+    <Compile Include="Patches\ProbeSurveyPatches.cs" />
     <Compile Include="Patches\DirectFireCoordinationPatches.cs" />
     <Compile Include="Patches\SocialPriorityPatches.cs" />
     <Compile Include="Patches\ShipPowerPatches.cs" />
@@ -202,6 +210,7 @@
     <None Include="ModFiles\UINation.en" />
     <None Include="ModFiles\UIGeneralControls.en" />
     <None Include="ModFiles\UIHabs.en" />
+    <None Include="ModFiles\UIIntel.en" />
     <None Include="ModFiles\ModInfo.json" />
   </ItemGroup>
 

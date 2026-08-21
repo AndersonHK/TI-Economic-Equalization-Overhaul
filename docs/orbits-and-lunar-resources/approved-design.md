@@ -191,6 +191,37 @@ typically contain about 10-50 ppm carbon and fines may reach roughly 200 ppm,
 much of it associated with solar-wind exposure. See
 [Carbon Chemistry of Apollo 14 Size-fractionated Fines](https://www.nature.com/articles/physci235106a0).
 
+## 4. Individual-site lunar surveying
+
+Launch Probe uses the body's existing operation entry and the native hab-site
+targeting interface to land one 0.325-tonne survey drone at a selected site.
+Each faction stores en-route and completed intel on the site. Arrival reveals
+only that site's resource profile, and a new base may be founded only at a
+surveyed vacant site.
+
+The payload is a Surveyor-class robotic lander with a modest instrumentation
+margin. NASA records Surveyor 1 at 294.3 kg at touchdown; the approved 325 kg
+round figure also remains close to JAXA's approximately 200 kg dry SLIM lander,
+while remaining far below the 1,752 kg Chandrayaan-3 lander-rover module. See
+the dated [technology and survey decision record](../technology-scenarios-and-site-survey-implementation-plan.md)
+for primary mission sources and the full comparison.
+
+For an Earth launch:
+
+`Boost = 0.325 * 0.1 * exp(normalizedDeltaV / modifiedGenericEV)`
+
+The destination is the site rather than low lunar orbit, so normalized delta-v
+includes the site's generic landing cost. With the two modern starts' 4.44
+km/s effective exhaust velocity, the 35 lunar sites cost approximately
+0.1452-0.1454 Boost apiece and 5.0842 Boost in total. This is 7.37% above the
+retired body-wide calculation of 4.7352 Boost for an 18-tonne orbital probe.
+
+Different sites may have probes in flight concurrently, but the same site may
+not receive a duplicate. Completing the last site calls the normal body-level
+prospection path. Existing saves with full body intel remain fully prospected,
+and old body-targeted probes already in flight retain body-wide completion.
+Shipborne Survey Planet remains a later body-wide capability.
+
 ## 5. Implementation and verification sequence
 
 Follow the repository's `Plan -> Document -> Implement -> Build -> Deploy ->

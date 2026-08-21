@@ -4,6 +4,8 @@
     "controlPointMaintenanceFreebies": 0,
     "councilorMaxOrgs": 18,
     "crewWaterConsumptionTons_year": 3,
-    "crewVolatilesConsumptionTons_year": 3
+    "crewVolatilesConsumptionTons_year": 3,
+    "probePayloadBaseline_tons": 0.325,
+    "probePayloadPerHabSite_tons": 0
   }
 ]

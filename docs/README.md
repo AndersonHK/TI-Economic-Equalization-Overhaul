@@ -55,8 +55,16 @@ when prose and runtime behavior disagree.
 - [Starting technology and project audit](starting-technology-2022-2026.md):
   authoritative 2022/2026 active research, completed technologies, starting
   projects, dependency audit, shared Space Tourism, Deep Space Propulsion, and
-  Augmented Reality decisions, the Augmented Reality Military-cap effect, and
-  the 2026 Skywatch and Outpost Habs progression decisions.
+  Augmented Reality decisions, the Augmented Reality Military-cap effect,
+  starting Outpost Core grants, and the 2026 Mission to Moon/Mission to Mars
+  progression decision.
+- [Technology, scenario, and site-survey implementation record](technology-scenarios-and-site-survey-implementation-plan.md):
+  implemented global-technology multiplier, modern-start scenario decisions,
+  real lunar-mission mass references, 0.325-tonne site-drone equations,
+  compatibility rules, automated deployment results, and manual-test matrix.
+- [Orbital hab ambient-hazard exposure scaling](orbital-hab-hazard-scaling.md):
+  approved linear event-weight scaling from zero through thirty human orbital
+  habs, exact ambient-event scope, exclusions, and verification plan.
 - [2003 starting technology audit](starting-technology-2003.md): Dark Skies
   opening technologies, completed projects, alien pacing, and current Economic
   Equalization compatibility limits.

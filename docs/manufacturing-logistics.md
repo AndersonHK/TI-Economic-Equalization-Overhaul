@@ -139,11 +139,23 @@ delivery route; they do not create additional orbital capacity.
 
 ## Probes
 
-Probes are full-payload T1 manufacturing jobs.
+Probes are full-payload T1 manufacturing jobs and site-targeted landed survey
+drones. Each mission delivers exactly 0.325 tonnes to one selected hab site;
+payload no longer scales with the number of sites on the parent body.
 
-- The Earth option buys and Boosts the complete probe.
+- The body-level Launch Probe action opens the native two-stage hab-site picker.
+- Bulk launch buttons, including those shown on Mission-to-* research
+  completion notifications, count, price, and launch one drone for every
+  eligible unsurveyed site rather than one probe per accessible body.
+- Native exploration and colonization eligibility still gate probe launches.
+- A site with a probe in flight cannot receive a duplicate mission, but the
+  player may send probes concurrently to different sites.
+- Arrival reveals only the selected site's resources. The body becomes fully
+  prospected after every child site is surveyed.
+- The Earth option buys and Boosts the complete probe to the selected surface
+  site, including landing delta-v.
 - The space option requires an owned active T1 factory and T1 dock on the same
-  hab.
+  hab and quotes the complete route through landing at the selected site.
 - The entire probe payload travels from the selected origin.
 - Material composition remains the vanilla probe composition.
 - Non-Earth freight consumes Water/Volatiles propellant.
@@ -154,8 +166,17 @@ Probes are full-payload T1 manufacturing jobs.
   Thrust Probes applies `ProbeTransferTime` exactly once to the resulting flight
   time. Hab-module freighter effects do not apply to probes.
 - Faction contribution to the applicable Mission-to-* global technology reduces
-  survey time after arrival; it does not change flight time or freight cost.
-- Multi-probe operations inherit the single-probe calculation.
+  the post-arrival single-site survey time; it does not change flight time or
+  freight cost.
+- A base may be founded only at a specifically surveyed site. Existing saves
+  with body-level survey intel remain fully surveyed.
+- Shipborne Survey Planet operations remain body-wide and reveal all sites.
+
+With Cryogenic Liquid-Fuel Rockets' 4.44 km/s effective exhaust velocity, a
+0.325-tonne Earth-launched lunar drone costs approximately 0.1452-0.1454 Boost
+depending on site latitude. Surveying all 35 modded lunar sites costs about
+5.0842 Boost, compared with 4.7352 Boost for the retired 18-tonne body-wide
+orbital probe calculation.
 
 ## AI network planning
 

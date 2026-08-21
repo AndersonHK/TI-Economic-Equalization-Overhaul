@@ -72,7 +72,7 @@ namespace TIEconomyMod
                     ShipPowerRuntime.RefreshTemplateMassCaches();
                 }
                 CouncilorRuntimeCaps.InitializeOrganizationCap();
-                Log("Loaded TI Economic Equalization Overhaul 0.9.3 for the TI 1.0.51 API surface.");
+            Log("Loaded TI Economic Equalization Overhaul 0.9.4 for the TI 1.0.51 API surface.");
                 return true;
             }
             catch (Exception exception)
@@ -296,7 +296,7 @@ namespace TIEconomyMod
         public bool enabled = true;
         public float maximumMultiplier = 4f;
         public bool researchCostEnabled = true;
-        public float researchCostMultiplier = 2.00f;
+        public float researchCostMultiplier = 2.20f;
         public bool projectResearchCostEnabled = true;
         public float projectResearchCostMultiplier = 1.40f;
         public bool aiSelectionEnabled = true;

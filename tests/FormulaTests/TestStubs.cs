@@ -441,7 +441,7 @@ namespace TIEconomyMod
         public bool enabled = true;
         public float maximumMultiplier = 4f;
         public bool researchCostEnabled = true;
-        public float researchCostMultiplier = 2.00f;
+        public float researchCostMultiplier = 2.20f;
         public bool projectResearchCostEnabled = true;
         public float projectResearchCostMultiplier = 1.40f;
         public bool aiSelectionEnabled = true;

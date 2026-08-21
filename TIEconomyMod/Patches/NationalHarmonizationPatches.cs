@@ -22,7 +22,8 @@ namespace TIEconomyMod.Patches
     public static class HistoricalClaimRegistry
     {
         private const string DarkSkies = "DarkSkies";
-        private static readonly HashSet<string> HistoricalClaims =
+        private static readonly object RefreshGate = new object();
+        private static HashSet<string> historicalClaims =
             new HashSet<string>(StringComparer.Ordinal);
         private static readonly HashSet<string> ExpansionProjects =
             new HashSet<string>(StringComparer.Ordinal)
@@ -37,15 +38,19 @@ namespace TIEconomyMod.Patches
         public static bool IsHistorical(TINationState claimant,
             TIRegionState region)
         {
-            EnsureCurrent();
-            return claimant != null && region != null &&
-                HistoricalClaims.Contains(Key(claimant.templateName,
-                    region.templateName));
+            if (claimant == null || region == null)
+            {
+                return false;
+            }
+
+            HashSet<string> snapshot = EnsureCurrent();
+            return snapshot.Contains(Key(claimant.templateName,
+                region.templateName));
         }
 
         public static void RefreshAndApply()
         {
-            Refresh();
+            HashSet<string> snapshot = Refresh();
             foreach (TINationState nation in
                 GameStateManager.IterateByClass<TINationState>())
             {
@@ -58,7 +63,7 @@ namespace TIEconomyMod.Patches
                 foreach (TIRegionState region in nation.claims)
                 {
                     if (region != null && region.nation != nation &&
-                        HistoricalClaims.Contains(Key(nation.templateName,
+                        snapshot.Contains(Key(nation.templateName,
                             region.templateName)) &&
                         !nation.hostileClaims.Contains(region))
                     {
@@ -68,55 +73,87 @@ namespace TIEconomyMod.Patches
             }
         }
 
-        private static void EnsureCurrent()
+        private static HashSet<string> EnsureCurrent()
         {
-            bool darkSkiesActive = IsDarkSkies2003Active();
-            if (!initialized || darkSkiesActive != darkSkiesActiveAtRefresh)
+            lock (RefreshGate)
             {
-                Refresh();
+                bool darkSkiesActive = IsDarkSkies2003Active();
+                if (!initialized ||
+                    darkSkiesActive != darkSkiesActiveAtRefresh)
+                {
+                    RefreshLocked(darkSkiesActive);
+                }
+
+                return historicalClaims;
             }
         }
 
-        private static void Refresh()
+        private static HashSet<string> Refresh()
         {
-            HistoricalClaims.Clear();
-            bool darkSkiesActive = IsDarkSkies2003Active();
-            foreach (TIBilateralTemplate bilateral in
-                TemplateManager.IterateByClass<TIBilateralTemplate>())
+            lock (RefreshGate)
             {
-                if (bilateral == null ||
-                    bilateral.relationType != BilateralRelationType.Claim ||
-                    string.IsNullOrEmpty(bilateral.nation1) ||
-                    string.IsNullOrEmpty(bilateral.region1))
-                {
-                    continue;
-                }
-
-                bool is2003 = Is2003Identifier(bilateral.nation1) ||
-                    Is2003Identifier(bilateral.region1);
-                // Never resolve or query Dark Skies templates merely because
-                // the DLC is installed. They are registered only for its active
-                // scenario after TI has validated ownership.
-                if (is2003 && !darkSkiesActive)
-                {
-                    continue;
-                }
-                if (!bilateral.BilateralIsInScenario())
-                {
-                    continue;
-                }
-
-                if (bilateral.hostileClaim || IsApprovedAddition(bilateral,
-                    is2003))
-                {
-                    HistoricalClaims.Add(Key(bilateral.nation1,
-                        bilateral.region1));
-                }
+                RefreshLocked(IsDarkSkies2003Active());
+                return historicalClaims;
             }
-            initialized = true;
-            darkSkiesActiveAtRefresh = darkSkiesActive;
-            Main.Log("Registered " + HistoricalClaims.Count +
-                " historical claim classifications for the active scenario.");
+        }
+
+        private static void RefreshLocked(bool darkSkiesActive)
+        {
+            try
+            {
+                HashSet<string> rebuilt = new HashSet<string>(
+                    StringComparer.Ordinal);
+                foreach (TIBilateralTemplate bilateral in
+                    TemplateManager.IterateByClass<TIBilateralTemplate>())
+                {
+                    if (bilateral == null ||
+                        bilateral.relationType !=
+                            BilateralRelationType.Claim ||
+                        string.IsNullOrEmpty(bilateral.nation1) ||
+                        string.IsNullOrEmpty(bilateral.region1))
+                    {
+                        continue;
+                    }
+
+                    bool is2003 = Is2003Identifier(bilateral.nation1) ||
+                        Is2003Identifier(bilateral.region1);
+                    // Never resolve or query Dark Skies templates merely
+                    // because the DLC is installed. They are registered only
+                    // for its active scenario after TI validates ownership.
+                    if (is2003 && !darkSkiesActive)
+                    {
+                        continue;
+                    }
+                    if (!bilateral.BilateralIsInScenario())
+                    {
+                        continue;
+                    }
+
+                    if (bilateral.hostileClaim ||
+                        IsApprovedAddition(bilateral, is2003))
+                    {
+                        rebuilt.Add(Key(bilateral.nation1,
+                            bilateral.region1));
+                    }
+                }
+
+                historicalClaims = rebuilt;
+                initialized = true;
+                darkSkiesActiveAtRefresh = darkSkiesActive;
+                Main.Log("Registered " + historicalClaims.Count +
+                    " historical claim classifications for the active " +
+                    "scenario.");
+            }
+            catch (Exception exception)
+            {
+                // The published snapshot is never mutated, so a failed rebuild
+                // can safely retain it and keep claim UI evaluation operational.
+                initialized = true;
+                darkSkiesActiveAtRefresh = darkSkiesActive;
+                Main.Log("[Error] Historical claim registry refresh failed; " +
+                    "retaining " + historicalClaims.Count +
+                    " prior classifications. " + exception);
+            }
         }
 
         private static bool IsApprovedAddition(TIBilateralTemplate bilateral,

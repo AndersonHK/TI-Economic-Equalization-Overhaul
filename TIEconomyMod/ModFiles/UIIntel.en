@@ -1,0 +1,6 @@
+UI.Intel.ProbeAll=Launch {0} site probes
+UI.Intel.ProbeAllSingle=Launch {0} site probe
+UI.Intel.ProbeAll_wCost=Launch {0} Site Probes: {1}
+UI.Intel.ProbeAllSingle_wCost=Launch {0} Site Probe: {1}
+UI.Intel.ProbeAllNone=Launch Multiple Site Probes
+UI.Intel.ProbeAllCostNone=This button will launch one probe to every eligible unsurveyed site when any are available.

@@ -53,8 +53,16 @@ namespace TIEconomyMod.Patches
             TIGameState target,
             ref TIResourcesCost __result)
         {
-            TISpaceBodyState body = target.ref_spaceBody;
-            float payloadMass = ProbePayloadMass(body);
+            TIHabSiteState site = ProbeSurveyRuntime.ResolveSite(
+                faction,
+                target);
+            if (site == null)
+            {
+                __result = new TIResourcesCost();
+                return false;
+            }
+
+            float payloadMass = ProbePayloadMass(site.parentBody);
             float conversion = TemplateManager.global.spaceResourceToTons;
             ResourceCostBuilder materials = new ResourceCostBuilder
             {
@@ -69,7 +77,7 @@ namespace TIEconomyMod.Patches
             };
             HabFreightQuote quote = HabLogistics.Quote(
                 faction,
-                target,
+                site,
                 1,
                 materials,
                 true,
@@ -83,7 +91,7 @@ namespace TIEconomyMod.Patches
 
             TIResourcesCost cost = HabConstructionCostRewrite.ToResourcesCost(
                 faction,
-                target,
+                site,
                 quote);
             float spaceDays = HabLogistics.EffectiveDeliveryTime(
                 faction,
@@ -94,7 +102,7 @@ namespace TIEconomyMod.Patches
             {
                 earthDays = HabLogistics.EarthDeliveryTime(
                     faction,
-                    target,
+                    site,
                     LogisticsDeliveryKind.Probe);
             }
 
@@ -102,41 +110,85 @@ namespace TIEconomyMod.Patches
             cost.SetCompletionTime_Days(
                 TemplateManager.global.probeConstructionTime_d +
                 deliveryDays +
-                ProbeScanDuration(faction, body));
+                ProbeSurveyRuntime.ScanDuration_days(faction, site));
             __result = cost;
             return false;
         }
 
         internal static float ProbePayloadMass(TISpaceBodyState body)
         {
-            return (TemplateManager.global.probePayloadBaseline_tons +
-                TemplateManager.global.probePayloadPerHabSite_tons *
-                body.habSites.Length) *
-                (1f + 0.5f * (body.irradiatedMultiplier - 1f));
+            return ProbeSurveyRuntime.PayloadMass_tons;
         }
+    }
 
-        private static float ProbeScanDuration(
+    [HarmonyPatch(typeof(LaunchProbeOperation), nameof(LaunchProbeOperation.EarthCost))]
+    internal static class ProbeEarthCostPatch
+    {
+        [HarmonyPrefix]
+        internal static bool Prefix(
             TIFactionState faction,
-            TISpaceBodyState target)
+            TIGameState target,
+            ref TIResourcesCost __result)
         {
-            string effect = target.template.effectToExplore;
-            TITechTemplate technology = TemplateManager
-                .IterateByClass<TITechTemplate>()
-                .FirstOrDefault(candidate => candidate.Effects.Any(
-                    candidateEffect => candidateEffect.dataName == effect));
-            float contributionRemaining = 1f;
-            if (technology != null &&
-                faction.techContributionHistory.ContainsKey(technology))
+            TIHabSiteState site = ProbeSurveyRuntime.ResolveSite(
+                faction,
+                target);
+            if (site == null)
             {
-                contributionRemaining = 1f -
-                    faction.techContributionHistory[technology];
+                __result = new TIResourcesCost();
+                return false;
             }
 
-            return Math.Max(
-                1f,
-                (1 + target.habSites.Length -
-                    target.occupiedHabSites.Count) *
-                contributionRemaining);
+            float payloadMass = ProbeSurveyRuntime.PayloadMass_tons;
+            float conversion = TemplateManager.global.spaceResourceToTons;
+            float materialUnits = payloadMass * conversion;
+            TIResourcesCost cost = new TIResourcesCost();
+            cost.ConstructCost(
+                new ResourceValue
+                {
+                    resource = FactionResource.Boost,
+                    value = (float)EarthLaunchCost.CalculateBoost(
+                        faction,
+                        site,
+                        payloadMass)
+                },
+                new ResourceValue
+                {
+                    resource = FactionResource.Money,
+                    value = materialUnits *
+                        TemplateManager.global.probeMetalsPayloadMassFraction *
+                        TIGlobalValuesState.GlobalValues
+                            .GetPurchaseResourceMarketValue(
+                                FactionResource.Metals) +
+                        materialUnits *
+                        TemplateManager.global
+                            .probeVolatilesPayloadMassFraction *
+                        TIGlobalValuesState.GlobalValues
+                            .GetPurchaseResourceMarketValue(
+                                FactionResource.Volatiles) +
+                        materialUnits *
+                        TemplateManager.global.probeFissilesPayloadMassFraction *
+                        TIGlobalValuesState.GlobalValues
+                            .GetPurchaseResourceMarketValue(
+                                FactionResource.Fissiles) +
+                        materialUnits *
+                        TemplateManager.global.probeNoblesPayloadMassFraction *
+                        TIGlobalValuesState.GlobalValues
+                            .GetPurchaseResourceMarketValue(
+                                FactionResource.NobleMetals)
+                });
+            float transferDays = TISpaceObjectState
+                .GenericTransferTimeFromEarthsSurface_d(faction, site);
+            transferDays += TIEffectsState.SumEffectsModifiers(
+                Context.ProbeTransferTime,
+                faction,
+                transferDays);
+            cost.SetCompletionTime_Days(
+                TemplateManager.global.probeConstructionTime_d +
+                transferDays +
+                ProbeSurveyRuntime.ScanDuration_days(faction, site));
+            __result = cost;
+            return false;
         }
     }
 

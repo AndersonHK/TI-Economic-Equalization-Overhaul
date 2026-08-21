@@ -1,6 +1,6 @@
 # TI Economic Equalization Overhaul
 
-Current release: **0.9.3**, targeting **Terra Invicta 1.0.51**.
+Current release: **0.9.4**, targeting **Terra Invicta 1.0.51**.
 
 The mod replaces opaque, border-sensitive scaling with economic units that
 remain understandable across countries, armies, habs, and spacecraft. It aims
@@ -91,7 +91,7 @@ Government, Inequality, and Knowledge gaps, the larger GDP-per-capita ratio,
 - Monthly national research uses a 0.0038 coefficient and the continuous
   per-capita-GDP factor `(perCapitaGDP + 12000) / 20000`, followed by the
   configured Education, Government, Cohesion, Unrest, and adviser factors.
-- Global technologies cost 2.00 times research. Mission to Space, Skywatch, and
+- Global technologies cost 2.20 times research. Mission to Space, Skywatch, and
   We Are Not Alone receive an additional 2.00 multiplier. Faction projects cost
   1.40 times their vanilla research cost.
 - AI global-technology choices keep every available candidate eligible. Native
@@ -125,13 +125,14 @@ Government, Inequality, and Knowledge gaps, the larger GDP-per-capita ratio,
 - The 2022 and 2026 scenarios begin with Mission to Space, Advanced Chemical
   Rocketry, Space Tourism, Deep Space Propulsion Concepts, and Augmented Reality
   completed. The 2022 lineup keeps Outpost Habs active; the 2026 lineup completes
-  it and continues that research lane with Mission to the Moon. Both starts also
-  include the implemented historically rescaled army/navy inventories.
+  it, completes Mission to the Moon, and continues that research lane with
+  Mission to Mars. Both starts complete Outpost Core for every human faction
+  and include the implemented historically rescaled army/navy inventories.
   Augmented Reality raises the maximum human Military technology level by 0.5,
   representing networked sensors, digital communications, augmented displays,
   and unmanned warfare without directly upgrading any nation's current level.
-  Its authored research cost is 2,000, or 4,000 after EEO's global multiplier,
-  keeping it below Space Research at 5,000.
+  Its authored research cost is 2,000, or 4,400 after EEO's global multiplier,
+  keeping it below Space Research at 5,500.
 
 ### Habs and manufacturing logistics
 
@@ -151,8 +152,11 @@ Government, Inequality, and Knowledge gaps, the larger GDP-per-capita ratio,
 - Routes are system-agnostic and include surface launch, transfer, and landing
   delta-v. Non-Earth freight consumes Water/Volatiles propellant using the probe
   rocket equation; Earth remains the fallback.
-- Hab founding and probes share the same origin rules. Probes are full-payload
-  T1 jobs and require a T1 factory-dock pair for space launch.
+- Hab founding and probes share the same origin rules. Each probe is a landed,
+  site-targeted 0.325-tonne survey drone: it reveals one site, pays the selected
+  site's landing delta-v, and requires that site to be surveyed before founding
+  a base there. Space launch remains a T1 job requiring a T1 factory-dock pair;
+  shipborne fleet surveys intentionally retain body-wide coverage.
 - Route and cost results are cached separately and refreshed lazily. Resource
   changes do not rescan origins; warm tooltip and planner calls are average O(1)
   with respect to origin count.
@@ -227,14 +231,15 @@ defaults.
 
 ## Compatibility and save behavior
 
-Version 0.9.3 is built and guarded against the installed Terra Invicta 1.0.51
+Version 0.9.4 is built and guarded against the installed Terra Invicta 1.0.51
 assemblies. Transpilers validate their expected IL shapes and fail verification
 when the target changes.
 
-The manufacturing source registry, cache generations, routes, and quotes are
-runtime-derived. They add no serialized state and rebuild lazily after loading,
-so existing saves remain compatible. Other affected systems likewise avoid new
-save fields unless a document explicitly says otherwise.
+The manufacturing source registry, cache generations, routes, quotes, and
+per-site survey state are runtime-derived from existing game data. They add no
+serialized fields. Existing body-wide survey intel still counts as surveying
+every child site, and a legacy in-flight body-targeted probe retains its
+body-wide completion behavior.
 
 The new Earth orbit-state roster, starting-station placement, and thirty-five-site
 Luna map are new-campaign features. Existing campaigns retain the orbit and site
@@ -243,7 +248,7 @@ states serialized when they were created.
 The current release archive is:
 
 ```text
-artifacts/TIEconomyMod-0.9.3-ti1.0.51.zip
+artifacts/TIEconomyMod-0.9.4-ti1.0.51.zip
 ```
 
 ## Build and verification
@@ -267,6 +272,8 @@ Verification rebuilds with warnings as errors and checks:
 - 2022/2026 starting forces and navy floors;
 - package layout, version metadata, and release archive contents.
 - Earth launch formula calibration and minimum-cost site/parking selection;
+- 0.325-tonne site-targeted probe costs, individual-site intel, founding gates,
+  legacy body-wide compatibility, and 2022/2026 technology/project grants;
 - the four inclination bands, starting-station migration, thirty-five lunar sites,
   site-specific resource bounds, 200 km minimum separation, and corrected
   resource localization.

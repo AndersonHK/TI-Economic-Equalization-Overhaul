@@ -156,6 +156,24 @@ if ($LASTEXITCODE -ne 0) {
 }
 
 powershell -NoProfile -ExecutionPolicy Bypass -File `
+    (Join-Path $scriptDirectory 'validate-probe-site-survey.ps1') `
+    -TargetManagedDir $resolvedManagedDir `
+    -ModAssemblyPath $assemblyPath `
+    -RepositoryRoot $repositoryRoot
+if ($LASTEXITCODE -ne 0) {
+    exit $LASTEXITCODE
+}
+
+powershell -NoProfile -ExecutionPolicy Bypass -File `
+    (Join-Path $scriptDirectory 'validate-hab-event-exposure.ps1') `
+    -TargetManagedDir $resolvedManagedDir `
+    -ModAssemblyPath $assemblyPath `
+    -RepositoryRoot $repositoryRoot
+if ($LASTEXITCODE -ne 0) {
+    exit $LASTEXITCODE
+}
+
+powershell -NoProfile -ExecutionPolicy Bypass -File `
     (Join-Path $scriptDirectory 'validate-ai-technology-selection.ps1') `
     -TargetManagedDir $resolvedManagedDir `
     -ModAssemblyPath $assemblyPath
@@ -476,7 +494,7 @@ $manifest = Get-Content -LiteralPath $manifestPath -Raw | ConvertFrom-Json
 if ($manifest.GameVersion -ne '1.0.51') {
     throw "ModInfo.json targets '$($manifest.GameVersion)' instead of TI 1.0.51."
 }
-if ($manifest.Version -ne '0.9.3') {
+if ($manifest.Version -ne '0.9.4') {
     throw "ModInfo.json version '$($manifest.Version)' does not match this release."
 }
 if ($manifest.AssemblyName -ne 'Assembly/TIEconomyMod.dll') {
@@ -562,10 +580,10 @@ if ($null -eq $modernStart -or
 }
 if ($null -eq $start2026 -or
     ($start2026.startingTechs -join ';') -ne
-        'DeepSystemSkywatch;WeAreNotAlone;MissiontotheMoon' -or
+        'DeepSystemSkywatch;WeAreNotAlone;MissiontoMars' -or
     ($start2026.globalTechsCompleted -join ';') -ne
-        'MissionToSpace;AdvancedChemicalRocketry;SpaceTourism;DeepSpacePropulsionConcepts;AugmentedReality;Skywatch;OutpostHabs') {
-    throw 'The 2026 start must complete the five approved baseline technologies plus Skywatch and Outpost Habs, replacing them with Deep System Skywatch and Mission to the Moon.'
+        'MissionToSpace;AdvancedChemicalRocketry;SpaceTourism;DeepSpacePropulsionConcepts;AugmentedReality;Skywatch;OutpostHabs;MissiontotheMoon') {
+    throw 'The 2026 start must complete Mission to the Moon and replace it with Mission to Mars.'
 }
 foreach ($scenario in @($modernStart, $start2026)) {
     $duplicateStartingTechnologies = @(
@@ -584,12 +602,13 @@ $expectedCompletedStartProjects = @(
     'Project_PlatformCore',
     'Project_SolarCollector',
     'Project_SpaceScienceLab',
-    'Project_ReusableRockets'
+    'Project_ReusableRockets',
+    'Project_OutpostCore'
 )
 foreach ($scenario in @($modernStart, $start2026)) {
     if (($scenario.projectsCompleted -join ';') -ne
         ($expectedCompletedStartProjects -join ';')) {
-        throw "Start '$($scenario.dataName)' must complete the eight baseline projects and Reusable Rockets."
+        throw "Start '$($scenario.dataName)' must complete the baseline projects, Reusable Rockets, and Outpost Core."
     }
 }
 $vanillaTechnologyPath = Join-Path $templatesDirectory 'TITechTemplate.json'
@@ -932,8 +951,8 @@ if ($assemblyFile.LastWriteTime -lt $buildStarted.AddSeconds(-2)) {
     throw 'Packaged DLL predates this verification build.'
 }
 $assemblyVersion = [Reflection.AssemblyName]::GetAssemblyName($assemblyPath).Version.ToString()
-if ($assemblyVersion -ne '0.9.3.0') {
-    throw "Assembly version '$assemblyVersion' does not match release 0.9.3."
+if ($assemblyVersion -ne '0.9.4.0') {
+    throw "Assembly version '$assemblyVersion' does not match release 0.9.4."
 }
 $assemblyHash = (Get-FileHash -LiteralPath $assemblyPath -Algorithm SHA256).Hash
 
@@ -1028,7 +1047,7 @@ if (Test-Path -LiteralPath $imagePath) {
     Copy-Item -LiteralPath $imagePath -Destination $stagingDirectory
 }
 
-$zipPath = Join-Path $artifactDirectory 'TIEconomyMod-0.9.3-ti1.0.51.zip'
+$zipPath = Join-Path $artifactDirectory 'TIEconomyMod-0.9.4-ti1.0.51.zip'
 if (Test-Path -LiteralPath $zipPath) {
     Remove-Item -LiteralPath $zipPath
 }

@@ -52,6 +52,7 @@ namespace TIEconomyMod.FormulaTests
                 TestNationalMergers();
                 TestEnvironmentUnitySpoilsAndEmissions();
                 TestHabRebalanceMath();
+                TestHabEventExposureMath();
                 TestEarthLaunchCostMath();
                 TestWeightValidation(weights);
                 TestDisabledFallback();
@@ -802,8 +803,8 @@ namespace TIEconomyMod.FormulaTests
 
             float technologyCost = 1000f;
             GlobalTechnologyResearchCostPatch.Postfix(ref technologyCost);
-            Near(2000f, technologyCost, 0.0001f,
-                "global technology costs double");
+            Near(2200f, technologyCost, 0.0001f,
+                "global technology costs add another twenty percent of base");
 
             float projectCost = 1000f;
             FactionProjectResearchCostPatch.Postfix(ref projectCost);
@@ -1714,6 +1715,71 @@ namespace TIEconomyMod.FormulaTests
                 "disabled Spoils adds no GDP");
         }
 
+        private static void TestHabEventExposureMath()
+        {
+            Near(0f,
+                HabEventExposureMath.ExposureMultiplier(-1),
+                0f,
+                "negative orbital-hab count clamps to zero");
+            Near(0f,
+                HabEventExposureMath.ExposureMultiplier(0),
+                0f,
+                "zero orbital habs suppress ambient hazard weight");
+            Near(1f / 30f,
+                HabEventExposureMath.ExposureMultiplier(1),
+                0.000001f,
+                "one orbital hab has one-thirtieth native exposure");
+            Near(2f / 30f,
+                HabEventExposureMath.ExposureMultiplier(2),
+                0.000001f,
+                "two orbital habs have two-thirtieths native exposure");
+            Near(0.5f,
+                HabEventExposureMath.ExposureMultiplier(15),
+                0f,
+                "fifteen orbital habs have half native exposure");
+            Near(29f / 30f,
+                HabEventExposureMath.ExposureMultiplier(29),
+                0.000001f,
+                "twenty-nine orbital habs remain below native exposure");
+            Near(1f,
+                HabEventExposureMath.ExposureMultiplier(30),
+                0f,
+                "thirty orbital habs restore native exposure");
+            Near(1f,
+                HabEventExposureMath.ExposureMultiplier(31),
+                0f,
+                "orbital exposure remains capped above thirty habs");
+
+            Near(0.1f,
+                HabEventExposureMath.AdjustSelectionWeight(
+                    HabEventExposureMath.MeteorStrikeEvent,
+                    1.5f,
+                    2),
+                0.000001f,
+                "meteor strike weight scales with orbital exposure");
+            Near(1f,
+                HabEventExposureMath.AdjustSelectionWeight(
+                    HabEventExposureMath.HabAccidentEvent,
+                    2f,
+                    15),
+                0f,
+                "hab accident weight scales with orbital exposure");
+            Near(4f,
+                HabEventExposureMath.AdjustSelectionWeight(
+                    "event_OrbitalDebrisStrike",
+                    4f,
+                    1),
+                0f,
+                "orbital debris remains at native weight");
+            Near(7f,
+                HabEventExposureMath.AdjustSelectionWeight(
+                    "event_HabModuleMalfunction",
+                    7f,
+                    1),
+                0f,
+                "mission-control malfunction remains at native weight");
+        }
+
         private static void TestHabRebalanceMath()
         {
             Near(150f,
@@ -2619,6 +2685,25 @@ namespace TIEconomyMod.FormulaTests
                     genericEv),
                 0.000001f,
                 "reference Earth launch is one Boost per ten tonnes");
+
+            Near(
+                0.145215f,
+                (float)EarthLaunchCostMath.BoostCost(
+                    0.325d,
+                    0.1d,
+                    6.646570d,
+                    4.44d),
+                0.000002f,
+                "Surveyor-class lunar site drone includes landing delta-v");
+            Near(
+                4.735218f,
+                (float)EarthLaunchCostMath.BoostCost(
+                    18d,
+                    0.1d,
+                    4.294550443d,
+                    4.44d),
+                0.000002f,
+                "former thirty-five-site body probe comparison");
 
             double plus40 = EarthLaunchCostMath.AscentDeltaV_kps(
                 mu, radius, rotationPeriod, 40d, 500d, 40d);

@@ -37,7 +37,7 @@
     <enabled>true</enabled>
     <maximumMultiplier>4</maximumMultiplier>
     <researchCostEnabled>true</researchCostEnabled>
-    <researchCostMultiplier>2</researchCostMultiplier>
+    <researchCostMultiplier>2.2</researchCostMultiplier>
     <projectResearchCostEnabled>true</projectResearchCostEnabled>
     <projectResearchCostMultiplier>1.4</projectResearchCostMultiplier>
     <aiSelectionEnabled>true</aiSelectionEnabled>

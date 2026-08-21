@@ -37,14 +37,14 @@ helmet-mounted displays, augmented command interfaces, and contemporary drone
 warfare; it raises the attainable ceiling without instantly modernizing any
 nation's fielded equipment. To price that additional strategic value without
 overtaking its direct successor, the mod raises `AugmentedReality`'s authored
-research cost from 1,500 to 2,000. The global 2.0 research-cost multiplier makes
-the in-game cost 4,000, still below `SpaceResearch` at 5,000. Both modern starts
+research cost from 1,500 to 2,000. The global 2.2 research-cost multiplier makes
+the in-game cost 4,400, still below `SpaceResearch` at 5,500. Both modern starts
 already complete `AugmentedReality`, so the new price primarily affects the 2003
 and custom research paths rather than their opening state.
 
-The 2026 scenario additionally completes `Skywatch` and `OutpostHabs`. It
-replaces them in the three active global-research slots with
-`DeepSystemSkywatch` and `MissiontotheMoon`, respectively.
+The 2026 scenario additionally completes `Skywatch`, `OutpostHabs`, and
+`MissiontotheMoon`. It continues the first lane with `DeepSystemSkywatch` and
+replaces the completed lunar mission slot with `MissiontoMars`.
 
 `DeepSystemSkywatch` is the direct 1,000-point successor to `Skywatch`. It
 preserves the Space Science and faction-objective progression lane while making
@@ -57,26 +57,26 @@ off-world habitation, not an already constructed lunar base. By the 2026 start,
 the completed Artemis II crewed lunar flight and the accumulated robotic lunar
 landing, surface-operations, resource-survey, navigation, and communications
 programs justify treating the global design foundation as established. The
-separate `Project_OutpostCore` remains uncompleted and subject to its normal
-faction unlock, preserving the engineering step required before a faction can
-build an outpost. `MissiontotheMoon` is the direct successor and keeps the
-longer-term lunar habitation and exploitation program in active research.
+separate `Project_OutpostCore` is scenario-completed for every faction at both
+modern starts, representing operational small-outpost engineering without
+constructing a base or consuming Mission Control. `MissiontotheMoon` is
+completed in 2026, while `MissiontoMars` becomes the active continuation.
 
 The intended resolved starts are:
 
 | Scenario | Active global research | Completed global technologies |
 |---|---|---|
 | 2022 | `Skywatch`; `WeAreNotAlone`; `OutpostHabs` | `MissionToSpace`; `AdvancedChemicalRocketry`; `SpaceTourism`; `DeepSpacePropulsionConcepts`; `AugmentedReality` |
-| 2026 | `DeepSystemSkywatch`; `WeAreNotAlone`; `MissiontotheMoon` | `MissionToSpace`; `AdvancedChemicalRocketry`; `SpaceTourism`; `DeepSpacePropulsionConcepts`; `AugmentedReality`; `Skywatch`; `OutpostHabs` |
+| 2026 | `DeepSystemSkywatch`; `WeAreNotAlone`; `MissiontoMars` | `MissionToSpace`; `AdvancedChemicalRocketry`; `SpaceTourism`; `DeepSpacePropulsionConcepts`; `AugmentedReality`; `Skywatch`; `OutpostHabs`; `MissiontotheMoon` |
 
 ## 2026 active-research replacements
 
-`DeepSystemSkywatch` replaces completed `Skywatch`, while `MissiontotheMoon`
-replaces completed `OutpostHabs`. `MissiontotheMoon` costs 1,000 research and
-requires only `OutpostHabs`, so it is legal at campaign creation and preserves
-the outpost-to-lunar-settlement research lane. `MissiontoMars` and
-`SpaceMiningandRefining` are also newly legal successors, but they are not used
-as starting slots.
+`DeepSystemSkywatch` replaces completed `Skywatch`. `MissiontotheMoon` is also
+completed, and `MissiontoMars` occupies its former active slot. The installed
+Mars technology costs 2,500 before the global multiplier and requires
+`OutpostHabs` plus `Skywatch`; both prerequisites are completed in 2026. Its
+opening effective cost is therefore 5,500. This advances the scenario from an
+established lunar program toward the next crewed deep-space destination.
 
 The alternatives below apply specifically to the slot opened by completing
 `Skywatch`. The selected option is listed first.
@@ -96,7 +96,8 @@ resolved.
 The eight original scenario-granted projects have no global-technology
 prerequisite: their prerequisites are either empty or other projects. The mod
 also grants Reusable Rockets because both starts complete its sole prerequisite,
-`AdvancedChemicalRocketry`.
+`AdvancedChemicalRocketry`, and grants Outpost Core as an established modern
+small-surface-hab engineering package.
 
 | Completed project | Project prerequisites |
 |---|---|
@@ -109,6 +110,7 @@ also grants Reusable Rockets because both starts complete its sole prerequisite,
 | Solar Collector | Platform Core, or Outpost Core as the alternative prerequisite |
 | Space Science Lab | Platform Core, or Outpost Core as the alternative prerequisite |
 | Reusable Rockets | `AdvancedChemicalRocketry` |
+| Outpost Core | `OutpostHabs`; scenario completion intentionally bypasses the normal unlock timing |
 
 ## Projects and technologies gated by the shared completed technologies
 
@@ -150,10 +152,11 @@ and Interrogation Techniques. Those projects retain their other prerequisites,
 unlock chances, and faction research costs. The technology also carries the
 native all-nations `Effect_IncreaseMaxArmyTechLevel` effect, valued at 0.25.
 
-In the 2026 start only, completed `OutpostHabs` directly opens
-`MissiontotheMoon`, `MissiontoMars`, and `SpaceMiningandRefining`. It also makes
-`Project_OutpostCore` eligible for its normal 90% initial unlock roll; the
-project is deliberately not scenario-completed.
+In the 2026 start, completed `OutpostHabs` directly opens
+`MissiontotheMoon`, `MissiontoMars`, and `SpaceMiningandRefining`; the scenario
+completes the lunar mission and begins the Mars mission. Both modern starts
+scenario-complete `Project_OutpostCore`, bypassing its normal 90% initial unlock
+roll and 300-point faction-research cost.
 
 ## Post-implementation review of other 2022–2026 changes
 
@@ -168,7 +171,7 @@ path.
 | `AdvancedNeuralNetworks` | Large multimodal neural networks demonstrated broad text, image, and professional-task performance beginning in 2023. | Strongest 2026-only candidate by description. Do not grant yet: the game requires `PhotonicComputing`, while practical modern AI remains electronic rather than dependent on a completed all-photonic computing transition. This needs a prerequisite/design decision, not a roster-only edit. |
 | `Biotechnology` | The FDA approved Casgevy in December 2023, the first approved CRISPR/Cas9 therapy. | Important 2026 milestone, but the generic Biotechnology field was already mature in 2022. Treating this as a completed technology would be more defensible for both starts than for 2026 alone. |
 | `AugmentedReality` | HoloLens shipped in 2016, HoloLens 2 shipped in 2019, and the Army tested the HoloLens-derived IVAS system before and during 2022. Later consumer systems broadened adoption. | Completed in both starts: the game's industrial, communications, and military sensory-overlay threshold had already been crossed by 2022. |
-| `OutpostHabs` | Artemis II completed its crewed lunar flight in April 2026 after several years of robotic lunar landing, surface-operations, and resource-survey missions. | Completed only in 2026 as a global architecture. Outpost Core remains a separate faction project, and Mission to the Moon replaces Outpost Habs as active global research. |
+| `OutpostHabs` | Artemis II completed its crewed lunar flight in April 2026 after several years of robotic lunar landing, surface-operations, and resource-survey missions. | Completed only in 2026 as a global architecture. Outpost Core is scenario-completed in both modern starts as practical small-outpost engineering; Mission to the Moon is completed in 2026 and Mission to Mars becomes active. |
 | `HighEnergyLasers` | A tactically relevant 300 kW-class laser was delivered to the U.S. Department of Defense on 15 September 2022. | The milestone predates the modern campaign start and therefore does not distinguish 2026. The technology also directly exposes Laser Engine and E-Beam Drive projects, so completing it carries more hardware significance than an umbrella concept grant. |
 | Fusion branches | Lawrence Livermore achieved laboratory fusion ignition on 5 December 2022 and repeated higher-yield shots afterward. | A major post-start scientific milestone, but far short of `NuclearFusioninSpace`, which assumes complete space reactors, power conversion, heat rejection, and propulsion integration. Highlight only; do not complete. |
 | Asteroid mission technologies | DART changed an asteroid's orbit on 26 September 2022; OSIRIS-REx returned a Bennu sample on 24 September 2023. | These materially strengthen planetary-defense and asteroid-operations experience, but do not satisfy the game's `MissiontotheAsteroids` package of Mars access, space mining, and deep-space propulsion. |

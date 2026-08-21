@@ -2,7 +2,38 @@
 
 Status: implemented, automatically verified, and deployed for manual testing on
 2026-08-21. Targets Terra Invicta 1.0.51 and Economic Equalization Overhaul
-0.9.3.
+0.9.4.
+
+## 2026-08-21 historical-registry crash remediation
+
+Status: implemented, automatically verified, packaged, and deployed after a
+loaded 2028 save crashed while the nation-region panel evaluated claim
+hostility. Focused manual retest pending.
+
+`Player.log` records `NullReferenceException` inside
+`HashSet<string>.AddIfNotPresent`, called from
+`HistoricalClaimRegistry.Refresh` at IL offset `0x009f`. Inspection of the
+deployed DLL maps that offset to the registry's `HistoricalClaims.Add(...)`
+call. A successful `Registered 145 historical claim classifications` message
+immediately precedes the failing refresh, demonstrating overlapping or
+re-entrant rebuilds of the same mutable `HashSet`. The generated key is
+non-null, and the probe/site-survey patches do not appear in the stack.
+
+The approved repair is:
+
+1. serialize refresh decisions and template enumeration behind a private lock;
+2. build each registry in a new local `HashSet<string>`;
+3. publish the completed set with one reference assignment and never mutate a
+   published snapshot;
+4. have readers retain a local snapshot reference for each evaluation;
+5. publish initialization and Dark Skies state under the same lock; and
+6. if a rebuild throws, retain the last valid snapshot, mark the attempted
+   scenario state current, and log the failure rather than closing the game.
+
+Regression validation must reject in-place `Clear`/`Add` mutation of the
+published set and require the lock, local rebuild, atomic publication, and
+retain-last-snapshot error path. The focused manual test is to load the affected
+2028 save and repeatedly open regions with ordinary and historical claims.
 
 ## Requested behavior
 
@@ -532,14 +563,18 @@ scenario lookup unless TI reports DLC validation complete, ownership of
 `DarkSkies`, and an active scenario that requires it. The four 2003 Russian
 claims on Donetsk, Kharkiv, Kiev, and Odesa are explicitly excluded.
 
-The required deployment pipeline passed against the installed TI 1.0.51
-assemblies: `1,121` formula assertions, `173` Harmony patches, `99`
-implementation-matrix rows, the exact `108 + 36 = 144` project-family data
-normalization audit, historical-pair coverage, Dark Skies gating, release
-packaging, and a verified `45`-file deployment. The deployed DLL SHA-256 is
-`3C22FF6E9EBDEEE4C284DFA739B6664F45F6420311D86028B633A8ECDD3ECA7F`.
 The deployed evaluator reads `TINationState.perCapitaGDP` for both nations; the
 validation pipeline rejects source regressions to total `TINationState.GDP`.
+
+The 2026-08-21 crash remediation replaced in-place historical-registry mutation
+with a locked local rebuild and atomic snapshot publication. Its validator
+requires the synchronization, publication, and retain-last-snapshot contracts
+and rejects any return to `HistoricalClaims.Clear()`-style mutation. The full
+Version 0.9.4 deployment pipeline then passed `1,123` formula assertions, all
+`173` Harmony patches, the 99-row implementation matrix, national-harmonization
+data validation, release packaging, and the 45-file enabled-mod mirror. The
+crash-fixed deployed DLL SHA-256 is
+`933AF3E2FDD2B4440D93D95EC3303FB895C34B50FB57BD27B39FFF9721C1843B`.
 
 Manual in-game results remain pending. The test matrix above is the handoff
 authority, with priority on score/threshold tooltips, exact federation gating,

@@ -372,8 +372,8 @@ namespace TIEconomyMod.Patches
                 return;
             }
 
-            // This method exists only on global technologies. The default x2.00 changes
-            // a 1,000 research technology to 2,000 after vanilla applies its modifiers.
+            // This method exists only on global technologies. The default x2.20 changes
+            // a 1,000 research technology to 2,200 after vanilla applies its modifiers.
             __result *= settings.researchCostMultiplier;
         }
     }

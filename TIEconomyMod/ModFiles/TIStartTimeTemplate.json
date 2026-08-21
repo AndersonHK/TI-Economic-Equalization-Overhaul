@@ -22,7 +22,8 @@
       "Project_PlatformCore",
       "Project_SolarCollector",
       "Project_SpaceScienceLab",
-      "Project_ReusableRockets"
+      "Project_ReusableRockets",
+      "Project_OutpostCore"
     ]
   },
   {
@@ -30,7 +31,7 @@
     "startingTechs": [
       "DeepSystemSkywatch",
       "WeAreNotAlone",
-      "MissiontotheMoon"
+      "MissiontoMars"
     ],
     "globalTechsCompleted": [
       "MissionToSpace",
@@ -39,7 +40,8 @@
       "DeepSpacePropulsionConcepts",
       "AugmentedReality",
       "Skywatch",
-      "OutpostHabs"
+      "OutpostHabs",
+      "MissiontotheMoon"
     ],
     "projectsCompleted": [
       "Project_Solid-FuelSpaceRockets",
@@ -50,7 +52,8 @@
       "Project_PlatformCore",
       "Project_SolarCollector",
       "Project_SpaceScienceLab",
-      "Project_ReusableRockets"
+      "Project_ReusableRockets",
+      "Project_OutpostCore"
     ]
   }
 ]
