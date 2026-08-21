@@ -75,9 +75,9 @@
     <maximumDirectionalMultiplier>3</maximumDirectionalMultiplier>
     <referenceGdpBillions>100</referenceGdpBillions>
     <minimumGdpBillions>1</minimumGdpBillions>
-    <economyChangeAtReferenceGdp>0.0015</economyChangeAtReferenceGdp>
-    <welfareChangeAtReferenceGdp>-0.01333332</welfareChangeAtReferenceGdp>
-    <spoilsChangeAtReferenceGdp>0.00666668</spoilsChangeAtReferenceGdp>
+    <economyChangeAtReferenceGdp>0.00225</economyChangeAtReferenceGdp>
+    <welfareChangeAtReferenceGdp>-0.01999998</welfareChangeAtReferenceGdp>
+    <spoilsChangeAtReferenceGdp>0.01000002</spoilsChangeAtReferenceGdp>
     <climateChangeMultiplier>4</climateChangeMultiplier>
     <economyMaximumResourceMultiplier>0.6</economyMaximumResourceMultiplier>
     <spoilsMaximumResourceMultiplier>1</spoilsMaximumResourceMultiplier>

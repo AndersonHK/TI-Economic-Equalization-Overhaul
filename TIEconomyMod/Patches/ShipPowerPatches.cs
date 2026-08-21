@@ -32,6 +32,41 @@ namespace TIEconomyMod.Patches
         }
     }
 
+    [HarmonyPatch(typeof(TISpaceShipState), "DriveHeat_GJ")]
+    public static class InstalledDriveHeatPatch
+    {
+        [HarmonyPrefix]
+        public static bool Prefix(
+            ref float __result, TISpaceShipState __instance)
+        {
+            TISpaceShipTemplate template = __instance == null
+                ? null
+                : __instance.template;
+            TIDriveTemplate drive = template == null
+                ? null
+                : template.driveTemplate;
+            TIPowerPlantTemplate powerPlant = template == null
+                ? null
+                : template.powerPlantTemplate;
+            if (!ShipPowerFeature.ThermalAccountingEnabled ||
+                drive == null || powerPlant == null)
+            {
+                return true;
+            }
+
+            ShipBalanceSettings settings = Main.settings.shipBalance;
+            __result = PowerPlantThermalMath.PlantWasteHeat_GW(
+                drive.openCycleCooling,
+                template.drivePowerRequirement_GW,
+                0f,
+                powerPlant.efficiency,
+                settings.openCycleResidualHeatEnabled
+                    ? settings.openCycleDriveHeatFraction
+                    : 0f);
+            return false;
+        }
+    }
+
     public static class ShipPowerRuntime
     {
         public static void RefreshTemplateMassCaches()
@@ -310,9 +345,11 @@ namespace TIEconomyMod.Patches
         public static string GetHullScaledDrivePower(
             TIDriveTemplate drive, ShipModuleListItem listItem)
         {
-            float power_GW = ShipBalanceMath.ScaledDriveValue(
-                drive.powerRequirement_GW,
-                DriveDisplayScale(drive, listItem));
+            TISpaceShipTemplate ship = listItem == null ||
+                listItem.controller == null
+                    ? null
+                    : listItem.controller.newShipTemplate;
+            float power_GW = GetInstalledDrivePower_GW(drive, ship);
             return TIUtilities.LocalizeGW(
                 "UI.Fleets.RequiredPowerGW", power_GW);
         }
@@ -440,9 +477,17 @@ namespace TIEconomyMod.Patches
             TISpaceShipTemplate shipTemplate,
             TISpaceShipState ship)
         {
-            if (string.IsNullOrEmpty(description) || drive == null ||
-                Math.Abs(
-                    DriveDisplayScale(drive, shipTemplate) - 1f) <= 0.0001f)
+            if (string.IsNullOrEmpty(description) || drive == null)
+            {
+                return description;
+            }
+
+            float scale = DriveDisplayScale(drive, shipTemplate);
+            float installedPower_GW =
+                GetInstalledDrivePower_GW(drive, shipTemplate);
+            if (Math.Abs(scale - 1f) <= 0.0001f &&
+                Math.Abs(installedPower_GW - drive.powerRequirement_GW) <=
+                    0.0001f)
             {
                 return description;
             }
@@ -493,10 +538,26 @@ namespace TIEconomyMod.Patches
         public static string GetHullScaledDrivePower(
             TIDriveTemplate drive, TISpaceShipTemplate ship)
         {
-            float power_GW = ShipBalanceMath.ScaledDriveValue(
-                drive.powerRequirement_GW, DriveDisplayScale(drive, ship));
+            float power_GW = GetInstalledDrivePower_GW(drive, ship);
             return TIUtilities.LocalizeGW(
                 "UI.Fleets.RequiredPowerGW", power_GW);
+        }
+
+        public static float GetInstalledDrivePower_GW(
+            TIDriveTemplate drive, TISpaceShipTemplate ship)
+        {
+            if (drive == null)
+            {
+                return 0f;
+            }
+
+            float usefulDrivePower_GW = ShipBalanceMath.ScaledDriveValue(
+                drive.powerRequirement_GW,
+                DriveDisplayScale(drive, ship));
+            return OpenCycleReactorDemandFeature.RequiredReactorOutput_GW(
+                usefulDrivePower_GW,
+                drive,
+                ship == null ? null : ship.powerPlantTemplate);
         }
 
         public static string GetHullScaledDriveCost(
@@ -539,8 +600,7 @@ namespace TIEconomyMod.Patches
                 drive.thrust_N, scale);
             entries[4].textElement.text = SanitizeModuleTableText(
                 GetHullScaledDrivePower(drive, ship), false);
-            entries[4].value = ShipBalanceMath.ScaledDriveValue(
-                drive.powerRequirement_GW, scale);
+            entries[4].value = GetInstalledDrivePower_GW(drive, ship);
             entries[5].textElement.text = SanitizeModuleTableText(
                 GetHullScaledDriveCost(drive, ship), true);
             entries[5].value = drive.buildCost().resourceCosts
@@ -826,9 +886,9 @@ namespace TIEconomyMod.Patches
         private static bool DriveFitsEffectiveOutput(
             TISpaceShipTemplate ship, TIDriveTemplate drive)
         {
-            float requiredPower_GW = ShipBalanceMath.ScaledDriveValue(
-                drive.powerRequirement_GW,
-                HullDriveScalingFeature.Multiplier(ship, drive));
+            float requiredPower_GW =
+                ShipModuleEnergyColumnCompatibilityPatch
+                    .GetInstalledDrivePower_GW(drive, ship);
             float effectiveOutput_GW =
                 ReactorBayCapacityFeature.EffectiveOutput_GW(
                     ship, ship.powerPlantTemplate);

@@ -3,6 +3,38 @@
 This is a decision log for the proposed ship rebalance. Entries here describe
 the balance decisions as well as their implementation status.
 
+## 2026-08-20
+
+### Implemented and deployed: open-cycle reactor demand and installed-drive heat consistency
+
+- Model an open-cycle drive's required reactor output as
+  `Q = D / (1 - f × (1 - efficiency))`, where `D` is useful drive input after
+  hull-art scaling and `f` is the retained-loss fraction. The default `f = 1%`
+  sends the other 99% of conversion loss into the propellant while conserving
+  `Q = D + retained heat`.
+- Make the ship-level drive-power getter the shared authority for plant mass,
+  cost, design and live generation demand, waste heat, and localized output.
+- Apply the same demand to ship and shipless compatibility, the duplicated
+  static AI drive filter, reactor-bay volume, appearance-driven cluster
+  reconciliation, and designer power text and sort values.
+- Fix the pre-existing combat-burn inconsistency: `DriveHeat_GJ` now uses the
+  installed ship-level requirement instead of raw drive-template power, so
+  hull-art scaling and open-cycle coupling cannot diverge from cached live
+  propulsion generation.
+- Audit every installed-assembly use of raw drive power and plant waste heat.
+  The `100 GW` fusion-art selector intentionally remains intrinsic/raw; no
+  additional demand-bearing consumers remain uncovered.
+- Record the formula, patch surface, audit, and manual test procedure in the
+  [open-cycle reactor demand and heat report](open-cycle-reactor-demand-and-heat.md),
+  and update the implementation matrix without replacing its in-progress
+  unrelated entries.
+- The TI 1.0.51 deployment passed **1,110 formula assertions**, all **157
+  Harmony patches**, the **96-row** implementation matrix, complete release
+  verification, packaging, and the **45-file** enabled-mod deployment. DLL
+  SHA-256:
+  `9C184342CD6842F6B3E1B543D5E77F54A44EDF8D3160EC1361D32BA90F8DA8F7`.
+  Manual in-game testing remains pending.
+
 ## 2026-08-19
 
 ### Implemented and deployed: refit hull-appearance lock

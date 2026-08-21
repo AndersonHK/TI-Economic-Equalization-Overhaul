@@ -298,7 +298,42 @@ try {
         1 `
         'Core-resource global GDP reason'
 
-    Write-Host 'PASS: target IL contains every guarded TI 1.0.51 patch point, including coup effects, research ownership, councilor caps, climate damage, and nuclear GDP effects.'
+    $driveCompatibility = Read-MethodIl 'TIDriveTemplate' 'IsCompatible'
+    Assert-Count $driveCompatibility `
+        'TIDriveTemplate::get_powerRequirement_GW\(\)' `
+        1 `
+        'Drive compatibility raw power input'
+    Assert-Count $driveCompatibility `
+        'TIPowerPlantTemplate::maxOutput_GW' `
+        1 `
+        'Drive compatibility plant-output cap'
+
+    $staticDriveFilter = Read-MethodIl `
+        'TISpaceShipTemplate' `
+        'ValidDrivesForPowerPlants'
+    Assert-Count $staticDriveFilter `
+        'TIDriveTemplate::get_powerRequirement_GW\(\)' `
+        1 `
+        'Static drive filtering raw power input'
+    Assert-Count $staticDriveFilter `
+        'TIPowerPlantTemplate::maxOutput_GW' `
+        1 `
+        'Static drive filtering plant-output cap'
+
+    $shipState = 'PavonisInteractive.TerraInvicta.TISpaceShipState'
+    $driveHeat = Read-MethodIl $shipState 'DriveHeat_GJ'
+    Assert-Count $driveHeat `
+        'TIDriveTemplate::get_powerRequirement_GW\(\)' `
+        1 `
+        'Combat drive heat raw template power bypass'
+
+    $powerCache = Read-MethodIl $shipState 'CacheInternalPowerStats'
+    Assert-Count $powerCache `
+        'TISpaceShipTemplate::get_drivePowerRequirement_GW\(\)' `
+        1 `
+        'Live propulsion generation ship-template power source'
+
+    Write-Host 'PASS: target IL contains every guarded TI 1.0.51 patch point, including coup effects, research ownership, councilor caps, climate damage, nuclear GDP effects, and ship drive-power consumers.'
 }
 finally {
     $resolvedProbe = (Resolve-Path -LiteralPath $probeDirectory).Path

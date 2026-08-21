@@ -107,6 +107,14 @@ if ($LASTEXITCODE -ne 0) {
 }
 
 powershell -NoProfile -ExecutionPolicy Bypass -File `
+    (Join-Path $scriptDirectory 'validate-campaign-difficulty-patches.ps1') `
+    -TargetManagedDir $resolvedManagedDir `
+    -ModAssemblyPath $assemblyPath
+if ($LASTEXITCODE -ne 0) {
+    exit $LASTEXITCODE
+}
+
+powershell -NoProfile -ExecutionPolicy Bypass -File `
     (Join-Path $scriptDirectory 'validate-projectile-collision-patches.ps1') `
     -TargetManagedDir $resolvedManagedDir `
     -ModAssemblyPath $assemblyPath
@@ -900,10 +908,12 @@ if ($mineUiText -match 'allowed mines|free.mine|quadratic|network of mines and c
 $globals = @(Get-Content -LiteralPath $globalOverrides -Raw | ConvertFrom-Json)
 $globalConfig = @($globals | Where-Object { $_.dataName -eq 'globalConfig' })
 if ($globalConfig.Count -ne 1 -or
+    $null -eq $globalConfig[0].controlPointMaintenanceFreebies -or
+    [int]$globalConfig[0].controlPointMaintenanceFreebies -ne 0 -or
     [int]$globalConfig[0].councilorMaxOrgs -ne 18 -or
     [double]$globalConfig[0].crewWaterConsumptionTons_year -ne 3 -or
     [double]$globalConfig[0].crewVolatilesConsumptionTons_year -ne 3) {
-    throw 'Global configuration must set the councilor organization cap to 18 and preserve the 3-ton crew-resource overrides.'
+    throw 'Global configuration must set base Control Point Capacity to 0, set the councilor organization cap to 18, and preserve the 3-ton crew-resource overrides.'
 }
 
 $assemblyFile = Get-Item -LiteralPath $assemblyPath

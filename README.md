@@ -35,9 +35,9 @@ historical research and deferred work.
 - Factor-balance Economy growth: capital returns are constrained by effective
   labor and resources, while all 149 global technologies compound productivity
   and progressively substitute for those constraints.
-- GDP-normalized Economy, Welfare, and Spoils Inequality effects at twice
-  baseline strength, with smooth bounded behavior on TI's 1-9 scale; climate-
-  tagged Inequality changes are also doubled.
+- GDP-normalized Economy, Welfare, and Spoils Inequality effects at 50% above
+  their prior tuned coefficients, with smooth bounded behavior on TI's 1-9
+  scale; climate-tagged Inequality changes remain quadrupled and unchanged.
 - GDP-only Economy emissions; no direct atmospheric removal from Environment
   IP; GDP-relative sustainability transition; 0.90 warm-climate GDP damage; no
   direct Spoils gas pulse; land-relative nuclear damage.
@@ -61,6 +61,9 @@ historical research and deferred work.
 
 ### Control, research, and councilors
 
+- New campaigns default Base Control Point Capacity to zero on every
+  difficulty. Realistic Space Combat Scale and Realistic Delta-V Usage default
+  on only for Cinematic; Normal, Veteran, and Brutal default both off.
 - Country Control Point usage is multiplied by 1.20 before the active scenario
   modifier. The five management technologies independently reduce the exponent
   by 0.02/0.03/0.05/0.05/0.05.

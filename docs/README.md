@@ -30,6 +30,9 @@ when prose and runtime behavior disagree.
 - [Cohesion, Inequality, and Government coefficient report](national-social-coefficients-report.md):
   comprehensive formula, coefficient, retained-vanilla, priority-speed, event,
   and cross-effect inventory for tuning the three national social scores.
+- [Inequality priority coefficient scaling](inequality-priority-coefficient-scaling.md):
+  approved and implemented 50% increase to the Economy, Welfare, and Spoils
+  priority coefficients, with climate and other direct sources unchanged.
 - [Coup frequency and Inequality stabilization](coup-inequality-stabilization-report.md):
   zero-Cohesion organic-coup-loop analysis, implemented `-0.10` Inequality
   change, immediate Cohesion-equilibrium reset, and manual-test plan.
@@ -69,6 +72,11 @@ when prose and runtime behavior disagree.
 
 ## Historical, exploratory, and deferred material
 
+- [Campaign difficulty preset control-cap assessment](campaign-difficulty-preset-control-cap.md)
+  traces the new-campaign preset code and JSON merge path, establishes that a
+  shared zero Base Control Point Capacity is a sparse global-config override,
+  and records the approved Normal combat-realism defaults, validation, and
+  manual-test plan.
 - [National harmonization eligibility plan](national-harmonization-eligibility-plan.md)
   traces the current dynamic claim-hostility and peaceful-unification gates,
   evaluates the proposed score, and records the not-yet-implemented patch and

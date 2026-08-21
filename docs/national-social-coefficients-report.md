@@ -312,14 +312,14 @@ revolution, secession, and other direct `AddToInequality` calls bypass it.
 resourceRatio = resourceRegions * 1,000 / max(GDP_billions, 1)
 resourceCurve = resourceRatio^0.30 / (1 + resourceRatio^0.30)
 resourceMultiplier = 1 + 0.60 * resourceCurve
-raw = +0.0015 * 100 / max(GDP_billions, 1) * resourceMultiplier
+raw = +0.00225 * 100 / max(GDP_billions, 1) * resourceMultiplier
 final = raw * boundary
 ```
 
 ### Welfare
 
 ```text
-raw = -0.01333332 * 100 / max(GDP_billions, 1)
+raw = -0.01999998 * 100 / max(GDP_billions, 1)
 final = raw * boundary
 ```
 
@@ -329,7 +329,7 @@ final = raw * boundary
 resourceRatio = resourceRegions * 1,000 / max(GDP_billions, 1)
 resourceCurve = resourceRatio^0.30 / (1 + resourceRatio^0.30)
 resourceMultiplier = 1 + 1.00 * resourceCurve
-raw = +0.00666668 * 100 / max(GDP_billions, 1) * resourceMultiplier
+raw = +0.01000002 * 100 / max(GDP_billions, 1) * resourceMultiplier
 final = raw * boundary
 ```
 
@@ -339,9 +339,9 @@ Current coefficients:
 |---|---:|---|
 | `inequality.referenceGdpBillions` | `100` | Economy, Welfare, Spoils |
 | `inequality.minimumGdpBillions` | `1` | Denominator floor |
-| `inequality.economyChangeAtReferenceGdp` | `+0.0015` | Economy |
-| `inequality.welfareChangeAtReferenceGdp` | `-0.01333332` | Welfare |
-| `inequality.spoilsChangeAtReferenceGdp` | `+0.00666668` | Spoils |
+| `inequality.economyChangeAtReferenceGdp` | `+0.00225` | Economy |
+| `inequality.welfareChangeAtReferenceGdp` | `-0.01999998` | Welfare |
+| `inequality.spoilsChangeAtReferenceGdp` | `+0.01000002` | Spoils |
 | `inequality.economyMaximumResourceMultiplier` | `0.60` | Adds up to `+60%` to Economy's raw delta |
 | `inequality.spoilsMaximumResourceMultiplier` | `1.00` | Adds up to `+100%` to Spoils' raw delta |
 | `abundance.referenceGdpPerResourceRegionBillions` | `1,000` | Shared resource ratio |
@@ -352,6 +352,10 @@ At Inequality 5 and no resource regions, a $100B economy receives the exact
 configured reference changes. A $1T economy receives one tenth as much per
 completion, while EEO's GDP-linear IP production gives roughly ten times as
 many completions at equal allocation.
+
+The 2026-08-20 calibration multiplies only these three priority coefficients
+by `1.5`; see [Inequality priority coefficient scaling](inequality-priority-coefficient-scaling.md).
+Climate and every other direct Inequality source remain unchanged.
 
 ### Climate
 

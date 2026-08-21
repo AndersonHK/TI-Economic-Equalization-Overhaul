@@ -257,8 +257,8 @@ namespace TIEconomyMod.Patches
             float resourceMultiplier = 1f +
                 settings.economyMaximumResourceMultiplier * resourceCurve;
             // Inequality is a proportional economic outcome, so the affected stock is
-            // GDP rather than headcount. Defaults give +0.0015 in a $100B economy and
-            // +0.00015 in a $1T economy before resources/bounds. Since the latter also
+            // GDP rather than headcount. Defaults give +0.00225 in a $100B economy and
+            // +0.000225 in a $1T economy before resources/bounds. Since the latter also
             // produces about 10x the IP, equal priority allocation produces the same
             // monthly national change instead of rewarding either union or breakup.
             float gdpBillions = Math.Max(settings.minimumGdpBillions,

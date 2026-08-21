@@ -110,6 +110,7 @@
     <Compile Include="Core\GovernmentMath.cs" />
     <Compile Include="Core\InequalityMath.cs" />
     <Compile Include="Core\CohesionRestMath.cs" />
+    <Compile Include="Core\CampaignDifficultyDefaults.cs" />
     <Compile Include="Core\PowerPlantThermalMath.cs" />
     <Compile Include="Core\ProjectileCollisionMath.cs" />
     <Compile Include="Core\DirectFireCommitmentMath.cs" />
@@ -145,6 +146,7 @@
     <Compile Include="Patches\MineMissionControlPatches.cs" />
     <Compile Include="Patches\MilitaryIntegrationPatches.cs" />
     <Compile Include="Patches\CompletionCompatibilityPatches.cs" />
+    <Compile Include="Patches\CampaignDifficultyPatches.cs" />
     <Compile Include="Patches\CohesionRestPatches.cs" />
     <Compile Include="Patches\CouncilorPatches.cs" />
     <Compile Include="Patches\NationalValuesPatches.cs" />

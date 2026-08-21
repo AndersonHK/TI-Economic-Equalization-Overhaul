@@ -104,6 +104,8 @@ namespace PavonisInteractive.TerraInvicta
     {
         public float mass_tons;
         public float powerRequirement_GW;
+        public bool openCycleCooling;
+        public PowerPlantRequirement requiredPowerPlant;
         public Nozzle nozzle;
         public TIResourcesCost cost = new TIResourcesCost();
 
@@ -115,6 +117,12 @@ namespace PavonisInteractive.TerraInvicta
         public TIResourcesCost buildCost()
         {
             return new TIResourcesCost(cost);
+        }
+
+        public bool IsCompatible(TIPowerPlantTemplate powerPlant)
+        {
+            return powerPlant != null &&
+                powerRequirement_GW <= powerPlant.maxOutput_GW;
         }
     }
 
@@ -475,9 +483,9 @@ namespace TIEconomyMod
         public float maximumDirectionalMultiplier = 3f;
         public float referenceGdpBillions = 100f;
         public float minimumGdpBillions = 1f;
-        public float economyChangeAtReferenceGdp = 0.0015f;
-        public float welfareChangeAtReferenceGdp = -0.01333332f;
-        public float spoilsChangeAtReferenceGdp = 0.00666668f;
+        public float economyChangeAtReferenceGdp = 0.00225f;
+        public float welfareChangeAtReferenceGdp = -0.01999998f;
+        public float spoilsChangeAtReferenceGdp = 0.01000002f;
         public float climateChangeMultiplier = 4f;
         public float economyMaximumResourceMultiplier = 0.60f;
         public float spoilsMaximumResourceMultiplier = 1f;

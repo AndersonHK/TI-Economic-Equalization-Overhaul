@@ -337,9 +337,9 @@ namespace TIEconomyMod
         public float maximumDirectionalMultiplier = 3f;
         public float referenceGdpBillions = 100f;
         public float minimumGdpBillions = 1f;
-        public float economyChangeAtReferenceGdp = 0.0015f;
-        public float welfareChangeAtReferenceGdp = -0.01333332f;
-        public float spoilsChangeAtReferenceGdp = 0.00666668f;
+        public float economyChangeAtReferenceGdp = 0.00225f;
+        public float welfareChangeAtReferenceGdp = -0.01999998f;
+        public float spoilsChangeAtReferenceGdp = 0.01000002f;
         public float climateChangeMultiplier = 4f;
         public float economyMaximumResourceMultiplier = 0.60f;
         public float spoilsMaximumResourceMultiplier = 1f;

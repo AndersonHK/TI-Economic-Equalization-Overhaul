@@ -1,6 +1,7 @@
 [
   {
     "dataName": "globalConfig",
+    "controlPointMaintenanceFreebies": 0,
     "councilorMaxOrgs": 18,
     "crewWaterConsumptionTons_year": 3,
     "crewVolatilesConsumptionTons_year": 3

@@ -389,6 +389,34 @@ if ($null -ne $staleInstalledModuleField) {
     throw 'Appearance panel refresh must not reuse the stale currentlyInstalledModule field.'
 }
 
+$installedDriveHeatType = $modAssembly.GetType(
+    'TIEconomyMod.Patches.InstalledDriveHeatPatch', $true)
+$installedDriveHeatPrefix = $installedDriveHeatType.GetMethod(
+    'Prefix', [Reflection.BindingFlags]'Public,Static')
+$readerArguments[0] = $installedDriveHeatPrefix
+$readerArguments[1] = $null
+$installedDriveHeatInstructions = @(
+    $instructionReader[0].PSObject.BaseObject.Invoke(
+        $null, $readerArguments))
+$installedPowerCalls = @($installedDriveHeatInstructions | Where-Object {
+    $_.operand -is [Reflection.MethodInfo] -and
+    $_.operand.Name -eq 'get_drivePowerRequirement_GW'
+})
+$thermalMathCalls = @($installedDriveHeatInstructions | Where-Object {
+    $_.operand -is [Reflection.MethodInfo] -and
+    $_.operand.Name -eq 'PlantWasteHeat_GW'
+})
+$rawDrivePowerCalls = @($installedDriveHeatInstructions | Where-Object {
+    $_.operand -is [Reflection.MethodInfo] -and
+    $_.operand.DeclaringType.Name -eq 'TIDriveTemplate' -and
+    $_.operand.Name -eq 'get_powerRequirement_GW'
+})
+if ($installedPowerCalls.Count -ne 1 -or
+    $thermalMathCalls.Count -ne 1 -or
+    $rawDrivePowerCalls.Count -ne 0) {
+    throw 'Installed drive heat must use the ship-level drive requirement and shared thermal math without reading raw drive-template power.'
+}
+
 $harmonyType = $harmonyAssembly.GetType('HarmonyLib.Harmony', $true)
 $harmonyId = 'ti-eeo.ship-power-validation.' +
     [Guid]::NewGuid().ToString('N')
@@ -419,8 +447,11 @@ $patchTypeNames = @(
     'TIEconomyMod.Patches.AlienShipFuelCapacityPatch',
     'TIEconomyMod.Patches.StoFighterFuelCapacityPatch',
     'TIEconomyMod.Patches.SavedShipCapacityInvariantPatch',
+    'TIEconomyMod.Patches.OpenCycleDrivePowerPlantCompatibilityPatch',
+    'TIEconomyMod.Patches.OpenCycleValidDrivesForPowerPlantsPatch',
     'TIEconomyMod.Patches.HullScaledDriveCompatibilityPatch',
     'TIEconomyMod.Patches.HullScaledPowerPlantCompatibilityPatch',
+    'TIEconomyMod.Patches.InstalledDriveHeatPatch',
     'TIEconomyMod.Patches.PoweredWeaponRadiatorHeatPatch',
     'TIEconomyMod.Patches.WeaponHeatCapacityPrecheckPatch',
     'TIEconomyMod.Patches.AuxiliaryElectricalGenerationPatch',

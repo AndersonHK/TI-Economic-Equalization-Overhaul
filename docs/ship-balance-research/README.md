@@ -5,7 +5,7 @@ Status: evidence and planning archive. Use the dated
 [current implementation matrix](../current-implementation-matrix.xlsx) to
 distinguish implemented values from proposals and deferred work.
 
-Last reviewed: 2026-08-19
+Last reviewed: 2026-08-20
 
 This dossier compares dated Terra Invicta ship-drive, power-plant, and
 weapon-crew snapshots with demonstrated hardware, active prototypes, historical
@@ -28,6 +28,7 @@ The comparison is organized into:
 - [Propulsion benchmarks](propulsion-benchmarks.md)
 - [Power-plant benchmarks](powerplant-benchmarks.md)
 - [2026-08-18 reactor progression adjustment](reactor-progression-adjustment-2026-08-18.md)
+- [2026-08-20 reactor power-progression and large-hull scaling analysis](reactor-power-progression-analysis-2026-08-20.md)
 - Data tables: [installed drive snapshot](tables/drives.csv),
   [installed power-plant snapshot](tables/powerplant.csv),
   [power plants with live overrides merged](tables/powerplant-current.csv),
@@ -41,6 +42,7 @@ The comparison is organized into:
 - [Early power-plant localization and unlock audit](localization-and-unlock-audit.md)
 - [Early human hull geometry, mass, crew, power, and volume audit](gunship-and-escort-hull-analysis.md)
 - [Drive/reactor pairing, open-cycle cooling, and hull geometry](drive-reactor-pairing-and-hull-geometry.md)
+- [Open-cycle reactor demand and heat accounting](open-cycle-reactor-demand-and-heat.md)
 - [Hull resource-cost accounting and metal-use options](hull-resource-cost-accounting.md)
 - [Skirmish roster performance investigation](skirmish-roster-performance-investigation.md)
 - [Human hull slots, crew, naval references, and drive scaling](human-hull-slots-and-drive-scaling.md)

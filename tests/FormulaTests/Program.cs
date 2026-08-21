@@ -35,6 +35,7 @@ namespace TIEconomyMod.FormulaTests
                     delegate { });
 
                 TestNationalValues();
+                TestCampaignDifficultyDefaults();
                 TestMilitaryMath();
                 TestMineMissionControl();
                 TestIndependentResearch();
@@ -268,6 +269,18 @@ namespace TIEconomyMod.FormulaTests
             Near(0f, (float)GlobalTechnologySelectionMath.SelectionWeight(
                 double.NaN, 1d, 0, 1d, 1d), 0f,
                 "invalid technology score requests vanilla fallback");
+        }
+
+        private static void TestCampaignDifficultyDefaults()
+        {
+            True(CampaignDifficultyDefaults.EnableCombatRealism(0),
+                "Cinematic enables both combat-realism defaults");
+            True(!CampaignDifficultyDefaults.EnableCombatRealism(1),
+                "Normal disables both combat-realism defaults");
+            True(!CampaignDifficultyDefaults.EnableCombatRealism(2),
+                "Veteran disables both combat-realism defaults");
+            True(!CampaignDifficultyDefaults.EnableCombatRealism(3),
+                "Brutal disables both combat-realism defaults");
         }
 
         private static void TestUtilityFootprints()
@@ -816,9 +829,21 @@ namespace TIEconomyMod.FormulaTests
                     false, 4f, 2f, 2f / 3f, 0.01f),
                 0.0001f,
                 "closed-cycle drive load contributes to plant waste heat");
-            Near(1.02f,
+            float openCycleOutput_GW =
+                PowerPlantThermalMath.OpenCycleReactorOutput_GW(
+                    4f, 2f / 3f, 0.01f);
+            Near(4.013378f, openCycleOutput_GW, 0.000001f,
+                "open-cycle reactor output includes only retained loss");
+            float openCycleResidualHeat_GW =
+                PowerPlantThermalMath.OpenCycleResidualHeat_GW(
+                    openCycleOutput_GW, 2f / 3f, 0.01f);
+            Near(openCycleOutput_GW,
+                4f + openCycleResidualHeat_GW,
+                0.000001f,
+                "open-cycle reactor output conserves drive work and heat");
+            Near(1.013378f,
                 PowerPlantThermalMath.PlantWasteHeat_GW(
-                    true, 4f, 2f, 2f / 3f, 0.01f),
+                    true, openCycleOutput_GW, 2f, 2f / 3f, 0.01f),
                 0.0001f,
                 "open-cycle drive retains one percent of drive-associated heat");
             Near(1f,
@@ -826,6 +851,28 @@ namespace TIEconomyMod.FormulaTests
                     true, 4f, 2f, 2f / 3f, 0f),
                 0.0001f,
                 "zero open-cycle coefficient reproduces the vanilla exemption");
+            Near(4f,
+                PowerPlantThermalMath.OpenCycleReactorOutput_GW(
+                    4f, 0.25f, 0f),
+                0f,
+                "zero retained heat requires no extra reactor output");
+            Near(4f,
+                PowerPlantThermalMath.OpenCycleReactorOutput_GW(
+                    4f, 1f, 0.75f),
+                0f,
+                "perfect plant efficiency requires no extra reactor output");
+            Near(8f,
+                PowerPlantThermalMath.OpenCycleReactorOutput_GW(
+                    4f, 0.5f, 1f),
+                0.0001f,
+                "fully retained loss reproduces closed conversion demand");
+            True(!float.IsNaN(
+                    PowerPlantThermalMath.OpenCycleReactorOutput_GW(
+                        4f, float.NaN, float.PositiveInfinity)) &&
+                !float.IsInfinity(
+                    PowerPlantThermalMath.OpenCycleReactorOutput_GW(
+                        4f, float.NaN, float.PositiveInfinity)),
+                "malformed open-cycle inputs remain finite");
             float gunInput_GJ = WeaponPowerMath.ElectricalInput_GJ(
                 8.7f, 0f, 0.9f);
             Near(0.009666667f, gunInput_GJ, 0.000000001f,
@@ -1338,6 +1385,7 @@ namespace TIEconomyMod.FormulaTests
             ship.powerPlantTemplate = new TIPowerPlantTemplate
             {
                 dataName = "TestSolidCorePlant",
+                efficiency = 0.575f,
                 maxOutput_GW = 90f,
                 specificPower_tGW = 1f,
                 powerPlantClass = PowerPlantRequirement.Solid_Core_Fission
@@ -1350,6 +1398,72 @@ namespace TIEconomyMod.FormulaTests
             HullScaledDrivePowerPatch.Postfix(ref scaledPower, ship);
             Near(83.0017f, scaledPower, 0.0001f,
                 "Cruiser drive power scales at constant exhaust velocity");
+            ship.driveTemplate.openCycleCooling = true;
+            scaledPower = 20f;
+            HullScaledDrivePowerPatch.Postfix(ref scaledPower, ship);
+            Near(83.35596f, scaledPower, 0.0001f,
+                "open-cycle coupling follows hull-art drive scaling");
+            ReactorBayCapacitySnapshot openCycleSnapshot;
+            True(ReactorBayCapacityFeature.TryGetSnapshot(
+                    ship, ship.powerPlantTemplate, out openCycleSnapshot),
+                "open-cycle reactor demand reaches reactor-bay accounting");
+            Near(
+                ShipBalanceMath.ReactorBayVolumeUsed_m3(
+                    scaledPower,
+                    PowerPlantRequirement.Solid_Core_Fission.ToString(),
+                    ship.powerPlantTemplate.specificPower_tGW),
+                openCycleSnapshot.BayVolumeUsed_m3,
+                0.0001f,
+                "reactor-bay used volume uses corrected open-cycle output");
+            ship.powerPlantTemplate.maxOutput_GW = 83.2f;
+            bool openCycleCompatible = true;
+            HullScaledDriveCompatibilityPatch.Postfix(
+                ref openCycleCompatible, ship, ship.driveTemplate);
+            True(!openCycleCompatible,
+                "retained open-cycle loss can cross a plant output boundary");
+            TIDriveTemplate candidateOpenCycleDrive = new TIDriveTemplate
+            {
+                openCycleCooling = true,
+                powerRequirement_GW = 20f
+            };
+            TIPowerPlantTemplate candidatePlant = new TIPowerPlantTemplate
+            {
+                efficiency = 0.575f,
+                maxOutput_GW = 20.05f
+            };
+            bool candidateCompatible = true;
+            OpenCycleDrivePowerPlantCompatibilityPatch.Postfix(
+                ref candidateCompatible,
+                candidateOpenCycleDrive,
+                candidatePlant);
+            True(!candidateCompatible,
+                "shipless drive compatibility uses corrected reactor demand");
+            IEnumerable<TIPowerPlantTemplate> candidatePlants =
+                new List<TIPowerPlantTemplate> { candidatePlant };
+            List<TIPowerPlantTemplate> materializedPlants;
+            OpenCycleValidDrivesForPowerPlantsPatch.Prefix(
+                ref candidatePlants, out materializedPlants);
+            List<TIDriveTemplate> filteredDrives =
+                new List<TIDriveTemplate> { candidateOpenCycleDrive };
+            OpenCycleValidDrivesForPowerPlantsPatch.Postfix(
+                ref filteredDrives, materializedPlants);
+            True(filteredDrives.Count == 0,
+                "static AI drive filtering uses corrected reactor demand");
+            TIEconomyMod.Main.settings.shipBalance
+                .openCycleResidualHeatEnabled = false;
+            openCycleCompatible = true;
+            HullScaledDriveCompatibilityPatch.Postfix(
+                ref openCycleCompatible, ship, ship.driveTemplate);
+            True(openCycleCompatible,
+                "disabled residual heat restores one-for-one reactor demand");
+            scaledPower = 20f;
+            HullScaledDrivePowerPatch.Postfix(ref scaledPower, ship);
+            Near(83.0017f, scaledPower, 0.0001f,
+                "disabled residual heat restores art-scaled drive demand");
+            TIEconomyMod.Main.settings.shipBalance
+                .openCycleResidualHeatEnabled = true;
+            ship.driveTemplate.openCycleCooling = false;
+            ship.powerPlantTemplate.maxOutput_GW = 90f;
             float scaledDryMass = 1000f;
             HullScaledDriveMassPatch.Postfix(ref scaledDryMass, ship);
             Near(1315.0085f, scaledDryMass, 0.001f,
@@ -1866,9 +1980,9 @@ namespace TIEconomyMod.FormulaTests
             EconomyInequalityPatch.Prefix(ref economyDefault, nation);
             WelfareInequalityPatch.Prefix(ref welfareDefault, nation);
             SpoilsInequalityPatch.Prefix(ref spoilsDefault, nation);
-            Near(0.0015f, economyDefault, 0.000001f, "Economy priority Inequality value");
-            Near(-0.01333332f, welfareDefault, 0.000001f, "Welfare priority Inequality value");
-            Near(0.00666668f, spoilsDefault, 0.000001f, "Spoils priority Inequality value");
+            Near(0.00225f, economyDefault, 0.000001f, "Economy priority Inequality value");
+            Near(-0.01999998f, welfareDefault, 0.000001f, "Welfare priority Inequality value");
+            Near(0.01000002f, spoilsDefault, 0.000001f, "Spoils priority Inequality value");
             float climateChange = 0.02f;
             ClimateInequalityPatch.Prefix(ref climateChange,
                 TINationState.InequalityChangeReason.InqReason_ClimateChange);

@@ -79,7 +79,7 @@ namespace TIEconomyMod.Patches
             }
 
             // Inequality is a proportional economic outcome, so Welfare divides by GDP.
-            // Defaults give -0.01333 at $100B and -0.001333 at $1T; ten times the IP in
+            // Defaults give -0.01999998 at $100B and -0.001999998 at $1T; ten times the IP in
             // the larger economy restores the same monthly movement at equal allocation.
             // The 1-9 transform is 0x at 1, 1x at 5, and 3x at 9 for this negative delta.
             float gdpBillions = Math.Max(settings.minimumGdpBillions,
@@ -134,8 +134,8 @@ namespace TIEconomyMod.Patches
             float resourceMultiplier = 1f +
                 settings.spoilsMaximumResourceMultiplier * resourceCurve;
             // Like the other Inequality changes, Spoils divides by GDP because it changes
-            // an economic distribution ratio. Defaults give +0.00667 at $100B and
-            // +0.000667 at $1T before resource/bound multipliers, exactly offsetting
+            // an economic distribution ratio. Defaults give +0.01000002 at $100B and
+            // +0.001000002 at $1T before resource/bound multipliers, exactly offsetting
             // the tenfold difference in GDP-linear IP production.
             float gdpBillions = Math.Max(settings.minimumGdpBillions,
                 (float)(__instance.GDP / 1000000000d));
@@ -144,7 +144,7 @@ namespace TIEconomyMod.Patches
 
             // The continuous boundary transform makes a positive Spoils delta 3x at
             // Inequality 1, 1x at 5, and 0x at 9. At 100M population, Inequality 5,
-            // one region, and $100B GDP, defaults give about +0.01111; installed vanilla
+            // one region, and $100B GDP, defaults give about +0.01667; installed vanilla
             // 1.0.51 gives roughly +0.0031 for the same population and resource count.
             float transformedDelta = InequalityMath.TransformPriorityChange(rawDelta,
                 __instance.inequality, settings.minimum, settings.neutral,

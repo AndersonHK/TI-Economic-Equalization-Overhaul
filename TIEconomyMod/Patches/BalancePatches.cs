@@ -107,6 +107,38 @@ namespace TIEconomyMod.Patches
         }
     }
 
+    internal static class OpenCycleReactorDemandFeature
+    {
+        public static bool Enabled
+        {
+            get
+            {
+                ShipBalanceSettings settings = Main.settings.shipBalance;
+                return Main.FeatureEnabled(
+                    settings.enabled &&
+                    settings.correctPowerPlantWasteHeat &&
+                    settings.openCycleResidualHeatEnabled);
+            }
+        }
+
+        public static float RequiredReactorOutput_GW(
+            float usefulDrivePower_GW,
+            TIDriveTemplate drive,
+            TIPowerPlantTemplate powerPlant)
+        {
+            if (!Enabled || drive == null || powerPlant == null ||
+                !drive.openCycleCooling)
+            {
+                return usefulDrivePower_GW;
+            }
+
+            return PowerPlantThermalMath.OpenCycleReactorOutput_GW(
+                usefulDrivePower_GW,
+                powerPlant.efficiency,
+                Main.settings.shipBalance.openCycleDriveHeatFraction);
+        }
+    }
+
     internal static class HullVariantEmptyMassFeature
     {
         private static readonly object diagnosticLock = new object();
@@ -238,9 +270,12 @@ namespace TIEconomyMod.Patches
             TIDriveTemplate drive = ship.driveTemplate;
             float requiredPower_GW = drive == null
                 ? 0f
-                : ShipBalanceMath.ScaledDriveValue(
-                    drive.powerRequirement_GW,
-                    HullDriveScalingFeature.Multiplier(ship, drive));
+                : OpenCycleReactorDemandFeature.RequiredReactorOutput_GW(
+                    ShipBalanceMath.ScaledDriveValue(
+                        drive.powerRequirement_GW,
+                        HullDriveScalingFeature.Multiplier(ship, drive)),
+                    drive,
+                    powerPlant);
             float bayVolumeUsed_m3 =
                 ShipBalanceMath.ReactorBayVolumeUsed_m3(
                     requiredPower_GW,
@@ -379,9 +414,9 @@ namespace TIEconomyMod.Patches
                 return true;
             }
 
-            // Vanilla multiplies delivered power by (1 - efficiency). Because the
-            // plant requirement is deliveredPower / efficiency, the rejected heat
-            // is input minus output: deliveredPower * (1 / efficiency - 1).
+            // Closed-cycle loads reject input minus delivered power. For an
+            // open-cycle drive, the drive argument is the installed reactor output;
+            // only the configured share of its conversion loss remains on the ship.
             __result = PowerPlantThermalMath.PlantWasteHeat_GW(
                 openCycleDriveCooling,
                 drivePowerRequirement_GW,
@@ -457,6 +492,10 @@ namespace TIEconomyMod.Patches
         {
             __result = ShipBalanceMath.ScaledDriveValue(
                 __result, HullDriveScalingFeature.Multiplier(__instance));
+            __result = OpenCycleReactorDemandFeature.RequiredReactorOutput_GW(
+                __result,
+                __instance == null ? null : __instance.driveTemplate,
+                __instance == null ? null : __instance.powerPlantTemplate);
         }
     }
 
@@ -565,6 +604,94 @@ namespace TIEconomyMod.Patches
     }
 
     [HarmonyPatch(
+        typeof(TIDriveTemplate), "IsCompatible")]
+    public static class OpenCycleDrivePowerPlantCompatibilityPatch
+    {
+        [HarmonyPostfix]
+        public static void Postfix(
+            ref bool __result,
+            TIDriveTemplate __instance,
+            TIPowerPlantTemplate powerPlant)
+        {
+            if (!__result || __instance == null || powerPlant == null)
+            {
+                return;
+            }
+
+            float requiredPower =
+                OpenCycleReactorDemandFeature.RequiredReactorOutput_GW(
+                    __instance.powerRequirement_GW,
+                    __instance,
+                    powerPlant);
+            __result = requiredPower <=
+                powerPlant.maxOutput_GW + 0.0001f;
+        }
+    }
+
+    [HarmonyPatch(
+        typeof(TISpaceShipTemplate), "ValidDrivesForPowerPlants")]
+    public static class OpenCycleValidDrivesForPowerPlantsPatch
+    {
+        [HarmonyPrefix]
+        public static void Prefix(
+            ref IEnumerable<TIPowerPlantTemplate> availablePowerPlants,
+            out List<TIPowerPlantTemplate> __state)
+        {
+            __state = null;
+            if (!OpenCycleReactorDemandFeature.Enabled)
+            {
+                return;
+            }
+
+            __state = availablePowerPlants == null
+                ? new List<TIPowerPlantTemplate>()
+                : new List<TIPowerPlantTemplate>(availablePowerPlants);
+            availablePowerPlants = __state;
+        }
+
+        [HarmonyPostfix]
+        public static void Postfix(
+            ref List<TIDriveTemplate> __result,
+            List<TIPowerPlantTemplate> __state)
+        {
+            if (__state == null || __result == null)
+            {
+                return;
+            }
+
+            for (int driveIndex = __result.Count - 1;
+                driveIndex >= 0;
+                driveIndex--)
+            {
+                TIDriveTemplate drive = __result[driveIndex];
+                bool compatible = false;
+                for (int plantIndex = 0;
+                    plantIndex < __state.Count;
+                    plantIndex++)
+                {
+                    TIPowerPlantTemplate plant = __state[plantIndex];
+                    if (drive != null && plant != null &&
+                        drive.IsCompatible(plant) &&
+                        OpenCycleReactorDemandFeature
+                            .RequiredReactorOutput_GW(
+                                drive.powerRequirement_GW,
+                                drive,
+                                plant) <= plant.maxOutput_GW + 0.0001f)
+                    {
+                        compatible = true;
+                        break;
+                    }
+                }
+
+                if (!compatible)
+                {
+                    __result.RemoveAt(driveIndex);
+                }
+            }
+        }
+    }
+
+    [HarmonyPatch(
         typeof(TISpaceShipTemplate), "validDriveForShipsPowerPlant")]
     public static class HullScaledDriveCompatibilityPatch
     {
@@ -580,9 +707,14 @@ namespace TIEconomyMod.Patches
                 return;
             }
 
-            float requiredPower = ShipBalanceMath.ScaledDriveValue(
-                driveToCheck.powerRequirement_GW,
-                HullDriveScalingFeature.Multiplier(__instance, driveToCheck));
+            float requiredPower =
+                OpenCycleReactorDemandFeature.RequiredReactorOutput_GW(
+                    ShipBalanceMath.ScaledDriveValue(
+                        driveToCheck.powerRequirement_GW,
+                        HullDriveScalingFeature.Multiplier(
+                            __instance, driveToCheck)),
+                    driveToCheck,
+                    __instance.powerPlantTemplate);
             __result = requiredPower <=
                 ReactorBayCapacityFeature.EffectiveOutput_GW(
                     __instance, __instance.powerPlantTemplate);
@@ -605,9 +737,13 @@ namespace TIEconomyMod.Patches
                 return;
             }
 
-            float requiredPower = ShipBalanceMath.ScaledDriveValue(
-                __instance.driveTemplate.powerRequirement_GW,
-                HullDriveScalingFeature.Multiplier(__instance));
+            float requiredPower =
+                OpenCycleReactorDemandFeature.RequiredReactorOutput_GW(
+                    ShipBalanceMath.ScaledDriveValue(
+                        __instance.driveTemplate.powerRequirement_GW,
+                        HullDriveScalingFeature.Multiplier(__instance)),
+                    __instance.driveTemplate,
+                    powerPlantToCheck);
             __result = requiredPower <=
                 ReactorBayCapacityFeature.EffectiveOutput_GW(
                     __instance, powerPlantToCheck);
