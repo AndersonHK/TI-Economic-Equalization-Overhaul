@@ -39,6 +39,9 @@
     <Compile Include="..\..\TIEconomyMod\Core\GovernmentMath.cs">
       <Link>GovernmentMath.cs</Link>
     </Compile>
+    <Compile Include="..\..\TIEconomyMod\Core\NationalHarmonizationMath.cs">
+      <Link>NationalHarmonizationMath.cs</Link>
+    </Compile>
     <Compile Include="..\..\TIEconomyMod\Core\HullDriveScaleCatalog.cs">
       <Link>HullDriveScaleCatalog.cs</Link>
     </Compile>

@@ -1,6 +1,6 @@
 # Patch Sanity Audit
 
-Status: current through Version 0.9.0 and Terra Invicta 1.0.51.
+Status: current through Version 0.9.3 and Terra Invicta 1.0.51.
 
 This audit checks the major economic, national, and logistics patch families against the directives in
 `design-directives.md`. “Stock” names the quantity that prevents linear GDP/IP
@@ -51,6 +51,9 @@ ensures every conventional-gun comparison row creates that column.
 | `MilitaryTechnologyPatch` | Army count | Aligned after stock correction. One completion is divided among every army it upgrades; the catch-up multiplier remains smooth and never penalizes leaders. |
 | `MilitaryMergerPatch` | Army/navy force structure and GDP | Aligned. The 50/50 blend represents inherited doctrine/equipment and the industrial base that sustains modernization; it replaces only the final merged rating. |
 | `InequalityMergerPatch` | Two population income distributions | Aligned. Population shares, GDP/c separation, existing distribution width, and the finite-sample correction approximate the merged Gini without a step table or arbitrary disparity bonus. |
+| `ClaimWillBeHostilePatch`, `HistoricalClaimRegistry`, and `HarmonizedRegionTransferPatch` | Cross-national social/economic distance and immutable grievance history | Aligned. Government, Inequality, Knowledge, and the symmetric per-capita-GDP ratio form one compatibility core; target Unrest and source Cohesion apply the approved directional multiplier. Inclusive `6`/`3` thresholds replace democracy-as-liberation and allow exceptional convergence to overcome historical hostility. Invalid GDP/c and missing claims fail closed, while a peacefully acquired historical region drops the mutable integration burden without erasing its future historical classification. |
+| `CanFormFederationPatch`, `CanAddNationPatch`, and `FormFederationPatch` | Best actual cross-boundary claim link | Aligned. The inclusive `12` ceiling makes federation a looser preparatory relationship than integration while retaining TI's alliance, cooldown, executive-control, enemy, and breakaway checks. The execution patch prevents stale UI state from bypassing the gate; scenario startup assembly still uses TI's explicit bypass. |
+| Historical-claim scenario registry | Active scenario and DLC entitlement | Aligned. Native flags are preserved; reviewed additions and the three expansion-project families are normalized from active bilateral templates. Dark Skies identifiers are never resolved unless TI has completed DLC validation, the entitlement list contains `DarkSkies`, and the active scenario requires it. Russia-to-Ukraine is explicitly excluded in 2003. |
 | `OppressionUnrestPatch` | Population | Aligned. Repression has diminishing effectiveness in democratic systems and cannot drive Unrest below zero in one completion. |
 | `OppressionDemocracyCurvePatch` | Bounded Government score | Aligned with the shared Government curve. The vanilla raw Oppression Government loss is resisted near zero, unchanged at five, and amplified near ten; UI and direct-investment pricing see the transformed getter value. |
 | `EnvironmentSustainabilityPatch` | GDP; fallout per land area | Aligned. Transition cost follows the dirty capital stock; concentrated nuclear damage makes progress harder without changing cleanup IP per blast. |

@@ -186,6 +186,12 @@
     <minimumPerCapitaGdp>1</minimumPerCapitaGdp>
     <inequalityBoundaryEpsilon>1E-06</inequalityBoundaryEpsilon>
   </nationalMergers>
+  <claimHarmonization>
+    <enabled>true</enabled>
+    <ordinaryThreshold>6</ordinaryThreshold>
+    <historicalThreshold>3</historicalThreshold>
+    <federationThreshold>12</federationThreshold>
+  </claimHarmonization>
   <oppression>
     <enabled>true</enabled>
     <unrestPopulationDivisor>2222222</unrestPopulationDivisor>

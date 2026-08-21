@@ -233,6 +233,17 @@ if ($LASTEXITCODE -ne 0) {
 }
 
 $templatesDirectory = Join-Path (Split-Path -Parent $resolvedManagedDir) 'StreamingAssets\Templates'
+$gameRoot = Split-Path -Parent (Split-Path -Parent $resolvedManagedDir)
+$darkSkiesTemplates = Join-Path $gameRoot 'DLC_Content\DarkSkies\2003_Scenario\Templates'
+powershell -NoProfile -ExecutionPolicy Bypass -File `
+    (Join-Path $scriptDirectory 'validate-national-harmonization.ps1') `
+    -VanillaTemplatesDir $templatesDirectory `
+    -DlcTemplatesDir $darkSkiesTemplates `
+    -RepositoryRoot $repositoryRoot
+if ($LASTEXITCODE -ne 0) {
+    exit $LASTEXITCODE
+}
+
 powershell -NoProfile -ExecutionPolicy Bypass -File `
     (Join-Path $scriptDirectory 'validate-starting-forces.ps1') `
     -VanillaTemplatesDir $templatesDirectory `

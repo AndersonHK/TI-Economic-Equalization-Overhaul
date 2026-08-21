@@ -1,0 +1,1442 @@
+YouTube transcript
+Video ID: 3I4P_6G3PFY
+Language: en
+Captions: auto-generated
+
+[0:00] What is the smallest near-term mass
+[0:02] driver we could actually build on the
+[0:04] moon? How long is it? How many tons does
+[0:06] it weigh? What does it take to actually
+[0:08] build it? Now, for the first time, we
+[0:10] actually have the baselines needed
+[0:12] [music] to do it. We know the
+[0:14] destination, the launch site, the
+[0:15] required ejection velocity, the rocket
+[0:18] delta V, the thrust to weight ratio, and
+[0:20] a defensible first estimate for pod size
+[0:22] and throughput. We ran more than 720
+[0:25] hours of orbital simulations, optimized
+[0:27] multi-burn trajectories through the
+[0:29] Earth Moon system, searched for a
+[0:31] continuously accessible route to low
+[0:33] Earth orbit, combined nine lunar
+[0:35] resource maps with terrain data to
+[0:37] choose a launch site, and worked
+[0:38] backwards [music] from orbital
+[0:39] requirements to size the rockets and the
+[0:41] mass driver itself. The result is a
+[0:43] candidate system with a specific
+[0:45] destination, [music] a specific launch
+[0:47] site, defined delta V and thrust
+[0:49] requirements, and a first estimate of
+[0:51] the power, [music] cadence, payload
+[0:53] size, and throughput needed to
+[0:54] continuously move lunar material [music]
+[0:56] into Earth orbit using a first
+[0:58] generation lunar mass driver. And we've
+[1:01] made the data and code behind all of
+[1:03] this open source and available on
+[1:05] GitHub. So you can access it, inspect
+[1:07] it, and run it yourself right now.
+[1:09] [music] So, okay, here's the question
+[1:11] that began this project. What is the
+[1:13] smallest near-term mass driver on the
+[1:15] moon? Like, what does it look like? What
+[1:17] are its actual design parameters? How
+[1:20] long is it? How many tons is it
+[1:22] approximately? What is its peak and
+[1:25] average power? What are its thermal
+[1:27] properties and cadence? And what is its
+[1:29] governing constraint? And what I mean by
+[1:31] governing constraint is what is the
+[1:33] bottleneck that sets its minimum design
+[1:35] parameters or maximum design parameters.
+[1:38] like what is the hardest thing that has
+[1:39] to be solved in order to build this
+[1:41] thing? And we can actually answer that
+[1:42] question now. The governing constraint,
+[1:45] the hardest limiting factor of the mass
+[1:47] driver is power. Power is a measure of
+[1:51] work per second. And power tells you how
+[1:53] much your hardware has to actually
+[1:55] survive. the flywheels, capacitors,
+[1:57] batteries, bus work, switches, rails,
+[1:59] contacts, insulation, heat rejection,
+[2:01] fault protection, current paths, and the
+[2:03] electromagnetic forces trying to tear
+[2:06] the system apart are all determined by
+[2:08] power, not total energy. A gigawatt does
+[2:12] not mean we need a gigawatt-sized solar
+[2:14] farm. The energy can be accumulated
+[2:16] slowly and discharged quickly. But the
+[2:18] discharge path, that hardware that turns
+[2:21] energy into work on the payload itself,
+[2:23] the mass driver itself has to survive
+[2:26] whatever peak power is. So I like to
+[2:29] think of peak power as a sort of
+[2:30] measurement of complexity and
+[2:32] involvement and intensity. It gives the
+[2:35] qualitative vibes of how easy or hard
+[2:38] the system is going to be to construct.
+[2:40] It is sort of a heruristic for probing
+[2:42] scale. To see this, let's do a quick
+[2:44] sensitivity sweep. And please bear
+[2:46] [music] with me. So to start if we hold
+[2:48] acceleration constant then the force is
+[2:50] constant but the power is not because
+[2:52] power [music] is force time velocity and
+[2:55] velocity keeps rising. So power peaks at
+[2:57] the muzzle right before the payload
+[2:59] exits. Assuming a constant acceleration
+[3:01] launch that peak power is mass time
+[3:04] acceleration squared [music] time and
+[3:06] the average power is half of that and
+[3:09] the track length is velocity squared
+[3:11] divided by 2 * acceleration. If we
+[3:14] assume a fixed target velocity of 2.54
+[3:16] km a second, then we can make a table
+[3:18] showing the lengths and peak power at
+[3:20] different accelerations for 10, 1, and
+[3:23] 0.1 ton payloads. The first thing that
+[3:25] stands out is the insane length
+[3:27] requirements of the 1G cases. At over
+[3:29] 322 km, we can basically ignore them on
+[3:32] the grounds of being unrealistic and
+[3:34] just look at the more palatable 10g
+[3:36] [music]
+[3:37] 32 km case. Though these have higher
+[3:39] power requirements, as you can see, peak
+[3:41] power is in the gigawatt range for 10
+[3:43] tons, hundreds of megawatt range for one
+[3:46] ton, and tens of megawws for hundreds of
+[3:48] kg. 254 megawatts of peak power for one
+[3:52] ton at 100 m a second acceleration isn't
+[3:55] that bad. It's ambitious, but doable.
+[3:58] Except this isn't the real number
+[3:59] because unfortunately this table I've
+[4:01] been showing is for the ideal case
+[4:03] [music] with no efficiency loss
+[4:05] accounted for. But real systems have
+[4:07] efficiency losses. So here is the table
+[4:10] at 50% efficiency. And 50% is still
+[4:13] exceptionally generous as most of the
+[4:15] figures I've seen for non-s
+[4:17] superconducting mass drivers fall in
+[4:18] around the 30% efficiency mark. And at
+[4:21] 30% efficiency the table gets a lot more
+[4:23] damning. at 100 meters a second of
+[4:26] acceleration will require about 850
+[4:29] megawws of peak power to launch a single
+[4:32] ton. For reference, that's enough
+[4:34] electricity for roughly 60,000 people at
+[4:36] US consumption levels. So basically a
+[4:39] city-wide grid worth of electricity
+[4:41] directed into a single contact point or
+[4:44] coil. Now, you might argue that this is
+[4:46] peak power, and peak power only happens
+[4:49] at the very end of the shot, and that is
+[4:51] true. But this isn't like electronic
+[4:53] warfare or nuclear tech applications
+[4:55] where a gigawatt pulse might last a
+[4:56] millionth of a second. At 100 m a
+[4:59] second, the shot lasts about 25 seconds,
+[5:02] which means the launcher spends about 12
+[5:04] 1/2 seconds above average power on its
+[5:07] way to peak [music] and spends the final
+[5:09] second or so very close to peak. So
+[5:11] focusing on peak power makes sense as it
+[5:13] is what the hardware ultimately has to
+[5:15] survive for relatively meaningful
+[5:17] amounts of time. So power is the
+[5:19] governing constraint [music] and it is a
+[5:21] problem. But we have two solutions to
+[5:24] reduce it. We can either lower the
+[5:26] acceleration and thus increase the
+[5:27] length of the track or we can lower the
+[5:30] mass per shot by shrinking the size of
+[5:31] the mass driver rocket pods. And long
+[5:34] story short, shrinking the size of the
+[5:36] rocket pod to lower mass is the better
+[5:38] option of the two because decreasing
+[5:40] acceleration will increase the size of
+[5:42] the mass driver since track length
+[5:44] scales roughly as one over acceleration.
+[5:47] So you are gaining lower peak power but
+[5:49] paying for it with more track length
+[5:51] which means more refined materials for
+[5:53] rails and supports and power electronics
+[5:55] [music] and more terrain preparation and
+[5:57] everything else. you turn the power
+[6:00] problem into an enormous civil
+[6:01] engineering distance problem. So you're
+[6:03] sort of trading one complexity for
+[6:05] another. On the other hand, if you lower
+[6:07] the size of the rocket pod, you can
+[6:09] lower peak [music] power without making
+[6:11] the launcher longer. And in fact, the
+[6:13] entire launcher can get smaller. Less
+[6:16] power for a smaller payload means
+[6:18] smaller rails and structure. Less power
+[6:19] electronics and radiators and plumbing
+[6:22] while keeping distance fixed. But this
+[6:24] comes at the cost of the economics.
+[6:26] Smaller rocket pods means less
+[6:27] throughput per hour unless [music] we
+[6:30] don't shrink the mass driver with the
+[6:32] pod because then we can fire more often
+[6:34] to keep up the same throughput. [music]
+[6:36] For you see, a mass driver is really
+[6:38] sized around thermal control. The rail
+[6:40] segments or coils have to be large
+[6:42] enough to not melt at any given current.
+[6:45] That's what we mean by our hardware has
+[6:47] to survive a certain amount of power and
+[6:49] thus how power dictates the size and why
+[6:51] it's a governing constraint. Too much
+[6:52] power just simply melts these things. So
+[6:54] the consequence of power is thermal and
+[6:56] cooling with relation to power is what
+[6:58] determines the size of the mass driver,
+[7:00] the amount of tons of material it is
+[7:03] made of. But this isn't determined by
+[7:05] cooling perfectly back to ambient
+[7:07] between shots as that would take way too
+[7:09] [music] long. Rather, it is sized around
+[7:10] steady state operation. How much heat is
+[7:12] deposited per shot versus how [music]
+[7:15] much heat the rails reject between
+[7:16] shots. Since temperature radiates to the
+[7:18] fourth power, the hotter something gets,
+[7:20] [music] the hotter it radiates. So, we
+[7:22] reach a point where tempo determines
+[7:23] temperature, where our material limits
+[7:26] don't determine whether [music] or not
+[7:27] we can fire a roundoff without melting,
+[7:29] but rather the rate at which we can fire
+[7:31] rounds, our tempo, or frequency. And
+[7:33] this is the same with things like a
+[7:34] machine gun or an internal combustion
+[7:36] engine. It isn't designed to survive one
+[7:39] shot. It's designed to survive firing
+[7:41] off 1,000 shots per minute for [music]
+[7:43] 10 hours or whatever. It is designed to
+[7:45] heat up to 300° C and operate [music]
+[7:48] there, not at room temperature after a
+[7:51] single shot. So, if a smaller pod
+[7:53] deposits less heat per shot, then we can
+[7:55] fire more often and keep the same
+[7:57] output, keep [music] the same economics
+[7:59] for the same thermal profile, like a
+[8:01] machine gun firing smaller bullets
+[8:03] faster or big huge bullets slower. If we
+[8:07] size our mass driver for thoroughput
+[8:09] [music] and let's say for an output of 1
+[8:11] ton per hour, we could fire a single one
+[8:14] [music] ton pod once per hour. Or we
+[8:16] could accomplish the same economics by
+[8:18] firing 10 100 kg pods in an hour. And
+[8:21] the thermal profile and therefore
+[8:23] materials required to build the mass
+[8:25] driver remains the same size. But the
+[8:27] advantage of firing a 100 kg pod once
+[8:30] every 6 minutes is that each launch has
+[8:32] onetenth the peak power demand. So our
+[8:35] power electronics can be made more
+[8:37] easily. That is the big takeaway.
+[8:39] Smaller and quicker is better than
+[8:40] bigger and slower because peak power is
+[8:43] able to be reduced for the same economic
+[8:45] throughput and mass driver size and
+[8:47] length. But if going smaller and faster
+[8:49] is better, then the next question
+[8:50] becomes well how small can we actually
+[8:53] go? Can we shoot 10,000 bulletsized mini
+[8:55] rockets a minute in a constant stream or
+[8:58] 100,000 sand grain sized micro rockets?
+[9:01] Can we approach the quantum scale?
+[9:03] Obviously, that's ridiculous, but why?
+[9:05] And where do you draw the line? And we
+[9:07] can get an intuition by trying to
+[9:09] imagine how one would build a sand
+[9:11] grain- sized rocket. So, we can see
+[9:13] there is obviously some limit to how
+[9:15] small we can go because every rocket pod
+[9:17] has overhead mass that does not scale
+[9:20] away as we butt up against material
+[9:22] property [music] limits. But to truly
+[9:24] know how small we can go, we need to
+[9:26] know the orbital requirements. This is
+[9:28] because in order to design and therefore
+[9:30] size a rocket at the very top you need
+[9:32] to know two first order mission
+[9:34] characterizing numbers. [music] The
+[9:36] required rocket delta V and the required
+[9:38] thrust to weight ratio. The first delta
+[9:41] V mostly determines the propellant mass
+[9:43] fraction and the relationship is given
+[9:45] by the rocket equation written here in
+[9:47] its delta V form where m is the initial
+[9:50] wet mass before the burn and m of f is
+[9:53] the final mass after the burn. That
+[9:55] final mass is basically just the dry
+[9:57] mass. As we can see, delta V is
+[9:59] proportional to the natural log of mass
+[10:01] ratio. So reducing the required delta V
+[10:04] does not shrink the rocket linearly. It
+[10:06] reduces the required propellant through
+[10:08] an exponential improvement in the wet
+[10:11] mass to final mass ratio which then
+[10:13] cascades into smaller tanks, casing,
+[10:15] structure, and everything else the
+[10:17] rocket pod has to carry. And then the
+[10:19] second mission characterizing figure
+[10:20] [music] thrust to weight ratio can be
+[10:22] thought of as the acceleration
+[10:24] requirement. How fast it needs to spin
+[10:26] that delta V or rather the mass flow
+[10:28] rate the rocket needs to be capable of.
+[10:30] And it mostly determines what kind of
+[10:32] engine is needed which is mass flow
+[10:34] rate, engine size, tank pressurization,
+[10:37] structural loads and thermal demands.
+[10:39] That sort of stuff. [music] Of course,
+[10:40] these are not the only numbers needed to
+[10:42] fully design a rocket. We still need to
+[10:44] know things like propellant choice and
+[10:46] materials like aluminum or iron [music]
+[10:47] or titanium or steel. But all of those
+[10:50] things live downstream of delta V and
+[10:52] thrusttoe ratio and are mostly going to
+[10:55] be dictated by our ISRU bill of
+[10:57] materials. And because delta V and
+[10:59] thrust to weight depend on the orbital
+[11:01] trajectory, the journey itself, they
+[11:03] therefore depend on the answers to a new
+[11:05] set of questions, which is well where
+[11:08] does the rocket actually start from?
+[11:10] like where is the mass driver launching
+[11:12] them from on the moon and where are they
+[11:14] traveling to like what is their final
+[11:16] destination and for reasons that I hope
+[11:18] should be self-evident at the final
+[11:21] destination of these [music] rocket pods
+[11:22] there should be located a second major
+[11:24] infrastructure project that which
+[11:26] receives the mass driven by the mass
+[11:28] driver and processes it for simplicity
+[11:31] sake we'll just call this the orbital
+[11:32] depot it's where the lunar launched mass
+[11:35] is at the very least stowed but also
+[11:37] likely refined and processed as Well,
+[11:40] and this orbital depot is just as
+[11:42] important in the whole lunar mass supply
+[11:43] chain as the mass driver itself. It
+[11:46] doesn't have to be complex at first,
+[11:47] just a layown yard in orbit. It might
+[11:49] even be constructed using ships
+[11:51] retrofitted into wet workshops and
+[11:53] things like that. This gives us
+[11:55] something to build from and we can
+[11:56] evolve it as we expand and scale up our
+[11:58] capacity. It is the foundation upon
+[12:00] which we will build out the rest of our
+[12:02] orbital industry. But the question is
+[12:04] where do we put it? Like where do we
+[12:06] actually locate it in Earth's orbit? And
+[12:08] then since smaller but faster launched
+[12:10] rockets is better in terms of power
+[12:12] systems as we've just established we can
+[12:14] add another question which is that of
+[12:16] access windows since the earth and the
+[12:18] moon are both revolving around the earth
+[12:21] moon berry center which makes transits
+[12:23] through the earth moon orbital system
+[12:25] more complex than the regular elliptical
+[12:27] keparian orbits we're familiar with from
+[12:29] high school. This introduces the
+[12:31] question of whether it's always possible
+[12:33] for mass driver launch rockets to reach
+[12:34] their orbits or are there limited flight
+[12:36] windows that we have to fly through? Can
+[12:38] we design a collection of transits, a
+[12:40] transit constellation such that we could
+[12:43] potentially reach our receiving station
+[12:45] no matter what? In other words, is it
+[12:47] possible to build a constant [music]
+[12:49] access mass driver? Or are there only
+[12:51] certain windows, certain flight times
+[12:53] for any given start point to a given end
+[12:56] point? And if there are windows, how
+[12:58] tight are they? once a day or once a
+[13:00] year or once a decade. Do we need to
+[13:03] build multiple mass drivers across
+[13:05] multiple lunar locations to even have a
+[13:07] shot at making this work economically?
+[13:09] Because if so, then that's very bad news
+[13:11] as even one of those assets will cost
+[13:13] many billions and take an exceptionally
+[13:16] long time to build. And so we can see
+[13:17] how these orbital dynamics questions
+[13:19] actually dictate everything downstream
+[13:21] of them as [music] the requirements for
+[13:23] what the rocket pod has to do in orbit
+[13:25] dictates the size of the actual rocket
+[13:27] pod itself. And the size of the rocket
+[13:29] pot itself dictates the actual size of
+[13:32] the mass driver because it determines
+[13:34] how much work it has to do. [music] It
+[13:36] determines peak power. So all those
+[13:38] questions we asked at the beginning
+[13:40] about the mass driver like how long is
+[13:42] it, how many tons it is, what is its
+[13:44] [music] peak and average power, what are
+[13:46] its thermal properties and cadence, what
+[13:48] is its governing constraint. All of
+[13:51] those technical specifications are
+[13:52] located downstream from the orbital
+[13:54] dynamics questions that we need to
+[13:56] answer. So we need to work backwards
+[13:58] from delivery to muzzle velocity. The
+[14:01] destination is the place where we need
+[14:03] to begin in order to begin designing a
+[14:05] mass driver. And with that, I will end
+[14:08] this beginning. [music] And fortunately,
+[14:10] we have lots of open questions for a
+[14:11] good YouTuber to draw out for as long as
+[14:14] possible to [music] maximize retention
+[14:15] as much as possible. Unfortunately for
+[14:18] YouTube's ad revenue, though, I'm not a
+[14:20] good YouTuber. I mean, just look at how
+[14:22] ridiculously long and convoluted this
+[14:25] intro has been. So, here are all the
+[14:27] answers up front. How did we get these
+[14:30] answers to those questions? Well, now
+[14:32] that's a good question.
+[14:36] The answer is we ran restricted
+[14:38] threebody multi-burn orbital simulations
+[14:40] on 64 GB of RAM for over 720 hours to
+[14:44] simulate and optimize different
+[14:45] trajectories from the moon to low Earth
+[14:47] orbit. Now, of course, returning viewers
+[14:50] might be wondering why we are presenting
+[14:52] [music] new simulation results despite
+[14:54] the fact that just a few months ago, I
+[14:55] released a quite big video presenting
+[14:57] the results of [music] simulations of
+[14:58] the same nature. These new simulations
+[15:01] are much more advanced. They account for
+[15:03] the major oversightes in the older
+[15:05] version, and they include multi-burn
+[15:06] trajectories, meaning the rocket pods
+[15:08] are no longer limited to one corrective
+[15:10] maneuver. They can perform several burns
+[15:12] during transit, whether that is done
+[15:14] with restartable propulsion, multiple
+[15:16] discrete motors, or some combination of
+[15:18] larger burns [music] and smaller trim
+[15:19] maneuvers. This gives us far more
+[15:21] control over the trajectory and a much
+[15:23] better picture of how real lunar to
+[15:25] lower Earth orbit transfers might
+[15:26] behave. Though, these new sims aren't
+[15:28] perfect, and it's worth noting that we
+[15:30] have left out some details in these new
+[15:32] simulations as well. But we now
+[15:34] understand the problem well enough
+[15:35] through reading and designing
+[15:36] simulations to say [music] these details
+[15:38] are minor enough so as not to affect the
+[15:41] validity of the current sims [music] so
+[15:43] long as we accept multiburn. Also, the
+[15:46] older simulations were not for nothing.
+[15:47] They taught us a ton. And some ideas
+[15:50] presented in that prior video are still
+[15:52] valid and carry over and those
+[15:54] conclusions are covered in [music] depth
+[15:56] in the previous video. But since they
+[15:58] are so important, I think we should
+[15:59] still briefly revisit the logic
+[16:00] underpinning them. First, the need for
+[16:02] controlled payloads. What we might call
+[16:04] mass driver rockets or rocket pods. With
+[16:07] a mass driver, you cannot just shoot
+[16:08] dumb rocks into [music] space and expect
+[16:10] them to arrive anywhere in a circular,
+[16:12] stable, aligned orbit. Real payloads
+[16:14] have to do cleanup work, raise parapsy,
+[16:16] and circularize. Correct attitude and
+[16:19] navigation errors, and make whatever
+[16:20] small plane and timing adjustments are
+[16:22] needed because a surface launch can only
+[16:24] put you on an initial trajectory, not
+[16:27] deliver a final operational orbit by
+[16:29] itself. In other words, every payload
+[16:31] needs a rocket thruster capable of
+[16:33] performing the careful maneuvering
+[16:34] required to reach and rendevous in low
+[16:36] Earth orbit regardless of the initial
+[16:38] orbital conditions. These rocket pods
+[16:41] can be relatively simple. They just need
+[16:42] a single burn to slow down, which means
+[16:44] we can use solid or hybrid rocket
+[16:46] propellants entirely sourced on the moon
+[16:48] and they don't need control surfaces or
+[16:50] landing gear or nose cones because
+[16:52] they'll never enter an atmosphere. We
+[16:54] typically associate rockets with high
+[16:56] complexity and rocket engines are always
+[16:58] shown as Lovecraftian messes of
+[17:00] plumbing, turbo pumps, and cables. But
+[17:02] there's actually a very wide range of
+[17:03] complexity when it comes to rocket
+[17:05] engines. What we might call the firework
+[17:07] to fullflow staged combustion scale. For
+[17:09] these rocket pods, we're talking about
+[17:11] engines that are much closer to the
+[17:12] firework end of the scale, maybe
+[17:14] something like the V2 rocket bombs used
+[17:16] in World War II or the solid rocket
+[17:18] space shuttle boosters than current
+[17:20] Raptor engines. actually simpler than
+[17:21] the V2 or shuttle booster since again we
+[17:24] don't need to worry about anything
+[17:25] atmosphere related as a lot of this huge
+[17:28] complexity comes from all the
+[17:29] difficulties imposed having to negotiate
+[17:31] an atmosphere which is highly corrosive
+[17:34] unpredictable turbulent and imposes a
+[17:36] huge amount of form factor [music] and
+[17:38] thrust constraints on rocketry. Our
+[17:40] lunarade rocket pods can have minimal
+[17:42] moving parts mainly being controlled
+[17:44] more with power electronics which can be
+[17:46] radically inexpensive and simpler to
+[17:48] design, build and verify. [music] And we
+[17:50] should care about simplicity
+[17:52] specifically for disassembly because
+[17:54] once these rocket pods reach the orbital
+[17:56] depot and offload their cargo, we'll be
+[17:58] left with what is essentially a spent
+[18:00] [music] casing. And we'll want to
+[18:01] recycle these at the orbital depot
+[18:03] because these casings are themselves
+[18:05] refined usable mass, likely aluminum or
+[18:08] iron. So, we'll probably need meltdown
+[18:10] hardware at the station. And [music]
+[18:12] this has another implication, too, which
+[18:14] is that whatever the casing or rocket
+[18:16] pod body is made of will be the thing we
+[18:18] ship the most of. So, if it is aluminum,
+[18:21] we're going to be sending tons and tons
+[18:23] of aluminum just to deliver other
+[18:25] things. And in line with that, the next
+[18:27] conclusion from the older video is that
+[18:30] of the location of the orbital depot
+[18:32] these pods are arriving at, which is the
+[18:34] answer to the whole question of where in
+[18:36] orbit do we put the orbital depot, which
+[18:38] is the destination question. L5 is
+[18:41] likely the best place for mega
+[18:42] construction, but right now there is no
+[18:44] market for such things. That comes
+[18:46] later. Today the market exists in low
+[18:48] and medium and to some extent
+[18:49] geostationary orbit. This is where
+[18:51] people are willing right now to pay for
+[18:53] mass [music] for propellant for
+[18:55] radiation shielding for scaffolding and
+[18:56] structures for hardware. This is where
+[18:59] the satellites and stations are the
+[19:01] constellations the existing and planned
+[19:03] projects. And so it's my opinion that
+[19:05] low earth orbit is where our target
+[19:07] destination should be because it is
+[19:09] where the customers and demand exist
+[19:11] today. It's worth noting though that
+[19:14] this market is almost exclusively
+[19:16] communications and information-based and
+[19:18] that's largely due to the constraints
+[19:19] imposed on mass to orbit cost. But with
+[19:22] thousands of tons of mass and orbit to
+[19:24] play with, we can do these things which
+[19:26] I'm just going to list on screen for
+[19:28] time sake. But we can't just say lower
+[19:30] earth orbit. I mean lower earth orbit is
+[19:32] a big place. So we have to define
+[19:34] exactly where in low earth orbit we
+[19:35] should aim for. And we picked low earth
+[19:37] orbit because we said that's where the
+[19:40] demand is. So, where in low Earth orbit
+[19:42] are the customers? Well, they're all
+[19:44] mostly between 550 to 900 km in
+[19:47] altitude, but I think we should go a
+[19:50] little higher and position ourselves at
+[19:51] about 1,200 km because this is above the
+[19:54] belts with the highest space debris and
+[19:56] atmospheric drag. Sure, that extra 4 to
+[19:59] 600 km will amount to an increase in
+[20:01] cost. And sure, space debris is
+[20:03] generally exaggerated in the headlines,
+[20:05] but because we are actually building so
+[20:07] large, we're basically volunteering to
+[20:10] be the poster child for the next space
+[20:12] traffic outreach cycle. And so, it's my
+[20:14] opinion that 1,200 km is a good
+[20:16] compromise between all these factors,
+[20:18] giving us a cleaner story for licensing
+[20:20] and insurance. And it's likely that if a
+[20:23] station offering thousands of tons of
+[20:25] lowcost mass and materials were in orbit
+[20:28] right now, all these companies and
+[20:29] agencies might adjust their planned
+[20:31] inclinations and altitudes to take
+[20:33] advantage of such an opportunity. So
+[20:36] around 1,200 km seems like something of
+[20:38] a Goldilocks zone for this orbital
+[20:40] depot. But altitude is only one scaler
+[20:43] in the orbit. Inclination matters just
+[20:45] as much because it sets the orbital
+[20:47] [music] plane and changing orbital
+[20:49] planes is extremely expensive in terms
+[20:51] of delta V. It also dictates the Earth
+[20:54] launch geometry and therefore the launch
+[20:56] period. The first and most ideal choice
+[20:58] would be a station in the lunar orbital
+[21:01] plane due to the lack of required
+[21:02] inclination changes for low Earth orbit.
+[21:04] However, this is not possible as nodal
+[21:07] procession would quickly swing the
+[21:08] station out of the lunar orbital plane,
+[21:11] revolving it around Earth's polar axis,
+[21:13] which is highly inclined at about 23
+[21:15] 1/2° relative to the elliptic, which is
+[21:18] the plane in which the Earth's orbit
+[21:20] occurs around the sun and is the
+[21:21] universal solar reference. Accepting
+[21:23] that any transit plan must account for
+[21:25] nodal procession, how do we get the best
+[21:28] time average delta V savings? Because
+[21:30] the target orbit processes, it will
+[21:32] periodically realign with the lunar
+[21:34] orbital plane. So the obvious strategy
+[21:36] is to choose an orbit whose nodal
+[21:37] procession lines up with the moon's
+[21:39] orbital plane as often as possible. The
+[21:41] complication is that the moon's orbit
+[21:43] also processes under the influence of
+[21:45] the sun with a cycle period of roughly
+[21:47] 18.6 years. When the lunar longitude of
+[21:50] the ascending node is at 90°, call that
+[21:52] the start of the lunar nodal cycle, the
+[21:54] target orbit needs an Earth inclination
+[21:56] of about 28.59°
+[21:58] to periodically align with the lunar
+[22:00] orbital plane. About 9.3 years later,
+[22:03] when the lunar node is at 270°, that
+[22:06] required inclination shifts to about
+[22:07] 18.3°. Could a station continuously
+[22:10] cycle between those inclinations over
+[22:12] that period so we could minimize the
+[22:14] mean inclination change work required to
+[22:16] access the receiving station? Suppose
+[22:18] the correction happens daily. Each day
+[22:20] as the station crosses the equator, a
+[22:22] thruster performs a small normal burn.
+[22:24] The required inclination change is only
+[22:26] about 30,000 of a degree per [music]
+[22:28] day. At 1,200 km altitude, where orbital
+[22:31] speed is roughly 7.25 km a second, that
+[22:34] is about 0.38 m a second of delta v
+[22:36] required per day. That is very
+[22:39] manageable, especially for a station
+[22:41] constantly receiving incoming rocket
+[22:43] pods, which should arrive with unused
+[22:45] propellant margins, giving the station a
+[22:47] nice reserve for orbital maneuvers and
+[22:49] everyday station keeping, even if it's
+[22:51] lowgrade performance lunar ISR derived
+[22:54] propellant. So by having the station
+[22:56] undertake the slow and gradual
+[22:58] inclination change to track the lunar
+[23:00] nodal procession, we maximize the
+[23:02] quantity of alignment periods it gets
+[23:04] with the lunar orbital plane and thus
+[23:06] the average delta V required for a
+[23:09] transiting rocket. And here I should
+[23:10] note we're assuming a circular orbit for
+[23:12] the time being since it simplifies the
+[23:14] planning of rendevous. But there is one
+[23:16] more problem worth talking about first.
+[23:18] Altitude also controls nodal procession
+[23:21] and sets how fast the station's orbital
+[23:23] plane naturally rotates around Earth. An
+[23:25] exact 1200 km orbit would still work,
+[23:27] but its procession would not line up
+[23:29] cleanly with the lunar nodal cycle. So
+[23:31] instead of treating 1200 km as an exact
+[23:33] target, we treat it as the goal to
+[23:36] [music] aim for. And we search nearby
+[23:38] altitudes for one whose nodal procession
+[23:40] has a clean integer relationship with
+[23:42] the moon's 18.6year nodal cycle. This
+[23:45] means the procession rates of either
+[23:47] orbit work kind of like a clock with the
+[23:49] lunar procession being analogous to the
+[23:51] hourhand and the target orbit procession
+[23:53] being analogous to the minute hand. This
+[23:56] is really useful in that it makes
+[23:57] maneuver planning in accordance with the
+[23:59] procession cycles easier. So to find
+[24:01] this integer relationship, we wrote a
+[24:03] mat lab sweep over nearby circular LEO
+[24:05] altitudes, calculated each orbit's nodal
+[24:08] procession rate at the lunar lining
+[24:09] inclination, and looked for cases where
+[24:12] an integer number of procession
+[24:13] revolutions fit cleanly inside the
+[24:15] moon's 18.6 year nodal cycle. And we got
+[24:18] this beautiful graph. Though most of
+[24:19] these are pointless since we only really
+[24:21] care about the point closest to 1200 km,
+[24:23] which turned out to be 121.2 km. So now
+[24:28] we have a target altitude and
+[24:30] inclination for the receiving station.
+[24:32] But that still leaves one final problem
+[24:35] rendevous. Even if the incoming rocket
+[24:38] pod reaches the correct orbit, the
+[24:40] station is constantly moving around that
+[24:42] orbit. [music] So the pod still has to
+[24:44] arrive at the right place at the right
+[24:46] time. So we have solved the orbit
+[24:48] geometry but not the final timing phase
+[24:51] between the pod and the depot. After
+[24:53] much deliberation, we figured the
+[24:54] simplest approach was just to have the
+[24:56] rocket pods assume a parking orbit just
+[24:58] above the orbit of the receiving station
+[25:01] where the rocket pods will simply wait
+[25:02] for the correct orbital period alignment
+[25:05] allowing for a gentle home and transfer
+[25:07] and rendevous. Basically, they just kind
+[25:09] of fly above, wait for their time, and
+[25:11] then dip down and rendevous at the
+[25:12] station. And if you think about it, this
+[25:14] parked orbit, this queuing essentially
+[25:16] acts itself as a layown yard. So the
+[25:20] receiving station itself can devote less
+[25:22] resources to storing these actual rocket
+[25:24] pods and it also acts as a supply chain
+[25:26] buffer for fluctuations in the frequency
+[25:28] of incoming [music] rocket pods which
+[25:30] may come in bursts as a downstream
+[25:32] effect of any number of reasons. But
+[25:34] anyways, the point is this parking orbit
+[25:36] allows the station to control the amount
+[25:38] of mass it receives and can balance that
+[25:39] with the amount of mass it exports to
+[25:41] the market, thus allowing it to maintain
+[25:43] something like supply chain homeostasis.
+[25:45] To decide the altitude of our parking
+[25:47] orbit above our 1211.2 km receiving
+[25:51] station, we sampled various orbits for
+[25:53] the time and delta v required to home in
+[25:55] and rendevous, but then decided to just
+[25:57] draw a line at a flat 100 m a second to
+[26:00] give us a 1,371.2
+[26:03] km altitude parking orbit where we'd
+[26:06] only have to wait a maximum of 57.3
+[26:08] hours for the phasing to be right for
+[26:11] rendevous. So, it's not like these would
+[26:13] have to wait years. It's just a few days
+[26:15] before their time comes. So technically
+[26:17] that's our new target destination. Not
+[26:20] 1,200 km, not 1211.2 km, but [music]
+[26:23] rather a lunar plane inclined 1371.2
+[26:27] km altitude orbit. Though it's entirely
+[26:30] dictated by the decisions that went into
+[26:32] finding the 1211 km orbit of the
+[26:35] receiving station. So that's our
+[26:37] destination. But what about the starting
+[26:40] location? In the last video, we worked
+[26:41] backwards using patched conics to find
+[26:43] what looked like the best lunar launch
+[26:45] location. And honestly, if all we had
+[26:47] done was upgrade from patched conics to
+[26:49] a more realistic multi-body simulation,
+[26:51] the old location might have been good
+[26:53] enough. It probably would have shifted
+[26:55] somewhat, but not necessarily enough to
+[26:58] throw the whole thing out. But we didn't
+[27:00] just upgrade the physics. We also
+[27:02] introduced multi-burn trajectories,
+[27:04] which is a much bigger deal, as that new
+[27:06] degree of freedom changes the design
+[27:08] space completely. So we had to refind
+[27:11] the starting location from scratch. This
+[27:13] became phase one of the simulation work,
+[27:16] what we called the allocation phase. The
+[27:18] biggest variable we had to account for
+[27:20] was timing. The moon is constantly
+[27:22] moving around its orbit. So the lunar
+[27:24] true anomaly, where the moon is when the
+[27:26] launch begins, changes the geometry of
+[27:29] the entire transfer. The target orbit is
+[27:32] also processing around Earth. So we also
+[27:34] had to sample the target orbit's [music]
+[27:35] longitude of ascending node. Then we
+[27:38] gave the optimizer the mass driver side
+[27:40] variables it was allowed to play with
+[27:41] [music] ejection velocity, lunar
+[27:43] latitude and longitude and the azimouth
+[27:45] and elevation of the launch direction.
+[27:48] But we constrained those ranges to be
+[27:50] realistic. Ejection velocity was
+[27:51] constrained [music] between 2.3 and 3.5
+[27:54] km a second. Longitude was constrained
+[27:56] between 90 and 90° keeping us on the
+[27:59] earthf facing side of the moon. So
+[28:01] communications can remain reliable.
+[28:03] Azimuth was constrained between 0 and
+[28:06] 180°, meaning the mass driver only fires
+[28:08] retrograde in this phase because that
+[28:10] sheds Earth orbital energy on the way
+[28:12] down to low Earth orbit and elevation
+[28:14] was capped at 0.5° because the normal G
+[28:17] forces involved in anything more than
+[28:19] that become [music] untenable. We also
+[28:21] did not allow for arrow breaking. The
+[28:23] rocket pods were not allowed to dip
+[28:25] below 200 km around Earth. Both because
+[28:28] skimming the highest thinnest part of
+[28:29] the atmosphere is hard to model cleanly
+[28:31] and because accidental de-orbiting is
+[28:34] not a failure mode we want. The same 200
+[28:36] km exclusion zone was applied around the
+[28:38] moon because getting too close
+[28:39] introduces extra pertabbation messiness
+[28:42] [music] from lunar mascons which induce
+[28:44] non-trivial pertabbations for the moon
+[28:46] as opposed to the Earth because the
+[28:47] [music] moon's much lower gravity. So
+[28:49] phase one was basically a course search.
+[28:52] sweep the major moving geometry,
+[28:53] constrain the mass driver to plausible
+[28:55] directions and velocities, and let
+[28:57] particle swarm optimization look for
+[28:59] regions [music] where the required
+[29:01] rocket delta V was low without creating
+[29:03] ridiculous thrust to weight or [music]
+[29:05] timing penalties. If a pattern emerged,
+[29:07] that region would become the fixed
+[29:09] starting [music] point for the more
+[29:11] expensive phase 2 trajectory
+[29:13] simulations. And we hoped [music] a
+[29:15] pattern would emerge. And what did we
+[29:17] find? Well, lots of bugs. We had to
+[29:20] restart twice [music] over, but once it
+[29:22] finally worked, we found
+[29:25] not much of a clean pattern. There was a
+[29:27] vague preference towards the lunar
+[29:29] equatorial west around Oceanus
+[29:31] Proellarum, but nothing like an obvious
+[29:33] best area. There's this vague spot in
+[29:36] the middle, but all of these transits
+[29:37] were for when the lunar and target
+[29:39] orbital planes were aligned, so it's not
+[29:42] very representative. What this seems to
+[29:44] show is that with multi-burn
+[29:46] trajectories, mass driver locations may
+[29:48] not be as sensitive as initially
+[29:49] expected. And this appears to be because
+[29:52] multiburn smooths out the performance
+[29:54] differences between sites because the
+[29:56] rocket pod has more opportunities to
+[29:58] correct and shape the trajectory after
+[30:00] the launch. Well, there is one
+[30:02] recognizable pattern, and that is that
+[30:04] the lunar poles are unfavorable places
+[30:07] to put a mass driver because the vehicle
+[30:09] has to always fight larger inclination
+[30:11] changes when leaving the lunar sphere of
+[30:14] influence. But besides that, a lot of
+[30:16] locations across the lunar west perform
+[30:18] similarly in Delta V. So instead of
+[30:20] getting one obvious answer, we got a
+[30:22] rough region. The problem though is that
+[30:25] for the next phase, which is the bulk of
+[30:27] the work, we need one actual point. So,
+[30:30] we need to consider other factors of
+[30:32] merit to determine placement outside of
+[30:34] raw delta v figures. There's a lot that
+[30:36] could be debated here, but ultimately we
+[30:38] chose to look at the lunar surface
+[30:40] itself within this region, namely
+[30:42] terrain, slope, and minology. The logic
+[30:45] was that the mass driver and the rocket
+[30:46] pods and everything else has to be made
+[30:48] out of resources. So, which area has the
+[30:51] most resources? This matters because
+[30:53] every kilometer we avoid hauling raw
+[30:55] material across the lunar surface is
+[30:57] energy, equipment, and complexity. we do
+[30:59] not have to pay for. So to find these
+[31:01] overlapping minological sites, we took
+[31:04] nine remote sensing abundance maps from
+[31:06] different papers, each estimating the
+[31:08] distribution for a useful lunar material
+[31:10] and overlaid them to look for places
+[31:12] where several useful materials appeared
+[31:14] together. Then we added terrain flatness
+[31:16] as another scoring factor by taking the
+[31:18] gradient of a lunar height map, which
+[31:20] gave us a rough picture of local slope.
+[31:22] And then we ruled out anything that had
+[31:24] too steep of an elevation. This matters
+[31:26] as an additional consideration because
+[31:28] flatter terrain reduces structural and
+[31:30] logistical headaches for almost any kind
+[31:32] of construction and especially for giant
+[31:34] solar farms and multicometer long mass
+[31:36] drivers on the moon. We then normalized
+[31:38] these maps and built a nonlinear
+[31:40] optimization system that adjusted the
+[31:42] threshold for each one. So for example,
+[31:44] we could ask only show me sites in the
+[31:46] top 10 percentile for this material for
+[31:49] titanium or aluminum or thorium or
+[31:51] whatever. The system then combined the
+[31:53] maps and kept tweaking those thresholds
+[31:55] to find regions that maximize the mean
+[31:57] abundance of the useful [music]
+[31:59] materials while also favoring flatter
+[32:01] terrain. And because when the only tool
+[32:03] you have is a hammer, everything starts
+[32:05] to look like a nail, we used particle
+[32:07] swarm optimization again for this. This
+[32:10] produced eight candidate sites near the
+[32:12] craters. Plato, Kepler T- meer, Fra
+[32:15] Maro, and Leande. These should not be
+[32:17] treated as the absolute best sites on
+[32:18] the moon because the maps rely on
+[32:20] imperfect remote sensing data which has
+[32:22] gaps that have been filled in with
+[32:24] various methods. So these maps have
+[32:26] artifacts and it's important to note
+[32:28] that our minorological understanding is
+[32:30] severely limited at this point in
+[32:32] history. So these optimal sites may very
+[32:35] much change. But for now, [music]
+[32:37] working with what we've got, these
+[32:39] locations do appear unusually rich in
+[32:41] several useful materials at once. Out of
+[32:43] these eight sites, we chose to go with
+[32:45] the one at Kepler Abandantia Tertia or
+[32:48] CAT for short, which sits near Kepler in
+[32:51] the eastern middle region of Oceananus
+[32:53] Proarum because it has a lot of mineral
+[32:56] richness overlap and is in our regional
+[32:58] circle. But don't take this site as us
+[33:00] declaring a final industrial capital of
+[33:03] the moon. Rather, just take it as a
+[33:05] defensible site, good enough for the
+[33:07] next phase of simulations. So now that
+[33:09] we have a location to put the mass
+[33:11] driver, we need to decide the launch
+[33:13] orientation, the azimuth and elevation
+[33:16] at which the mass driver rocket pods
+[33:18] leave the mass driver relative to the
+[33:19] lunar surface. Elevation is how high we
+[33:22] tilt the mass driver upwards. So we can
+[33:24] do stuff like gain altitude and prevent
+[33:26] the payload being launched from
+[33:28] immediately flying into the side of a
+[33:30] moon mountain. But physics mostly makes
+[33:32] the decision for us. Tiny angles become
+[33:34] huge over kilometer scales. A 15 km mass
+[33:37] driver elevated by just one degree would
+[33:39] end more than 260 m above the lunar
+[33:42] surface. That is massive structural
+[33:44] overhead to maintain over many kilm
+[33:47] before even adding the converters,
+[33:49] switching [music] hardware, insulation,
+[33:51] power distribution, and active thermal
+[33:53] control systems that have to stay close
+[33:55] [music] to the launcher. And similar to
+[33:56] this, a reoccurring idea I've seen a lot
+[33:59] is to curve the mass driver upwards at
+[34:01] the end. maybe by running it up a crater
+[34:03] wall or some other natural ramp. But at
+[34:05] orbital velocity speeds, even a gentle
+[34:08] curve creates enormous vertical forces
+[34:10] into [music] the guideway. For example,
+[34:12] a 20g mass driver launching a 300 kg
+[34:14] payload is pushing it forward with about
+[34:17] 60 kons of force. But if that payload is
+[34:19] moving at even just 2 km/s and we try to
+[34:22] curve it upward through a 1 km radius
+[34:25] bend, the payload pushes downward into
+[34:27] the guideway with about 1.2 meg of
+[34:30] force. That is equivalent to the weight
+[34:32] of about 120 metric tonses on Earth.
+[34:35] Roughly the weight of a fully loaded
+[34:37] heavy freight rail car coming from a 300
+[34:40] kg payload. Except here it is not spread
+[34:43] across a rail car and eight wheels. It
+[34:45] is acting as a moving vertical load
+[34:47] [music] through every coil section of a
+[34:49] precision launcher that still has to
+[34:51] remain aligned over kilometers. So the
+[34:54] practical answer to elevation is none.
+[34:56] [music]
+[34:56] just to treat the mass driver as a
+[34:58] horizontal piece of infrastructure. And
+[35:00] fortunately, the moon curves away about
+[35:02] 3.7 times faster than Earth does. So, we
+[35:05] only need about 60 km of cleared line of
+[35:08] sight after the muzzle for the payload
+[35:09] to be 1 km above the lunar surface.
+[35:12] Azimuth [music]
+[35:12] is the horizontal direction the mass
+[35:14] driver fires in. So, for example, 0°
+[35:17] points toward lunar north, 90° points
+[35:20] east, 180° points south, and so on.
+[35:23] [music] This matters because Azimuth
+[35:25] controls the initial plane and direction
+[35:27] of motion of the rocket pod relative to
+[35:29] the moon. [music] And since the rocket
+[35:31] pod is not trying to stay in lunar
+[35:32] orbit, but escape the moon entirely,
+[35:35] azimuth also helps control where it
+[35:37] leaves the lunar sphere of influence,
+[35:38] when it leaves, and what direction it is
+[35:41] moving when it exits. That makes it
+[35:43] extremely useful for setting up later
+[35:45] maneuvers. To show this, we put together
+[35:48] this animation. Here we hold the mass
+[35:50] driver location fixed at cat and sweep
+[35:53] the launch azimuth. Notice how even the
+[35:55] same azimuths [music] can converge into
+[35:57] significantly different trajectories at
+[35:59] different lunar true anomalies. That is
+[36:01] because the moon is not moving through a
+[36:03] perfectly simple circular orbit.
+[36:05] Vibration and orbital eccentricity
+[36:07] change the geometry. So the same shot
+[36:09] direction can lead to different
+[36:11] departure conditions depending on when
+[36:13] it is fired. Then if we combine azmouth
+[36:15] with ejection velocity which is
+[36:17] basically controlled by finally
+[36:19] adjusting the electrical parameters of
+[36:21] the mass driver, we get a much richer
+[36:23] design space. We are no longer just
+[36:25] choosing where to point the gun. We are
+[36:27] choosing from a whole family of lunar
+[36:29] exit trajectories. [music]
+[36:30] In our convention, an azimuth near 90°
+[36:34] gives us a more retrograde departure
+[36:36] that is useful because it helps with
+[36:38] inplane maneuvering, especially lowering
+[36:40] parapsis deeper into Earth's gravity
+[36:42] well. but it still leaves the rocket pod
+[36:44] with a lot of inclination change work to
+[36:46] do later. The opposite trade-off exists
+[36:48] near zero or 180 degrees where the mass
+[36:50] driver is aimed toward the lunar poles.
+[36:53] Those trajectories are better for
+[36:55] setting up inclination changes both
+[36:57] through the rocket pod's own burns and
+[36:59] through lunar gravity assists, but they
+[37:01] are not as useful for the inplane energy
+[37:04] change we need to drop down toward low
+[37:06] Earth orbit. So rather than choosing one
+[37:08] extreme, we split the difference. We set
+[37:10] the launcher azimuth to 45°. Then let
+[37:13] the optimizer control ejection velocity
+[37:15] to control how retrograde or highly
+[37:17] inclined each departure becomes. This
+[37:20] gives us a little more flexible family
+[37:22] of exits instead of locking the whole
+[37:23] system into one narrow trajectory type.
+[37:26] And with [music] that, we finally have
+[37:28] all the pieces in place to run the main
+[37:30] optimization we've been building up to.
+[37:32] The good news is that because we
+[37:34] invested so much time into setting up a
+[37:36] good problem set, given all this
+[37:39] context, the results themselves are much
+[37:41] faster to explain. One reason the
+[37:43] optimization took so long, other than
+[37:45] our very poor programming skills, was
+[37:47] the delta vcap. The allocation phase
+[37:49] suggested that 4 km/s was a reasonable
+[37:52] upper limit. So, we imposed that as a
+[37:55] hard constraint and made the optimizer
+[37:57] search only for trajectories that stayed
+[37:59] below it. Most transits had no trouble
+[38:01] staying under that limit, but some,
+[38:03] namely the ones where procession created
+[38:05] a large inclination mismatch, struggled
+[38:08] more and had to be restarted several
+[38:10] times so the optimizer could search a
+[38:12] different part of the solution space.
+[38:14] But eventually, we got every transit
+[38:16] under 4 km/s, which was very satisfying.
+[38:19] Well, almost every transit. There was
+[38:21] one that came in at [music] 4.009 009
+[38:24] km/s. But after watching it struggle for
+[38:27] a [music] long time, we kind of started
+[38:29] feeling bad for it and decided that it
+[38:31] was close enough to count. So, we
+[38:32] included it anyways. [music] Poor little
+[38:34] guy. Anyways, here's the results. These
+[38:38] are so gorgeous. I wish we could sit
+[38:40] here and look at every single one, but
+[38:42] this video is already very [music] long
+[38:45] and we have more to discuss.
+[38:47] Fortunately, Mel put together a video on
+[38:49] his channel that looks at all of them
+[38:51] back toback. So check that out if you
+[38:53] want to see these in [music] greater
+[38:54] detail. I'll link it in the description.
+[39:00] And then this beautiful plot shows the
+[39:01] main transit parameters [music] all
+[39:03] together. The first indicates how much
+[39:05] ejection velocity is required from the
+[39:06] mass driver on a given transit. The
+[39:08] second tells us how much rocket delta v
+[39:10] a given transit required. The third
+[39:12] tells us what our rocket thrust to
+[39:14] weight ratio needs to be for that
+[39:16] [music] transit. And the fourth tells us
+[39:18] how long each of our transits are going
+[39:19] to take. And here is the distribution of
+[39:22] these parameters. What these show, what
+[39:25] all this hard work and time and energy
+[39:27] went into was the ability to say with a
+[39:31] reasonable degree of confidence that to
+[39:33] reach a 1,371.2
+[39:36] 2 km target orbit in [music] low Earth
+[39:38] orbit. When launching anytime from CAT
+[39:41] on the moon, regardless of the orbital
+[39:44] conditions, a transiting rocket pod
+[39:46] requires between 2.33 to 3 km a second
+[39:50] of ejection velocity from [music] the
+[39:51] mass driver, a delta V capability in the
+[39:54] range of 3 to 4 km a second, plus some
+[39:57] propellant safety margin, maybe 5%. And
+[40:00] the capacity to throttle up to a thrust
+[40:02] to weight ratio of four. So, now we can
+[40:05] finally attempt to answer the question
+[40:07] from the beginning of this video. How
+[40:09] small can we actually make the rocket
+[40:11] [music] pods? Remember, peak power is
+[40:13] the issue. For example, a payload that
+[40:16] masses in at 1 ton launched at 100 m a
+[40:19] second requires about 850 megawatt of
+[40:22] peak power with roughly 12 seconds spent
+[40:24] above 425 megawatt on the way to peak.
+[40:28] This is very high, especially for lunar
+[40:30] made switches and hardware. So, we want
+[40:32] to reduce peak power. And recall that of
+[40:34] the two main ways to reduce peak power,
+[40:36] we decided that lowering the mass of the
+[40:38] rocket pod was more attractive than
+[40:40] lowering acceleration. Because if we
+[40:42] lower acceleration, we have to increase
+[40:44] the launcher length. But lowering the
+[40:46] pod mass allows us to lower the mass
+[40:48] driver size and power. But we lose out
+[40:50] on economics as we would have lower
+[40:53] throughput. But we can combat this by
+[40:55] simply keeping the same sized launcher.
+[40:57] So the launcher is not sized for any
+[41:00] single shot, but rather for some amount
+[41:02] of mass per hour for throughput. And
+[41:05] this is dictated by thermal cadence, the
+[41:07] steadystate firing temp. And by lowering
+[41:10] the mass of the rocket pods and firing
+[41:11] smaller pods at a more rapid rate. So we
+[41:14] have the same economics, we are able to
+[41:17] lower peak power without increasing the
+[41:19] size of the launcher or anything else.
+[41:22] For example, a 1 ton per hour system
+[41:24] could launch one one ton pod once an
+[41:26] hour or 10 100 kg pods every hour,
+[41:29] [music] one every 6 minutes. The output
+[41:32] is the same, thermal is the same, and
+[41:35] therefore the mass driver size remains
+[41:37] the same, but each individual shot has
+[41:39] one/10enth the peak power demand. So by
+[41:42] lowering the mass of the rocket pods, we
+[41:44] relax the hardest part of the mass
+[41:45] driver. But that only works up to a
+[41:48] point. The pod still needs a rocket
+[41:50] motor, structure, guidance, power,
+[41:52] thermal, [music] margin, fairing, and
+[41:54] the armature that couples it to the
+[41:55] launcher. None of that scales down to
+[41:57] zero. So the question is, what is the
+[42:00] limit? If smaller is better, how small
+[42:02] can we actually go? And now from the
+[42:05] simulations, we have the two numbers we
+[42:07] needed. Roughly 4 km/s of delta V and a
+[42:10] thrust to weight requirement of four as
+[42:12] well. These are non-trivial delta V and
+[42:15] thrust weight figures, but they are not
+[42:17] outside the reasonable bounds of
+[42:18] application for something like a
+[42:20] potentially radically inexpensive
+[42:21] aluminum oxygen thruster operating at an
+[42:24] ISP of something like 230 seconds. And
+[42:27] it's worth noting that this is the most
+[42:29] we will need as many flights were under
+[42:32] this amount. But it's worth noting that
+[42:33] we might want to design for the worst
+[42:35] case regardless. And that a good
+[42:37] strategy may be that if the transit
+[42:38] requires less delta V, we should just
+[42:40] put more cargo on it so we don't have to
+[42:42] make a more complex rocket that can
+[42:45] tolerate different propellant mass
+[42:46] fractions. I.e. less delta V means we
+[42:49] should increase the dry mass, not lower
+[42:51] the wet mass. [music] So we just design
+[42:53] every pod to be the same delta V and
+[42:55] vary the payload rather than varying the
+[42:57] design so we can achieve manufacturing
+[42:59] standardization and scale. Anyway, with
+[43:02] these figures and an assumed specific
+[43:04] impulse of 230 seconds, the rocket
+[43:07] equation gives a mass ratio of about
+[43:09] 5.9.
+[43:10] That means roughly 83% of the wet pod
+[43:13] mass has to be propellant, leaving only
+[43:16] 17% for everything else, the dry rocket
+[43:19] hardware and [music] the useful payload.
+[43:21] So then how much of that 17% is
+[43:23] structural overhead, what we can call
+[43:25] dry mass, and how much is left for
+[43:28] payload? How do we divide the 17? To
+[43:30] estimate that, we looked across a range
+[43:32] of real rocket motors from hobby motors
+[43:34] up through small aerospace solid motors,
+[43:37] larger star motors, and finally Falcon 9
+[43:39] as a rough high-end comparison using
+[43:41] this big brochure from Northrup Groomman
+[43:44] and this hobby rocket models page. And
+[43:46] we put together this data table which we
+[43:48] then plotted into a graph. And look,
+[43:51] there's a pattern. Very small motors of
+[43:53] a few kilogram are pretty structurally
+[43:55] inefficient. The hardware overhead takes
+[43:58] up a huge fraction of the vehicle. But
+[43:59] as the motors get larger, the inert
+[44:01] fraction becomes much smaller as
+[44:03] economies of scale take hold. But then
+[44:05] the rate of gains fall off and the trend
+[44:08] plateaus around maybe 500 kg. But by
+[44:11] that point, their inert mass fractions
+[44:12] are around 6 to 8%. There is an
+[44:14] important caveat though as many of these
+[44:16] entries are motor only numbers. So they
+[44:18] do not include the other structural
+[44:20] things. So if a motor has a 6% inert
+[44:22] fraction, the full rocket pod is not
+[44:24] really 6%. It might be more like 8 to
+[44:26] 10%. But anyways, for this first order
+[44:28] sizing, I think we can defensively say
+[44:30] that a 500 kg wet rocket pod is a
+[44:34] reasonable baseline and would give us
+[44:35] something like a 7% payload margin with
+[44:38] 10% being the structural overhead dry
+[44:40] mass. So, we're dividing that 7% with
+[44:43] 10% being the structure and 7% being
+[44:46] being left for whatever payload we're
+[44:47] putting in it. Using the same
+[44:49] acceleration and muzzle velocity as
+[44:50] before, that would require about 423
+[44:53] megawatts of peak power with an average
+[44:55] power of about 212 megawatt during the
+[44:58] 25.4 second launch. Meaning the system
+[45:01] spends about 12.7 seconds above 211
+[45:05] megawatt on its way to peak. At one
+[45:07] launch every 3 minutes, that works out
+[45:09] to be about 30 megawatt averaged over
+[45:12] time. This is still significant, but
+[45:14] much better than the 850 megawatts peak
+[45:17] required for the one-tonon launcher. And
+[45:19] if we need less, we can go even smaller.
+[45:21] Though you'll be eating into your
+[45:22] payload margin, but that might actually
+[45:24] be okay. And you might even decide you
+[45:26] don't really need a payload. You're more
+[45:28] interested in the material that the
+[45:30] rocket pods themselves are made out of.
+[45:31] But anyways, at 500 kg of wet mass, 83%
+[45:35] propellant means we need about 415 kg of
+[45:38] propellant. And that leaves about 85 kg
+[45:41] for everything else. If we allocate
+[45:43] roughly 50 kg to dry pod hardware, then
+[45:47] about 35 kg remain for payload. That
+[45:50] sounds small, but 35 kg every 3 minutes
+[45:53] is still 700 kg hour or about 16.8 tons
+[45:57] per day. And recall that the rocket pod
+[45:59] itself is usable mass, not just its
+[46:01] dedicated payload fraction. The total
+[46:03] rocket pod is 500 kg full of propellants
+[46:06] and fuel. But the dry mass, just the
+[46:10] spent casing plus whatever payload it
+[46:12] has, would have a total mass of 85 kg.
+[46:15] So, if the total useful mass delivered
+[46:17] to orbit is arguably the full 85 kg, not
+[46:21] just the 35 kg of flexible payload, then
+[46:23] counting the spent casings as the true
+[46:26] exported mass at one [music] pod every 3
+[46:29] minutes, that works out to about 1.7
+[46:31] tons per hour, or nearly 41 tons per
+[46:35] day. That 35 kg is just what we might
+[46:38] consider dynamic or freedom of choice
+[46:40] mass. It could be anything, electronics,
+[46:42] fuel, wafers, rocks, thorium, plutonium,
+[46:44] whatever. And if we only care about
+[46:46] aluminum and steel and fuel and don't
+[46:48] need a payload margin, then we can
+[46:50] shrink it even further, thus lowering
+[46:52] peak power even more. So all this work
+[46:55] shows us the scale of a continuous
+[46:57] access mass driver and what is required
+[46:59] to make it work, what metrics we need to
+[47:01] achieve. What remains are the big
+[47:03] questions regarding NC2 resource
+[47:06] utilization and manufacturing, how to
+[47:08] actually build it. Answering these
+[47:10] questions is the work we have to do now.
+[47:12] But now we know that work will not be
+[47:14] done in vain. There is a path off this
+[47:17] rock. There is a future in which
+[47:19] material is cast along cis lunar space
+[47:22] at a frequency and throughput comparable
+[47:24] to the railways of earth today and
+[47:26] perhaps even greater perhaps thousands
+[47:28] maybe eventually tens of thousands of
+[47:30] tons of mass could be exported to low
+[47:32] earth orbit every day for two perhaps
+[47:35] three orders of magnitude less cost than
+[47:37] a single rocket launch today. And then
+[47:40] we build behemoths.
+[47:43] [music]
+[47:48] We opened this video with a question.
+[47:50] What is the smallest near-term mass
+[47:52] driver we could actually build on the
+[47:54] moon? How long is it? How many tons does
+[47:57] it weigh? What does it take to actually
+[47:59] build it? Unfortunately, this video has
+[48:01] already become far too long to answer
+[48:04] all of that here. But now for the first
+[48:06] time, we actually have the baselines
+[48:08] needed to do it. We know the
+[48:10] destination, the launch site, the
+[48:12] required ejection velocity, the rocket
+[48:14] delta V, the thrust to weight ratio, and
+[48:16] a defensible first estimate for pod size
+[48:18] and throughput. So in the next video, we
+[48:21] are going to take everything we
+[48:23] established here and work backwards into
+[48:25] the mass driver itself. Though while you
+[48:27] wait, I want to genuinely encourage you
+[48:29] to try answering those questions
+[48:31] yourself. Take these numbers, build a
+[48:34] model, make assumptions, run a
+[48:36] simulation, and see what you find. We
+[48:38] usually think of simulations as tools
+[48:40] for modeling specific processes. But a
+[48:43] better perspective is that simulations
+[48:45] are a remarkably effective way to learn
+[48:47] about a problem itself. They give us a
+[48:49] picture into what the problems actually
+[48:52] are. It is all well and good to have an
+[48:54] idea, but ideas are now cheap. We live
+[48:56] in an age where communication is
+[48:58] saturated with confident handwaving,
+[49:00] where concepts are easy to generate,
+[49:02] easy to dress up, and very difficult to
+[49:04] verify. So, this is a call to anyone
+[49:06] with ideas about space, and especially
+[49:08] to anyone interested in our industrial
+[49:11] future beyond the Earth. Start building
+[49:14] simulations. Do not let an algorithm, a
+[49:17] pitch deck, or whoever happens to have
+[49:19] the loudspeaker decide what you think
+[49:21] [music] is possible. Follow relevant
+[49:23] technical documentation. read papers,
+[49:26] make simulations, and build diagrams and
+[49:28] even animations to check your work. The
+[49:30] computational power available to you is
+[49:32] enormous, probably more than you
+[49:34] realize. And once you actually
+[49:36] understand the problem, you may find
+[49:37] yourself in genuinely novel territory,
+[49:40] asking questions no one has asked
+[49:42] before, because almost no one has looked
+[49:44] closely enough to see them. This is not
+[49:46] a trivial pursuit. It is a deeply
+[49:49] meaningful one. Humanity's future in
+[49:51] this dangerous, unfamiliar, and
+[49:52] extraordinary environment calls many of
+[49:54] our terrestrial assumptions into
+[49:56] question. The rules we have grown used
+[49:58] to about energy, structure, land,
+[50:01] distance, scarcity, and material
+[50:03] abundance may not hold forever as we
+[50:05] move out into space. Maybe one day
+[50:07] megawws may be freely afforded to each
+[50:09] of us individually to do whatever we
+[50:11] want with. One day we may be able to buy
+[50:13] centrifuged land by the square kilometer
+[50:16] on moderate budgets in space as
+[50:18] individuals. But that future cannot be
+[50:20] left only to institutions, investors,
+[50:22] algorithms, or whoever happens to
+[50:24] control the loudspeaker. Ordinary people
+[50:26] need to understand it too. We need to
+[50:28] understand the constraints, the
+[50:30] opportunities, the dangers, and the
+[50:31] trade-offs before we can meaningfully
+[50:33] choose what kind of future we want
+[50:35] because space will not automatically
+[50:37] make us wiser. It will only give us a
+[50:39] larger arena in which to act. It is up
+[50:41] to us to learn how to use it for better
+[50:44] rather than worse. It does not matter
+[50:46] what tools you use. It does not matter
+[50:48] whether you are a good programmer yet.
+[50:50] You might be a highle Python person,
+[50:52] someone who works in C and inline
+[50:54] [music] assembly or someone building
+[50:56] physical models on an actual table. The
+[50:59] point is not to begin perfectly. The
+[51:01] point is to begin. Take the first step.
+[51:04] Make a crude version. See what breaks.
+[51:06] Then make it better. For repetition is
+[51:09] what truly brings understanding, [music]
+[51:10] not raw intelligence or innate skill.
+[51:13] The master has failed more times than
+[51:15] the student has tried. Ideas are always
+[51:18] cheap. It is the work that follows that
+[51:19] gives them value. If you're unfamiliar
+[51:21] with the process, the resources are
+[51:23] here. We have the internet, Google
+[51:25] Scholar, the archive, public data sets,
+[51:27] open- source code, and an endless
+[51:29] wellspring [music] of ideas to study for
+[51:31] free. You can find tutorials on YouTube
+[51:33] that rival university lectures. You have
+[51:36] access to the tools. You have access to
+[51:38] the knowledge. Now, it is time to just
+[51:40] [music] start. And once you have your
+[51:43] results, join the anthroofuturism
+[51:45] Discord and present your findings, where
+[51:47] I'm sure a great many salty nerds will
+[51:50] be eager to argue over every assumption,
+[51:52] equation, and tiny detail.

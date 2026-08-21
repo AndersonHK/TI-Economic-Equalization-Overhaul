@@ -240,3 +240,41 @@ exposure, and climate-driven Inequality retain their existing behavior.
   compact cost and duration labels; do not append multiline diagnostics. Do not
   add mod labels, migration history, or comparisons with retired behavior to
   gameplay text.
+
+## National harmonization and claim legitimacy
+
+Claim legitimacy is based on the directional compatibility of an annexing or
+claimant nation `S` with the annexed or region-owning nation `T`; Government
+alone is not a proxy for liberation. The authoritative score is:
+
+```text
+f = abs(S.Government - T.Government)
+  + abs(S.Inequality - T.Inequality)
+  + abs(S.Knowledge - T.Knowledge)
+  + max(S.GDPPerCapita / T.GDPPerCapita,
+        T.GDPPerCapita / S.GDPPerCapita)
+
+modifier = (10 - T.Unrest) / 10 + (10 - S.Cohesion) / 10
+harmonizationScore = modifier * f
+```
+
+GDP means current per-capita GDP (`TINationState.perCapitaGDP`, or GDP/c), not
+total national GDP. Unrest and Cohesion are defensively clamped to `[0,10]`;
+non-finite inputs or non-positive GDP/c fail closed. A real ordinary
+claim is non-hostile at an inclusive score of `6` or less. A claim with an
+immutable historical-hostility designation is non-hostile only at `3` or less,
+so history can be overcome but requires substantially deeper convergence.
+Regions with no claim remain hostile, and alien claim behavior remains TI's.
+
+Federation formation and entry retain TI's alliance, cooldown, executive,
+enemy, breakaway, and cross-boundary-claim requirements. In addition, the best
+actual directional claim link connecting the prospective parties must score
+`12` or less. Historical status does not lower this federation ceiling, and
+scenario-defined startup federation assembly bypasses it.
+
+Historical designation and an integrated hostile-region burden are separate.
+The designation selects the `3` threshold whenever ownership is external; the
+runtime burden may still be removed after a peaceful transfer without erasing
+the historical standard for a future ownership change. Scenario history is
+explicit: Russia's claims on Donetsk, Kharkiv, Kiev, and Odesa are historical
+in the 2022/2026/2070 families but ordinary in the Dark Skies 2003 start.

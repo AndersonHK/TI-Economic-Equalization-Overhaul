@@ -36,6 +36,14 @@ when prose and runtime behavior disagree.
 - [Coup frequency and Inequality stabilization](coup-inequality-stabilization-report.md):
   zero-Cohesion organic-coup-loop analysis, implemented `-0.10` Inequality
   change, immediate Cohesion-equilibrium reset, and manual-test plan.
+- [National harmonization eligibility](national-harmonization-eligibility-plan.md):
+  authoritative implemented claim score, `6`/`3` integration thresholds,
+  `12` federation gate, historical-claim matrix, Dark Skies ownership gate,
+  automated results, and manual-test plan.
+- [National unification harmonization table](national-unification-harmonization-table.xlsx):
+  formula-driven, filterable scores for all evaluable directional capital
+  claims across 2003, 2022, 2026, and 2070, including project unlocks,
+  historical classifications, and editable threshold/weight calibration.
 - [Land warfare and Military investment](land-warfare-and-military-investment.md):
   authoritative formulas for army value, upkeep, modernization, repair debt,
   combat ratings, and force-preserving transfers.
@@ -77,10 +85,6 @@ when prose and runtime behavior disagree.
   shared zero Base Control Point Capacity is a sparse global-config override,
   and records the approved Normal combat-realism defaults, validation, and
   manual-test plan.
-- [National harmonization eligibility plan](national-harmonization-eligibility-plan.md)
-  traces the current dynamic claim-hostility and peaceful-unification gates,
-  evaluates the proposed score, and records the not-yet-implemented patch and
-  test plan.
 - [Initial Economy plan](economy-growth-initial-plan.md) is a superseded design
   record. The calibration document and source describe the implemented model.
 - [Hab capacity beyond twenty facilities](hab-slot-expansion-assessment.md) is a

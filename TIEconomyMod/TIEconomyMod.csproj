@@ -108,6 +108,7 @@
     <Compile Include="Core\HullVolumeCatalog.cs" />
     <Compile Include="Core\HullDriveScaleCatalog.cs" />
     <Compile Include="Core\GovernmentMath.cs" />
+    <Compile Include="Core\NationalHarmonizationMath.cs" />
     <Compile Include="Core\InequalityMath.cs" />
     <Compile Include="Core\CohesionRestMath.cs" />
     <Compile Include="Core\CampaignDifficultyDefaults.cs" />
@@ -152,6 +153,7 @@
     <Compile Include="Patches\NationalValuesPatches.cs" />
     <Compile Include="Patches\NuclearEffectsPatches.cs" />
     <Compile Include="Patches\NationalMergerPatches.cs" />
+    <Compile Include="Patches\NationalHarmonizationPatches.cs" />
     <Compile Include="Patches\ProjectileCollisionPatches.cs" />
     <Compile Include="Patches\DirectFireCoordinationPatches.cs" />
     <Compile Include="Patches\SocialPriorityPatches.cs" />

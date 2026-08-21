@@ -5,7 +5,7 @@ Status: evidence and planning archive. Use the dated
 [current implementation matrix](../current-implementation-matrix.xlsx) to
 distinguish implemented values from proposals and deferred work.
 
-Last reviewed: 2026-08-20
+Last reviewed: 2026-08-21
 
 This dossier compares dated Terra Invicta ship-drive, power-plant, and
 weapon-crew snapshots with demonstrated hardware, active prototypes, historical
@@ -43,6 +43,8 @@ The comparison is organized into:
 - [Early human hull geometry, mass, crew, power, and volume audit](gunship-and-escort-hull-analysis.md)
 - [Drive/reactor pairing, open-cycle cooling, and hull geometry](drive-reactor-pairing-and-hull-geometry.md)
 - [Open-cycle reactor demand and heat accounting](open-cycle-reactor-demand-and-heat.md)
+- [Open-cycle reactor mass scaling and power UI plan](open-cycle-reactor-mass-scaling-plan-2026-08-21.md)
+- [NERVA-class thermal-reactor specific mass](details/reactors/nerva-thermal-specific-mass-2026-08-21.md)
 - [Hull resource-cost accounting and metal-use options](hull-resource-cost-accounting.md)
 - [Skirmish roster performance investigation](skirmish-roster-performance-investigation.md)
 - [Human hull slots, crew, naval references, and drive scaling](human-hull-slots-and-drive-scaling.md)

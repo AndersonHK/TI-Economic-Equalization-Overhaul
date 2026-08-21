@@ -56,6 +56,17 @@ historical research and deferred work.
   newly calculated rest state with a floor of zero. This gives failed states an
   immediate route out of the zero-Cohesion coup loop when their revised social
   equilibrium is positive.
+- Human claim legitimacy uses a directional harmonization score built from the
+Government, Inequality, and Knowledge gaps, the larger GDP-per-capita ratio,
+  target Unrest, and source Cohesion. Ordinary claims integrate peacefully at
+  `6` or less; historically hostile claims require `3` or less. Federation
+  formation and entry require at least one real cross-boundary claim link at
+  `12` or less, in addition to TI's existing diplomatic and control rules.
+- Approved historical claims include post-2014 Russia-to-Ukraine, China-to-
+  Taiwan, both India/Pakistan directions, both Koreas, the Baltic/Russian and
+  other reviewed grievances, plus the Restored Warsaw Pact, Forward Russia,
+  and Liberating Mainland China project families. Dark Skies registration is
+  ownership- and scenario-gated; Russia-to-Ukraine remains ordinary in 2003.
 - Configurable region conversion, decolonization, and fallout thresholds,
   defaulting to five times vanilla.
 
@@ -297,6 +308,13 @@ enabled-mod destination and verifies every deployed file by SHA-256.
 - Verify neutral research equals the sum of unusable national Control Point
   shares, appears gray in all three slots, and waits below completion until a
   faction contributes.
+- Compare claim tooltips and policy targets around scores `3`, `6`, and `12`.
+  Confirm India/Pakistan and China/Taiwan use the historical threshold, a
+  passing historical transfer leaves no hostile-region burden, and a score
+  above `12` removes federation formation or entry.
+- In Dark Skies, confirm Russia's Ukrainian claims are ordinary while the other
+  approved 2003 grievances are historical; then repeat a base scenario to
+  confirm no `2003_*` lookup warning appears.
 
 ### Habs, founding, and probes
 

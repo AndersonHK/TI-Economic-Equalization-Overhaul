@@ -103,6 +103,35 @@ try {
     Assert-Count $absorb 'TINationState::TransferRegionsControlTo\(' 1 'National merger region transfer'
     Assert-Count $absorb 'TINationState::ClearArmies\(\)' 1 'National merger joining-force cleanup'
 
+    $claimWillBeHostile = Read-MethodIl $nation 'ClaimWillBeHostile'
+    Assert-Count $claimWillBeHostile 'TINationState::HostileClaimDueToDemocracy\(' 1 'Vanilla dynamic claim-hostility hook'
+    Assert-Count $claimWillBeHostile 'hostileClaims' 1 'Vanilla stored hostile-claim gate'
+
+    $hostileDueToDemocracy = Read-MethodIl $nation 'HostileClaimDueToDemocracy'
+    Assert-Count $hostileDueToDemocracy 'democracyDecreaseToMakeHostileClaim' 1 'Vanilla Government-only claim threshold'
+
+    $canFormFederation = Read-MethodIl $nation 'CanFormFederation'
+    Assert-Count $canFormFederation 'TINationState::HasClaimOnOtherNation\(' 2 'Federation-formation claim links'
+
+    $canAddNation = Read-MethodIl 'PavonisInteractive.TerraInvicta.TIFederationState' 'CanAddNation'
+    Assert-Count $canAddNation 'TIFederationState::MemberClaims\(' 1 'Federation-entry member claim links'
+    Assert-Count $canAddNation 'TINationState::get_claims\(\)' 1 'Federation-entry prospective claim links'
+
+    $formFederation = Read-MethodIl $nation 'FormFederation'
+    Assert-Count $formFederation 'TIFederationState::FoundFederation\(' 1 'Federation execution mutation'
+
+    $regionListContains = 'System\.Collections\.Generic\.List`1<class PavonisInteractive\.TerraInvicta\.TIRegionState>::Contains\('
+    $unifyFeedback = Read-MethodIl $nation 'CanUnifyFeedback'
+    Assert-Count $unifyFeedback $regionListContains 2 'Unification external-claim presentation hooks'
+    $regionColor = Read-MethodIl 'PavonisInteractive.TerraInvicta.RegionController' 'GetRegionFillColor'
+    Assert-Count $regionColor $regionListContains 3 'Map external-claim presentation hooks'
+    $claimList = Read-MethodIl 'PavonisInteractive.TerraInvicta.ClaimListItemController' 'UpdateListItem'
+    Assert-Count $claimList $regionListContains 2 'Claim-list external-claim presentation hooks'
+    $nationRegionList = Read-MethodIl 'PavonisInteractive.TerraInvicta.NationInfoController' 'UpdateRegionList'
+    Assert-Count $nationRegionList $regionListContains 3 'Nation-region external-claim presentation hooks'
+    $policyTarget = Read-MethodIl 'PavonisInteractive.TerraInvicta.PolicyTargetGridItemController' 'UpdateListItem'
+    Assert-Count $policyTarget $regionListContains 1 'Policy-target external-claim presentation hook'
+
     $controlCost = Read-MethodIl $nation 'get_ControlPointMaintenanceCost'
     Assert-Count $controlCost 'ldfld\s+float32 TIStartTimeTemplate::CPMaintenanceModifier' 1 'Control-point scenario multiplier'
 

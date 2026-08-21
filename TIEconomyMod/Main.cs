@@ -208,6 +208,9 @@ namespace TIEconomyMod
         [Draw("National Mergers")]
         public NationalMergerSettings nationalMergers = new NationalMergerSettings();
 
+        [Draw("Claim Harmonization")]
+        public ClaimHarmonizationSettings claimHarmonization = new ClaimHarmonizationSettings();
+
         [Draw("Oppression")]
         public OppressionSettings oppression = new OppressionSettings();
 
@@ -480,6 +483,15 @@ namespace TIEconomyMod
     }
 
     [DrawFields(DrawFieldMask.Public)]
+    public sealed class ClaimHarmonizationSettings
+    {
+        public bool enabled = true;
+        public float ordinaryThreshold = 6f;
+        public float historicalThreshold = 3f;
+        public float federationThreshold = 12f;
+    }
+
+    [DrawFields(DrawFieldMask.Public)]
     public sealed class OppressionSettings
     {
         public bool enabled = true;
@@ -595,6 +607,7 @@ namespace TIEconomyMod
             value.government = value.government ?? defaults.government;
             value.military = value.military ?? defaults.military;
             value.nationalMergers = value.nationalMergers ?? defaults.nationalMergers;
+            value.claimHarmonization = value.claimHarmonization ?? defaults.claimHarmonization;
             value.oppression = value.oppression ?? defaults.oppression;
             value.environment = value.environment ?? defaults.environment;
             value.emissions = value.emissions ?? defaults.emissions;
@@ -753,6 +766,32 @@ namespace TIEconomyMod
                 Math.Min(0.1f, (value.nationalMergers.inequalityMaximum -
                     value.nationalMergers.inequalityMinimum) / 4f),
                 "nationalMergers.inequalityBoundaryEpsilon", log);
+            RepairNonNegative(ref value.claimHarmonization.ordinaryThreshold,
+                defaults.claimHarmonization.ordinaryThreshold,
+                "claimHarmonization.ordinaryThreshold", log);
+            RepairNonNegative(ref value.claimHarmonization.historicalThreshold,
+                defaults.claimHarmonization.historicalThreshold,
+                "claimHarmonization.historicalThreshold", log);
+            RepairNonNegative(ref value.claimHarmonization.federationThreshold,
+                defaults.claimHarmonization.federationThreshold,
+                "claimHarmonization.federationThreshold", log);
+            if (value.claimHarmonization.historicalThreshold >
+                value.claimHarmonization.ordinaryThreshold)
+            {
+                log("Historical claim threshold exceeded the ordinary threshold; restored 3/6 defaults.");
+                value.claimHarmonization.historicalThreshold =
+                    defaults.claimHarmonization.historicalThreshold;
+                value.claimHarmonization.ordinaryThreshold =
+                    defaults.claimHarmonization.ordinaryThreshold;
+            }
+            if (value.claimHarmonization.federationThreshold <
+                Math.Max(value.claimHarmonization.ordinaryThreshold,
+                    value.claimHarmonization.historicalThreshold))
+            {
+                log("Federation threshold was lower than an integration threshold; restored 12 default.");
+                value.claimHarmonization.federationThreshold =
+                    defaults.claimHarmonization.federationThreshold;
+            }
             RepairPositive(ref value.oppression.unrestPopulationDivisor, defaults.oppression.unrestPopulationDivisor, "oppression.unrestPopulationDivisor", log);
             RepairPositive(ref value.oppression.fullDemocracy, defaults.oppression.fullDemocracy, "oppression.fullDemocracy", log);
             RepairPositive(ref value.environment.storageRatingOffset, defaults.environment.storageRatingOffset, "environment.storageRatingOffset", log);

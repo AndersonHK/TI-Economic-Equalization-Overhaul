@@ -1,0 +1,8 @@
+quantity,per_day,unit,basis
+shots,480.0,pods/day,one 500 kg pod every 180 s
+wet pod throughput,240.0,t/day,500 kg per pod
+propellant throughput,199.2,t/day,415 kg per pod (video baseline)
+aluminum reactant,105.427,t/day,stoichiometric 4Al + 3O2
+oxygen reactant,93.773,t/day,stoichiometric 4Al + 3O2
+dry pods plus discretionary cargo,40.8,t/day,85 kg final mass per pod
+discretionary cargo,16.8,t/day,35 kg per pod (video baseline)

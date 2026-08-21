@@ -1,2 +1,10 @@
 UI.Nation.PerCapitaGDPHelp2=The Economy and Spoils priorities each increase Per Capita GDP by ${0} per {1}.
 UI.Nation.GDPHelp1=A nation's GDP, or Gross Domestic Product, is a measure of its annual economic output in U.S. dollars adjusted by purchasing power parity. The nation's GDP determines how many Control Points a nation has, how many Investment Points it produces, and how difficult certain missions there are. GDP increases from both the Economy and Spoils priorities are included in the 31-day GDP change above.
+UI.Nation.HarmonizationMissingClaim=The receiving nation has no claim on this region, so the transfer would be hostile.
+UI.Nation.HarmonizationInvalid=Harmonization cannot be calculated from the current national GDP per capita values, so peaceful integration is unavailable.
+UI.Nation.HarmonizationHistorical=historical
+UI.Nation.HarmonizationOrdinary=ordinary
+UI.Nation.HarmonizationClaimScore=Harmonization score: {0} / {1} ({2} claim). Components: Government {3}, Inequality {4}, Knowledge {5}, GDP/c ratio {6}; stability/cohesion modifier {7}.
+UI.Nation.HarmonizationFederationNoLink=Federation harmonization: no cross-boundary claim link (maximum score {0}).
+UI.Nation.HarmonizationFederationInvalid=Federation harmonization cannot be calculated from the current national GDP per capita values.
+UI.Nation.HarmonizationFederationScore=Best federation harmonization: {0} / {1}, using {2}'s claim on {3}.

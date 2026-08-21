@@ -561,6 +561,7 @@ coefficient because they change incentives or feedback:
 | Government | National research | `max(Government,0.10)^0.20` |
 | Government | Spoils payout | `1.30 - 0.03*Government`, clamped over Government `[0,10]`; gives `x1.30` at 0 and `x1.00` at 10 |
 | Government | Oppression Unrest reduction | EEO formula fades linearly as `(10-Government)/10` |
+| Government, Inequality, Knowledge, GDP/c, Cohesion, and Unrest | Claim integration and federation eligibility | Directional harmonization uses the three absolute score gaps plus the larger per-capita-GDP ratio, multiplied by `(10-target Unrest)/10 + (10-source Cohesion)/10`; inclusive thresholds are `6` ordinary, `3` historical, and `12` federation |
 
 ## Practical tuning map
 
@@ -603,6 +604,8 @@ setting; editing `Settings.xml` alone cannot alter them.
 - Economy Inequality: `TIEconomyMod/Patches/EconomyPatches.cs`
 - Government curve math: `TIEconomyMod/Core/GovernmentMath.cs`
 - Merger Inequality: `TIEconomyMod/Patches/NationalMergerPatches.cs`
+- Claim harmonization: `TIEconomyMod/Core/NationalHarmonizationMath.cs` and
+  `TIEconomyMod/Patches/NationalHarmonizationPatches.cs`
 - Formula verification: `tests/FormulaTests/Program.cs`
 - Existing design authority: `docs/design-directives.md` and
   `docs/government-boundary-curve.md`

@@ -48,6 +48,7 @@ namespace TIEconomyMod.FormulaTests
                 TestAbundance();
                 TestInequality();
                 TestSocialPriorities();
+                TestNationalHarmonization();
                 TestNationalMergers();
                 TestEnvironmentUnitySpoilsAndEmissions();
                 TestHabRebalanceMath();
@@ -2437,6 +2438,75 @@ namespace TIEconomyMod.FormulaTests
             SpoilsSustainabilityPatch.Prefix(ref result, nation);
             Near(0.005f, result, 0.000001f,
                 "disabled abundance removes the Spoils sustainability resource premium");
+        }
+
+        private static void TestNationalHarmonization()
+        {
+            NationalHarmonizationResult identical =
+                NationalHarmonizationMath.Calculate(
+                    7d, 3d, 9d, 100d, 10d,
+                    7d, 3d, 9d, 100d, 10d);
+            True(identical.valid, "identical harmonization inputs are valid");
+            Near(0f, (float)identical.score, 0f,
+                "fully stable identical nations have zero harmonization score");
+
+            NationalHarmonizationResult ratioForward =
+                NationalHarmonizationMath.Calculate(
+                    5d, 4d, 6d, 400d, 5d,
+                    5d, 4d, 6d, 100d, 5d);
+            NationalHarmonizationResult ratioReverse =
+                NationalHarmonizationMath.Calculate(
+                    5d, 4d, 6d, 100d, 5d,
+                    5d, 4d, 6d, 400d, 5d);
+            Near(4f, (float)ratioForward.perCapitaGdpRatio, 0f,
+                "GDP/c ratio chooses the larger direction");
+            Near((float)ratioForward.score, (float)ratioReverse.score, 0f,
+                "GDP/c ratio is inverse-symmetric when modifier inputs match");
+
+            NationalHarmonizationResult lowCohesion =
+                NationalHarmonizationMath.Calculate(
+                    5d, 4d, 6d, 100d, 2d,
+                    7d, 5d, 8d, 200d, 3d);
+            NationalHarmonizationResult highCohesion =
+                NationalHarmonizationMath.Calculate(
+                    5d, 4d, 6d, 100d, 8d,
+                    7d, 5d, 8d, 200d, 3d);
+            True(highCohesion.score < lowCohesion.score,
+                "higher source cohesion lowers harmonization score");
+
+            NationalHarmonizationResult highUnrest =
+                NationalHarmonizationMath.Calculate(
+                    5d, 4d, 6d, 100d, 2d,
+                    7d, 5d, 8d, 200d, 9d);
+            True(highUnrest.score < lowCohesion.score,
+                "higher target unrest lowers the requested multiplier");
+            True(Math.Abs(highUnrest.score - ratioForward.score) > 0.01d,
+                "source and target roles are directional");
+
+            NationalHarmonizationResult exactOrdinary =
+                new NationalHarmonizationResult { valid = true, score = 6d };
+            NationalHarmonizationResult exactHistorical =
+                new NationalHarmonizationResult { valid = true, score = 3d };
+            NationalHarmonizationResult overOrdinary =
+                new NationalHarmonizationResult
+                {
+                    valid = true,
+                    score = 6.000001d
+                };
+            True(NationalHarmonizationMath.Passes(exactOrdinary, 6d),
+                "ordinary threshold is inclusive");
+            True(NationalHarmonizationMath.Passes(exactHistorical, 3d),
+                "historical threshold is inclusive");
+            True(!NationalHarmonizationMath.Passes(overOrdinary, 6d),
+                "score above the ordinary threshold fails");
+
+            NationalHarmonizationResult invalidGdp =
+                NationalHarmonizationMath.Calculate(
+                    5d, 4d, 6d, 0d, 5d,
+                    5d, 4d, 6d, 100d, 5d);
+            True(!invalidGdp.valid &&
+                !NationalHarmonizationMath.Passes(invalidGdp, 12d),
+                "non-positive GDP/c fails closed");
         }
 
         private static void TestNationalMergers()
