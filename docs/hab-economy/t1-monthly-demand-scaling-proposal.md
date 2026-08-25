@@ -1,17 +1,19 @@
 # T1 monthly demand scaling proposal
 
 Date: 2026-08-17  
-Status: **implemented and deployed**, including the power-plant aggregation
-rule below; manual in-game testing pending
+Status: **historical; superseded by the implemented consolidated T1-T3
+revision** in [`t1-t3-monthly-demand-revision-plan.md`](t1-t3-monthly-demand-revision-plan.md)
 
 The machine-readable approved values are in
 [`hab-module-maintenance-proposals.csv`](hab-module-maintenance-proposals.csv).
 The generator aggregation is deliberately save-compatible: existing placed
 generators gain 2x output while their crew and monthly resource burden also
 become 2x, so old layouts gain power headroom instead of shutting down. New
-generator construction pays 2x resources and Boost through the runtime cost
-rewrite; template mass and build time are unchanged. Money maintenance is
-unchanged for every module.
+generator construction pays 2x resources and Boost. The 2026-08-24 correction
+also makes the represented two-plant module physically 2x and removes the
+separate runtime multiplier, preserving the same construction bill without a
+4x charge. Build time is unchanged. Money maintenance is unchanged for every
+module.
 
 Deployment verification on 2026-08-17 passed the complete TI 1.0.51 release
 pipeline, including 1,070 formula assertions, guarded Harmony/IL checks, exact
@@ -93,8 +95,10 @@ The multiplier applies to direct generators (`power > 0`), not to a Solar
 Mirror that modifies a separate collector. It is applied after the physical
 maintenance calculation and the 50% reduction ceiling, then remains subject
 to the three preservation restrictions. Zero crew remains zero when doubled.
-"Construction cost" means resource and boost cost, not physical mass or build
-time; those should remain unchanged unless separately approved.
+The original pass treated "construction cost" as resource and Boost cost only.
+The 2026-08-24 correction additionally doubles physical generator mass while
+removing the separate runtime cost multiplier, so charged cost remains 2x.
+Build time remains unchanged.
 
 For T1 this covers Automated Fission Pile, Automated Solar Collector, Fission
 Pile, Fusion Pile, Heavy Fission Pile, Heavy Fusion Pile, and Solar Collector.

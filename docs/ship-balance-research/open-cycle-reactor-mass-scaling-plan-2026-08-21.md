@@ -1,9 +1,14 @@
 # Open-cycle reactor mass scaling and power UI plan
 
-Status: implementation plan only. No gameplay values are changed by this
-document.
+Status: temporary flat-`0.5` gameplay calibration implemented and deployed
+2026-08-24; manual in-game verification pending.
 
-Last reviewed: 2026-08-21
+Last reviewed: 2026-08-24
+
+Implementation scope note: authored `maxOutput_GW` progression remains owned
+by the separate reactor-output task and is unchanged here. This implementation
+does change how drive output consumes that existing rated cap: electrical drive
+output counts one-for-one and open-cycle thermal output counts by `s`.
 
 ## Objective
 
@@ -15,10 +20,10 @@ burden associated with two different uses of that output:
    systems, and weapons.
 
 The open-cycle drive must continue to advertise its full installed thermal
-demand. The new scaler reduces only how strongly that thermal contribution
-sizes plant mass, construction resources, and reactor-bay occupancy. It must
-not reduce thrust, falsify reactor thermal output, or make an under-capacity
-reactor compatible with a drive.
+demand. The new scaler reduces how strongly that thermal contribution sizes
+plant mass, construction resources, reactor-bay occupancy, and rated-cap use.
+It must not reduce thrust, falsify reactor thermal output, or alter the authored
+cap value itself.
 
 The same demand breakdown will correct four UI concepts:
 
@@ -30,8 +35,9 @@ The same demand breakdown will correct four UI concepts:
 
 ## Settled accounting model
 
-Use one shared snapshot for every design, compatibility, mass, cost, volume,
-heat, and UI consumer. Do not continue encoding several meanings into
+Use one shared snapshot for every design-side output, mass, cost, volume, heat,
+cap, and UI consumer. Keep the separately owned cap values isolated from the
+temporary weighting policy. Do not continue encoding several meanings into
 `TISpaceShipTemplate.drivePowerRequirement_GW`.
 
 Let:
@@ -46,6 +52,7 @@ Let:
 - `Qtotal` = actual total reactor thermal output;
 - `Pmass` = gross-reactor-equivalent power used to size plant mass, cost, and
   bay occupancy;
+- `Cdrive` = drive demand charged against the plant's rated output cap;
 - `Hrad` = steady waste heat assigned to the radiators before separately
   modeled module heat is added.
 
@@ -77,9 +84,16 @@ The physical and mass-sizing totals are deliberately different:
 
 `Pmass = s * Qoc + Qe`
 
+`Cdrive = s * Qoc`
+
 `Hrad = Hoc + He`
 
-The reactor's `maxOutput_GW` comparison uses `Qtotal`, not `Pmass`.
+`Qtotal` is the physically meaningful thermal-output value exposed to the UI.
+`Cdrive`, not `Qtotal` or the full `Pmass`, is compared with `maxOutput_GW` for
+drive compatibility. At the temporary `s = 0.5`, a 4 GW rated cap can support
+either 4 GWe of closed-cycle drive output or 8 GWth of open-cycle output before
+the small retained-heat correction. Ship systems and weapons retain their
+existing cap semantics.
 
 ### Closed-cycle drive
 
@@ -96,6 +110,8 @@ Combine it with other useful electrical loads:
 `Qoc = 0`
 
 `Qtotal = Pmass = Qe`
+
+`Cdrive = D`
 
 `Hrad = Qe - (D + A)`
 
@@ -136,10 +152,37 @@ Interpret the multiplier as:
 
 `desired direct-thermal t/GWth / ordinary plant specificPower_tGW`
 
-For example, Solid Core I currently uses `240 t/GW`. A target open-cycle
-coefficient of `6-10 t/GWth` implies a multiplier of approximately
-`0.025-0.0417`. Exact shipped values require a separate reactor-data
-calibration pass after the mechanic is verified.
+### Temporary pre-rebalance gameplay calibration
+
+Until reactor specific masses are rebalanced, every reactor class other than
+`Fuel_Cell` and `Any_General` uses `s = 0.5`. Fuel-cell and general plants stay
+at `1.0`. This deliberately gives direct/open-cycle propulsion a uniform 50%
+mass, resource-cost, occupied-bay-volume, and rated-cap discount without
+letting the currently uneven reactor progression amplify that discount
+differently by technology path.
+
+Solid Core I's live `240 t/GW` coefficient therefore becomes an effective
+`120 t/GWth` for its open-cycle propulsion contribution during this temporary
+calibration. Scenario-aware JSON values still override class defaults, and all
+shipped non-fuel-cell/general overrides are also set to `0.5` so the temporary
+policy is visible in data.
+
+### Deferred post-rebalance technology targets
+
+The differentiated engineering targets are retained for restoration after the
+reactor rebalance, but are inactive for now:
+
+| Power-plant path | Multiplier | Rationale |
+|---|---:|---|
+| Solid-core fission | `0.025` | Direct hydrogen heating omits the electrical plant while preserving the generous NERVA target requested for later `t/GWe` growth |
+| Molten-salt/liquid-core fission | `0.05` | Direct exhaust remains favorable but requires more fluid containment and fuel management |
+| Gas-core fission | `0.10` | Direct use avoids conversion hardware, but fuel containment and recovery remain substantial |
+| Mirror fusion | `0.15` | Open magnetic geometry is unusually compatible with direct plasma exhaust |
+| General magnetic/hybrid fusion | `0.20` | Direct exhaust saves conversion hardware but retains most confinement machinery |
+| Z-pinch fusion | `0.25` | Pulsed/direct operation retains compression, switching, and chamber hardware |
+| Electrostatic/toroidal/inertial fusion | `0.30` | Turning the reactor into a practical direct drive removes less of the core plant |
+| Antimatter beam/plasma/gas/solid | `0.20/0.25/0.30/0.35` | Increasing interception and thermalization hardware reduces the direct-exhaust advantage |
+| Fuel cell/general | `1.0` | No reactor-specific direct-thermal discount |
 
 This multiplier solves the electrical-versus-direct-thermal distinction. It
 does not solve the small-reactor fixed-mass floor identified by the NERVA
@@ -151,8 +194,9 @@ Add a feature switch:
 
 `openCycleThermalMassScalingEnabled`
 
-Disabling it uses `s = 1` while retaining the corrected power and heat
-breakdown. This permits isolated regression testing and a safe fallback.
+Disabling it uses `s = 1` for both mass and cap weighting while retaining the
+corrected power and heat breakdown. This permits isolated regression testing
+and a safe fallback.
 
 ## Shared implementation types
 
@@ -166,8 +210,9 @@ returns a `ShipPowerDemandSnapshot` containing at least:
 | `OpenCycleReactorOutput_GWth` | Actual direct-thermal reactor output |
 | `UsefulElectricalDemand_GWe` | Closed drive plus systems and weapons |
 | `ElectricalReactorInput_GWth` | Gross thermal input to conversion |
-| `TotalReactorOutput_GWth` | Physical output used for plant caps |
+| `TotalReactorOutput_GWth` | Actual thermal output reported by the plant |
 | `MassRatedOutput_GW` | Scaled value used for mass and resources |
+| `CapRatedDriveDemand_GW` | Drive contribution compared with rated output |
 | `OpenCycleWasteHeat_GW` | Retained drive heat |
 | `ElectricalWasteHeat_GW` | Conversion loss |
 | `PlantWasteHeat_GW` | Sum of the two plant heat components |
@@ -183,6 +228,7 @@ Preserve these invariants in the math layer:
 - open cycle: `Qoc = D + Hoc`;
 - electrical side: `Qe = useful electrical demand + He`;
 - `Pmass <= Qtotal` whenever `0 < s <= 1`;
+- open cycle: `Cdrive = s * Qoc`; closed cycle: `Cdrive = D`;
 - disabling the scaler gives `Pmass = Qtotal`;
 - no input produces NaN or infinity.
 
@@ -203,15 +249,13 @@ Any consumer needing reactor input must use the shared snapshot explicitly.
 ### 2. Reactor output and electrical generation
 
 Patch `shipPowerProductionRequirement_GW` to return
-`TotalReactorOutput_GWth`. Treat `maxOutput_GW` consistently as maximum thermal
-reactor output and update UI labels to `GWth`.
+`TotalReactorOutput_GWth`. Label the unchanged `maxOutput_GW` value as maximum
+rated output in UI, distinct from actual reactor thermal output.
 
-Audit `TISpaceShipState.CacheInternalPowerStats` separately. Its auxiliary
-fields currently store gross thermal requirements, while its propulsion field
-also participates in `drive.powerGen` electrical-gain behavior. Do not blindly
-replace that field with `Qoc`: preserve the electrical-output semantics of
-`powerGen`, and use the snapshot only where the field represents reactor
-capacity. Add an IL guard around the audited assignments.
+Audit `TISpaceShipState.CacheInternalPowerStats` separately. Preserve the
+electrical-output semantics of `drive.powerGen`; the existing live heat patches
+continue to use installed, hull-scaled drive demand and the common thermal math
+without rewriting those cache fields.
 
 ### 3. Plant mass, resources, and cached ship mass
 
@@ -228,30 +272,21 @@ approved.
 
 ### 4. Reactor bay geometry
 
-Reactor-bay fit becomes load-composition-dependent. Keep two limits:
-
-- physical thermal capacity: `Qtotal <= maxOutput_GW`;
-- geometric/mass capacity: plant mass or its derived volume from `Pmass` must
-  fit the measured bay.
-
 Update `ReactorBayCapacitySnapshot` to expose both actual thermal output and
-mass-rated output. `BayVolumeUsed_m3` must be derived from `Pmass`, while
-compatibility with the plant rating must use `Qtotal`.
+mass-rated output. `BayVolumeUsed_m3` is derived from `Pmass`, so electrical
+loads remain fully represented while open-cycle propulsion receives its
+technology multiplier.
 
-The existing single `EffectiveOutput_GW` is no longer sufficient as a
-context-free plant characteristic. For a selected ship, calculate remaining
-open-cycle drive capacity after its electrical load:
-
-`thermal headroom = maxOutput_GW - Qe`
-
-`mass headroom = (bay-equivalent capacity - Qe) / s`
-
-The permitted open-cycle contribution is the smaller headroom. Closed-cycle
-headroom uses the ordinary unscaled path.
+The existing `EffectiveOutput_GW` and bay-output limit values remain the rated
+capacity boundary. Compatibility compares the new `Cdrive` value with that
+boundary; the authored and geometry-derived cap values themselves do not
+change.
 
 ### 5. Compatibility and AI design
 
-Replace every raw drive-versus-plant comparison with the snapshot result:
+The same `s` value used for mass sizing also weights open-cycle drive demand in
+every drive-versus-plant rated-output comparison. Closed-cycle electrical drive
+demand remains one-for-one. Coverage includes:
 
 - `TIDriveTemplate.IsCompatible(TIPowerPlantTemplate)`;
 - `TISpaceShipTemplate.ValidDrivesForPowerPlants`;
@@ -261,9 +296,9 @@ Replace every raw drive-versus-plant comparison with the snapshot result:
 - reactor-bay used-volume and effective-capacity checks;
 - AI candidate filtering and any capacity-boundary helper.
 
-Shipless compatibility lacks systems and weapons, so it uses the candidate
-drive alone. Ship-context compatibility includes every installed electrical
-load. A factor must never make `Qtotal > maxOutput_GW` pass.
+Broader reinterpretation of ship-context system and weapon loads remains
+deferred. The temporary weighting can make an open-cycle pairing pass with the
+same authored cap, but never changes that cap number.
 
 ### 6. Heat and live combat
 
@@ -296,31 +331,46 @@ not reorder drives merely because plant efficiency or mass multiplier changed.
 
 ### Power-plant descriptions and tooltips
 
-For an installed or prospective ship context, display these as separate lines:
+Use the compact vanilla-shaped power-plant table:
 
-- `Reactor thermal output: Qtotal GWth`;
-- `Electrical generation: useful electrical demand GWe`;
-- `Open-cycle drive output: Qoc GWth`, when present;
-- `Waste heat to radiators: total radiator load GWth`;
-- optional indented heat breakdown:
-  `open-cycle bleed / electrical conversion / module heat`;
-- `Open-cycle mass factor: x s`, when `s != 1`;
-- existing installed mass, cost, efficiency, and maximum thermal output.
+1. Classification.
+2. Electrical Output for installed designs, meaning useful installed
+   electrical demand.
+3. Thermal Output only when an installed open-cycle drive is present, meaning
+   useful work `D` delivered to the drive rather than gross reactor input
+   `Qoc`.
+4. Mass for installed designs.
+5. One Waste Heat row for installed designs with a drive.
+6. Crew when nonzero.
+7. Efficiency.
+8. Specific Power, with the active open-cycle mass/cap multiplier in
+   parentheses after the value.
+9. Max Output To Drive.
+10. Build Cost for installed designs, or Cost per GW prospectively.
+
+Keep reactor-bay used/available volume outside the table as a separate block.
+Do not display separate rated-cap-use, multiplier, or heat-breakdown rows; the
+underlying calculations and compatibility checks remain unchanged.
+
+The compact presentation was deployed on 2026-08-24 after passing 1,172
+formula assertions, all 176 Harmony patches, the 100-row implementation
+matrix, release verification, and the 46-file deployment. Source and deployed
+DLL SHA-256 is
+`5A709534E45DECA9165F9361808046D0C183A2302445B0E21FF3E5B0C29F8CEB`.
+Manual rendered-table confirmation remains pending.
 
 Do not label `Pmass` as reactor output. If exposed for debugging or advanced
 tooltips, call it `Mass-sizing equivalent`, never `Power produced`.
 
 ### Power-plant module table
 
-Keep the maximum-output column, but localize it as maximum **thermal** output.
-In the selected module tooltip, show actual `Qtotal` and useful electrical
-generation separately. Preserve the current hull/bay-limited warning, now
-computed from the load-aware headroom calculation.
+Keep the vanilla `Max Output To Drive` wording. Preserve the current
+hull/bay-limited warning, computed from the load-aware headroom calculation.
 
 ### Waste-heat UI
 
-Replace the generic plant waste-heat line with `Waste heat to radiators` and
-the exact `TISpaceShipTemplate.wasteHeat_GW` used to size the selected
+Retain one concise `Waste Heat` row showing the exact
+`TISpaceShipTemplate.wasteHeat_GW` used to size the selected
 radiator. This ensures the displayed number, radiator mass/cost, and live
 cooling rate share one source.
 
@@ -342,8 +392,9 @@ English string replacement to identify fields.
    extension, refresh hook, setting, and validation.
 4. **Core getters:** restore drive-demand semantics; patch total thermal
    output, plant mass, cost, waste heat, and cache refresh.
-5. **Capacity:** convert bay volume and every compatibility/AI consumer to the
-   two-limit physical-output and mass-volume model.
+5. **Capacity:** convert bay used volume to mass-rated output and route every
+   player and AI compatibility path through cap-rated drive demand without
+   changing authored cap values.
 6. **Runtime heat:** reconcile design heat, combat drive heat, live cached
    waste heat, and electrical-generation heat.
 7. **UI:** add cycle-specific drive labels and the separate reactor,
@@ -373,7 +424,8 @@ Cover:
   values;
 - `Pmass` changing without `D` or `Qtotal` changing;
 - mass, cost, and bay volume using `Pmass`;
-- compatibility and maximum-output checks using `Qtotal`;
+- open-cycle cap weighting at `s`, closed-cycle one-for-one cap use, and
+  unchanged authored cap values;
 - radiator sizing using the same heat displayed in UI;
 - feature-disabled parity and finite fallbacks.
 
@@ -388,7 +440,7 @@ Update target-assembly guards for every vanilla consumer whose semantics are
 being replaced. Update the existing ship-power transpiler validator to assert:
 
 - all module-table drive/output replacements occur exactly once;
-- no raw maximum-output comparison bypasses the snapshot;
+- every drive compatibility path uses cap-rated drive demand;
 - design mass and cost use mass-rated output;
 - waste heat and live combat heat use the common model; and
 - template initialization refreshes the new registry.
@@ -404,7 +456,7 @@ parity, and the implementation matrix in the same change.
 | Four-GW open-cycle fixture | Thermal output, mass-sized output, bay use, and retained radiator heat match the snapshot |
 | Closed-cycle electric drive | Drive shows `GWe`; reactor `GWth` includes efficiency gross-up; scaler has no effect |
 | Mixed systems and powered weapons | Electrical demand and conversion heat appear separately and total radiator heat matches radiator sizing |
-| Plant cap boundary | Lower mass does not permit thermal output above `maxOutput_GW` |
+| Plant cap boundary | `4 GWe` and `8 GWth` consume the same rated capacity at `s = 0.5`; authored `maxOutput_GW` is unchanged |
 | Reactor-bay boundary | Mass scaling changes bay occupancy; physical and geometry limits reject independently |
 | Hull appearance/drive cluster changes | Demand, output, mass, bay volume, UI, and candidate filtering refresh together |
 | Live combat burn | Open-cycle bleed and closed-cycle conversion heat accumulate correctly |
@@ -422,9 +474,34 @@ true:
    `GWe`.
 4. Plant mass, resource cost, and bay occupancy use the scaled open-cycle
    contribution plus the ordinary gross electrical contribution.
-5. Maximum-output compatibility uses actual thermal output and cannot be
-   bypassed by the mass scaler.
+5. Maximum-output compatibility charges open-cycle drive output at `s` and
+   closed-cycle electrical drive output one-for-one, without changing any
+   authored `maxOutput_GW` value.
 6. The displayed waste heat to radiators exactly equals the value used for
    radiator mass, cost, and live cooling.
 7. Design, AI, refit, save/load, and combat paths agree with the same snapshot.
 
+## Deployment result
+
+The normal `tools\deploy.ps1` path completed against the installed TI 1.0.51
+assemblies on 2026-08-24. It passed 1,172 formula assertions, all 176 Harmony
+patch registrations, the 100-row implementation matrix, the guarded
+ship-power and target-IL validators, release packaging, and deployment of 46
+files. The packaged and deployed DLLs match at SHA-256
+`8F7F33E3953244C095C0E69E763FECF3469EF0F162922A8AC15F9C4BD76DDB4A`.
+
+Manual verification should now exercise the matrix above with particular
+attention to prospective-versus-installed tooltip parity, the new rated-cap
+boundary, mixed open-cycle and auxiliary electrical loads, refit resource cost,
+save/load mass restoration, and combat radiator heat.
+
+The first 2026-08-24 UI follow-up was rejected in manual testing. Vanilla's
+mass and crew strings were already labelled with `<rcol>…</rcol>`; the actual
+fault was that the injected rows did not use this native column markup. The
+corrective follow-up preserves every vanilla row and requires each injected
+field to contain one balanced `<rcol>` pair, including the rated-cap and
+reactor-bay rows, so the complete description remains one table. The verified
+46-file deployment passed 1,172 assertions and all 176 Harmony patches; source
+and deployed DLL SHA-256 is
+`9CBEC6289FF3588ECD0DC149927ED9E1726D58480AD45A6B8AE608C9F5AF6D11`.
+Manual rendered-table confirmation remains pending.

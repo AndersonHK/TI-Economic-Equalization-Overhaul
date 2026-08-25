@@ -19,18 +19,11 @@ function Load-AssemblyBytes {
 
 $harmonyAssembly = Load-AssemblyBytes (
     Join-Path $TargetManagedDir 'UnityModManager\0Harmony.dll')
-foreach ($unityAssemblyName in @(
-    'UnityEngine.CoreModule.dll',
-    'UnityEngine.dll',
-    'UnityEngine.IMGUIModule.dll',
-    'UnityEngine.UI.dll',
-    'UnityEngine.UIModule.dll',
-    'Unity.TextMeshPro.dll'
-)) {
-    $unityAssemblyPath = Join-Path $TargetManagedDir $unityAssemblyName
-    if (Test-Path -LiteralPath $unityAssemblyPath) {
-        [void](Load-AssemblyBytes $unityAssemblyPath)
-    }
+foreach ($unityAssembly in Get-ChildItem `
+    -LiteralPath $TargetManagedDir `
+    -File `
+    -Filter 'Unity*.dll') {
+    [void](Load-AssemblyBytes $unityAssembly.FullName)
 }
 [void](Load-AssemblyBytes (
     Join-Path $TargetManagedDir 'UnityModManager\UnityModManager.dll'))
@@ -126,7 +119,7 @@ $harmony = [Activator]::CreateInstance(
 
 foreach ($contract in $contracts) {
     if ($null -eq $contract.Target) {
-        throw "Installed TI 1.0.51 mine-MC target for '$($contract.Patch)' was not found."
+        throw "Installed TI 1.0.53 mine-MC target for '$($contract.Patch)' was not found."
     }
     $patchType = $modAssembly.GetType($contract.Patch, $true)
     $patchMethodInfo = $patchType.GetMethod(
@@ -187,4 +180,4 @@ foreach ($case in @(
     }
 }
 
-Write-Host 'PASS: mine MC patches bind to TI 1.0.51 and Harmony emits all five replacements; Tier 1/2/3 costs are 1/2/3 and MC colors use the 75%/100% boundaries.'
+Write-Host 'PASS: mine MC patches bind to TI 1.0.53 and Harmony emits all five replacements; Tier 1/2/3 costs are 1/2/3 and MC colors use the 75%/100% boundaries.'

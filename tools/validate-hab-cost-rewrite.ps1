@@ -79,9 +79,10 @@ try {
     if (-not $buildMaterialsMatch.Success -or
         [regex]::Matches(
             $buildMaterialsMatch.Value,
-            'HabRebalanceMath::GeneratorConstructionCostMultiplier\(').Count -ne 1 -or
-        -not $buildMaterialsMatch.Value.Contains('TIHabModuleTemplate::power')) {
-        throw 'Hab construction must apply the direct-generator 2x resource-cost multiplier exactly once.'
+            'HabRebalanceMath::FullMaterialMass\(').Count -ne 1 -or
+        $buildMaterialsMatch.Value.Contains(
+            'GeneratorConstructionCostMultiplier')) {
+        throw 'Hab construction must derive resource cost once from physical template mass without a second generator multiplier.'
     }
 
     $probeMethodMatch = [regex]::Match(

@@ -1,6 +1,7 @@
 """Generate the complete ship-hull appearance, volume, slot, and image report."""
 
 import argparse
+import concurrent.futures
 import csv
 import hashlib
 import importlib.util
@@ -80,6 +81,12 @@ def parse_args():
         type=Path,
         default=DEFAULT_RUNTIME_DRIVE_SCALE_CSV,
         help="Measured De Laval/Magnetic art scales consumed by the runtime mod",
+    )
+    parser.add_argument(
+        "--workers",
+        type=int,
+        default=8,
+        help="Parallel thumbnail-render worker processes (default: 8)",
     )
     return parser.parse_args()
 
@@ -191,29 +198,44 @@ def combined_bounds(measure, records):
     return bounds
 
 
-def parse_obj_geometry(mesh, cache_key, cache):
+def extract_mesh_geometry(mesh, cache_key, cache):
     cached = cache.get(cache_key)
     if cached is not None:
         return cached
-    vertices = []
-    triangles = []
-    for line in mesh.export().splitlines():
-        if line.startswith("v "):
-            vertices.append(tuple(float(value) for value in line.split()[1:4]))
-        elif line.startswith("f "):
-            face = [int(token.split("/", 1)[0]) - 1 for token in line.split()[1:]]
-            for index in range(1, len(face) - 1):
-                triangles.append((face[0], face[index], face[index + 1]))
-    result = (
-        np.asarray(vertices, dtype=float),
-        np.asarray(triangles, dtype=np.int32),
+
+    # UnityPy's OBJ exporter formats every vertex, UV, normal, and face as text.
+    # The report only needs positions and triangle indices, so consume the
+    # already-decoded MeshHandler buffers directly. Preserve the exporter's X
+    # reflection and reversed face winding while retaining the source buffer's
+    # full decoded precision.
+    from UnityPy.helpers.MeshHelper import MeshHandler
+
+    handler = MeshHandler(mesh)
+    handler.process()
+    if not handler.m_Vertices:
+        result = (np.empty((0, 3), dtype=float), np.empty((0, 3), dtype=np.int32))
+        cache[cache_key] = result
+        return result
+
+    vertices = np.asarray(handler.m_Vertices, dtype=float)
+    vertices[:, 0] *= -1
+    submeshes = [
+        np.asarray(triangles, dtype=np.int32)
+        for triangles in handler.get_triangles()
+        if triangles
+    ]
+    triangles = (
+        np.concatenate(submeshes, axis=0)[:, ::-1]
+        if submeshes
+        else np.empty((0, 3), dtype=np.int32)
     )
+    result = (vertices, triangles)
     cache[cache_key] = result
     return result
 
 
 def transformed_geometry(measure, record, root_offset, cache):
-    vertices, triangles = parse_obj_geometry(
+    vertices, triangles = extract_mesh_geometry(
         record["mesh"], record["mesh_cache_key"], cache
     )
     if not len(vertices) or not len(triangles):
@@ -224,26 +246,30 @@ def transformed_geometry(measure, record, root_offset, cache):
 
 
 def project_triangles(geometries, horizontal_axis, vertical_axis, depth_axis):
-    projected = []
+    depth_parts = []
+    point_parts = []
+    light_parts = []
     for vertices, triangles in geometries:
-        for triangle in triangles:
-            points = vertices[triangle]
-            edge_a = points[1] - points[0]
-            edge_b = points[2] - points[0]
-            normal = np.cross(edge_a, edge_b)
-            magnitude = np.linalg.norm(normal)
-            if magnitude <= 1e-9:
-                continue
-            light = abs(float(normal[depth_axis] / magnitude))
-            projected.append(
-                (
-                    float(points[:, depth_axis].mean()),
-                    points[:, [horizontal_axis, vertical_axis]],
-                    light,
-                )
-            )
-    projected.sort(key=lambda item: item[0])
-    return projected
+        points = vertices[triangles]
+        normals = np.cross(points[:, 1] - points[:, 0], points[:, 2] - points[:, 0])
+        magnitudes = np.linalg.norm(normals, axis=1)
+        valid = magnitudes > 1e-9
+        if not np.any(valid):
+            continue
+        points = points[valid]
+        normals = normals[valid]
+        magnitudes = magnitudes[valid]
+        depth_parts.append(points[:, :, depth_axis].mean(axis=1))
+        point_parts.append(points[:, :, [horizontal_axis, vertical_axis]])
+        light_parts.append(np.abs(normals[:, depth_axis] / magnitudes))
+
+    if not depth_parts:
+        return []
+    depths = np.concatenate(depth_parts)
+    points = np.concatenate(point_parts)
+    lights = np.concatenate(light_parts)
+    order = np.argsort(depths, kind="stable")
+    return [(depths[index], points[index], lights[index]) for index in order]
 
 
 def draw_projection(draw, projected, bounds_2d, box, base_color):
@@ -262,14 +288,7 @@ def draw_projection(draw, projected, bounds_2d, box, base_color):
         draw.polygon([tuple(point) for point in screen], fill=color)
 
 
-def render_thumbnail(
-    measure, records, root_offset, bounds, image_path, alien, geometry_cache
-):
-    geometries = []
-    for record in records:
-        geometry = transformed_geometry(measure, record, root_offset, geometry_cache)
-        if geometry is not None:
-            geometries.append(geometry)
+def render_thumbnail(geometries, bounds, image_path, alien):
     if not geometries:
         raise RuntimeError(f"No renderable triangle geometry for {image_path.name}")
 
@@ -730,6 +749,8 @@ def write_runtime_drive_scale_csv(scales, path):
 
 def main():
     args = parse_args()
+    if args.workers < 1:
+        raise ValueError("--workers must be at least 1")
     game_root = args.game_install_dir.resolve()
     output_root = args.output_root.resolve()
     template_path = (
@@ -762,72 +783,100 @@ def main():
     image_root = output_root / IMAGE_DIRECTORY
     geometry_cache = {}
     rows = []
+    appearance_count = sum(len(template["modelResource"]) for template in templates)
+    queued_count = 0
 
-    for template in templates:
-        data_name = template["dataName"]
-        model_resources = template["modelResource"]
-        for appearance_index, model_resource in enumerate(model_resources):
-            environment_name, prefab_path = prefab_location(
-                measure, data_name, appearance_index, model_resource
-            )
-            environment = environments[environment_name]
-            if prefab_path not in environment.container:
-                raise RuntimeError(f"Missing prefab {prefab_path} for {data_name}")
-            root = environment.container[prefab_path].read()
-            root_transform = next(
-                pointer
-                for pointer in measure.component_ptrs(root)
-                if pointer.type.name == "Transform"
-            )
-            records = {"meshes": [], "colliders": []}
-            measure.walk(root_transform, np.eye(4), True, [], records)
-            root_offset = measure.xyz(root_transform.read().m_LocalPosition)
-            for category in records.values():
-                for record in category:
-                    record["points"] -= root_offset
-            included, excluded = select_main_hull_meshes(measure, data_name, records)
-            bounds = combined_bounds(measure, included)
-            size = bounds[1] - bounds[0]
-            envelope = math.pi / 4 * float(size[0]) * float(size[1]) * float(size[2])
-            image_name = f"{data_name.lower()}-appearance-{appearance_index}.png"
-            render_thumbnail(
-                measure,
-                included,
-                root_offset,
-                bounds,
-                image_root / image_name,
-                bool(template["alien"]),
-                geometry_cache,
-            )
-            nose = int(template["noseHardpoints"])
-            hull = int(template["hullHardpoints"])
-            utility = int(template["internalModules"])
-            runtime_volume = (
-                math.pi
-                * (float(template["width_m"]) / 2) ** 2
-                * float(template["length_m"])
-            )
-            rows.append(
-                {
-                    "data_name": data_name,
-                    "alien": bool(template["alien"]),
-                    "appearance_index": appearance_index,
-                    "model_resource": model_resource,
-                    "prefab_asset_path": prefab_path,
-                    "image_file": image_name,
-                    "main_hull_bounds": measure.bound_record(bounds),
-                    "main_hull_elliptical_envelope_m3": round(envelope, 6),
-                    "template_stored_volume_m3": template["volume"],
-                    "runtime_cylinder_m3": round(runtime_volume, 6),
-                    "nose_hardpoints": nose,
-                    "hull_hardpoints": hull,
-                    "utility_slots": utility,
-                    "weapon_slots": nose + hull,
-                    "counted_slots": nose + hull + utility,
-                    "included_mesh_paths": [record["path"] for record in included],
-                    "excluded_machinery": excluded,
-                }
-            )
+    pending_renders = set()
+    with concurrent.futures.ProcessPoolExecutor(max_workers=args.workers) as executor:
+        for template in templates:
+            data_name = template["dataName"]
+            model_resources = template["modelResource"]
+            for appearance_index, model_resource in enumerate(model_resources):
+                environment_name, prefab_path = prefab_location(
+                    measure, data_name, appearance_index, model_resource
+                )
+                environment = environments[environment_name]
+                if prefab_path not in environment.container:
+                    raise RuntimeError(f"Missing prefab {prefab_path} for {data_name}")
+                root = environment.container[prefab_path].read()
+                root_transform = next(
+                    pointer
+                    for pointer in measure.component_ptrs(root)
+                    if pointer.type.name == "Transform"
+                )
+                records = {"meshes": [], "colliders": []}
+                measure.walk(root_transform, np.eye(4), True, [], records)
+                root_offset = measure.xyz(root_transform.read().m_LocalPosition)
+                for category in records.values():
+                    for record in category:
+                        record["points"] -= root_offset
+                included, excluded = select_main_hull_meshes(measure, data_name, records)
+                bounds = combined_bounds(measure, included)
+                size = bounds[1] - bounds[0]
+                envelope = math.pi / 4 * float(size[0]) * float(size[1]) * float(size[2])
+                image_name = f"{data_name.lower()}-appearance-{appearance_index}.png"
+                geometries = []
+                for record in included:
+                    geometry = transformed_geometry(
+                        measure, record, root_offset, geometry_cache
+                    )
+                    if geometry is not None:
+                        geometries.append(geometry)
+                pending_renders.add(
+                    executor.submit(
+                        render_thumbnail,
+                        geometries,
+                        bounds,
+                        image_root / image_name,
+                        bool(template["alien"]),
+                    )
+                )
+                queued_count += 1
+                print(
+                    f"Queued hull appearance {queued_count}/{appearance_count}: "
+                    f"{data_name} / {appearance_index}",
+                    flush=True,
+                )
+                if len(pending_renders) >= args.workers * 2:
+                    completed, pending_renders = concurrent.futures.wait(
+                        pending_renders,
+                        return_when=concurrent.futures.FIRST_COMPLETED,
+                    )
+                    for future in completed:
+                        future.result()
+
+                nose = int(template["noseHardpoints"])
+                hull = int(template["hullHardpoints"])
+                utility = int(template["internalModules"])
+                runtime_volume = (
+                    math.pi
+                    * (float(template["width_m"]) / 2) ** 2
+                    * float(template["length_m"])
+                )
+                rows.append(
+                    {
+                        "data_name": data_name,
+                        "alien": bool(template["alien"]),
+                        "appearance_index": appearance_index,
+                        "model_resource": model_resource,
+                        "prefab_asset_path": prefab_path,
+                        "image_file": image_name,
+                        "main_hull_bounds": measure.bound_record(bounds),
+                        "main_hull_elliptical_envelope_m3": round(envelope, 6),
+                        "template_stored_volume_m3": template["volume"],
+                        "runtime_cylinder_m3": round(runtime_volume, 6),
+                        "nose_hardpoints": nose,
+                        "hull_hardpoints": hull,
+                        "utility_slots": utility,
+                        "weapon_slots": nose + hull,
+                        "counted_slots": nose + hull + utility,
+                        "included_mesh_paths": [record["path"] for record in included],
+                        "excluded_machinery": excluded,
+                    }
+                )
+
+        for future in concurrent.futures.as_completed(pending_renders):
+            future.result()
 
     validate_rows(measure, templates, rows, image_root)
     human_drive_scales = measure_human_drive_scales(

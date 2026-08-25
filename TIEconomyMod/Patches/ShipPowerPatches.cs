@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace TIEconomyMod.Patches
@@ -93,6 +94,7 @@ namespace TIEconomyMod.Patches
         {
             GunPowerRegistry.Refresh();
             ProjectileGeometryRegistry.Refresh();
+            PowerPlantScalingRegistry.Refresh();
             ShipPowerRuntime.RefreshTemplateMassCaches();
         }
     }
@@ -350,8 +352,7 @@ namespace TIEconomyMod.Patches
                     ? null
                     : listItem.controller.newShipTemplate;
             float power_GW = GetInstalledDrivePower_GW(drive, ship);
-            return TIUtilities.LocalizeGW(
-                "UI.Fleets.RequiredPowerGW", power_GW);
+            return GetLocalizedDriveDemand(drive, power_GW);
         }
 
         public static string GetHullScaledDriveMass(
@@ -436,8 +437,11 @@ namespace TIEconomyMod.Patches
         public static string GetReactorBayDescription(
             string description,
             TIPowerPlantTemplate powerPlant,
-            TISpaceShipTemplate ship)
+            TISpaceShipTemplate ship,
+            bool prospective = false)
         {
+            description = GetSeparatedPowerPlantDescription(
+                description, powerPlant, ship, prospective);
             ReactorBayCapacitySnapshot snapshot;
             string header = Loc.T("UI.Fleets.ReactorBayCapacityHeader");
             if (string.IsNullOrEmpty(description) || powerPlant == null ||
@@ -453,6 +457,93 @@ namespace TIEconomyMod.Patches
                     "UI.Fleets.ReactorBayCapacityVolume",
                     snapshot.BayVolumeUsed_m3.ToString("N1"),
                     snapshot.BayVolume_m3.ToString("N1"));
+        }
+
+        public static string GetSeparatedPowerPlantDescription(
+            string description,
+            TIPowerPlantTemplate powerPlant,
+            TISpaceShipTemplate ship,
+            bool prospective = false)
+        {
+            if (string.IsNullOrEmpty(description) || powerPlant == null)
+            {
+                return description;
+            }
+
+            ShipPowerDemandSnapshot demand =
+                ShipPowerDemandFeature.Snapshot(
+                    ship, ship == null ? null : ship.driveTemplate,
+                    powerPlant);
+            string baselineSpecificPower =
+                powerPlant.GetLocalizedSpecificPower();
+            string specificPower = Loc.T(
+                "UI.Fleets.SpecificPowerWithOpenCycleMultiplier",
+                powerPlant.specificPower_tGW.ToString(
+                    TIUtilities.DecimalPlaces(
+                        powerPlant.specificPower_tGW)),
+                demand.OpenCycleThermalMassMultiplier.ToString("0.###"));
+            string result = description;
+            if (!string.IsNullOrEmpty(baselineSpecificPower) &&
+                result.Contains(baselineSpecificPower))
+            {
+                result = result.Replace(
+                    baselineSpecificPower, specificPower);
+            }
+
+            string electricalOutputLabel = Loc.T(
+                "UI.Fleets.ElectricalOutputHeader");
+            if (prospective || ship == null ||
+                result.Contains(electricalOutputLabel))
+            {
+                return result;
+            }
+
+            string baselineOutput = powerPlant.GetLocalizedOutput(ship);
+            string baselineWasteHeat = powerPlant.GetLocalizedWasteHeat(ship);
+            if (!string.IsNullOrEmpty(baselineOutput) &&
+                result.Contains(baselineOutput))
+            {
+                StringBuilder output = new StringBuilder();
+                output.Append(Loc.T(
+                    "UI.Fleets.ElectricalOutput",
+                    FormatPower(demand.UsefulElectricalDemand_GWe)));
+                if (demand.DriveDemandIsThermal &&
+                    demand.DriveDemand_GW > 0f)
+                {
+                    output.AppendLine();
+                    output.Append(Loc.T(
+                        "UI.Fleets.ThermalOutput",
+                        FormatPower(demand.DriveDemand_GW)));
+                }
+                result = result.Replace(
+                    baselineOutput, output.ToString());
+            }
+            if (!string.IsNullOrEmpty(baselineWasteHeat) &&
+                result.Contains(baselineWasteHeat))
+            {
+                result = result.Replace(
+                    baselineWasteHeat,
+                    Loc.T(
+                        "UI.Fleets.WasteHeat",
+                        FormatPower(Math.Max(0f, ship.wasteHeat_GW))));
+            }
+            return result;
+        }
+
+        private static string GetLocalizedDriveDemand(
+            TIDriveTemplate drive, float power_GW)
+        {
+            return Loc.T(
+                drive != null && drive.openCycleCooling
+                    ? "UI.Fleets.ThermalDriveDemand"
+                    : "UI.Fleets.ElectricalDriveDemand",
+                FormatPower(power_GW));
+        }
+
+        private static string FormatPower(float power_GW)
+        {
+            return TIUtilities.FormatBigOrSmallNumber(
+                Math.Max(0f, power_GW)).ToString();
         }
 
         private static float DriveDisplayScale(
@@ -485,13 +576,6 @@ namespace TIEconomyMod.Patches
             float scale = DriveDisplayScale(drive, shipTemplate);
             float installedPower_GW =
                 GetInstalledDrivePower_GW(drive, shipTemplate);
-            if (Math.Abs(scale - 1f) <= 0.0001f &&
-                Math.Abs(installedPower_GW - drive.powerRequirement_GW) <=
-                    0.0001f)
-            {
-                return description;
-            }
-
             string baselineCombatThrust = drive.GetLocalizedCombatThrust(ship);
             string baselineThrust = drive.GetLocalizedThrust();
             string baselinePower = drive.GetLocalizedRequiredPower();
@@ -539,8 +623,7 @@ namespace TIEconomyMod.Patches
             TIDriveTemplate drive, TISpaceShipTemplate ship)
         {
             float power_GW = GetInstalledDrivePower_GW(drive, ship);
-            return TIUtilities.LocalizeGW(
-                "UI.Fleets.RequiredPowerGW", power_GW);
+            return GetLocalizedDriveDemand(drive, power_GW);
         }
 
         public static float GetInstalledDrivePower_GW(
@@ -551,13 +634,9 @@ namespace TIEconomyMod.Patches
                 return 0f;
             }
 
-            float usefulDrivePower_GW = ShipBalanceMath.ScaledDriveValue(
+            return ShipBalanceMath.ScaledDriveValue(
                 drive.powerRequirement_GW,
                 DriveDisplayScale(drive, ship));
-            return OpenCycleReactorDemandFeature.RequiredReactorOutput_GW(
-                usefulDrivePower_GW,
-                drive,
-                ship == null ? null : ship.powerPlantTemplate);
         }
 
         public static string GetHullScaledDriveCost(
@@ -716,12 +795,14 @@ namespace TIEconomyMod.Patches
             ref string __result,
             TIPowerPlantTemplate __instance,
             TISpaceShipState ship,
-            TISpaceShipTemplate shipTemplate)
+            TISpaceShipTemplate shipTemplate,
+            bool prospective)
         {
             TISpaceShipTemplate context = shipTemplate ??
                 (ship == null ? null : ship.template);
             __result = ShipModuleEnergyColumnCompatibilityPatch
-                .GetReactorBayDescription(__result, __instance, context);
+                .GetReactorBayDescription(
+                    __result, __instance, context, prospective);
         }
     }
 
@@ -749,7 +830,7 @@ namespace TIEconomyMod.Patches
                 : module.ref_powerPlant;
             __result = ShipModuleEnergyColumnCompatibilityPatch
                 .GetReactorBayDescription(
-                    __result, powerPlant, ship);
+                    __result, powerPlant, ship, true);
         }
     }
 
@@ -887,8 +968,12 @@ namespace TIEconomyMod.Patches
             TISpaceShipTemplate ship, TIDriveTemplate drive)
         {
             float requiredPower_GW =
-                ShipModuleEnergyColumnCompatibilityPatch
-                    .GetInstalledDrivePower_GW(drive, ship);
+                OpenCycleReactorDemandFeature
+                    .RequiredCapRatedDriveOutput_GW(
+                        ShipModuleEnergyColumnCompatibilityPatch
+                            .GetInstalledDrivePower_GW(drive, ship),
+                        drive,
+                        ship.powerPlantTemplate);
             float effectiveOutput_GW =
                 ReactorBayCapacityFeature.EffectiveOutput_GW(
                     ship, ship.powerPlantTemplate);
@@ -977,9 +1062,20 @@ namespace TIEconomyMod.Patches
                 return;
             }
 
+            __result += DesignWeaponHeat_GW(__instance);
+        }
+
+        public static float DesignWeaponHeat_GW(
+            TISpaceShipTemplate ship)
+        {
+            if (ship == null)
+            {
+                return 0f;
+            }
+
             float weaponHeat_GW = 0f;
             foreach (TIShipWeaponTemplate weapon in
-                __instance.allWeaponTemplates)
+                ship.allWeaponTemplates)
             {
                 if (weapon.selfPowered)
                 {
@@ -987,15 +1083,14 @@ namespace TIEconomyMod.Patches
                 }
 
                 float heatPerShot_GJ = weapon.HeatGeneration_GJ(
-                    __instance.GetBonusPowerForWeapon_GJ(weapon));
+                    ship.GetBonusPowerForWeapon_GJ(weapon));
                 weaponHeat_GW += WeaponPowerMath.DesignHeatRate_GW(
                     heatPerShot_GJ,
                     weapon.salvo_shots,
                     weapon.cooldown_s,
                     weapon.intraSalvoCooldown_s);
             }
-
-            __result += weaponHeat_GW;
+            return weaponHeat_GW;
         }
     }
 

@@ -23,10 +23,13 @@ when prose and runtime behavior disagree.
   authoritative D-T Fusion, Nuclear Fusion Methodologies, and D-D Fusion
   prerequisite graph, localization, costs, and manual tree-layout target.
 - [Current implementation matrix](current-implementation-matrix.xlsx):
-  patch-by-patch comparison with Terra Invicta 1.0.51 and the maintained-main
+  patch-by-patch comparison with Terra Invicta 1.0.53 and the maintained-main
   baseline.
 - [Patch sanity audit](patch-sanity-audit.md): scale, unit, and compatibility
   review of the implemented Harmony patches.
+- [Terra Invicta 1.0.53 compatibility](compatibility/ti-1.0.53-compatibility.md):
+  diagnosis of the all-patches-disabled regression, API migration plan,
+  automatic acceptance criteria, and focused manual-test checklist.
 - [Cohesion, Inequality, and Government coefficient report](national-social-coefficients-report.md):
   comprehensive formula, coefficient, retained-vanilla, priority-speed, event,
   and cross-effect inventory for tuning the three national social scores.

@@ -34,6 +34,14 @@ if ($LASTEXITCODE -ne 0) {
 
 $assemblyPath = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\Assembly\TIEconomyMod.dll'
 powershell -NoProfile -ExecutionPolicy Bypass -File `
+    (Join-Path $scriptDirectory 'validate-national-harmonization-patches.ps1') `
+    -TargetManagedDir $resolvedManagedDir `
+    -ModAssemblyPath $assemblyPath
+if ($LASTEXITCODE -ne 0) {
+    exit $LASTEXITCODE
+}
+
+powershell -NoProfile -ExecutionPolicy Bypass -File `
     (Join-Path $scriptDirectory 'validate-nuclear-gdp-transpiler.ps1') `
     -TargetManagedDir $resolvedManagedDir `
     -ModAssemblyPath $assemblyPath
@@ -491,10 +499,10 @@ if ($LASTEXITCODE -ne 0) {
 
 $manifestPath = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\ModInfo.json'
 $manifest = Get-Content -LiteralPath $manifestPath -Raw | ConvertFrom-Json
-if ($manifest.GameVersion -ne '1.0.51') {
-    throw "ModInfo.json targets '$($manifest.GameVersion)' instead of TI 1.0.51."
+if ($manifest.GameVersion -ne '1.0.53') {
+    throw "ModInfo.json targets '$($manifest.GameVersion)' instead of TI 1.0.53."
 }
-if ($manifest.Version -ne '0.9.4') {
+if ($manifest.Version -ne '0.9.5') {
     throw "ModInfo.json version '$($manifest.Version)' does not match this release."
 }
 if ($manifest.AssemblyName -ne 'Assembly/TIEconomyMod.dll') {
@@ -928,7 +936,79 @@ if ($projectTemplateOverrides.Count -ne 1 -or
         ($expectedGoldRushEffects -join ';')) {
     throw 'Gold Rush must preserve its mining bonus while removing only the free-mine effect.'
 }
-$mineUiText = (Get-Content -LiteralPath $generalControlsLocalization -Raw) +
+$generalControlsText = Get-Content -LiteralPath $generalControlsLocalization -Raw
+$powerTableKeys = @(
+    'UI.Fleets.ThermalDriveDemand=',
+    'UI.Fleets.ElectricalDriveDemand=',
+    'UI.Fleets.ElectricalOutput=',
+    'UI.Fleets.ThermalOutput=',
+    'UI.Fleets.WasteHeat=',
+    'UI.Fleets.SpecificPowerWithOpenCycleMultiplier=')
+foreach ($requiredPowerKey in $powerTableKeys) {
+    if (-not $generalControlsText.Contains($requiredPowerKey)) {
+        throw "Ship power localization is missing '$requiredPowerKey'."
+    }
+}
+foreach ($powerTableKey in $powerTableKeys) {
+    $normalizedKey = $powerTableKey.TrimEnd('=')
+    $linePattern = '(?m)^' + [regex]::Escape($normalizedKey) +
+        '=(?<value>[^\r\n]*)$'
+    $lineMatches = [regex]::Matches($generalControlsText, $linePattern)
+    if ($lineMatches.Count -ne 1) {
+        throw "Ship power localization must define '$normalizedKey' exactly once."
+    }
+    $localizedValue = $lineMatches[0].Groups['value'].Value
+    if ([regex]::Matches($localizedValue, '<rcol>').Count -ne 1 -or
+        [regex]::Matches($localizedValue, '</rcol>').Count -ne 1 -or
+        $localizedValue.IndexOf('<rcol>') -gt
+            $localizedValue.IndexOf('</rcol>')) {
+        throw "Ship power localization '$normalizedKey' must contain one balanced native <rcol> pair."
+    }
+}
+$requiredExternalPowerKeys = @(
+    'UI.Fleets.ReactorBayCapacityHeader=',
+    'UI.Fleets.ReactorBayCapacityVolume=',
+    'UI.Fleets.ElectricalOutputHeader=')
+foreach ($requiredExternalPowerKey in $requiredExternalPowerKeys) {
+    if (-not $generalControlsText.Contains($requiredExternalPowerKey)) {
+        throw "Ship power localization is missing '$requiredExternalPowerKey'."
+    }
+}
+$obsoleteExpandedPowerKeys = @(
+    'UI.Fleets.PowerPlantMass=',
+    'UI.Fleets.ReactorThermalOutput=',
+    'UI.Fleets.ElectricalGeneration=',
+    'UI.Fleets.OpenCycleDriveOutput=',
+    'UI.Fleets.OpenCycleMassMultiplier=',
+    'UI.Fleets.OpenCycleCapUsage=',
+    'UI.Fleets.WasteHeatToRadiators=',
+    'UI.Fleets.OpenCycleWasteHeat=',
+    'UI.Fleets.ElectricalWasteHeat=',
+    'UI.Fleets.ModuleWasteHeat=',
+    'UI.Fleets.MaximumRatedOutput=')
+foreach ($obsoleteExpandedPowerKey in $obsoleteExpandedPowerKeys) {
+    if ($generalControlsText.Contains($obsoleteExpandedPowerKey)) {
+        throw "Compact ship power localization must not retain '$obsoleteExpandedPowerKey'."
+    }
+}
+$reactorBayVolumeLine = [regex]::Match(
+    $generalControlsText,
+    '(?m)^UI\.Fleets\.ReactorBayCapacityVolume=(?<value>[^\r\n]*)$')
+if (-not $reactorBayVolumeLine.Success -or
+    $reactorBayVolumeLine.Groups['value'].Value.Contains('<rcol>')) {
+    throw 'Reactor-bay volume must remain a separate block outside the table.'
+}
+$specificPowerLine = [regex]::Match(
+    $generalControlsText,
+    '(?m)^UI\.Fleets\.SpecificPowerWithOpenCycleMultiplier=(?<value>[^\r\n]*)$')
+if (-not $specificPowerLine.Success -or
+    -not $specificPowerLine.Groups['value'].Value.Contains('{0}') -or
+    -not $specificPowerLine.Groups['value'].Value.Contains('({1})') -or
+    $specificPowerLine.Groups['value'].Value.IndexOf('{0}') -gt
+        $specificPowerLine.Groups['value'].Value.IndexOf('({1})')) {
+    throw 'Specific Power must show its multiplier parenthetically after the value.'
+}
+$mineUiText = $generalControlsText +
     (Get-Content -LiteralPath $habUiLocalization -Raw)
 if ($mineUiText -match 'allowed mines|free.mine|quadratic|network of mines and catapults' -or
     $mineUiText -notmatch 'Tier 1 costs 1' -or
@@ -941,9 +1021,9 @@ if ($globalConfig.Count -ne 1 -or
     $null -eq $globalConfig[0].controlPointMaintenanceFreebies -or
     [int]$globalConfig[0].controlPointMaintenanceFreebies -ne 0 -or
     [int]$globalConfig[0].councilorMaxOrgs -ne 18 -or
-    [double]$globalConfig[0].crewWaterConsumptionTons_year -ne 3 -or
-    [double]$globalConfig[0].crewVolatilesConsumptionTons_year -ne 3) {
-    throw 'Global configuration must set base Control Point Capacity to 0, set the councilor organization cap to 18, and preserve the 3-ton crew-resource overrides.'
+    [double]$globalConfig[0].crewWaterConsumptionTons_year -ne 2 -or
+    [double]$globalConfig[0].crewVolatilesConsumptionTons_year -ne 2) {
+    throw 'Global configuration must set base Control Point Capacity to 0, set the councilor organization cap to 18, and set both crew-resource overrides to 2 tons per year.'
 }
 
 $assemblyFile = Get-Item -LiteralPath $assemblyPath
@@ -951,8 +1031,8 @@ if ($assemblyFile.LastWriteTime -lt $buildStarted.AddSeconds(-2)) {
     throw 'Packaged DLL predates this verification build.'
 }
 $assemblyVersion = [Reflection.AssemblyName]::GetAssemblyName($assemblyPath).Version.ToString()
-if ($assemblyVersion -ne '0.9.4.0') {
-    throw "Assembly version '$assemblyVersion' does not match release 0.9.4."
+if ($assemblyVersion -ne '0.9.5.0') {
+    throw "Assembly version '$assemblyVersion' does not match release 0.9.5."
 }
 $assemblyHash = (Get-FileHash -LiteralPath $assemblyPath -Algorithm SHA256).Hash
 
@@ -1047,7 +1127,7 @@ if (Test-Path -LiteralPath $imagePath) {
     Copy-Item -LiteralPath $imagePath -Destination $stagingDirectory
 }
 
-$zipPath = Join-Path $artifactDirectory 'TIEconomyMod-0.9.4-ti1.0.51.zip'
+$zipPath = Join-Path $artifactDirectory 'TIEconomyMod-0.9.5-ti1.0.53.zip'
 if (Test-Path -LiteralPath $zipPath) {
     Remove-Item -LiteralPath $zipPath
 }
@@ -1158,4 +1238,4 @@ if ($packagedHash -ne $assemblyHash) {
 Write-Host "PASS: release verification completed."
 Write-Host "DLL SHA256: $assemblyHash"
 Write-Host "Artifact: $zipPath"
-Write-Host 'Compatibility target: TI 1.0.51 installed assemblies and guarded IL patch points.'
+Write-Host 'Compatibility target: TI 1.0.53 installed assemblies, guarded IL patch points, and focused Harmony binding.'

@@ -277,14 +277,26 @@ namespace TIEconomyMod.Patches
                 return evaluation;
             }
 
-            evaluation.harmonization = NationalHarmonizationMath.Calculate(
-                claimant.democracy, claimant.inequality, claimant.education,
-                claimant.perCapitaGDP, claimant.cohesion, target.democracy,
-                target.inequality, target.education, target.perCapitaGDP,
-                target.unrest);
+            evaluation.harmonization = Calculate(claimant, target);
             evaluation.hostile = !NationalHarmonizationMath.Passes(
                 evaluation.harmonization, evaluation.threshold);
             return evaluation;
+        }
+
+        public static bool IsNationHostile(TINationState claimant,
+            TINationState target)
+        {
+            if (claimant == null || target == null)
+            {
+                return true;
+            }
+            if (target == claimant)
+            {
+                return false;
+            }
+            return !NationalHarmonizationMath.Passes(
+                Calculate(claimant, target),
+                Main.settings.claimHarmonization.ordinaryThreshold);
         }
 
         public static bool IsHostile(TINationState claimant,
@@ -318,6 +330,16 @@ namespace TIEconomyMod.Patches
                 score.knowledgeDifference.ToString("N2"),
                 score.perCapitaGdpRatio.ToString("N2"),
                 score.modifier.ToString("N2"));
+        }
+
+        private static NationalHarmonizationResult Calculate(
+            TINationState claimant, TINationState target)
+        {
+            return NationalHarmonizationMath.Calculate(
+                claimant.democracy, claimant.inequality, claimant.education,
+                claimant.perCapitaGDP, claimant.cohesion, target.democracy,
+                target.inequality, target.education, target.perCapitaGDP,
+                target.unrest);
         }
     }
 
@@ -467,7 +489,7 @@ namespace TIEconomyMod.Patches
     {
         [HarmonyPrefix]
         public static bool Prefix(TINationState __instance,
-            TIRegionState region, ref bool __result)
+            TINationState testNation, ref bool __result)
         {
             ClaimHarmonizationSettings settings =
                 Main.settings.claimHarmonization;
@@ -476,8 +498,12 @@ namespace TIEconomyMod.Patches
             {
                 return true;
             }
-            __result = ClaimHarmonizationEvaluator.IsHostile(__instance,
-                region);
+            // TI 1.0.53 reduced this compatibility hook from a claimed region
+            // to its owning nation. Use the ordinary threshold here; exact
+            // historical thresholds remain in ClaimWillBeHostile and the
+            // region-aware presentation helpers.
+            __result = ClaimHarmonizationEvaluator.IsNationHostile(__instance,
+                testNation);
             return false;
         }
     }

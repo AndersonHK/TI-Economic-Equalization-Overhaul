@@ -1,16 +1,17 @@
 # T2 and T3 monthly demand scaling proposal
 
 Date: 2026-08-17  
-Status: **implemented and deployed** with the approved T1 rules; manual
-in-game testing pending
+Status: **historical; superseded by the implemented consolidated T1-T3
+revision** in [`t1-t3-monthly-demand-revision-plan.md`](t1-t3-monthly-demand-revision-plan.md)
 
 The machine-readable approved values are in
 [`hab-module-maintenance-proposals.csv`](hab-module-maintenance-proposals.csv).
 Direct generator output and crew are doubled in the template overrides, while
-the runtime hab-cost rewrite doubles their construction resources and Boost
-without changing physical mass or build time. Existing saves therefore retain
-valid layouts and gain power headroom on load. Money maintenance remains
-vanilla for every module.
+their physical mass now represents both aggregated plants. This naturally
+doubles construction resources and Boost without a second runtime multiplier.
+Build time is unchanged. Existing saves therefore retain valid layouts and
+gain power headroom on load. Money maintenance remains vanilla for every
+module.
 
 Deployment verification on 2026-08-17 passed the complete TI 1.0.51 release
 pipeline, including 1,070 formula assertions, guarded Harmony/IL checks, exact
@@ -64,8 +65,8 @@ power-plant multiplier.
 | T3 | Heavy Fusion Reactor Farm | 900 | 1800 | 150 | 300 | 91.0 | 182.0 | 2x |
 | T3 | Solar Farm | 240 | 480 | 25 | 50 | 0 | 0 | 2x |
 
-Physical mass and build time remain unchanged. Construction cost means only
-the resource and boost amount paid to build the generator.
+As corrected on 2026-08-24, physical generator mass and construction resources
+both represent two plants. Build time remains unchanged.
 
 The Heavy Fission Reactor Farm is the sole direct conflict between the raw 2x
 maintenance result and the new increase restriction. Its ordinary scaled

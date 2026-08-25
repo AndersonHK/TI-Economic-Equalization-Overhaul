@@ -69,10 +69,11 @@ namespace TIEconomyMod
                     ProjectileGeometryRegistry.Refresh();
                     UtilityFootprintRegistry.Refresh();
                     PropellantDensityRegistry.Refresh();
+                    PowerPlantScalingRegistry.Refresh();
                     ShipPowerRuntime.RefreshTemplateMassCaches();
                 }
                 CouncilorRuntimeCaps.InitializeOrganizationCap();
-            Log("Loaded TI Economic Equalization Overhaul 0.9.4 for the TI 1.0.51 API surface.");
+            Log("Loaded TI Economic Equalization Overhaul 0.9.5 for the TI 1.0.53 API surface.");
                 return true;
             }
             catch (Exception exception)
@@ -412,6 +413,7 @@ namespace TIEconomyMod
         public bool correctPowerPlantWasteHeat = true;
         public bool openCycleResidualHeatEnabled = true;
         public float openCycleDriveHeatFraction = 0.01f;
+        public bool openCycleThermalMassScalingEnabled = true;
         public bool crewSupportMassEnabled = true;
         public float crewSupportMass_tons = 3f;
         public bool hullDriveScalingEnabled = true;

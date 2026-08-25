@@ -845,7 +845,7 @@ namespace TIEconomyMod.FormulaTests
                 "open-cycle reactor output conserves drive work and heat");
             Near(1.013378f,
                 PowerPlantThermalMath.PlantWasteHeat_GW(
-                    true, openCycleOutput_GW, 2f, 2f / 3f, 0.01f),
+                    true, 4f, 2f, 2f / 3f, 0.01f),
                 0.0001f,
                 "open-cycle drive retains one percent of drive-associated heat");
             Near(1f,
@@ -875,6 +875,80 @@ namespace TIEconomyMod.FormulaTests
                     PowerPlantThermalMath.OpenCycleReactorOutput_GW(
                         4f, float.NaN, float.PositiveInfinity)),
                 "malformed open-cycle inputs remain finite");
+            ShipPowerDemandSnapshot openDemand =
+                PowerPlantThermalMath.CalculateShipDemand(
+                    true, 4f, 2f, 2f / 3f, 0.01f, 0.5f);
+            Near(4f, openDemand.DriveDemand_GW, 0f,
+                "open-cycle drive keeps its full displayed thermal demand");
+            True(openDemand.DriveDemandIsThermal,
+                "open-cycle drive demand is identified as thermal");
+            Near(4.013378f, openDemand.OpenCycleReactorOutput_GWth,
+                0.000001f,
+                "open-cycle snapshot reports actual propulsion reactor output");
+            Near(2f, openDemand.UsefulElectricalDemand_GWe, 0f,
+                "open-cycle snapshot separates auxiliary electrical demand");
+            Near(3f, openDemand.ElectricalReactorInput_GWth, 0.000001f,
+                "electrical demand is grossed up by plant efficiency");
+            Near(7.013378f, openDemand.TotalReactorOutput_GWth, 0.000001f,
+                "thermal output sums propulsion and electrical input");
+            Near(5.006689f, openDemand.MassRatedOutput_GW, 0.000001f,
+                "temporary multiplier applies only to open-cycle output");
+            Near(2.006689f, openDemand.CapRatedDriveDemand_GW,
+                0.000001f,
+                "open-cycle drive consumes rated cap at the multiplier");
+            Near(1.013378f, openDemand.PlantWasteHeat_GW, 0.000001f,
+                "snapshot plant heat conserves both paths");
+            ShipPowerDemandSnapshot closedDemand =
+                PowerPlantThermalMath.CalculateShipDemand(
+                    false, 4f, 2f, 2f / 3f, 0.01f, 0.5f);
+            True(!closedDemand.DriveDemandIsThermal,
+                "closed-cycle drive demand is identified as electrical");
+            Near(6f, closedDemand.UsefulElectricalDemand_GWe, 0f,
+                "closed-cycle drive joins auxiliary electrical demand");
+            Near(9f, closedDemand.TotalReactorOutput_GWth, 0.000001f,
+                "closed-cycle electrical demand is grossed up");
+            Near(9f, closedDemand.MassRatedOutput_GW, 0.000001f,
+                "open-cycle multiplier does not affect closed-cycle mass");
+            Near(4f, closedDemand.CapRatedDriveDemand_GW, 0.000001f,
+                "closed-cycle drive consumes rated cap one-for-one");
+            Near(3f, closedDemand.PlantWasteHeat_GW, 0.000001f,
+                "closed-cycle snapshot reports conversion heat");
+            Near(0.5f,
+                PowerPlantScalingMath.DefaultOpenCycleThermalMassMultiplier(
+                    PowerPlantRequirement.Solid_Core_Fission),
+                0f, "temporary solid-core open-cycle multiplier");
+            Near(0.5f,
+                PowerPlantScalingMath.DefaultOpenCycleThermalMassMultiplier(
+                    PowerPlantRequirement.Liquid_Core_Fission),
+                0f, "temporary liquid-core open-cycle multiplier");
+            Near(0.5f,
+                PowerPlantScalingMath.DefaultOpenCycleThermalMassMultiplier(
+                    PowerPlantRequirement.Gas_Core_Fission),
+                0f, "temporary gas-core open-cycle multiplier");
+            Near(0.5f,
+                PowerPlantScalingMath.DefaultOpenCycleThermalMassMultiplier(
+                    PowerPlantRequirement.Mirrored_Magnetic_Confinement_Fusion),
+                0f, "temporary mirror-fusion open-cycle multiplier");
+            Near(0.5f,
+                PowerPlantScalingMath.DefaultOpenCycleThermalMassMultiplier(
+                    PowerPlantRequirement.Inertial_Confinement_Fusion),
+                0f, "temporary inertial-fusion open-cycle multiplier");
+            Near(1f,
+                PowerPlantScalingMath.DefaultOpenCycleThermalMassMultiplier(
+                    PowerPlantRequirement.Fuel_Cell),
+                0f, "fuel cells retain full mass rating");
+            Near(1f,
+                PowerPlantScalingMath.DefaultOpenCycleThermalMassMultiplier(
+                    PowerPlantRequirement.Any_General),
+                0f, "general plants retain full mass rating");
+            Near(4f,
+                PowerPlantThermalMath.CapRatedDriveDemand_GW(
+                    true, 8f, 0.5f, 0f, 0.5f),
+                0f, "eight thermal gigawatts consume four rated gigawatts");
+            Near(4f,
+                PowerPlantThermalMath.CapRatedDriveDemand_GW(
+                    false, 4f, 0.5f, 0f, 0.5f),
+                0f, "four electrical gigawatts consume four rated gigawatts");
             float gunInput_GJ = WeaponPowerMath.ElectricalInput_GJ(
                 8.7f, 0f, 0.9f);
             Near(0.009666667f, gunInput_GJ, 0.000000001f,
@@ -1403,26 +1477,56 @@ namespace TIEconomyMod.FormulaTests
             ship.driveTemplate.openCycleCooling = true;
             scaledPower = 20f;
             HullScaledDrivePowerPatch.Postfix(ref scaledPower, ship);
-            Near(83.35596f, scaledPower, 0.0001f,
-                "open-cycle coupling follows hull-art drive scaling");
+            Near(83.0017f, scaledPower, 0.0001f,
+                "open-cycle drive property remains full thermal demand");
+            ShipPowerDemandSnapshot scaledOpenDemand =
+                ShipPowerDemandFeature.Snapshot(ship);
+            Near(83.35596f,
+                scaledOpenDemand.OpenCycleReactorOutput_GWth,
+                0.0001f,
+                "reactor output retains open-cycle coupling separately");
+            Near(41.67798f, scaledOpenDemand.MassRatedOutput_GW,
+                0.0001f,
+                "temporary half multiplier sizes open-cycle plant mass");
             ReactorBayCapacitySnapshot openCycleSnapshot;
             True(ReactorBayCapacityFeature.TryGetSnapshot(
                     ship, ship.powerPlantTemplate, out openCycleSnapshot),
                 "open-cycle reactor demand reaches reactor-bay accounting");
             Near(
                 ShipBalanceMath.ReactorBayVolumeUsed_m3(
-                    scaledPower,
+                    scaledOpenDemand.MassRatedOutput_GW,
                     PowerPlantRequirement.Solid_Core_Fission.ToString(),
                     ship.powerPlantTemplate.specificPower_tGW),
                 openCycleSnapshot.BayVolumeUsed_m3,
                 0.0001f,
-                "reactor-bay used volume uses corrected open-cycle output");
-            ship.powerPlantTemplate.maxOutput_GW = 83.2f;
+                "reactor-bay used volume uses mass-rated open-cycle output");
+            Near(scaledOpenDemand.TotalReactorOutput_GWth,
+                openCycleSnapshot.TotalReactorOutput_GWth, 0.0001f,
+                "reactor-bay snapshot exposes actual thermal output");
+            Near(scaledOpenDemand.MassRatedOutput_GW,
+                openCycleSnapshot.MassRatedOutput_GW, 0.0001f,
+                "reactor-bay snapshot exposes mass-rated output");
+            float reportedThermalOutput = 0f;
+            True(!SeparatedShipPowerProductionPatch.Prefix(
+                    ref reportedThermalOutput, ship),
+                "separated production getter replaces mixed vanilla output");
+            Near(scaledOpenDemand.TotalReactorOutput_GWth,
+                reportedThermalOutput, 0.0001f,
+                "production getter reports actual reactor thermal output");
+            float scaledPlantMass = 0f;
+            True(!OpenCyclePowerPlantMassPatch.Prefix(
+                    ref scaledPlantMass, ship),
+                "open-cycle plant mass getter is replaced");
+            Near(scaledOpenDemand.MassRatedOutput_GW,
+                scaledPlantMass, 0.0001f,
+                "plant mass uses scaled mass-rated output");
+            ship.powerPlantTemplate.maxOutput_GW = 41.6f;
             bool openCycleCompatible = true;
-            HullScaledDriveCompatibilityPatch.Postfix(
-                ref openCycleCompatible, ship, ship.driveTemplate);
+            True(!HullScaledDriveCompatibilityPatch.Prefix(
+                    ref openCycleCompatible, ship, ship.driveTemplate),
+                "hull compatibility prefix replaces vanilla cap logic");
             True(!openCycleCompatible,
-                "retained open-cycle loss can cross a plant output boundary");
+                "half-rated open-cycle demand can cross a plant boundary");
             TIDriveTemplate candidateOpenCycleDrive = new TIDriveTemplate
             {
                 openCycleCooling = true,
@@ -1431,33 +1535,71 @@ namespace TIEconomyMod.FormulaTests
             TIPowerPlantTemplate candidatePlant = new TIPowerPlantTemplate
             {
                 efficiency = 0.575f,
-                maxOutput_GW = 20.05f
+                maxOutput_GW = 10.04f,
+                powerPlantClass = PowerPlantRequirement.Solid_Core_Fission
             };
             bool candidateCompatible = true;
-            OpenCycleDrivePowerPlantCompatibilityPatch.Postfix(
+            True(!OpenCycleDrivePowerPlantCompatibilityPatch.Prefix(
+                    ref candidateCompatible,
+                    candidateOpenCycleDrive,
+                    candidatePlant),
+                "shipless compatibility prefix replaces vanilla cap logic");
+            True(!candidateCompatible,
+                "shipless compatibility uses half-rated thermal demand");
+            candidatePlant.maxOutput_GW = 10.05f;
+            candidateCompatible = false;
+            OpenCycleDrivePowerPlantCompatibilityPatch.Prefix(
+                ref candidateCompatible,
+                candidateOpenCycleDrive,
+                candidatePlant);
+            True(candidateCompatible,
+                "half-rated cap logic can allow a drive that raw thermal demand would reject");
+            List<TIDriveTemplate> filteredDrives = null;
+            True(!OpenCycleValidDrivesForPowerPlantsPatch.Prefix(
+                    ref filteredDrives,
+                    new List<TIDriveTemplate> { candidateOpenCycleDrive },
+                    new List<TIPowerPlantTemplate> { candidatePlant }),
+                "static compatibility prefix replaces vanilla filtering");
+            True(filteredDrives.Count == 1,
+                "static AI filtering can accept half-rated thermal demand");
+            candidatePlant.maxOutput_GW = 10.04f;
+            OpenCycleValidDrivesForPowerPlantsPatch.Prefix(
+                ref filteredDrives,
+                new List<TIDriveTemplate> { candidateOpenCycleDrive },
+                new List<TIPowerPlantTemplate> { candidatePlant });
+            True(filteredDrives.Count == 0,
+                "static AI filtering uses half-rated thermal demand");
+            candidatePlant.maxOutput_GW = 100f;
+            candidatePlant.powerPlantClass =
+                PowerPlantRequirement.Gas_Core_Fission;
+            candidateOpenCycleDrive.requiredPowerPlant =
+                PowerPlantRequirement.Solid_Core_Fission;
+            OpenCycleDrivePowerPlantCompatibilityPatch.Prefix(
                 ref candidateCompatible,
                 candidateOpenCycleDrive,
                 candidatePlant);
             True(!candidateCompatible,
-                "shipless drive compatibility uses corrected reactor demand");
-            IEnumerable<TIPowerPlantTemplate> candidatePlants =
-                new List<TIPowerPlantTemplate> { candidatePlant };
-            List<TIPowerPlantTemplate> materializedPlants;
-            OpenCycleValidDrivesForPowerPlantsPatch.Prefix(
-                ref candidatePlants, out materializedPlants);
-            List<TIDriveTemplate> filteredDrives =
-                new List<TIDriveTemplate> { candidateOpenCycleDrive };
-            OpenCycleValidDrivesForPowerPlantsPatch.Postfix(
-                ref filteredDrives, materializedPlants);
-            True(filteredDrives.Count == 0,
-                "static AI drive filtering uses corrected reactor demand");
+                "replacement cap logic preserves reactor-class compatibility");
+            candidateOpenCycleDrive.requiredPowerPlant =
+                PowerPlantRequirement.Any_General;
+            candidatePlant.powerPlantClass =
+                PowerPlantRequirement.Solid_Core_Fission;
             TIEconomyMod.Main.settings.shipBalance
                 .openCycleResidualHeatEnabled = false;
             openCycleCompatible = true;
-            HullScaledDriveCompatibilityPatch.Postfix(
+            HullScaledDriveCompatibilityPatch.Prefix(
                 ref openCycleCompatible, ship, ship.driveTemplate);
             True(openCycleCompatible,
-                "disabled residual heat restores one-for-one reactor demand");
+                "disabled residual heat retains half-rated cap scaling");
+            TIEconomyMod.Main.settings.shipBalance
+                .openCycleThermalMassScalingEnabled = false;
+            openCycleCompatible = true;
+            HullScaledDriveCompatibilityPatch.Prefix(
+                ref openCycleCompatible, ship, ship.driveTemplate);
+            True(!openCycleCompatible,
+                "disabled multiplier restores one-for-one cap demand");
+            TIEconomyMod.Main.settings.shipBalance
+                .openCycleThermalMassScalingEnabled = true;
             scaledPower = 20f;
             HullScaledDrivePowerPatch.Postfix(ref scaledPower, ship);
             Near(83.0017f, scaledPower, 0.0001f,
@@ -1476,13 +1618,13 @@ namespace TIEconomyMod.FormulaTests
             Near(526.0034f, scaledCost.value, 0.001f,
                 "Cruiser construction cost includes the larger drive");
             bool compatible = true;
-            HullScaledDriveCompatibilityPatch.Postfix(
+            HullScaledDriveCompatibilityPatch.Prefix(
                 ref compatible, ship, ship.driveTemplate);
             True(compatible,
                 "scaled Cruiser drive remains within a 90 GW plant cap");
             ship.powerPlantTemplate.maxOutput_GW = 80f;
             compatible = true;
-            HullScaledDriveCompatibilityPatch.Postfix(
+            HullScaledDriveCompatibilityPatch.Prefix(
                 ref compatible, ship, ship.driveTemplate);
             True(!compatible,
                 "scaled De Laval drive power respects the existing plant output cap");
@@ -1493,7 +1635,7 @@ namespace TIEconomyMod.FormulaTests
             };
             ship.powerPlantTemplate.maxOutput_GW = 60f;
             compatible = true;
-            HullScaledDriveCompatibilityPatch.Postfix(
+            HullScaledDriveCompatibilityPatch.Prefix(
                 ref compatible, ship, magneticCandidate);
             True(compatible,
                 "candidate compatibility uses magnetic art rather than the installed nozzle");
@@ -1575,45 +1717,45 @@ namespace TIEconomyMod.FormulaTests
             };
             ship.hullAppearanceIndex = 0;
             compatible = true;
-            HullScaledDriveCompatibilityPatch.Postfix(
+            HullScaledDriveCompatibilityPatch.Prefix(
                 ref compatible, ship, pegasusX3);
             True(compatible,
                 "Gunship appearance 0 accepts Pegasus x3 with Molten Salt II");
             compatible = true;
-            HullScaledDriveCompatibilityPatch.Postfix(
+            HullScaledDriveCompatibilityPatch.Prefix(
                 ref compatible, ship, pegasusX4);
             True(!compatible,
                 "Gunship appearance 0 rejects Pegasus x4 by reactor bay");
             ship.hullAppearanceIndex = 1;
             compatible = true;
-            HullScaledDriveCompatibilityPatch.Postfix(
+            HullScaledDriveCompatibilityPatch.Prefix(
                 ref compatible, ship, pegasusX3);
             True(compatible,
                 "Gunship appearance 1 accepts scaled Pegasus x3");
             compatible = true;
-            HullScaledDriveCompatibilityPatch.Postfix(
+            HullScaledDriveCompatibilityPatch.Prefix(
                 ref compatible, ship, pegasusX4);
             True(compatible,
                 "Gunship appearance 1 accepts scaled Pegasus x4");
             compatible = true;
-            HullScaledDriveCompatibilityPatch.Postfix(
+            HullScaledDriveCompatibilityPatch.Prefix(
                 ref compatible, ship, pegasusX5);
             True(!compatible,
                 "Gunship appearance 1 rejects scaled Pegasus x5 by reactor bay");
             ship.hullAppearanceIndex = 2;
             compatible = true;
-            HullScaledDriveCompatibilityPatch.Postfix(
+            HullScaledDriveCompatibilityPatch.Prefix(
                 ref compatible, ship, pegasusX4);
             True(compatible,
                 "smaller premium Gunship De Laval art fits scaled Pegasus x4");
             ship.hullAppearanceIndex = 3;
             compatible = true;
-            HullScaledDriveCompatibilityPatch.Postfix(
+            HullScaledDriveCompatibilityPatch.Prefix(
                 ref compatible, ship, pegasusX3);
             True(compatible,
                 "DLCA Gunship appearance accepts scaled Pegasus x3");
             compatible = true;
-            HullScaledDriveCompatibilityPatch.Postfix(
+            HullScaledDriveCompatibilityPatch.Prefix(
                 ref compatible, ship, pegasusX4);
             True(!compatible,
                 "DLCA Gunship appearance rejects scaled Pegasus x4");
@@ -1623,7 +1765,7 @@ namespace TIEconomyMod.FormulaTests
                 powerRequirement_GW = 6f * 65.8824f
             };
             compatible = true;
-            HullScaledDriveCompatibilityPatch.Postfix(
+            HullScaledDriveCompatibilityPatch.Prefix(
                 ref compatible, ship, pulsedPegasusX6);
             True(compatible,
                 "pulsed x6 remains vanilla and fits the DLCA reactor bay");
@@ -1631,13 +1773,13 @@ namespace TIEconomyMod.FormulaTests
             ship.hullAppearanceIndex = 0;
             ship.driveTemplate = pegasusX4;
             compatible = true;
-            HullScaledPowerPlantCompatibilityPatch.Postfix(
+            HullScaledPowerPlantCompatibilityPatch.Prefix(
                 ref compatible, ship, ship.powerPlantTemplate);
             True(!compatible,
                 "power-plant selection applies the same appearance-0 bay cap");
             ship.driveTemplate = pegasusX3;
             compatible = true;
-            HullScaledPowerPlantCompatibilityPatch.Postfix(
+            HullScaledPowerPlantCompatibilityPatch.Prefix(
                 ref compatible, ship, ship.powerPlantTemplate);
             True(compatible,
                 "power-plant selection accepts a demand within the bay cap");
@@ -1645,7 +1787,7 @@ namespace TIEconomyMod.FormulaTests
                 false;
             ship.driveTemplate = pegasusX4;
             compatible = true;
-            HullScaledPowerPlantCompatibilityPatch.Postfix(
+            HullScaledPowerPlantCompatibilityPatch.Prefix(
                 ref compatible, ship, ship.powerPlantTemplate);
             True(compatible,
                 "disabled reactor-bay capacity restores theoretical output");
@@ -1894,14 +2036,6 @@ namespace TIEconomyMod.FormulaTests
                 "clean physical mass retains one-decimal Earth Boost");
             Near(1f, HabRebalanceMath.ConstructionRate(false), 0f,
                 "new construction rate");
-            Near(2f,
-                HabRebalanceMath.GeneratorConstructionCostMultiplier(true),
-                0f,
-                "direct generators represent two plants at construction");
-            Near(1f,
-                HabRebalanceMath.GeneratorConstructionCostMultiplier(false),
-                0f,
-                "non-generators retain ordinary construction cost");
             True(HabRebalanceMath.HasRebalancedMaterialFraction(0.6666667f),
                 "two-thirds material marker");
             True(HabRebalanceMath.HasRebalancedMaterialFraction(0.6f),
@@ -2573,6 +2707,7 @@ namespace TIEconomyMod.FormulaTests
             True(!invalidGdp.valid &&
                 !NationalHarmonizationMath.Passes(invalidGdp, 12d),
                 "non-positive GDP/c fails closed");
+
         }
 
         private static void TestNationalMergers()

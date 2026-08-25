@@ -29,6 +29,8 @@ The comparison is organized into:
 - [Power-plant benchmarks](powerplant-benchmarks.md)
 - [2026-08-18 reactor progression adjustment](reactor-progression-adjustment-2026-08-18.md)
 - [2026-08-20 reactor power-progression and large-hull scaling analysis](reactor-power-progression-analysis-2026-08-20.md)
+- [2026-08-24 revised reactor power-progression and hull-scaling plan](reactor-power-progression-plan-2026-08-24.md)
+- [2026-08-24 conservative linear reactor-scaling plan](reactor-conservative-linear-scaling-plan-2026-08-24.md)
 - Data tables: [installed drive snapshot](tables/drives.csv),
   [installed power-plant snapshot](tables/powerplant.csv),
   [power plants with live overrides merged](tables/powerplant-current.csv),

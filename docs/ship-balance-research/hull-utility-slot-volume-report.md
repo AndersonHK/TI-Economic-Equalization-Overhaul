@@ -152,7 +152,7 @@ A later utility-slot change should therefore choose hull-level counts first, the
 
 - Installed hull template SHA-256: `36952BDDFFCBEBE1C3AB2C2141B7D7DF53F985C0EED326C5A43A9B52BD86826B`
 - Base `ships` bundle SHA-256: `F1804254B5C6F2C2FFBF78C333738F462BAA18023AC5AACF9A8EACAA4D9F09A4`
-- Dark Skies `ships_prm` bundle SHA-256: `9035AD167BC1371462D0FAFC709764B446BA21D4B5C7F41917465483706A31BC`
+- Dark Skies `ships_prm` bundle SHA-256: `58F8B233CD7814F3CD536B46725369F69D6EC58AA260E580DE9D1E1268CF5D63`
 - Mod hull override SHA-256: `589F168B1819CAA2351612A4416DE31D8D7B7BE7F2AFB512D5D9338D0C3095E4`
 - Generator: [`generate_hull_variant_report.py`](../../scripts/ship-balance/generate_hull_variant_report.py)
 - Shared prefab traversal: [`measure_ship_prefabs.py`](../../scripts/ship-balance/measure_ship_prefabs.py)

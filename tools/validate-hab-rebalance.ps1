@@ -69,6 +69,16 @@ $crewValues = @{
     TouristBerth = 2
     XenologyLab = 1
 }
+$solarMassValues = @{
+    AutomatedSolarCollector = 160.0
+    SolarCollector = 160.0
+    SolarArray = 620.0
+    SolarFarm = 1800.0
+}
+$solarCrewValues = @{
+    SolarArray = 1
+    SolarFarm = 3
+}
 $materialNames = @(
     'water',
     'volatiles',
@@ -138,12 +148,21 @@ foreach ($override in $overrides) {
     $overrideByName[$override.dataName] = $override
     $source = $vanillaByName[$override.dataName]
     $vanillaMass = [double]$source.baseMass_tons
-    $expectedMass = [Math]::Round(
+    $expectedUnitMass = [Math]::Round(
         ($vanillaMass * 1.5) / $cleanMassIncrementTons,
         0,
         [MidpointRounding]::AwayFromZero) * $cleanMassIncrementTons
+    $expectedMass = if ($solarMassValues.ContainsKey($source.dataName)) {
+        $solarMassValues[$source.dataName]
+    }
+    elseif ([double]$source.power -gt 0) {
+        $expectedUnitMass * 2
+    }
+    else {
+        $expectedUnitMass
+    }
     if ([Math]::Abs([double]$override.baseMass_tons - $expectedMass) -gt 0.000001) {
-        throw "$($override.dataName) mass is not 150 percent of vanilla rounded to the nearest 5 tons."
+        throw "$($override.dataName) mass does not match its approved generic or solar-specific mass rule."
     }
 
     $sum = 0.0
@@ -158,14 +177,14 @@ foreach ($override in $overrides) {
         }
         $overrideValue = [double]$overrideProperty.Value
         $expectedWeight = [Math]::Round(
-            $sourceValue * $vanillaMass / $expectedMass,
+            $sourceValue * $vanillaMass / $expectedUnitMass,
             9)
         if ([Math]::Abs($overrideValue - $expectedWeight) -gt 0.00000001) {
             throw "$($override.dataName) changes the vanilla '$materialName' tonnage."
         }
         $sum += $overrideValue
     }
-    $expectedSum = $vanillaMass / $expectedMass
+    $expectedSum = $vanillaMass / $expectedUnitMass
     if ([Math]::Abs($sum - $expectedSum) -gt 0.00000001) {
         throw "$($override.dataName) material weights sum to $sum instead of $expectedSum."
     }
@@ -181,9 +200,15 @@ foreach ($override in $overrides) {
         }
     }
     elseif ([double]$source.power -gt 0) {
+        $expectedCrew = if ($solarCrewValues.ContainsKey($override.dataName)) {
+            $solarCrewValues[$override.dataName]
+        }
+        else {
+            [int]$source.crew * 2
+        }
         if (-not $override.PSObject.Properties['crew'] -or
-            [int]$override.crew -ne [int]$source.crew * 2) {
-            throw "$($override.dataName) does not double generator crew."
+            [int]$override.crew -ne $expectedCrew) {
+            throw "$($override.dataName) does not match its approved generator crew value."
         }
     }
     elseif ($override.PSObject.Properties['crew']) {
@@ -258,7 +283,11 @@ foreach ($override in $overrides) {
     $maintenanceTotalByTier[[int]$source.tier] += $proposedResourceTotal * 10
 }
 
-$expectedMaintenanceTotalByTier = @{ 1 = 178.585; 2 = 890.425; 3 = 3346.3 }
+$expectedMaintenanceTotalByTier = @{
+    1 = 89.5625
+    2 = 457.1125
+    3 = 2049.05
+}
 foreach ($tier in 1..3) {
     if ([Math]::Abs(
         $maintenanceTotalByTier[$tier] -
@@ -279,9 +308,9 @@ $globalJson = Get-Content -LiteralPath $globalOverridePath -Raw | ConvertFrom-Js
 $global = @($globalJson | ForEach-Object { $_ })
 if ($global.Count -ne 1 -or
     $global[0].dataName -ne 'globalConfig' -or
-    [double]$global[0].crewWaterConsumptionTons_year -ne 3 -or
-    [double]$global[0].crewVolatilesConsumptionTons_year -ne 3) {
-    throw 'Global crew water and volatile consumption must both equal 3 tons per year.'
+    [double]$global[0].crewWaterConsumptionTons_year -ne 2 -or
+    [double]$global[0].crewVolatilesConsumptionTons_year -ne 2) {
+    throw 'Global crew water and volatile consumption must both equal 2 tons per year.'
 }
 
 function Assert-Station {
@@ -344,11 +373,11 @@ $issSectorZero = @(
 $issSectorTwo = @('LifeScienceLab', '', 'Quarters', '')
 $issSectorFour = @('Quarters', '', 'MaterialsLab', '')
 Assert-Station $habByName.InternationalSpaceStation 'CooperateCouncil' `
-    $issSectorZero $issSectorTwo $issSectorFour 435 8
+    $issSectorZero $issSectorTwo $issSectorFour 705 8
 Assert-Station $habByName.InternationalSpaceStationSkirmish 'ResistCouncil' `
-    $issSectorZero $issSectorTwo $issSectorFour 435 8
+    $issSectorZero $issSectorTwo $issSectorFour 705 8
 Assert-Station $habByName.Tiangong 'EscapeCouncil' `
     @('PlatformCore', 'SolarCollector', 'LifeScienceLab', '', '') `
-    @('', '', '', '') @('', '', '', '') 80 3
+    @('', '', '', '') @('', '', '', '') 215 3
 
-Write-Host 'PASS: 110 hab-module overrides, T1-T3 maintenance, doubled generators, consumables, and starting stations validate.'
+Write-Host 'PASS: 110 hab-module overrides, consolidated T1-T3 maintenance, generator aggregation, solar targets, consumables, and starting stations validate.'

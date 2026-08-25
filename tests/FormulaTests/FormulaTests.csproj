@@ -75,6 +75,9 @@
     <Compile Include="..\..\TIEconomyMod\Core\PowerPlantThermalMath.cs">
       <Link>PowerPlantThermalMath.cs</Link>
     </Compile>
+    <Compile Include="..\..\TIEconomyMod\Core\PowerPlantScalingMath.cs">
+      <Link>PowerPlantScalingMath.cs</Link>
+    </Compile>
     <Compile Include="..\..\TIEconomyMod\Core\ProjectileCollisionMath.cs">
       <Link>ProjectileCollisionMath.cs</Link>
     </Compile>

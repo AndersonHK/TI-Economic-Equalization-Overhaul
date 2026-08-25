@@ -108,6 +108,8 @@ try {
     Assert-Count $claimWillBeHostile 'hostileClaims' 1 'Vanilla stored hostile-claim gate'
 
     $hostileDueToDemocracy = Read-MethodIl $nation 'HostileClaimDueToDemocracy'
+    Assert-Count $hostileDueToDemocracy 'HostileClaimDueToDemocracy\(class PavonisInteractive\.TerraInvicta\.TINationState testNation\)' 1 'TI 1.0.53 nation-level claim compatibility signature'
+    Assert-Count $hostileDueToDemocracy 'HostileClaimDueToDemocracy\(class PavonisInteractive\.TerraInvicta\.TIRegionState' 0 'Retired TI 1.0.51 region-level claim signature'
     Assert-Count $hostileDueToDemocracy 'democracyDecreaseToMakeHostileClaim' 1 'Vanilla Government-only claim threshold'
 
     $canFormFederation = Read-MethodIl $nation 'CanFormFederation'
@@ -362,7 +364,7 @@ try {
         1 `
         'Live propulsion generation ship-template power source'
 
-    Write-Host 'PASS: target IL contains every guarded TI 1.0.51 patch point, including coup effects, research ownership, councilor caps, climate damage, nuclear GDP effects, and ship drive-power consumers.'
+    Write-Host 'PASS: target IL contains every guarded TI 1.0.53 patch point, including the nation-level claim compatibility signature, coup effects, research ownership, councilor caps, climate damage, nuclear GDP effects, and ship drive-power consumers.'
 }
 finally {
     $resolvedProbe = (Resolve-Path -LiteralPath $probeDirectory).Path

@@ -3,6 +3,101 @@
 This is a decision log for the proposed ship rebalance. Entries here describe
 the balance decisions as well as their implementation status.
 
+## 2026-08-24
+
+### Implemented and deployed: compact reactor presentation
+
+- Return the power-plant panel to the vanilla ten-row information hierarchy:
+  Classification; installed Electrical Output; open-cycle Thermal Output;
+  installed Mass; one installed Waste Heat row; Crew; Efficiency; Specific
+  Power with the open-cycle mass/cap multiplier parenthesized after its value;
+  Max Output To Drive; and installed Build Cost or prospective Cost per GW.
+- `Thermal Output` is useful work delivered to the open-cycle drive (`D`), not
+  the slightly larger gross reactor contribution (`Qoc`). `Electrical Output`
+  is useful installed electrical demand.
+- Remove the separate cap-use, multiplier, and waste-heat-breakdown rows from
+  presentation only. Their underlying calculations remain authoritative.
+- Restore reactor-bay used/available volume as a separate block beneath the
+  table. Prospective descriptions retain static plant data and cost per GW but
+  do not show installed output, mass, or waste heat.
+- TI 1.0.51 validation passed **1,172 formula assertions**, all **176 Harmony
+  patches**, the **100-row** implementation matrix, release verification, and
+  the **46-file** deployment. Source and deployed DLLs match at SHA-256
+  `5A709534E45DECA9165F9361808046D0C183A2302445B0E21FF3E5B0C29F8CEB`;
+  source and deployed compact localization also match. Manual rendered-table
+  confirmation remains pending.
+
+### Implemented and deployed: native reactor table markup
+
+- The first mass-label hotfix was based on an incorrect diagnosis. Vanilla
+  already supplies labelled mass and crew rows using Terra Invicta's native
+  `<rcol>…</rcol>` column markup. The injected power and heat localization rows
+  omitted that markup, corrupting the group boundary: the next native label was
+  consumed, its value was stranded, and later rows fell outside the table.
+- Preserve vanilla's mass, crew, efficiency, specific-power, and cost strings.
+  Convert every injected drive-demand, reactor-output, multiplier, cap-use,
+  radiator-heat, maximum-output, and reactor-bay row to the same balanced `<rcol>`
+  form, then validate the complete installed-row sequence rather than merely
+  checking that one replacement method exists.
+- TI 1.0.51 validation passed **1,172 formula assertions**, all **176 Harmony
+  patches**, the **100-row** implementation matrix, release verification, and
+  the **46-file** deployment. Source and deployed DLLs match at SHA-256
+  `9CBEC6289FF3588ECD0DC149927ED9E1726D58480AD45A6B8AE608C9F5AF6D11`;
+  source and deployed reactor-localization files also match. Manual rendered
+  table confirmation remains pending.
+
+### Superseded deployed attempt: labeled power-plant mass row
+
+- This attempt incorrectly replaced vanilla's already-labelled mass row with a
+  second custom format. It did not repair the missing native column markup and
+  caused the mass row to disappear while the crew value became stranded.
+- TI 1.0.51 validation passed **1,172 formula assertions**, all **176 Harmony
+  patches**, the **100-row** implementation matrix, release verification, and
+  the **46-file** deployment. Built DLL SHA-256:
+  `07B2364672A8B1D2F7C752331EBC6BBFB1D0E327DC6DF6CF2A38B68DB945B3D3`.
+  Manual testing rejected this attempt; it is superseded by the corrective
+  markup implementation above.
+
+### Implemented and deployed: open-cycle reactor mass and cap separation
+
+- Restore one unambiguous drive-demand value: open-cycle drives expose their
+  installed, hull-scaled thermal demand in `GWth`, while closed-cycle drives
+  expose electrical demand in `GWe`.
+- Compute a shared ship-power snapshot that separately tracks useful drive
+  demand, auxiliary electrical demand, actual reactor thermal output,
+  electrical conversion input, mass-rated output, and each radiator-heat
+  component. Plant output and heat conserve energy; mass scaling never changes
+  the drive's useful power or its reported reactor thermal output.
+- Size power-plant mass, construction resources, and occupied reactor-bay
+  volume from `Pmass = multiplier × Qopen-cycle + Qelectrical`. Until the
+  reactor progression is rebalanced, use the temporary gameplay multiplier
+  **0.5** for every reactor class and **1.0** for general/fuel-cell plants.
+- Add a scenario-aware `openCycleThermalMassMultiplier` template extension and
+  enable the feature through
+  `shipBalance.openCycleThermalMassScalingEnabled`. Explicit solid-, molten-,
+  liquid-, and gas-core JSON values make the temporary reactor policy visible;
+  the registry supplies the same bounded default for all other reactor plants.
+- Rewrite power-plant and drive presentation to report reactor `GWth`, useful
+  electrical `GWe`, open-cycle output, the active mass multiplier, and total
+  radiator heat with open-cycle, conversion, and module breakdowns. The same
+  blocks are prefixed into prospective descriptions where vanilla omits its
+  installed-output lines.
+- Leave every authored `maxOutput_GW` value unchanged. Compatibility compares
+  closed-cycle electrical demand one-for-one, but rates open-cycle thermal
+  demand as `multiplier × Qopen-cycle` against that same cap. At the temporary
+  **0.5** multiplier, a 4 GW cap therefore admits either 4 GWe or 8 GWth before
+  the small retained-loss correction. This replaces the cancelled cap-doubling
+  proposal.
+- Record the equations, policy, patch surface, validation, and manual test
+  matrix in the [implementation plan](open-cycle-reactor-mass-scaling-plan-2026-08-21.md)
+  and update the current implementation matrix in place.
+- The TI 1.0.51 deployment passed **1,172 formula assertions**, all **176
+  Harmony patches**, the **100-row** implementation matrix, complete release
+  verification, packaging, and the **46-file** enabled-mod deployment. Source
+  and deployed DLL SHA-256:
+  `8F7F33E3953244C095C0E69E763FECF3469EF0F162922A8AC15F9C4BD76DDB4A`.
+  Manual in-game testing remains pending.
+
 ## 2026-08-20
 
 ### Implemented and deployed: open-cycle reactor demand and installed-drive heat consistency

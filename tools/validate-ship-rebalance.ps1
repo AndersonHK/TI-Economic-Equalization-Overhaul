@@ -85,12 +85,28 @@ foreach ($entry in $expectedPower.GetEnumerator()) {
         throw "Power-plant override must contain '$($entry.Key)' exactly once."
     }
     $expectedMaximumOutput = $entry.Value[2]
-    if ($null -eq $expectedMaximumOutput) {
-        Assert-Properties $row[0] @('dataName', 'efficiency', 'specificPower_tGW') $entry.Key
+    $expectedOpenCycleMultiplier = if ($entry.Key -like 'FuelCell*') {
+        $null
     }
     else {
-        Assert-Properties $row[0] @(
-            'dataName', 'maxOutput_GW', 'specificPower_tGW', 'efficiency') $entry.Key
+        0.5
+    }
+    if ($null -eq $expectedMaximumOutput) {
+        $expectedProperties = @('dataName', 'efficiency')
+        if ($null -ne $expectedOpenCycleMultiplier) {
+            $expectedProperties += 'openCycleThermalMassMultiplier'
+        }
+        $expectedProperties += 'specificPower_tGW'
+        Assert-Properties $row[0] $expectedProperties $entry.Key
+    }
+    else {
+        $expectedProperties = @(
+            'dataName', 'maxOutput_GW', 'specificPower_tGW')
+        if ($null -ne $expectedOpenCycleMultiplier) {
+            $expectedProperties += 'openCycleThermalMassMultiplier'
+        }
+        $expectedProperties += 'efficiency'
+        Assert-Properties $row[0] $expectedProperties $entry.Key
         Assert-Near $row[0].maxOutput_GW $expectedMaximumOutput "$($entry.Key) maximum output"
         Assert-Near `
             ([double]$row[0].maxOutput_GW * [double]$row[0].specificPower_tGW) `
@@ -99,6 +115,12 @@ foreach ($entry in $expectedPower.GetEnumerator()) {
     }
     Assert-Near $row[0].specificPower_tGW $entry.Value[1] "$($entry.Key) specific mass"
     Assert-Near $row[0].efficiency $entry.Value[0] "$($entry.Key) efficiency"
+    if ($null -ne $expectedOpenCycleMultiplier) {
+        Assert-Near `
+            $row[0].openCycleThermalMassMultiplier `
+            $expectedOpenCycleMultiplier `
+            "$($entry.Key) open-cycle thermal mass multiplier"
+    }
 }
 
 $heatOverrides = Read-JsonArray (Join-Path $modFiles 'TIHeatSinkTemplate.json')

@@ -3,8 +3,8 @@
     "dataName": "globalConfig",
     "controlPointMaintenanceFreebies": 0,
     "councilorMaxOrgs": 18,
-    "crewWaterConsumptionTons_year": 3,
-    "crewVolatilesConsumptionTons_year": 3,
+    "crewWaterConsumptionTons_year": 2,
+    "crewVolatilesConsumptionTons_year": 2,
     "probePayloadBaseline_tons": 0.325,
     "probePayloadPerHabSite_tons": 0
   }

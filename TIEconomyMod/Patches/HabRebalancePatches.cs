@@ -249,12 +249,9 @@ namespace TIEconomyMod.Patches
             float materialWeightSum =
                 HabConstructionCostRewrite.MaterialFraction(
                     __instance.weightedBuildMaterials);
-            float constructionCostMultiplier =
-                HabRebalanceMath.GeneratorConstructionCostMultiplier(
-                    __instance.power > 0);
             float ordinaryMaterialCost =
                 HabRebalanceMath.FullMaterialMass(
-                    nominalMass * constructionCostMultiplier,
+                    nominalMass,
                     multiplier) *
                 TemplateManager.global.spaceResourceToTons;
 
@@ -310,8 +307,7 @@ namespace TIEconomyMod.Patches
                 result.metals +
                 radiationShieldingMass *
                 TemplateManager.global.spaceResourceToTons *
-                multiplier *
-                constructionCostMultiplier);
+                multiplier);
 
             __result = result;
             return false;

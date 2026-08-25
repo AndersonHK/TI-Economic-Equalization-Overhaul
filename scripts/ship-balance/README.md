@@ -75,8 +75,15 @@ overlay:
 
 ```powershell
 python scripts/ship-balance/generate_hull_variant_report.py `
-  --game-install-dir 'D:\Games\SteamLibrary\steamapps\common\Terra Invicta'
+  --game-install-dir 'D:\Games\SteamLibrary\steamapps\common\Terra Invicta' `
+  --workers 8
 ```
+
+The generator reads full-precision decoded vertex and triangle buffers directly
+instead of rounding them through OBJ text. Thumbnail projection and rendering
+use eight worker processes by default; pass `--workers` to tune the process
+count. Bundle loading and Unity object traversal remain in the parent process
+so workers never share UnityPy state.
 
 Outputs contain source SHA-256 hashes but no run timestamps, so two runs over
 identical templates and bundles are byte-for-byte comparable.

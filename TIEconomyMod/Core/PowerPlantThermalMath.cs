@@ -2,6 +2,22 @@ using System;
 
 namespace TIEconomyMod
 {
+    public struct ShipPowerDemandSnapshot
+    {
+        public float DriveDemand_GW;
+        public bool DriveDemandIsThermal;
+        public float OpenCycleReactorOutput_GWth;
+        public float UsefulElectricalDemand_GWe;
+        public float ElectricalReactorInput_GWth;
+        public float TotalReactorOutput_GWth;
+        public float MassRatedOutput_GW;
+        public float CapRatedDriveDemand_GW;
+        public float OpenCycleWasteHeat_GW;
+        public float ElectricalWasteHeat_GW;
+        public float PlantWasteHeat_GW;
+        public float OpenCycleThermalMassMultiplier;
+    }
+
     public static class PowerPlantThermalMath
     {
         private const float MinimumEfficiency = 0.0001f;
@@ -66,6 +82,27 @@ namespace TIEconomyMod
             return IsFinite(heat_GW) ? heat_GW : 0f;
         }
 
+        public static float CapRatedDriveDemand_GW(
+            bool openCycleDriveCooling,
+            float drivePowerRequirement_GW,
+            float efficiency,
+            float openCycleDriveHeatFraction,
+            float openCycleThermalMultiplier)
+        {
+            float driveDemand_GW = NonNegativeFinite(
+                drivePowerRequirement_GW);
+            if (!openCycleDriveCooling)
+            {
+                return driveDemand_GW;
+            }
+
+            return OpenCycleReactorOutput_GW(
+                    driveDemand_GW,
+                    efficiency,
+                    openCycleDriveHeatFraction) *
+                BoundedMassMultiplier(openCycleThermalMultiplier);
+        }
+
         public static float PlantWasteHeat_GW(
             bool openCycleDriveCooling,
             float drivePowerRequirement_GW,
@@ -73,17 +110,105 @@ namespace TIEconomyMod
             float efficiency,
             float openCycleDriveHeatFraction)
         {
-            float systemsAndWeaponsHeat_GW = WasteHeatFromUsefulPower_GW(
-                systemsAndWeaponsRequirement_GW, efficiency);
-            float driveHeat_GW = openCycleDriveCooling
-                ? OpenCycleResidualHeat_GW(
-                    drivePowerRequirement_GW,
-                    efficiency,
-                    openCycleDriveHeatFraction)
-                : WasteHeatFromUsefulPower_GW(
-                    drivePowerRequirement_GW, efficiency);
+            return CalculateShipDemand(
+                openCycleDriveCooling,
+                drivePowerRequirement_GW,
+                systemsAndWeaponsRequirement_GW,
+                efficiency,
+                openCycleDriveHeatFraction,
+                1f).PlantWasteHeat_GW;
+        }
 
-            return systemsAndWeaponsHeat_GW + driveHeat_GW;
+        public static ShipPowerDemandSnapshot CalculateShipDemand(
+            bool openCycleDriveCooling,
+            float drivePowerRequirement_GW,
+            float systemsAndWeaponsRequirement_GW,
+            float efficiency,
+            float openCycleDriveHeatFraction,
+            float openCycleThermalMassMultiplier)
+        {
+            ShipPowerDemandSnapshot snapshot =
+                default(ShipPowerDemandSnapshot);
+            float driveDemand_GW = NonNegativeFinite(
+                drivePowerRequirement_GW);
+            float auxiliaryElectricalDemand_GWe = NonNegativeFinite(
+                systemsAndWeaponsRequirement_GW);
+            float boundedEfficiency = BoundedEfficiency(efficiency);
+            float boundedMassMultiplier = BoundedMassMultiplier(
+                openCycleThermalMassMultiplier);
+
+            snapshot.DriveDemand_GW = driveDemand_GW;
+            snapshot.DriveDemandIsThermal = openCycleDriveCooling;
+            snapshot.OpenCycleThermalMassMultiplier =
+                openCycleDriveCooling ? boundedMassMultiplier : 1f;
+
+            if (openCycleDriveCooling)
+            {
+                snapshot.OpenCycleReactorOutput_GWth =
+                    OpenCycleReactorOutput_GW(
+                        driveDemand_GW,
+                        boundedEfficiency,
+                        openCycleDriveHeatFraction);
+                snapshot.OpenCycleWasteHeat_GW =
+                    OpenCycleResidualHeat_GW(
+                        snapshot.OpenCycleReactorOutput_GWth,
+                        boundedEfficiency,
+                        openCycleDriveHeatFraction);
+                snapshot.UsefulElectricalDemand_GWe =
+                    auxiliaryElectricalDemand_GWe;
+            }
+            else
+            {
+                snapshot.UsefulElectricalDemand_GWe =
+                    driveDemand_GW + auxiliaryElectricalDemand_GWe;
+            }
+
+            snapshot.ElectricalReactorInput_GWth =
+                snapshot.UsefulElectricalDemand_GWe <= 0f
+                    ? 0f
+                    : snapshot.UsefulElectricalDemand_GWe /
+                        boundedEfficiency;
+            if (!IsFinite(snapshot.ElectricalReactorInput_GWth))
+            {
+                snapshot.ElectricalReactorInput_GWth =
+                    snapshot.UsefulElectricalDemand_GWe;
+            }
+
+            snapshot.ElectricalWasteHeat_GW = Math.Max(
+                0f,
+                snapshot.ElectricalReactorInput_GWth -
+                    snapshot.UsefulElectricalDemand_GWe);
+            snapshot.TotalReactorOutput_GWth =
+                snapshot.OpenCycleReactorOutput_GWth +
+                snapshot.ElectricalReactorInput_GWth;
+            snapshot.MassRatedOutput_GW =
+                snapshot.OpenCycleReactorOutput_GWth *
+                    snapshot.OpenCycleThermalMassMultiplier +
+                snapshot.ElectricalReactorInput_GWth;
+            snapshot.CapRatedDriveDemand_GW =
+                openCycleDriveCooling
+                    ? snapshot.OpenCycleReactorOutput_GWth *
+                        snapshot.OpenCycleThermalMassMultiplier
+                    : driveDemand_GW;
+            snapshot.PlantWasteHeat_GW =
+                snapshot.OpenCycleWasteHeat_GW +
+                snapshot.ElectricalWasteHeat_GW;
+            return snapshot;
+        }
+
+        private static float NonNegativeFinite(float value)
+        {
+            return IsFinite(value) ? Math.Max(0f, value) : 0f;
+        }
+
+        private static float BoundedMassMultiplier(float multiplier)
+        {
+            if (!IsFinite(multiplier) || multiplier <= 0f)
+            {
+                return 1f;
+            }
+
+            return Math.Min(1f, multiplier);
         }
 
         private static float BoundedEfficiency(float efficiency)

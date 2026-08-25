@@ -118,6 +118,8 @@
     <Compile Include="Core\CohesionRestMath.cs" />
     <Compile Include="Core\CampaignDifficultyDefaults.cs" />
     <Compile Include="Core\PowerPlantThermalMath.cs" />
+    <Compile Include="Core\PowerPlantScalingMath.cs" />
+    <Compile Include="Core\PowerPlantScalingRegistry.cs" />
     <Compile Include="Core\ProbeSurveyRuntime.cs" />
     <Compile Include="Core\ProjectileCollisionMath.cs" />
     <Compile Include="Core\DirectFireCommitmentMath.cs" />

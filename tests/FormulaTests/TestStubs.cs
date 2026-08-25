@@ -61,6 +61,17 @@ namespace PavonisInteractive.TerraInvicta
         public float maxOutput_GW;
         public float specificPower_tGW;
         public PowerPlantRequirement powerPlantClass;
+        public bool magneticFusionPlant;
+
+        public float buildMass_tons(float power_GW)
+        {
+            return Math.Max(1f, specificPower_tGW * power_GW);
+        }
+
+        public TIResourcesCost buildCost(float power_GW)
+        {
+            return new TIResourcesCost { value = buildMass_tons(power_GW) };
+        }
     }
 
     public sealed class TISpaceShipTemplate
@@ -72,6 +83,8 @@ namespace PavonisInteractive.TerraInvicta
         public TIPowerPlantTemplate powerPlantTemplate;
         public TIRadiatorTemplate radiatorTemplate;
         public TIFactionState designingFaction;
+        public float requiredSystemsPower_GW;
+        public float requiredWeaponsPowerGeneration_GW;
 
         public int GetHullAppearanceIndex
         {
@@ -357,6 +370,19 @@ public sealed class TIEffectTemplate
 
 namespace TIEconomyMod
 {
+    public static class PowerPlantScalingRegistry
+    {
+        public static float OpenCycleThermalMassMultiplier(
+            PavonisInteractive.TerraInvicta.TIPowerPlantTemplate powerPlant)
+        {
+            return powerPlant == null
+                ? 1f
+                : PowerPlantScalingMath
+                    .DefaultOpenCycleThermalMassMultiplier(
+                        powerPlant.powerPlantClass);
+        }
+    }
+
     public static class Main
     {
         public static bool enabled = true;
@@ -542,6 +568,7 @@ namespace TIEconomyMod
         public bool correctPowerPlantWasteHeat = true;
         public bool openCycleResidualHeatEnabled = true;
         public float openCycleDriveHeatFraction = 0.01f;
+        public bool openCycleThermalMassScalingEnabled = true;
         public bool crewSupportMassEnabled = true;
         public float crewSupportMass_tons = 3f;
         public bool hullDriveScalingEnabled = true;

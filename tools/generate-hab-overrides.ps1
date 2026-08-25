@@ -63,6 +63,16 @@ $crewValues = @{
     TouristBerth = 2
     XenologyLab = 1
 }
+$solarMassValues = @{
+    AutomatedSolarCollector = 160.0
+    SolarCollector = 160.0
+    SolarArray = 620.0
+    SolarFarm = 1800.0
+}
+$solarCrewValues = @{
+    SolarArray = 1
+    SolarFarm = 3
+}
 
 $vanilla = Get-Content -LiteralPath $sourcePath -Raw | ConvertFrom-Json
 $targets = @($vanilla | Where-Object {
@@ -119,10 +129,19 @@ $overrides = foreach ($template in $targets) {
     }
     $proposal = $proposalByName[$template.dataName]
     $vanillaMass = [double]$template.baseMass_tons
-    $rebalancedMass = [Math]::Round(
+    $rebalancedUnitMass = [Math]::Round(
         ($vanillaMass * 1.5) / $cleanMassIncrementTons,
         0,
         [MidpointRounding]::AwayFromZero) * $cleanMassIncrementTons
+    $rebalancedMass = if ($solarMassValues.ContainsKey($template.dataName)) {
+        $solarMassValues[$template.dataName]
+    }
+    elseif ([double]$template.power -gt 0) {
+        $rebalancedUnitMass * 2
+    }
+    else {
+        $rebalancedUnitMass
+    }
     $vanillaSum = 0.0
     $weights = [ordered]@{}
     foreach ($materialName in $materialNames) {
@@ -130,7 +149,7 @@ $overrides = foreach ($template in $targets) {
         $value = if ($null -eq $property) { 0.0 } else { [double]$property.Value }
         $vanillaSum += $value
         $weights[$materialName] = [Math]::Round(
-            $value * $vanillaMass / $rebalancedMass,
+            $value * $vanillaMass / $rebalancedUnitMass,
             9)
     }
     if ([Math]::Abs($vanillaSum - 1.0) -gt 0.0000001) {
@@ -150,7 +169,10 @@ $overrides = foreach ($template in $targets) {
     }
     if ([double]$template.power -gt 0) {
         $entry.power = [double]$template.power * 2
-        $entry.crew = if ($template.tier -eq 1) {
+        $entry.crew = if ($solarCrewValues.ContainsKey($template.dataName)) {
+            $solarCrewValues[$template.dataName]
+        }
+        elseif ($template.tier -eq 1) {
             $crewValues[$template.dataName] * 2
         }
         else {

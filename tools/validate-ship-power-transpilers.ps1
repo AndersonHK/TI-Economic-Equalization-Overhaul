@@ -257,6 +257,249 @@ if ($setModuleCalls.Count -ne 1 -or $removeModuleCalls.Count -ne 1 -or
     throw 'Appearance reconciliation must directly test effective output, inspect installed-count drive variations, and use exactly one normal replacement/removal path.'
 }
 
+$capFeatureType = $modAssembly.GetType(
+    'TIEconomyMod.Patches.OpenCycleReactorDemandFeature', $true)
+$capRatedDriveHelper = $capFeatureType.GetMethod(
+    'RequiredCapRatedDriveOutput_GW',
+    [Reflection.BindingFlags]'Public,Static')
+$ratedFitType = $modAssembly.GetType(
+    'TIEconomyMod.Patches.DrivePowerPlantCompatibilityFeature', $true)
+$ratedFitHelper = $ratedFitType.GetMethod(
+    'FitsRatedOutput', [Reflection.BindingFlags]'Public,Static')
+$compatibilityConsumers = @(
+    $modAssembly.GetType(
+        'TIEconomyMod.Patches.OpenCycleDrivePowerPlantCompatibilityPatch',
+        $true).GetMethod('Prefix',
+            [Reflection.BindingFlags]'Public,Static'),
+    $modAssembly.GetType(
+        'TIEconomyMod.Patches.OpenCycleValidDrivesForPowerPlantsPatch',
+        $true).GetMethod('Prefix',
+            [Reflection.BindingFlags]'Public,Static'),
+    $modAssembly.GetType(
+        'TIEconomyMod.Patches.HullScaledDriveCompatibilityPatch',
+        $true).GetMethod('Prefix',
+            [Reflection.BindingFlags]'Public,Static'),
+    $modAssembly.GetType(
+        'TIEconomyMod.Patches.HullScaledPowerPlantCompatibilityPatch',
+        $true).GetMethod('Prefix',
+            [Reflection.BindingFlags]'Public,Static')
+)
+if ($null -eq $capRatedDriveHelper -or $null -eq $ratedFitHelper) {
+    throw 'Open-cycle cap-rated drive compatibility helper is missing.'
+}
+foreach ($compatibilityConsumer in $compatibilityConsumers) {
+    if ($null -eq $compatibilityConsumer) {
+        throw 'Open-cycle cap-rated drive compatibility consumer is missing.'
+    }
+    $readerArguments[0] = $compatibilityConsumer
+    $readerArguments[1] = $null
+    $compatibilityInstructions = @(
+        $instructionReader[0].PSObject.BaseObject.Invoke(
+            $null, $readerArguments))
+    $ratedFitCalls = @($compatibilityInstructions | Where-Object {
+        $_.opcode.Name -eq 'call' -and
+        $_.operand -eq $ratedFitHelper
+    })
+    if ($ratedFitCalls.Count -ne 1) {
+        throw "$($compatibilityConsumer.DeclaringType.Name).$($compatibilityConsumer.Name) must call rated-output compatibility exactly once."
+    }
+}
+
+$directCapConsumers = @(
+    $ratedFitHelper,
+    $appearancePatchType.GetMethod(
+        'DriveFitsEffectiveOutput',
+        [Reflection.BindingFlags]'NonPublic,Static')
+)
+foreach ($directCapConsumer in $directCapConsumers) {
+    if ($null -eq $directCapConsumer) {
+        throw 'Open-cycle direct cap-rated demand consumer is missing.'
+    }
+    $readerArguments[0] = $directCapConsumer
+    $readerArguments[1] = $null
+    $directCapInstructions = @(
+        $instructionReader[0].PSObject.BaseObject.Invoke(
+            $null, $readerArguments))
+    $capHelperCalls = @($directCapInstructions | Where-Object {
+        $_.opcode.Name -eq 'call' -and
+        $_.operand -eq $capRatedDriveHelper
+    })
+    if ($capHelperCalls.Count -ne 1) {
+        throw "$($directCapConsumer.DeclaringType.Name).$($directCapConsumer.Name) must call cap-rated drive demand exactly once."
+    }
+}
+
+$descriptionHelperType = $modAssembly.GetType(
+    'TIEconomyMod.Patches.ShipModuleEnergyColumnCompatibilityPatch', $true)
+$separatedPlantDescription = $descriptionHelperType.GetMethod(
+    'GetSeparatedPowerPlantDescription',
+    [Reflection.BindingFlags]'Public,Static')
+$localizedMassMethods = @($gameAssembly.GetType(
+    'TIPowerPlantTemplate', $true).GetMethods(
+        [Reflection.BindingFlags]'Public,Instance') | Where-Object {
+            $_.Name -eq 'GetLocalizedMass' -and
+            $_.GetParameters().Count -eq 1 -and
+            $_.GetParameters()[0].ParameterType.Name -eq
+                'TISpaceShipTemplate'
+        })
+if ($null -eq $separatedPlantDescription -or
+    $localizedMassMethods.Count -ne 1) {
+    throw 'Separated power-plant description or localized mass source is missing.'
+}
+if ($separatedPlantDescription.GetParameters().Count -ne 4 -or
+    $separatedPlantDescription.GetParameters()[3].ParameterType -ne
+        [bool]) {
+    throw 'Separated power-plant descriptions must receive prospective state explicitly.'
+}
+$localizedMassMethod = $localizedMassMethods[0]
+$readerArguments[0] = $separatedPlantDescription
+$readerArguments[1] = $null
+$plantDescriptionInstructions = @(
+    $instructionReader[0].PSObject.BaseObject.Invoke(
+        $null, $readerArguments))
+$expectedPlantDescriptionKeys = @(
+    'UI.Fleets.ElectricalOutputHeader',
+    'UI.Fleets.ElectricalOutput',
+    'UI.Fleets.ThermalOutput',
+    'UI.Fleets.WasteHeat',
+    'UI.Fleets.SpecificPowerWithOpenCycleMultiplier'
+)
+foreach ($expectedPlantDescriptionKey in $expectedPlantDescriptionKeys) {
+    $keyLoads = @($plantDescriptionInstructions | Where-Object {
+        $_.opcode.Name -eq 'ldstr' -and
+        $_.operand -eq $expectedPlantDescriptionKey
+    })
+    if ($keyLoads.Count -ne 1) {
+        throw "Separated power-plant descriptions must load '$expectedPlantDescriptionKey' exactly once."
+    }
+}
+$obsoletePlantDescriptionKeys = @(
+    'UI.Fleets.ReactorThermalOutput',
+    'UI.Fleets.ElectricalGeneration',
+    'UI.Fleets.OpenCycleDriveOutput',
+    'UI.Fleets.OpenCycleCapUsage',
+    'UI.Fleets.OpenCycleMassMultiplier',
+    'UI.Fleets.WasteHeatToRadiators',
+    'UI.Fleets.OpenCycleWasteHeat',
+    'UI.Fleets.ElectricalWasteHeat',
+    'UI.Fleets.ModuleWasteHeat',
+    'UI.Fleets.MaximumRatedOutput'
+)
+foreach ($obsoletePlantDescriptionKey in $obsoletePlantDescriptionKeys) {
+    $keyLoads = @($plantDescriptionInstructions | Where-Object {
+        $_.opcode.Name -eq 'ldstr' -and
+        $_.operand -eq $obsoletePlantDescriptionKey
+    })
+    if ($keyLoads.Count -ne 0) {
+        throw "Compact power-plant descriptions must not load '$obsoletePlantDescriptionKey'."
+    }
+}
+$snapshotType = $modAssembly.GetType(
+    'TIEconomyMod.ShipPowerDemandSnapshot', $true)
+$driveDemandField = $snapshotType.GetField('DriveDemand_GW')
+$grossOpenCycleField = $snapshotType.GetField(
+    'OpenCycleReactorOutput_GWth')
+$electricalDemandField = $snapshotType.GetField(
+    'UsefulElectricalDemand_GWe')
+$multiplierField = $snapshotType.GetField(
+    'OpenCycleThermalMassMultiplier')
+$driveDemandLoads = @($plantDescriptionInstructions | Where-Object {
+    $_.opcode.Name -in @('ldfld', 'ldflda') -and
+    $_.operand -eq $driveDemandField
+})
+$grossOpenCycleLoads = @($plantDescriptionInstructions | Where-Object {
+    $_.opcode.Name -in @('ldfld', 'ldflda') -and
+    $_.operand -eq $grossOpenCycleField
+})
+$electricalDemandLoads = @($plantDescriptionInstructions | Where-Object {
+    $_.opcode.Name -in @('ldfld', 'ldflda') -and
+    $_.operand -eq $electricalDemandField
+})
+$multiplierLoads = @($plantDescriptionInstructions | Where-Object {
+    $_.opcode.Name -in @('ldfld', 'ldflda') -and
+    $_.operand -eq $multiplierField
+})
+if ($driveDemandLoads.Count -lt 1 -or
+    $grossOpenCycleLoads.Count -ne 0 -or
+    $electricalDemandLoads.Count -ne 1 -or
+    $multiplierLoads.Count -ne 1) {
+    throw ('Compact power rows must show useful drive/electrical output ' +
+        'and the active multiplier without exposing gross open-cycle ' +
+        'reactor input. Loads: drive=' + $driveDemandLoads.Count +
+        ', gross=' + $grossOpenCycleLoads.Count + ', electrical=' +
+        $electricalDemandLoads.Count + ', multiplier=' +
+        $multiplierLoads.Count + '.')
+}
+$localizedMassCalls = @($plantDescriptionInstructions | Where-Object {
+    $_.opcode.Name -eq 'callvirt' -and
+    $_.operand -eq $localizedMassMethod
+})
+$labeledMassKeys = @($plantDescriptionInstructions | Where-Object {
+    $_.opcode.Name -eq 'ldstr' -and
+    $_.operand -eq 'UI.Fleets.PowerPlantMass'
+})
+if ($localizedMassCalls.Count -ne 0 -or $labeledMassKeys.Count -ne 0) {
+    throw 'Separated power-plant descriptions must preserve the native mass row unchanged.'
+}
+
+$reactorBayDescription = $descriptionHelperType.GetMethod(
+    'GetReactorBayDescription', [Reflection.BindingFlags]'Public,Static')
+if ($null -eq $reactorBayDescription) {
+    throw 'Reactor-bay description helper is missing.'
+}
+if ($reactorBayDescription.GetParameters().Count -ne 4 -or
+    $reactorBayDescription.GetParameters()[3].ParameterType -ne [bool]) {
+    throw 'Reactor-bay descriptions must receive prospective state explicitly.'
+}
+$readerArguments[0] = $reactorBayDescription
+$readerArguments[1] = $null
+$reactorBayDescriptionInstructions = @(
+    $instructionReader[0].PSObject.BaseObject.Invoke(
+        $null, $readerArguments))
+$reactorBayVolumeKeys = @($reactorBayDescriptionInstructions |
+    Where-Object {
+        $_.opcode.Name -eq 'ldstr' -and
+        $_.operand -eq 'UI.Fleets.ReactorBayCapacityVolume'
+    })
+$reactorBayHeaderKeys = @($reactorBayDescriptionInstructions |
+    Where-Object {
+        $_.opcode.Name -eq 'ldstr' -and
+        $_.operand -eq 'UI.Fleets.ReactorBayCapacityHeader'
+    })
+if ($reactorBayVolumeKeys.Count -ne 1 -or
+    $reactorBayHeaderKeys.Count -ne 1) {
+    throw 'Reactor-bay description must append exactly one external header/value block.'
+}
+
+$powerPlantType = $gameAssembly.GetType('TIPowerPlantTemplate', $true)
+$nativePlantDescriptions = @($powerPlantType.GetMethods(
+    [Reflection.BindingFlags]'Public,Instance,DeclaredOnly') |
+    Where-Object { $_.Name -eq 'GetDescriptionData' })
+$nativeCrewMethod = $gameAssembly.GetType(
+    'TIShipPartTemplate', $true).GetMethod(
+        'GetLocalizedCrew', [Reflection.BindingFlags]'Public,Instance')
+if ($nativePlantDescriptions.Count -ne 1 -or $null -eq $nativeCrewMethod) {
+    throw 'Native power-plant description or crew row source is missing.'
+}
+$nativePlantDescriptionMethod =
+    $nativePlantDescriptions[0].PSObject.BaseObject
+$readerArguments[0] = $nativePlantDescriptionMethod
+$readerArguments[1] = $null
+$nativePlantDescriptionInstructions = @(
+    $instructionReader[0].PSObject.BaseObject.Invoke(
+        $null, $readerArguments))
+$nativeMassCalls = @($nativePlantDescriptionInstructions | Where-Object {
+    $_.opcode.Name -eq 'call' -and
+    $_.operand -eq $localizedMassMethod
+})
+$nativeCrewCalls = @($nativePlantDescriptionInstructions | Where-Object {
+    $_.opcode.Name -eq 'call' -and
+    $_.operand -eq $nativeCrewMethod
+})
+if ($nativeMassCalls.Count -ne 1 -or $nativeCrewCalls.Count -ne 1) {
+    throw 'Native power-plant descriptions must still supply exactly one mass and one crew row.'
+}
+
 $fuelRefreshPatchType = $modAssembly.GetType(
     'TIEconomyMod.Patches.FuelCapacityDesignerRefreshPatch', $true)
 $fuelRefreshPrefix = $fuelRefreshPatchType.GetMethod(
@@ -451,6 +694,9 @@ $patchTypeNames = @(
     'TIEconomyMod.Patches.OpenCycleValidDrivesForPowerPlantsPatch',
     'TIEconomyMod.Patches.HullScaledDriveCompatibilityPatch',
     'TIEconomyMod.Patches.HullScaledPowerPlantCompatibilityPatch',
+    'TIEconomyMod.Patches.SeparatedShipPowerProductionPatch',
+    'TIEconomyMod.Patches.OpenCyclePowerPlantMassPatch',
+    'TIEconomyMod.Patches.OpenCyclePowerPlantCostPatch',
     'TIEconomyMod.Patches.InstalledDriveHeatPatch',
     'TIEconomyMod.Patches.PoweredWeaponRadiatorHeatPatch',
     'TIEconomyMod.Patches.WeaponHeatCapacityPrecheckPatch',
@@ -478,4 +724,4 @@ finally {
     $harmony.UnpatchAll($harmonyId)
 }
 
-Write-Host 'PASS: ship-power transpilers replace the validated heat and module-table calls, reactor-bay compatibility targets apply, and all ship-power patch classes apply.'
+Write-Host 'PASS: ship-power transpilers replace the validated heat and module-table calls, all five drive-cap consumers use cap-rated demand, compact installed/prospective reactor rows preserve useful-output semantics and native mass/crew data, reactor-bay compatibility targets apply, and all ship-power patch classes apply.'

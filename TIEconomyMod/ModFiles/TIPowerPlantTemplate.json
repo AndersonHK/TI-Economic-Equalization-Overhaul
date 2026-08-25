@@ -18,156 +18,183 @@
     "dataName": "SolidCoreFissionReactorI",
     "maxOutput_GW": 2,
     "specificPower_tGW": 240,
+    "openCycleThermalMassMultiplier": 0.5,
     "efficiency": 0.575
   },
   {
     "dataName": "SolidCoreFissionReactorII",
     "maxOutput_GW": 3,
     "specificPower_tGW": 204,
+    "openCycleThermalMassMultiplier": 0.5,
     "efficiency": 0.6
   },
   {
     "dataName": "SolidCoreFissionReactorIII",
     "maxOutput_GW": 10,
     "specificPower_tGW": 168,
+    "openCycleThermalMassMultiplier": 0.5,
     "efficiency": 0.625
   },
   {
     "dataName": "SolidCoreFissionReactorIV",
     "maxOutput_GW": 30,
     "specificPower_tGW": 72,
+    "openCycleThermalMassMultiplier": 0.5,
     "efficiency": 0.65
   },
   {
     "dataName": "SolidCoreFissionReactorV",
     "maxOutput_GW": 60,
     "specificPower_tGW": 48,
+    "openCycleThermalMassMultiplier": 0.5,
     "efficiency": 0.675
   },
   {
     "dataName": "SolidCoreFissionReactorVI",
     "maxOutput_GW": 0.75,
     "specificPower_tGW": 36,
+    "openCycleThermalMassMultiplier": 0.5,
     "efficiency": 0.6
   },
   {
     "dataName": "SolidCoreFissionReactorVII",
     "maxOutput_GW": 2,
     "specificPower_tGW": 30,
+    "openCycleThermalMassMultiplier": 0.5,
     "efficiency": 0.625
   },
   {
     "dataName": "SolidCoreFissionReactorVIII",
     "maxOutput_GW": 4,
     "specificPower_tGW": 24,
+    "openCycleThermalMassMultiplier": 0.5,
     "efficiency": 0.65
   },
   {
     "dataName": "SolidCoreFissionReactorIX",
     "maxOutput_GW": 6,
     "specificPower_tGW": 18,
+    "openCycleThermalMassMultiplier": 0.5,
     "efficiency": 0.675
   },
   {
     "dataName": "SolidCoreFissionReactorX",
     "maxOutput_GW": 10,
     "specificPower_tGW": 12,
+    "openCycleThermalMassMultiplier": 0.5,
     "efficiency": 0.7
   },
   {
     "dataName": "MoltenSaltFissionReactorI",
     "maxOutput_GW": 40,
     "specificPower_tGW": 15,
+    "openCycleThermalMassMultiplier": 0.5,
     "efficiency": 0.725
   },
   {
     "dataName": "MoltenSaltFissionReactorII",
     "maxOutput_GW": 400,
     "specificPower_tGW": 12,
+    "openCycleThermalMassMultiplier": 0.5,
     "efficiency": 0.75
   },
   {
     "dataName": "MoltenCoreFissionReactorI",
     "maxOutput_GW": 4,
     "specificPower_tGW": 16,
+    "openCycleThermalMassMultiplier": 0.5,
     "efficiency": 0.675
   },
   {
     "dataName": "MoltenCoreFissionReactorII",
     "maxOutput_GW": 17,
     "specificPower_tGW": 14,
+    "openCycleThermalMassMultiplier": 0.5,
     "efficiency": 0.705
   },
   {
     "dataName": "MoltenCoreFissionReactorIII",
     "maxOutput_GW": 200,
     "specificPower_tGW": 12,
+    "openCycleThermalMassMultiplier": 0.5,
     "efficiency": 0.725
   },
   {
     "dataName": "VaporCoreFissionReactorI",
     "efficiency": 0.87,
+    "openCycleThermalMassMultiplier": 0.5,
     "specificPower_tGW": 9
   },
   {
     "dataName": "VaporCoreFissionReactorII",
     "efficiency": 0.88,
+    "openCycleThermalMassMultiplier": 0.5,
     "specificPower_tGW": 8
   },
   {
     "dataName": "VaporCoreFissionReactorIII",
     "efficiency": 0.89,
+    "openCycleThermalMassMultiplier": 0.5,
     "specificPower_tGW": 7
   },
   {
     "dataName": "GasCoreFissionReactorI",
     "efficiency": 0.87,
+    "openCycleThermalMassMultiplier": 0.5,
     "specificPower_tGW": 20
   },
   {
     "dataName": "GasCoreFissionReactorII",
     "efficiency": 0.89,
+    "openCycleThermalMassMultiplier": 0.5,
     "specificPower_tGW": 16
   },
   {
     "dataName": "GasCoreFissionReactorIII",
     "efficiency": 0.91,
+    "openCycleThermalMassMultiplier": 0.5,
     "specificPower_tGW": 10
   },
   {
     "dataName": "GasCoreFissionReactorIV",
     "maxOutput_GW": 1000,
     "specificPower_tGW": 7,
+    "openCycleThermalMassMultiplier": 0.5,
     "efficiency": 0.92
   },
   {
     "dataName": "GasCoreFissionReactorV",
     "maxOutput_GW": 1300,
     "specificPower_tGW": 6,
+    "openCycleThermalMassMultiplier": 0.5,
     "efficiency": 0.93
   },
   {
     "dataName": "GasCoreFissionReactorVI",
     "maxOutput_GW": 1700,
     "specificPower_tGW": 5,
+    "openCycleThermalMassMultiplier": 0.5,
     "efficiency": 0.94
   },
   {
     "dataName": "AlienHybridConfinementFusionReactor",
     "maxOutput_GW": 5000,
     "specificPower_tGW": 0.5,
+    "openCycleThermalMassMultiplier": 0.5,
     "efficiency": 0.995
   },
   {
     "dataName": "AlienAdvancedHybridConfinementFusionReactor",
     "maxOutput_GW": 32000,
     "specificPower_tGW": 0.175,
+    "openCycleThermalMassMultiplier": 0.5,
     "efficiency": 0.998
   },
   {
     "dataName": "AlienSuperAdvancedHybridConfinementFusionReactor",
     "maxOutput_GW": 107550,
     "specificPower_tGW": 0.025,
+    "openCycleThermalMassMultiplier": 0.5,
     "efficiency": 0.9995
   }
 ]
