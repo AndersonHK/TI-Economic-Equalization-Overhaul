@@ -44,6 +44,12 @@ The reported save contains both compatibility modes:
 - Mars has 24 sites at site intel `1.0`, one site at the probe-in-flight marker,
   and no completed body intel. Serialized site resource yields are present.
 
+The follow-up save audit identified the marker as orphaned: Project Exodus has
+`0.1` intel on Ares Valles but no incomplete Project Exodus probe event. The
+Resistance independently has a valid Ares Valles probe scheduled for 25
+September 2033. A marker-only lookup therefore conflates stale local state with
+another faction's legitimate operation; event ownership is required.
+
 This rules out data loss and makes UI/notification integration the repair
 target. No migration of either body's intel is required.
 
@@ -56,6 +62,26 @@ patches therefore do not wrap the body-row `Refresh` or the native empty-site
 icon selector. Parallel-launch availability comes from the shared prospecting
 state predicate, and the surveyed marker is applied after the native marker
 method has run, with the initialized sprite resolved lazily by reflection.
+
+## Remaining body-wide consumers
+
+Manual testing found two additional 1.0.53 consumers outside the Intel screen:
+
+- The natural-body site table and the Found Outpost target rows still pass the
+  parent body's survey state when choosing exact resource output and icons.
+- The body detail header treats a serialized `0.1` site-intel marker as an
+  active probe even when that faction has no matching pending operation. This
+  produces `Survey Completion: ERROR` and permanently makes the orphaned site
+  look unavailable for another launch.
+
+The shared per-site state must therefore validate an in-flight marker against
+an incomplete, unarchived `LaunchProbeOperation` time event for the same
+faction and site. Valid events supply the displayed completion date; orphaned
+markers are treated as launchable again. Exact site productivity is adapted at
+the asset-independent formatter, while site-table rows are corrected after
+their native refresh. The native empty-site icon selector may only be patched
+after a surface marker has called it successfully, proving that Unity has
+initialized `AssetCacheManager`.
 
 ## Validation and deployment
 
@@ -70,3 +96,8 @@ The focused validator now rejects either target and rejects direct static
 verification passed all 34 pooled validators and 1,172 formula assertions, and
 deployment installed DLL SHA-256
 `486928F27CA8220FFBED09349354B583C1AF837B936CC0A3DAFA1EC80054176D`.
+
+The follow-up implementation passed all 24 code/patch validators, all 10 data
+validators, and 1,172 formula assertions in 22.98 seconds with eight validation
+workers. Deployment installed DLL SHA-256
+`CE7C739098D64D11F269B4714944198833507C7FC4FF2A0ECE4EF075E9B421E7`.

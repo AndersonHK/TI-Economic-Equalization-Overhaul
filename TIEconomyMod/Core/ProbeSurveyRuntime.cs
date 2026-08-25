@@ -1,4 +1,5 @@
 using PavonisInteractive.TerraInvicta;
+using PavonisInteractive.TerraInvicta.Systems.GameTime;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,11 +49,12 @@ namespace TIEconomyMod
                 return false;
             }
 
-            return ProbeSurveyStateMath.SiteProspectorEnRoute(
+            bool hasMarker = ProbeSurveyStateMath.SiteProspectorEnRoute(
                 faction.GetIntel(site.parentBody),
                 faction.GetIntel(site),
                 TIFactionState.intelMarkerForProspectorEnRoute,
                 TIFactionState.intelToProspectSpaceBody);
+            return hasMarker && PendingProbeArrival(faction, site) != null;
         }
 
         internal static bool BodyHasProspectorEnRoute(
@@ -83,8 +85,70 @@ namespace TIEconomyMod
             }
 
             float intel = faction.GetIntel(body);
-            return intel >= TIFactionState.intelMarkerForProspectorEnRoute &&
+            bool hasMarker =
+                intel >= TIFactionState.intelMarkerForProspectorEnRoute &&
                 intel < TIFactionState.intelToProspectSpaceBody;
+            return hasMarker && PendingProbeArrival(faction, body) != null;
+        }
+
+        internal static TIDateTime PendingProbeArrival(
+            TIFactionState faction,
+            TIGameState target)
+        {
+            if (faction == null || target == null)
+            {
+                return null;
+            }
+
+            TIDateTime earliest = null;
+            foreach (TITimeEvent pendingEvent in
+                GameStateManager.GetAllGameStates<TITimeEvent>())
+            {
+                if (pendingEvent == null ||
+                    pendingEvent.isComplete ||
+                    pendingEvent.archived ||
+                    pendingEvent.eventName !=
+                        faction.factionOperationCompleteName ||
+                    pendingEvent.eventDataTemplateName !=
+                        typeof(LaunchProbeOperation).Name ||
+                    !ReferenceEquals(pendingEvent.eventObject, faction) ||
+                    !ReferenceEquals(pendingEvent.eventObject2, target))
+                {
+                    continue;
+                }
+
+                TIDateTime arrival = pendingEvent.time;
+                if (arrival != null &&
+                    (earliest == null || arrival < earliest))
+                {
+                    earliest = arrival;
+                }
+            }
+
+            return earliest;
+        }
+
+        internal static TIDateTime EarliestProspectorArrival(
+            TIFactionState faction,
+            TISpaceBodyState body)
+        {
+            if (faction == null || body == null)
+            {
+                return null;
+            }
+
+            TIDateTime earliest = PendingProbeArrival(faction, body);
+            foreach (TIHabSiteState site in body.habSites)
+            {
+                TIDateTime arrival = PendingProbeArrival(faction, site);
+                if (arrival != null &&
+                    (earliest == null || arrival < earliest))
+                {
+                    earliest = arrival;
+                }
+            }
+
+            return earliest;
         }
 
         internal static List<TIHabSiteState> EligibleSites(

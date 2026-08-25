@@ -54,6 +54,24 @@ if (-not $probeUiPatchSource.Contains(
         'ProbeSurveyRuntime.SurveyedSites(')) {
     throw 'Site markers, output, and Intel lists must share the per-site survey state.'
 }
+if (-not $probePatchSource.Contains(
+        'ProbeSurveyRuntime.EarliestProspectorArrival(') -or
+    -not $probePatchSource.Contains(
+        '__result = ProbeSurveyRuntime.BodyHasProspectorEnRoute(')) {
+    throw 'Body completion state must come from the shared pending-event authority.'
+}
+$probeRuntimeSource = Get-Content -LiteralPath (Join-Path $RepositoryRoot `
+    'TIEconomyMod\Core\ProbeSurveyRuntime.cs') -Raw
+foreach ($requiredEventGuard in @(
+        'GameStateManager.GetAllGameStates<TITimeEvent>()',
+        'pendingEvent.isComplete',
+        'pendingEvent.archived',
+        'pendingEvent.eventDataTemplateName',
+        'ReferenceEquals(pendingEvent.eventObject2, target)')) {
+    if (-not $probeRuntimeSource.Contains($requiredEventGuard)) {
+        throw "Probe-in-flight state is missing event guard: $requiredEventGuard"
+    }
+}
 if ($probeUiPatchSource.Contains('AssetCacheManager.')) {
     throw ('Survey UI patches must not statically dereference AssetCacheManager; ' +
         'Harmony applies them before Unity initializes its asset fields.')
@@ -68,6 +86,22 @@ if ($probeUiPatchSource.Contains(
 if (-not $probeUiPatchSource.Contains('"prospectedHabSiteIcon"') -or
     -not $probeUiPatchSource.Contains('ProspectedHabSiteIcon.GetValue(null)')) {
     throw 'Surveyed site markers must resolve the initialized icon lazily.'
+}
+if (-not $probeUiPatchSource.Contains(
+        'SurveyedSiteIconRuntime.EnsureInstalled()') -or
+    -not $probeUiPatchSource.Contains(
+        '"GetEmptyHabSiteIcon"') -or
+    -not $probeUiPatchSource.Contains(
+        'new Harmony(Main.mod.Info.Id).Patch(')) {
+    throw 'The shared empty-site icon hook must install only from the delayed runtime path.'
+}
+if (-not $probeUiPatchSource.Contains(
+        'typeof(TIHabSiteState)') -or
+    -not $probeUiPatchSource.Contains(
+        'nameof(TIHabSiteState.ProductivityString)') -or
+    -not $probeUiPatchSource.Contains(
+        'typeof(BaseSiteListItemController)')) {
+    throw 'Colonization and natural-body site output must consume per-site survey state.'
 }
 if (-not $probeNotificationSource.Contains(
         'site.ProductivityString(true)') -or
@@ -239,8 +273,10 @@ $requiredGameTypes = @(
     'PavonisInteractive.TerraInvicta.IntelScreenController',
     'PavonisInteractive.TerraInvicta.IntelHabSiteListPane',
     'PavonisInteractive.TerraInvicta.HabSiteController',
+    'PavonisInteractive.TerraInvicta.BaseSiteListItemController',
     'PavonisInteractive.TerraInvicta.TIFactionState',
-    'PavonisInteractive.TerraInvicta.TIHabSiteState')
+    'PavonisInteractive.TerraInvicta.TIHabSiteState',
+    'PavonisInteractive.TerraInvicta.TITimeEvent')
 foreach ($typeName in $requiredGameTypes) {
     if ($null -eq $gameAssembly.GetType($typeName, $false)) {
         throw "Required site-survey target type is missing: $typeName"
@@ -306,7 +342,8 @@ $patchTypeNames = @(
     'TIEconomyMod.Patches.BodyProspectorArrivalPatch',
     'TIEconomyMod.Patches.ProspectorBodiesListPatch',
     'TIEconomyMod.Patches.SurveyedSiteFoundingAvailabilityPatch',
-    'TIEconomyMod.Patches.SurveyedBaseTargetsPatch')
+    'TIEconomyMod.Patches.SurveyedBaseTargetsPatch',
+    'TIEconomyMod.Patches.SurveyedSiteProductivityPatch')
 
 # UI patch methods reference Unity native calls which desktop PowerShell cannot
 # JIT safely (Harmony reports an ECall SecurityException outside the Unity
@@ -322,6 +359,9 @@ $uiPatchContracts = @(
     @('TIEconomyMod.Patches.SurveyedSiteMarkerPatch',
       'PavonisInteractive.TerraInvicta.HabSiteController',
       'SetMarkerData'),
+    @('TIEconomyMod.Patches.SurveyedBodySiteListItemPatch',
+      'PavonisInteractive.TerraInvicta.BaseSiteListItemController',
+      'SetListItem'),
     @('TIEconomyMod.Patches.SurveyedIntelSiteModelsPatch',
       'PavonisInteractive.TerraInvicta.IntelScreenController',
       'SetHabSiteListModelData'),

@@ -1,5 +1,6 @@
 using HarmonyLib;
 using PavonisInteractive.TerraInvicta;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -8,6 +9,79 @@ using UnityEngine;
 
 namespace TIEconomyMod.Patches
 {
+    internal static class SurveyedSiteIconRuntime
+    {
+        private static readonly object InstallLock = new object();
+        private static readonly FieldInfo ProspectedHabSiteIcon =
+            AccessTools.Field(
+                typeof(AssetCacheManager),
+                "prospectedHabSiteIcon");
+        private static bool installed;
+
+        internal static void EnsureInstalled()
+        {
+            if (installed)
+            {
+                return;
+            }
+
+            lock (InstallLock)
+            {
+                if (installed)
+                {
+                    return;
+                }
+
+                try
+                {
+                    MethodInfo target = AccessTools.Method(
+                        typeof(HabSiteController),
+                        "GetEmptyHabSiteIcon");
+                    MethodInfo prefix = AccessTools.Method(
+                        typeof(SurveyedSiteIconRuntime),
+                        nameof(Prefix));
+                    if (target == null || prefix == null)
+                    {
+                        throw new MissingMethodException(
+                            "The delayed empty-site icon hook is unavailable.");
+                    }
+
+                    new Harmony(Main.mod.Info.Id).Patch(
+                        target,
+                        prefix: new HarmonyMethod(prefix));
+                    installed = true;
+                }
+                catch (Exception exception)
+                {
+                    Main.Warn(
+                        "Could not install the delayed per-site marker hook: " +
+                        exception);
+                }
+            }
+        }
+
+        private static bool Prefix(
+            TIHabSiteState site,
+            TIFactionState faction,
+            ref Sprite __result)
+        {
+            if (!ProbeSurveyRuntime.SiteProspected(faction, site) ||
+                ProspectedHabSiteIcon == null)
+            {
+                return true;
+            }
+
+            Sprite icon = ProspectedHabSiteIcon.GetValue(null) as Sprite;
+            if (icon == null)
+            {
+                return true;
+            }
+
+            __result = icon;
+            return false;
+        }
+    }
+
     [HarmonyPatch(
         typeof(IntelSpaceBodyListItemController),
         nameof(IntelSpaceBodyListItemController.OnClickProspectButton))]
@@ -125,6 +199,117 @@ namespace TIEconomyMod.Patches
     }
 
     [HarmonyPatch(
+        typeof(TIHabSiteState),
+        nameof(TIHabSiteState.ProductivityString))]
+    internal static class SurveyedSiteProductivityPatch
+    {
+        [HarmonyPrefix]
+        internal static void Prefix(
+            TIHabSiteState __instance,
+            ref bool probed)
+        {
+            if (probed || GameControl.control == null)
+            {
+                return;
+            }
+
+            probed = ProbeSurveyRuntime.SiteProspected(
+                GameControl.control.activePlayer,
+                __instance);
+        }
+    }
+
+    [HarmonyPatch(
+        typeof(BaseSiteListItemController),
+        nameof(BaseSiteListItemController.SetListItem))]
+    internal static class SurveyedBodySiteListItemPatch
+    {
+        [HarmonyPostfix]
+        internal static void Postfix(
+            BaseSiteListItemController __instance,
+            TIHabSiteState habSite,
+            TIFactionState viewingFaction,
+            ref int ___statusTipValue)
+        {
+            if (habSite == null || viewingFaction == null)
+            {
+                return;
+            }
+
+            bool knownHab = habSite.hasPlannedOrOperatingBase &&
+                GameControl.control.activePlayer
+                    .HasIntelOnSpaceAssetLocation(habSite.hab);
+            bool surveyed = ProbeSurveyRuntime.SiteProspected(
+                viewingFaction,
+                habSite);
+            if (!knownHab)
+            {
+                if (surveyed)
+                {
+                    __instance.statusImage.enabled = true;
+                    __instance.tip.enabled = true;
+                    GameControl.assetLoader.LoadAssetForImageAssignment(
+                        "icons_2d/ICO_probe",
+                        __instance.statusImage);
+                    ___statusTipValue = 1;
+                }
+                else if (ProbeSurveyRuntime.SiteProspectorEnRoute(
+                    viewingFaction,
+                    habSite))
+                {
+                    __instance.statusImage.enabled = true;
+                    __instance.tip.enabled = true;
+                    GameControl.assetLoader.LoadAssetForImageAssignment(
+                        "icons_2d/ICO_probe_en_route",
+                        __instance.statusImage);
+                    ___statusTipValue = 2;
+                }
+                else
+                {
+                    __instance.statusImage.enabled = false;
+                    __instance.tip.enabled = false;
+                    ___statusTipValue = 3;
+                }
+            }
+
+            TIHabModuleState mine = habSite.hab == null
+                ? null
+                : habSite.hab.mine;
+            if (!surveyed ||
+                (habSite.hab != null &&
+                 habSite.hab.faction == viewingFaction &&
+                 mine != null &&
+                 mine.active))
+            {
+                return;
+            }
+
+            const int bigCap = 1;
+            const int smallCap = 7;
+            __instance.Water.SetText(TIUtilities.FormatBigOrSmallNumber(
+                habSite.GetMonthlyProduction(FactionResource.Water),
+                bigCap,
+                smallCap));
+            __instance.Volatiles.SetText(TIUtilities.FormatBigOrSmallNumber(
+                habSite.GetMonthlyProduction(FactionResource.Volatiles),
+                bigCap,
+                smallCap));
+            __instance.Metals.SetText(TIUtilities.FormatBigOrSmallNumber(
+                habSite.GetMonthlyProduction(FactionResource.Metals),
+                bigCap,
+                smallCap));
+            __instance.Nobles.SetText(TIUtilities.FormatBigOrSmallNumber(
+                habSite.GetMonthlyProduction(FactionResource.NobleMetals),
+                bigCap,
+                smallCap));
+            __instance.Fissiles.SetText(TIUtilities.FormatBigOrSmallNumber(
+                habSite.GetMonthlyProduction(FactionResource.Fissiles),
+                bigCap,
+                smallCap));
+        }
+    }
+
+    [HarmonyPatch(
         typeof(HabSiteController),
         nameof(HabSiteController.SetMarkerData))]
     internal static class SurveyedSiteMarkerPatch
@@ -139,11 +324,21 @@ namespace TIEconomyMod.Patches
         {
             TIHabSiteState site = __instance.site;
             TIFactionState faction = GameControl.control.activePlayer;
+            bool knownHab = site != null &&
+                site.hasPlannedOrOperatingBase &&
+                faction != null &&
+                faction.HasIntelOnSpaceAssetLocation(site.hab);
+            if (site != null && faction != null && !knownHab)
+            {
+                // The original empty-site path has now completed successfully,
+                // so Unity's AssetCacheManager is safe for Harmony to compile.
+                SurveyedSiteIconRuntime.EnsureInstalled();
+            }
+
             if (site == null ||
                 faction == null ||
                 !ProbeSurveyRuntime.SiteProspected(faction, site) ||
-                (site.hasPlannedOrOperatingBase &&
-                 faction.HasIntelOnSpaceAssetLocation(site.hab)) ||
+                knownHab ||
                 ProspectedHabSiteIcon == null)
             {
                 return;

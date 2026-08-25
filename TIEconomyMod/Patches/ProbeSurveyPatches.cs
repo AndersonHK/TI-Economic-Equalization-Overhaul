@@ -299,41 +299,11 @@ namespace TIEconomyMod.Patches
         internal static bool Prefix(
             TIFactionState __instance,
             TISpaceBodyState spaceBody,
-            GameTimeManager ___gameTime,
             ref TIDateTime __result)
         {
-            float bodyIntel = __instance.GetIntel(spaceBody);
-            if (bodyIntel >= TIFactionState.intelMarkerForProspectorEnRoute &&
-                bodyIntel < TIFactionState.intelToProspectSpaceBody)
-            {
-                return true;
-            }
-
-            __result = null;
-            if (spaceBody == null || ___gameTime == null)
-            {
-                return false;
-            }
-
-            TIOperationTemplate operation = OperationsManager.operationsLookup[
-                typeof(LaunchProbeOperation)].GetTemplate();
-            foreach (TIHabSiteState site in spaceBody.habSites.Where(candidate =>
-                ProbeSurveyRuntime.SiteProspectorEnRoute(
-                    __instance,
-                    candidate)))
-            {
-                TIDateTime arrival = ___gameTime.GetTimeForPendingEvent(
-                    __instance.factionOperationCompleteName,
-                    __instance,
-                    site,
-                    operation);
-                if (arrival != null &&
-                    (__result == null || arrival < __result))
-                {
-                    __result = arrival;
-                }
-            }
-
+            __result = ProbeSurveyRuntime.EarliestProspectorArrival(
+                __instance,
+                spaceBody);
             return false;
         }
     }
