@@ -82,6 +82,14 @@ if ($LASTEXITCODE -ne 0) {
 }
 
 powershell -NoProfile -ExecutionPolicy Bypass -File `
+    (Join-Path $scriptDirectory 'validate-hab-upgrade-cost-patches.ps1') `
+    -TargetManagedDir $resolvedManagedDir `
+    -ModAssemblyPath $assemblyPath
+if ($LASTEXITCODE -ne 0) {
+    exit $LASTEXITCODE
+}
+
+powershell -NoProfile -ExecutionPolicy Bypass -File `
     (Join-Path $scriptDirectory 'validate-ship-power-transpilers.ps1') `
     -TargetManagedDir $resolvedManagedDir `
     -ModAssemblyPath $assemblyPath
@@ -502,7 +510,7 @@ $manifest = Get-Content -LiteralPath $manifestPath -Raw | ConvertFrom-Json
 if ($manifest.GameVersion -ne '1.0.53') {
     throw "ModInfo.json targets '$($manifest.GameVersion)' instead of TI 1.0.53."
 }
-if ($manifest.Version -ne '0.9.5') {
+if ($manifest.Version -ne '0.9.6') {
     throw "ModInfo.json version '$($manifest.Version)' does not match this release."
 }
 if ($manifest.AssemblyName -ne 'Assembly/TIEconomyMod.dll') {
@@ -1031,8 +1039,8 @@ if ($assemblyFile.LastWriteTime -lt $buildStarted.AddSeconds(-2)) {
     throw 'Packaged DLL predates this verification build.'
 }
 $assemblyVersion = [Reflection.AssemblyName]::GetAssemblyName($assemblyPath).Version.ToString()
-if ($assemblyVersion -ne '0.9.5.0') {
-    throw "Assembly version '$assemblyVersion' does not match release 0.9.5."
+if ($assemblyVersion -ne '0.9.6.0') {
+    throw "Assembly version '$assemblyVersion' does not match release 0.9.6."
 }
 $assemblyHash = (Get-FileHash -LiteralPath $assemblyPath -Algorithm SHA256).Hash
 
@@ -1127,7 +1135,7 @@ if (Test-Path -LiteralPath $imagePath) {
     Copy-Item -LiteralPath $imagePath -Destination $stagingDirectory
 }
 
-$zipPath = Join-Path $artifactDirectory 'TIEconomyMod-0.9.5-ti1.0.53.zip'
+$zipPath = Join-Path $artifactDirectory 'TIEconomyMod-0.9.6-ti1.0.53.zip'
 if (Test-Path -LiteralPath $zipPath) {
     Remove-Item -LiteralPath $zipPath
 }

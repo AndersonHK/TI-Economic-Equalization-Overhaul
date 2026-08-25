@@ -30,6 +30,9 @@ when prose and runtime behavior disagree.
 - [Terra Invicta 1.0.53 compatibility](compatibility/ti-1.0.53-compatibility.md):
   diagnosis of the all-patches-disabled regression, API migration plan,
   automatic acceptance criteria, and focused manual-test checklist.
+- [TI 1.0.53 hab-upgrade affordability](compatibility/ti-1.0.53-hab-upgrade-affordability.md):
+  shared single/bulk upgrade-cost selection, guarded UI correction, and manual
+  acceptance checks for mixed stockpile/Boost construction.
 - [Cohesion, Inequality, and Government coefficient report](national-social-coefficients-report.md):
   comprehensive formula, coefficient, retained-vanilla, priority-speed, event,
   and cross-effect inventory for tuning the three national social scores.
