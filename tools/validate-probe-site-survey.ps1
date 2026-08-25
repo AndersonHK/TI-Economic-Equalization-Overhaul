@@ -12,6 +12,10 @@ $ErrorActionPreference = 'Stop'
 $modFiles = Join-Path $RepositoryRoot 'TIEconomyMod\ModFiles'
 $probePatchSource = Get-Content -LiteralPath (Join-Path $RepositoryRoot `
     'TIEconomyMod\Patches\ProbeSurveyPatches.cs') -Raw
+$probeUiPatchSource = Get-Content -LiteralPath (Join-Path $RepositoryRoot `
+    'TIEconomyMod\Patches\ProbeSurveyUiPatches.cs') -Raw
+$probeNotificationSource = Get-Content -LiteralPath (Join-Path $RepositoryRoot `
+    'TIEconomyMod\Core\ProbeSurveyNotifications.cs') -Raw
 if (-not $probePatchSource.Contains(
         '__instance.CanProspectFromShip(spaceBody)')) {
     throw 'Site-probe availability must retain the native colonization gate.'
@@ -21,14 +25,54 @@ if (-not $probePatchSource.Contains(
     throw 'Launch Probe visibility must use the native prospecting gate.'
 }
 if (-not $probePatchSource.Contains(
-        '!ProbeSurveyRuntime.BodyHasProspectorEnRoute(')) {
-    throw 'AI prospecting candidates must remain sequential while a drone is in flight.'
-}
-if (-not $probePatchSource.Contains(
         'typeof(LaunchAllProbeOperation)') -or
     -not $probePatchSource.Contains(
         'ProbeSurveyRuntime.EligibleSites(faction, body)')) {
     throw 'Bulk probe launches must enumerate eligible sites rather than bodies.'
+}
+if (-not $probeUiPatchSource.Contains(
+        'TIOperationTargeting_HabSite') -and
+    -not $probePatchSource.Contains(
+        '__result = typeof(TIOperationTargeting_HabSite)')) {
+    throw 'Individual probe launches must retain the hab-site targeting method.'
+}
+if (-not $probeUiPatchSource.Contains(
+        'IntelSpaceBodyListItemController.OnClickProspectButton') -or
+    -not $probeUiPatchSource.Contains(
+        'OperationCanvasController.Singleton.OnOperationSelected')) {
+    throw 'The Intel probe button must enter the site-target selection flow.'
+}
+if (-not $probeUiPatchSource.Contains(
+        'ProbeSurveyRuntime.EligibleSites(') -or
+    -not $probePatchSource.Contains(
+        'ProbeSurveyRuntime.LegacyBodyProspectorEnRoute(')) {
+    throw 'The body row must allow another eligible site while probes are in flight.'
+}
+if (-not $probeUiPatchSource.Contains(
+        'ProbeSurveyRuntime.SiteProspected(faction, site)') -or
+    -not $probeUiPatchSource.Contains(
+        'ProbeSurveyRuntime.SurveyedSites(')) {
+    throw 'Site markers, output, and Intel lists must share the per-site survey state.'
+}
+if ($probeUiPatchSource.Contains('AssetCacheManager.')) {
+    throw ('Survey UI patches must not statically dereference AssetCacheManager; ' +
+        'Harmony applies them before Unity initializes its asset fields.')
+}
+if ($probeUiPatchSource.Contains(
+        'nameof(IntelSpaceBodyListItemController.Refresh)') -or
+    $probeUiPatchSource.Contains(
+        'nameof(HabSiteController.GetEmptyHabSiteIcon)')) {
+    throw ('Survey UI patches must not wrap methods that directly access ' +
+        'AssetCacheManager during startup-time Harmony compilation.')
+}
+if (-not $probeUiPatchSource.Contains('"prospectedHabSiteIcon"') -or
+    -not $probeUiPatchSource.Contains('ProspectedHabSiteIcon.GetValue(null)')) {
+    throw 'Surveyed site markers must resolve the initialized icon lazily.'
+}
+if (-not $probeNotificationSource.Contains(
+        'site.ProductivityString(true)') -or
+    $probeNotificationSource.Contains('foreach (TIHabSiteState')) {
+    throw 'Probe completion must report exactly one surveyed site.'
 }
 
 function Assert-Close(
@@ -191,6 +235,10 @@ $requiredGameTypes = @(
     'LaunchProbeOperation',
     'TIOperationTargeting_HabSite',
     'FoundBaseOperation',
+    'PavonisInteractive.TerraInvicta.IntelSpaceBodyListItemController',
+    'PavonisInteractive.TerraInvicta.IntelScreenController',
+    'PavonisInteractive.TerraInvicta.IntelHabSiteListPane',
+    'PavonisInteractive.TerraInvicta.HabSiteController',
     'PavonisInteractive.TerraInvicta.TIFactionState',
     'PavonisInteractive.TerraInvicta.TIHabSiteState')
 foreach ($typeName in $requiredGameTypes) {
@@ -207,6 +255,37 @@ $payloadProperty = $runtimeType.GetProperty(
     [Reflection.BindingFlags]::Static)
 if ($null -eq $payloadProperty) {
     throw 'ProbeSurveyRuntime does not expose its payload-mass authority.'
+}
+
+$stateMathType = $modAssembly.GetType(
+    'TIEconomyMod.ProbeSurveyStateMath', $true)
+$siteProspectedMethod = $stateMathType.GetMethod(
+    'SiteProspected',
+    [Reflection.BindingFlags]::NonPublic -bor
+    [Reflection.BindingFlags]::Static)
+$siteEnRouteMethod = $stateMathType.GetMethod(
+    'SiteProspectorEnRoute',
+    [Reflection.BindingFlags]::NonPublic -bor
+    [Reflection.BindingFlags]::Static)
+if ($null -eq $siteProspectedMethod -or $null -eq $siteEnRouteMethod) {
+    throw 'ProbeSurveyStateMath does not expose its survey-state authority.'
+}
+$legacyLunaSite = $siteProspectedMethod.Invoke(
+    $null, @([single]1.0, [single]0.0, [single]1.0))
+$marsCompletedSite = $siteProspectedMethod.Invoke(
+    $null, @([single]0.0, [single]1.0, [single]1.0))
+$marsPendingSite = $siteProspectedMethod.Invoke(
+    $null, @([single]0.0, [single]0.1, [single]1.0))
+$marsProbeEnRoute = $siteEnRouteMethod.Invoke(
+    $null, @(
+        [single]0.0,
+        [single]0.1,
+        [single]0.1,
+        [single]1.0))
+if (-not $legacyLunaSite -or -not $marsCompletedSite -or
+    $marsPendingSite -or -not $marsProbeEnRoute) {
+    throw ('Legacy Luna and per-site Mars survey-state compatibility ' +
+        'semantics changed unexpectedly.')
 }
 
 $patchTypeNames = @(
@@ -228,6 +307,46 @@ $patchTypeNames = @(
     'TIEconomyMod.Patches.ProspectorBodiesListPatch',
     'TIEconomyMod.Patches.SurveyedSiteFoundingAvailabilityPatch',
     'TIEconomyMod.Patches.SurveyedBaseTargetsPatch')
+
+# UI patch methods reference Unity native calls which desktop PowerShell cannot
+# JIT safely (Harmony reports an ECall SecurityException outside the Unity
+# runtime). Resolve every class and target signature here; the compiled DLL and
+# in-game PatchAll provide the remaining runtime coverage.
+$uiPatchContracts = @(
+    @('TIEconomyMod.Patches.IntelProbeSiteSelectionPatch',
+      'PavonisInteractive.TerraInvicta.IntelSpaceBodyListItemController',
+      'OnClickProspectButton'),
+    @('TIEconomyMod.Patches.SurveyedSiteOutputPatch',
+      'PavonisInteractive.TerraInvicta.HabSiteController',
+      'BuildOutputString'),
+    @('TIEconomyMod.Patches.SurveyedSiteMarkerPatch',
+      'PavonisInteractive.TerraInvicta.HabSiteController',
+      'SetMarkerData'),
+    @('TIEconomyMod.Patches.SurveyedIntelSiteModelsPatch',
+      'PavonisInteractive.TerraInvicta.IntelScreenController',
+      'SetHabSiteListModelData'),
+    @('TIEconomyMod.Patches.SurveyedIntelSiteItemsPatch',
+      'PavonisInteractive.TerraInvicta.IntelHabSiteListPane',
+      'ItemsToDisplay'),
+    @('TIEconomyMod.Patches.SurveyedIntelSiteTabActivePlayerPatch',
+      'PavonisInteractive.TerraInvicta.IntelScreenController',
+      'UpdateActivePlayerUIElements'),
+    @('TIEconomyMod.Patches.SurveyedIntelSiteTabRefreshPatch',
+      'PavonisInteractive.TerraInvicta.IntelScreenController',
+      'RefreshAll'))
+$allMethodFlags = [Reflection.BindingFlags]::Public -bor
+    [Reflection.BindingFlags]::NonPublic -bor
+    [Reflection.BindingFlags]::Instance -bor
+    [Reflection.BindingFlags]::Static
+foreach ($contract in $uiPatchContracts) {
+    [void]$modAssembly.GetType($contract[0], $true)
+    $targetType = $gameAssembly.GetType($contract[1], $true)
+    if ($null -eq $targetType.GetMethod(
+            $contract[2],
+            $allMethodFlags)) {
+        throw "Required UI survey target is missing: $($contract[1]).$($contract[2])"
+    }
+}
 $harmonyType = $harmonyAssembly.GetType('HarmonyLib.Harmony', $true)
 $harmonyId = 'ti.eeo.validate.probe-site-survey.' +
     [Guid]::NewGuid().ToString('N')
@@ -247,5 +366,6 @@ finally {
     $harmony.UnpatchAll($harmonyId)
 }
 
-Write-Host ('PASS: 0.325-tonne site surveys, 25-site Mars bulk launch, ' +
-    'scenario state, lunar costs, and Harmony targets validate.')
+Write-Host ('PASS: per-site targeting/UI/notification paths, legacy Luna ' +
+    'intel, per-site Mars intel, 0.325-tonne surveys, 25-site Mars bulk ' +
+    'launch, scenario state, lunar costs, and Harmony targets validate.')

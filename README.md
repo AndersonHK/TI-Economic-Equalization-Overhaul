@@ -1,6 +1,6 @@
 # TI Economic Equalization Overhaul
 
-Current release: **0.9.6**, targeting **Terra Invicta 1.0.53**.
+Current release: **0.9.7**, targeting **Terra Invicta 1.0.53**.
 
 The mod replaces opaque, border-sensitive scaling with economic units that
 remain understandable across countries, armies, habs, and spacecraft. It aims
@@ -157,6 +157,9 @@ Government, Inequality, and Knowledge gaps, the larger GDP-per-capita ratio,
   site's landing delta-v, and requires that site to be surveyed before founding
   a base there. Space launch remains a T1 job requiring a T1 factory-dock pair;
   shipborne fleet surveys intentionally retain body-wide coverage.
+- Intel-screen probe launches enter the individual-site selector, allow probes
+  to different sites concurrently, and report only the completed site's exact
+  yields. Surveyed site markers and Intel rows use the same site-intel state.
 - Route and cost results are cached separately and refreshed lazily. Resource
   changes do not rescan origins; warm tooltip and planner calls are average O(1)
   with respect to origin count.
@@ -231,7 +234,7 @@ defaults.
 
 ## Compatibility and save behavior
 
-Version 0.9.6 is built and guarded against the installed Terra Invicta 1.0.53
+Version 0.9.7 is built and guarded against the installed Terra Invicta 1.0.53
 assemblies. Transpilers validate their expected IL shapes, and verification
 dynamically binds the changed claim-harmonization contract and other focused
 patch families so a missing target or changed patch parameter fails before
@@ -250,7 +253,7 @@ states serialized when they were created.
 The current release archive is:
 
 ```text
-artifacts/TIEconomyMod-0.9.6-ti1.0.53.zip
+artifacts/TIEconomyMod-0.9.7-ti1.0.53.zip
 ```
 
 ## Build and verification
@@ -347,6 +350,16 @@ enabled-mod destination and verifies every deployed file by SHA-256.
   capacity restrictions remain active.
 - Launch single and multiple probes from Earth and from a T1 factory-dock pair;
   the entire space-built probe payload must travel from its origin.
+- From the Intel space-body list, open the probe action and confirm that only
+  unsurveyed sites without probes in flight are selectable. Launch probes at
+  two different sites on the same body and confirm the launch action remains
+  available while the first is in flight.
+- Complete one site survey and confirm its notification contains only that
+  site, its surface marker and tooltip show exact yields, and it appears in the
+  Intel hab-site tab. Confirm other sites remain unknown and the body's
+  aggregate values remain ranges until the final site completes.
+- Load a save with legacy whole-body survey intel and confirm every child site
+  remains surveyed without adding or requiring per-site intel entries.
 - Repeat planner and cost requests before and after resource spending, time
   advancement, and hab changes; stale results should refresh only when requested.
 

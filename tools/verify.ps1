@@ -1,6 +1,8 @@
 [CmdletBinding()]
 param(
-    [string]$TargetManagedDir
+    [string]$TargetManagedDir,
+    [ValidateRange(8, 32)]
+    [int]$ValidationThreads = 8
 )
 
 $ErrorActionPreference = 'Stop'
@@ -9,6 +11,121 @@ $repositoryRoot = Split-Path -Parent $scriptDirectory
 $buildStarted = Get-Date
 $managedPathFile = Join-Path ([IO.Path]::GetTempPath()) (
     'ti-eeo-managed-' + [Guid]::NewGuid().ToString('N') + '.txt')
+
+function New-ValidationJob {
+    param(
+        [Parameter(Mandatory = $true)]
+        [string]$Name,
+        [Parameter(Mandatory = $true)]
+        [string]$Executable,
+        [string[]]$Arguments = @()
+    )
+
+    return [pscustomobject]@{
+        Name = $Name
+        Executable = $Executable
+        Arguments = [string[]]$Arguments
+        WorkingDirectory = $repositoryRoot
+    }
+}
+
+function Invoke-ValidationPool {
+    param(
+        [Parameter(Mandatory = $true)]
+        [object[]]$Jobs,
+        [Parameter(Mandatory = $true)]
+        [int]$MaxThreads
+    )
+
+    if ($Jobs.Count -eq 0) {
+        return
+    }
+
+    $worker = {
+        param($Job)
+
+        $ErrorActionPreference = 'Continue'
+        $started = Get-Date
+        $exitCode = 1
+        $captured = @()
+        $priorLocation = Get-Location
+        try {
+            Set-Location -LiteralPath $Job.WorkingDirectory
+            $arguments = [string[]]$Job.Arguments
+            $global:LASTEXITCODE = 0
+            $captured = @(& $Job.Executable @arguments 2>&1)
+            $exitCode = if ($null -eq $LASTEXITCODE) {
+                0
+            }
+            else {
+                [int]$LASTEXITCODE
+            }
+        }
+        catch {
+            $captured += $_.Exception.ToString()
+            $exitCode = 1
+        }
+        finally {
+            Set-Location -LiteralPath $priorLocation
+        }
+
+        [pscustomobject]@{
+            Name = [string]$Job.Name
+            ExitCode = $exitCode
+            Output = (($captured | ForEach-Object { $_.ToString() }) -join
+                [Environment]::NewLine)
+            ElapsedMilliseconds = [int64]((Get-Date) - $started).TotalMilliseconds
+        }
+    }
+
+    $pool = [RunspaceFactory]::CreateRunspacePool(1, $MaxThreads)
+    $tasks = New-Object System.Collections.Generic.List[object]
+    $failures = New-Object System.Collections.Generic.List[string]
+    try {
+        $pool.Open()
+        foreach ($job in $Jobs) {
+            $powershell = [PowerShell]::Create()
+            $powershell.RunspacePool = $pool
+            [void]$powershell.AddScript($worker).AddArgument($job)
+            $tasks.Add([pscustomobject]@{
+                Name = $job.Name
+                PowerShell = $powershell
+                Handle = $powershell.BeginInvoke()
+            })
+        }
+
+        foreach ($task in $tasks) {
+            $results = @($task.PowerShell.EndInvoke($task.Handle))
+            $result = $results | Select-Object -Last 1
+            if ($null -eq $result) {
+                $failures.Add("$($task.Name) (no result)")
+                continue
+            }
+            if (-not [string]::IsNullOrWhiteSpace($result.Output)) {
+                Write-Host $result.Output
+            }
+            Write-Host ('[{0}] {1:N2}s' -f
+                $result.Name,
+                ($result.ElapsedMilliseconds / 1000.0))
+            if ($result.ExitCode -ne 0) {
+                $failures.Add("$($result.Name) (exit $($result.ExitCode))")
+            }
+        }
+    }
+    finally {
+        foreach ($task in $tasks) {
+            $task.PowerShell.Dispose()
+        }
+        $pool.Dispose()
+    }
+
+    if ($failures.Count -gt 0) {
+        throw 'Parallel validation failed: ' + ($failures -join ', ')
+    }
+
+    Write-Host (('PASS: {0} validators completed through a {1}-worker ' +
+        'isolated runspace pool.') -f $Jobs.Count, $MaxThreads)
+}
 
 try {
     & (Join-Path $scriptDirectory 'build.ps1') -Configuration Release `
@@ -25,199 +142,135 @@ finally {
     }
 }
 
-powershell -NoProfile -ExecutionPolicy Bypass -File `
-    (Join-Path $scriptDirectory 'validate-target-il.ps1') `
-    -TargetManagedDir $resolvedManagedDir
-if ($LASTEXITCODE -ne 0) {
-    exit $LASTEXITCODE
-}
-
 $assemblyPath = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\Assembly\TIEconomyMod.dll'
-powershell -NoProfile -ExecutionPolicy Bypass -File `
-    (Join-Path $scriptDirectory 'validate-national-harmonization-patches.ps1') `
-    -TargetManagedDir $resolvedManagedDir `
-    -ModAssemblyPath $assemblyPath
-if ($LASTEXITCODE -ne 0) {
-    exit $LASTEXITCODE
-}
-
-powershell -NoProfile -ExecutionPolicy Bypass -File `
-    (Join-Path $scriptDirectory 'validate-nuclear-gdp-transpiler.ps1') `
-    -TargetManagedDir $resolvedManagedDir `
-    -ModAssemblyPath $assemblyPath
-if ($LASTEXITCODE -ne 0) {
-    exit $LASTEXITCODE
-}
-
-powershell -NoProfile -ExecutionPolicy Bypass -File `
-    (Join-Path $scriptDirectory 'validate-councilor-cap-transpiler.ps1') `
-    -TargetManagedDir $resolvedManagedDir `
-    -ModAssemblyPath $assemblyPath
-if ($LASTEXITCODE -ne 0) {
-    exit $LASTEXITCODE
-}
-
-powershell -NoProfile -ExecutionPolicy Bypass -File `
-    (Join-Path $scriptDirectory 'validate-hab-connector-transpiler.ps1') `
-    -TargetManagedDir $resolvedManagedDir `
-    -ModAssemblyPath $assemblyPath
-if ($LASTEXITCODE -ne 0) {
-    exit $LASTEXITCODE
-}
-
-powershell -NoProfile -ExecutionPolicy Bypass -File `
-    (Join-Path $scriptDirectory 'validate-hab-list-icon-transpiler.ps1') `
-    -TargetManagedDir $resolvedManagedDir `
-    -ModAssemblyPath $assemblyPath
-if ($LASTEXITCODE -ne 0) {
-    exit $LASTEXITCODE
-}
-
-powershell -NoProfile -ExecutionPolicy Bypass -File `
-    (Join-Path $scriptDirectory 'validate-hab-cost-rewrite.ps1') `
-    -TargetManagedDir $resolvedManagedDir `
-    -ModAssemblyPath $assemblyPath
-if ($LASTEXITCODE -ne 0) {
-    exit $LASTEXITCODE
-}
-
-powershell -NoProfile -ExecutionPolicy Bypass -File `
-    (Join-Path $scriptDirectory 'validate-hab-upgrade-cost-patches.ps1') `
-    -TargetManagedDir $resolvedManagedDir `
-    -ModAssemblyPath $assemblyPath
-if ($LASTEXITCODE -ne 0) {
-    exit $LASTEXITCODE
-}
-
-powershell -NoProfile -ExecutionPolicy Bypass -File `
-    (Join-Path $scriptDirectory 'validate-ship-power-transpilers.ps1') `
-    -TargetManagedDir $resolvedManagedDir `
-    -ModAssemblyPath $assemblyPath
-if ($LASTEXITCODE -ne 0) {
-    exit $LASTEXITCODE
-}
-
-powershell -NoProfile -ExecutionPolicy Bypass -File `
-    (Join-Path $scriptDirectory 'validate-alien-ship-design-patch.ps1') `
-    -TargetManagedDir $resolvedManagedDir `
-    -ModAssemblyPath $assemblyPath
-if ($LASTEXITCODE -ne 0) {
-    exit $LASTEXITCODE
-}
-
-powershell -NoProfile -ExecutionPolicy Bypass -File `
-    (Join-Path $scriptDirectory 'validate-utility-footprint-patches.ps1') `
-    -TargetManagedDir $resolvedManagedDir `
-    -ModAssemblyPath $assemblyPath `
-    -RepositoryRoot $repositoryRoot
-if ($LASTEXITCODE -ne 0) {
-    exit $LASTEXITCODE
-}
-
-powershell -NoProfile -ExecutionPolicy Bypass -File `
-    (Join-Path $scriptDirectory 'validate-skirmish-performance-patches.ps1') `
-    -TargetManagedDir $resolvedManagedDir `
-    -ModAssemblyPath $assemblyPath
-if ($LASTEXITCODE -ne 0) {
-    exit $LASTEXITCODE
-}
-
-powershell -NoProfile -ExecutionPolicy Bypass -File `
-    (Join-Path $scriptDirectory 'validate-campaign-difficulty-patches.ps1') `
-    -TargetManagedDir $resolvedManagedDir `
-    -ModAssemblyPath $assemblyPath
-if ($LASTEXITCODE -ne 0) {
-    exit $LASTEXITCODE
-}
-
-powershell -NoProfile -ExecutionPolicy Bypass -File `
-    (Join-Path $scriptDirectory 'validate-projectile-collision-patches.ps1') `
-    -TargetManagedDir $resolvedManagedDir `
-    -ModAssemblyPath $assemblyPath
-if ($LASTEXITCODE -ne 0) {
-    exit $LASTEXITCODE
-}
-
-powershell -NoProfile -ExecutionPolicy Bypass -File `
-    (Join-Path $scriptDirectory 'validate-direct-fire-coordination-patches.ps1') `
-    -TargetManagedDir $resolvedManagedDir `
-    -ModAssemblyPath $assemblyPath
-if ($LASTEXITCODE -ne 0) {
-    exit $LASTEXITCODE
-}
-
-powershell -NoProfile -ExecutionPolicy Bypass -File `
-    (Join-Path $scriptDirectory 'validate-weapon-cadence-patches.ps1') `
-    -TargetManagedDir $resolvedManagedDir `
-    -ModAssemblyPath $assemblyPath
-if ($LASTEXITCODE -ne 0) {
-    exit $LASTEXITCODE
-}
-
-powershell -NoProfile -ExecutionPolicy Bypass -File `
-    (Join-Path $scriptDirectory 'validate-mine-mc-patches.ps1') `
-    -TargetManagedDir $resolvedManagedDir `
-    -ModAssemblyPath $assemblyPath
-if ($LASTEXITCODE -ne 0) {
-    exit $LASTEXITCODE
-}
-
-powershell -NoProfile -ExecutionPolicy Bypass -File `
-    (Join-Path $scriptDirectory 'validate-earth-orbits-and-luna.ps1') `
-    -TargetManagedDir $resolvedManagedDir `
-    -ModAssemblyPath $assemblyPath `
-    -RepositoryRoot $repositoryRoot
-if ($LASTEXITCODE -ne 0) {
-    exit $LASTEXITCODE
-}
-
-powershell -NoProfile -ExecutionPolicy Bypass -File `
-    (Join-Path $scriptDirectory 'validate-probe-site-survey.ps1') `
-    -TargetManagedDir $resolvedManagedDir `
-    -ModAssemblyPath $assemblyPath `
-    -RepositoryRoot $repositoryRoot
-if ($LASTEXITCODE -ne 0) {
-    exit $LASTEXITCODE
-}
-
-powershell -NoProfile -ExecutionPolicy Bypass -File `
-    (Join-Path $scriptDirectory 'validate-hab-event-exposure.ps1') `
-    -TargetManagedDir $resolvedManagedDir `
-    -ModAssemblyPath $assemblyPath `
-    -RepositoryRoot $repositoryRoot
-if ($LASTEXITCODE -ne 0) {
-    exit $LASTEXITCODE
-}
-
-powershell -NoProfile -ExecutionPolicy Bypass -File `
-    (Join-Path $scriptDirectory 'validate-ai-technology-selection.ps1') `
-    -TargetManagedDir $resolvedManagedDir `
-    -ModAssemblyPath $assemblyPath
-if ($LASTEXITCODE -ne 0) {
-    exit $LASTEXITCODE
-}
-
-powershell -NoProfile -ExecutionPolicy Bypass -File `
-    (Join-Path $scriptDirectory 'validate-refit-appearance-lock.ps1') `
-    -TargetManagedDir $resolvedManagedDir `
-    -ModAssemblyPath $assemblyPath `
-    -RepositoryRoot $repositoryRoot
-if ($LASTEXITCODE -ne 0) {
-    exit $LASTEXITCODE
-}
-
-powershell -NoProfile -ExecutionPolicy Bypass -File `
-    (Join-Path $scriptDirectory 'validate-cohesion-rest-patches.ps1') `
-    -TargetManagedDir $resolvedManagedDir `
-    -ModAssemblyPath $assemblyPath
-if ($LASTEXITCODE -ne 0) {
-    exit $LASTEXITCODE
-}
-
-powershell -NoProfile -ExecutionPolicy Bypass -File (Join-Path $scriptDirectory 'validate-implementation-matrix.ps1') -RepositoryRoot $repositoryRoot
-if ($LASTEXITCODE -ne 0) {
-    exit $LASTEXITCODE
-}
+$powershellExecutable = Join-Path $PSHOME 'powershell.exe'
+$patchValidationJobs = @(
+    New-ValidationJob 'Target IL' $powershellExecutable @(
+        '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File',
+        (Join-Path $scriptDirectory 'validate-target-il.ps1'),
+        '-TargetManagedDir', $resolvedManagedDir)
+    New-ValidationJob 'National harmonization patches' $powershellExecutable @(
+        '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File',
+        (Join-Path $scriptDirectory 'validate-national-harmonization-patches.ps1'),
+        '-TargetManagedDir', $resolvedManagedDir,
+        '-ModAssemblyPath', $assemblyPath)
+    New-ValidationJob 'Nuclear GDP transpiler' $powershellExecutable @(
+        '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File',
+        (Join-Path $scriptDirectory 'validate-nuclear-gdp-transpiler.ps1'),
+        '-TargetManagedDir', $resolvedManagedDir,
+        '-ModAssemblyPath', $assemblyPath)
+    New-ValidationJob 'Councilor cap transpiler' $powershellExecutable @(
+        '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File',
+        (Join-Path $scriptDirectory 'validate-councilor-cap-transpiler.ps1'),
+        '-TargetManagedDir', $resolvedManagedDir,
+        '-ModAssemblyPath', $assemblyPath)
+    New-ValidationJob 'Hab connector transpiler' $powershellExecutable @(
+        '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File',
+        (Join-Path $scriptDirectory 'validate-hab-connector-transpiler.ps1'),
+        '-TargetManagedDir', $resolvedManagedDir,
+        '-ModAssemblyPath', $assemblyPath)
+    New-ValidationJob 'Hab list icon transpiler' $powershellExecutable @(
+        '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File',
+        (Join-Path $scriptDirectory 'validate-hab-list-icon-transpiler.ps1'),
+        '-TargetManagedDir', $resolvedManagedDir,
+        '-ModAssemblyPath', $assemblyPath)
+    New-ValidationJob 'Hab cost rewrite' $powershellExecutable @(
+        '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File',
+        (Join-Path $scriptDirectory 'validate-hab-cost-rewrite.ps1'),
+        '-TargetManagedDir', $resolvedManagedDir,
+        '-ModAssemblyPath', $assemblyPath)
+    New-ValidationJob 'Hab upgrade costs' $powershellExecutable @(
+        '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File',
+        (Join-Path $scriptDirectory 'validate-hab-upgrade-cost-patches.ps1'),
+        '-TargetManagedDir', $resolvedManagedDir,
+        '-ModAssemblyPath', $assemblyPath)
+    New-ValidationJob 'Ship power transpilers' $powershellExecutable @(
+        '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File',
+        (Join-Path $scriptDirectory 'validate-ship-power-transpilers.ps1'),
+        '-TargetManagedDir', $resolvedManagedDir,
+        '-ModAssemblyPath', $assemblyPath)
+    New-ValidationJob 'Alien ship design' $powershellExecutable @(
+        '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File',
+        (Join-Path $scriptDirectory 'validate-alien-ship-design-patch.ps1'),
+        '-TargetManagedDir', $resolvedManagedDir,
+        '-ModAssemblyPath', $assemblyPath)
+    New-ValidationJob 'Utility footprints' $powershellExecutable @(
+        '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File',
+        (Join-Path $scriptDirectory 'validate-utility-footprint-patches.ps1'),
+        '-TargetManagedDir', $resolvedManagedDir,
+        '-ModAssemblyPath', $assemblyPath,
+        '-RepositoryRoot', $repositoryRoot)
+    New-ValidationJob 'Skirmish performance' $powershellExecutable @(
+        '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File',
+        (Join-Path $scriptDirectory 'validate-skirmish-performance-patches.ps1'),
+        '-TargetManagedDir', $resolvedManagedDir,
+        '-ModAssemblyPath', $assemblyPath)
+    New-ValidationJob 'Campaign difficulty' $powershellExecutable @(
+        '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File',
+        (Join-Path $scriptDirectory 'validate-campaign-difficulty-patches.ps1'),
+        '-TargetManagedDir', $resolvedManagedDir,
+        '-ModAssemblyPath', $assemblyPath)
+    New-ValidationJob 'Projectile collision' $powershellExecutable @(
+        '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File',
+        (Join-Path $scriptDirectory 'validate-projectile-collision-patches.ps1'),
+        '-TargetManagedDir', $resolvedManagedDir,
+        '-ModAssemblyPath', $assemblyPath)
+    New-ValidationJob 'Direct fire coordination' $powershellExecutable @(
+        '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File',
+        (Join-Path $scriptDirectory 'validate-direct-fire-coordination-patches.ps1'),
+        '-TargetManagedDir', $resolvedManagedDir,
+        '-ModAssemblyPath', $assemblyPath)
+    New-ValidationJob 'Weapon cadence' $powershellExecutable @(
+        '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File',
+        (Join-Path $scriptDirectory 'validate-weapon-cadence-patches.ps1'),
+        '-TargetManagedDir', $resolvedManagedDir,
+        '-ModAssemblyPath', $assemblyPath)
+    New-ValidationJob 'Mine Mission Control' $powershellExecutable @(
+        '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File',
+        (Join-Path $scriptDirectory 'validate-mine-mc-patches.ps1'),
+        '-TargetManagedDir', $resolvedManagedDir,
+        '-ModAssemblyPath', $assemblyPath)
+    New-ValidationJob 'Earth orbits and Luna' $powershellExecutable @(
+        '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File',
+        (Join-Path $scriptDirectory 'validate-earth-orbits-and-luna.ps1'),
+        '-TargetManagedDir', $resolvedManagedDir,
+        '-ModAssemblyPath', $assemblyPath,
+        '-RepositoryRoot', $repositoryRoot)
+    New-ValidationJob 'Per-site probe survey' $powershellExecutable @(
+        '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File',
+        (Join-Path $scriptDirectory 'validate-probe-site-survey.ps1'),
+        '-TargetManagedDir', $resolvedManagedDir,
+        '-ModAssemblyPath', $assemblyPath,
+        '-RepositoryRoot', $repositoryRoot)
+    New-ValidationJob 'Hab event exposure' $powershellExecutable @(
+        '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File',
+        (Join-Path $scriptDirectory 'validate-hab-event-exposure.ps1'),
+        '-TargetManagedDir', $resolvedManagedDir,
+        '-ModAssemblyPath', $assemblyPath,
+        '-RepositoryRoot', $repositoryRoot)
+    New-ValidationJob 'AI technology selection' $powershellExecutable @(
+        '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File',
+        (Join-Path $scriptDirectory 'validate-ai-technology-selection.ps1'),
+        '-TargetManagedDir', $resolvedManagedDir,
+        '-ModAssemblyPath', $assemblyPath)
+    New-ValidationJob 'Refit appearance lock' $powershellExecutable @(
+        '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File',
+        (Join-Path $scriptDirectory 'validate-refit-appearance-lock.ps1'),
+        '-TargetManagedDir', $resolvedManagedDir,
+        '-ModAssemblyPath', $assemblyPath,
+        '-RepositoryRoot', $repositoryRoot)
+    New-ValidationJob 'Cohesion rest patches' $powershellExecutable @(
+        '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File',
+        (Join-Path $scriptDirectory 'validate-cohesion-rest-patches.ps1'),
+        '-TargetManagedDir', $resolvedManagedDir,
+        '-ModAssemblyPath', $assemblyPath)
+    New-ValidationJob 'Implementation matrix' $powershellExecutable @(
+        '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File',
+        (Join-Path $scriptDirectory 'validate-implementation-matrix.ps1'),
+        '-RepositoryRoot', $repositoryRoot)
+)
+Invoke-ValidationPool -Jobs $patchValidationJobs `
+    -MaxThreads $ValidationThreads
 
 $vswhere = Join-Path ${env:ProgramFiles(x86)} 'Microsoft Visual Studio\Installer\vswhere.exe'
 $installation = & $vswhere -latest -products * -requires Microsoft.Component.MSBuild -property installationPath
@@ -261,45 +314,55 @@ $codexLocalization = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\UICodex.en
 $generalControlsLocalization = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\UIGeneralControls.en'
 $habUiLocalization = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\UIHabs.en'
 $testExecutable = Join-Path $repositoryRoot 'tests\FormulaTests\bin\Release\TIEconomyMod.FormulaTests.exe'
-& $testExecutable $weights
-if ($LASTEXITCODE -ne 0) {
-    exit $LASTEXITCODE
-}
-
 $templatesDirectory = Join-Path (Split-Path -Parent $resolvedManagedDir) 'StreamingAssets\Templates'
 $gameRoot = Split-Path -Parent (Split-Path -Parent $resolvedManagedDir)
 $darkSkiesTemplates = Join-Path $gameRoot 'DLC_Content\DarkSkies\2003_Scenario\Templates'
-powershell -NoProfile -ExecutionPolicy Bypass -File `
-    (Join-Path $scriptDirectory 'validate-national-harmonization.ps1') `
-    -VanillaTemplatesDir $templatesDirectory `
-    -DlcTemplatesDir $darkSkiesTemplates `
-    -RepositoryRoot $repositoryRoot
-if ($LASTEXITCODE -ne 0) {
-    exit $LASTEXITCODE
-}
-
-powershell -NoProfile -ExecutionPolicy Bypass -File `
-    (Join-Path $scriptDirectory 'validate-starting-forces.ps1') `
-    -VanillaTemplatesDir $templatesDirectory `
-    -RepositoryRoot $repositoryRoot
-if ($LASTEXITCODE -ne 0) {
-    exit $LASTEXITCODE
-}
-
-powershell -NoProfile -ExecutionPolicy Bypass -File `
-    (Join-Path $scriptDirectory 'validate-starting-economic-overrides.ps1') `
-    -VanillaTemplatesDir $templatesDirectory `
-    -RepositoryRoot $repositoryRoot
-if ($LASTEXITCODE -ne 0) {
-    exit $LASTEXITCODE
-}
-
-powershell -NoProfile -ExecutionPolicy Bypass -File `
-    (Join-Path $scriptDirectory 'validate-environment-model.ps1') `
-    -RepositoryRoot $repositoryRoot
-if ($LASTEXITCODE -ne 0) {
-    exit $LASTEXITCODE
-}
+$nodeExecutable = (Get-Command node -ErrorAction Stop).Source
+$dataValidationJobs = @(
+    New-ValidationJob 'Formula assertions' $testExecutable @($weights)
+    New-ValidationJob 'National harmonization data' $powershellExecutable @(
+        '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File',
+        (Join-Path $scriptDirectory 'validate-national-harmonization.ps1'),
+        '-VanillaTemplatesDir', $templatesDirectory,
+        '-DlcTemplatesDir', $darkSkiesTemplates,
+        '-RepositoryRoot', $repositoryRoot)
+    New-ValidationJob 'Starting forces' $powershellExecutable @(
+        '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File',
+        (Join-Path $scriptDirectory 'validate-starting-forces.ps1'),
+        '-VanillaTemplatesDir', $templatesDirectory,
+        '-RepositoryRoot', $repositoryRoot)
+    New-ValidationJob 'Starting economic overrides' $powershellExecutable @(
+        '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File',
+        (Join-Path $scriptDirectory 'validate-starting-economic-overrides.ps1'),
+        '-VanillaTemplatesDir', $templatesDirectory,
+        '-RepositoryRoot', $repositoryRoot)
+    New-ValidationJob 'Environment model' $powershellExecutable @(
+        '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File',
+        (Join-Path $scriptDirectory 'validate-environment-model.ps1'),
+        '-RepositoryRoot', $repositoryRoot)
+    New-ValidationJob 'Economy growth simulator' $nodeExecutable @(
+        (Join-Path $repositoryRoot 'tools\economy-growth-simulator.js'))
+    New-ValidationJob 'Military investment simulator' $nodeExecutable @(
+        (Join-Path $repositoryRoot 'tools\military-investment-simulator.js'),
+        '--verify')
+    New-ValidationJob 'Hab rebalance data' $powershellExecutable @(
+        '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File',
+        (Join-Path $scriptDirectory 'validate-hab-rebalance.ps1'),
+        '-VanillaTemplatesDir', $templatesDirectory,
+        '-RepositoryRoot', $repositoryRoot)
+    New-ValidationJob 'Ship rebalance data' $powershellExecutable @(
+        '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File',
+        (Join-Path $scriptDirectory 'validate-ship-rebalance.ps1'),
+        '-VanillaTemplatesDir', $templatesDirectory,
+        '-RepositoryRoot', $repositoryRoot)
+    New-ValidationJob 'Hull variant report' $powershellExecutable @(
+        '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File',
+        (Join-Path $scriptDirectory 'validate-hull-variant-report.ps1'),
+        '-VanillaTemplatesDir', $templatesDirectory,
+        '-RepositoryRoot', $repositoryRoot)
+)
+Invoke-ValidationPool -Jobs $dataValidationJobs `
+    -MaxThreads $ValidationThreads
 
 $technologyTemplates = Join-Path $templatesDirectory 'TITechTemplate.json'
 $installedTechnologyIds = @(
@@ -471,46 +534,12 @@ foreach ($entry in $controlTechnologies.GetEnumerator()) {
     }
 }
 
-& node (Join-Path $repositoryRoot 'tools\economy-growth-simulator.js') | Out-Host
-if ($LASTEXITCODE -ne 0) {
-    throw 'Economy growth simulator failed.'
-}
-
-& node (Join-Path $repositoryRoot 'tools\military-investment-simulator.js') '--verify' | Out-Host
-if ($LASTEXITCODE -ne 0) {
-    throw 'Military investment simulator failed.'
-}
-
-powershell -NoProfile -ExecutionPolicy Bypass -File `
-    (Join-Path $scriptDirectory 'validate-hab-rebalance.ps1') `
-    -VanillaTemplatesDir $templatesDirectory `
-    -RepositoryRoot $repositoryRoot
-if ($LASTEXITCODE -ne 0) {
-    exit $LASTEXITCODE
-}
-
-powershell -NoProfile -ExecutionPolicy Bypass -File `
-    (Join-Path $scriptDirectory 'validate-ship-rebalance.ps1') `
-    -VanillaTemplatesDir $templatesDirectory `
-    -RepositoryRoot $repositoryRoot
-if ($LASTEXITCODE -ne 0) {
-    exit $LASTEXITCODE
-}
-
-powershell -NoProfile -ExecutionPolicy Bypass -File `
-    (Join-Path $scriptDirectory 'validate-hull-variant-report.ps1') `
-    -VanillaTemplatesDir $templatesDirectory `
-    -RepositoryRoot $repositoryRoot
-if ($LASTEXITCODE -ne 0) {
-    exit $LASTEXITCODE
-}
-
 $manifestPath = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\ModInfo.json'
 $manifest = Get-Content -LiteralPath $manifestPath -Raw | ConvertFrom-Json
 if ($manifest.GameVersion -ne '1.0.53') {
     throw "ModInfo.json targets '$($manifest.GameVersion)' instead of TI 1.0.53."
 }
-if ($manifest.Version -ne '0.9.6') {
+if ($manifest.Version -ne '0.9.7') {
     throw "ModInfo.json version '$($manifest.Version)' does not match this release."
 }
 if ($manifest.AssemblyName -ne 'Assembly/TIEconomyMod.dll') {
@@ -1039,8 +1068,8 @@ if ($assemblyFile.LastWriteTime -lt $buildStarted.AddSeconds(-2)) {
     throw 'Packaged DLL predates this verification build.'
 }
 $assemblyVersion = [Reflection.AssemblyName]::GetAssemblyName($assemblyPath).Version.ToString()
-if ($assemblyVersion -ne '0.9.6.0') {
-    throw "Assembly version '$assemblyVersion' does not match release 0.9.6."
+if ($assemblyVersion -ne '0.9.7.0') {
+    throw "Assembly version '$assemblyVersion' does not match release 0.9.7."
 }
 $assemblyHash = (Get-FileHash -LiteralPath $assemblyPath -Algorithm SHA256).Hash
 
@@ -1135,7 +1164,7 @@ if (Test-Path -LiteralPath $imagePath) {
     Copy-Item -LiteralPath $imagePath -Destination $stagingDirectory
 }
 
-$zipPath = Join-Path $artifactDirectory 'TIEconomyMod-0.9.6-ti1.0.53.zip'
+$zipPath = Join-Path $artifactDirectory 'TIEconomyMod-0.9.7-ti1.0.53.zip'
 if (Test-Path -LiteralPath $zipPath) {
     Remove-Item -LiteralPath $zipPath
 }
@@ -1244,6 +1273,9 @@ if ($packagedHash -ne $assemblyHash) {
 }
 
 Write-Host "PASS: release verification completed."
+Write-Host ('Verification wall time: {0:N2}s with {1} validation workers.' -f
+    ((Get-Date) - $buildStarted).TotalSeconds,
+    $ValidationThreads)
 Write-Host "DLL SHA256: $assemblyHash"
 Write-Host "Artifact: $zipPath"
 Write-Host 'Compatibility target: TI 1.0.53 installed assemblies, guarded IL patch points, and focused Harmony binding.'

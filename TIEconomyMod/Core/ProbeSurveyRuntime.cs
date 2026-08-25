@@ -32,8 +32,10 @@ namespace TIEconomyMod
         {
             return faction != null &&
                 site != null &&
-                (BodyProspected(faction, site.parentBody) ||
-                 faction.GetIntel(site) >= 1f);
+                ProbeSurveyStateMath.SiteProspected(
+                    faction.GetIntel(site.parentBody),
+                    faction.GetIntel(site),
+                    TIFactionState.intelToProspectSpaceBody);
         }
 
         internal static bool SiteProspectorEnRoute(
@@ -46,9 +48,11 @@ namespace TIEconomyMod
                 return false;
             }
 
-            float intel = faction.GetIntel(site);
-            return intel >= TIFactionState.intelMarkerForProspectorEnRoute &&
-                intel < TIFactionState.intelToProspectSpaceBody;
+            return ProbeSurveyStateMath.SiteProspectorEnRoute(
+                faction.GetIntel(site.parentBody),
+                faction.GetIntel(site),
+                TIFactionState.intelMarkerForProspectorEnRoute,
+                TIFactionState.intelToProspectSpaceBody);
         }
 
         internal static bool BodyHasProspectorEnRoute(
@@ -60,15 +64,27 @@ namespace TIEconomyMod
                 return false;
             }
 
-            float legacyIntel = faction.GetIntel(body);
-            if (legacyIntel >= TIFactionState.intelMarkerForProspectorEnRoute &&
-                legacyIntel < TIFactionState.intelToProspectSpaceBody)
+            if (LegacyBodyProspectorEnRoute(faction, body))
             {
                 return true;
             }
 
             return body.habSites.Any(site =>
                 SiteProspectorEnRoute(faction, site));
+        }
+
+        internal static bool LegacyBodyProspectorEnRoute(
+            TIFactionState faction,
+            TISpaceBodyState body)
+        {
+            if (faction == null || body == null || BodyProspected(faction, body))
+            {
+                return false;
+            }
+
+            float intel = faction.GetIntel(body);
+            return intel >= TIFactionState.intelMarkerForProspectorEnRoute &&
+                intel < TIFactionState.intelToProspectSpaceBody;
         }
 
         internal static List<TIHabSiteState> EligibleSites(
@@ -91,6 +107,32 @@ namespace TIEconomyMod
                     !SiteProspected(faction, site) &&
                     !SiteProspectorEnRoute(faction, site))
                 .ToList();
+        }
+
+        internal static List<TIHabSiteState> SurveyedSites(
+            TIFactionState faction)
+        {
+            if (faction == null)
+            {
+                return new List<TIHabSiteState>();
+            }
+
+            return GameStateManager.AllSpaceBodies()
+                .Where(body => body != null && body.habSites != null)
+                .SelectMany(body => body.habSites)
+                .Where(site => SiteProspected(faction, site))
+                .OrderBy(site => site.parentBody.ID)
+                .ThenBy(site => site.ID)
+                .ToList();
+        }
+
+        internal static bool HasSurveyedSite(TIFactionState faction)
+        {
+            return faction != null &&
+                GameStateManager.AllSpaceBodies().Any(body =>
+                    body != null &&
+                    body.habSites != null &&
+                    body.habSites.Any(site => SiteProspected(faction, site)));
         }
 
         internal static TIHabSiteState ResolveSite(
@@ -150,10 +192,22 @@ namespace TIEconomyMod
             TISpaceBodyState body = site.parentBody;
             if (!BodyProspected(faction, body) &&
                 body.habSites.All(candidate =>
-                    SiteProspected(faction, candidate)))
+                    candidate != null &&
+                    faction.GetIntel(candidate) >=
+                        TIFactionState.intelToProspectSpaceBody))
             {
                 faction.ProspectSpaceBody(body);
+                return;
             }
+
+            // Site intel does not raise the vanilla body event. Reuse that
+            // event as a body-scoped UI invalidation signal so each site
+            // controller can re-evaluate its own per-site state immediately.
+            GameControl.eventManager.TriggerEvent(
+                new SpaceBodyProspected(faction, body),
+                null,
+                faction,
+                body);
         }
 
         internal static float ScanDuration_days(

@@ -2,6 +2,8 @@
 param(
     [string]$GameInstallDir,
     [string]$TargetManagedDir,
+    [ValidateRange(8, 32)]
+    [int]$ValidationThreads = 8,
     [switch]$SkipVerification
 )
 
@@ -93,7 +95,9 @@ $gameRoot = Find-TerraInvictaInstall -ExplicitGameDir $GameInstallDir -ExplicitM
 $managedDirectory = Join-Path $gameRoot 'TerraInvicta_Data\Managed'
 Assert-TerraInvictaClosed
 if (-not $SkipVerification) {
-    & (Join-Path $scriptDirectory 'verify.ps1') -TargetManagedDir $managedDirectory
+    & (Join-Path $scriptDirectory 'verify.ps1') `
+        -TargetManagedDir $managedDirectory `
+        -ValidationThreads $ValidationThreads
     if ($LASTEXITCODE -ne 0) {
         exit $LASTEXITCODE
     }

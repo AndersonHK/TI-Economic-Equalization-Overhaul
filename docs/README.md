@@ -68,6 +68,13 @@ when prose and runtime behavior disagree.
   implemented global-technology multiplier, modern-start scenario decisions,
   real lunar-mission mass references, 0.325-tonne site-drone equations,
   compatibility rules, automated deployment results, and manual-test matrix.
+
+- [TI 1.0.53 per-site survey UI compatibility](compatibility/ti-1.0.53-site-survey-ui.md):
+  Intel targeting, concurrent site probes, one-site result notifications,
+  surveyed marker/resource display, and legacy body-intel compatibility.
+- [Parallel validation and deployment](tooling/parallel-validation.md): bounded
+  eight-worker runspace scheduling, per-validator process isolation, failure
+  propagation, and serialized packaging/deployment boundaries.
 - [Orbital hab ambient-hazard exposure scaling](orbital-hab-hazard-scaling.md):
   approved linear event-weight scaling from zero through thirty human orbital
   habs, exact ambient-event scope, exclusions, and verification plan.

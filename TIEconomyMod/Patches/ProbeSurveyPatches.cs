@@ -179,9 +179,7 @@ namespace TIEconomyMod.Patches
 
             TIFactionState faction = actorState.ref_faction;
             ProbeSurveyRuntime.ProspectSite(faction, site);
-            TINotificationQueueState.LogProbeArrived(
-                faction,
-                site.parentBody);
+            ProbeSurveyNotifications.LogSiteProbeArrived(faction, site);
             TINotificationQueueState.LogEnemyProbeArrived(
                 faction,
                 site.parentBody);
@@ -266,7 +264,7 @@ namespace TIEconomyMod.Patches
         {
             __result = spaceBody != null &&
                 !ProbeSurveyRuntime.BodyProspected(__instance, spaceBody) &&
-                (ProbeSurveyRuntime.BodyHasProspectorEnRoute(
+                (ProbeSurveyRuntime.LegacyBodyProspectorEnRoute(
                     __instance,
                     spaceBody) ||
                  __instance.FleetSurveyingPlanet(spaceBody));
