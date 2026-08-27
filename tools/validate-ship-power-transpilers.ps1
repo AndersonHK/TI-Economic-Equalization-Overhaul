@@ -516,6 +516,11 @@ if ($null -eq $fuelRefreshPrefix -or $null -eq $fuelRefreshPostfix -or
     $null -eq $enforceFuel -or $null -eq $refreshFuelOverlay) {
     throw 'Fuel-capacity designer refresh patch is incomplete.'
 }
+$fuelRefreshPrefixParameters = @($fuelRefreshPrefix.GetParameters())
+if ($fuelRefreshPrefixParameters.Count -ne 2 -or
+    $fuelRefreshPrefixParameters[1].ParameterType -ne [bool]) {
+    throw 'Fuel-capacity designer refresh must receive the existing-template loading guard.'
+}
 foreach ($fuelRefreshMethod in @($fuelRefreshPrefix, $fuelRefreshPostfix)) {
     $readerArguments[0] = $fuelRefreshMethod
     $readerArguments[1] = $null
@@ -534,6 +539,69 @@ foreach ($fuelRefreshMethod in @($fuelRefreshPrefix, $fuelRefreshPostfix)) {
     if ($helperCalls.Count -ne 1) {
         throw "Fuel-capacity $($fuelRefreshMethod.Name) must call its lifecycle helper exactly once."
     }
+}
+
+$existingFuelLoadPatchType = $modAssembly.GetType(
+    'TIEconomyMod.Patches.ExistingShipFuelCapacityLoadPatch', $true)
+$existingFuelLoadPrefix = $existingFuelLoadPatchType.GetMethod(
+    'Prefix', [Reflection.BindingFlags]'Public,Static')
+$existingFuelLoadPostfix = $existingFuelLoadPatchType.GetMethod(
+    'Postfix', [Reflection.BindingFlags]'Public,Static')
+if ($null -eq $existingFuelLoadPrefix -or
+    $null -eq $existingFuelLoadPostfix -or
+    -not $existingFuelLoadPrefix.GetParameters()[1].ParameterType.IsByRef) {
+    throw 'Existing-design fuel loading must preserve the serialized tank count across UI assembly.'
+}
+$readerArguments[0] = $existingFuelLoadPostfix
+$readerArguments[1] = $null
+$existingFuelLoadInstructions = @(
+    $instructionReader[0].PSObject.BaseObject.Invoke(
+        $null, $readerArguments))
+$existingFuelLoadCalls = @($existingFuelLoadInstructions | Where-Object {
+    $_.operand -is [Reflection.MethodInfo]
+} | ForEach-Object { $_.operand.Name })
+foreach ($requiredCall in @(
+    'SetTankCountWithinCapacity',
+    'CacheTemplateValues',
+    'RefreshSpinner',
+    'UpdateShipDesignDataPanelAndImage')) {
+    if (@($existingFuelLoadCalls | Where-Object {
+        $_ -eq $requiredCall
+    }).Count -ne 1) {
+        throw "Existing-design fuel loading must call $requiredCall exactly once after the final hull appearance is selected."
+    }
+}
+
+$shipPowerRuntimeType = $modAssembly.GetType(
+    'TIEconomyMod.Patches.ShipPowerRuntime', $true)
+$refreshPerformanceCache = $shipPowerRuntimeType.GetMethod(
+    'RefreshTemplatePerformanceCache',
+    [Reflection.BindingFlags]'Public,Static')
+$refreshPerformanceCaches = $shipPowerRuntimeType.GetMethod(
+    'RefreshTemplatePerformanceCaches',
+    [Reflection.BindingFlags]'Public,Static')
+if ($null -eq $refreshPerformanceCache -or
+    $null -eq $refreshPerformanceCaches) {
+    throw 'Canonical ship-template performance cache refresh methods are missing.'
+}
+$readerArguments[0] = $refreshPerformanceCache
+$readerArguments[1] = $null
+$refreshPerformanceInstructions = @(
+    $instructionReader[0].PSObject.BaseObject.Invoke(
+        $null, $readerArguments))
+$aggregateCacheCalls = @($refreshPerformanceInstructions | Where-Object {
+    $_.operand -is [Reflection.MethodInfo] -and
+    $_.operand.Name -eq 'CacheTemplateValues'
+})
+if ($aggregateCacheCalls.Count -ne 1) {
+    throw 'Ship performance reconciliation must use the game aggregate cache refresh exactly once.'
+}
+$factionCachePatchType = $modAssembly.GetType(
+    'TIEconomyMod.Patches.ShipDesignPerformanceSaveLoadCachePatch', $true)
+$factionCachePostfix = $factionCachePatchType.GetMethod(
+    'Postfix', [Reflection.BindingFlags]'Public,Static')
+if ($null -eq $factionCachePostfix) {
+    throw 'Loaded faction ship designs must refresh their performance caches.'
 }
 
 $appearancePostfix = $appearancePatchType.GetMethod(
@@ -670,6 +738,7 @@ $harmony = [Activator]::CreateInstance(
 # generated wrapper trips the host's ECall restriction. Unity Mono patches it.
 $patchTypeNames = @(
     'TIEconomyMod.Patches.GunPowerTemplateInitializationPatch',
+    'TIEconomyMod.Patches.ShipDesignPerformanceSaveLoadCachePatch',
     'TIEconomyMod.Patches.ShipPowerSaveLoadCachePatch',
     'TIEconomyMod.Patches.GunSelfPoweredPatch',
     'TIEconomyMod.Patches.GunEnergyUsagePatch',

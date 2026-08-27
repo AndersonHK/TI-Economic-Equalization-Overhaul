@@ -143,7 +143,19 @@ finally {
 }
 
 $assemblyPath = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\Assembly\TIEconomyMod.dll'
-$powershellExecutable = Join-Path $PSHOME 'powershell.exe'
+$powershellCandidates = @(
+    'C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe',
+    (Get-Process -Id $PID).Path,
+    (Join-Path $PSHOME 'pwsh.exe'),
+    (Join-Path $PSHOME 'powershell.exe')
+) | Where-Object {
+    -not [string]::IsNullOrWhiteSpace($_) -and
+    (Test-Path -LiteralPath $_ -PathType Leaf)
+} | Select-Object -Unique
+$powershellExecutable = $powershellCandidates | Select-Object -First 1
+if ([string]::IsNullOrWhiteSpace($powershellExecutable)) {
+    throw 'No usable PowerShell executable was found for isolated validators.'
+}
 $patchValidationJobs = @(
     New-ValidationJob 'Target IL' $powershellExecutable @(
         '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File',

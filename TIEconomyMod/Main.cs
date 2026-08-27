@@ -70,7 +70,7 @@ namespace TIEconomyMod
                     UtilityFootprintRegistry.Refresh();
                     PropellantDensityRegistry.Refresh();
                     PowerPlantScalingRegistry.Refresh();
-                    ShipPowerRuntime.RefreshTemplateMassCaches();
+                    ShipPowerRuntime.RefreshTemplatePerformanceCaches();
                 }
                 CouncilorRuntimeCaps.InitializeOrganizationCap();
                 Log("Loaded TI Economic Equalization Overhaul 0.9.7 for the TI 1.0.53 API surface.");
@@ -125,7 +125,7 @@ namespace TIEconomyMod
         {
             settings.ValidateAndRepair(Log);
             CouncilorRuntimeCaps.ApplyOrganizationCap();
-            ShipPowerRuntime.RefreshTemplateMassCaches();
+            ShipPowerRuntime.RefreshTemplatePerformanceCaches();
             settings.Save(modEntry);
         }
 

@@ -636,8 +636,18 @@ namespace TIEconomyMod.Patches
     public static class FuelCapacityDesignerRefreshPatch
     {
         [HarmonyPrefix]
-        public static void Prefix(FleetsScreenController __instance)
+        public static void Prefix(
+            FleetsScreenController __instance,
+            bool ___loadingExistingTemplate)
         {
+            // LoadShipTemplateIntoUI assembles the editable copy in stages.
+            // Enforcing against a transitional hull appearance can permanently
+            // discard tanks that are legal on the saved appearance.
+            if (___loadingExistingTemplate)
+            {
+                return;
+            }
+
             FuelCapacityDesignerUi.EnforceAndRefreshSpinner(__instance);
         }
 
@@ -645,6 +655,46 @@ namespace TIEconomyMod.Patches
         public static void Postfix(FleetsScreenController __instance)
         {
             FuelCapacityDesignerUi.RefreshOverlay(__instance);
+        }
+    }
+
+    [HarmonyPatch(
+        typeof(FleetsScreenController),
+        nameof(FleetsScreenController.LoadShipTemplateIntoUI))]
+    public static class ExistingShipFuelCapacityLoadPatch
+    {
+        [HarmonyPrefix]
+        public static void Prefix(
+            TISpaceShipTemplate ship,
+            out int __state)
+        {
+            __state = ship == null ? 0 : ship.propellantTanks;
+        }
+
+        [HarmonyPostfix]
+        public static void Postfix(
+            FleetsScreenController __instance,
+            int __state)
+        {
+            TISpaceShipTemplate editable = __instance == null
+                ? null
+                : __instance.newShipTemplate;
+            if (editable == null)
+            {
+                return;
+            }
+
+            // The saved count remains authoritative until the saved appearance
+            // and all modules have been installed. Clamp only against that final
+            // configuration, then rebuild cost and all performance caches once.
+            HullFuelCapacityFeature.SetTankCountWithinCapacity(
+                editable, __state);
+            editable.CacheTemplateValues();
+            FuelCapacityDesignerUi.RefreshSpinner(__instance);
+            __instance.UpdateShipDesignDataPanelAndImage(
+                updateImage: false,
+                updateSpaceBackground: false);
+            __instance.UpdateTransferInfo();
         }
     }
 

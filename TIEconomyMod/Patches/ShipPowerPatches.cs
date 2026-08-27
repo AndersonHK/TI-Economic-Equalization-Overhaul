@@ -70,7 +70,21 @@ namespace TIEconomyMod.Patches
 
     public static class ShipPowerRuntime
     {
-        public static void RefreshTemplateMassCaches()
+        public static void RefreshTemplatePerformanceCache(
+            TISpaceShipTemplate template)
+        {
+            if (template == null)
+            {
+                return;
+            }
+
+            // The game owns separate caches for dry mass, acceleration, and
+            // delta-v. Use its canonical aggregate refresh so every derived
+            // value observes the same patched mass and propulsion inputs.
+            template.CacheTemplateValues(skipCost: true);
+        }
+
+        public static void RefreshTemplatePerformanceCaches()
         {
             if (TemplateManager.self == null ||
                 !TemplateManager.self.Initialized)
@@ -81,7 +95,7 @@ namespace TIEconomyMod.Patches
             foreach (TISpaceShipTemplate template in
                 TemplateManager.GetAllTemplates<TISpaceShipTemplate>())
             {
-                template.dryMass_tons(true);
+                RefreshTemplatePerformanceCache(template);
             }
         }
     }
@@ -95,7 +109,30 @@ namespace TIEconomyMod.Patches
             GunPowerRegistry.Refresh();
             ProjectileGeometryRegistry.Refresh();
             PowerPlantScalingRegistry.Refresh();
-            ShipPowerRuntime.RefreshTemplateMassCaches();
+            ShipPowerRuntime.RefreshTemplatePerformanceCaches();
+        }
+    }
+
+    [HarmonyPatch(typeof(TIFactionState),
+        "PostGlobalGameStateCreateInit_2")]
+    public static class ShipDesignPerformanceSaveLoadCachePatch
+    {
+        [HarmonyPostfix]
+        public static void Postfix(TIFactionState __instance)
+        {
+            if (!ShipPowerFeature.Enabled ||
+                __instance == null ||
+                __instance.shipDesigns == null)
+            {
+                return;
+            }
+
+            // Saved faction designs are registered during the original method,
+            // after the global template pass has already run.
+            foreach (TISpaceShipTemplate design in __instance.shipDesigns)
+            {
+                ShipPowerRuntime.RefreshTemplatePerformanceCache(design);
+            }
         }
     }
 
@@ -117,7 +154,8 @@ namespace TIEconomyMod.Patches
 
             // Templates are process data, not save data. Reconcile the serialized
             // live mass with the freshly recalculated dry mass and retained fuel.
-            __instance.template.dryMass_tons(true);
+            ShipPowerRuntime.RefreshTemplatePerformanceCache(
+                __instance.template);
             CurrentMass(__instance) = __instance.template.dryMass_kg +
                 __instance.propellant_tons * 1000f;
             __instance.SetPropulsionValuesDirty();
