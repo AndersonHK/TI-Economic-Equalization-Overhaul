@@ -75,6 +75,10 @@ when prose and runtime behavior disagree.
 - [Parallel validation and deployment](tooling/parallel-validation.md): bounded
   eight-worker runspace scheduling, per-validator process isolation, failure
   propagation, and serialized packaging/deployment boundaries.
+- [Terra Invicta save format, editing, and diagnostics](tooling/terra-invicta-save-format-and-editing.md):
+  FullSerializer object-graph schema, formatting-sensitive metadata loading,
+  safe mutation approaches, validation gates, runtime logs, and future
+  save/load tooling entry points.
 - [Orbital hab ambient-hazard exposure scaling](orbital-hab-hazard-scaling.md):
   approved linear event-weight scaling from zero through thirty human orbital
   habs, exact ambient-event scope, exclusions, and verification plan.

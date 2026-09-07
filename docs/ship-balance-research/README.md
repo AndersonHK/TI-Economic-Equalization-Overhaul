@@ -39,6 +39,7 @@ The comparison is organized into:
   and the
   [current magnetic tier-progression comparison](tables/magnetic-tier-progression-rework.csv)
 - [Weapon automation and crew](weapon-automation-and-crew.md)
+- [Laser size, armor penetration, ablation, X-rays, and jitter](laser-armor-penetration-and-jitter.md)
 - [Low-tech rebalance: first planning slice](low-tech-rebalance-slice.md)
 - [Fundamental limits and six-month crew consumables](fundamental-limits-and-crew-consumables.md)
 - [Early power-plant localization and unlock audit](localization-and-unlock-audit.md)
