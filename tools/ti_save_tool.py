@@ -454,6 +454,7 @@ def cleanup_remaining_references(
         "removed_collection_references": 0,
         "nulled_layout_positions": 0,
         "removed_refit_queue_items": 0,
+        "removed_preserved_fleet_ship_references": 0,
         "removed_alarms": 0,
     }
     removable_lists = {
@@ -532,6 +533,21 @@ def cleanup_remaining_references(
                             retained_queue
                         )
                         queue[:] = retained_queue
+                if key == "preservedFleetCompositions" and isinstance(child, list):
+                    for faction_entry in child:
+                        if not isinstance(faction_entry, dict):
+                            continue
+                        records = faction_entry.get("Value")
+                        if not isinstance(records, list):
+                            continue
+                        for record in records:
+                            if not isinstance(record, dict):
+                                continue
+                            changes[
+                                "removed_preserved_fleet_ship_references"
+                            ] += remove_reference_items(
+                                record.get("ships"), removed_ship_ids
+                            )
                 stack.append(child)
         elif isinstance(current, list):
             stack.extend(current)
@@ -651,6 +667,168 @@ def mutate_remove_fleet(
         "orbit_id": orbit_id,
         "destination_orbit_id": destination_id,
         "orbit_description": orbit_text,
+        "initial_reference_count": len(initial_references),
+        "faction_changes": faction_changes,
+        "cleanup_changes": cleanup_changes,
+    }
+
+
+def mutate_remove_ships(
+    document: Dict[str, Any],
+    fleet_id: int,
+    ship_ids: Sequence[int],
+    expected_faction_id: Optional[int],
+    expected_body: Optional[str],
+    expected_hull: Optional[str],
+) -> Dict[str, Any]:
+    selected_ship_ids = list(ship_ids)
+    if not selected_ship_ids:
+        raise ValueError("At least one ship ID is required")
+    if len(set(selected_ship_ids)) != len(selected_ship_ids):
+        raise ValueError("Duplicate ship IDs were supplied")
+
+    fleets = index_states(document, FLEET_TYPE)
+    if fleet_id not in fleets:
+        raise ValueError(f"Fleet ID {fleet_id} is not present")
+    fleet = fleets[fleet_id]
+    declared_ship_ids = fleet_ship_ids(fleet)
+    selected_ship_id_set = set(selected_ship_ids)
+    missing_memberships = sorted(selected_ship_id_set - set(declared_ship_ids))
+    if missing_memberships:
+        raise ValueError(
+            f"Selected ships are not members of fleet {fleet_id}: {missing_memberships}"
+        )
+    if len(selected_ship_id_set) == len(declared_ship_ids):
+        raise ValueError(
+            "Ship removal would leave an empty fleet; use remove-fleet instead"
+        )
+
+    faction_id = nested_ref(fleet, "faction")
+    if expected_faction_id is not None and faction_id != expected_faction_id:
+        raise ValueError(
+            f"Fleet {fleet_id} belongs to faction {faction_id}; expected {expected_faction_id}"
+        )
+
+    orbits = index_states(document, ORBIT_TYPE)
+    orbit_id = nested_ref(fleet, "orbitState")
+    destination_id = nested_ref(fleet, "trajectory", "destinationOrbit")
+    orbit_text = " ".join(
+        str(orbits.get(identifier, {}).get("displayName") or "")
+        for identifier in (orbit_id, destination_id)
+        if identifier is not None
+    )
+    if expected_body and expected_body.lower() not in orbit_text.lower():
+        raise ValueError(
+            f"Fleet {fleet_id} current/destination orbit does not contain {expected_body!r}: {orbit_text!r}"
+        )
+
+    ships = index_states(document, SHIP_TYPE)
+    missing_ship_states = sorted(selected_ship_id_set - set(ships))
+    if missing_ship_states:
+        raise ValueError(f"Selected ship states are missing: {missing_ship_states}")
+    incorrect_backrefs = sorted(
+        identifier
+        for identifier in selected_ship_ids
+        if nested_ref(ships[identifier], "fleet") != fleet_id
+    )
+    if incorrect_backrefs:
+        raise ValueError(
+            f"Selected ships do not point back to fleet {fleet_id}: {incorrect_backrefs}"
+        )
+
+    hull_details: List[Dict[str, Any]] = []
+    if expected_hull:
+        factions = index_states(document, FACTION_TYPE)
+        faction = factions.get(faction_id)
+        if faction is None:
+            raise ValueError(f"Owning faction state {faction_id} is missing")
+        designs = faction.get("shipDesigns", [])
+        if not isinstance(designs, list):
+            raise ValueError(f"Faction {faction_id} shipDesigns is not an array")
+        hull_by_template = {
+            design.get("dataName"): design.get("hullName")
+            for design in designs
+            if isinstance(design, dict)
+            and isinstance(design.get("dataName"), str)
+        }
+        for identifier in selected_ship_ids:
+            ship = ships[identifier]
+            template_name = ship.get("templateName")
+            actual_hull = hull_by_template.get(template_name)
+            hull_details.append(
+                {
+                    "ship_id": identifier,
+                    "display_name": ship.get("displayName"),
+                    "template_name": template_name,
+                    "hull_name": actual_hull,
+                }
+            )
+            if actual_hull != expected_hull:
+                raise ValueError(
+                    f"Ship {identifier} resolves to hull {actual_hull!r}; expected {expected_hull!r}"
+                )
+
+    officers = index_states(document, OFFICER_TYPE)
+    officer_ids = {
+        identifier
+        for ship_id in selected_ship_ids
+        for identifier in (ref_id(item) for item in ships[ship_id].get("officers", []))
+        if identifier is not None
+    }
+    officer_ids.update(
+        identifier
+        for identifier, officer in officers.items()
+        if nested_ref(officer, "ship") in selected_ship_id_set
+    )
+
+    removed_ids = selected_ship_id_set | officer_ids
+    initial_references = list(find_paths_to_ids(document, removed_ids))
+
+    removed_memberships = remove_reference_items(fleet.get("ships"), selected_ship_id_set)
+    if removed_memberships != len(selected_ship_ids):
+        raise ValueError(
+            f"Removed {removed_memberships} fleet memberships; expected {len(selected_ship_ids)}"
+        )
+    if remove_state_entries(document, SHIP_TYPE, selected_ship_id_set) != len(
+        selected_ship_ids
+    ):
+        raise ValueError("Did not remove exactly the selected ship states")
+    if remove_state_entries(document, OFFICER_TYPE, officer_ids) != len(officer_ids):
+        raise ValueError("Did not remove exactly the selected ships' officer states")
+
+    faction_changes: List[Dict[str, int]] = []
+    for faction_state_id, faction in index_states(document, FACTION_TYPE).items():
+        changes = {
+            "faction_id": faction_state_id,
+            "intel": remove_keyed_reference_items(faction.get("intel"), removed_ids),
+            "highestIntel": remove_keyed_reference_items(
+                faction.get("highestIntel"), removed_ids
+            ),
+        }
+        if any(value for key, value in changes.items() if key != "faction_id"):
+            faction_changes.append(changes)
+
+    cleanup_changes = cleanup_remaining_references(
+        document, set(), removed_ids, selected_ship_id_set
+    )
+    remaining_references = list(find_paths_to_ids(document, removed_ids))
+    if remaining_references:
+        formatted = ", ".join(path for path, _ in remaining_references[:10])
+        raise ValueError(f"Unsupported references to removed IDs remain: {formatted}")
+
+    return {
+        "fleet_id": fleet_id,
+        "fleet_name": fleet_display_name(fleet, faction_id),
+        "faction_id": faction_id,
+        "ship_ids": selected_ship_ids,
+        "ship_names": [ships[identifier].get("displayName") for identifier in selected_ship_ids],
+        "expected_hull": expected_hull,
+        "hull_details": hull_details,
+        "officer_ids": sorted(officer_ids),
+        "orbit_id": orbit_id,
+        "destination_orbit_id": destination_id,
+        "orbit_description": orbit_text,
+        "remaining_fleet_ship_ids": fleet_ship_ids(fleet),
         "initial_reference_count": len(initial_references),
         "faction_changes": faction_changes,
         "cleanup_changes": cleanup_changes,
@@ -928,6 +1106,143 @@ def command_remove_fleet(args: argparse.Namespace) -> int:
     return 0
 
 
+def command_remove_ships(args: argparse.Namespace) -> int:
+    if args.input.resolve() == args.output.resolve():
+        raise ValueError("Input and output paths must be different")
+    if args.output.exists():
+        raise ValueError(f"Refusing to overwrite existing output: {args.output}")
+    if args.audit and args.audit.exists():
+        raise ValueError(f"Refusing to overwrite existing audit: {args.audit}")
+
+    source_archive = args.input.read_bytes()
+    source_archive_hash = sha256(source_archive)
+    source_payload = read_payload(args.input)
+    source_document = load_document(source_payload)
+    source_roundtrip = encode_document(source_document)
+    if source_roundtrip != source_payload:
+        raise ValueError(
+            "Source failed byte-identical FullSerializer round-trip; refusing to edit"
+        )
+
+    source_state_bytes = state_byte_map(source_document)
+    source_nonfinite = nonfinite_counts(source_document)
+    source_fullserializer_definitions = fullserializer_definition_map(source_document)
+    source_reference_count, source_unresolved = reference_integrity(source_document)
+    if source_unresolved:
+        raise ValueError(
+            f"Source contains unresolved $ref values; first: {source_unresolved[0]}"
+        )
+    source_current_id = serialized_node(source_document.get("currentID"))
+
+    operation = mutate_remove_ships(
+        source_document,
+        fleet_id=args.fleet_id,
+        ship_ids=args.ship_id,
+        expected_faction_id=args.expected_faction_id,
+        expected_body=args.expected_body,
+        expected_hull=args.expected_hull,
+    )
+    operation["promoted_fullserializer_definitions"] = (
+        promote_unresolved_fullserializer_definitions(
+            source_document, source_fullserializer_definitions
+        )
+    )
+    removed_ids = {*operation["ship_ids"], *operation["officer_ids"]}
+    candidate_payload = encode_document(source_document)
+    if not metadata_fast_scan_succeeds(candidate_payload):
+        raise ValueError("Candidate fails the first-200-line metadata scan")
+
+    candidate_document = load_document(candidate_payload)
+    if encode_document(candidate_document) != candidate_payload:
+        raise ValueError("Candidate payload is not byte-stable after reload")
+    if serialized_node(candidate_document.get("currentID")) != source_current_id:
+        raise ValueError("currentID changed during ship removal")
+    if list(find_paths_to_ids(candidate_document, removed_ids)):
+        raise ValueError("Candidate still contains references to removed state IDs")
+
+    candidate_reference_count, candidate_unresolved = reference_integrity(candidate_document)
+    if candidate_unresolved:
+        raise ValueError(
+            f"Candidate contains unresolved $ref values; first: {candidate_unresolved[0]}"
+        )
+
+    candidate_state_bytes = state_byte_map(candidate_document)
+    source_keys = set(source_state_bytes)
+    candidate_keys = set(candidate_state_bytes)
+    removed_state_keys = sorted(source_keys - candidate_keys)
+    added_state_keys = sorted(candidate_keys - source_keys)
+    expected_removed_state_keys = sorted(
+        [(SHIP_TYPE, identifier) for identifier in operation["ship_ids"]]
+        + [(OFFICER_TYPE, identifier) for identifier in operation["officer_ids"]]
+    )
+    if removed_state_keys != expected_removed_state_keys:
+        raise ValueError(f"Unexpected removed states: {removed_state_keys}")
+    if added_state_keys:
+        raise ValueError(f"Unexpected added states: {added_state_keys}")
+
+    changed_retained_states = sorted(
+        key
+        for key in source_keys & candidate_keys
+        if source_state_bytes[key] != candidate_state_bytes[key]
+    )
+    metadata_keys = [key for key in source_keys if key[0] == METADATA_TYPE]
+    if any(key in changed_retained_states for key in metadata_keys):
+        raise ValueError("Metadata state changed during ship removal")
+
+    write_gzip_atomic(args.output, candidate_payload)
+    written_archive = args.output.read_bytes()
+    written_payload = gzip.decompress(written_archive)
+    if written_payload != candidate_payload:
+        raise ValueError("Written gzip payload differs from the validated candidate bytes")
+    if encode_document(load_document(written_payload)) != written_payload:
+        raise ValueError("Written output fails byte-identical parse/serialize validation")
+    if sha256(args.input.read_bytes()) != source_archive_hash:
+        raise ValueError("Source archive changed during editing")
+
+    audit = {
+        "tool": "ti_save_tool.py",
+        "operation": "remove-ships",
+        "input": str(args.input),
+        "output": str(args.output),
+        "source_archive_sha256": source_archive_hash,
+        "source_payload_sha256": sha256(source_payload),
+        "candidate_archive_sha256": sha256(written_archive),
+        "candidate_payload_sha256": sha256(written_payload),
+        "source_payload_bytes": len(source_payload),
+        "candidate_payload_bytes": len(written_payload),
+        "source_roundtrip_byte_identical": source_roundtrip == source_payload,
+        "candidate_roundtrip_byte_identical": encode_document(candidate_document)
+        == candidate_payload,
+        "written_payload_byte_identical_to_validated_candidate": written_payload
+        == candidate_payload,
+        "metadata_fast_scan": metadata_fast_scan_succeeds(written_payload),
+        "operation_details": operation,
+        "removed_state_keys": [
+            {"type": type_name, "id": identifier}
+            for type_name, identifier in removed_state_keys
+        ],
+        "added_state_count": len(added_state_keys),
+        "retained_state_count": len(source_keys & candidate_keys),
+        "byte_identical_retained_state_count": len(source_keys & candidate_keys)
+        - len(changed_retained_states),
+        "changed_retained_states": [
+            {"type": type_name, "id": identifier}
+            for type_name, identifier in changed_retained_states
+        ],
+        "remaining_references_to_removed_ids": 0,
+        "source_fullserializer_ref_count": source_reference_count,
+        "candidate_fullserializer_ref_count": candidate_reference_count,
+        "candidate_unresolved_fullserializer_refs": 0,
+        "source_nonfinite_tokens": source_nonfinite,
+        "candidate_nonfinite_tokens": nonfinite_counts(candidate_document),
+        "source_unchanged": sha256(args.input.read_bytes()) == source_archive_hash,
+    }
+    if args.audit:
+        args.audit.write_text(json.dumps(audit, indent=2) + "\n", encoding="utf-8")
+    print(json.dumps(audit, indent=2))
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -963,6 +1278,22 @@ def build_parser() -> argparse.ArgumentParser:
     remove_parser.add_argument("--expected-faction-id", type=int)
     remove_parser.add_argument("--expected-body")
     remove_parser.set_defaults(func=command_remove_fleet)
+
+    remove_ships_parser = subparsers.add_parser(
+        "remove-ships",
+        help="Remove selected ships while retaining their non-empty fleet",
+    )
+    remove_ships_parser.add_argument("--input", type=Path, required=True)
+    remove_ships_parser.add_argument("--output", type=Path, required=True)
+    remove_ships_parser.add_argument("--audit", type=Path)
+    remove_ships_parser.add_argument("--fleet-id", type=int, required=True)
+    remove_ships_parser.add_argument(
+        "--ship-id", type=int, action="append", required=True
+    )
+    remove_ships_parser.add_argument("--expected-faction-id", type=int)
+    remove_ships_parser.add_argument("--expected-body")
+    remove_ships_parser.add_argument("--expected-hull")
+    remove_ships_parser.set_defaults(func=command_remove_ships)
 
     return parser
 

@@ -233,6 +233,16 @@ Typical generic commands are:
 python tools/ti_save_tool.py inspect --input C:\path\to\save.gz --body "body-name"
 python tools/ti_save_tool.py roundtrip-check --input C:\path\to\save.gz
 python tools/ti_save_tool.py references --input C:\path\to\save.gz --id 12345
+python tools/ti_save_tool.py remove-ships `
+    --input C:\path\to\source.gz `
+    --output .tmp\edited-save.gz `
+    --audit .tmp\edited-save.audit.json `
+    --fleet-id 12345 `
+    --ship-id 23456 `
+    --ship-id 34567 `
+    --expected-faction-id 6789 `
+    --expected-body "body-name" `
+    --expected-hull "AlienBattleship"
 python tools/ti_save_tool.py remove-fleet `
     --input C:\path\to\source.gz `
     --output .tmp\edited-save.gz `
@@ -258,6 +268,29 @@ lifecycle references. When a removed state contained the first `$id` definition
 of an ordinary shared FullSerializer object still used elsewhere, the tool
 promotes that exact definition to the first surviving `$ref`; it never leaves
 an unresolved reference or invents a replacement object.
+
+`remove-ships` is the narrower operation for deleting selected members while
+retaining their fleet. It requires explicit ship IDs and verifies that every
+ship exists, belongs to the selected fleet in both directions, and (when
+requested) resolves through the owning faction's serialized `shipDesigns`
+table to the expected hull. It removes the ship references from the fleet,
+deletes associated officer states and lifecycle references, and applies the
+same byte-stability, metadata, state-delta, and `$id`/`$ref` gates as fleet
+removal. It refuses to leave an empty fleet; use `remove-fleet` when every ship
+must be deleted so fleet-level lifecycle cleanup is not skipped.
+
+Combat autosaves need an additional precondition check. Inspect
+`TISpaceCombatState`, projectile states, and all incoming references to the
+selected ships before editing. A pre-initialization combat snapshot can cache
+the two participating fleets and can also retain ship references in
+`preservedFleetCompositions`. Those records describe fleets temporarily merged
+into a combat participant and are consulted when splitting survivors after the
+battle. For a bounded pre-initialization removal, delete the selected ship from
+both the active fleet and every preserved record while retaining the record and
+its other ships. Do not assume the same is safe after combat assets, targets,
+projectiles, or waypoints have been initialized: the editor must either
+implement and validate those current-version cleanup semantics or refuse the
+mutation when unsupported references remain.
 
 This is still an offline graph editor, not a substitute for manual load,
 simulation, log, and native re-save testing. Re-run its no-op round-trip gate

@@ -227,7 +227,7 @@ The game's lowest fusion entries begin around `270 km/s`, close to PuFF's concep
 
 ### Balance opinion
 
-- Early fusion drives should begin as large, low-duty-cycle, maintenance-intensive pulse systems near the PuFF/Fusion Driven Rocket concept range.
+- Revised 2026-09-11: large, low-duty-cycle pulse systems near the PuFF/Fusion Driven Rocket concept range are one possible early branch, not a required starting point for all fusion drives. The [NASA Direct Fusion Drive study](https://ntrs.nasa.gov/api/citations/20170003126/downloads/20170003126.pdf) also explores a compact, roughly megawatt-class FRC engine. Both remain concepts; neither establishes which architecture will become practical first. See [fusion scaling and technology timelines](fusion-magnet-scaling-and-technology-timeline-2026-09-11.md).
 - Do not infer compactness from plasma physics alone. Magnets, neutron shielding, tritium breeding, heat rejection, pulse power, and structural fatigue are system-level constraints.
 - Treat aneutronic and direct-conversion claims as later branches with their own bremsstrahlung and fuel-cycle penalties.
 

@@ -3,6 +3,31 @@
 This is a decision log for the proposed ship rebalance. Entries here describe
 the balance decisions as well as their implementation status.
 
+## 2026-09-11
+
+### Research only: fission-drive progression and scientific bounds
+
+- Add [fission-drive analysis](fission-drive-progression-and-scientific-bounds-2026-09-11.md), [complete tables](fission-drive-data-tables-2026-09-11.md), and a [source-hashed snapshot](tables/fission-drive-audit-2026-09-11.json) covering 39 base drives and 24 reactors in installed TI 1.0.53 / EEO 0.9.7.
+- Separate unchanged drive templates from reactor/accounting changes; quantify vanilla-to-current mass and heat deltas, open/closed power-per-reactor-mass advantages, combat flow/endurance, project prerequisites, and progression between drives.
+- Verify runtime self-powered classification, Calc cooling, combat thrust/EV reciprocity, vanilla mass/heat, and alternative prerequisites against fresh installed-assembly disassembly. Preserve relevant method evidence in the JSON snapshot.
+- Ground solid, liquid, gas, lightbulb, and fragment comparisons in primary scientific studies. Distinguish retained nuclear fuel from electrical conversion and identify radiator assumptions behind optimistic gas-core/fragment performance.
+- Correct the NERVA mass report's mislabeled NASA citation; retain numerical anchors using NASA TM-101354. Keep adjustment examples tentative. Documentation only; no gameplay, runtime, or tooling changes, build, or deployment.
+
+### Research only: molten-core follow-up and cooled gas-core containment
+
+- Extend the containment report with NERVA's mission/funding history, the distinction between old concepts and qualified flight systems, interrupted industrial capability, and a dated nuclear-electric flight-development update.
+- Add [molten- and gas-core containment and demonstration evidence](molten-and-gas-core-containment-and-demonstration-2026-09-11.md), separating fuel, propellant and wall temperatures and clarifying the cooling assumptions in the NASA gas-core study.
+- Distinguish molten salts, molten-metal fuel and hot liquid-core propulsion. Compare demonstrated MSRE/ARE operation and Pewee solid-core temperatures with CNTR targets and current subsystem research.
+- Expand the fusion timeline report's fission classification and give hot liquid-core propulsion its own conditional development entry. No gameplay changes, build or deployment.
+
+### Research only: fusion scaling and overlapping reactor timelines
+
+- Add [fusion magnet scaling, reactor size, and technology timelines](fusion-magnet-scaling-and-technology-timeline-2026-09-11.md), comparing ITER, dated ARC/SPARC concepts, and Thea's Helios; distinguish plasma field, peak coil field, fusion heat, and net electricity.
+- Derive conditional field/volume/wall-load scaling and spacecraft radiator examples; compare confinement architectures, fuels, and ordinary vapor-core versus extreme gas-core fission.
+- Treat fusion/fission coexistence and compact early fusion as credible scenarios, with public targets separated from speculative technology windows.
+- Correct the propulsion benchmark's mandatory large-pulse fusion starting point and the power-plant benchmark's categorical fusion/fission mass ordering. Clarify that D-D does not share D-T's neutron energy fraction.
+- Preserve earlier balance proposals as dated proposals. No gameplay, runtime, template, or tooling changes; no build or deployment.
+
 ## 2026-08-24
 
 ### Implemented and deployed: compact reactor presentation

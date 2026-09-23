@@ -184,12 +184,12 @@ NASA describes direct conversion of charged fusion products as a research topic 
 
 - Output values from tens to hundreds of thousands of gigawatts have no prototype basis.
 - Specific masses from `0.005` down to `0.000002 kg/kW` cannot be extrapolated from ITER or NIF.
-- Efficiencies of `92–99.9%` are especially unsupported for neutron-rich D-T or D-D systems, whose energy must largely be captured as heat.
+- Efficiencies of `92–99.9%` are especially unsupported for thermal fusion-electric systems. Approximately 80% of D-T reaction energy is carried by neutrons; D-D has a different, fuel-cycle-dependent neutron fraction. Neutron energy cannot be converted directly by magnetic or electrostatic charged-particle converters, and conventional plants capture it as heat. Do not assign the D-T energy split to every fusion fuel. See the [fuel and energy-pathway analysis](fusion-magnet-scaling-and-technology-timeline-2026-09-11.md#5-the-fuel-and-energy-pathway-matter-as-much-as-confinement).
 - Direct conversion might eventually improve efficiency for charged-particle fuels, but it does not justify applying near-perfect efficiency to every fusion confinement method.
 
 ### Balance opinion
 
-- First-generation fusion electricity should be no lighter than aggressive mature fission and may be heavier.
+- Revised 2026-09-11: using mature fission's specific mass or a heavier value for first-generation fusion electricity is a conservative balance placeholder, not a universal physical lower bound. Compare complete systems at matched useful output, shielding, endurance and heat-rejection assumptions; high-field compact concepts and architecture-specific advances prevent a categorical mass ordering. See [fusion magnet scaling and technology timelines](fusion-magnet-scaling-and-technology-timeline-2026-09-11.md).
 - Use roughly `30–50%` delivered electrical efficiency for thermal neutron-rich fusion until a direct-conversion technology is specified.
 - Reserve `50–70%` for late charged-particle direct conversion with explicit fuel and radiation tradeoffs.
 - Treat efficiencies above `80%` as exceptional and technology-specific, not a generic fusion progression.
@@ -219,7 +219,7 @@ scientific extrapolation.
 | Complete solar/regenerative fuel-cell system | 10–30+ kg/kW with present arrays; lower only with explicit advanced-array assumptions | 45–60% round trip | Shared engineering |
 | Current/near-term space fission | 100–250 kg/kW | 20–30% | Remote/autonomous control, maintenance staff |
 | Aggressive mature multimegawatt fission | 5–20 kg/kW | 25–45% | Shared engineering |
-| First-generation fusion power | no defensible value; use ≥ mature fission as a placeholder | 30–50% for thermal conversion | High maintenance, automated plasma control |
+| First-generation fusion power | no validated general value; ≥ mature fission is an optional conservative placeholder, not a physical bound | 30–50% for thermal conversion | High maintenance, automated plasma control |
 | Charged-particle direct fusion | concept-only; 1–10 kg/kW as a balance placeholder | 50–70% conditional | Shared engineering |
 | Antimatter | no research-grounded envelope | no research-grounded envelope | Infrastructure and containment dominate |
 

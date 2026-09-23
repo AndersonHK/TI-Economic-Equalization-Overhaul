@@ -57,7 +57,7 @@ not be transferred to a NERVA reactor by merely relabeling the denominator.
 
 ### Phoebus-2A: the direct four-gigawatt answer
 
-NASA's ROVER/NERVA achievement summary gives Phoebus-2A as `4,100 MWth` and
+NASA's 1988 nuclear-propulsion review gives Phoebus-2A as `4,100 MWth` and
 reports a minimum reactor specific mass of `2.3 kg/MWth`. The Los Alamos
 program review independently records approximately the same `4,080 MWth`
 test result and specific mass. This was ground demonstrated, not merely a
@@ -69,9 +69,14 @@ paper reactor.
 | Minimum reactor specific mass | `2.3 t/GWth` |
 | Implied reactor mass | `9.4 t` |
 
-Sources: [NASA ROVER/NERVA Program Achievements](https://ntrs.nasa.gov/api/citations/20060051740/downloads/20060051740.pdf),
+Sources: [NASA TM-101354, Nuclear Propulsion—A Vital Technology for the Exploration of Mars and the Planets](https://ntrs.nasa.gov/api/citations/19890001573/downloads/19890001573.pdf),
 [Los Alamos ROVER/NERVA program review](https://digital.library.unt.edu/ark:/67531/metadc1068425/m2/1/high_res_d/5335395.pdf), and
 [NASA's nuclear-rocket ground-test history](https://ntrs.nasa.gov/search.jsp?R=20140008771).
+
+Citation corrected 2026-09-11: the previously linked NTRS 20060051740 is
+*Turbopump Design and Analysis Approach for Nuclear Thermal Rockets*, not
+*ROVER/NERVA Program Achievements*. TM-101354 independently supports the
+4.1 GWth and 2.3 kg/MWth figures used here.
 
 `2.3 t/GWth` should be treated as a large-reactor lower anchor. It should not
 be extended linearly to a `0.28 GW` engine: critical mass, reflector,
@@ -218,4 +223,3 @@ radiator, and electrical-specific-mass path. If the nozzle and feed system
 remain represented by a zero-mass drive template, they must be included in the
 thermal plant boundary; otherwise they can move to drive mass and the reactor
 coefficient can approach the lower `2.3-4 t/GWth` band.
-
