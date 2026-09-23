@@ -130,6 +130,29 @@ $fleetsControllerType = $gameAssembly.GetType(
     'PavonisInteractive.TerraInvicta.FleetsScreenController', $true)
 $setAltHull = $fleetsControllerType.GetMethod(
     'SetAltHull', [Reflection.BindingFlags]'Public,Instance')
+$massBreakdown = $fleetsControllerType.GetMethod(
+    'DesignerMassBreakdown', [Reflection.BindingFlags]'Public,Instance')
+$massTooltipPatch = $modAssembly.GetType(
+    'TIEconomyMod.Patches.HullVariantMassTooltipPatch', $true)
+$massHelper = $modAssembly.GetType(
+    'TIEconomyMod.Patches.HullVariantEmptyMassFeature', $true).GetMethod(
+        'EmptyHullMass_tons', [Reflection.BindingFlags]'Public,Static')
+$massReaderArguments = [object[]]@($massBreakdown, $null)
+$massOriginal = $instructionReader[0].PSObject.BaseObject.Invoke(
+    $null, $massReaderArguments)
+$massArguments = [object[]]::new(1)
+$massArguments[0] = $massOriginal
+$massPatched = @($massTooltipPatch.GetMethod('Transpiler').Invoke(
+    $null, $massArguments))
+$variantReads = @($massPatched | Where-Object { $_.operand -eq $massHelper })
+$rawHullReads = @($massPatched | Where-Object {
+    $_.operand -is [Reflection.MethodInfo] -and
+    $_.operand.Name -eq 'get_hullTemplate'
+})
+if ($massPatched.Count -ne @($massOriginal).Count -or
+    $variantReads.Count -ne 2 -or $rawHullReads.Count -ne 0) {
+    throw 'Wet-mass tooltip must use selected-appearance hull mass for both tons and percentage.'
+}
 $onCycleAltHull = $fleetsControllerType.GetMethod(
     'OnCycleAltHull', [Reflection.BindingFlags]'Public,Instance')
 if ($null -eq $setAltHull -or $null -eq $onCycleAltHull) {
@@ -737,6 +760,7 @@ $harmony = [Activator]::CreateInstance(
 # PowerShell/CoreCLR harness cannot detour that Unity method because Harmony's
 # generated wrapper trips the host's ECall restriction. Unity Mono patches it.
 $patchTypeNames = @(
+    'TIEconomyMod.Patches.HullVariantMassTooltipPatch',
     'TIEconomyMod.Patches.GunPowerTemplateInitializationPatch',
     'TIEconomyMod.Patches.ShipDesignPerformanceSaveLoadCachePatch',
     'TIEconomyMod.Patches.ShipPowerSaveLoadCachePatch',

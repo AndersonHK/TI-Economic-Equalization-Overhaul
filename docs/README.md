@@ -33,6 +33,9 @@ when prose and runtime behavior disagree.
 - [Terra Invicta 1.0.53 compatibility](compatibility/ti-1.0.53-compatibility.md):
   diagnosis of the all-patches-disabled regression, API migration plan,
   automatic acceptance criteria, and focused manual-test checklist.
+- [Terra Invicta 1.0.53b audit](compatibility/ti-1.0.53b-audit-and-mass-tooltip.md):
+  binary changes, scenario-value overlap, verification results, and the
+  selected-art hull mass tooltip correction.
 - [TI 1.0.53 hab-upgrade affordability](compatibility/ti-1.0.53-hab-upgrade-affordability.md):
   shared single/bulk upgrade-cost selection, guarded UI correction, and manual
   acceptance checks for mixed stockpile/Boost construction.

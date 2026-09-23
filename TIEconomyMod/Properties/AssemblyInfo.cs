@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("TIEconomyMod")]
-[assembly: AssemblyDescription("Configurable TI 1.0.53 economic and national-priority balance overhaul")]
+[assembly: AssemblyDescription("Configurable TI 1.0.53b economic and national-priority balance overhaul")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("TIEconomyMod")]

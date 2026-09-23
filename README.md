@@ -1,6 +1,6 @@
 # TI Economic Equalization Overhaul
 
-Current release: **0.9.7**, targeting **Terra Invicta 1.0.53**.
+Current release: **0.9.7**, validated against **Terra Invicta 1.0.53b**.
 
 The mod replaces opaque, border-sensitive scaling with economic units that
 remain understandable across countries, armies, habs, and spacecraft. It aims
@@ -234,11 +234,16 @@ defaults.
 
 ## Compatibility and save behavior
 
-Version 0.9.7 is built and guarded against the installed Terra Invicta 1.0.53
+Version 0.9.7 is built and guarded against the installed Terra Invicta 1.0.53b
 assemblies. Transpilers validate their expected IL shapes, and verification
 dynamically binds the changed claim-harmonization contract and other focused
 patch families so a missing target or changed patch parameter fails before
 deployment.
+
+The [53B compatibility audit](docs/compatibility/ti-1.0.53b-audit-and-mass-tooltip.md)
+records the changed game binary, scenario-value overlap review, and selected-art
+hull mass tooltip correction. ModInfo's numeric `GameVersion` and the package
+filename remain `1.0.53`; the `b` suffix identifies the reviewed hotfix release.
 
 The manufacturing source registry, cache generations, routes, quotes, and
 per-site survey state are runtime-derived from existing game data. They add no
@@ -270,7 +275,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\verify.ps1
 Verification rebuilds with warnings as errors and checks:
 
 - dependency-free formula assertions;
-- every guarded TI 1.0.53 IL patch point and focused dynamic Harmony
+- every guarded TI 1.0.53b IL patch point and focused dynamic Harmony
   application, including the changed claim-harmonization contract;
 - all 110 hab-module overrides and logistics localization;
 - construction, founding, probe, AI-priority, lazy-cache, and compact cost-label patches;

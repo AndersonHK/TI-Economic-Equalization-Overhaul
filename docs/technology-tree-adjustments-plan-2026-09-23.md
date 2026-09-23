@@ -1,7 +1,9 @@
 # Technology-tree adjustments: review plan
 
 Status: implemented and deployed on 2026-09-23 after approval of the
-interactive preview's "Requested changes" draft. Manual in-game checks pending.
+interactive preview's "Requested changes" draft. After the merge correction,
+the user confirmed on 2026-09-23 that everything works as intended. The pending
+test notes below describe the state at their original deployment checkpoints.
 
 ## Approved implementation scope
 

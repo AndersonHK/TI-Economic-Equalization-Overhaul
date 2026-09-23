@@ -1326,4 +1326,4 @@ Write-Host ('Verification wall time: {0:N2}s with {1} validation workers.' -f
     $ValidationThreads)
 Write-Host "DLL SHA256: $assemblyHash"
 Write-Host "Artifact: $zipPath"
-Write-Host 'Compatibility target: TI 1.0.53 installed assemblies, guarded IL patch points, and focused Harmony binding.'
+Write-Host 'Compatibility target: TI 1.0.53b installed assemblies, guarded IL patch points, and focused Harmony binding (numeric GameVersion 1.0.53).'

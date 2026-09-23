@@ -13,6 +13,64 @@ using System.Text.RegularExpressions;
 
 namespace TIEconomyMod.Patches
 {
+    [HarmonyPatch(typeof(FleetsScreenController), "DesignerMassBreakdown")]
+    public static class HullVariantMassTooltipPatch
+    {
+        [HarmonyTranspiler]
+        public static IEnumerable<CodeInstruction> Transpiler(
+            IEnumerable<CodeInstruction> instructions)
+        {
+            List<CodeInstruction> patched = new List<CodeInstruction>(instructions);
+            var hullGetter = AccessTools.PropertyGetter(
+                typeof(TISpaceShipTemplate), "hullTemplate");
+            var baseMass = AccessTools.Method(
+                typeof(TIShipPartTemplate), "buildMass_tons");
+            var variantMass = AccessTools.Method(
+                typeof(HullVariantEmptyMassFeature), "EmptyHullMass_tons");
+            int replacements = 0;
+            for (int i = 1; i + 6 < patched.Count; i++)
+            {
+                if (!patched[i].Calls(hullGetter))
+                {
+                    continue;
+                }
+
+                // Keep the ship argument; replace only the native hull mass
+                // expression in the tons and percentage entries. Nops retain
+                // branch labels and exception boundaries on the original IL.
+                bool expected = patched[i - 1].opcode == OpCodes.Ldarg_1 &&
+                    patched[i + 5].opcode == OpCodes.Ldc_I4_0 &&
+                    patched[i + 6].Calls(baseMass);
+                for (int offset = 1; offset <= 4; offset++)
+                {
+                    expected &= patched[i + offset].opcode == OpCodes.Ldc_R4 &&
+                        Equals(patched[i + offset].operand, 0f);
+                }
+                if (!expected)
+                {
+                    throw new InvalidOperationException(
+                        "Unexpected hull mass expression in DesignerMassBreakdown.");
+                }
+
+                for (int offset = 0; offset <= 5; offset++)
+                {
+                    patched[i + offset].opcode = OpCodes.Nop;
+                    patched[i + offset].operand = null;
+                }
+                patched[i + 6].opcode = OpCodes.Call;
+                patched[i + 6].operand = variantMass;
+                replacements++;
+            }
+            if (replacements != 2)
+            {
+                throw new InvalidOperationException(
+                    "Expected two hull mass reads in DesignerMassBreakdown, found " +
+                    replacements + ".");
+            }
+            return patched;
+        }
+    }
+
     internal static class ShipPowerFeature
     {
         public static bool Enabled
