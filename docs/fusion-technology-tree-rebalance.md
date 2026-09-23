@@ -2,14 +2,16 @@
 
 Status: implementation authority for the late-game fusion prerequisite graph.
 
-Game-data baseline: Terra Invicta 1.0.51
+Original game-data baseline: Terra Invicta 1.0.51; entry-cost update approved
+2026-09-23 against the installed 1.0.53 target.
 
 ## Decision
 
 `DeuteriumTritiumFusion` moves before `NuclearFusioninSpace`, whose localized
-name is Nuclear Fusion Methodologies. It retains its installed authored research
-cost of 50,000, its Energy category, its Space Development AI role, and both of
-its permanent global effects. It becomes an AI-critical technology and directly
+name is Nuclear Fusion Methodologies. Its authored research cost is 40,000,
+matching High Temperature Superconductors and reduced from the installed 50,000.
+It retains its Energy category, Space Development AI role, and both permanent
+global effects. It is an AI-critical technology and directly
 requires the three technologies that previously unlocked Nuclear Fusion
 Methodologies:
 
@@ -17,8 +19,8 @@ Methodologies:
 - `NuclearFissioninSpace`; and
 - `AdvancedHeatManagementConcepts`.
 
-`NuclearFusioninSpace` retains its installed authored cost of 50,000 and its
-global fusion-technology effect. Its sole prerequisite becomes
+`NuclearFusioninSpace` also costs 40,000, reduced from the installed 50,000,
+and retains its global fusion-technology effect. Its sole prerequisite is
 `DeuteriumTritiumFusion`. This establishes the sequence from a practical
 deuterium-tritium fuel cycle and tritium-breeding blanket to the systematic
 development of multiple fusion-confinement architectures.
@@ -43,9 +45,9 @@ auxiliary prerequisites. The result therefore keeps Deuterium-Tritium Fusion
 and Nuclear Fusion Methodologies transitively mandatory, while preserving
 Superalloys as D-D Fusion's direct material-science gate.
 
-EEO's global 2.0 research-cost multiplier produces displayed costs of 100,000
-for Deuterium-Tritium Fusion, 100,000 for Nuclear Fusion Methodologies, and
-150,000 for Deuterium-Deuterium Fusion.
+EEO's global 2.2 research-cost multiplier produces displayed costs of 88,000
+for Deuterium-Tritium Fusion, 88,000 for Nuclear Fusion Methodologies, and
+165,000 for Deuterium-Deuterium Fusion.
 
 `DeuteriumHelium3Fusion` remains downstream of Deuterium-Deuterium Fusion,
 High-Temperature Superconductors, and Carbon Nanotubes. As part of the military
@@ -80,13 +82,19 @@ installed confinement-method technology or technologies.
 ## Technology-tree layout
 
 The game derives node placement from prerequisites and costs; technology
-templates do not expose authored screen coordinates. The intended full-tree
-result is:
+templates do not expose authored screen coordinates. On 2026-09-23 the user
+approved the preview's "Requested changes" draft. Its technology-only model
+predicts D-T in column 8 with Coilguns, Methodologies in column 9, D-D in 11,
+D-He3 in 12, Aneutronic in 13, and Proton-Proton in 14. Columns are counted
+from one, including the starter column. Future Techs occupy column 15 in that
+model. Magnetic Plasma Confinement remains in column 9; Clean Energy and
+Terawatt Fusion both move to column 13. D-D retains all five method requirements
+and Superalloys.
 
-- Deuterium-Tritium Fusion moves one column earlier and appears above Coilguns;
-- Nuclear Fusion Methodologies follows it in the next column; and
-- Deuterium-Deuterium Fusion remains downstream of all five method branches and
-  directly requires Superalloys.
+This implements the approved prices without an additional UI patch or broader
+fusion discounts. The game's separate Future Tech bookkeeping issue remains
+documented in [the detailed layout report](technology-tree/column-placement-analysis-2026-09-23.md).
+The [preview and snapshots](technology-tree/README.md) support further iteration.
 
 Exact vertical placement and connection-line readability require manual
 in-game verification because they are produced by the runtime tree-layout
@@ -94,8 +102,16 @@ algorithm.
 
 ## Verification contract
 
-Automated verification pins the installed 1.0.51 costs, effects, AI metadata,
-and prerequisite baselines before checking the three exact overrides. It also
+`ModInfo.json` lists `TITechTemplate.json` in `TemplatesToReplaceArrays`.
+This replaces each explicitly supplied array property while preserving omitted
+fields and other technology records. Default index-wise merging would retain
+unwanted trailing prerequisites/effects and would not clear an empty array.
+`tools/validate-technology-template-merge.ps1` exercises the installed game's
+own loader and merger to check the effective result, including preserved fields.
+
+Automated verification pins the installed costs, effects, AI metadata,
+and prerequisite baselines before checking the exact overrides and the 40,000
+High Temperature Superconductors price match for both entry technologies. It also
 checks that every referenced method exists and that the resulting technology
 graph is acyclic. Manual testing must confirm the full-tree placement, selected
 technology Requirements and Unlocks panels, path-cost display, and existing-save

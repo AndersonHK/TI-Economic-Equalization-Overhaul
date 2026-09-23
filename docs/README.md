@@ -22,6 +22,9 @@ when prose and runtime behavior disagree.
 - [Fusion technology tree rebalance](fusion-technology-tree-rebalance.md):
   authoritative D-T Fusion, Nuclear Fusion Methodologies, and D-D Fusion
   prerequisite graph, localization, costs, and manual tree-layout target.
+- [Technology-tree preview and report](technology-tree/README.md): interactive
+  price/prerequisite preview, before/after snapshots, native column-placement
+  analysis, and the approved fusion entry discounts and 2026 Neural Networks grant.
 - [Current implementation matrix](current-implementation-matrix.xlsx):
   patch-by-patch comparison with Terra Invicta 1.0.53 and the maintained-main
   baseline.

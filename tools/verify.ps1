@@ -332,6 +332,11 @@ $darkSkiesTemplates = Join-Path $gameRoot 'DLC_Content\DarkSkies\2003_Scenario\T
 $nodeExecutable = (Get-Command node -ErrorAction Stop).Source
 $dataValidationJobs = @(
     New-ValidationJob 'Formula assertions' $testExecutable @($weights)
+    New-ValidationJob 'Technology template merge' $powershellExecutable @(
+        '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File',
+        (Join-Path $scriptDirectory 'validate-technology-template-merge.ps1'),
+        '-TargetManagedDir', $resolvedManagedDir,
+        '-RepositoryRoot', $repositoryRoot)
     New-ValidationJob 'National harmonization data' $powershellExecutable @(
         '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File',
         (Join-Path $scriptDirectory 'validate-national-harmonization.ps1'),
@@ -639,8 +644,8 @@ if ($null -eq $start2026 -or
     ($start2026.startingTechs -join ';') -ne
         'DeepSystemSkywatch;WeAreNotAlone;MissiontoMars' -or
     ($start2026.globalTechsCompleted -join ';') -ne
-        'MissionToSpace;AdvancedChemicalRocketry;SpaceTourism;DeepSpacePropulsionConcepts;AugmentedReality;Skywatch;OutpostHabs;MissiontotheMoon') {
-    throw 'The 2026 start must complete Mission to the Moon and replace it with Mission to Mars.'
+        'MissionToSpace;AdvancedChemicalRocketry;SpaceTourism;DeepSpacePropulsionConcepts;AugmentedReality;Skywatch;OutpostHabs;MissiontotheMoon;AdvancedNeuralNetworks') {
+    throw 'The 2026 start must complete Mission to the Moon and Advanced Neural Networks, retaining Mission to Mars as active research.'
 }
 foreach ($scenario in @($modernStart, $start2026)) {
     $duplicateStartingTechnologies = @(
@@ -699,6 +704,7 @@ $mineEffectByTechnology = [ordered]@{
 $expectedOverrideIds = @($expectedTechnologyIds) +
     @($mineEffectByTechnology.Keys) +
     @(
+        'AdvancedNeuralNetworks',
         'AugmentedReality',
         'CarbonNanotubes',
         'Superalloys',
@@ -711,7 +717,37 @@ if ($technologyCostOverrides.Count -ne $expectedOverrideIds.Count -or
     @($technologyCostOverrides | Where-Object {
         $_.dataName -notin $expectedOverrideIds
     }).Count -ne 0) {
-    throw 'Technology overrides must contain the three doubled starts, eight retired free-mine effect edits, the four Military-ceiling additions, and the three approved fusion-tree edits.'
+    throw 'Technology overrides must contain the three doubled starts, eight retired free-mine effect edits, four Military-ceiling additions, three fusion-tree edits, and Advanced Neural Networks.'
+}
+$vanillaNeuralNetworks = @($vanillaTechnologies | Where-Object {
+    $_.dataName -eq 'AdvancedNeuralNetworks'
+})
+$neuralNetworksOverride = @($technologyCostOverrides | Where-Object {
+    $_.dataName -eq 'AdvancedNeuralNetworks'
+})
+$vanillaMissionToMars = @($vanillaTechnologies | Where-Object {
+    $_.dataName -eq 'MissiontoMars'
+})
+$vanillaHighTemperatureSuperconductors = @($vanillaTechnologies | Where-Object {
+    $_.dataName -eq 'HighTemperatureSuperconductors'
+})
+if ($vanillaMissionToMars.Count -ne 1 -or
+    [double]$vanillaMissionToMars[0].researchCost -ne 2500 -or
+    $vanillaHighTemperatureSuperconductors.Count -ne 1 -or
+    [double]$vanillaHighTemperatureSuperconductors[0].researchCost -ne 40000) {
+    throw 'The technology-price references must retain Mission to Mars at 2,500 and High Temperature Superconductors at 40,000.'
+}
+if ($vanillaNeuralNetworks.Count -ne 1 -or
+    [double]$vanillaNeuralNetworks[0].researchCost -ne 5000 -or
+    ($vanillaNeuralNetworks[0].prereqs -join ';') -ne 'PhotonicComputing' -or
+    $neuralNetworksOverride.Count -ne 1 -or
+    [double]$neuralNetworksOverride[0].researchCost -ne
+        [double]$vanillaMissionToMars[0].researchCost -or
+    (($neuralNetworksOverride[0].PSObject.Properties.Name | Sort-Object) -join ';') -ne
+        'dataName;prereqs;researchCost' -or
+    $neuralNetworksOverride[0].prereqs -isnot [Array] -or
+    @($neuralNetworksOverride[0].prereqs).Count -ne 0) {
+    throw 'Advanced Neural Networks must match Mission to Mars at 2,500 and explicitly remove its Photonic Computing prerequisite, preserving all other fields.'
 }
 $vanillaAugmentedReality = @($vanillaTechnologies | Where-Object {
     $_.dataName -eq 'AugmentedReality'
@@ -841,11 +877,11 @@ if ($vanillaDeuteriumTritiumFusion.Count -ne 1 -or
     -not [bool]$deuteriumTritiumFusionOverride[0].AI_criticalTech -or
     ($deuteriumTritiumFusionOverride[0].prereqs -join ';') -ne
         'AdvancedSuperconductors;NuclearFissioninSpace;AdvancedHeatManagementConcepts' -or
-    $deuteriumTritiumFusionOverride[0].PSObject.Properties.Name -contains
-        'researchCost' -or
+    [double]$deuteriumTritiumFusionOverride[0].researchCost -ne
+        [double]$vanillaHighTemperatureSuperconductors[0].researchCost -or
     $deuteriumTritiumFusionOverride[0].PSObject.Properties.Name -contains
         'effects') {
-    throw 'D-T Fusion must retain its installed 50,000 cost and effects, become AI-critical, and inherit the three former Fusion Methodologies prerequisites.'
+    throw 'D-T Fusion must match High Temperature Superconductors at 40,000, preserve its effects, become AI-critical, and inherit the three former Fusion Methodologies prerequisites.'
 }
 if ($vanillaFusionMethodologies.Count -ne 1 -or
     [double]$vanillaFusionMethodologies[0].researchCost -ne 50000 -or
@@ -856,11 +892,11 @@ if ($vanillaFusionMethodologies.Count -ne 1 -or
     $fusionMethodologiesOverride.Count -ne 1 -or
     ($fusionMethodologiesOverride[0].prereqs -join ';') -ne
         'DeuteriumTritiumFusion' -or
-    $fusionMethodologiesOverride[0].PSObject.Properties.Name -contains
-        'researchCost' -or
+    [double]$fusionMethodologiesOverride[0].researchCost -ne
+        [double]$vanillaHighTemperatureSuperconductors[0].researchCost -or
     $fusionMethodologiesOverride[0].PSObject.Properties.Name -contains
         'effects') {
-    throw 'Nuclear Fusion Methodologies must retain its installed 50,000 cost and fusion effect and require only D-T Fusion.'
+    throw 'Nuclear Fusion Methodologies must match High Temperature Superconductors at 40,000, preserve its fusion effect, and require only D-T Fusion.'
 }
 if ($vanillaDeuteriumDeuteriumFusion.Count -ne 1 -or
     [double]$vanillaDeuteriumDeuteriumFusion[0].researchCost -ne 75000 -or

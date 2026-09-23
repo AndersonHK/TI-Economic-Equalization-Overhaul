@@ -12,6 +12,11 @@
     "researchCost": 1000
   },
   {
+    "dataName": "AdvancedNeuralNetworks",
+    "researchCost": 2500,
+    "prereqs": []
+  },
+  {
     "dataName": "AugmentedReality",
     "researchCost": 2000,
     "effects": [
@@ -32,6 +37,7 @@
   },
   {
     "dataName": "DeuteriumTritiumFusion",
+    "researchCost": 40000,
     "AI_criticalTech": true,
     "prereqs": [
       "AdvancedSuperconductors",
@@ -41,6 +47,7 @@
   },
   {
     "dataName": "NuclearFusioninSpace",
+    "researchCost": 40000,
     "prereqs": [
       "DeuteriumTritiumFusion"
     ]

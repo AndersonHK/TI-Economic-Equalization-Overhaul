@@ -42,8 +42,8 @@ the in-game cost 4,400, still below `SpaceResearch` at 5,500. Both modern starts
 already complete `AugmentedReality`, so the new price primarily affects the 2003
 and custom research paths rather than their opening state.
 
-The 2026 scenario additionally completes `Skywatch`, `OutpostHabs`, and
-`MissiontotheMoon`. It continues the first lane with `DeepSystemSkywatch` and
+The 2026 scenario additionally completes `Skywatch`, `OutpostHabs`,
+`MissiontotheMoon`, and `AdvancedNeuralNetworks`. It continues the first lane with `DeepSystemSkywatch` and
 replaces the completed lunar mission slot with `MissiontoMars`.
 
 `DeepSystemSkywatch` is the direct 1,000-point successor to `Skywatch`. It
@@ -67,7 +67,27 @@ The intended resolved starts are:
 | Scenario | Active global research | Completed global technologies |
 |---|---|---|
 | 2022 | `Skywatch`; `WeAreNotAlone`; `OutpostHabs` | `MissionToSpace`; `AdvancedChemicalRocketry`; `SpaceTourism`; `DeepSpacePropulsionConcepts`; `AugmentedReality` |
-| 2026 | `DeepSystemSkywatch`; `WeAreNotAlone`; `MissiontoMars` | `MissionToSpace`; `AdvancedChemicalRocketry`; `SpaceTourism`; `DeepSpacePropulsionConcepts`; `AugmentedReality`; `Skywatch`; `OutpostHabs`; `MissiontotheMoon` |
+| 2026 | `DeepSystemSkywatch`; `WeAreNotAlone`; `MissiontoMars` | `MissionToSpace`; `AdvancedChemicalRocketry`; `SpaceTourism`; `DeepSpacePropulsionConcepts`; `AugmentedReality`; `Skywatch`; `OutpostHabs`; `MissiontotheMoon`; `AdvancedNeuralNetworks` |
+
+## Advanced Neural Networks: approved 2026 grant
+
+The 2026-09-23 technology-tree review removes `PhotonicComputing` as a
+prerequisite of `AdvancedNeuralNetworks` and sets its authored cost to 2,500,
+matching `MissiontoMars`. At the shipped x2.2 multiplier, it displays 5,500.
+The definition changes apply in all scenarios, while automatic completion is
+granted only to new 2026 campaigns. The 2022 completion roster remains intact;
+existing saves do not receive a retroactive grant from this scenario edit.
+
+The technology file uses `TemplatesToReplaceArrays` in `ModInfo.json` so the
+empty prerequisite array actually clears Photonic Computing. This manifest
+setting was added after manual testing exposed the game's default index-wise
+merge behavior. The native-merger validator confirms both the resolved
+technology and the resolved 2026 completion grant, not just their override JSON.
+
+Completing the technology does not automatically complete its dependent
+technologies or projects. Their other requirements and normal project unlock
+rules still apply. See the [approved plan](technology-tree-adjustments-plan-2026-09-23.md)
+and [layout analysis](technology-tree/column-placement-analysis-2026-09-23.md).
 
 ## 2026 active-research replacements
 
@@ -161,14 +181,15 @@ roll and 300-point faction-research cost.
 ## Post-implementation review of other 2022–2026 changes
 
 The installed 1.0.51 technology graph contains several real-world developments
-worth tracking, but the audit found no additional clean 2026 starting-roster
-grant. In most cases the historical milestone is narrower than the game
+worth tracking. The original audit deferred additional grants; the 2026-09-23
+review subsequently approved Advanced Neural Networks with the prerequisite
+change described above. In most other cases the historical milestone is narrower than the game
 technology, or the game's prerequisite chain assumes a different development
 path.
 
 | Technology or branch | 2022–2026 milestone | Starting-roster finding |
 |---|---|---|
-| `AdvancedNeuralNetworks` | Large multimodal neural networks demonstrated broad text, image, and professional-task performance beginning in 2023. | Strongest 2026-only candidate by description. Do not grant yet: the game requires `PhotonicComputing`, while practical modern AI remains electronic rather than dependent on a completed all-photonic computing transition. This needs a prerequisite/design decision, not a roster-only edit. |
+| `AdvancedNeuralNetworks` | Large multimodal neural networks demonstrated broad text, image, and professional-task performance beginning in 2023. | Approved for the 2026 start on 2026-09-23 together with removal of the Photonic Computing prerequisite and a 2,500 base research cost. |
 | `Biotechnology` | The FDA approved Casgevy in December 2023, the first approved CRISPR/Cas9 therapy. | Important 2026 milestone, but the generic Biotechnology field was already mature in 2022. Treating this as a completed technology would be more defensible for both starts than for 2026 alone. |
 | `AugmentedReality` | HoloLens shipped in 2016, HoloLens 2 shipped in 2019, and the Army tested the HoloLens-derived IVAS system before and during 2022. Later consumer systems broadened adoption. | Completed in both starts: the game's industrial, communications, and military sensory-overlay threshold had already been crossed by 2022. |
 | `OutpostHabs` | Artemis II completed its crewed lunar flight in April 2026 after several years of robotic lunar landing, surface-operations, and resource-survey missions. | Completed only in 2026 as a global architecture. Outpost Core is scenario-completed in both modern starts as practical small-outpost engineering; Mission to the Moon is completed in 2026 and Mission to Mars becomes active. |

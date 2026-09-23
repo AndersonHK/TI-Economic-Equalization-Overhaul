@@ -1,0 +1,2764 @@
+{
+  "date": "2026-09-23",
+  "gameVersionFromModManifest": "1.0.53",
+  "assemblySha256": "4A4B9AAE4154E444E9727204205D2D42AE8ED9E1C5F92CDC1280074A259D8350",
+  "scope": "Offline cold technology-only tree model. JSON order used for template enumeration. Future parent calculated with initial lastNode zero; UI has persistent lastNode across modes. No Unity rendering or live node inspection.",
+  "columnNumbering": "one-based, including the starter column",
+  "templateCount": 149,
+  "focus": [
+    {
+      "dataName": "DeuteriumTritiumFusion",
+      "prereqs": [
+        "AdvancedSuperconductors",
+        "NuclearFissioninSpace",
+        "AdvancedHeatManagementConcepts"
+      ],
+      "current": {
+        "baseCost": 50000,
+        "seedColumn": 4,
+        "afterCostColumn": 9,
+        "finalColumn": 9
+      },
+      "requested_edits": {
+        "baseCost": 40000,
+        "seedColumn": 4,
+        "afterCostColumn": 8,
+        "finalColumn": 8
+      },
+      "optional_discount_schedule": {
+        "baseCost": 40000,
+        "seedColumn": 4,
+        "afterCostColumn": 8,
+        "finalColumn": 8
+      }
+    },
+    {
+      "dataName": "NuclearFusioninSpace",
+      "prereqs": [
+        "DeuteriumTritiumFusion"
+      ],
+      "current": {
+        "baseCost": 50000,
+        "seedColumn": 5,
+        "afterCostColumn": 9,
+        "finalColumn": 10
+      },
+      "requested_edits": {
+        "baseCost": 40000,
+        "seedColumn": 5,
+        "afterCostColumn": 8,
+        "finalColumn": 9
+      },
+      "optional_discount_schedule": {
+        "baseCost": 40000,
+        "seedColumn": 5,
+        "afterCostColumn": 8,
+        "finalColumn": 9
+      }
+    },
+    {
+      "dataName": "MagneticPlasmaConfinementTechniques",
+      "prereqs": [
+        "HighTemperatureSuperconductors",
+        "SuperconductingMagnets"
+      ],
+      "current": {
+        "baseCost": 35000,
+        "seedColumn": 5,
+        "afterCostColumn": 8,
+        "finalColumn": 9
+      },
+      "requested_edits": {
+        "baseCost": 35000,
+        "seedColumn": 5,
+        "afterCostColumn": 8,
+        "finalColumn": 9
+      },
+      "optional_discount_schedule": {
+        "baseCost": 30000,
+        "seedColumn": 5,
+        "afterCostColumn": 8,
+        "finalColumn": 9
+      }
+    },
+    {
+      "dataName": "ElectrostaticPlasmaConfinement",
+      "prereqs": [
+        "NuclearFusioninSpace",
+        "VacuumElectrostaticPrinciples"
+      ],
+      "current": {
+        "baseCost": 15000,
+        "seedColumn": 2,
+        "afterCostColumn": 7,
+        "finalColumn": 11
+      },
+      "requested_edits": {
+        "baseCost": 15000,
+        "seedColumn": 2,
+        "afterCostColumn": 7,
+        "finalColumn": 10
+      },
+      "optional_discount_schedule": {
+        "baseCost": 15000,
+        "seedColumn": 2,
+        "afterCostColumn": 7,
+        "finalColumn": 10
+      }
+    },
+    {
+      "dataName": "InertialPlasmaConfinementTechniques",
+      "prereqs": [
+        "ArcLasers",
+        "NuclearFusioninSpace",
+        "AdvancedAtomicManipulation"
+      ],
+      "current": {
+        "baseCost": 65000,
+        "seedColumn": 3,
+        "afterCostColumn": 10,
+        "finalColumn": 11
+      },
+      "requested_edits": {
+        "baseCost": 65000,
+        "seedColumn": 3,
+        "afterCostColumn": 10,
+        "finalColumn": 10
+      },
+      "optional_discount_schedule": {
+        "baseCost": 60000,
+        "seedColumn": 3,
+        "afterCostColumn": 9,
+        "finalColumn": 10
+      }
+    },
+    {
+      "dataName": "Tokamaks",
+      "prereqs": [
+        "MagneticPlasmaConfinementTechniques",
+        "NuclearFusioninSpace",
+        "AppliedArtificialIntelligence"
+      ],
+      "current": {
+        "baseCost": 25000,
+        "seedColumn": 6,
+        "afterCostColumn": 7,
+        "finalColumn": 11
+      },
+      "requested_edits": {
+        "baseCost": 25000,
+        "seedColumn": 6,
+        "afterCostColumn": 7,
+        "finalColumn": 10
+      },
+      "optional_discount_schedule": {
+        "baseCost": 25000,
+        "seedColumn": 6,
+        "afterCostColumn": 7,
+        "finalColumn": 10
+      }
+    },
+    {
+      "dataName": "ZPinchTechniques",
+      "prereqs": [
+        "MagneticPlasmaConfinementTechniques",
+        "NuclearFusioninSpace",
+        "Supercapacitors"
+      ],
+      "current": {
+        "baseCost": 50000,
+        "seedColumn": 6,
+        "afterCostColumn": 9,
+        "finalColumn": 11
+      },
+      "requested_edits": {
+        "baseCost": 50000,
+        "seedColumn": 6,
+        "afterCostColumn": 9,
+        "finalColumn": 10
+      },
+      "optional_discount_schedule": {
+        "baseCost": 40000,
+        "seedColumn": 6,
+        "afterCostColumn": 8,
+        "finalColumn": 10
+      }
+    },
+    {
+      "dataName": "DeuteriumDeuteriumFusion",
+      "prereqs": [
+        "MagneticPlasmaConfinementTechniques",
+        "ElectrostaticPlasmaConfinement",
+        "InertialPlasmaConfinementTechniques",
+        "Tokamaks",
+        "ZPinchTechniques",
+        "Superalloys"
+      ],
+      "current": {
+        "baseCost": 75000,
+        "seedColumn": 2,
+        "afterCostColumn": 10,
+        "finalColumn": 12
+      },
+      "requested_edits": {
+        "baseCost": 75000,
+        "seedColumn": 2,
+        "afterCostColumn": 10,
+        "finalColumn": 11
+      },
+      "optional_discount_schedule": {
+        "baseCost": 65000,
+        "seedColumn": 2,
+        "afterCostColumn": 9,
+        "finalColumn": 11
+      }
+    },
+    {
+      "dataName": "DeuteriumHelium3Fusion",
+      "prereqs": [
+        "DeuteriumDeuteriumFusion",
+        "HighTemperatureSuperconductors",
+        "CarbonNanotubes"
+      ],
+      "current": {
+        "baseCost": 75000,
+        "seedColumn": 3,
+        "afterCostColumn": 10,
+        "finalColumn": 13
+      },
+      "requested_edits": {
+        "baseCost": 75000,
+        "seedColumn": 3,
+        "afterCostColumn": 10,
+        "finalColumn": 12
+      },
+      "optional_discount_schedule": {
+        "baseCost": 65000,
+        "seedColumn": 3,
+        "afterCostColumn": 9,
+        "finalColumn": 12
+      }
+    },
+    {
+      "dataName": "AneutronicFusion",
+      "prereqs": [
+        "DeuteriumHelium3Fusion",
+        "AdvancedHydrogenContainment"
+      ],
+      "current": {
+        "baseCost": 75000,
+        "seedColumn": 4,
+        "afterCostColumn": 10,
+        "finalColumn": 14
+      },
+      "requested_edits": {
+        "baseCost": 75000,
+        "seedColumn": 4,
+        "afterCostColumn": 10,
+        "finalColumn": 13
+      },
+      "optional_discount_schedule": {
+        "baseCost": 65000,
+        "seedColumn": 4,
+        "afterCostColumn": 9,
+        "finalColumn": 13
+      }
+    },
+    {
+      "dataName": "ProtonProtonFusion",
+      "prereqs": [
+        "AneutronicFusion",
+        "Ultracapacitors"
+      ],
+      "current": {
+        "baseCost": 100000,
+        "seedColumn": 5,
+        "afterCostColumn": 10,
+        "finalColumn": 15
+      },
+      "requested_edits": {
+        "baseCost": 100000,
+        "seedColumn": 5,
+        "afterCostColumn": 10,
+        "finalColumn": 14
+      },
+      "optional_discount_schedule": {
+        "baseCost": 75000,
+        "seedColumn": 5,
+        "afterCostColumn": 10,
+        "finalColumn": 14
+      }
+    },
+    {
+      "dataName": "TerawattFusionReactors",
+      "prereqs": [
+        "DeuteriumHelium3Fusion",
+        "Ultracapacitors",
+        "Diamondoids"
+      ],
+      "current": {
+        "baseCost": 100000,
+        "seedColumn": 4,
+        "afterCostColumn": 10,
+        "finalColumn": 14
+      },
+      "requested_edits": {
+        "baseCost": 100000,
+        "seedColumn": 4,
+        "afterCostColumn": 10,
+        "finalColumn": 13
+      },
+      "optional_discount_schedule": {
+        "baseCost": 100000,
+        "seedColumn": 4,
+        "afterCostColumn": 10,
+        "finalColumn": 13
+      }
+    },
+    {
+      "dataName": "CleanEnergy",
+      "prereqs": [
+        "DeuteriumHelium3Fusion",
+        "ArrivalInternationalDevelopment"
+      ],
+      "current": {
+        "baseCost": 50000,
+        "seedColumn": 2,
+        "afterCostColumn": 9,
+        "finalColumn": 14
+      },
+      "requested_edits": {
+        "baseCost": 50000,
+        "seedColumn": 2,
+        "afterCostColumn": 9,
+        "finalColumn": 13
+      },
+      "optional_discount_schedule": {
+        "baseCost": 50000,
+        "seedColumn": 2,
+        "afterCostColumn": 9,
+        "finalColumn": 13
+      }
+    },
+    {
+      "dataName": "Coilguns",
+      "prereqs": [
+        "Railguns",
+        "Supercapacitors",
+        "SuperconductingMagnets"
+      ],
+      "current": {
+        "baseCost": 30000,
+        "seedColumn": 2,
+        "afterCostColumn": 8,
+        "finalColumn": 8
+      },
+      "requested_edits": {
+        "baseCost": 30000,
+        "seedColumn": 2,
+        "afterCostColumn": 8,
+        "finalColumn": 8
+      },
+      "optional_discount_schedule": {
+        "baseCost": 30000,
+        "seedColumn": 2,
+        "afterCostColumn": 8,
+        "finalColumn": 8
+      }
+    },
+    {
+      "dataName": "HighTemperatureSuperconductors",
+      "prereqs": [
+        "AdvancedSuperconductors",
+        "AdvancedAtomicManipulation",
+        "AdvancedHeatManagementConcepts"
+      ],
+      "current": {
+        "baseCost": 40000,
+        "seedColumn": 4,
+        "afterCostColumn": 8,
+        "finalColumn": 8
+      },
+      "requested_edits": {
+        "baseCost": 40000,
+        "seedColumn": 4,
+        "afterCostColumn": 8,
+        "finalColumn": 8
+      },
+      "optional_discount_schedule": {
+        "baseCost": 40000,
+        "seedColumn": 4,
+        "afterCostColumn": 8,
+        "finalColumn": 8
+      }
+    },
+    {
+      "dataName": "AdvancedNeuralNetworks",
+      "prereqs": [],
+      "current": {
+        "baseCost": 5000,
+        "seedColumn": 3,
+        "afterCostColumn": 5,
+        "finalColumn": 5
+      },
+      "requested_edits": {
+        "baseCost": 2500,
+        "seedColumn": 2,
+        "afterCostColumn": 4,
+        "finalColumn": 4
+      },
+      "optional_discount_schedule": {
+        "baseCost": 2500,
+        "seedColumn": 2,
+        "afterCostColumn": 4,
+        "finalColumn": 4
+      }
+    },
+    {
+      "dataName": "PhotonicComputing",
+      "prereqs": [],
+      "current": {
+        "baseCost": 1500,
+        "seedColumn": 2,
+        "afterCostColumn": 4,
+        "finalColumn": 4
+      },
+      "requested_edits": {
+        "baseCost": 1500,
+        "seedColumn": 2,
+        "afterCostColumn": 4,
+        "finalColumn": 4
+      },
+      "optional_discount_schedule": {
+        "baseCost": 1500,
+        "seedColumn": 2,
+        "afterCostColumn": 4,
+        "finalColumn": 4
+      }
+    },
+    {
+      "dataName": "MissiontoMars",
+      "prereqs": [
+        "OutpostHabs",
+        "Skywatch"
+      ],
+      "current": {
+        "baseCost": 2500,
+        "seedColumn": 3,
+        "afterCostColumn": 4,
+        "finalColumn": 4
+      },
+      "requested_edits": {
+        "baseCost": 2500,
+        "seedColumn": 3,
+        "afterCostColumn": 4,
+        "finalColumn": 4
+      },
+      "optional_discount_schedule": {
+        "baseCost": 2500,
+        "seedColumn": 3,
+        "afterCostColumn": 4,
+        "finalColumn": 4
+      }
+    }
+  ],
+  "allOrdinaryTechnologies": [
+    {
+      "dataName": "Accelerando",
+      "baseCost": 150000,
+      "currentColumn": 11,
+      "requestedEditsColumn": 11,
+      "optionalDiscountColumn": 11
+    },
+    {
+      "dataName": "AdAstra",
+      "baseCost": 5000,
+      "currentColumn": 5,
+      "requestedEditsColumn": 5,
+      "optionalDiscountColumn": 5
+    },
+    {
+      "dataName": "AdministrationAlgorithms",
+      "baseCost": 50000,
+      "currentColumn": 10,
+      "requestedEditsColumn": 10,
+      "optionalDiscountColumn": 10
+    },
+    {
+      "dataName": "AdvancedAtomicManipulation",
+      "baseCost": 10000,
+      "currentColumn": 6,
+      "requestedEditsColumn": 6,
+      "optionalDiscountColumn": 6
+    },
+    {
+      "dataName": "AdvancedCarbonManipulation",
+      "baseCost": 1000,
+      "currentColumn": 2,
+      "requestedEditsColumn": 2,
+      "optionalDiscountColumn": 2
+    },
+    {
+      "dataName": "AdvancedChemicalRocketry",
+      "baseCost": 1000,
+      "currentColumn": 2,
+      "requestedEditsColumn": 2,
+      "optionalDiscountColumn": 2
+    },
+    {
+      "dataName": "AdvancedFissionSystems",
+      "baseCost": 25000,
+      "currentColumn": 8,
+      "requestedEditsColumn": 8,
+      "optionalDiscountColumn": 8
+    },
+    {
+      "dataName": "AdvancedHeatManagementConcepts",
+      "baseCost": 2500,
+      "currentColumn": 4,
+      "requestedEditsColumn": 4,
+      "optionalDiscountColumn": 4
+    },
+    {
+      "dataName": "AdvancedHydrogenContainment",
+      "baseCost": 20000,
+      "currentColumn": 8,
+      "requestedEditsColumn": 8,
+      "optionalDiscountColumn": 8
+    },
+    {
+      "dataName": "AdvancedMagnetics",
+      "baseCost": 1000,
+      "currentColumn": 2,
+      "requestedEditsColumn": 2,
+      "optionalDiscountColumn": 2
+    },
+    {
+      "dataName": "AdvancedMissileWarfareDoctrine",
+      "baseCost": 30000,
+      "currentColumn": 8,
+      "requestedEditsColumn": 8,
+      "optionalDiscountColumn": 8
+    },
+    {
+      "dataName": "AdvancedNeuralNetworks",
+      "baseCost": 5000,
+      "currentColumn": 5,
+      "requestedEditsColumn": 4,
+      "optionalDiscountColumn": 4
+    },
+    {
+      "dataName": "AdvancedSuperconductors",
+      "baseCost": 3500,
+      "currentColumn": 5,
+      "requestedEditsColumn": 5,
+      "optionalDiscountColumn": 5
+    },
+    {
+      "dataName": "AntimatterContainment",
+      "baseCost": 10000,
+      "currentColumn": 9,
+      "requestedEditsColumn": 9,
+      "optionalDiscountColumn": 9
+    },
+    {
+      "dataName": "AntimatterMassProduction",
+      "baseCost": 125000,
+      "currentColumn": 11,
+      "requestedEditsColumn": 11,
+      "optionalDiscountColumn": 11
+    },
+    {
+      "dataName": "AntimatterPropulsion",
+      "baseCost": 100000,
+      "currentColumn": 12,
+      "requestedEditsColumn": 12,
+      "optionalDiscountColumn": 12
+    },
+    {
+      "dataName": "AntimatterWeaponry",
+      "baseCost": 35000,
+      "currentColumn": 10,
+      "requestedEditsColumn": 10,
+      "optionalDiscountColumn": 10
+    },
+    {
+      "dataName": "AppliedArtificialIntelligence",
+      "baseCost": 25000,
+      "currentColumn": 8,
+      "requestedEditsColumn": 8,
+      "optionalDiscountColumn": 8
+    },
+    {
+      "dataName": "ArcLasers",
+      "baseCost": 25000,
+      "currentColumn": 7,
+      "requestedEditsColumn": 7,
+      "optionalDiscountColumn": 7
+    },
+    {
+      "dataName": "ArrivalCulture",
+      "baseCost": 20000,
+      "currentColumn": 9,
+      "requestedEditsColumn": 9,
+      "optionalDiscountColumn": 9
+    },
+    {
+      "dataName": "ArrivalDomesticPolitics",
+      "baseCost": 2000,
+      "currentColumn": 4,
+      "requestedEditsColumn": 4,
+      "optionalDiscountColumn": 4
+    },
+    {
+      "dataName": "ArrivalEconomics",
+      "baseCost": 2500,
+      "currentColumn": 4,
+      "requestedEditsColumn": 4,
+      "optionalDiscountColumn": 4
+    },
+    {
+      "dataName": "ArrivalGovernance",
+      "baseCost": 35000,
+      "currentColumn": 10,
+      "requestedEditsColumn": 10,
+      "optionalDiscountColumn": 10
+    },
+    {
+      "dataName": "ArrivalInternationalDevelopment",
+      "baseCost": 5000,
+      "currentColumn": 6,
+      "requestedEditsColumn": 6,
+      "optionalDiscountColumn": 6
+    },
+    {
+      "dataName": "ArrivalInternationalRelations",
+      "baseCost": 5000,
+      "currentColumn": 5,
+      "requestedEditsColumn": 5,
+      "optionalDiscountColumn": 5
+    },
+    {
+      "dataName": "ArrivalLaw",
+      "baseCost": 5000,
+      "currentColumn": 5,
+      "requestedEditsColumn": 5,
+      "optionalDiscountColumn": 5
+    },
+    {
+      "dataName": "ArrivalMassCommunications",
+      "baseCost": 5000,
+      "currentColumn": 8,
+      "requestedEditsColumn": 8,
+      "optionalDiscountColumn": 8
+    },
+    {
+      "dataName": "ArrivalPsychology",
+      "baseCost": 5000,
+      "currentColumn": 7,
+      "requestedEditsColumn": 7,
+      "optionalDiscountColumn": 7
+    },
+    {
+      "dataName": "ArrivalSecurity",
+      "baseCost": 10000,
+      "currentColumn": 6,
+      "requestedEditsColumn": 6,
+      "optionalDiscountColumn": 6
+    },
+    {
+      "dataName": "ArrivalSociology",
+      "baseCost": 2500,
+      "currentColumn": 4,
+      "requestedEditsColumn": 4,
+      "optionalDiscountColumn": 4
+    },
+    {
+      "dataName": "AugmentedReality",
+      "baseCost": 2000,
+      "currentColumn": 4,
+      "requestedEditsColumn": 4,
+      "optionalDiscountColumn": 4
+    },
+    {
+      "dataName": "Biotechnology",
+      "baseCost": 1500,
+      "currentColumn": 4,
+      "requestedEditsColumn": 4,
+      "optionalDiscountColumn": 4
+    },
+    {
+      "dataName": "CarbonNanotubes",
+      "baseCost": 3500,
+      "currentColumn": 5,
+      "requestedEditsColumn": 5,
+      "optionalDiscountColumn": 5
+    },
+    {
+      "dataName": "CleanEnergy",
+      "baseCost": 50000,
+      "currentColumn": 14,
+      "requestedEditsColumn": 13,
+      "optionalDiscountColumn": 13
+    },
+    {
+      "dataName": "ClimateChangeMitigation",
+      "baseCost": 100000,
+      "currentColumn": 15,
+      "requestedEditsColumn": 14,
+      "optionalDiscountColumn": 14
+    },
+    {
+      "dataName": "Coilguns",
+      "baseCost": 30000,
+      "currentColumn": 8,
+      "requestedEditsColumn": 8,
+      "optionalDiscountColumn": 8
+    },
+    {
+      "dataName": "ColonyHabs",
+      "baseCost": 35000,
+      "currentColumn": 10,
+      "requestedEditsColumn": 10,
+      "optionalDiscountColumn": 10
+    },
+    {
+      "dataName": "Cybernetics",
+      "baseCost": 5000,
+      "currentColumn": 5,
+      "requestedEditsColumn": 5,
+      "optionalDiscountColumn": 5
+    },
+    {
+      "dataName": "DeepSpacePropulsionConcepts",
+      "baseCost": 1000,
+      "currentColumn": 2,
+      "requestedEditsColumn": 2,
+      "optionalDiscountColumn": 2
+    },
+    {
+      "dataName": "DeepSystemSkywatch",
+      "baseCost": 1000,
+      "currentColumn": 3,
+      "requestedEditsColumn": 3,
+      "optionalDiscountColumn": 3
+    },
+    {
+      "dataName": "DesignerLifeforms",
+      "baseCost": 30000,
+      "currentColumn": 9,
+      "requestedEditsColumn": 9,
+      "optionalDiscountColumn": 9
+    },
+    {
+      "dataName": "DeuteriumDeuteriumFusion",
+      "baseCost": 75000,
+      "currentColumn": 12,
+      "requestedEditsColumn": 11,
+      "optionalDiscountColumn": 11
+    },
+    {
+      "dataName": "DeuteriumHelium3Fusion",
+      "baseCost": 75000,
+      "currentColumn": 13,
+      "requestedEditsColumn": 12,
+      "optionalDiscountColumn": 12
+    },
+    {
+      "dataName": "DeuteriumTritiumFusion",
+      "baseCost": 50000,
+      "currentColumn": 9,
+      "requestedEditsColumn": 8,
+      "optionalDiscountColumn": 8
+    },
+    {
+      "dataName": "Diamondoids",
+      "baseCost": 15000,
+      "currentColumn": 9,
+      "requestedEditsColumn": 9,
+      "optionalDiscountColumn": 9
+    },
+    {
+      "dataName": "DirectedEnergyWarfareDoctrine",
+      "baseCost": 2500,
+      "currentColumn": 4,
+      "requestedEditsColumn": 4,
+      "optionalDiscountColumn": 4
+    },
+    {
+      "dataName": "DirectedSpaceResearch",
+      "baseCost": 5000,
+      "currentColumn": 8,
+      "requestedEditsColumn": 8,
+      "optionalDiscountColumn": 8
+    },
+    {
+      "dataName": "ElectromagneticPropulsion",
+      "baseCost": 1500,
+      "currentColumn": 4,
+      "requestedEditsColumn": 4,
+      "optionalDiscountColumn": 4
+    },
+    {
+      "dataName": "ElectrostaticPlasmaConfinement",
+      "baseCost": 15000,
+      "currentColumn": 11,
+      "requestedEditsColumn": 10,
+      "optionalDiscountColumn": 10
+    },
+    {
+      "dataName": "ElectrostaticPropulsion",
+      "baseCost": 3000,
+      "currentColumn": 5,
+      "requestedEditsColumn": 5,
+      "optionalDiscountColumn": 5
+    },
+    {
+      "dataName": "ElectrothermalPropulsion",
+      "baseCost": 500,
+      "currentColumn": 3,
+      "requestedEditsColumn": 3,
+      "optionalDiscountColumn": 3
+    },
+    {
+      "dataName": "ExtendedSpaceSurvival",
+      "baseCost": 10000,
+      "currentColumn": 8,
+      "requestedEditsColumn": 8,
+      "optionalDiscountColumn": 8
+    },
+    {
+      "dataName": "FallofEmpires",
+      "baseCost": 10000,
+      "currentColumn": 6,
+      "requestedEditsColumn": 6,
+      "optionalDiscountColumn": 6
+    },
+    {
+      "dataName": "FissionPulseDrives",
+      "baseCost": 25000,
+      "currentColumn": 7,
+      "requestedEditsColumn": 7,
+      "optionalDiscountColumn": 7
+    },
+    {
+      "dataName": "FleetLogistics",
+      "baseCost": 45000,
+      "currentColumn": 11,
+      "requestedEditsColumn": 11,
+      "optionalDiscountColumn": 11
+    },
+    {
+      "dataName": "GasCoreFissionSystems",
+      "baseCost": 20000,
+      "currentColumn": 7,
+      "requestedEditsColumn": 7,
+      "optionalDiscountColumn": 7
+    },
+    {
+      "dataName": "Genies",
+      "baseCost": 50000,
+      "currentColumn": 9,
+      "requestedEditsColumn": 9,
+      "optionalDiscountColumn": 9
+    },
+    {
+      "dataName": "GreatNations",
+      "baseCost": 25000,
+      "currentColumn": 7,
+      "requestedEditsColumn": 7,
+      "optionalDiscountColumn": 7
+    },
+    {
+      "dataName": "HeavyPulsedPropulsion",
+      "baseCost": 50000,
+      "currentColumn": 9,
+      "requestedEditsColumn": 9,
+      "optionalDiscountColumn": 9
+    },
+    {
+      "dataName": "HighTemperatureSuperconductors",
+      "baseCost": 40000,
+      "currentColumn": 8,
+      "requestedEditsColumn": 8,
+      "optionalDiscountColumn": 8
+    },
+    {
+      "dataName": "HighEnergyElectromagneticPropulsion",
+      "baseCost": 5000,
+      "currentColumn": 7,
+      "requestedEditsColumn": 7,
+      "optionalDiscountColumn": 7
+    },
+    {
+      "dataName": "HighEnergyLasers",
+      "baseCost": 1000,
+      "currentColumn": 2,
+      "requestedEditsColumn": 2,
+      "optionalDiscountColumn": 2
+    },
+    {
+      "dataName": "ImprovedShipbuildingTechniques",
+      "baseCost": 20000,
+      "currentColumn": 8,
+      "requestedEditsColumn": 8,
+      "optionalDiscountColumn": 8
+    },
+    {
+      "dataName": "InSituResourceUtilization",
+      "baseCost": 5000,
+      "currentColumn": 5,
+      "requestedEditsColumn": 5,
+      "optionalDiscountColumn": 5
+    },
+    {
+      "dataName": "IndependenceMovements",
+      "baseCost": 5000,
+      "currentColumn": 5,
+      "requestedEditsColumn": 5,
+      "optionalDiscountColumn": 5
+    },
+    {
+      "dataName": "IndustrializationofSpace",
+      "baseCost": 15000,
+      "currentColumn": 7,
+      "requestedEditsColumn": 7,
+      "optionalDiscountColumn": 7
+    },
+    {
+      "dataName": "InertialPlasmaConfinementTechniques",
+      "baseCost": 65000,
+      "currentColumn": 11,
+      "requestedEditsColumn": 10,
+      "optionalDiscountColumn": 10
+    },
+    {
+      "dataName": "InfraredCombatLasers",
+      "baseCost": 5000,
+      "currentColumn": 5,
+      "requestedEditsColumn": 5,
+      "optionalDiscountColumn": 5
+    },
+    {
+      "dataName": "IntegratedEarthSpaceEconomy",
+      "baseCost": 40000,
+      "currentColumn": 10,
+      "requestedEditsColumn": 10,
+      "optionalDiscountColumn": 10
+    },
+    {
+      "dataName": "InterplanetaryPolities",
+      "baseCost": 50000,
+      "currentColumn": 11,
+      "requestedEditsColumn": 11,
+      "optionalDiscountColumn": 11
+    },
+    {
+      "dataName": "KineticsWarfareDoctrine",
+      "baseCost": 2500,
+      "currentColumn": 4,
+      "requestedEditsColumn": 4,
+      "optionalDiscountColumn": 4
+    },
+    {
+      "dataName": "MagneticForceManipulation",
+      "baseCost": 2500,
+      "currentColumn": 4,
+      "requestedEditsColumn": 4,
+      "optionalDiscountColumn": 4
+    },
+    {
+      "dataName": "MagneticNozzles",
+      "baseCost": 50000,
+      "currentColumn": 10,
+      "requestedEditsColumn": 10,
+      "optionalDiscountColumn": 10
+    },
+    {
+      "dataName": "MagneticPlasmaConfinementTechniques",
+      "baseCost": 35000,
+      "currentColumn": 9,
+      "requestedEditsColumn": 9,
+      "optionalDiscountColumn": 9
+    },
+    {
+      "dataName": "MassDrivers",
+      "baseCost": 1000,
+      "currentColumn": 3,
+      "requestedEditsColumn": 3,
+      "optionalDiscountColumn": 3
+    },
+    {
+      "dataName": "MilitarizationofSpace",
+      "baseCost": 5000,
+      "currentColumn": 5,
+      "requestedEditsColumn": 5,
+      "optionalDiscountColumn": 5
+    },
+    {
+      "dataName": "MindandMachine",
+      "baseCost": 35000,
+      "currentColumn": 9,
+      "requestedEditsColumn": 9,
+      "optionalDiscountColumn": 9
+    },
+    {
+      "dataName": "MissileWarfareDoctrine",
+      "baseCost": 2500,
+      "currentColumn": 4,
+      "requestedEditsColumn": 4,
+      "optionalDiscountColumn": 4
+    },
+    {
+      "dataName": "MissiontoJupiter",
+      "baseCost": 10000,
+      "currentColumn": 6,
+      "requestedEditsColumn": 6,
+      "optionalDiscountColumn": 6
+    },
+    {
+      "dataName": "MissiontoMars",
+      "baseCost": 2500,
+      "currentColumn": 4,
+      "requestedEditsColumn": 4,
+      "optionalDiscountColumn": 4
+    },
+    {
+      "dataName": "MissiontoSaturn",
+      "baseCost": 25000,
+      "currentColumn": 7,
+      "requestedEditsColumn": 7,
+      "optionalDiscountColumn": 7
+    },
+    {
+      "dataName": "MissionToSpace",
+      "baseCost": 500,
+      "currentColumn": 1,
+      "requestedEditsColumn": 1,
+      "optionalDiscountColumn": 1
+    },
+    {
+      "dataName": "MissiontotheAsteroids",
+      "baseCost": 3500,
+      "currentColumn": 5,
+      "requestedEditsColumn": 5,
+      "optionalDiscountColumn": 5
+    },
+    {
+      "dataName": "MissiontoVenus",
+      "baseCost": 2500,
+      "currentColumn": 5,
+      "requestedEditsColumn": 5,
+      "optionalDiscountColumn": 5
+    },
+    {
+      "dataName": "MissiontotheInnerPlanets",
+      "baseCost": 15000,
+      "currentColumn": 7,
+      "requestedEditsColumn": 7,
+      "optionalDiscountColumn": 7
+    },
+    {
+      "dataName": "MissiontotheMoon",
+      "baseCost": 1000,
+      "currentColumn": 3,
+      "requestedEditsColumn": 3,
+      "optionalDiscountColumn": 3
+    },
+    {
+      "dataName": "MissiontotheOuterPlanets",
+      "baseCost": 75000,
+      "currentColumn": 10,
+      "requestedEditsColumn": 10,
+      "optionalDiscountColumn": 10
+    },
+    {
+      "dataName": "MolecularAssemblers",
+      "baseCost": 25000,
+      "currentColumn": 8,
+      "requestedEditsColumn": 8,
+      "optionalDiscountColumn": 8
+    },
+    {
+      "dataName": "MoltenCoreFissionSystems",
+      "baseCost": 10000,
+      "currentColumn": 6,
+      "requestedEditsColumn": 6,
+      "optionalDiscountColumn": 6
+    },
+    {
+      "dataName": "NetworkedGlobalDefense",
+      "baseCost": 25000,
+      "currentColumn": 9,
+      "requestedEditsColumn": 9,
+      "optionalDiscountColumn": 9
+    },
+    {
+      "dataName": "NetworkedPropaganda",
+      "baseCost": 10000,
+      "currentColumn": 9,
+      "requestedEditsColumn": 9,
+      "optionalDiscountColumn": 9
+    },
+    {
+      "dataName": "Neutronics",
+      "baseCost": 15000,
+      "currentColumn": 7,
+      "requestedEditsColumn": 7,
+      "optionalDiscountColumn": 7
+    },
+    {
+      "dataName": "NextGenerationAerospace",
+      "baseCost": 5000,
+      "currentColumn": 6,
+      "requestedEditsColumn": 6,
+      "optionalDiscountColumn": 6
+    },
+    {
+      "dataName": "NuclearFissioninSpace",
+      "baseCost": 2500,
+      "currentColumn": 4,
+      "requestedEditsColumn": 4,
+      "optionalDiscountColumn": 4
+    },
+    {
+      "dataName": "NuclearFusioninSpace",
+      "baseCost": 50000,
+      "currentColumn": 10,
+      "requestedEditsColumn": 9,
+      "optionalDiscountColumn": 9
+    },
+    {
+      "dataName": "OrbitalFighters",
+      "baseCost": 7500,
+      "currentColumn": 7,
+      "requestedEditsColumn": 7,
+      "optionalDiscountColumn": 7
+    },
+    {
+      "dataName": "OrbitalRingHabs",
+      "baseCost": 5000,
+      "currentColumn": 6,
+      "requestedEditsColumn": 6,
+      "optionalDiscountColumn": 6
+    },
+    {
+      "dataName": "OrbitalShipbuilding",
+      "baseCost": 1000,
+      "currentColumn": 2,
+      "requestedEditsColumn": 2,
+      "optionalDiscountColumn": 2
+    },
+    {
+      "dataName": "OrbitalTorusHabs",
+      "baseCost": 35000,
+      "currentColumn": 10,
+      "requestedEditsColumn": 10,
+      "optionalDiscountColumn": 10
+    },
+    {
+      "dataName": "OurSpaceFuture",
+      "baseCost": 30000,
+      "currentColumn": 9,
+      "requestedEditsColumn": 9,
+      "optionalDiscountColumn": 9
+    },
+    {
+      "dataName": "OutpostHabs",
+      "baseCost": 1000,
+      "currentColumn": 2,
+      "requestedEditsColumn": 2,
+      "optionalDiscountColumn": 2
+    },
+    {
+      "dataName": "ParticleCannon",
+      "baseCost": 5000,
+      "currentColumn": 5,
+      "requestedEditsColumn": 5,
+      "optionalDiscountColumn": 5
+    },
+    {
+      "dataName": "PhasedArrayLasers",
+      "baseCost": 70000,
+      "currentColumn": 10,
+      "requestedEditsColumn": 10,
+      "optionalDiscountColumn": 10
+    },
+    {
+      "dataName": "PhotonicComputing",
+      "baseCost": 1500,
+      "currentColumn": 4,
+      "requestedEditsColumn": 4,
+      "optionalDiscountColumn": 4
+    },
+    {
+      "dataName": "PlasmaWeapons",
+      "baseCost": 20000,
+      "currentColumn": 7,
+      "requestedEditsColumn": 7,
+      "optionalDiscountColumn": 7
+    },
+    {
+      "dataName": "PredictiveGenetics",
+      "baseCost": 5000,
+      "currentColumn": 5,
+      "requestedEditsColumn": 5,
+      "optionalDiscountColumn": 5
+    },
+    {
+      "dataName": "PrinciplesofSpaceWarfare",
+      "baseCost": 1000,
+      "currentColumn": 3,
+      "requestedEditsColumn": 3,
+      "optionalDiscountColumn": 3
+    },
+    {
+      "dataName": "AneutronicFusion",
+      "baseCost": 75000,
+      "currentColumn": 14,
+      "requestedEditsColumn": 13,
+      "optionalDiscountColumn": 13
+    },
+    {
+      "dataName": "ProtonProtonFusion",
+      "baseCost": 100000,
+      "currentColumn": 15,
+      "requestedEditsColumn": 14,
+      "optionalDiscountColumn": 14
+    },
+    {
+      "dataName": "QuantumComputing",
+      "baseCost": 15000,
+      "currentColumn": 7,
+      "requestedEditsColumn": 7,
+      "optionalDiscountColumn": 7
+    },
+    {
+      "dataName": "QuantumEncryption",
+      "baseCost": 20000,
+      "currentColumn": 8,
+      "requestedEditsColumn": 8,
+      "optionalDiscountColumn": 8
+    },
+    {
+      "dataName": "Railguns",
+      "baseCost": 5000,
+      "currentColumn": 5,
+      "requestedEditsColumn": 5,
+      "optionalDiscountColumn": 5
+    },
+    {
+      "dataName": "SelfRepairingSoftware",
+      "baseCost": 10000,
+      "currentColumn": 6,
+      "requestedEditsColumn": 6,
+      "optionalDiscountColumn": 6
+    },
+    {
+      "dataName": "SettlementHabs",
+      "baseCost": 5000,
+      "currentColumn": 6,
+      "requestedEditsColumn": 6,
+      "optionalDiscountColumn": 6
+    },
+    {
+      "dataName": "Skywatch",
+      "baseCost": 500,
+      "currentColumn": 2,
+      "requestedEditsColumn": 2,
+      "optionalDiscountColumn": 2
+    },
+    {
+      "dataName": "SolidCoreFissionSystems",
+      "baseCost": 5000,
+      "currentColumn": 5,
+      "requestedEditsColumn": 5,
+      "optionalDiscountColumn": 5
+    },
+    {
+      "dataName": "SpaceAgriculture",
+      "baseCost": 2500,
+      "currentColumn": 6,
+      "requestedEditsColumn": 6,
+      "optionalDiscountColumn": 6
+    },
+    {
+      "dataName": "SpaceAssaultDoctrine",
+      "baseCost": 10000,
+      "currentColumn": 6,
+      "requestedEditsColumn": 6,
+      "optionalDiscountColumn": 6
+    },
+    {
+      "dataName": "SpaceCommerce",
+      "baseCost": 20000,
+      "currentColumn": 8,
+      "requestedEditsColumn": 8,
+      "optionalDiscountColumn": 8
+    },
+    {
+      "dataName": "SpaceMedicine",
+      "baseCost": 2500,
+      "currentColumn": 6,
+      "requestedEditsColumn": 6,
+      "optionalDiscountColumn": 6
+    },
+    {
+      "dataName": "SpaceMiningandRefining",
+      "baseCost": 2500,
+      "currentColumn": 4,
+      "requestedEditsColumn": 4,
+      "optionalDiscountColumn": 4
+    },
+    {
+      "dataName": "SpaceNavies",
+      "baseCost": 10000,
+      "currentColumn": 6,
+      "requestedEditsColumn": 6,
+      "optionalDiscountColumn": 6
+    },
+    {
+      "dataName": "SpaceResearch",
+      "baseCost": 2500,
+      "currentColumn": 5,
+      "requestedEditsColumn": 5,
+      "optionalDiscountColumn": 5
+    },
+    {
+      "dataName": "SpaceTourism",
+      "baseCost": 1000,
+      "currentColumn": 2,
+      "requestedEditsColumn": 2,
+      "optionalDiscountColumn": 2
+    },
+    {
+      "dataName": "Superalloys",
+      "baseCost": 5000,
+      "currentColumn": 7,
+      "requestedEditsColumn": 7,
+      "optionalDiscountColumn": 7
+    },
+    {
+      "dataName": "Supercapacitors",
+      "baseCost": 10000,
+      "currentColumn": 6,
+      "requestedEditsColumn": 6,
+      "optionalDiscountColumn": 6
+    },
+    {
+      "dataName": "SuperconductingMagnets",
+      "baseCost": 10000,
+      "currentColumn": 6,
+      "requestedEditsColumn": 6,
+      "optionalDiscountColumn": 6
+    },
+    {
+      "dataName": "TargetedBiologicalWarfare",
+      "baseCost": 30000,
+      "currentColumn": 10,
+      "requestedEditsColumn": 10,
+      "optionalDiscountColumn": 10
+    },
+    {
+      "dataName": "Tokamaks",
+      "baseCost": 25000,
+      "currentColumn": 11,
+      "requestedEditsColumn": 10,
+      "optionalDiscountColumn": 10
+    },
+    {
+      "dataName": "TerawattFusionReactors",
+      "baseCost": 100000,
+      "currentColumn": 14,
+      "requestedEditsColumn": 13,
+      "optionalDiscountColumn": 13
+    },
+    {
+      "dataName": "TerrestrialMilitaryScience",
+      "baseCost": 3000,
+      "currentColumn": 5,
+      "requestedEditsColumn": 5,
+      "optionalDiscountColumn": 5
+    },
+    {
+      "dataName": "TitanicSpacecraft",
+      "baseCost": 60000,
+      "currentColumn": 12,
+      "requestedEditsColumn": 12,
+      "optionalDiscountColumn": 12
+    },
+    {
+      "dataName": "TransInterfaceWarfare",
+      "baseCost": 25000,
+      "currentColumn": 8,
+      "requestedEditsColumn": 8,
+      "optionalDiscountColumn": 8
+    },
+    {
+      "dataName": "TransformPhages",
+      "baseCost": 10000,
+      "currentColumn": 6,
+      "requestedEditsColumn": 6,
+      "optionalDiscountColumn": 6
+    },
+    {
+      "dataName": "Ultracapacitors",
+      "baseCost": 40000,
+      "currentColumn": 9,
+      "requestedEditsColumn": 9,
+      "optionalDiscountColumn": 9
+    },
+    {
+      "dataName": "UltravioletCombatLasers",
+      "baseCost": 60000,
+      "currentColumn": 9,
+      "requestedEditsColumn": 9,
+      "optionalDiscountColumn": 9
+    },
+    {
+      "dataName": "UnityMovements",
+      "baseCost": 10000,
+      "currentColumn": 6,
+      "requestedEditsColumn": 6,
+      "optionalDiscountColumn": 6
+    },
+    {
+      "dataName": "VacuumElectrostaticPrinciples",
+      "baseCost": 1000,
+      "currentColumn": 3,
+      "requestedEditsColumn": 3,
+      "optionalDiscountColumn": 3
+    },
+    {
+      "dataName": "VisibleCombatLasers",
+      "baseCost": 25000,
+      "currentColumn": 7,
+      "requestedEditsColumn": 7,
+      "optionalDiscountColumn": 7
+    },
+    {
+      "dataName": "WeAreNotAlone",
+      "baseCost": 1000,
+      "currentColumn": 1,
+      "requestedEditsColumn": 1,
+      "optionalDiscountColumn": 1
+    },
+    {
+      "dataName": "WhiteCollarAutomation",
+      "baseCost": 40000,
+      "currentColumn": 9,
+      "requestedEditsColumn": 9,
+      "optionalDiscountColumn": 9
+    },
+    {
+      "dataName": "ZPinchTechniques",
+      "baseCost": 50000,
+      "currentColumn": 11,
+      "requestedEditsColumn": 10,
+      "optionalDiscountColumn": 10
+    }
+  ],
+  "futureCostTests": [
+    {
+      "allFutureTechBaseCost": 100000,
+      "protonProtonColumn": 15,
+      "futurePhysicalColumn": 15
+    },
+    {
+      "allFutureTechBaseCost": 120001,
+      "protonProtonColumn": 15,
+      "futurePhysicalColumn": 15
+    },
+    {
+      "allFutureTechBaseCost": 150000,
+      "protonProtonColumn": 15,
+      "futurePhysicalColumn": 15
+    },
+    {
+      "allFutureTechBaseCost": 1000000,
+      "protonProtonColumn": 15,
+      "futurePhysicalColumn": 15
+    }
+  ],
+  "orderSensitivity": {
+    "current": {
+      "focusColumns": {
+        "DeuteriumTritiumFusion": [
+          9
+        ],
+        "NuclearFusioninSpace": [
+          10
+        ],
+        "MagneticPlasmaConfinementTechniques": [
+          9
+        ],
+        "ElectrostaticPlasmaConfinement": [
+          11
+        ],
+        "InertialPlasmaConfinementTechniques": [
+          11
+        ],
+        "Tokamaks": [
+          11
+        ],
+        "ZPinchTechniques": [
+          11
+        ],
+        "DeuteriumDeuteriumFusion": [
+          12
+        ],
+        "DeuteriumHelium3Fusion": [
+          13
+        ],
+        "AneutronicFusion": [
+          14
+        ],
+        "ProtonProtonFusion": [
+          15
+        ],
+        "TerawattFusionReactors": [
+          14
+        ],
+        "CleanEnergy": [
+          14
+        ],
+        "Coilguns": [
+          8
+        ],
+        "HighTemperatureSuperconductors": [
+          8
+        ],
+        "AdvancedNeuralNetworks": [
+          5
+        ],
+        "PhotonicComputing": [
+          4
+        ],
+        "MissiontoMars": [
+          4
+        ]
+      },
+      "futurePhysicalColumns": [
+        15
+      ],
+      "anyChangedTechs": []
+    },
+    "requested_edits": {
+      "focusColumns": {
+        "DeuteriumTritiumFusion": [
+          8
+        ],
+        "NuclearFusioninSpace": [
+          9
+        ],
+        "MagneticPlasmaConfinementTechniques": [
+          9
+        ],
+        "ElectrostaticPlasmaConfinement": [
+          10
+        ],
+        "InertialPlasmaConfinementTechniques": [
+          10
+        ],
+        "Tokamaks": [
+          10
+        ],
+        "ZPinchTechniques": [
+          10
+        ],
+        "DeuteriumDeuteriumFusion": [
+          11
+        ],
+        "DeuteriumHelium3Fusion": [
+          12
+        ],
+        "AneutronicFusion": [
+          13
+        ],
+        "ProtonProtonFusion": [
+          14
+        ],
+        "TerawattFusionReactors": [
+          13
+        ],
+        "CleanEnergy": [
+          13
+        ],
+        "Coilguns": [
+          8
+        ],
+        "HighTemperatureSuperconductors": [
+          8
+        ],
+        "AdvancedNeuralNetworks": [
+          4
+        ],
+        "PhotonicComputing": [
+          4
+        ],
+        "MissiontoMars": [
+          4
+        ]
+      },
+      "futurePhysicalColumns": [
+        15
+      ],
+      "anyChangedTechs": []
+    },
+    "optional_discount_schedule": {
+      "focusColumns": {
+        "DeuteriumTritiumFusion": [
+          8
+        ],
+        "NuclearFusioninSpace": [
+          9
+        ],
+        "MagneticPlasmaConfinementTechniques": [
+          9
+        ],
+        "ElectrostaticPlasmaConfinement": [
+          10
+        ],
+        "InertialPlasmaConfinementTechniques": [
+          10
+        ],
+        "Tokamaks": [
+          10
+        ],
+        "ZPinchTechniques": [
+          10
+        ],
+        "DeuteriumDeuteriumFusion": [
+          11
+        ],
+        "DeuteriumHelium3Fusion": [
+          12
+        ],
+        "AneutronicFusion": [
+          13
+        ],
+        "ProtonProtonFusion": [
+          14
+        ],
+        "TerawattFusionReactors": [
+          13
+        ],
+        "CleanEnergy": [
+          13
+        ],
+        "Coilguns": [
+          8
+        ],
+        "HighTemperatureSuperconductors": [
+          8
+        ],
+        "AdvancedNeuralNetworks": [
+          4
+        ],
+        "PhotonicComputing": [
+          4
+        ],
+        "MissiontoMars": [
+          4
+        ]
+      },
+      "futurePhysicalColumns": [
+        15
+      ],
+      "anyChangedTechs": []
+    }
+  },
+  "scenarios": {
+    "current": {
+      "costRounds": 17,
+      "repairRounds": 6,
+      "futurePhysicalColumn": 15,
+      "futureStoredNodeOneBased": 16,
+      "lastNodeTrace": [
+        {
+          "tech": "DeepSpacePropulsionConcepts",
+          "stage": "seed",
+          "node": 1,
+          "oldLast": 0,
+          "newLast": 2
+        },
+        {
+          "tech": "AntimatterMassProduction",
+          "stage": "first-prereq",
+          "node": 3,
+          "oldLast": 2,
+          "newLast": 4
+        },
+        {
+          "tech": "Tokamaks",
+          "stage": "first-prereq",
+          "node": 5,
+          "oldLast": 4,
+          "newLast": 6
+        },
+        {
+          "tech": "AntimatterPropulsion",
+          "stage": "cost",
+          "node": 7,
+          "oldLast": 6,
+          "newLast": 8
+        },
+        {
+          "tech": "Accelerando",
+          "stage": "cost",
+          "node": 9,
+          "oldLast": 8,
+          "newLast": 10
+        },
+        {
+          "tech": "AntimatterPropulsion",
+          "stage": "repair",
+          "node": 11,
+          "oldLast": 10,
+          "newLast": 12
+        },
+        {
+          "tech": "ProtonProtonFusion",
+          "stage": "repair",
+          "node": 13,
+          "oldLast": 12,
+          "newLast": 14
+        }
+      ]
+    },
+    "requested_edits": {
+      "costRounds": 17,
+      "repairRounds": 6,
+      "futurePhysicalColumn": 15,
+      "futureStoredNodeOneBased": 16,
+      "lastNodeTrace": [
+        {
+          "tech": "DeepSpacePropulsionConcepts",
+          "stage": "seed",
+          "node": 1,
+          "oldLast": 0,
+          "newLast": 2
+        },
+        {
+          "tech": "AntimatterMassProduction",
+          "stage": "first-prereq",
+          "node": 3,
+          "oldLast": 2,
+          "newLast": 4
+        },
+        {
+          "tech": "Tokamaks",
+          "stage": "first-prereq",
+          "node": 5,
+          "oldLast": 4,
+          "newLast": 6
+        },
+        {
+          "tech": "AntimatterPropulsion",
+          "stage": "cost",
+          "node": 7,
+          "oldLast": 6,
+          "newLast": 8
+        },
+        {
+          "tech": "Accelerando",
+          "stage": "cost",
+          "node": 9,
+          "oldLast": 8,
+          "newLast": 10
+        },
+        {
+          "tech": "AntimatterPropulsion",
+          "stage": "repair",
+          "node": 11,
+          "oldLast": 10,
+          "newLast": 12
+        },
+        {
+          "tech": "ProtonProtonFusion",
+          "stage": "repair",
+          "node": 13,
+          "oldLast": 12,
+          "newLast": 14
+        }
+      ]
+    },
+    "optional_discount_schedule": {
+      "costRounds": 16,
+      "repairRounds": 6,
+      "futurePhysicalColumn": 15,
+      "futureStoredNodeOneBased": 16,
+      "lastNodeTrace": [
+        {
+          "tech": "DeepSpacePropulsionConcepts",
+          "stage": "seed",
+          "node": 1,
+          "oldLast": 0,
+          "newLast": 2
+        },
+        {
+          "tech": "AntimatterMassProduction",
+          "stage": "first-prereq",
+          "node": 3,
+          "oldLast": 2,
+          "newLast": 4
+        },
+        {
+          "tech": "Tokamaks",
+          "stage": "first-prereq",
+          "node": 5,
+          "oldLast": 4,
+          "newLast": 6
+        },
+        {
+          "tech": "AntimatterPropulsion",
+          "stage": "cost",
+          "node": 7,
+          "oldLast": 6,
+          "newLast": 8
+        },
+        {
+          "tech": "Accelerando",
+          "stage": "cost",
+          "node": 9,
+          "oldLast": 8,
+          "newLast": 10
+        },
+        {
+          "tech": "AntimatterPropulsion",
+          "stage": "repair",
+          "node": 11,
+          "oldLast": 10,
+          "newLast": 12
+        },
+        {
+          "tech": "ProtonProtonFusion",
+          "stage": "repair",
+          "node": 13,
+          "oldLast": 12,
+          "newLast": 14
+        }
+      ]
+    }
+  },
+  "costPassTrace": [
+    {
+      "scenario": "current",
+      "technology": "DeuteriumTritiumFusion",
+      "round": 1,
+      "column": 4,
+      "columnAverage": 29653,
+      "threshold": 35583.6,
+      "moved": true
+    },
+    {
+      "scenario": "current",
+      "technology": "DeuteriumTritiumFusion",
+      "round": 2,
+      "column": 5,
+      "columnAverage": 51964,
+      "threshold": 62356.799999999996,
+      "moved": false
+    },
+    {
+      "scenario": "current",
+      "technology": "DeuteriumTritiumFusion",
+      "round": 3,
+      "column": 5,
+      "columnAverage": 43552,
+      "threshold": 52262.4,
+      "moved": false
+    },
+    {
+      "scenario": "current",
+      "technology": "DeuteriumTritiumFusion",
+      "round": 4,
+      "column": 5,
+      "columnAverage": 49479,
+      "threshold": 59374.799999999996,
+      "moved": false
+    },
+    {
+      "scenario": "current",
+      "technology": "DeuteriumTritiumFusion",
+      "round": 5,
+      "column": 5,
+      "columnAverage": 34513,
+      "threshold": 41415.6,
+      "moved": true
+    },
+    {
+      "scenario": "current",
+      "technology": "DeuteriumTritiumFusion",
+      "round": 6,
+      "column": 6,
+      "columnAverage": 56944,
+      "threshold": 68332.8,
+      "moved": false
+    },
+    {
+      "scenario": "current",
+      "technology": "DeuteriumTritiumFusion",
+      "round": 7,
+      "column": 6,
+      "columnAverage": 44565,
+      "threshold": 53478.0,
+      "moved": false
+    },
+    {
+      "scenario": "current",
+      "technology": "DeuteriumTritiumFusion",
+      "round": 8,
+      "column": 6,
+      "columnAverage": 35428,
+      "threshold": 42513.6,
+      "moved": true
+    },
+    {
+      "scenario": "current",
+      "technology": "DeuteriumTritiumFusion",
+      "round": 9,
+      "column": 7,
+      "columnAverage": 58333,
+      "threshold": 69999.59999999999,
+      "moved": false
+    },
+    {
+      "scenario": "current",
+      "technology": "DeuteriumTritiumFusion",
+      "round": 10,
+      "column": 7,
+      "columnAverage": 45652,
+      "threshold": 54782.4,
+      "moved": false
+    },
+    {
+      "scenario": "current",
+      "technology": "DeuteriumTritiumFusion",
+      "round": 11,
+      "column": 7,
+      "columnAverage": 35833,
+      "threshold": 42999.6,
+      "moved": true
+    },
+    {
+      "scenario": "current",
+      "technology": "DeuteriumTritiumFusion",
+      "round": 12,
+      "column": 8,
+      "columnAverage": 58333,
+      "threshold": 69999.59999999999,
+      "moved": false
+    },
+    {
+      "scenario": "current",
+      "technology": "DeuteriumTritiumFusion",
+      "round": 13,
+      "column": 8,
+      "columnAverage": 45652,
+      "threshold": 54782.4,
+      "moved": false
+    },
+    {
+      "scenario": "current",
+      "technology": "DeuteriumTritiumFusion",
+      "round": 14,
+      "column": 8,
+      "columnAverage": 40600,
+      "threshold": 48720.0,
+      "moved": true
+    },
+    {
+      "scenario": "current",
+      "technology": "DeuteriumTritiumFusion",
+      "round": 15,
+      "column": 9,
+      "columnAverage": 59117,
+      "threshold": 70940.4,
+      "moved": false
+    },
+    {
+      "scenario": "current",
+      "technology": "DeuteriumTritiumFusion",
+      "round": 16,
+      "column": 9,
+      "columnAverage": 53571,
+      "threshold": 64285.2,
+      "moved": false
+    },
+    {
+      "scenario": "current",
+      "technology": "DeuteriumTritiumFusion",
+      "round": 17,
+      "column": 9,
+      "columnAverage": 51250,
+      "threshold": 61500.0,
+      "moved": false
+    },
+    {
+      "scenario": "current",
+      "technology": "NuclearFusioninSpace",
+      "round": 1,
+      "column": 5,
+      "columnAverage": 47812,
+      "threshold": 57374.4,
+      "moved": false
+    },
+    {
+      "scenario": "current",
+      "technology": "NuclearFusioninSpace",
+      "round": 2,
+      "column": 5,
+      "columnAverage": 51964,
+      "threshold": 62356.799999999996,
+      "moved": false
+    },
+    {
+      "scenario": "current",
+      "technology": "NuclearFusioninSpace",
+      "round": 3,
+      "column": 5,
+      "columnAverage": 43552,
+      "threshold": 52262.4,
+      "moved": false
+    },
+    {
+      "scenario": "current",
+      "technology": "NuclearFusioninSpace",
+      "round": 4,
+      "column": 5,
+      "columnAverage": 49479,
+      "threshold": 59374.799999999996,
+      "moved": false
+    },
+    {
+      "scenario": "current",
+      "technology": "NuclearFusioninSpace",
+      "round": 5,
+      "column": 5,
+      "columnAverage": 34513,
+      "threshold": 41415.6,
+      "moved": true
+    },
+    {
+      "scenario": "current",
+      "technology": "NuclearFusioninSpace",
+      "round": 6,
+      "column": 6,
+      "columnAverage": 56944,
+      "threshold": 68332.8,
+      "moved": false
+    },
+    {
+      "scenario": "current",
+      "technology": "NuclearFusioninSpace",
+      "round": 7,
+      "column": 6,
+      "columnAverage": 44565,
+      "threshold": 53478.0,
+      "moved": false
+    },
+    {
+      "scenario": "current",
+      "technology": "NuclearFusioninSpace",
+      "round": 8,
+      "column": 6,
+      "columnAverage": 35428,
+      "threshold": 42513.6,
+      "moved": true
+    },
+    {
+      "scenario": "current",
+      "technology": "NuclearFusioninSpace",
+      "round": 9,
+      "column": 7,
+      "columnAverage": 58333,
+      "threshold": 69999.59999999999,
+      "moved": false
+    },
+    {
+      "scenario": "current",
+      "technology": "NuclearFusioninSpace",
+      "round": 10,
+      "column": 7,
+      "columnAverage": 45652,
+      "threshold": 54782.4,
+      "moved": false
+    },
+    {
+      "scenario": "current",
+      "technology": "NuclearFusioninSpace",
+      "round": 11,
+      "column": 7,
+      "columnAverage": 35833,
+      "threshold": 42999.6,
+      "moved": true
+    },
+    {
+      "scenario": "current",
+      "technology": "NuclearFusioninSpace",
+      "round": 12,
+      "column": 8,
+      "columnAverage": 58333,
+      "threshold": 69999.59999999999,
+      "moved": false
+    },
+    {
+      "scenario": "current",
+      "technology": "NuclearFusioninSpace",
+      "round": 13,
+      "column": 8,
+      "columnAverage": 45652,
+      "threshold": 54782.4,
+      "moved": false
+    },
+    {
+      "scenario": "current",
+      "technology": "NuclearFusioninSpace",
+      "round": 14,
+      "column": 8,
+      "columnAverage": 40600,
+      "threshold": 48720.0,
+      "moved": true
+    },
+    {
+      "scenario": "current",
+      "technology": "NuclearFusioninSpace",
+      "round": 15,
+      "column": 9,
+      "columnAverage": 59117,
+      "threshold": 70940.4,
+      "moved": false
+    },
+    {
+      "scenario": "current",
+      "technology": "NuclearFusioninSpace",
+      "round": 16,
+      "column": 9,
+      "columnAverage": 53571,
+      "threshold": 64285.2,
+      "moved": false
+    },
+    {
+      "scenario": "current",
+      "technology": "NuclearFusioninSpace",
+      "round": 17,
+      "column": 9,
+      "columnAverage": 51250,
+      "threshold": 61500.0,
+      "moved": false
+    },
+    {
+      "scenario": "current",
+      "technology": "AdvancedNeuralNetworks",
+      "round": 1,
+      "column": 3,
+      "columnAverage": 14822,
+      "threshold": 17786.399999999998,
+      "moved": false
+    },
+    {
+      "scenario": "current",
+      "technology": "AdvancedNeuralNetworks",
+      "round": 2,
+      "column": 3,
+      "columnAverage": 20482,
+      "threshold": 24578.399999999998,
+      "moved": false
+    },
+    {
+      "scenario": "current",
+      "technology": "AdvancedNeuralNetworks",
+      "round": 3,
+      "column": 3,
+      "columnAverage": 7377,
+      "threshold": 8852.4,
+      "moved": false
+    },
+    {
+      "scenario": "current",
+      "technology": "AdvancedNeuralNetworks",
+      "round": 4,
+      "column": 3,
+      "columnAverage": 3588,
+      "threshold": 4305.599999999999,
+      "moved": true
+    },
+    {
+      "scenario": "current",
+      "technology": "AdvancedNeuralNetworks",
+      "round": 5,
+      "column": 4,
+      "columnAverage": 9333,
+      "threshold": 11199.6,
+      "moved": false
+    },
+    {
+      "scenario": "current",
+      "technology": "AdvancedNeuralNetworks",
+      "round": 6,
+      "column": 4,
+      "columnAverage": 6488,
+      "threshold": 7785.599999999999,
+      "moved": false
+    },
+    {
+      "scenario": "current",
+      "technology": "AdvancedNeuralNetworks",
+      "round": 7,
+      "column": 4,
+      "columnAverage": 3939,
+      "threshold": 4726.8,
+      "moved": true
+    },
+    {
+      "scenario": "current",
+      "technology": "AdvancedNeuralNetworks",
+      "round": 8,
+      "column": 5,
+      "columnAverage": 9754,
+      "threshold": 11704.8,
+      "moved": false
+    },
+    {
+      "scenario": "current",
+      "technology": "AdvancedNeuralNetworks",
+      "round": 9,
+      "column": 5,
+      "columnAverage": 6780,
+      "threshold": 8136.0,
+      "moved": false
+    },
+    {
+      "scenario": "current",
+      "technology": "AdvancedNeuralNetworks",
+      "round": 10,
+      "column": 5,
+      "columnAverage": 4785,
+      "threshold": 5742.0,
+      "moved": false
+    },
+    {
+      "scenario": "current",
+      "technology": "AdvancedNeuralNetworks",
+      "round": 11,
+      "column": 5,
+      "columnAverage": 4685,
+      "threshold": 5622.0,
+      "moved": false
+    },
+    {
+      "scenario": "current",
+      "technology": "AdvancedNeuralNetworks",
+      "round": 12,
+      "column": 5,
+      "columnAverage": 4685,
+      "threshold": 5622.0,
+      "moved": false
+    },
+    {
+      "scenario": "current",
+      "technology": "AdvancedNeuralNetworks",
+      "round": 13,
+      "column": 5,
+      "columnAverage": 4685,
+      "threshold": 5622.0,
+      "moved": false
+    },
+    {
+      "scenario": "current",
+      "technology": "AdvancedNeuralNetworks",
+      "round": 14,
+      "column": 5,
+      "columnAverage": 4685,
+      "threshold": 5622.0,
+      "moved": false
+    },
+    {
+      "scenario": "current",
+      "technology": "AdvancedNeuralNetworks",
+      "round": 15,
+      "column": 5,
+      "columnAverage": 4685,
+      "threshold": 5622.0,
+      "moved": false
+    },
+    {
+      "scenario": "current",
+      "technology": "AdvancedNeuralNetworks",
+      "round": 16,
+      "column": 5,
+      "columnAverage": 4685,
+      "threshold": 5622.0,
+      "moved": false
+    },
+    {
+      "scenario": "current",
+      "technology": "AdvancedNeuralNetworks",
+      "round": 17,
+      "column": 5,
+      "columnAverage": 4685,
+      "threshold": 5622.0,
+      "moved": false
+    },
+    {
+      "scenario": "requested_edits",
+      "technology": "DeuteriumTritiumFusion",
+      "round": 1,
+      "column": 4,
+      "columnAverage": 30040,
+      "threshold": 36048.0,
+      "moved": true
+    },
+    {
+      "scenario": "requested_edits",
+      "technology": "DeuteriumTritiumFusion",
+      "round": 2,
+      "column": 5,
+      "columnAverage": 50535,
+      "threshold": 60642.0,
+      "moved": false
+    },
+    {
+      "scenario": "requested_edits",
+      "technology": "DeuteriumTritiumFusion",
+      "round": 3,
+      "column": 5,
+      "columnAverage": 42500,
+      "threshold": 51000.0,
+      "moved": false
+    },
+    {
+      "scenario": "requested_edits",
+      "technology": "DeuteriumTritiumFusion",
+      "round": 4,
+      "column": 5,
+      "columnAverage": 48645,
+      "threshold": 58374.0,
+      "moved": false
+    },
+    {
+      "scenario": "requested_edits",
+      "technology": "DeuteriumTritiumFusion",
+      "round": 5,
+      "column": 5,
+      "columnAverage": 33958,
+      "threshold": 40749.6,
+      "moved": false
+    },
+    {
+      "scenario": "requested_edits",
+      "technology": "DeuteriumTritiumFusion",
+      "round": 6,
+      "column": 5,
+      "columnAverage": 26524,
+      "threshold": 31828.8,
+      "moved": true
+    },
+    {
+      "scenario": "requested_edits",
+      "technology": "DeuteriumTritiumFusion",
+      "round": 7,
+      "column": 6,
+      "columnAverage": 43695,
+      "threshold": 52434.0,
+      "moved": false
+    },
+    {
+      "scenario": "requested_edits",
+      "technology": "DeuteriumTritiumFusion",
+      "round": 8,
+      "column": 6,
+      "columnAverage": 34857,
+      "threshold": 41828.4,
+      "moved": false
+    },
+    {
+      "scenario": "requested_edits",
+      "technology": "DeuteriumTritiumFusion",
+      "round": 9,
+      "column": 6,
+      "columnAverage": 26951,
+      "threshold": 32341.199999999997,
+      "moved": true
+    },
+    {
+      "scenario": "requested_edits",
+      "technology": "DeuteriumTritiumFusion",
+      "round": 10,
+      "column": 7,
+      "columnAverage": 45833,
+      "threshold": 54999.6,
+      "moved": false
+    },
+    {
+      "scenario": "requested_edits",
+      "technology": "DeuteriumTritiumFusion",
+      "round": 11,
+      "column": 7,
+      "columnAverage": 35277,
+      "threshold": 42332.4,
+      "moved": false
+    },
+    {
+      "scenario": "requested_edits",
+      "technology": "DeuteriumTritiumFusion",
+      "round": 12,
+      "column": 7,
+      "columnAverage": 29000,
+      "threshold": 34800.0,
+      "moved": true
+    },
+    {
+      "scenario": "requested_edits",
+      "technology": "DeuteriumTritiumFusion",
+      "round": 13,
+      "column": 8,
+      "columnAverage": 45833,
+      "threshold": 54999.6,
+      "moved": false
+    },
+    {
+      "scenario": "requested_edits",
+      "technology": "DeuteriumTritiumFusion",
+      "round": 14,
+      "column": 8,
+      "columnAverage": 39800,
+      "threshold": 47760.0,
+      "moved": false
+    },
+    {
+      "scenario": "requested_edits",
+      "technology": "DeuteriumTritiumFusion",
+      "round": 15,
+      "column": 8,
+      "columnAverage": 35833,
+      "threshold": 42999.6,
+      "moved": false
+    },
+    {
+      "scenario": "requested_edits",
+      "technology": "DeuteriumTritiumFusion",
+      "round": 16,
+      "column": 8,
+      "columnAverage": 35294,
+      "threshold": 42352.799999999996,
+      "moved": false
+    },
+    {
+      "scenario": "requested_edits",
+      "technology": "DeuteriumTritiumFusion",
+      "round": 17,
+      "column": 8,
+      "columnAverage": 35294,
+      "threshold": 42352.799999999996,
+      "moved": false
+    },
+    {
+      "scenario": "requested_edits",
+      "technology": "NuclearFusioninSpace",
+      "round": 1,
+      "column": 5,
+      "columnAverage": 46562,
+      "threshold": 55874.4,
+      "moved": false
+    },
+    {
+      "scenario": "requested_edits",
+      "technology": "NuclearFusioninSpace",
+      "round": 2,
+      "column": 5,
+      "columnAverage": 50535,
+      "threshold": 60642.0,
+      "moved": false
+    },
+    {
+      "scenario": "requested_edits",
+      "technology": "NuclearFusioninSpace",
+      "round": 3,
+      "column": 5,
+      "columnAverage": 42500,
+      "threshold": 51000.0,
+      "moved": false
+    },
+    {
+      "scenario": "requested_edits",
+      "technology": "NuclearFusioninSpace",
+      "round": 4,
+      "column": 5,
+      "columnAverage": 48645,
+      "threshold": 58374.0,
+      "moved": false
+    },
+    {
+      "scenario": "requested_edits",
+      "technology": "NuclearFusioninSpace",
+      "round": 5,
+      "column": 5,
+      "columnAverage": 33958,
+      "threshold": 40749.6,
+      "moved": false
+    },
+    {
+      "scenario": "requested_edits",
+      "technology": "NuclearFusioninSpace",
+      "round": 6,
+      "column": 5,
+      "columnAverage": 26524,
+      "threshold": 31828.8,
+      "moved": true
+    },
+    {
+      "scenario": "requested_edits",
+      "technology": "NuclearFusioninSpace",
+      "round": 7,
+      "column": 6,
+      "columnAverage": 43695,
+      "threshold": 52434.0,
+      "moved": false
+    },
+    {
+      "scenario": "requested_edits",
+      "technology": "NuclearFusioninSpace",
+      "round": 8,
+      "column": 6,
+      "columnAverage": 34857,
+      "threshold": 41828.4,
+      "moved": false
+    },
+    {
+      "scenario": "requested_edits",
+      "technology": "NuclearFusioninSpace",
+      "round": 9,
+      "column": 6,
+      "columnAverage": 26951,
+      "threshold": 32341.199999999997,
+      "moved": true
+    },
+    {
+      "scenario": "requested_edits",
+      "technology": "NuclearFusioninSpace",
+      "round": 10,
+      "column": 7,
+      "columnAverage": 45833,
+      "threshold": 54999.6,
+      "moved": false
+    },
+    {
+      "scenario": "requested_edits",
+      "technology": "NuclearFusioninSpace",
+      "round": 11,
+      "column": 7,
+      "columnAverage": 35277,
+      "threshold": 42332.4,
+      "moved": false
+    },
+    {
+      "scenario": "requested_edits",
+      "technology": "NuclearFusioninSpace",
+      "round": 12,
+      "column": 7,
+      "columnAverage": 29000,
+      "threshold": 34800.0,
+      "moved": true
+    },
+    {
+      "scenario": "requested_edits",
+      "technology": "NuclearFusioninSpace",
+      "round": 13,
+      "column": 8,
+      "columnAverage": 45833,
+      "threshold": 54999.6,
+      "moved": false
+    },
+    {
+      "scenario": "requested_edits",
+      "technology": "NuclearFusioninSpace",
+      "round": 14,
+      "column": 8,
+      "columnAverage": 39800,
+      "threshold": 47760.0,
+      "moved": false
+    },
+    {
+      "scenario": "requested_edits",
+      "technology": "NuclearFusioninSpace",
+      "round": 15,
+      "column": 8,
+      "columnAverage": 35833,
+      "threshold": 42999.6,
+      "moved": false
+    },
+    {
+      "scenario": "requested_edits",
+      "technology": "NuclearFusioninSpace",
+      "round": 16,
+      "column": 8,
+      "columnAverage": 35294,
+      "threshold": 42352.799999999996,
+      "moved": false
+    },
+    {
+      "scenario": "requested_edits",
+      "technology": "NuclearFusioninSpace",
+      "round": 17,
+      "column": 8,
+      "columnAverage": 35294,
+      "threshold": 42352.799999999996,
+      "moved": false
+    },
+    {
+      "scenario": "requested_edits",
+      "technology": "AdvancedNeuralNetworks",
+      "round": 1,
+      "column": 2,
+      "columnAverage": 19975,
+      "threshold": 23970.0,
+      "moved": false
+    },
+    {
+      "scenario": "requested_edits",
+      "technology": "AdvancedNeuralNetworks",
+      "round": 2,
+      "column": 2,
+      "columnAverage": 5858,
+      "threshold": 7029.599999999999,
+      "moved": false
+    },
+    {
+      "scenario": "requested_edits",
+      "technology": "AdvancedNeuralNetworks",
+      "round": 3,
+      "column": 2,
+      "columnAverage": 2534,
+      "threshold": 3040.7999999999997,
+      "moved": false
+    },
+    {
+      "scenario": "requested_edits",
+      "technology": "AdvancedNeuralNetworks",
+      "round": 4,
+      "column": 2,
+      "columnAverage": 1750,
+      "threshold": 2100.0,
+      "moved": true
+    },
+    {
+      "scenario": "requested_edits",
+      "technology": "AdvancedNeuralNetworks",
+      "round": 5,
+      "column": 3,
+      "columnAverage": 2200,
+      "threshold": 2640.0,
+      "moved": false
+    },
+    {
+      "scenario": "requested_edits",
+      "technology": "AdvancedNeuralNetworks",
+      "round": 6,
+      "column": 3,
+      "columnAverage": 1960,
+      "threshold": 2352.0,
+      "moved": true
+    },
+    {
+      "scenario": "requested_edits",
+      "technology": "AdvancedNeuralNetworks",
+      "round": 7,
+      "column": 4,
+      "columnAverage": 3878,
+      "threshold": 4653.599999999999,
+      "moved": false
+    },
+    {
+      "scenario": "requested_edits",
+      "technology": "AdvancedNeuralNetworks",
+      "round": 8,
+      "column": 4,
+      "columnAverage": 2636,
+      "threshold": 3163.2,
+      "moved": false
+    },
+    {
+      "scenario": "requested_edits",
+      "technology": "AdvancedNeuralNetworks",
+      "round": 9,
+      "column": 4,
+      "columnAverage": 2363,
+      "threshold": 2835.6,
+      "moved": false
+    },
+    {
+      "scenario": "requested_edits",
+      "technology": "AdvancedNeuralNetworks",
+      "round": 10,
+      "column": 4,
+      "columnAverage": 2300,
+      "threshold": 2760.0,
+      "moved": false
+    },
+    {
+      "scenario": "requested_edits",
+      "technology": "AdvancedNeuralNetworks",
+      "round": 11,
+      "column": 4,
+      "columnAverage": 2300,
+      "threshold": 2760.0,
+      "moved": false
+    },
+    {
+      "scenario": "requested_edits",
+      "technology": "AdvancedNeuralNetworks",
+      "round": 12,
+      "column": 4,
+      "columnAverage": 2300,
+      "threshold": 2760.0,
+      "moved": false
+    },
+    {
+      "scenario": "requested_edits",
+      "technology": "AdvancedNeuralNetworks",
+      "round": 13,
+      "column": 4,
+      "columnAverage": 2300,
+      "threshold": 2760.0,
+      "moved": false
+    },
+    {
+      "scenario": "requested_edits",
+      "technology": "AdvancedNeuralNetworks",
+      "round": 14,
+      "column": 4,
+      "columnAverage": 2300,
+      "threshold": 2760.0,
+      "moved": false
+    },
+    {
+      "scenario": "requested_edits",
+      "technology": "AdvancedNeuralNetworks",
+      "round": 15,
+      "column": 4,
+      "columnAverage": 2300,
+      "threshold": 2760.0,
+      "moved": false
+    },
+    {
+      "scenario": "requested_edits",
+      "technology": "AdvancedNeuralNetworks",
+      "round": 16,
+      "column": 4,
+      "columnAverage": 2300,
+      "threshold": 2760.0,
+      "moved": false
+    },
+    {
+      "scenario": "requested_edits",
+      "technology": "AdvancedNeuralNetworks",
+      "round": 17,
+      "column": 4,
+      "columnAverage": 2300,
+      "threshold": 2760.0,
+      "moved": false
+    }
+  ]
+}
