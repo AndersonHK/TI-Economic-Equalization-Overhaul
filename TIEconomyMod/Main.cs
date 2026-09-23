@@ -73,7 +73,7 @@ namespace TIEconomyMod
                     ShipPowerRuntime.RefreshTemplatePerformanceCaches();
                 }
                 CouncilorRuntimeCaps.InitializeOrganizationCap();
-                Log("Loaded TI Economic Equalization Overhaul 0.9.7, validated against TI 1.0.53b.");
+                Log("Loaded TI Economic Equalization Overhaul 0.9.8, validated against TI 1.0.53b.");
                 return true;
             }
             catch (Exception exception)
@@ -260,7 +260,13 @@ namespace TIEconomyMod
         public float gdpPerInvestmentPointBillions = 100f;
         public float lowIncomeMultiplierAtZero = 0.70f;
         public float lowIncomeThreshold = 15000f;
-        public float outputMultiplier = 1.05f;
+        public float outputMultiplier = 1.10f;
+        public bool spaceAssetUpkeepEnabled = true;
+        public float missionControlUpkeep = 0.05f;
+        public float boostUpkeep = 0.10f;
+        public float fundingUpkeep = 0.001f;
+        public bool boostCapEnabled = true;
+        public float boostCapFactor = 2f;
     }
 
     [DrawFields(DrawFieldMask.Public)]
@@ -623,6 +629,10 @@ namespace TIEconomyMod
             RepairRange(ref value.investment.lowIncomeMultiplierAtZero, defaults.investment.lowIncomeMultiplierAtZero, 0f, 1f, "investment.lowIncomeMultiplierAtZero", log);
             RepairPositive(ref value.investment.lowIncomeThreshold, defaults.investment.lowIncomeThreshold, "investment.lowIncomeThreshold", log);
             RepairPositive(ref value.investment.outputMultiplier, defaults.investment.outputMultiplier, "investment.outputMultiplier", log);
+            RepairNonNegative(ref value.investment.missionControlUpkeep, defaults.investment.missionControlUpkeep, "investment.missionControlUpkeep", log);
+            RepairNonNegative(ref value.investment.boostUpkeep, defaults.investment.boostUpkeep, "investment.boostUpkeep", log);
+            RepairNonNegative(ref value.investment.fundingUpkeep, defaults.investment.fundingUpkeep, "investment.fundingUpkeep", log);
+            RepairPositive(ref value.investment.boostCapFactor, defaults.investment.boostCapFactor, "investment.boostCapFactor", log);
             RepairPositive(ref value.economy.baseGainBillions, defaults.economy.baseGainBillions, "economy.baseGainBillions", log);
             RepairNonNegative(ref value.economy.educationPerLevel, defaults.economy.educationPerLevel, "economy.educationPerLevel", log);
             RepairNonNegative(ref value.economy.governmentPerLevel, defaults.economy.governmentPerLevel, "economy.governmentPerLevel", log);

@@ -432,7 +432,7 @@ namespace TIEconomyMod
         public float gdpPerInvestmentPointBillions = 100f;
         public float lowIncomeMultiplierAtZero = 0.70f;
         public float lowIncomeThreshold = 15000f;
-        public float outputMultiplier = 1.05f;
+        public float outputMultiplier = 1.10f;
     }
 
     public sealed class EconomySettings

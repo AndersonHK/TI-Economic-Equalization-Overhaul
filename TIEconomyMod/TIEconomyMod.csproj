@@ -108,6 +108,7 @@
     <Compile Include="Core\LandCombatMath.cs" />
     <Compile Include="Core\MilitaryMath.cs" />
     <Compile Include="Core\MineMissionControlMath.cs" />
+    <Compile Include="Core\NationalSpaceAssetMath.cs" />
     <Compile Include="Core\GunPowerRegistry.cs" />
     <Compile Include="Core\GlobalTechnologySelectionMath.cs" />
     <Compile Include="Core\HullVolumeCatalog.cs" />
@@ -163,6 +164,8 @@
     <Compile Include="Patches\CohesionRestPatches.cs" />
     <Compile Include="Patches\CouncilorPatches.cs" />
     <Compile Include="Patches\NationalValuesPatches.cs" />
+    <Compile Include="Patches\NationalSpaceAssetPatches.cs" />
+    <Compile Include="Patches\NationalSpaceAssetUiPatches.cs" />
     <Compile Include="Patches\NuclearEffectsPatches.cs" />
     <Compile Include="Patches\NationalMergerPatches.cs" />
     <Compile Include="Patches\NationalHarmonizationPatches.cs" />

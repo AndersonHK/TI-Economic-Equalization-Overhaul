@@ -35,6 +35,7 @@ namespace TIEconomyMod.FormulaTests
                     delegate { });
 
                 TestNationalValues();
+                TestNationalSpaceAssets();
                 TestCampaignDifficultyDefaults();
                 TestMilitaryMath();
                 TestMineMissionControl();
@@ -76,6 +77,37 @@ namespace TIEconomyMod.FormulaTests
             TIGlobalValuesState.GlobalValues = new TIGlobalValuesState();
         }
 
+        private static void TestNationalSpaceAssets()
+        {
+            Near(4f, (float)NationalSpaceAssetMath.Upkeep(20, 10, 2000, .05, .1, .001),
+                .00001f, "asset upkeep uses monthly production units");
+            Near(0f, (float)NationalSpaceAssetMath.Available(3, 4), .00001f,
+                "asset upkeep cannot make investment negative");
+            double cap = NationalSpaceAssetMath.BoostCapMonth(1000, 10, 2);
+            Near(100f, (float)(12 * cap), .00001f, "k2 capacity converts monthly to annual");
+            Near(10f, (float)NationalSpaceAssetMath.BoostCapMonth(1000, 100, 2),
+                .00001f, "Education capacity denominator has 200B floor");
+            Near(0f, (float)NationalSpaceAssetMath.ClampBoostChange(.4, 120, cap),
+                .00001f, "over-cap assets block increases without reducing stock");
+            Near(-2f, (float)NationalSpaceAssetMath.ClampBoostChange(-2, 120, cap),
+                .00001f, "over-cap assets can still be damaged");
+            Near(.1f, (float)NationalSpaceAssetMath.ClampBoostChange(.4, 99.9, cap),
+                .00001f, "final completion fills only remaining capacity");
+            Near(0f, (float)NationalSpaceAssetMath.BoostHeadroomYear(99.999999, cap),
+                .00001f, "float rounding cannot leave a priority permanently open");
+            double splitCap = NationalSpaceAssetMath.BoostCapMonth(300, 10, 2) +
+                NationalSpaceAssetMath.BoostCapMonth(700, 10, 2);
+            Near((float)cap, (float)splitCap, .00001f, "Boost capacity has no split-country bonus");
+            True(NationalSpaceAssetMath.DirectInvestmentLimit(.1, .4, 2, 0, 100) == 2,
+                "direct investment buys at most one final partial completion");
+            True(NationalSpaceAssetMath.DirectInvestmentLimit(.1, .4, 2, 1.5, 100) == 1,
+                "direct investment accounts for saved progress");
+            True(NationalSpaceAssetMath.DirectInvestmentLimit(0, .4, 2, 0, 100) == 0,
+                "direct investment blocked at cap");
+            True(NationalSpaceAssetMath.DirectInvestmentLimit(10, .4, 2, 0, 3) == 3,
+                "direct investment retains vanilla annual allowance");
+        }
+
         private static void TestNationalValues()
         {
             Reset();
@@ -84,10 +116,10 @@ namespace TIEconomyMod.FormulaTests
             nation.perCapitaGDP = 0f;
             float result = 0f;
             True(!InvestmentPointsPatch.Prefix(ref result, nation), "IP prefix replaces vanilla");
-            Near(3.675f, result, 0.0001f, "IP zero-income penalty and output increase");
+            Near(3.85f, result, 0.0001f, "IP zero-income penalty and output increase");
             nation.perCapitaGDP = 15000f;
             InvestmentPointsPatch.Prefix(ref result, nation);
-            Near(5.25f, result, 0.0001f, "IP threshold and output increase");
+            Near(5.5f, result, 0.0001f, "IP threshold and output increase");
 
             nation.economyScore = 200f;
             nation.numControlPoints = 4;

@@ -16,6 +16,9 @@ when prose and runtime behavior disagree.
   planning, and player-facing explanations.
 - [Mine Mission Control](mine-mission-control.md): authoritative tier-based mine
   MC formula, retired free-mine bonuses, and UI/AI integration.
+- [National space assets](economy/national-space-assets-implementation.md):
+  national MC/Boost/Funding upkeep, the GDP/Education Boost cap, configuration,
+  and 0.9.8 manual test targets.
 - [Global technology AI selection](global-technology-ai-selection.md):
   authoritative soft-priority, relative-cost, and weighted-selection formula
   for AI replacement of completed global technologies.

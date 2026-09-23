@@ -6,7 +6,13 @@
     <gdpPerInvestmentPointBillions>100</gdpPerInvestmentPointBillions>
     <lowIncomeMultiplierAtZero>0.7</lowIncomeMultiplierAtZero>
     <lowIncomeThreshold>15000</lowIncomeThreshold>
-    <outputMultiplier>1.05</outputMultiplier>
+    <outputMultiplier>1.10</outputMultiplier>
+    <spaceAssetUpkeepEnabled>true</spaceAssetUpkeepEnabled>
+    <missionControlUpkeep>0.05</missionControlUpkeep>
+    <boostUpkeep>0.10</boostUpkeep>
+    <fundingUpkeep>0.001</fundingUpkeep>
+    <boostCapEnabled>true</boostCapEnabled>
+    <boostCapFactor>2</boostCapFactor>
   </investment>
   <economy>
     <enabled>true</enabled>

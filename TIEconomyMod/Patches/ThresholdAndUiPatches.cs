@@ -245,6 +245,26 @@ namespace TIEconomyMod.Patches
             }
 
             StringBuilder section = new StringBuilder();
+            if (priority == PriorityType.LaunchFacilities && NationalSpaceAssets.CapEnabled(nation))
+            {
+                section.AppendLine("EEO Boost capacity")
+                    .Append("National production ").Append(nation.rawBoostPerMonth_dekatons.ToString("0.###"))
+                    .Append(" / ").Append(NationalSpaceAssets.CapMonth(nation).ToString("0.###"))
+                    .AppendLine(" Boost/month.")
+                    .AppendLine("Existing production is preserved above the cap; further expansion requires more GDP or Education.");
+            }
+            if (NationalSpaceAssets.UpkeepEnabled(nation) &&
+                (priority == PriorityType.LaunchFacilities || priority == PriorityType.MissionControl ||
+                 priority == PriorityType.Funding))
+            {
+                InvestmentSettings s = Main.settings.investment;
+                float rate = priority == PriorityType.MissionControl ? s.missionControlUpkeep :
+                    priority == PriorityType.LaunchFacilities ? s.boostUpkeep : s.fundingUpkeep;
+                section.Append("Monthly upkeep: ").Append(rate.ToString("0.####"))
+                    .Append(" IP per ").AppendLine(priority == PriorityType.MissionControl ? "installed MC." :
+                        priority == PriorityType.LaunchFacilities ? "Boost/month of national production." :
+                        "$1/month of national Funding.");
+            }
             if (priority == PriorityType.Economy)
             {
                 if (!Main.FeatureEnabled(Main.settings.economy.enabled))
@@ -729,54 +749,81 @@ namespace TIEconomyMod.Patches
     [HarmonyPatch(typeof(NationInfoController), "BuildInvestmentTooltip")]
     public static class InvestmentTooltipPatch
     {
-        [HarmonyPostfix]
-        public static void Postfix(ref string __result, TINationState nation)
+        [HarmonyPrefix]
+        public static bool Prefix(ref string __result, TINationState nation)
         {
             if (!Main.FeatureEnabled(Main.settings.ui.enabled) ||
-                !Main.settings.ui.expandedTooltips ||
-                nation == null)
-            {
-                return;
-            }
+                !Main.settings.ui.expandedTooltips || nation == null)
+                return true;
 
-            InvestmentSettings investment = Main.settings.investment;
-            float armyUpkeep = 0f;
+            bool assetUpkeep = NationalSpaceAssets.UpkeepEnabled(nation);
+            StringBuilder text = new StringBuilder(Loc.T(assetUpkeep
+                ? "UI.Nation.EEO.InvestmentPoints" : "UI.Nation.InvestmentPoints")).AppendLine().AppendLine();
+            float gross = nation.economyScore;
+            float available = nation.BaseInvestmentPoints_month();
+            text.Append(Loc.T("UI.Nation.BaseIPs", gross.ToString("N2")));
+            if (available != gross)
+                text.Append(Loc.T("UI.Nation.CurrentIPs", available.ToString("N2")));
+
+            if (nation.adviserAdministrationBonus > 0f)
+                Bullet(text, "UI.Nation.AdviserBonus", nation.adviserAdministrationBonus.ToString("P0"));
+            if (nation.investmentPoints_occupationPenalty_frac > 0f)
+                Bullet(text, "UI.Nation.IPOccupationPenalty", nation.investmentPoints_occupationPenalty_frac.ToString("P0"));
+            if (nation.investmentPoints_unrestPenalty_frac > 0f)
+                Bullet(text, "UI.Nation.IPUnrestPenalty", nation.investmentPoints_unrestPenalty_frac.ToString("P0"));
+
+            float home = 0f, away = 0f, navy = 0f;
+            int homeCount = 0, awayCount = 0, navyCount = 0;
             foreach (TIArmyState army in nation.armies)
             {
-                armyUpkeep += army.investmentArmyFactor + army.investmentNavyFactor;
+                float cost = army.investmentArmyFactor;
+                if (cost > 0f)
+                {
+                    if (army.useHomeInvestmentFactor) { home += cost; homeCount++; }
+                    else { away += cost; awayCount++; }
+                }
+                if (army.deploymentType == DeploymentType.Naval && army.investmentNavyFactor > 0f)
+                {
+                    navy += army.investmentNavyFactor;
+                    navyCount++;
+                }
             }
+            if (homeCount > 0)
+                Bullet(text, "UI.Nation.HomeArmiesPenalty", Number(home / homeCount), Number(home));
+            if (awayCount > 0)
+                Bullet(text, "UI.Nation.AwayArmiesPenalty", Number(away / awayCount), Number(away));
+            if (navyCount > 0)
+                Bullet(text, "UI.Nation.NaviesPenalty", Number(navy / navyCount), Number(navy));
 
-            StringBuilder section = new StringBuilder().AppendLine("EEO Investment Points");
-            if (Main.FeatureEnabled(investment.enabled))
+            if (assetUpkeep)
             {
-                // This mirrors InvestmentPointsPatch. A $500B nation produces 5 GDP-base
-                // IP; at $7.5k PCGDP, x.85 income and x1.05 output display 4.46.
-                float basePoints = (float)(nation.GDP /
-                    (investment.gdpPerInvestmentPointBillions * 1000000000d));
-                float incomeProgress = Math.Max(0f, Math.Min(1f,
-                    nation.perCapitaGDP / investment.lowIncomeThreshold));
-                float incomeMultiplier = investment.lowIncomeMultiplierAtZero +
-                    (1f - investment.lowIncomeMultiplierAtZero) * incomeProgress;
-                section.Append("GDP base ").Append(basePoints.ToString("0.##"))
-                    .Append("; low-income x").Append(incomeMultiplier.ToString("0.###"))
-                    .Append("; output x").Append(investment.outputMultiplier.ToString("0.###"))
-                    .Append("; EEO base ").Append((basePoints * incomeMultiplier *
-                        investment.outputMultiplier).ToString("0.##")).AppendLine();
+                InvestmentSettings s = Main.settings.investment;
+                float mc = nation.missionControl * s.missionControlUpkeep;
+                float boost = nation.rawBoostPerMonth_dekatons * s.boostUpkeep;
+                float funding = nation.spaceFunding_month * s.fundingUpkeep;
+                if (mc > 0f)
+                    Bullet(text, "UI.Nation.EEO.MissionControlPenalty", Number(s.missionControlUpkeep), Number(mc));
+                if (boost > 0f)
+                    Bullet(text, "UI.Nation.EEO.BoostPenalty", Number(s.boostUpkeep), Number(boost));
+                if (funding > 0f)
+                    Bullet(text, "UI.Nation.EEO.FundingPenalty", Number(1000f * s.fundingUpkeep), Number(funding));
             }
-            else
-            {
-                section.AppendLine("EEO base-IP formula disabled; vanilla applies.");
-            }
-            section.Append("Army and navy upkeep ").Append(armyUpkeep.ToString("0.##"));
-            float repairDebt = nation.GetAccumulatedInvestmentPoints(
-                PriorityType.Military_BuildArmy);
-            if (Main.FeatureEnabled(Main.settings.army.enabled) && repairDebt < 0f)
-            {
-                section.AppendLine()
-                    .Append("Army repair debt ").Append((-repairDebt).ToString("0.##"))
-                    .Append(" IP");
-            }
-            __result = (__result ?? string.Empty).TrimEnd() + "\n\n" + section;
+            float debt = nation.GetAccumulatedInvestmentPoints(PriorityType.Military_BuildArmy);
+            if (Main.FeatureEnabled(Main.settings.army.enabled) && debt < 0f)
+                Bullet(text, "UI.Nation.EEO.ArmyRepairDebt", Number(-debt));
+
+            __result = text.ToString().Trim();
+            return false;
+        }
+
+        private static string Number(float value)
+        {
+            return TIUtilities.FormatSmallNumber(value, 2);
+        }
+
+        private static void Bullet(StringBuilder text, string key, params string[] values)
+        {
+            text.AppendLine().AppendLine().Append(Loc.T(key, values));
         }
     }
 }

@@ -124,6 +124,9 @@
       <Link>SocialPriorityPatches.cs</Link>
     </Compile>
     <Compile Include="Program.cs" />
+    <Compile Include="..\..\TIEconomyMod\Core\NationalSpaceAssetMath.cs">
+      <Link>NationalSpaceAssetMath.cs</Link>
+    </Compile>
     <Compile Include="TestStubs.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

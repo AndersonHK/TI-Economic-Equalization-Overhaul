@@ -1,6 +1,6 @@
 # TI Economic Equalization Overhaul
 
-Current release: **0.9.7**, validated against **Terra Invicta 1.0.53b**.
+Current release: **0.9.8**, validated against **Terra Invicta 1.0.53b**.
 
 The mod replaces opaque, border-sensitive scaling with economic units that
 remain understandable across countries, armies, habs, and spacecraft. It aims
@@ -9,8 +9,8 @@ and technological progression matter consistently.
 
 ## Design direction
 
-Investment Points are linear in GDP: each $100B produces 1 monthly IP before
-the low-income modifier. Each completion then follows the stock it changes:
+Investment Points are linear in GDP: each $100B produces 1.10 monthly IP before
+the low-income modifier, national penalties, and upkeep. Each completion then follows the stock it changes:
 
 - fixed assets and physical work have a fixed effect per IP;
 - economic ratios divide by GDP;
@@ -32,6 +32,13 @@ historical research and deferred work.
 
 ### Economy, society, and environment
 
+- National assets consume monthly IP: 0.05 per installed MC, 0.10 per monthly
+  Boost production, and 0.001 per monthly Funding dollar, before federation
+  sharing. Available IP is floored at zero after other deductions.
+- Monthly Boost capacity is `2 × GDP_billions / max(200, 300 − 6 × Education)`.
+  Existing over-cap production is preserved; further expansion waits for GDP
+  or Education to raise the cap. Normal investment, direct investment, initial
+  spaceflight grants, and AI priority validity share the cap.
 - Factor-balance Economy growth: capital returns are constrained by effective
   labor and resources, while all 149 global technologies compound productivity
   and progressively substitute for those constraints.
@@ -234,7 +241,7 @@ defaults.
 
 ## Compatibility and save behavior
 
-Version 0.9.7 is built and guarded against the installed Terra Invicta 1.0.53b
+Version 0.9.8 is built and guarded against the installed Terra Invicta 1.0.53b
 assemblies. Transpilers validate their expected IL shapes, and verification
 dynamically binds the changed claim-harmonization contract and other focused
 patch families so a missing target or changed patch parameter fails before
@@ -258,7 +265,7 @@ states serialized when they were created.
 The current release archive is:
 
 ```text
-artifacts/TIEconomyMod-0.9.7-ti1.0.53.zip
+artifacts/TIEconomyMod-0.9.8-ti1.0.53.zip
 ```
 
 ## Build and verification
