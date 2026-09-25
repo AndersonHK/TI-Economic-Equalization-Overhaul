@@ -2,6 +2,13 @@
 
 Last reviewed: 2026-08-16
 
+The [2026-09-25 missile-role and alien-launcher exploration](../../missile-role-and-alien-launcher-exploration-2026-09-25.md)
+adds a complete missile comparison workbook, editable alien launcher trials,
+installed combat-code findings and a test plan for pursuit and exposed-capital
+roles. The follow-up implements doubled magazines for all six alien launchers
+in the 0.9.9 JSON package metadata version; build, tests, validation and deployment
+were skipped at the user's request. The workbook remains the pre-change baseline.
+
 The [gun and railgun progression report](gun-and-railgun-progression.md)
 compares the 6-inch, 8-inch, and 10-inch conventional weapons with the railgun
 families using equivalent mounts.

@@ -1,0 +1,26 @@
+[
+  {
+    "dataName": "GlitteringJewelMissileBay",
+    "magazine": 32
+  },
+  {
+    "dataName": "GlitteringJewelMissilePod",
+    "magazine": 8
+  },
+  {
+    "dataName": "IridescentStarTorpedoBay",
+    "magazine": 16
+  },
+  {
+    "dataName": "LuminousSwarmMissileBay",
+    "magazine": 72
+  },
+  {
+    "dataName": "BrilliantSkyMissileBay",
+    "magazine": 32
+  },
+  {
+    "dataName": "PredatoryStarTorpedoBay",
+    "magazine": 16
+  }
+]

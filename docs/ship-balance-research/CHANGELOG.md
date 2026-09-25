@@ -3,6 +3,16 @@
 This is a decision log for the proposed ship rebalance. Entries here describe
 the balance decisions as well as their implementation status.
 
+## 2026-09-25
+
+### Implemented in JSON, not deployed: alien missile ammunition ×2
+
+- Double magazine capacity for all six alien missile/torpedo launchers, including Glittering Jewel's half-hull pod, using sparse `TIMissileTemplate.json` overrides.
+- Change Glittering Jewel Bay 16→32, Glittering Jewel Pod 4→8, Iridescent Star 8→16, Luminous Swarm 36→72, Brilliant Sky 16→32 and Predatory Star 8→16. Preserve firing cadence, salvo size, guidance and damage values.
+- Advance `ModInfo.json` package version from 0.9.8 to 0.9.9. Keep this commit scoped to documentation and JSON as requested; assembly metadata and the compiled DLL remain at their previous version pending a future synchronized build.
+- Preserve the [missile workbook and source snapshots](missile-role-and-alien-launcher-exploration-2026-09-25.md) as the installed pre-change baseline and document the approved override separately.
+- Build, tests, validation and deployment skipped for this turn at the user's explicit request. No in-game behavior is claimed verified.
+
 ## 2026-09-11
 
 ### Research only: fission-drive progression and scientific bounds
