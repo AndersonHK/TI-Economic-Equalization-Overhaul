@@ -5,7 +5,8 @@
     "EV_kps": 1200,
     "efficiency": 0.95,
     "thrustRating_GW": "720.000",
-    "req power": "757.895"
+    "req power": "757.895",
+    "cooling": "Open"
   },
   {
     "dataName": "AlienFusionLanternx2",
@@ -13,7 +14,8 @@
     "EV_kps": 1200,
     "efficiency": 0.95,
     "thrustRating_GW": "1,440.000",
-    "req power": "1,515.789"
+    "req power": "1,515.789",
+    "cooling": "Open"
   },
   {
     "dataName": "AlienFusionLanternx3",
@@ -21,7 +23,8 @@
     "EV_kps": 1200,
     "efficiency": 0.95,
     "thrustRating_GW": "2,160.000",
-    "req power": "2,273.684"
+    "req power": "2,273.684",
+    "cooling": "Open"
   },
   {
     "dataName": "AlienFusionLanternx4",
@@ -29,7 +32,8 @@
     "EV_kps": 1200,
     "efficiency": 0.95,
     "thrustRating_GW": "2,880.000",
-    "req power": "3,031.579"
+    "req power": "3,031.579",
+    "cooling": "Open"
   },
   {
     "dataName": "AlienFusionLanternx5",
@@ -37,7 +41,8 @@
     "EV_kps": 1200,
     "efficiency": 0.95,
     "thrustRating_GW": "3,600.000",
-    "req power": "3,789.474"
+    "req power": "3,789.474",
+    "cooling": "Open"
   },
   {
     "dataName": "AlienFusionLanternx6",
@@ -45,7 +50,8 @@
     "EV_kps": 1200,
     "efficiency": 0.95,
     "thrustRating_GW": "4,320.000",
-    "req power": "4,547.368"
+    "req power": "4,547.368",
+    "cooling": "Open"
   },
   {
     "dataName": "AlienFusionTorchx1",
@@ -53,7 +59,8 @@
     "EV_kps": 2350,
     "efficiency": 0.97,
     "thrustRating_GW": "4,465.000",
-    "req power": "4,603.093"
+    "req power": "4,603.093",
+    "cooling": "Open"
   },
   {
     "dataName": "AlienFusionTorchx2",
@@ -61,7 +68,8 @@
     "EV_kps": 2350,
     "efficiency": 0.97,
     "thrustRating_GW": "8,930.000",
-    "req power": "9,206.186"
+    "req power": "9,206.186",
+    "cooling": "Open"
   },
   {
     "dataName": "AlienFusionTorchx3",
@@ -69,7 +77,8 @@
     "EV_kps": 2350,
     "efficiency": 0.97,
     "thrustRating_GW": "13,395.000",
-    "req power": "13,809.278"
+    "req power": "13,809.278",
+    "cooling": "Open"
   },
   {
     "dataName": "AlienFusionTorchx4",
@@ -77,7 +86,8 @@
     "EV_kps": 2350,
     "efficiency": 0.97,
     "thrustRating_GW": "17,860.000",
-    "req power": "18,412.371"
+    "req power": "18,412.371",
+    "cooling": "Open"
   },
   {
     "dataName": "AlienFusionTorchx5",
@@ -85,7 +95,8 @@
     "EV_kps": 2350,
     "efficiency": 0.97,
     "thrustRating_GW": "22,325.000",
-    "req power": "23,015.464"
+    "req power": "23,015.464",
+    "cooling": "Open"
   },
   {
     "dataName": "AlienFusionTorchx6",
@@ -93,7 +104,8 @@
     "EV_kps": 2350,
     "efficiency": 0.97,
     "thrustRating_GW": "26,790.000",
-    "req power": "27,618.557"
+    "req power": "27,618.557",
+    "cooling": "Open"
   },
   {
     "dataName": "AdvancedAlienFusionTorchx1",
@@ -101,7 +113,8 @@
     "EV_kps": 3000,
     "efficiency": 0.98,
     "thrustRating_GW": "15,750.000",
-    "req power": "16,071.429"
+    "req power": "16,071.429",
+    "cooling": "Open"
   },
   {
     "dataName": "AdvancedAlienFusionTorchx2",
@@ -109,7 +122,8 @@
     "EV_kps": 3000,
     "efficiency": 0.98,
     "thrustRating_GW": "31,500.000",
-    "req power": "32,142.857"
+    "req power": "32,142.857",
+    "cooling": "Open"
   },
   {
     "dataName": "AdvancedAlienFusionTorchx3",
@@ -117,7 +131,8 @@
     "EV_kps": 3000,
     "efficiency": 0.98,
     "thrustRating_GW": "47,250.000",
-    "req power": "48,214.286"
+    "req power": "48,214.286",
+    "cooling": "Open"
   },
   {
     "dataName": "AdvancedAlienFusionTorchx4",
@@ -125,7 +140,8 @@
     "EV_kps": 3000,
     "efficiency": 0.98,
     "thrustRating_GW": "63,000.000",
-    "req power": "64,285.714"
+    "req power": "64,285.714",
+    "cooling": "Open"
   },
   {
     "dataName": "AdvancedAlienFusionTorchx5",
@@ -133,7 +149,8 @@
     "EV_kps": 3000,
     "efficiency": 0.98,
     "thrustRating_GW": "78,750.000",
-    "req power": "80,357.143"
+    "req power": "80,357.143",
+    "cooling": "Open"
   },
   {
     "dataName": "AdvancedAlienFusionTorchx6",
@@ -141,6 +158,631 @@
     "EV_kps": 3000,
     "efficiency": 0.98,
     "thrustRating_GW": "94,500.000",
-    "req power": "96,428.571"
+    "req power": "96,428.571",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "TritonFusorDrivex1",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "TritonFusorDrivex2",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "TritonFusorDrivex3",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "TritonFusorDrivex4",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "TritonFusorDrivex5",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "TritonFusorDrivex6",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "DeuteronFusorDrivex1",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "DeuteronFusorDrivex2",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "DeuteronFusorDrivex3",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "DeuteronFusorDrivex4",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "DeuteronFusorDrivex5",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "DeuteronFusorDrivex6",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "ProtiumFusorDrivex1",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "ProtiumFusorDrivex2",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "ProtiumFusorDrivex3",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "ProtiumFusorDrivex4",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "ProtiumFusorDrivex5",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "ProtiumFusorDrivex6",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "TritonReflexDrivex1",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "TritonReflexDrivex2",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "TritonReflexDrivex3",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "TritonReflexDrivex4",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "TritonReflexDrivex5",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "TritonReflexDrivex6",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "DeuteronReflexDrivex1",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "DeuteronReflexDrivex2",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "DeuteronReflexDrivex3",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "DeuteronReflexDrivex4",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "DeuteronReflexDrivex5",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "DeuteronReflexDrivex6",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "HelionReflexDrivex1",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "HelionReflexDrivex2",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "HelionReflexDrivex3",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "HelionReflexDrivex4",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "HelionReflexDrivex5",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "HelionReflexDrivex6",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "TritonTorusDrivex1",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "TritonTorusDrivex2",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "TritonTorusDrivex3",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "TritonTorusDrivex4",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "TritonTorusDrivex5",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "TritonTorusDrivex6",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "DeuteronTorusDrivex1",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "DeuteronTorusDrivex2",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "DeuteronTorusDrivex3",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "DeuteronTorusDrivex4",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "DeuteronTorusDrivex5",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "DeuteronTorusDrivex6",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "HelionTorusLanternx1",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "HelionTorusLanternx2",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "HelionTorusLanternx3",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "HelionTorusLanternx4",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "HelionTorusLanternx5",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "HelionTorusLanternx6",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "ProtiumTorusLanternx1",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "ProtiumTorusLanternx2",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "ProtiumTorusLanternx3",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "ProtiumTorusLanternx4",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "ProtiumTorusLanternx5",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "ProtiumTorusLanternx6",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "TritonPolywellDrivex1",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "TritonPolywellDrivex2",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "TritonPolywellDrivex3",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "TritonPolywellDrivex4",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "TritonPolywellDrivex5",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "TritonPolywellDrivex6",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "DeuteronPolywellDrivex1",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "DeuteronPolywellDrivex2",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "DeuteronPolywellDrivex3",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "DeuteronPolywellDrivex4",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "DeuteronPolywellDrivex5",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "DeuteronPolywellDrivex6",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "HelionPlasmajetLanternx1",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "HelionPlasmajetLanternx2",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "HelionPlasmajetLanternx3",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "HelionPlasmajetLanternx4",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "HelionPlasmajetLanternx5",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "HelionPlasmajetLanternx6",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "BoranePlasmajetTorchx1",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "BoranePlasmajetTorchx2",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "BoranePlasmajetTorchx3",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "BoranePlasmajetTorchx4",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "BoranePlasmajetTorchx5",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "BoranePlasmajetTorchx6",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "ZetaTritonDrivex1",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "ZetaTritonDrivex2",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "ZetaTritonDrivex3",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "ZetaTritonDrivex4",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "ZetaTritonDrivex5",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "ZetaTritonDrivex6",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "ZetaDeuteronDrivex1",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "ZetaDeuteronDrivex2",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "ZetaDeuteronDrivex3",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "ZetaDeuteronDrivex4",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "ZetaDeuteronDrivex5",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "ZetaDeuteronDrivex6",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "ZetaDeuteronTorchx1",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "ZetaDeuteronTorchx2",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "ZetaDeuteronTorchx3",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "ZetaDeuteronTorchx4",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "ZetaDeuteronTorchx5",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "ZetaDeuteronTorchx6",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "ZetaHelionLanternx1",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "ZetaHelionLanternx2",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "ZetaHelionLanternx3",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "ZetaHelionLanternx4",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "ZetaHelionLanternx5",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "ZetaHelionLanternx6",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "ZetaBoraneLanternx1",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "ZetaBoraneLanternx2",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "ZetaBoraneLanternx3",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "ZetaBoraneLanternx4",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "ZetaBoraneLanternx5",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "ZetaBoraneLanternx6",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "TritonNovaDrivex1",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "TritonNovaDrivex2",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "TritonNovaDrivex3",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "TritonNovaDrivex4",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "TritonNovaDrivex5",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "TritonNovaDrivex6",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "DeuteronNovaLanternx1",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "DeuteronNovaLanternx2",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "DeuteronNovaLanternx3",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "DeuteronNovaLanternx4",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "DeuteronNovaLanternx5",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "DeuteronNovaLanternx6",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "HelionNovaLanternx1",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "HelionNovaLanternx2",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "HelionNovaLanternx3",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "HelionNovaLanternx4",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "HelionNovaLanternx5",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "HelionNovaLanternx6",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "HelionNovaTorchx1",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "HelionNovaTorchx2",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "HelionNovaTorchx3",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "HelionNovaTorchx4",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "HelionNovaTorchx5",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "HelionNovaTorchx6",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "BoraneNovaLanternx1",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "BoraneNovaLanternx2",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "BoraneNovaLanternx3",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "BoraneNovaLanternx4",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "BoraneNovaLanternx5",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "BoraneNovaLanternx6",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "ProtiumNovaTorchx1",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "ProtiumNovaTorchx2",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "ProtiumNovaTorchx3",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "ProtiumNovaTorchx4",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "ProtiumNovaTorchx5",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "ProtiumNovaTorchx6",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "ProtiumConverterTorchx1",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "ProtiumConverterTorchx2",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "ProtiumConverterTorchx3",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "ProtiumConverterTorchx4",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "ProtiumConverterTorchx5",
+    "cooling": "Open"
+  },
+  {
+    "dataName": "ProtiumConverterTorchx6",
+    "cooling": "Open"
   }
 ]

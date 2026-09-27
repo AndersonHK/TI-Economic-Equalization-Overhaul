@@ -2,6 +2,12 @@
 
 Last reviewed: 2026-08-18
 
+Current-data update (2026-09-27): release 0.10.1 doubles all human fusion
+reactor `specificPower_tGW` coefficients. The dated benchmarks below retain
+their original comparison values. Use [powerplant-current.csv](tables/powerplant-current.csv)
+and the [implementation record](fusion-open-cycle-implementation-2026-09-27.md)
+for current fusion masses and open-cycle accounting.
+
 ## Unit normalization
 
 The game field `specificPower_tGW` is named like a specific mass, not a specific power. Its conversion is:

@@ -3,6 +3,15 @@
 This is a decision log for the proposed ship rebalance. Entries here describe
 the balance decisions as well as their implementation status.
 
+## 2026-09-27
+
+### 0.10.1: open-cycle fusion drives and human reactor specific mass
+
+- Double `specificPower_tGW` for all 27 human fusion reactors; preserve all three alien reactor coefficients.
+- Explicitly set Open cooling on all 174 human and alien fusion-drive variants, including Protium drives and the previously calculated-open advanced alien torch. Retain the current thermal accounting and mass multipliers.
+- Refresh the current reactor and drive CSV tables, preserve the vanilla reactor baseline, update the implementation matrix, and retain the candidate report as pre-change research.
+- Normal deployment passed all 37 validators and 1,204 formula assertions and hash-verified 47 deployed files. Manual designer and saved-ship testing is pending. See the [implementation record](fusion-open-cycle-implementation-2026-09-27.md).
+
 ## 2026-09-25
 
 ### Planning only: nose batteries and enlarged spinal tier

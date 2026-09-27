@@ -2,6 +2,12 @@
 
 Last reviewed: 2026-07-28
 
+Current-data update (2026-09-27): all 174 fusion drive variants now explicitly
+use Open cooling. [drives.csv](tables/drives.csv) overlays the 0.10.1 fusion
+values, including existing alien performance changes, on the historical
+snapshot. The dated comparisons below remain historical; see the
+[implementation record](fusion-open-cycle-implementation-2026-09-27.md).
+
 ## What is being compared
 
 The current drive template contains 541 rows, largely because each underlying drive is repeated with different thruster counts. Restricting the comparison to `thrusters = 1` leaves 96 base entries across nine game classifications.

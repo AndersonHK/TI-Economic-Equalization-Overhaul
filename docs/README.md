@@ -7,6 +7,8 @@ when prose and runtime behavior disagree.
 
 ## Current authorities
 
+- [Fusion open-cycle rebalance](ship-balance-research/fusion-open-cycle-implementation-2026-09-27.md):
+  0.10.1 doubles human fusion reactor tonnes/GW and makes every fusion drive explicitly open cycle.
 - [Capital heavy mounts](ship-balance-research/capital-heavy-mount-implementation.md):
   0.10.0 heavy-only capital fitting, utility/mass/crew changes, save conversion,
   and fresh-campaign-first manual acceptance.

@@ -1,6 +1,10 @@
 # TI Economic Equalization Overhaul
 
-Current release: **0.10.0**, validated against **Terra Invicta 1.0.53b**.
+Current release: **0.10.1**, validated against **Terra Invicta 1.0.53b**.
+
+Release 0.10.1 doubles tonnes per GW for all 27 human fusion reactors and makes
+all 174 human and alien fusion-drive variants explicitly open cycle. See the
+[fusion rebalance and manual checks](docs/ship-balance-research/fusion-open-cycle-implementation-2026-09-27.md).
 
 Release 0.10.0 gives Titans and Motherships one full heavy hull weapon per hull
 cell, with heavy-only fitting for players and AI. It adds capital utility slots
@@ -248,7 +252,7 @@ defaults.
 
 ## Compatibility and save behavior
 
-Version 0.10.0 is built and guarded against the installed Terra Invicta 1.0.53b
+Version 0.10.1 is built and guarded against the installed Terra Invicta 1.0.53b
 assemblies. Transpilers validate their expected IL shapes, and verification
 dynamically binds the changed claim-harmonization contract and other focused
 patch families so a missing target or changed patch parameter fails before
@@ -272,7 +276,7 @@ states serialized when they were created.
 The current release archive is:
 
 ```text
-artifacts/TIEconomyMod-0.10.0-ti1.0.53.zip
+artifacts/TIEconomyMod-0.10.1-ti1.0.53.zip
 ```
 
 ## Build and verification

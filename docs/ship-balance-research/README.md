@@ -5,7 +5,7 @@ Status: evidence and planning archive. Use the dated
 [current implementation matrix](../current-implementation-matrix.xlsx) to
 distinguish implemented values from proposals and deferred work.
 
-Last reviewed: 2026-09-25
+Last reviewed: 2026-09-27
 
 This dossier compares dated Terra Invicta ship-drive, power-plant, and
 weapon-crew snapshots with demonstrated hardware, active prototypes, historical
@@ -24,6 +24,7 @@ The game data used here comes from the installed templates:
 
 The comparison is organized into:
 
+- [0.10.1 fusion open-cycle implementation](fusion-open-cycle-implementation-2026-09-27.md): all human/alien fusion drives explicitly open; all human fusion reactor specific masses doubled. Includes deployment results and table provenance. The [candidate report](fusion-drive-open-cycle-candidates-2026-09-27.md) retains the pre-change scientific and localization audit.
 - [2026-09-25 nose batteries and enlarged spinal tier](nose-battery-and-spinal-tier-proposal-2026-09-25.md): planning only. Battleship 2×size 2, Dreadnought 3×size 3, Mothership 4×size 4, and a size-4 target of roughly four times size 3. Includes current-template deltas, mass/volume density, delta-v implications, Lancer role/appearance limits, laser exceptions and unresolved alien alternatives. No implementation or deployment authorized by this document.
 - [2026-09-25 weapon visibility and maximum nose mounts](weapon-visibility-and-maximum-nose-plan-2026-09-25.md): capital small-hull weapon hiding implemented; nose restriction deferred pending the alien-ship decision. Retains the proposed per-hull sizes and migration discussion. Nose fittings and statistics remain unchanged.
 - [0.10.0 capital heavy-mount implementation](capital-heavy-mount-implementation.md): current rules, mass/crew totals, migration policy and manual acceptance checklist.
@@ -40,7 +41,7 @@ The comparison is organized into:
 - [2026-08-20 reactor power-progression and large-hull scaling analysis](reactor-power-progression-analysis-2026-08-20.md)
 - [2026-08-24 revised reactor power-progression and hull-scaling plan](reactor-power-progression-plan-2026-08-24.md)
 - [2026-08-24 conservative linear reactor-scaling plan](reactor-conservative-linear-scaling-plan-2026-08-24.md)
-- Data tables: [installed drive snapshot](tables/drives.csv),
+- Data tables: [drive snapshot with current fusion overrides](tables/drives.csv),
   [installed power-plant snapshot](tables/powerplant.csv),
   [power plants with live overrides merged](tables/powerplant-current.csv),
   [installed laser-weapon snapshot](tables/lasers.csv), the historical

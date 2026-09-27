@@ -196,5 +196,113 @@
     "specificPower_tGW": 0.025,
     "openCycleThermalMassMultiplier": 0.5,
     "efficiency": 0.9995
+  },
+  {
+    "dataName": "ElectrostaticConfinementFusionReactorI",
+    "specificPower_tGW": 2
+  },
+  {
+    "dataName": "ElectrostaticConfinementFusionReactorII",
+    "specificPower_tGW": 1.0
+  },
+  {
+    "dataName": "ElectrostaticConfinementFusionReactorIII",
+    "specificPower_tGW": 0.01
+  },
+  {
+    "dataName": "MirrorCellFusionReactorI",
+    "specificPower_tGW": 10
+  },
+  {
+    "dataName": "MirrorCellFusionReactorII",
+    "specificPower_tGW": 8
+  },
+  {
+    "dataName": "MirrorCellFusionReactorIII",
+    "specificPower_tGW": 1.6
+  },
+  {
+    "dataName": "FusionTokamakI",
+    "specificPower_tGW": 8
+  },
+  {
+    "dataName": "FusionTokamakII",
+    "specificPower_tGW": 4
+  },
+  {
+    "dataName": "FusionTokamakIII",
+    "specificPower_tGW": 2
+  },
+  {
+    "dataName": "FusionTokamakIV",
+    "specificPower_tGW": 1.0
+  },
+  {
+    "dataName": "FusionTokamakV",
+    "specificPower_tGW": 0.2
+  },
+  {
+    "dataName": "HybridConfinementFusionReactorI",
+    "specificPower_tGW": 4
+  },
+  {
+    "dataName": "HybridConfinementFusionReactorII",
+    "specificPower_tGW": 2
+  },
+  {
+    "dataName": "HybridConfinementFusionReactorIII",
+    "specificPower_tGW": 1.0
+  },
+  {
+    "dataName": "HybridConfinementFusionReactorIV",
+    "specificPower_tGW": 0.1
+  },
+  {
+    "dataName": "ZPinchFusionReactorI",
+    "specificPower_tGW": 6
+  },
+  {
+    "dataName": "ZPinchFusionReactorII",
+    "specificPower_tGW": 4
+  },
+  {
+    "dataName": "ZPinchFusionReactorIII",
+    "specificPower_tGW": 2.8
+  },
+  {
+    "dataName": "ZPinchFusionReactorIV",
+    "specificPower_tGW": 0.8
+  },
+  {
+    "dataName": "FlowStabilizedZPinchFusionReactor",
+    "specificPower_tGW": 0.0136
+  },
+  {
+    "dataName": "InertialConfinementFusionReactorI",
+    "specificPower_tGW": 8
+  },
+  {
+    "dataName": "InertialConfinementFusionReactorII",
+    "specificPower_tGW": 4
+  },
+  {
+    "dataName": "InertialConfinementFusionReactorIII",
+    "specificPower_tGW": 2
+  },
+  {
+    "dataName": "InertialConfinementFusionReactorIV",
+    "specificPower_tGW": 1.0
+  },
+  {
+    "dataName": "InertialConfinementFusionReactorV",
+    "specificPower_tGW": 0.5
+  },
+  {
+    "dataName": "InertialConfinementFusionReactorVI",
+    "specificPower_tGW": 0.136
+  },
+  {
+    "dataName": "InertialConfinementFusionReactorVII",
+    "specificPower_tGW": 0.004
   }
 ]

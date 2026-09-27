@@ -76,8 +76,26 @@ $expectedPower = [ordered]@{
     AlienAdvancedHybridConfinementFusionReactor = @(0.998, 0.175, 32000, 5600)
     AlienSuperAdvancedHybridConfinementFusionReactor = @(0.9995, 0.025, 107550, 2688.75)
 }
-if ($powerOverrides.Count -ne $expectedPower.Count) {
-    throw "Power-plant override has $($powerOverrides.Count) rows instead of $($expectedPower.Count)."
+$vanillaPower = Read-JsonArray (Join-Path $VanillaTemplatesDir 'TIPowerPlantTemplate.json')
+$humanFusionPower = @($vanillaPower | Where-Object {
+    $_.powerPlantClass -like '*Fusion*' -and $_.dataName -notlike 'Alien*'
+})
+if ($humanFusionPower.Count -ne 27) {
+    throw "Expected 27 installed human fusion reactors, found $($humanFusionPower.Count)."
+}
+$expectedPowerCount = $expectedPower.Count + $humanFusionPower.Count
+if ($powerOverrides.Count -ne $expectedPowerCount) {
+    throw "Power-plant override has $($powerOverrides.Count) rows instead of $expectedPowerCount."
+}
+foreach ($plant in $humanFusionPower) {
+    $row = @($powerOverrides | Where-Object dataName -eq $plant.dataName)
+    if ($row.Count -ne 1) {
+        throw "Human fusion reactor '$($plant.dataName)' must have exactly one override."
+    }
+    # A mass-only override preserves efficiency, output cap, crew and materials.
+    Assert-Properties $row[0] @('dataName', 'specificPower_tGW') $plant.dataName
+    Assert-Near $row[0].specificPower_tGW `
+        (2.0 * [double]$plant.specificPower_tGW) "$($plant.dataName) doubled specific mass"
 }
 foreach ($entry in $expectedPower.GetEnumerator()) {
     $row = @($powerOverrides | Where-Object dataName -eq $entry.Key)
@@ -746,8 +764,18 @@ $driveFamilies = [ordered]@{
     AlienFusionTorch = @(3800000, 2350, 0.97, 32000)
     AdvancedAlienFusionTorch = @(10500000, 3000, 0.98, 107550)
 }
-if ($driveOverrides.Count -ne 18) {
-    throw "Alien drive override has $($driveOverrides.Count) rows instead of 18."
+$fusionDrives = @($vanillaDrives | Where-Object driveClassification -like 'Fusion_*')
+if ($fusionDrives.Count -ne 174 -or $driveOverrides.Count -ne $fusionDrives.Count) {
+    throw 'Fusion cooling overrides must cover exactly all 174 installed fusion drives.'
+}
+foreach ($drive in $fusionDrives) {
+    $row = @($driveOverrides | Where-Object dataName -eq $drive.dataName)
+    if ($row.Count -ne 1 -or $row[0].cooling -ne 'Open') {
+        throw "Fusion drive '$($drive.dataName)' must explicitly use Open cooling."
+    }
+    if ($drive.dataName -notmatch 'Alien') {
+        Assert-Properties $row[0] @('dataName', 'cooling') $drive.dataName
+    }
 }
 foreach ($family in $driveFamilies.GetEnumerator()) {
     for ($thrusters = 1; $thrusters -le 6; $thrusters++) {
@@ -759,7 +787,7 @@ foreach ($family in $driveFamilies.GetEnumerator()) {
         }
         Assert-Properties $row[0] @(
             'dataName', 'thrust_N', 'EV_kps', 'efficiency',
-            'thrustRating_GW', 'req power') $id
+            'thrustRating_GW', 'req power', 'cooling') $id
         $expectedThrust = [double]$family.Value[0] * $thrusters
         $expectedEv = [double]$family.Value[1]
         $expectedEfficiency = [double]$family.Value[2]
