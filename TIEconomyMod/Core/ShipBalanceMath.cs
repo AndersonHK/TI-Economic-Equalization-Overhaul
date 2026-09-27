@@ -554,27 +554,27 @@ namespace TIEconomyMod
                     break;
                 case "Cruiser":
                     mass_tons = VariantValue(
-                        appearanceIndex, 964f, 1788f, 1549f, 2286f);
+                        appearanceIndex, 964f, 1764f, 1564f, 2264f);
                     break;
                 case "Battlecruiser":
                     mass_tons = VariantValue(
-                        appearanceIndex, 1170f, 2460f, 1900f, 3024f);
+                        appearanceIndex, 1170f, 2470f, 1870f, 3070f);
                     break;
                 case "Lancer":
                     mass_tons = VariantValue(
-                        appearanceIndex, 1958f, 2472f, 3848f, 3865f);
+                        appearanceIndex, 1958f, 2458f, 3858f, 3858f);
                     break;
                 case "Battleship":
                     mass_tons = VariantValue(
-                        appearanceIndex, 1558f, 1961f, 1854f, 2251f);
+                        appearanceIndex, 1558f, 1958f, 1858f, 2258f);
                     break;
                 case "Dreadnought":
                     mass_tons = VariantValue(
-                        appearanceIndex, 2346f, 2906f, 2521f, 3559f);
+                        appearanceIndex, 2343f, 2943f, 2543f, 3543f);
                     break;
                 case "Titan":
                     mass_tons = VariantValue(
-                        appearanceIndex, 3143f, 4208f, 3408f, 5089f);
+                        appearanceIndex, 3280f, 4180f, 3380f, 5080f);
                     break;
             }
             return mass_tons > 0f;

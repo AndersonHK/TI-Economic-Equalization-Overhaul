@@ -1,0 +1,3071 @@
+{
+  "status": "PLANNING ONLY: no game changes",
+  "baseline": "EEO 0.10.0 / TI 1.0.53b",
+  "assumptions": "Size 1-3 unchanged. Size 4 target=4x current size 3 mass/raw energy throughput/mean electrical draw; lasers are sensitivity cases, not approved raw-energy edits. Alien Battleship/Dreadnought conditional; alien Lancer/Titan retain secondary small noses. Hull+weapon-mount denominator omits ammo, weapon crew and all other equipment.",
+  "hulls": [
+    {
+      "hull": "Gunship",
+      "alien": false,
+      "old_count": 1,
+      "old_size": 1,
+      "new_count": 1,
+      "new_size": 1,
+      "extra_size1": 0,
+      "bare_t": 180.0,
+      "volume_m3": 11019.664214,
+      "mc": 1,
+      "hull_units": 0,
+      "nose_A_current": 2,
+      "nose_A_proposed": 2,
+      "current": {
+        "nose": {
+          "mass_t": 50,
+          "dps_MW": 229.52249999999995,
+          "electrical_MW": 376.4654761904762
+        },
+        "total": {
+          "mass_t": 50,
+          "dps_MW": 229.52249999999995,
+          "electrical_MW": 376.4654761904762
+        },
+        "nose_fit": {
+          "LightCoilCannonMk3": 1
+        },
+        "hull_fit": {},
+        "reference_mass_t": 230.0,
+        "raw_per_1000t": 997.923913043478,
+        "raw_per_100000m3": 2082.844772242712
+      },
+      "proposed": {
+        "nose": {
+          "mass_t": 50,
+          "dps_MW": 229.52249999999995,
+          "electrical_MW": 376.4654761904762
+        },
+        "total": {
+          "mass_t": 50,
+          "dps_MW": 229.52249999999995,
+          "electrical_MW": 376.4654761904762
+        },
+        "nose_fit": {
+          "LightCoilCannonMk3": 1
+        },
+        "hull_fit": {},
+        "reference_mass_t": 230.0,
+        "raw_per_1000t": 997.923913043478,
+        "raw_per_100000m3": 2082.844772242712
+      },
+      "nose_volume_current": 400,
+      "nose_volume_proposed": 400,
+      "nose_volume_size4_as12": 400,
+      "illustrative_lambda4": {
+        "nose": {
+          "mass_t": 50,
+          "dps_MW": 229.52249999999995,
+          "electrical_MW": 376.4654761904762
+        },
+        "total": {
+          "mass_t": 50,
+          "dps_MW": 229.52249999999995,
+          "electrical_MW": 376.4654761904762
+        },
+        "reference_mass_t": 230.0,
+        "raw_per_1000t": 997.923913043478,
+        "raw_per_100000m3": 2082.844772242712
+      }
+    },
+    {
+      "hull": "Corvette",
+      "alien": false,
+      "old_count": 1,
+      "old_size": 1,
+      "new_count": 1,
+      "new_size": 1,
+      "extra_size1": 0,
+      "bare_t": 400.0,
+      "volume_m3": 5070.771061,
+      "mc": 1,
+      "hull_units": 1,
+      "nose_A_current": 2,
+      "nose_A_proposed": 2,
+      "current": {
+        "nose": {
+          "mass_t": 50,
+          "dps_MW": 229.52249999999995,
+          "electrical_MW": 376.4654761904762
+        },
+        "total": {
+          "mass_t": 90,
+          "dps_MW": 294.5329166666666,
+          "electrical_MW": 497.19910714285714
+        },
+        "nose_fit": {
+          "LightCoilCannonMk3": 1
+        },
+        "hull_fit": {
+          "LightCoilgunBatteryMk3": 1
+        },
+        "reference_mass_t": 490.0,
+        "raw_per_1000t": 601.0875850340135,
+        "raw_per_100000m3": 5808.444379040495
+      },
+      "proposed": {
+        "nose": {
+          "mass_t": 50,
+          "dps_MW": 229.52249999999995,
+          "electrical_MW": 376.4654761904762
+        },
+        "total": {
+          "mass_t": 90,
+          "dps_MW": 294.5329166666666,
+          "electrical_MW": 497.19910714285714
+        },
+        "nose_fit": {
+          "LightCoilCannonMk3": 1
+        },
+        "hull_fit": {
+          "LightCoilgunBatteryMk3": 1
+        },
+        "reference_mass_t": 490.0,
+        "raw_per_1000t": 601.0875850340135,
+        "raw_per_100000m3": 5808.444379040495
+      },
+      "nose_volume_current": 400,
+      "nose_volume_proposed": 400,
+      "nose_volume_size4_as12": 400,
+      "illustrative_lambda4": {
+        "nose": {
+          "mass_t": 50,
+          "dps_MW": 229.52249999999995,
+          "electrical_MW": 376.4654761904762
+        },
+        "total": {
+          "mass_t": 90,
+          "dps_MW": 294.53291666666667,
+          "electrical_MW": 497.19910714285714
+        },
+        "reference_mass_t": 490.0,
+        "raw_per_1000t": 601.0875850340136,
+        "raw_per_100000m3": 5808.444379040497
+      }
+    },
+    {
+      "hull": "Frigate",
+      "alien": false,
+      "old_count": 1,
+      "old_size": 1,
+      "new_count": 1,
+      "new_size": 1,
+      "extra_size1": 0,
+      "bare_t": 600.0,
+      "volume_m3": 13692.464509,
+      "mc": 2,
+      "hull_units": 2,
+      "nose_A_current": 2,
+      "nose_A_proposed": 2,
+      "current": {
+        "nose": {
+          "mass_t": 50,
+          "dps_MW": 229.52249999999995,
+          "electrical_MW": 376.4654761904762
+        },
+        "total": {
+          "mass_t": 130,
+          "dps_MW": 368.7412499999999,
+          "electrical_MW": 602.4699404761905
+        },
+        "nose_fit": {
+          "LightCoilCannonMk3": 1
+        },
+        "hull_fit": {
+          "CoilgunBatteryMk3": 1
+        },
+        "reference_mass_t": 730.0,
+        "raw_per_1000t": 505.12499999999994,
+        "raw_per_100000m3": 2693.023230095852
+      },
+      "proposed": {
+        "nose": {
+          "mass_t": 50,
+          "dps_MW": 229.52249999999995,
+          "electrical_MW": 376.4654761904762
+        },
+        "total": {
+          "mass_t": 130,
+          "dps_MW": 368.7412499999999,
+          "electrical_MW": 602.4699404761905
+        },
+        "nose_fit": {
+          "LightCoilCannonMk3": 1
+        },
+        "hull_fit": {
+          "CoilgunBatteryMk3": 1
+        },
+        "reference_mass_t": 730.0,
+        "raw_per_1000t": 505.12499999999994,
+        "raw_per_100000m3": 2693.023230095852
+      },
+      "nose_volume_current": 400,
+      "nose_volume_proposed": 400,
+      "nose_volume_size4_as12": 400,
+      "illustrative_lambda4": {
+        "nose": {
+          "mass_t": 50,
+          "dps_MW": 229.52249999999995,
+          "electrical_MW": 376.4654761904762
+        },
+        "total": {
+          "mass_t": 130,
+          "dps_MW": 368.7412499999999,
+          "electrical_MW": 602.4699404761905
+        },
+        "reference_mass_t": 730.0,
+        "raw_per_1000t": 505.12499999999994,
+        "raw_per_100000m3": 2693.023230095852
+      }
+    },
+    {
+      "hull": "Destroyer",
+      "alien": false,
+      "old_count": 1,
+      "old_size": 2,
+      "new_count": 1,
+      "new_size": 2,
+      "extra_size1": 0,
+      "bare_t": 900.0,
+      "volume_m3": 22061.954731,
+      "mc": 2,
+      "hull_units": 2,
+      "nose_A_current": 4,
+      "nose_A_proposed": 4,
+      "current": {
+        "nose": {
+          "mass_t": 100,
+          "dps_MW": 418.03273809523813,
+          "electrical_MW": 684.0535714285716
+        },
+        "total": {
+          "mass_t": 180,
+          "dps_MW": 557.2514880952381,
+          "electrical_MW": 910.0580357142859
+        },
+        "nose_fit": {
+          "CoilCannonMk3": 1
+        },
+        "hull_fit": {
+          "CoilgunBatteryMk3": 1
+        },
+        "reference_mass_t": 1080.0,
+        "raw_per_1000t": 515.9736000881834,
+        "raw_per_100000m3": 2525.848207422097
+      },
+      "proposed": {
+        "nose": {
+          "mass_t": 100,
+          "dps_MW": 418.03273809523813,
+          "electrical_MW": 684.0535714285716
+        },
+        "total": {
+          "mass_t": 180,
+          "dps_MW": 557.2514880952381,
+          "electrical_MW": 910.0580357142859
+        },
+        "nose_fit": {
+          "CoilCannonMk3": 1
+        },
+        "hull_fit": {
+          "CoilgunBatteryMk3": 1
+        },
+        "reference_mass_t": 1080.0,
+        "raw_per_1000t": 515.9736000881834,
+        "raw_per_100000m3": 2525.848207422097
+      },
+      "nose_volume_current": 800,
+      "nose_volume_proposed": 800,
+      "nose_volume_size4_as12": 800,
+      "illustrative_lambda4": {
+        "nose": {
+          "mass_t": 100,
+          "dps_MW": 418.03273809523813,
+          "electrical_MW": 684.0535714285716
+        },
+        "total": {
+          "mass_t": 180,
+          "dps_MW": 557.2514880952381,
+          "electrical_MW": 910.0580357142858
+        },
+        "reference_mass_t": 1080.0,
+        "raw_per_1000t": 515.9736000881834,
+        "raw_per_100000m3": 2525.848207422097
+      }
+    },
+    {
+      "hull": "Cruiser",
+      "alien": false,
+      "old_count": 1,
+      "old_size": 2,
+      "new_count": 1,
+      "new_size": 2,
+      "extra_size1": 0,
+      "bare_t": 1000.0,
+      "volume_m3": 45819.948385,
+      "mc": 3,
+      "hull_units": 3,
+      "nose_A_current": 4,
+      "nose_A_proposed": 4,
+      "current": {
+        "nose": {
+          "mass_t": 100,
+          "dps_MW": 418.03273809523813,
+          "electrical_MW": 684.0535714285716
+        },
+        "total": {
+          "mass_t": 220,
+          "dps_MW": 622.2619047619048,
+          "electrical_MW": 1030.791666666667
+        },
+        "nose_fit": {
+          "CoilCannonMk3": 1
+        },
+        "hull_fit": {
+          "CoilgunBatteryMk3": 1,
+          "LightCoilgunBatteryMk3": 1
+        },
+        "reference_mass_t": 1220.0,
+        "raw_per_1000t": 510.05074160811876,
+        "raw_per_100000m3": 1358.0589387255043
+      },
+      "proposed": {
+        "nose": {
+          "mass_t": 100,
+          "dps_MW": 418.03273809523813,
+          "electrical_MW": 684.0535714285716
+        },
+        "total": {
+          "mass_t": 220,
+          "dps_MW": 622.2619047619048,
+          "electrical_MW": 1030.791666666667
+        },
+        "nose_fit": {
+          "CoilCannonMk3": 1
+        },
+        "hull_fit": {
+          "CoilgunBatteryMk3": 1,
+          "LightCoilgunBatteryMk3": 1
+        },
+        "reference_mass_t": 1220.0,
+        "raw_per_1000t": 510.05074160811876,
+        "raw_per_100000m3": 1358.0589387255043
+      },
+      "nose_volume_current": 800,
+      "nose_volume_proposed": 800,
+      "nose_volume_size4_as12": 800,
+      "illustrative_lambda4": {
+        "nose": {
+          "mass_t": 100,
+          "dps_MW": 418.03273809523813,
+          "electrical_MW": 684.0535714285716
+        },
+        "total": {
+          "mass_t": 220,
+          "dps_MW": 622.2619047619048,
+          "electrical_MW": 1030.791666666667
+        },
+        "reference_mass_t": 1220.0,
+        "raw_per_1000t": 510.05074160811876,
+        "raw_per_100000m3": 1358.0589387255043
+      }
+    },
+    {
+      "hull": "Battlecruiser",
+      "alien": false,
+      "old_count": 1,
+      "old_size": 3,
+      "new_count": 1,
+      "new_size": 3,
+      "extra_size1": 0,
+      "bare_t": 1200.0,
+      "volume_m3": 43684.422123,
+      "mc": 3,
+      "hull_units": 2,
+      "nose_A_current": 8,
+      "nose_A_proposed": 8,
+      "current": {
+        "nose": {
+          "mass_t": 150,
+          "dps_MW": 691.1916666666667,
+          "electrical_MW": 1131.916666666667
+        },
+        "total": {
+          "mass_t": 230,
+          "dps_MW": 830.4104166666667,
+          "electrical_MW": 1357.9211309523812
+        },
+        "nose_fit": {
+          "HeavyCoilCannonMk3": 1
+        },
+        "hull_fit": {
+          "CoilgunBatteryMk3": 1
+        },
+        "reference_mass_t": 1430.0,
+        "raw_per_1000t": 580.7065850815851,
+        "raw_per_100000m3": 1900.9303003448747
+      },
+      "proposed": {
+        "nose": {
+          "mass_t": 150,
+          "dps_MW": 691.1916666666667,
+          "electrical_MW": 1131.916666666667
+        },
+        "total": {
+          "mass_t": 230,
+          "dps_MW": 830.4104166666667,
+          "electrical_MW": 1357.9211309523812
+        },
+        "nose_fit": {
+          "HeavyCoilCannonMk3": 1
+        },
+        "hull_fit": {
+          "CoilgunBatteryMk3": 1
+        },
+        "reference_mass_t": 1430.0,
+        "raw_per_1000t": 580.7065850815851,
+        "raw_per_100000m3": 1900.9303003448747
+      },
+      "nose_volume_current": 1200,
+      "nose_volume_proposed": 1200,
+      "nose_volume_size4_as12": 1200,
+      "illustrative_lambda4": {
+        "nose": {
+          "mass_t": 150,
+          "dps_MW": 691.1916666666667,
+          "electrical_MW": 1131.916666666667
+        },
+        "total": {
+          "mass_t": 230,
+          "dps_MW": 830.4104166666667,
+          "electrical_MW": 1357.9211309523812
+        },
+        "reference_mass_t": 1430.0,
+        "raw_per_1000t": 580.7065850815851,
+        "raw_per_100000m3": 1900.9303003448747
+      }
+    },
+    {
+      "hull": "Lancer",
+      "alien": false,
+      "old_count": 1,
+      "old_size": 4,
+      "new_count": 1,
+      "new_size": 4,
+      "extra_size1": 0,
+      "bare_t": 2000.0,
+      "volume_m3": 152598.424445,
+      "mc": 4,
+      "hull_units": 3,
+      "nose_A_current": 16,
+      "nose_A_proposed": 32,
+      "current": {
+        "nose": {
+          "mass_t": 200,
+          "dps_MW": 997.609523809524,
+          "electrical_MW": 1634.3537414965988
+        },
+        "total": {
+          "mass_t": 320,
+          "dps_MW": 1201.8386904761908,
+          "electrical_MW": 1981.091836734694
+        },
+        "nose_fit": {
+          "SpinalCoilerMk3": 1
+        },
+        "hull_fit": {
+          "CoilgunBatteryMk3": 1,
+          "LightCoilgunBatteryMk3": 1
+        },
+        "reference_mass_t": 2320.0,
+        "raw_per_1000t": 518.0339183087029,
+        "raw_per_100000m3": 787.5826338622264
+      },
+      "proposed": {
+        "nose": {
+          "mass_t": 600,
+          "dps_MW": 2764.766666666667,
+          "electrical_MW": 4527.666666666668
+        },
+        "total": {
+          "mass_t": 720,
+          "dps_MW": 2968.9958333333334,
+          "electrical_MW": 4874.404761904763
+        },
+        "nose_fit": {
+          "SpinalCoilerMk3": 1
+        },
+        "hull_fit": {
+          "CoilgunBatteryMk3": 1,
+          "LightCoilgunBatteryMk3": 1
+        },
+        "reference_mass_t": 2720.0,
+        "raw_per_1000t": 1091.5425857843138,
+        "raw_per_100000m3": 1945.626794071801
+      },
+      "nose_volume_current": 1600,
+      "nose_volume_proposed": 1600,
+      "nose_volume_size4_as12": 4800,
+      "illustrative_lambda4": {
+        "nose": {
+          "mass_t": 350,
+          "dps_MW": 1916.8630952380959,
+          "electrical_MW": 3141.6649659863942
+        },
+        "total": {
+          "mass_t": 470,
+          "dps_MW": 2121.092261904763,
+          "electrical_MW": 3488.4030612244896
+        },
+        "reference_mass_t": 2470.0,
+        "raw_per_1000t": 858.7418064391753,
+        "raw_per_100000m3": 1389.9830680553675
+      }
+    },
+    {
+      "hull": "Battleship",
+      "alien": false,
+      "old_count": 1,
+      "old_size": 2,
+      "new_count": 2,
+      "new_size": 2,
+      "extra_size1": 0,
+      "bare_t": 1600.0,
+      "volume_m3": 105142.66767,
+      "mc": 3,
+      "hull_units": 6,
+      "nose_A_current": 4,
+      "nose_A_proposed": 8,
+      "current": {
+        "nose": {
+          "mass_t": 100,
+          "dps_MW": 418.03273809523813,
+          "electrical_MW": 684.0535714285716
+        },
+        "total": {
+          "mass_t": 340,
+          "dps_MW": 898.7129464285715,
+          "electrical_MW": 1494.7730654761906
+        },
+        "nose_fit": {
+          "CoilCannonMk3": 1
+        },
+        "hull_fit": {
+          "HeavyCoilgunBatteryMk3": 1,
+          "LightCoilgunBatteryMk3": 2
+        },
+        "reference_mass_t": 1940.0,
+        "raw_per_1000t": 463.2540960972018,
+        "raw_per_100000m3": 854.7557013193401
+      },
+      "proposed": {
+        "nose": {
+          "mass_t": 200,
+          "dps_MW": 836.0654761904763,
+          "electrical_MW": 1368.1071428571431
+        },
+        "total": {
+          "mass_t": 440,
+          "dps_MW": 1316.7456845238096,
+          "electrical_MW": 2178.8266369047624
+        },
+        "nose_fit": {
+          "CoilCannonMk3": 2
+        },
+        "hull_fit": {
+          "HeavyCoilgunBatteryMk3": 1,
+          "LightCoilgunBatteryMk3": 2
+        },
+        "reference_mass_t": 2040.0,
+        "raw_per_1000t": 645.4635708450047,
+        "raw_per_100000m3": 1252.3419023916513
+      },
+      "nose_volume_current": 800,
+      "nose_volume_proposed": 1600,
+      "nose_volume_size4_as12": 1600,
+      "illustrative_lambda4": {
+        "nose": {
+          "mass_t": 200,
+          "dps_MW": 836.0654761904763,
+          "electrical_MW": 1368.1071428571431
+        },
+        "total": {
+          "mass_t": 440,
+          "dps_MW": 1316.7456845238098,
+          "electrical_MW": 2178.8266369047624
+        },
+        "reference_mass_t": 2040.0,
+        "raw_per_1000t": 645.4635708450047,
+        "raw_per_100000m3": 1252.3419023916515
+      }
+    },
+    {
+      "hull": "Dreadnought",
+      "alien": false,
+      "old_count": 1,
+      "old_size": 3,
+      "new_count": 3,
+      "new_size": 3,
+      "extra_size1": 0,
+      "bare_t": 2400.0,
+      "volume_m3": 272229.43595,
+      "mc": 4,
+      "hull_units": 8,
+      "nose_A_current": 8,
+      "nose_A_proposed": 24,
+      "current": {
+        "nose": {
+          "mass_t": 150,
+          "dps_MW": 691.1916666666667,
+          "electrical_MW": 1131.916666666667
+        },
+        "total": {
+          "mass_t": 470,
+          "dps_MW": 1392.5104166666665,
+          "electrical_MW": 2270.421130952381
+        },
+        "nose_fit": {
+          "HeavyCoilCannonMk3": 1
+        },
+        "hull_fit": {
+          "HeavyCoilgunBatteryMk3": 2
+        },
+        "reference_mass_t": 2870.0,
+        "raw_per_1000t": 485.1952671312427,
+        "raw_per_100000m3": 511.520883774827
+      },
+      "proposed": {
+        "nose": {
+          "mass_t": 450,
+          "dps_MW": 2073.5750000000003,
+          "electrical_MW": 3395.750000000001
+        },
+        "total": {
+          "mass_t": 770,
+          "dps_MW": 2774.89375,
+          "electrical_MW": 4534.254464285716
+        },
+        "nose_fit": {
+          "HeavyCoilCannonMk3": 3
+        },
+        "hull_fit": {
+          "HeavyCoilgunBatteryMk3": 2
+        },
+        "reference_mass_t": 3170.0,
+        "raw_per_1000t": 875.3608044164038,
+        "raw_per_100000m3": 1019.3217130676716
+      },
+      "nose_volume_current": 1200,
+      "nose_volume_proposed": 3600,
+      "nose_volume_size4_as12": 3600,
+      "illustrative_lambda4": {
+        "nose": {
+          "mass_t": 450,
+          "dps_MW": 2073.5750000000003,
+          "electrical_MW": 3395.750000000001
+        },
+        "total": {
+          "mass_t": 770,
+          "dps_MW": 2774.8937499999997,
+          "electrical_MW": 4534.254464285716
+        },
+        "reference_mass_t": 3170.0,
+        "raw_per_1000t": 875.3608044164037,
+        "raw_per_100000m3": 1019.3217130676716
+      }
+    },
+    {
+      "hull": "Titan",
+      "alien": false,
+      "old_count": 1,
+      "old_size": 4,
+      "new_count": 1,
+      "new_size": 4,
+      "extra_size1": 0,
+      "bare_t": 3400.0,
+      "volume_m3": 514552.084509,
+      "mc": 5,
+      "hull_units": 24,
+      "nose_A_current": 16,
+      "nose_A_proposed": 32,
+      "current": {
+        "nose": {
+          "mass_t": 200,
+          "dps_MW": 997.609523809524,
+          "electrical_MW": 1634.3537414965988
+        },
+        "total": {
+          "mass_t": 1160,
+          "dps_MW": 3101.5657738095238,
+          "electrical_MW": 5049.867134353741
+        },
+        "nose_fit": {
+          "SpinalCoilerMk3": 1
+        },
+        "hull_fit": {
+          "HeavyCoilgunBatteryMk3": 6
+        },
+        "reference_mass_t": 4560.0,
+        "raw_per_1000t": 680.1679328529657,
+        "raw_per_100000m3": 602.7700338186609
+      },
+      "proposed": {
+        "nose": {
+          "mass_t": 600,
+          "dps_MW": 2764.766666666667,
+          "electrical_MW": 4527.666666666668
+        },
+        "total": {
+          "mass_t": 1560,
+          "dps_MW": 4868.722916666667,
+          "electrical_MW": 7943.18005952381
+        },
+        "nose_fit": {
+          "SpinalCoilerMk3": 1
+        },
+        "hull_fit": {
+          "HeavyCoilgunBatteryMk3": 6
+        },
+        "reference_mass_t": 4960.0,
+        "raw_per_1000t": 981.5973622311828,
+        "raw_per_100000m3": 946.2060427395875
+      },
+      "nose_volume_current": 1600,
+      "nose_volume_proposed": 1600,
+      "nose_volume_size4_as12": 4800,
+      "illustrative_lambda4": {
+        "nose": {
+          "mass_t": 350,
+          "dps_MW": 1916.8630952380959,
+          "electrical_MW": 3141.6649659863942
+        },
+        "total": {
+          "mass_t": 1310,
+          "dps_MW": 4020.819345238096,
+          "electrical_MW": 6557.1783588435355
+        },
+        "reference_mass_t": 4710.0,
+        "raw_per_1000t": 853.677143362653,
+        "raw_per_100000m3": 781.4212528309694
+      }
+    },
+    {
+      "hull": "AlienBattleship",
+      "alien": true,
+      "old_count": 1,
+      "old_size": 2,
+      "new_count": 2,
+      "new_size": 2,
+      "extra_size1": 0,
+      "bare_t": 1656,
+      "volume_m3": 201325.225328,
+      "mc": 1,
+      "hull_units": 6,
+      "nose_A_current": 4,
+      "nose_A_proposed": 8,
+      "current": {
+        "nose": {
+          "mass_t": 100,
+          "dps_MW": 1004.4642857142857,
+          "electrical_MW": 1488.095238095238
+        },
+        "total": {
+          "mass_t": 340,
+          "dps_MW": 2289.72967032967,
+          "electrical_MW": 3385.541391941392
+        },
+        "nose_fit": {
+          "AdvancedAlienMagCannon": 1
+        },
+        "hull_fit": {
+          "AdvancedAlienHeavyMagBattery": 1,
+          "AdvancedAlienLightMagBattery": 2
+        },
+        "reference_mass_t": 1996,
+        "raw_per_1000t": 1147.1591534717786,
+        "raw_per_100000m3": 1137.328750830519
+      },
+      "proposed": {
+        "nose": {
+          "mass_t": 200,
+          "dps_MW": 2008.9285714285713,
+          "electrical_MW": 2976.190476190476
+        },
+        "total": {
+          "mass_t": 440,
+          "dps_MW": 3294.193956043956,
+          "electrical_MW": 4873.63663003663
+        },
+        "nose_fit": {
+          "AdvancedAlienMagCannon": 2
+        },
+        "hull_fit": {
+          "AdvancedAlienHeavyMagBattery": 1,
+          "AdvancedAlienLightMagBattery": 2
+        },
+        "reference_mass_t": 2096,
+        "raw_per_1000t": 1571.6574217766965,
+        "raw_per_100000m3": 1636.25494553752
+      },
+      "nose_volume_current": 800,
+      "nose_volume_proposed": 1600,
+      "nose_volume_size4_as12": 1600,
+      "illustrative_lambda4": {
+        "nose": {
+          "mass_t": 200,
+          "dps_MW": 2008.9285714285713,
+          "electrical_MW": 2976.190476190476
+        },
+        "total": {
+          "mass_t": 440,
+          "dps_MW": 3294.193956043956,
+          "electrical_MW": 4873.63663003663
+        },
+        "reference_mass_t": 2096,
+        "raw_per_1000t": 1571.6574217766965,
+        "raw_per_100000m3": 1636.25494553752
+      }
+    },
+    {
+      "hull": "AlienDreadnought",
+      "alien": true,
+      "old_count": 1,
+      "old_size": 4,
+      "new_count": 3,
+      "new_size": 3,
+      "extra_size1": 0,
+      "bare_t": 2200,
+      "volume_m3": 302989.802622,
+      "mc": 1,
+      "hull_units": 8,
+      "nose_A_current": 16,
+      "nose_A_proposed": 24,
+      "current": {
+        "nose": {
+          "mass_t": 200,
+          "dps_MW": 2313.425454545455,
+          "electrical_MW": 3427.2969696969703
+        },
+        "total": {
+          "mass_t": 520,
+          "dps_MW": 4134.256223776224,
+          "electrical_MW": 6104.989277389278
+        },
+        "nose_fit": {
+          "AdvancedAlienSpinalMagCannon": 1
+        },
+        "hull_fit": {
+          "AdvancedAlienHeavyMagBattery": 2
+        },
+        "reference_mass_t": 2720,
+        "raw_per_1000t": 1519.9471410942,
+        "raw_per_100000m3": 1364.4869193614363
+      },
+      "proposed": {
+        "nose": {
+          "mass_t": 450,
+          "dps_MW": 4807.8439024390245,
+          "electrical_MW": 7122.7317073170725
+        },
+        "total": {
+          "mass_t": 770,
+          "dps_MW": 6628.6746716697935,
+          "electrical_MW": 9800.42401500938
+        },
+        "nose_fit": {
+          "AdvancedAlienHeavyMagCannon": 3
+        },
+        "hull_fit": {
+          "AdvancedAlienHeavyMagBattery": 2
+        },
+        "reference_mass_t": 2970,
+        "raw_per_1000t": 2231.876993828213,
+        "raw_per_100000m3": 2187.7550380596495
+      },
+      "nose_volume_current": 1600,
+      "nose_volume_proposed": 3600,
+      "nose_volume_size4_as12": 3600,
+      "illustrative_lambda4": {
+        "nose": {
+          "mass_t": 450,
+          "dps_MW": 4807.8439024390245,
+          "electrical_MW": 7122.7317073170725
+        },
+        "total": {
+          "mass_t": 770,
+          "dps_MW": 6628.674671669793,
+          "electrical_MW": 9800.424015009381
+        },
+        "reference_mass_t": 2970,
+        "raw_per_1000t": 2231.876993828213,
+        "raw_per_100000m3": 2187.7550380596495
+      }
+    },
+    {
+      "hull": "AlienLancer",
+      "alien": true,
+      "old_count": 1,
+      "old_size": 4,
+      "new_count": 1,
+      "new_size": 4,
+      "extra_size1": 2,
+      "bare_t": 1656,
+      "volume_m3": 166671.706039,
+      "mc": 1,
+      "hull_units": 4,
+      "nose_A_current": 20,
+      "nose_A_proposed": 36,
+      "current": {
+        "nose": {
+          "mass_t": 300,
+          "dps_MW": 3267.7527272727275,
+          "electrical_MW": 4841.115151515152
+        },
+        "total": {
+          "mass_t": 460,
+          "dps_MW": 4045.219393939394,
+          "electrical_MW": 5999.692929292931
+        },
+        "nose_fit": {
+          "AdvancedAlienSpinalMagCannon": 1,
+          "AdvancedAlienLightMagCannon": 2
+        },
+        "hull_fit": {
+          "AdvancedAlienMagBattery": 2
+        },
+        "reference_mass_t": 2116,
+        "raw_per_1000t": 1911.7293922208858,
+        "raw_per_100000m3": 2427.0582512624196
+      },
+      "proposed": {
+        "nose": {
+          "mass_t": 700,
+          "dps_MW": 7364.785809312638,
+          "electrical_MW": 10910.79379157428
+        },
+        "total": {
+          "mass_t": 860,
+          "dps_MW": 8142.252475979305,
+          "electrical_MW": 12069.371569352059
+        },
+        "nose_fit": {
+          "AdvancedAlienSpinalMagCannon": 1,
+          "AdvancedAlienLightMagCannon": 2
+        },
+        "hull_fit": {
+          "AdvancedAlienMagBattery": 2
+        },
+        "reference_mass_t": 2516,
+        "raw_per_1000t": 3236.189378370153,
+        "raw_per_100000m3": 4885.203775423091
+      },
+      "nose_volume_current": 2400,
+      "nose_volume_proposed": 2400,
+      "nose_volume_size4_as12": 5600,
+      "illustrative_lambda4": {
+        "nose": {
+          "mass_t": 450,
+          "dps_MW": 5400.185188470068,
+          "electrical_MW": 8000.274353288993
+        },
+        "total": {
+          "mass_t": 610,
+          "dps_MW": 6177.651855136735,
+          "electrical_MW": 9158.852131066771
+        },
+        "reference_mass_t": 2266,
+        "raw_per_1000t": 2726.236476229804,
+        "raw_per_100000m3": 3706.4790431143774
+      }
+    },
+    {
+      "hull": "AlienTitan",
+      "alien": true,
+      "old_count": 1,
+      "old_size": 4,
+      "new_count": 1,
+      "new_size": 4,
+      "extra_size1": 2,
+      "bare_t": 2600,
+      "volume_m3": 349989.244758,
+      "mc": 1,
+      "hull_units": 32,
+      "nose_A_current": 20,
+      "nose_A_proposed": 36,
+      "current": {
+        "nose": {
+          "mass_t": 300,
+          "dps_MW": 3267.7527272727275,
+          "electrical_MW": 4841.115151515152
+        },
+        "total": {
+          "mass_t": 1580,
+          "dps_MW": 10551.075804195805,
+          "electrical_MW": 15551.884382284385
+        },
+        "nose_fit": {
+          "AdvancedAlienSpinalMagCannon": 1,
+          "AdvancedAlienLightMagCannon": 2
+        },
+        "hull_fit": {
+          "AdvancedAlienHeavyMagBattery": 8
+        },
+        "reference_mass_t": 4180,
+        "raw_per_1000t": 2524.18081440091,
+        "raw_per_100000m3": 3014.6857259831922
+      },
+      "proposed": {
+        "nose": {
+          "mass_t": 700,
+          "dps_MW": 7364.785809312638,
+          "electrical_MW": 10910.79379157428
+        },
+        "total": {
+          "mass_t": 1980,
+          "dps_MW": 14648.108886235716,
+          "electrical_MW": 21621.563022343515
+        },
+        "nose_fit": {
+          "AdvancedAlienSpinalMagCannon": 1,
+          "AdvancedAlienLightMagCannon": 2
+        },
+        "hull_fit": {
+          "AdvancedAlienHeavyMagBattery": 8
+        },
+        "reference_mass_t": 4580,
+        "raw_per_1000t": 3198.2770493964445,
+        "raw_per_100000m3": 4185.302578758998
+      },
+      "nose_volume_current": 2400,
+      "nose_volume_proposed": 2400,
+      "nose_volume_size4_as12": 5600,
+      "illustrative_lambda4": {
+        "nose": {
+          "mass_t": 450,
+          "dps_MW": 5400.185188470068,
+          "electrical_MW": 8000.274353288993
+        },
+        "total": {
+          "mass_t": 1730,
+          "dps_MW": 12683.508265393146,
+          "electrical_MW": 18711.04358405823
+        },
+        "reference_mass_t": 4330,
+        "raw_per_1000t": 2929.216689467239,
+        "raw_per_100000m3": 3623.97086635138
+      }
+    },
+    {
+      "hull": "AlienMothership",
+      "alien": true,
+      "old_count": 1,
+      "old_size": 4,
+      "new_count": 4,
+      "new_size": 4,
+      "extra_size1": 0,
+      "bare_t": 8500,
+      "volume_m3": 49197068.556474,
+      "mc": 1,
+      "hull_units": 64,
+      "nose_A_current": 16,
+      "nose_A_proposed": 128,
+      "current": {
+        "nose": {
+          "mass_t": 200,
+          "dps_MW": 2313.425454545455,
+          "electrical_MW": 3427.2969696969703
+        },
+        "total": {
+          "mass_t": 2760,
+          "dps_MW": 16880.071608391605,
+          "electrical_MW": 24848.83543123543
+        },
+        "nose_fit": {
+          "AdvancedAlienSpinalMagCannon": 1
+        },
+        "hull_fit": {
+          "AdvancedAlienHeavyMagBattery": 16
+        },
+        "reference_mass_t": 11260,
+        "raw_per_1000t": 1499.1182600703023,
+        "raw_per_100000m3": 34.31113296723104
+      },
+      "proposed": {
+        "nose": {
+          "mass_t": 2400,
+          "dps_MW": 25641.83414634146,
+          "electrical_MW": 37987.90243902439
+        },
+        "total": {
+          "mass_t": 4960,
+          "dps_MW": 40208.48030018761,
+          "electrical_MW": 59409.44090056285
+        },
+        "nose_fit": {
+          "AdvancedAlienSpinalMagCannon": 4
+        },
+        "hull_fit": {
+          "AdvancedAlienHeavyMagBattery": 16
+        },
+        "reference_mass_t": 13460,
+        "raw_per_1000t": 2987.25708025168,
+        "raw_per_100000m3": 81.72942307331124
+      },
+      "nose_volume_current": 1600,
+      "nose_volume_proposed": 6400,
+      "nose_volume_size4_as12": 19200,
+      "illustrative_lambda4": {
+        "nose": {
+          "mass_t": 1400,
+          "dps_MW": 17783.431662971183,
+          "electrical_MW": 26345.824685883235
+        },
+        "total": {
+          "mass_t": 3960,
+          "dps_MW": 32350.077816817335,
+          "electrical_MW": 47767.363147421696
+        },
+        "reference_mass_t": 12460,
+        "raw_per_1000t": 2596.3144315262707,
+        "raw_per_100000m3": 65.75610857724628
+      }
+    }
+  ],
+  "families": [
+    {
+      "family": "Rail Mk1",
+      "size3": "HeavyRailCannonMk1",
+      "size4": "SpinalRailgunMk1",
+      "current3": {
+        "mass_t": 180,
+        "dps_MW": 16.921875,
+        "electrical_MW": 90.25,
+        "interval_s": 45.0,
+        "shot_MJ": 761.484375,
+        "input_MJ": 4061.25,
+        "loaded_mass_t": 201.6
+      },
+      "current4": {
+        "mass_t": 240,
+        "dps_MW": 26.832399999999996,
+        "electrical_MW": 143.1061333333333,
+        "interval_s": 45.0,
+        "shot_MJ": 1207.4579999999999,
+        "input_MJ": 6439.775999999999,
+        "loaded_mass_t": 276.0
+      },
+      "target4": {
+        "mass_t": 720,
+        "dps_MW": 67.6875,
+        "electrical_MW": 361.0
+      },
+      "delta_pct": {
+        "mass_t": 200.0,
+        "dps_MW": 152.26032706727693,
+        "electrical_MW": 152.26032706727693
+      },
+      "laser": false,
+      "delta_scaled_lambda4": {
+        "mass_t": 420,
+        "dps_MW": 56.563974999999985,
+        "electrical_MW": 301.6745333333332
+      },
+      "lambda_for_3x_size3_raw": 3.4149300869530133,
+      "lambda_for_4x_size3_raw": 5.12239513042952
+    },
+    {
+      "family": "Coil Mk1",
+      "size3": "HeavyCoilCannonMk1",
+      "size4": "SpinalCoilerMk1",
+      "current3": {
+        "mass_t": 180,
+        "dps_MW": 153.89249999999998,
+        "electrical_MW": 407.48999999999995,
+        "interval_s": 16.666666666666668,
+        "shot_MJ": 2564.875,
+        "input_MJ": 6791.5,
+        "loaded_mass_t": 213.84
+      },
+      "current4": {
+        "mass_t": 240,
+        "dps_MW": 228.42,
+        "electrical_MW": 607.5,
+        "interval_s": 16.666666666666668,
+        "shot_MJ": 3807.0,
+        "input_MJ": 10125.0,
+        "loaded_mass_t": 296.25
+      },
+      "target4": {
+        "mass_t": 720,
+        "dps_MW": 615.5699999999999,
+        "electrical_MW": 1629.9599999999998
+      },
+      "delta_pct": {
+        "mass_t": 200.0,
+        "dps_MW": 169.4904123982138,
+        "electrical_MW": 168.30617283950616
+      },
+      "laser": false,
+      "delta_scaled_lambda4": {
+        "mass_t": 420,
+        "dps_MW": 452.0025,
+        "electrical_MW": 1207.5300000000002
+      },
+      "lambda_for_3x_size3_raw": 4.1298178524705635,
+      "lambda_for_4x_size3_raw": 6.194726778705846
+    },
+    {
+      "family": "Siege coil Mk1",
+      "size3": "HeavySiegeCoilerMk1",
+      "size4": "SpinalSiegeCoilerMk1",
+      "current3": {
+        "mass_t": 1000,
+        "dps_MW": 287.13882352941175,
+        "electrical_MW": 765.1597058823529,
+        "interval_s": 22.666666666666668,
+        "shot_MJ": 6508.48,
+        "input_MJ": 17343.62,
+        "loaded_mass_t": 1093.8
+      },
+      "current4": {
+        "mass_t": 1500,
+        "dps_MW": 418.99632352941177,
+        "electrical_MW": 1116.7279411764705,
+        "interval_s": 22.666666666666668,
+        "shot_MJ": 9497.25,
+        "input_MJ": 25312.5,
+        "loaded_mass_t": 1650.0
+      },
+      "target4": {
+        "mass_t": 4000,
+        "dps_MW": 1148.555294117647,
+        "electrical_MW": 3060.6388235294116
+      },
+      "delta_pct": {
+        "mass_t": 166.66666666666666,
+        "dps_MW": 174.12061386190737,
+        "electrical_MW": 174.0720197530864
+      },
+      "laser": false,
+      "delta_scaled_lambda4": {
+        "mass_t": 3000,
+        "dps_MW": 814.5688235294118,
+        "electrical_MW": 2171.432647058823
+      },
+      "lambda_for_3x_size3_raw": 4.355289968783144,
+      "lambda_for_4x_size3_raw": 6.532934953174716
+    },
+    {
+      "family": "Rail Mk2",
+      "size3": "HeavyRailCannonMk2",
+      "size4": "SpinalRailgunMk2",
+      "current3": {
+        "mass_t": 165,
+        "dps_MW": 40.786680000000004,
+        "electrical_MW": 169.94450000000003,
+        "interval_s": 30.0,
+        "shot_MJ": 1223.6004,
+        "input_MJ": 5098.335000000001,
+        "loaded_mass_t": 186.6
+      },
+      "current4": {
+        "mass_t": 220,
+        "dps_MW": 67.18464000000002,
+        "electrical_MW": 279.93600000000004,
+        "interval_s": 30.0,
+        "shot_MJ": 2015.5392000000004,
+        "input_MJ": 8398.080000000002,
+        "loaded_mass_t": 256.0
+      },
+      "target4": {
+        "mass_t": 660,
+        "dps_MW": 163.14672000000002,
+        "electrical_MW": 679.7780000000001
+      },
+      "delta_pct": {
+        "mass_t": 200.0,
+        "dps_MW": 142.833361911294,
+        "electrical_MW": 142.83336191129402
+      },
+      "laser": false,
+      "delta_scaled_lambda4": {
+        "mass_t": 385,
+        "dps_MW": 146.37852000000004,
+        "electrical_MW": 609.9105000000001
+      },
+      "lambda_for_3x_size3_raw": 3.0901387834514473,
+      "lambda_for_4x_size3_raw": 4.635208175177171
+    },
+    {
+      "family": "Coil Mk2",
+      "size3": "HeavyCoilCannonMk2",
+      "size4": "SpinalCoilerMk2",
+      "current3": {
+        "mass_t": 165,
+        "dps_MW": 300.5217391304348,
+        "electrical_MW": 627.7565217391304,
+        "interval_s": 11.5,
+        "shot_MJ": 3456.0,
+        "input_MJ": 7219.2,
+        "loaded_mass_t": 198.84
+      },
+      "current4": {
+        "mass_t": 220,
+        "dps_MW": 443.5217391304348,
+        "electrical_MW": 924.0036231884058,
+        "interval_s": 11.5,
+        "shot_MJ": 5100.5,
+        "input_MJ": 10626.041666666666,
+        "loaded_mass_t": 276.25
+      },
+      "target4": {
+        "mass_t": 660,
+        "dps_MW": 1202.0869565217392,
+        "electrical_MW": 2511.026086956522
+      },
+      "delta_pct": {
+        "mass_t": 200.0,
+        "dps_MW": 171.0322517400255,
+        "electrical_MW": 171.75500441133224
+      },
+      "laser": false,
+      "delta_scaled_lambda4": {
+        "mass_t": 385,
+        "dps_MW": 872.5217391304348,
+        "electrical_MW": 1812.7449275362317
+      },
+      "lambda_for_3x_size3_raw": 4.203101246579508,
+      "lambda_for_4x_size3_raw": 6.304651869869262
+    },
+    {
+      "family": "Siege coil Mk2",
+      "size3": "HeavySiegeCoilerMk2",
+      "size4": "SpinalSiegeCoilerMk2",
+      "current3": {
+        "mass_t": 1000,
+        "dps_MW": 528.9795918367347,
+        "electrical_MW": 1102.6285714285716,
+        "interval_s": 16.333333333333332,
+        "shot_MJ": 8640.0,
+        "input_MJ": 18009.600000000002,
+        "loaded_mass_t": 1093.8
+      },
+      "current4": {
+        "mass_t": 1500,
+        "dps_MW": 796.2244897959183,
+        "electrical_MW": 1658.8010204081631,
+        "interval_s": 16.333333333333332,
+        "shot_MJ": 13004.999999999998,
+        "input_MJ": 27093.749999999996,
+        "loaded_mass_t": 1650.0
+      },
+      "target4": {
+        "mass_t": 4000,
+        "dps_MW": 2115.918367346939,
+        "electrical_MW": 4410.514285714286
+      },
+      "delta_pct": {
+        "mass_t": 166.66666666666666,
+        "dps_MW": 165.74394463667824,
+        "electrical_MW": 165.8856747404845
+      },
+      "laser": false,
+      "delta_scaled_lambda4": {
+        "mass_t": 3000,
+        "dps_MW": 1597.9591836734692,
+        "electrical_MW": 3327.3183673469375
+      },
+      "lambda_for_3x_size3_raw": 3.958762886597939,
+      "lambda_for_4x_size3_raw": 5.938144329896908
+    },
+    {
+      "family": "Rail Mk3",
+      "size3": "HeavyRailCannonMk3",
+      "size4": "SpinalRailgunMk3",
+      "current3": {
+        "mass_t": 150,
+        "dps_MW": 133.259765625,
+        "electrical_MW": 435.1339285714286,
+        "interval_s": 15.0,
+        "shot_MJ": 1998.896484375,
+        "input_MJ": 6527.008928571429,
+        "loaded_mass_t": 171.6
+      },
+      "current4": {
+        "mass_t": 200,
+        "dps_MW": 211.30515,
+        "electrical_MW": 689.976,
+        "interval_s": 15.0,
+        "shot_MJ": 3169.57725,
+        "input_MJ": 10349.64,
+        "loaded_mass_t": 236.0
+      },
+      "target4": {
+        "mass_t": 600,
+        "dps_MW": 533.0390625,
+        "electrical_MW": 1740.5357142857144
+      },
+      "delta_pct": {
+        "mass_t": 200.0,
+        "dps_MW": 152.26032706727688,
+        "electrical_MW": 152.26032706727688
+      },
+      "laser": false,
+      "delta_scaled_lambda4": {
+        "mass_t": 350,
+        "dps_MW": 445.441303125,
+        "electrical_MW": 1454.5022142857142
+      },
+      "lambda_for_3x_size3_raw": 3.4149300869530124,
+      "lambda_for_4x_size3_raw": 5.122395130429518
+    },
+    {
+      "family": "Coil Mk3",
+      "size3": "HeavyCoilCannonMk3",
+      "size4": "SpinalCoilerMk3",
+      "current3": {
+        "mass_t": 150,
+        "dps_MW": 691.1916666666667,
+        "electrical_MW": 1131.916666666667,
+        "interval_s": 8.4,
+        "shot_MJ": 5806.01,
+        "input_MJ": 9508.100000000002,
+        "loaded_mass_t": 183.84
+      },
+      "current4": {
+        "mass_t": 200,
+        "dps_MW": 997.609523809524,
+        "electrical_MW": 1634.3537414965988,
+        "interval_s": 8.4,
+        "shot_MJ": 8379.920000000002,
+        "input_MJ": 13728.571428571431,
+        "loaded_mass_t": 256.25
+      },
+      "target4": {
+        "mass_t": 600,
+        "dps_MW": 2764.766666666667,
+        "electrical_MW": 4527.666666666668
+      },
+      "delta_pct": {
+        "mass_t": 200.0,
+        "dps_MW": 177.13916123304276,
+        "electrical_MW": 177.0310093652446
+      },
+      "laser": false,
+      "delta_scaled_lambda4": {
+        "mass_t": 350,
+        "dps_MW": 1916.8630952380959,
+        "electrical_MW": 3141.6649659863942
+      },
+      "lambda_for_3x_size3_raw": 4.511432023652729,
+      "lambda_for_4x_size3_raw": 6.767148035479093
+    },
+    {
+      "family": "Siege coil Mk3",
+      "size3": "HeavySiegeCoilerMk3",
+      "size4": "SpinalSiegeCoilerMk3",
+      "current3": {
+        "mass_t": 1000,
+        "dps_MW": 1260.8386764705883,
+        "electrical_MW": 2057.8852941176474,
+        "interval_s": 11.333333333333334,
+        "shot_MJ": 14289.505000000001,
+        "input_MJ": 23322.700000000004,
+        "loaded_mass_t": 1093.8
+      },
+      "current4": {
+        "mass_t": 1500,
+        "dps_MW": 1915.6261764705882,
+        "electrical_MW": 3126.8382352941176,
+        "interval_s": 11.333333333333334,
+        "shot_MJ": 21710.43,
+        "input_MJ": 35437.5,
+        "loaded_mass_t": 1650.0
+      },
+      "target4": {
+        "mass_t": 4000,
+        "dps_MW": 5043.354705882353,
+        "electrical_MW": 8231.54117647059
+      },
+      "delta_pct": {
+        "mass_t": 166.66666666666666,
+        "dps_MW": 163.27447222371921,
+        "electrical_MW": 163.2544620811288
+      },
+      "laser": false,
+      "delta_scaled_lambda4": {
+        "mass_t": 3000,
+        "dps_MW": 3879.988676470588,
+        "electrical_MW": 6333.697058823528
+      },
+      "lambda_for_3x_size3_raw": 3.8511385036232015,
+      "lambda_for_4x_size3_raw": 5.776707755434802
+    },
+    {
+      "family": "IR Laser",
+      "size3": "720cmIRLaserCannon",
+      "size4": "960cmIRLaserCannon",
+      "current3": {
+        "mass_t": 700,
+        "dps_MW": 11.666666666666666,
+        "electrical_MW": 46.666666666666664,
+        "interval_s": 30.0,
+        "shot_MJ": 350,
+        "input_MJ": 1400.0,
+        "loaded_mass_t": 700.0
+      },
+      "current4": {
+        "mass_t": 900,
+        "dps_MW": 13.333333333333334,
+        "electrical_MW": 53.333333333333336,
+        "interval_s": 30.0,
+        "shot_MJ": 400,
+        "input_MJ": 1600.0,
+        "loaded_mass_t": 900.0
+      },
+      "target4": {
+        "mass_t": 2800,
+        "dps_MW": 46.666666666666664,
+        "electrical_MW": 186.66666666666666
+      },
+      "delta_pct": {
+        "mass_t": 211.11111111111111,
+        "dps_MW": 249.99999999999994,
+        "electrical_MW": 249.99999999999994
+      },
+      "laser": true,
+      "delta_scaled_lambda4": {
+        "mass_t": 1500,
+        "dps_MW": 18.333333333333336,
+        "electrical_MW": 73.33333333333334
+      },
+      "lambda_for_3x_size3_raw": 13.99999999999999,
+      "lambda_for_4x_size3_raw": 20.999999999999986
+    },
+    {
+      "family": "IR ArcLaser",
+      "size3": "720cmIRArcLaserCannon",
+      "size4": "960cmIRArcLaserCannon",
+      "current3": {
+        "mass_t": 555,
+        "dps_MW": 17.5,
+        "electrical_MW": 50.00000000000001,
+        "interval_s": 20.0,
+        "shot_MJ": 350,
+        "input_MJ": 1000.0000000000001,
+        "loaded_mass_t": 555.0
+      },
+      "current4": {
+        "mass_t": 715,
+        "dps_MW": 20.0,
+        "electrical_MW": 57.142857142857146,
+        "interval_s": 20.0,
+        "shot_MJ": 400,
+        "input_MJ": 1142.857142857143,
+        "loaded_mass_t": 715.0
+      },
+      "target4": {
+        "mass_t": 2220,
+        "dps_MW": 70.0,
+        "electrical_MW": 200.00000000000003
+      },
+      "delta_pct": {
+        "mass_t": 210.4895104895105,
+        "dps_MW": 250.0,
+        "electrical_MW": 250.00000000000006
+      },
+      "laser": true,
+      "delta_scaled_lambda4": {
+        "mass_t": 1195,
+        "dps_MW": 27.5,
+        "electrical_MW": 78.57142857142856
+      },
+      "lambda_for_3x_size3_raw": 14.0,
+      "lambda_for_4x_size3_raw": 21.0
+    },
+    {
+      "family": "IR Phaser",
+      "size3": "720cmIRPhaserCannon",
+      "size4": "960cmIRPhaserCannon",
+      "current3": {
+        "mass_t": 350,
+        "dps_MW": 35.0,
+        "electrical_MW": 77.77777777777777,
+        "interval_s": 10.0,
+        "shot_MJ": 350,
+        "input_MJ": 777.7777777777777,
+        "loaded_mass_t": 350.0
+      },
+      "current4": {
+        "mass_t": 450,
+        "dps_MW": 40.0,
+        "electrical_MW": 88.88888888888889,
+        "interval_s": 10.0,
+        "shot_MJ": 400,
+        "input_MJ": 888.8888888888889,
+        "loaded_mass_t": 450.0
+      },
+      "target4": {
+        "mass_t": 1400,
+        "dps_MW": 140.0,
+        "electrical_MW": 311.1111111111111
+      },
+      "delta_pct": {
+        "mass_t": 211.11111111111111,
+        "dps_MW": 250.0,
+        "electrical_MW": 250.0
+      },
+      "laser": true,
+      "delta_scaled_lambda4": {
+        "mass_t": 750,
+        "dps_MW": 55.0,
+        "electrical_MW": 122.22222222222223
+      },
+      "lambda_for_3x_size3_raw": 14.0,
+      "lambda_for_4x_size3_raw": 21.0
+    },
+    {
+      "family": "Green Laser",
+      "size3": "720cmGreenLaserCannon",
+      "size4": "960cmGreenLaserCannon",
+      "current3": {
+        "mass_t": 700,
+        "dps_MW": 11.666666666666666,
+        "electrical_MW": 58.333333333333336,
+        "interval_s": 30.0,
+        "shot_MJ": 350,
+        "input_MJ": 1750.0,
+        "loaded_mass_t": 700.0
+      },
+      "current4": {
+        "mass_t": 900,
+        "dps_MW": 13.333333333333334,
+        "electrical_MW": 66.66666666666667,
+        "interval_s": 30.0,
+        "shot_MJ": 400,
+        "input_MJ": 2000.0,
+        "loaded_mass_t": 900.0
+      },
+      "target4": {
+        "mass_t": 2800,
+        "dps_MW": 46.666666666666664,
+        "electrical_MW": 233.33333333333334
+      },
+      "delta_pct": {
+        "mass_t": 211.11111111111111,
+        "dps_MW": 249.99999999999994,
+        "electrical_MW": 250.0
+      },
+      "laser": true,
+      "delta_scaled_lambda4": {
+        "mass_t": 1500,
+        "dps_MW": 18.333333333333336,
+        "electrical_MW": 91.66666666666669
+      },
+      "lambda_for_3x_size3_raw": 13.99999999999999,
+      "lambda_for_4x_size3_raw": 20.999999999999986
+    },
+    {
+      "family": "Green ArcLaser",
+      "size3": "720cmGreenArcLaserCannon",
+      "size4": "960cmGreenArcLaserCannon",
+      "current3": {
+        "mass_t": 555,
+        "dps_MW": 17.5,
+        "electrical_MW": 58.333333333333336,
+        "interval_s": 20.0,
+        "shot_MJ": 350,
+        "input_MJ": 1166.6666666666667,
+        "loaded_mass_t": 555.0
+      },
+      "current4": {
+        "mass_t": 715,
+        "dps_MW": 20.0,
+        "electrical_MW": 66.66666666666667,
+        "interval_s": 20.0,
+        "shot_MJ": 400,
+        "input_MJ": 1333.3333333333335,
+        "loaded_mass_t": 715.0
+      },
+      "target4": {
+        "mass_t": 2220,
+        "dps_MW": 70.0,
+        "electrical_MW": 233.33333333333334
+      },
+      "delta_pct": {
+        "mass_t": 210.4895104895105,
+        "dps_MW": 250.0,
+        "electrical_MW": 250.0
+      },
+      "laser": true,
+      "delta_scaled_lambda4": {
+        "mass_t": 1195,
+        "dps_MW": 27.5,
+        "electrical_MW": 91.66666666666669
+      },
+      "lambda_for_3x_size3_raw": 14.0,
+      "lambda_for_4x_size3_raw": 21.0
+    },
+    {
+      "family": "Green Phaser",
+      "size3": "720cmGreenPhaserCannon",
+      "size4": "960cmGreenPhaserCannon",
+      "current3": {
+        "mass_t": 555,
+        "dps_MW": 35.0,
+        "electrical_MW": 87.5,
+        "interval_s": 10.0,
+        "shot_MJ": 350,
+        "input_MJ": 875.0,
+        "loaded_mass_t": 555.0
+      },
+      "current4": {
+        "mass_t": 715,
+        "dps_MW": 40.0,
+        "electrical_MW": 100.0,
+        "interval_s": 10.0,
+        "shot_MJ": 400,
+        "input_MJ": 1000.0,
+        "loaded_mass_t": 715.0
+      },
+      "target4": {
+        "mass_t": 2220,
+        "dps_MW": 140.0,
+        "electrical_MW": 350.0
+      },
+      "delta_pct": {
+        "mass_t": 210.4895104895105,
+        "dps_MW": 250.0,
+        "electrical_MW": 250.0
+      },
+      "laser": true,
+      "delta_scaled_lambda4": {
+        "mass_t": 1195,
+        "dps_MW": 55.0,
+        "electrical_MW": 137.5
+      },
+      "lambda_for_3x_size3_raw": 14.0,
+      "lambda_for_4x_size3_raw": 21.0
+    },
+    {
+      "family": "UV Laser",
+      "size3": "720cmUVLaserCannon",
+      "size4": "960cmUVLaserCannon",
+      "current3": {
+        "mass_t": 700,
+        "dps_MW": 11.666666666666666,
+        "electrical_MW": 116.66666666666667,
+        "interval_s": 30.0,
+        "shot_MJ": 350,
+        "input_MJ": 3500.0,
+        "loaded_mass_t": 700.0
+      },
+      "current4": {
+        "mass_t": 900,
+        "dps_MW": 13.333333333333334,
+        "electrical_MW": 133.33333333333334,
+        "interval_s": 30.0,
+        "shot_MJ": 400,
+        "input_MJ": 4000.0,
+        "loaded_mass_t": 900.0
+      },
+      "target4": {
+        "mass_t": 2800,
+        "dps_MW": 46.666666666666664,
+        "electrical_MW": 466.6666666666667
+      },
+      "delta_pct": {
+        "mass_t": 211.11111111111111,
+        "dps_MW": 249.99999999999994,
+        "electrical_MW": 250.0
+      },
+      "laser": true,
+      "delta_scaled_lambda4": {
+        "mass_t": 1500,
+        "dps_MW": 18.333333333333336,
+        "electrical_MW": 183.33333333333337
+      },
+      "lambda_for_3x_size3_raw": 13.99999999999999,
+      "lambda_for_4x_size3_raw": 20.999999999999986
+    },
+    {
+      "family": "UV ArcLaser",
+      "size3": "720cmUVArcLaserCannon",
+      "size4": "960cmUVArcLaserCannon",
+      "current3": {
+        "mass_t": 555,
+        "dps_MW": 17.5,
+        "electrical_MW": 87.5,
+        "interval_s": 20.0,
+        "shot_MJ": 350,
+        "input_MJ": 1750.0,
+        "loaded_mass_t": 555.0
+      },
+      "current4": {
+        "mass_t": 715,
+        "dps_MW": 20.0,
+        "electrical_MW": 100.0,
+        "interval_s": 20.0,
+        "shot_MJ": 400,
+        "input_MJ": 2000.0,
+        "loaded_mass_t": 715.0
+      },
+      "target4": {
+        "mass_t": 2220,
+        "dps_MW": 70.0,
+        "electrical_MW": 350.0
+      },
+      "delta_pct": {
+        "mass_t": 210.4895104895105,
+        "dps_MW": 250.0,
+        "electrical_MW": 250.0
+      },
+      "laser": true,
+      "delta_scaled_lambda4": {
+        "mass_t": 1195,
+        "dps_MW": 27.5,
+        "electrical_MW": 137.5
+      },
+      "lambda_for_3x_size3_raw": 14.0,
+      "lambda_for_4x_size3_raw": 21.0
+    },
+    {
+      "family": "UV Phaser",
+      "size3": "720cmUVPhaserCannon",
+      "size4": "960cmUVPhaserCannon",
+      "current3": {
+        "mass_t": 555,
+        "dps_MW": 35.0,
+        "electrical_MW": 116.66666666666667,
+        "interval_s": 10.0,
+        "shot_MJ": 350,
+        "input_MJ": 1166.6666666666667,
+        "loaded_mass_t": 555.0
+      },
+      "current4": {
+        "mass_t": 715,
+        "dps_MW": 40.0,
+        "electrical_MW": 133.33333333333334,
+        "interval_s": 10.0,
+        "shot_MJ": 400,
+        "input_MJ": 1333.3333333333335,
+        "loaded_mass_t": 715.0
+      },
+      "target4": {
+        "mass_t": 2220,
+        "dps_MW": 140.0,
+        "electrical_MW": 466.6666666666667
+      },
+      "delta_pct": {
+        "mass_t": 210.4895104895105,
+        "dps_MW": 250.0,
+        "electrical_MW": 250.0
+      },
+      "laser": true,
+      "delta_scaled_lambda4": {
+        "mass_t": 1195,
+        "dps_MW": 55.0,
+        "electrical_MW": 183.33333333333337
+      },
+      "lambda_for_3x_size3_raw": 14.0,
+      "lambda_for_4x_size3_raw": 21.0
+    },
+    {
+      "family": "Alien magnetic",
+      "size3": "AlienHeavyMagCannon",
+      "size4": "AlienSpinalMagCannon",
+      "current3": {
+        "mass_t": 150,
+        "dps_MW": 471.9709090909092,
+        "electrical_MW": 921.818181818182,
+        "interval_s": 14.666666666666666,
+        "shot_MJ": 6922.240000000001,
+        "input_MJ": 13520.000000000002,
+        "loaded_mass_t": 210.0
+      },
+      "current4": {
+        "mass_t": 200,
+        "dps_MW": 675.3177966101695,
+        "electrical_MW": 1324.1525423728813,
+        "interval_s": 19.666666666666668,
+        "shot_MJ": 13281.25,
+        "input_MJ": 26041.666666666668,
+        "loaded_mass_t": 290.0
+      },
+      "target4": {
+        "mass_t": 600,
+        "dps_MW": 1887.8836363636367,
+        "electrical_MW": 3687.272727272728
+      },
+      "delta_pct": {
+        "mass_t": 200.0,
+        "dps_MW": 179.55484748663108,
+        "electrical_MW": 178.46283636363643
+      },
+      "laser": false,
+      "delta_scaled_lambda4": {
+        "mass_t": 350,
+        "dps_MW": 1285.3584591679503,
+        "electrical_MW": 2531.155624036979
+      },
+      "lambda_for_3x_size3_raw": 4.642027373506819,
+      "lambda_for_4x_size3_raw": 6.963041060260228
+    },
+    {
+      "family": "AdvancedAlien magnetic",
+      "size3": "AdvancedAlienHeavyMagCannon",
+      "size4": "AdvancedAlienSpinalMagCannon",
+      "current3": {
+        "mass_t": 150,
+        "dps_MW": 1602.6146341463414,
+        "electrical_MW": 2374.243902439024,
+        "interval_s": 10.25,
+        "shot_MJ": 16426.8,
+        "input_MJ": 24336.0,
+        "loaded_mass_t": 210.0
+      },
+      "current4": {
+        "mass_t": 200,
+        "dps_MW": 2313.425454545455,
+        "electrical_MW": 3427.2969696969703,
+        "interval_s": 13.75,
+        "shot_MJ": 31809.600000000006,
+        "input_MJ": 47125.33333333334,
+        "loaded_mass_t": 290.0
+      },
+      "target4": {
+        "mass_t": 600,
+        "dps_MW": 6410.458536585365,
+        "electrical_MW": 9496.975609756097
+      },
+      "delta_pct": {
+        "mass_t": 200.0,
+        "dps_MW": 177.0981240821914,
+        "electrical_MW": 177.0981240821914
+      },
+      "laser": false,
+      "delta_scaled_lambda4": {
+        "mass_t": 350,
+        "dps_MW": 4445.857915742796,
+        "electrical_MW": 6586.456171470809
+      },
+      "lambda_for_3x_size3_raw": 4.509257845136595,
+      "lambda_for_4x_size3_raw": 6.763886767704893
+    },
+    {
+      "family": "Gen3Alien magnetic",
+      "size3": "Gen3AlienHeavyMagCannon",
+      "size4": "Gen3AlienSpinalMagCannon",
+      "current3": {
+        "mass_t": 150,
+        "dps_MW": 11316.266666666668,
+        "electrical_MW": 15310.243137254905,
+        "interval_s": 6.0,
+        "shot_MJ": 67897.6,
+        "input_MJ": 91861.45882352944,
+        "loaded_mass_t": 297.2
+      },
+      "current4": {
+        "mass_t": 200,
+        "dps_MW": 22885.209302325584,
+        "electrical_MW": 30962.341997264026,
+        "interval_s": 8.6,
+        "shot_MJ": 196812.80000000002,
+        "input_MJ": 266276.1411764706,
+        "loaded_mass_t": 531.2
+      },
+      "target4": {
+        "mass_t": 600,
+        "dps_MW": 45265.06666666667,
+        "electrical_MW": 61240.97254901962
+      },
+      "delta_pct": {
+        "mass_t": 200.0,
+        "dps_MW": 97.79179673950746,
+        "electrical_MW": 97.79179673950749
+      },
+      "laser": false,
+      "delta_scaled_lambda4": {
+        "mass_t": 350,
+        "dps_MW": 57592.03720930233,
+        "electrical_MW": 77918.63857729139
+      },
+      "lambda_for_3x_size3_raw": 1.9563182259693424,
+      "lambda_for_4x_size3_raw": 2.934477338954013
+    },
+    {
+      "family": "Alien OrangeLaser",
+      "size3": "Alien768cmOrangeLaserCannon",
+      "size4": "Alien1024cmOrangeLaserCannon",
+      "current3": {
+        "mass_t": 587,
+        "dps_MW": 16.0,
+        "electrical_MW": 45.714285714285715,
+        "interval_s": 24.0,
+        "shot_MJ": 384,
+        "input_MJ": 1097.142857142857,
+        "loaded_mass_t": 587.0
+      },
+      "current4": {
+        "mass_t": 758,
+        "dps_MW": 18.666666666666668,
+        "electrical_MW": 53.333333333333336,
+        "interval_s": 24.0,
+        "shot_MJ": 448,
+        "input_MJ": 1280.0,
+        "loaded_mass_t": 758.0
+      },
+      "target4": {
+        "mass_t": 2348,
+        "dps_MW": 64.0,
+        "electrical_MW": 182.85714285714286
+      },
+      "delta_pct": {
+        "mass_t": 209.76253298153034,
+        "dps_MW": 242.85714285714283,
+        "electrical_MW": 242.85714285714283
+      },
+      "laser": true,
+      "delta_scaled_lambda4": {
+        "mass_t": 1271,
+        "dps_MW": 26.66666666666667,
+        "electrical_MW": 76.1904761904762
+      },
+      "lambda_for_3x_size3_raw": 11.999999999999995,
+      "lambda_for_4x_size3_raw": 17.999999999999993
+    },
+    {
+      "family": "Alien VioletLaser",
+      "size3": "Alien768cmVioletLaserCannon",
+      "size4": "Alien1024cmVioletLaserCannon",
+      "current3": {
+        "mass_t": 587,
+        "dps_MW": 21.333333333333332,
+        "electrical_MW": 42.666666666666664,
+        "interval_s": 18.0,
+        "shot_MJ": 384,
+        "input_MJ": 768.0,
+        "loaded_mass_t": 587.0
+      },
+      "current4": {
+        "mass_t": 758,
+        "dps_MW": 24.88888888888889,
+        "electrical_MW": 49.77777777777778,
+        "interval_s": 18.0,
+        "shot_MJ": 448,
+        "input_MJ": 896.0,
+        "loaded_mass_t": 758.0
+      },
+      "target4": {
+        "mass_t": 2348,
+        "dps_MW": 85.33333333333333,
+        "electrical_MW": 170.66666666666666
+      },
+      "delta_pct": {
+        "mass_t": 209.76253298153034,
+        "dps_MW": 242.85714285714283,
+        "electrical_MW": 242.85714285714283
+      },
+      "laser": true,
+      "delta_scaled_lambda4": {
+        "mass_t": 1271,
+        "dps_MW": 35.55555555555556,
+        "electrical_MW": 71.11111111111111
+      },
+      "lambda_for_3x_size3_raw": 11.999999999999995,
+      "lambda_for_4x_size3_raw": 17.999999999999993
+    },
+    {
+      "family": "Alien Xaser",
+      "size3": "Alien768cmXaserCannon",
+      "size4": "Alien1024cmXaserCannon",
+      "current3": {
+        "mass_t": 760,
+        "dps_MW": 16.0,
+        "electrical_MW": 40.0,
+        "interval_s": 24.0,
+        "shot_MJ": 384,
+        "input_MJ": 960.0,
+        "loaded_mass_t": 760.0
+      },
+      "current4": {
+        "mass_t": 973,
+        "dps_MW": 18.666666666666668,
+        "electrical_MW": 46.666666666666664,
+        "interval_s": 24.0,
+        "shot_MJ": 448,
+        "input_MJ": 1120.0,
+        "loaded_mass_t": 973.0
+      },
+      "target4": {
+        "mass_t": 3040,
+        "dps_MW": 64.0,
+        "electrical_MW": 160.0
+      },
+      "delta_pct": {
+        "mass_t": 212.43576567317572,
+        "dps_MW": 242.85714285714283,
+        "electrical_MW": 242.8571428571429
+      },
+      "laser": true,
+      "delta_scaled_lambda4": {
+        "mass_t": 1612,
+        "dps_MW": 26.66666666666667,
+        "electrical_MW": 66.66666666666666
+      },
+      "lambda_for_3x_size3_raw": 11.999999999999995,
+      "lambda_for_4x_size3_raw": 17.999999999999993
+    },
+    {
+      "family": "Alien Graser",
+      "size3": "Alien768cmGraserCannon",
+      "size4": "Alien1024cmGraserCannon",
+      "current3": {
+        "mass_t": 1400,
+        "dps_MW": 10.666666666666666,
+        "electrical_MW": 35.55555555555556,
+        "interval_s": 36.0,
+        "shot_MJ": 384,
+        "input_MJ": 1280.0,
+        "loaded_mass_t": 1400.0
+      },
+      "current4": {
+        "mass_t": 1827,
+        "dps_MW": 12.444444444444445,
+        "electrical_MW": 41.48148148148149,
+        "interval_s": 36.0,
+        "shot_MJ": 448,
+        "input_MJ": 1493.3333333333335,
+        "loaded_mass_t": 1827.0
+      },
+      "target4": {
+        "mass_t": 5600,
+        "dps_MW": 42.666666666666664,
+        "electrical_MW": 142.22222222222223
+      },
+      "delta_pct": {
+        "mass_t": 206.51340996168582,
+        "dps_MW": 242.85714285714283,
+        "electrical_MW": 242.85714285714283
+      },
+      "laser": true,
+      "delta_scaled_lambda4": {
+        "mass_t": 3108,
+        "dps_MW": 17.77777777777778,
+        "electrical_MW": 59.25925925925928
+      },
+      "lambda_for_3x_size3_raw": 11.999999999999995,
+      "lambda_for_4x_size3_raw": 17.999999999999993
+    },
+    {
+      "family": "Electron",
+      "size3": "HeavyElectronLance",
+      "size4": "SpinalElectronLance",
+      "current3": {
+        "mass_t": 60,
+        "dps_MW": 12.307692307692308,
+        "electrical_MW": 82.05128205128206,
+        "interval_s": 9.75,
+        "shot_MJ": 120,
+        "input_MJ": 800.0,
+        "loaded_mass_t": 60.0
+      },
+      "current4": {
+        "mass_t": 120,
+        "dps_MW": 24.615384615384617,
+        "electrical_MW": 164.10256410256412,
+        "interval_s": 9.75,
+        "shot_MJ": 240,
+        "input_MJ": 1600.0,
+        "loaded_mass_t": 120.0
+      },
+      "target4": {
+        "mass_t": 240,
+        "dps_MW": 49.23076923076923,
+        "electrical_MW": 328.20512820512823
+      },
+      "delta_pct": {
+        "mass_t": 100.0,
+        "dps_MW": 100.0,
+        "electrical_MW": 100.0
+      },
+      "laser": false,
+      "delta_scaled_lambda4": {
+        "mass_t": 300,
+        "dps_MW": 61.53846153846154,
+        "electrical_MW": 410.2564102564103
+      },
+      "lambda_for_3x_size3_raw": 2.0,
+      "lambda_for_4x_size3_raw": 3.0
+    },
+    {
+      "family": "Ion",
+      "size3": "HeavyIonCannon",
+      "size4": "SpinalIonCannon",
+      "current3": {
+        "mass_t": 60,
+        "dps_MW": 12.307692307692308,
+        "electrical_MW": 82.05128205128206,
+        "interval_s": 9.75,
+        "shot_MJ": 120,
+        "input_MJ": 800.0,
+        "loaded_mass_t": 60.0
+      },
+      "current4": {
+        "mass_t": 120,
+        "dps_MW": 24.615384615384617,
+        "electrical_MW": 164.10256410256412,
+        "interval_s": 9.75,
+        "shot_MJ": 240,
+        "input_MJ": 1600.0,
+        "loaded_mass_t": 120.0
+      },
+      "target4": {
+        "mass_t": 240,
+        "dps_MW": 49.23076923076923,
+        "electrical_MW": 328.20512820512823
+      },
+      "delta_pct": {
+        "mass_t": 100.0,
+        "dps_MW": 100.0,
+        "electrical_MW": 100.0
+      },
+      "laser": false,
+      "delta_scaled_lambda4": {
+        "mass_t": 300,
+        "dps_MW": 61.53846153846154,
+        "electrical_MW": 410.2564102564103
+      },
+      "lambda_for_3x_size3_raw": 2.0,
+      "lambda_for_4x_size3_raw": 3.0
+    },
+    {
+      "family": "Neutral particle",
+      "size3": "HeavyParticleLance",
+      "size4": "SpinalParticleLance",
+      "current3": {
+        "mass_t": 80,
+        "dps_MW": 16.551724137931036,
+        "electrical_MW": 110.34482758620689,
+        "interval_s": 7.25,
+        "shot_MJ": 120,
+        "input_MJ": 800.0,
+        "loaded_mass_t": 80.0
+      },
+      "current4": {
+        "mass_t": 160,
+        "dps_MW": 33.10344827586207,
+        "electrical_MW": 220.68965517241378,
+        "interval_s": 7.25,
+        "shot_MJ": 240,
+        "input_MJ": 1600.0,
+        "loaded_mass_t": 160.0
+      },
+      "target4": {
+        "mass_t": 320,
+        "dps_MW": 66.20689655172414,
+        "electrical_MW": 441.37931034482756
+      },
+      "delta_pct": {
+        "mass_t": 100.0,
+        "dps_MW": 100.0,
+        "electrical_MW": 100.0
+      },
+      "laser": false,
+      "delta_scaled_lambda4": {
+        "mass_t": 400,
+        "dps_MW": 82.75862068965517,
+        "electrical_MW": 551.7241379310344
+      },
+      "lambda_for_3x_size3_raw": 2.0,
+      "lambda_for_4x_size3_raw": 3.0
+    },
+    {
+      "family": "Antimatter particle",
+      "size3": "HeavyAntimatterParticleCannon",
+      "size4": "SpinalAntimatterParticleCannon",
+      "current3": {
+        "mass_t": 240,
+        "dps_MW": 18.461538461538463,
+        "electrical_MW": 184.61538461538464,
+        "interval_s": 8.666666666666666,
+        "shot_MJ": 160,
+        "input_MJ": 1600.0,
+        "loaded_mass_t": 240.0
+      },
+      "current4": {
+        "mass_t": 480,
+        "dps_MW": 36.92307692307693,
+        "electrical_MW": 369.2307692307693,
+        "interval_s": 8.666666666666666,
+        "shot_MJ": 320,
+        "input_MJ": 3200.0,
+        "loaded_mass_t": 480.0
+      },
+      "target4": {
+        "mass_t": 960,
+        "dps_MW": 73.84615384615385,
+        "electrical_MW": 738.4615384615386
+      },
+      "delta_pct": {
+        "mass_t": 100.0,
+        "dps_MW": 100.0,
+        "electrical_MW": 100.0
+      },
+      "laser": false,
+      "delta_scaled_lambda4": {
+        "mass_t": 1200,
+        "dps_MW": 92.30769230769232,
+        "electrical_MW": 923.0769230769232
+      },
+      "lambda_for_3x_size3_raw": 2.0,
+      "lambda_for_4x_size3_raw": 3.0
+    },
+    {
+      "family": "Alien particle",
+      "size3": "AlienHeavyParticleCannon",
+      "size4": "AlienSpinalParticleCannon",
+      "current3": {
+        "mass_t": 400,
+        "dps_MW": 29.454545454545457,
+        "electrical_MW": 147.27272727272728,
+        "interval_s": 7.333333333333333,
+        "shot_MJ": 216,
+        "input_MJ": 1080.0,
+        "loaded_mass_t": 400.0
+      },
+      "current4": {
+        "mass_t": 800,
+        "dps_MW": 44.18181818181819,
+        "electrical_MW": 220.9090909090909,
+        "interval_s": 7.333333333333333,
+        "shot_MJ": 324,
+        "input_MJ": 1620.0,
+        "loaded_mass_t": 800.0
+      },
+      "target4": {
+        "mass_t": 1600,
+        "dps_MW": 117.81818181818183,
+        "electrical_MW": 589.0909090909091
+      },
+      "delta_pct": {
+        "mass_t": 100.0,
+        "dps_MW": 166.66666666666666,
+        "electrical_MW": 166.66666666666669
+      },
+      "laser": false,
+      "delta_scaled_lambda4": {
+        "mass_t": 2000,
+        "dps_MW": 88.36363636363637,
+        "electrical_MW": 441.81818181818176
+      },
+      "lambda_for_3x_size3_raw": 3.9999999999999996,
+      "lambda_for_4x_size3_raw": 5.999999999999999
+    },
+    {
+      "family": "Plasma Mk1",
+      "size3": "PlasmaCannonMk1",
+      "size4": "HeavyPlasmaCannonMk1",
+      "current3": {
+        "mass_t": 540,
+        "dps_MW": 8.932291666666666,
+        "electrical_MW": 202.39583333333334,
+        "interval_s": 48.0,
+        "shot_MJ": 428.75,
+        "input_MJ": 9715.0,
+        "loaded_mass_t": 540.0
+      },
+      "current4": {
+        "mass_t": 720,
+        "dps_MW": 9.1875,
+        "electrical_MW": 295.9375,
+        "interval_s": 60.0,
+        "shot_MJ": 551.25,
+        "input_MJ": 17756.25,
+        "loaded_mass_t": 720.0
+      },
+      "target4": {
+        "mass_t": 2160,
+        "dps_MW": 35.729166666666664,
+        "electrical_MW": 809.5833333333334
+      },
+      "delta_pct": {
+        "mass_t": 200.0,
+        "dps_MW": 288.88888888888886,
+        "electrical_MW": 173.56564589933123
+      },
+      "laser": false,
+      "delta_scaled_lambda4": {
+        "mass_t": 1260,
+        "dps_MW": 9.953125000000002,
+        "electrical_MW": 576.5625
+      },
+      "lambda_for_3x_size3_raw": 69.99999999999983,
+      "lambda_for_4x_size3_raw": 104.99999999999976
+    },
+    {
+      "family": "Plasma Mk2",
+      "size3": "PlasmaCannonMk2",
+      "size4": "HeavyPlasmaCannonMk2",
+      "current3": {
+        "mass_t": 480,
+        "dps_MW": 10.71875,
+        "electrical_MW": 173.48214285714286,
+        "interval_s": 40.0,
+        "shot_MJ": 428.75,
+        "input_MJ": 6939.285714285715,
+        "loaded_mass_t": 480.0
+      },
+      "current4": {
+        "mass_t": 640,
+        "dps_MW": 11.025,
+        "electrical_MW": 236.75,
+        "interval_s": 50.0,
+        "shot_MJ": 551.25,
+        "input_MJ": 11837.5,
+        "loaded_mass_t": 640.0
+      },
+      "target4": {
+        "mass_t": 1920,
+        "dps_MW": 42.875,
+        "electrical_MW": 693.9285714285714
+      },
+      "delta_pct": {
+        "mass_t": 200.0,
+        "dps_MW": 288.88888888888886,
+        "electrical_MW": 193.1060491778549
+      },
+      "laser": false,
+      "delta_scaled_lambda4": {
+        "mass_t": 1120,
+        "dps_MW": 11.943750000000001,
+        "electrical_MW": 426.55357142857144
+      },
+      "lambda_for_3x_size3_raw": 69.99999999999991,
+      "lambda_for_4x_size3_raw": 104.99999999999987
+    },
+    {
+      "family": "Plasma Mk3",
+      "size3": "PlasmaCannonMk3",
+      "size4": "HeavyPlasmaCannonMk3",
+      "current3": {
+        "mass_t": 420,
+        "dps_MW": 13.3984375,
+        "electrical_MW": 168.66319444444443,
+        "interval_s": 32.0,
+        "shot_MJ": 428.75,
+        "input_MJ": 5397.222222222222,
+        "loaded_mass_t": 420.0
+      },
+      "current4": {
+        "mass_t": 560,
+        "dps_MW": 13.78125,
+        "electrical_MW": 221.953125,
+        "interval_s": 40.0,
+        "shot_MJ": 551.25,
+        "input_MJ": 8878.125,
+        "loaded_mass_t": 560.0
+      },
+      "target4": {
+        "mass_t": 1680,
+        "dps_MW": 53.59375,
+        "electrical_MW": 674.6527777777777
+      },
+      "delta_pct": {
+        "mass_t": 200.0,
+        "dps_MW": 288.88888888888886,
+        "electrical_MW": 203.96182877703467
+      },
+      "laser": false,
+      "delta_scaled_lambda4": {
+        "mass_t": 980,
+        "dps_MW": 14.9296875,
+        "electrical_MW": 381.82291666666674
+      },
+      "lambda_for_3x_size3_raw": 70.0,
+      "lambda_for_4x_size3_raw": 105.0
+    },
+    {
+      "family": "Alien plasma",
+      "size3": "AlienPlasmaCannon",
+      "size4": "AlienHeavyPlasmaCannon",
+      "current3": {
+        "mass_t": 390,
+        "dps_MW": 19.29375,
+        "electrical_MW": 181.76388888888889,
+        "interval_s": 32.0,
+        "shot_MJ": 617.4,
+        "input_MJ": 5816.444444444444,
+        "loaded_mass_t": 390.0
+      },
+      "current4": {
+        "mass_t": 520,
+        "dps_MW": 19.845000000000002,
+        "electrical_MW": 237.1125,
+        "interval_s": 40.0,
+        "shot_MJ": 793.8000000000001,
+        "input_MJ": 9484.5,
+        "loaded_mass_t": 520.0
+      },
+      "target4": {
+        "mass_t": 1560,
+        "dps_MW": 77.175,
+        "electrical_MW": 727.0555555555555
+      },
+      "delta_pct": {
+        "mass_t": 200.0,
+        "dps_MW": 288.88888888888886,
+        "electrical_MW": 206.62894430093544
+      },
+      "laser": false,
+      "delta_scaled_lambda4": {
+        "mass_t": 910,
+        "dps_MW": 21.498750000000012,
+        "electrical_MW": 403.1583333333334
+      },
+      "lambda_for_3x_size3_raw": 69.9999999999996,
+      "lambda_for_4x_size3_raw": 104.99999999999939
+    }
+  ],
+  "appearances": [
+    {
+      "hull": "Gunship",
+      "appearance": 0,
+      "bare_t": 180.0,
+      "volume_m3": 11019.664214,
+      "nose_A_per_1000t": 11.11111111111111,
+      "nose_A_per_100000m3": 18.14937334895457,
+      "raw_per_1000t": 997.923913043478
+    },
+    {
+      "hull": "Gunship",
+      "appearance": 1,
+      "bare_t": 196.0,
+      "volume_m3": 6474.448755,
+      "nose_A_per_1000t": 10.204081632653061,
+      "nose_A_per_100000m3": 30.890660744754012,
+      "raw_per_1000t": 933.0182926829266
+    },
+    {
+      "hull": "Gunship",
+      "appearance": 2,
+      "bare_t": 183.0,
+      "volume_m3": 3452.257356,
+      "nose_A_per_1000t": 10.92896174863388,
+      "nose_A_per_100000m3": 57.933108507221036,
+      "raw_per_1000t": 985.075107296137
+    },
+    {
+      "hull": "Gunship",
+      "appearance": 3,
+      "bare_t": 214.0,
+      "volume_m3": 3574.852162,
+      "nose_A_per_1000t": 9.345794392523365,
+      "nose_A_per_100000m3": 55.94636951031487,
+      "raw_per_1000t": 869.4034090909089
+    },
+    {
+      "hull": "Corvette",
+      "appearance": 0,
+      "bare_t": 400.0,
+      "volume_m3": 5070.771061,
+      "nose_A_per_1000t": 5.0,
+      "nose_A_per_100000m3": 39.441733336814906,
+      "raw_per_1000t": 601.0875850340135
+    },
+    {
+      "hull": "Corvette",
+      "appearance": 1,
+      "bare_t": 614.0,
+      "volume_m3": 10445.991443,
+      "nose_A_per_1000t": 3.257328990228013,
+      "nose_A_per_100000m3": 19.14610030951372,
+      "raw_per_1000t": 418.37062026515144
+    },
+    {
+      "hull": "Corvette",
+      "appearance": 2,
+      "bare_t": 723.0,
+      "volume_m3": 13890.245741,
+      "nose_A_per_1000t": 2.7662517289073305,
+      "nose_A_per_100000m3": 14.398593353151245,
+      "raw_per_1000t": 362.2791102911029
+    },
+    {
+      "hull": "Corvette",
+      "appearance": 3,
+      "bare_t": 692.0,
+      "volume_m3": 11004.382981,
+      "nose_A_per_1000t": 2.8901734104046244,
+      "nose_A_per_100000m3": 18.174576470604208,
+      "raw_per_1000t": 376.6405583972719
+    },
+    {
+      "hull": "Frigate",
+      "appearance": 0,
+      "bare_t": 600.0,
+      "volume_m3": 13692.464509,
+      "nose_A_per_1000t": 3.3333333333333335,
+      "nose_A_per_100000m3": 14.606574285333428,
+      "raw_per_1000t": 505.12499999999994
+    },
+    {
+      "hull": "Frigate",
+      "appearance": 1,
+      "bare_t": 657.0,
+      "volume_m3": 13923.55905,
+      "nose_A_per_1000t": 3.0441400304414,
+      "nose_A_per_100000m3": 14.36414348384582,
+      "raw_per_1000t": 468.5403430749682
+    },
+    {
+      "hull": "Frigate",
+      "appearance": 2,
+      "bare_t": 826.0,
+      "volume_m3": 18459.201811,
+      "nose_A_per_1000t": 2.4213075060532687,
+      "nose_A_per_100000m3": 10.834704666418364,
+      "raw_per_1000t": 385.7126046025104
+    },
+    {
+      "hull": "Frigate",
+      "appearance": 3,
+      "bare_t": 915.0,
+      "volume_m3": 22332.808913,
+      "nose_A_per_1000t": 2.185792349726776,
+      "nose_A_per_100000m3": 8.955434167691255,
+      "raw_per_1000t": 352.8624401913875
+    },
+    {
+      "hull": "Destroyer",
+      "appearance": 0,
+      "bare_t": 900.0,
+      "volume_m3": 22061.954731,
+      "nose_A_per_1000t": 4.444444444444445,
+      "nose_A_per_100000m3": 18.130759711783217,
+      "raw_per_1000t": 515.9736000881834
+    },
+    {
+      "hull": "Destroyer",
+      "appearance": 1,
+      "bare_t": 1757.0,
+      "volume_m3": 66132.58393,
+      "nose_A_per_1000t": 2.2766078542970973,
+      "nose_A_per_100000m3": 6.048455636080876,
+      "raw_per_1000t": 287.6879133171079
+    },
+    {
+      "hull": "Destroyer",
+      "appearance": 2,
+      "bare_t": 1885.0,
+      "volume_m3": 42867.288585,
+      "nose_A_per_1000t": 2.1220159151193636,
+      "nose_A_per_100000m3": 9.331124342209199,
+      "raw_per_1000t": 269.8554421768708
+    },
+    {
+      "hull": "Destroyer",
+      "appearance": 3,
+      "bare_t": 2082.0,
+      "volume_m3": 62885.428219,
+      "nose_A_per_1000t": 1.9212295869356388,
+      "nose_A_per_100000m3": 6.360774050977128,
+      "raw_per_1000t": 246.35344301292577
+    },
+    {
+      "hull": "Cruiser",
+      "appearance": 0,
+      "bare_t": 1000.0,
+      "volume_m3": 45819.948385,
+      "nose_A_per_1000t": 4.0,
+      "nose_A_per_100000m3": 8.729822142945654,
+      "raw_per_1000t": 510.05074160811876
+    },
+    {
+      "hull": "Cruiser",
+      "appearance": 1,
+      "bare_t": 1800.0,
+      "volume_m3": 143362.034026,
+      "nose_A_per_1000t": 2.2222222222222223,
+      "nose_A_per_100000m3": 2.7901389842687108,
+      "raw_per_1000t": 308.05044790193307
+    },
+    {
+      "hull": "Cruiser",
+      "appearance": 2,
+      "bare_t": 1600.0,
+      "volume_m3": 96768.961828,
+      "nose_A_per_1000t": 2.5,
+      "nose_A_per_100000m3": 4.133556798004837,
+      "raw_per_1000t": 341.9021454735741
+    },
+    {
+      "hull": "Cruiser",
+      "appearance": 3,
+      "bare_t": 2300.0,
+      "volume_m3": 202070.381704,
+      "nose_A_per_1000t": 1.7391304347826086,
+      "nose_A_per_100000m3": 1.9795083110494365,
+      "raw_per_1000t": 246.92932728647017
+    },
+    {
+      "hull": "Battlecruiser",
+      "appearance": 0,
+      "bare_t": 1200.0,
+      "volume_m3": 43684.422123,
+      "nose_A_per_1000t": 6.666666666666667,
+      "nose_A_per_100000m3": 18.31316430711801,
+      "raw_per_1000t": 580.7065850815851
+    },
+    {
+      "hull": "Battlecruiser",
+      "appearance": 1,
+      "bare_t": 2500.0,
+      "volume_m3": 162618.495218,
+      "nose_A_per_1000t": 3.2,
+      "nose_A_per_100000m3": 4.919489624642949,
+      "raw_per_1000t": 304.1796398046398
+    },
+    {
+      "hull": "Battlecruiser",
+      "appearance": 2,
+      "bare_t": 1900.0,
+      "volume_m3": 80740.993279,
+      "nose_A_per_1000t": 4.2105263157894735,
+      "nose_A_per_100000m3": 9.908225890107705,
+      "raw_per_1000t": 389.8640453834116
+    },
+    {
+      "hull": "Battlecruiser",
+      "appearance": 3,
+      "bare_t": 3100.0,
+      "volume_m3": 205738.660377,
+      "nose_A_per_1000t": 2.5806451612903225,
+      "nose_A_per_100000m3": 3.8884281570321426,
+      "raw_per_1000t": 249.37249749749753
+    },
+    {
+      "hull": "Lancer",
+      "appearance": 0,
+      "bare_t": 2000.0,
+      "volume_m3": 152598.424445,
+      "nose_A_per_1000t": 16.0,
+      "nose_A_per_100000m3": 20.970072342741346,
+      "raw_per_1000t": 1091.5425857843138
+    },
+    {
+      "hull": "Lancer",
+      "appearance": 1,
+      "bare_t": 2500.0,
+      "volume_m3": 215348.959487,
+      "nose_A_per_1000t": 12.8,
+      "nose_A_per_100000m3": 14.859602793637714,
+      "raw_per_1000t": 922.0483954451346
+    },
+    {
+      "hull": "Lancer",
+      "appearance": 2,
+      "bare_t": 3900.0,
+      "volume_m3": 259685.278284,
+      "nose_A_per_1000t": 8.205128205128204,
+      "nose_A_per_100000m3": 12.322608432582687,
+      "raw_per_1000t": 642.6397907647907
+    },
+    {
+      "hull": "Lancer",
+      "appearance": 3,
+      "bare_t": 3900.0,
+      "volume_m3": 256682.460941,
+      "nose_A_per_1000t": 8.205128205128204,
+      "nose_A_per_100000m3": 12.466765310994658,
+      "raw_per_1000t": 642.6397907647907
+    },
+    {
+      "hull": "Battleship",
+      "appearance": 0,
+      "bare_t": 1600.0,
+      "volume_m3": 105142.66767,
+      "nose_A_per_1000t": 5.0,
+      "nose_A_per_100000m3": 7.608709363461028,
+      "raw_per_1000t": 645.4635708450047
+    },
+    {
+      "hull": "Battleship",
+      "appearance": 1,
+      "bare_t": 2000.0,
+      "volume_m3": 164048.422723,
+      "nose_A_per_1000t": 4.0,
+      "nose_A_per_100000m3": 4.876608910472859,
+      "raw_per_1000t": 539.6498707064794
+    },
+    {
+      "hull": "Battleship",
+      "appearance": 2,
+      "bare_t": 1900.0,
+      "volume_m3": 134463.754304,
+      "nose_A_per_1000t": 4.2105263157894735,
+      "nose_A_per_100000m3": 5.949558705547773,
+      "raw_per_1000t": 562.7118309930811
+    },
+    {
+      "hull": "Battleship",
+      "appearance": 3,
+      "bare_t": 2300.0,
+      "volume_m3": 168180.615798,
+      "nose_A_per_1000t": 3.4782608695652173,
+      "nose_A_per_100000m3": 4.7567907645246805,
+      "raw_per_1000t": 480.5641184393466
+    },
+    {
+      "hull": "Dreadnought",
+      "appearance": 0,
+      "bare_t": 2400.0,
+      "volume_m3": 272229.43595,
+      "nose_A_per_1000t": 10.0,
+      "nose_A_per_100000m3": 8.816092909367834,
+      "raw_per_1000t": 875.3608044164038
+    },
+    {
+      "hull": "Dreadnought",
+      "appearance": 1,
+      "bare_t": 3000.0,
+      "volume_m3": 410481.618817,
+      "nose_A_per_1000t": 8.0,
+      "nose_A_per_100000m3": 5.846790428562314,
+      "raw_per_1000t": 736.0460875331565
+    },
+    {
+      "hull": "Dreadnought",
+      "appearance": 2,
+      "bare_t": 2600.0,
+      "volume_m3": 207412.75456,
+      "nose_A_per_1000t": 9.23076923076923,
+      "nose_A_per_100000m3": 11.571130257111223,
+      "raw_per_1000t": 823.4106083086053
+    },
+    {
+      "hull": "Dreadnought",
+      "appearance": 3,
+      "bare_t": 3600.0,
+      "volume_m3": 542945.652925,
+      "nose_A_per_1000t": 6.666666666666667,
+      "nose_A_per_100000m3": 4.420331919171891,
+      "raw_per_1000t": 634.9871281464531
+    },
+    {
+      "hull": "Titan",
+      "appearance": 0,
+      "bare_t": 3400.0,
+      "volume_m3": 514552.084509,
+      "nose_A_per_1000t": 9.411764705882353,
+      "nose_A_per_100000m3": 6.219001139706838,
+      "raw_per_1000t": 981.5973622311828
+    },
+    {
+      "hull": "Titan",
+      "appearance": 1,
+      "bare_t": 4300.0,
+      "volume_m3": 865494.884959,
+      "nose_A_per_1000t": 7.441860465116279,
+      "nose_A_per_100000m3": 3.6973066572791926,
+      "raw_per_1000t": 830.8400881683732
+    },
+    {
+      "hull": "Titan",
+      "appearance": 2,
+      "bare_t": 3500.0,
+      "volume_m3": 407508.818065,
+      "nose_A_per_1000t": 9.142857142857142,
+      "nose_A_per_100000m3": 7.852590810659664,
+      "raw_per_1000t": 962.1982048748354
+    },
+    {
+      "hull": "Titan",
+      "appearance": 3,
+      "bare_t": 5200.0,
+      "volume_m3": 987672.365761,
+      "nose_A_per_1000t": 6.153846153846154,
+      "nose_A_per_100000m3": 3.2399408052025485,
+      "raw_per_1000t": 720.225283530572
+    },
+    {
+      "hull": "AlienBattleship",
+      "appearance": 0,
+      "bare_t": 1656,
+      "volume_m3": 201325.225328,
+      "nose_A_per_1000t": 4.830917874396135,
+      "nose_A_per_100000m3": 3.973669959621981,
+      "raw_per_1000t": 1571.6574217766965
+    },
+    {
+      "hull": "AlienDreadnought",
+      "appearance": 0,
+      "bare_t": 2200,
+      "volume_m3": 302989.802622,
+      "nose_A_per_1000t": 10.909090909090908,
+      "nose_A_per_100000m3": 7.921058660162766,
+      "raw_per_1000t": 2231.876993828213
+    },
+    {
+      "hull": "AlienLancer",
+      "appearance": 0,
+      "bare_t": 1656,
+      "volume_m3": 166671.706039,
+      "nose_A_per_1000t": 21.73913043478261,
+      "nose_A_per_100000m3": 21.599346917092365,
+      "raw_per_1000t": 3236.189378370153
+    },
+    {
+      "hull": "AlienTitan",
+      "appearance": 0,
+      "bare_t": 2600,
+      "volume_m3": 349989.244758,
+      "nose_A_per_1000t": 13.846153846153847,
+      "nose_A_per_100000m3": 10.286030367845216,
+      "raw_per_1000t": 3198.2770493964445
+    },
+    {
+      "hull": "AlienMothership",
+      "appearance": 0,
+      "bare_t": 8500,
+      "volume_m3": 49197068.556474,
+      "nose_A_per_1000t": 15.058823529411764,
+      "nose_A_per_100000m3": 0.26017810360604515,
+      "raw_per_1000t": 2987.25708025168
+    }
+  ],
+  "source_sha256": {
+    "D:\\Games\\SteamLibrary\\steamapps\\common\\Terra Invicta\\TerraInvicta_Data\\StreamingAssets\\Templates\\TIShipHullTemplate.json": "36952bddffcbebe1c3ab2c2141b7d7df53f985c0eed326c5a43a9b52bd86826b",
+    "C:\\Users\\imper\\Documents\\GitHub\\TI-Economic-Equalization-Overhaul\\TIEconomyMod\\ModFiles\\TIShipHullTemplate.json": "ed0a6ee01a2f5931324b15897a923ab9eb6f5a822a25fe7bf02e9d1f7e6d4318",
+    "D:\\Games\\SteamLibrary\\steamapps\\common\\Terra Invicta\\TerraInvicta_Data\\StreamingAssets\\Templates\\TIMagneticGunTemplate.json": "db4fce6d3b9ae8ab31b10d2d0cdeff1a18079c964fa545e7d3c0f127167ba5e3",
+    "C:\\Users\\imper\\Documents\\GitHub\\TI-Economic-Equalization-Overhaul\\TIEconomyMod\\ModFiles\\TIMagneticGunTemplate.json": "09870e5530e7b51fd8d9d08da985b17c7e20b98e547651de7b4269a2c0c49176",
+    "D:\\Games\\SteamLibrary\\steamapps\\common\\Terra Invicta\\TerraInvicta_Data\\StreamingAssets\\Templates\\TILaserWeaponTemplate.json": "eb2953a9b5c747e9392c891a8ddff837ba65a129f138c334843d2ea295a76c32",
+    "C:\\Users\\imper\\Documents\\GitHub\\TI-Economic-Equalization-Overhaul\\TIEconomyMod\\ModFiles\\TILaserWeaponTemplate.json": "ffdd44e9b41a65608a0b60e5f60070b11aae81a4ef3c8cdb7472f6cabcfc7ed6",
+    "D:\\Games\\SteamLibrary\\steamapps\\common\\Terra Invicta\\TerraInvicta_Data\\StreamingAssets\\Templates\\TIParticleWeaponTemplate.json": "8e65189ee90d07f628d8cb5393374ad4dc40e348e67e4a1e7b30b32fec926f16",
+    "D:\\Games\\SteamLibrary\\steamapps\\common\\Terra Invicta\\TerraInvicta_Data\\StreamingAssets\\Templates\\TIPlasmaWeaponTemplate.json": "53d756601396a4f282940b5632cba7d24c1acee4bce10f94f93aa343417159b8",
+    "D:\\Games\\SteamLibrary\\steamapps\\common\\Terra Invicta\\TerraInvicta_Data\\StreamingAssets\\Templates\\TIGunTemplate.json": "1d7093358ec282391003cb11e6566cc09258881f4ea2c10179fde9afd6723662",
+    "C:\\Users\\imper\\Documents\\GitHub\\TI-Economic-Equalization-Overhaul\\TIEconomyMod\\ModFiles\\TIGunTemplate.json": "62e0b9bdb6eee4257de0ef69335cc153104335789978daf01f9caf8fc1dcdf73",
+    "C:\\Users\\imper\\Documents\\GitHub\\TI-Economic-Equalization-Overhaul\\docs\\ship-balance-research\\tables\\capital-heavy-mount-proposal-2026-09-25.json": "8d030063f5736c9a0227f4bdc9d2c25fbebd80cf51754801a14361a50c9c31f7",
+    "C:\\Users\\imper\\Documents\\GitHub\\TI-Economic-Equalization-Overhaul\\TIEconomyMod\\ModFiles\\Config\\hull-variant-main-volumes.csv": "736cc3248146e8c7c24b1ab7469b182a377b950bf704f4da4905244f8c10c2a5",
+    "C:\\Users\\imper\\Documents\\GitHub\\TI-Economic-Equalization-Overhaul\\TIEconomyMod\\Core\\ShipBalanceMath.cs": "6afeb41e37bc9a73d69925bbed0b3f509e670c3751ce1b6821d5948104c8f5a6",
+    "C:\\Users\\imper\\Documents\\GitHub\\TI-Economic-Equalization-Overhaul\\TIEconomyMod\\Patches\\FuelCapacityPatches.cs": "6891dc1c0dbd1c6955cde0fa85ff6fcb7a60996f9a2df069880a54c66ba37162",
+    "C:\\Users\\imper\\Documents\\GitHub\\TI-Economic-Equalization-Overhaul\\TIEconomyMod\\ModFiles\\Settings.xml": "de7ede586a976846cb25690d67244b0382fed6a51ddc81fe68e5a0730621c824",
+    "D:\\Games\\SteamLibrary\\steamapps\\common\\Terra Invicta\\TerraInvicta_Data\\Managed\\Assembly-CSharp.dll": "4a4b9aae4154e444e9727204205d2d42ae8ed9e1c5f92cdc1280074a259d8350"
+  },
+  "alien_options": [
+    {
+      "hull": "AlienDreadnought",
+      "count": 1,
+      "size": 4,
+      "label": "Preserve native spinal",
+      "size3_equivalents": 4,
+      "mass_t": 600,
+      "raw_MW": 6410.458536585365,
+      "mean_GW": 9.496975609756097
+    },
+    {
+      "hull": "AlienDreadnought",
+      "count": 2,
+      "size": 3,
+      "label": "Compact battery candidate",
+      "size3_equivalents": 2,
+      "mass_t": 300,
+      "raw_MW": 3205.2292682926827,
+      "mean_GW": 4.748487804878049
+    },
+    {
+      "hull": "AlienDreadnought",
+      "count": 3,
+      "size": 3,
+      "label": "Human-parity candidate",
+      "size3_equivalents": 3,
+      "mass_t": 450,
+      "raw_MW": 4807.8439024390245,
+      "mean_GW": 7.122731707317072
+    },
+    {
+      "hull": "AlienDreadnought",
+      "count": 4,
+      "size": 3,
+      "label": "One size-3 per native cell",
+      "size3_equivalents": 4,
+      "mass_t": 600,
+      "raw_MW": 6410.458536585365,
+      "mean_GW": 9.496975609756097
+    },
+    {
+      "hull": "AlienTitan",
+      "count": 1,
+      "size": 4,
+      "label": "Retain spinal plus two size-1 secondaries; figures exclude secondaries",
+      "size3_equivalents": 4,
+      "mass_t": 600,
+      "raw_MW": 6410.458536585365,
+      "mean_GW": 9.496975609756097
+    },
+    {
+      "hull": "AlienTitan",
+      "count": 2,
+      "size": 3,
+      "label": "Conservative twin size-3",
+      "size3_equivalents": 2,
+      "mass_t": 300,
+      "raw_MW": 3205.2292682926827,
+      "mean_GW": 4.748487804878049
+    },
+    {
+      "hull": "AlienTitan",
+      "count": 6,
+      "size": 3,
+      "label": "One size-3 per native cell",
+      "size3_equivalents": 6,
+      "mass_t": 900,
+      "raw_MW": 9615.687804878049,
+      "mean_GW": 14.245463414634145
+    },
+    {
+      "hull": "AlienTitan",
+      "count": 2,
+      "size": 4,
+      "label": "Twin spinal candidate",
+      "size3_equivalents": 8,
+      "mass_t": 1200,
+      "raw_MW": 12820.91707317073,
+      "mean_GW": 18.993951219512194
+    },
+    {
+      "hull": "AlienTitan",
+      "count": 6,
+      "size": 4,
+      "label": "One size-4 per native cell; reject overshoot",
+      "size3_equivalents": 24,
+      "mass_t": 3600,
+      "raw_MW": 38462.751219512196,
+      "mean_GW": 56.98185365853658
+    },
+    {
+      "hull": "AlienMothership",
+      "count": 4,
+      "size": 4,
+      "label": "User proposal",
+      "size3_equivalents": 16,
+      "mass_t": 2400,
+      "raw_MW": 25641.83414634146,
+      "mean_GW": 37.98790243902439
+    }
+  ],
+  "scope": "Human Battleship 2xS2, human Dreadnought 3xS3, Mothership 4xS4. Alien Battleship 2xS2 candidate; Alien Dreadnought/Titan unresolved options. Three-size3 alien Dreadnought in hull tables is a comparison case, not a decision.",
+  "confirmed_direction": "User confirms roughly 4x mounting mass, firepower and input as a broad reference, prefers nuanced family-specific linear adjustments to existing size-3 to size-4 deltas. Uniform exact-4x tables are reference screens, not selected settings.",
+  "scenario_keys": {
+    "proposed": "Exact 4x size-3 reference, not final selected values",
+    "target4": "Exact 4x size-3 weapon reference",
+    "illustrative_lambda4": "Existing size3-to-size4 metric difference multiplied by four",
+    "delta_scaled_lambda4": "Family-specific existing-difference illustration, common lambda=4 for comparison only"
+  }
+}

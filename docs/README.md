@@ -7,6 +7,9 @@ when prose and runtime behavior disagree.
 
 ## Current authorities
 
+- [Capital heavy mounts](ship-balance-research/capital-heavy-mount-implementation.md):
+  0.10.0 heavy-only capital fitting, utility/mass/crew changes, save conversion,
+  and fresh-campaign-first manual acceptance.
 - [Project README](../README.md): release target, implemented scope, build,
   deployment, and smoke-test entry point.
 - [Design directives](design-directives.md): durable economic and patch-design

@@ -3,6 +3,18 @@
 These rules are the balance authority for future work. Compatibility scaffolding
 may change between TI releases; the units and incentives below should not.
 
+## Fresh campaigns and save migration
+
+Fresh campaigns started on the current mod version are the primary design and
+acceptance path. Migration is secondary, but old saves must be converted to the
+current rules with best-effort preservation of existing data; leaving them on
+the old rules is not the compatibility strategy. Preserve equipment, fuel and
+ship state when conversion exceeds current capacity. Apply current limits when
+the player edits or refits the design. Migration must not grant research.
+
+Substantial changes with one-way save conversions warrant a minor-version
+advance: the compact capital heavy-mount change is release **0.10.0**.
+
 ## One IP buys one understandable quantity
 
 Monthly Investment Points scale almost linearly with GDP. A completed IP should

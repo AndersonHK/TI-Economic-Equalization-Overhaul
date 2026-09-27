@@ -128,6 +128,20 @@ namespace TIEconomyMod.Patches
 
     public static class ShipPowerRuntime
     {
+        private static readonly AccessTools.FieldRef<TIEffectsState,
+            Dictionary<TIFactionState, Dictionary<Context, List<TIEffectTemplate>>>> FactionEffects =
+            AccessTools.FieldRefAccess<TIEffectsState,
+                Dictionary<TIFactionState, Dictionary<Context, List<TIEffectTemplate>>>>("factionEffects");
+
+        internal static bool EffectsReadyForPerformance(TIFactionState faction, TIEffectsState effects)
+        {
+            if (faction == null) return true; // Main-menu stock templates.
+            if (effects == null) return false;
+            var byFaction = FactionEffects(effects);
+            Dictionary<Context, List<TIEffectTemplate>> modifiers;
+            return byFaction != null && byFaction.TryGetValue(faction, out modifiers) && modifiers != null;
+        }
+
         public static void RefreshTemplatePerformanceCache(
             TISpaceShipTemplate template)
         {
@@ -135,6 +149,12 @@ namespace TIEconomyMod.Patches
             {
                 return;
             }
+
+            // Factions load before TIEffectsState rebuilds factionEffects.
+            // Migration may already have resolved designingFaction; native
+            // acceleration would dereference that still-uninitialized table.
+            // The effects-state postfix refreshes every design once it is ready.
+            if (!EffectsReadyForPerformance(template.designingFaction, GameStateManager.Effects())) return;
 
             // The game owns separate caches for dry mass, acceleration, and
             // delta-v. Use its canonical aggregate refresh so every derived
@@ -167,30 +187,26 @@ namespace TIEconomyMod.Patches
             GunPowerRegistry.Refresh();
             ProjectileGeometryRegistry.Refresh();
             PowerPlantScalingRegistry.Refresh();
+            TIEconomyMod.Core.CapitalMountRuntime.NormalizeStockDesigns();
             ShipPowerRuntime.RefreshTemplatePerformanceCaches();
         }
     }
 
-    [HarmonyPatch(typeof(TIFactionState),
+    [HarmonyPatch(typeof(TIEffectsState),
         "PostGlobalGameStateCreateInit_2")]
     public static class ShipDesignPerformanceSaveLoadCachePatch
     {
         [HarmonyPostfix]
-        public static void Postfix(TIFactionState __instance)
+        public static void Postfix()
         {
-            if (!ShipPowerFeature.Enabled ||
-                __instance == null ||
-                __instance.shipDesigns == null)
+            if (!ShipPowerFeature.Enabled)
             {
                 return;
             }
 
-            // Saved faction designs are registered during the original method,
-            // after the global template pass has already run.
-            foreach (TISpaceShipTemplate design in __instance.shipDesigns)
-            {
-                ShipPowerRuntime.RefreshTemplatePerformanceCache(design);
-            }
+            // Faction phase 2 has registered saved designs. Effects phase 2 has
+            // now restored the runtime modifiers used by their acceleration.
+            ShipPowerRuntime.RefreshTemplatePerformanceCaches();
         }
     }
 

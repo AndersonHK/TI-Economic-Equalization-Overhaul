@@ -140,6 +140,10 @@
     <Compile Include="Core\TechWeightCatalog.cs" />
     <Compile Include="Core\WeaponPowerMath.cs" />
     <Compile Include="Core\WeaponCadenceMath.cs" />
+    <Compile Include="Core\CapitalMountPolicy.cs" />
+    <Compile Include="Core\CapitalMountRuntime.cs" />
+    <Compile Include="Patches\CapitalMountPatches.cs" />
+    <Compile Include="Patches\CapitalMigrationPatches.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Patches\EconomyPatches.cs" />
     <Compile Include="Patches\EarthLaunchCostPatches.cs" />

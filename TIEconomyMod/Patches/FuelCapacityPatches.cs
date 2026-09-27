@@ -102,6 +102,12 @@ namespace TIEconomyMod.Patches
 
         public static bool Enforce(TISpaceShipTemplate ship)
         {
+            // Converted campaign designs retain their fuel until edited/refitted.
+            // Designer clones intentionally do not inherit this exception.
+            if (ship != null && CapitalMountRuntime.State(ship).LegacyCapacity)
+            {
+                return false;
+            }
             FuelCapacitySnapshot snapshot;
             if (!TryGetSnapshot(ship, out snapshot) ||
                 ship.propellantTanks <= snapshot.MaximumTanks)

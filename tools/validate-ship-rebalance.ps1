@@ -390,7 +390,8 @@ foreach ($entry in $expectedAlienMags.GetEnumerator()) {
     }
 }
 
-$hullOverrides = Read-JsonArray (Join-Path $modFiles 'TIShipHullTemplate.json')
+$allHullOverrides = Read-JsonArray (Join-Path $modFiles 'TIShipHullTemplate.json')
+$hullOverrides = @($allHullOverrides | Where-Object { $_.dataName -notlike 'Alien*' })
 $expectedHulls = [ordered]@{
     Gunship = @(55, 15, 9719, 171, 3)
     Escort = @(62, 15, 10956, 338, 4)
@@ -402,8 +403,8 @@ $expectedHulls = [ordered]@{
     Battlecruiser = @($null, $null, $null, 1170, 10)
     Lancer = @($null, $null, $null, 1958, 14)
     Battleship = @($null, $null, $null, 1558, 14)
-    Dreadnought = @($null, $null, $null, 2346, 18)
-    Titan = @($null, $null, $null, 3143, 19)
+    Dreadnought = @($null, $null, $null, 2343, 19)
+    Titan = @($null, $null, $null, 3280, 40)
 }
 if ($hullOverrides.Count -ne $expectedHulls.Count) {
     throw "Hull override has $($hullOverrides.Count) rows instead of $($expectedHulls.Count)."
@@ -414,7 +415,11 @@ foreach ($entry in $expectedHulls.GetEnumerator()) {
         throw "Hull override must contain '$($entry.Key)' exactly once."
     }
     if ($null -eq $entry.Value[0]) {
-        Assert-Properties $row[0] @('dataName', 'mass_tons', 'crew') $entry.Key
+        if ($entry.Key -in @('Titan', 'Dreadnought')) {
+            Assert-Properties $row[0] @('dataName', 'mass_tons', 'crew', 'internalModules', 'shipModuleSlots') $entry.Key
+        } else {
+            Assert-Properties $row[0] @('dataName', 'mass_tons', 'crew') $entry.Key
+        }
         Assert-Near $row[0].mass_tons $entry.Value[3] "$($entry.Key) mass_tons"
         Assert-Near $row[0].crew $entry.Value[4] "$($entry.Key) crew"
     }
@@ -445,7 +450,7 @@ foreach ($entry in $expectedHulls.GetEnumerator()) {
         Lancer { 2000 }
         Battleship { 1600 }
         Dreadnought { 2400 }
-        Titan { 3200 }
+        Titan { 3400 }
     }
     Assert-Near $emptyMass $expectedEmptyMass "$($entry.Key) empty mass"
 }

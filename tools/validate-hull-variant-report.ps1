@@ -157,7 +157,8 @@ foreach ($row in $csvRows) {
     }
     $nose = [int]$template.noseHardpoints
     $hull = [int]$template.hullHardpoints
-    $utility = [int]$template.internalModules
+    $override = $overrideByName[[string]$template.dataName]
+    $utility = if ($null -ne $override -and $null -ne $override.internalModules) { [int]$override.internalModules } else { [int]$template.internalModules }
     if ([int]$row.noseHardpoints -ne $nose -or
         [int]$row.hullHardpoints -ne $hull -or
         [int]$row.utilitySlots -ne $utility -or
@@ -256,7 +257,7 @@ foreach ($requiredText in @(
     'Vmain-envelope = pi / 4 * X * Y * L',
     'STOFighter',
     'AlienMothership',
-    'does not recommend or implement new counts yet')) {
+    'reflects current counts without deriving new counts from volume')) {
     if (-not $reportText.Contains($requiredText)) {
         throw "Hull-variant report is missing required text '$requiredText'."
     }

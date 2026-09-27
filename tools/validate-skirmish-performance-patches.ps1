@@ -141,6 +141,16 @@ if (@($runtimeCalls | Where-Object {
 }
 
 $catalogCalls = @(Get-Calls $buildCatalog)
+if (@($catalogCalls | Where-Object { $_.Name -eq 'PrepareMenuDesigns' }).Count -ne 1 -or
+    [Array]::IndexOf($catalogCalls.Name, 'PrepareMenuDesigns') -ge
+    [Array]::IndexOf($catalogCalls.Name, 'TemplateSpaceCombatValue')) {
+    throw 'Departed faction references must be cleared before main-menu combat scoring.'
+}
+if (@($catalogCalls | Where-Object { $_.Name -eq 'EnsureDesign' }).Count -ne 1 -or
+    [Array]::IndexOf($catalogCalls.Name, 'EnsureDesign') -ge
+    [Array]::IndexOf($catalogCalls.Name, 'TemplateSpaceCombatValue')) {
+    throw 'Capital normalization must precede reading a cached score in the skirmish catalog.'
+}
 if (@($catalogCalls | Where-Object {
     $_.Name -eq 'TemplateSpaceCombatValue'
 }).Count -ne 1 -or

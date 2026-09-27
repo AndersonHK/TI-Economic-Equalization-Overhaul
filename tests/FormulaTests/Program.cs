@@ -44,6 +44,7 @@ namespace TIEconomyMod.FormulaTests
                 TestEconomyAndTechnology();
                 TestBalanceTuning();
                 TestUtilityFootprints();
+                TestCapitalMounts();
                 TestPerformanceCaches();
                 TestWeaponCadence();
                 TestAbundance();
@@ -65,6 +66,29 @@ namespace TIEconomyMod.FormulaTests
                 Console.Error.WriteLine("FAIL: " + exception);
                 return 1;
             }
+        }
+
+        private static void TestCapitalMounts()
+        {
+            True(CapitalMountPolicy.Applies("Titan"), "human Titan uses compact mounts");
+            True(CapitalMountPolicy.Applies("AlienTitan"), "alien Titan uses compact mounts");
+            True(CapitalMountPolicy.Applies("AlienMothership"), "mothership uses compact mounts");
+            True(!CapitalMountPolicy.Applies("Dreadnought"), "Dreadnought retains native mounts");
+            Near(1, CapitalMountPolicy.LegacyOffsets("OneHull").Count, 0, "single expands once");
+            Near(2, CapitalMountPolicy.LegacyOffsets("TwoHullHoriz").Count, 0, "horizontal expands twice");
+            Near(2, CapitalMountPolicy.LegacyOffsets("TwoHullVert").Count, 0, "vertical expands twice");
+            Near(4, CapitalMountPolicy.LegacyOffsets("FourHull").Count, 0, "heavy expands four times");
+            True(CapitalMountPolicy.HeavyEquivalent("LightCoilgunBatteryMk3") == "HeavyCoilgunBatteryMk3", "coil tier retained");
+            True(CapitalMountPolicy.HeavyEquivalent("RailgunBatteryMk2") == "HeavyRailgunBatteryMk2", "rail tier retained");
+            True(CapitalMountPolicy.HeavyEquivalent("60cmGreenPhaserBattery") == "360cmGreenPhaserBattery", "laser family retained");
+            True(CapitalMountPolicy.HeavyEquivalent("Alien128cmVioletLaserBattery") == "Alien384cmVioletLaserBattery", "alien laser family retained");
+            True(CapitalMountPolicy.HeavyEquivalent("AdvancedAlienLightMagBattery") == "AdvancedAlienHeavyMagBattery", "alien magnetic tier retained");
+            True(CapitalMountPolicy.HeavyEquivalent("ArtemisMissileBay") == null, "missiles require fallback");
+            True(CapitalMountPolicy.FallbackRank("HeavyCoilgunBatteryMk1") > CapitalMountPolicy.FallbackRank("HeavyRailgunBatteryMk3"), "coil outranks rail fallback");
+            Near(33, CapitalMountPolicy.ConvertedAmmo(1, 3, 100), 0, "ammo fractions round down");
+            Near(0, CapitalMountPolicy.ConvertedAmmo(0, 10, 100), 0, "empty stays empty");
+            Near(0, CapitalMountPolicy.ConvertedAmmo(10, 0, 100), 0, "missing maximum cannot refill");
+            Near(100, CapitalMountPolicy.ConvertedAmmo(200, 100, 100), 0, "ammo cannot exceed full");
         }
 
         private static void Reset()
@@ -1133,7 +1157,7 @@ namespace TIEconomyMod.FormulaTests
             True(ShipBalanceMath.TryGetVariantEmptyHullMass_tons(
                     "Cruiser", 1, out flatVariantMass),
                 "Cruiser appearance 1 has an authored empty-hull mass");
-            Near(1788f, flatVariantMass, 0f,
+            Near(1764f, flatVariantMass, 0f,
                 "Cruiser appearance 1 uses its flat empty-hull mass");
             string[] humanVariantHulls =
             {
@@ -1149,12 +1173,12 @@ namespace TIEconomyMod.FormulaTests
                 { 576f, 633f, 802f, 891f },
                 { 679f, 980f, 1622f, 1595f },
                 { 873f, 1730f, 1858f, 2055f },
-                { 964f, 1788f, 1549f, 2286f },
-                { 1170f, 2460f, 1900f, 3024f },
-                { 1958f, 2472f, 3848f, 3865f },
-                { 1558f, 1961f, 1854f, 2251f },
-                { 2346f, 2906f, 2521f, 3559f },
-                { 3143f, 4208f, 3408f, 5089f }
+                { 964f, 1764f, 1564f, 2264f },
+                { 1170f, 2470f, 1870f, 3070f },
+                { 1958f, 2458f, 3858f, 3858f },
+                { 1558f, 1958f, 1858f, 2258f },
+                { 2343f, 2943f, 2543f, 3543f },
+                { 3280f, 4180f, 3380f, 5080f }
             };
             for (int hullIndex = 0;
                 hullIndex < humanVariantHulls.Length;
@@ -1678,8 +1702,8 @@ namespace TIEconomyMod.FormulaTests
             ship.hullAppearanceIndex = 1;
             float variantMass = 1000f;
             HullVariantEmptyMassPatch.Postfix(ref variantMass, ship);
-            Near(1824f, variantMass, 0.001f,
-                "Cruiser appearance 1 adds its 824-ton structural penalty");
+            Near(1800f, variantMass, 0.001f,
+                "Cruiser appearance 1 adds its rounded 800-ton structural penalty");
 
             ship.hullTemplate = new TIShipHullTemplate
             {

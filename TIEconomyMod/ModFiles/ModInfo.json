@@ -4,14 +4,15 @@
   "title": "Economic Equalization Overhaul",
   "Author": "Verdiss and contributors",
   "description": "Configurable, stock-normalized national economy and priority formulas, validated against Terra Invicta 1.0.53b.",
-  "Version": "0.9.9",
+  "Version": "0.10.0",
   "ManagerVersion": "0.27.14",
   "GameVersion": "1.0.53",
   "AssemblyName": "Assembly/TIEconomyMod.dll",
   "EntryMethod": "TIEconomyMod.Main.Load",
   "TemplatesToReplaceArrays": [
     "TISpaceBodyTemplate.json",
-    "TITechTemplate.json"
+    "TITechTemplate.json",
+    "TIShipHullTemplate.json"
   ],
   "mod url": "https://steamcommunity.com/sharedfiles/filedetails/?id=2876646709"
 }

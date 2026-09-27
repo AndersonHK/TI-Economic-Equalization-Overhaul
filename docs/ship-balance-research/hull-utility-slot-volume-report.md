@@ -1,6 +1,6 @@
 # Ship-hull graphical variants, measured volume, and utility slots
 
-Status: generated asset-measurement report. No gameplay values were changed.
+Status: generated asset-measurement report using current mod hull overrides, including the 0.10.0 capital utility counts.
 
 ## Result
 
@@ -72,14 +72,14 @@ The table reports nose hardpoints, hull hardpoints, and utility slots separately
 | <img src="hull-variants/lancer-appearance-1.png" width="220"> | Lancer | 1 | 43.9 × 24.7 × 252.9 m | 215,349 m³ | 4 | 3 | 7 | 14 |
 | <img src="hull-variants/lancer-appearance-2.png" width="220"> | Lancer | 2 | 46.8 × 31.8 × 222.6 m | 259,685 m³ | 4 | 3 | 7 | 14 |
 | <img src="hull-variants/lancer-appearance-3.png" width="220"> | Lancer | 3 | 42.1 × 35.8 × 217.3 m | 256,682 m³ | 4 | 3 | 7 | 14 |
-| <img src="hull-variants/dreadnought-appearance-0.png" width="220"> | Dreadnought | 0 | 43.6 × 30.1 × 264.0 m | 272,229 m³ | 3 | 8 | 7 | 18 |
-| <img src="hull-variants/dreadnought-appearance-1.png" width="220"> | Dreadnought | 1 | 56.0 × 35.5 × 262.9 m | 410,482 m³ | 3 | 8 | 7 | 18 |
-| <img src="hull-variants/dreadnought-appearance-2.png" width="220"> | Dreadnought | 2 | 37.3 × 28.1 × 251.7 m | 207,413 m³ | 3 | 8 | 7 | 18 |
-| <img src="hull-variants/dreadnought-appearance-3.png" width="220"> | Dreadnought | 3 | 63.8 × 44.0 × 245.9 m | 542,946 m³ | 3 | 8 | 7 | 18 |
-| <img src="hull-variants/titan-appearance-0.png" width="220"> | Titan | 0 | 57.5 × 40.5 × 281.4 m | 514,552 m³ | 4 | 6 | 9 | 19 |
-| <img src="hull-variants/titan-appearance-1.png" width="220"> | Titan | 1 | 74.7 × 53.5 × 275.7 m | 865,495 m³ | 4 | 6 | 9 | 19 |
-| <img src="hull-variants/titan-appearance-2.png" width="220"> | Titan | 2 | 49.0 × 39.9 × 265.0 m | 407,509 m³ | 4 | 6 | 9 | 19 |
-| <img src="hull-variants/titan-appearance-3.png" width="220"> | Titan | 3 | 73.0 × 62.2 × 276.7 m | 987,672 m³ | 4 | 6 | 9 | 19 |
+| <img src="hull-variants/dreadnought-appearance-0.png" width="220"> | Dreadnought | 0 | 43.6 × 30.1 × 264.0 m | 272,229 m³ | 3 | 8 | 8 | 19 |
+| <img src="hull-variants/dreadnought-appearance-1.png" width="220"> | Dreadnought | 1 | 56.0 × 35.5 × 262.9 m | 410,482 m³ | 3 | 8 | 8 | 19 |
+| <img src="hull-variants/dreadnought-appearance-2.png" width="220"> | Dreadnought | 2 | 37.3 × 28.1 × 251.7 m | 207,413 m³ | 3 | 8 | 8 | 19 |
+| <img src="hull-variants/dreadnought-appearance-3.png" width="220"> | Dreadnought | 3 | 63.8 × 44.0 × 245.9 m | 542,946 m³ | 3 | 8 | 8 | 19 |
+| <img src="hull-variants/titan-appearance-0.png" width="220"> | Titan | 0 | 57.5 × 40.5 × 281.4 m | 514,552 m³ | 4 | 6 | 12 | 22 |
+| <img src="hull-variants/titan-appearance-1.png" width="220"> | Titan | 1 | 74.7 × 53.5 × 275.7 m | 865,495 m³ | 4 | 6 | 12 | 22 |
+| <img src="hull-variants/titan-appearance-2.png" width="220"> | Titan | 2 | 49.0 × 39.9 × 265.0 m | 407,509 m³ | 4 | 6 | 12 | 22 |
+| <img src="hull-variants/titan-appearance-3.png" width="220"> | Titan | 3 | 73.0 × 62.2 × 276.7 m | 987,672 m³ | 4 | 6 | 12 | 22 |
 
 ## Special human hull
 
@@ -101,10 +101,10 @@ The table reports nose hardpoints, hull hardpoints, and utility slots separately
 | <img src="hull-variants/alienbattlecruiser-appearance-0.png" width="220"> | AlienBattlecruiser | 0 | 36.9 × 23.3 × 255.7 m | 172,808 m³ | 3 | 3 | 6 | 12 |
 | <img src="hull-variants/alienbattleship-appearance-0.png" width="220"> | AlienBattleship | 0 | 35.4 × 25.1 × 288.2 m | 201,325 m³ | 2 | 6 | 7 | 15 |
 | <img src="hull-variants/alienlancer-appearance-0.png" width="220"> | AlienLancer | 0 | 31.6 × 24.5 × 274.7 m | 166,672 m³ | 6 | 4 | 7 | 17 |
-| <img src="hull-variants/aliendreadnought-appearance-0.png" width="220"> | AlienDreadnought | 0 | 39.8 × 30.7 × 315.6 m | 302,990 m³ | 4 | 8 | 9 | 21 |
-| <img src="hull-variants/alientitan-appearance-0.png" width="220"> | AlienTitan | 0 | 39.5 × 28.8 × 391.2 m | 349,989 m³ | 6 | 8 | 7 | 21 |
+| <img src="hull-variants/aliendreadnought-appearance-0.png" width="220"> | AlienDreadnought | 0 | 39.8 × 30.7 × 315.6 m | 302,990 m³ | 4 | 8 | 10 | 22 |
+| <img src="hull-variants/alientitan-appearance-0.png" width="220"> | AlienTitan | 0 | 39.5 × 28.8 × 391.2 m | 349,989 m³ | 6 | 8 | 10 | 24 |
 | <img src="hull-variants/alienassaultcarrier-appearance-0.png" width="220"> | AlienAssaultCarrier | 0 | 58.6 × 33.0 × 275.8 m | 419,182 m³ | 0 | 6 | 6 | 12 |
-| <img src="hull-variants/alienmothership-appearance-0.png" width="220"> | AlienMothership | 0 | 478.3 × 182.8 × 716.2 m | 49,197,069 m³ | 4 | 16 | 7 | 27 |
+| <img src="hull-variants/alienmothership-appearance-0.png" width="220"> | AlienMothership | 0 | 478.3 × 182.8 × 716.2 m | 49,197,069 m³ | 4 | 16 | 11 | 31 |
 | <img src="hull-variants/salamandergunship-appearance-0.png" width="220"> | SalamanderGunship | 0 | 31.6 × 9.1 × 64.7 m | 14,539 m³ | 1 | 1 | 1 | 3 |
 
 ## Hull-level utility-slot planning view
@@ -123,8 +123,8 @@ Graphical appearances share template slot counts but can have different art enve
 | Battlecruiser | 5 | 10 | 4 | 43,684–205,739 m³ | 8,737–41,148 m³ |
 | Battleship | 6 | 14 | 4 | 105,143–168,181 m³ | 17,524–28,030 m³ |
 | Lancer | 7 | 14 | 4 | 152,598–259,685 m³ | 21,800–37,098 m³ |
-| Dreadnought | 7 | 18 | 4 | 207,413–542,946 m³ | 29,630–77,564 m³ |
-| Titan | 9 | 19 | 4 | 407,509–987,672 m³ | 45,279–109,741 m³ |
+| Dreadnought | 8 | 19 | 4 | 207,413–542,946 m³ | 25,927–67,868 m³ |
+| Titan | 12 | 22 | 4 | 407,509–987,672 m³ | 33,959–82,306 m³ |
 | STOFighter | 1 | 3 | 1 | 4,082–4,082 m³ | 4,082–4,082 m³ |
 | AlienGunship | 3 | 4 | 1 | 10,892–10,892 m³ | 3,631–3,631 m³ |
 | AlienEscort | 4 | 6 | 1 | 7,358–7,358 m³ | 1,840–1,840 m³ |
@@ -136,24 +136,24 @@ Graphical appearances share template slot counts but can have different art enve
 | AlienBattlecruiser | 6 | 12 | 1 | 172,808–172,808 m³ | 28,801–28,801 m³ |
 | AlienBattleship | 7 | 15 | 1 | 201,325–201,325 m³ | 28,761–28,761 m³ |
 | AlienLancer | 7 | 17 | 1 | 166,672–166,672 m³ | 23,810–23,810 m³ |
-| AlienDreadnought | 9 | 21 | 1 | 302,990–302,990 m³ | 33,666–33,666 m³ |
-| AlienTitan | 7 | 21 | 1 | 349,989–349,989 m³ | 49,998–49,998 m³ |
+| AlienDreadnought | 10 | 22 | 1 | 302,990–302,990 m³ | 30,299–30,299 m³ |
+| AlienTitan | 10 | 24 | 1 | 349,989–349,989 m³ | 34,999–34,999 m³ |
 | AlienAssaultCarrier | 6 | 12 | 1 | 419,182–419,182 m³ | 69,864–69,864 m³ |
-| AlienMothership | 7 | 27 | 1 | 49,197,069–49,197,069 m³ | 7,028,153–7,028,153 m³ |
+| AlienMothership | 11 | 31 | 1 | 49,197,069–49,197,069 m³ | 4,472,461–4,472,461 m³ |
 | SalamanderGunship | 1 | 3 | 1 | 14,539–14,539 m³ | 14,539–14,539 m³ |
 
 ## Interpretation for adding utility slots
 
 The measurements support using hull volume as a constraint or audit signal, but not a direct one-slot-equals-N-cubic-metres rule. Current utility slots are categorical permissions; larger hulls also devote more art volume to structure, weapons, tanks, armor clearance, damage tolerance, and heat-management machinery. Appearance spreads further show that a hull template can retain one slot layout while its art envelope changes materially.
 
-A later utility-slot change should therefore choose hull-level counts first, then use the smallest measured appearance envelope as the conservative art check. The present report supplies that evidence but does not recommend or implement new counts yet.
+A later utility-slot change should therefore choose hull-level counts first, then use the smallest measured appearance envelope as the conservative art check. The present report supplies that evidence but reflects current counts without deriving new counts from volume. See the [0.10.0 capital implementation](capital-heavy-mount-implementation.md) for the approved utility changes.
 
 ## Reproducibility
 
 - Installed hull template SHA-256: `36952BDDFFCBEBE1C3AB2C2141B7D7DF53F985C0EED326C5A43A9B52BD86826B`
 - Base `ships` bundle SHA-256: `F1804254B5C6F2C2FFBF78C333738F462BAA18023AC5AACF9A8EACAA4D9F09A4`
 - Dark Skies `ships_prm` bundle SHA-256: `58F8B233CD7814F3CD536B46725369F69D6EC58AA260E580DE9D1E1268CF5D63`
-- Mod hull override SHA-256: `589F168B1819CAA2351612A4416DE31D8D7B7BE7F2AFB512D5D9338D0C3095E4`
+- Mod hull override SHA-256: `ED0A6EE01A2F5931324B15897A923AB9EB6F5A822A25FE7BF02E9D1F7E6D4318`
 - Generator: [`generate_hull_variant_report.py`](../../scripts/ship-balance/generate_hull_variant_report.py)
 - Shared prefab traversal: [`measure_ship_prefabs.py`](../../scripts/ship-balance/measure_ship_prefabs.py)
 - Machine-readable rows: [`hull-variant-volume-and-slots.csv`](tables/hull-variant-volume-and-slots.csv)

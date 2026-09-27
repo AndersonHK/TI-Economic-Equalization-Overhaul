@@ -627,6 +627,40 @@ if ($null -eq $factionCachePostfix) {
     throw 'Loaded faction ship designs must refresh their performance caches.'
 }
 
+# Migration resolves a design's faction before the effects runtime dictionary
+# exists. Reproduce that boundary without relying on a fully booted Unity host.
+$effectsStateType = $gameAssembly.GetType('PavonisInteractive.TerraInvicta.TIEffectsState', $true)
+$cacheFactionType = $gameAssembly.GetType('PavonisInteractive.TerraInvicta.TIFactionState', $true)
+$cacheFaction = [Runtime.Serialization.FormatterServices]::GetUninitializedObject($cacheFactionType)
+$cacheEffects = [Runtime.Serialization.FormatterServices]::GetUninitializedObject($effectsStateType)
+$effectsReady = $shipPowerRuntimeType.GetMethod('EffectsReadyForPerformance', [Reflection.BindingFlags]'NonPublic,Static')
+if ($null -eq $effectsReady) { throw 'Ship cache refresh lacks an effects-readiness guard.' }
+if (-not $effectsReady.Invoke($null, @($null, $null)) -or
+    $effectsReady.Invoke($null, @($cacheFaction, $null)) -or
+    $effectsReady.Invoke($null, @($cacheFaction, $cacheEffects))) {
+    throw 'Ship performance refresh accepted uninitialized faction effects or rejected ownerless stock templates.'
+}
+$effectsField = $effectsStateType.GetField('factionEffects', [Reflection.BindingFlags]'Instance,NonPublic')
+$effectsMap = [Activator]::CreateInstance($effectsField.FieldType)
+$effectsField.SetValue($cacheEffects, $effectsMap)
+if ($effectsReady.Invoke($null, @($cacheFaction, $cacheEffects))) { throw 'Missing faction effects were treated as ready.' }
+$effectsMap.Add($cacheFaction, $null)
+if ($effectsReady.Invoke($null, @($cacheFaction, $cacheEffects))) { throw 'Null faction modifiers were treated as ready.' }
+$modifierMap = [Activator]::CreateInstance($effectsField.FieldType.GetGenericArguments()[1])
+$effectsMap[$cacheFaction] = $modifierMap
+if (-not $effectsReady.Invoke($null, @($cacheFaction, $cacheEffects))) { throw 'Restored faction effects were rejected.' }
+$cacheTemplateType = $gameAssembly.GetType('TISpaceShipTemplate', $true)
+$earlyTemplate = [Runtime.Serialization.FormatterServices]::GetUninitializedObject($cacheTemplateType)
+$cacheTemplateType.GetField('_designingFaction', [Reflection.BindingFlags]'Instance,NonPublic').SetValue($earlyTemplate, $cacheFaction)
+# No hull/drive exists on this fixture: calling CacheTemplateValues would fail.
+# The real helper must return before entering it while game effects are absent.
+[void]$refreshPerformanceCache.Invoke($null, @($earlyTemplate))
+$cachePatchAttributes = @($factionCachePatchType.GetCustomAttributes($false) | Where-Object { $_.GetType().Name -eq 'HarmonyPatch' })
+if (-not @($cachePatchAttributes | Where-Object { $_.info.declaringType -eq $effectsStateType -and $_.info.methodName -eq 'PostGlobalGameStateCreateInit_2' }).Count) {
+    throw 'Loaded-design refresh must run after TIEffectsState phase 2, not faction phase 2.'
+}
+Write-Host 'PASS: performance refresh defers uninitialized/missing faction effects and resumes at the effects-state initialization boundary.'
+
 $appearancePostfix = $appearancePatchType.GetMethod(
     'Postfix', [Reflection.BindingFlags]'Public,Static')
 $readerArguments[0] = $appearancePostfix

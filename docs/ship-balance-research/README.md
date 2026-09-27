@@ -5,7 +5,7 @@ Status: evidence and planning archive. Use the dated
 [current implementation matrix](../current-implementation-matrix.xlsx) to
 distinguish implemented values from proposals and deferred work.
 
-Last reviewed: 2026-08-21
+Last reviewed: 2026-09-25
 
 This dossier compares dated Terra Invicta ship-drive, power-plant, and
 weapon-crew snapshots with demonstrated hardware, active prototypes, historical
@@ -24,6 +24,11 @@ The game data used here comes from the installed templates:
 
 The comparison is organized into:
 
+- [2026-09-25 nose batteries and enlarged spinal tier](nose-battery-and-spinal-tier-proposal-2026-09-25.md): planning only. Battleship 2×size 2, Dreadnought 3×size 3, Mothership 4×size 4, and a size-4 target of roughly four times size 3. Includes current-template deltas, mass/volume density, delta-v implications, Lancer role/appearance limits, laser exceptions and unresolved alien alternatives. No implementation or deployment authorized by this document.
+- [2026-09-25 weapon visibility and maximum nose mounts](weapon-visibility-and-maximum-nose-plan-2026-09-25.md): capital small-hull weapon hiding implemented; nose restriction deferred pending the alien-ship decision. Retains the proposed per-hull sizes and migration discussion. Nose fittings and statistics remain unchanged.
+- [0.10.0 capital heavy-mount implementation](capital-heavy-mount-implementation.md): current rules, mass/crew totals, migration policy and manual acceptance checklist.
+- [2026-09-25 Titan and Mothership heavy-mount plan](capital-heavy-mount-plan-2026-09-25.md): approved planning archive with before/after firepower density tables. Superseded for release number and migration exceptions by the 0.10.0 implementation record; all nose rebalancing remains deferred.
+- [2026-09-25 nose weapon audit](nose-weapon-scaling-audit-2026-09-25.md): deferred research for user tuning and combat tests; 120 weapons in 35 families, x2/x3 alternatives, laser optical exception, correction candidates, and actual-template firepower per mass/volume comparisons. No nose correction is included in the active plan.
 - [Planning changelog](CHANGELOG.md)
 - [Propulsion benchmarks](propulsion-benchmarks.md)
 - [Power-plant benchmarks](powerplant-benchmarks.md)

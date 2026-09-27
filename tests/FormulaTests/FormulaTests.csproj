@@ -21,6 +21,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\TIEconomyMod\Core\CapitalMountPolicy.cs" />
     <Compile Include="..\..\TIEconomyMod\Core\AlienFloraAssaultMath.cs">
       <Link>AlienFloraAssaultMath.cs</Link>
     </Compile>

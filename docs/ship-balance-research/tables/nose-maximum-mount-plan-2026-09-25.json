@@ -1,0 +1,491 @@
+{
+    "gameAssemblySHA256":  "4A4B9AAE4154E444E9727204205D2D42AE8ED9E1C5F92CDC1280074A259D8350",
+    "date":  "2026-09-25",
+    "status":  "Planning only; native geometry queried without changing game or mod",
+    "hulls":  [
+                  {
+                      "hull":  "Gunship",
+                      "noseCells":  1,
+                      "maximumSize":  1,
+                      "allowedMounts":  [
+
+                                        ],
+                      "maximumFootprints":  [
+
+                                            ],
+                      "alien":  false,
+                      "simpleHull":  false
+                  },
+                  {
+                      "hull":  "Escort",
+                      "noseCells":  0,
+                      "maximumSize":  0,
+                      "allowedMounts":  [
+
+                                        ],
+                      "maximumFootprints":  [
+
+                                            ],
+                      "alien":  false,
+                      "simpleHull":  false
+                  },
+                  {
+                      "hull":  "Corvette",
+                      "noseCells":  1,
+                      "maximumSize":  1,
+                      "allowedMounts":  [
+
+                                        ],
+                      "maximumFootprints":  [
+
+                                            ],
+                      "alien":  false,
+                      "simpleHull":  false
+                  },
+                  {
+                      "hull":  "Frigate",
+                      "noseCells":  1,
+                      "maximumSize":  1,
+                      "allowedMounts":  [
+
+                                        ],
+                      "maximumFootprints":  [
+
+                                            ],
+                      "alien":  false,
+                      "simpleHull":  false
+                  },
+                  {
+                      "hull":  "Monitor",
+                      "noseCells":  0,
+                      "maximumSize":  0,
+                      "allowedMounts":  [
+
+                                        ],
+                      "maximumFootprints":  [
+
+                                            ],
+                      "alien":  false,
+                      "simpleHull":  false
+                  },
+                  {
+                      "hull":  "Destroyer",
+                      "noseCells":  2,
+                      "maximumSize":  2,
+                      "allowedMounts":  [
+                                            "TwoNoseVert"
+                                        ],
+                      "maximumFootprints":  [
+                                                {
+                                                    "mount":  "TwoNoseVert",
+                                                    "size":  2,
+                                                    "slots":  [
+                                                                  7,
+                                                                  8
+                                                              ]
+                                                }
+                                            ],
+                      "alien":  false,
+                      "simpleHull":  false
+                  },
+                  {
+                      "hull":  "Cruiser",
+                      "noseCells":  2,
+                      "maximumSize":  2,
+                      "allowedMounts":  [
+                                            "TwoNoseVert"
+                                        ],
+                      "maximumFootprints":  [
+                                                {
+                                                    "mount":  "TwoNoseVert",
+                                                    "size":  2,
+                                                    "slots":  [
+                                                                  7,
+                                                                  8
+                                                              ]
+                                                }
+                                            ],
+                      "alien":  false,
+                      "simpleHull":  false
+                  },
+                  {
+                      "hull":  "Battlecruiser",
+                      "noseCells":  3,
+                      "maximumSize":  3,
+                      "allowedMounts":  [
+                                            "ThreeNoseAngle"
+                                        ],
+                      "maximumFootprints":  [
+                                                {
+                                                    "mount":  "ThreeNoseAngle",
+                                                    "size":  3,
+                                                    "slots":  [
+                                                                  8,
+                                                                  9,
+                                                                  7
+                                                              ]
+                                                }
+                                            ],
+                      "alien":  false,
+                      "simpleHull":  false
+                  },
+                  {
+                      "hull":  "Battleship",
+                      "noseCells":  2,
+                      "maximumSize":  2,
+                      "allowedMounts":  [
+                                            "TwoNoseVert"
+                                        ],
+                      "maximumFootprints":  [
+                                                {
+                                                    "mount":  "TwoNoseVert",
+                                                    "size":  2,
+                                                    "slots":  [
+                                                                  7,
+                                                                  8
+                                                              ]
+                                                }
+                                            ],
+                      "alien":  false,
+                      "simpleHull":  false
+                  },
+                  {
+                      "hull":  "Lancer",
+                      "noseCells":  4,
+                      "maximumSize":  4,
+                      "allowedMounts":  [
+                                            "FourNose"
+                                        ],
+                      "maximumFootprints":  [
+                                                {
+                                                    "mount":  "FourNose",
+                                                    "size":  4,
+                                                    "slots":  [
+                                                                  8,
+                                                                  9,
+                                                                  7,
+                                                                  10
+                                                              ]
+                                                }
+                                            ],
+                      "alien":  false,
+                      "simpleHull":  false
+                  },
+                  {
+                      "hull":  "Dreadnought",
+                      "noseCells":  3,
+                      "maximumSize":  3,
+                      "allowedMounts":  [
+                                            "ThreeNoseAngle"
+                                        ],
+                      "maximumFootprints":  [
+                                                {
+                                                    "mount":  "ThreeNoseAngle",
+                                                    "size":  3,
+                                                    "slots":  [
+                                                                  8,
+                                                                  9,
+                                                                  7
+                                                              ]
+                                                }
+                                            ],
+                      "alien":  false,
+                      "simpleHull":  false
+                  },
+                  {
+                      "hull":  "Titan",
+                      "noseCells":  4,
+                      "maximumSize":  4,
+                      "allowedMounts":  [
+                                            "FourNose"
+                                        ],
+                      "maximumFootprints":  [
+                                                {
+                                                    "mount":  "FourNose",
+                                                    "size":  4,
+                                                    "slots":  [
+                                                                  8,
+                                                                  9,
+                                                                  7,
+                                                                  10
+                                                              ]
+                                                }
+                                            ],
+                      "alien":  false,
+                      "simpleHull":  false
+                  },
+                  {
+                      "hull":  "STOFighter",
+                      "noseCells":  1,
+                      "maximumSize":  1,
+                      "allowedMounts":  [
+
+                                        ],
+                      "maximumFootprints":  [
+
+                                            ],
+                      "alien":  false,
+                      "simpleHull":  true
+                  },
+                  {
+                      "hull":  "AlienGunship",
+                      "noseCells":  1,
+                      "maximumSize":  1,
+                      "allowedMounts":  [
+
+                                        ],
+                      "maximumFootprints":  [
+
+                                            ],
+                      "alien":  true,
+                      "simpleHull":  false
+                  },
+                  {
+                      "hull":  "AlienEscort",
+                      "noseCells":  0,
+                      "maximumSize":  0,
+                      "allowedMounts":  [
+
+                                        ],
+                      "maximumFootprints":  [
+
+                                            ],
+                      "alien":  true,
+                      "simpleHull":  false
+                  },
+                  {
+                      "hull":  "AlienCorvette",
+                      "noseCells":  1,
+                      "maximumSize":  1,
+                      "allowedMounts":  [
+
+                                        ],
+                      "maximumFootprints":  [
+
+                                            ],
+                      "alien":  true,
+                      "simpleHull":  false
+                  },
+                  {
+                      "hull":  "AlienFrigate",
+                      "noseCells":  1,
+                      "maximumSize":  1,
+                      "allowedMounts":  [
+
+                                        ],
+                      "maximumFootprints":  [
+
+                                            ],
+                      "alien":  true,
+                      "simpleHull":  false
+                  },
+                  {
+                      "hull":  "AlienMonitor",
+                      "noseCells":  1,
+                      "maximumSize":  1,
+                      "allowedMounts":  [
+
+                                        ],
+                      "maximumFootprints":  [
+
+                                            ],
+                      "alien":  true,
+                      "simpleHull":  false
+                  },
+                  {
+                      "hull":  "AlienDestroyer",
+                      "noseCells":  2,
+                      "maximumSize":  2,
+                      "allowedMounts":  [
+                                            "TwoNoseVert"
+                                        ],
+                      "maximumFootprints":  [
+                                                {
+                                                    "mount":  "TwoNoseVert",
+                                                    "size":  2,
+                                                    "slots":  [
+                                                                  7,
+                                                                  8
+                                                              ]
+                                                }
+                                            ],
+                      "alien":  true,
+                      "simpleHull":  false
+                  },
+                  {
+                      "hull":  "AlienCruiser",
+                      "noseCells":  2,
+                      "maximumSize":  2,
+                      "allowedMounts":  [
+                                            "TwoNoseVert"
+                                        ],
+                      "maximumFootprints":  [
+                                                {
+                                                    "mount":  "TwoNoseVert",
+                                                    "size":  2,
+                                                    "slots":  [
+                                                                  7,
+                                                                  8
+                                                              ]
+                                                }
+                                            ],
+                      "alien":  true,
+                      "simpleHull":  false
+                  },
+                  {
+                      "hull":  "AlienBattlecruiser",
+                      "noseCells":  3,
+                      "maximumSize":  3,
+                      "allowedMounts":  [
+                                            "ThreeNoseAngle"
+                                        ],
+                      "maximumFootprints":  [
+                                                {
+                                                    "mount":  "ThreeNoseAngle",
+                                                    "size":  3,
+                                                    "slots":  [
+                                                                  8,
+                                                                  9,
+                                                                  7
+                                                              ]
+                                                }
+                                            ],
+                      "alien":  true,
+                      "simpleHull":  false
+                  },
+                  {
+                      "hull":  "AlienBattleship",
+                      "noseCells":  2,
+                      "maximumSize":  2,
+                      "allowedMounts":  [
+                                            "TwoNoseVert"
+                                        ],
+                      "maximumFootprints":  [
+                                                {
+                                                    "mount":  "TwoNoseVert",
+                                                    "size":  2,
+                                                    "slots":  [
+                                                                  7,
+                                                                  8
+                                                              ]
+                                                }
+                                            ],
+                      "alien":  true,
+                      "simpleHull":  false
+                  },
+                  {
+                      "hull":  "AlienLancer",
+                      "noseCells":  6,
+                      "maximumSize":  4,
+                      "allowedMounts":  [
+                                            "FourNose"
+                                        ],
+                      "maximumFootprints":  [
+                                                {
+                                                    "mount":  "FourNose",
+                                                    "size":  4,
+                                                    "slots":  [
+                                                                  7,
+                                                                  8,
+                                                                  11,
+                                                                  9
+                                                              ]
+                                                }
+                                            ],
+                      "alien":  true,
+                      "simpleHull":  false
+                  },
+                  {
+                      "hull":  "AlienDreadnought",
+                      "noseCells":  4,
+                      "maximumSize":  4,
+                      "allowedMounts":  [
+                                            "FourNose"
+                                        ],
+                      "maximumFootprints":  [
+                                                {
+                                                    "mount":  "FourNose",
+                                                    "size":  4,
+                                                    "slots":  [
+                                                                  9,
+                                                                  8,
+                                                                  7,
+                                                                  10
+                                                              ]
+                                                }
+                                            ],
+                      "alien":  true,
+                      "simpleHull":  false
+                  },
+                  {
+                      "hull":  "AlienTitan",
+                      "noseCells":  6,
+                      "maximumSize":  4,
+                      "allowedMounts":  [
+                                            "FourNose"
+                                        ],
+                      "maximumFootprints":  [
+                                                {
+                                                    "mount":  "FourNose",
+                                                    "size":  4,
+                                                    "slots":  [
+                                                                  7,
+                                                                  8,
+                                                                  11,
+                                                                  9
+                                                              ]
+                                                }
+                                            ],
+                      "alien":  true,
+                      "simpleHull":  false
+                  },
+                  {
+                      "hull":  "AlienAssaultCarrier",
+                      "noseCells":  0,
+                      "maximumSize":  0,
+                      "allowedMounts":  [
+
+                                        ],
+                      "maximumFootprints":  [
+
+                                            ],
+                      "alien":  true,
+                      "simpleHull":  false
+                  },
+                  {
+                      "hull":  "AlienMothership",
+                      "noseCells":  4,
+                      "maximumSize":  4,
+                      "allowedMounts":  [
+                                            "FourNose"
+                                        ],
+                      "maximumFootprints":  [
+                                                {
+                                                    "mount":  "FourNose",
+                                                    "size":  4,
+                                                    "slots":  [
+                                                                  9,
+                                                                  8,
+                                                                  7,
+                                                                  10
+                                                              ]
+                                                }
+                                            ],
+                      "alien":  true,
+                      "simpleHull":  false
+                  },
+                  {
+                      "hull":  "SalamanderGunship",
+                      "noseCells":  1,
+                      "maximumSize":  1,
+                      "allowedMounts":  [
+
+                                        ],
+                      "maximumFootprints":  [
+
+                                            ],
+                      "alien":  true,
+                      "simpleHull":  true
+                  }
+              ]
+}

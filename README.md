@@ -1,6 +1,13 @@
 # TI Economic Equalization Overhaul
 
-Current release: **0.9.8**, validated against **Terra Invicta 1.0.53b**.
+Current release: **0.10.0**, validated against **Terra Invicta 1.0.53b**.
+
+Release 0.10.0 gives Titans and Motherships one full heavy hull weapon per hull
+cell, with heavy-only fitting for players and AI. It adds capital utility slots
+and the approved mass/crew changes, preserves alien crew and nose weapon stats,
+and converts older capital designs and ships. Fresh campaigns are the primary
+acceptance path; migrated ships preserve excess fuel/capacity until refit. See
+the [release values and manual checklist](docs/ship-balance-research/capital-heavy-mount-implementation.md).
 
 The mod replaces opaque, border-sensitive scaling with economic units that
 remain understandable across countries, armies, habs, and spacecraft. It aims
@@ -241,7 +248,7 @@ defaults.
 
 ## Compatibility and save behavior
 
-Version 0.9.8 is built and guarded against the installed Terra Invicta 1.0.53b
+Version 0.10.0 is built and guarded against the installed Terra Invicta 1.0.53b
 assemblies. Transpilers validate their expected IL shapes, and verification
 dynamically binds the changed claim-harmonization contract and other focused
 patch families so a missing target or changed patch parameter fails before
@@ -265,7 +272,7 @@ states serialized when they were created.
 The current release archive is:
 
 ```text
-artifacts/TIEconomyMod-0.9.8-ti1.0.53.zip
+artifacts/TIEconomyMod-0.10.0-ti1.0.53.zip
 ```
 
 ## Build and verification

@@ -383,7 +383,7 @@ def build_markdown(rows, metadata):
     lines = [
         "# Ship-hull graphical variants, measured volume, and utility slots",
         "",
-        "Status: generated asset-measurement report. No gameplay values were changed.",
+        "Status: generated asset-measurement report using current mod hull overrides, including the 0.10.0 capital utility counts.",
         "",
         "## Result",
         "",
@@ -505,7 +505,7 @@ def build_markdown(rows, metadata):
             "A later utility-slot change should therefore choose hull-level counts "
             "first, then use the smallest measured appearance envelope as the "
             "conservative art check. The present report supplies that evidence but "
-            "does not recommend or implement new counts yet.",
+            "reflects current counts without deriving new counts from volume. See the [0.10.0 capital implementation](capital-heavy-mount-implementation.md) for the approved utility changes.",
             "",
             "## Reproducibility",
             "",

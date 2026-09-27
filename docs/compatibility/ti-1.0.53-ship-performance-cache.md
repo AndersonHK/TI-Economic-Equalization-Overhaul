@@ -1,5 +1,24 @@
 # TI 1.0.53 ship performance cache and refit loading
 
+## 0.10.0 save-load initialization correction
+
+The September 25 manual save test converted 9 capital designs and 21 ships,
+then failed in `TIEffectsState.SumEffectsModifiers`, called by the faction
+phase-2 performance refresh. Capital migration resolves the designing faction;
+the acceleration calculation consequently reads faction effects. The bootstrap
+runs faction phase 2 before the effects state's runtime dictionary is restored.
+The same premature refresh also ran from the settings-save callback on exit.
+
+Correction: require a ready faction-effects dictionary before aggregate
+performance calculation, and move the saved-design refresh to the effects
+state's phase-2 postfix. Recalculate all registered ship designs after effects
+are restored, retaining the native aggregate cache function and built-ship mass
+reconciliation. Regression checks cover null, missing-faction and ready effects
+states, plus the actual early-refresh path and the effects-state Harmony target.
+The normal deployment flow passed all 37 validation jobs and 1,204 formula
+assertions; the corrected 47-file package was deployed on 2026-09-25. Loading the
+reported campaign again remains the manual acceptance check.
+
 ## Symptom
 
 After loading a campaign, the ship-class list and the refit designer could show

@@ -61,6 +61,7 @@ namespace TIEconomyMod
 
                     throw;
                 }
+                TIEconomyMod.Core.CapitalMountRuntime.InstallSerializer();
                 HabLogistics.Clear();
                 if (TemplateManager.self != null &&
                     TemplateManager.self.Initialized)
@@ -70,10 +71,11 @@ namespace TIEconomyMod
                     UtilityFootprintRegistry.Refresh();
                     PropellantDensityRegistry.Refresh();
                     PowerPlantScalingRegistry.Refresh();
+                    TIEconomyMod.Core.CapitalMountRuntime.NormalizeStockDesigns();
                     ShipPowerRuntime.RefreshTemplatePerformanceCaches();
                 }
                 CouncilorRuntimeCaps.InitializeOrganizationCap();
-                Log("Loaded TI Economic Equalization Overhaul 0.9.8, validated against TI 1.0.53b.");
+                Log("Loaded TI Economic Equalization Overhaul 0.10.0, validated against TI 1.0.53b.");
                 return true;
             }
             catch (Exception exception)

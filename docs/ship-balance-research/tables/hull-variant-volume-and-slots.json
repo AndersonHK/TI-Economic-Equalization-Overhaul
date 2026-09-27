@@ -6,7 +6,7 @@
     "method": "pi / 4 * main hull mesh AABB X * Y * longitudinal L",
     "source_sha256": {
       "hull_templates": "36952BDDFFCBEBE1C3AB2C2141B7D7DF53F985C0EED326C5A43A9B52BD86826B",
-      "mod_hull_overrides": "589F168B1819CAA2351612A4416DE31D8D7B7BE7F2AFB512D5D9338D0C3095E4",
+      "mod_hull_overrides": "ED0A6EE01A2F5931324B15897A923AB9EB6F5A822A25FE7BF02E9D1F7E6D4318",
       "ships_bundle": "F1804254B5C6F2C2FFBF78C333738F462BAA18023AC5AACF9A8EACAA4D9F09A4",
       "ships_prm_bundle": "58F8B233CD7814F3CD536B46725369F69D6EC58AA260E580DE9D1E1268CF5D63"
     },
@@ -2024,7 +2024,7 @@
     {
       "alien": false,
       "appearance_index": 0,
-      "counted_slots": 18,
+      "counted_slots": 19,
       "data_name": "Dreadnought",
       "excluded_machinery": [
         {
@@ -2071,13 +2071,13 @@
       "prefab_asset_path": "assets/artresources/ships/earth/dreadnought/dreadnought.prefab",
       "runtime_cylinder_m3": 264581.006295,
       "template_stored_volume_m3": 240528,
-      "utility_slots": 7,
+      "utility_slots": 8,
       "weapon_slots": 11
     },
     {
       "alien": false,
       "appearance_index": 1,
-      "counted_slots": 18,
+      "counted_slots": 19,
       "data_name": "Dreadnought",
       "excluded_machinery": [
         {
@@ -2127,13 +2127,13 @@
       "prefab_asset_path": "assets/artresources/ships/earth_alt/dreadnought/dreadnought_1.prefab",
       "runtime_cylinder_m3": 264581.006295,
       "template_stored_volume_m3": 240528,
-      "utility_slots": 7,
+      "utility_slots": 8,
       "weapon_slots": 11
     },
     {
       "alien": false,
       "appearance_index": 2,
-      "counted_slots": 18,
+      "counted_slots": 19,
       "data_name": "Dreadnought",
       "excluded_machinery": [
         {
@@ -2178,13 +2178,13 @@
       "prefab_asset_path": "assets/artresources/ships/earth_prm/dreadnought/dreadnought_2.prefab",
       "runtime_cylinder_m3": 264581.006295,
       "template_stored_volume_m3": 240528,
-      "utility_slots": 7,
+      "utility_slots": 8,
       "weapon_slots": 11
     },
     {
       "alien": false,
       "appearance_index": 3,
-      "counted_slots": 18,
+      "counted_slots": 19,
       "data_name": "Dreadnought",
       "excluded_machinery": [
         {
@@ -2232,13 +2232,13 @@
       "prefab_asset_path": "assets/artresources/ships/dlca/dreadnought/dreadnought_3.prefab",
       "runtime_cylinder_m3": 264581.006295,
       "template_stored_volume_m3": 240528,
-      "utility_slots": 7,
+      "utility_slots": 8,
       "weapon_slots": 11
     },
     {
       "alien": false,
       "appearance_index": 0,
-      "counted_slots": 19,
+      "counted_slots": 22,
       "data_name": "Titan",
       "excluded_machinery": [
         {
@@ -2286,13 +2286,13 @@
       "prefab_asset_path": "assets/artresources/ships/earth/titan/titan.prefab",
       "runtime_cylinder_m3": 288633.825049,
       "template_stored_volume_m3": 264581,
-      "utility_slots": 9,
+      "utility_slots": 12,
       "weapon_slots": 10
     },
     {
       "alien": false,
       "appearance_index": 1,
-      "counted_slots": 19,
+      "counted_slots": 22,
       "data_name": "Titan",
       "excluded_machinery": [
         {
@@ -2343,13 +2343,13 @@
       "prefab_asset_path": "assets/artresources/ships/earth_alt/titan/titan_1.prefab",
       "runtime_cylinder_m3": 288633.825049,
       "template_stored_volume_m3": 264581,
-      "utility_slots": 9,
+      "utility_slots": 12,
       "weapon_slots": 10
     },
     {
       "alien": false,
       "appearance_index": 2,
-      "counted_slots": 19,
+      "counted_slots": 22,
       "data_name": "Titan",
       "excluded_machinery": [
         {
@@ -2395,13 +2395,13 @@
       "prefab_asset_path": "assets/artresources/ships/earth_prm/titan/titan_2.prefab",
       "runtime_cylinder_m3": 288633.825049,
       "template_stored_volume_m3": 264581,
-      "utility_slots": 9,
+      "utility_slots": 12,
       "weapon_slots": 10
     },
     {
       "alien": false,
       "appearance_index": 3,
-      "counted_slots": 19,
+      "counted_slots": 22,
       "data_name": "Titan",
       "excluded_machinery": [
         {
@@ -2450,7 +2450,7 @@
       "prefab_asset_path": "assets/artresources/ships/dlca/titan/titan_3.prefab",
       "runtime_cylinder_m3": 288633.825049,
       "template_stored_volume_m3": 264581,
-      "utility_slots": 9,
+      "utility_slots": 12,
       "weapon_slots": 10
     },
     {
@@ -3113,7 +3113,7 @@
     {
       "alien": true,
       "appearance_index": 0,
-      "counted_slots": 21,
+      "counted_slots": 22,
       "data_name": "AlienDreadnought",
       "excluded_machinery": [
         {
@@ -3181,13 +3181,13 @@
       "prefab_asset_path": "assets/artresources/ships/alien/dreadnought/aliendreadnought.prefab",
       "runtime_cylinder_m3": 212057.504117,
       "template_stored_volume_m3": 194386,
-      "utility_slots": 9,
+      "utility_slots": 10,
       "weapon_slots": 12
     },
     {
       "alien": true,
       "appearance_index": 0,
-      "counted_slots": 21,
+      "counted_slots": 24,
       "data_name": "AlienTitan",
       "excluded_machinery": [
         {
@@ -3244,7 +3244,7 @@
       "prefab_asset_path": "assets/artresources/ships/alien/titan/alientitan.prefab",
       "runtime_cylinder_m3": 282743.338823,
       "template_stored_volume_m3": 265072,
-      "utility_slots": 7,
+      "utility_slots": 10,
       "weapon_slots": 14
     },
     {
@@ -3328,7 +3328,7 @@
     {
       "alien": true,
       "appearance_index": 0,
-      "counted_slots": 27,
+      "counted_slots": 31,
       "data_name": "AlienMothership",
       "excluded_machinery": [
         {
@@ -3423,7 +3423,7 @@
       "prefab_asset_path": "assets/artresources/ships/alien/mothership/alienmothership.prefab",
       "runtime_cylinder_m3": 1696460.032938,
       "template_stored_volume_m3": 1625774,
-      "utility_slots": 7,
+      "utility_slots": 11,
       "weapon_slots": 20
     },
     {
