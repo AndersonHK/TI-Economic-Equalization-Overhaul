@@ -150,6 +150,8 @@
     <Compile Include="Patches\AlienFloraAssaultPatches.cs" />
     <Compile Include="Patches\AiTechnologySelectionPatches.cs" />
     <Compile Include="Patches\AlienShipDesignPatches.cs" />
+    <Compile Include="Patches\AlienTerritoryDemandPatches.cs" />
+    <Compile Include="Patches\MissionProbabilityPatches.cs" />
     <Compile Include="Patches\BalancePatches.cs" />
     <Compile Include="Patches\EnvironmentUnitySpoilsPatches.cs" />
     <Compile Include="Patches\FuelCapacityPatches.cs" />

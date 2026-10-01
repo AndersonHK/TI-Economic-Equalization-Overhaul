@@ -195,6 +195,51 @@ examples include state-specific destroy/disband methods and cleanup methods on
 factions, notification queues, goals, intel, missions, and time events. Inspect
 the current implementation before relying on any method name or cleanup list.
 
+### Fleet relocation is a relationship edit
+
+Moving an in-transit fleet to a station is not equivalent to changing one
+location ID. In 1.0.53, the native `TISpaceFleetState.Dock` path cancels active
+operations, assigns `dockedLocation`, assumes the station's orbit, registers the
+fleet in the station's docking layout, and emits an arrival event. A compatible
+offline operation must keep at least these serialized relationships aligned:
+
+- clear the active `trajectory` and any transfer-only operation state;
+- set `orbitState`, `barycenter`, orbital epoch/anomaly fields, and
+  `dockedLocation` from the destination station;
+- add the fleet to the destination orbit's `assetsInOrbit` list;
+- add it to the station's `dockedFleets` list and `_itemList` docking layout,
+  with a matching `dockOffset`;
+- cancel current AI goals which still assign that fleet to the old transfer;
+  and
+- remove player alarms created for the canceled arrival.
+
+`TIOrbitState.TestAndCorrectAnomalyToAvoidOverlap` offsets an exact anomaly
+collision by `1.5 / semiMajorAxis_km` for docking. `TIConeLayoutState` reuses
+the first null `_itemList` slot before appending a new slot; its stored offset
+is derived from the layout width, height, world position, and world rotation.
+Preserving these rules avoids overlapping map objects and keeps both sides of
+the docking relationship consistent.
+
+### Region ownership is distinct from a full political transfer
+
+The minimum serialized ownership invariant is three-sided: the region's
+`nation` must identify its owner, the old nation's `regions` collection must
+not contain it, and the new nation's `regions` collection must contain it.
+Claims are independent of ownership and should not be removed merely because a
+region changes hands.
+
+The game's `TINationState.TransferRegionsControlTo` path does substantially
+more than those identity edits. It transfers a computed share of national GDP,
+blends several nation statistics and public opinion, updates per-capita-GDP
+history, recalculates priority scaling and control points, transfers or
+destroys region-based armies according to the caller, validates occupations,
+rebuilds adjacency caches, and emits reporting events. An offline ownership
+repair should therefore be explicitly described as structural unless it also
+reproduces and validates those version-specific economic and political side
+effects. In particular, do not invent or resurrect a control-point state just
+to imitate a likely control-point-count change; use the native domain method
+when a complete political transfer is required.
+
 ## Safe offline workflow
 
 1. Close Terra Invicta before reading or writing its save directory.
@@ -251,6 +296,19 @@ python tools/ti_save_tool.py remove-fleet `
     --expected-ship-count 1 `
     --expected-faction-id 6789 `
     --expected-body "body-name"
+python tools/ti_save_tool.py relocate-fleets-transfer-region `
+    --input C:\path\to\source.gz `
+    --reference-input C:\path\to\intact-pre-transfer-save.gz `
+    --output .tmp\edited-save.gz `
+    --audit .tmp\edited-save.audit.json `
+    --fleet-id 12345 `
+    --fleet-id 23456 `
+    --station-id 34567 `
+    --expected-faction-id 45678 `
+    --expected-destination-orbit-id 56789 `
+    --region-id 67890 `
+    --from-nation-id 78901 `
+    --to-nation-id 89012
 ```
 
 The removal operation validates its location, ownership, and ship-count
@@ -278,6 +336,37 @@ deletes associated officer states and lifecycle references, and applies the
 same byte-stability, metadata, state-delta, and `$id`/`$ref` gates as fleet
 removal. It refuses to leave an empty fleet; use `remove-fleet` when every ship
 must be deleted so fleet-level lifecycle cleanup is not skipped.
+
+`relocate-fleets-transfer-region` is an atomic compound operation intended for
+carefully inspected saves. It verifies that every selected fleet belongs to the
+expected faction and is in transit to the expected orbit, then docks each at an
+existing same-faction station. It preserves all selected fleets and ships,
+updates the station/orbit/layout relationships, removes exactly one assigned AI
+goal per relocated fleet, and removes player alarms for the canceled arrivals.
+Because orbit templates are not expanded in the serialized orbit state, the
+tool derives docking anomaly spacing from an already docked fleet at the target
+station and refuses a target with no usable sample.
+
+Without `--reference-input`, the region portion deliberately performs only the
+structural three-reference ownership repair described above. With a qualifying
+reference save, it additionally transfers the evidence-based regional GDP
+described below. Its audit labels the selected scope explicitly. Neither mode
+modifies other national statistics, opinion, history, armies, control points,
+adjacency caches, or reporting state. Use an exact-version in-game domain
+operation when those political-transfer side effects are required.
+
+When an intact pre-transfer save is available, a narrower economic correction
+can be evidence-based without imitating the complete political-transfer
+routine. Calculate the region's reference GDP share using
+`TIRegionState.NationalGDPProportion`: population is weighted by the 1.0.53
+global modifiers for core-economy (1.25), core-resource/oil (1.25), and colony
+(0.5) status. Derive the resulting reference regional GDP per capita and
+multiply it by the region's current population. Add that result to the restored
+owner and subtract the identical result from the former owner so global GDP is
+conserved. Recheck these modifiers after a patch, and record both save hashes
+and every input in the audit. Population itself is serialized on the region and
+is aggregated by the owning nation's `regions` collection; do not create a
+second nation-level population scalar.
 
 Combat autosaves need an additional precondition check. Inspect
 `TISpaceCombatState`, projectile states, and all incoming references to the

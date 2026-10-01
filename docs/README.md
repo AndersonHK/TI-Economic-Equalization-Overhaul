@@ -7,6 +7,11 @@ when prose and runtime behavior disagree.
 
 ## Current authorities
 
+- [Mission probability](mission-probability-rounding.md): 0.10.3 floors contested
+  chances (promoting >99.95% to 100%), displays decimal precision at the extremes,
+  and blocks impossible orders.
+- [Alien territory demands](alien-territory-demands.md): 0.10.2 requires full
+  Servant control before the Alien Administration can demand a region.
 - [Fusion open-cycle rebalance](ship-balance-research/fusion-open-cycle-implementation-2026-09-27.md):
   0.10.1 doubles human fusion reactor tonnes/GW and makes every fusion drive explicitly open cycle.
 - [Capital heavy mounts](ship-balance-research/capital-heavy-mount-implementation.md):

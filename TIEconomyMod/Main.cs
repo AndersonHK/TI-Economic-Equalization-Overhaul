@@ -75,7 +75,7 @@ namespace TIEconomyMod
                     ShipPowerRuntime.RefreshTemplatePerformanceCaches();
                 }
                 CouncilorRuntimeCaps.InitializeOrganizationCap();
-                Log("Loaded TI Economic Equalization Overhaul 0.10.1, validated against TI 1.0.53b.");
+                Log("Loaded TI Economic Equalization Overhaul 0.10.3, validated against TI 1.0.53b.");
                 return true;
             }
             catch (Exception exception)
