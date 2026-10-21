@@ -1,0 +1,1 @@
+PASS: 35 unique resources; all posed dimensions reproduced; 700 independent off-grid elevation samples contained by the refined bounds.

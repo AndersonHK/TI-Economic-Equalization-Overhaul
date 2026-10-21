@@ -1,5 +1,17 @@
 # Turret clearance and firepower audit
 
+**Canonical-size projection:** the separate
+[projected report set](../canonical-turret-projection/README.md) compares proposed
+physics-based dimensions against this exact baseline, including tier-coherence,
+legal loadouts and corrected Mothership geometry. This original snapshot remains
+unchanged by the projected numbers.
+
+**Current follow-ups:** [weapon shape and Monitor interpretation](weapon-shapes-and-monitor-2026-10-21.md)
+distinguishes actual mesh dimensions from conservative motion envelopes.
+[Mothership geometry in 0.10.4](../mothership-symmetric-mount-implementation-2026-10-21.md)
+changes runtime mount positions. The tables below remain the original native-asset
+research snapshot committed as `d5cf300`; they do not include that runtime correction.
+
 Research snapshot: 2026-10-20 (user local date). Gameplay changes proposed here are not implemented. Measurements cover **28 hull classes, all 64 installed appearances, 147 hull-weapon templates, and 35 distinct weapon resources**. The geometry is decoded from installed assets; firing arcs and rendered combat behavior have not been manually tested.
 
 ## Principal findings

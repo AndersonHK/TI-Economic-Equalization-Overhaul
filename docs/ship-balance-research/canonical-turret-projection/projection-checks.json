@@ -1,0 +1,21 @@
+{
+  "baseline_fit_records_reproduced": 5376,
+  "baseline_max_gap_error_m": 0,
+  "source_resources": 35,
+  "hull_templates": 147,
+  "classes": 28,
+  "appearances": 64,
+  "all_ship_targets": 166,
+  "scenarios": [
+    "baseline",
+    "canonical",
+    "head_only",
+    "compact_optics",
+    "named_diameter",
+    "mag_relative",
+    "retier_rail",
+    "retier_coil",
+    "retier_naval",
+    "retier_pair"
+  ]
+}

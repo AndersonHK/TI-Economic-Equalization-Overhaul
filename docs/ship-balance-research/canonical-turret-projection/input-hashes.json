@@ -1,0 +1,16 @@
+{
+  "docs\\ship-balance-research\\turret-clearance\\measurements.json": "33c86030bb040cb74fe08969bf40d7859ad4abb433fd01984e9346818e60ced5",
+  "docs\\ship-balance-research\\turret-clearance\\class-clearance.md": "097b38fbfeb03a85f8e48a9958c6b78d1083d8a6640ed2887f7297a190600931",
+  "docs\\ship-balance-research\\turret-clearance\\weapon-inventory.md": "fc266949253eb2a5b234651300d92c7e9261cc8170866d57f43d65272a74c95c",
+  "docs\\ship-balance-research\\turret-clearance\\node-inventory.md": "ebc2f774797a96611c3d2085924f9a7c790ea2652a1e561376925b36288817db",
+  "docs\\ship-balance-research\\turret-clearance\\dps-analysis.md": "454e43d8cb02088f79f3753da652efe2f380162fd55ba186239950dcd5c6ce10",
+  "docs\\ship-balance-research\\turret-clearance\\weapon-mesh-inspection-2026-10-21.json": "70c50c33bf49963cfd32e4d21f4ca33e6add9b8dbae5dde1ef6192595ebad4f2",
+  "docs\\ship-balance-research\\turret-clearance\\mothership-layout-2026-10-21.json": "06d2bfbc56400de387775613977622efffd2f21a357eff55688e25b00fcbd63d",
+  "docs\\ship-balance-research\\barrel-lens-audit\\inventory.json": "1bc03c61d4e3bea00f421f9e0b95423fb63f55163db854fb236e9621498e8174",
+  "docs\\ship-balance-research\\barrel-lens-audit\\dimensions.json": "092056191aecbd0dcef4f99657baac287f33764e14dbeff0ab50b42a4ede6c8d",
+  "docs\\ship-balance-research\\barrel-lens-audit\\measured-geometry.npz": "31ea3a782d1f3dc34bca49e4d53aec2852613d22ad36a9f882b632e29419fbb3",
+  "TIEconomyMod\\Core\\CapitalMountPolicy.cs": "7cc9b4a6e36eebe557aafe6db38d97c5dd4085fd0f9a052a3d145d7ced792dd0",
+  "TIEconomyMod\\Core\\MothershipMountGeometry.cs": "127c6109c9d30026f55df060e3bb143f724ce6ea413373ba7ad9e8cf2574743f",
+  "TIEconomyMod\\Patches\\MothershipMountPatches.cs": "0c70775db10322ad2dd590c3aceb789e607ff2f5f149980b966f1c1e8d509892",
+  "docs\\ship-balance-research\\canonical-turret-projection\\source-hull-geometry.npz": "5174ef236df9f3c496ecd0187ef03cf0b5633ebc192717fa9d05151b404cace2"
+}

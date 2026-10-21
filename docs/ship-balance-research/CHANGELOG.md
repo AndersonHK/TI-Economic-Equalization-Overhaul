@@ -3,6 +3,68 @@
 This is a decision log for the proposed ship rebalance. Entries here describe
 the balance decisions as well as their implementation status.
 
+## 2026-10-21
+
+### Archived 25 mm proposal; canonical turret plan and projected fallout
+
+- Archived the never-implemented 25 mm/two-cell autocannon plan and its JSON
+  evidence, preserving history and updating live links.
+- Adopted the user's final canonical optics interpretation: native simulation
+  radius determines 3D diameter; current laser stats stay unchanged.
+- Added the [canonical plan](canonical-turret-scaling-plan-2026-10-21.md) and
+  [projected copies](canonical-turret-projection/README.md) of the original
+  28-class/64-appearance audit, retaining all original inputs and reproducing
+  5,376 baseline fit records exactly before applying new sizes.
+- Compared proportional and head-only scaling, compact alien optical-head
+  envelopes, magnetic-relative and rejected name-as-diameter sensitivities,
+  and optional heavy-rail/heavy-coil/6-inch tier moves. Included legal packings,
+  corrected Mothership geometry, tier distributions and exact DPS/mass fallout.
+- No gameplay or asset implementation, build, deployment or commit. Tier moves
+  and replacement optical heads remain explicit proposals.
+
+### Research: barrel/lens dimensions and deferred larger apertures
+
+- Measured all 41 gunpowder, magnetic and laser ship resources; inventoried
+  166 ship templates and 37 region/base lasers without ship art.
+- Confirmed identical small/medium hull coil geometry, exaggerated autocannon
+  openings, siege/Gen3 art mismatches and compressed laser aperture progression.
+- Added [visual and numerical analysis](barrel-and-lens-dimensional-audit-2026-10-21.md)
+  and a [deferred laser proposal](larger-laser-aperture-proposal-2026-10-21.md)
+  with 25/50/100% aperture sensitivity, fitting, PD and integration consequences.
+- Clarified that the earlier 25/30 autocannon art scale preserves its existing
+  bore exaggeration; it is not a physical caliber correction.
+- No gameplay/asset changes, build, deployment or commit in this research turn.
+
+### Deferred: 25 mm autocannon and two-cell 30/40 mm batteries
+
+- Proposed a new size-1 25 mm based on current merged 30 mm data, with 5/6 art
+  scale, smaller projectile calibration and a 0.20 s intra-salvo interval.
+- Quantified geometry and early-hull output/fitting changes from making the
+  30/40 mm hull weapons size 2. Identified the weak 30 mm intermediate, Escort's
+  horizontal/vertical footprint exception, and native tracking/HP side effects.
+- Traced a concrete Ship30 stock-design conflict and proposed versioned records,
+  legacy construction gates and explicit refit/save handling.
+- Recorded candidate values, alternatives and acceptance gates in the
+  [deferred proposal](archive/25mm-autocannon-2026-10-21/25mm-autocannon-and-two-cell-upgrade-proposal-2026-10-21.md).
+  No runtime/template/asset changes, build or deployment in this planning turn.
+
+### 0.10.4: symmetric Mothership mount correction
+
+- Committed the complete pre-fix research as `d5cf300` before implementation.
+- Corrected the duplicated ventral origin and repositioned the authored mounts
+  symmetrically on verified rim/crown surfaces. All twenty paired indices now
+  have at least 34.2 m center spacing, including a 5.181 m worst-size-4 preview
+  sphere margin. Added source-position/hierarchy guards and idempotent handling.
+- The conditional four-gun UI expansion was not applied: 42 icons would be
+  required, beyond the native 40-icon capacity. Retained sixteen active guns,
+  8,200-ton hull mass, existing indices, nose/utility fitting and weapon stats.
+- Normal deployment passed 39 validators and 1,204 formula assertions and
+  hash-verified 47 deployed files. Manual rendering/aiming remains pending.
+- Added the [implementation record](mothership-symmetric-mount-implementation-2026-10-21.md)
+  and [weapon/Monitor visual follow-up](turret-clearance/weapon-shapes-and-monitor-2026-10-21.md).
+  The latter explains shared projectile pedestals, long autocannon barrels and
+  the conservative-sphere interpretation. No Monitor or weapon-art edits applied.
+
 ## 2026-10-20
 
 ### Visual follow-up: crowded foundations and Mothership repair proposal

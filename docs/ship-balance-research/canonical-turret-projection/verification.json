@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "baseline_fit_records_exact": 5376,
+  "projected_fit_records_checked": 53760,
+  "source_files_verified": 14,
+  "native_original_source_hashes_verified": 22,
+  "runtime_files_unchanged": 119,
+  "ship_target_records": 166,
+  "calibrated_target_equations": 157,
+  "random_rotations_tested_all_vertices": 840,
+  "compact_alien_laser_template_envelopes_checked": 8,
+  "original_node_coordinates_preserved_all_scenarios": true,
+  "live_game_test": false,
+  "build_deploy_commit": false,
+  "local_documentation_links_checked": 245,
+  "markdown_tables_consistent": true
+}

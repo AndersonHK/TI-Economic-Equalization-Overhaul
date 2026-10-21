@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "ship_templates": 166,
+  "non_ship_laser_templates": 37,
+  "resources": 41,
+  "source_hashes_checked": 20,
+  "runtime_files_unchanged": 119,
+  "geometry_index_and_bounds_checks": 82,
+  "section_fixture": "concentric square tubes plus translated/scaled repeat",
+  "max_inner_opening_change_0_1_to_1_mm_inset_m": 3.4371350210449236e-10,
+  "small_medium_coil_translation_aligned_max_vertex_delta_m": 1.6341363109351192e-06,
+  "laser_formula_scenarios_checked": 44,
+  "manual_mesh_views_inspected": 82,
+  "live_game_test": false,
+  "build_deploy_commit_this_turn": false,
+  "graser_note": "Tables evaluate authored wavelength 0.1 nm; native field is int, loaded rounding was not inspected. At 0 nm aperture benefit would be exactly zero; conclusion unchanged.",
+  "documentation_local_links_checked": 188,
+  "markdown_tables_checked": true
+}

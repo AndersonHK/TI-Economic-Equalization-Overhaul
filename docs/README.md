@@ -7,6 +7,10 @@ when prose and runtime behavior disagree.
 
 ## Current authorities
 
+- [Mothership symmetric mount geometry](ship-balance-research/mothership-symmetric-mount-implementation-2026-10-21.md):
+  0.10.4 fixes the duplicate and spaces all authored pairs on verified surfaces.
+  Sixteen active guns and 8,200 t remain because four extra cells exceed the native
+  UI capacity. Includes deployment evidence and manual acceptance checks.
 - [Mission probability](mission-probability-rounding.md): 0.10.3 floors contested
   chances (promoting >99.95% to 100%), displays decimal precision at the extremes,
   and blocks impossible orders.
@@ -139,6 +143,16 @@ when prose and runtime behavior disagree.
   deferred.
 - [Military 2022-2030 sanity check](military-investment-2022-2030-sanity-check.md)
   is a controlled calibration exercise, not a historical forecast.
+- [Canonical turret scaling plan](ship-balance-research/canonical-turret-scaling-plan-2026-10-21.md)
+  projects physics-based model sizes through all 28 classes and 64 appearances,
+  with compact alien optics, legal-loadout checks, tier-coherence statistics and
+  optional retier DPS/capital-policy fallout. Planning only; existing 25 mm
+  addition proposal is archived.
+- [Barrel and lens dimensional audit](ship-balance-research/barrel-and-lens-dimensional-audit-2026-10-21.md)
+  measures 41 ship resources and inventories 203 templates, with muzzle/optic
+  dimensions, visual evidence and family-ratio deltas. The
+  [larger-laser proposal](ship-balance-research/larger-laser-aperture-proposal-2026-10-21.md)
+  separates visual corrections from aperture-driven penetration changes.
 - [Ship balance research](ship-balance-research/README.md) contains evidence,
   planning decisions, and a dated implementation log. Each document should be
   read according to its status language; research proposals are not current
@@ -154,6 +168,12 @@ when prose and runtime behavior disagree.
   explains crowded foundations across 28 appearances and identifies the
   Mothership's mirrored repair surface, exact Transform correction, and an
   optional symmetric rim-battery layout.
+  The [weapon-shape and Monitor follow-up](ship-balance-research/turret-clearance/weapon-shapes-and-monitor-2026-10-21.md)
+  renders every weapon resource at a common scale and separates visible dimensions
+  from conservative motion envelopes; Monitor/art changes remain proposals.
+  The [archived 25 mm and two-cell autocannon proposal](ship-balance-research/archive/25mm-autocannon-2026-10-21/25mm-autocannon-and-two-cell-upgrade-proposal-2026-10-21.md)
+  quantifies a compact size-1 replacement and promotion of the 30/40 mm hull guns,
+  including balance, orientation, research and save-compatibility consequences.
 
 ## Maintenance rule
 

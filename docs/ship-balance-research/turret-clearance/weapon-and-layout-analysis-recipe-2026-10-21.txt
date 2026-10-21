@@ -1,0 +1,475 @@
+
+===== weapon_meshes.py =====
+
+import json,sys,math
+from pathlib import Path
+import numpy as np
+ROOT=Path.cwd();sys.path.insert(0,str(ROOT/'scripts/ship-balance'))
+import measure_turret_clearance as m
+from UnityPy.helpers.MeshHelper import MeshHandler
+OUT=ROOT/'docs/ship-balance-research/turret-clearance';TMP=ROOT/'.tmp/mothership-fix'
+old=m.read(OUT/'measurements.json')
+env=m.UnityPy.load(str(m.DEFAULT_GAME/'TerraInvicta_Data/StreamingAssets/AssetBundles/shipweapons'))
+paths={Path(path).stem.lower():(path,ptr) for path,ptr in env.container.items()}
+result=[];arrays={}
+for k,g in enumerate(old['geometries']):
+ resource=g['resource'];path,ptr=paths[resource.split('/')[-1].lower()]
+ go=ptr.read();root=m.transform(go).read();child=root.m_Children[0].read()
+ base,bname=m.mesh_vertices(go);upper,uname=m.mesh_vertices(child.m_GameObject.read())
+ scale=m.xyz(root.m_LocalScale);cs=m.xyz(child.m_LocalScale);p=m.xyz(child.m_LocalPosition)
+ upper_scaled=upper*cs
+ r=m.local_matrix(child)[:3,:3]@np.diag(1/cs)
+ base_points=base*scale
+ upper_points=m.transform_points(m.local_matrix(child),upper)*scale
+ meshes=[]
+ for index,(partgo,points) in enumerate([(go,base_points),(child.m_GameObject.read(),upper_points)]):
+  mesh=next(q for q in m.component_ptrs(partgo) if q.type.name=='MeshFilter').read().m_Mesh.read()
+  handler=MeshHandler(mesh);handler.process();tris=np.concatenate([np.asarray(t,dtype=np.int32) for t in handler.get_triangles() if t])
+  arrays['v%d_%d'%(k,index)]=points;arrays['t%d_%d'%(k,index)]=tris
+  meshes.append({'name':mesh.m_Name,'key':'%d_%d'%(k,index)})
+ radius=float(np.linalg.norm(base_points[:,[0,2]],axis=1).max())
+ sampled=radius
+ for deg in range(-180,181):
+  a=math.radians(deg);co,si=math.cos(a),math.sin(a)
+  pitch=np.array([[1,0,0],[0,co,-si],[0,si,co]])
+  points=(p+upper_scaled@(r@pitch).T)*scale
+  sampled=max(sampled,float(np.linalg.norm(points[:,[0,2]],axis=1).max()))
+ # Every angle is within 0.5 degrees of a sample. Bound the missing arc displacement.
+ epsilon=2*max(abs(scale))*float(np.linalg.norm(upper_scaled,axis=1).max())*math.sin(math.radians(.25))
+ ws=[w for w in old['weapons'] if w['resource']==resource]
+ row={'resource':resource,'asset_path':path,'meshes':meshes,'sizes':sorted({w['size'] for w in ws}),
+      'weapons':[w['name'] for w in ws], 'root_scale':scale.tolist(),'child_scale':cs.tolist(),
+      'child_pivot_m':(p*scale).tolist(),'source_child_rotation_xyzw':[child.m_LocalRotation.x,child.m_LocalRotation.y,child.m_LocalRotation.z,child.m_LocalRotation.w],
+      'posed_dimensions_m':g['posed_dimensions_m'],'posed_min_m':g['posed_min_m'],'posed_max_m':g['posed_max_m'],
+      'base_dimensions_m':np.ptp(base_points,axis=0).tolist(),'moving_dimensions_m':np.ptp(upper_points,axis=0).tolist(),
+      'posed_yaw_diameter_m':2*g['yaw_only_radius_m'],'pitch_yaw_diameter_bound_m':2*(sampled+epsilon),
+      'sampling_radius_margin_m':epsilon,'old_sphere_diameter_m':2*g['swept_radius_m'],
+      'static_launcher':all(w['kind']=='TIMissileTemplate' for w in ws)}
+ result.append(row)
+ print(resource,'dimensions',*[round(x,3) for x in g['posed_dimensions_m']],'sphere',round(row['old_sphere_diameter_m'],3),'pitch/yaw',round(row['pitch_yaw_diameter_bound_m'],3),flush=True)
+np.savez_compressed(TMP/'weapon-scenes.npz',**arrays)
+(OUT/'weapon-mesh-inspection-2026-10-21.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')
+
+
+===== render_weapons.py =====
+
+import bpy,json,math
+from pathlib import Path
+import numpy as np
+from mathutils import Vector,Quaternion
+from bpy_extras.object_utils import world_to_camera_view
+ROOT=Path.cwd();TMP=ROOT/'.tmp/mothership-fix';OUT=ROOT/'docs/ship-balance-research/turret-clearance/weapon-visuals'
+OUT.mkdir(parents=True,exist_ok=True)
+weapons=json.loads((ROOT/'docs/ship-balance-research/turret-clearance/weapon-mesh-inspection-2026-10-21.json').read_text())
+data=np.load(str(TMP/'weapon-scenes.npz'));meta=[]
+for k,w in enumerate(weapons):
+ bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
+ scene=bpy.context.scene;scene.render.engine='BLENDER_RENDER';scene.render.resolution_x=900;scene.render.resolution_y=550;scene.render.resolution_percentage=100
+ scene.render.image_settings.file_format='PNG';scene.world.horizon_color=(.025,.032,.045);scene.world.ambient_color=(0,0,0)
+ scene.world.light_settings.use_ambient_occlusion=True;scene.world.light_settings.ao_factor=.65;scene.world.light_settings.samples=5
+ scene.world.light_settings.use_environment_light=True;scene.world.light_settings.environment_energy=.12
+ for j,entry in enumerate(w['meshes']):
+  verts=data['v'+entry['key']][:,[0,2,1]];tris=data['t'+entry['key']][:,::-1]
+  mesh=bpy.data.meshes.new(entry['name']);mesh.from_pydata(verts.tolist(),[],tris.tolist());mesh.update()
+  ob=bpy.data.objects.new(entry['name'],mesh);scene.objects.link(ob)
+  mat=bpy.data.materials.new('base' if j==0 else 'moving');mat.diffuse_color=(.47,.49,.51) if j==0 else (.23,.55,.72);mat.specular_intensity=.15
+  ob.data.materials.append(mat)
+ for i,(direction,energy) in enumerate([((1,-1,2),.8),((-1,.6,-1),.3)]):
+  lamp=bpy.data.lamps.new('Key'+str(i),'SUN');lamp.energy=energy;lamp.use_shadow=False
+  ob=bpy.data.objects.new(lamp.name,lamp);scene.objects.link(ob);ob.rotation_euler=Vector(direction).to_track_quat('Z','Y').to_euler()
+ camera=bpy.data.cameras.new('Camera');cam=bpy.data.objects.new('Camera',camera);scene.objects.link(cam);scene.camera=cam
+ camera.type='ORTHO';camera.ortho_scale=16;camera.clip_end=1000
+ for view,direction,center in [('top',(0,0,1),(0,1,0)),('side',(-1,0,0),(0,1,2)),('iso',(1,-1,1),(0,1,1))]:
+  cam.location=Vector(center)+Vector(direction)*60;cam.rotation_euler=(Vector(center)-cam.location).to_track_quat('-Z','Y').to_euler()
+  if view=='top':cam.rotation_euler=(Quaternion((0,0,1),math.pi/2)*cam.rotation_euler.to_quaternion()).to_euler()
+  scene.update()
+  filename='%02d-%s.png'%(k,view);scene.render.filepath=str(OUT/filename);bpy.ops.render.render(write_still=True)
+  origin=world_to_camera_view(scene,cam,Vector((0,0,0)));pivot=w['child_pivot_m'];pivot=world_to_camera_view(scene,cam,Vector((pivot[0],pivot[2],pivot[1])))
+  meta.append({'index':k,'view':view,'file':filename,'origin':[origin.x*900,(1-origin.y)*550],
+               'pivot':[pivot.x*900,(1-pivot.y)*550],'resource':w['resource']})
+ (TMP/'weapon-render-meta.json').write_text(json.dumps(meta,indent=2))
+ print('DONE',w['resource'],flush=True)
+
+
+===== weapon_figures.py =====
+
+import json,math
+from pathlib import Path
+from PIL import Image,ImageDraw,ImageFont
+ROOT=Path.cwd();OUT=ROOT/'docs/ship-balance-research/turret-clearance';TMP=ROOT/'.tmp/mothership-fix';FIG=OUT/'weapon-visuals'
+ws=json.loads((OUT/'weapon-mesh-inspection-2026-10-21.json').read_text());meta=json.loads((TMP/'weapon-render-meta.json').read_text())
+font=ImageFont.truetype('C:/Windows/Fonts/consola.ttf',20);small=ImageFont.truetype('C:/Windows/Fonts/consola.ttf',16)
+for m in meta:
+ im=Image.open(FIG/m['file']).convert('RGB');w=ws[m['index']]
+ if m['view']=='side':im=im.transpose(Image.Transpose.FLIP_LEFT_RIGHT)
+ dr=ImageDraw.Draw(im);dr.rectangle((0,0,900,70),fill=(12,19,27));dr.rectangle((0,490,900,550),fill=(12,19,27))
+ name=w['resource'].split('/')[-1];sizes='/'.join(map(str,w['sizes']))
+ dr.text((15,10),name+' | size '+sizes+' | '+m['view'],font=font,fill='white')
+ dr.text((15,40),'W/H/L: '+' / '.join('%.3f'%x for x in w['posed_dimensions_m'])+' m',font=small,fill=(190,210,220))
+ if m['view'] in ['top','side']:
+  for key,c in [('origin',(255,195,75)),('pivot',(255,95,125))]:
+   x,y=m[key];x=900-x if m['view']=='side' else x
+   dr.ellipse((x-3,y-3,x+3,y+3),fill=c)
+ dr.text((15,499),'Gray: base   Blue: moving gun   Same art-space scale throughout',font=small,fill=(200,220,230))
+ dr.line((740,526,852.5,526),fill='white',width=3);dr.text((775,530),'2 m',font=small,fill='white')
+ im.save(FIG/('labeled-'+m['file']))
+
+groups={'largest-comparison':[0,2,28,15,12,6],
+        'magnetic-progression':[3,4,5,6,7,8],
+        'laser-progression':[12,13,14,15,16,19],
+        'autocannon-views':[0]}
+for name,indices in groups.items():
+ if name=='autocannon-views':
+  im=Image.new('RGB',(900,1650))
+  for i,view in enumerate(['iso','top','side']):im.paste(Image.open(FIG/('labeled-00-'+view+'.png')),(0,550*i))
+ else:
+  im=Image.new('RGB',(1800,550*math.ceil(len(indices)/2)))
+  for i,idx in enumerate(indices):im.paste(Image.open(FIG/('labeled-%02d-iso.png'%idx)),((i%2)*900,(i//2)*550))
+ im.save(FIG/(name+'.png'))
+# Complete inventory: seven compact sheets, all with the same camera scale.
+for start in range(0,len(ws),6):
+ im=Image.new('RGB',(1800,1650),(12,19,27))
+ for n,idx in enumerate(range(start,min(start+6,len(ws)))):
+  im.paste(Image.open(FIG/('labeled-%02d-iso.png'%idx)),((n%2)*900,(n//2)*550))
+ im.save(FIG/('inventory-%02d.png'%(start//6+1)))
+
+
+===== monitor_examples.py =====
+
+import json,sys
+from pathlib import Path
+import numpy as np
+ROOT=Path.cwd();sys.path.insert(0,str(ROOT/'scripts/ship-balance'))
+import measure_turret_clearance as m
+from UnityPy.helpers.MeshHelper import MeshHandler
+TMP=ROOT/'.tmp/mothership-fix';OUT=ROOT/'docs/ship-balance-research/turret-clearance'
+ships=m.UnityPy.load(str(m.DEFAULT_GAME/'TerraInvicta_Data/StreamingAssets/AssetBundles/ships'))
+weapons=m.UnityPy.load(str(m.DEFAULT_GAME/'TerraInvicta_Data/StreamingAssets/AssetBundles/shipweapons'))
+weapon_map={Path(p).stem.lower():ptr for p,ptr in weapons.container.items()}
+e=m.read(OUT/'measurements.json');v=next(v for v in e['variants'] if v['hull']=='Monitor' and v['appearance']==0)
+scene=next(v for v in m.read(ROOT/'.tmp/turret-visual/scene-index.json') if v['hull']=='Monitor' and v['appearance']==0)
+original=np.load(ROOT/'.tmp/turret-visual'/scene['geometry_file']);root=ships.container[v['asset_path']].read();tr=m.transform(root)
+objects=dict(m.hierarchy(tr));origin=m.xyz(tr.read().m_LocalPosition)
+owner=next(p for p in m.component_ptrs(root) if p.type.name=='MonoBehaviour' and 'dorsalHullWeaponControllers' in p.read_typetree())
+refs=owner.read_typetree()['dorsalHullWeaponControllers']
+scenes=[]
+for label,res,indices,factor in [('four-autocannons','30mm_autocannon',v['ordinary_indices'],1),
+                                ('four-small-lasers','small_laser_battery',v['ordinary_indices'],1),
+                                ('two-medium-plasma','medium_plasma_battery',[p['controller'] for p in v['legal_placements']['TwoHullHoriz']],1),
+                                ('compact-autocannon-proposal','30mm_autocannon',v['ordinary_indices'],.5)]:
+ arrays={k:original[k] for k in original.files};meshes=list(scene['meshes'])
+ go=weapon_map[res].read();wt=m.transform(go).read();wc=wt.m_Children[0].read()
+ for index in indices:
+  controller=m.resolve(owner,refs[index]);tree=controller.read_typetree()
+  bm,bt,path=objects[tree['baseObject']['m_PathID']];_,ct,_=objects[tree['weaponObject']['m_PathID']]
+  B=bm.copy();B[:3,:3]=B[:3,:3]@np.diag(m.xyz(wt.m_LocalScale)*factor/m.xyz(bt.m_LocalScale));B[:3,3]-=origin
+  C=m.local_matrix(ct);C[:3,:3]=C[:3,:3]@np.diag(m.xyz(wc.m_LocalScale)/m.xyz(ct.m_LocalScale));C[:3,3]=m.xyz(wc.m_LocalPosition)
+  for j,(part,mat) in enumerate([(go,B),(wc.m_GameObject.read(),B@C)]):
+   mp=next(p for p in m.component_ptrs(part) if p.type.name=='MeshFilter').read().m_Mesh.read();handler=MeshHandler(mp);handler.process()
+   vv=m.transform_points(mat,np.asarray(handler.m_Vertices,dtype=float));tt=np.concatenate([np.asarray(t,dtype=np.int32) for t in handler.get_triangles() if t])
+   key='weapon%d_%d'%(index,j);arrays['v'+key]=vv;arrays['t'+key]=tt
+   meshes.append({'key':key,'name':key,'path':key,'weapon':True})
+ path=TMP/('monitor-'+label+'.npz');np.savez_compressed(path,**arrays)
+ s=dict(scene,geometry_file=str(path),meshes=meshes,hull='Monitor-'+label,nodes=[])
+ scenes.append(s)
+(TMP/'monitor-scene-index.json').write_text(json.dumps(scenes,indent=2))
+code=(ROOT/'.tmp/turret-visual/render_hulls.py').read_text()
+code=code.replace("TMP=ROOT/'.tmp/turret-visual'","TMP=ROOT/'.tmp/mothership-fix'")
+code=code.replace("OUT=ROOT/'docs/ship-balance-research/turret-clearance/visuals'","OUT=ROOT/'docs/ship-balance-research/turret-clearance/weapon-visuals'")
+code=code.replace("TMP/'scene-index.json'","TMP/'monitor-scene-index.json'")
+code=code.replace("render_meta=[]","render_meta=[]\nweapon_mat=bpy.data.materials.new('Mounted weapon');weapon_mat.diffuse_color=(.12,.5,.75);weapon_mat.specular_intensity=.1")
+code=code.replace("else:ob.data.materials.append(mat)","else:ob.data.materials.append(weapon_mat if mr.get('weapon') else mat)")
+code=code.replace("'render-meta.json'","'monitor-render-meta.json'")
+(TMP/'render_monitor.py').write_text(code)
+print([(s['hull'],len(s['meshes'])) for s in scenes])
+
+
+===== final_figures.py =====
+
+from pathlib import Path
+import json
+from PIL import Image,ImageDraw,ImageFont
+ROOT=Path.cwd();OUT=ROOT/'docs/ship-balance-research/turret-clearance';TMP=ROOT/'.tmp/mothership-fix'
+font=ImageFont.truetype('C:/Windows/Fonts/consola.ttf',19);title=ImageFont.truetype('C:/Windows/Fonts/segoeui.ttf',26)
+for m in json.loads((TMP/'render-meta.json').read_text()):
+ if m['view'] not in ['dorsal','ventral']:continue
+ im=Image.open(OUT/'mothership-visuals'/m['file']).convert('RGB');dr=ImageDraw.Draw(im)
+ dr.rectangle((0,0,1600,58),fill=(10,18,27));dr.rectangle((0,637,1600,700),fill=(10,18,27))
+ dr.text((20,12),'0.10.4 Mothership '+m['view']+' mount layout | runtime positions on original hull geometry',font=title,fill='white')
+ for n in m['nodes']:
+  x,y=n['pixel'];color=(45,205,255) if n['ordinary'] else (255,190,65)
+  dr.ellipse((x-4,y-4,x+4,y+4),fill=color)
+  lx=x-10;ly=y+24 if y<350 else y-42;ly=max(65,min(ly,605))
+  if 200<y<500:ly=y+(-45 if n['index']%2 else 25)
+  label=str(n['index'])+('' if n['ordinary'] else '*');bbox=dr.textbbox((lx,ly),label,font=font)
+  dr.line((x,y,lx+8,ly+8),fill=color,width=1);dr.rectangle((bbox[0]-3,bbox[1]-3,bbox[2]+3,bbox[3]+3),fill=(10,18,27));dr.text((lx,ly),label,font=font,fill=color)
+ dr.text((20,644),'16 active guns (cyan) | 4 inactive alternatives (amber*) | Hull mass remains 8200 t',font=font,fill='white')
+ dr.text((20,672),'Minimum origin spacing: 34.200 m | All-faction size-4 preview sphere gap: 5.181 m',font=font,fill=(200,220,230))
+ im.save(OUT/'mothership-visuals'/('mothership-'+m['view']+'-implemented.png'))
+
+labels=[('four-autocannons','Stock-legal: four 30/40 mm autocannons'),('four-small-lasers','Stock-legal: four small laser batteries'),
+        ('two-medium-plasma','Stock-legal: two size-2 plasma batteries'),('compact-autocannon-proposal','PROPOSAL ONLY: autocannon art at 50% scale')]
+sheet=Image.new('RGB',(1600,1400),(10,18,27));font2=ImageFont.truetype('C:/Windows/Fonts/segoeui.ttf',22)
+for i,(slug,label) in enumerate(labels):
+ for j,view in enumerate(['dorsal','side']):
+  im=Image.open(OUT/'weapon-visuals'/('monitor-'+slug+'-0-'+view+'-clay.png')).convert('RGB')
+  if view=='side':im=im.transpose(Image.Transpose.FLIP_LEFT_RIGHT)
+  im=im.resize((800,350));sheet.paste(im,((i%2)*800,(i//2)*700+j*350))
+ dr=ImageDraw.Draw(sheet);x=(i%2)*800;y=(i//2)*700;dr.rectangle((x,y,x+800,y+38),fill=(10,18,27));dr.text((x+10,y+6),label,font=font2,fill='white')
+ dr.rectangle((x,y+665,x+800,y+700),fill=(10,18,27));dr.text((x+10,y+671),'Monitor art 0 | original mount origins | offline reconstruction',font=ImageFont.truetype('C:/Windows/Fonts/consola.ttf',16),fill=(205,220,230))
+sheet.save(OUT/'weapon-visuals/monitor-loadout-comparison.png')
+
+
+===== write_weapon_report.py =====
+
+from pathlib import Path
+import json,math,itertools
+ROOT=Path.cwd();OUT=ROOT/'docs/ship-balance-research/turret-clearance';TMP=ROOT/'.tmp/mothership-fix'
+ws=json.loads((OUT/'weapon-mesh-inspection-2026-10-21.json').read_text());old=json.loads((OUT/'measurements.json').read_text())
+by={w['resource'].split('/')[-1]:w for w in ws}
+def table(h,r):return '\n'.join(['| '+' | '.join(h)+' |','| '+' | '.join(['---']*len(h))+' |']+['| '+' | '.join(map(str,x))+' |' for x in r])
+def f(x):return '%.3f'%x
+def img(name,caption):return '!['+caption+'](weapon-visuals/'+name+')'
+parts=['# Why the turret sizes look surprising: mesh and Monitor follow-up',
+'''2026-10-21. **Your visual impression is largely right: many weapons are far smaller than the mount-spacing limits implied by the earlier worst-of-size tables.** The 30 mm autocannon is a genuine long-barrel outlier, several size-1 and size-2 guns share the same pedestal, and the earlier sphere diameter is a conservative motion bound rather than a visible mesh diameter. I should have emphasized those distinctions more strongly when interpreting the first report.
+
+I decoded and rendered all **35 distinct hull-weapon resources** at a common art-space scale. The grey geometry is the weapon base; the blue geometry is its moving gun assembly. These are the actual installed meshes, with resource scales and child offsets, not imagined replacements. The figures use neutral materials to reveal shape and are not captured in-game frames. Source templates and bundle hashes remain those in the [committed audit](methodology.md). The new per-resource measurements are in [weapon-mesh-inspection-2026-10-21.json](weapon-mesh-inspection-2026-10-21.json).
+
+The Mothership correction was separately implemented and deployed as 0.10.4; see [implementation and validation](../mothership-symmetric-mount-implementation-2026-10-21.md). **No Monitor fitting, weapon statistics, or weapon-model scaling changes were applied.**''',
+img('largest-comparison.png','Same-scale comparison of the largest cross-family envelopes and compact laser art'),
+'''## The 30 mm autocannon really is a long exposed gun
+
+The installed art is an exposed rotary-barrel assembly on a substantial open cradle. It is not a compact enclosed CIWS enclosure. Its base mesh is literally named `base_medium`, shared in name and measured dimensions with the small/medium human naval, rail and coil mounts. The current 30 mm and 40 mm autocannon templates use this same resource.
+
+The long forward barrel makes the gun the largest size-1 yaw-reach outlier, even though its pedestal is not unusually large within the human projectile-gun family. It is 3.495 m wide, 2.873 m high and 6.110 m long in the resource-scale pose. That is quite different from saying it is a solid 12.952 m-wide object.''',
+img('autocannon-views.png','Autocannon isometric, top and side views at one common scale, with mount origin and elevation pivot'),
+table(['Autocannon quantity','Metres','Interpretation'],[
+('Full visible envelope W × H × L','3.495 × 2.873 × 6.110','Forward authored pose'),
+('Base envelope W × H × L','3.495 × 2.085 × 2.754','The broad shared pedestal'),
+('Moving assembly length','5.972','Receiver plus long rotary barrels'),
+('Elevation-pivot height above mount origin','1.690','Height, not horizontal deck demand'),
+('Yaw-only diameter in the forward/elevation-zero pose',f(ws[0]['posed_yaw_diameter_m']),'Circle enclosing the long forward reach'),
+('Pitch-and-yaw horizontal diameter bound',f(ws[0]['pitch_yaw_diameter_bound_m']),'New, tighter horizontal motion bound'),
+('Earlier full 3D sphere diameter',f(ws[0]['old_sphere_diameter_m']),'Conservative sphere centered at the mount origin')]),
+'''The old sphere bound combines the pivot offset and the farthest moving vertex using the triangle inequality. The roughly 1.69 m vertical pivot offset contributes to its radius even when it does not consume horizontal deck spacing. The new horizontal bound reduces the autocannon diameter from 12.952 to 9.673 m, about 25.3%. The actual forward mesh remains only 6.110 m long and 3.495 m wide.
+
+A swept circle also contains empty space: the gun can point in many directions, but does not occupy every one of those orientations at once. Two weapons tracking roughly the same target can look comfortably separated even when two independent all-aim envelopes overlap. Conversely, one comfortable forward pose is not proof that barrels never clip when they aim in different directions.''',
+'''## Similar slot sizes do not imply a consistent physical scale ladder
+
+The art uses a small number of reusable mount forms. Cell cost and weapon performance are not a uniform linear dimension rule. This is especially obvious in the human magnetic family.''',
+img('magnetic-progression.png','Small medium and large magnetic guns show shared small-medium pedestals and a different heavy base'),
+table(['Resource','Size','Width m','Height m','Length m','Base mesh'],[
+ (w['resource'].split('/')[-1],'/'.join(map(str,w['sizes'])),*[f(x) for x in w['posed_dimensions_m']],w['meshes'][0]['name'])
+ for w in [ws[i] for i in [0,1,2,3,4,5,6,7,8,27,28]]]),
+'''Small and medium coil batteries have the same 3.495 m-wide pedestal and almost identical moving assemblies. Their total lengths are 4.312 and 4.209 m respectively; the medium art is slightly shorter in this pose. The large battery switches to a broad multi-barrel cradle. Thus a maximum over all size-1 models can easily be close to, or larger than, a maximum over size-2 models.
+
+The largest size-4 sphere is set by the heavy plasma art, whose long barrels extend from `base_large`. That base is 5.843 m wide and 6.383 m long. The heavy laser instead uses a compact ball-shaped optical assembly: it is taller, but much shorter in plan view. “Largest” depends on the dimension or motion you care about.''',
+img('laser-progression.png','Laser weapons have a much smaller visual footprint than the largest projectile examples'),
+'''The human point-defense laser is only about 0.98 m wide. The size-1 small laser is 1.53 m wide, and the size-4 large laser 3.72 m wide. These are good examples of the roomy-looking turrets you described. A class-wide test using the autocannon or heavy plasma maximum is intentionally much stricter than a laser-specific fit assessment.
+
+Resource names also retain historical conventions. They must not be used as the authoritative caliber or slot-size label:''',
+table(['Current template','Slot size','Model resource','Moving mesh name'],[
+('30mmAutocannon / 40mmAutocannon','1','30mm_Autocannon','30mm_Autocannon'),
+('6-inchCannon','1','8-Inch_Cannon','6-Inch_Cannon'),
+('8-inchCannon','2','12-Inch_Cannon','12-Inch_Cannon')]),
+'''## How the refined horizontal bound was calculated
+
+For each resource, the base and moving meshes are decoded separately. The child scale, child offset, initial child rotation and root scale are applied as in the resource pose. I sample a complete 360° elevation rotation about the gun's local X axis in 1° increments and take the maximum distance in the root's XZ plane. Base yaw can rotate that horizontal reach around the mount axis without changing its radius.
+
+To avoid claiming that discrete samples are an exact continuous maximum, the radius receives an additional bound `2 × max(|rootScale|) × max(|childScaledVertex|) × sin(0.25°)`. Every unsampled angle is within 0.5° of a sample, so this term bounds the omitted displacement. This is still conservative, but it does not charge the entire vertical pivot height against horizontal separation.
+
+This is a resource-space, upright-mount footprint bound. It does not replace the full 3D calculation for arbitrarily tilted mounts, different parent scales or detailed hull intersections. Static missile launchers do not actually rotate; their rotation columns are hypothetical comparison bounds, not required launcher movement. The old sphere remains a safe sufficient bound; its failure should be described as **not certified**, not as proved visual collision.''',
+'''## Monitor: what is and is not fine as-is
+
+**For the existing fitting rules, leave the Monitor unchanged.** There is no newly demonstrated misplaced/duplicated node requiring a patch. The previous tables were largely answering a more aggressive question: what if a large gun could occupy every ordinary node independently? Keeping the same number of nodes does not make that capacity change equivalent to stock fitting.
+
+In the currently installed Monitor grid there are four single-cell placements, two legal horizontal two-cell placements, no vertical two-cell placement and **no FourHull rectangle**. The two hull rows are separated by four half-rows rather than the two needed for a FourHull rectangle. This is a statement about the inspected current template, not a general claim about every historical game version.
+
+The following reconstruction uses the actual Monitor/0 hull and native controller mappings. Weapon root and child transforms are replaced using the combat branch of `SetWeapon`, retaining the mount origins and authored rotations. These are offline reconstructed poses, not an in-game sweep test.''',
+img('monitor-loadout-comparison.png','Monitor art 0 with stock legal autocannons, lasers and medium plasma, and an optional half-scale autocannon proposal'),
+'''The stock four-autocannon forward pose has visible separation, while the small lasers are much roomier. Two medium plasma weapons also fit as a native two-cell loadout. The original all-aim worst-case sphere result did not demonstrate that these poses overlap. Monitor/0 remains the most demanding case if one requires a guaranteed arbitrary-aim margin for the longest size-1 art.
+
+If your intended policy were instead “size 4 at all four nodes,” I would not treat all Monitor appearances as automatically safe. That is a different fitting rule and would need weapon-family-specific checks or a visual scaling policy. I have not implemented it.''',
+'''## Optional fix that keeps turrets within the existing mounts
+
+If you want a strict all-aim gap for unusually long art, retain all origins and foundations and scale only the offending weapon art around its base origin. Scale the complete base hierarchy so the moving gun and fire point remain aligned. Do not shrink all lasers merely because a different weapon defines the global maximum.
+
+For the autocannon, the following factors use the smallest same-face horizontal origin separation on each appearance and the refined 9.673 m diameter bound. The rule is `factor ≤ (distance − requiredGap) / diameter`, capped at 1. These factors are proposal limits for upright mounts; they do not add guns or change damage statistics.''']
+rows=[]
+for v in old['variants']:
+ if v['hull']!='Monitor':continue
+ pairs=[math.hypot(a['position_m'][0]-b['position_m'][0],a['position_m'][2]-b['position_m'][2]) for a,b in itertools.combinations(v['nodes'],2) if a['side']==b['side'] and a['index']!=b['index']]
+ distance=min(pairs);D=ws[0]['pitch_yaw_diameter_bound_m']
+ rows.append((v['appearance'],f(distance),f(distance-D),f(min(1,(distance-2)/D)),f(min(1,(distance-5)/D))))
+parts += [table(['Monitor art','Horizontal spacing m','Unscaled bound gap m','Scale for ≥2 m gap','Scale for ≥5 m gap'],rows),
+'''A uniform 50% autocannon-art option would make the model approximately **1.748 × 1.436 × 3.055 m** and its horizontal motion diameter about **4.837 m**. On Monitor/0 that leaves approximately **2.703 m** under this bound. The lower-right reconstruction shows this option without moving a single mount. It looks closer to a compact CIWS and sits inside the existing foundation footprint.
+
+That is a **proposal only**, not a necessary repair proven by these renders. A global autocannon-art change would affect every hull and both current 30/40 mm templates; an appearance/loadout-specific rule would be narrower. Either needs separate approval and checks for base seating, native aim rotations and muzzle/effect positioning. The default recommendation for this task is to preserve the existing Monitor rules and art.''',
+'## Complete per-resource dimensions and bounds',
+table(['Resource','Size','W × H × L m','Pose yaw diameter m','Pitch/yaw bound m','Old sphere diameter m'],[
+ (w['resource'].split('/')[-1],'/'.join(map(str,w['sizes'])),' × '.join(f(x) for x in w['posed_dimensions_m']),f(w['posed_yaw_diameter_m']),f(w['pitch_yaw_diameter_bound_m']),f(w['old_sphere_diameter_m'])) for w in ws]),
+'''Same-scale visual inventory: [resources 1–6](weapon-visuals/inventory-01.png), [7–12](weapon-visuals/inventory-02.png), [13–18](weapon-visuals/inventory-03.png), [19–24](weapon-visuals/inventory-04.png), [25–30](weapon-visuals/inventory-05.png), [31–35](weapon-visuals/inventory-06.png).
+
+The figures and tables explain the asset design; they do not infer weapon caliber from mesh dimensions or equate a bounding box with occupied volume. The archived research commit is `d5cf300`. This follow-up clarifies its interpretation and supplies a tighter horizontal metric without silently replacing the original measurements.''']
+parts += ['''## Verification
+
+All 35 resource dimension records were independently reproduced from the saved
+posed vertices. Seven hundred off-grid elevation samples were checked against
+the refined bounds and passed; [retained result](weapon-inspection-validation-2026-10-21.txt).
+The common-scale figures and native-footprint Monitor reconstructions were
+visually inspected. Gold dots in the autocannon top/side views mark the base
+origin; pink dots mark the elevation pivot. The full procedure is retained in
+[the analysis recipe](weapon-and-layout-analysis-recipe-2026-10-21.txt).
+These checks do not substitute for an in-game aiming test.''']
+(OUT/'weapon-shapes-and-monitor-2026-10-21.md').write_text('\n\n'.join(parts)+'\n',encoding='utf-8')
+recipe=[]
+for name in ['weapon_meshes.py','render_weapons.py','weapon_figures.py','monitor_examples.py','final_figures.py','write_weapon_report.py','prepare_geometry.py','validate_weapon_bounds.py']:
+ recipe.extend(['\n===== '+name+' =====\n',(TMP/name).read_text(encoding='utf-8')])
+(OUT/'weapon-and-layout-analysis-recipe-2026-10-21.txt').write_text('\n'.join(recipe),encoding='utf-8')
+
+
+===== prepare_geometry.py =====
+
+import json, math, itertools, hashlib
+from pathlib import Path
+import numpy as np
+ROOT=Path.cwd();OUT=ROOT/'docs/ship-balance-research/turret-clearance'
+d=json.loads((OUT/'measurements.json').read_text());v=next(v for v in d['variants'] if v['hull']=='AlienMothership')
+rows=[{'index':i,'name_suffix':next(n for n in v['nodes'] if n['side']=='dorsal' and n['index']==i)['path'].split('Base ')[-1]} for i in range(20)]
+for row in rows:
+ for side in ['dorsal','ventral']:
+  n=next(n for n in v['nodes'] if n['side']==side and n['index']==row['index'])
+  row['original_'+side]=n['position_m'];row[side]=[round(x,6) for x in n['position_m']]
+for side in ['dorsal','ventral']:
+ for left,right in [(0,16),(1,17),(2,18),(3,19)]:
+  p=rows[left][side];rows[right][side]=[-p[0],p[1],p[2]]
+for idx,x,z in [(5,0,7.063),(14,0,-27.337)]:
+ rows[idx]['dorsal']=[float(x),88.91,float(z)];rows[idx]['ventral']=[float(x),-88.91,float(z)]
+
+# Independent surface probes at the four repositioned alternatives, on both faces.
+scene=next(s for s in json.loads((ROOT/'.tmp/turret-visual/scene-index.json').read_text()) if s['hull']=='AlienMothership')
+data=np.load(ROOT/'.tmp/turret-visual'/scene['geometry_file']);pieces=[]
+for mesh in scene['meshes']:
+ t=data['v'+str(mesh['key'])][data['t'+str(mesh['key'])]];x=t[:,:,0];z=t[:,:,2]
+ den=(z[:,1]-z[:,2])*(x[:,0]-x[:,2])+(x[:,2]-x[:,1])*(z[:,0]-z[:,2]);ok=abs(den)>1e-10
+ pieces.append((mesh['name'],t[ok],den[ok]))
+def hit(px,pz,side):
+ hits=[]
+ for name,t,den in pieces:
+  x=t[:,:,0];z=t[:,:,2]
+  a=((z[:,1]-z[:,2])*(px-x[:,2])+(x[:,2]-x[:,1])*(pz-z[:,2]))/den
+  b=((z[:,2]-z[:,0])*(px-x[:,2])+(x[:,0]-x[:,2])*(pz-z[:,2]))/den
+  ok=(a>=-1e-7)&(b>=-1e-7)&(a+b<=1+1e-7)
+  if ok.any():
+   y=a[ok]*t[ok,0,1]+b[ok]*t[ok,1,1]+(1-a[ok]-b[ok])*t[ok,2,1]
+   hits.append((float(max(y) if side=='dorsal' else min(y)),name))
+ return (max(hits) if side=='dorsal' else min(hits)) if hits else None
+for left,right,z in [(4,6,61.8),(7,9,-6.6),(10,12,-40.8),(13,15,-120),(8,11,27.6)]:
+ for idx,x in [(left,-196.5),(right,196.5)]:
+  for side in ['dorsal','ventral']:
+   y,name=hit(x,z,side)
+   assert name=='Hydra_Mothership_Outer_A'
+   rows[idx][side]=[x,round(y+(-.04 if side=='dorsal' else .04),6),float(z)]
+probes=[]
+for idx in [4,5,6,7,8,9,10,11,12,13,14,15]:
+ for side in ['dorsal','ventral']:
+  x,y,z=rows[idx][side]
+  samples=[hit(x+rad*math.cos(math.radians(a)),z+rad*math.sin(math.radians(a)),side)
+           for rad,a in [(0,0)]+[(4,a) for a in range(0,360,45)]]
+  expected='Hydra_Mothership_Central_A' if idx in [5,14] else 'Hydra_Mothership_Outer_A'
+  assert all(s and s[1]==expected for s in samples)
+  assert max(s[0] for s in samples)-min(s[0] for s in samples)<.02
+  probes.append({'index':idx,'side':side,'samples':samples})
+def minimum(indices):
+ nodes=[(i,s,rows[i][s]) for i in indices for s in ['dorsal','ventral']]
+ return min((math.dist(a[2],b[2]),a[:2],b[:2]) for a,b in itertools.combinations(nodes,2) if a[0]!=b[0])
+e={'source_bundle_sha256':next(s['sha256'] for s in d['sources'] if s['path'].endswith('AssetBundles\\ships')),
+ 'rows':rows,'minimum_all_20':minimum(range(20)),'minimum_active_16':minimum(v['ordinary_indices']),
+ 'inactive_indices':[5,8,11,14],'active_ui_guns':16,'hull_mass_tons':8200,'surface_probes':probes}
+(OUT/'mothership-layout-2026-10-21.json').write_text(json.dumps(e,indent=2)+'\n',encoding='utf-8')
+
+def vec(p):return 'new Vector3('+', '.join(format(x,'.9g')+('f' if '.' in format(x,'.9g') else '.0f') for x in p)+')'
+source=['using System;','using UnityEngine;','','namespace TIEconomyMod.Core','{',
+ '    // Source geometry and surface probes: docs/ship-balance-research/turret-clearance/mothership-layout-2026-10-21.json',
+ '    // All twenty authored pairs are spaced; four remain unavailable in the native UI.',
+ '    public static class MothershipMountGeometry','    {','        public const int Count = 20;',
+ '        private static readonly string[] Suffixes = { '+', '.join('"'+r['name_suffix']+'"' for r in rows)+' };']
+for key in ['original_dorsal','original_ventral','dorsal','ventral']:
+ source += ['        private static readonly Vector3[] '+key+' =','        {']
+ source += ['            '+vec(row[key])+', // '+str(row['index']) for row in rows]
+ source += ['        };']
+source += ['''
+        public static string Name(int index, bool ventralSide)
+        {
+            return (ventralSide ? "Ventral" : "Dorsal") + " Turret Mount Base " + Suffixes[index];
+        }
+
+        public static Vector3 Original(int index, bool ventralSide)
+        {
+            return (ventralSide ? original_ventral : original_dorsal)[index];
+        }
+
+        public static Vector3 Target(int index, bool ventralSide)
+        {
+            return (ventralSide ? ventral : dorsal)[index];
+        }
+
+        public static bool Matches(Vector3 actual, Vector3 expected)
+        {
+            // Component comparisons also reject NaN, without Unity native calls.
+            return Math.Abs(actual.x - expected.x) <= 0.0025f &&
+                Math.Abs(actual.y - expected.y) <= 0.0025f && Math.Abs(actual.z - expected.z) <= 0.0025f;
+        }
+
+        public static bool ValidatePositions(Vector3[] top, Vector3[] bottom, out string reason)
+        {
+            reason = null;
+            if (top == null || bottom == null || top.Length != Count || bottom.Length != Count)
+            {
+                reason = "expected twenty dorsal and twenty ventral authored controllers";
+                return false;
+            }
+            for (int side = 0; side < 2; ++side)
+            {
+                Vector3[] values = side == 0 ? top : bottom;
+                for (int index = 0; index < Count; ++index)
+                    if (!Matches(values[index], Original(index, side == 1)) &&
+                        !Matches(values[index], Target(index, side == 1)))
+                    {
+                        reason = "unexpected " + Name(index, side == 1) + " position";
+                        return false;
+                    }
+            }
+            return true;
+        }
+    }
+}''']
+(ROOT/'TIEconomyMod/Core/MothershipMountGeometry.cs').write_text('\n'.join(source)+'\n',encoding='utf-8')
+print('minimum all20',e['minimum_all_20'],'active16',e['minimum_active_16'])
+print('Central support ring variation',max(max(s[0] for s in p['samples'])-min(s[0] for s in p['samples']) for p in probes))
+
+
+===== validate_weapon_bounds.py =====
+
+import json,math
+from pathlib import Path
+import numpy as np
+root=Path.cwd();out=root/'docs/ship-balance-research/turret-clearance';tmp=root/'.tmp/mothership-fix'
+ws=json.loads((out/'weapon-mesh-inspection-2026-10-21.json').read_text());data=np.load(tmp/'weapon-scenes.npz')
+assert len(ws)==35 and len({w['resource'] for w in ws})==35
+rng=np.random.default_rng(20261021);checks=0
+for i,w in enumerate(ws):
+ base=data['v%d_0'%i];upper=data['v%d_1'%i];S=np.array(w['root_scale']);p=np.array(w['child_pivot_m'])/S
+ x,y,z,qw=np.array(w['source_child_rotation_xyzw'])/np.linalg.norm(w['source_child_rotation_xyzw'])
+ R=np.array([[1-2*(y*y+z*z),2*(x*y-z*qw),2*(x*z+y*qw)],
+             [2*(x*y+z*qw),1-2*(x*x+z*z),2*(y*z-x*qw)],
+             [2*(x*z-y*qw),2*(y*z+x*qw),1-2*(x*x+y*y)]])
+ child=(upper/S-p)@R
+ np.testing.assert_allclose(np.ptp(np.concatenate([base,upper]),axis=0),w['posed_dimensions_m'],rtol=0,atol=1e-6)
+ for angle in rng.uniform(-math.pi,math.pi,20):
+  c,s=math.cos(angle),math.sin(angle);P=np.array([[1,0,0],[0,c,-s],[0,s,c]])
+  points=(p+child@(R@P).T)*S
+  radius=max(np.linalg.norm(points[:,[0,2]],axis=1).max(),np.linalg.norm(base[:,[0,2]],axis=1).max())
+  assert radius<=w['pitch_yaw_diameter_bound_m']/2+1e-7,(w['resource'],radius)
+  checks+=1
+print('PASS: 35 unique resources; all posed dimensions reproduced; %d independent off-grid elevation samples contained by the refined bounds.'%checks)

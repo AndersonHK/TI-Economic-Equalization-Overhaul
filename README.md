@@ -1,6 +1,12 @@
 # TI Economic Equalization Overhaul
 
-Current release: **0.10.3**, validated against **Terra Invicta 1.0.53b**.
+Current release: **0.10.4**, validated against **Terra Invicta 1.0.53b**.
+
+Release 0.10.4 corrects and symmetrically spaces the Mothership's authored turret
+origins on verified rim/crown surfaces, including the duplicate ventral mount.
+Its 16 active hull guns and 8,200-ton hull remain: four additional UI weapons
+would exceed the native designer's full-icon capacity. See the
+[geometry implementation and manual checks](docs/ship-balance-research/mothership-symmetric-mount-implementation-2026-10-21.md).
 
 Release 0.10.3 rounds contested mission chances down to 0.1 percentage-point
 steps (except chances strictly above 99.95%, which become 100%), shows decimal

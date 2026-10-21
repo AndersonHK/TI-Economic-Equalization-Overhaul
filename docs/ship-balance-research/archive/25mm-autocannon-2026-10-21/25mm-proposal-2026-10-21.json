@@ -1,0 +1,493 @@
+{
+  "status": "DEFERRED PROPOSAL; not a game template package",
+  "scale": 0.8333333333333334,
+  "area_ratio": 0.6944444444444445,
+  "mass_ratio": 0.5787037037037038,
+  "candidate_25mm": {
+    "dataName": "25mmAutocannon",
+    "friendlyName": "25mm Autocannon",
+    "mount": "OneHull",
+    "requiredProjectName": "Project_Warships",
+    "crew": 0,
+    "attackMode": true,
+    "defenseMode": true,
+    "baseWeaponMass_tons": 2.0,
+    "cooldown_s": 1.0,
+    "salvo_shots": 10,
+    "intraSalvoCooldown_s": 0.2,
+    "efficiency": 1.0,
+    "flatChipping": 0,
+    "magazine": 3000,
+    "ammoMass_kg": 3.182870370370371,
+    "muzzleVelocity_kps": 1.35,
+    "bombardmentValue": 0,
+    "warheadMass_kg": 1.0127314814814816,
+    "targetingRange_km": 200,
+    "pivotRange_deg": 180,
+    "isPointDefenseTargetable": false,
+    "weightedBuildMaterials": {
+      "volatiles": 0.05,
+      "metals": 0.85,
+      "nobleMetals": 0.1
+    },
+    "ammoMaterials": {
+      "volatiles": 0.5,
+      "metals": 0.5
+    },
+    "iconResource": "shipbuildericons/ICO_30mmAutocannon",
+    "modelResource": "shipweapons/30mm_Autocannon",
+    "effectResource": "spaceCombat/MuzzleFlashFlame",
+    "shotModelResource": "spaceCombat/BulletAutocannon",
+    "fireSoundFXResource": "event:/SFX/Game_SFX/Guns/trig_SFX_AutoCannon",
+    "impactVisualFXResource": "spaceCombat/ImpactOrange",
+    "impactSoundFXResource": "event:/SFX/Game_SFX/Ship_Fire_Impacts/trig_SFX_BlasterMediumVeryLoudHighMid020MonoRR",
+    "damage_MJ": 0.9228515625000002,
+    "powerUse_MJ": 0.04918981481481483,
+    "projectileDiameter_mm": 25.0,
+    "hp": 3
+  },
+  "model_scale_factor_separate_from_native_template": 0.8333333333333334,
+  "baseline_guns": {
+    "30mmAutocannon": {
+      "dataName": "30mmAutocannon",
+      "friendlyName": "30mm Autocannon",
+      "mount": "OneHull",
+      "requiredProjectName": "Project_Warships",
+      "crew": 0,
+      "attackMode": true,
+      "defenseMode": true,
+      "baseWeaponMass_tons": 3,
+      "cooldown_s": 1.0,
+      "salvo_shots": 10,
+      "intraSalvoCooldown_s": 0.25,
+      "efficiency": 1.0,
+      "flatChipping": 0,
+      "magazine": 3000,
+      "ammoMass_kg": 5.5,
+      "muzzleVelocity_kps": 1.35,
+      "bombardmentValue": 0,
+      "warheadMass_kg": 1.75,
+      "targetingRange_km": 200,
+      "pivotRange_deg": 180,
+      "isPointDefenseTargetable": false,
+      "weightedBuildMaterials": {
+        "volatiles": 0.05,
+        "metals": 0.85,
+        "nobleMetals": 0.1
+      },
+      "ammoMaterials": {
+        "volatiles": 0.5,
+        "metals": 0.5
+      },
+      "iconResource": "shipbuildericons/ICO_30mmAutocannon",
+      "modelResource": "shipweapons/30mm_Autocannon",
+      "effectResource": "spaceCombat/MuzzleFlashFlame",
+      "shotModelResource": "spaceCombat/BulletAutocannon",
+      "fireSoundFXResource": "event:/SFX/Game_SFX/Guns/trig_SFX_AutoCannon",
+      "impactVisualFXResource": "spaceCombat/ImpactOrange",
+      "impactSoundFXResource": "event:/SFX/Game_SFX/Ship_Fire_Impacts/trig_SFX_BlasterMediumVeryLoudHighMid020MonoRR",
+      "damage_MJ": 3.189375,
+      "powerUse_MJ": 0.085,
+      "projectileDiameter_mm": 30.0
+    },
+    "40mmAutocannon": {
+      "dataName": "40mmAutocannon",
+      "friendlyName": "40mm Autocannon",
+      "mount": "OneHull",
+      "requiredProjectName": "Project_40mmAutocannon",
+      "crew": 0,
+      "attackMode": true,
+      "defenseMode": true,
+      "baseWeaponMass_tons": 25,
+      "cooldown_s": 1.75,
+      "salvo_shots": 6,
+      "intraSalvoCooldown_s": 0.5,
+      "efficiency": 0.9,
+      "flatChipping": 0.025,
+      "magazine": 2000,
+      "ammoMass_kg": 8.8,
+      "muzzleVelocity_kps": 2.6,
+      "bombardmentValue": 0,
+      "warheadMass_kg": 2.8,
+      "targetingRange_km": 350,
+      "pivotRange_deg": 180,
+      "isPointDefenseTargetable": false,
+      "weightedBuildMaterials": {
+        "volatiles": 0.05,
+        "metals": 0.75,
+        "nobleMetals": 0.2
+      },
+      "ammoMaterials": {
+        "volatiles": 0.5,
+        "metals": 0.495,
+        "nobleMetals": 0.005
+      },
+      "iconResource": "shipbuildericons/ICO_40mmAutocannon",
+      "modelResource": "shipweapons/30mm_Autocannon",
+      "effectResource": "spaceCombat/MuzzleFlashFlame",
+      "shotModelResource": "spaceCombat/BulletAutocannon",
+      "fireSoundFXResource": "event:/SFX/Game_SFX/Guns/trig_SFX_AutoCannon",
+      "impactVisualFXResource": "spaceCombat/ImpactOrange",
+      "impactSoundFXResource": "event:/SFX/Game_SFX/Ship_Fire_Impacts/trig_SFX_BlasterMediumVeryLoudHighMid020MonoRR",
+      "damage_MJ": 20.28,
+      "powerUse_MJ": 8.7,
+      "projectileDiameter_mm": 40.0
+    },
+    "6-inchCannon": {
+      "dataName": "6-inchCannon",
+      "friendlyName": "6-inch Cannon",
+      "mount": "OneHull",
+      "requiredProjectName": "Project_Warships",
+      "crew": 2,
+      "attackMode": true,
+      "defenseMode": true,
+      "baseWeaponMass_tons": 25,
+      "cooldown_s": 12,
+      "salvo_shots": 4,
+      "intraSalvoCooldown_s": 2,
+      "efficiency": 1.0,
+      "flatChipping": 0.15,
+      "magazine": 600,
+      "ammoMass_kg": 90.0,
+      "muzzleVelocity_kps": 1.4,
+      "bombardmentValue": 0,
+      "warheadMass_kg": 40.0,
+      "targetingRange_km": 250,
+      "pivotRange_deg": 180,
+      "isPointDefenseTargetable": true,
+      "weightedBuildMaterials": {
+        "volatiles": 0.05,
+        "metals": 0.85,
+        "nobleMetals": 0.1
+      },
+      "ammoMaterials": {
+        "volatiles": 0.5,
+        "metals": 0.5
+      },
+      "iconResource": "shipbuildericons/ICO_6-InchCannon",
+      "modelResource": "shipweapons/8-Inch_Cannon",
+      "effectResource": "spaceCombat/MuzzleFlashFlame",
+      "shotModelResource": "spaceCombat/BulletGun",
+      "fireSoundFXResource": "event:/SFX/Game_SFX/Guns/trig_SFX_Cannon",
+      "impactVisualFXResource": "spaceCombat/ImpactOrange",
+      "impactSoundFXResource": "event:/SFX/Game_SFX/Ship_Fire_Impacts/trig_SFX_BlasterLongLoudMid017MonoRR",
+      "damage_MJ": 22.05,
+      "powerUse_MJ": 0.675,
+      "projectileDiameter_mm": 152.4
+    },
+    "8-inchCannon": {
+      "dataName": "8-inchCannon",
+      "friendlyName": "8-inch Cannon",
+      "mount": "TwoHullHoriz",
+      "requiredProjectName": "Project_PatrolVessels",
+      "crew": 2,
+      "attackMode": true,
+      "defenseMode": false,
+      "baseWeaponMass_tons": 50,
+      "cooldown_s": 15,
+      "salvo_shots": 4,
+      "intraSalvoCooldown_s": 2.5,
+      "efficiency": 1.0,
+      "flatChipping": 0.2,
+      "magazine": 400,
+      "ammoMass_kg": 200.0,
+      "muzzleVelocity_kps": 1.4,
+      "bombardmentValue": 0,
+      "warheadMass_kg": 90.0,
+      "targetingRange_km": 250,
+      "pivotRange_deg": 180,
+      "isPointDefenseTargetable": true,
+      "weightedBuildMaterials": {
+        "volatiles": 0.05,
+        "metals": 0.85,
+        "nobleMetals": 0.1
+      },
+      "ammoMaterials": {
+        "volatiles": 0.5,
+        "metals": 0.5
+      },
+      "iconResource": "shipbuildericons/ICO_8-InchCannon",
+      "modelResource": "shipweapons/12-Inch_Cannon",
+      "effectResource": "spaceCombat/MuzzleFlashFlame",
+      "shotModelResource": "spaceCombat/BulletGun",
+      "fireSoundFXResource": "event:/SFX/Game_SFX/Guns/trig_SFX_Cannon",
+      "impactVisualFXResource": "spaceCombat/ImpactOrange",
+      "impactSoundFXResource": "event:/SFX/Game_SFX/Ship_Fire_Impacts/trig_SFX_BlasterLongLoudMid017MonoRR",
+      "damage_MJ": 49,
+      "powerUse_MJ": 1.40625,
+      "projectileDiameter_mm": 203.2
+    }
+  },
+  "stats": {
+    "30mmAutocannon": {
+      "shot_MJ": 1.5946875000000003,
+      "cycle_s": 3.25,
+      "shots_s": 3.076923076923077,
+      "raw_DPS": 4.90673076923077,
+      "DPS_per_cell": 4.90673076923077,
+      "loaded_mass_t": 19.5,
+      "ammo_mass_t": 16.5,
+      "endurance_s": 975.0,
+      "total_magazine_MJ": 4784.062500000001,
+      "average_electric_MW": 0.26153846153846155,
+      "average_module_heat_MW": 0.0
+    },
+    "40mmAutocannon": {
+      "shot_MJ": 9.464,
+      "cycle_s": 4.25,
+      "shots_s": 1.411764705882353,
+      "raw_DPS": 13.36094117647059,
+      "DPS_per_cell": 13.36094117647059,
+      "loaded_mass_t": 42.6,
+      "ammo_mass_t": 17.6,
+      "endurance_s": 1416.6666666666665,
+      "total_magazine_MJ": 18928.0,
+      "average_electric_MW": 13.647058823529411,
+      "average_module_heat_MW": 1.3647058823529408
+    },
+    "6-inchCannon": {
+      "shot_MJ": 39.199999999999996,
+      "cycle_s": 18,
+      "shots_s": 0.2222222222222222,
+      "raw_DPS": 8.71111111111111,
+      "DPS_per_cell": 8.71111111111111,
+      "loaded_mass_t": 79.0,
+      "ammo_mass_t": 54.0,
+      "endurance_s": 2700.0,
+      "total_magazine_MJ": 23519.999999999996,
+      "average_electric_MW": 0.15,
+      "average_module_heat_MW": 0.0
+    },
+    "8-inchCannon": {
+      "shot_MJ": 88.19999999999999,
+      "cycle_s": 22.5,
+      "shots_s": 0.17777777777777778,
+      "raw_DPS": 15.679999999999998,
+      "DPS_per_cell": 7.839999999999999,
+      "loaded_mass_t": 130.0,
+      "ammo_mass_t": 80.0,
+      "endurance_s": 2250.0,
+      "total_magazine_MJ": 35279.99999999999,
+      "average_electric_MW": 0.25,
+      "average_module_heat_MW": 0.0
+    },
+    "25mmAutocannon": {
+      "shot_MJ": 0.9228515625000002,
+      "cycle_s": 2.8,
+      "shots_s": 3.5714285714285716,
+      "raw_DPS": 3.295898437500001,
+      "DPS_per_cell": 3.295898437500001,
+      "loaded_mass_t": 11.548611111111112,
+      "ammo_mass_t": 9.548611111111112,
+      "endurance_s": 840.0,
+      "total_magazine_MJ": 2768.5546875000005,
+      "average_electric_MW": 0.1756779100529101,
+      "average_module_heat_MW": 0.0
+    }
+  },
+  "hull_scenarios": [
+    {
+      "hull": "Gunship",
+      "tier": 1,
+      "H": 0,
+      "K": 0,
+      "V": 0,
+      "old30": 0.0,
+      "all25": 0.0,
+      "pair30": 0.0,
+      "old40": 0.0,
+      "pair40": 0.0
+    },
+    {
+      "hull": "Escort",
+      "tier": 1,
+      "H": 2,
+      "K": 0,
+      "V": 1,
+      "old30": 9.81346153846154,
+      "all25": 6.591796875000002,
+      "pair30": 6.591796875000002,
+      "old40": 26.72188235294118,
+      "pair40": 6.591796875000002
+    },
+    {
+      "hull": "Corvette",
+      "tier": 1,
+      "H": 1,
+      "K": 0,
+      "V": 0,
+      "old30": 4.90673076923077,
+      "all25": 3.295898437500001,
+      "pair30": 3.295898437500001,
+      "old40": 13.36094117647059,
+      "pair40": 3.295898437500001
+    },
+    {
+      "hull": "Frigate",
+      "tier": 1,
+      "H": 2,
+      "K": 1,
+      "V": 0,
+      "old30": 9.81346153846154,
+      "all25": 6.591796875000002,
+      "pair30": 4.90673076923077,
+      "old40": 26.72188235294118,
+      "pair40": 13.36094117647059
+    },
+    {
+      "hull": "Monitor",
+      "tier": 2,
+      "H": 4,
+      "K": 2,
+      "V": 0,
+      "old30": 19.62692307692308,
+      "all25": 13.183593750000004,
+      "pair30": 9.81346153846154,
+      "old40": 53.44376470588236,
+      "pair40": 26.72188235294118
+    },
+    {
+      "hull": "Destroyer",
+      "tier": 2,
+      "H": 2,
+      "K": 1,
+      "V": 0,
+      "old30": 9.81346153846154,
+      "all25": 6.591796875000002,
+      "pair30": 4.90673076923077,
+      "old40": 26.72188235294118,
+      "pair40": 13.36094117647059
+    },
+    {
+      "hull": "Cruiser",
+      "tier": 2,
+      "H": 3,
+      "K": 1,
+      "V": 0,
+      "old30": 14.720192307692312,
+      "all25": 9.887695312500004,
+      "pair30": 8.202629206730771,
+      "old40": 40.08282352941177,
+      "pair40": 16.65683961397059
+    },
+    {
+      "hull": "Battlecruiser",
+      "tier": 2,
+      "H": 2,
+      "K": 1,
+      "V": 0,
+      "old30": 9.81346153846154,
+      "all25": 6.591796875000002,
+      "pair30": 4.90673076923077,
+      "old40": 26.72188235294118,
+      "pair40": 13.36094117647059
+    },
+    {
+      "hull": "Battleship",
+      "tier": 3,
+      "H": 6,
+      "K": 2,
+      "V": 3,
+      "old30": 29.440384615384623,
+      "all25": 19.775390625000007,
+      "pair30": 16.405258413461542,
+      "old40": 80.16564705882354,
+      "pair40": 33.31367922794118
+    },
+    {
+      "hull": "Lancer",
+      "tier": 3,
+      "H": 3,
+      "K": 1,
+      "V": 0,
+      "old30": 14.720192307692312,
+      "all25": 9.887695312500004,
+      "pair30": 8.202629206730771,
+      "old40": 40.08282352941177,
+      "pair40": 16.65683961397059
+    },
+    {
+      "hull": "Dreadnought",
+      "tier": 3,
+      "H": 8,
+      "K": 4,
+      "V": 4,
+      "old30": 39.25384615384616,
+      "all25": 26.367187500000007,
+      "pair30": 19.62692307692308,
+      "old40": 106.88752941176472,
+      "pair40": 53.44376470588236
+    },
+    {
+      "hull": "Titan",
+      "tier": 3,
+      "H": 6,
+      "K": 2,
+      "V": 3,
+      "old30": 29.440384615384623,
+      "all25": 19.775390625000007,
+      "pair30": 16.405258413461542,
+      "old40": 80.16564705882354,
+      "pair40": 33.31367922794118
+    }
+  ],
+  "geometry_limits": {
+    "old_sphere_diameter_m": 10.793398624786606,
+    "posed_yaw_diameter_m": 7.897976013171463,
+    "pitch_yaw_diameter_bound_m": 8.061036191641396
+  },
+  "sources": [
+    {
+      "path": "D:\\Games\\SteamLibrary\\steamapps\\common\\Terra Invicta\\TerraInvicta_Data\\StreamingAssets\\Templates\\TIGunTemplate.json",
+      "sha256": "1D7093358EC282391003CB11E6566CC09258881F4EA2C10179FDE9AFD6723662"
+    },
+    {
+      "path": "C:\\Users\\imper\\Documents\\GitHub\\TI-Economic-Equalization-Overhaul\\TIEconomyMod\\ModFiles\\TIGunTemplate.json",
+      "sha256": "62E0B9BDB6EEE4257DE0EF69335CC153104335789978DAF01F9CAF8FC1DCDF73"
+    },
+    {
+      "path": "D:\\Games\\SteamLibrary\\steamapps\\common\\Terra Invicta\\TerraInvicta_Data\\StreamingAssets\\Templates\\TIShipHullTemplate.json",
+      "sha256": "36952BDDFFCBEBE1C3AB2C2141B7D7DF53F985C0EED326C5A43A9B52BD86826B"
+    },
+    {
+      "path": "C:\\Users\\imper\\Documents\\GitHub\\TI-Economic-Equalization-Overhaul\\TIEconomyMod\\ModFiles\\TIShipHullTemplate.json",
+      "sha256": "ED0A6EE01A2F5931324B15897A923AB9EB6F5A822A25FE7BF02E9D1F7E6D4318"
+    },
+    {
+      "path": "D:\\Games\\SteamLibrary\\steamapps\\common\\Terra Invicta\\TerraInvicta_Data\\StreamingAssets\\Templates\\TISpaceShipTemplate.json",
+      "sha256": "B53FD21B71331334D4E47CD464AAFBEE3B750AC296A453CE4590085F46FE233F"
+    },
+    {
+      "path": "D:\\Games\\SteamLibrary\\steamapps\\common\\Terra Invicta\\TerraInvicta_Data\\StreamingAssets\\Templates\\TIProjectTemplate.json",
+      "sha256": "65C4AF0411555B0BABE86001F1CF5D0E83999B831D6D72E7319702C2C03542D7"
+    },
+    {
+      "path": "D:\\Games\\SteamLibrary\\steamapps\\common\\Terra Invicta\\TerraInvicta_Data\\Managed\\Assembly-CSharp.dll",
+      "sha256": "4A4B9AAE4154E444E9727204205D2D42AE8ED9E1C5F92CDC1280074A259D8350"
+    },
+    {
+      "path": "C:\\Users\\imper\\Documents\\GitHub\\TI-Economic-Equalization-Overhaul\\docs\\ship-balance-research\\turret-clearance\\weapon-mesh-inspection-2026-10-21.json",
+      "sha256": "70C50C33BF49963CFD32E4D21F4CA33E6ADD9B8DBAE5DDE1EF6192595EBAD4F2"
+    },
+    {
+      "path": "C:\\Users\\imper\\Documents\\GitHub\\TI-Economic-Equalization-Overhaul\\TIEconomyMod\\Core\\WeaponCadenceMath.cs",
+      "sha256": "BECE58D0AB3E6B5F03CD903A0D61A4E0A58569C9EF444CCE8162DC8EB5DCDADE"
+    },
+    {
+      "path": "C:\\Users\\imper\\Documents\\GitHub\\TI-Economic-Equalization-Overhaul\\TIEconomyMod\\Core\\ProjectileGeometryRegistry.cs",
+      "sha256": "958069D576B72351B34F8362DC4D916766FA1B2236A535497D7EB33F83C8D9C1"
+    },
+    {
+      "path": "C:\\Users\\imper\\Documents\\GitHub\\TI-Economic-Equalization-Overhaul\\TIEconomyMod\\Core\\GunPowerRegistry.cs",
+      "sha256": "5B531B9DC7AB0AE3578D6C58B218742992CDBAB1B2634A0FA3B6DAFB2CB334B5"
+    }
+  ],
+  "native_rules": {
+    "averageCooldown_s": "(cooldown_s + intraSalvoCooldown_s * (salvo_shots - 1)) / salvo_shots",
+    "internalSize": "TwoHullHoriz and TwoHullVert return 2; OneHull returns 1",
+    "hitPoints": "hp ?? (3 * internalSize)",
+    "training_rate_deg_s": "270 / weaponTemplate.internalSize",
+    "magazineMass_kg": "magazine * ammoMass_kg",
+    "buildMass_tons": "baseWeaponMass_tons + (1 + shipMagazineMultiplier) * magazineMass_tons"
+  }
+}

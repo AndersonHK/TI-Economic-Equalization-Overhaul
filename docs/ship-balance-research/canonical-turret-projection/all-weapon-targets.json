@@ -1,0 +1,3322 @@
+[
+  {
+    "name": "30mmAutocannon",
+    "kind": "TIGunTemplate",
+    "resource": "shipweapons/30mm_Autocannon",
+    "mount": "OneHull",
+    "factor": 0.19985881931255373,
+    "reference": "declared caliber / inscribed muzzle",
+    "target_m": 0.03,
+    "measured_m": 0.1501059603133341,
+    "before_dimensions_m": [
+      3.4953175316151714,
+      2.8729419022477494,
+      6.11009011256929
+    ],
+    "canonical_uniform_dimensions_m": [
+      0.6985700349910778,
+      0.5741827765367973,
+      1.2211553957914068
+    ]
+  },
+  {
+    "name": "35mmAutocannon",
+    "kind": "TIGunTemplate",
+    "resource": "shipweapons/30mm_Autocannon",
+    "mount": "HalfNose",
+    "factor": 0.2331686225313127,
+    "reference": "declared caliber / inscribed muzzle",
+    "target_m": 0.035,
+    "measured_m": 0.1501059603133341,
+    "before_dimensions_m": [
+      3.4953175316151714,
+      2.8729419022477494,
+      6.11009011256929
+    ],
+    "canonical_uniform_dimensions_m": [
+      0.8149983741562575,
+      0.669879905959597,
+      1.4246812950899748
+    ]
+  },
+  {
+    "name": "40mmNoseAutocannon",
+    "kind": "TIGunTemplate",
+    "resource": "shipweapons/30mm_Autocannon",
+    "mount": "HalfNose",
+    "factor": 0.26647842575007163,
+    "reference": "declared caliber / inscribed muzzle",
+    "target_m": 0.04,
+    "measured_m": 0.1501059603133341,
+    "before_dimensions_m": [
+      3.4953175316151714,
+      2.8729419022477494,
+      6.11009011256929
+    ],
+    "canonical_uniform_dimensions_m": [
+      0.9314267133214371,
+      0.7655770353823964,
+      1.6282071943885426
+    ]
+  },
+  {
+    "name": "40mmAutocannon",
+    "kind": "TIGunTemplate",
+    "resource": "shipweapons/30mm_Autocannon",
+    "mount": "OneHull",
+    "factor": 0.26647842575007163,
+    "reference": "declared caliber / inscribed muzzle",
+    "target_m": 0.04,
+    "measured_m": 0.1501059603133341,
+    "before_dimensions_m": [
+      3.4953175316151714,
+      2.8729419022477494,
+      6.11009011256929
+    ],
+    "canonical_uniform_dimensions_m": [
+      0.9314267133214371,
+      0.7655770353823964,
+      1.6282071943885426
+    ]
+  },
+  {
+    "name": "6-inchCannon",
+    "kind": "TIGunTemplate",
+    "resource": "shipweapons/8-Inch_Cannon",
+    "mount": "OneHull",
+    "factor": 0.981645730971976,
+    "reference": "declared caliber / inscribed muzzle",
+    "target_m": 0.1524,
+    "measured_m": 0.15524949092286197,
+    "before_dimensions_m": [
+      3.4953175316151714,
+      2.842941971189635,
+      4.985625897760311
+    ],
+    "canonical_uniform_dimensions_m": [
+      3.431163533301538,
+      2.79076184941936,
+      4.894118378759735
+    ]
+  },
+  {
+    "name": "8-inchCannon",
+    "kind": "TIGunTemplate",
+    "resource": "shipweapons/12-Inch_Cannon",
+    "mount": "TwoHullHoriz",
+    "factor": 1.0609387439973064,
+    "reference": "declared caliber / inscribed muzzle",
+    "target_m": 0.2032,
+    "measured_m": 0.19152849412813594,
+    "before_dimensions_m": [
+      3.4953175316151714,
+      2.8059418509770815,
+      5.799860237392018
+    ],
+    "canonical_uniform_dimensions_m": [
+      3.708317791863565,
+      2.9769324231051018,
+      6.153296435618606
+    ]
+  },
+  {
+    "name": "10-inchCannon",
+    "kind": "TIGunTemplate",
+    "resource": "shipweapons/12-Inch_Cannon",
+    "mount": "OneNose",
+    "factor": 1.3261734299966328,
+    "reference": "declared caliber / inscribed muzzle",
+    "target_m": 0.254,
+    "measured_m": 0.19152849412813594,
+    "before_dimensions_m": [
+      3.4953175316151714,
+      2.8059418509770815,
+      5.799860237392018
+    ],
+    "canonical_uniform_dimensions_m": [
+      4.635397239829456,
+      3.721165528881377,
+      7.691620544523257
+    ]
+  },
+  {
+    "name": "12-inchCannon",
+    "kind": "TIGunTemplate",
+    "resource": "shipweapons/16-Inch_Cannon",
+    "mount": "TwoNoseVert",
+    "factor": 1.181637928397127,
+    "reference": "declared caliber / inscribed muzzle",
+    "target_m": 0.3048,
+    "measured_m": 0.25794703493772947,
+    "before_dimensions_m": [
+      3.4953175316151714,
+      2.8309419218010596,
+      6.707099189871862
+    ],
+    "canonical_uniform_dimensions_m": [
+      4.130199767147911,
+      3.3451483478895856,
+      7.925362792274235
+    ]
+  },
+  {
+    "name": "LightRailgunBatteryMk1",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/small_railgun_battery",
+    "mount": "OneHull",
+    "factor": 0.4917441470003903,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.045202273819545266,
+    "measured_m": 0.09192234233040986,
+    "before_dimensions_m": [
+      3.4953175316151714,
+      2.1917188616957244,
+      3.8683683377634477
+    ],
+    "canonical_uniform_dimensions_m": [
+      1.7188019380796122,
+      1.0777649221092305,
+      1.9022474885368044
+    ]
+  },
+  {
+    "name": "LightRailgunBatteryMk2",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/small_railgun_battery",
+    "mount": "OneHull",
+    "factor": 0.4917441470003903,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.045202273819545266,
+    "measured_m": 0.09192234233040986,
+    "before_dimensions_m": [
+      3.4953175316151714,
+      2.1917188616957244,
+      3.8683683377634477
+    ],
+    "canonical_uniform_dimensions_m": [
+      1.7188019380796122,
+      1.0777649221092305,
+      1.9022474885368044
+    ]
+  },
+  {
+    "name": "LightRailgunBatteryMk3",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/small_railgun_battery",
+    "mount": "OneHull",
+    "factor": 0.4917441470003903,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.045202273819545266,
+    "measured_m": 0.09192234233040986,
+    "before_dimensions_m": [
+      3.4953175316151714,
+      2.1917188616957244,
+      3.8683683377634477
+    ],
+    "canonical_uniform_dimensions_m": [
+      1.7188019380796122,
+      1.0777649221092305,
+      1.9022474885368044
+    ]
+  },
+  {
+    "name": "RailgunBatteryMk1",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/medium_railgun_battery",
+    "mount": "TwoHullHoriz",
+    "factor": 0.7375971087428285,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.05827621740129213,
+    "measured_m": 0.07900819663002609,
+    "before_dimensions_m": [
+      3.4953175316151714,
+      2.21371860072318,
+      4.449846551165155
+    ],
+    "canonical_uniform_dimensions_m": [
+      2.5781361054574705,
+      1.6328324394636375,
+      3.282193950488665
+    ]
+  },
+  {
+    "name": "RailgunBatteryMk2",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/medium_railgun_battery",
+    "mount": "TwoHullHoriz",
+    "factor": 0.7375971087428285,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.05827621740129213,
+    "measured_m": 0.07900819663002609,
+    "before_dimensions_m": [
+      3.4953175316151714,
+      2.21371860072318,
+      4.449846551165155
+    ],
+    "canonical_uniform_dimensions_m": [
+      2.5781361054574705,
+      1.6328324394636375,
+      3.282193950488665
+    ]
+  },
+  {
+    "name": "RailgunBatteryMk3",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/medium_railgun_battery",
+    "mount": "TwoHullHoriz",
+    "factor": 0.7375971087428285,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.05827621740129213,
+    "measured_m": 0.07900819663002609,
+    "before_dimensions_m": [
+      3.4953175316151714,
+      2.21371860072318,
+      4.449846551165155
+    ],
+    "canonical_uniform_dimensions_m": [
+      2.5781361054574705,
+      1.6328324394636375,
+      3.282193950488665
+    ]
+  },
+  {
+    "name": "HeavyRailgunBatteryMk1",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/large_railgun_battery",
+    "mount": "FourHull",
+    "factor": 0.4130476227637987,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.06816027735893099,
+    "measured_m": 0.165017963068894,
+    "before_dimensions_m": [
+      5.842532848972269,
+      2.3490829532385717,
+      8.88572755390447
+    ],
+    "canonical_uniform_dimensions_m": [
+      2.4132443041874,
+      0.9702831295101557,
+      3.670228642667025
+    ]
+  },
+  {
+    "name": "HeavyRailgunBatteryMk2",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/large_railgun_battery",
+    "mount": "FourHull",
+    "factor": 0.4130476227637987,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.06816027735893099,
+    "measured_m": 0.165017963068894,
+    "before_dimensions_m": [
+      5.842532848972269,
+      2.3490829532385717,
+      8.88572755390447
+    ],
+    "canonical_uniform_dimensions_m": [
+      2.4132443041874,
+      0.9702831295101557,
+      3.670228642667025
+    ]
+  },
+  {
+    "name": "HeavyRailgunBatteryMk3",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/large_railgun_battery",
+    "mount": "FourHull",
+    "factor": 0.4130476227637987,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.06816027735893099,
+    "measured_m": 0.165017963068894,
+    "before_dimensions_m": [
+      5.842532848972269,
+      2.3490829532385717,
+      8.88572755390447
+    ],
+    "canonical_uniform_dimensions_m": [
+      2.4132443041874,
+      0.9702831295101557,
+      3.670228642667025
+    ]
+  },
+  {
+    "name": "LightRailCannonMk1",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/small_railgun_cannon",
+    "mount": "OneNose",
+    "factor": 1.0,
+    "reference": "closed rail face: bore unresolved",
+    "target_m": 0.06277615218659174,
+    "measured_m": null,
+    "before_dimensions_m": [
+      2.236392169391195,
+      1.3829585146913494,
+      3.8332732545641197
+    ],
+    "canonical_uniform_dimensions_m": [
+      2.236392169391195,
+      1.3829585146913494,
+      3.8332732545641197
+    ]
+  },
+  {
+    "name": "LightRailCannonMk2",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/small_railgun_cannon",
+    "mount": "OneNose",
+    "factor": 1.0,
+    "reference": "closed rail face: bore unresolved",
+    "target_m": 0.06277615218659174,
+    "measured_m": null,
+    "before_dimensions_m": [
+      2.236392169391195,
+      1.3829585146913494,
+      3.8332732545641197
+    ],
+    "canonical_uniform_dimensions_m": [
+      2.236392169391195,
+      1.3829585146913494,
+      3.8332732545641197
+    ]
+  },
+  {
+    "name": "LightRailCannonMk3",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/small_railgun_cannon",
+    "mount": "OneNose",
+    "factor": 1.0,
+    "reference": "closed rail face: bore unresolved",
+    "target_m": 0.06277615218659174,
+    "measured_m": null,
+    "before_dimensions_m": [
+      2.236392169391195,
+      1.3829585146913494,
+      3.8332732545641197
+    ],
+    "canonical_uniform_dimensions_m": [
+      2.236392169391195,
+      1.3829585146913494,
+      3.8332732545641197
+    ]
+  },
+  {
+    "name": "RailCannonMk1",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/medium_railgun_cannon",
+    "mount": "TwoNoseVert",
+    "factor": 1.0,
+    "reference": "closed rail face: bore unresolved",
+    "target_m": 0.07342343301213786,
+    "measured_m": null,
+    "before_dimensions_m": [
+      2.8819486514623804,
+      1.9432677971047987,
+      6.089018308499312
+    ],
+    "canonical_uniform_dimensions_m": [
+      2.8819486514623804,
+      1.9432677971047987,
+      6.089018308499312
+    ]
+  },
+  {
+    "name": "RailCannonMk2",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/medium_railgun_cannon",
+    "mount": "TwoNoseVert",
+    "factor": 1.0,
+    "reference": "closed rail face: bore unresolved",
+    "target_m": 0.07342343301213786,
+    "measured_m": null,
+    "before_dimensions_m": [
+      2.8819486514623804,
+      1.9432677971047987,
+      6.089018308499312
+    ],
+    "canonical_uniform_dimensions_m": [
+      2.8819486514623804,
+      1.9432677971047987,
+      6.089018308499312
+    ]
+  },
+  {
+    "name": "RailCannonMk3",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/medium_railgun_cannon",
+    "mount": "TwoNoseVert",
+    "factor": 1.0,
+    "reference": "closed rail face: bore unresolved",
+    "target_m": 0.07342343301213786,
+    "measured_m": null,
+    "before_dimensions_m": [
+      2.8819486514623804,
+      1.9432677971047987,
+      6.089018308499312
+    ],
+    "canonical_uniform_dimensions_m": [
+      2.8819486514623804,
+      1.9432677971047987,
+      6.089018308499312
+    ]
+  },
+  {
+    "name": "HeavyRailCannonMk1",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/large_railgun_cannon",
+    "mount": "ThreeNoseAngle",
+    "factor": 0.43641381183749595,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.0840488495061547,
+    "measured_m": 0.19258980175781265,
+    "before_dimensions_m": [
+      2.196988523621144,
+      1.448751654504595,
+      4.998634134845231
+    ],
+    "canonical_uniform_dimensions_m": [
+      0.958796136156736,
+      0.6322552319482293,
+      2.181472976768831
+    ]
+  },
+  {
+    "name": "HeavyRailCannonMk2",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/large_railgun_cannon",
+    "mount": "ThreeNoseAngle",
+    "factor": 0.43641381183749595,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.0840488495061547,
+    "measured_m": 0.19258980175781265,
+    "before_dimensions_m": [
+      2.196988523621144,
+      1.448751654504595,
+      4.998634134845231
+    ],
+    "canonical_uniform_dimensions_m": [
+      0.958796136156736,
+      0.6322552319482293,
+      2.181472976768831
+    ]
+  },
+  {
+    "name": "HeavyRailCannonMk3",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/large_railgun_cannon",
+    "mount": "ThreeNoseAngle",
+    "factor": 0.43641381183749595,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.0840488495061547,
+    "measured_m": 0.19258980175781265,
+    "before_dimensions_m": [
+      2.196988523621144,
+      1.448751654504595,
+      4.998634134845231
+    ],
+    "canonical_uniform_dimensions_m": [
+      0.958796136156736,
+      0.6322552319482293,
+      2.181472976768831
+    ]
+  },
+  {
+    "name": "SpinalRailgunMk1",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/huge_railgun_cannon",
+    "mount": "FourNose",
+    "factor": 1.0,
+    "reference": "closed rail face: bore unresolved",
+    "target_m": 0.09250772880753862,
+    "measured_m": null,
+    "before_dimensions_m": [
+      3.4953175316151714,
+      2.2501298433831245,
+      5.937450394504253
+    ],
+    "canonical_uniform_dimensions_m": [
+      3.4953175316151714,
+      2.2501298433831245,
+      5.937450394504253
+    ]
+  },
+  {
+    "name": "SpinalRailgunMk2",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/huge_railgun_cannon",
+    "mount": "FourNose",
+    "factor": 1.0,
+    "reference": "closed rail face: bore unresolved",
+    "target_m": 0.09250772880753862,
+    "measured_m": null,
+    "before_dimensions_m": [
+      3.4953175316151714,
+      2.2501298433831245,
+      5.937450394504253
+    ],
+    "canonical_uniform_dimensions_m": [
+      3.4953175316151714,
+      2.2501298433831245,
+      5.937450394504253
+    ]
+  },
+  {
+    "name": "SpinalRailgunMk3",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/huge_railgun_cannon",
+    "mount": "FourNose",
+    "factor": 1.0,
+    "reference": "closed rail face: bore unresolved",
+    "target_m": 0.09250772880753862,
+    "measured_m": null,
+    "before_dimensions_m": [
+      3.4953175316151714,
+      2.2501298433831245,
+      5.937450394504253
+    ],
+    "canonical_uniform_dimensions_m": [
+      3.4953175316151714,
+      2.2501298433831245,
+      5.937450394504253
+    ]
+  },
+  {
+    "name": "LightCoilgunBatteryMk1",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/small_coilgun_battery",
+    "mount": "OneHull",
+    "factor": 0.2695775621562551,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.044099336365158705,
+    "measured_m": 0.163586820848233,
+    "before_dimensions_m": [
+      3.4953175316151714,
+      2.311718847145446,
+      4.3117117175776265
+    ],
+    "canonical_uniform_dimensions_m": [
+      0.942259179134837,
+      0.623187531204138,
+      1.1623407335451361
+    ]
+  },
+  {
+    "name": "LightCoilgunBatteryMk2",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/small_coilgun_battery",
+    "mount": "OneHull",
+    "factor": 0.2695775621562551,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.044099336365158705,
+    "measured_m": 0.163586820848233,
+    "before_dimensions_m": [
+      3.4953175316151714,
+      2.311718847145446,
+      4.3117117175776265
+    ],
+    "canonical_uniform_dimensions_m": [
+      0.942259179134837,
+      0.623187531204138,
+      1.1623407335451361
+    ]
+  },
+  {
+    "name": "LightCoilgunBatteryMk3",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/small_coilgun_battery",
+    "mount": "OneHull",
+    "factor": 0.2695775621562551,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.044099336365158705,
+    "measured_m": 0.163586820848233,
+    "before_dimensions_m": [
+      3.4953175316151714,
+      2.311718847145446,
+      4.3117117175776265
+    ],
+    "canonical_uniform_dimensions_m": [
+      0.942259179134837,
+      0.623187531204138,
+      1.1623407335451361
+    ]
+  },
+  {
+    "name": "CoilgunBatteryMk1",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/medium_coilgun_battery",
+    "mount": "TwoHullHoriz",
+    "factor": 0.33523495301859946,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.054840020201519436,
+    "measured_m": 0.163586820848233,
+    "before_dimensions_m": [
+      3.4953175316151714,
+      2.2767188634398714,
+      4.208712032245583
+    ],
+    "canonical_uniform_dimensions_m": [
+      1.171752608496099,
+      0.7632357412218245,
+      1.4109073803986625
+    ]
+  },
+  {
+    "name": "CoilgunBatteryMk2",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/medium_coilgun_battery",
+    "mount": "TwoHullHoriz",
+    "factor": 0.33523495301859946,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.054840020201519436,
+    "measured_m": 0.163586820848233,
+    "before_dimensions_m": [
+      3.4953175316151714,
+      2.2767188634398714,
+      4.208712032245583
+    ],
+    "canonical_uniform_dimensions_m": [
+      1.171752608496099,
+      0.7632357412218245,
+      1.4109073803986625
+    ]
+  },
+  {
+    "name": "CoilgunBatteryMk3",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/medium_coilgun_battery",
+    "mount": "TwoHullHoriz",
+    "factor": 0.33523495301859946,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.054840020201519436,
+    "measured_m": 0.163586820848233,
+    "before_dimensions_m": [
+      3.4953175316151714,
+      2.2767188634398714,
+      4.208712032245583
+    ],
+    "canonical_uniform_dimensions_m": [
+      1.171752608496099,
+      0.7632357412218245,
+      1.4109073803986625
+    ]
+  },
+  {
+    "name": "HeavyCoilgunBatteryMk1",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/large_coilgun_battery",
+    "mount": "FourHull",
+    "factor": 0.517378126641899,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.06909409582855443,
+    "measured_m": 0.13354661179245716,
+    "before_dimensions_m": [
+      5.842532848972269,
+      2.3490829532385717,
+      8.03841556773412
+    ],
+    "canonical_uniform_dimensions_m": [
+      3.0227987002450294,
+      1.2153641376729918,
+      4.158900387603356
+    ]
+  },
+  {
+    "name": "HeavyCoilgunBatteryMk2",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/large_coilgun_battery",
+    "mount": "FourHull",
+    "factor": 0.517378126641899,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.06909409582855443,
+    "measured_m": 0.13354661179245716,
+    "before_dimensions_m": [
+      5.842532848972269,
+      2.3490829532385717,
+      8.03841556773412
+    ],
+    "canonical_uniform_dimensions_m": [
+      3.0227987002450294,
+      1.2153641376729918,
+      4.158900387603356
+    ]
+  },
+  {
+    "name": "HeavyCoilgunBatteryMk3",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/large_coilgun_battery",
+    "mount": "FourHull",
+    "factor": 0.517378126641899,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.06909409582855443,
+    "measured_m": 0.13354661179245716,
+    "before_dimensions_m": [
+      5.842532848972269,
+      2.3490829532385717,
+      8.03841556773412
+    ],
+    "canonical_uniform_dimensions_m": [
+      3.0227987002450294,
+      1.2153641376729918,
+      4.158900387603356
+    ]
+  },
+  {
+    "name": "LightCoilCannonMk1",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/small_coilgun_cannon",
+    "mount": "OneNose",
+    "factor": 0.7209472662990826,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.05891666667627614,
+    "measured_m": 0.08172118742986502,
+    "before_dimensions_m": [
+      2.236392169391195,
+      1.3990491992013467,
+      4.030905436926001
+    ],
+    "canonical_uniform_dimensions_m": [
+      1.6123208208952566,
+      1.0086406955821314,
+      2.9060702554619096
+    ]
+  },
+  {
+    "name": "LightCoilCannonMk2",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/small_coilgun_cannon",
+    "mount": "OneNose",
+    "factor": 0.7209472662990826,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.05891666667627614,
+    "measured_m": 0.08172118742986502,
+    "before_dimensions_m": [
+      2.236392169391195,
+      1.3990491992013467,
+      4.030905436926001
+    ],
+    "canonical_uniform_dimensions_m": [
+      1.6123208208952566,
+      1.0086406955821314,
+      2.9060702554619096
+    ]
+  },
+  {
+    "name": "LightCoilCannonMk3",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/small_coilgun_cannon",
+    "mount": "OneNose",
+    "factor": 0.7209472662990826,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.05891666667627614,
+    "measured_m": 0.08172118742986502,
+    "before_dimensions_m": [
+      2.236392169391195,
+      1.3990491992013467,
+      4.030905436926001
+    ],
+    "canonical_uniform_dimensions_m": [
+      1.6123208208952566,
+      1.0086406955821314,
+      2.9060702554619096
+    ]
+  },
+  {
+    "name": "CoilCannonMk1",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/medium_coilgun_cannon",
+    "mount": "TwoNoseVert",
+    "factor": 0.9953029348016793,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.07462730981837636,
+    "measured_m": 0.07497949338735381,
+    "before_dimensions_m": [
+      2.8082429638782997,
+      1.9179185669904748,
+      4.561631440403684
+    ],
+    "canonical_uniform_dimensions_m": [
+      2.795052463584238,
+      1.9089099784362507,
+      4.540205160117399
+    ]
+  },
+  {
+    "name": "CoilCannonMk2",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/medium_coilgun_cannon",
+    "mount": "TwoNoseVert",
+    "factor": 0.9953029348016793,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.07462730981837636,
+    "measured_m": 0.07497949338735381,
+    "before_dimensions_m": [
+      2.8082429638782997,
+      1.9179185669904748,
+      4.561631440403684
+    ],
+    "canonical_uniform_dimensions_m": [
+      2.795052463584238,
+      1.9089099784362507,
+      4.540205160117399
+    ]
+  },
+  {
+    "name": "CoilCannonMk3",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/medium_coilgun_cannon",
+    "mount": "TwoNoseVert",
+    "factor": 0.9953029348016793,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.07462730981837636,
+    "measured_m": 0.07497949338735381,
+    "before_dimensions_m": [
+      2.8082429638782997,
+      1.9179185669904748,
+      4.561631440403684
+    ],
+    "canonical_uniform_dimensions_m": [
+      2.795052463584238,
+      1.9089099784362507,
+      4.540205160117399
+    ]
+  },
+  {
+    "name": "HeavyCoilCannonMk1",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/large_coilgun_cannon",
+    "mount": "ThreeNoseAngle",
+    "factor": 0.7690506752481956,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.0852760131209358,
+    "measured_m": 0.11088477764279277,
+    "before_dimensions_m": [
+      2.7374694056620683,
+      2.053858246686951,
+      5.475824657704935
+    ],
+    "canonical_uniform_dimensions_m": [
+      2.1052526948956904,
+      1.5795210714786747,
+      4.2111866505487
+    ]
+  },
+  {
+    "name": "HeavyCoilCannonMk2",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/large_coilgun_cannon",
+    "mount": "ThreeNoseAngle",
+    "factor": 0.7690506752481956,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.0852760131209358,
+    "measured_m": 0.11088477764279277,
+    "before_dimensions_m": [
+      2.7374694056620683,
+      2.053858246686951,
+      5.475824657704935
+    ],
+    "canonical_uniform_dimensions_m": [
+      2.1052526948956904,
+      1.5795210714786747,
+      4.2111866505487
+    ]
+  },
+  {
+    "name": "HeavyCoilCannonMk3",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/large_coilgun_cannon",
+    "mount": "ThreeNoseAngle",
+    "factor": 0.7690506752481956,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.0852760131209358,
+    "measured_m": 0.11088477764279277,
+    "before_dimensions_m": [
+      2.7374694056620683,
+      2.053858246686951,
+      5.475824657704935
+    ],
+    "canonical_uniform_dimensions_m": [
+      2.1052526948956904,
+      1.5795210714786747,
+      4.2111866505487
+    ]
+  },
+  {
+    "name": "SpinalCoilerMk1",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/huge_coilgun_cannon",
+    "mount": "FourNose",
+    "factor": 0.7207265506287677,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.09377511545986239,
+    "measured_m": 0.1301119202255727,
+    "before_dimensions_m": [
+      3.4953175316151714,
+      2.269129889512815,
+      6.703261193445357
+    ],
+    "canonical_uniform_dimensions_m": [
+      2.5191681479132613,
+      1.6354221581972077,
+      4.831218317915549
+    ]
+  },
+  {
+    "name": "SpinalCoilerMk2",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/huge_coilgun_cannon",
+    "mount": "FourNose",
+    "factor": 0.7207265506287677,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.09377511545986239,
+    "measured_m": 0.1301119202255727,
+    "before_dimensions_m": [
+      3.4953175316151714,
+      2.269129889512815,
+      6.703261193445357
+    ],
+    "canonical_uniform_dimensions_m": [
+      2.5191681479132613,
+      1.6354221581972077,
+      4.831218317915549
+    ]
+  },
+  {
+    "name": "SpinalCoilerMk3",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/huge_coilgun_cannon",
+    "mount": "FourNose",
+    "factor": 0.7207265506287677,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.09377511545986239,
+    "measured_m": 0.1301119202255727,
+    "before_dimensions_m": [
+      3.4953175316151714,
+      2.269129889512815,
+      6.703261193445357
+    ],
+    "canonical_uniform_dimensions_m": [
+      2.5191681479132613,
+      1.6354221581972077,
+      4.831218317915549
+    ]
+  },
+  {
+    "name": "HeavySiegeCoilerMk1",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/large_coilgun_cannon",
+    "mount": "ThreeNoseAngle",
+    "factor": 1.6556935340486976,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.18359120936759957,
+    "measured_m": 0.11088477764279277,
+    "before_dimensions_m": [
+      2.7374694056620683,
+      2.053858246686951,
+      5.475824657704935
+    ],
+    "canonical_uniform_dimensions_m": [
+      4.532410394610817,
+      3.4005598188921793,
+      9.066287479346483
+    ]
+  },
+  {
+    "name": "HeavySiegeCoilerMk2",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/large_coilgun_cannon",
+    "mount": "ThreeNoseAngle",
+    "factor": 1.6556935340486976,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.18359120936759957,
+    "measured_m": 0.11088477764279277,
+    "before_dimensions_m": [
+      2.7374694056620683,
+      2.053858246686951,
+      5.475824657704935
+    ],
+    "canonical_uniform_dimensions_m": [
+      4.532410394610817,
+      3.4005598188921793,
+      9.066287479346483
+    ]
+  },
+  {
+    "name": "HeavySiegeCoilerMk3",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/large_coilgun_cannon",
+    "mount": "ThreeNoseAngle",
+    "factor": 1.6556935340486976,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.18359120936759957,
+    "measured_m": 0.11088477764279277,
+    "before_dimensions_m": [
+      2.7374694056620683,
+      2.053858246686951,
+      5.475824657704935
+    ],
+    "canonical_uniform_dimensions_m": [
+      4.532410394610817,
+      3.4005598188921793,
+      9.066287479346483
+    ]
+  },
+  {
+    "name": "SpinalSiegeCoilerMk1",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/huge_coilgun_cannon",
+    "mount": "FourNose",
+    "factor": 1.5527582827016377,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.20203236180847273,
+    "measured_m": 0.1301119202255727,
+    "before_dimensions_m": [
+      3.4953175316151714,
+      2.269129889512815,
+      6.703261193445357
+    ],
+    "canonical_uniform_dimensions_m": [
+      5.427383247887701,
+      3.5234102304668755,
+      10.408544339234743
+    ]
+  },
+  {
+    "name": "SpinalSiegeCoilerMk2",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/huge_coilgun_cannon",
+    "mount": "FourNose",
+    "factor": 1.5527582827016377,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.20203236180847273,
+    "measured_m": 0.1301119202255727,
+    "before_dimensions_m": [
+      3.4953175316151714,
+      2.269129889512815,
+      6.703261193445357
+    ],
+    "canonical_uniform_dimensions_m": [
+      5.427383247887701,
+      3.5234102304668755,
+      10.408544339234743
+    ]
+  },
+  {
+    "name": "SpinalSiegeCoilerMk3",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/huge_coilgun_cannon",
+    "mount": "FourNose",
+    "factor": 1.5527582827016377,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.20203236180847273,
+    "measured_m": 0.1301119202255727,
+    "before_dimensions_m": [
+      3.4953175316151714,
+      2.269129889512815,
+      6.703261193445357
+    ],
+    "canonical_uniform_dimensions_m": [
+      5.427383247887701,
+      3.5234102304668755,
+      10.408544339234743
+    ]
+  },
+  {
+    "name": "AlienLightMagBattery",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/alien_small_coilgun_battery",
+    "mount": "OneHull",
+    "factor": 0.8211428702318985,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.05004593454043751,
+    "measured_m": 0.060946683402736075,
+    "before_dimensions_m": [
+      1.6475963838040286,
+      1.1471194318997773,
+      4.1177873271374
+    ],
+    "canonical_uniform_dimensions_m": [
+      1.3529120235805367,
+      0.9419489428089679,
+      3.381291704810142
+    ]
+  },
+  {
+    "name": "AlienMagBattery",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/alien_medium_coilgun_battery",
+    "mount": "TwoHullHoriz",
+    "factor": 0.7303417049436748,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.06305392638915812,
+    "measured_m": 0.08633482924820916,
+    "before_dimensions_m": [
+      2.8307274498955124,
+      1.6400230478322353,
+      5.250002263996213
+    ],
+    "canonical_uniform_dimensions_m": [
+      2.0673983119875494,
+      1.1977772289007167,
+      3.834295604445147
+    ]
+  },
+  {
+    "name": "AlienHeavyMagBattery",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/alien_large_coilgun_battery",
+    "mount": "FourHull",
+    "factor": 0.8716666573337403,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.079092995571291,
+    "measured_m": 0.09073766319480565,
+    "before_dimensions_m": [
+      5.14253970932532,
+      1.5620548092793225,
+      7.222942373547951
+    ],
+    "canonical_uniform_dimensions_m": [
+      4.482580398633625,
+      1.3615910941766003,
+      6.295998034864775
+    ]
+  },
+  {
+    "name": "AlienMiniLightMagCannon",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/alien_small_coilgun_cannon",
+    "mount": "HalfNose",
+    "factor": 1.100715912132423,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.06909409582855443,
+    "measured_m": 0.0627719605640097,
+    "before_dimensions_m": [
+      1.2551831464080578,
+      1.1325395350049512,
+      3.1003835763405276
+    ],
+    "canonical_uniform_dimensions_m": [
+      1.38160006189179,
+      1.246604287299005,
+      3.412641536192048
+    ]
+  },
+  {
+    "name": "AlienLightMagCannon",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/alien_small_coilgun_cannon",
+    "mount": "OneNose",
+    "factor": 1.100715912132423,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.06909409582855443,
+    "measured_m": 0.0627719605640097,
+    "before_dimensions_m": [
+      1.2551831464080578,
+      1.1325395350049512,
+      3.1003835763405276
+    ],
+    "canonical_uniform_dimensions_m": [
+      1.38160006189179,
+      1.246604287299005,
+      3.412641536192048
+    ]
+  },
+  {
+    "name": "AlienMagCannon",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/alien_medium_coilgun_cannon",
+    "mount": "TwoNoseVert",
+    "factor": 0.9818680774060751,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.08705310575784926,
+    "measured_m": 0.08866069460963477,
+    "before_dimensions_m": [
+      1.5573871118440934,
+      1.4328399989016547,
+      4.235525145203836
+    ],
+    "canonical_uniform_dimensions_m": [
+      1.52914868928336,
+      1.4068598549520903,
+      4.158726931126377
+    ]
+  },
+  {
+    "name": "AlienHeavyMagCannon",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/alien_large_coilgun_cannon",
+    "mount": "ThreeNoseAngle",
+    "factor": 1.049541463418601,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.09965093001951152,
+    "measured_m": 0.09494711118408339,
+    "before_dimensions_m": [
+      1.3657586041265155,
+      1.3895659402110228,
+      4.271255690342414
+    ],
+    "canonical_uniform_dimensions_m": [
+      1.433420284051489,
+      1.4584070704057213,
+      4.482859947877005
+    ]
+  },
+  {
+    "name": "AlienSpinalMagCannon",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/alien_huge_coilgun_cannon",
+    "mount": "FourNose",
+    "factor": 0.8503849821031877,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.10968004040303887,
+    "measured_m": 0.12897692540592168,
+    "before_dimensions_m": [
+      2.556068744600843,
+      2.2122968884154686,
+      6.252950332357738
+    ],
+    "canonical_uniform_dimensions_m": [
+      2.1736424736319053,
+      1.881304049862126,
+      5.3174150564741565
+    ]
+  },
+  {
+    "name": "AdvancedAlienLightMagBattery",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/alien_small_coilgun_battery",
+    "mount": "OneHull",
+    "factor": 0.8211428702318985,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.05004593454043751,
+    "measured_m": 0.060946683402736075,
+    "before_dimensions_m": [
+      1.6475963838040286,
+      1.1471194318997773,
+      4.1177873271374
+    ],
+    "canonical_uniform_dimensions_m": [
+      1.3529120235805367,
+      0.9419489428089679,
+      3.381291704810142
+    ]
+  },
+  {
+    "name": "AdvancedAlienMagBattery",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/alien_medium_coilgun_battery",
+    "mount": "TwoHullHoriz",
+    "factor": 0.7303417049436748,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.06305392638915812,
+    "measured_m": 0.08633482924820916,
+    "before_dimensions_m": [
+      2.8307274498955124,
+      1.6400230478322353,
+      5.250002263996213
+    ],
+    "canonical_uniform_dimensions_m": [
+      2.0673983119875494,
+      1.1977772289007167,
+      3.834295604445147
+    ]
+  },
+  {
+    "name": "AdvancedAlienHeavyMagBattery",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/alien_large_coilgun_battery",
+    "mount": "FourHull",
+    "factor": 0.8716666573337403,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.079092995571291,
+    "measured_m": 0.09073766319480565,
+    "before_dimensions_m": [
+      5.14253970932532,
+      1.5620548092793225,
+      7.222942373547951
+    ],
+    "canonical_uniform_dimensions_m": [
+      4.482580398633625,
+      1.3615910941766003,
+      6.295998034864775
+    ]
+  },
+  {
+    "name": "AdvancedAlienLightMagCannon",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/alien_small_coilgun_cannon",
+    "mount": "OneNose",
+    "factor": 1.100715912132423,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.06909409582855443,
+    "measured_m": 0.0627719605640097,
+    "before_dimensions_m": [
+      1.2551831464080578,
+      1.1325395350049512,
+      3.1003835763405276
+    ],
+    "canonical_uniform_dimensions_m": [
+      1.38160006189179,
+      1.246604287299005,
+      3.412641536192048
+    ]
+  },
+  {
+    "name": "AdvancedAlienMagCannon",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/alien_medium_coilgun_cannon",
+    "mount": "TwoNoseVert",
+    "factor": 0.9818680774060751,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.08705310575784926,
+    "measured_m": 0.08866069460963477,
+    "before_dimensions_m": [
+      1.5573871118440934,
+      1.4328399989016547,
+      4.235525145203836
+    ],
+    "canonical_uniform_dimensions_m": [
+      1.52914868928336,
+      1.4068598549520903,
+      4.158726931126377
+    ]
+  },
+  {
+    "name": "AdvancedAlienHeavyMagCannon",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/alien_large_coilgun_cannon",
+    "mount": "ThreeNoseAngle",
+    "factor": 1.049541463418601,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.09965093001951152,
+    "measured_m": 0.09494711118408339,
+    "before_dimensions_m": [
+      1.3657586041265155,
+      1.3895659402110228,
+      4.271255690342414
+    ],
+    "canonical_uniform_dimensions_m": [
+      1.433420284051489,
+      1.4584070704057213,
+      4.482859947877005
+    ]
+  },
+  {
+    "name": "AdvancedAlienSpinalMagCannon",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/alien_huge_coilgun_cannon",
+    "mount": "FourNose",
+    "factor": 0.8503849821031877,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.10968004040303887,
+    "measured_m": 0.12897692540592168,
+    "before_dimensions_m": [
+      2.556068744600843,
+      2.2122968884154686,
+      6.252950332357738
+    ],
+    "canonical_uniform_dimensions_m": [
+      2.1736424736319053,
+      1.881304049862126,
+      5.3174150564741565
+    ]
+  },
+  {
+    "name": "Gen3AlienLightMagBattery",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/alien_small_coilgun_battery",
+    "mount": "OneHull",
+    "factor": 1.0065998797271072,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.06134892418296021,
+    "measured_m": 0.060946683402736075,
+    "before_dimensions_m": [
+      1.6475963838040286,
+      1.1471194318997773,
+      4.1177873271374
+    ],
+    "canonical_uniform_dimensions_m": [
+      1.658470321775952,
+      1.1546902821829432,
+      4.144964228238313
+    ]
+  },
+  {
+    "name": "Gen3AlienMagBattery",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/alien_medium_coilgun_battery",
+    "mount": "TwoHullHoriz",
+    "factor": 0.8910073071860594,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.07692496372481508,
+    "measured_m": 0.08633482924820916,
+    "before_dimensions_m": [
+      2.8307274498955124,
+      1.6400230478322353,
+      5.250002263996213
+    ],
+    "canonical_uniform_dimensions_m": [
+      2.522198842509061,
+      1.4612725195720737,
+      4.677790379963981
+    ]
+  },
+  {
+    "name": "Gen3AlienHeavyMagBattery",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/alien_large_coilgun_battery",
+    "mount": "FourHull",
+    "factor": 1.0681273646117246,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.09691938105929405,
+    "measured_m": 0.09073766319480565,
+    "before_dimensions_m": [
+      5.14253970932532,
+      1.5620548092793225,
+      7.222942373547951
+    ],
+    "canonical_uniform_dimensions_m": [
+      5.492887387132798,
+      1.668473486814593,
+      7.715022402200129
+    ]
+  },
+  {
+    "name": "Gen3AlienLightMagCannon",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/alien_small_coilgun_cannon",
+    "mount": "OneNose",
+    "factor": 1.3536702762558457,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.08497253719780407,
+    "measured_m": 0.0627719605640097,
+    "before_dimensions_m": [
+      1.2551831464080578,
+      1.1325395350049512,
+      3.1003835763405276
+    ],
+    "canonical_uniform_dimensions_m": [
+      1.6991041165498773,
+      1.5330851052208192,
+      4.196897092283969
+    ]
+  },
+  {
+    "name": "Gen3AlienMagCannon",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/alien_medium_coilgun_cannon",
+    "mount": "TwoNoseVert",
+    "factor": 1.203166546629289,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.10667358175522827,
+    "measured_m": 0.08866069460963477,
+    "before_dimensions_m": [
+      1.5573871118440934,
+      1.4328399989016547,
+      4.235525145203836
+    ],
+    "canonical_uniform_dimensions_m": [
+      1.87379607312242,
+      1.7239451533508179,
+      5.096042162116416
+    ]
+  },
+  {
+    "name": "Gen3AlienHeavyMagCannon",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/alien_large_coilgun_cannon",
+    "mount": "ThreeNoseAngle",
+    "factor": 1.4155279654640422,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.13440029112109378,
+    "measured_m": 0.09494711118408339,
+    "before_dimensions_m": [
+      1.3657586041265155,
+      1.3895659402110228,
+      4.271255690342414
+    ],
+    "canonical_uniform_dimensions_m": [
+      1.933269498214217,
+      1.966969448225038,
+      6.046081877327111
+    ]
+  },
+  {
+    "name": "Gen3AlienSpinalMagCannon",
+    "kind": "TIMagneticGunTemplate",
+    "resource": "shipweapons/alien_huge_coilgun_cannon",
+    "mount": "FourNose",
+    "factor": 1.3128996164432567,
+    "reference": "derived magnetic proxy",
+    "target_m": 0.1693337558954651,
+    "measured_m": 0.12897692540592168,
+    "before_dimensions_m": [
+      2.556068744600843,
+      2.2122968884154686,
+      6.252950332357738
+    ],
+    "canonical_uniform_dimensions_m": [
+      3.3558616743890433,
+      2.904523736259279,
+      8.209496092991209
+    ]
+  },
+  {
+    "name": "PointDefenseLaserTurret",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/point_defense_laser_battery",
+    "mount": "OneHull",
+    "factor": 0.8646360987916473,
+    "reference": "native optical diameter",
+    "target_m": 0.6,
+    "measured_m": 0.6939335528999038,
+    "before_dimensions_m": [
+      0.9770880591864852,
+      1.0635980440488921,
+      0.9132209094790369
+    ],
+    "canonical_uniform_dimensions_m": [
+      0.8448256076709048,
+      0.9196252634888606,
+      0.7896037645069145
+    ]
+  },
+  {
+    "name": "60cmIRLaserBattery",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/small_laser_battery",
+    "mount": "OneHull",
+    "factor": 1.122719139993839,
+    "reference": "native optical diameter",
+    "target_m": 1.2,
+    "measured_m": 1.06883365327377,
+    "before_dimensions_m": [
+      1.5302815426019833,
+      1.6066110371670983,
+      1.430255020471236
+    ],
+    "canonical_uniform_dimensions_m": [
+      1.718076377458544,
+      1.8037729619528542,
+      1.6057746865553368
+    ]
+  },
+  {
+    "name": "120cmIRLaserBattery",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/medium_laser_battery",
+    "mount": "TwoHullHoriz",
+    "factor": 1.4644703949918683,
+    "reference": "native optical diameter",
+    "target_m": 2.4,
+    "measured_m": 1.6388176969690986,
+    "before_dimensions_m": [
+      2.328636914446591,
+      2.4406093021254835,
+      2.1764260660681174
+    ],
+    "canonical_uniform_dimensions_m": [
+      3.410219821892244,
+      3.5742000687045348,
+      3.187311540645374
+    ]
+  },
+  {
+    "name": "360cmIRLaserBattery",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/large_laser_battery",
+    "mount": "FourHull",
+    "factor": 2.760298327421583,
+    "reference": "native optical diameter",
+    "target_m": 7.2,
+    "measured_m": 2.6084137096607156,
+    "before_dimensions_m": [
+      3.7198180349348036,
+      3.7692832055628234,
+      3.4766729334385786
+    ],
+    "canonical_uniform_dimensions_m": [
+      10.267807500143178,
+      10.404346127893323,
+      9.596654483162396
+    ]
+  },
+  {
+    "name": "240cmIRLaserCannon",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/small_laser_cannon",
+    "mount": "OneNose",
+    "factor": 3.0165409791493563,
+    "reference": "native optical diameter",
+    "target_m": 4.8,
+    "measured_m": 1.5912265184454968,
+    "before_dimensions_m": [
+      2.078844277771239,
+      2.3008378253058304,
+      1.9429610710749756
+    ],
+    "canonical_uniform_dimensions_m": [
+      6.27091895316709,
+      6.940571586411925,
+      5.861021691789589
+    ]
+  },
+  {
+    "name": "480cmIRLaserCannon",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/medium_laser_cannon",
+    "mount": "TwoNoseVert",
+    "factor": 3.5781851937819154,
+    "reference": "native optical diameter",
+    "target_m": 9.6,
+    "measured_m": 2.682924298239971,
+    "before_dimensions_m": [
+      3.9023308481141044,
+      4.136199198170664,
+      3.647255836050192
+    ],
+    "canonical_uniform_dimensions_m": [
+      13.963262461960312,
+      14.800086729426901,
+      13.050556830489478
+    ]
+  },
+  {
+    "name": "720cmIRLaserCannon",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/large_laser_cannon",
+    "mount": "ThreeNoseAngle",
+    "factor": 3.4800064787692295,
+    "reference": "native optical diameter",
+    "target_m": 14.4,
+    "measured_m": 4.137923330847601,
+    "before_dimensions_m": [
+      5.82423959296213,
+      6.030914241838362,
+      5.443539431376422
+    ],
+    "canonical_uniform_dimensions_m": [
+      20.26839151741247,
+      20.987620634499116,
+      18.943552488625716
+    ]
+  },
+  {
+    "name": "960cmIRLaserCannon",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/huge_laser_cannon",
+    "mount": "FourNose",
+    "factor": 3.8521106379234267,
+    "reference": "native optical diameter",
+    "target_m": 19.2,
+    "measured_m": 4.98428051649893,
+    "before_dimensions_m": [
+      7.1601336622343865,
+      7.269083229071271,
+      6.692113073678627
+    ],
+    "canonical_uniform_dimensions_m": [
+      27.581627049246705,
+      28.001312834656215,
+      25.77875996130388
+    ]
+  },
+  {
+    "name": "PointDefenseArcLaserTurret",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/point_defense_laser_battery",
+    "mount": "OneHull",
+    "factor": 0.8646360987916473,
+    "reference": "native optical diameter",
+    "target_m": 0.6,
+    "measured_m": 0.6939335528999038,
+    "before_dimensions_m": [
+      0.9770880591864852,
+      1.0635980440488921,
+      0.9132209094790369
+    ],
+    "canonical_uniform_dimensions_m": [
+      0.8448256076709048,
+      0.9196252634888606,
+      0.7896037645069145
+    ]
+  },
+  {
+    "name": "60cmIRArcLaserBattery",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/small_laser_battery",
+    "mount": "OneHull",
+    "factor": 1.122719139993839,
+    "reference": "native optical diameter",
+    "target_m": 1.2,
+    "measured_m": 1.06883365327377,
+    "before_dimensions_m": [
+      1.5302815426019833,
+      1.6066110371670983,
+      1.430255020471236
+    ],
+    "canonical_uniform_dimensions_m": [
+      1.718076377458544,
+      1.8037729619528542,
+      1.6057746865553368
+    ]
+  },
+  {
+    "name": "120cmIRArcLaserBattery",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/medium_laser_battery",
+    "mount": "TwoHullHoriz",
+    "factor": 1.4644703949918683,
+    "reference": "native optical diameter",
+    "target_m": 2.4,
+    "measured_m": 1.6388176969690986,
+    "before_dimensions_m": [
+      2.328636914446591,
+      2.4406093021254835,
+      2.1764260660681174
+    ],
+    "canonical_uniform_dimensions_m": [
+      3.410219821892244,
+      3.5742000687045348,
+      3.187311540645374
+    ]
+  },
+  {
+    "name": "360cmIRArcLaserBattery",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/large_laser_battery",
+    "mount": "FourHull",
+    "factor": 2.760298327421583,
+    "reference": "native optical diameter",
+    "target_m": 7.2,
+    "measured_m": 2.6084137096607156,
+    "before_dimensions_m": [
+      3.7198180349348036,
+      3.7692832055628234,
+      3.4766729334385786
+    ],
+    "canonical_uniform_dimensions_m": [
+      10.267807500143178,
+      10.404346127893323,
+      9.596654483162396
+    ]
+  },
+  {
+    "name": "240cmIRArcLaserCannon",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/small_laser_cannon",
+    "mount": "OneNose",
+    "factor": 3.0165409791493563,
+    "reference": "native optical diameter",
+    "target_m": 4.8,
+    "measured_m": 1.5912265184454968,
+    "before_dimensions_m": [
+      2.078844277771239,
+      2.3008378253058304,
+      1.9429610710749756
+    ],
+    "canonical_uniform_dimensions_m": [
+      6.27091895316709,
+      6.940571586411925,
+      5.861021691789589
+    ]
+  },
+  {
+    "name": "480cmIRArcLaserCannon",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/medium_laser_cannon",
+    "mount": "TwoNoseVert",
+    "factor": 3.5781851937819154,
+    "reference": "native optical diameter",
+    "target_m": 9.6,
+    "measured_m": 2.682924298239971,
+    "before_dimensions_m": [
+      3.9023308481141044,
+      4.136199198170664,
+      3.647255836050192
+    ],
+    "canonical_uniform_dimensions_m": [
+      13.963262461960312,
+      14.800086729426901,
+      13.050556830489478
+    ]
+  },
+  {
+    "name": "720cmIRArcLaserCannon",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/large_laser_cannon",
+    "mount": "ThreeNoseAngle",
+    "factor": 3.4800064787692295,
+    "reference": "native optical diameter",
+    "target_m": 14.4,
+    "measured_m": 4.137923330847601,
+    "before_dimensions_m": [
+      5.82423959296213,
+      6.030914241838362,
+      5.443539431376422
+    ],
+    "canonical_uniform_dimensions_m": [
+      20.26839151741247,
+      20.987620634499116,
+      18.943552488625716
+    ]
+  },
+  {
+    "name": "960cmIRArcLaserCannon",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/huge_laser_cannon",
+    "mount": "FourNose",
+    "factor": 3.8521106379234267,
+    "reference": "native optical diameter",
+    "target_m": 19.2,
+    "measured_m": 4.98428051649893,
+    "before_dimensions_m": [
+      7.1601336622343865,
+      7.269083229071271,
+      6.692113073678627
+    ],
+    "canonical_uniform_dimensions_m": [
+      27.581627049246705,
+      28.001312834656215,
+      25.77875996130388
+    ]
+  },
+  {
+    "name": "PointDefensePhaserTurret",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/point_defense_laser_battery",
+    "mount": "OneHull",
+    "factor": 0.8646360987916473,
+    "reference": "native optical diameter",
+    "target_m": 0.6,
+    "measured_m": 0.6939335528999038,
+    "before_dimensions_m": [
+      0.9770880591864852,
+      1.0635980440488921,
+      0.9132209094790369
+    ],
+    "canonical_uniform_dimensions_m": [
+      0.8448256076709048,
+      0.9196252634888606,
+      0.7896037645069145
+    ]
+  },
+  {
+    "name": "60cmIRPhaserBattery",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/small_laser_battery",
+    "mount": "OneHull",
+    "factor": 1.122719139993839,
+    "reference": "native optical diameter",
+    "target_m": 1.2,
+    "measured_m": 1.06883365327377,
+    "before_dimensions_m": [
+      1.5302815426019833,
+      1.6066110371670983,
+      1.430255020471236
+    ],
+    "canonical_uniform_dimensions_m": [
+      1.718076377458544,
+      1.8037729619528542,
+      1.6057746865553368
+    ]
+  },
+  {
+    "name": "120cmIRPhaserBattery",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/medium_laser_battery",
+    "mount": "TwoHullHoriz",
+    "factor": 1.4644703949918683,
+    "reference": "native optical diameter",
+    "target_m": 2.4,
+    "measured_m": 1.6388176969690986,
+    "before_dimensions_m": [
+      2.328636914446591,
+      2.4406093021254835,
+      2.1764260660681174
+    ],
+    "canonical_uniform_dimensions_m": [
+      3.410219821892244,
+      3.5742000687045348,
+      3.187311540645374
+    ]
+  },
+  {
+    "name": "360cmIRPhaserBattery",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/large_laser_battery",
+    "mount": "FourHull",
+    "factor": 2.760298327421583,
+    "reference": "native optical diameter",
+    "target_m": 7.2,
+    "measured_m": 2.6084137096607156,
+    "before_dimensions_m": [
+      3.7198180349348036,
+      3.7692832055628234,
+      3.4766729334385786
+    ],
+    "canonical_uniform_dimensions_m": [
+      10.267807500143178,
+      10.404346127893323,
+      9.596654483162396
+    ]
+  },
+  {
+    "name": "240cmIRPhaserCannon",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/small_laser_cannon",
+    "mount": "OneNose",
+    "factor": 3.0165409791493563,
+    "reference": "native optical diameter",
+    "target_m": 4.8,
+    "measured_m": 1.5912265184454968,
+    "before_dimensions_m": [
+      2.078844277771239,
+      2.3008378253058304,
+      1.9429610710749756
+    ],
+    "canonical_uniform_dimensions_m": [
+      6.27091895316709,
+      6.940571586411925,
+      5.861021691789589
+    ]
+  },
+  {
+    "name": "480cmIRPhaserCannon",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/medium_laser_cannon",
+    "mount": "TwoNoseVert",
+    "factor": 3.5781851937819154,
+    "reference": "native optical diameter",
+    "target_m": 9.6,
+    "measured_m": 2.682924298239971,
+    "before_dimensions_m": [
+      3.9023308481141044,
+      4.136199198170664,
+      3.647255836050192
+    ],
+    "canonical_uniform_dimensions_m": [
+      13.963262461960312,
+      14.800086729426901,
+      13.050556830489478
+    ]
+  },
+  {
+    "name": "720cmIRPhaserCannon",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/large_laser_cannon",
+    "mount": "ThreeNoseAngle",
+    "factor": 3.4800064787692295,
+    "reference": "native optical diameter",
+    "target_m": 14.4,
+    "measured_m": 4.137923330847601,
+    "before_dimensions_m": [
+      5.82423959296213,
+      6.030914241838362,
+      5.443539431376422
+    ],
+    "canonical_uniform_dimensions_m": [
+      20.26839151741247,
+      20.987620634499116,
+      18.943552488625716
+    ]
+  },
+  {
+    "name": "960cmIRPhaserCannon",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/huge_laser_cannon",
+    "mount": "FourNose",
+    "factor": 3.8521106379234267,
+    "reference": "native optical diameter",
+    "target_m": 19.2,
+    "measured_m": 4.98428051649893,
+    "before_dimensions_m": [
+      7.1601336622343865,
+      7.269083229071271,
+      6.692113073678627
+    ],
+    "canonical_uniform_dimensions_m": [
+      27.581627049246705,
+      28.001312834656215,
+      25.77875996130388
+    ]
+  },
+  {
+    "name": "60cmGreenLaserBattery",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/small_laser_battery",
+    "mount": "OneHull",
+    "factor": 1.122719139993839,
+    "reference": "native optical diameter",
+    "target_m": 1.2,
+    "measured_m": 1.06883365327377,
+    "before_dimensions_m": [
+      1.5302815426019833,
+      1.6066110371670983,
+      1.430255020471236
+    ],
+    "canonical_uniform_dimensions_m": [
+      1.718076377458544,
+      1.8037729619528542,
+      1.6057746865553368
+    ]
+  },
+  {
+    "name": "120cmGreenLaserBattery",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/medium_laser_battery",
+    "mount": "TwoHullHoriz",
+    "factor": 1.4644703949918683,
+    "reference": "native optical diameter",
+    "target_m": 2.4,
+    "measured_m": 1.6388176969690986,
+    "before_dimensions_m": [
+      2.328636914446591,
+      2.4406093021254835,
+      2.1764260660681174
+    ],
+    "canonical_uniform_dimensions_m": [
+      3.410219821892244,
+      3.5742000687045348,
+      3.187311540645374
+    ]
+  },
+  {
+    "name": "360cmGreenLaserBattery",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/large_laser_battery",
+    "mount": "FourHull",
+    "factor": 2.760298327421583,
+    "reference": "native optical diameter",
+    "target_m": 7.2,
+    "measured_m": 2.6084137096607156,
+    "before_dimensions_m": [
+      3.7198180349348036,
+      3.7692832055628234,
+      3.4766729334385786
+    ],
+    "canonical_uniform_dimensions_m": [
+      10.267807500143178,
+      10.404346127893323,
+      9.596654483162396
+    ]
+  },
+  {
+    "name": "240cmGreenLaserCannon",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/small_laser_cannon",
+    "mount": "OneNose",
+    "factor": 3.0165409791493563,
+    "reference": "native optical diameter",
+    "target_m": 4.8,
+    "measured_m": 1.5912265184454968,
+    "before_dimensions_m": [
+      2.078844277771239,
+      2.3008378253058304,
+      1.9429610710749756
+    ],
+    "canonical_uniform_dimensions_m": [
+      6.27091895316709,
+      6.940571586411925,
+      5.861021691789589
+    ]
+  },
+  {
+    "name": "480cmGreenLaserCannon",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/medium_laser_cannon",
+    "mount": "TwoNoseVert",
+    "factor": 3.5781851937819154,
+    "reference": "native optical diameter",
+    "target_m": 9.6,
+    "measured_m": 2.682924298239971,
+    "before_dimensions_m": [
+      3.9023308481141044,
+      4.136199198170664,
+      3.647255836050192
+    ],
+    "canonical_uniform_dimensions_m": [
+      13.963262461960312,
+      14.800086729426901,
+      13.050556830489478
+    ]
+  },
+  {
+    "name": "720cmGreenLaserCannon",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/large_laser_cannon",
+    "mount": "ThreeNoseAngle",
+    "factor": 3.4800064787692295,
+    "reference": "native optical diameter",
+    "target_m": 14.4,
+    "measured_m": 4.137923330847601,
+    "before_dimensions_m": [
+      5.82423959296213,
+      6.030914241838362,
+      5.443539431376422
+    ],
+    "canonical_uniform_dimensions_m": [
+      20.26839151741247,
+      20.987620634499116,
+      18.943552488625716
+    ]
+  },
+  {
+    "name": "960cmGreenLaserCannon",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/huge_laser_cannon",
+    "mount": "FourNose",
+    "factor": 3.8521106379234267,
+    "reference": "native optical diameter",
+    "target_m": 19.2,
+    "measured_m": 4.98428051649893,
+    "before_dimensions_m": [
+      7.1601336622343865,
+      7.269083229071271,
+      6.692113073678627
+    ],
+    "canonical_uniform_dimensions_m": [
+      27.581627049246705,
+      28.001312834656215,
+      25.77875996130388
+    ]
+  },
+  {
+    "name": "60cmGreenArcLaserBattery",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/small_laser_battery",
+    "mount": "OneHull",
+    "factor": 1.122719139993839,
+    "reference": "native optical diameter",
+    "target_m": 1.2,
+    "measured_m": 1.06883365327377,
+    "before_dimensions_m": [
+      1.5302815426019833,
+      1.6066110371670983,
+      1.430255020471236
+    ],
+    "canonical_uniform_dimensions_m": [
+      1.718076377458544,
+      1.8037729619528542,
+      1.6057746865553368
+    ]
+  },
+  {
+    "name": "120cmGreenArcLaserBattery",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/medium_laser_battery",
+    "mount": "TwoHullHoriz",
+    "factor": 1.4644703949918683,
+    "reference": "native optical diameter",
+    "target_m": 2.4,
+    "measured_m": 1.6388176969690986,
+    "before_dimensions_m": [
+      2.328636914446591,
+      2.4406093021254835,
+      2.1764260660681174
+    ],
+    "canonical_uniform_dimensions_m": [
+      3.410219821892244,
+      3.5742000687045348,
+      3.187311540645374
+    ]
+  },
+  {
+    "name": "360cmGreenArcLaserBattery",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/large_laser_battery",
+    "mount": "FourHull",
+    "factor": 2.760298327421583,
+    "reference": "native optical diameter",
+    "target_m": 7.2,
+    "measured_m": 2.6084137096607156,
+    "before_dimensions_m": [
+      3.7198180349348036,
+      3.7692832055628234,
+      3.4766729334385786
+    ],
+    "canonical_uniform_dimensions_m": [
+      10.267807500143178,
+      10.404346127893323,
+      9.596654483162396
+    ]
+  },
+  {
+    "name": "240cmGreenArcLaserCannon",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/small_laser_cannon",
+    "mount": "OneNose",
+    "factor": 3.0165409791493563,
+    "reference": "native optical diameter",
+    "target_m": 4.8,
+    "measured_m": 1.5912265184454968,
+    "before_dimensions_m": [
+      2.078844277771239,
+      2.3008378253058304,
+      1.9429610710749756
+    ],
+    "canonical_uniform_dimensions_m": [
+      6.27091895316709,
+      6.940571586411925,
+      5.861021691789589
+    ]
+  },
+  {
+    "name": "480cmGreenArcLaserCannon",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/medium_laser_cannon",
+    "mount": "TwoNoseVert",
+    "factor": 3.5781851937819154,
+    "reference": "native optical diameter",
+    "target_m": 9.6,
+    "measured_m": 2.682924298239971,
+    "before_dimensions_m": [
+      3.9023308481141044,
+      4.136199198170664,
+      3.647255836050192
+    ],
+    "canonical_uniform_dimensions_m": [
+      13.963262461960312,
+      14.800086729426901,
+      13.050556830489478
+    ]
+  },
+  {
+    "name": "720cmGreenArcLaserCannon",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/large_laser_cannon",
+    "mount": "ThreeNoseAngle",
+    "factor": 3.4800064787692295,
+    "reference": "native optical diameter",
+    "target_m": 14.4,
+    "measured_m": 4.137923330847601,
+    "before_dimensions_m": [
+      5.82423959296213,
+      6.030914241838362,
+      5.443539431376422
+    ],
+    "canonical_uniform_dimensions_m": [
+      20.26839151741247,
+      20.987620634499116,
+      18.943552488625716
+    ]
+  },
+  {
+    "name": "960cmGreenArcLaserCannon",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/huge_laser_cannon",
+    "mount": "FourNose",
+    "factor": 3.8521106379234267,
+    "reference": "native optical diameter",
+    "target_m": 19.2,
+    "measured_m": 4.98428051649893,
+    "before_dimensions_m": [
+      7.1601336622343865,
+      7.269083229071271,
+      6.692113073678627
+    ],
+    "canonical_uniform_dimensions_m": [
+      27.581627049246705,
+      28.001312834656215,
+      25.77875996130388
+    ]
+  },
+  {
+    "name": "60cmGreenPhaserBattery",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/small_laser_battery",
+    "mount": "OneHull",
+    "factor": 1.122719139993839,
+    "reference": "native optical diameter",
+    "target_m": 1.2,
+    "measured_m": 1.06883365327377,
+    "before_dimensions_m": [
+      1.5302815426019833,
+      1.6066110371670983,
+      1.430255020471236
+    ],
+    "canonical_uniform_dimensions_m": [
+      1.718076377458544,
+      1.8037729619528542,
+      1.6057746865553368
+    ]
+  },
+  {
+    "name": "120cmGreenPhaserBattery",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/medium_laser_battery",
+    "mount": "TwoHullHoriz",
+    "factor": 1.4644703949918683,
+    "reference": "native optical diameter",
+    "target_m": 2.4,
+    "measured_m": 1.6388176969690986,
+    "before_dimensions_m": [
+      2.328636914446591,
+      2.4406093021254835,
+      2.1764260660681174
+    ],
+    "canonical_uniform_dimensions_m": [
+      3.410219821892244,
+      3.5742000687045348,
+      3.187311540645374
+    ]
+  },
+  {
+    "name": "360cmGreenPhaserBattery",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/large_laser_battery",
+    "mount": "FourHull",
+    "factor": 2.760298327421583,
+    "reference": "native optical diameter",
+    "target_m": 7.2,
+    "measured_m": 2.6084137096607156,
+    "before_dimensions_m": [
+      3.7198180349348036,
+      3.7692832055628234,
+      3.4766729334385786
+    ],
+    "canonical_uniform_dimensions_m": [
+      10.267807500143178,
+      10.404346127893323,
+      9.596654483162396
+    ]
+  },
+  {
+    "name": "240cmGreenPhaserCannon",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/small_laser_cannon",
+    "mount": "OneNose",
+    "factor": 3.0165409791493563,
+    "reference": "native optical diameter",
+    "target_m": 4.8,
+    "measured_m": 1.5912265184454968,
+    "before_dimensions_m": [
+      2.078844277771239,
+      2.3008378253058304,
+      1.9429610710749756
+    ],
+    "canonical_uniform_dimensions_m": [
+      6.27091895316709,
+      6.940571586411925,
+      5.861021691789589
+    ]
+  },
+  {
+    "name": "480cmGreenPhaserCannon",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/medium_laser_cannon",
+    "mount": "TwoNoseVert",
+    "factor": 3.5781851937819154,
+    "reference": "native optical diameter",
+    "target_m": 9.6,
+    "measured_m": 2.682924298239971,
+    "before_dimensions_m": [
+      3.9023308481141044,
+      4.136199198170664,
+      3.647255836050192
+    ],
+    "canonical_uniform_dimensions_m": [
+      13.963262461960312,
+      14.800086729426901,
+      13.050556830489478
+    ]
+  },
+  {
+    "name": "720cmGreenPhaserCannon",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/large_laser_cannon",
+    "mount": "ThreeNoseAngle",
+    "factor": 3.4800064787692295,
+    "reference": "native optical diameter",
+    "target_m": 14.4,
+    "measured_m": 4.137923330847601,
+    "before_dimensions_m": [
+      5.82423959296213,
+      6.030914241838362,
+      5.443539431376422
+    ],
+    "canonical_uniform_dimensions_m": [
+      20.26839151741247,
+      20.987620634499116,
+      18.943552488625716
+    ]
+  },
+  {
+    "name": "960cmGreenPhaserCannon",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/huge_laser_cannon",
+    "mount": "FourNose",
+    "factor": 3.8521106379234267,
+    "reference": "native optical diameter",
+    "target_m": 19.2,
+    "measured_m": 4.98428051649893,
+    "before_dimensions_m": [
+      7.1601336622343865,
+      7.269083229071271,
+      6.692113073678627
+    ],
+    "canonical_uniform_dimensions_m": [
+      27.581627049246705,
+      28.001312834656215,
+      25.77875996130388
+    ]
+  },
+  {
+    "name": "60cmUVLaserBattery",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/small_laser_battery",
+    "mount": "OneHull",
+    "factor": 1.122719139993839,
+    "reference": "native optical diameter",
+    "target_m": 1.2,
+    "measured_m": 1.06883365327377,
+    "before_dimensions_m": [
+      1.5302815426019833,
+      1.6066110371670983,
+      1.430255020471236
+    ],
+    "canonical_uniform_dimensions_m": [
+      1.718076377458544,
+      1.8037729619528542,
+      1.6057746865553368
+    ]
+  },
+  {
+    "name": "120cmUVLaserBattery",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/medium_laser_battery",
+    "mount": "TwoHullHoriz",
+    "factor": 1.4644703949918683,
+    "reference": "native optical diameter",
+    "target_m": 2.4,
+    "measured_m": 1.6388176969690986,
+    "before_dimensions_m": [
+      2.328636914446591,
+      2.4406093021254835,
+      2.1764260660681174
+    ],
+    "canonical_uniform_dimensions_m": [
+      3.410219821892244,
+      3.5742000687045348,
+      3.187311540645374
+    ]
+  },
+  {
+    "name": "360cmUVLaserBattery",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/large_laser_battery",
+    "mount": "FourHull",
+    "factor": 2.760298327421583,
+    "reference": "native optical diameter",
+    "target_m": 7.2,
+    "measured_m": 2.6084137096607156,
+    "before_dimensions_m": [
+      3.7198180349348036,
+      3.7692832055628234,
+      3.4766729334385786
+    ],
+    "canonical_uniform_dimensions_m": [
+      10.267807500143178,
+      10.404346127893323,
+      9.596654483162396
+    ]
+  },
+  {
+    "name": "240cmUVLaserCannon",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/small_laser_cannon",
+    "mount": "OneNose",
+    "factor": 3.0165409791493563,
+    "reference": "native optical diameter",
+    "target_m": 4.8,
+    "measured_m": 1.5912265184454968,
+    "before_dimensions_m": [
+      2.078844277771239,
+      2.3008378253058304,
+      1.9429610710749756
+    ],
+    "canonical_uniform_dimensions_m": [
+      6.27091895316709,
+      6.940571586411925,
+      5.861021691789589
+    ]
+  },
+  {
+    "name": "480cmUVLaserCannon",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/medium_laser_cannon",
+    "mount": "TwoNoseVert",
+    "factor": 3.5781851937819154,
+    "reference": "native optical diameter",
+    "target_m": 9.6,
+    "measured_m": 2.682924298239971,
+    "before_dimensions_m": [
+      3.9023308481141044,
+      4.136199198170664,
+      3.647255836050192
+    ],
+    "canonical_uniform_dimensions_m": [
+      13.963262461960312,
+      14.800086729426901,
+      13.050556830489478
+    ]
+  },
+  {
+    "name": "720cmUVLaserCannon",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/large_laser_cannon",
+    "mount": "ThreeNoseAngle",
+    "factor": 3.4800064787692295,
+    "reference": "native optical diameter",
+    "target_m": 14.4,
+    "measured_m": 4.137923330847601,
+    "before_dimensions_m": [
+      5.82423959296213,
+      6.030914241838362,
+      5.443539431376422
+    ],
+    "canonical_uniform_dimensions_m": [
+      20.26839151741247,
+      20.987620634499116,
+      18.943552488625716
+    ]
+  },
+  {
+    "name": "960cmUVLaserCannon",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/huge_laser_cannon",
+    "mount": "FourNose",
+    "factor": 3.8521106379234267,
+    "reference": "native optical diameter",
+    "target_m": 19.2,
+    "measured_m": 4.98428051649893,
+    "before_dimensions_m": [
+      7.1601336622343865,
+      7.269083229071271,
+      6.692113073678627
+    ],
+    "canonical_uniform_dimensions_m": [
+      27.581627049246705,
+      28.001312834656215,
+      25.77875996130388
+    ]
+  },
+  {
+    "name": "60cmUVArcLaserBattery",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/small_laser_battery",
+    "mount": "OneHull",
+    "factor": 1.122719139993839,
+    "reference": "native optical diameter",
+    "target_m": 1.2,
+    "measured_m": 1.06883365327377,
+    "before_dimensions_m": [
+      1.5302815426019833,
+      1.6066110371670983,
+      1.430255020471236
+    ],
+    "canonical_uniform_dimensions_m": [
+      1.718076377458544,
+      1.8037729619528542,
+      1.6057746865553368
+    ]
+  },
+  {
+    "name": "120cmUVArcLaserBattery",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/medium_laser_battery",
+    "mount": "TwoHullHoriz",
+    "factor": 1.4644703949918683,
+    "reference": "native optical diameter",
+    "target_m": 2.4,
+    "measured_m": 1.6388176969690986,
+    "before_dimensions_m": [
+      2.328636914446591,
+      2.4406093021254835,
+      2.1764260660681174
+    ],
+    "canonical_uniform_dimensions_m": [
+      3.410219821892244,
+      3.5742000687045348,
+      3.187311540645374
+    ]
+  },
+  {
+    "name": "360cmUVArcLaserBattery",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/large_laser_battery",
+    "mount": "FourHull",
+    "factor": 2.760298327421583,
+    "reference": "native optical diameter",
+    "target_m": 7.2,
+    "measured_m": 2.6084137096607156,
+    "before_dimensions_m": [
+      3.7198180349348036,
+      3.7692832055628234,
+      3.4766729334385786
+    ],
+    "canonical_uniform_dimensions_m": [
+      10.267807500143178,
+      10.404346127893323,
+      9.596654483162396
+    ]
+  },
+  {
+    "name": "240cmUVArcLaserCannon",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/small_laser_cannon",
+    "mount": "OneNose",
+    "factor": 3.0165409791493563,
+    "reference": "native optical diameter",
+    "target_m": 4.8,
+    "measured_m": 1.5912265184454968,
+    "before_dimensions_m": [
+      2.078844277771239,
+      2.3008378253058304,
+      1.9429610710749756
+    ],
+    "canonical_uniform_dimensions_m": [
+      6.27091895316709,
+      6.940571586411925,
+      5.861021691789589
+    ]
+  },
+  {
+    "name": "480cmUVArcLaserCannon",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/medium_laser_cannon",
+    "mount": "TwoNoseVert",
+    "factor": 3.5781851937819154,
+    "reference": "native optical diameter",
+    "target_m": 9.6,
+    "measured_m": 2.682924298239971,
+    "before_dimensions_m": [
+      3.9023308481141044,
+      4.136199198170664,
+      3.647255836050192
+    ],
+    "canonical_uniform_dimensions_m": [
+      13.963262461960312,
+      14.800086729426901,
+      13.050556830489478
+    ]
+  },
+  {
+    "name": "720cmUVArcLaserCannon",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/large_laser_cannon",
+    "mount": "ThreeNoseAngle",
+    "factor": 3.4800064787692295,
+    "reference": "native optical diameter",
+    "target_m": 14.4,
+    "measured_m": 4.137923330847601,
+    "before_dimensions_m": [
+      5.82423959296213,
+      6.030914241838362,
+      5.443539431376422
+    ],
+    "canonical_uniform_dimensions_m": [
+      20.26839151741247,
+      20.987620634499116,
+      18.943552488625716
+    ]
+  },
+  {
+    "name": "960cmUVArcLaserCannon",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/huge_laser_cannon",
+    "mount": "FourNose",
+    "factor": 3.8521106379234267,
+    "reference": "native optical diameter",
+    "target_m": 19.2,
+    "measured_m": 4.98428051649893,
+    "before_dimensions_m": [
+      7.1601336622343865,
+      7.269083229071271,
+      6.692113073678627
+    ],
+    "canonical_uniform_dimensions_m": [
+      27.581627049246705,
+      28.001312834656215,
+      25.77875996130388
+    ]
+  },
+  {
+    "name": "60cmUVPhaserBattery",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/small_laser_battery",
+    "mount": "OneHull",
+    "factor": 1.122719139993839,
+    "reference": "native optical diameter",
+    "target_m": 1.2,
+    "measured_m": 1.06883365327377,
+    "before_dimensions_m": [
+      1.5302815426019833,
+      1.6066110371670983,
+      1.430255020471236
+    ],
+    "canonical_uniform_dimensions_m": [
+      1.718076377458544,
+      1.8037729619528542,
+      1.6057746865553368
+    ]
+  },
+  {
+    "name": "120cmUVPhaserBattery",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/medium_laser_battery",
+    "mount": "TwoHullHoriz",
+    "factor": 1.4644703949918683,
+    "reference": "native optical diameter",
+    "target_m": 2.4,
+    "measured_m": 1.6388176969690986,
+    "before_dimensions_m": [
+      2.328636914446591,
+      2.4406093021254835,
+      2.1764260660681174
+    ],
+    "canonical_uniform_dimensions_m": [
+      3.410219821892244,
+      3.5742000687045348,
+      3.187311540645374
+    ]
+  },
+  {
+    "name": "360cmUVPhaserBattery",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/large_laser_battery",
+    "mount": "FourHull",
+    "factor": 2.760298327421583,
+    "reference": "native optical diameter",
+    "target_m": 7.2,
+    "measured_m": 2.6084137096607156,
+    "before_dimensions_m": [
+      3.7198180349348036,
+      3.7692832055628234,
+      3.4766729334385786
+    ],
+    "canonical_uniform_dimensions_m": [
+      10.267807500143178,
+      10.404346127893323,
+      9.596654483162396
+    ]
+  },
+  {
+    "name": "240cmUVPhaserCannon",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/small_laser_cannon",
+    "mount": "OneNose",
+    "factor": 3.0165409791493563,
+    "reference": "native optical diameter",
+    "target_m": 4.8,
+    "measured_m": 1.5912265184454968,
+    "before_dimensions_m": [
+      2.078844277771239,
+      2.3008378253058304,
+      1.9429610710749756
+    ],
+    "canonical_uniform_dimensions_m": [
+      6.27091895316709,
+      6.940571586411925,
+      5.861021691789589
+    ]
+  },
+  {
+    "name": "480cmUVPhaserCannon",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/medium_laser_cannon",
+    "mount": "TwoNoseVert",
+    "factor": 3.5781851937819154,
+    "reference": "native optical diameter",
+    "target_m": 9.6,
+    "measured_m": 2.682924298239971,
+    "before_dimensions_m": [
+      3.9023308481141044,
+      4.136199198170664,
+      3.647255836050192
+    ],
+    "canonical_uniform_dimensions_m": [
+      13.963262461960312,
+      14.800086729426901,
+      13.050556830489478
+    ]
+  },
+  {
+    "name": "720cmUVPhaserCannon",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/large_laser_cannon",
+    "mount": "ThreeNoseAngle",
+    "factor": 3.4800064787692295,
+    "reference": "native optical diameter",
+    "target_m": 14.4,
+    "measured_m": 4.137923330847601,
+    "before_dimensions_m": [
+      5.82423959296213,
+      6.030914241838362,
+      5.443539431376422
+    ],
+    "canonical_uniform_dimensions_m": [
+      20.26839151741247,
+      20.987620634499116,
+      18.943552488625716
+    ]
+  },
+  {
+    "name": "960cmUVPhaserCannon",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/huge_laser_cannon",
+    "mount": "FourNose",
+    "factor": 3.8521106379234267,
+    "reference": "native optical diameter",
+    "target_m": 19.2,
+    "measured_m": 4.98428051649893,
+    "before_dimensions_m": [
+      7.1601336622343865,
+      7.269083229071271,
+      6.692113073678627
+    ],
+    "canonical_uniform_dimensions_m": [
+      27.581627049246705,
+      28.001312834656215,
+      25.77875996130388
+    ]
+  },
+  {
+    "name": "AlienPointDefenseLaserTurret",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/alien_point_defense_laser_battery",
+    "mount": "OneHull",
+    "factor": 0.8860712941926507,
+    "reference": "native optical diameter",
+    "target_m": 0.64,
+    "measured_m": 0.7222895089758437,
+    "before_dimensions_m": [
+      2.4031840734110688,
+      2.4599032786538206,
+      2.188018328720311
+    ],
+    "canonical_uniform_dimensions_m": [
+      2.129392422110512,
+      2.1796496817055355,
+      1.9387402322464466
+    ]
+  },
+  {
+    "name": "Alien64cmOrangeLaserBattery",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/alien_small_laser_battery",
+    "mount": "OneHull",
+    "factor": 2.424372564206682,
+    "reference": "native optical diameter",
+    "target_m": 1.28,
+    "measured_m": 0.5279716570373125,
+    "before_dimensions_m": [
+      1.6475963838040286,
+      1.0961194559353507,
+      2.3008191451552378
+    ],
+    "canonical_uniform_dimensions_m": [
+      3.994387469780629,
+      2.657401936062819,
+      5.5780428107158295
+    ]
+  },
+  {
+    "name": "Alien128cmOrangeLaserBattery",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/alien_medium_laser_battery",
+    "mount": "TwoHullHoriz",
+    "factor": 4.772000871788436,
+    "reference": "native optical diameter",
+    "target_m": 2.56,
+    "measured_m": 0.5364626010725289,
+    "before_dimensions_m": [
+      2.3527148597346965,
+      1.2501194544154322,
+      2.76348470991082
+    ],
+    "canonical_uniform_dimensions_m": [
+      11.227157361723581,
+      5.9655711263101265,
+      13.187351444868447
+    ]
+  },
+  {
+    "name": "Alien384cmOrangeLaserBattery",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/alien_large_laser_battery",
+    "mount": "FourHull",
+    "factor": 8.514397180036692,
+    "reference": "native optical diameter",
+    "target_m": 7.68,
+    "measured_m": 0.9020016141608869,
+    "before_dimensions_m": [
+      5.428885205321194,
+      1.6490327821196704,
+      7.397432103704052
+    ],
+    "canonical_uniform_dimensions_m": [
+      46.22368488292969,
+      14.040520069867782,
+      62.98467504329067
+    ]
+  },
+  {
+    "name": "Alien256cmOrangeLaserCannon",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/alien_small_laser_cannon",
+    "mount": "OneNose",
+    "factor": 7.40204070336644,
+    "reference": "native optical diameter",
+    "target_m": 5.12,
+    "measured_m": 0.6917011409666296,
+    "before_dimensions_m": [
+      1.5879294314753452,
+      1.5543045815954104,
+      1.8172979377292777
+    ],
+    "canonical_uniform_dimensions_m": [
+      11.753918285854036,
+      11.505025778398172,
+      13.451713305216003
+    ]
+  },
+  {
+    "name": "Alien512cmOrangeLaserCannon",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/alien_medium_laser_cannon",
+    "mount": "TwoNoseVert",
+    "factor": 9.912838665257185,
+    "reference": "native optical diameter",
+    "target_m": 10.24,
+    "measured_m": 1.0330037989914493,
+    "before_dimensions_m": [
+      1.9749465329508027,
+      1.9328766394277415,
+      2.6501854751822504
+    ],
+    "canonical_uniform_dimensions_m": [
+      19.577326353650342,
+      19.160294286491688,
+      26.2708610484896
+    ]
+  },
+  {
+    "name": "Alien768cmOrangeLaserCannon",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/alien_large_laser_cannon",
+    "mount": "ThreeNoseAngle",
+    "factor": 14.869258813962308,
+    "reference": "native optical diameter",
+    "target_m": 15.36,
+    "measured_m": 1.0330037422966156,
+    "before_dimensions_m": [
+      2.110955038201027,
+      2.020876339538391,
+      3.9999348871494282
+    ],
+    "canonical_uniform_dimensions_m": [
+      31.38833680764876,
+      30.048933323609106,
+      59.47606707602196
+    ]
+  },
+  {
+    "name": "Alien1024cmOrangeLaserCannon",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/alien_huge_laser_cannon",
+    "mount": "FourNose",
+    "factor": 14.79497872159248,
+    "reference": "native optical diameter",
+    "target_m": 20.48,
+    "measured_m": 1.3842534271516413,
+    "before_dimensions_m": [
+      2.556068744600843,
+      2.5363314887334623,
+      4.4153114499943165
+    ],
+    "canonical_uniform_dimensions_m": [
+      37.81698268729708,
+      37.524970406716555,
+      65.32443895186955
+    ]
+  },
+  {
+    "name": "Alien64cmVioletLaserBattery",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/alien_small_laser_battery",
+    "mount": "OneHull",
+    "factor": 2.424372564206682,
+    "reference": "native optical diameter",
+    "target_m": 1.28,
+    "measured_m": 0.5279716570373125,
+    "before_dimensions_m": [
+      1.6475963838040286,
+      1.0961194559353507,
+      2.3008191451552378
+    ],
+    "canonical_uniform_dimensions_m": [
+      3.994387469780629,
+      2.657401936062819,
+      5.5780428107158295
+    ]
+  },
+  {
+    "name": "Alien128cmVioletLaserBattery",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/alien_medium_laser_battery",
+    "mount": "TwoHullHoriz",
+    "factor": 4.772000871788436,
+    "reference": "native optical diameter",
+    "target_m": 2.56,
+    "measured_m": 0.5364626010725289,
+    "before_dimensions_m": [
+      2.3527148597346965,
+      1.2501194544154322,
+      2.76348470991082
+    ],
+    "canonical_uniform_dimensions_m": [
+      11.227157361723581,
+      5.9655711263101265,
+      13.187351444868447
+    ]
+  },
+  {
+    "name": "Alien384cmVioletLaserBattery",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/alien_large_laser_battery",
+    "mount": "FourHull",
+    "factor": 8.514397180036692,
+    "reference": "native optical diameter",
+    "target_m": 7.68,
+    "measured_m": 0.9020016141608869,
+    "before_dimensions_m": [
+      5.428885205321194,
+      1.6490327821196704,
+      7.397432103704052
+    ],
+    "canonical_uniform_dimensions_m": [
+      46.22368488292969,
+      14.040520069867782,
+      62.98467504329067
+    ]
+  },
+  {
+    "name": "Alien256cmVioletLaserCannon",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/alien_small_laser_cannon",
+    "mount": "OneNose",
+    "factor": 7.40204070336644,
+    "reference": "native optical diameter",
+    "target_m": 5.12,
+    "measured_m": 0.6917011409666296,
+    "before_dimensions_m": [
+      1.5879294314753452,
+      1.5543045815954104,
+      1.8172979377292777
+    ],
+    "canonical_uniform_dimensions_m": [
+      11.753918285854036,
+      11.505025778398172,
+      13.451713305216003
+    ]
+  },
+  {
+    "name": "Alien512cmVioletLaserCannon",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/alien_medium_laser_cannon",
+    "mount": "TwoNoseVert",
+    "factor": 9.912838665257185,
+    "reference": "native optical diameter",
+    "target_m": 10.24,
+    "measured_m": 1.0330037989914493,
+    "before_dimensions_m": [
+      1.9749465329508027,
+      1.9328766394277415,
+      2.6501854751822504
+    ],
+    "canonical_uniform_dimensions_m": [
+      19.577326353650342,
+      19.160294286491688,
+      26.2708610484896
+    ]
+  },
+  {
+    "name": "Alien768cmVioletLaserCannon",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/alien_large_laser_cannon",
+    "mount": "ThreeNoseAngle",
+    "factor": 14.869258813962308,
+    "reference": "native optical diameter",
+    "target_m": 15.36,
+    "measured_m": 1.0330037422966156,
+    "before_dimensions_m": [
+      2.110955038201027,
+      2.020876339538391,
+      3.9999348871494282
+    ],
+    "canonical_uniform_dimensions_m": [
+      31.38833680764876,
+      30.048933323609106,
+      59.47606707602196
+    ]
+  },
+  {
+    "name": "Alien1024cmVioletLaserCannon",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/alien_huge_laser_cannon",
+    "mount": "FourNose",
+    "factor": 14.79497872159248,
+    "reference": "native optical diameter",
+    "target_m": 20.48,
+    "measured_m": 1.3842534271516413,
+    "before_dimensions_m": [
+      2.556068744600843,
+      2.5363314887334623,
+      4.4153114499943165
+    ],
+    "canonical_uniform_dimensions_m": [
+      37.81698268729708,
+      37.524970406716555,
+      65.32443895186955
+    ]
+  },
+  {
+    "name": "Alien384cmXaserBattery",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/alien_large_laser_battery",
+    "mount": "FourHull",
+    "factor": 8.514397180036692,
+    "reference": "native optical diameter",
+    "target_m": 7.68,
+    "measured_m": 0.9020016141608869,
+    "before_dimensions_m": [
+      5.428885205321194,
+      1.6490327821196704,
+      7.397432103704052
+    ],
+    "canonical_uniform_dimensions_m": [
+      46.22368488292969,
+      14.040520069867782,
+      62.98467504329067
+    ]
+  },
+  {
+    "name": "Alien256cmXaserCannon",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/alien_small_laser_cannon",
+    "mount": "OneNose",
+    "factor": 7.40204070336644,
+    "reference": "native optical diameter",
+    "target_m": 5.12,
+    "measured_m": 0.6917011409666296,
+    "before_dimensions_m": [
+      1.5879294314753452,
+      1.5543045815954104,
+      1.8172979377292777
+    ],
+    "canonical_uniform_dimensions_m": [
+      11.753918285854036,
+      11.505025778398172,
+      13.451713305216003
+    ]
+  },
+  {
+    "name": "Alien512cmXaserCannon",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/alien_medium_laser_cannon",
+    "mount": "TwoNoseVert",
+    "factor": 9.912838665257185,
+    "reference": "native optical diameter",
+    "target_m": 10.24,
+    "measured_m": 1.0330037989914493,
+    "before_dimensions_m": [
+      1.9749465329508027,
+      1.9328766394277415,
+      2.6501854751822504
+    ],
+    "canonical_uniform_dimensions_m": [
+      19.577326353650342,
+      19.160294286491688,
+      26.2708610484896
+    ]
+  },
+  {
+    "name": "Alien768cmXaserCannon",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/alien_large_laser_cannon",
+    "mount": "ThreeNoseAngle",
+    "factor": 14.869258813962308,
+    "reference": "native optical diameter",
+    "target_m": 15.36,
+    "measured_m": 1.0330037422966156,
+    "before_dimensions_m": [
+      2.110955038201027,
+      2.020876339538391,
+      3.9999348871494282
+    ],
+    "canonical_uniform_dimensions_m": [
+      31.38833680764876,
+      30.048933323609106,
+      59.47606707602196
+    ]
+  },
+  {
+    "name": "Alien1024cmXaserCannon",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/alien_huge_laser_cannon",
+    "mount": "FourNose",
+    "factor": 14.79497872159248,
+    "reference": "native optical diameter",
+    "target_m": 20.48,
+    "measured_m": 1.3842534271516413,
+    "before_dimensions_m": [
+      2.556068744600843,
+      2.5363314887334623,
+      4.4153114499943165
+    ],
+    "canonical_uniform_dimensions_m": [
+      37.81698268729708,
+      37.524970406716555,
+      65.32443895186955
+    ]
+  },
+  {
+    "name": "Alien768cmGraserCannon",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/alien_large_laser_cannon",
+    "mount": "ThreeNoseAngle",
+    "factor": 14.869258813962308,
+    "reference": "native optical diameter",
+    "target_m": 15.36,
+    "measured_m": 1.0330037422966156,
+    "before_dimensions_m": [
+      2.110955038201027,
+      2.020876339538391,
+      3.9999348871494282
+    ],
+    "canonical_uniform_dimensions_m": [
+      31.38833680764876,
+      30.048933323609106,
+      59.47606707602196
+    ]
+  },
+  {
+    "name": "Alien1024cmGraserCannon",
+    "kind": "TILaserWeaponTemplate",
+    "resource": "shipweapons/alien_huge_laser_cannon",
+    "mount": "FourNose",
+    "factor": 14.79497872159248,
+    "reference": "native optical diameter",
+    "target_m": 20.48,
+    "measured_m": 1.3842534271516413,
+    "before_dimensions_m": [
+      2.556068744600843,
+      2.5363314887334623,
+      4.4153114499943165
+    ],
+    "canonical_uniform_dimensions_m": [
+      37.81698268729708,
+      37.524970406716555,
+      65.32443895186955
+    ]
+  }
+]

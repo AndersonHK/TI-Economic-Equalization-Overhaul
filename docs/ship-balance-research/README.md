@@ -5,7 +5,7 @@ Status: evidence and planning archive. Use the dated
 [current implementation matrix](../current-implementation-matrix.xlsx) to
 distinguish implemented values from proposals and deferred work.
 
-Last reviewed: 2026-09-27
+Last reviewed: 2026-10-21
 
 This dossier compares dated Terra Invicta ship-drive, power-plant, and
 weapon-crew snapshots with demonstrated hardware, active prototypes, historical
@@ -24,6 +24,11 @@ The game data used here comes from the installed templates:
 
 The comparison is organized into:
 
+- [Canonical turret scaling plan](canonical-turret-scaling-plan-2026-10-21.md): physics-based bore/aperture targets, compact alien optics, a separate projected copy of the original 28-class/64-appearance clearance reports, visual tier coherence, legal loadouts, and optional retier DPS/capital-policy fallout. Planning only; current laser stats remain unchanged.
+- [Barrel and lens dimensional audit](barrel-and-lens-dimensional-audit-2026-10-21.md): 203 templates, 41 measured ship resources, muzzle/optical apertures, same-scale renders, exact small/medium coil duplication, caliber and family-ratio deltas. [Larger-laser proposal](larger-laser-aperture-proposal-2026-10-21.md) separates art correction from aperture-driven penetration changes. Research only.
+- [Archived 25 mm autocannon and two-cell 30/40 mm proposal](archive/25mm-autocannon-2026-10-21/25mm-autocannon-and-two-cell-upgrade-proposal-2026-10-21.md): retained historical proposal and evidence. Archived at the user's request; superseded as the active direction by canonical scaling of existing weapons. Never implemented.
+- [0.10.4 Mothership symmetric geometry](mothership-symmetric-mount-implementation-2026-10-21.md): deployed correction, UI-capacity decision, all twenty authored pairs, unchanged sixteen active weapons and mass, and manual checks.
+- [Weapon shapes and Monitor clarification](turret-clearance/weapon-shapes-and-monitor-2026-10-21.md): same-scale renders of all 35 resources, actual model sizes versus motion bounds, stock-legal Monitor reconstructions and an unapplied compact-art option.
 - [2026-10-20 complete turret clearance and firepower audit](turret-clearance/README.md): 28 classes, 64 appearances, 147 hull weapons and 35 art resources; preview/combat scaling, largest size-1/2/4 turrets, padding tables, extra/merge-node inventory, distance matrices and class DPS deltas. Research tooling and reports; hypothetical fitting changes are not implemented.
 - [Visual inspection and mount-repair proposals](turret-clearance/visual-inspection-and-mount-repair.md): direct mesh inspection of 28 appearances, crowded foundation explanations, original Mothership surface albedo, the exact duplicate-node correction, and a tested-surface symmetric redistribution concept. Documentation and proposals only; no asset/runtime changes.
 - [0.10.1 fusion open-cycle implementation](fusion-open-cycle-implementation-2026-09-27.md): all human/alien fusion drives explicitly open; all human fusion reactor specific masses doubled. Includes deployment results and table provenance. The [candidate report](fusion-drive-open-cycle-candidates-2026-09-27.md) retains the pre-change scientific and localization audit.

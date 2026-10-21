@@ -1,0 +1,1447 @@
+[
+  {
+    "class": "Gunship",
+    "family": "RailgunBatteryMk1",
+    "before_raw_MJ_s": 0.0,
+    "after_raw_MJ_s": 0.0,
+    "before_weapons": [],
+    "after_weapons": [],
+    "before_mass_t": 0,
+    "after_mass_t": 0
+  },
+  {
+    "class": "Gunship",
+    "family": "RailgunBatteryMk2",
+    "before_raw_MJ_s": 0.0,
+    "after_raw_MJ_s": 0.0,
+    "before_weapons": [],
+    "after_weapons": [],
+    "before_mass_t": 0,
+    "after_mass_t": 0
+  },
+  {
+    "class": "Gunship",
+    "family": "RailgunBatteryMk3",
+    "before_raw_MJ_s": 0.0,
+    "after_raw_MJ_s": 0.0,
+    "before_weapons": [],
+    "after_weapons": [],
+    "before_mass_t": 0,
+    "after_mass_t": 0
+  },
+  {
+    "class": "Gunship",
+    "family": "CoilgunBatteryMk1",
+    "before_raw_MJ_s": 0.0,
+    "after_raw_MJ_s": 0.0,
+    "before_weapons": [],
+    "after_weapons": [],
+    "before_mass_t": 0,
+    "after_mass_t": 0
+  },
+  {
+    "class": "Gunship",
+    "family": "CoilgunBatteryMk2",
+    "before_raw_MJ_s": 0.0,
+    "after_raw_MJ_s": 0.0,
+    "before_weapons": [],
+    "after_weapons": [],
+    "before_mass_t": 0,
+    "after_mass_t": 0
+  },
+  {
+    "class": "Gunship",
+    "family": "CoilgunBatteryMk3",
+    "before_raw_MJ_s": 0.0,
+    "after_raw_MJ_s": 0.0,
+    "before_weapons": [],
+    "after_weapons": [],
+    "before_mass_t": 0,
+    "after_mass_t": 0
+  },
+  {
+    "class": "Gunship",
+    "family": "Naval cannon",
+    "before_raw_MJ_s": 0.0,
+    "after_raw_MJ_s": 0.0,
+    "before_weapons": [],
+    "after_weapons": [],
+    "before_mass_t": 0,
+    "after_mass_t": 0
+  },
+  {
+    "class": "Escort",
+    "family": "RailgunBatteryMk1",
+    "before_raw_MJ_s": 11.8125,
+    "after_raw_MJ_s": 11.8125,
+    "before_weapons": [
+      "LightRailgunBatteryMk1",
+      "LightRailgunBatteryMk1"
+    ],
+    "after_weapons": [
+      "LightRailgunBatteryMk1",
+      "LightRailgunBatteryMk1"
+    ],
+    "before_mass_t": 100,
+    "after_mass_t": 100
+  },
+  {
+    "class": "Escort",
+    "family": "RailgunBatteryMk2",
+    "before_raw_MJ_s": 20.327999999999996,
+    "after_raw_MJ_s": 20.327999999999996,
+    "before_weapons": [
+      "LightRailgunBatteryMk2",
+      "LightRailgunBatteryMk2"
+    ],
+    "after_weapons": [
+      "LightRailgunBatteryMk2",
+      "LightRailgunBatteryMk2"
+    ],
+    "before_mass_t": 90,
+    "after_mass_t": 90
+  },
+  {
+    "class": "Escort",
+    "family": "RailgunBatteryMk3",
+    "before_raw_MJ_s": 39.690000000000005,
+    "after_raw_MJ_s": 39.690000000000005,
+    "before_weapons": [
+      "LightRailgunBatteryMk3",
+      "LightRailgunBatteryMk3"
+    ],
+    "after_weapons": [
+      "LightRailgunBatteryMk3",
+      "LightRailgunBatteryMk3"
+    ],
+    "before_mass_t": 80,
+    "after_mass_t": 80
+  },
+  {
+    "class": "Escort",
+    "family": "CoilgunBatteryMk1",
+    "before_raw_MJ_s": 26.133333333333333,
+    "after_raw_MJ_s": 26.133333333333333,
+    "before_weapons": [
+      "LightCoilgunBatteryMk1",
+      "LightCoilgunBatteryMk1"
+    ],
+    "after_weapons": [
+      "LightCoilgunBatteryMk1",
+      "LightCoilgunBatteryMk1"
+    ],
+    "before_mass_t": 100,
+    "after_mass_t": 100
+  },
+  {
+    "class": "Escort",
+    "family": "CoilgunBatteryMk2",
+    "before_raw_MJ_s": 61.65333333333333,
+    "after_raw_MJ_s": 61.65333333333333,
+    "before_weapons": [
+      "LightCoilgunBatteryMk2",
+      "LightCoilgunBatteryMk2"
+    ],
+    "after_weapons": [
+      "LightCoilgunBatteryMk2",
+      "LightCoilgunBatteryMk2"
+    ],
+    "before_mass_t": 90,
+    "after_mass_t": 90
+  },
+  {
+    "class": "Escort",
+    "family": "CoilgunBatteryMk3",
+    "before_raw_MJ_s": 130.02083333333334,
+    "after_raw_MJ_s": 130.02083333333334,
+    "before_weapons": [
+      "LightCoilgunBatteryMk3",
+      "LightCoilgunBatteryMk3"
+    ],
+    "after_weapons": [
+      "LightCoilgunBatteryMk3",
+      "LightCoilgunBatteryMk3"
+    ],
+    "before_mass_t": 80,
+    "after_mass_t": 80
+  },
+  {
+    "class": "Escort",
+    "family": "Naval cannon",
+    "before_raw_MJ_s": 17.42222222222222,
+    "after_raw_MJ_s": 0.0,
+    "before_weapons": [
+      "6-inchCannon",
+      "6-inchCannon"
+    ],
+    "after_weapons": [],
+    "before_mass_t": 50,
+    "after_mass_t": 0
+  },
+  {
+    "class": "Corvette",
+    "family": "RailgunBatteryMk1",
+    "before_raw_MJ_s": 5.90625,
+    "after_raw_MJ_s": 5.90625,
+    "before_weapons": [
+      "LightRailgunBatteryMk1"
+    ],
+    "after_weapons": [
+      "LightRailgunBatteryMk1"
+    ],
+    "before_mass_t": 50,
+    "after_mass_t": 50
+  },
+  {
+    "class": "Corvette",
+    "family": "RailgunBatteryMk2",
+    "before_raw_MJ_s": 10.163999999999998,
+    "after_raw_MJ_s": 10.163999999999998,
+    "before_weapons": [
+      "LightRailgunBatteryMk2"
+    ],
+    "after_weapons": [
+      "LightRailgunBatteryMk2"
+    ],
+    "before_mass_t": 45,
+    "after_mass_t": 45
+  },
+  {
+    "class": "Corvette",
+    "family": "RailgunBatteryMk3",
+    "before_raw_MJ_s": 19.845000000000002,
+    "after_raw_MJ_s": 19.845000000000002,
+    "before_weapons": [
+      "LightRailgunBatteryMk3"
+    ],
+    "after_weapons": [
+      "LightRailgunBatteryMk3"
+    ],
+    "before_mass_t": 40,
+    "after_mass_t": 40
+  },
+  {
+    "class": "Corvette",
+    "family": "CoilgunBatteryMk1",
+    "before_raw_MJ_s": 13.066666666666666,
+    "after_raw_MJ_s": 13.066666666666666,
+    "before_weapons": [
+      "LightCoilgunBatteryMk1"
+    ],
+    "after_weapons": [
+      "LightCoilgunBatteryMk1"
+    ],
+    "before_mass_t": 50,
+    "after_mass_t": 50
+  },
+  {
+    "class": "Corvette",
+    "family": "CoilgunBatteryMk2",
+    "before_raw_MJ_s": 30.826666666666664,
+    "after_raw_MJ_s": 30.826666666666664,
+    "before_weapons": [
+      "LightCoilgunBatteryMk2"
+    ],
+    "after_weapons": [
+      "LightCoilgunBatteryMk2"
+    ],
+    "before_mass_t": 45,
+    "after_mass_t": 45
+  },
+  {
+    "class": "Corvette",
+    "family": "CoilgunBatteryMk3",
+    "before_raw_MJ_s": 65.01041666666667,
+    "after_raw_MJ_s": 65.01041666666667,
+    "before_weapons": [
+      "LightCoilgunBatteryMk3"
+    ],
+    "after_weapons": [
+      "LightCoilgunBatteryMk3"
+    ],
+    "before_mass_t": 40,
+    "after_mass_t": 40
+  },
+  {
+    "class": "Corvette",
+    "family": "Naval cannon",
+    "before_raw_MJ_s": 8.71111111111111,
+    "after_raw_MJ_s": 0.0,
+    "before_weapons": [
+      "6-inchCannon"
+    ],
+    "after_weapons": [],
+    "before_mass_t": 25,
+    "after_mass_t": 0
+  },
+  {
+    "class": "Frigate",
+    "family": "RailgunBatteryMk1",
+    "before_raw_MJ_s": 11.8125,
+    "after_raw_MJ_s": 11.8125,
+    "before_weapons": [
+      "LightRailgunBatteryMk1",
+      "LightRailgunBatteryMk1"
+    ],
+    "after_weapons": [
+      "LightRailgunBatteryMk1",
+      "LightRailgunBatteryMk1"
+    ],
+    "before_mass_t": 100,
+    "after_mass_t": 100
+  },
+  {
+    "class": "Frigate",
+    "family": "RailgunBatteryMk2",
+    "before_raw_MJ_s": 20.327999999999996,
+    "after_raw_MJ_s": 20.327999999999996,
+    "before_weapons": [
+      "LightRailgunBatteryMk2",
+      "LightRailgunBatteryMk2"
+    ],
+    "after_weapons": [
+      "LightRailgunBatteryMk2",
+      "LightRailgunBatteryMk2"
+    ],
+    "before_mass_t": 90,
+    "after_mass_t": 90
+  },
+  {
+    "class": "Frigate",
+    "family": "RailgunBatteryMk3",
+    "before_raw_MJ_s": 40.824000000000005,
+    "after_raw_MJ_s": 56.34803999999999,
+    "before_weapons": [
+      "RailgunBatteryMk3"
+    ],
+    "after_weapons": [
+      "HeavyRailgunBatteryMk3"
+    ],
+    "before_mass_t": 80,
+    "after_mass_t": 160
+  },
+  {
+    "class": "Frigate",
+    "family": "CoilgunBatteryMk1",
+    "before_raw_MJ_s": 32.946,
+    "after_raw_MJ_s": 88.93424999999999,
+    "before_weapons": [
+      "CoilgunBatteryMk1"
+    ],
+    "after_weapons": [
+      "HeavyCoilgunBatteryMk1"
+    ],
+    "before_mass_t": 100,
+    "after_mass_t": 200
+  },
+  {
+    "class": "Frigate",
+    "family": "CoilgunBatteryMk2",
+    "before_raw_MJ_s": 69.34444444444445,
+    "after_raw_MJ_s": 180.0,
+    "before_weapons": [
+      "CoilgunBatteryMk2"
+    ],
+    "after_weapons": [
+      "HeavyCoilgunBatteryMk2"
+    ],
+    "before_mass_t": 90,
+    "after_mass_t": 180
+  },
+  {
+    "class": "Frigate",
+    "family": "CoilgunBatteryMk3",
+    "before_raw_MJ_s": 139.21875,
+    "after_raw_MJ_s": 350.65937499999995,
+    "before_weapons": [
+      "CoilgunBatteryMk3"
+    ],
+    "after_weapons": [
+      "HeavyCoilgunBatteryMk3"
+    ],
+    "before_mass_t": 80,
+    "after_mass_t": 160
+  },
+  {
+    "class": "Frigate",
+    "family": "Naval cannon",
+    "before_raw_MJ_s": 17.42222222222222,
+    "after_raw_MJ_s": 15.679999999999998,
+    "before_weapons": [
+      "6-inchCannon",
+      "6-inchCannon"
+    ],
+    "after_weapons": [
+      "8-inchCannon"
+    ],
+    "before_mass_t": 50,
+    "after_mass_t": 50
+  },
+  {
+    "class": "Monitor",
+    "family": "RailgunBatteryMk1",
+    "before_raw_MJ_s": 23.625,
+    "after_raw_MJ_s": 23.625,
+    "before_weapons": [
+      "LightRailgunBatteryMk1",
+      "LightRailgunBatteryMk1",
+      "LightRailgunBatteryMk1",
+      "LightRailgunBatteryMk1"
+    ],
+    "after_weapons": [
+      "LightRailgunBatteryMk1",
+      "LightRailgunBatteryMk1",
+      "LightRailgunBatteryMk1",
+      "LightRailgunBatteryMk1"
+    ],
+    "before_mass_t": 200,
+    "after_mass_t": 200
+  },
+  {
+    "class": "Monitor",
+    "family": "RailgunBatteryMk2",
+    "before_raw_MJ_s": 40.65599999999999,
+    "after_raw_MJ_s": 40.65599999999999,
+    "before_weapons": [
+      "LightRailgunBatteryMk2",
+      "LightRailgunBatteryMk2",
+      "LightRailgunBatteryMk2",
+      "LightRailgunBatteryMk2"
+    ],
+    "after_weapons": [
+      "LightRailgunBatteryMk2",
+      "LightRailgunBatteryMk2",
+      "LightRailgunBatteryMk2",
+      "LightRailgunBatteryMk2"
+    ],
+    "before_mass_t": 180,
+    "after_mass_t": 180
+  },
+  {
+    "class": "Monitor",
+    "family": "RailgunBatteryMk3",
+    "before_raw_MJ_s": 81.64800000000001,
+    "after_raw_MJ_s": 112.69607999999998,
+    "before_weapons": [
+      "RailgunBatteryMk3",
+      "RailgunBatteryMk3"
+    ],
+    "after_weapons": [
+      "HeavyRailgunBatteryMk3",
+      "HeavyRailgunBatteryMk3"
+    ],
+    "before_mass_t": 160,
+    "after_mass_t": 320
+  },
+  {
+    "class": "Monitor",
+    "family": "CoilgunBatteryMk1",
+    "before_raw_MJ_s": 65.892,
+    "after_raw_MJ_s": 177.86849999999998,
+    "before_weapons": [
+      "CoilgunBatteryMk1",
+      "CoilgunBatteryMk1"
+    ],
+    "after_weapons": [
+      "HeavyCoilgunBatteryMk1",
+      "HeavyCoilgunBatteryMk1"
+    ],
+    "before_mass_t": 200,
+    "after_mass_t": 400
+  },
+  {
+    "class": "Monitor",
+    "family": "CoilgunBatteryMk2",
+    "before_raw_MJ_s": 138.6888888888889,
+    "after_raw_MJ_s": 360.0,
+    "before_weapons": [
+      "CoilgunBatteryMk2",
+      "CoilgunBatteryMk2"
+    ],
+    "after_weapons": [
+      "HeavyCoilgunBatteryMk2",
+      "HeavyCoilgunBatteryMk2"
+    ],
+    "before_mass_t": 180,
+    "after_mass_t": 360
+  },
+  {
+    "class": "Monitor",
+    "family": "CoilgunBatteryMk3",
+    "before_raw_MJ_s": 278.4375,
+    "after_raw_MJ_s": 701.3187499999999,
+    "before_weapons": [
+      "CoilgunBatteryMk3",
+      "CoilgunBatteryMk3"
+    ],
+    "after_weapons": [
+      "HeavyCoilgunBatteryMk3",
+      "HeavyCoilgunBatteryMk3"
+    ],
+    "before_mass_t": 160,
+    "after_mass_t": 320
+  },
+  {
+    "class": "Monitor",
+    "family": "Naval cannon",
+    "before_raw_MJ_s": 34.84444444444444,
+    "after_raw_MJ_s": 31.359999999999996,
+    "before_weapons": [
+      "6-inchCannon",
+      "6-inchCannon",
+      "6-inchCannon",
+      "6-inchCannon"
+    ],
+    "after_weapons": [
+      "8-inchCannon",
+      "8-inchCannon"
+    ],
+    "before_mass_t": 100,
+    "after_mass_t": 100
+  },
+  {
+    "class": "Destroyer",
+    "family": "RailgunBatteryMk1",
+    "before_raw_MJ_s": 11.8125,
+    "after_raw_MJ_s": 11.8125,
+    "before_weapons": [
+      "LightRailgunBatteryMk1",
+      "LightRailgunBatteryMk1"
+    ],
+    "after_weapons": [
+      "LightRailgunBatteryMk1",
+      "LightRailgunBatteryMk1"
+    ],
+    "before_mass_t": 100,
+    "after_mass_t": 100
+  },
+  {
+    "class": "Destroyer",
+    "family": "RailgunBatteryMk2",
+    "before_raw_MJ_s": 20.327999999999996,
+    "after_raw_MJ_s": 20.327999999999996,
+    "before_weapons": [
+      "LightRailgunBatteryMk2",
+      "LightRailgunBatteryMk2"
+    ],
+    "after_weapons": [
+      "LightRailgunBatteryMk2",
+      "LightRailgunBatteryMk2"
+    ],
+    "before_mass_t": 90,
+    "after_mass_t": 90
+  },
+  {
+    "class": "Destroyer",
+    "family": "RailgunBatteryMk3",
+    "before_raw_MJ_s": 40.824000000000005,
+    "after_raw_MJ_s": 56.34803999999999,
+    "before_weapons": [
+      "RailgunBatteryMk3"
+    ],
+    "after_weapons": [
+      "HeavyRailgunBatteryMk3"
+    ],
+    "before_mass_t": 80,
+    "after_mass_t": 160
+  },
+  {
+    "class": "Destroyer",
+    "family": "CoilgunBatteryMk1",
+    "before_raw_MJ_s": 32.946,
+    "after_raw_MJ_s": 88.93424999999999,
+    "before_weapons": [
+      "CoilgunBatteryMk1"
+    ],
+    "after_weapons": [
+      "HeavyCoilgunBatteryMk1"
+    ],
+    "before_mass_t": 100,
+    "after_mass_t": 200
+  },
+  {
+    "class": "Destroyer",
+    "family": "CoilgunBatteryMk2",
+    "before_raw_MJ_s": 69.34444444444445,
+    "after_raw_MJ_s": 180.0,
+    "before_weapons": [
+      "CoilgunBatteryMk2"
+    ],
+    "after_weapons": [
+      "HeavyCoilgunBatteryMk2"
+    ],
+    "before_mass_t": 90,
+    "after_mass_t": 180
+  },
+  {
+    "class": "Destroyer",
+    "family": "CoilgunBatteryMk3",
+    "before_raw_MJ_s": 139.21875,
+    "after_raw_MJ_s": 350.65937499999995,
+    "before_weapons": [
+      "CoilgunBatteryMk3"
+    ],
+    "after_weapons": [
+      "HeavyCoilgunBatteryMk3"
+    ],
+    "before_mass_t": 80,
+    "after_mass_t": 160
+  },
+  {
+    "class": "Destroyer",
+    "family": "Naval cannon",
+    "before_raw_MJ_s": 17.42222222222222,
+    "after_raw_MJ_s": 15.679999999999998,
+    "before_weapons": [
+      "6-inchCannon",
+      "6-inchCannon"
+    ],
+    "after_weapons": [
+      "8-inchCannon"
+    ],
+    "before_mass_t": 50,
+    "after_mass_t": 50
+  },
+  {
+    "class": "Cruiser",
+    "family": "RailgunBatteryMk1",
+    "before_raw_MJ_s": 17.71875,
+    "after_raw_MJ_s": 17.71875,
+    "before_weapons": [
+      "LightRailgunBatteryMk1",
+      "LightRailgunBatteryMk1",
+      "LightRailgunBatteryMk1"
+    ],
+    "after_weapons": [
+      "LightRailgunBatteryMk1",
+      "LightRailgunBatteryMk1",
+      "LightRailgunBatteryMk1"
+    ],
+    "before_mass_t": 150,
+    "after_mass_t": 150
+  },
+  {
+    "class": "Cruiser",
+    "family": "RailgunBatteryMk2",
+    "before_raw_MJ_s": 30.491999999999994,
+    "after_raw_MJ_s": 30.491999999999994,
+    "before_weapons": [
+      "LightRailgunBatteryMk2",
+      "LightRailgunBatteryMk2",
+      "LightRailgunBatteryMk2"
+    ],
+    "after_weapons": [
+      "LightRailgunBatteryMk2",
+      "LightRailgunBatteryMk2",
+      "LightRailgunBatteryMk2"
+    ],
+    "before_mass_t": 135,
+    "after_mass_t": 135
+  },
+  {
+    "class": "Cruiser",
+    "family": "RailgunBatteryMk3",
+    "before_raw_MJ_s": 60.66900000000001,
+    "after_raw_MJ_s": 76.19304,
+    "before_weapons": [
+      "RailgunBatteryMk3",
+      "LightRailgunBatteryMk3"
+    ],
+    "after_weapons": [
+      "HeavyRailgunBatteryMk3",
+      "LightRailgunBatteryMk3"
+    ],
+    "before_mass_t": 120,
+    "after_mass_t": 200
+  },
+  {
+    "class": "Cruiser",
+    "family": "CoilgunBatteryMk1",
+    "before_raw_MJ_s": 46.01266666666666,
+    "after_raw_MJ_s": 102.00091666666665,
+    "before_weapons": [
+      "CoilgunBatteryMk1",
+      "LightCoilgunBatteryMk1"
+    ],
+    "after_weapons": [
+      "HeavyCoilgunBatteryMk1",
+      "LightCoilgunBatteryMk1"
+    ],
+    "before_mass_t": 150,
+    "after_mass_t": 250
+  },
+  {
+    "class": "Cruiser",
+    "family": "CoilgunBatteryMk2",
+    "before_raw_MJ_s": 100.17111111111112,
+    "after_raw_MJ_s": 210.82666666666665,
+    "before_weapons": [
+      "CoilgunBatteryMk2",
+      "LightCoilgunBatteryMk2"
+    ],
+    "after_weapons": [
+      "HeavyCoilgunBatteryMk2",
+      "LightCoilgunBatteryMk2"
+    ],
+    "before_mass_t": 135,
+    "after_mass_t": 225
+  },
+  {
+    "class": "Cruiser",
+    "family": "CoilgunBatteryMk3",
+    "before_raw_MJ_s": 204.22916666666669,
+    "after_raw_MJ_s": 415.66979166666664,
+    "before_weapons": [
+      "CoilgunBatteryMk3",
+      "LightCoilgunBatteryMk3"
+    ],
+    "after_weapons": [
+      "HeavyCoilgunBatteryMk3",
+      "LightCoilgunBatteryMk3"
+    ],
+    "before_mass_t": 120,
+    "after_mass_t": 200
+  },
+  {
+    "class": "Cruiser",
+    "family": "Naval cannon",
+    "before_raw_MJ_s": 26.133333333333333,
+    "after_raw_MJ_s": 15.679999999999998,
+    "before_weapons": [
+      "6-inchCannon",
+      "6-inchCannon",
+      "6-inchCannon"
+    ],
+    "after_weapons": [
+      "8-inchCannon"
+    ],
+    "before_mass_t": 75,
+    "after_mass_t": 50
+  },
+  {
+    "class": "Battlecruiser",
+    "family": "RailgunBatteryMk1",
+    "before_raw_MJ_s": 11.8125,
+    "after_raw_MJ_s": 11.8125,
+    "before_weapons": [
+      "LightRailgunBatteryMk1",
+      "LightRailgunBatteryMk1"
+    ],
+    "after_weapons": [
+      "LightRailgunBatteryMk1",
+      "LightRailgunBatteryMk1"
+    ],
+    "before_mass_t": 100,
+    "after_mass_t": 100
+  },
+  {
+    "class": "Battlecruiser",
+    "family": "RailgunBatteryMk2",
+    "before_raw_MJ_s": 20.327999999999996,
+    "after_raw_MJ_s": 20.327999999999996,
+    "before_weapons": [
+      "LightRailgunBatteryMk2",
+      "LightRailgunBatteryMk2"
+    ],
+    "after_weapons": [
+      "LightRailgunBatteryMk2",
+      "LightRailgunBatteryMk2"
+    ],
+    "before_mass_t": 90,
+    "after_mass_t": 90
+  },
+  {
+    "class": "Battlecruiser",
+    "family": "RailgunBatteryMk3",
+    "before_raw_MJ_s": 40.824000000000005,
+    "after_raw_MJ_s": 56.34803999999999,
+    "before_weapons": [
+      "RailgunBatteryMk3"
+    ],
+    "after_weapons": [
+      "HeavyRailgunBatteryMk3"
+    ],
+    "before_mass_t": 80,
+    "after_mass_t": 160
+  },
+  {
+    "class": "Battlecruiser",
+    "family": "CoilgunBatteryMk1",
+    "before_raw_MJ_s": 32.946,
+    "after_raw_MJ_s": 88.93424999999999,
+    "before_weapons": [
+      "CoilgunBatteryMk1"
+    ],
+    "after_weapons": [
+      "HeavyCoilgunBatteryMk1"
+    ],
+    "before_mass_t": 100,
+    "after_mass_t": 200
+  },
+  {
+    "class": "Battlecruiser",
+    "family": "CoilgunBatteryMk2",
+    "before_raw_MJ_s": 69.34444444444445,
+    "after_raw_MJ_s": 180.0,
+    "before_weapons": [
+      "CoilgunBatteryMk2"
+    ],
+    "after_weapons": [
+      "HeavyCoilgunBatteryMk2"
+    ],
+    "before_mass_t": 90,
+    "after_mass_t": 180
+  },
+  {
+    "class": "Battlecruiser",
+    "family": "CoilgunBatteryMk3",
+    "before_raw_MJ_s": 139.21875,
+    "after_raw_MJ_s": 350.65937499999995,
+    "before_weapons": [
+      "CoilgunBatteryMk3"
+    ],
+    "after_weapons": [
+      "HeavyCoilgunBatteryMk3"
+    ],
+    "before_mass_t": 80,
+    "after_mass_t": 160
+  },
+  {
+    "class": "Battlecruiser",
+    "family": "Naval cannon",
+    "before_raw_MJ_s": 17.42222222222222,
+    "after_raw_MJ_s": 15.679999999999998,
+    "before_weapons": [
+      "6-inchCannon",
+      "6-inchCannon"
+    ],
+    "after_weapons": [
+      "8-inchCannon"
+    ],
+    "before_mass_t": 50,
+    "after_mass_t": 50
+  },
+  {
+    "class": "Battleship",
+    "family": "RailgunBatteryMk1",
+    "before_raw_MJ_s": 35.4375,
+    "after_raw_MJ_s": 35.4375,
+    "before_weapons": [
+      "LightRailgunBatteryMk1",
+      "LightRailgunBatteryMk1",
+      "LightRailgunBatteryMk1",
+      "LightRailgunBatteryMk1",
+      "LightRailgunBatteryMk1",
+      "LightRailgunBatteryMk1"
+    ],
+    "after_weapons": [
+      "LightRailgunBatteryMk1",
+      "LightRailgunBatteryMk1",
+      "LightRailgunBatteryMk1",
+      "LightRailgunBatteryMk1",
+      "LightRailgunBatteryMk1",
+      "LightRailgunBatteryMk1"
+    ],
+    "before_mass_t": 300,
+    "after_mass_t": 300
+  },
+  {
+    "class": "Battleship",
+    "family": "RailgunBatteryMk2",
+    "before_raw_MJ_s": 60.983999999999995,
+    "after_raw_MJ_s": 60.983999999999995,
+    "before_weapons": [
+      "LightRailgunBatteryMk2",
+      "LightRailgunBatteryMk2",
+      "LightRailgunBatteryMk2",
+      "LightRailgunBatteryMk2",
+      "LightRailgunBatteryMk2",
+      "LightRailgunBatteryMk2"
+    ],
+    "after_weapons": [
+      "LightRailgunBatteryMk2",
+      "LightRailgunBatteryMk2",
+      "LightRailgunBatteryMk2",
+      "LightRailgunBatteryMk2",
+      "LightRailgunBatteryMk2",
+      "LightRailgunBatteryMk2"
+    ],
+    "before_mass_t": 270,
+    "after_mass_t": 270
+  },
+  {
+    "class": "Battleship",
+    "family": "RailgunBatteryMk3",
+    "before_raw_MJ_s": 121.33800000000002,
+    "after_raw_MJ_s": 152.38608,
+    "before_weapons": [
+      "LightRailgunBatteryMk3",
+      "RailgunBatteryMk3",
+      "RailgunBatteryMk3",
+      "LightRailgunBatteryMk3"
+    ],
+    "after_weapons": [
+      "HeavyRailgunBatteryMk3",
+      "HeavyRailgunBatteryMk3",
+      "LightRailgunBatteryMk3",
+      "LightRailgunBatteryMk3"
+    ],
+    "before_mass_t": 240,
+    "after_mass_t": 400
+  },
+  {
+    "class": "Battleship",
+    "family": "CoilgunBatteryMk1",
+    "before_raw_MJ_s": 115.06758333333332,
+    "after_raw_MJ_s": 204.0018333333333,
+    "before_weapons": [
+      "HeavyCoilgunBatteryMk1",
+      "LightCoilgunBatteryMk1",
+      "LightCoilgunBatteryMk1"
+    ],
+    "after_weapons": [
+      "HeavyCoilgunBatteryMk1",
+      "HeavyCoilgunBatteryMk1",
+      "LightCoilgunBatteryMk1",
+      "LightCoilgunBatteryMk1"
+    ],
+    "before_mass_t": 300,
+    "after_mass_t": 500
+  },
+  {
+    "class": "Battleship",
+    "family": "CoilgunBatteryMk2",
+    "before_raw_MJ_s": 241.65333333333334,
+    "after_raw_MJ_s": 421.6533333333333,
+    "before_weapons": [
+      "LightCoilgunBatteryMk2",
+      "LightCoilgunBatteryMk2",
+      "HeavyCoilgunBatteryMk2"
+    ],
+    "after_weapons": [
+      "HeavyCoilgunBatteryMk2",
+      "HeavyCoilgunBatteryMk2",
+      "LightCoilgunBatteryMk2",
+      "LightCoilgunBatteryMk2"
+    ],
+    "before_mass_t": 270,
+    "after_mass_t": 450
+  },
+  {
+    "class": "Battleship",
+    "family": "CoilgunBatteryMk3",
+    "before_raw_MJ_s": 480.6802083333333,
+    "after_raw_MJ_s": 831.3395833333333,
+    "before_weapons": [
+      "HeavyCoilgunBatteryMk3",
+      "LightCoilgunBatteryMk3",
+      "LightCoilgunBatteryMk3"
+    ],
+    "after_weapons": [
+      "LightCoilgunBatteryMk3",
+      "HeavyCoilgunBatteryMk3",
+      "HeavyCoilgunBatteryMk3",
+      "LightCoilgunBatteryMk3"
+    ],
+    "before_mass_t": 240,
+    "after_mass_t": 400
+  },
+  {
+    "class": "Battleship",
+    "family": "Naval cannon",
+    "before_raw_MJ_s": 52.26666666666666,
+    "after_raw_MJ_s": 31.359999999999996,
+    "before_weapons": [
+      "6-inchCannon",
+      "6-inchCannon",
+      "6-inchCannon",
+      "6-inchCannon",
+      "6-inchCannon",
+      "6-inchCannon"
+    ],
+    "after_weapons": [
+      "8-inchCannon",
+      "8-inchCannon"
+    ],
+    "before_mass_t": 150,
+    "after_mass_t": 100
+  },
+  {
+    "class": "Lancer",
+    "family": "RailgunBatteryMk1",
+    "before_raw_MJ_s": 17.71875,
+    "after_raw_MJ_s": 17.71875,
+    "before_weapons": [
+      "LightRailgunBatteryMk1",
+      "LightRailgunBatteryMk1",
+      "LightRailgunBatteryMk1"
+    ],
+    "after_weapons": [
+      "LightRailgunBatteryMk1",
+      "LightRailgunBatteryMk1",
+      "LightRailgunBatteryMk1"
+    ],
+    "before_mass_t": 150,
+    "after_mass_t": 150
+  },
+  {
+    "class": "Lancer",
+    "family": "RailgunBatteryMk2",
+    "before_raw_MJ_s": 30.491999999999994,
+    "after_raw_MJ_s": 30.491999999999994,
+    "before_weapons": [
+      "LightRailgunBatteryMk2",
+      "LightRailgunBatteryMk2",
+      "LightRailgunBatteryMk2"
+    ],
+    "after_weapons": [
+      "LightRailgunBatteryMk2",
+      "LightRailgunBatteryMk2",
+      "LightRailgunBatteryMk2"
+    ],
+    "before_mass_t": 135,
+    "after_mass_t": 135
+  },
+  {
+    "class": "Lancer",
+    "family": "RailgunBatteryMk3",
+    "before_raw_MJ_s": 60.66900000000001,
+    "after_raw_MJ_s": 76.19304,
+    "before_weapons": [
+      "RailgunBatteryMk3",
+      "LightRailgunBatteryMk3"
+    ],
+    "after_weapons": [
+      "HeavyRailgunBatteryMk3",
+      "LightRailgunBatteryMk3"
+    ],
+    "before_mass_t": 120,
+    "after_mass_t": 200
+  },
+  {
+    "class": "Lancer",
+    "family": "CoilgunBatteryMk1",
+    "before_raw_MJ_s": 46.01266666666666,
+    "after_raw_MJ_s": 102.00091666666665,
+    "before_weapons": [
+      "CoilgunBatteryMk1",
+      "LightCoilgunBatteryMk1"
+    ],
+    "after_weapons": [
+      "HeavyCoilgunBatteryMk1",
+      "LightCoilgunBatteryMk1"
+    ],
+    "before_mass_t": 150,
+    "after_mass_t": 250
+  },
+  {
+    "class": "Lancer",
+    "family": "CoilgunBatteryMk2",
+    "before_raw_MJ_s": 100.17111111111112,
+    "after_raw_MJ_s": 210.82666666666665,
+    "before_weapons": [
+      "CoilgunBatteryMk2",
+      "LightCoilgunBatteryMk2"
+    ],
+    "after_weapons": [
+      "HeavyCoilgunBatteryMk2",
+      "LightCoilgunBatteryMk2"
+    ],
+    "before_mass_t": 135,
+    "after_mass_t": 225
+  },
+  {
+    "class": "Lancer",
+    "family": "CoilgunBatteryMk3",
+    "before_raw_MJ_s": 204.22916666666669,
+    "after_raw_MJ_s": 415.66979166666664,
+    "before_weapons": [
+      "CoilgunBatteryMk3",
+      "LightCoilgunBatteryMk3"
+    ],
+    "after_weapons": [
+      "HeavyCoilgunBatteryMk3",
+      "LightCoilgunBatteryMk3"
+    ],
+    "before_mass_t": 120,
+    "after_mass_t": 200
+  },
+  {
+    "class": "Lancer",
+    "family": "Naval cannon",
+    "before_raw_MJ_s": 26.133333333333333,
+    "after_raw_MJ_s": 15.679999999999998,
+    "before_weapons": [
+      "6-inchCannon",
+      "6-inchCannon",
+      "6-inchCannon"
+    ],
+    "after_weapons": [
+      "8-inchCannon"
+    ],
+    "before_mass_t": 75,
+    "after_mass_t": 50
+  },
+  {
+    "class": "Dreadnought",
+    "family": "RailgunBatteryMk1",
+    "before_raw_MJ_s": 47.25,
+    "after_raw_MJ_s": 47.25,
+    "before_weapons": [
+      "LightRailgunBatteryMk1",
+      "LightRailgunBatteryMk1",
+      "LightRailgunBatteryMk1",
+      "LightRailgunBatteryMk1",
+      "LightRailgunBatteryMk1",
+      "LightRailgunBatteryMk1",
+      "LightRailgunBatteryMk1",
+      "LightRailgunBatteryMk1"
+    ],
+    "after_weapons": [
+      "LightRailgunBatteryMk1",
+      "LightRailgunBatteryMk1",
+      "LightRailgunBatteryMk1",
+      "LightRailgunBatteryMk1",
+      "LightRailgunBatteryMk1",
+      "LightRailgunBatteryMk1",
+      "LightRailgunBatteryMk1",
+      "LightRailgunBatteryMk1"
+    ],
+    "before_mass_t": 400,
+    "after_mass_t": 400
+  },
+  {
+    "class": "Dreadnought",
+    "family": "RailgunBatteryMk2",
+    "before_raw_MJ_s": 81.312,
+    "after_raw_MJ_s": 81.312,
+    "before_weapons": [
+      "LightRailgunBatteryMk2",
+      "LightRailgunBatteryMk2",
+      "LightRailgunBatteryMk2",
+      "LightRailgunBatteryMk2",
+      "LightRailgunBatteryMk2",
+      "LightRailgunBatteryMk2",
+      "LightRailgunBatteryMk2",
+      "LightRailgunBatteryMk2"
+    ],
+    "after_weapons": [
+      "LightRailgunBatteryMk2",
+      "LightRailgunBatteryMk2",
+      "LightRailgunBatteryMk2",
+      "LightRailgunBatteryMk2",
+      "LightRailgunBatteryMk2",
+      "LightRailgunBatteryMk2",
+      "LightRailgunBatteryMk2",
+      "LightRailgunBatteryMk2"
+    ],
+    "before_mass_t": 360,
+    "after_mass_t": 360
+  },
+  {
+    "class": "Dreadnought",
+    "family": "RailgunBatteryMk3",
+    "before_raw_MJ_s": 163.29600000000002,
+    "after_raw_MJ_s": 225.39215999999996,
+    "before_weapons": [
+      "RailgunBatteryMk3",
+      "RailgunBatteryMk3",
+      "RailgunBatteryMk3",
+      "RailgunBatteryMk3"
+    ],
+    "after_weapons": [
+      "HeavyRailgunBatteryMk3",
+      "HeavyRailgunBatteryMk3",
+      "HeavyRailgunBatteryMk3",
+      "HeavyRailgunBatteryMk3"
+    ],
+    "before_mass_t": 320,
+    "after_mass_t": 640
+  },
+  {
+    "class": "Dreadnought",
+    "family": "CoilgunBatteryMk1",
+    "before_raw_MJ_s": 177.86849999999998,
+    "after_raw_MJ_s": 355.73699999999997,
+    "before_weapons": [
+      "HeavyCoilgunBatteryMk1",
+      "HeavyCoilgunBatteryMk1"
+    ],
+    "after_weapons": [
+      "HeavyCoilgunBatteryMk1",
+      "HeavyCoilgunBatteryMk1",
+      "HeavyCoilgunBatteryMk1",
+      "HeavyCoilgunBatteryMk1"
+    ],
+    "before_mass_t": 400,
+    "after_mass_t": 800
+  },
+  {
+    "class": "Dreadnought",
+    "family": "CoilgunBatteryMk2",
+    "before_raw_MJ_s": 360.0,
+    "after_raw_MJ_s": 720.0,
+    "before_weapons": [
+      "HeavyCoilgunBatteryMk2",
+      "HeavyCoilgunBatteryMk2"
+    ],
+    "after_weapons": [
+      "HeavyCoilgunBatteryMk2",
+      "HeavyCoilgunBatteryMk2",
+      "HeavyCoilgunBatteryMk2",
+      "HeavyCoilgunBatteryMk2"
+    ],
+    "before_mass_t": 360,
+    "after_mass_t": 720
+  },
+  {
+    "class": "Dreadnought",
+    "family": "CoilgunBatteryMk3",
+    "before_raw_MJ_s": 701.3187499999999,
+    "after_raw_MJ_s": 1402.6374999999998,
+    "before_weapons": [
+      "HeavyCoilgunBatteryMk3",
+      "HeavyCoilgunBatteryMk3"
+    ],
+    "after_weapons": [
+      "HeavyCoilgunBatteryMk3",
+      "HeavyCoilgunBatteryMk3",
+      "HeavyCoilgunBatteryMk3",
+      "HeavyCoilgunBatteryMk3"
+    ],
+    "before_mass_t": 320,
+    "after_mass_t": 640
+  },
+  {
+    "class": "Dreadnought",
+    "family": "Naval cannon",
+    "before_raw_MJ_s": 69.68888888888888,
+    "after_raw_MJ_s": 62.71999999999999,
+    "before_weapons": [
+      "6-inchCannon",
+      "6-inchCannon",
+      "6-inchCannon",
+      "6-inchCannon",
+      "6-inchCannon",
+      "6-inchCannon",
+      "6-inchCannon",
+      "6-inchCannon"
+    ],
+    "after_weapons": [
+      "8-inchCannon",
+      "8-inchCannon",
+      "8-inchCannon",
+      "8-inchCannon"
+    ],
+    "before_mass_t": 200,
+    "after_mass_t": 200
+  },
+  {
+    "class": "Titan",
+    "family": "RailgunBatteryMk1",
+    "before_raw_MJ_s": 46.656000000000006,
+    "after_raw_MJ_s": 0.0,
+    "before_weapons": [
+      "HeavyRailgunBatteryMk1",
+      "HeavyRailgunBatteryMk1",
+      "HeavyRailgunBatteryMk1",
+      "HeavyRailgunBatteryMk1",
+      "HeavyRailgunBatteryMk1",
+      "HeavyRailgunBatteryMk1"
+    ],
+    "after_weapons": [],
+    "before_mass_t": 1200,
+    "after_mass_t": 0
+  },
+  {
+    "class": "Titan",
+    "family": "RailgunBatteryMk2",
+    "before_raw_MJ_s": 107.49542400000001,
+    "after_raw_MJ_s": 0.0,
+    "before_weapons": [
+      "HeavyRailgunBatteryMk2",
+      "HeavyRailgunBatteryMk2",
+      "HeavyRailgunBatteryMk2",
+      "HeavyRailgunBatteryMk2",
+      "HeavyRailgunBatteryMk2",
+      "HeavyRailgunBatteryMk2"
+    ],
+    "after_weapons": [],
+    "before_mass_t": 1080,
+    "after_mass_t": 0
+  },
+  {
+    "class": "Titan",
+    "family": "RailgunBatteryMk3",
+    "before_raw_MJ_s": 338.0882399999999,
+    "after_raw_MJ_s": 0.0,
+    "before_weapons": [
+      "HeavyRailgunBatteryMk3",
+      "HeavyRailgunBatteryMk3",
+      "HeavyRailgunBatteryMk3",
+      "HeavyRailgunBatteryMk3",
+      "HeavyRailgunBatteryMk3",
+      "HeavyRailgunBatteryMk3"
+    ],
+    "after_weapons": [],
+    "before_mass_t": 960,
+    "after_mass_t": 0
+  },
+  {
+    "class": "Titan",
+    "family": "CoilgunBatteryMk1",
+    "before_raw_MJ_s": 533.6054999999999,
+    "after_raw_MJ_s": 0.0,
+    "before_weapons": [
+      "HeavyCoilgunBatteryMk1",
+      "HeavyCoilgunBatteryMk1",
+      "HeavyCoilgunBatteryMk1",
+      "HeavyCoilgunBatteryMk1",
+      "HeavyCoilgunBatteryMk1",
+      "HeavyCoilgunBatteryMk1"
+    ],
+    "after_weapons": [],
+    "before_mass_t": 1200,
+    "after_mass_t": 0
+  },
+  {
+    "class": "Titan",
+    "family": "CoilgunBatteryMk2",
+    "before_raw_MJ_s": 1080.0,
+    "after_raw_MJ_s": 0.0,
+    "before_weapons": [
+      "HeavyCoilgunBatteryMk2",
+      "HeavyCoilgunBatteryMk2",
+      "HeavyCoilgunBatteryMk2",
+      "HeavyCoilgunBatteryMk2",
+      "HeavyCoilgunBatteryMk2",
+      "HeavyCoilgunBatteryMk2"
+    ],
+    "after_weapons": [],
+    "before_mass_t": 1080,
+    "after_mass_t": 0
+  },
+  {
+    "class": "Titan",
+    "family": "CoilgunBatteryMk3",
+    "before_raw_MJ_s": 2103.9562499999997,
+    "after_raw_MJ_s": 0.0,
+    "before_weapons": [
+      "HeavyCoilgunBatteryMk3",
+      "HeavyCoilgunBatteryMk3",
+      "HeavyCoilgunBatteryMk3",
+      "HeavyCoilgunBatteryMk3",
+      "HeavyCoilgunBatteryMk3",
+      "HeavyCoilgunBatteryMk3"
+    ],
+    "after_weapons": [],
+    "before_mass_t": 960,
+    "after_mass_t": 0
+  },
+  {
+    "class": "Titan",
+    "family": "Naval cannon",
+    "before_raw_MJ_s": 0.0,
+    "after_raw_MJ_s": 0.0,
+    "before_weapons": [],
+    "after_weapons": [],
+    "before_mass_t": 0,
+    "after_mass_t": 0
+  },
+  {
+    "class": "STOFighter",
+    "family": "RailgunBatteryMk1",
+    "before_raw_MJ_s": 5.90625,
+    "after_raw_MJ_s": 5.90625,
+    "before_weapons": [
+      "LightRailgunBatteryMk1"
+    ],
+    "after_weapons": [
+      "LightRailgunBatteryMk1"
+    ],
+    "before_mass_t": 50,
+    "after_mass_t": 50
+  },
+  {
+    "class": "STOFighter",
+    "family": "RailgunBatteryMk2",
+    "before_raw_MJ_s": 10.163999999999998,
+    "after_raw_MJ_s": 10.163999999999998,
+    "before_weapons": [
+      "LightRailgunBatteryMk2"
+    ],
+    "after_weapons": [
+      "LightRailgunBatteryMk2"
+    ],
+    "before_mass_t": 45,
+    "after_mass_t": 45
+  },
+  {
+    "class": "STOFighter",
+    "family": "RailgunBatteryMk3",
+    "before_raw_MJ_s": 19.845000000000002,
+    "after_raw_MJ_s": 19.845000000000002,
+    "before_weapons": [
+      "LightRailgunBatteryMk3"
+    ],
+    "after_weapons": [
+      "LightRailgunBatteryMk3"
+    ],
+    "before_mass_t": 40,
+    "after_mass_t": 40
+  },
+  {
+    "class": "STOFighter",
+    "family": "CoilgunBatteryMk1",
+    "before_raw_MJ_s": 13.066666666666666,
+    "after_raw_MJ_s": 13.066666666666666,
+    "before_weapons": [
+      "LightCoilgunBatteryMk1"
+    ],
+    "after_weapons": [
+      "LightCoilgunBatteryMk1"
+    ],
+    "before_mass_t": 50,
+    "after_mass_t": 50
+  },
+  {
+    "class": "STOFighter",
+    "family": "CoilgunBatteryMk2",
+    "before_raw_MJ_s": 30.826666666666664,
+    "after_raw_MJ_s": 30.826666666666664,
+    "before_weapons": [
+      "LightCoilgunBatteryMk2"
+    ],
+    "after_weapons": [
+      "LightCoilgunBatteryMk2"
+    ],
+    "before_mass_t": 45,
+    "after_mass_t": 45
+  },
+  {
+    "class": "STOFighter",
+    "family": "CoilgunBatteryMk3",
+    "before_raw_MJ_s": 65.01041666666667,
+    "after_raw_MJ_s": 65.01041666666667,
+    "before_weapons": [
+      "LightCoilgunBatteryMk3"
+    ],
+    "after_weapons": [
+      "LightCoilgunBatteryMk3"
+    ],
+    "before_mass_t": 40,
+    "after_mass_t": 40
+  },
+  {
+    "class": "STOFighter",
+    "family": "Naval cannon",
+    "before_raw_MJ_s": 8.71111111111111,
+    "after_raw_MJ_s": 0.0,
+    "before_weapons": [
+      "6-inchCannon"
+    ],
+    "after_weapons": [],
+    "before_mass_t": 25,
+    "after_mass_t": 0
+  }
+]

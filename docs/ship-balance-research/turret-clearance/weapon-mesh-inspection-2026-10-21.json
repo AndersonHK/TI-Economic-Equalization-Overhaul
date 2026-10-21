@@ -1,0 +1,2599 @@
+[
+  {
+    "resource": "shipweapons/30mm_Autocannon",
+    "asset_path": "assets/artresources/ships/earth/weapons/30mm_autocannon.prefab",
+    "meshes": [
+      {
+        "name": "base_medium",
+        "key": "0_0"
+      },
+      {
+        "name": "30mm_Autocannon",
+        "key": "0_1"
+      }
+    ],
+    "sizes": [
+      1
+    ],
+    "weapons": [
+      "30mmAutocannon",
+      "40mmAutocannon"
+    ],
+    "root_scale": [
+      0.10087999701499939,
+      0.10087999701499939,
+      0.10087999701499939
+    ],
+    "child_scale": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "child_pivot_m": [
+      -0.02400016642246028,
+      1.6899999004024835,
+      0.009000704475150556
+    ],
+    "source_child_rotation_xyzw": [
+      -0.0,
+      -0.0,
+      -0.0,
+      1.0
+    ],
+    "posed_dimensions_m": [
+      3.4953175316151714,
+      2.8729419022477494,
+      6.11009011256929
+    ],
+    "posed_min_m": [
+      -1.7511190308266578,
+      -0.05494505585214782,
+      -1.3842699437811916
+    ],
+    "posed_max_m": [
+      1.7441985007885137,
+      2.8179968463956016,
+      4.725820168788099
+    ],
+    "base_dimensions_m": [
+      3.4953175316151714,
+      2.0845783330458296,
+      2.753710400238731
+    ],
+    "moving_dimensions_m": [
+      2.04344624492461,
+      1.5675923639320075,
+      5.972018742510215
+    ],
+    "posed_yaw_diameter_m": 9.477571215805755,
+    "pitch_yaw_diameter_bound_m": 9.673243429969675,
+    "sampling_radius_margin_m": 0.04176424298223126,
+    "old_sphere_diameter_m": 12.952078349743926,
+    "static_launcher": false
+  },
+  {
+    "resource": "shipweapons/8-Inch_Cannon",
+    "asset_path": "assets/artresources/ships/earth/weapons/8-inch_cannon.prefab",
+    "meshes": [
+      {
+        "name": "base_medium",
+        "key": "1_0"
+      },
+      {
+        "name": "6-Inch_Cannon",
+        "key": "1_1"
+      }
+    ],
+    "sizes": [
+      1
+    ],
+    "weapons": [
+      "6-inchCannon"
+    ],
+    "root_scale": [
+      0.10087999701499939,
+      0.10087999701499939,
+      0.10087999701499939
+    ],
+    "child_scale": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "child_pivot_m": [
+      -0.042000290111883665,
+      1.6599999693443692,
+      -0.0019999275581343845
+    ],
+    "source_child_rotation_xyzw": [
+      -0.0,
+      -0.0,
+      -0.0,
+      1.0
+    ],
+    "posed_dimensions_m": [
+      3.4953175316151714,
+      2.842941971189635,
+      4.985625897760311
+    ],
+    "posed_min_m": [
+      -1.7511190308266578,
+      -0.05494505585214782,
+      -1.3842699437811916
+    ],
+    "posed_max_m": [
+      1.7441985007885137,
+      2.7879969153374873,
+      3.60135595397912
+    ],
+    "base_dimensions_m": [
+      3.4953175316151714,
+      2.0845783330458296,
+      2.753710400238731
+    ],
+    "moving_dimensions_m": [
+      2.04344624492461,
+      1.5675923639320075,
+      4.858555159734522
+    ],
+    "posed_yaw_diameter_m": 7.208918054703259,
+    "pitch_yaw_diameter_bound_m": 7.3711421735438085,
+    "sampling_radius_margin_m": 0.03186542179435129,
+    "old_sphere_diameter_m": 10.624104740791214,
+    "static_launcher": false
+  },
+  {
+    "resource": "shipweapons/12-Inch_Cannon",
+    "asset_path": "assets/artresources/ships/earth/weapons/12-inch_cannon.prefab",
+    "meshes": [
+      {
+        "name": "base_medium",
+        "key": "2_0"
+      },
+      {
+        "name": "12-Inch_Cannon",
+        "key": "2_1"
+      }
+    ],
+    "sizes": [
+      2
+    ],
+    "weapons": [
+      "8-inchCannon"
+    ],
+    "root_scale": [
+      0.10087999701499939,
+      0.10087999701499939,
+      0.10087999701499939
+    ],
+    "child_scale": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "child_pivot_m": [
+      -0.017000196739469065,
+      1.6229998491318156,
+      -0.008999894986281953
+    ],
+    "source_child_rotation_xyzw": [
+      -0.0,
+      -0.0,
+      -0.0,
+      1.0
+    ],
+    "posed_dimensions_m": [
+      3.4953175316151714,
+      2.8059418509770815,
+      5.799860237392018
+    ],
+    "posed_min_m": [
+      -1.7511190308266578,
+      -0.05494505585214782,
+      -1.3842699437811916
+    ],
+    "posed_max_m": [
+      1.7441985007885137,
+      2.7509967951249337,
+      4.415590293610826
+    ],
+    "base_dimensions_m": [
+      3.4953175316151714,
+      2.0845783330458296,
+      2.753710400238731
+    ],
+    "moving_dimensions_m": [
+      2.04344624492461,
+      1.5675923639320075,
+      5.679789466794375
+    ],
+    "posed_yaw_diameter_m": 8.835456960183656,
+    "pitch_yaw_diameter_bound_m": 9.024151089004967,
+    "sampling_radius_margin_m": 0.0389575549415002,
+    "old_sphere_diameter_m": 12.174669910110532,
+    "static_launcher": false
+  },
+  {
+    "resource": "shipweapons/small_railgun_battery",
+    "asset_path": "assets/artresources/ships/earth/weapons/small_railgun_battery.prefab",
+    "meshes": [
+      {
+        "name": "base_medium",
+        "key": "3_0"
+      },
+      {
+        "name": "small_railgun_battery",
+        "key": "3_1"
+      }
+    ],
+    "sizes": [
+      1
+    ],
+    "weapons": [
+      "LightRailgunBatteryMk1",
+      "LightRailgunBatteryMk2",
+      "LightRailgunBatteryMk3"
+    ],
+    "root_scale": [
+      0.10087999701499939,
+      0.10087999701499939,
+      0.10087999701499939
+    ],
+    "child_scale": [
+      0.8447193503379822,
+      0.8447193503379822,
+      0.8447193503379822
+    ],
+    "child_pivot_m": [
+      -0.5610008177126389,
+      1.6169998244375279,
+      0.06599991687509821
+    ],
+    "source_child_rotation_xyzw": [
+      -0.0,
+      -0.0,
+      -0.0,
+      1.0
+    ],
+    "posed_dimensions_m": [
+      3.4953175316151714,
+      2.1917188616957244,
+      3.8683683377634477
+    ],
+    "posed_min_m": [
+      -1.7511190308266578,
+      -0.05494505585214782,
+      -1.3842699437811916
+    ],
+    "posed_max_m": [
+      1.7441985007885137,
+      2.1367738058435766,
+      2.484098393982256
+    ],
+    "base_dimensions_m": [
+      3.4953175316151714,
+      2.0845783330458296,
+      2.753710400238731
+    ],
+    "moving_dimensions_m": [
+      2.122108606258358,
+      0.9060142362968904,
+      2.9670949570523595
+    ],
+    "posed_yaw_diameter_m": 5.126276736342426,
+    "pitch_yaw_diameter_bound_m": 5.17293919994066,
+    "sampling_radius_margin_m": 0.023331231799117124,
+    "old_sphere_diameter_m": 8.772789584377598,
+    "static_launcher": false
+  },
+  {
+    "resource": "shipweapons/medium_railgun_battery",
+    "asset_path": "assets/artresources/ships/earth/weapons/medium_railgun_battery.prefab",
+    "meshes": [
+      {
+        "name": "base_medium",
+        "key": "4_0"
+      },
+      {
+        "name": "Medium_Railgun_Battery",
+        "key": "4_1"
+      }
+    ],
+    "sizes": [
+      2
+    ],
+    "weapons": [
+      "RailgunBatteryMk1",
+      "RailgunBatteryMk2",
+      "RailgunBatteryMk3"
+    ],
+    "root_scale": [
+      0.10087999701499939,
+      0.10087999701499939,
+      0.10087999701499939
+    ],
+    "child_scale": [
+      0.7260449528694153,
+      0.7260449528694153,
+      0.7260449528694153
+    ],
+    "child_pivot_m": [
+      -0.5469999102671181,
+      1.6389997867077,
+      -0.005001139482097461
+    ],
+    "source_child_rotation_xyzw": [
+      -1.7763568394002505e-15,
+      -0.0,
+      -0.0,
+      1.0
+    ],
+    "posed_dimensions_m": [
+      3.4953175316151714,
+      2.21371860072318,
+      4.449846551165155
+    ],
+    "posed_min_m": [
+      -1.7511190308266578,
+      -0.05494505585214782,
+      -1.3842699437811916
+    ],
+    "posed_max_m": [
+      1.7441985007885137,
+      2.1587735448710323,
+      3.065576607383963
+    ],
+    "base_dimensions_m": [
+      3.4953175316151714,
+      2.0845783330458296,
+      2.753710400238731
+    ],
+    "moving_dimensions_m": [
+      2.122108536023794,
+      0.9060142309624963,
+      3.6195764422608248
+    ],
+    "posed_yaw_diameter_m": 6.250454464314155,
+    "pitch_yaw_diameter_bound_m": 6.327187354810142,
+    "sampling_radius_margin_m": 0.028554476398425024,
+    "old_sphere_diameter_m": 9.999975973122144,
+    "static_launcher": false
+  },
+  {
+    "resource": "shipweapons/large_railgun_battery",
+    "asset_path": "assets/artresources/ships/earth/weapons/large_railgun_battery.prefab",
+    "meshes": [
+      {
+        "name": "base_large",
+        "key": "5_0"
+      },
+      {
+        "name": "Large_Railgun_Battery",
+        "key": "5_1"
+      }
+    ],
+    "sizes": [
+      4
+    ],
+    "weapons": [
+      "HeavyRailgunBatteryMk1",
+      "HeavyRailgunBatteryMk2",
+      "HeavyRailgunBatteryMk3"
+    ],
+    "root_scale": [
+      0.10087999701499939,
+      0.10087999701499939,
+      0.10087999701499939
+    ],
+    "child_scale": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "child_pivot_m": [
+      0.004999160480991582,
+      1.1429999901353654,
+      0.001000354336776893
+    ],
+    "source_child_rotation_xyzw": [
+      -0.0,
+      -0.0,
+      -0.0,
+      1.0
+    ],
+    "posed_dimensions_m": [
+      5.842532848972269,
+      2.3490829532385717,
+      8.88572755390447
+    ],
+    "posed_min_m": [
+      -2.9212664244861344,
+      -0.025026118777766726,
+      -3.4622822803648887
+    ],
+    "posed_max_m": [
+      2.9212664244861344,
+      2.324056834460805,
+      5.42344527353958
+    ],
+    "base_dimensions_m": [
+      5.842532848972269,
+      2.3490829532385717,
+      6.383346670860419
+    ],
+    "moving_dimensions_m": [
+      3.5401858174884637,
+      1.4451437953201065,
+      5.705873401874612
+    ],
+    "posed_yaw_diameter_m": 11.315591008371426,
+    "pitch_yaw_diameter_bound_m": 11.414296361130116,
+    "sampling_radius_margin_m": 0.04935267637934509,
+    "old_sphere_diameter_m": 13.59685886779492,
+    "static_launcher": false
+  },
+  {
+    "resource": "shipweapons/small_coilgun_battery",
+    "asset_path": "assets/artresources/ships/earth/weapons/small_coilgun_battery.prefab",
+    "meshes": [
+      {
+        "name": "base_medium",
+        "key": "6_0"
+      },
+      {
+        "name": "small_coilgun_battery",
+        "key": "6_1"
+      }
+    ],
+    "sizes": [
+      1
+    ],
+    "weapons": [
+      "LightCoilgunBatteryMk1",
+      "LightCoilgunBatteryMk2",
+      "LightCoilgunBatteryMk3"
+    ],
+    "root_scale": [
+      0.10087999701499939,
+      0.10087999701499939,
+      0.10087999701499939
+    ],
+    "child_scale": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "child_pivot_m": [
+      -0.0069999689313766655,
+      1.7369999334966337,
+      0.055000230372915127
+    ],
+    "source_child_rotation_xyzw": [
+      -0.0,
+      -0.0,
+      -0.0,
+      1.0
+    ],
+    "posed_dimensions_m": [
+      3.4953175316151714,
+      2.311718847145446,
+      4.3117117175776265
+    ],
+    "posed_min_m": [
+      -1.7511190308266578,
+      -0.05494505585214782,
+      -1.3842699437811916
+    ],
+    "posed_max_m": [
+      1.7441985007885137,
+      2.2567737912932984,
+      2.927441773796435
+    ],
+    "base_dimensions_m": [
+      3.4953175316151714,
+      2.0845783330458296,
+      2.753710400238731
+    ],
+    "moving_dimensions_m": [
+      2.1221088526128824,
+      0.9060142634669575,
+      3.421438319171102
+    ],
+    "posed_yaw_diameter_m": 6.004728718066488,
+    "pitch_yaw_diameter_bound_m": 6.056174568309254,
+    "sampling_radius_margin_m": 0.025722925121383126,
+    "old_sphere_diameter_m": 9.371048039788898,
+    "static_launcher": false
+  },
+  {
+    "resource": "shipweapons/medium_coilgun_battery",
+    "asset_path": "assets/artresources/ships/earth/weapons/medium_coilgun_battery.prefab",
+    "meshes": [
+      {
+        "name": "base_medium",
+        "key": "7_0"
+      },
+      {
+        "name": "medium_coilgun_battery",
+        "key": "7_1"
+      }
+    ],
+    "sizes": [
+      2
+    ],
+    "weapons": [
+      "CoilgunBatteryMk1",
+      "CoilgunBatteryMk2",
+      "CoilgunBatteryMk3"
+    ],
+    "root_scale": [
+      0.10087999701499939,
+      0.10087999701499939,
+      0.10087999701499939
+    ],
+    "child_scale": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "child_pivot_m": [
+      -0.0500001867448292,
+      1.701999949791059,
+      -0.04799945495912805
+    ],
+    "source_child_rotation_xyzw": [
+      -0.0,
+      -0.0,
+      -0.0,
+      1.0
+    ],
+    "posed_dimensions_m": [
+      3.4953175316151714,
+      2.2767188634398714,
+      4.208712032245583
+    ],
+    "posed_min_m": [
+      -1.7511190308266578,
+      -0.05494505585214782,
+      -1.3842699437811916
+    ],
+    "posed_max_m": [
+      1.7441985007885137,
+      2.2217738075877236,
+      2.8244420884643917
+    ],
+    "base_dimensions_m": [
+      3.4953175316151714,
+      2.0845783330458296,
+      2.753710400238731
+    ],
+    "moving_dimensions_m": [
+      2.1221088526128824,
+      0.9060142634669575,
+      3.421435240557912
+    ],
+    "posed_yaw_diameter_m": 5.8244043237793,
+    "pitch_yaw_diameter_bound_m": 6.062244102959939,
+    "sampling_radius_margin_m": 0.025722925121383126,
+    "old_sphere_diameter_m": 9.302100163379002,
+    "static_launcher": false
+  },
+  {
+    "resource": "shipweapons/large_coilgun_battery",
+    "asset_path": "assets/artresources/ships/earth/weapons/large_coilgun_battery.prefab",
+    "meshes": [
+      {
+        "name": "base_large",
+        "key": "8_0"
+      },
+      {
+        "name": "large_coilgun_cannon",
+        "key": "8_1"
+      }
+    ],
+    "sizes": [
+      4
+    ],
+    "weapons": [
+      "HeavyCoilgunBatteryMk1",
+      "HeavyCoilgunBatteryMk2",
+      "HeavyCoilgunBatteryMk3"
+    ],
+    "root_scale": [
+      0.10087999701499939,
+      0.10087999701499939,
+      0.10087999701499939
+    ],
+    "child_scale": [
+      0.8163652420043945,
+      0.8163652420043945,
+      1.0
+    ],
+    "child_pivot_m": [
+      0.0,
+      1.4299998565210785,
+      -0.2770002421241031
+    ],
+    "source_child_rotation_xyzw": [
+      -0.0,
+      -0.0,
+      -0.0,
+      1.0
+    ],
+    "posed_dimensions_m": [
+      5.842532848972269,
+      2.3490829532385717,
+      8.03841556773412
+    ],
+    "posed_min_m": [
+      -2.9212664244861344,
+      -0.025026118777766726,
+      -3.4622822803648887
+    ],
+    "posed_max_m": [
+      2.9212664244861344,
+      2.324056834460805,
+      4.576133287369231
+    ],
+    "base_dimensions_m": [
+      5.842532848972269,
+      2.3490829532385717,
+      6.383346670860419
+    ],
+    "moving_dimensions_m": [
+      3.591539090677947,
+      0.8394232591325144,
+      5.000402070057589
+    ],
+    "posed_yaw_diameter_m": 9.679657468626454,
+    "pitch_yaw_diameter_bound_m": 10.822409722195914,
+    "sampling_radius_margin_m": 0.04452815866795136,
+    "old_sphere_diameter_m": 13.118296979549028,
+    "static_launcher": false
+  },
+  {
+    "resource": "shipweapons/alien_small_coilgun_battery",
+    "asset_path": "assets/artresources/ships/alien/weapons/alien_small_coilgun_battery.prefab",
+    "meshes": [
+      {
+        "name": "base_battery",
+        "key": "9_0"
+      },
+      {
+        "name": "small_coilgun_battery",
+        "key": "9_1"
+      }
+    ],
+    "sizes": [
+      1
+    ],
+    "weapons": [
+      "AlienLightMagBattery",
+      "AdvancedAlienLightMagBattery",
+      "Gen3AlienLightMagBattery"
+    ],
+    "root_scale": [
+      0.10000000149011612,
+      0.10000000149011612,
+      0.10000000149011612
+    ],
+    "child_scale": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "child_pivot_m": [
+      -0.010999679729337686,
+      0.7440000168085099,
+      -0.12300002758204975
+    ],
+    "source_child_rotation_xyzw": [
+      -0.0,
+      -0.0,
+      -0.0,
+      1.0
+    ],
+    "posed_dimensions_m": [
+      1.6475963838040286,
+      1.1471194318997773,
+      4.1177873271374
+    ],
+    "posed_min_m": [
+      -0.8347974901616197,
+      -3.576278739814143e-08,
+      -0.6420549249955254
+    ],
+    "posed_max_m": [
+      0.8127988936424089,
+      1.1471193961369899,
+      3.4757324021418743
+    ],
+    "base_dimensions_m": [
+      0.913760103490354,
+      0.6520945050134435,
+      0.8998780384641591
+    ],
+    "moving_dimensions_m": [
+      1.6475963838040286,
+      0.987141290115435,
+      4.1177873271374
+    ],
+    "posed_yaw_diameter_m": 7.023731020903266,
+    "pitch_yaw_diameter_bound_m": 7.574405453558475,
+    "sampling_radius_margin_m": 0.031703302164396735,
+    "old_sphere_diameter_m": 8.774242778432079,
+    "static_launcher": false
+  },
+  {
+    "resource": "shipweapons/alien_medium_coilgun_battery",
+    "asset_path": "assets/artresources/ships/alien/weapons/alien_medium_coilgun_battery.prefab",
+    "meshes": [
+      {
+        "name": "base_battery",
+        "key": "10_0"
+      },
+      {
+        "name": "medium_coilgun_battery",
+        "key": "10_1"
+      }
+    ],
+    "sizes": [
+      2
+    ],
+    "weapons": [
+      "AlienMagBattery",
+      "AdvancedAlienMagBattery",
+      "Gen3AlienMagBattery"
+    ],
+    "root_scale": [
+      0.14424000680446625,
+      0.14424000680446625,
+      0.14424000680446625
+    ],
+    "child_scale": [
+      0.6932889223098755,
+      0.6932889223098755,
+      0.6932889223098755
+    ],
+    "child_pivot_m": [
+      -0.016999244442832406,
+      1.1549998846563483,
+      -0.01900005334721544
+    ],
+    "source_child_rotation_xyzw": [
+      -0.0,
+      -0.0,
+      -0.0,
+      1.0
+    ],
+    "posed_dimensions_m": [
+      2.8307274498955124,
+      1.6400230478322353,
+      5.250002263996213
+    ],
+    "posed_min_m": [
+      -1.4323633031765957,
+      -5.1584246207880824e-08,
+      -0.64899199350657
+    ],
+    "posed_max_m": [
+      1.398364146718917,
+      1.640022996247989,
+      4.601010270489643
+    ],
+    "base_dimensions_m": [
+      1.3180076158111405,
+      0.9405811443871901,
+      1.2979841245711299
+    ],
+    "moving_dimensions_m": [
+      2.8307274498955124,
+      1.1877036437462907,
+      5.244525945603506
+    ],
+    "posed_yaw_diameter_m": 9.451424196424536,
+    "pitch_yaw_diameter_bound_m": 9.608304526500165,
+    "sampling_radius_margin_m": 0.0414349110793333,
+    "old_sphere_diameter_m": 11.806774700682553,
+    "static_launcher": false
+  },
+  {
+    "resource": "shipweapons/alien_large_coilgun_battery",
+    "asset_path": "assets/artresources/ships/alien/weapons/alien_large_coilgun_battery.prefab",
+    "meshes": [
+      {
+        "name": "base_battery_large",
+        "key": "11_0"
+      },
+      {
+        "name": "large_coilgun_battery",
+        "key": "11_1"
+      }
+    ],
+    "sizes": [
+      4
+    ],
+    "weapons": [
+      "AlienHeavyMagBattery",
+      "AdvancedAlienHeavyMagBattery",
+      "Gen3AlienHeavyMagBattery"
+    ],
+    "root_scale": [
+      0.416400671005249,
+      0.13419343531131744,
+      0.416400671005249
+    ],
+    "child_scale": [
+      0.1689523309469223,
+      0.5242571234703064,
+      0.1689523309469223
+    ],
+    "child_pivot_m": [
+      -0.0070353475684901134,
+      0.5255284169570871,
+      0.9005030447929698
+    ],
+    "source_child_rotation_xyzw": [
+      -0.0,
+      -0.0,
+      -0.0,
+      1.0
+    ],
+    "posed_dimensions_m": [
+      5.14253970932532,
+      1.5620548092793225,
+      7.222942373547951
+    ],
+    "posed_min_m": [
+      -2.5868338113989466,
+      -0.042835685567217396,
+      -2.5042804690642697
+    ],
+    "posed_max_m": [
+      2.555705897926373,
+      1.519219123712105,
+      4.718661904483682
+    ],
+    "base_dimensions_m": [
+      5.14253970932532,
+      1.5620548092793225,
+      4.871042322818084
+    ],
+    "moving_dimensions_m": [
+      3.2770833458662865,
+      0.6093101684922989,
+      4.301798269510856
+    ],
+    "posed_yaw_diameter_m": 9.821745224406905,
+    "pitch_yaw_diameter_bound_m": 9.943300076530912,
+    "sampling_radius_margin_m": 0.03550377969993511,
+    "old_sphere_diameter_m": 10.222208409923274,
+    "static_launcher": false
+  },
+  {
+    "resource": "shipweapons/point_defense_laser_battery",
+    "asset_path": "assets/artresources/ships/earth/weapons/point_defense_laser_battery.prefab",
+    "meshes": [
+      {
+        "name": "laser_base",
+        "key": "12_0"
+      },
+      {
+        "name": "laser_battery",
+        "key": "12_1"
+      }
+    ],
+    "sizes": [
+      1
+    ],
+    "weapons": [
+      "PointDefenseLaserTurret",
+      "PointDefenseArcLaserTurret",
+      "PointDefensePhaserTurret"
+    ],
+    "root_scale": [
+      0.16247057914733887,
+      0.16247057914733887,
+      0.16247057914733887
+    ],
+    "child_scale": [
+      0.9824731349945068,
+      0.9824731349945068,
+      0.9824731349945068
+    ],
+    "child_pivot_m": [
+      0.0,
+      0.4841623289579502,
+      0.1023564640881034
+    ],
+    "source_child_rotation_xyzw": [
+      2.1855694143368964e-08,
+      -0.0,
+      -0.0,
+      1.0
+    ],
+    "posed_dimensions_m": [
+      0.9770880591864852,
+      1.0635980440488921,
+      0.9132209094790369
+    ],
+    "posed_min_m": [
+      -0.4885440295932426,
+      -0.1621423399281383,
+      -0.45661045473951845
+    ],
+    "posed_max_m": [
+      0.4885440295932426,
+      0.9014557041207538,
+      0.45661045473951845
+    ],
+    "base_dimensions_m": [
+      0.9770880591864852,
+      0.820620795720103,
+      0.9132209094790369
+    ],
+    "moving_dimensions_m": [
+      0.8345867503256167,
+      0.8345867503256099,
+      0.6780280513679866
+    ],
+    "posed_yaw_diameter_m": 0.993654050756074,
+    "pitch_yaw_diameter_bound_m": 1.0561080654966764,
+    "sampling_radius_margin_m": 0.003682762463108561,
+    "old_sphere_diameter_m": 1.8337569108594773,
+    "static_launcher": false
+  },
+  {
+    "resource": "shipweapons/small_laser_battery",
+    "asset_path": "assets/artresources/ships/earth/weapons/small_laser_battery.prefab",
+    "meshes": [
+      {
+        "name": "laser_base",
+        "key": "13_0"
+      },
+      {
+        "name": "laser_battery",
+        "key": "13_1"
+      }
+    ],
+    "sizes": [
+      1
+    ],
+    "weapons": [
+      "60cmIRLaserBattery",
+      "60cmIRArcLaserBattery",
+      "60cmIRPhaserBattery",
+      "60cmGreenLaserBattery",
+      "60cmGreenArcLaserBattery",
+      "60cmGreenPhaserBattery",
+      "60cmUVLaserBattery",
+      "60cmUVArcLaserBattery",
+      "60cmUVPhaserBattery"
+    ],
+    "root_scale": [
+      0.2544558048248291,
+      0.2544558048248291,
+      0.2544558048248291
+    ],
+    "child_scale": [
+      0.9662183523178101,
+      0.9662183523178101,
+      0.9662183523178101
+    ],
+    "child_pivot_m": [
+      0.0,
+      0.7099316857545546,
+      0.15776260020473387
+    ],
+    "source_child_rotation_xyzw": [
+      2.1855694143368964e-08,
+      -0.0,
+      -0.0,
+      1.0
+    ],
+    "posed_dimensions_m": [
+      1.5302815426019833,
+      1.6066110371670983,
+      1.430255020471236
+    ],
+    "posed_min_m": [
+      -0.7651407713009917,
+      -0.25394172790619507,
+      -0.715127510235618
+    ],
+    "posed_max_m": [
+      0.7651407713009917,
+      1.3526693092609032,
+      0.715127510235618
+    ],
+    "base_dimensions_m": [
+      1.5302815426019833,
+      1.285227923275798,
+      1.430255020471236
+    ],
+    "moving_dimensions_m": [
+      1.285475247012712,
+      1.2854752470127015,
+      1.0443351472734947
+    ],
+    "posed_yaw_diameter_m": 1.5562266259498942,
+    "pitch_yaw_diameter_bound_m": 1.6268896260074663,
+    "sampling_radius_margin_m": 0.005672388143121846,
+    "old_sphere_diameter_m": 2.754519003204456,
+    "static_launcher": false
+  },
+  {
+    "resource": "shipweapons/medium_laser_battery",
+    "asset_path": "assets/artresources/ships/earth/weapons/medium_laser_battery.prefab",
+    "meshes": [
+      {
+        "name": "laser_base",
+        "key": "14_0"
+      },
+      {
+        "name": "laser_battery",
+        "key": "14_1"
+      }
+    ],
+    "sizes": [
+      2
+    ],
+    "weapons": [
+      "120cmIRLaserBattery",
+      "120cmIRArcLaserBattery",
+      "120cmIRPhaserBattery",
+      "120cmGreenLaserBattery",
+      "120cmGreenArcLaserBattery",
+      "120cmGreenPhaserBattery",
+      "120cmUVLaserBattery",
+      "120cmUVArcLaserBattery",
+      "120cmUVPhaserBattery"
+    ],
+    "root_scale": [
+      0.38720664381980896,
+      0.38720664381980896,
+      0.38720664381980896
+    ],
+    "child_scale": [
+      0.973565936088562,
+      0.973565936088562,
+      0.973565936088562
+    ],
+    "child_pivot_m": [
+      0.0,
+      1.0686903332499824,
+      0.12390612325282113
+    ],
+    "source_child_rotation_xyzw": [
+      2.1855694143368964e-08,
+      -0.0,
+      -0.0,
+      1.0
+    ],
+    "posed_dimensions_m": [
+      2.328636914446591,
+      2.4406093021254835,
+      2.1764260660681174
+    ],
+    "posed_min_m": [
+      -1.1643184572232954,
+      -0.3864243704562025,
+      -1.0882130330340587
+    ],
+    "posed_max_m": [
+      1.1643184572232954,
+      2.054184931669281,
+      1.0882130330340587
+    ],
+    "base_dimensions_m": [
+      2.328636914446591,
+      1.9557376223258611,
+      2.1764260660681174
+    ],
+    "moving_dimensions_m": [
+      1.97098919683862,
+      1.9709891968386037,
+      1.601254709445659
+    ],
+    "posed_yaw_diameter_m": 2.3681176747840715,
+    "pitch_yaw_diameter_bound_m": 2.385512355508341,
+    "sampling_radius_margin_m": 0.008697340362134626,
+    "old_sphere_diameter_m": 4.144988544524477,
+    "static_launcher": false
+  },
+  {
+    "resource": "shipweapons/large_laser_battery",
+    "asset_path": "assets/artresources/ships/earth/weapons/large_laser_battery.prefab",
+    "meshes": [
+      {
+        "name": "laser_base",
+        "key": "15_0"
+      },
+      {
+        "name": "laser_battery",
+        "key": "15_1"
+      }
+    ],
+    "sizes": [
+      4
+    ],
+    "weapons": [
+      "360cmIRLaserBattery",
+      "360cmIRArcLaserBattery",
+      "360cmIRPhaserBattery",
+      "360cmGreenLaserBattery",
+      "360cmGreenArcLaserBattery",
+      "360cmGreenPhaserBattery",
+      "360cmUVLaserBattery",
+      "360cmUVArcLaserBattery",
+      "360cmUVPhaserBattery"
+    ],
+    "root_scale": [
+      0.6185327768325806,
+      0.6185327768325806,
+      0.6185327768325806
+    ],
+    "child_scale": [
+      0.9700436592102051,
+      0.9700436592102051,
+      0.9700436592102051
+    ],
+    "child_pivot_m": [
+      0.0,
+      1.5834438732986769,
+      0.0
+    ],
+    "source_child_rotation_xyzw": [
+      2.1855694143368964e-08,
+      -0.0,
+      -0.0,
+      1.0
+    ],
+    "posed_dimensions_m": [
+      3.7198180349348036,
+      3.7692832055628234,
+      3.4766729334385786
+    ],
+    "posed_min_m": [
+      -1.8599090174674018,
+      -0.6172831554132259,
+      -1.7383364667192893
+    ],
+    "posed_max_m": [
+      1.8599090174674018,
+      3.1520000501495975,
+      1.7383364667192893
+    ],
+    "base_dimensions_m": [
+      3.7198180349348036,
+      3.12414014997146,
+      3.4766729334385786
+    ],
+    "moving_dimensions_m": [
+      3.1371123537018772,
+      3.1371123537018515,
+      2.5486268207266005
+    ],
+    "posed_yaw_diameter_m": 3.782885507336872,
+    "pitch_yaw_diameter_bound_m": 3.810571639699409,
+    "sampling_radius_margin_m": 0.013843066181268618,
+    "old_sphere_diameter_m": 6.339494884409417,
+    "static_launcher": false
+  },
+  {
+    "resource": "shipweapons/alien_point_defense_laser_battery",
+    "asset_path": "assets/artresources/ships/alien/weapons/alien_point_defense_laser_battery.prefab",
+    "meshes": [
+      {
+        "name": "base_battery",
+        "key": "16_0"
+      },
+      {
+        "name": "PointDefenseLaserBattery",
+        "key": "16_1"
+      }
+    ],
+    "sizes": [
+      1
+    ],
+    "weapons": [
+      "AlienPointDefenseLaserTurret"
+    ],
+    "root_scale": [
+      0.1458600014448166,
+      0.1458600014448166,
+      0.1458600014448166
+    ],
+    "child_scale": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "child_pivot_m": [
+      0.026254288361258205,
+      1.0253958407597068,
+      0.01896177341051075
+    ],
+    "source_child_rotation_xyzw": [
+      -0.0,
+      -0.0,
+      -0.0,
+      1.0
+    ],
+    "posed_dimensions_m": [
+      2.4031840734110688,
+      2.4599032786538206,
+      2.188018328720311
+    ],
+    "posed_min_m": [
+      -1.1753371919325275,
+      -5.216360143833754e-08,
+      -0.8764377821679323
+    ],
+    "posed_max_m": [
+      1.2278468814785413,
+      2.459903226490219,
+      1.3115805465523787
+    ],
+    "base_dimensions_m": [
+      1.332810480292764,
+      0.9511450402610127,
+      1.3125621003467103
+    ],
+    "moving_dimensions_m": [
+      2.4031840734110688,
+      2.2863617405487915,
+      2.188018328720311
+    ],
+    "posed_yaw_diameter_m": 3.2275220261543316,
+    "pitch_yaw_diameter_bound_m": 3.767196046826817,
+    "sampling_radius_margin_m": 0.016128448842827787,
+    "old_sphere_diameter_m": 5.7481942107912944,
+    "static_launcher": false
+  },
+  {
+    "resource": "shipweapons/alien_small_laser_battery",
+    "asset_path": "assets/artresources/ships/alien/weapons/alien_small_laser_battery.prefab",
+    "meshes": [
+      {
+        "name": "base_battery",
+        "key": "17_0"
+      },
+      {
+        "name": "small_laser_battery",
+        "key": "17_1"
+      }
+    ],
+    "sizes": [
+      1
+    ],
+    "weapons": [
+      "Alien64cmOrangeLaserBattery",
+      "Alien64cmVioletLaserBattery"
+    ],
+    "root_scale": [
+      0.10000000149011612,
+      0.10000000149011612,
+      0.10000000149011612
+    ],
+    "child_scale": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "child_pivot_m": [
+      -0.017999649316067234,
+      0.6930000408440833,
+      0.006000042051077514
+    ],
+    "source_child_rotation_xyzw": [
+      -0.0,
+      -0.0,
+      -0.0,
+      1.0
+    ],
+    "posed_dimensions_m": [
+      1.6475963838040286,
+      1.0961194559353507,
+      2.3008191451552378
+    ],
+    "posed_min_m": [
+      -0.8417974597483493,
+      -3.576278739814143e-08,
+      -0.7124001609146617
+    ],
+    "posed_max_m": [
+      0.8057989240556793,
+      1.0961194201725633,
+      1.588418984240576
+    ],
+    "base_dimensions_m": [
+      0.913760103490354,
+      0.6520945050134435,
+      0.8998780384641591
+    ],
+    "moving_dimensions_m": [
+      1.6475963838040286,
+      0.987141290115435,
+      2.3008191451552378
+    ],
+    "posed_yaw_diameter_m": 3.4549043716210317,
+    "pitch_yaw_diameter_bound_m": 3.4848751271686136,
+    "sampling_radius_margin_m": 0.014985377773791018,
+    "old_sphere_diameter_m": 4.82092594846691,
+    "static_launcher": false
+  },
+  {
+    "resource": "shipweapons/alien_medium_laser_battery",
+    "asset_path": "assets/artresources/ships/alien/weapons/alien_medium_laser_battery.prefab",
+    "meshes": [
+      {
+        "name": "base_battery",
+        "key": "18_0"
+      },
+      {
+        "name": "medium_laser_battery",
+        "key": "18_1"
+      }
+    ],
+    "sizes": [
+      2
+    ],
+    "weapons": [
+      "Alien128cmOrangeLaserBattery",
+      "Alien128cmVioletLaserBattery"
+    ],
+    "root_scale": [
+      0.10000000149011612,
+      0.10000000149011612,
+      0.10000000149011612
+    ],
+    "child_scale": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "child_pivot_m": [
+      -0.026000976949944743,
+      0.8470000393241648,
+      -0.013999939173459097
+    ],
+    "source_child_rotation_xyzw": [
+      -0.0,
+      -0.0,
+      -0.0,
+      1.0
+    ],
+    "posed_dimensions_m": [
+      2.3527148597346965,
+      1.2501194544154322,
+      2.76348470991082
+    ],
+    "posed_min_m": [
+      -1.2023586452358757,
+      -3.576278739814143e-08,
+      -0.5330563624658637
+    ],
+    "posed_max_m": [
+      1.1503562144988209,
+      1.2501194186526448,
+      2.230428347444956
+    ],
+    "base_dimensions_m": [
+      0.913760103490354,
+      0.6520945050134435,
+      0.8998780384641591
+    ],
+    "moving_dimensions_m": [
+      2.3527148597346965,
+      0.987141290115435,
+      2.76348470991082
+    ],
+    "posed_yaw_diameter_m": 4.932888571887339,
+    "pitch_yaw_diameter_bound_m": 5.026937250335167,
+    "sampling_radius_margin_m": 0.021675125908371645,
+    "old_sphere_diameter_m": 6.662618042310818,
+    "static_launcher": false
+  },
+  {
+    "resource": "shipweapons/alien_large_laser_battery",
+    "asset_path": "assets/artresources/ships/alien/weapons/alien_large_laser_battery.prefab",
+    "meshes": [
+      {
+        "name": "base_battery_large",
+        "key": "19_0"
+      },
+      {
+        "name": "large_laser_battery",
+        "key": "19_1"
+      }
+    ],
+    "sizes": [
+      4
+    ],
+    "weapons": [
+      "Alien384cmOrangeLaserBattery",
+      "Alien384cmVioletLaserBattery",
+      "Alien384cmXaserBattery"
+    ],
+    "root_scale": [
+      0.4395865797996521,
+      0.14166556298732758,
+      0.4395865797996521
+    ],
+    "child_scale": [
+      0.31729814410209656,
+      0.9845723509788513,
+      0.31729814410209656
+    ],
+    "child_pivot_m": [
+      -0.01394831959633036,
+      0.8578019825236893,
+      0.5439724934913741
+    ],
+    "source_child_rotation_xyzw": [
+      -0.0,
+      -0.0,
+      -0.0,
+      1.0
+    ],
+    "posed_dimensions_m": [
+      5.428885205321194,
+      1.6490327821196704,
+      7.397432103704052
+    ],
+    "posed_min_m": [
+      -2.7308731873984584,
+      -0.04522085225517891,
+      -2.643723132331729
+    ],
+    "posed_max_m": [
+      2.6980120179227356,
+      1.6038119298644915,
+      4.753708971372323
+    ],
+    "base_dimensions_m": [
+      5.428885205321194,
+      1.6490327821196704,
+      5.142270375255862
+    ],
+    "moving_dimensions_m": [
+      3.835484673453091,
+      1.2621365001600147,
+      4.703681653459125
+    ],
+    "posed_yaw_diameter_m": 10.163514599932858,
+    "pitch_yaw_diameter_bound_m": 10.487927824462375,
+    "sampling_radius_margin_m": 0.0408265815336722,
+    "old_sphere_diameter_m": 11.388467004311279,
+    "static_launcher": false
+  },
+  {
+    "resource": "shipweapons/point_defense_particle_beam_battery",
+    "asset_path": "assets/artresources/ships/earth/weapons/point_defense_particle_beam_battery.prefab",
+    "meshes": [
+      {
+        "name": "Point_Defense_Particle_Beam_Battery_Base",
+        "key": "20_0"
+      },
+      {
+        "name": "Point_Defense_Particle_Beam_Battery",
+        "key": "20_1"
+      }
+    ],
+    "sizes": [
+      1
+    ],
+    "weapons": [
+      "PointDefenseE-Beamer",
+      "PointDefenseIonBattery"
+    ],
+    "root_scale": [
+      0.10087999701499939,
+      0.10087999701499939,
+      0.10087999701499939
+    ],
+    "child_scale": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "child_pivot_m": [
+      -0.01799774107130503,
+      0.6830000050054394,
+      0.42500110780096634
+    ],
+    "source_child_rotation_xyzw": [
+      -0.0,
+      -0.0,
+      -0.0,
+      1.0
+    ],
+    "posed_dimensions_m": [
+      2.5973990106683686,
+      1.167791329331499,
+      3.6427211463331446
+    ],
+    "posed_min_m": [
+      -1.2986995053341843,
+      -0.009083004013354268,
+      -1.3898902407798062
+    ],
+    "posed_max_m": [
+      1.2986995053341843,
+      1.1587083253181447,
+      2.2528309055533384
+    ],
+    "base_dimensions_m": [
+      2.5973990106683686,
+      1.167791329331499,
+      2.7593307934440077
+    ],
+    "moving_dimensions_m": [
+      1.3097815507521204,
+      0.6539917962728694,
+      2.090157008637213
+    ],
+    "posed_yaw_diameter_m": 4.585232707030108,
+    "pitch_yaw_diameter_bound_m": 4.617916531575193,
+    "sampling_radius_margin_m": 0.016341912272542444,
+    "old_sphere_diameter_m": 5.354574013703601,
+    "static_launcher": false
+  },
+  {
+    "resource": "shipweapons/60_generic_battery",
+    "asset_path": "assets/artresources/ships/earth/weapons/60_generic_battery.prefab",
+    "meshes": [
+      {
+        "name": "base_medium",
+        "key": "21_0"
+      },
+      {
+        "name": "PointDefenseLaserBattery",
+        "key": "21_1"
+      }
+    ],
+    "sizes": [
+      1
+    ],
+    "weapons": [
+      "LightE-BeamBattery",
+      "LightIonBattery"
+    ],
+    "root_scale": [
+      0.10087999701499939,
+      0.10087999701499939,
+      0.10087999701499939
+    ],
+    "child_scale": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "child_pivot_m": [
+      0.010000228559706947,
+      1.6869999842620018,
+      0.0019988273823391967
+    ],
+    "source_child_rotation_xyzw": [
+      -0.0,
+      -0.0,
+      -0.0,
+      1.0
+    ],
+    "posed_dimensions_m": [
+      3.4953175316151714,
+      2.2617189460141454,
+      4.617264463218293
+    ],
+    "posed_min_m": [
+      -1.7511190308266578,
+      -0.05494505585214782,
+      -1.3842699437811916
+    ],
+    "posed_max_m": [
+      1.7441985007885137,
+      2.2067738901619975,
+      3.232994519437101
+    ],
+    "base_dimensions_m": [
+      3.4953175316151714,
+      2.0845783330458296,
+      2.753710400238731
+    ],
+    "moving_dimensions_m": [
+      2.12210875640622,
+      0.9060142634669575,
+      3.779989774015803
+    ],
+    "posed_yaw_diameter_m": 6.64822696945354,
+    "pitch_yaw_diameter_bound_m": 6.725878611082191,
+    "sampling_radius_margin_m": 0.02905733263123616,
+    "old_sphere_diameter_m": 10.033532841633132,
+    "static_launcher": false
+  },
+  {
+    "resource": "shipweapons/120_generic_battery",
+    "asset_path": "assets/artresources/ships/earth/weapons/120_generic_battery.prefab",
+    "meshes": [
+      {
+        "name": "base_medium",
+        "key": "22_0"
+      },
+      {
+        "name": "small_laser_battery",
+        "key": "22_1"
+      }
+    ],
+    "sizes": [
+      2
+    ],
+    "weapons": [
+      "E-BeamBattery",
+      "IonBattery",
+      "ParticleBeamBattery"
+    ],
+    "root_scale": [
+      0.10087999701499939,
+      0.10087999701499939,
+      0.10087999701499939
+    ],
+    "child_scale": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "child_pivot_m": [
+      0.0,
+      1.655999888743736,
+      0.002000736107484802
+    ],
+    "source_child_rotation_xyzw": [
+      -0.0,
+      -0.0,
+      -0.0,
+      1.0
+    ],
+    "posed_dimensions_m": [
+      3.4953175316151714,
+      2.2307187542892173,
+      4.700838790430035
+    ],
+    "posed_min_m": [
+      -1.7511190308266578,
+      -0.05494505585214782,
+      -1.3842699437811916
+    ],
+    "posed_max_m": [
+      1.7441985007885137,
+      2.1757736984370695,
+      3.3165688466488437
+    ],
+    "base_dimensions_m": [
+      3.4953175316151714,
+      2.0845783330458296,
+      2.753710400238731
+    ],
+    "moving_dimensions_m": [
+      2.12210875640622,
+      0.9060142634669575,
+      3.863563346982346
+    ],
+    "posed_yaw_diameter_m": 6.778030144587998,
+    "pitch_yaw_diameter_bound_m": 6.856785764943303,
+    "sampling_radius_margin_m": 0.029643404270144228,
+    "old_sphere_diameter_m": 10.10579157238124,
+    "static_launcher": false
+  },
+  {
+    "resource": "shipweapons/240_generic_battery",
+    "asset_path": "assets/artresources/ships/earth/weapons/240_generic_battery.prefab",
+    "meshes": [
+      {
+        "name": "base_medium",
+        "key": "23_0"
+      },
+      {
+        "name": "medium_laser_battery",
+        "key": "23_1"
+      }
+    ],
+    "sizes": [
+      4
+    ],
+    "weapons": [
+      "HeavyE-BeamBattery",
+      "HeavyIonBattery",
+      "HeavyParticleBeamBattery"
+    ],
+    "root_scale": [
+      0.10087999701499939,
+      0.10087999701499939,
+      0.10087999701499939
+    ],
+    "child_scale": [
+      0.8807080388069153,
+      0.8807080388069153,
+      0.8807080388069153
+    ],
+    "child_pivot_m": [
+      0.03599929733805762,
+      1.6720000187329447,
+      0.027000354647408464
+    ],
+    "source_child_rotation_xyzw": [
+      -0.0,
+      -0.0,
+      -0.0,
+      1.0
+    ],
+    "posed_dimensions_m": [
+      3.4953175316151714,
+      3.4058266009022096,
+      4.58859306183449
+    ],
+    "posed_min_m": [
+      -1.7511190308266578,
+      -0.05494505585214782,
+      -1.3842699437811916
+    ],
+    "posed_max_m": [
+      1.7441985007885137,
+      3.3508815450500617,
+      3.2043231180532983
+    ],
+    "base_dimensions_m": [
+      3.4953175316151714,
+      2.0845783330458296,
+      2.753710400238731
+    ],
+    "moving_dimensions_m": [
+      2.122108292274133,
+      2.066916919758921,
+      3.726318472749938
+    ],
+    "posed_yaw_diameter_m": 6.688370736077896,
+    "pitch_yaw_diameter_bound_m": 6.804957333230655,
+    "sampling_radius_margin_m": 0.02912389960957367,
+    "old_sphere_diameter_m": 10.01993822572467,
+    "static_launcher": false
+  },
+  {
+    "resource": "shipweapons/480_generic_cannon",
+    "asset_path": "assets/artresources/ships/earth/weapons/480_generic_cannon.prefab",
+    "meshes": [
+      {
+        "name": "base_normal",
+        "key": "24_0"
+      },
+      {
+        "name": "small_laser_cannon",
+        "key": "24_1"
+      }
+    ],
+    "sizes": [
+      2
+    ],
+    "weapons": [
+      "AntimatterPointDefenseBattery"
+    ],
+    "root_scale": [
+      0.10087999701499939,
+      0.10087999701499939,
+      0.10087999701499939
+    ],
+    "child_scale": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "child_pivot_m": [
+      -0.017000196739469065,
+      0.9329998954885923,
+      -0.0009994913893235369
+    ],
+    "source_child_rotation_xyzw": [
+      -0.0,
+      -0.0,
+      -0.0,
+      1.0
+    ],
+    "posed_dimensions_m": [
+      2.236392169391195,
+      1.4849756022984657,
+      3.8022997137757515
+    ],
+    "posed_min_m": [
+      -1.1185008674014227,
+      -0.03220175280654658,
+      -1.3579925371032857
+    ],
+    "posed_max_m": [
+      1.117891301989772,
+      1.4527738494919191,
+      2.4443071766724658
+    ],
+    "base_dimensions_m": [
+      2.236392169391195,
+      1.1878026029358786,
+      3.0171129851418925
+    ],
+    "moving_dimensions_m": [
+      1.052352726124468,
+      0.9060143596736197,
+      2.994301519676128
+    ],
+    "posed_yaw_diameter_m": 4.9131276971970745,
+    "pitch_yaw_diameter_bound_m": 5.013455830926878,
+    "sampling_radius_margin_m": 0.021670184491774696,
+    "old_sphere_diameter_m": 6.83276680613406,
+    "static_launcher": false
+  },
+  {
+    "resource": "shipweapons/960_generic_cannon",
+    "asset_path": "assets/artresources/ships/earth/weapons/960_generic_cannon.prefab",
+    "meshes": [
+      {
+        "name": "base_normal",
+        "key": "25_0"
+      },
+      {
+        "name": "medium_laser_cannon",
+        "key": "25_1"
+      }
+    ],
+    "sizes": [
+      4
+    ],
+    "weapons": [
+      "HeavyAntimatterPointDefenseBattery"
+    ],
+    "root_scale": [
+      0.10087999701499939,
+      0.10087999701499939,
+      0.10087999701499939
+    ],
+    "child_scale": [
+      1.1644749641418457,
+      1.1644748449325562,
+      1.1644748449325562
+    ],
+    "child_pivot_m": [
+      -0.0020008086382887202,
+      0.9579999663125705,
+      0.03100009551826588
+    ],
+    "source_child_rotation_xyzw": [
+      -0.027546288445591927,
+      -0.0,
+      -0.0,
+      0.9996205568313599
+    ],
+    "posed_dimensions_m": [
+      2.236392169391195,
+      1.573783874671356,
+      5.259433026830482
+    ],
+    "posed_min_m": [
+      -1.1185008674014227,
+      -0.03220175280654658,
+      -1.3579925371032857
+    ],
+    "posed_max_m": [
+      1.117891301989772,
+      1.5415821218648094,
+      3.901440489727197
+    ],
+    "base_dimensions_m": [
+      2.236392169391195,
+      1.1878026029358786,
+      3.0171129851418925
+    ],
+    "moving_dimensions_m": [
+      1.0523526197877309,
+      0.9527048785364207,
+      4.548302371481595
+    ],
+    "posed_yaw_diameter_m": 7.812204087745501,
+    "pitch_yaw_diameter_bound_m": 7.881737549082422,
+    "sampling_radius_margin_m": 0.03382468978793942,
+    "old_sphere_diameter_m": 9.669079455270843,
+    "static_launcher": false
+  },
+  {
+    "resource": "shipweapons/alien_point_defense_particle_beam_battery",
+    "asset_path": "assets/artresources/ships/alien/weapons/alien_point_defense_particle_beam_battery.prefab",
+    "meshes": [
+      {
+        "name": "base_battery_large",
+        "key": "26_0"
+      },
+      {
+        "name": "Point_Defense_Particle_Beam_Battery",
+        "key": "26_1"
+      }
+    ],
+    "sizes": [
+      1
+    ],
+    "weapons": [
+      "AlienPointDefenseParticleBeam"
+    ],
+    "root_scale": [
+      0.29983973503112793,
+      0.09662935137748718,
+      0.29983973503112793
+    ],
+    "child_scale": [
+      0.33351150155067444,
+      1.0348823070526123,
+      0.33351150155067444
+    ],
+    "child_pivot_m": [
+      -0.01099967909444377,
+      0.5517800018661916,
+      0.7043000113827134
+    ],
+    "source_child_rotation_xyzw": [
+      -0.0,
+      -0.0,
+      -0.0,
+      1.0
+    ],
+    "posed_dimensions_m": [
+      3.7030145511262162,
+      1.1247967733039737,
+      5.738652826086936
+    ],
+    "posed_min_m": [
+      -1.8627144925269477,
+      -0.030844910576792728,
+      -1.80326989021205
+    ],
+    "posed_max_m": [
+      1.8403000585992686,
+      1.093951862727181,
+      3.9353829358748853
+    ],
+    "base_dimensions_m": [
+      3.7030145511262162,
+      1.1247967733039737,
+      3.507516056286022
+    ],
+    "moving_dimensions_m": [
+      2.5864435261822285,
+      0.7322696415940564,
+      3.5852146478447127
+    ],
+    "posed_yaw_diameter_m": 8.135208469822565,
+    "pitch_yaw_diameter_bound_m": 8.194332332961167,
+    "sampling_radius_margin_m": 0.029561931569301005,
+    "old_sphere_diameter_m": 8.56466532777328,
+    "static_launcher": false
+  },
+  {
+    "resource": "shipweapons/medium_plasma_battery",
+    "asset_path": "assets/artresources/ships/earth/weapons/medium_plasma_battery.prefab",
+    "meshes": [
+      {
+        "name": "medium_plasma_battery_base",
+        "key": "27_0"
+      },
+      {
+        "name": "medium_plasma_battery",
+        "key": "27_1"
+      }
+    ],
+    "sizes": [
+      2
+    ],
+    "weapons": [
+      "PlasmaBatteryMk1",
+      "PlasmaBatteryMk2",
+      "PlasmaBatteryMk3"
+    ],
+    "root_scale": [
+      0.10087999701499939,
+      0.10087999701499939,
+      0.10087999701499939
+    ],
+    "child_scale": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "child_pivot_m": [
+      0.0,
+      0.7596263986884111,
+      -0.2713671977427481
+    ],
+    "source_child_rotation_xyzw": [
+      -0.0,
+      -0.0,
+      -0.0,
+      1.0
+    ],
+    "posed_dimensions_m": [
+      2.729126134608748,
+      1.3553615239057515,
+      4.380911642411817
+    ],
+    "posed_min_m": [
+      -1.364563067304374,
+      -0.006957038963216977,
+      -1.8167945087722615
+    ],
+    "posed_max_m": [
+      1.364563067304374,
+      1.3484044849425345,
+      2.564117133639556
+    ],
+    "base_dimensions_m": [
+      2.729126134608748,
+      1.3553615239057515,
+      3.2887108383572468
+    ],
+    "moving_dimensions_m": [
+      1.666848344385869,
+      0.5974221105421123,
+      3.1334344400587497
+    ],
+    "posed_yaw_diameter_m": 5.2654463445423625,
+    "pitch_yaw_diameter_bound_m": 6.377993793013669,
+    "sampling_radius_margin_m": 0.025286882801979927,
+    "old_sphere_diameter_m": 7.408630405972954,
+    "static_launcher": false
+  },
+  {
+    "resource": "shipweapons/large_plasma_battery",
+    "asset_path": "assets/artresources/ships/earth/weapons/large_plasma_battery.prefab",
+    "meshes": [
+      {
+        "name": "base_large",
+        "key": "28_0"
+      },
+      {
+        "name": "large_plasma_battery",
+        "key": "28_1"
+      }
+    ],
+    "sizes": [
+      4
+    ],
+    "weapons": [
+      "HeavyPlasmaBatteryMk1",
+      "HeavyPlasmaBatteryMk2",
+      "HeavyPlasmaBatteryMk3"
+    ],
+    "root_scale": [
+      0.10087999701499939,
+      0.10087999701499939,
+      0.10087999701499939
+    ],
+    "child_scale": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "child_pivot_m": [
+      -0.0069999689313766655,
+      1.291999961999096,
+      0.3539995328297323
+    ],
+    "source_child_rotation_xyzw": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "posed_dimensions_m": [
+      5.842532848972269,
+      2.3490829532385717,
+      9.575533172626763
+    ],
+    "posed_min_m": [
+      -2.9212664244861344,
+      -0.025026118777766726,
+      -3.4622822803648887
+    ],
+    "posed_max_m": [
+      2.9212664244861344,
+      2.324056834460805,
+      6.113250892261874
+    ],
+    "base_dimensions_m": [
+      5.842532848972269,
+      2.3490829532385717,
+      6.383346670860419
+    ],
+    "moving_dimensions_m": [
+      3.7464809935742096,
+      1.1307577404747207,
+      6.310984445065799
+    ],
+    "posed_yaw_diameter_m": 12.644791910972941,
+    "pitch_yaw_diameter_bound_m": 12.749143563616116,
+    "sampling_radius_margin_m": 0.052175826321587584,
+    "old_sphere_diameter_m": 14.637131461374803,
+    "static_launcher": false
+  },
+  {
+    "resource": "shipweapons/alien_medium_plasma_battery",
+    "asset_path": "assets/artresources/ships/alien/weapons/alien_medium_plasma_battery.prefab",
+    "meshes": [
+      {
+        "name": "base_battery",
+        "key": "29_0"
+      },
+      {
+        "name": "medium_plasma_battery",
+        "key": "29_1"
+      }
+    ],
+    "sizes": [
+      2
+    ],
+    "weapons": [
+      "AlienPlasmaBattery"
+    ],
+    "root_scale": [
+      0.154789999127388,
+      0.154789999127388,
+      0.154789999127388
+    ],
+    "child_scale": [
+      0.6460365653038025,
+      0.6460365653038025,
+      0.6460365653038025
+    ],
+    "child_pivot_m": [
+      -0.008999824761639463,
+      1.171000007036156,
+      -0.14000034050099863
+    ],
+    "source_child_rotation_xyzw": [
+      -0.0,
+      -0.0,
+      -0.0,
+      1.0
+    ],
+    "posed_dimensions_m": [
+      2.830727464281236,
+      1.6560231764498958,
+      5.329076447805824
+    ],
+    "posed_min_m": [
+      -1.424363890688266,
+      -5.535721747662592e-08,
+      -0.7645159654414279
+    ],
+    "posed_max_m": [
+      1.4063635735929698,
+      1.6560231210926784,
+      4.564560482364397
+    ],
+    "base_dimensions_m": [
+      1.4144092351427986,
+      1.009377063579164,
+      1.392921187130085
+    ],
+    "moving_dimensions_m": [
+      2.830727464281236,
+      1.1877036497821865,
+      5.329076447805824
+    ],
+    "posed_yaw_diameter_m": 9.402129356954058,
+    "pitch_yaw_diameter_bound_m": 10.029910163059983,
+    "sampling_radius_margin_m": 0.04223062110784818,
+    "old_sphere_diameter_m": 12.037323351027911,
+    "static_launcher": false
+  },
+  {
+    "resource": "shipweapons/alien_large_plasma_battery",
+    "asset_path": "assets/artresources/ships/alien/weapons/alien_large_plasma_battery.prefab",
+    "meshes": [
+      {
+        "name": "base_battery_large",
+        "key": "30_0"
+      },
+      {
+        "name": "large_plasma_battery",
+        "key": "30_1"
+      }
+    ],
+    "sizes": [
+      4
+    ],
+    "weapons": [
+      "AlienHeavyPlasmaBattery"
+    ],
+    "root_scale": [
+      0.40533068776130676,
+      0.130625918507576,
+      0.40533068776130676
+    ],
+    "child_scale": [
+      0.24671213328838348,
+      0.7655448317527771,
+      0.24671213328838348
+    ],
+    "child_pivot_m": [
+      -0.05300140278344356,
+      0.7359999690208809,
+      0.8700008116221909
+    ],
+    "source_child_rotation_xyzw": [
+      -0.0,
+      -0.0,
+      -0.0,
+      1.0
+    ],
+    "posed_dimensions_m": [
+      5.005825644297261,
+      1.5205277646251556,
+      8.044177032235742
+    ],
+    "posed_min_m": [
+      -2.5180630121638785,
+      -0.04169690386969016,
+      -2.437704344766132
+    ],
+    "posed_max_m": [
+      2.487762632133382,
+      1.4788308607554654,
+      5.60647268746961
+    ],
+    "base_dimensions_m": [
+      5.005825644297261,
+      1.5205277646251556,
+      4.74154599716627
+    ],
+    "moving_dimensions_m": [
+      3.3233405623175276,
+      0.9733653711366155,
+      5.220404745973053
+    ],
+    "posed_yaw_diameter_m": 11.6729682591534,
+    "pitch_yaw_diameter_bound_m": 11.793047471858674,
+    "sampling_radius_margin_m": 0.04369567622046016,
+    "old_sphere_diameter_m": 12.295927210324093,
+    "static_launcher": false
+  },
+  {
+    "resource": "shipweapons/missile_launcher",
+    "asset_path": "assets/artresources/ships/earth/weapons/missile_launcher.prefab",
+    "meshes": [
+      {
+        "name": "missile_launcher_base",
+        "key": "31_0"
+      },
+      {
+        "name": "missile_launcher",
+        "key": "31_1"
+      }
+    ],
+    "sizes": [
+      1
+    ],
+    "weapons": [
+      "KraitMissileBay",
+      "AnacondaMissileBay",
+      "CobraMissileBay",
+      "RacerMissileBay",
+      "RattlerMissileBay",
+      "RiverjackMissileBay",
+      "HarlequinMissileBay",
+      "KeelbackMissileBay",
+      "CopperheadMissileBay",
+      "ViperMissileBay",
+      "LanceheadMissileBay",
+      "PythonNuclearMissileBay",
+      "SidewinderNuclearMissileBay",
+      "KraitMissilePod",
+      "AnacondaMissilePod",
+      "CobraMissilePod",
+      "RacerMissilePod",
+      "RattlerMissilePod",
+      "RiverjackMissilePod",
+      "HarlequinMissilePod",
+      "KeelbackMissilePod",
+      "CopperheadMissilePod",
+      "ViperMissilePod",
+      "LanceheadMissilePod",
+      "PythonNuclearMissilePod"
+    ],
+    "root_scale": [
+      0.10087999701499939,
+      0.10087999701499939,
+      0.10087999701499939
+    ],
+    "child_scale": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "child_pivot_m": [
+      0.19200038133889308,
+      0.36599994299329097,
+      -0.5639991464431944
+    ],
+    "source_child_rotation_xyzw": [
+      0.5000007748603821,
+      -0.4999987781047821,
+      -0.5000012516975403,
+      0.4999993145465851
+    ],
+    "posed_dimensions_m": [
+      1.2576724628622458,
+      0.6022050720790961,
+      1.3405853486007786
+    ],
+    "posed_min_m": [
+      -0.6288362314311229,
+      -0.09568637656320789,
+      -0.7117491171696557
+    ],
+    "posed_max_m": [
+      0.6288362314311229,
+      0.5065186955158882,
+      0.6288362314311229
+    ],
+    "base_dimensions_m": [
+      1.2576724628622458,
+      0.4758188136642332,
+      1.2576724628622458
+    ],
+    "moving_dimensions_m": [
+      1.107643344782791,
+      0.28103723805937153,
+      1.2536582398546656
+    ],
+    "posed_yaw_diameter_m": 1.6896772219546548,
+    "pitch_yaw_diameter_bound_m": 3.8130528412340627,
+    "sampling_radius_margin_m": 0.011345081100493865,
+    "old_sphere_diameter_m": 3.99855865550539,
+    "static_launcher": true
+  },
+  {
+    "resource": "shipweapons/torpedo_launcher",
+    "asset_path": "assets/artresources/ships/earth/weapons/torpedo_launcher.prefab",
+    "meshes": [
+      {
+        "name": "torpedo_launcher_base",
+        "key": "32_0"
+      },
+      {
+        "name": "torpedo_launcher",
+        "key": "32_1"
+      }
+    ],
+    "sizes": [
+      1
+    ],
+    "weapons": [
+      "HeraTorpedoBay",
+      "HermesTorpedoBay",
+      "HerculesTorpedoBay",
+      "ArtemisTorpedoBay",
+      "VulcanTorpedoBay",
+      "ApolloTorpedoBay",
+      "AthenaTorpedoBay",
+      "AresTorpedoBay",
+      "PoseidonTorpedoBay",
+      "ZeusTorpedoBay",
+      "CerebrusNuclearTorpedoBay",
+      "HadesNuclearTorpedoBay",
+      "NemesisNuclearTorpedoBay",
+      "OlympusNuclearTorpedoBay",
+      "AcheronNuclearTorpedoBay",
+      "TartarusNuclearTorpedoBay",
+      "StyxNuclearTorpedoBay",
+      "AntimatterTorpedoLauncher",
+      "HeraTorpedoPod",
+      "HermesTorpedoPod",
+      "HerculesTorpedoPod",
+      "ArtemisTorpedoPod",
+      "VulcanTorpedoPod",
+      "ApolloTorpedoPod",
+      "CerebrusNuclearTorpedoPod",
+      "HadesNuclearTorpedoPod"
+    ],
+    "root_scale": [
+      0.10087999701499939,
+      0.10087999701499939,
+      0.10087999701499939
+    ],
+    "child_scale": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "child_pivot_m": [
+      0.37899969986037263,
+      0.7969998969569332,
+      -1.1960010099904252
+    ],
+    "source_child_rotation_xyzw": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "posed_dimensions_m": [
+      2.6083184668271997,
+      1.2868713291476155,
+      2.8065828639414363
+    ],
+    "posed_min_m": [
+      -1.3041592334135998,
+      -0.19844644417077006,
+      -1.5024236305278365
+    ],
+    "posed_max_m": [
+      1.3041592334135998,
+      1.0884248849768454,
+      1.3041592334135998
+    ],
+    "base_dimensions_m": [
+      2.6083184668271997,
+      0.986812610952569,
+      2.6083184668271997
+    ],
+    "moving_dimensions_m": [
+      2.297167649618018,
+      0.5828503849181388,
+      2.5999917561627868
+    ],
+    "posed_yaw_diameter_m": 3.5042638924821814,
+    "pitch_yaw_diameter_bound_m": 7.330240937879833,
+    "sampling_radius_margin_m": 0.02352884700236363,
+    "old_sphere_diameter_m": 8.365152959317111,
+    "static_launcher": true
+  },
+  {
+    "resource": "shipweapons/alien_missile_launcher",
+    "asset_path": "assets/artresources/ships/alien/weapons/alien_missile_launcher.prefab",
+    "meshes": [
+      {
+        "name": "missile_launcher_base",
+        "key": "33_0"
+      },
+      {
+        "name": "missile_launcher",
+        "key": "33_1"
+      }
+    ],
+    "sizes": [
+      1
+    ],
+    "weapons": [
+      "GlitteringJewelMissileBay",
+      "GlitteringJewelMissilePod",
+      "LuminousSwarmMissileBay",
+      "BrilliantSkyMissileBay"
+    ],
+    "root_scale": [
+      0.10000000149011612,
+      0.10000000149011612,
+      0.10000000149011612
+    ],
+    "child_scale": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "child_pivot_m": [
+      0.0,
+      0.4900000168383123,
+      -0.47399998417496647
+    ],
+    "source_child_rotation_xyzw": [
+      -0.0,
+      -0.0,
+      -0.0,
+      1.0
+    ],
+    "posed_dimensions_m": [
+      1.2205913725583457,
+      0.6150124880232074,
+      1.2205913725583457
+    ],
+    "posed_min_m": [
+      -0.6102956862791729,
+      -1.4308152671605758e-07,
+      -0.6102956862791729
+    ],
+    "posed_max_m": [
+      0.6102956862791729,
+      0.6150123449416807,
+      0.6102956862791729
+    ],
+    "base_dimensions_m": [
+      1.2205913725583457,
+      0.4825619292944744,
+      1.2205913725583457
+    ],
+    "moving_dimensions_m": [
+      0.9860070375503156,
+      0.21911238758433438,
+      1.0780283969346938
+    ],
+    "posed_yaw_diameter_m": 1.4750699893494967,
+    "pitch_yaw_diameter_bound_m": 3.0016158457879714,
+    "sampling_radius_margin_m": 0.009034844133401217,
+    "old_sphere_diameter_m": 3.4341299627390978,
+    "static_launcher": true
+  },
+  {
+    "resource": "shipweapons/alien_torpedo_launcher",
+    "asset_path": "assets/artresources/ships/alien/weapons/alien_torpedo_launcher.prefab",
+    "meshes": [
+      {
+        "name": "torpedo_launcher_base",
+        "key": "34_0"
+      },
+      {
+        "name": "torpedo_launcher",
+        "key": "34_1"
+      }
+    ],
+    "sizes": [
+      1
+    ],
+    "weapons": [
+      "IridescentStarTorpedoBay",
+      "PredatoryStarTorpedoBay"
+    ],
+    "root_scale": [
+      0.10000000149011612,
+      0.10000000149011612,
+      0.10000000149011612
+    ],
+    "child_scale": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "child_pivot_m": [
+      -0.029999733418222263,
+      0.8260000351965431,
+      -0.7899998782575111
+    ],
+    "source_child_rotation_xyzw": [
+      -0.0,
+      -0.0,
+      -0.0,
+      1.0
+    ],
+    "posed_dimensions_m": [
+      2.0000000298023224,
+      1.0308392400184356,
+      2.0000000298023224
+    ],
+    "posed_min_m": [
+      -1.0000000149011612,
+      -2.3444625079825284e-07,
+      -1.0000000149011612
+    ],
+    "posed_max_m": [
+      1.0000000149011612,
+      1.0308390055721848,
+      1.0000000149011612
+    ],
+    "base_dimensions_m": [
+      2.0000000298023224,
+      0.7907019216436629,
+      2.0000000298023224
+    ],
+    "moving_dimensions_m": [
+      1.6156219723168306,
+      0.3590266281221304,
+      1.7664035106659455
+    ],
+    "posed_yaw_diameter_m": 2.4169760892567864,
+    "pitch_yaw_diameter_bound_m": 4.958006018920633,
+    "sampling_radius_margin_m": 0.014804044320550602,
+    "old_sphere_diameter_m": 5.679571091720151,
+    "static_launcher": true
+  }
+]

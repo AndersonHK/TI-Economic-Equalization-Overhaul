@@ -1,0 +1,22 @@
+{
+  "D:\\Games\\SteamLibrary\\steamapps\\common\\Terra Invicta\\TerraInvicta_Data\\StreamingAssets\\AssetBundles\\shipweapons": "9dfcf8e93536dc400a00428af2d6c32226bac44f1ecd88b874d8f946e9ea912e",
+  "D:\\Games\\SteamLibrary\\steamapps\\common\\Terra Invicta\\TerraInvicta_Data\\StreamingAssets\\Templates\\TIGunTemplate.json": "1d7093358ec282391003cb11e6566cc09258881f4ea2c10179fde9afd6723662",
+  "TIEconomyMod\\ModFiles\\TIGunTemplate.json": "62e0b9bdb6eee4257de0ef69335cc153104335789978daf01f9caf8fc1dcdf73",
+  "D:\\Games\\SteamLibrary\\steamapps\\common\\Terra Invicta\\TerraInvicta_Data\\StreamingAssets\\Templates\\TIMagneticGunTemplate.json": "db4fce6d3b9ae8ab31b10d2d0cdeff1a18079c964fa545e7d3c0f127167ba5e3",
+  "TIEconomyMod\\ModFiles\\TIMagneticGunTemplate.json": "09870e5530e7b51fd8d9d08da985b17c7e20b98e547651de7b4269a2c0c49176",
+  "D:\\Games\\SteamLibrary\\steamapps\\common\\Terra Invicta\\TerraInvicta_Data\\StreamingAssets\\Templates\\TILaserWeaponTemplate.json": "eb2953a9b5c747e9392c891a8ddff837ba65a129f138c334843d2ea295a76c32",
+  "TIEconomyMod\\ModFiles\\TILaserWeaponTemplate.json": "ffdd44e9b41a65608a0b60e5f60070b11aae81a4ef3c8cdb7472f6cabcfc7ed6",
+  "C:\\Users\\imper\\Documents\\GitHub\\TI-Economic-Equalization-Overhaul\\TIEconomyMod\\Core\\ProjectileCollisionMath.cs": "ea3474443cc9ac7a4c647df9dc17339c97285986baf7627f8fbce145c68182ec",
+  "C:\\Users\\imper\\Documents\\GitHub\\TI-Economic-Equalization-Overhaul\\TIEconomyMod\\Core\\ProjectileGeometryRegistry.cs": "958069d576b72351b34f8362dc4d916766fa1b2236a535497d7eb33f83c8d9c1",
+  "D:\\Games\\SteamLibrary\\steamapps\\common\\Terra Invicta\\TerraInvicta_Data\\Managed\\Assembly-CSharp.dll": "4a4b9aae4154e444e9727204205d2d42ae8ed9e1c5f92cdc1280074a259d8350",
+  "C:\\Users\\imper\\Documents\\GitHub\\TI-Economic-Equalization-Overhaul\\.tmp\\barrel-audit\\TILaserWeaponTemplate.cs": "cf51faeb5a1f0e63c7722592309b5e55cee73cdb4acdad45852b5a681bc44ba9",
+  "C:\\Users\\imper\\Documents\\GitHub\\TI-Economic-Equalization-Overhaul\\.tmp\\barrel-audit\\Damage.cs": "ef10e2266906224ed5cbfd9662ab5a56ba691a2cb1a113eda061e83edd557de5",
+  "C:\\Users\\imper\\Documents\\GitHub\\TI-Economic-Equalization-Overhaul\\.tmp\\barrel-audit\\TISpaceShipState.cs": "7068ef1b54a50c3f139f46ba1bbf29d3d11c3e5fc8774a96ead38854ec6fbb00",
+  "C:\\Users\\imper\\Documents\\GitHub\\TI-Economic-Equalization-Overhaul\\.tmp\\barrel-audit\\TIShipWeaponTemplate.cs": "0dff795b5a2fc6fd1847ae8f3c620082f6bae90e5f61d9ef39f01d45625f1136",
+  "D:\\Games\\SteamLibrary\\steamapps\\common\\Terra Invicta\\TerraInvicta_Data\\StreamingAssets\\Localization\\en\\TIGunTemplate.en": "ddd9765878a3628efc7a78f4116e6aff3c99277ddd0daed9e20cdac15f8f60af",
+  "D:\\Games\\SteamLibrary\\steamapps\\common\\Terra Invicta\\TerraInvicta_Data\\StreamingAssets\\Localization\\en\\TIMagneticGunTemplate.en": "3dfbd18d48d5a1099198882cf0fff113aee70382c43c7998dab277939d07dc28",
+  "D:\\Games\\SteamLibrary\\steamapps\\common\\Terra Invicta\\TerraInvicta_Data\\StreamingAssets\\Localization\\en\\TILaserWeaponTemplate.en": "e35e57925ec7db898d5bf113d793f615119abb04122144b37418d096755c0f4c",
+  "C:\\Users\\imper\\Documents\\GitHub\\TI-Economic-Equalization-Overhaul\\scripts\\ship-balance\\measure_ship_prefabs.py": "cad46201315645a5d07b7d770950b955c973fb51e5f16f39edb41161a6969246",
+  "C:\\Users\\imper\\Documents\\GitHub\\TI-Economic-Equalization-Overhaul\\scripts\\ship-balance\\measure_turret_clearance.py": "0fafd1407a78e270027884919d07abba0430aa8608e286624a647fbc5ad6ea9d",
+  "C:\\Users\\imper\\Documents\\GitHub\\TI-Economic-Equalization-Overhaul\\scripts\\ship-balance\\generate_hull_variant_report.py": "250534451b1940af2141447107099f6c5b303266305e7a0a56450577c7a3b739"
+}

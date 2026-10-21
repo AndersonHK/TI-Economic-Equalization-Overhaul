@@ -1,0 +1,4418 @@
+[
+  {
+    "hull": "Gunship",
+    "appearance": 0,
+    "size": 1,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Gunship",
+    "appearance": 0,
+    "size": 2,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Gunship",
+    "appearance": 0,
+    "size": 4,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Gunship",
+    "appearance": 1,
+    "size": 1,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Gunship",
+    "appearance": 1,
+    "size": 2,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Gunship",
+    "appearance": 1,
+    "size": 4,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Gunship",
+    "appearance": 2,
+    "size": 1,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Gunship",
+    "appearance": 2,
+    "size": 2,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Gunship",
+    "appearance": 2,
+    "size": 4,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Gunship",
+    "appearance": 3,
+    "size": 1,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Gunship",
+    "appearance": 3,
+    "size": 2,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Gunship",
+    "appearance": 3,
+    "size": 4,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Escort",
+    "appearance": 0,
+    "size": 1,
+    "eligible_templates": 76,
+    "min_guns": 2,
+    "max_guns": 2,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 2.6479220317258,
+      "worst_weapon_best_max_packing_gap_m": 2.6479220317258,
+      "limiting_weapon": "30mmAutocannon"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 5.170893317272899,
+      "worst_weapon_best_max_packing_gap_m": 5.170893317272899,
+      "limiting_weapon": "6-inchCannon"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 5.170893317272899,
+      "worst_weapon_best_max_packing_gap_m": 5.170893317272899,
+      "limiting_weapon": "6-inchCannon"
+    }
+  },
+  {
+    "hull": "Escort",
+    "appearance": 0,
+    "size": 2,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Escort",
+    "appearance": 0,
+    "size": 4,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Escort",
+    "appearance": 1,
+    "size": 1,
+    "eligible_templates": 76,
+    "min_guns": 2,
+    "max_guns": 2,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 0.7480125798419106,
+      "worst_weapon_best_max_packing_gap_m": 0.7480125798419106,
+      "limiting_weapon": "30mmAutocannon"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 3.2709838653890095,
+      "worst_weapon_best_max_packing_gap_m": 3.2709838653890095,
+      "limiting_weapon": "6-inchCannon"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 3.2709838653890095,
+      "worst_weapon_best_max_packing_gap_m": 3.2709838653890095,
+      "limiting_weapon": "6-inchCannon"
+    }
+  },
+  {
+    "hull": "Escort",
+    "appearance": 1,
+    "size": 2,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Escort",
+    "appearance": 1,
+    "size": 4,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Escort",
+    "appearance": 2,
+    "size": 1,
+    "eligible_templates": 76,
+    "min_guns": 2,
+    "max_guns": 2,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 4.697921268786347,
+      "worst_weapon_best_max_packing_gap_m": 4.697921268786347,
+      "limiting_weapon": "30mmAutocannon"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 7.220892554333446,
+      "worst_weapon_best_max_packing_gap_m": 7.220892554333446,
+      "limiting_weapon": "6-inchCannon"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 7.220892554333446,
+      "worst_weapon_best_max_packing_gap_m": 7.220892554333446,
+      "limiting_weapon": "6-inchCannon"
+    }
+  },
+  {
+    "hull": "Escort",
+    "appearance": 2,
+    "size": 2,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Escort",
+    "appearance": 2,
+    "size": 4,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Escort",
+    "appearance": 3,
+    "size": 1,
+    "eligible_templates": 76,
+    "min_guns": 2,
+    "max_guns": 2,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 1.277921758736527,
+      "worst_weapon_best_max_packing_gap_m": 1.277921758736527,
+      "limiting_weapon": "30mmAutocannon"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 3.800893044283626,
+      "worst_weapon_best_max_packing_gap_m": 3.800893044283626,
+      "limiting_weapon": "6-inchCannon"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 3.800893044283626,
+      "worst_weapon_best_max_packing_gap_m": 3.800893044283626,
+      "limiting_weapon": "6-inchCannon"
+    }
+  },
+  {
+    "hull": "Escort",
+    "appearance": 3,
+    "size": 2,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Escort",
+    "appearance": 3,
+    "size": 4,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Corvette",
+    "appearance": 0,
+    "size": 1,
+    "eligible_templates": 76,
+    "min_guns": 1,
+    "max_guns": 1,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Corvette",
+    "appearance": 0,
+    "size": 2,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Corvette",
+    "appearance": 0,
+    "size": 4,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Corvette",
+    "appearance": 1,
+    "size": 1,
+    "eligible_templates": 76,
+    "min_guns": 1,
+    "max_guns": 1,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Corvette",
+    "appearance": 1,
+    "size": 2,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Corvette",
+    "appearance": 1,
+    "size": 4,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Corvette",
+    "appearance": 2,
+    "size": 1,
+    "eligible_templates": 76,
+    "min_guns": 1,
+    "max_guns": 1,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Corvette",
+    "appearance": 2,
+    "size": 2,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Corvette",
+    "appearance": 2,
+    "size": 4,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Corvette",
+    "appearance": 3,
+    "size": 1,
+    "eligible_templates": 76,
+    "min_guns": 1,
+    "max_guns": 1,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Corvette",
+    "appearance": 3,
+    "size": 2,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Corvette",
+    "appearance": 3,
+    "size": 4,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 0,
+    "size": 1,
+    "eligible_templates": 76,
+    "min_guns": 2,
+    "max_guns": 2,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 3.485953800524628,
+      "worst_weapon_best_max_packing_gap_m": 3.485953800524628,
+      "limiting_weapon": "30mmAutocannon"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 6.008925086071727,
+      "worst_weapon_best_max_packing_gap_m": 6.008925086071727,
+      "limiting_weapon": "6-inchCannon"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 6.008925086071727,
+      "worst_weapon_best_max_packing_gap_m": 6.008925086071727,
+      "limiting_weapon": "6-inchCannon"
+    }
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 0,
+    "size": 2,
+    "eligible_templates": 23,
+    "min_guns": 1,
+    "max_guns": 1,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 0,
+    "size": 4,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 1,
+    "size": 1,
+    "eligible_templates": 76,
+    "min_guns": 2,
+    "max_guns": 2,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 6.147915594424164,
+      "worst_weapon_best_max_packing_gap_m": 6.147915594424164,
+      "limiting_weapon": "30mmAutocannon"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 8.670886879971263,
+      "worst_weapon_best_max_packing_gap_m": 8.670886879971263,
+      "limiting_weapon": "6-inchCannon"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 8.670886879971263,
+      "worst_weapon_best_max_packing_gap_m": 8.670886879971263,
+      "limiting_weapon": "6-inchCannon"
+    }
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 1,
+    "size": 2,
+    "eligible_templates": 23,
+    "min_guns": 1,
+    "max_guns": 1,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 1,
+    "size": 4,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 2,
+    "size": 1,
+    "eligible_templates": 76,
+    "min_guns": 2,
+    "max_guns": 2,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 16.54792165025607,
+      "worst_weapon_best_max_packing_gap_m": 16.54792165025607,
+      "limiting_weapon": "30mmAutocannon"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 19.070892935803172,
+      "worst_weapon_best_max_packing_gap_m": 19.070892935803172,
+      "limiting_weapon": "6-inchCannon"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 19.070892935803172,
+      "worst_weapon_best_max_packing_gap_m": 19.070892935803172,
+      "limiting_weapon": "6-inchCannon"
+    }
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 2,
+    "size": 2,
+    "eligible_templates": 23,
+    "min_guns": 1,
+    "max_guns": 1,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 2,
+    "size": 4,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 3,
+    "size": 1,
+    "eligible_templates": 76,
+    "min_guns": 2,
+    "max_guns": 2,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 17.947920791949187,
+      "worst_weapon_best_max_packing_gap_m": 17.947920791949187,
+      "limiting_weapon": "30mmAutocannon"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 20.470892077496288,
+      "worst_weapon_best_max_packing_gap_m": 20.470892077496288,
+      "limiting_weapon": "6-inchCannon"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 20.470892077496288,
+      "worst_weapon_best_max_packing_gap_m": 20.470892077496288,
+      "limiting_weapon": "6-inchCannon"
+    }
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 3,
+    "size": 2,
+    "eligible_templates": 23,
+    "min_guns": 1,
+    "max_guns": 1,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 3,
+    "size": 4,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Monitor",
+    "appearance": 0,
+    "size": 1,
+    "eligible_templates": 76,
+    "min_guns": 4,
+    "max_guns": 4,
+    "baseline": {
+      "worst_all_max_packings_gap_m": -5.398059587532724,
+      "worst_weapon_best_max_packing_gap_m": -5.398059587532724,
+      "limiting_weapon": "30mmAutocannon"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": -2.875088301985625,
+      "worst_weapon_best_max_packing_gap_m": -2.875088301985625,
+      "limiting_weapon": "6-inchCannon"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": -2.875088301985625,
+      "worst_weapon_best_max_packing_gap_m": -2.875088301985625,
+      "limiting_weapon": "6-inchCannon"
+    }
+  },
+  {
+    "hull": "Monitor",
+    "appearance": 0,
+    "size": 2,
+    "eligible_templates": 23,
+    "min_guns": 2,
+    "max_guns": 2,
+    "baseline": {
+      "worst_all_max_packings_gap_m": -4.62065114789933,
+      "worst_weapon_best_max_packing_gap_m": -4.62065114789933,
+      "limiting_weapon": "8-inchCannon"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": -5.362560240803265,
+      "worst_weapon_best_max_packing_gap_m": -5.362560240803265,
+      "limiting_weapon": "8-inchCannon"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": -5.362560240803265,
+      "worst_weapon_best_max_packing_gap_m": -5.362560240803265,
+      "limiting_weapon": "8-inchCannon"
+    }
+  },
+  {
+    "hull": "Monitor",
+    "appearance": 0,
+    "size": 4,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Monitor",
+    "appearance": 1,
+    "size": 1,
+    "eligible_templates": 76,
+    "min_guns": 4,
+    "max_guns": 4,
+    "baseline": {
+      "worst_all_max_packings_gap_m": -1.6316369682541154,
+      "worst_weapon_best_max_packing_gap_m": -1.6316369682541154,
+      "limiting_weapon": "30mmAutocannon"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 0.8913343172929835,
+      "worst_weapon_best_max_packing_gap_m": 0.8913343172929835,
+      "limiting_weapon": "6-inchCannon"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 0.8913343172929835,
+      "worst_weapon_best_max_packing_gap_m": 0.8913343172929835,
+      "limiting_weapon": "6-inchCannon"
+    }
+  },
+  {
+    "hull": "Monitor",
+    "appearance": 1,
+    "size": 2,
+    "eligible_templates": 23,
+    "min_guns": 2,
+    "max_guns": 2,
+    "baseline": {
+      "worst_all_max_packings_gap_m": -0.8542285286207214,
+      "worst_weapon_best_max_packing_gap_m": -0.8542285286207214,
+      "limiting_weapon": "8-inchCannon"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": -1.5961376215246563,
+      "worst_weapon_best_max_packing_gap_m": -1.5961376215246563,
+      "limiting_weapon": "8-inchCannon"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": -1.5961376215246563,
+      "worst_weapon_best_max_packing_gap_m": -1.5961376215246563,
+      "limiting_weapon": "8-inchCannon"
+    }
+  },
+  {
+    "hull": "Monitor",
+    "appearance": 1,
+    "size": 4,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Monitor",
+    "appearance": 2,
+    "size": 1,
+    "eligible_templates": 76,
+    "min_guns": 4,
+    "max_guns": 4,
+    "baseline": {
+      "worst_all_max_packings_gap_m": -0.15207798019512886,
+      "worst_weapon_best_max_packing_gap_m": -0.15207798019512886,
+      "limiting_weapon": "30mmAutocannon"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 2.37089330535197,
+      "worst_weapon_best_max_packing_gap_m": 2.37089330535197,
+      "limiting_weapon": "6-inchCannon"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 2.37089330535197,
+      "worst_weapon_best_max_packing_gap_m": 2.37089330535197,
+      "limiting_weapon": "6-inchCannon"
+    }
+  },
+  {
+    "hull": "Monitor",
+    "appearance": 2,
+    "size": 2,
+    "eligible_templates": 23,
+    "min_guns": 2,
+    "max_guns": 2,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 0.6253304594382652,
+      "worst_weapon_best_max_packing_gap_m": 0.6253304594382652,
+      "limiting_weapon": "8-inchCannon"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": -0.11657863346566977,
+      "worst_weapon_best_max_packing_gap_m": -0.11657863346566977,
+      "limiting_weapon": "8-inchCannon"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": -0.11657863346566977,
+      "worst_weapon_best_max_packing_gap_m": -0.11657863346566977,
+      "limiting_weapon": "8-inchCannon"
+    }
+  },
+  {
+    "hull": "Monitor",
+    "appearance": 2,
+    "size": 4,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Monitor",
+    "appearance": 3,
+    "size": 1,
+    "eligible_templates": 76,
+    "min_guns": 4,
+    "max_guns": 4,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 4.847922437037385,
+      "worst_weapon_best_max_packing_gap_m": 4.847922437037385,
+      "limiting_weapon": "30mmAutocannon"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 7.3708937225844835,
+      "worst_weapon_best_max_packing_gap_m": 7.3708937225844835,
+      "limiting_weapon": "6-inchCannon"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 7.3708937225844835,
+      "worst_weapon_best_max_packing_gap_m": 7.3708937225844835,
+      "limiting_weapon": "6-inchCannon"
+    }
+  },
+  {
+    "hull": "Monitor",
+    "appearance": 3,
+    "size": 2,
+    "eligible_templates": 23,
+    "min_guns": 2,
+    "max_guns": 2,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 14.47533006604761,
+      "worst_weapon_best_max_packing_gap_m": 14.47533006604761,
+      "limiting_weapon": "8-inchCannon"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 13.733420973143675,
+      "worst_weapon_best_max_packing_gap_m": 13.733420973143675,
+      "limiting_weapon": "8-inchCannon"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 13.733420973143675,
+      "worst_weapon_best_max_packing_gap_m": 13.733420973143675,
+      "limiting_weapon": "8-inchCannon"
+    }
+  },
+  {
+    "hull": "Monitor",
+    "appearance": 3,
+    "size": 4,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 0,
+    "size": 1,
+    "eligible_templates": 76,
+    "min_guns": 2,
+    "max_guns": 2,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 9.02792166932956,
+      "worst_weapon_best_max_packing_gap_m": 9.02792166932956,
+      "limiting_weapon": "30mmAutocannon"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 11.550892954876659,
+      "worst_weapon_best_max_packing_gap_m": 11.550892954876659,
+      "limiting_weapon": "6-inchCannon"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 11.550892954876659,
+      "worst_weapon_best_max_packing_gap_m": 11.550892954876659,
+      "limiting_weapon": "6-inchCannon"
+    }
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 0,
+    "size": 2,
+    "eligible_templates": 23,
+    "min_guns": 1,
+    "max_guns": 1,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 0,
+    "size": 4,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 1,
+    "size": 1,
+    "eligible_templates": 76,
+    "min_guns": 2,
+    "max_guns": 2,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 28.547922603930388,
+      "worst_weapon_best_max_packing_gap_m": 28.547922603930388,
+      "limiting_weapon": "30mmAutocannon"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 31.07089388947749,
+      "worst_weapon_best_max_packing_gap_m": 31.07089388947749,
+      "limiting_weapon": "6-inchCannon"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 31.07089388947749,
+      "worst_weapon_best_max_packing_gap_m": 31.07089388947749,
+      "limiting_weapon": "6-inchCannon"
+    }
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 1,
+    "size": 2,
+    "eligible_templates": 23,
+    "min_guns": 1,
+    "max_guns": 1,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 1,
+    "size": 4,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 2,
+    "size": 1,
+    "eligible_templates": 76,
+    "min_guns": 2,
+    "max_guns": 2,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 43.948272760881494,
+      "worst_weapon_best_max_packing_gap_m": 43.948272760881494,
+      "limiting_weapon": "30mmAutocannon"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 46.471244046428595,
+      "worst_weapon_best_max_packing_gap_m": 46.471244046428595,
+      "limiting_weapon": "6-inchCannon"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 46.471244046428595,
+      "worst_weapon_best_max_packing_gap_m": 46.471244046428595,
+      "limiting_weapon": "6-inchCannon"
+    }
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 2,
+    "size": 2,
+    "eligible_templates": 23,
+    "min_guns": 1,
+    "max_guns": 1,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 2,
+    "size": 4,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 3,
+    "size": 1,
+    "eligible_templates": 76,
+    "min_guns": 2,
+    "max_guns": 2,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 27.94792031511203,
+      "worst_weapon_best_max_packing_gap_m": 27.94792031511203,
+      "limiting_weapon": "30mmAutocannon"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 30.47089160065913,
+      "worst_weapon_best_max_packing_gap_m": 30.47089160065913,
+      "limiting_weapon": "6-inchCannon"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 30.47089160065913,
+      "worst_weapon_best_max_packing_gap_m": 30.47089160065913,
+      "limiting_weapon": "6-inchCannon"
+    }
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 3,
+    "size": 2,
+    "eligible_templates": 23,
+    "min_guns": 1,
+    "max_guns": 1,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 3,
+    "size": 4,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Cruiser",
+    "appearance": 0,
+    "size": 1,
+    "eligible_templates": 76,
+    "min_guns": 3,
+    "max_guns": 3,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 13.490397601343345,
+      "worst_weapon_best_max_packing_gap_m": 13.490397601343345,
+      "limiting_weapon": "30mmAutocannon"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 16.013368886890444,
+      "worst_weapon_best_max_packing_gap_m": 16.013368886890444,
+      "limiting_weapon": "6-inchCannon"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 16.013368886890444,
+      "worst_weapon_best_max_packing_gap_m": 16.013368886890444,
+      "limiting_weapon": "6-inchCannon"
+    }
+  },
+  {
+    "hull": "Cruiser",
+    "appearance": 0,
+    "size": 2,
+    "eligible_templates": 23,
+    "min_guns": 1,
+    "max_guns": 1,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Cruiser",
+    "appearance": 0,
+    "size": 4,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Cruiser",
+    "appearance": 1,
+    "size": 1,
+    "eligible_templates": 76,
+    "min_guns": 3,
+    "max_guns": 3,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 20.757349592987104,
+      "worst_weapon_best_max_packing_gap_m": 20.757349592987104,
+      "limiting_weapon": "30mmAutocannon"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 23.280320878534205,
+      "worst_weapon_best_max_packing_gap_m": 23.280320878534205,
+      "limiting_weapon": "6-inchCannon"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 23.280320878534205,
+      "worst_weapon_best_max_packing_gap_m": 23.280320878534205,
+      "limiting_weapon": "6-inchCannon"
+    }
+  },
+  {
+    "hull": "Cruiser",
+    "appearance": 1,
+    "size": 2,
+    "eligible_templates": 23,
+    "min_guns": 1,
+    "max_guns": 1,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Cruiser",
+    "appearance": 1,
+    "size": 4,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Cruiser",
+    "appearance": 2,
+    "size": 1,
+    "eligible_templates": 76,
+    "min_guns": 3,
+    "max_guns": 3,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 30.747920505846892,
+      "worst_weapon_best_max_packing_gap_m": 30.747920505846892,
+      "limiting_weapon": "30mmAutocannon"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 33.27089179139399,
+      "worst_weapon_best_max_packing_gap_m": 33.27089179139399,
+      "limiting_weapon": "6-inchCannon"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 33.27089179139399,
+      "worst_weapon_best_max_packing_gap_m": 33.27089179139399,
+      "limiting_weapon": "6-inchCannon"
+    }
+  },
+  {
+    "hull": "Cruiser",
+    "appearance": 2,
+    "size": 2,
+    "eligible_templates": 23,
+    "min_guns": 1,
+    "max_guns": 1,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Cruiser",
+    "appearance": 2,
+    "size": 4,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Cruiser",
+    "appearance": 3,
+    "size": 1,
+    "eligible_templates": 76,
+    "min_guns": 3,
+    "max_guns": 3,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 26.11955379470055,
+      "worst_weapon_best_max_packing_gap_m": 26.11955379470055,
+      "limiting_weapon": "30mmAutocannon"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 28.64252508024765,
+      "worst_weapon_best_max_packing_gap_m": 28.64252508024765,
+      "limiting_weapon": "6-inchCannon"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 28.64252508024765,
+      "worst_weapon_best_max_packing_gap_m": 28.64252508024765,
+      "limiting_weapon": "6-inchCannon"
+    }
+  },
+  {
+    "hull": "Cruiser",
+    "appearance": 3,
+    "size": 2,
+    "eligible_templates": 23,
+    "min_guns": 1,
+    "max_guns": 1,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Cruiser",
+    "appearance": 3,
+    "size": 4,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Battlecruiser",
+    "appearance": 0,
+    "size": 1,
+    "eligible_templates": 76,
+    "min_guns": 2,
+    "max_guns": 2,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 51.55979777329679,
+      "worst_weapon_best_max_packing_gap_m": 51.55979777329679,
+      "limiting_weapon": "30mmAutocannon"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 54.082769058843894,
+      "worst_weapon_best_max_packing_gap_m": 54.082769058843894,
+      "limiting_weapon": "6-inchCannon"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 54.082769058843894,
+      "worst_weapon_best_max_packing_gap_m": 54.082769058843894,
+      "limiting_weapon": "6-inchCannon"
+    }
+  },
+  {
+    "hull": "Battlecruiser",
+    "appearance": 0,
+    "size": 2,
+    "eligible_templates": 23,
+    "min_guns": 1,
+    "max_guns": 1,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Battlecruiser",
+    "appearance": 0,
+    "size": 4,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Battlecruiser",
+    "appearance": 1,
+    "size": 1,
+    "eligible_templates": 76,
+    "min_guns": 2,
+    "max_guns": 2,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 26.983630082324638,
+      "worst_weapon_best_max_packing_gap_m": 26.983630082324638,
+      "limiting_weapon": "30mmAutocannon"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 29.50660136787174,
+      "worst_weapon_best_max_packing_gap_m": 29.50660136787174,
+      "limiting_weapon": "6-inchCannon"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 29.50660136787174,
+      "worst_weapon_best_max_packing_gap_m": 29.50660136787174,
+      "limiting_weapon": "6-inchCannon"
+    }
+  },
+  {
+    "hull": "Battlecruiser",
+    "appearance": 1,
+    "size": 2,
+    "eligible_templates": 23,
+    "min_guns": 1,
+    "max_guns": 1,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Battlecruiser",
+    "appearance": 1,
+    "size": 4,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Battlecruiser",
+    "appearance": 2,
+    "size": 1,
+    "eligible_templates": 76,
+    "min_guns": 2,
+    "max_guns": 2,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 61.747920029009734,
+      "worst_weapon_best_max_packing_gap_m": 61.747920029009734,
+      "limiting_weapon": "30mmAutocannon"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 64.27089131455683,
+      "worst_weapon_best_max_packing_gap_m": 64.27089131455683,
+      "limiting_weapon": "6-inchCannon"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 64.27089131455683,
+      "worst_weapon_best_max_packing_gap_m": 64.27089131455683,
+      "limiting_weapon": "6-inchCannon"
+    }
+  },
+  {
+    "hull": "Battlecruiser",
+    "appearance": 2,
+    "size": 2,
+    "eligible_templates": 23,
+    "min_guns": 1,
+    "max_guns": 1,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Battlecruiser",
+    "appearance": 2,
+    "size": 4,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Battlecruiser",
+    "appearance": 3,
+    "size": 1,
+    "eligible_templates": 76,
+    "min_guns": 2,
+    "max_guns": 2,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 35.44792317613498,
+      "worst_weapon_best_max_packing_gap_m": 35.44792317613498,
+      "limiting_weapon": "30mmAutocannon"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 37.97089446168208,
+      "worst_weapon_best_max_packing_gap_m": 37.97089446168208,
+      "limiting_weapon": "6-inchCannon"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 37.97089446168208,
+      "worst_weapon_best_max_packing_gap_m": 37.97089446168208,
+      "limiting_weapon": "6-inchCannon"
+    }
+  },
+  {
+    "hull": "Battlecruiser",
+    "appearance": 3,
+    "size": 2,
+    "eligible_templates": 23,
+    "min_guns": 1,
+    "max_guns": 1,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Battlecruiser",
+    "appearance": 3,
+    "size": 4,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Battleship",
+    "appearance": 0,
+    "size": 1,
+    "eligible_templates": 76,
+    "min_guns": 6,
+    "max_guns": 6,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 0.37792348131076103,
+      "worst_weapon_best_max_packing_gap_m": 0.37792348131076103,
+      "limiting_weapon": "30mmAutocannon"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 2.90089476685786,
+      "worst_weapon_best_max_packing_gap_m": 2.90089476685786,
+      "limiting_weapon": "6-inchCannon"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 2.90089476685786,
+      "worst_weapon_best_max_packing_gap_m": 2.90089476685786,
+      "limiting_weapon": "6-inchCannon"
+    }
+  },
+  {
+    "hull": "Battleship",
+    "appearance": 0,
+    "size": 2,
+    "eligible_templates": 23,
+    "min_guns": 2,
+    "max_guns": 2,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 1.155331920944155,
+      "worst_weapon_best_max_packing_gap_m": 69.54242671425354,
+      "limiting_weapon": "8-inchCannon"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 0.4134228280402201,
+      "worst_weapon_best_max_packing_gap_m": 68.80051762134961,
+      "limiting_weapon": "8-inchCannon"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 0.4134228280402201,
+      "worst_weapon_best_max_packing_gap_m": 68.80051762134961,
+      "limiting_weapon": "8-inchCannon"
+    }
+  },
+  {
+    "hull": "Battleship",
+    "appearance": 0,
+    "size": 4,
+    "eligible_templates": 22,
+    "min_guns": 1,
+    "max_guns": 1,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Battleship",
+    "appearance": 1,
+    "size": 1,
+    "eligible_templates": 76,
+    "min_guns": 6,
+    "max_guns": 6,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 5.847922079409516,
+      "worst_weapon_best_max_packing_gap_m": 5.847922079409516,
+      "limiting_weapon": "30mmAutocannon"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 8.370893364956615,
+      "worst_weapon_best_max_packing_gap_m": 8.370893364956615,
+      "limiting_weapon": "6-inchCannon"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 8.370893364956615,
+      "worst_weapon_best_max_packing_gap_m": 8.370893364956615,
+      "limiting_weapon": "6-inchCannon"
+    }
+  },
+  {
+    "hull": "Battleship",
+    "appearance": 1,
+    "size": 2,
+    "eligible_templates": 23,
+    "min_guns": 2,
+    "max_guns": 2,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 6.62533051904291,
+      "worst_weapon_best_max_packing_gap_m": 60.22532970841974,
+      "limiting_weapon": "8-inchCannon"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 5.883421426138975,
+      "worst_weapon_best_max_packing_gap_m": 59.483420615515804,
+      "limiting_weapon": "8-inchCannon"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 5.883421426138975,
+      "worst_weapon_best_max_packing_gap_m": 59.483420615515804,
+      "limiting_weapon": "8-inchCannon"
+    }
+  },
+  {
+    "hull": "Battleship",
+    "appearance": 1,
+    "size": 4,
+    "eligible_templates": 22,
+    "min_guns": 1,
+    "max_guns": 1,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Battleship",
+    "appearance": 2,
+    "size": 1,
+    "eligible_templates": 76,
+    "min_guns": 6,
+    "max_guns": 6,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 0.9479193614377142,
+      "worst_weapon_best_max_packing_gap_m": 0.9479193614377142,
+      "limiting_weapon": "30mmAutocannon"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 3.470890646984813,
+      "worst_weapon_best_max_packing_gap_m": 3.470890646984813,
+      "limiting_weapon": "6-inchCannon"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 3.470890646984813,
+      "worst_weapon_best_max_packing_gap_m": 3.470890646984813,
+      "limiting_weapon": "6-inchCannon"
+    }
+  },
+  {
+    "hull": "Battleship",
+    "appearance": 2,
+    "size": 2,
+    "eligible_templates": 23,
+    "min_guns": 2,
+    "max_guns": 2,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 1.7253278010711082,
+      "worst_weapon_best_max_packing_gap_m": 78.12532932695001,
+      "limiting_weapon": "8-inchCannon"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 0.9834187081671732,
+      "worst_weapon_best_max_packing_gap_m": 77.38342023404608,
+      "limiting_weapon": "8-inchCannon"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 0.9834187081671732,
+      "worst_weapon_best_max_packing_gap_m": 77.38342023404608,
+      "limiting_weapon": "8-inchCannon"
+    }
+  },
+  {
+    "hull": "Battleship",
+    "appearance": 2,
+    "size": 4,
+    "eligible_templates": 22,
+    "min_guns": 1,
+    "max_guns": 1,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Battleship",
+    "appearance": 3,
+    "size": 1,
+    "eligible_templates": 76,
+    "min_guns": 6,
+    "max_guns": 6,
+    "baseline": {
+      "worst_all_max_packings_gap_m": -3.792078502331817,
+      "worst_weapon_best_max_packing_gap_m": -3.792078502331817,
+      "limiting_weapon": "30mmAutocannon"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": -1.2691072167847182,
+      "worst_weapon_best_max_packing_gap_m": -1.2691072167847182,
+      "limiting_weapon": "6-inchCannon"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": -1.2691072167847182,
+      "worst_weapon_best_max_packing_gap_m": -1.2691072167847182,
+      "limiting_weapon": "6-inchCannon"
+    }
+  },
+  {
+    "hull": "Battleship",
+    "appearance": 3,
+    "size": 2,
+    "eligible_templates": 23,
+    "min_guns": 2,
+    "max_guns": 2,
+    "baseline": {
+      "worst_all_max_packings_gap_m": -3.014670062698423,
+      "worst_weapon_best_max_packing_gap_m": 46.27536172963515,
+      "limiting_weapon": "8-inchCannon"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": -3.756579155602358,
+      "worst_weapon_best_max_packing_gap_m": 45.53345263673121,
+      "limiting_weapon": "8-inchCannon"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": -3.756579155602358,
+      "worst_weapon_best_max_packing_gap_m": 45.53345263673121,
+      "limiting_weapon": "8-inchCannon"
+    }
+  },
+  {
+    "hull": "Battleship",
+    "appearance": 3,
+    "size": 4,
+    "eligible_templates": 22,
+    "min_guns": 1,
+    "max_guns": 1,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Lancer",
+    "appearance": 0,
+    "size": 1,
+    "eligible_templates": 76,
+    "min_guns": 3,
+    "max_guns": 3,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 19.887921802843962,
+      "worst_weapon_best_max_packing_gap_m": 19.887921802843962,
+      "limiting_weapon": "30mmAutocannon"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 22.410893088391063,
+      "worst_weapon_best_max_packing_gap_m": 22.410893088391063,
+      "limiting_weapon": "6-inchCannon"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 22.410893088391063,
+      "worst_weapon_best_max_packing_gap_m": 22.410893088391063,
+      "limiting_weapon": "6-inchCannon"
+    }
+  },
+  {
+    "hull": "Lancer",
+    "appearance": 0,
+    "size": 2,
+    "eligible_templates": 23,
+    "min_guns": 1,
+    "max_guns": 1,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Lancer",
+    "appearance": 0,
+    "size": 4,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Lancer",
+    "appearance": 1,
+    "size": 1,
+    "eligible_templates": 76,
+    "min_guns": 3,
+    "max_guns": 3,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 18.84792279466525,
+      "worst_weapon_best_max_packing_gap_m": 18.84792279466525,
+      "limiting_weapon": "30mmAutocannon"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 21.370894080212352,
+      "worst_weapon_best_max_packing_gap_m": 21.370894080212352,
+      "limiting_weapon": "6-inchCannon"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 21.370894080212352,
+      "worst_weapon_best_max_packing_gap_m": 21.370894080212352,
+      "limiting_weapon": "6-inchCannon"
+    }
+  },
+  {
+    "hull": "Lancer",
+    "appearance": 1,
+    "size": 2,
+    "eligible_templates": 23,
+    "min_guns": 1,
+    "max_guns": 1,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Lancer",
+    "appearance": 1,
+    "size": 4,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Lancer",
+    "appearance": 2,
+    "size": 1,
+    "eligible_templates": 76,
+    "min_guns": 3,
+    "max_guns": 3,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 16.65619601294204,
+      "worst_weapon_best_max_packing_gap_m": 16.65619601294204,
+      "limiting_weapon": "30mmAutocannon"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 19.179167298489137,
+      "worst_weapon_best_max_packing_gap_m": 19.179167298489137,
+      "limiting_weapon": "6-inchCannon"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 19.179167298489137,
+      "worst_weapon_best_max_packing_gap_m": 19.179167298489137,
+      "limiting_weapon": "6-inchCannon"
+    }
+  },
+  {
+    "hull": "Lancer",
+    "appearance": 2,
+    "size": 2,
+    "eligible_templates": 23,
+    "min_guns": 1,
+    "max_guns": 1,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Lancer",
+    "appearance": 2,
+    "size": 4,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Lancer",
+    "appearance": 3,
+    "size": 1,
+    "eligible_templates": 76,
+    "min_guns": 3,
+    "max_guns": 3,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 8.44792317613498,
+      "worst_weapon_best_max_packing_gap_m": 8.44792317613498,
+      "limiting_weapon": "30mmAutocannon"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 10.970894461682079,
+      "worst_weapon_best_max_packing_gap_m": 10.970894461682079,
+      "limiting_weapon": "6-inchCannon"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 10.970894461682079,
+      "worst_weapon_best_max_packing_gap_m": 10.970894461682079,
+      "limiting_weapon": "6-inchCannon"
+    }
+  },
+  {
+    "hull": "Lancer",
+    "appearance": 3,
+    "size": 2,
+    "eligible_templates": 23,
+    "min_guns": 1,
+    "max_guns": 1,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Lancer",
+    "appearance": 3,
+    "size": 4,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Dreadnought",
+    "appearance": 0,
+    "size": 1,
+    "eligible_templates": 76,
+    "min_guns": 8,
+    "max_guns": 8,
+    "baseline": {
+      "worst_all_max_packings_gap_m": -4.352078445111358,
+      "worst_weapon_best_max_packing_gap_m": -4.352078445111358,
+      "limiting_weapon": "30mmAutocannon"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": -1.8291071595642592,
+      "worst_weapon_best_max_packing_gap_m": -1.8291071595642592,
+      "limiting_weapon": "6-inchCannon"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": -1.8291071595642592,
+      "worst_weapon_best_max_packing_gap_m": -1.8291071595642592,
+      "limiting_weapon": "6-inchCannon"
+    }
+  },
+  {
+    "hull": "Dreadnought",
+    "appearance": 0,
+    "size": 2,
+    "eligible_templates": 23,
+    "min_guns": 4,
+    "max_guns": 4,
+    "baseline": {
+      "worst_all_max_packings_gap_m": -3.574670005477964,
+      "worst_weapon_best_max_packing_gap_m": -3.574670005477964,
+      "limiting_weapon": "8-inchCannon"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": -4.316579098381899,
+      "worst_weapon_best_max_packing_gap_m": -4.316579098381899,
+      "limiting_weapon": "8-inchCannon"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": -4.316579098381899,
+      "worst_weapon_best_max_packing_gap_m": -4.316579098381899,
+      "limiting_weapon": "8-inchCannon"
+    }
+  },
+  {
+    "hull": "Dreadnought",
+    "appearance": 0,
+    "size": 4,
+    "eligible_templates": 22,
+    "min_guns": 2,
+    "max_guns": 2,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 71.43286680293794,
+      "worst_weapon_best_max_packing_gap_m": 71.43286680293794,
+      "limiting_weapon": "HeavyPlasmaBatteryMk1"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 68.57110113817976,
+      "worst_weapon_best_max_packing_gap_m": 68.57110113817976,
+      "limiting_weapon": "360cmIRLaserBattery"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 68.57110113817976,
+      "worst_weapon_best_max_packing_gap_m": 68.57110113817976,
+      "limiting_weapon": "360cmIRLaserBattery"
+    }
+  },
+  {
+    "hull": "Dreadnought",
+    "appearance": 1,
+    "size": 1,
+    "eligible_templates": 76,
+    "min_guns": 8,
+    "max_guns": 8,
+    "baseline": {
+      "worst_all_max_packings_gap_m": -6.032078273449981,
+      "worst_weapon_best_max_packing_gap_m": -6.032078273449981,
+      "limiting_weapon": "30mmAutocannon"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": -3.5091069879028822,
+      "worst_weapon_best_max_packing_gap_m": -3.5091069879028822,
+      "limiting_weapon": "6-inchCannon"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": -3.5091069879028822,
+      "worst_weapon_best_max_packing_gap_m": -3.5091069879028822,
+      "limiting_weapon": "6-inchCannon"
+    }
+  },
+  {
+    "hull": "Dreadnought",
+    "appearance": 1,
+    "size": 2,
+    "eligible_templates": 23,
+    "min_guns": 4,
+    "max_guns": 4,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 1.6453297847136863,
+      "worst_weapon_best_max_packing_gap_m": 1.6453297847136863,
+      "limiting_weapon": "8-inchCannon"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 0.9034206918097514,
+      "worst_weapon_best_max_packing_gap_m": 0.9034206918097514,
+      "limiting_weapon": "8-inchCannon"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 0.9034206918097514,
+      "worst_weapon_best_max_packing_gap_m": 0.9034206918097514,
+      "limiting_weapon": "8-inchCannon"
+    }
+  },
+  {
+    "hull": "Dreadnought",
+    "appearance": 1,
+    "size": 4,
+    "eligible_templates": 22,
+    "min_guns": 2,
+    "max_guns": 2,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 40.79286693645234,
+      "worst_weapon_best_max_packing_gap_m": 40.79286693645234,
+      "limiting_weapon": "HeavyPlasmaBatteryMk1"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 37.93110127169416,
+      "worst_weapon_best_max_packing_gap_m": 37.93110127169416,
+      "limiting_weapon": "360cmIRLaserBattery"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 37.93110127169416,
+      "worst_weapon_best_max_packing_gap_m": 37.93110127169416,
+      "limiting_weapon": "360cmIRLaserBattery"
+    }
+  },
+  {
+    "hull": "Dreadnought",
+    "appearance": 2,
+    "size": 1,
+    "eligible_templates": 76,
+    "min_guns": 8,
+    "max_guns": 8,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 0.4479217456235052,
+      "worst_weapon_best_max_packing_gap_m": 0.4479217456235052,
+      "limiting_weapon": "30mmAutocannon"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 2.970893031170604,
+      "worst_weapon_best_max_packing_gap_m": 2.970893031170604,
+      "limiting_weapon": "6-inchCannon"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 2.970893031170604,
+      "worst_weapon_best_max_packing_gap_m": 2.970893031170604,
+      "limiting_weapon": "6-inchCannon"
+    }
+  },
+  {
+    "hull": "Dreadnought",
+    "appearance": 2,
+    "size": 2,
+    "eligible_templates": 23,
+    "min_guns": 4,
+    "max_guns": 4,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 1.275327038131655,
+      "worst_weapon_best_max_packing_gap_m": 1.275327038131655,
+      "limiting_weapon": "8-inchCannon"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 0.5334179452277201,
+      "worst_weapon_best_max_packing_gap_m": 0.5334179452277201,
+      "limiting_weapon": "8-inchCannon"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 0.5334179452277201,
+      "worst_weapon_best_max_packing_gap_m": 0.5334179452277201,
+      "limiting_weapon": "8-inchCannon"
+    }
+  },
+  {
+    "hull": "Dreadnought",
+    "appearance": 2,
+    "size": 4,
+    "eligible_templates": 22,
+    "min_guns": 2,
+    "max_guns": 2,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 111.11287235332246,
+      "worst_weapon_best_max_packing_gap_m": 111.11287235332246,
+      "limiting_weapon": "HeavyPlasmaBatteryMk1"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 108.25110668856428,
+      "worst_weapon_best_max_packing_gap_m": 108.25110668856428,
+      "limiting_weapon": "360cmIRLaserBattery"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 108.25110668856428,
+      "worst_weapon_best_max_packing_gap_m": 108.25110668856428,
+      "limiting_weapon": "360cmIRLaserBattery"
+    }
+  },
+  {
+    "hull": "Dreadnought",
+    "appearance": 3,
+    "size": 1,
+    "eligible_templates": 76,
+    "min_guns": 8,
+    "max_guns": 8,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 7.84792088731662,
+      "worst_weapon_best_max_packing_gap_m": 7.84792088731662,
+      "limiting_weapon": "30mmAutocannon"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 10.37089217286372,
+      "worst_weapon_best_max_packing_gap_m": 10.37089217286372,
+      "limiting_weapon": "6-inchCannon"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 10.37089217286372,
+      "worst_weapon_best_max_packing_gap_m": 10.37089217286372,
+      "limiting_weapon": "6-inchCannon"
+    }
+  },
+  {
+    "hull": "Dreadnought",
+    "appearance": 3,
+    "size": 2,
+    "eligible_templates": 23,
+    "min_guns": 4,
+    "max_guns": 4,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 8.625329326950014,
+      "worst_weapon_best_max_packing_gap_m": 8.625329326950014,
+      "limiting_weapon": "8-inchCannon"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 7.8834202340460795,
+      "worst_weapon_best_max_packing_gap_m": 7.8834202340460795,
+      "limiting_weapon": "8-inchCannon"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 7.8834202340460795,
+      "worst_weapon_best_max_packing_gap_m": 7.8834202340460795,
+      "limiting_weapon": "8-inchCannon"
+    }
+  },
+  {
+    "hull": "Dreadnought",
+    "appearance": 3,
+    "size": 4,
+    "eligible_templates": 22,
+    "min_guns": 2,
+    "max_guns": 2,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 90.01286624980683,
+      "worst_weapon_best_max_packing_gap_m": 90.01286624980683,
+      "limiting_weapon": "HeavyPlasmaBatteryMk1"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 87.15110058504865,
+      "worst_weapon_best_max_packing_gap_m": 87.15110058504865,
+      "limiting_weapon": "360cmIRLaserBattery"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 87.15110058504865,
+      "worst_weapon_best_max_packing_gap_m": 87.15110058504865,
+      "limiting_weapon": "360cmIRLaserBattery"
+    }
+  },
+  {
+    "hull": "Titan",
+    "appearance": 0,
+    "size": 1,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Titan",
+    "appearance": 0,
+    "size": 2,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Titan",
+    "appearance": 0,
+    "size": 4,
+    "eligible_templates": 22,
+    "min_guns": 6,
+    "max_guns": 6,
+    "baseline": {
+      "worst_all_max_packings_gap_m": -1.5971305458474596,
+      "worst_weapon_best_max_packing_gap_m": -1.5971305458474596,
+      "limiting_weapon": "HeavyPlasmaBatteryMk1"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": -4.458896210605648,
+      "worst_weapon_best_max_packing_gap_m": -4.458896210605648,
+      "limiting_weapon": "360cmIRLaserBattery"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": -4.458896210605648,
+      "worst_weapon_best_max_packing_gap_m": -4.458896210605648,
+      "limiting_weapon": "360cmIRLaserBattery"
+    }
+  },
+  {
+    "hull": "Titan",
+    "appearance": 1,
+    "size": 1,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Titan",
+    "appearance": 1,
+    "size": 2,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Titan",
+    "appearance": 1,
+    "size": 4,
+    "eligible_templates": 22,
+    "min_guns": 6,
+    "max_guns": 6,
+    "baseline": {
+      "worst_all_max_packings_gap_m": -8.197129019968553,
+      "worst_weapon_best_max_packing_gap_m": -8.197129019968553,
+      "limiting_weapon": "HeavyPlasmaBatteryMk1"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": -11.058894684726742,
+      "worst_weapon_best_max_packing_gap_m": -11.058894684726742,
+      "limiting_weapon": "360cmIRLaserBattery"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": -11.058894684726742,
+      "worst_weapon_best_max_packing_gap_m": -11.058894684726742,
+      "limiting_weapon": "360cmIRLaserBattery"
+    }
+  },
+  {
+    "hull": "Titan",
+    "appearance": 2,
+    "size": 1,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Titan",
+    "appearance": 2,
+    "size": 2,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Titan",
+    "appearance": 2,
+    "size": 4,
+    "eligible_templates": 22,
+    "min_guns": 6,
+    "max_guns": 6,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 3.262870064504103,
+      "worst_weapon_best_max_packing_gap_m": 3.262870064504103,
+      "limiting_weapon": "HeavyPlasmaBatteryMk1"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 0.4011043997459147,
+      "worst_weapon_best_max_packing_gap_m": 0.4011043997459147,
+      "limiting_weapon": "360cmIRLaserBattery"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 0.4011043997459147,
+      "worst_weapon_best_max_packing_gap_m": 0.4011043997459147,
+      "limiting_weapon": "360cmIRLaserBattery"
+    }
+  },
+  {
+    "hull": "Titan",
+    "appearance": 3,
+    "size": 1,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Titan",
+    "appearance": 3,
+    "size": 2,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "Titan",
+    "appearance": 3,
+    "size": 4,
+    "eligible_templates": 22,
+    "min_guns": 6,
+    "max_guns": 6,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 14.362868538625197,
+      "worst_weapon_best_max_packing_gap_m": 14.362868538625197,
+      "limiting_weapon": "HeavyPlasmaBatteryMk1"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 11.501102873867008,
+      "worst_weapon_best_max_packing_gap_m": 11.501102873867008,
+      "limiting_weapon": "360cmIRLaserBattery"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 11.501102873867008,
+      "worst_weapon_best_max_packing_gap_m": 11.501102873867008,
+      "limiting_weapon": "360cmIRLaserBattery"
+    }
+  },
+  {
+    "hull": "STOFighter",
+    "appearance": 0,
+    "size": 1,
+    "eligible_templates": 76,
+    "min_guns": 1,
+    "max_guns": 1,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "STOFighter",
+    "appearance": 0,
+    "size": 2,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "STOFighter",
+    "appearance": 0,
+    "size": 4,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "AlienGunship",
+    "appearance": 0,
+    "size": 1,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "AlienGunship",
+    "appearance": 0,
+    "size": 2,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "AlienGunship",
+    "appearance": 0,
+    "size": 4,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "AlienEscort",
+    "appearance": 0,
+    "size": 1,
+    "eligible_templates": 13,
+    "min_guns": 2,
+    "max_guns": 2,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 9.925757030833058,
+      "worst_weapon_best_max_packing_gap_m": 9.925757030833058,
+      "limiting_weapon": "AlienLightMagBattery"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 7.012279205729884,
+      "worst_weapon_best_max_packing_gap_m": 7.012279205729884,
+      "limiting_weapon": "Alien64cmOrangeLaserBattery"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 9.867848083798968,
+      "worst_weapon_best_max_packing_gap_m": 9.867848083798968,
+      "limiting_weapon": "Gen3AlienLightMagBattery"
+    }
+  },
+  {
+    "hull": "AlienEscort",
+    "appearance": 0,
+    "size": 2,
+    "eligible_templates": 6,
+    "min_guns": 1,
+    "max_guns": 1,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "AlienEscort",
+    "appearance": 0,
+    "size": 4,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "AlienCorvette",
+    "appearance": 0,
+    "size": 1,
+    "eligible_templates": 13,
+    "min_guns": 1,
+    "max_guns": 1,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "AlienCorvette",
+    "appearance": 0,
+    "size": 2,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "AlienCorvette",
+    "appearance": 0,
+    "size": 4,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "AlienFrigate",
+    "appearance": 0,
+    "size": 1,
+    "eligible_templates": 13,
+    "min_guns": 3,
+    "max_guns": 3,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 16.525734064539094,
+      "worst_weapon_best_max_packing_gap_m": 16.525734064539094,
+      "limiting_weapon": "AlienLightMagBattery"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 13.61225623943592,
+      "worst_weapon_best_max_packing_gap_m": 13.61225623943592,
+      "limiting_weapon": "Alien64cmOrangeLaserBattery"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 16.467825117505004,
+      "worst_weapon_best_max_packing_gap_m": 16.467825117505004,
+      "limiting_weapon": "Gen3AlienLightMagBattery"
+    }
+  },
+  {
+    "hull": "AlienFrigate",
+    "appearance": 0,
+    "size": 2,
+    "eligible_templates": 6,
+    "min_guns": 1,
+    "max_guns": 1,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "AlienFrigate",
+    "appearance": 0,
+    "size": 4,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "AlienMonitor",
+    "appearance": 0,
+    "size": 1,
+    "eligible_templates": 13,
+    "min_guns": 4,
+    "max_guns": 4,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 9.375756840098195,
+      "worst_weapon_best_max_packing_gap_m": 9.375756840098195,
+      "limiting_weapon": "AlienLightMagBattery"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 6.462279014995021,
+      "worst_weapon_best_max_packing_gap_m": 6.462279014995021,
+      "limiting_weapon": "Alien64cmOrangeLaserBattery"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 9.317847893064105,
+      "worst_weapon_best_max_packing_gap_m": 9.317847893064105,
+      "limiting_weapon": "Gen3AlienLightMagBattery"
+    }
+  },
+  {
+    "hull": "AlienMonitor",
+    "appearance": 0,
+    "size": 2,
+    "eligible_templates": 6,
+    "min_guns": 2,
+    "max_guns": 2,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 6.162677411911542,
+      "worst_weapon_best_max_packing_gap_m": 6.162677411911542,
+      "limiting_weapon": "AlienPlasmaBattery"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": -13.594018343361135,
+      "worst_weapon_best_max_packing_gap_m": -13.594018343361135,
+      "limiting_weapon": "Alien128cmOrangeLaserBattery"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 6.162677411911542,
+      "worst_weapon_best_max_packing_gap_m": 6.162677411911542,
+      "limiting_weapon": "AlienPlasmaBattery"
+    }
+  },
+  {
+    "hull": "AlienMonitor",
+    "appearance": 0,
+    "size": 4,
+    "eligible_templates": 7,
+    "min_guns": 1,
+    "max_guns": 1,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "AlienDestroyer",
+    "appearance": 0,
+    "size": 1,
+    "eligible_templates": 13,
+    "min_guns": 2,
+    "max_guns": 2,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 35.22575722156792,
+      "worst_weapon_best_max_packing_gap_m": 35.22575722156792,
+      "limiting_weapon": "AlienLightMagBattery"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 32.312279396464746,
+      "worst_weapon_best_max_packing_gap_m": 32.312279396464746,
+      "limiting_weapon": "Alien64cmOrangeLaserBattery"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 35.16784827453383,
+      "worst_weapon_best_max_packing_gap_m": 35.16784827453383,
+      "limiting_weapon": "Gen3AlienLightMagBattery"
+    }
+  },
+  {
+    "hull": "AlienDestroyer",
+    "appearance": 0,
+    "size": 2,
+    "eligible_templates": 6,
+    "min_guns": 1,
+    "max_guns": 1,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "AlienDestroyer",
+    "appearance": 0,
+    "size": 4,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "AlienCruiser",
+    "appearance": 0,
+    "size": 1,
+    "eligible_templates": 13,
+    "min_guns": 4,
+    "max_guns": 4,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 15.84576884647938,
+      "worst_weapon_best_max_packing_gap_m": 15.84576884647938,
+      "limiting_weapon": "AlienLightMagBattery"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 12.932291021376207,
+      "worst_weapon_best_max_packing_gap_m": 12.932291021376207,
+      "limiting_weapon": "Alien64cmOrangeLaserBattery"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 15.78785989944529,
+      "worst_weapon_best_max_packing_gap_m": 15.78785989944529,
+      "limiting_weapon": "Gen3AlienLightMagBattery"
+    }
+  },
+  {
+    "hull": "AlienCruiser",
+    "appearance": 0,
+    "size": 2,
+    "eligible_templates": 6,
+    "min_guns": 2,
+    "max_guns": 2,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 17.31270428761702,
+      "worst_weapon_best_max_packing_gap_m": 17.31270428761702,
+      "limiting_weapon": "AlienPlasmaBattery"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": -2.443991467655657,
+      "worst_weapon_best_max_packing_gap_m": -2.443991467655657,
+      "limiting_weapon": "Alien128cmOrangeLaserBattery"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 17.31270428761702,
+      "worst_weapon_best_max_packing_gap_m": 17.31270428761702,
+      "limiting_weapon": "AlienPlasmaBattery"
+    }
+  },
+  {
+    "hull": "AlienCruiser",
+    "appearance": 0,
+    "size": 4,
+    "eligible_templates": 7,
+    "min_guns": 1,
+    "max_guns": 1,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "AlienBattlecruiser",
+    "appearance": 0,
+    "size": 1,
+    "eligible_templates": 13,
+    "min_guns": 3,
+    "max_guns": 3,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 30.903322100938087,
+      "worst_weapon_best_max_packing_gap_m": 30.903322100938087,
+      "limiting_weapon": "AlienLightMagBattery"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 27.989844275834912,
+      "worst_weapon_best_max_packing_gap_m": 27.989844275834912,
+      "limiting_weapon": "Alien64cmOrangeLaserBattery"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 30.845413153903998,
+      "worst_weapon_best_max_packing_gap_m": 30.845413153903998,
+      "limiting_weapon": "Gen3AlienLightMagBattery"
+    }
+  },
+  {
+    "hull": "AlienBattlecruiser",
+    "appearance": 0,
+    "size": 2,
+    "eligible_templates": 6,
+    "min_guns": 1,
+    "max_guns": 1,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "AlienBattlecruiser",
+    "appearance": 0,
+    "size": 4,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "AlienBattleship",
+    "appearance": 0,
+    "size": 1,
+    "eligible_templates": 13,
+    "min_guns": 6,
+    "max_guns": 6,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 15.725757221567921,
+      "worst_weapon_best_max_packing_gap_m": 15.725757221567921,
+      "limiting_weapon": "AlienLightMagBattery"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 12.812279396464747,
+      "worst_weapon_best_max_packing_gap_m": 12.812279396464747,
+      "limiting_weapon": "Alien64cmOrangeLaserBattery"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 15.667848274533831,
+      "worst_weapon_best_max_packing_gap_m": 15.667848274533831,
+      "limiting_weapon": "Gen3AlienLightMagBattery"
+    }
+  },
+  {
+    "hull": "AlienBattleship",
+    "appearance": 0,
+    "size": 2,
+    "eligible_templates": 6,
+    "min_guns": 2,
+    "max_guns": 2,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 12.912677411911542,
+      "worst_weapon_best_max_packing_gap_m": 114.66745238441189,
+      "limiting_weapon": "AlienPlasmaBattery"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": -6.844018343361135,
+      "worst_weapon_best_max_packing_gap_m": 94.9107566291392,
+      "limiting_weapon": "Alien128cmOrangeLaserBattery"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 12.912677411911542,
+      "worst_weapon_best_max_packing_gap_m": 114.66745238441189,
+      "limiting_weapon": "AlienPlasmaBattery"
+    }
+  },
+  {
+    "hull": "AlienBattleship",
+    "appearance": 0,
+    "size": 4,
+    "eligible_templates": 7,
+    "min_guns": 1,
+    "max_guns": 1,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "AlienLancer",
+    "appearance": 0,
+    "size": 1,
+    "eligible_templates": 13,
+    "min_guns": 4,
+    "max_guns": 4,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 31.325755695689015,
+      "worst_weapon_best_max_packing_gap_m": 31.325755695689015,
+      "limiting_weapon": "AlienLightMagBattery"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 28.41227787058584,
+      "worst_weapon_best_max_packing_gap_m": 28.41227787058584,
+      "limiting_weapon": "Alien64cmOrangeLaserBattery"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 31.267846748654925,
+      "worst_weapon_best_max_packing_gap_m": 31.267846748654925,
+      "limiting_weapon": "Gen3AlienLightMagBattery"
+    }
+  },
+  {
+    "hull": "AlienLancer",
+    "appearance": 0,
+    "size": 2,
+    "eligible_templates": 6,
+    "min_guns": 2,
+    "max_guns": 2,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 98.86119133677546,
+      "worst_weapon_best_max_packing_gap_m": 98.86119133677546,
+      "limiting_weapon": "AlienPlasmaBattery"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 79.10449558150279,
+      "worst_weapon_best_max_packing_gap_m": 79.10449558150279,
+      "limiting_weapon": "Alien128cmOrangeLaserBattery"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 98.86119133677546,
+      "worst_weapon_best_max_packing_gap_m": 98.86119133677546,
+      "limiting_weapon": "AlienPlasmaBattery"
+    }
+  },
+  {
+    "hull": "AlienLancer",
+    "appearance": 0,
+    "size": 4,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "AlienDreadnought",
+    "appearance": 0,
+    "size": 1,
+    "eligible_templates": 13,
+    "min_guns": 8,
+    "max_guns": 8,
+    "baseline": {
+      "worst_all_max_packings_gap_m": -4.774242778432079,
+      "worst_weapon_best_max_packing_gap_m": -4.774242778432079,
+      "limiting_weapon": "AlienLightMagBattery"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": -7.6877206035352526,
+      "worst_weapon_best_max_packing_gap_m": -7.6877206035352526,
+      "limiting_weapon": "Alien64cmOrangeLaserBattery"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": -4.832151725466169,
+      "worst_weapon_best_max_packing_gap_m": -4.832151725466169,
+      "limiting_weapon": "Gen3AlienLightMagBattery"
+    }
+  },
+  {
+    "hull": "AlienDreadnought",
+    "appearance": 0,
+    "size": 2,
+    "eligible_templates": 6,
+    "min_guns": 4,
+    "max_guns": 4,
+    "baseline": {
+      "worst_all_max_packings_gap_m": -8.037323351027911,
+      "worst_weapon_best_max_packing_gap_m": -8.037323351027911,
+      "limiting_weapon": "AlienPlasmaBattery"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": -27.79401910630059,
+      "worst_weapon_best_max_packing_gap_m": -27.79401910630059,
+      "limiting_weapon": "Alien128cmOrangeLaserBattery"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": -8.037323351027911,
+      "worst_weapon_best_max_packing_gap_m": -8.037323351027911,
+      "limiting_weapon": "AlienPlasmaBattery"
+    }
+  },
+  {
+    "hull": "AlienDreadnought",
+    "appearance": 0,
+    "size": 4,
+    "eligible_templates": 7,
+    "min_guns": 2,
+    "max_guns": 2,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 43.78408606482239,
+      "worst_weapon_best_max_packing_gap_m": 43.78408606482239,
+      "limiting_weapon": "AlienHeavyPlasmaBattery"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": -40.885918071302385,
+      "worst_weapon_best_max_packing_gap_m": -40.885918071302385,
+      "limiting_weapon": "Alien384cmOrangeLaserBattery"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 34.4403894154175,
+      "worst_weapon_best_max_packing_gap_m": 34.4403894154175,
+      "limiting_weapon": "Alien384cmOrangeLaserBattery"
+    }
+  },
+  {
+    "hull": "AlienTitan",
+    "appearance": 0,
+    "size": 1,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "AlienTitan",
+    "appearance": 0,
+    "size": 2,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "AlienTitan",
+    "appearance": 0,
+    "size": 4,
+    "eligible_templates": 7,
+    "min_guns": 8,
+    "max_guns": 8,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 10.854074315554813,
+      "worst_weapon_best_max_packing_gap_m": 10.854074315554813,
+      "limiting_weapon": "AlienHeavyPlasmaBattery"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": -73.81592982056996,
+      "worst_weapon_best_max_packing_gap_m": -73.81592982056996,
+      "limiting_weapon": "Alien384cmOrangeLaserBattery"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 1.5103776661499246,
+      "worst_weapon_best_max_packing_gap_m": 1.5103776661499246,
+      "limiting_weapon": "Alien384cmOrangeLaserBattery"
+    }
+  },
+  {
+    "hull": "AlienAssaultCarrier",
+    "appearance": 0,
+    "size": 1,
+    "eligible_templates": 13,
+    "min_guns": 6,
+    "max_guns": 6,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 3.225757221567921,
+      "worst_weapon_best_max_packing_gap_m": 3.225757221567921,
+      "limiting_weapon": "AlienLightMagBattery"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 0.31227939646474745,
+      "worst_weapon_best_max_packing_gap_m": 0.31227939646474745,
+      "limiting_weapon": "Alien64cmOrangeLaserBattery"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 3.1678482745338314,
+      "worst_weapon_best_max_packing_gap_m": 3.1678482745338314,
+      "limiting_weapon": "Gen3AlienLightMagBattery"
+    }
+  },
+  {
+    "hull": "AlienAssaultCarrier",
+    "appearance": 0,
+    "size": 2,
+    "eligible_templates": 6,
+    "min_guns": 2,
+    "max_guns": 2,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 45.96267664897209,
+      "worst_weapon_best_max_packing_gap_m": 45.96267664897209,
+      "limiting_weapon": "AlienPlasmaBattery"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": 26.20598089369941,
+      "worst_weapon_best_max_packing_gap_m": 26.20598089369941,
+      "limiting_weapon": "Alien128cmOrangeLaserBattery"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 45.96267664897209,
+      "worst_weapon_best_max_packing_gap_m": 45.96267664897209,
+      "limiting_weapon": "AlienPlasmaBattery"
+    }
+  },
+  {
+    "hull": "AlienAssaultCarrier",
+    "appearance": 0,
+    "size": 4,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "AlienMothership",
+    "appearance": 0,
+    "size": 1,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "AlienMothership",
+    "appearance": 0,
+    "size": 2,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "AlienMothership",
+    "appearance": 0,
+    "size": 4,
+    "eligible_templates": 7,
+    "min_guns": 16,
+    "max_guns": 16,
+    "baseline": {
+      "worst_all_max_packings_gap_m": 21.90408671186431,
+      "worst_weapon_best_max_packing_gap_m": 21.90408671186431,
+      "limiting_weapon": "AlienHeavyPlasmaBattery"
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": -62.765917424260465,
+      "worst_weapon_best_max_packing_gap_m": -62.765917424260465,
+      "limiting_weapon": "Alien384cmOrangeLaserBattery"
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": 12.560390062459422,
+      "worst_weapon_best_max_packing_gap_m": 12.560390062459422,
+      "limiting_weapon": "Alien384cmOrangeLaserBattery"
+    }
+  },
+  {
+    "hull": "SalamanderGunship",
+    "appearance": 0,
+    "size": 1,
+    "eligible_templates": 13,
+    "min_guns": 1,
+    "max_guns": 1,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "SalamanderGunship",
+    "appearance": 0,
+    "size": 2,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  },
+  {
+    "hull": "SalamanderGunship",
+    "appearance": 0,
+    "size": 4,
+    "eligible_templates": 0,
+    "min_guns": 0,
+    "max_guns": 0,
+    "baseline": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "canonical": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    },
+    "compact_optics": {
+      "worst_all_max_packings_gap_m": null,
+      "worst_weapon_best_max_packing_gap_m": null,
+      "limiting_weapon": null
+    }
+  }
+]

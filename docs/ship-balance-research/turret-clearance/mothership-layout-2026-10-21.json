@@ -1,0 +1,1525 @@
+{
+  "source_bundle_sha256": "F1804254B5C6F2C2FFBF78C333738F462BAA18023AC5AACF9A8EACAA4D9F09A4",
+  "rows": [
+    {
+      "index": 0,
+      "name_suffix": "70",
+      "original_dorsal": [
+        -108.5,
+        25.0,
+        249.0
+      ],
+      "dorsal": [
+        -108.5,
+        25.0,
+        249.0
+      ],
+      "original_ventral": [
+        -108.5,
+        -22.965999603271484,
+        249.0
+      ],
+      "ventral": [
+        -108.5,
+        -22.966,
+        249.0
+      ]
+    },
+    {
+      "index": 1,
+      "name_suffix": "60",
+      "original_dorsal": [
+        -196.5,
+        25.100000381469727,
+        96.0
+      ],
+      "dorsal": [
+        -196.5,
+        25.1,
+        96.0
+      ],
+      "original_ventral": [
+        -196.5,
+        -23.18000030517578,
+        96.0
+      ],
+      "ventral": [
+        -196.5,
+        -23.18,
+        96.0
+      ]
+    },
+    {
+      "index": 2,
+      "name_suffix": "50",
+      "original_dorsal": [
+        -196.5,
+        25.350000381469727,
+        -161.39999389648438
+      ],
+      "dorsal": [
+        -196.5,
+        25.35,
+        -161.399994
+      ],
+      "original_ventral": [
+        -196.5,
+        -23.59000015258789,
+        -161.39999389648438
+      ],
+      "ventral": [
+        -196.5,
+        -23.59,
+        -161.399994
+      ]
+    },
+    {
+      "index": 3,
+      "name_suffix": "40",
+      "original_dorsal": [
+        -88.4000015258789,
+        25.350000381469727,
+        -273.75
+      ],
+      "dorsal": [
+        -88.400002,
+        25.35,
+        -273.75
+      ],
+      "original_ventral": [
+        -88.4000015258789,
+        -23.59000015258789,
+        -273.75
+      ],
+      "ventral": [
+        -88.400002,
+        -23.59,
+        -273.75
+      ]
+    },
+    {
+      "index": 4,
+      "name_suffix": "72",
+      "original_dorsal": [
+        -4.0,
+        88.88999938964844,
+        3.0
+      ],
+      "dorsal": [
+        -196.5,
+        25.135874,
+        61.8
+      ],
+      "original_ventral": [
+        -4.0,
+        -88.81999969482422,
+        3.0
+      ],
+      "ventral": [
+        -196.5,
+        -23.252537,
+        61.8
+      ]
+    },
+    {
+      "index": 5,
+      "name_suffix": "7C",
+      "original_dorsal": [
+        0.0,
+        88.88999938964844,
+        3.0
+      ],
+      "dorsal": [
+        0.0,
+        88.91,
+        7.063
+      ],
+      "original_ventral": [
+        0.0,
+        -88.81999969482422,
+        3.0
+      ],
+      "ventral": [
+        0.0,
+        -88.91,
+        7.063
+      ]
+    },
+    {
+      "index": 6,
+      "name_suffix": "74",
+      "original_dorsal": [
+        4.0,
+        88.88999938964844,
+        3.0
+      ],
+      "dorsal": [
+        196.5,
+        25.135874,
+        61.8
+      ],
+      "original_ventral": [
+        4.0,
+        -88.81999969482422,
+        3.0
+      ],
+      "ventral": [
+        196.5,
+        -23.252537,
+        61.8
+      ]
+    },
+    {
+      "index": 7,
+      "name_suffix": "62",
+      "original_dorsal": [
+        -4.0,
+        88.90999603271484,
+        -7.0
+      ],
+      "dorsal": [
+        -196.5,
+        25.19645,
+        -6.6
+      ],
+      "original_ventral": [
+        -4.0,
+        -88.81999969482422,
+        -7.0
+      ],
+      "ventral": [
+        -196.5,
+        -23.34972,
+        -6.6
+      ]
+    },
+    {
+      "index": 8,
+      "name_suffix": "6C",
+      "original_dorsal": [
+        0.0,
+        88.90999603271484,
+        -7.0
+      ],
+      "dorsal": [
+        -196.5,
+        25.165888,
+        27.6
+      ],
+      "original_ventral": [
+        0.0,
+        -88.81999969482422,
+        -7.0
+      ],
+      "ventral": [
+        -196.5,
+        -23.300595,
+        27.6
+      ]
+    },
+    {
+      "index": 9,
+      "name_suffix": "64",
+      "original_dorsal": [
+        4.0,
+        88.90999603271484,
+        -7.0
+      ],
+      "dorsal": [
+        196.5,
+        25.19645,
+        -6.6
+      ],
+      "original_ventral": [
+        4.0,
+        -88.81999969482422,
+        -7.0
+      ],
+      "ventral": [
+        196.5,
+        -23.34972,
+        -6.6
+      ]
+    },
+    {
+      "index": 10,
+      "name_suffix": "52",
+      "original_dorsal": [
+        -4.0,
+        88.90999603271484,
+        -17.0
+      ],
+      "dorsal": [
+        -196.5,
+        25.227309,
+        -40.8
+      ],
+      "original_ventral": [
+        -4.0,
+        -88.81999969482422,
+        -17.0
+      ],
+      "ventral": [
+        -196.5,
+        -23.399424,
+        -40.8
+      ]
+    },
+    {
+      "index": 11,
+      "name_suffix": "5C",
+      "original_dorsal": [
+        0.0,
+        88.90999603271484,
+        -17.0
+      ],
+      "dorsal": [
+        196.5,
+        25.165888,
+        27.6
+      ],
+      "original_ventral": [
+        0.0,
+        -88.81999969482422,
+        -17.0
+      ],
+      "ventral": [
+        196.5,
+        -23.300595,
+        27.6
+      ]
+    },
+    {
+      "index": 12,
+      "name_suffix": "54",
+      "original_dorsal": [
+        4.0,
+        88.90999603271484,
+        -17.0
+      ],
+      "dorsal": [
+        196.5,
+        25.227309,
+        -40.8
+      ],
+      "original_ventral": [
+        4.0,
+        -88.81999969482422,
+        -17.0
+      ],
+      "ventral": [
+        196.5,
+        -23.399424,
+        -40.8
+      ]
+    },
+    {
+      "index": 13,
+      "name_suffix": "42",
+      "original_dorsal": [
+        -4.0,
+        88.90999603271484,
+        -27.0
+      ],
+      "dorsal": [
+        -196.5,
+        25.322998,
+        -120.0
+      ],
+      "original_ventral": [
+        -4.0,
+        -88.81999969482422,
+        -27.0
+      ],
+      "ventral": [
+        -196.5,
+        -23.552573,
+        -120.0
+      ]
+    },
+    {
+      "index": 14,
+      "name_suffix": "4C",
+      "original_dorsal": [
+        0.0,
+        88.90999603271484,
+        -27.0
+      ],
+      "dorsal": [
+        0.0,
+        88.91,
+        -27.337
+      ],
+      "original_ventral": [
+        0.0,
+        -88.81999969482422,
+        -27.0
+      ],
+      "ventral": [
+        0.0,
+        -88.91,
+        -27.337
+      ]
+    },
+    {
+      "index": 15,
+      "name_suffix": "44",
+      "original_dorsal": [
+        4.0,
+        88.90999603271484,
+        -27.0
+      ],
+      "dorsal": [
+        196.5,
+        25.322998,
+        -120.0
+      ],
+      "original_ventral": [
+        4.0,
+        -88.81999969482422,
+        -27.0
+      ],
+      "ventral": [
+        196.5,
+        -23.552573,
+        -120.0
+      ]
+    },
+    {
+      "index": 16,
+      "name_suffix": "76",
+      "original_dorsal": [
+        108.5,
+        25.0,
+        249.0
+      ],
+      "dorsal": [
+        108.5,
+        25.0,
+        249.0
+      ],
+      "original_ventral": [
+        108.5,
+        -22.965999603271484,
+        249.0
+      ],
+      "ventral": [
+        108.5,
+        -22.966,
+        249.0
+      ]
+    },
+    {
+      "index": 17,
+      "name_suffix": "66",
+      "original_dorsal": [
+        196.5,
+        25.100000381469727,
+        96.0
+      ],
+      "dorsal": [
+        196.5,
+        25.1,
+        96.0
+      ],
+      "original_ventral": [
+        196.5,
+        -23.18000030517578,
+        96.0
+      ],
+      "ventral": [
+        196.5,
+        -23.18,
+        96.0
+      ]
+    },
+    {
+      "index": 18,
+      "name_suffix": "56",
+      "original_dorsal": [
+        196.5,
+        25.350000381469727,
+        -161.39999389648438
+      ],
+      "dorsal": [
+        196.5,
+        25.35,
+        -161.399994
+      ],
+      "original_ventral": [
+        -196.5,
+        -23.18000030517578,
+        96.0
+      ],
+      "ventral": [
+        196.5,
+        -23.59,
+        -161.399994
+      ]
+    },
+    {
+      "index": 19,
+      "name_suffix": "46",
+      "original_dorsal": [
+        88.40001678466797,
+        25.350000381469727,
+        -273.7500305175781
+      ],
+      "dorsal": [
+        88.400002,
+        25.35,
+        -273.75
+      ],
+      "original_ventral": [
+        88.40001678466797,
+        -23.59000015258789,
+        -273.7500305175781
+      ],
+      "ventral": [
+        88.400002,
+        -23.59,
+        -273.75
+      ]
+    }
+  ],
+  "minimum_all_20": [
+    34.200013170175765,
+    [
+      4,
+      "dorsal"
+    ],
+    [
+      8,
+      "dorsal"
+    ]
+  ],
+  "minimum_active_16": [
+    34.200013922188404,
+    [
+      7,
+      "dorsal"
+    ],
+    [
+      10,
+      "dorsal"
+    ]
+  ],
+  "inactive_indices": [
+    5,
+    8,
+    11,
+    14
+  ],
+  "active_ui_guns": 16,
+  "hull_mass_tons": 8200,
+  "surface_probes": [
+    {
+      "index": 4,
+      "side": "dorsal",
+      "samples": [
+        [
+          25.175874346989286,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.17524944086169,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.17269745663029,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.17236400733381,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.17408686739897,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.17685680876567,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.179051237348276,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.17938468664476,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.177661826579598,
+          "Hydra_Mothership_Outer_A"
+        ]
+      ]
+    },
+    {
+      "index": 4,
+      "side": "ventral",
+      "samples": [
+        [
+          -23.29253661458612,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.291658250218926,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.287449097247826,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.286915797784744,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.289675096572296,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.294110633803374,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.297624131924415,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.298157431387498,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.29539813259995,
+          "Hydra_Mothership_Outer_A"
+        ]
+      ]
+    },
+    {
+      "index": 5,
+      "side": "dorsal",
+      "samples": [
+        [
+          88.93059508921576,
+          "Hydra_Mothership_Central_A"
+        ],
+        [
+          88.93059508921576,
+          "Hydra_Mothership_Central_A"
+        ],
+        [
+          88.93059496558129,
+          "Hydra_Mothership_Central_A"
+        ],
+        [
+          88.93059491437022,
+          "Hydra_Mothership_Central_A"
+        ],
+        [
+          88.93059496558128,
+          "Hydra_Mothership_Central_A"
+        ],
+        [
+          88.93059508921576,
+          "Hydra_Mothership_Central_A"
+        ],
+        [
+          88.93059521285024,
+          "Hydra_Mothership_Central_A"
+        ],
+        [
+          88.93059526406132,
+          "Hydra_Mothership_Central_A"
+        ],
+        [
+          88.93059521285024,
+          "Hydra_Mothership_Central_A"
+        ]
+      ]
+    },
+    {
+      "index": 5,
+      "side": "ventral",
+      "samples": [
+        [
+          -88.93059570668284,
+          "Hydra_Mothership_Central_A"
+        ],
+        [
+          -88.93059570668285,
+          "Hydra_Mothership_Central_A"
+        ],
+        [
+          -88.93059583031732,
+          "Hydra_Mothership_Central_A"
+        ],
+        [
+          -88.93059588152842,
+          "Hydra_Mothership_Central_A"
+        ],
+        [
+          -88.93059583031733,
+          "Hydra_Mothership_Central_A"
+        ],
+        [
+          -88.93059570668285,
+          "Hydra_Mothership_Central_A"
+        ],
+        [
+          -88.93059558304836,
+          "Hydra_Mothership_Central_A"
+        ],
+        [
+          -88.93059553183728,
+          "Hydra_Mothership_Central_A"
+        ],
+        [
+          -88.93059558304837,
+          "Hydra_Mothership_Central_A"
+        ]
+      ]
+    },
+    {
+      "index": 6,
+      "side": "dorsal",
+      "samples": [
+        [
+          25.175874346989286,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.17685680876567,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.17408686739897,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.17236400733381,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.17269745663029,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.17524944086169,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.177661826579598,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.17938468664476,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.179051237348276,
+          "Hydra_Mothership_Outer_A"
+        ]
+      ]
+    },
+    {
+      "index": 6,
+      "side": "ventral",
+      "samples": [
+        [
+          -23.29253661458612,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.294110633803374,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.289675096572296,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.286915797784744,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.28744909724783,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.291658250218926,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.29539813259995,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.298157431387498,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.297624131924415,
+          "Hydra_Mothership_Outer_A"
+        ]
+      ]
+    },
+    {
+      "index": 7,
+      "side": "dorsal",
+      "samples": [
+        [
+          25.236449884099798,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.23696794116333,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.234264067160826,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.232840615076306,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.23411367550761,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.236883616874312,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.23907804545692,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.240059153123283,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.239368344364095,
+          "Hydra_Mothership_Outer_A"
+        ]
+      ]
+    },
+    {
+      "index": 7,
+      "side": "ventral",
+      "samples": [
+        [
+          -23.38972018077162,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.391065548690555,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.38656088113808,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.383906888463336,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.38579106387584,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.390226601106917,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.39374009922796,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.395533473079897,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.394782117962492,
+          "Hydra_Mothership_Outer_A"
+        ]
+      ]
+    },
+    {
+      "index": 8,
+      "side": "dorsal",
+      "samples": [
+        [
+          25.205887751043605,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.20610869101251,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.203404817010007,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.20237741138813,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.204100271453292,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.206870212819993,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.209064641402602,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.209398090699082,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.208509094213277,
+          "Hydra_Mothership_Outer_A"
+        ]
+      ]
+    },
+    {
+      "index": 8,
+      "side": "ventral",
+      "samples": [
+        [
+          -23.340594598237892,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.34136189945474,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.33685723190227,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.334973781436517,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.337733080224066,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.342168617455144,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.345682115576192,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.34621541503927,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.34507846872668,
+          "Hydra_Mothership_Outer_A"
+        ]
+      ]
+    },
+    {
+      "index": 9,
+      "side": "dorsal",
+      "samples": [
+        [
+          25.236449884099798,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.236883616874312,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.234113675507608,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.232840615076306,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.23426406716083,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.23696794116333,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.239368344364095,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.24005915312328,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.23907804545692,
+          "Hydra_Mothership_Outer_A"
+        ]
+      ]
+    },
+    {
+      "index": 9,
+      "side": "ventral",
+      "samples": [
+        [
+          -23.38972018077162,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.390226601106917,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.38579106387584,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.383906888463336,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.386560881138085,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.391065548690555,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.394782117962492,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.395533473079897,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.39374009922796,
+          "Hydra_Mothership_Outer_A"
+        ]
+      ]
+    },
+    {
+      "index": 10,
+      "side": "dorsal",
+      "samples": [
+        [
+          25.267309134250613,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.267827191314147,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.265123317311645,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.263699865227128,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.264390673986316,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.26689702092863,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.269494951189582,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.270918403274102,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.270227594514918,
+          "Hydra_Mothership_Outer_A"
+        ]
+      ]
+    },
+    {
+      "index": 10,
+      "side": "ventral",
+      "samples": [
+        [
+          -23.439423830007435,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.44076919792637,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.436264530373897,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.433610537699153,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.434361892816554,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.438284584758684,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.442583129640965,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.445237122315714,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.444485767198312,
+          "Hydra_Mothership_Outer_A"
+        ]
+      ]
+    },
+    {
+      "index": 11,
+      "side": "dorsal",
+      "samples": [
+        [
+          25.205887751043605,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.206870212819993,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.20410027145329,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.202377411388127,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.203404817010007,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.20610869101251,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.208509094213277,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.209398090699082,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.209064641402602,
+          "Hydra_Mothership_Outer_A"
+        ]
+      ]
+    },
+    {
+      "index": 11,
+      "side": "ventral",
+      "samples": [
+        [
+          -23.340594598237892,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.342168617455144,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.337733080224066,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.334973781436517,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.33685723190227,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.34136189945474,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.34507846872668,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.34621541503927,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.34568211557619,
+          "Hydra_Mothership_Outer_A"
+        ]
+      ]
+    },
+    {
+      "index": 12,
+      "side": "dorsal",
+      "samples": [
+        [
+          25.267309134250613,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.26689702092863,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.264390673986313,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.263699865227128,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.265123317311645,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.267827191314147,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.270227594514914,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.270918403274102,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.269494951189582,
+          "Hydra_Mothership_Outer_A"
+        ]
+      ]
+    },
+    {
+      "index": 12,
+      "side": "ventral",
+      "samples": [
+        [
+          -23.439423830007435,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.438284584758684,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.434361892816554,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.433610537699153,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.436264530373897,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.44076919792637,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.444485767198312,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.445237122315714,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.442583129640965,
+          "Hydra_Mothership_Outer_A"
+        ]
+      ]
+    },
+    {
+      "index": 13,
+      "side": "dorsal",
+      "samples": [
+        [
+          25.362998049506963,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.364029558556844,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.361392522277633,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.3596959820746,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.35934403238284,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.360995932823073,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.36383202999501,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.366190976639544,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.366062350824343,
+          "Hydra_Mothership_Outer_A"
+        ]
+      ]
+    },
+    {
+      "index": 13,
+      "side": "ventral",
+      "samples": [
+        [
+          -23.59257298310294,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.595213364628087,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.59073668651034,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.587335686032002,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.586521335663022,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.5891398488124,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.593779213358637,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.59772175247133,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.59814334305824,
+          "Hydra_Mothership_Outer_A"
+        ]
+      ]
+    },
+    {
+      "index": 14,
+      "side": "dorsal",
+      "samples": [
+        [
+          88.93059659288753,
+          "Hydra_Mothership_Central_A"
+        ],
+        [
+          88.93059659288753,
+          "Hydra_Mothership_Central_A"
+        ],
+        [
+          88.93059646925305,
+          "Hydra_Mothership_Central_A"
+        ],
+        [
+          88.93059641804197,
+          "Hydra_Mothership_Central_A"
+        ],
+        [
+          88.93059646925303,
+          "Hydra_Mothership_Central_A"
+        ],
+        [
+          88.93059659288753,
+          "Hydra_Mothership_Central_A"
+        ],
+        [
+          88.93059671652199,
+          "Hydra_Mothership_Central_A"
+        ],
+        [
+          88.93059676773308,
+          "Hydra_Mothership_Central_A"
+        ],
+        [
+          88.93059671652199,
+          "Hydra_Mothership_Central_A"
+        ]
+      ]
+    },
+    {
+      "index": 14,
+      "side": "ventral",
+      "samples": [
+        [
+          -88.93059420301108,
+          "Hydra_Mothership_Central_A"
+        ],
+        [
+          -88.9305942030111,
+          "Hydra_Mothership_Central_A"
+        ],
+        [
+          -88.93059432664556,
+          "Hydra_Mothership_Central_A"
+        ],
+        [
+          -88.93059437785664,
+          "Hydra_Mothership_Central_A"
+        ],
+        [
+          -88.93059432664556,
+          "Hydra_Mothership_Central_A"
+        ],
+        [
+          -88.93059420301108,
+          "Hydra_Mothership_Central_A"
+        ],
+        [
+          -88.93059407937662,
+          "Hydra_Mothership_Central_A"
+        ],
+        [
+          -88.93059402816553,
+          "Hydra_Mothership_Central_A"
+        ],
+        [
+          -88.93059407937662,
+          "Hydra_Mothership_Central_A"
+        ]
+      ]
+    },
+    {
+      "index": 15,
+      "side": "dorsal",
+      "samples": [
+        [
+          25.362998049506963,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.360995932823073,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.35934403238284,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.3596959820746,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.361392522277633,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.364029558556844,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.366062350824343,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.366190976639547,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          25.36383202999501,
+          "Hydra_Mothership_Outer_A"
+        ]
+      ]
+    },
+    {
+      "index": 15,
+      "side": "ventral",
+      "samples": [
+        [
+          -23.59257298310294,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.5891398488124,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.58652133566302,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.587335686032002,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.59073668651034,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.595213364628087,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.59814334305824,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.59772175247133,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          -23.593779213358637,
+          "Hydra_Mothership_Outer_A"
+        ]
+      ]
+    }
+  ]
+}

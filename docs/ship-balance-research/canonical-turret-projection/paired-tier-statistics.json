@@ -1,0 +1,1032 @@
+{
+  "spread": [
+    {
+      "scenario": "baseline",
+      "alien": false,
+      "size": 1,
+      "n": 11,
+      "median": 6.056174568309254,
+      "min": 1.0561080654966764,
+      "max": 9.673243429969675,
+      "cv": 0.4739543149368622
+    },
+    {
+      "scenario": "baseline",
+      "alien": false,
+      "size": 2,
+      "n": 7,
+      "median": 6.327187354810142,
+      "min": 2.385512355508341,
+      "max": 9.024151089004967,
+      "cv": 0.30935456548882007
+    },
+    {
+      "scenario": "baseline",
+      "alien": false,
+      "size": 4,
+      "n": 6,
+      "median": 9.352073635639169,
+      "min": 3.810571639699409,
+      "max": 12.749143563616116,
+      "cv": 0.34322126346810483
+    },
+    {
+      "scenario": "canonical",
+      "alien": false,
+      "size": 1,
+      "n": 11,
+      "median": 2.5777106811155424,
+      "min": 0.9131491576534397,
+      "max": 7.330240937879833,
+      "cv": 0.6081949797251665
+    },
+    {
+      "scenario": "canonical",
+      "alien": false,
+      "size": 2,
+      "n": 7,
+      "median": 5.013455830926878,
+      "min": 2.0322761170430566,
+      "max": 9.574071522010854,
+      "cv": 0.41850094057838993
+    },
+    {
+      "scenario": "canonical",
+      "alien": false,
+      "size": 4,
+      "n": 6,
+      "median": 7.3433474411565385,
+      "min": 4.714647977486273,
+      "max": 12.749143563616116,
+      "cv": 0.3474763201121653
+    },
+    {
+      "scenario": "compact_optics",
+      "alien": false,
+      "size": 1,
+      "n": 11,
+      "median": 2.5777106811155424,
+      "min": 0.9131491576534397,
+      "max": 7.330240937879833,
+      "cv": 0.6081949797251665
+    },
+    {
+      "scenario": "compact_optics",
+      "alien": false,
+      "size": 2,
+      "n": 7,
+      "median": 5.013455830926878,
+      "min": 2.0322761170430566,
+      "max": 9.574071522010854,
+      "cv": 0.41850094057838993
+    },
+    {
+      "scenario": "compact_optics",
+      "alien": false,
+      "size": 4,
+      "n": 6,
+      "median": 7.3433474411565385,
+      "min": 4.714647977486273,
+      "max": 12.749143563616116,
+      "cv": 0.3474763201121653
+    },
+    {
+      "scenario": "named_diameter",
+      "alien": false,
+      "size": 1,
+      "n": 11,
+      "median": 2.5777106811155424,
+      "min": 0.9131491576534397,
+      "max": 7.330240937879833,
+      "cv": 0.6448198316301539
+    },
+    {
+      "scenario": "named_diameter",
+      "alien": false,
+      "size": 2,
+      "n": 7,
+      "median": 5.013455830926878,
+      "min": 1.746756110764641,
+      "max": 9.574071522010854,
+      "cv": 0.4922928623862842
+    },
+    {
+      "scenario": "named_diameter",
+      "alien": false,
+      "size": 4,
+      "n": 6,
+      "median": 6.202117700525726,
+      "min": 4.714647977486273,
+      "max": 12.749143563616116,
+      "cv": 0.37741401599667107
+    },
+    {
+      "scenario": "mag_relative",
+      "alien": false,
+      "size": 1,
+      "n": 11,
+      "median": 4.617916531575193,
+      "min": 0.9131491576534397,
+      "max": 7.330240937879833,
+      "cv": 0.5053973763736
+    },
+    {
+      "scenario": "mag_relative",
+      "alien": false,
+      "size": 2,
+      "n": 7,
+      "median": 6.856785764943303,
+      "min": 3.493512221529282,
+      "max": 9.574071522010854,
+      "cv": 0.2982802567635369
+    },
+    {
+      "scenario": "mag_relative",
+      "alien": false,
+      "size": 4,
+      "n": 6,
+      "median": 10.052959085610903,
+      "min": 6.804957333230655,
+      "max": 20.7705642229055,
+      "cv": 0.40437835851950543
+    },
+    {
+      "scenario": "retier_rail",
+      "alien": false,
+      "size": 1,
+      "n": 11,
+      "median": 2.5777106811155424,
+      "min": 0.9131491576534397,
+      "max": 7.330240937879833,
+      "cv": 0.6081949797251665
+    },
+    {
+      "scenario": "retier_rail",
+      "alien": false,
+      "size": 2,
+      "n": 8,
+      "median": 4.864051904206575,
+      "min": 2.0322761170430566,
+      "max": 9.574071522010854,
+      "cv": 0.4004939381623201
+    },
+    {
+      "scenario": "retier_rail",
+      "alien": false,
+      "size": 4,
+      "n": 5,
+      "median": 7.881737549082422,
+      "min": 5.599278067820796,
+      "max": 12.749143563616116,
+      "cv": 0.29749535668162613
+    },
+    {
+      "scenario": "retier_coil",
+      "alien": false,
+      "size": 1,
+      "n": 11,
+      "median": 2.5777106811155424,
+      "min": 0.9131491576534397,
+      "max": 7.330240937879833,
+      "cv": 0.6081949797251665
+    },
+    {
+      "scenario": "retier_coil",
+      "alien": false,
+      "size": 2,
+      "n": 8,
+      "median": 5.306366949373837,
+      "min": 2.0322761170430566,
+      "max": 9.574071522010854,
+      "cv": 0.3900928487068486
+    },
+    {
+      "scenario": "retier_coil",
+      "alien": false,
+      "size": 4,
+      "n": 5,
+      "median": 7.881737549082422,
+      "min": 4.714647977486273,
+      "max": 12.749143563616116,
+      "cv": 0.33022535757800053
+    },
+    {
+      "scenario": "retier_naval",
+      "alien": false,
+      "size": 1,
+      "n": 10,
+      "median": 2.560736627737622,
+      "min": 0.9131491576534397,
+      "max": 7.330240937879833,
+      "cv": 0.6150256099533375
+    },
+    {
+      "scenario": "retier_naval",
+      "alien": false,
+      "size": 2,
+      "n": 8,
+      "median": 5.6957248119702735,
+      "min": 2.0322761170430566,
+      "max": 9.574071522010854,
+      "cv": 0.3903929451481655
+    },
+    {
+      "scenario": "retier_naval",
+      "alien": false,
+      "size": 4,
+      "n": 6,
+      "median": 7.3433474411565385,
+      "min": 4.714647977486273,
+      "max": 12.749143563616116,
+      "cv": 0.3474763201121653
+    },
+    {
+      "scenario": "retier_pair",
+      "alien": false,
+      "size": 1,
+      "n": 10,
+      "median": 2.560736627737622,
+      "min": 0.9131491576534397,
+      "max": 7.330240937879833,
+      "cv": 0.6150256099533375
+    },
+    {
+      "scenario": "retier_pair",
+      "alien": false,
+      "size": 2,
+      "n": 9,
+      "median": 5.013455830926878,
+      "min": 2.0322761170430566,
+      "max": 9.574071522010854,
+      "cv": 0.37877300677542575
+    },
+    {
+      "scenario": "retier_pair",
+      "alien": false,
+      "size": 4,
+      "n": 5,
+      "median": 7.881737549082422,
+      "min": 5.599278067820796,
+      "max": 12.749143563616116,
+      "cv": 0.29749535668162613
+    },
+    {
+      "scenario": "baseline",
+      "alien": true,
+      "size": 1,
+      "n": 7,
+      "median": 4.958006018920633,
+      "min": 3.0016158457879714,
+      "max": 8.194332332961167,
+      "cv": 0.37249329076081117
+    },
+    {
+      "scenario": "baseline",
+      "alien": true,
+      "size": 2,
+      "n": 4,
+      "median": 9.608304526500165,
+      "min": 5.026937250335167,
+      "max": 10.029910163059983,
+      "cv": 0.23947109730384908
+    },
+    {
+      "scenario": "baseline",
+      "alien": true,
+      "size": 4,
+      "n": 4,
+      "median": 10.215613950496643,
+      "min": 9.943300076530912,
+      "max": 11.793047471858674,
+      "cv": 0.07169477464517168
+    },
+    {
+      "scenario": "canonical",
+      "alien": true,
+      "size": 1,
+      "n": 7,
+      "median": 6.21966903443515,
+      "min": 3.0016158457879714,
+      "max": 8.448635647993857,
+      "cv": 0.3505678366560501
+    },
+    {
+      "scenario": "canonical",
+      "alien": true,
+      "size": 2,
+      "n": 4,
+      "median": 9.295489852920259,
+      "min": 7.017345509502158,
+      "max": 23.988548941025183,
+      "cv": 0.5464346360298126
+    },
+    {
+      "scenario": "canonical",
+      "alien": true,
+      "size": 4,
+      "n": 4,
+      "median": 11.206879189073598,
+      "min": 8.667243140576025,
+      "max": 89.29838309303081,
+      "cv": 1.1363876194815028
+    },
+    {
+      "scenario": "compact_optics",
+      "alien": true,
+      "size": 1,
+      "n": 7,
+      "median": 4.958006018920633,
+      "min": 1.3328105851325667,
+      "max": 8.194332332961167,
+      "cv": 0.5540517535161961
+    },
+    {
+      "scenario": "compact_optics",
+      "alien": true,
+      "size": 2,
+      "n": 4,
+      "median": 7.789207526141348,
+      "min": 3.072,
+      "max": 10.029910163059983,
+      "cv": 0.3618867748610472
+    },
+    {
+      "scenario": "compact_optics",
+      "alien": true,
+      "size": 4,
+      "n": 4,
+      "median": 9.918355453144262,
+      "min": 8.667243140576025,
+      "max": 11.793047471858674,
+      "cv": 0.1212588238506095
+    },
+    {
+      "scenario": "named_diameter",
+      "alien": true,
+      "size": 1,
+      "n": 7,
+      "median": 4.958006018920633,
+      "min": 3.0016158457879714,
+      "max": 8.194332332961167,
+      "cv": 0.3522109761376664
+    },
+    {
+      "scenario": "named_diameter",
+      "alien": true,
+      "size": 2,
+      "n": 4,
+      "median": 9.295489852920259,
+      "min": 7.017345509502158,
+      "max": 11.994274470512591,
+      "cv": 0.19548161231138772
+    },
+    {
+      "scenario": "named_diameter",
+      "alien": true,
+      "size": 4,
+      "n": 4,
+      "median": 11.206879189073598,
+      "min": 8.667243140576025,
+      "max": 44.649191546515404,
+      "cv": 0.7864465386205461
+    },
+    {
+      "scenario": "mag_relative",
+      "alien": true,
+      "size": 1,
+      "n": 7,
+      "median": 7.574405453558475,
+      "min": 3.0016158457879714,
+      "max": 9.285102379812546,
+      "cv": 0.37408546003319254
+    },
+    {
+      "scenario": "mag_relative",
+      "alien": true,
+      "size": 2,
+      "n": 4,
+      "median": 10.227853989342957,
+      "min": 8.545827728517443,
+      "max": 23.988548941025183,
+      "cv": 0.47109251654496037
+    },
+    {
+      "scenario": "mag_relative",
+      "alien": true,
+      "size": 4,
+      "n": 4,
+      "median": 12.363553586221489,
+      "min": 10.555097602111935,
+      "max": 89.29838309303081,
+      "cv": 1.0783486082181912
+    },
+    {
+      "scenario": "retier_rail",
+      "alien": true,
+      "size": 1,
+      "n": 7,
+      "median": 4.958006018920633,
+      "min": 1.3328105851325667,
+      "max": 8.194332332961167,
+      "cv": 0.5540517535161961
+    },
+    {
+      "scenario": "retier_rail",
+      "alien": true,
+      "size": 2,
+      "n": 4,
+      "median": 7.789207526141348,
+      "min": 3.072,
+      "max": 10.029910163059983,
+      "cv": 0.3618867748610472
+    },
+    {
+      "scenario": "retier_rail",
+      "alien": true,
+      "size": 4,
+      "n": 4,
+      "median": 9.918355453144262,
+      "min": 8.667243140576025,
+      "max": 11.793047471858674,
+      "cv": 0.1212588238506095
+    },
+    {
+      "scenario": "retier_coil",
+      "alien": true,
+      "size": 1,
+      "n": 7,
+      "median": 4.958006018920633,
+      "min": 1.3328105851325667,
+      "max": 8.194332332961167,
+      "cv": 0.5540517535161961
+    },
+    {
+      "scenario": "retier_coil",
+      "alien": true,
+      "size": 2,
+      "n": 4,
+      "median": 7.789207526141348,
+      "min": 3.072,
+      "max": 10.029910163059983,
+      "cv": 0.3618867748610472
+    },
+    {
+      "scenario": "retier_coil",
+      "alien": true,
+      "size": 4,
+      "n": 4,
+      "median": 9.918355453144262,
+      "min": 8.667243140576025,
+      "max": 11.793047471858674,
+      "cv": 0.1212588238506095
+    },
+    {
+      "scenario": "retier_naval",
+      "alien": true,
+      "size": 1,
+      "n": 7,
+      "median": 4.958006018920633,
+      "min": 1.3328105851325667,
+      "max": 8.194332332961167,
+      "cv": 0.5540517535161961
+    },
+    {
+      "scenario": "retier_naval",
+      "alien": true,
+      "size": 2,
+      "n": 4,
+      "median": 7.789207526141348,
+      "min": 3.072,
+      "max": 10.029910163059983,
+      "cv": 0.3618867748610472
+    },
+    {
+      "scenario": "retier_naval",
+      "alien": true,
+      "size": 4,
+      "n": 4,
+      "median": 9.918355453144262,
+      "min": 8.667243140576025,
+      "max": 11.793047471858674,
+      "cv": 0.1212588238506095
+    },
+    {
+      "scenario": "retier_pair",
+      "alien": true,
+      "size": 1,
+      "n": 7,
+      "median": 4.958006018920633,
+      "min": 1.3328105851325667,
+      "max": 8.194332332961167,
+      "cv": 0.5540517535161961
+    },
+    {
+      "scenario": "retier_pair",
+      "alien": true,
+      "size": 2,
+      "n": 4,
+      "median": 7.789207526141348,
+      "min": 3.072,
+      "max": 10.029910163059983,
+      "cv": 0.3618867748610472
+    },
+    {
+      "scenario": "retier_pair",
+      "alien": true,
+      "size": 4,
+      "n": 4,
+      "median": 9.918355453144262,
+      "min": 8.667243140576025,
+      "max": 11.793047471858674,
+      "cv": 0.1212588238506095
+    }
+  ],
+  "inversions": [
+    {
+      "scenario": "baseline",
+      "alien": false,
+      "small": 1,
+      "large": 2,
+      "pairs": 77,
+      "inversions": 37,
+      "fraction": 0.4805194805194805
+    },
+    {
+      "scenario": "baseline",
+      "alien": false,
+      "small": 2,
+      "large": 4,
+      "pairs": 42,
+      "inversions": 9,
+      "fraction": 0.21428571428571427
+    },
+    {
+      "scenario": "baseline",
+      "alien": false,
+      "small": 1,
+      "large": 4,
+      "pairs": 66,
+      "inversions": 15,
+      "fraction": 0.22727272727272727
+    },
+    {
+      "scenario": "canonical",
+      "alien": false,
+      "small": 1,
+      "large": 2,
+      "pairs": 77,
+      "inversions": 23,
+      "fraction": 0.2987012987012987
+    },
+    {
+      "scenario": "canonical",
+      "alien": false,
+      "small": 2,
+      "large": 4,
+      "pairs": 42,
+      "inversions": 10,
+      "fraction": 0.23809523809523808
+    },
+    {
+      "scenario": "canonical",
+      "alien": false,
+      "small": 1,
+      "large": 4,
+      "pairs": 66,
+      "inversions": 8,
+      "fraction": 0.12121212121212122
+    },
+    {
+      "scenario": "compact_optics",
+      "alien": false,
+      "small": 1,
+      "large": 2,
+      "pairs": 77,
+      "inversions": 23,
+      "fraction": 0.2987012987012987
+    },
+    {
+      "scenario": "compact_optics",
+      "alien": false,
+      "small": 2,
+      "large": 4,
+      "pairs": 42,
+      "inversions": 10,
+      "fraction": 0.23809523809523808
+    },
+    {
+      "scenario": "compact_optics",
+      "alien": false,
+      "small": 1,
+      "large": 4,
+      "pairs": 66,
+      "inversions": 8,
+      "fraction": 0.12121212121212122
+    },
+    {
+      "scenario": "named_diameter",
+      "alien": false,
+      "small": 1,
+      "large": 2,
+      "pairs": 77,
+      "inversions": 26,
+      "fraction": 0.33766233766233766
+    },
+    {
+      "scenario": "named_diameter",
+      "alien": false,
+      "small": 2,
+      "large": 4,
+      "pairs": 42,
+      "inversions": 13,
+      "fraction": 0.30952380952380953
+    },
+    {
+      "scenario": "named_diameter",
+      "alien": false,
+      "small": 1,
+      "large": 4,
+      "pairs": 66,
+      "inversions": 11,
+      "fraction": 0.16666666666666666
+    },
+    {
+      "scenario": "mag_relative",
+      "alien": false,
+      "small": 1,
+      "large": 2,
+      "pairs": 77,
+      "inversions": 17,
+      "fraction": 0.22077922077922077
+    },
+    {
+      "scenario": "mag_relative",
+      "alien": false,
+      "small": 2,
+      "large": 4,
+      "pairs": 42,
+      "inversions": 6,
+      "fraction": 0.14285714285714285
+    },
+    {
+      "scenario": "mag_relative",
+      "alien": false,
+      "small": 1,
+      "large": 4,
+      "pairs": 66,
+      "inversions": 2,
+      "fraction": 0.030303030303030304
+    },
+    {
+      "scenario": "retier_rail",
+      "alien": false,
+      "small": 1,
+      "large": 2,
+      "pairs": 88,
+      "inversions": 26,
+      "fraction": 0.29545454545454547
+    },
+    {
+      "scenario": "retier_rail",
+      "alien": false,
+      "small": 2,
+      "large": 4,
+      "pairs": 40,
+      "inversions": 6,
+      "fraction": 0.15
+    },
+    {
+      "scenario": "retier_rail",
+      "alien": false,
+      "small": 1,
+      "large": 4,
+      "pairs": 55,
+      "inversions": 5,
+      "fraction": 0.09090909090909091
+    },
+    {
+      "scenario": "retier_coil",
+      "alien": false,
+      "small": 1,
+      "large": 2,
+      "pairs": 88,
+      "inversions": 26,
+      "fraction": 0.29545454545454547
+    },
+    {
+      "scenario": "retier_coil",
+      "alien": false,
+      "small": 2,
+      "large": 4,
+      "pairs": 40,
+      "inversions": 8,
+      "fraction": 0.2
+    },
+    {
+      "scenario": "retier_coil",
+      "alien": false,
+      "small": 1,
+      "large": 4,
+      "pairs": 55,
+      "inversions": 5,
+      "fraction": 0.09090909090909091
+    },
+    {
+      "scenario": "retier_naval",
+      "alien": false,
+      "small": 1,
+      "large": 2,
+      "pairs": 80,
+      "inversions": 18,
+      "fraction": 0.225
+    },
+    {
+      "scenario": "retier_naval",
+      "alien": false,
+      "small": 2,
+      "large": 4,
+      "pairs": 48,
+      "inversions": 13,
+      "fraction": 0.2708333333333333
+    },
+    {
+      "scenario": "retier_naval",
+      "alien": false,
+      "small": 1,
+      "large": 4,
+      "pairs": 60,
+      "inversions": 5,
+      "fraction": 0.08333333333333333
+    },
+    {
+      "scenario": "retier_pair",
+      "alien": false,
+      "small": 1,
+      "large": 2,
+      "pairs": 90,
+      "inversions": 20,
+      "fraction": 0.2222222222222222
+    },
+    {
+      "scenario": "retier_pair",
+      "alien": false,
+      "small": 2,
+      "large": 4,
+      "pairs": 45,
+      "inversions": 8,
+      "fraction": 0.17777777777777778
+    },
+    {
+      "scenario": "retier_pair",
+      "alien": false,
+      "small": 1,
+      "large": 4,
+      "pairs": 50,
+      "inversions": 3,
+      "fraction": 0.06
+    },
+    {
+      "scenario": "baseline",
+      "alien": true,
+      "small": 1,
+      "large": 2,
+      "pairs": 28,
+      "inversions": 3,
+      "fraction": 0.10714285714285714
+    },
+    {
+      "scenario": "baseline",
+      "alien": true,
+      "small": 2,
+      "large": 4,
+      "pairs": 16,
+      "inversions": 2,
+      "fraction": 0.125
+    },
+    {
+      "scenario": "baseline",
+      "alien": true,
+      "small": 1,
+      "large": 4,
+      "pairs": 28,
+      "inversions": 0,
+      "fraction": 0.0
+    },
+    {
+      "scenario": "canonical",
+      "alien": true,
+      "small": 1,
+      "large": 2,
+      "pairs": 28,
+      "inversions": 3,
+      "fraction": 0.10714285714285714
+    },
+    {
+      "scenario": "canonical",
+      "alien": true,
+      "small": 2,
+      "large": 4,
+      "pairs": 16,
+      "inversions": 4,
+      "fraction": 0.25
+    },
+    {
+      "scenario": "canonical",
+      "alien": true,
+      "small": 1,
+      "large": 4,
+      "pairs": 28,
+      "inversions": 0,
+      "fraction": 0.0
+    },
+    {
+      "scenario": "compact_optics",
+      "alien": true,
+      "small": 1,
+      "large": 2,
+      "pairs": 28,
+      "inversions": 6,
+      "fraction": 0.21428571428571427
+    },
+    {
+      "scenario": "compact_optics",
+      "alien": true,
+      "small": 2,
+      "large": 4,
+      "pairs": 16,
+      "inversions": 2,
+      "fraction": 0.125
+    },
+    {
+      "scenario": "compact_optics",
+      "alien": true,
+      "small": 1,
+      "large": 4,
+      "pairs": 28,
+      "inversions": 0,
+      "fraction": 0.0
+    },
+    {
+      "scenario": "named_diameter",
+      "alien": true,
+      "small": 1,
+      "large": 2,
+      "pairs": 28,
+      "inversions": 2,
+      "fraction": 0.07142857142857142
+    },
+    {
+      "scenario": "named_diameter",
+      "alien": true,
+      "small": 2,
+      "large": 4,
+      "pairs": 16,
+      "inversions": 4,
+      "fraction": 0.25
+    },
+    {
+      "scenario": "named_diameter",
+      "alien": true,
+      "small": 1,
+      "large": 4,
+      "pairs": 28,
+      "inversions": 0,
+      "fraction": 0.0
+    },
+    {
+      "scenario": "mag_relative",
+      "alien": true,
+      "small": 1,
+      "large": 2,
+      "pairs": 28,
+      "inversions": 1,
+      "fraction": 0.03571428571428571
+    },
+    {
+      "scenario": "mag_relative",
+      "alien": true,
+      "small": 2,
+      "large": 4,
+      "pairs": 16,
+      "inversions": 3,
+      "fraction": 0.1875
+    },
+    {
+      "scenario": "mag_relative",
+      "alien": true,
+      "small": 1,
+      "large": 4,
+      "pairs": 28,
+      "inversions": 0,
+      "fraction": 0.0
+    },
+    {
+      "scenario": "retier_rail",
+      "alien": true,
+      "small": 1,
+      "large": 2,
+      "pairs": 28,
+      "inversions": 6,
+      "fraction": 0.21428571428571427
+    },
+    {
+      "scenario": "retier_rail",
+      "alien": true,
+      "small": 2,
+      "large": 4,
+      "pairs": 16,
+      "inversions": 2,
+      "fraction": 0.125
+    },
+    {
+      "scenario": "retier_rail",
+      "alien": true,
+      "small": 1,
+      "large": 4,
+      "pairs": 28,
+      "inversions": 0,
+      "fraction": 0.0
+    },
+    {
+      "scenario": "retier_coil",
+      "alien": true,
+      "small": 1,
+      "large": 2,
+      "pairs": 28,
+      "inversions": 6,
+      "fraction": 0.21428571428571427
+    },
+    {
+      "scenario": "retier_coil",
+      "alien": true,
+      "small": 2,
+      "large": 4,
+      "pairs": 16,
+      "inversions": 2,
+      "fraction": 0.125
+    },
+    {
+      "scenario": "retier_coil",
+      "alien": true,
+      "small": 1,
+      "large": 4,
+      "pairs": 28,
+      "inversions": 0,
+      "fraction": 0.0
+    },
+    {
+      "scenario": "retier_naval",
+      "alien": true,
+      "small": 1,
+      "large": 2,
+      "pairs": 28,
+      "inversions": 6,
+      "fraction": 0.21428571428571427
+    },
+    {
+      "scenario": "retier_naval",
+      "alien": true,
+      "small": 2,
+      "large": 4,
+      "pairs": 16,
+      "inversions": 2,
+      "fraction": 0.125
+    },
+    {
+      "scenario": "retier_naval",
+      "alien": true,
+      "small": 1,
+      "large": 4,
+      "pairs": 28,
+      "inversions": 0,
+      "fraction": 0.0
+    },
+    {
+      "scenario": "retier_pair",
+      "alien": true,
+      "small": 1,
+      "large": 2,
+      "pairs": 28,
+      "inversions": 6,
+      "fraction": 0.21428571428571427
+    },
+    {
+      "scenario": "retier_pair",
+      "alien": true,
+      "small": 2,
+      "large": 4,
+      "pairs": 16,
+      "inversions": 2,
+      "fraction": 0.125
+    },
+    {
+      "scenario": "retier_pair",
+      "alien": true,
+      "small": 1,
+      "large": 4,
+      "pairs": 28,
+      "inversions": 0,
+      "fraction": 0.0
+    }
+  ]
+}

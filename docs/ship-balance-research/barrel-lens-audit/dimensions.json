@@ -1,0 +1,647 @@
+[
+  {
+    "index": 0,
+    "resource": "shipweapons/12-Inch_Cannon",
+    "moving_dimensions_m": [
+      2.04344624492461,
+      1.5675923639320075,
+      5.679789466794375
+    ],
+    "openings": 1,
+    "opening_width_m": 0.19828924248474777,
+    "opening_height_m": 0.1982816662021547,
+    "opening_inscribed_m": 0.19152849412813594,
+    "opening_circumscribed_m": 0.19828924262583222,
+    "outer_width_m": 0.2653982254534647,
+    "method": "inner muzzle-rim section 0.1 mm behind tip"
+  },
+  {
+    "index": 1,
+    "resource": "shipweapons/16-Inch_Cannon",
+    "moving_dimensions_m": [
+      2.04344624492461,
+      1.5675923639320075,
+      6.562028803177043
+    ],
+    "openings": 1,
+    "opening_width_m": 0.2670482882636094,
+    "opening_height_m": 0.26704831307474675,
+    "opening_inscribed_m": 0.25794703493772947,
+    "opening_circumscribed_m": 0.2670555747196217,
+    "outer_width_m": 0.36441534600321007,
+    "method": "inner muzzle-rim section 0.1 mm behind tip"
+  },
+  {
+    "index": 2,
+    "resource": "shipweapons/30mm_Autocannon",
+    "moving_dimensions_m": [
+      2.04344624492461,
+      1.5675923639320075,
+      5.972018742510215
+    ],
+    "openings": 4,
+    "opening_width_m": 0.15540241098721985,
+    "opening_height_m": 0.1553963740172522,
+    "opening_inscribed_m": 0.1501059603133341,
+    "opening_circumscribed_m": 0.15540684160034818,
+    "outer_width_m": 0.21504675340914936,
+    "method": "inner muzzle-rim section 0.1 mm behind tip"
+  },
+  {
+    "index": 3,
+    "resource": "shipweapons/8-Inch_Cannon",
+    "moving_dimensions_m": [
+      2.04344624492461,
+      1.5675923639320075,
+      4.858555159734522
+    ],
+    "openings": 1,
+    "opening_width_m": 0.16072963242821459,
+    "opening_height_m": 0.1607234752309754,
+    "opening_inscribed_m": 0.15524949092286197,
+    "opening_circumscribed_m": 0.16072963254068695,
+    "outer_width_m": 0.21514056562030892,
+    "method": "inner muzzle-rim section 0.1 mm behind tip"
+  },
+  {
+    "index": 4,
+    "resource": "shipweapons/alien_huge_coilgun_cannon",
+    "moving_dimensions_m": [
+      1.305037136450963,
+      0.8660895953489778,
+      6.114689918081311
+    ],
+    "openings": 3,
+    "opening_width_m": 0.13960737198006168,
+    "opening_height_m": 0.13960737095252776,
+    "opening_inscribed_m": 0.12897692540592168,
+    "opening_circumscribed_m": 0.13960752843459617,
+    "outer_width_m": 0.1982975228512638,
+    "method": "inner muzzle-rim section 0.1 mm behind tip"
+  },
+  {
+    "index": 5,
+    "resource": "shipweapons/alien_huge_laser_cannon",
+    "moving_dimensions_m": [
+      1.9504164986374448,
+      1.6666637669006548,
+      4.4028355300849
+    ],
+    "openings": 1,
+    "opening_width_m": 1.3842534271516413,
+    "opening_height_m": 1.3842534271516413,
+    "opening_inscribed_m": 1.3724108266662265,
+    "opening_circumscribed_m": 1.3842534665254747,
+    "outer_width_m": 1.6666635761657886,
+    "method": "inner muzzle-rim section 0.1 mm behind tip",
+    "aperture_m": 1.3842534271516413,
+    "simulation_diameter_m": 20.48
+  },
+  {
+    "index": 6,
+    "resource": "shipweapons/alien_large_coilgun_battery",
+    "moving_dimensions_m": [
+      3.2770833458662865,
+      0.6093101684922989,
+      4.301798269510856
+    ],
+    "openings": 9,
+    "opening_width_m": 0.09821637019663776,
+    "opening_height_m": 0.09821638651450798,
+    "opening_inscribed_m": 0.09073766319480565,
+    "opening_circumscribed_m": 0.09821650120969849,
+    "outer_width_m": 0.13955118400235644,
+    "method": "inner muzzle-rim section 0.1 mm behind tip"
+  },
+  {
+    "index": 7,
+    "resource": "shipweapons/alien_large_coilgun_cannon",
+    "moving_dimensions_m": [
+      1.0932973857978947,
+      0.9412654665835058,
+      4.271255690342414
+    ],
+    "openings": 1,
+    "opening_width_m": 0.1611610385819918,
+    "opening_height_m": 0.0949471111840835,
+    "opening_inscribed_m": 0.09494711118408339,
+    "opening_circumscribed_m": 0.16116103858216183,
+    "outer_width_m": 0.20162550705114307,
+    "method": "inner muzzle-rim section 0.1 mm behind tip"
+  },
+  {
+    "index": 8,
+    "resource": "shipweapons/alien_large_laser_battery",
+    "moving_dimensions_m": [
+      3.835484673453091,
+      1.2621365001600147,
+      4.703681653459125
+    ],
+    "openings": 3,
+    "opening_width_m": 0.9020016141608869,
+    "opening_height_m": 0.9020014748762883,
+    "opening_inscribed_m": 0.8942846710339585,
+    "opening_circumscribed_m": 0.902001668746029,
+    "outer_width_m": 0.9784005232081383,
+    "method": "inner muzzle-rim section 0.1 mm behind tip",
+    "aperture_m": 0.9020016141608869,
+    "simulation_diameter_m": 7.68
+  },
+  {
+    "index": 9,
+    "resource": "shipweapons/alien_large_laser_cannon",
+    "moving_dimensions_m": [
+      1.455504794315531,
+      1.2437534700658377,
+      3.9999348871494282
+    ],
+    "openings": 1,
+    "opening_width_m": 1.0330037422966156,
+    "opening_height_m": 1.0330037422966156,
+    "opening_inscribed_m": 1.024166132034095,
+    "opening_circumscribed_m": 1.0330037654096722,
+    "outer_width_m": 1.243753183963534,
+    "method": "inner muzzle-rim section 0.1 mm behind tip",
+    "aperture_m": 1.0330037422966156,
+    "simulation_diameter_m": 15.36
+  },
+  {
+    "index": 10,
+    "resource": "shipweapons/alien_medium_coilgun_battery",
+    "moving_dimensions_m": [
+      2.8307274498955124,
+      1.1877036437462907,
+      5.244525945603506
+    ],
+    "openings": 9,
+    "opening_width_m": 0.0934506349481037,
+    "opening_height_m": 0.09345066736365777,
+    "opening_inscribed_m": 0.08633482924820916,
+    "opening_circumscribed_m": 0.09345076961104004,
+    "outer_width_m": 0.13278703391517668,
+    "method": "inner muzzle-rim section 0.1 mm behind tip"
+  },
+  {
+    "index": 11,
+    "resource": "shipweapons/alien_medium_coilgun_cannon",
+    "moving_dimensions_m": [
+      0.8971023145075423,
+      0.5953631043633394,
+      4.203330531026581
+    ],
+    "openings": 3,
+    "opening_width_m": 0.0959682224255527,
+    "opening_height_m": 0.09596822537297567,
+    "opening_inscribed_m": 0.08866069460963477,
+    "opening_circumscribed_m": 0.09596833014561473,
+    "outer_width_m": 0.136360238719475,
+    "method": "inner muzzle-rim section 0.1 mm behind tip"
+  },
+  {
+    "index": 12,
+    "resource": "shipweapons/alien_medium_laser_battery",
+    "moving_dimensions_m": [
+      2.3527148597346965,
+      0.987141290115435,
+      2.76348470991082
+    ],
+    "openings": 3,
+    "opening_width_m": 0.5364626010725289,
+    "opening_height_m": 0.5364625772062356,
+    "opening_inscribed_m": 0.5318726451668429,
+    "opening_circumscribed_m": 0.5364629689551419,
+    "outer_width_m": 0.5819006052896469,
+    "method": "inner muzzle-rim section 0.1 mm behind tip",
+    "aperture_m": 0.5364626010725289,
+    "simulation_diameter_m": 2.56
+  },
+  {
+    "index": 13,
+    "resource": "shipweapons/alien_medium_laser_cannon",
+    "moving_dimensions_m": [
+      1.4555048741986905,
+      1.2437536336947883,
+      2.6501854751822504
+    ],
+    "openings": 1,
+    "opening_width_m": 1.0330037989914493,
+    "opening_height_m": 1.0330037989914493,
+    "opening_inscribed_m": 1.024166188255687,
+    "opening_circumscribed_m": 1.033003822104508,
+    "outer_width_m": 1.2437532522250294,
+    "method": "inner muzzle-rim section 0.1 mm behind tip",
+    "aperture_m": 1.0330037989914493,
+    "simulation_diameter_m": 10.24
+  },
+  {
+    "index": 14,
+    "resource": "shipweapons/alien_point_defense_laser_battery",
+    "moving_dimensions_m": [
+      2.4031840734110688,
+      2.2863617405487915,
+      2.188018328720311
+    ],
+    "openings": 3,
+    "opening_width_m": 0.7222895089758437,
+    "opening_height_m": 0.7222894162278398,
+    "opening_inscribed_m": 0.7161094838633141,
+    "opening_circumscribed_m": 0.722289976905128,
+    "outer_width_m": 0.783466876415523,
+    "method": "inner muzzle-rim section 0.1 mm behind tip",
+    "aperture_m": 0.7222895089758437,
+    "simulation_diameter_m": 0.64
+  },
+  {
+    "index": 15,
+    "resource": "shipweapons/alien_small_coilgun_battery",
+    "moving_dimensions_m": [
+      1.6475963838040286,
+      0.987141290115435,
+      4.1177873271374
+    ],
+    "openings": 6,
+    "opening_width_m": 0.06596999266698944,
+    "opening_height_m": 0.06597000951827307,
+    "opening_inscribed_m": 0.060946683402736075,
+    "opening_circumscribed_m": 0.06597008247956392,
+    "outer_width_m": 0.09378361026361515,
+    "method": "inner muzzle-rim section 0.1 mm behind tip"
+  },
+  {
+    "index": 16,
+    "resource": "shipweapons/alien_small_coilgun_cannon",
+    "moving_dimensions_m": [
+      0.6351503403324843,
+      0.4215184285044846,
+      2.9759670395390074
+    ],
+    "openings": 3,
+    "opening_width_m": 0.06794570492005673,
+    "opening_height_m": 0.06794570636365342,
+    "opening_inscribed_m": 0.0627719605640097,
+    "opening_circumscribed_m": 0.06794578160941855,
+    "outer_width_m": 0.09658762844415503,
+    "method": "inner muzzle-rim section 0.1 mm behind tip"
+  },
+  {
+    "index": 17,
+    "resource": "shipweapons/alien_small_laser_battery",
+    "moving_dimensions_m": [
+      1.6475963838040286,
+      0.987141290115435,
+      2.3008191451552378
+    ],
+    "openings": 2,
+    "opening_width_m": 0.5279716570373125,
+    "opening_height_m": 0.5279714662900442,
+    "opening_inscribed_m": 0.5234542121664943,
+    "opening_circumscribed_m": 0.5279719648525341,
+    "outer_width_m": 0.5726904000742792,
+    "method": "inner muzzle-rim section 0.1 mm behind tip",
+    "aperture_m": 0.5279716570373125,
+    "simulation_diameter_m": 1.28
+  },
+  {
+    "index": 18,
+    "resource": "shipweapons/alien_small_laser_cannon",
+    "moving_dimensions_m": [
+      0.8328193464009188,
+      0.974608652512352,
+      1.7745688612676909
+    ],
+    "openings": 1,
+    "opening_width_m": 0.6917011409666296,
+    "opening_height_m": 0.6917011409666296,
+    "opening_inscribed_m": 0.6857834491979544,
+    "opening_circumscribed_m": 0.6917011590831665,
+    "outer_width_m": 0.8328193464009188,
+    "method": "inner muzzle-rim section 0.1 mm behind tip",
+    "aperture_m": 0.6917011409666296,
+    "simulation_diameter_m": 5.12
+  },
+  {
+    "index": 19,
+    "resource": "shipweapons/huge_coilgun_cannon",
+    "moving_dimensions_m": [
+      0.8717277964715322,
+      1.103353994299198,
+      6.540569714761716
+    ],
+    "openings": 3,
+    "opening_width_m": 0.1408359105875867,
+    "opening_height_m": 0.14083591356869837,
+    "opening_inscribed_m": 0.1301119202255727,
+    "opening_circumscribed_m": 0.14083606842797963,
+    "outer_width_m": 0.2000411911031508,
+    "method": "inner muzzle-rim section 0.1 mm behind tip"
+  },
+  {
+    "index": 20,
+    "resource": "shipweapons/huge_laser_cannon",
+    "moving_dimensions_m": [
+      5.994542697827594,
+      5.994542697827545,
+      5.921051158304564
+    ],
+    "aperture_m": 4.98428051649893,
+    "openings": 1,
+    "method": "optical cap submesh projected diameter",
+    "simulation_diameter_m": 19.2
+  },
+  {
+    "index": 21,
+    "resource": "shipweapons/huge_railgun_cannon",
+    "moving_dimensions_m": [
+      0.9859964898371913,
+      1.103353994299198,
+      5.608758548791172
+    ],
+    "openings": null,
+    "method": "closed accelerator front face; no separate bore",
+    "face_dimensions_m": [
+      0.7436683591139115,
+      0.7831189351675008
+    ]
+  },
+  {
+    "index": 22,
+    "resource": "shipweapons/large_coilgun_battery",
+    "moving_dimensions_m": [
+      3.591539090677947,
+      0.8394232591325144,
+      5.000402070057589
+    ],
+    "openings": 4,
+    "opening_width_m": 0.1445508459382247,
+    "opening_height_m": 0.1445546232095608,
+    "opening_inscribed_m": 0.13354661179245716,
+    "opening_circumscribed_m": 0.1445546232095608,
+    "outer_width_m": 0.2052936402043127,
+    "method": "inner muzzle-rim section 0.1 mm behind tip"
+  },
+  {
+    "index": 23,
+    "resource": "shipweapons/large_coilgun_cannon",
+    "moving_dimensions_m": [
+      1.3157392643075172,
+      1.3359433622926407,
+      5.390614813202943
+    ],
+    "openings": 3,
+    "opening_width_m": 0.12002404157048191,
+    "opening_height_m": 0.12002404481302771,
+    "opening_inscribed_m": 0.11088477764279277,
+    "opening_circumscribed_m": 0.1200241767883039,
+    "outer_width_m": 0.1705028477045146,
+    "method": "inner muzzle-rim section 0.1 mm behind tip"
+  },
+  {
+    "index": 24,
+    "resource": "shipweapons/large_laser_battery",
+    "moving_dimensions_m": [
+      3.1371123537018772,
+      3.1371123537018515,
+      2.5486268207266005
+    ],
+    "aperture_m": 2.6084137096607156,
+    "openings": 1,
+    "method": "optical cap submesh projected diameter",
+    "simulation_diameter_m": 7.2
+  },
+  {
+    "index": 25,
+    "resource": "shipweapons/large_laser_cannon",
+    "moving_dimensions_m": [
+      4.976637652113222,
+      4.976637652113182,
+      4.915625364581329
+    ],
+    "aperture_m": 4.137923330847601,
+    "openings": 1,
+    "method": "optical cap submesh projected diameter",
+    "simulation_diameter_m": 14.4
+  },
+  {
+    "index": 26,
+    "resource": "shipweapons/large_railgun_battery",
+    "moving_dimensions_m": [
+      3.5401858174884637,
+      1.4451437953201065,
+      5.705873401874612
+    ],
+    "openings": 4,
+    "opening_width_m": 0.17645954195499058,
+    "opening_height_m": 0.19300264881655105,
+    "opening_inscribed_m": 0.165017963068894,
+    "opening_circumscribed_m": 0.19300264881658102,
+    "outer_width_m": 0.2506035425398617,
+    "method": "inner muzzle-rim section 0.1 mm behind tip"
+  },
+  {
+    "index": 27,
+    "resource": "shipweapons/large_railgun_cannon",
+    "moving_dimensions_m": [
+      0.6456920329706609,
+      0.7713134493692348,
+      4.844624118360602
+    ],
+    "openings": 1,
+    "opening_width_m": 0.20846535935669525,
+    "opening_height_m": 0.20846537741428817,
+    "opening_inscribed_m": 0.19258980175781265,
+    "opening_circumscribed_m": 0.20846571237803888,
+    "outer_width_m": 0.2961805947640823,
+    "method": "inner muzzle-rim section 0.1 mm behind tip"
+  },
+  {
+    "index": 28,
+    "resource": "shipweapons/medium_coilgun_battery",
+    "moving_dimensions_m": [
+      2.1221088526128824,
+      0.9060142634669575,
+      3.421435240557912
+    ],
+    "openings": 2,
+    "opening_width_m": 0.17706629332177215,
+    "opening_height_m": 0.17707101947429083,
+    "opening_inscribed_m": 0.163586820848233,
+    "opening_circumscribed_m": 0.17707101947429083,
+    "outer_width_m": 0.251472428745575,
+    "method": "inner muzzle-rim section 0.1 mm behind tip"
+  },
+  {
+    "index": 29,
+    "resource": "shipweapons/medium_coilgun_cannon",
+    "moving_dimensions_m": [
+      1.0523526484521213,
+      0.9060144374382818,
+      4.035460328946766
+    ],
+    "openings": 3,
+    "opening_width_m": 0.08115939890881019,
+    "opening_height_m": 0.08115940019195718,
+    "opening_inscribed_m": 0.07497949338735381,
+    "opening_circumscribed_m": 0.08115948943302384,
+    "outer_width_m": 0.11534192731810021,
+    "method": "inner muzzle-rim section 0.1 mm behind tip"
+  },
+  {
+    "index": 30,
+    "resource": "shipweapons/medium_laser_battery",
+    "moving_dimensions_m": [
+      1.97098919683862,
+      1.9709891968386037,
+      1.601254709445659
+    ],
+    "aperture_m": 1.6388176969690986,
+    "openings": 1,
+    "method": "optical cap submesh projected diameter",
+    "simulation_diameter_m": 2.4
+  },
+  {
+    "index": 31,
+    "resource": "shipweapons/medium_laser_cannon",
+    "moving_dimensions_m": [
+      3.2267253433271104,
+      3.2267253433270846,
+      3.1871665270749516
+    ],
+    "aperture_m": 2.682924298239971,
+    "openings": 1,
+    "method": "optical cap submesh projected diameter",
+    "simulation_diameter_m": 9.6
+  },
+  {
+    "index": 32,
+    "resource": "shipweapons/medium_railgun_battery",
+    "moving_dimensions_m": [
+      2.122108536023794,
+      0.9060142309624963,
+      3.6195764422608248
+    ],
+    "openings": 2,
+    "opening_width_m": 0.08551988001936695,
+    "opening_height_m": 0.08551987783654313,
+    "opening_inscribed_m": 0.07900819663002609,
+    "opening_circumscribed_m": 0.08552343878834329,
+    "outer_width_m": 0.12154209292208448,
+    "method": "inner muzzle-rim section 0.1 mm behind tip"
+  },
+  {
+    "index": 33,
+    "resource": "shipweapons/medium_railgun_cannon",
+    "moving_dimensions_m": [
+      1.3561246517401297,
+      1.1675445268111782,
+      5.042628988799232
+    ],
+    "openings": null,
+    "method": "closed accelerator front face; no separate bore",
+    "face_dimensions_m": [
+      0.5372814829407994,
+      0.5657835211748807
+    ]
+  },
+  {
+    "index": 34,
+    "resource": "shipweapons/point_defense_laser_battery",
+    "moving_dimensions_m": [
+      0.8345867503256167,
+      0.8345867503256099,
+      0.6780280513679866
+    ],
+    "aperture_m": 0.6939335528999038,
+    "openings": 1,
+    "method": "optical cap submesh projected diameter",
+    "simulation_diameter_m": 0.6
+  },
+  {
+    "index": 35,
+    "resource": "shipweapons/small_coilgun_battery",
+    "moving_dimensions_m": [
+      2.1221088526128824,
+      0.9060142634669575,
+      3.421438319171102
+    ],
+    "openings": 2,
+    "opening_width_m": 0.17706629332177215,
+    "opening_height_m": 0.17707101947429083,
+    "opening_inscribed_m": 0.163586820848233,
+    "opening_circumscribed_m": 0.17707101947429083,
+    "outer_width_m": 0.251472428745575,
+    "method": "inner muzzle-rim section 0.1 mm behind tip"
+  },
+  {
+    "index": 36,
+    "resource": "shipweapons/small_coilgun_cannon",
+    "moving_dimensions_m": [
+      0.8156191090143352,
+      0.7022006660774665,
+      3.0924065317268514
+    ],
+    "openings": 1,
+    "opening_width_m": 0.08845501482535312,
+    "opening_height_m": 0.08845499080132224,
+    "opening_inscribed_m": 0.08172118742986502,
+    "opening_circumscribed_m": 0.08845501482535394,
+    "outer_width_m": 0.12569708212010555,
+    "method": "inner muzzle-rim section 0.1 mm behind tip"
+  },
+  {
+    "index": 37,
+    "resource": "shipweapons/small_laser_battery",
+    "moving_dimensions_m": [
+      1.285475247012712,
+      1.2854752470127015,
+      1.0443351472734947
+    ],
+    "aperture_m": 1.06883365327377,
+    "openings": 1,
+    "method": "optical cap submesh projected diameter",
+    "simulation_diameter_m": 1.2
+  },
+  {
+    "index": 38,
+    "resource": "shipweapons/small_laser_cannon",
+    "moving_dimensions_m": [
+      1.913751698998927,
+      1.9137516989989112,
+      1.8902895992669135
+    ],
+    "aperture_m": 1.5912265184454968,
+    "openings": 1,
+    "method": "optical cap submesh projected diameter",
+    "simulation_diameter_m": 4.8
+  },
+  {
+    "index": 39,
+    "resource": "shipweapons/small_railgun_battery",
+    "moving_dimensions_m": [
+      2.122108606258358,
+      0.9060142362968904,
+      2.9670949570523595
+    ],
+    "openings": 2,
+    "opening_width_m": 0.09949838120276105,
+    "opening_height_m": 0.09949836596508055,
+    "opening_inscribed_m": 0.09192234233040986,
+    "opening_circumscribed_m": 0.09950251448082031,
+    "outer_width_m": 0.141382570169955,
+    "method": "inner muzzle-rim section 0.1 mm behind tip"
+  },
+  {
+    "index": 40,
+    "resource": "shipweapons/small_railgun_cannon",
+    "moving_dimensions_m": [
+      0.7749426676710911,
+      0.667180599231159,
+      2.8815552967396627
+    ],
+    "openings": null,
+    "method": "closed accelerator front face; no separate bore",
+    "face_dimensions_m": [
+      0.3070236476077923,
+      0.32331084023823387
+    ]
+  }
+]
