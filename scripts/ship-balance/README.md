@@ -1,5 +1,24 @@
 # Ship asset measurement scripts
 
+## Turret sizes, hull nodes, clearance and DPS
+
+The [turret audit](../../docs/ship-balance-research/turret-clearance/README.md)
+measures every installed hull appearance and size-1/2/4 weapon resource. It
+includes separate designer/combat scale paths, exact native controller maps,
+extra-node capacity scenarios, padding thresholds, full coordinate/distance
+tables and stock/current/hypothetical DPS deltas.
+
+Run `export_turret_mount_maps.ps1`, then `measure_turret_clearance.py` with
+Python 3.12, NumPy, UnityPy and Pillow. These tools read installed assets and
+write research artifacts under `docs/`; they do not edit gameplay data.
+`report_turret_clearance.py` regenerates Markdown from saved evidence using
+standard-library Python, or prints a selected record with
+`--hull Titan --appearance 1`. `test_turret_clearance.py --geometry` checks
+coverage, provenance, packing, source arithmetic, random rotation containment
+and exact extra-node selection. See the audit methodology for path options.
+
+## Hull and drive measurement
+
 `measure_ship_prefabs.py` is the maintained Unity-asset measurement tool used
 by the human hull and drive-scaling research. It preserves the original hull
 measurement path and keeps drive measurements in separate functions.

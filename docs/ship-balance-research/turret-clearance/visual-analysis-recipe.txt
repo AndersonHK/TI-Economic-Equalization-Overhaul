@@ -1,0 +1,619 @@
+Visual-study analysis recipe (research archive; not a gameplay patch).
+Dependencies: existing Python 3.12 + UnityPy/NumPy/Pillow; Blender 2.79 CPU background renderer.
+Commands: export_geometry.py; render_hulls.py; render_hulls.py -- --details; surface_probe.py; export_materials.py; render_hulls.py -- --details --textured AlienMothership; annotate.py; proposal_evidence.py; write_report.py.
+Run Python scripts from repository root. Blender invocation: blender.exe --background --factory-startup -t 8 --python SCRIPT -- OPTIONS. Temporary artifacts use .tmp/turret-visual; retained outputs use docs/ship-balance-research/turret-clearance.
+
+===== export_geometry.py =====
+
+import sys, json
+from pathlib import Path
+import numpy as np
+ROOT=Path.cwd()
+sys.path.insert(0,str(ROOT/'scripts/ship-balance'))
+import measure_turret_clearance as m
+from UnityPy.helpers.MeshHelper import MeshHandler
+import generate_hull_variant_report as h
+
+OUT=ROOT/'.tmp/turret-visual'
+OUT.mkdir(parents=True,exist_ok=True)
+game=m.DEFAULT_GAME
+envs={'base':m.UnityPy.load(str(game/'TerraInvicta_Data/StreamingAssets/AssetBundles/ships')),
+      'dlc':m.UnityPy.load(str(game/'DLC_Content/DarkSkies/AssetBundles/ships_prm'))}
+evidence=m.read(ROOT/'docs/ship-balance-research/turret-clearance/measurements.json')
+names={'Escort','Frigate','Monitor','Battleship','Dreadnought','Titan','AlienDreadnought','AlienAssaultCarrier','AlienMothership','AlienDestroyer'}
+metadata=[]
+for v in evidence['variants']:
+    if v['hull'] not in names: continue
+    env=envs['dlc' if v['appearance']>=2 and not v['alien'] else 'base']
+    root=env.container[v['asset_path']].read()
+    root_t=m.transform(root)
+    origin=m.xyz(root_t.read().m_LocalPosition)
+    records={'meshes':[],'colliders':[]}
+    m.hull_reader.walk(root_t,np.eye(4),True,[],records)
+    main,excluded=h.select_main_hull_meshes(m.hull_reader,v['hull'],records)
+    meshes=[]; arrays={}
+    for i,r in enumerate(main):
+        handler=MeshHandler(r['mesh']); handler.process()
+        vertices=np.asarray(handler.m_Vertices,dtype=float)
+        tris=[np.asarray(t,dtype=np.int32) for t in handler.get_triangles() if t]
+        if not tris:continue
+        triangles=np.concatenate(tris)
+        world=m.transform_points(r['matrix'],vertices)-origin
+        arrays['v'+str(i)]=world; arrays['t'+str(i)]=triangles
+        meshes.append({'key':i,'path':r['path'],'name':r['mesh_name'],'vertices':len(vertices),'triangles':len(triangles)})
+    # Inventory all renderer components, including inactive children and turret placeholders.
+    renderers=[]
+    for goid,(matrix,tr,path) in m.hierarchy(root_t):
+        go=tr.m_GameObject.read()
+        for p in m.component_ptrs(go):
+            if p.type.name in ('MeshRenderer','SkinnedMeshRenderer'):
+                renderers.append({'path':path,'component':p.type.name,'active_self':bool(go.m_IsActive)})
+    key=v['hull']+'-'+str(v['appearance'])
+    np.savez_compressed(OUT/(key+'.npz'),**arrays)
+    data=dict(v,meshes=meshes,renderer_inventory=renderers,geometry_file=key+'.npz')
+    metadata.append(data)
+    print(key,len(meshes),sum(r['triangles'] for r in meshes),flush=True)
+(OUT/'scene-index.json').write_text(json.dumps(metadata,indent=2),encoding='utf-8')
+
+
+===== render_hulls.py =====
+
+# Blender 2.79 / Python 3.5. Offline clay render of decoded game geometry.
+import bpy, json, math, sys
+from pathlib import Path
+import numpy as np
+from mathutils import Vector, Quaternion
+from bpy_extras.object_utils import world_to_camera_view
+
+ROOT=Path.cwd(); TMP=ROOT/'.tmp/turret-visual'; OUT=ROOT/'docs/ship-balance-research/turret-clearance/visuals'
+OUT.mkdir(parents=True,exist_ok=True)
+scenes=json.loads((TMP/'scene-index.json').read_text())
+args=sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else []
+details='--details' in args
+textured='--textured' in args
+args=[a for a in args if a not in ['--details','--textured']]
+if args:scenes=[v for v in scenes if v['hull'] in args]
+render_meta=[]
+
+def cv(p):return Vector((p[0],p[2],p[1]))
+
+for v in scenes:
+    bpy.ops.object.select_all(action='SELECT'); bpy.ops.object.delete(use_global=False)
+    for mesh in list(bpy.data.meshes):
+        if mesh.users==0:bpy.data.meshes.remove(mesh)
+    scene=bpy.context.scene
+    scene.render.engine='BLENDER_RENDER'
+    scene.render.resolution_x=1600;scene.render.resolution_y=700;scene.render.resolution_percentage=100
+    scene.render.image_settings.file_format='PNG'; scene.render.alpha_mode='SKY'
+    scene.world.horizon_color=(.025,.032,.045)
+    scene.world.ambient_color=(0,0,0)
+    scene.world.light_settings.use_ambient_occlusion=True
+    scene.world.light_settings.ao_factor=.65
+    scene.world.light_settings.samples=5
+    scene.world.light_settings.use_environment_light=True
+    scene.world.light_settings.environment_energy=.12
+    mat=bpy.data.materials.get('HullClay') or bpy.data.materials.new('HullClay')
+    mat.diffuse_color=(.42,.48,.54);mat.diffuse_intensity=.8;mat.specular_intensity=.1
+    data=np.load(str(TMP/v['geometry_file']))
+    texture_info=json.loads((TMP/'material-index.json').read_text()) if textured else {}
+    uvdata=np.load(str(TMP/'mothership-uv.npz')) if textured else None
+    allpoints=[]
+    for mr in v['meshes']:
+        verts=data['v'+str(mr['key'])]; faces=data['t'+str(mr['key'])]
+        # Swap Unity Y/Z and reverse triangle winding: a handedness conversion.
+        verts=verts[:,[0,2,1]];faces=faces[:,::-1]
+        mesh=bpy.data.meshes.new(mr['name']);mesh.from_pydata(verts.tolist(),[],faces.tolist());mesh.update()
+        ob=bpy.data.objects.new(mr['name'],mesh);scene.objects.link(ob)
+        if mr['name'] in texture_info:
+            texmat=bpy.data.materials.new(mr['name']+' albedo');texmat.diffuse_color=(1,1,1);texmat.specular_intensity=.1
+            tx=bpy.data.textures.new(mr['name']+' albedo','IMAGE')
+            tx.image=bpy.data.images.load(str(TMP/texture_info[mr['name']]['_MainTex']['file']))
+            slot=texmat.texture_slots.add();slot.texture=tx;slot.texture_coords='UV';slot.use_map_color_diffuse=True
+            mesh.uv_textures.new(name='UVMap');layer=mesh.uv_layers.active.data
+            uvs=uvdata[mr['name']]
+            for polygon in mesh.polygons:
+                for li in polygon.loop_indices:layer[li].uv=uvs[mesh.loops[li].vertex_index][:2]
+            ob.data.materials.append(texmat)
+        else:ob.data.materials.append(mat)
+        allpoints.append(verts)
+    points=np.concatenate(allpoints)
+    lo=points.min(0);hi=points.max(0);center=(lo+hi)/2; extent=float(max(hi-lo))
+    for i,(loc,energy) in enumerate([((1,-1,2),.7),((-1,.6,-1),.25)]):
+        lamp=bpy.data.lamps.new('Key'+str(i),'SUN');lamp.energy=energy;lamp.use_shadow=False
+        ob=bpy.data.objects.new('Key'+str(i),lamp);scene.objects.link(ob)
+        ob.rotation_euler=Vector(loc).to_track_quat('Z','Y').to_euler()
+    camera=bpy.data.cameras.new('Camera');cam=bpy.data.objects.new('Camera',camera);scene.objects.link(cam);scene.camera=cam
+    camera.type='ORTHO';camera.clip_end=10000
+    views=[('dorsal',(0,0,1),None,None),('side',(-1,0,0),None,None),('ventral',(0,0,-1),None,None)]
+    if details:
+        import itertools
+        ns=[n for n in v['nodes'] if n['side']=='dorsal' and n['ordinary']]
+        pairs=[(np.linalg.norm(np.asarray(a['position_m'])-b['position_m']),a,b) for a,b in itertools.combinations(ns,2)]
+        if not pairs:continue
+        dist,a,b=min(pairs,key=lambda x:x[0]);focus=(np.asarray(a['position_m'])+b['position_m'])/2
+        views=[('dorsal-detail',(0,0,1),cv(focus),max(40,dist*4)),('side-detail',(-1,0,0),cv(focus),max(40,dist*4))]
+        if v['hull']=='AlienMothership':
+            views=[('dorsal-central',(0,0,1),cv((0,88.9,-12)),105),
+                   ('ventral-duplicate',(0,0,-1),cv((-196.5,-23.18,96)),100),
+                   ('ventral-repair',(0,0,-1),cv((196.5,-23.59,-161.4)),100),
+                   ('ventral-mirror-source',(0,0,-1),cv((-196.5,-23.59,-161.4)),100)]
+    for view, direction, focus, zoom in views:
+        if view=='ventral' and v['hull'] not in ['AlienMothership','AlienDreadnought']:continue
+        target=Vector(center) if focus is None else focus
+        cam.location=target+Vector(direction)*max(extent*2,500)
+        cam.rotation_euler=(target-cam.location).to_track_quat('-Z','Y').to_euler()
+        if view.startswith('dorsal'):cam.rotation_euler=(Quaternion((0,0,1),math.pi/2)*cam.rotation_euler.to_quaternion()).to_euler()
+        if view.startswith('ventral'):cam.rotation_euler=(Quaternion((0,0,1),-math.pi/2)*cam.rotation_euler.to_quaternion()).to_euler()
+        scene.update()
+        basis=np.asarray(cam.matrix_world.to_3x3())
+        local=(points-center)@basis
+        span=local.max(0)-local.min(0)
+        camera.ortho_scale=zoom if zoom else max(span[0],span[1]*1600/700)*1.12
+        scene.update()
+        fname=v['hull'].lower()+'-'+str(v['appearance'])+'-'+view+('-albedo' if textured else '')
+        scene.render.filepath=str(OUT/(fname+'-clay.png'))
+        bpy.ops.render.render(write_still=True)
+        nodes=[]
+        for n in v['nodes']:
+            if view.startswith(('dorsal','ventral')) and n['side']!=view.split('-')[0]:continue
+            if view.startswith('side') and n['side']!='dorsal':continue
+            pos=world_to_camera_view(scene,cam,cv(n['position_m']))
+            nodes.append(dict(n,pixel=[pos.x*1600,(1-pos.y)*700]))
+        if view=='ventral-repair':
+            pos=world_to_camera_view(scene,cam,cv((196.5,-23.59000015258789,-161.39999389648438)))
+            nodes.append({'side':'ventral','index':18,'ordinary':True,'proposal':True,'pixel':[pos.x*1600,(1-pos.y)*700]})
+        render_meta.append({'hull':v['hull'],'appearance':v['appearance'],'view':view,'file':fname+'-clay.png',
+                            'nodes':nodes,'ortho_width_m':camera.ortho_scale})
+        (TMP/('textured-meta.json' if textured else ('detail-meta.json' if details else 'render-meta.json'))).write_text(json.dumps(render_meta,indent=2))
+    print('DONE',v['hull'],v['appearance'],flush=True)
+
+
+===== surface_probe.py =====
+
+import json,math
+from pathlib import Path
+import numpy as np
+ROOT=Path.cwd(); TMP=ROOT/'.tmp/turret-visual'
+scenes=json.loads((TMP/'scene-index.json').read_text())
+results=[]
+for v in scenes:
+ data=np.load(TMP/v['geometry_file']); pieces=[]
+ for m in v['meshes']:
+  points=data['v'+str(m['key'])][data['t'+str(m['key'])]]
+  x=points[:,:,0];z=points[:,:,2]
+  denom=(z[:,1]-z[:,2])*(x[:,0]-x[:,2])+(x[:,2]-x[:,1])*(z[:,0]-z[:,2])
+  mask=abs(denom)>1e-10
+  pieces.append((m['name'],points[mask],denom[mask]))
+ def hit(pos,side):
+  px,py,pz=pos;hits=[]
+  for name,t,d in pieces:
+   x=t[:,:,0];z=t[:,:,2]
+   a=((z[:,1]-z[:,2])*(px-x[:,2])+(x[:,2]-x[:,1])*(pz-z[:,2]))/d
+   b=((z[:,2]-z[:,0])*(px-x[:,2])+(x[:,0]-x[:,2])*(pz-z[:,2]))/d
+   ok=(a>=-1e-7)&(b>=-1e-7)&(a+b<=1+1e-7)
+   if ok.any():
+    y=a[ok]*t[ok,0,1]+b[ok]*t[ok,1,1]+(1-a[ok]-b[ok])*t[ok,2,1]
+    hits.append((float(max(y) if side=='dorsal' else min(y)),name))
+  if not hits:return None
+  yy,name=(max(hits) if side=='dorsal' else min(hits))
+  return {'surface_y':yy,'surface_mesh':name,'outward_offset_m':(py-yy)*(1 if side=='dorsal' else -1)}
+ for n in v['nodes']:
+  if n['side']=='ventral' and v['hull']!='AlienMothership':continue
+  results.append({'hull':v['hull'],'appearance':v['appearance'],'side':n['side'],'index':n['index'],
+                  'ordinary':n['ordinary'],'position':n['position_m'],'hit':hit(n['position_m'],n['side'])})
+ if v['hull']=='AlienMothership':
+  candidates=[('mirror_outer_18',(196.5,-23.59000015258789,-161.39999389648438),'ventral'),
+              ('central_widen_left',(-9,88.91,3),'dorsal'),('central_widen_right',(9,88.91,3),'dorsal')]
+  for xx in (-196.5,196.5):
+   for zz in (55,10,-35,-80,-120):
+    for side,yy in [('dorsal',25.35),('ventral',-23.59)]:
+     candidates.append(('rim_%s_%s_%s'%(xx,zz,side),(xx,yy,zz),side))
+  for label,pos,side in candidates:
+   samples=[]
+   for radius in (0,2,4,6):
+    for theta in ([0] if radius==0 else range(0,360,45)):
+     p=(pos[0]+radius*math.cos(math.radians(theta)),pos[1],pos[2]+radius*math.sin(math.radians(theta)))
+     samples.append({'radius':radius,'angle':theta,'position':p,'hit':hit(p,side)})
+   results.append({'hull':v['hull'],'candidate':label,'position':pos,'side':side,'samples':samples})
+ print(v['hull'],v['appearance'],flush=True)
+(TMP/'surface-probes.json').write_text(json.dumps(results,indent=2),encoding='utf-8')
+
+
+===== export_materials.py =====
+
+import sys,json
+from pathlib import Path
+import numpy as np
+sys.path.insert(0,str(Path.cwd()/'scripts/ship-balance'))
+import measure_turret_clearance as m
+from UnityPy.helpers.MeshHelper import MeshHandler
+TMP=Path.cwd()/'.tmp/turret-visual'
+env=m.UnityPy.load(str(m.DEFAULT_GAME/'TerraInvicta_Data/StreamingAssets/AssetBundles/ships'))
+go=env.container['assets/artresources/ships/alien/mothership/alienmothership.prefab'].read()
+info={};arrays={}
+for gid,(matrix,tr,path) in m.hierarchy(m.transform(go)):
+ name=path.split('/')[-1]
+ if name not in ['Hydra_Mothership_Outer_A','Hydra_Mothership_Central_A']:continue
+ g=tr.m_GameObject.read()
+ mr=next(p for p in m.component_ptrs(g) if p.type.name=='MeshRenderer').read()
+ mf=next(p for p in m.component_ptrs(g) if p.type.name=='MeshFilter').read()
+ handler=MeshHandler(mf.m_Mesh.read());handler.process()
+ arrays[name]=np.asarray(handler.m_UV0)
+ props=mr.m_Materials[0].read().m_SavedProperties
+ info[name]={}
+ for key,te in props.m_TexEnvs:
+  if key not in ['_MainTex','_BumpMap']:continue
+  texture=te.m_Texture.read();filename=name+key+'.png';texture.image.save(TMP/filename)
+  info[name][key]={'file':filename,'name':texture.m_Name,'size':[texture.m_Width,texture.m_Height],
+                  'scale':[te.m_Scale.x,te.m_Scale.y],'offset':[te.m_Offset.x,te.m_Offset.y]}
+(TMP/'material-index.json').write_text(json.dumps(info,indent=2))
+np.savez_compressed(TMP/'mothership-uv.npz',**arrays)
+
+
+===== inspect_materials.py =====
+
+import sys,json
+from pathlib import Path
+sys.path.insert(0,str(Path.cwd()/'scripts/ship-balance'))
+import measure_turret_clearance as m
+env=m.UnityPy.load(str(m.DEFAULT_GAME/'TerraInvicta_Data/StreamingAssets/AssetBundles/ships'))
+go=env.container['assets/artresources/ships/alien/mothership/alienmothership.prefab'].read()
+print('UNITY',env.container['assets/artresources/ships/alien/mothership/alienmothership.prefab'].assetsfile.unity_version)
+for gid,(mat,tr,path) in m.hierarchy(m.transform(go)):
+ if path.endswith(('Ventral Turret Mount Base 60','Ventral Turret Mount Base 50','Ventral Turret Mount Base 56')):
+  print('TRANSFORM',path,tr.object_reader.path_id,tr.m_LocalPosition,tr.m_LocalRotation,tr.m_LocalScale,'PARENT',tr.m_Father.read().m_GameObject.read().m_Name)
+ if not path.endswith(('Hydra_Mothership_Outer_A','Hydra_Mothership_Central_A')):continue
+ g=tr.m_GameObject.read()
+ for ptr in m.component_ptrs(g):
+  if ptr.type.name=='MeshRenderer':
+   for material in ptr.read().m_Materials:
+    print(path,'MATREF',material)
+    try:
+     ma=material.read();print('MAT',ma.m_Name);print(ma.m_SavedProperties)
+    except Exception as e:print(type(e).__name__,str(e))
+
+
+===== annotate.py =====
+
+import json,math,itertools
+from pathlib import Path
+from PIL import Image,ImageDraw,ImageFont
+ROOT=Path.cwd();TMP=ROOT/'.tmp/turret-visual';OUT=ROOT/'docs/ship-balance-research/turret-clearance/visuals'
+font=ImageFont.truetype('C:/Windows/Fonts/consola.ttf',20)
+small=ImageFont.truetype('C:/Windows/Fonts/consola.ttf',17)
+title=ImageFont.truetype('C:/Windows/Fonts/segoeui.ttf',26)
+metas=json.loads((TMP/'render-meta.json').read_text())
+if (TMP/'detail-meta.json').exists():metas+=json.loads((TMP/'detail-meta.json').read_text())
+if (TMP/'textured-meta.json').exists():metas+=json.loads((TMP/'textured-meta.json').read_text())
+for meta in metas:
+ im=Image.open(OUT/meta['file']).convert('RGB');draw=ImageDraw.Draw(im)
+ if meta['view'].startswith('side'):
+  im=im.transpose(Image.Transpose.FLIP_LEFT_RIGHT);draw=ImageDraw.Draw(im)
+  meta=dict(meta,nodes=[dict(n,pixel=[1600-n['pixel'][0],n['pixel'][1]]) for n in meta['nodes']])
+ draw.rectangle((0,0,1600,58),fill=(15,21,30))
+ albedo='-albedo-' in meta['file']
+ draw.text((20,12),meta['hull']+' / art '+str(meta['appearance'])+' / '+meta['view']+(' | original albedo on inspected surface' if albedo else ' | bare hull geometry'),font=title,fill='white')
+ draw.rectangle((0,635,1600,700),fill=(15,21,30))
+ ns=[n for n in meta['nodes'] if 8<n['pixel'][0]<1590 and 65<n['pixel'][1]<630]
+ for i,n in enumerate(ns):
+  x,y=n['pixel'];color=(85,240,185) if n.get('proposal') else ((255,196,65) if not n['ordinary'] else (45,205,255))
+  draw.ellipse((x-5,y-5,x+5,y+5),fill=(5,10,18),outline=color,width=2)
+  if meta['hull']=='AlienMothership' and meta['view'] in ['dorsal','ventral'] and 4<=n['index']<=15:
+   continue
+  dy=-65 if i%2==0 else 45
+  if len(ns)>12:dy=-95 if i%2==0 else 65
+  lx=x-12;ly=y+dy
+  if meta['view'].startswith('dorsal') and any(not q['ordinary'] for q in ns) and 'position_m' in n:
+   xx=n['position_m'][0]
+   if abs(xx)<=5:
+    ly=y+(-60 if xx<-.1 else (40 if xx>.1 else -10))
+    lx=x+14 if abs(xx)<.1 else x-12
+  text=str(n['index'])+(' proposed' if n.get('proposal') else ('*' if not n['ordinary'] else ''))
+  ly=max(70,min(ly,603));lx=max(5,min(lx,1470))
+  box=draw.textbbox((lx,ly),text,font=font)
+  draw.line((x,y,lx+8,ly+10),fill=color,width=2)
+  draw.rectangle((box[0]-3,box[1]-3,box[2]+3,box[3]+3),fill=(15,21,30))
+  draw.text((lx,ly),text,font=font,fill=color)
+ if meta['hull']=='AlienMothership' and meta['view'] in ['dorsal','ventral']:
+  draw.rectangle((690,400,1120,433),fill=(15,21,30))
+  draw.text((700,405),'Central: 8 ordinary + 4 alternatives',font=font,fill=(220,230,240))
+ if meta['view'].startswith('dorsal') and all('position_m' in n for n in ns):
+  pairs=[(math.dist(a['position_m'],b['position_m']),a,b) for a,b in itertools.combinations(ns,2) if a['ordinary'] and b['ordinary']]
+  if pairs:
+   d,a,b=min(pairs,key=lambda p:p[0]);ax,ay=a['pixel'];bx,by=b['pixel']
+   draw.line((ax,ay,bx,by),fill=(255,95,95),width=3)
+   text='nearest ordinary pair '+str(a['index'])+'-'+str(b['index'])+': '+format(d,'.3f')+' m'
+   draw.text((20,640),text,font=font,fill=(255,130,130))
+ width=meta['ortho_width_m'];bar=10**math.floor(math.log10(width/6));bar*=2 if width/bar>15 else 1
+ px=bar/width*1600
+ draw.line((1360-px,660,1360,660),fill='white',width=3)
+ draw.text((1360-px,668),format(bar,'g')+' m',font=small,fill='white')
+ draw.text((20,674),'Cyan: ordinary origin | Amber*: alternate origin | '+('Original albedo, no Unity shading' if albedo else 'No weapons / no textures')+' / offline render',font=small,fill=(200,210,220))
+ file=meta['file'].replace('-clay','-annotated');im.save(OUT/file)
+for hull in ['Escort','Frigate','Monitor','Battleship','Dreadnought','Titan']:
+ chosen=[m for m in metas if m['hull']==hull and m['view']=='dorsal']
+ sheet=Image.new('RGB',(1600,1400),(20,25,35))
+ for i,m in enumerate(chosen):
+  im=Image.open(OUT/m['file'].replace('-clay','-annotated')).resize((800,350))
+  sheet.paste(im,((i%2)*800,(i//2)*700))
+  side=m['file'].replace('-dorsal-clay','-side-annotated')
+  im=Image.open(OUT/side).resize((800,350))
+  sheet.paste(im,((i%2)*800,(i//2)*700+350))
+ sheet.save(OUT/(hull.lower()+'-all-variants.png'))
+
+
+===== proposal_evidence.py =====
+
+import json,math,itertools,hashlib,statistics,copy
+from pathlib import Path
+from PIL import Image,ImageDraw,ImageFont
+ROOT=Path.cwd();TMP=ROOT/'.tmp/turret-visual';OUT=ROOT/'docs/ship-balance-research/turret-clearance'
+base=json.loads((OUT/'measurements.json').read_text())
+scenes=json.loads((TMP/'scene-index.json').read_text());probes=json.loads((TMP/'surface-probes.json').read_text())
+v=next(v for v in scenes if v['hull']=='AlienMothership')
+old=copy.deepcopy(v['nodes']);fixed=copy.deepcopy(old)
+for n in fixed:
+ if n['side']=='ventral' and n['index']==18:n['position_m']=[196.5,-23.59000015258789,-161.39999389648438]
+proposed=copy.deepcopy(fixed)
+ids=[(4,6,55),(7,9,10),(10,12,-35),(13,15,-120)]
+for left,right,z in ids:
+ for index,x in [(left,-196.5),(right,196.5)]:
+  for side in ['dorsal','ventral']:
+   p=next(p for p in probes if p.get('candidate')=='rim_%s_%s_%s'%(x,z,side))
+   yy=p['samples'][0]['hit']['surface_y']+(.1 if side=='dorsal' else -.1)
+   for n in proposed:
+    if n['side']==side and n['index']==index:n['position_m']=[x,yy,z]
+def minimum(nodes,all_nodes=False):
+ ns=[n for n in nodes if all_nodes or n['ordinary']]
+ ps=[(math.dist(a['position_m'],b['position_m']),a['side'],a['index'],b['side'],b['index'])
+     for a,b in itertools.combinations(ns,2) if a['index']!=b['index']]
+ return min(ps)
+radius=max(g['swept_radius_m'] for g in base['geometries'] if g['resource']=='shipweapons/alien_large_plasma_battery')
+summary={'before_min':minimum(old),'minimal_fix_min':minimum(fixed),'optional_redistribution_min':minimum(proposed),
+ 'before_all_nodes_min':minimum(old,True),'minimal_fix_all_nodes_min':minimum(fixed,True),'optional_all_nodes_min':minimum(proposed,True),
+ 'size4_diameter_bound_m':2*radius,'candidate_nodes':[n for n in proposed if n['ordinary'] and n['index'] in [i for l,r,z in ids for i in (l,r)]],
+ 'minimal_fix_target':[n for n in fixed if n['side']=='ventral' and n['index']==18][0]}
+variants=[]
+for s in scenes:
+ ns=sorted([n for n in s['nodes'] if n['side']=='dorsal' and n['ordinary']],key=lambda n:n['position_m'][2])
+ gaps=[math.dist(a['position_m'],b['position_m']) for a,b in zip(ns,ns[1:])]
+ variants.append({'hull':s['hull'],'appearance':s['appearance'],'min_distance':s['ordinary_min_distance_m'],
+                  'median_dorsal_adjacent_gap':statistics.median(gaps),'renderer_inventory':s['renderer_inventory'],'meshes':s['meshes']})
+sources=[q for q in base['sources'] if q['path'].endswith(('ships','ships_prm','shipweapons','Assembly-CSharp.dll'))]
+for q in sources:
+ assert hashlib.sha256(Path(q['path']).read_bytes()).hexdigest().upper()==q['sha256']
+evidence={'sources_verified':sources,'inspected_variants':variants,'surface_probes':probes,'mothership_proposal':summary,
+          'rendering':'Blender 2.79 offline clay; original albedo for the Mothership Outer_A and Central_A detail views',
+          'asset_unity_version':'2020.3.49f1','scope':'Research only; no asset/runtime mutation'}
+(OUT/'visual-evidence.json').write_text(json.dumps(evidence,indent=2)+'\n',encoding='utf-8')
+
+# Overlay the optional proposal on the unchanged original dorsal geometry.
+meta=next(m for m in json.loads((TMP/'render-meta.json').read_text()) if m['hull']=='AlienMothership' and m['view']=='dorsal')
+ns={n['index']:n for n in meta['nodes']}
+u=lambda z:ns[1]['pixel'][0]+(z-96)*(ns[2]['pixel'][0]-ns[1]['pixel'][0])/(-161.39999389648438-96)
+vv=lambda x:ns[1]['pixel'][1]+(x+196.5)*(ns[17]['pixel'][1]-ns[1]['pixel'][1])/393
+im=Image.open(OUT/'visuals'/meta['file']).convert('RGB');dr=ImageDraw.Draw(im)
+font=ImageFont.truetype('C:/Windows/Fonts/consola.ttf',19);title=ImageFont.truetype('C:/Windows/Fonts/segoeui.ttf',26)
+dr.rectangle((0,0,1600,60),fill=(15,21,30));dr.rectangle((0,635,1600,700),fill=(15,21,30))
+dr.text((20,12),'Mothership optional redesign: move 8 central ordinary mounts onto existing rim surfaces',font=title,fill='white')
+for n in meta['nodes']:
+ if n['index'] in [0,1,2,3,16,17,18,19]:
+  x,y=n['pixel'];dr.ellipse((x-5,y-5,x+5,y+5),outline=(45,205,255),width=3)
+for l,r,z in ids:
+ for idx,x in [(l,-196.5),(r,196.5)]:
+  xx,yy=u(z),vv(x);dr.ellipse((xx-6,yy-6,xx+6,yy+6),fill=(45,240,170))
+  label=str(idx);ly=yy+35 if x<0 else yy-40
+  dr.line((xx,yy,xx,ly),fill=(45,240,170),width=2)
+  dr.text((xx-35,ly),label,font=font,fill=(45,240,170))
+for x in (-196.5,196.5):
+ xx,yy=u(-80),vv(x);dr.line((xx-8,yy-8,xx+8,yy+8),fill=(255,85,85),width=3);dr.line((xx+8,yy-8,xx-8,yy+8),fill=(255,85,85),width=3)
+dr.text((20,644),'Green: proposed, unchanged count | Cyan: retained outer nodes | Red X: rejected z=-80 connector',font=font,fill='white')
+dr.text((20,674),'Centre spacing >= %.3f m; size-4 conservative edge gap >= %.3f m. No runtime changes applied.'%(minimum(proposed)[0],minimum(proposed)[0]-2*radius),font=font,fill=(220,230,240))
+im.save(OUT/'visuals/mothership-optional-rim-proposal.png')
+print(json.dumps(summary,indent=2))
+
+
+===== write_report.py =====
+
+import json,math
+from pathlib import Path
+ROOT=Path.cwd();OUT=ROOT/'docs/ship-balance-research/turret-clearance';TMP=ROOT/'.tmp/turret-visual'
+d=json.loads((OUT/'visual-evidence.json').read_text());base=json.loads((OUT/'measurements.json').read_text())
+p=d['mothership_proposal'];probes=d['surface_probes']
+def table(head,rows):return '\n'.join(['| '+' | '.join(head)+' |','| '+' | '.join(['---']*len(head))+' |']+['| '+' | '.join(map(str,row))+' |' for row in rows])
+def fig(file,alt):return '!['+alt+'](visuals/'+file+')'
+observations={
+('Battleship',0):'Two foundations on the same shoulder section; large inter-module gaps do not help this pair.',
+('Battleship',1):'Separate small circular foundations along a relatively continuous axial deck; closest to passing the 5 m bound.',
+('Battleship',2):'Closest pair is on the aft tank/module assembly, not across the very long open truss.',
+('Battleship',3):'Two distinct square foundations share one central module. Deliberate close grouping, not coincident nodes.',
+('Dreadnought',0):'Repeated three-mount weapons sections. Eight nodes are concentrated on a few sections.',
+('Dreadnought',1):'Separate circular rings on one axial strip; the 1–2 pair is genuinely close.',
+('Dreadnought',2):'Repeated foundations on separated collars and the aft assembly; the long scaffold is not usable deck.',
+('Dreadnought',3):'Individual foundations spread across substantial modules. No comparable tight cluster.',
+('Titan',0):'Three paired sections; central pair limits clearance despite the large hull.',
+('Titan',1):'Two circular seats on one raised platform. A second tight pair, 4–5, is only 8.310 m apart.',
+('Titan',2):'The aft pair on the tank section is limiting; the long forward/middle separations are irrelevant to the minimum.',
+('Titan',3):'Broad, separately spaced foundations, consistent with its much larger minimum gap.'}
+
+sections=['# Visual inspection of close hull mounts and repair proposals',
+'''Research follow-up, 2026-10-20. **The suspicious small distances are mostly real, authored local clusters—not a global scale error or accidental counting of dorsal/ventral copies. The Mothership duplicate is a separate, well-supported placement defect.** Its missing counterpart has an appropriate existing rim surface, so the minimal repair should move one mount Transform, without editing hull vertices or adding a barbette.
+
+This report interprets the [numerical clearance study](README.md) through direct visual inspection of decoded assets. It covers all four appearances of Escort, Frigate, Monitor, Battleship, Dreadnought and Titan, plus Alien Destroyer, Dreadnought, Assault Carrier and Mothership: **28 appearances in 10 classes**. The repeated “battleships” in the request was interpreted broadly to include the large-hull outliers.
+
+**Status:** proposals and documentation only. No installed asset, gameplay configuration or runtime code was changed. No new build/deployment was performed for this follow-up.''',
+'''## What was actually inspected
+
+The figures are offline renders of the installed triangle meshes with authored controller origins overlaid. They are not generated concept art or in-game screenshots. Top and side views, close views of limiting pairs, and numerical vertical surface intersections were examined. Main hull meshes retain their authored dimensions; textures, weapons, drive subtrees and radiators are omitted from the clay views so that a turret placeholder cannot be mistaken for a permanent hull foundation.
+
+For the Mothership, I also decoded the original UVs and albedo textures of `Hydra_Mothership_Outer_A` and `Hydra_Mothership_Central_A` and rendered the relevant surfaces with them. That checks whether an apparently plain surface has a painted turret foundation. These albedo views do not reproduce Unity's normal-map, metallic, emission or lighting pipeline.
+
+Cyan markers are ordinary logical mount origins; amber markers are alternative controller origins. A marker is not a physical turret. Numbers are controller-list indices, not UI serialized slot indices. One dorsal and one ventral representation normally belong to the same logical gun. “Barbette” below means a visible modeled turret seat, ring or foundation; it does not claim a simulated armor/rotation mechanism.
+
+Geometry, renderer classifications, surface probes, source hashes and proposal coordinates are retained in [visual-evidence.json](visual-evidence.json). The exact analysis recipe is archived as [research text](visual-analysis-recipe.txt).''',
+'''## Why a huge hull can have a small minimum spacing
+
+The earlier number was the **closest pair**, not average spacing or available deck area. Art can spend most of its length on tanks, habitats, machinery, open trusses or structural arms while clustering guns onto a few specific foundations. Increasing total hull length does not enlarge a paired foundation on one module.
+
+All twelve large-human cases below have their limiting pair on the **same dorsal side**. These small numbers are not the distance through the hull to a mirrored ventral turret. The side views also show that the close pairs are not separated by large elevations that would explain away the plan-view crowding.
+
+The human worst-size-4 full-rotation diameter bound is 14.637 m. A 5 m gap therefore requires 19.637 m between equal-scale origins. The final column is the additional separation needed to pass that sufficient bound. It is **not** a measured penetration depth or an instruction to move a mount by exactly that amount. Real triangle meshes may clear in a particular pose while their conservative spheres overlap.''']
+rows=[]
+for v in d['inspected_variants']:
+ if v['hull'] not in ['Battleship','Dreadnought','Titan']:continue
+ original=next(x for x in base['variants'] if x['hull']==v['hull'] and x['appearance']==v['appearance'])
+ name=v['hull'];i=v['appearance'];minimum=v['min_distance']
+ rows.append((f'[{name}/{i}](visuals/{name.lower()}-{i}-dorsal-detail-annotated.png)',
+              original['ordinary_nearest_pair'].replace('dorsal:',''),f'{minimum:.3f}',
+              f"{v['median_dorsal_adjacent_gap']:.3f}",f'{max(0,19.637131461374804-minimum):.3f}'))
+sections.append(table(['Class/art','Limiting pair','Minimum m','Median consecutive dorsal spacing m','Extra separation for 5 m bound'],rows))
+sections += ['''The median is computed after sorting ordinary dorsal nodes along the ship axis; it is included to expose clustering, not as another clearance certificate. For example, Titan/1 has a **26.250 m median** but a **6.440 m minimum**. Battleship/3 has **24.160 m versus 9.160 m**.''',
+ '## Battleships: foundation layout explains all four cases',fig('battleship-all-variants.png','All four Battleship variants, with dorsal and side mount overlays'),
+ table(['Art','Visual interpretation'],[(i,observations['Battleship',i]) for i in range(4)]),
+ fig('battleship-3-dorsal-detail-annotated.png','Battleship art 3 has two distinct square turret foundations on the same central block'),
+'''Battleship/3 is the clearest example: nodes 2 and 3 are centered on two separate square seats attached to the same backing plate. The 9.160 m value matches the actual two-seat artwork. These are not duplicate pointers, one shared origin, or two vertices of one mount. The seats' top surfaces are about 13.207 m high, while both origins are at 13.200 m: the roughly 7 mm difference is ordinary seating/intersection detail, not evidence of a misplaced gun.
+
+**Semantic conclusion:** keep the current layout when using weapons appropriate to those seats. If the goal is unrestricted larger turrets, move or rebuild the two seats and their backing plate together. Moving only the origins would detach the guns visually from their foundations. Battleship/1 is a less invasive enlargement candidate than /3: it misses the worst-size-4 5 m bound by only 0.837 m of pair separation, although its individual rings would still need to follow any movement.''',
+ '## Dreadnoughts: local triples and short intervals dominate',fig('dreadnought-all-variants.png','All four Dreadnought appearances with their mount groups'),
+ table(['Art','Visual interpretation'],[(i,observations['Dreadnought',i]) for i in range(4)]),
+ fig('dreadnought-1-dorsal-detail-annotated.png','Dreadnought art 1 shows separate circular seats at the closely spaced nodes'),
+'''Dreadnought/0 places three foundations on each of two weapons sections. The limiting 6–7 pair is 8.600 m apart, and the median consecutive spacing is only 9.300 m. This is extensive concentration, not one isolated bad coordinate. Its foundation surfaces belong to `Earth_DR_Weapons`.
+
+Dreadnought/1 is different: it has a long narrow axial strip with visible circular seats, but unequal spacing. Nodes 1 and 2 are 6.920 m apart; both seat surfaces are about 17.750 m high and both origins 17.740 m. They are seated on the modeled rings, so the small value is not a coordinate extraction mistake. There is room elsewhere on the silhouette, but not every apparently empty part is equivalent mounting deck.
+
+**Semantic conclusion:** /0 needs a weapons-section redesign to spread all eight larger guns; /1 is a candidate for re-spacing the ring geometry along its existing strip; /2 needs collar-aware changes rather than placing guns into the open truss. /3 already has the most accommodating layout and should not be modified merely to impose consistency with a more crowded appearance.''',
+ '## Titans: a very large ship can still carry a small two-seat platform',fig('titan-all-variants.png','All Titan appearances and their actual foundation groups'),
+ table(['Art','Visual interpretation'],[(i,observations['Titan',i]) for i in range(4)]),
+ fig('titan-1-dorsal-detail-annotated.png','Titan art 1 central platform with two separate circular seats only 6.44 metres apart'),
+'''Titan/1 has a visibly authored paired platform, not two random origins floating over empty space. Nodes 2 and 3 sit over separate circular rings on that same platform. Both origins are at Y=26.600 m; the local ring surface is about Y=26.752 m. That small inward seating offset does not turn 6.440 m of separation into a large gap.
+
+The platform ends and nearby grille structures make a simple one-axis shift aesthetically questionable. Meeting the 19.637 m center-spacing target would add 13.197 m to this pair. That is a substantial change to the platform, not a rounding correction. Moving only one node would also create an asymmetric seat arrangement.
+
+**Semantic conclusion:** the current capital rule allowing a heavy gun per logical cell does not prove every art variant was designed for that visual footprint. /1 is the strongest candidate for an appearance-specific foundation redesign; /0 and /2 have milder paired-section constraints; /3 already spaces foundations generously. The prior worst-case bounds remain conservative, so an actual weapon-family/aim-pose collision study would be appropriate before deciding how much geometry to change.''',
+ '## Smaller and alien edge cases',
+table(['Class/art','Minimum m','Observed meaning'],[
+('Escort 0/1/2/3','15.600 / 13.700 / 17.650 / 14.230','Two seats on a short hull. The proportions and placement are coherent; no duplicate origin found.'),
+('Frigate 0/1/2/3','16.438 / 19.100 / 29.500 / 30.900','Later appearances spread the two mounts across more separated modules. Art 0/1 crowding is genuine, not class-name confusion.'),
+('Monitor 0/1/2/3','7.554 / 11.320 / 12.800 / 17.800','Four nodes share compact modules. Art 0 node 2 lies on the connecting strip between two raised seats, not on another distinct large seat.'),
+('AlienDreadnought/0','4.000 ordinary; ~2.000 with alternatives','Left/right ordinary origins are at X=±2 m. Alternative origins sit near X=0 on the same ribbed panel.'),
+('AlienAssaultCarrier/0','12.000','Regular groups of three centerline origins on panelled sections; no coincident origins.'),
+('AlienDestroyer/0','44.000 ordinary; 21.000 including the middle','The alternative lies on the same broad axial panel between ordinary mounts; a coherent extra-gun candidate.')]),
+fig('monitor-0-dorsal-detail-annotated.png','Monitor art 0 shows an intermediate origin on the bridge between larger foundations'),
+'''The Monitor illustrates why node count and visible dedicated foundations need not match one-to-one. The gun asset supplies its own base, so an origin without a separate raised hull seat is not automatically a defect. Nevertheless, installing a much larger gun at the intervening origin would be a different visual arrangement from enlarging the two existing seats. Compare [all Monitor variants](visuals/monitor-all-variants.png), [Escort variants](visuals/escort-all-variants.png) and [Frigate variants](visuals/frigate-all-variants.png).''',
+fig('aliendreadnought-0-dorsal-detail-annotated.png','Alien Dreadnought paired ordinary origins and center alternatives on a ribbed panel'),
+'''Alien Dreadnought's 4 m number has a clear semantic cause: the two ordinary guns are alternatives to a central combined placement on a common panel. The spare controller between them should not be interpreted as another independently roomy barbette. Promoting every such origin into a simultaneous gun needs more physical deck allocation, not only a larger UI allowance. The panels have modeled ribs, but no separate circular barbette geometry under each marked origin in this view.
+
+[Alien Assault Carrier close view](visuals/alienassaultcarrier-0-dorsal-detail-annotated.png) shows a repeated 12 m rhythm on a shared strip. [Alien Destroyer close view](visuals/aliendestroyer-0-dorsal-detail-annotated.png) supports the earlier middle-node proposal: unlike the 2–4 m clusters, its 21–23 m neighboring distances leave meaningful space.''',
+ '## Mothership: the duplicate and the appropriate repair surface',
+fig('alienmothership-0-ventral-annotated.png','Mothership underside shows the duplicated outer origin and the missing mirror position'),
+'''The ordinary outer pattern has four stations on each side. Dorsal indices 2 and 18 are a left/right pair at Z=-161.4 m. Ventral index 2 has the expected left counterpart, but ventral index 18 sits at index 1's position at Z=96 m. This leaves the right aft counterpart empty. The object names reinforce the geometric diagnosis: `Base 56` has inherited the position of `Base 60`, while its matching left aft seat is `Base 50`. This is strong evidence of an authored placement/copy mistake, though the original artist's intent is not available.''',
+table(['Ventral controller','Object','X m','Y m','Z m'],[
+('1 (retain)','Ventral Turret Mount Base 60','-196.500','-23.180','96.000'),
+('2 (mirror reference)','Ventral Turret Mount Base 50','-196.500','-23.590','-161.400'),
+('18 (current defect)','Ventral Turret Mount Base 56','-196.500','-23.180','96.000'),
+('18 (proposed)','same object and list index','196.500','-23.590','-161.400')]),
+fig('alienmothership-0-ventral-duplicate-annotated.png','Current duplicate: two different controller indices share the same outer-rim origin'),
+fig('alienmothership-0-ventral-repair-albedo-annotated.png','Proposed counterpart lies on the original textured rim surface'),
+'''**Visual finding:** the replacement is on the same kind of broad, beveled outer-rim panel as the existing opposite-side mount. There is no separate modeled circular turret ring at either point. The original albedo shows panel seams and surface wear rather than a dedicated painted circular seat. A new barbette is therefore **not required to match the existing outer-mount style**. Compare the [unchanged opposite-side geometry](visuals/alienmothership-0-ventral-mirror-source-annotated.png).
+
+This refines the earlier description “existing foundation”: the suitable support is the structural rim surface, not an unused ornamental turret pedestal. Adding a new ring at only the repaired site would actually reduce visual consistency; any optional cosmetic ring should be introduced symmetrically across the equivalent outer mounts.''',
+table(['Surface check at proposed index 18','Result'],[
+('Support mesh','Hydra_Mothership_Outer_A'),
+('Surface Y at center','-23.644494 m'),
+('Proposed origin Y','-23.590000 m, matching ventral index 2'),
+('Origin seating relative to surface','0.054494 m inward; same as the mirror reference'),
+('Eight samples on a 2 m radius ring','All hit the support; height variation about 0.001823 m'),
+('Eight samples on a 4 m radius ring','All hit the support; height variation about 0.004858 m'),
+('Eight samples on a 6 m radius ring','All hit hull, but variation about 0.858 m: the larger ring reaches the bevel'),
+('Position change','ΔX=+393.000 m; ΔY=-0.410 m; ΔZ=-257.400 m; distance 469.791 m')]),
+'''These are point/ring surface probes, not a continuous base-to-hull collision test. They support the proposed placement and indicate where the rim begins to slope. Final gun-base seating still needs its actual mesh footprint.
+
+**Do not simply negate dorsal Y.** The matching dorsal position is at Y=+25.350 m, whereas the existing opposite ventral reference is Y=-23.590 m. A naïve Y mirror would place the new origin 1.760 m farther outward than its ventral counterpart. Mirror X from the correct ventral reference instead.''',
+ '## Minimal correction: edit a Transform, not a skeletal mesh',
+'''All surveyed main hull surfaces are static `MeshFilter`/`MeshRenderer` geometry. None of the 28 inspected main hulls uses a `SkinnedMeshRenderer`; the human skinned renderers encountered belong to radiator systems. The Mothership hierarchy has no skinned renderers at all. The mount is a child GameObject with a Transform and a weapon-visual controller, not a bone whose skin weights must be repaired.
+
+For the affected Mothership prefab, the target is a direct child of `AlienMothership`, with unit inherited scale. The exact serialized edit would be:
+
+```text
+Prefab: assets/artresources/ships/alien/mothership/alienmothership.prefab
+Controller list: ventralHullWeaponControllers[18]
+Object: AlienMothership/Ventral Turret Mount Base 56
+ShipWeaponVisController path ID: 700196163148817806
+Transform path ID: -1311517130906965347
+localPosition: (-196.5, -23.18000030517578, 96.0)
+           -> (196.5, -23.59000015258789, -161.39999389648438)
+localRotation: preserve (0, 0, 1, 0)
+localScale: preserve approximately (0.2, 0.2, 0.2)
+Parent, child weapon/fire point, list order and references: preserve
+```
+
+The positional values above are local to the prefab root at this stage. Unity applies parent transforms when converting local positions to world space; do not reuse those numbers as absolute combat-world coordinates. [Unity Transform.localPosition documentation](https://docs.unity3d.com/ScriptReference/Transform-localPosition.html).
+
+**Preferred first implementation:** an appearance-specific, guarded instance correction before `ShipModelController.BuildShip` initializes weapons. Check the Mothership class, expected prefab/object identity, both relevant list entries, original coordinates and parent relationship. Apply once; accept an already-correct position; reject/log an unexpected layout. This avoids editing the shipped bundle and makes comparison/rollback straightforward. Do it before weapon initialization creates the `Base Orientation` parent, because applying the same `localPosition` afterward would address a different coordinate frame. This is a proposed hook, not an implemented or Harmony-validated patch.
+
+The slot index and controller object remain unchanged, so there is no intended capacity, ammo-index or DPS change and no obvious need for a design-data migration. Still test saved ships, refits, designer previews and new combat instances. Muzzle and shot-effect origins move with the hierarchy; that makes this more than a purely cosmetic screenshot correction.''',
+table(['Mothership metric','Current asset','Minimal correction','Meaning'],[
+('Ordinary logical mounts','16','16','No capacity change'),
+('Authored paired indices including alternatives','20','20','No extra gun enabled'),
+('Minimum ordinary center spacing','0.000 m','8.000 m','Exact duplicate removed; central pair becomes limiting'),
+('Worst-size-4 conservative ordinary gap','-12.296 m','-4.296 m','Still not a global heavy-turret clearance certificate'),
+('Minimum with every alternative active','0.000 m','4.000 m','Central merge origins remain tightly grouped')]),
+ '## Optional Mothership redesign: relocate the crowded central battery symmetrically',
+fig('alienmothership-0-dorsal-central-albedo-annotated.png','Original Mothership central diamond panel and tightly grouped origins'),
+'''The central battery sits on a common diamond-shaped face, not on twelve dedicated barbettes. The flat face has vertices approximately `(X,Z)=(±16.803,-10.137), (0,15.337), (0,-35.612)`, at Y≈88.931 m. Its full width is 33.606 m and length 50.949 m. The ordinary columns are X=±4 m; their rows are Z=3,-7,-17,-27 m. Alternatives occupy X≈0.
+
+Simply widening the columns is not enough: row-to-row spacing stays 10 m. Moreover, at Z=3 m, a test at X=±9 m hits the raised bevel at Y≈89.343 m, about 0.433 m above an unchanged Y=88.91 origin. The footprint reaches the beveled margin before a naïve rectangular enlargement looks plausible. Enlarging this battery in place would therefore entail redesigning the diamond platform or adopting a different arrangement—not just changing X coordinates.
+
+A more spacious option is to retain the eight original outer mounts, repair ventral index 18, and move the eight ordinary central mounts onto symmetric points of the existing long rim sections. This retains 16 logical guns and the current heavy-per-node rule. The following coordinates are **proposal seeds**, not approved edits. Dorsal/ventral Y is the sampled hull surface plus 0.10 m outward allowance; final base seating may need a different allowance.''']
+rows=[]
+for left,right,z in [(4,6,55),(7,9,10),(10,12,-35),(13,15,-120)]:
+ ns=[n for n in p['candidate_nodes'] if n['index']==left]
+ yy={n['side']:n['position_m'][1] for n in ns}
+ rows.append((f'{left} / {right}','-196.500 / +196.500',f'{z:.3f}',f"{yy['dorsal']:.6f}",f"{yy['ventral']:.6f}"))
+sections += [table(['Paired indices (left/right)','X m','Z m','Dorsal Y m','Ventral Y m'],rows),
+fig('mothership-optional-rim-proposal.png','Optional symmetric movement of eight central nodes onto tested outer rim surfaces'),
+'''The four proposed rows all hit `Hydra_Mothership_Outer_A` on both sides. Eight test points on each 4 m radius ring vary in height by less than 0.012 m. This is useful evidence of a broad, almost planar support region, although it does not replace continuous footprint and animated clearance checks.
+
+**Rejected site:** X=±196.5, Z=-80 m looks attractive if one spaces the stations arithmetically, but it lies in the rim interruption/connector area. The ray hits `Hydra_Mothership_Outer_B` around Y=17.1–17.8 m dorsally, roughly 7.5–8.2 m below the assumed rim height. Its 4 m ring varies by about 3.47 m. The red crosses in the figure identify this false candidate. Z=-120 m returns to the suitable rim panel.''',
+table(['Metric','After minimal repair','After optional redistribution','Delta'],[
+('Ordinary logical guns','16','16','0'),
+('Minimum ordinary center spacing','8.000 m',f"{p['optional_redistribution_min'][0]:.3f} m",f"+{p['optional_redistribution_min'][0]-8:.3f} m"),
+('Native size-4 conservative gap','-4.296 m',f"{p['optional_redistribution_min'][0]-p['size4_diameter_bound_m']:.3f} m",f"+{p['optional_redistribution_min'][0]-8:.3f} m"),
+('Nominal size-4 capacity','64 units','64 units','0'),
+('Same fitted weapons: raw DPS','unchanged','unchanged','0%'),
+('All 20 authored indices simultaneously active','4.000 m minimum','10.000 m minimum','Still constrained by four central alternatives')]),
+'''**Semantic tradeoff:** the eight ordinary central guns would become a distributed rim battery, leaving the diamond crown visually sparse. This is a deliberate composition change, not a necessary part of repairing the duplicated slot. The rim's existing style does not require individual barbettes, but an optional new seat design should repeat symmetrically at every relocated station. Do not claim the redesign enables four additional heavy guns: the retained central alternatives still have only 10 m spacing and would need their own layout/fitting work.
+
+The 28.704 m conservative gap applies to the unchanged 16 ordinary mount indices after the proposed relocation, including the matching dorsal/ventral geometry. It does not certify hull/weapon intersection, muzzle visibility, line of fire, radiator/appendage clearance, or the visual quality of a complete fitted ship.''',
+ '## If actual hull-foundation geometry must be edited',
+'''For the human paired-seat cases, the appropriate object is often a static mesh that contains several foundations and other details. Examples include `Earth_DLCA_BS_Common_Details_A` (Battleship/3), `Earth_DR_Common_Back_C` (Dreadnought/1), and `Earth_TI_ALT_Common_Head` (Titan/1). Moving that entire object would move unrelated hull geometry. The redesign should select the foundation's vertex/triangle islands, adjust the backing deck if necessary, and move the matching controller origin by the same root-space displacement.
+
+Preserve UVs, material/submesh assignments, winding, normals/tangents, mesh bounds and any relevant collider relationship. Move both members of a symmetric pair, and the corresponding ventral pair, with an explicit per-appearance specification. Do not treat a circular seat in an atlas or one disconnected decorative island as the complete support assembly without checking it in 3D. On assets that genuinely use skinning, bind poses, bone weights and animation ownership would matter; those are not implicated by these main-hull measurements.
+
+For runtime experiments, create an instance-specific mesh copy before changing vertices. Unity warns that editing `sharedMesh` changes every object using that shared asset; `MeshFilter.mesh` creates a duplicate when first accessed. [Unity sharedMesh](https://docs.unity3d.com/ScriptReference/MeshFilter-sharedMesh.html), [Unity mesh](https://docs.unity3d.com/ScriptReference/MeshFilter-mesh.html).
+
+For an offline asset release, work from a separate asset project/package and retain the original bundle hashes and reference identities. The inspected Mothership serialized asset reports Unity **2020.3.49f1**; that is bundle metadata, not a claim about the current executable's engine version. Confirm the player/bundle version and reference/manifest requirements before rebuilding. Unity does not guarantee that bundles made by newer editors load in older players, so exporting from an arbitrary current editor is not a safe replacement workflow. [Unity AssetBundle compatibility guidance](https://docs.unity.cn/2023.1/Documentation/Manual/AssetBundlesIntro.html).
+
+The minimal Mothership fix needs none of that vertex editing: either correct the single serialized Transform in a separately validated package or apply the guarded instance relocation proposed above.''',
+ '## Recommended next scope and validation',
+'''1. Implement **only the Mothership ventral index-18 correction** first. Verify the same 16 logical weapons, unique ordinary origins, preserved references/rotations/scales, and the intended mirrored outer-rim location.
+2. Inspect a fitted Mothership in designer and combat, from both sides, before and after. Fire the affected gun and confirm its base, barrel, muzzle effect and projectile origin agree. Include a loaded save and a refit/new-instance path.
+3. Treat crowded but correctly seated human foundations as a separate visual-capacity project. Start with Titan/1 or Battleship/3, choose the target weapon families and required padding, then move seats plus origins together. Preserve other appearances until individually specified.
+4. If retaining full heavy-per-node Mothership clearance is the goal, review the optional rim redistribution as a distinct art choice. It changes placement substantially while retaining count and nominal DPS.
+
+This follow-up adds visual semantics to the previous study. It does not replace conservative sphere bounds with a claim of exact mesh collision, and it does not turn a proposed coordinate into tested in-game behavior. No game process was launched for this inspection.''']
+sections += ['''## Validation of this follow-up
+
+Source SHA-256 values for the base/DLC ship bundles, weapon bundle and installed game assembly matched the prior measurement snapshot. Checks passed for 28-appearance coverage; the 0→8 m ordinary and 0→4 m all-node minimal-repair deltas; the optional 41.000 m ordinary spacing; left/right coordinate symmetry; and the mesh identity/height variation of all tested 4 m support rings. All report links and Markdown tables passed the existing report-integrity check. The report retains 28 referenced figures; intermediate and duplicate renders were removed through an exact hashed manifest.
+
+These checks validate the saved analysis and proposal arithmetic. The proposed runtime hook, edited assets, complete fitted-weapon intersections and in-game behavior have not been implemented or tested.''']
+(OUT/'visual-inspection-and-mount-repair.md').write_text('\n\n'.join(sections)+'\n',encoding='utf-8')
+
+# Retain the temporary procedure as documentation, without installing new runtime tooling.
+recipe=['Visual-study analysis recipe (research archive; not a gameplay patch).',
+        'Dependencies: existing Python 3.12 + UnityPy/NumPy/Pillow; Blender 2.79 CPU background renderer.',
+        'Commands: export_geometry.py; render_hulls.py; render_hulls.py -- --details; surface_probe.py; export_materials.py; render_hulls.py -- --details --textured AlienMothership; annotate.py; proposal_evidence.py; write_report.py.',
+        'Run Python scripts from repository root. Blender invocation: blender.exe --background --factory-startup -t 8 --python SCRIPT -- OPTIONS. Temporary artifacts use .tmp/turret-visual; retained outputs use docs/ship-balance-research/turret-clearance.']
+for name in ['export_geometry.py','render_hulls.py','surface_probe.py','export_materials.py','inspect_materials.py','annotate.py','proposal_evidence.py','write_report.py']:
+ recipe.extend(['\n===== '+name+' =====\n',(TMP/name).read_text(encoding='utf-8')])
+(OUT/'visual-analysis-recipe.txt').write_text('\n'.join(recipe),encoding='utf-8')

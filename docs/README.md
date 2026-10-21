@@ -146,6 +146,14 @@ when prose and runtime behavior disagree.
   [hull graphical-variant and utility-slot report](ship-balance-research/hull-utility-slot-volume-report.md)
   inventories all installed human and alien appearances and separates the main
   hull art envelope from named reactor/radiator and engine geometry.
+- [Turret clearance and firepower audit](ship-balance-research/turret-clearance/README.md)
+  inventories 64 hull appearances and 147 weapons, separates preview/combat
+  scaling, tests multiple padding thresholds, catalogs extra mount nodes,
+  and quantifies class DPS deltas. These fitting scenarios are research only.
+  The [visual follow-up and mount-repair proposal](ship-balance-research/turret-clearance/visual-inspection-and-mount-repair.md)
+  explains crowded foundations across 28 appearances and identifies the
+  Mothership's mirrored repair surface, exact Transform correction, and an
+  optional symmetric rim-battery layout.
 
 ## Maintenance rule
 

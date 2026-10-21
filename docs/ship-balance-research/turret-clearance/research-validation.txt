@@ -1,0 +1,16 @@
+test_capital_current_baseline_not_double_counted (__main__.EvidenceChecks.test_capital_current_baseline_not_double_counted) ... ok
+test_installed_inventory_coverage (__main__.EvidenceChecks.test_installed_inventory_coverage) ... ok
+test_kinetic_energy_and_salvo_cadence (__main__.EvidenceChecks.test_kinetic_energy_and_salvo_cadence) ... ok
+test_native_maps_positions_and_scope (__main__.EvidenceChecks.test_native_maps_positions_and_scope) ... ok
+test_packing_with_known_adjacency_and_mixed_sizes (__main__.EvidenceChecks.test_packing_with_known_adjacency_and_mixed_sizes) ... ok
+test_padding_monotonicity_and_extra_counts (__main__.EvidenceChecks.test_padding_monotonicity_and_extra_counts) ... ok
+test_report_links_and_tables (__main__.EvidenceChecks.test_report_links_and_tables) ... ok
+test_source_hashes (__main__.EvidenceChecks.test_source_hashes) ... ok
+test_stock_hull_grid_same_as_current (__main__.EvidenceChecks.test_stock_hull_grid_same_as_current) ... ok
+test_bound_contains_rotated_nonuniform_meshes (__main__.GeometryChecks.test_bound_contains_rotated_nonuniform_meshes) ... ok
+test_extra_subset_exact_against_exhaustive_search (__main__.GeometryChecks.test_extra_subset_exact_against_exhaustive_search) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 2.307s
+
+OK

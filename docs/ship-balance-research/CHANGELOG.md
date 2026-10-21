@@ -3,6 +3,38 @@
 This is a decision log for the proposed ship rebalance. Entries here describe
 the balance decisions as well as their implementation status.
 
+## 2026-10-20
+
+### Visual follow-up: crowded foundations and Mothership repair proposal
+
+- Visually inspected 28 appearances using original decoded hull geometry and
+  authored node overlays, plus the Mothership's original albedo on the affected
+  surfaces. Distinguished real paired/triple foundations from exact duplicates.
+- Proposed correcting only ventral Mothership index 18 to the existing mirrored
+  rim surface, with no hull-mesh or bone edit. The hull uses static meshes and
+  the affected object is a Transform, not a skinned bone.
+- Evaluated a separate symmetric eight-node redistribution onto the rim,
+  retaining 16 logical guns and reaching 41.000 m minimum center spacing. A
+  tempting connector location was rejected after surface probing.
+- Retained a [new illustrated report](turret-clearance/visual-inspection-and-mount-repair.md),
+  numerical evidence and the analysis recipe. This follow-up changed documentation
+  only; no asset/runtime edits, build, deployment or in-game validation.
+
+### Turret art, node clearance and hypothetical firepower
+
+- Added offline extraction and reporting tools covering all 28 installed hull
+  classes, 64 appearances, 147 hull-weapon templates and 35 weapon resources.
+- Recorded separate designer/combat scales, conservative rotation envelopes,
+  seven padding policies, every physical node, pairwise distance matrices,
+  exact extra-node subsets and stock/current/hypothetical class DPS tables.
+- Identified extra controller indices on AlienDestroyer, AlienDreadnought and
+  AlienMothership, plus two distinct Mothership ventral controllers with the
+  same origin. No mount relocation or fitting/balance change was implemented.
+- Eleven research checks passed. The normal deployment workflow passed 39
+  validators and 1,204 formula assertions, then hash-verified 47 deployed files.
+  Manual rendering checks remain pending. See the [audit](turret-clearance/README.md)
+  and [validation record](turret-clearance/validation.md).
+
 ## 2026-09-27
 
 ### 0.10.1: open-cycle fusion drives and human reactor specific mass
