@@ -157,6 +157,12 @@ if ([string]::IsNullOrWhiteSpace($powershellExecutable)) {
     throw 'No usable PowerShell executable was found for isolated validators.'
 }
 $patchValidationJobs = @(
+    New-ValidationJob 'Canonical gunpowder art' $powershellExecutable @(
+        '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File',
+        (Join-Path $scriptDirectory 'validate-gunpowder-art.ps1'),
+        '-TargetManagedDir', $resolvedManagedDir,
+        '-ModAssemblyPath', $assemblyPath,
+        '-RepositoryRoot', $repositoryRoot)
     New-ValidationJob 'Capital heavy mounts' $powershellExecutable @(
         '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File',
         (Join-Path $scriptDirectory 'validate-capital-mounts.ps1'),
@@ -317,6 +323,7 @@ if ($LASTEXITCODE -ne 0) {
 $weights = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\Config\economy-tech-weights.csv'
 $hullVolumes = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\Config\hull-variant-main-volumes.csv'
 $hullDriveScales = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\Config\hull-variant-drive-scales.csv'
+$gunpowderArtProfiles = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\Config\gunpowder-art-profiles.eeo'
 $defaultSettings = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\Settings.xml'
 $missionOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIMissionTemplate.json'
 $startOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIStartTimeTemplate.json'
@@ -577,7 +584,7 @@ $manifest = Get-Content -LiteralPath $manifestPath -Raw | ConvertFrom-Json
 if ($manifest.GameVersion -ne '1.0.53') {
     throw "ModInfo.json targets '$($manifest.GameVersion)' instead of TI 1.0.53."
 }
-if ($manifest.Version -ne '0.10.4') {
+if ($manifest.Version -ne '0.10.8') {
     throw "ModInfo.json version '$($manifest.Version)' does not match this release."
 }
 if ($manifest.AssemblyName -ne 'Assembly/TIEconomyMod.dll') {
@@ -1137,8 +1144,8 @@ if ($assemblyFile.LastWriteTime -lt $buildStarted.AddSeconds(-2)) {
     throw 'Packaged DLL predates this verification build.'
 }
 $assemblyVersion = [Reflection.AssemblyName]::GetAssemblyName($assemblyPath).Version.ToString()
-if ($assemblyVersion -ne '0.10.4.0') {
-    throw "Assembly version '$assemblyVersion' does not match release 0.10.4."
+if ($assemblyVersion -ne '0.10.8.0') {
+    throw "Assembly version '$assemblyVersion' does not match release 0.10.8."
 }
 $assemblyHash = (Get-FileHash -LiteralPath $assemblyPath -Algorithm SHA256).Hash
 
@@ -1199,6 +1206,7 @@ Copy-Item -LiteralPath $assemblyPath -Destination (Join-Path $stagingDirectory '
 Copy-Item -LiteralPath $weights -Destination (Join-Path $stagingDirectory 'Config')
 Copy-Item -LiteralPath $hullVolumes -Destination (Join-Path $stagingDirectory 'Config')
 Copy-Item -LiteralPath $hullDriveScales -Destination (Join-Path $stagingDirectory 'Config')
+Copy-Item -LiteralPath $gunpowderArtProfiles -Destination (Join-Path $stagingDirectory 'Config')
 Copy-Item -LiteralPath $defaultSettings -Destination $stagingDirectory
 Copy-Item -LiteralPath $missionOverrides -Destination $stagingDirectory
 Copy-Item -LiteralPath $startOverrides -Destination $stagingDirectory
@@ -1233,7 +1241,7 @@ if (Test-Path -LiteralPath $imagePath) {
     Copy-Item -LiteralPath $imagePath -Destination $stagingDirectory
 }
 
-$zipPath = Join-Path $artifactDirectory 'TIEconomyMod-0.10.4-ti1.0.53.zip'
+$zipPath = Join-Path $artifactDirectory 'TIEconomyMod-0.10.8-ti1.0.53.zip'
 if (Test-Path -LiteralPath $zipPath) {
     Remove-Item -LiteralPath $zipPath
 }
@@ -1281,6 +1289,7 @@ try {
         }
     }
     $packagedShipFiles = @(
+        'TIEconomyMod/Config/gunpowder-art-profiles.eeo',
         'TIEconomyMod/TIPowerPlantTemplate.json',
         'TIEconomyMod/TIDriveTemplate.json',
         'TIEconomyMod/TIHeatSinkTemplate.json',

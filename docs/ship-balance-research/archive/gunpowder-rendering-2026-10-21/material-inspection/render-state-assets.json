@@ -1,0 +1,97 @@
+[
+  {
+    "material": {
+      "m_Name": "MAT_6-Inch_Cannon",
+      "m_Shader": {
+        "m_FileID": 0,
+        "m_PathID": -4850512016903265157
+      },
+      "m_ShaderKeywords": "_EMISSION _METALLICGLOSSMAP _NORMALMAP",
+      "m_LightmapFlags": 1,
+      "m_EnableInstancingVariants": true,
+      "m_DoubleSidedGI": false,
+      "m_CustomRenderQueue": -1,
+      "stringTagMap": [],
+      "disabledShaderPasses": [],
+      "m_BuildTextureStacks": []
+    },
+    "shader_name": "Standard",
+    "shader_id": -4850512016903265157
+  },
+  {
+    "material": {
+      "m_Name": "MAT_16-Inch_Cannon",
+      "m_Shader": {
+        "m_FileID": 0,
+        "m_PathID": -4850512016903265157
+      },
+      "m_ShaderKeywords": "_EMISSION _METALLICGLOSSMAP _NORMALMAP",
+      "m_LightmapFlags": 1,
+      "m_EnableInstancingVariants": true,
+      "m_DoubleSidedGI": false,
+      "m_CustomRenderQueue": -1,
+      "stringTagMap": [],
+      "disabledShaderPasses": [],
+      "m_BuildTextureStacks": []
+    },
+    "shader_name": "Standard",
+    "shader_id": -4850512016903265157
+  },
+  {
+    "material": {
+      "m_Name": "MAT_base_medium",
+      "m_Shader": {
+        "m_FileID": 0,
+        "m_PathID": -4850512016903265157
+      },
+      "m_ShaderKeywords": "_METALLICGLOSSMAP _NORMALMAP",
+      "m_LightmapFlags": 4,
+      "m_EnableInstancingVariants": true,
+      "m_DoubleSidedGI": false,
+      "m_CustomRenderQueue": -1,
+      "stringTagMap": [],
+      "disabledShaderPasses": [],
+      "m_BuildTextureStacks": []
+    },
+    "shader_name": "Standard",
+    "shader_id": -4850512016903265157
+  },
+  {
+    "material": {
+      "m_Name": "MAT_30mm_Autocannon",
+      "m_Shader": {
+        "m_FileID": 0,
+        "m_PathID": -4850512016903265157
+      },
+      "m_ShaderKeywords": "_EMISSION _METALLICGLOSSMAP _NORMALMAP",
+      "m_LightmapFlags": 1,
+      "m_EnableInstancingVariants": true,
+      "m_DoubleSidedGI": false,
+      "m_CustomRenderQueue": -1,
+      "stringTagMap": [],
+      "disabledShaderPasses": [],
+      "m_BuildTextureStacks": []
+    },
+    "shader_name": "Standard",
+    "shader_id": -4850512016903265157
+  },
+  {
+    "material": {
+      "m_Name": "MAT_12-Inch_Cannon",
+      "m_Shader": {
+        "m_FileID": 0,
+        "m_PathID": -4850512016903265157
+      },
+      "m_ShaderKeywords": "_EMISSION _METALLICGLOSSMAP _NORMALMAP",
+      "m_LightmapFlags": 1,
+      "m_EnableInstancingVariants": true,
+      "m_DoubleSidedGI": false,
+      "m_CustomRenderQueue": -1,
+      "stringTagMap": [],
+      "disabledShaderPasses": [],
+      "m_BuildTextureStacks": []
+    },
+    "shader_name": "Standard",
+    "shader_id": -4850512016903265157
+  }
+]

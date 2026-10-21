@@ -1,0 +1,4 @@
+PASS: gunpowder art schema 1, 8 calibrated profiles, 12 invalid-schema guards, typed round trip, 300 managed lifecycle assertions and unchanged gameplay data.
+PASS: source assembly/bundle hashes match; SetWeapon patch resolves (Unity-only binding: True). Actual scene hierarchy, mesh fingerprints, muzzle placement and visual appearance require the in-game check.
+PASS: actual native recursive JSON predicate excludes private .eeo profiles; reproduced rejection boundary for .json and .json.backup; 25 discovered template files have array roots.
+PASS: six material-layout guard cases, both native repair-cache fields and both gunpowder patch targets validate. Material binding/renderer probes require Unity-host confirmation.

@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-21",
+  "release": "0.10.8",
+  "user_acceptance": "The fix worked.",
+  "observed_mode": {
+    "baked": true,
+    "nonInstanced": false
+  },
+  "observed_mode_source": "accepted-runtime-trace-2026-10-21.txt",
+  "cutout_status": "user-confirmed fixed",
+  "scale_status": "user previously confirmed acceptable",
+  "gpu_level_root_cause": "not proven; successful rendering path is established",
+  "scope_limit": "Not an exhaustive test of all calibers, hull variants, repair sequences or graphics backends.",
+  "dll_sha256": "483727F3FB55435FCBCAED420128176AADC41946C7AA5E311455AD614D377A87",
+  "future_laser_work": "separate phase; no laser implementation in this release"
+}

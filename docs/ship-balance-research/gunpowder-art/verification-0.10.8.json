@@ -1,0 +1,10 @@
+{
+  "release": "0.10.8",
+  "deployed_files": 48,
+  "dll_sha256": "483727F3FB55435FCBCAED420128176AADC41946C7AA5E311455AD614D377A87",
+  "gameplay_files_unchanged": 41,
+  "geometry_coordinate_checks": 864,
+  "manual_result": "pending",
+  "new_commit": false,
+  "laser_changes": false
+}

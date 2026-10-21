@@ -1,5 +1,7 @@
 # Canonical turret scaling plan and projected fitting fallout
 
+**Implementation follow-up:** [user-accepted 0.10.8 applies the gunpowder art portion only](gunpowder-canonical-art-implementation-2026-10-21.md), using mesh-baked dimensions and normalized previews without gameplay/size-tier changes. Magnetic, laser, hull and retier options below remain deferred. The planning snapshot is preserved; its original “no implementation” status describes that earlier planning turn.
+
 2026-10-21. **Planning only. No gameplay, template, mesh, hull-node or runtime
 changes; no build, deployment or commit.** The
 [25 mm proposal and evidence are archived](archive/25mm-autocannon-2026-10-21/README.md)

@@ -1,0 +1,1842 @@
+[
+  {
+    "hull": "Gunship",
+    "appearance": 0,
+    "path": "/Gunship/Small Nose Weapon Base",
+    "mesh": "base_normal",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_normal"
+    ]
+  },
+  {
+    "hull": "Gunship",
+    "appearance": 0,
+    "path": "/Gunship/Small Nose Weapon Base/Small Nose Weapon Weapon",
+    "mesh": "small_laser_cannon",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_cannon"
+    ]
+  },
+  {
+    "hull": "Gunship",
+    "appearance": 1,
+    "path": "/Gunship_1/Small Nose Weapon Base",
+    "mesh": "base_normal",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_normal"
+    ]
+  },
+  {
+    "hull": "Gunship",
+    "appearance": 1,
+    "path": "/Gunship_1/Small Nose Weapon Base/Small Nose Weapon Weapon",
+    "mesh": "small_laser_cannon",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_cannon"
+    ]
+  },
+  {
+    "hull": "Gunship",
+    "appearance": 2,
+    "path": "/Gunship_2/Small Nose Weapon Base",
+    "mesh": "base_normal",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_normal"
+    ]
+  },
+  {
+    "hull": "Gunship",
+    "appearance": 2,
+    "path": "/Gunship_2/Small Nose Weapon Base/Small Nose Weapon Weapon",
+    "mesh": "small_laser_cannon",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_cannon"
+    ]
+  },
+  {
+    "hull": "Gunship",
+    "appearance": 3,
+    "path": "/Gunship_3/Small Nose Weapon Base",
+    "mesh": "base_normal",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_normal"
+    ]
+  },
+  {
+    "hull": "Gunship",
+    "appearance": 3,
+    "path": "/Gunship_3/Small Nose Weapon Base/Small Nose Weapon Weapon",
+    "mesh": "small_laser_cannon",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_cannon"
+    ]
+  },
+  {
+    "hull": "Escort",
+    "appearance": 0,
+    "path": "/Escort/Small Forward Dorsal Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Escort",
+    "appearance": 0,
+    "path": "/Escort/Small Forward Dorsal Hull Weapon Base/Forward Dorsal Hull Weapon",
+    "mesh": "small_laser_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_battery"
+    ]
+  },
+  {
+    "hull": "Escort",
+    "appearance": 0,
+    "path": "/Escort/Small Rear Dorsal Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Escort",
+    "appearance": 0,
+    "path": "/Escort/Small Rear Dorsal Hull Weapon Base/Rear Dorsal Hull Weapon",
+    "mesh": "small_coilgun_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_coilgun_battery"
+    ]
+  },
+  {
+    "hull": "Escort",
+    "appearance": 0,
+    "path": "/Escort/Small Forward Ventral Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Escort",
+    "appearance": 0,
+    "path": "/Escort/Small Forward Ventral Hull Weapon Base/Forward Ventral Hull Weapon",
+    "mesh": "small_laser_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_battery"
+    ]
+  },
+  {
+    "hull": "Escort",
+    "appearance": 0,
+    "path": "/Escort/Small Rear Ventral Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Escort",
+    "appearance": 0,
+    "path": "/Escort/Small Rear Ventral Hull Weapon Base/Rear Ventral Hull Weapon",
+    "mesh": "small_coilgun_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_coilgun_battery"
+    ]
+  },
+  {
+    "hull": "Escort",
+    "appearance": 1,
+    "path": "/Escort_1/Small Forward Dorsal Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Escort",
+    "appearance": 1,
+    "path": "/Escort_1/Small Forward Dorsal Hull Weapon Base/Forward Dorsal Hull Weapon",
+    "mesh": "small_laser_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_battery"
+    ]
+  },
+  {
+    "hull": "Escort",
+    "appearance": 1,
+    "path": "/Escort_1/Small Rear Dorsal Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Escort",
+    "appearance": 1,
+    "path": "/Escort_1/Small Rear Dorsal Hull Weapon Base/Rear Dorsal Hull Weapon",
+    "mesh": "small_coilgun_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_coilgun_battery"
+    ]
+  },
+  {
+    "hull": "Escort",
+    "appearance": 1,
+    "path": "/Escort_1/Small Forward Ventral Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Escort",
+    "appearance": 1,
+    "path": "/Escort_1/Small Forward Ventral Hull Weapon Base/Forward Ventral Hull Weapon",
+    "mesh": "small_laser_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_battery"
+    ]
+  },
+  {
+    "hull": "Escort",
+    "appearance": 1,
+    "path": "/Escort_1/Small Rear Ventral Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Escort",
+    "appearance": 1,
+    "path": "/Escort_1/Small Rear Ventral Hull Weapon Base/Rear Ventral Hull Weapon",
+    "mesh": "small_coilgun_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_coilgun_battery"
+    ]
+  },
+  {
+    "hull": "Escort",
+    "appearance": 2,
+    "path": "/Escort_2/Small Forward Dorsal Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Escort",
+    "appearance": 2,
+    "path": "/Escort_2/Small Forward Dorsal Hull Weapon Base/Forward Dorsal Hull Weapon",
+    "mesh": "small_laser_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_battery"
+    ]
+  },
+  {
+    "hull": "Escort",
+    "appearance": 2,
+    "path": "/Escort_2/Small Rear Dorsal Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Escort",
+    "appearance": 2,
+    "path": "/Escort_2/Small Rear Dorsal Hull Weapon Base/Rear Dorsal Hull Weapon",
+    "mesh": "small_coilgun_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_coilgun_battery"
+    ]
+  },
+  {
+    "hull": "Escort",
+    "appearance": 2,
+    "path": "/Escort_2/Small Forward Ventral Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Escort",
+    "appearance": 2,
+    "path": "/Escort_2/Small Forward Ventral Hull Weapon Base/Forward Ventral Hull Weapon",
+    "mesh": "small_laser_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_battery"
+    ]
+  },
+  {
+    "hull": "Escort",
+    "appearance": 2,
+    "path": "/Escort_2/Small Rear Ventral Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Escort",
+    "appearance": 2,
+    "path": "/Escort_2/Small Rear Ventral Hull Weapon Base/Rear Ventral Hull Weapon",
+    "mesh": "small_coilgun_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_coilgun_battery"
+    ]
+  },
+  {
+    "hull": "Escort",
+    "appearance": 3,
+    "path": "/Escort_3/Small Forward Dorsal Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Escort",
+    "appearance": 3,
+    "path": "/Escort_3/Small Forward Dorsal Hull Weapon Base/Forward Dorsal Hull Weapon",
+    "mesh": "small_laser_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_battery"
+    ]
+  },
+  {
+    "hull": "Escort",
+    "appearance": 3,
+    "path": "/Escort_3/Small Rear Dorsal Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Escort",
+    "appearance": 3,
+    "path": "/Escort_3/Small Rear Dorsal Hull Weapon Base/Rear Dorsal Hull Weapon",
+    "mesh": "small_coilgun_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_coilgun_battery"
+    ]
+  },
+  {
+    "hull": "Escort",
+    "appearance": 3,
+    "path": "/Escort_3/Small Forward Ventral Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Escort",
+    "appearance": 3,
+    "path": "/Escort_3/Small Forward Ventral Hull Weapon Base/Forward Ventral Hull Weapon",
+    "mesh": "small_laser_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_battery"
+    ]
+  },
+  {
+    "hull": "Escort",
+    "appearance": 3,
+    "path": "/Escort_3/Small Rear Ventral Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Escort",
+    "appearance": 3,
+    "path": "/Escort_3/Small Rear Ventral Hull Weapon Base/Rear Ventral Hull Weapon",
+    "mesh": "small_coilgun_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_coilgun_battery"
+    ]
+  },
+  {
+    "hull": "Corvette",
+    "appearance": 0,
+    "path": "/Corvette/Small Nose Weapon Base",
+    "mesh": "base_normal",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_normal"
+    ]
+  },
+  {
+    "hull": "Corvette",
+    "appearance": 0,
+    "path": "/Corvette/Small Nose Weapon Base/Small Nose Weapon Weapon",
+    "mesh": "small_laser_cannon",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_cannon"
+    ]
+  },
+  {
+    "hull": "Corvette",
+    "appearance": 0,
+    "path": "/Corvette/Small Forward Dorsal Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Corvette",
+    "appearance": 0,
+    "path": "/Corvette/Small Forward Dorsal Hull Weapon Base/Forward Dorsal Hull Weapon",
+    "mesh": "small_laser_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_battery"
+    ]
+  },
+  {
+    "hull": "Corvette",
+    "appearance": 0,
+    "path": "/Corvette/Small Forward Ventral Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Corvette",
+    "appearance": 0,
+    "path": "/Corvette/Small Forward Ventral Hull Weapon Base/Forward Ventral Hull Weapon",
+    "mesh": "small_laser_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_battery"
+    ]
+  },
+  {
+    "hull": "Corvette",
+    "appearance": 1,
+    "path": "/Corvette_1/Small Nose Weapon Base",
+    "mesh": "base_normal",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_normal"
+    ]
+  },
+  {
+    "hull": "Corvette",
+    "appearance": 1,
+    "path": "/Corvette_1/Small Nose Weapon Base/Small Nose Weapon Weapon",
+    "mesh": "small_laser_cannon",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_cannon"
+    ]
+  },
+  {
+    "hull": "Corvette",
+    "appearance": 1,
+    "path": "/Corvette_1/Small Forward Dorsal Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Corvette",
+    "appearance": 1,
+    "path": "/Corvette_1/Small Forward Dorsal Hull Weapon Base/Forward Dorsal Hull Weapon",
+    "mesh": "small_laser_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_battery"
+    ]
+  },
+  {
+    "hull": "Corvette",
+    "appearance": 1,
+    "path": "/Corvette_1/Small Forward Ventral Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Corvette",
+    "appearance": 1,
+    "path": "/Corvette_1/Small Forward Ventral Hull Weapon Base/Forward Ventral Hull Weapon",
+    "mesh": "small_laser_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_battery"
+    ]
+  },
+  {
+    "hull": "Corvette",
+    "appearance": 2,
+    "path": "/Corvette_2/Small Nose Weapon Base",
+    "mesh": "base_normal",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_normal"
+    ]
+  },
+  {
+    "hull": "Corvette",
+    "appearance": 2,
+    "path": "/Corvette_2/Small Nose Weapon Base/Small Nose Weapon Weapon",
+    "mesh": "small_laser_cannon",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_cannon"
+    ]
+  },
+  {
+    "hull": "Corvette",
+    "appearance": 2,
+    "path": "/Corvette_2/Small Forward Dorsal Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Corvette",
+    "appearance": 2,
+    "path": "/Corvette_2/Small Forward Dorsal Hull Weapon Base/Forward Dorsal Hull Weapon",
+    "mesh": "small_laser_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_battery"
+    ]
+  },
+  {
+    "hull": "Corvette",
+    "appearance": 2,
+    "path": "/Corvette_2/Small Forward Ventral Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Corvette",
+    "appearance": 2,
+    "path": "/Corvette_2/Small Forward Ventral Hull Weapon Base/Forward Ventral Hull Weapon",
+    "mesh": "small_laser_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_battery"
+    ]
+  },
+  {
+    "hull": "Corvette",
+    "appearance": 3,
+    "path": "/Corvette_3/Small Nose Weapon Base",
+    "mesh": "base_normal",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_normal"
+    ]
+  },
+  {
+    "hull": "Corvette",
+    "appearance": 3,
+    "path": "/Corvette_3/Small Nose Weapon Base/Small Nose Weapon Weapon",
+    "mesh": "small_laser_cannon",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_cannon"
+    ]
+  },
+  {
+    "hull": "Corvette",
+    "appearance": 3,
+    "path": "/Corvette_3/Small Forward Dorsal Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Corvette",
+    "appearance": 3,
+    "path": "/Corvette_3/Small Forward Dorsal Hull Weapon Base/Forward Dorsal Hull Weapon",
+    "mesh": "small_laser_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_battery"
+    ]
+  },
+  {
+    "hull": "Corvette",
+    "appearance": 3,
+    "path": "/Corvette_3/Small Forward Ventral Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Corvette",
+    "appearance": 3,
+    "path": "/Corvette_3/Small Forward Ventral Hull Weapon Base/Forward Ventral Hull Weapon",
+    "mesh": "small_laser_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_battery"
+    ]
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 0,
+    "path": "/Frigate/Small Nose Weapon Base",
+    "mesh": "base_normal",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_normal"
+    ]
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 0,
+    "path": "/Frigate/Small Nose Weapon Base/Small Nose Weapon Weapon",
+    "mesh": "small_laser_cannon",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_cannon"
+    ]
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 0,
+    "path": "/Frigate/Small Forward Dorsal Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 0,
+    "path": "/Frigate/Small Forward Dorsal Hull Weapon Base/Forward Dorsal Hull Weapon",
+    "mesh": "small_laser_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_battery"
+    ]
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 0,
+    "path": "/Frigate/Small Rear Dorsal Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 0,
+    "path": "/Frigate/Small Rear Dorsal Hull Weapon Base/Rear Dorsal Hull Weapon Weapon",
+    "mesh": "small_coilgun_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_coilgun_battery"
+    ]
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 0,
+    "path": "/Frigate/Small Forward Ventral Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 0,
+    "path": "/Frigate/Small Forward Ventral Hull Weapon Base/Forward Ventral Hull Weapon",
+    "mesh": "small_laser_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_battery"
+    ]
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 0,
+    "path": "/Frigate/Small Rear Ventral Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 0,
+    "path": "/Frigate/Small Rear Ventral Hull Weapon Base/Rear Ventral Hull Weapon Weapon",
+    "mesh": "small_coilgun_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_coilgun_battery"
+    ]
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 1,
+    "path": "/Frigate_1/Small Nose Weapon Base",
+    "mesh": "base_normal",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_normal"
+    ]
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 1,
+    "path": "/Frigate_1/Small Nose Weapon Base/Small Nose Weapon Weapon",
+    "mesh": "small_laser_cannon",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_cannon"
+    ]
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 1,
+    "path": "/Frigate_1/Small Forward Dorsal Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 1,
+    "path": "/Frigate_1/Small Forward Dorsal Hull Weapon Base/Forward Dorsal Hull Weapon",
+    "mesh": "small_laser_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_battery"
+    ]
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 1,
+    "path": "/Frigate_1/Small Rear Dorsal Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 1,
+    "path": "/Frigate_1/Small Rear Dorsal Hull Weapon Base/Rear Dorsal Hull Weapon Weapon",
+    "mesh": "small_coilgun_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_coilgun_battery"
+    ]
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 1,
+    "path": "/Frigate_1/Small Forward Ventral Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 1,
+    "path": "/Frigate_1/Small Forward Ventral Hull Weapon Base/Forward Ventral Hull Weapon",
+    "mesh": "small_laser_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_battery"
+    ]
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 1,
+    "path": "/Frigate_1/Small Rear Ventral Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 1,
+    "path": "/Frigate_1/Small Rear Ventral Hull Weapon Base/Rear Ventral Hull Weapon Weapon",
+    "mesh": "small_coilgun_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_coilgun_battery"
+    ]
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 2,
+    "path": "/Frigate_2/Small Nose Weapon Base",
+    "mesh": "base_normal",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_normal"
+    ]
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 2,
+    "path": "/Frigate_2/Small Nose Weapon Base/Small Nose Weapon Weapon",
+    "mesh": "small_laser_cannon",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_cannon"
+    ]
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 2,
+    "path": "/Frigate_2/Small Forward Dorsal Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 2,
+    "path": "/Frigate_2/Small Forward Dorsal Hull Weapon Base/Forward Dorsal Hull Weapon",
+    "mesh": "small_laser_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_battery"
+    ]
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 2,
+    "path": "/Frigate_2/Small Rear Dorsal Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 2,
+    "path": "/Frigate_2/Small Rear Dorsal Hull Weapon Base/Rear Dorsal Hull Weapon Weapon",
+    "mesh": "small_coilgun_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_coilgun_battery"
+    ]
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 2,
+    "path": "/Frigate_2/Small Forward Ventral Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 2,
+    "path": "/Frigate_2/Small Forward Ventral Hull Weapon Base/Forward Ventral Hull Weapon",
+    "mesh": "small_laser_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_battery"
+    ]
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 2,
+    "path": "/Frigate_2/Small Rear Ventral Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 2,
+    "path": "/Frigate_2/Small Rear Ventral Hull Weapon Base/Rear Ventral Hull Weapon Weapon",
+    "mesh": "small_coilgun_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_coilgun_battery"
+    ]
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 3,
+    "path": "/Frigate_3/Small Nose Weapon Base",
+    "mesh": "base_normal",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_normal"
+    ]
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 3,
+    "path": "/Frigate_3/Small Nose Weapon Base/Small Nose Weapon Weapon",
+    "mesh": "small_laser_cannon",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_cannon"
+    ]
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 3,
+    "path": "/Frigate_3/Small Forward Dorsal Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 3,
+    "path": "/Frigate_3/Small Forward Dorsal Hull Weapon Base/Forward Dorsal Hull Weapon",
+    "mesh": "small_laser_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_battery"
+    ]
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 3,
+    "path": "/Frigate_3/Small Rear Dorsal Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 3,
+    "path": "/Frigate_3/Small Rear Dorsal Hull Weapon Base/Rear Dorsal Hull Weapon Weapon",
+    "mesh": "small_coilgun_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_coilgun_battery"
+    ]
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 3,
+    "path": "/Frigate_3/Small Forward Ventral Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 3,
+    "path": "/Frigate_3/Small Forward Ventral Hull Weapon Base/Forward Ventral Hull Weapon",
+    "mesh": "small_laser_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_battery"
+    ]
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 3,
+    "path": "/Frigate_3/Small Rear Ventral Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 3,
+    "path": "/Frigate_3/Small Rear Ventral Hull Weapon Base/Rear Ventral Hull Weapon Weapon",
+    "mesh": "small_coilgun_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_coilgun_battery"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 0,
+    "path": "/Destroyer/Small Nose Weapon Base Left",
+    "mesh": "base_normal",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_normal"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 0,
+    "path": "/Destroyer/Small Nose Weapon Base Left/Small Nose Weapon Weapon",
+    "mesh": "small_laser_cannon",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_cannon"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 0,
+    "path": "/Destroyer/Small Nose Weapon Base Right",
+    "mesh": "base_normal",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_normal"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 0,
+    "path": "/Destroyer/Small Nose Weapon Base Right/Small Nose Weapon Weapon",
+    "mesh": "small_laser_cannon",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_cannon"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 0,
+    "path": "/Destroyer/Small Rear Dorsal Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 0,
+    "path": "/Destroyer/Small Rear Dorsal Hull Weapon Base/Rear Dorsal Hull Weapon Weapon",
+    "mesh": "small_coilgun_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_coilgun_battery"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 0,
+    "path": "/Destroyer/Center Mount Nose Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 0,
+    "path": "/Destroyer/Center Mount Nose Weapon Base/Center Mount Nose Weapon Gun",
+    "mesh": "16-Inch_Cannon",
+    "submeshes": 1,
+    "materials": [
+      "MAT_16-Inch_Cannon"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 0,
+    "path": "/Destroyer/Small Forward Dorsal Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 0,
+    "path": "/Destroyer/Small Forward Dorsal Hull Weapon Base/Forward Dorsal Hull Weapon",
+    "mesh": "small_laser_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_battery"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 0,
+    "path": "/Destroyer/Small Forward Ventral Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 0,
+    "path": "/Destroyer/Small Forward Ventral Hull Weapon Base/Forward Ventral Hull Weapon",
+    "mesh": "small_laser_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_battery"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 0,
+    "path": "/Destroyer/Small Rear Ventral Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 0,
+    "path": "/Destroyer/Small Rear Ventral Hull Weapon Base/Rear Ventral Hull Weapon Weapon",
+    "mesh": "small_coilgun_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_coilgun_battery"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 1,
+    "path": "/Destroyer_1/Small Nose Weapon Base Left",
+    "mesh": "base_normal",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_normal"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 1,
+    "path": "/Destroyer_1/Small Nose Weapon Base Left/Small Nose Weapon Weapon",
+    "mesh": "small_laser_cannon",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_cannon"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 1,
+    "path": "/Destroyer_1/Small Nose Weapon Base Right",
+    "mesh": "base_normal",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_normal"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 1,
+    "path": "/Destroyer_1/Small Nose Weapon Base Right/Small Nose Weapon Weapon",
+    "mesh": "small_laser_cannon",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_cannon"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 1,
+    "path": "/Destroyer_1/Small Rear Dorsal Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 1,
+    "path": "/Destroyer_1/Small Rear Dorsal Hull Weapon Base/Rear Dorsal Hull Weapon Weapon",
+    "mesh": "small_coilgun_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_coilgun_battery"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 1,
+    "path": "/Destroyer_1/Center Mount Nose Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 1,
+    "path": "/Destroyer_1/Center Mount Nose Weapon Base/Center Mount Nose Weapon Gun",
+    "mesh": "16-Inch_Cannon",
+    "submeshes": 1,
+    "materials": [
+      "MAT_16-Inch_Cannon"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 1,
+    "path": "/Destroyer_1/Small Forward Dorsal Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 1,
+    "path": "/Destroyer_1/Small Forward Dorsal Hull Weapon Base/Forward Dorsal Hull Weapon",
+    "mesh": "small_laser_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_battery"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 1,
+    "path": "/Destroyer_1/Small Forward Ventral Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 1,
+    "path": "/Destroyer_1/Small Forward Ventral Hull Weapon Base/Forward Ventral Hull Weapon",
+    "mesh": "small_laser_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_battery"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 1,
+    "path": "/Destroyer_1/Small Rear Ventral Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 1,
+    "path": "/Destroyer_1/Small Rear Ventral Hull Weapon Base/Rear Ventral Hull Weapon Weapon",
+    "mesh": "small_coilgun_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_coilgun_battery"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 2,
+    "path": "/Destroyer_2/Small Nose Weapon Base Left",
+    "mesh": "base_normal",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_normal"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 2,
+    "path": "/Destroyer_2/Small Nose Weapon Base Left/Small Nose Weapon Weapon",
+    "mesh": "small_laser_cannon",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_cannon"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 2,
+    "path": "/Destroyer_2/Small Nose Weapon Base Right",
+    "mesh": "base_normal",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_normal"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 2,
+    "path": "/Destroyer_2/Small Nose Weapon Base Right/Small Nose Weapon Weapon",
+    "mesh": "small_laser_cannon",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_cannon"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 2,
+    "path": "/Destroyer_2/Small Rear Dorsal Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 2,
+    "path": "/Destroyer_2/Small Rear Dorsal Hull Weapon Base/Rear Dorsal Hull Weapon Weapon",
+    "mesh": "small_coilgun_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_coilgun_battery"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 2,
+    "path": "/Destroyer_2/Center Mount Nose Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 2,
+    "path": "/Destroyer_2/Center Mount Nose Weapon Base/Center Mount Nose Weapon Gun",
+    "mesh": "16-Inch_Cannon",
+    "submeshes": 1,
+    "materials": [
+      "MAT_16-Inch_Cannon"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 2,
+    "path": "/Destroyer_2/Small Forward Dorsal Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 2,
+    "path": "/Destroyer_2/Small Forward Dorsal Hull Weapon Base/Forward Dorsal Hull Weapon",
+    "mesh": "small_laser_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_battery"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 2,
+    "path": "/Destroyer_2/Small Forward Ventral Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 2,
+    "path": "/Destroyer_2/Small Forward Ventral Hull Weapon Base/Forward Ventral Hull Weapon",
+    "mesh": "small_laser_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_battery"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 2,
+    "path": "/Destroyer_2/Small Rear Ventral Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 2,
+    "path": "/Destroyer_2/Small Rear Ventral Hull Weapon Base/Rear Ventral Hull Weapon Weapon",
+    "mesh": "small_coilgun_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_coilgun_battery"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 3,
+    "path": "/Destroyer_3/Small Nose Weapon Base Left",
+    "mesh": "base_normal",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_normal"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 3,
+    "path": "/Destroyer_3/Small Nose Weapon Base Left/Small Nose Weapon Weapon",
+    "mesh": "small_laser_cannon",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_cannon"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 3,
+    "path": "/Destroyer_3/Small Nose Weapon Base Right",
+    "mesh": "base_normal",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_normal"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 3,
+    "path": "/Destroyer_3/Small Nose Weapon Base Right/Small Nose Weapon Weapon",
+    "mesh": "small_laser_cannon",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_cannon"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 3,
+    "path": "/Destroyer_3/Small Rear Dorsal Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 3,
+    "path": "/Destroyer_3/Small Rear Dorsal Hull Weapon Base/Rear Dorsal Hull Weapon Weapon",
+    "mesh": "small_coilgun_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_coilgun_battery"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 3,
+    "path": "/Destroyer_3/Center Mount Nose Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 3,
+    "path": "/Destroyer_3/Center Mount Nose Weapon Base/Center Mount Nose Weapon Gun",
+    "mesh": "16-Inch_Cannon",
+    "submeshes": 1,
+    "materials": [
+      "MAT_16-Inch_Cannon"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 3,
+    "path": "/Destroyer_3/Small Forward Dorsal Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 3,
+    "path": "/Destroyer_3/Small Forward Dorsal Hull Weapon Base/Forward Dorsal Hull Weapon",
+    "mesh": "small_laser_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_battery"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 3,
+    "path": "/Destroyer_3/Small Forward Ventral Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 3,
+    "path": "/Destroyer_3/Small Forward Ventral Hull Weapon Base/Forward Ventral Hull Weapon",
+    "mesh": "small_laser_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_battery"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 3,
+    "path": "/Destroyer_3/Small Rear Ventral Hull Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 3,
+    "path": "/Destroyer_3/Small Rear Ventral Hull Weapon Base/Rear Ventral Hull Weapon Weapon",
+    "mesh": "small_coilgun_battery",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_coilgun_battery"
+    ]
+  },
+  {
+    "hull": "Battleship",
+    "appearance": 0,
+    "path": "/Battleship/Center Mount Nose Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Battleship",
+    "appearance": 0,
+    "path": "/Battleship/Center Mount Nose Weapon Base/Center Mount Nose Weapon Gun",
+    "mesh": "16-Inch_Cannon",
+    "submeshes": 1,
+    "materials": [
+      "MAT_16-Inch_Cannon"
+    ]
+  },
+  {
+    "hull": "Battleship",
+    "appearance": 0,
+    "path": "/Battleship/Small Nose Weapon LR",
+    "mesh": "base_normal",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_normal"
+    ]
+  },
+  {
+    "hull": "Battleship",
+    "appearance": 0,
+    "path": "/Battleship/Small Nose Weapon LR/Small Nose Weapon Weapon",
+    "mesh": "small_laser_cannon",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_cannon"
+    ]
+  },
+  {
+    "hull": "Battleship",
+    "appearance": 0,
+    "path": "/Battleship/Small Nose Weapon LL",
+    "mesh": "base_normal",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_normal"
+    ]
+  },
+  {
+    "hull": "Battleship",
+    "appearance": 0,
+    "path": "/Battleship/Small Nose Weapon LL/Small Nose Weapon Weapon",
+    "mesh": "small_laser_cannon",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_cannon"
+    ]
+  },
+  {
+    "hull": "Battleship",
+    "appearance": 1,
+    "path": "/Battleship_1/Center Mount Nose Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Battleship",
+    "appearance": 1,
+    "path": "/Battleship_1/Center Mount Nose Weapon Base/Center Mount Nose Weapon Gun",
+    "mesh": "16-Inch_Cannon",
+    "submeshes": 1,
+    "materials": [
+      "MAT_16-Inch_Cannon"
+    ]
+  },
+  {
+    "hull": "Battleship",
+    "appearance": 1,
+    "path": "/Battleship_1/Small Nose Weapon TC",
+    "mesh": "base_normal",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_normal"
+    ]
+  },
+  {
+    "hull": "Battleship",
+    "appearance": 1,
+    "path": "/Battleship_1/Small Nose Weapon TC/Small Nose Weapon Weapon",
+    "mesh": "small_laser_cannon",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_cannon"
+    ]
+  },
+  {
+    "hull": "Battleship",
+    "appearance": 1,
+    "path": "/Battleship_1/Small Nose Weapon BC",
+    "mesh": "base_normal",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_normal"
+    ]
+  },
+  {
+    "hull": "Battleship",
+    "appearance": 1,
+    "path": "/Battleship_1/Small Nose Weapon BC/Small Nose Weapon Weapon",
+    "mesh": "small_laser_cannon",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_cannon"
+    ]
+  },
+  {
+    "hull": "Battleship",
+    "appearance": 2,
+    "path": "/Battleship_2/Center Mount Nose Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Battleship",
+    "appearance": 2,
+    "path": "/Battleship_2/Center Mount Nose Weapon Base/Center Mount Nose Weapon Gun",
+    "mesh": "16-Inch_Cannon",
+    "submeshes": 1,
+    "materials": [
+      "MAT_16-Inch_Cannon"
+    ]
+  },
+  {
+    "hull": "Battleship",
+    "appearance": 2,
+    "path": "/Battleship_2/Small Nose Weapon TC",
+    "mesh": "base_normal",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_normal"
+    ]
+  },
+  {
+    "hull": "Battleship",
+    "appearance": 2,
+    "path": "/Battleship_2/Small Nose Weapon TC/Small Nose Weapon Weapon",
+    "mesh": "small_laser_cannon",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_cannon"
+    ]
+  },
+  {
+    "hull": "Battleship",
+    "appearance": 2,
+    "path": "/Battleship_2/Small Nose Weapon BC",
+    "mesh": "base_normal",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_normal"
+    ]
+  },
+  {
+    "hull": "Battleship",
+    "appearance": 2,
+    "path": "/Battleship_2/Small Nose Weapon BC/Small Nose Weapon Weapon",
+    "mesh": "small_laser_cannon",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_cannon"
+    ]
+  },
+  {
+    "hull": "Battleship",
+    "appearance": 3,
+    "path": "/Battleship_3/Center Mount Nose Weapon Base",
+    "mesh": "base_medium",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_medium"
+    ]
+  },
+  {
+    "hull": "Battleship",
+    "appearance": 3,
+    "path": "/Battleship_3/Center Mount Nose Weapon Base/Center Mount Nose Weapon Gun",
+    "mesh": "16-Inch_Cannon",
+    "submeshes": 1,
+    "materials": [
+      "MAT_16-Inch_Cannon"
+    ]
+  },
+  {
+    "hull": "Battleship",
+    "appearance": 3,
+    "path": "/Battleship_3/Small Nose Weapon TC",
+    "mesh": "base_normal",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_normal"
+    ]
+  },
+  {
+    "hull": "Battleship",
+    "appearance": 3,
+    "path": "/Battleship_3/Small Nose Weapon TC/Small Nose Weapon Weapon",
+    "mesh": "small_laser_cannon",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_cannon"
+    ]
+  },
+  {
+    "hull": "Battleship",
+    "appearance": 3,
+    "path": "/Battleship_3/Small Nose Weapon BC",
+    "mesh": "base_normal",
+    "submeshes": 1,
+    "materials": [
+      "MAT_base_normal"
+    ]
+  },
+  {
+    "hull": "Battleship",
+    "appearance": 3,
+    "path": "/Battleship_3/Small Nose Weapon BC/Small Nose Weapon Weapon",
+    "mesh": "small_laser_cannon",
+    "submeshes": 1,
+    "materials": [
+      "MAT_small_laser_cannon"
+    ]
+  }
+]

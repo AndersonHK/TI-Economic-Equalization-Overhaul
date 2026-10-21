@@ -1,43 +1,40 @@
-# Ship balance research
+# Ship balance: implementations, plans and evidence
 
-Status: evidence and planning archive. Use the dated
-[planning changelog](CHANGELOG.md) and the
-[current implementation matrix](../current-implementation-matrix.xlsx) to
-distinguish implemented values from proposals and deferred work.
+Last reviewed: 2026-10-21. Use current implementation records for released
+behavior, planning records for unimplemented choices, and dated measurements
+for their stated baselines. The [implementation matrix](../current-implementation-matrix.xlsx)
+and [decision changelog](CHANGELOG.md) provide cross-checks. The
+[complete catalog](../CATALOG.md) lists every report, table, figure and evidence file.
 
-Last reviewed: 2026-10-21
+## Current implementations
 
-This dossier compares dated Terra Invicta ship-drive, power-plant, and
-weapon-crew snapshots with demonstrated hardware, active prototypes, historical
-engineering programs, and explicitly speculative studies. Research findings do
-not change gameplay unless the changelog marks them implemented.
+- [Accepted 0.10.8 gunpowder art](gunpowder-canonical-art-implementation-2026-10-21.md): eight canonical calibers, private mesh-baked geometry, reversible state and unchanged stats/tiers. [Manual/deployment evidence](gunpowder-art/README.md) records the successful user test.
+- [0.10.4 symmetric Mothership geometry](mothership-symmetric-mount-implementation-2026-10-21.md): twenty authored pairs, sixteen active guns, unchanged mass and the UI-capacity decision.
+- [0.10.0 capital heavy mounts](capital-heavy-mount-implementation.md): current fitting, migration, mass and crew rules.
+- [0.10.1 fusion open cycle](fusion-open-cycle-implementation-2026-09-27.md): fusion-drive cooling and human reactor-mass changes.
 
-The game data used here comes from the installed templates:
+## Future weapon and hull design
 
-- `TIDriveTemplate.json`
-- `TIPowerPlantTemplate.json`
-- `TILaserWeaponTemplate.json`
-- `TIMagneticGunTemplate.json`
-- `TIMissileTemplate.json`
-- `TIParticleWeaponTemplate.json`
-- `TIPlasmaWeaponTemplate.json`
+- [Canonical sizing plan](canonical-turret-scaling-plan-2026-10-21.md) and [projected report set](canonical-turret-projection/README.md): gunpowder portion implemented; laser/magnetic/compact alien optics, hull changes and retiers remain proposals.
+- [Larger-laser aperture proposal](larger-laser-aperture-proposal-2026-10-21.md): simulation aperture buffs are a separate balance choice from matching art to existing optics.
+- [Nose batteries and enlarged spinal tier](nose-battery-and-spinal-tier-proposal-2026-09-25.md): deferred fitting and output alternatives.
+- [Weapon visibility and maximum nose mounts](weapon-visibility-and-maximum-nose-plan-2026-09-25.md): capital filtering implemented; nose restrictions remain deferred.
+- [Nose weapon scaling audit](nose-weapon-scaling-audit-2026-09-25.md): comparative data supporting the deferred nose choices.
 
-The comparison is organized into:
+## Reproducible measurement baselines
 
-- [Canonical turret scaling plan](canonical-turret-scaling-plan-2026-10-21.md): physics-based bore/aperture targets, compact alien optics, a separate projected copy of the original 28-class/64-appearance clearance reports, visual tier coherence, legal loadouts, and optional retier DPS/capital-policy fallout. Planning only; current laser stats remain unchanged.
-- [Barrel and lens dimensional audit](barrel-and-lens-dimensional-audit-2026-10-21.md): 203 templates, 41 measured ship resources, muzzle/optical apertures, same-scale renders, exact small/medium coil duplication, caliber and family-ratio deltas. [Larger-laser proposal](larger-laser-aperture-proposal-2026-10-21.md) separates art correction from aperture-driven penetration changes. Research only.
-- [Archived 25 mm autocannon and two-cell 30/40 mm proposal](archive/25mm-autocannon-2026-10-21/25mm-autocannon-and-two-cell-upgrade-proposal-2026-10-21.md): retained historical proposal and evidence. Archived at the user's request; superseded as the active direction by canonical scaling of existing weapons. Never implemented.
-- [0.10.4 Mothership symmetric geometry](mothership-symmetric-mount-implementation-2026-10-21.md): deployed correction, UI-capacity decision, all twenty authored pairs, unchanged sixteen active weapons and mass, and manual checks.
-- [Weapon shapes and Monitor clarification](turret-clearance/weapon-shapes-and-monitor-2026-10-21.md): same-scale renders of all 35 resources, actual model sizes versus motion bounds, stock-legal Monitor reconstructions and an unapplied compact-art option.
-- [2026-10-20 complete turret clearance and firepower audit](turret-clearance/README.md): 28 classes, 64 appearances, 147 hull weapons and 35 art resources; preview/combat scaling, largest size-1/2/4 turrets, padding tables, extra/merge-node inventory, distance matrices and class DPS deltas. Research tooling and reports; hypothetical fitting changes are not implemented.
-- [Visual inspection and mount-repair proposals](turret-clearance/visual-inspection-and-mount-repair.md): direct mesh inspection of 28 appearances, crowded foundation explanations, original Mothership surface albedo, the exact duplicate-node correction, and a tested-surface symmetric redistribution concept. Documentation and proposals only; no asset/runtime changes.
-- [0.10.1 fusion open-cycle implementation](fusion-open-cycle-implementation-2026-09-27.md): all human/alien fusion drives explicitly open; all human fusion reactor specific masses doubled. Includes deployment results and table provenance. The [candidate report](fusion-drive-open-cycle-candidates-2026-09-27.md) retains the pre-change scientific and localization audit.
-- [2026-09-25 nose batteries and enlarged spinal tier](nose-battery-and-spinal-tier-proposal-2026-09-25.md): planning only. Battleship 2×size 2, Dreadnought 3×size 3, Mothership 4×size 4, and a size-4 target of roughly four times size 3. Includes current-template deltas, mass/volume density, delta-v implications, Lancer role/appearance limits, laser exceptions and unresolved alien alternatives. No implementation or deployment authorized by this document.
-- [2026-09-25 weapon visibility and maximum nose mounts](weapon-visibility-and-maximum-nose-plan-2026-09-25.md): capital small-hull weapon hiding implemented; nose restriction deferred pending the alien-ship decision. Retains the proposed per-hull sizes and migration discussion. Nose fittings and statistics remain unchanged.
-- [0.10.0 capital heavy-mount implementation](capital-heavy-mount-implementation.md): current rules, mass/crew totals, migration policy and manual acceptance checklist.
-- [2026-09-25 Titan and Mothership heavy-mount plan](capital-heavy-mount-plan-2026-09-25.md): approved planning archive with before/after firepower density tables. Superseded for release number and migration exceptions by the 0.10.0 implementation record; all nose rebalancing remains deferred.
-- [2026-09-25 nose weapon audit](nose-weapon-scaling-audit-2026-09-25.md): deferred research for user tuning and combat tests; 120 weapons in 35 families, x2/x3 alternatives, laser optical exception, correction candidates, and actual-template firepower per mass/volume comparisons. No nose correction is included in the active plan.
-- [Planning changelog](CHANGELOG.md)
+- [Barrel and lens audit](barrel-and-lens-dimensional-audit-2026-10-21.md): 203 templates, 41 measured resources and caliber/aperture ratios.
+- [Original turret clearance/firepower audit](turret-clearance/README.md): 28 classes, 64 appearances, 147 hull weapons, 35 resources; original native geometry rather than current gunpowder/Mothership state.
+- [Weapon shapes and Monitor interpretation](turret-clearance/weapon-shapes-and-monitor-2026-10-21.md): same-scale native-art renders and the distinction between legal fitting and every-node hypotheses.
+- [Original visual mount-repair study](turret-clearance/visual-inspection-and-mount-repair.md): historical surfaces and repair candidates; the implemented Mothership record above supersedes its proposed layout.
+
+## Archives
+
+- [Ship archive index](archive/README.md): superseded 25 mm plan, completed capital/fusion proposals and rendering investigation.
+- [Gunpowder rendering investigation](archive/gunpowder-rendering-2026-10-21/README.md): failed startup/material paths, screenshots and source evidence preserved below the accepted implementation.
+
+## Broader ship research and implementation references
+
 - [Propulsion benchmarks](propulsion-benchmarks.md)
 - [Power-plant benchmarks](powerplant-benchmarks.md)
 - [2026-09-20 space energy, propulsion, and lunar industrial timelines to 2100](space-energy-and-industrial-timelines-2026-2100.md), with [working primary-source notes and brief verbatim excerpts](details/space-energy-primary-source-notes-2026-09-20.md)

@@ -5,6 +5,91 @@ the balance decisions as well as their implementation status.
 
 ## 2026-10-21
 
+### Accepted 0.10.8 and documentation organization
+
+- User confirmed “The fix worked.” The accepted runtime trace records
+  `baked=True nonInstanced=False`; no optional instancing override was needed
+  in that observed run. The exact GPU-level cause remains unproven.
+- Rewrote the gunpowder implementation authority around final mesh-baked
+  behavior and separated current deployment/manual evidence from historical
+  0.10.5–0.10.7 failures and provisional explanations.
+- Archived the rendering investigation, completed capital/fusion planning
+  records and superseded initial economy plan. Retained binary/data evidence,
+  repaired links, and added archive indexes and a complete artifact catalog.
+- Runtime/package bytes are unchanged by this cleanup; no rebuild or redeploy.
+  The requested commit/push includes the accepted gunpowder implementation.
+  Future laser work remains a separate phase.
+
+### 0.10.8: same-size gunpowder rendering comparison
+
+- New user screenshots show sky/Earth through the turret silhouette while it
+  occludes the hull. 0.10.7 did not solve the issue; its probes show correct
+  Standard material/albedo/UV/color and no property-block override.
+- Added cached private mesh copies with baked vertex, pivot, muzzle-position
+  and muzzle-scale factors. World geometry matches the prior transform path.
+  Normals, tangents, UVs, topology, source assets, accepted calibers and stats
+  are preserved. Unreadable meshes fall back to canonical transform sizing.
+- Added session-only EEO comparison controls for baked sizing (default on) and
+  non-instanced material copies (default off). Expanded probes record queue,
+  blending/depth state, shader passes, batching, streams and camera paths.
+- Normal deployment passed all 40 validators, including 864 geometry/muzzle
+  coordinate comparisons; 48 deployed files verified. The later user test
+  confirmed success; see the acceptance entry above. No laser implementation.
+- [Current evidence](gunpowder-art/README.md) and
+  [historical comparison design](archive/gunpowder-rendering-2026-10-21/material-inspection/background-cutout-0.10.8.md).
+
+### 0.10.7: gunpowder material restoration and renderer trace
+
+- User confirmed the canonical scales look acceptable; 40 mm appears as a grey
+  mask before damage while the 10-inch gun is textured. Startup 0.10.6 succeeds.
+- Source textures/UVs are present and scale-invariant in controlled offline
+  renders. Inspected hull slots do not support the surplus-material hypothesis.
+  Native initialization caches materials before assigning selected weapon art,
+  and repair can restore placeholder materials; its role in the reported fresh
+  combat case is still unproven.
+- Implemented explicit source material arrays and repair caches for the eight
+  profiled gunpowder weapons, plus bounded read-only runtime renderer traces.
+  Accepted scales, gameplay data and tiers stay unchanged.
+- The first deployment attempt refused while the game was running. After the
+  user closed it, full normal build/validation/deployment passed: 40 validators,
+  1,204 existing formula assertions, 300 lifecycle assertions and six material
+  layout cases; 48 deployed files hash-verified. Manual material confirmation
+  remains pending. [Evidence and status](archive/gunpowder-rendering-2026-10-21/material-inspection/README.md).
+- User intends to commit and then proceed to lasers with the compact alien
+  optics plan if this test succeeds. No new commit or laser work yet.
+
+### 0.10.6: exclude private art profiles from native JSON discovery
+
+- User startup testing found the private schema object was read as a native
+  template array. ModManager recursively selects any path containing `.json`,
+  even beneath Config; the initial validator only tested our private reader.
+- Renamed the private catalog to `gunpowder-art-profiles.eeo` and updated loader,
+  package manifest checks and the implementation matrix. The normal deployment
+  removes the old `.json` file; no native loader behavior is patched.
+- Added tests executing the actual native discovery predicate, including the
+  `.json.backup` trap and `.eeo` exclusion, plus array-root checks for all 25
+  discovered template files. All 40 validators and 48 deployed-file hashes pass.
+- Initial failure screenshot/logs are preserved with the
+  [implementation record](gunpowder-canonical-art-implementation-2026-10-21.md).
+  Fresh launch and appearance acceptance remains manual; gameplay data unchanged.
+
+### 0.10.5: canonical gunpowder art only
+
+- Committed documentation as `d247f16`, then checkpointed the already-deployed
+  Mothership baseline as `859a99b` before implementing new art behavior.
+- Added a schema-1 catalog for all eight existing gunpowder templates. Shared
+  resources receive independent caliber factors; no new weapon is introduced.
+- Assign canonical resource scales in designer/combat/simple-hull paths, with
+  source/mesh/pivot/fire-point guards and reversible controller-scale snapshots.
+- All 41 pre-existing gameplay/localization/settings files remain byte-identical.
+  Weapon tiers, DPS, mass, cadence and all magnetic/laser art remain unchanged.
+- Normal deployment passed 40 validators, 1,204 formula assertions and 300
+  managed lifecycle assertions; 48 deployed files were hash-verified. Actual
+  Unity appearance, aiming and VFX checks remain manual acceptance.
+- Subsequent user startup testing failed on native JSON discovery of the private
+  catalog; superseded by the 0.10.6 packaging correction above.
+- [Implementation record and checklist](gunpowder-canonical-art-implementation-2026-10-21.md).
+
 ### Archived 25 mm proposal; canonical turret plan and projected fallout
 
 - Archived the never-implemented 25 mm/two-cell autocannon plan and its JSON

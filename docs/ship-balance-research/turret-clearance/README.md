@@ -1,5 +1,10 @@
 # Turret clearance and firepower audit
 
+**Snapshot status:** original native-asset baseline. The
+[accepted gunpowder art pass](../gunpowder-canonical-art-implementation-2026-10-21.md)
+and deployed Mothership geometry are described separately; do not read these
+original weapon dimensions or duplicate-node findings as current release state.
+
 **Canonical-size projection:** the separate
 [projected report set](../canonical-turret-projection/README.md) compares proposed
 physics-based dimensions against this exact baseline, including tier-coherence,

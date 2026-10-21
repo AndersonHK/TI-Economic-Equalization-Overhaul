@@ -1,5 +1,9 @@
 # Barrel and laser aperture dimensional audit
 
+**Current follow-up:** [0.10.8 implements and resolves the gunpowder art pass](gunpowder-canonical-art-implementation-2026-10-21.md).
+This document retains the original source-art measurements; its research-only
+status below describes that dated investigation, not the subsequent release.
+
 2026-10-21. **Research only; no weapon, template, mesh, mount or balance changes.**
 
 The small and medium hull coils really are the same size: their 3,214 moving-mesh

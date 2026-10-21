@@ -5,8 +5,19 @@ research and deferred work. Unless a document says otherwise, the source code,
 default settings, automated verification, and current implementation matrix win
 when prose and runtime behavior disagree.
 
+Use the [complete document and artifact catalog](CATALOG.md) to find every
+retained report, table, figure and evidence file. The [archive index](archive/README.md)
+separates superseded material from current authorities; the
+[relocation record](tooling/document-relocations-2026-10-21.json) preserves old paths.
+The [index-maintenance guide](tooling/documentation-indexing.md) describes how to
+regenerate the catalog and verify links after later changes.
+
 ## Current authorities
 
+- [Canonical gunpowder art](ship-balance-research/gunpowder-canonical-art-implementation-2026-10-21.md):
+  accepted 0.10.8 mesh-baked sizing resolves the reported cutout. Eight guarded
+  profiles retain canonical preview/combat dimensions, unchanged stats/tiers,
+  and reversible controller state. [Manual acceptance and deployment evidence](ship-balance-research/gunpowder-art/README.md).
 - [Mothership symmetric mount geometry](ship-balance-research/mothership-symmetric-mount-implementation-2026-10-21.md):
   0.10.4 fixes the duplicate and spaces all authored pairs on verified surfaces.
   Sixteen active guns and 8,200 t remain because four extra cells exceed the native
@@ -133,7 +144,7 @@ when prose and runtime behavior disagree.
   shared zero Base Control Point Capacity is a sparse global-config override,
   and records the approved Normal combat-realism defaults, validation, and
   manual-test plan.
-- [Initial Economy plan](economy-growth-initial-plan.md) is a superseded design
+- [Initial Economy plan](archive/economy/economy-growth-initial-plan.md) is a superseded design
   record. The calibration document and source describe the implemented model.
 - [Hab capacity beyond twenty facilities](hab-slot-expansion-assessment.md) is a
   feasibility assessment, not implemented scope. The implemented T1 station
@@ -146,8 +157,9 @@ when prose and runtime behavior disagree.
 - [Canonical turret scaling plan](ship-balance-research/canonical-turret-scaling-plan-2026-10-21.md)
   projects physics-based model sizes through all 28 classes and 64 appearances,
   with compact alien optics, legal-loadout checks, tier-coherence statistics and
-  optional retier DPS/capital-policy fallout. Planning only; existing 25 mm
-  addition proposal is archived.
+  optional retier DPS/capital-policy fallout. The gunpowder portion is now
+  implemented; laser/magnetic/hull and tier-change options remain planned.
+  The 25 mm addition proposal is archived.
 - [Barrel and lens dimensional audit](ship-balance-research/barrel-and-lens-dimensional-audit-2026-10-21.md)
   measures 41 ship resources and inventories 203 templates, with muzzle/optic
   dimensions, visual evidence and family-ratio deltas. The

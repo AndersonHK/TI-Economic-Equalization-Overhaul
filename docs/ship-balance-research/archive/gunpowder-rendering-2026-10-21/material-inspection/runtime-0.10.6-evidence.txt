@@ -1,0 +1,8 @@
+[EconomyMod] Loaded TI Economic Equalization Overhaul 0.10.6, validated against TI 1.0.53b.
+[EconomyMod] Gunpowder art schema 1: 30mmAutocannon / preview factor=0.199859
+[EconomyMod] Gunpowder art schema 1: 40mmAutocannon / preview factor=0.266478
+[EconomyMod] Gunpowder art schema 1: 6-inchCannon / preview factor=0.981646
+[EconomyMod] Gunpowder art schema 1: 10-inchCannon / preview factor=1.326173
+[EconomyMod] Gunpowder art schema 1: 8-inchCannon / preview factor=1.060939
+[EconomyMod] Gunpowder art schema 1: 10-inchCannon / ship factor=1.326173
+[EconomyMod] Gunpowder art schema 1: 40mmAutocannon / ship factor=0.266478

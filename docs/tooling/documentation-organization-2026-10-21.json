@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-21",
+  "status": "passed",
+  "catalog_entries": 411,
+  "markdown_files_checked": 158,
+  "local_links_checked": 1028,
+  "relocated_files": 40,
+  "non_markdown_relocated_files_byte_identical": 34,
+  "immutable_package_files_still_match_deployment": 47,
+  "mutable_runtime_settings": "Installed Settings.xml differs after gameplay and is preserved; repository default Settings.xml remains unchanged.",
+  "gameplay_data_files_unchanged": 41,
+  "dll_sha256": "483727F3FB55435FCBCAED420128176AADC41946C7AA5E311455AD614D377A87",
+  "new_build_or_deployment": false,
+  "user_acceptance": "0.10.8 fix worked; runtime records baked=True nonInstanced=False",
+  "validation_reused": "Full 40-validator deployment plus 1204 formula/300 lifecycle/864 coordinate assertions; focused gunpowder and matrix validators rerun without rebuild."
+}

@@ -9,7 +9,7 @@ Retained for user tuning and combat testing. All correction recommendations
 below are exploratory, not implementation instructions for this release.
 Reference mass denominators reflect the latest hull targets.
 Companion to the
-[capital heavy-mount plan](capital-heavy-mount-plan-2026-09-25.md).
+[capital heavy-mount plan](archive/implemented-plans/capital-heavy-mount-plan-2026-09-25.md).
 Baseline: installed TI 1.0.53b templates merged with EEO 0.9.8 overrides.
 
 ## Definitions and interpretation

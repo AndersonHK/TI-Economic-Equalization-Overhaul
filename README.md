@@ -1,6 +1,18 @@
 # TI Economic Equalization Overhaul
 
-Current release: **0.10.4**, validated against **Terra Invicta 1.0.53b**.
+Current release: **0.10.8**, validated against **Terra Invicta 1.0.53b**.
+
+Release 0.10.8 scales all eight existing gunpowder models to their canonical
+bores using private mesh copies and scaled pivots/muzzle transforms. The user
+confirmed that this fixes the invisible/background-cutout turret problem with
+the default baked mode; gameplay statistics and size tiers are unchanged.
+Designer and combat use matching resource dimensions. Guarded `.eeo` visual
+profiles stay outside native JSON template discovery.
+See the [accepted implementation](docs/ship-balance-research/gunpowder-canonical-art-implementation-2026-10-21.md),
+[current evidence](docs/ship-balance-research/gunpowder-art/README.md) and
+[retained comparison controls](docs/ship-balance-research/gunpowder-art/render-comparison.md).
+Earlier unsuccessful iterations are preserved in the
+[rendering investigation archive](docs/ship-balance-research/archive/gunpowder-rendering-2026-10-21/README.md).
 
 Release 0.10.4 corrects and symmetrically spaces the Mothership's authored turret
 origins on verified rim/crown surfaces, including the duplicate ventral mount.

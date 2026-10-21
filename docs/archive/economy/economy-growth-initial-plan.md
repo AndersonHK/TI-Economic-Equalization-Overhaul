@@ -1,8 +1,10 @@
 # Initial Economy Growth Plan
 
+**Archived 2026-10-21.** Historical planning/investigation state; later outcomes supersede pending or provisional conclusions below. See the [current authority](../../economy-growth-calibration-plan.md). Original numerical evidence is retained.
+
 Status: historical and superseded. The implemented model and accepted constants
-are documented in [Economy Growth Calibration](economy-growth-calibration-plan.md)
-and [Design Directives](design-directives.md).
+are documented in [Economy Growth Calibration](../../economy-growth-calibration-plan.md)
+and [Design Directives](../../design-directives.md).
 
 This file preserves the exploratory sequence that led to the factor-balance
 model. Future work should not treat its tentative ranges or future-tense tasks

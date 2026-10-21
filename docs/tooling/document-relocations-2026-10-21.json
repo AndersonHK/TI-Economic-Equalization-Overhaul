@@ -1,0 +1,246 @@
+{
+  "date": "2026-10-21",
+  "reason": "Separate accepted gunpowder implementation from superseded investigations and completed planning; retain evidence and repair links.",
+  "files": [
+    {
+      "from": "ship-balance-research/gunpowder-art/material-inspection/12-inch_cannon-canonical.png",
+      "to": "ship-balance-research/archive/gunpowder-rendering-2026-10-21/material-inspection/12-inch_cannon-canonical.png",
+      "sha256_before": "018227C4E4C4109CF72032D5198629853E58AF3B20C0635C6EBA40D728D1C618",
+      "retains_current_authority_path": false
+    },
+    {
+      "from": "ship-balance-research/gunpowder-art/material-inspection/12-inch_cannon-original.png",
+      "to": "ship-balance-research/archive/gunpowder-rendering-2026-10-21/material-inspection/12-inch_cannon-original.png",
+      "sha256_before": "C04F5B6837350004AD417B1FF93F6E024931C651989BD67E46DD0ABEB241F103",
+      "retains_current_authority_path": false
+    },
+    {
+      "from": "ship-balance-research/gunpowder-art/material-inspection/30mm_autocannon-canonical.png",
+      "to": "ship-balance-research/archive/gunpowder-rendering-2026-10-21/material-inspection/30mm_autocannon-canonical.png",
+      "sha256_before": "E7EF5DF020477275A3F85F5EB6E212852A0725326250715C187DCEE682F0302E",
+      "retains_current_authority_path": false
+    },
+    {
+      "from": "ship-balance-research/gunpowder-art/material-inspection/30mm_autocannon-original.png",
+      "to": "ship-balance-research/archive/gunpowder-rendering-2026-10-21/material-inspection/30mm_autocannon-original.png",
+      "sha256_before": "F16E8A8A2B8B41BBE6B055733170A69BE15FFC633B2A7FFFADA24ECDAFE1D86C",
+      "retains_current_authority_path": false
+    },
+    {
+      "from": "ship-balance-research/gunpowder-art/material-inspection/background-cutout-0.10.8.md",
+      "to": "ship-balance-research/archive/gunpowder-rendering-2026-10-21/material-inspection/background-cutout-0.10.8.md",
+      "sha256_before": "BD81264B37C682AE953094DADDC467A0E5BE8B573E2D073C9A83B7E60D5DF3C8",
+      "retains_current_authority_path": false
+    },
+    {
+      "from": "ship-balance-research/gunpowder-art/material-inspection/background-cutout-earth.png",
+      "to": "ship-balance-research/archive/gunpowder-rendering-2026-10-21/material-inspection/background-cutout-earth.png",
+      "sha256_before": "5B344231EFF7D50BA0088B20B8213288872436C822C5C2B425F3B32A20690DDF",
+      "retains_current_authority_path": false
+    },
+    {
+      "from": "ship-balance-research/gunpowder-art/material-inspection/background-cutout-sky.png",
+      "to": "ship-balance-research/archive/gunpowder-rendering-2026-10-21/material-inspection/background-cutout-sky.png",
+      "sha256_before": "C8E6357698A18BD570918F165090459D090DA10089F6AEBE393964D82F4EA110",
+      "retains_current_authority_path": false
+    },
+    {
+      "from": "ship-balance-research/gunpowder-art/material-inspection/battleship-heavy-coil.png",
+      "to": "ship-balance-research/archive/gunpowder-rendering-2026-10-21/material-inspection/battleship-heavy-coil.png",
+      "sha256_before": "07F9F53FB3A25DF2ACBCB5B292809CCD55F53D6091E57EA256EBFD8FF08F8245",
+      "retains_current_authority_path": false
+    },
+    {
+      "from": "ship-balance-research/gunpowder-art/material-inspection/damage-renderer-membership.json",
+      "to": "ship-balance-research/archive/gunpowder-rendering-2026-10-21/material-inspection/damage-renderer-membership.json",
+      "sha256_before": "8E0B3AAE86AA847DCC4BF082B2808016E384EAC689F730CF2302975A9379CB71",
+      "retains_current_authority_path": false
+    },
+    {
+      "from": "ship-balance-research/gunpowder-art/material-inspection/deployment-0.10.7.txt",
+      "to": "ship-balance-research/archive/gunpowder-rendering-2026-10-21/material-inspection/deployment-0.10.7.txt",
+      "sha256_before": "7F4F8727462E279927C23D865EA69F61BC23717948927782E51151022EED80B1",
+      "retains_current_authority_path": false
+    },
+    {
+      "from": "ship-balance-research/gunpowder-art/material-inspection/deployment-0.10.8.txt",
+      "to": "ship-balance-research/gunpowder-art/deployment-0.10.8.txt",
+      "sha256_before": "D7D819BECD70D1D3A629163CEB4E6F49CBF5096D952FF38374651F5640ACA102",
+      "retains_current_authority_path": false
+    },
+    {
+      "from": "ship-balance-research/gunpowder-art/material-inspection/deployment-verification-0.10.7.json",
+      "to": "ship-balance-research/archive/gunpowder-rendering-2026-10-21/material-inspection/deployment-verification-0.10.7.json",
+      "sha256_before": "CE7CEB64DC2594F76334F988509D12BD747EEC8BBFD6ECE70BA6C88B1A023FA1",
+      "retains_current_authority_path": false
+    },
+    {
+      "from": "ship-balance-research/gunpowder-art/material-inspection/deployment-verification-0.10.8.json",
+      "to": "ship-balance-research/gunpowder-art/verification-0.10.8.json",
+      "sha256_before": "0BD098AF8A9BF1E091F2416EA8B350704C852A9FCE9F14796D88A0FF4BAB4BD0",
+      "retains_current_authority_path": false
+    },
+    {
+      "from": "ship-balance-research/gunpowder-art/material-inspection/forty-mm-grey-detail.png",
+      "to": "ship-balance-research/archive/gunpowder-rendering-2026-10-21/material-inspection/forty-mm-grey-detail.png",
+      "sha256_before": "E82AB0CC09334DA73078027705AFE7B216F37C467528C7F6A49926A735F56FD6",
+      "retains_current_authority_path": false
+    },
+    {
+      "from": "ship-balance-research/gunpowder-art/material-inspection/forty-mm-grey.png",
+      "to": "ship-balance-research/archive/gunpowder-rendering-2026-10-21/material-inspection/forty-mm-grey.png",
+      "sha256_before": "10A3D06BD8CFAE651A5B69AB1B6D0C01E026314E34D4F929751167BE4B3E9F86",
+      "retains_current_authority_path": false
+    },
+    {
+      "from": "ship-balance-research/gunpowder-art/material-inspection/frigate-six-inch.png",
+      "to": "ship-balance-research/archive/gunpowder-rendering-2026-10-21/material-inspection/frigate-six-inch.png",
+      "sha256_before": "18993B26D7B82BE1C0807481459D29CE3CD54F51ADF5D137D208319589F0F76F",
+      "retains_current_authority_path": false
+    },
+    {
+      "from": "ship-balance-research/gunpowder-art/material-inspection/investigation.json",
+      "to": "ship-balance-research/archive/gunpowder-rendering-2026-10-21/material-inspection/investigation.json",
+      "sha256_before": "94CD3E3199AF1C6D063EBC55C11EFD7CE77B1E2E3059440B293128F684D2F3F1",
+      "retains_current_authority_path": false
+    },
+    {
+      "from": "ship-balance-research/gunpowder-art/material-inspection/isolated-validation.txt",
+      "to": "ship-balance-research/archive/gunpowder-rendering-2026-10-21/material-inspection/isolated-validation.txt",
+      "sha256_before": "7F17DFAB2CDE252660464267148D8000943B2C3DF4C2CBBE401EF68315389673",
+      "retains_current_authority_path": false
+    },
+    {
+      "from": "ship-balance-research/gunpowder-art/material-inspection/MAT_12-Inch_Cannon-_MainTex.png",
+      "to": "ship-balance-research/archive/gunpowder-rendering-2026-10-21/material-inspection/MAT_12-Inch_Cannon-_MainTex.png",
+      "sha256_before": "E055FAE0CD243270419372C2140F225A1A0D0B887D216D4CC79028DA187B491C",
+      "retains_current_authority_path": false
+    },
+    {
+      "from": "ship-balance-research/gunpowder-art/material-inspection/MAT_16-Inch_Cannon-_MainTex.png",
+      "to": "ship-balance-research/archive/gunpowder-rendering-2026-10-21/material-inspection/MAT_16-Inch_Cannon-_MainTex.png",
+      "sha256_before": "6804C7A80FB4590EEC3B9B985A94351819C300F6B8DA1FBD4181D23D4A94F351",
+      "retains_current_authority_path": false
+    },
+    {
+      "from": "ship-balance-research/gunpowder-art/material-inspection/MAT_30mm_Autocannon-_MainTex.png",
+      "to": "ship-balance-research/archive/gunpowder-rendering-2026-10-21/material-inspection/MAT_30mm_Autocannon-_MainTex.png",
+      "sha256_before": "A3049313E35366C8E672A7E37A2D2C90BF75B0DA68BE66EF501F2D51A17A2A5E",
+      "retains_current_authority_path": false
+    },
+    {
+      "from": "ship-balance-research/gunpowder-art/material-inspection/MAT_6-Inch_Cannon-_MainTex.png",
+      "to": "ship-balance-research/archive/gunpowder-rendering-2026-10-21/material-inspection/MAT_6-Inch_Cannon-_MainTex.png",
+      "sha256_before": "EADD6C81E348F9FFC1FA6584A771A4695E14513A6A4D0CD45D6EB8E1C0EA1D9E",
+      "retains_current_authority_path": false
+    },
+    {
+      "from": "ship-balance-research/gunpowder-art/material-inspection/MAT_base_medium-_MainTex.png",
+      "to": "ship-balance-research/archive/gunpowder-rendering-2026-10-21/material-inspection/MAT_base_medium-_MainTex.png",
+      "sha256_before": "7FCEB4D46EDAC21A4B203551A3C07A778EB12F0E56B005BEA3B832A042B48F30",
+      "retains_current_authority_path": false
+    },
+    {
+      "from": "ship-balance-research/gunpowder-art/material-inspection/mothership-heavy-guns.png",
+      "to": "ship-balance-research/archive/gunpowder-rendering-2026-10-21/material-inspection/mothership-heavy-guns.png",
+      "sha256_before": "768AAD0FCFD9CE14E5A85953F869133B0336AA618E843CF6A81D3F7E15358D06",
+      "retains_current_authority_path": false
+    },
+    {
+      "from": "ship-balance-research/gunpowder-art/material-inspection/mount-materials.json",
+      "to": "ship-balance-research/archive/gunpowder-rendering-2026-10-21/material-inspection/mount-materials.json",
+      "sha256_before": "2D840134407B466687C026231A3F565790D6CF66783EAD42B0C1110246293CBB",
+      "retains_current_authority_path": false
+    },
+    {
+      "from": "ship-balance-research/gunpowder-art/material-inspection/README.md",
+      "to": "ship-balance-research/archive/gunpowder-rendering-2026-10-21/material-inspection/README.md",
+      "sha256_before": "419B5B0D318B1AE0DF2CF4693D96EFEC0C4BD988D2EB649E9EDCE8FEEB1B5572",
+      "retains_current_authority_path": false
+    },
+    {
+      "from": "ship-balance-research/gunpowder-art/material-inspection/render-state-assets.json",
+      "to": "ship-balance-research/archive/gunpowder-rendering-2026-10-21/material-inspection/render-state-assets.json",
+      "sha256_before": "34F02F037443412FA3B8A1F65D4DD9ACCEA3AC088CF1EB911AB8A2572C1D0C1F",
+      "retains_current_authority_path": false
+    },
+    {
+      "from": "ship-balance-research/gunpowder-art/material-inspection/runtime-0.10.6-evidence.txt",
+      "to": "ship-balance-research/archive/gunpowder-rendering-2026-10-21/material-inspection/runtime-0.10.6-evidence.txt",
+      "sha256_before": "6CD9195A9C96E9376ECC9CEBB8A091AAE5C83A034347A4C26140F62255847218",
+      "retains_current_authority_path": false
+    },
+    {
+      "from": "ship-balance-research/gunpowder-art/material-inspection/runtime-0.10.7-cutout.txt",
+      "to": "ship-balance-research/archive/gunpowder-rendering-2026-10-21/material-inspection/runtime-0.10.7-cutout.txt",
+      "sha256_before": "2D455EF9F9838CC9BF1B695851517F7E184FB20FA58D065832FD8037A54095F5",
+      "retains_current_authority_path": false
+    },
+    {
+      "from": "ship-balance-research/gunpowder-art/material-inspection/source-materials.json",
+      "to": "ship-balance-research/archive/gunpowder-rendering-2026-10-21/material-inspection/source-materials.json",
+      "sha256_before": "62718DC8568BEA940649B8CDE22361755390431115796EC4BA226D9B84B2F35D",
+      "retains_current_authority_path": false
+    },
+    {
+      "from": "ship-balance-research/gunpowder-art/material-inspection/ten-inch-textured.png",
+      "to": "ship-balance-research/archive/gunpowder-rendering-2026-10-21/material-inspection/ten-inch-textured.png",
+      "sha256_before": "6C3E30219A02CE858854795A1E5A7C6E755DE014591766C92B4BA24EBAC5D955",
+      "retains_current_authority_path": false
+    },
+    {
+      "from": "ship-balance-research/gunpowder-art/deployment-0.10.5.txt",
+      "to": "ship-balance-research/archive/gunpowder-rendering-2026-10-21/startup-and-deployment/deployment-0.10.5.txt",
+      "sha256_before": "F8586F50714E11D806E1A0B441AE88ED1C5511F32B082FE81169791540DD6B8D",
+      "retains_current_authority_path": false
+    },
+    {
+      "from": "ship-balance-research/gunpowder-art/deployment-0.10.6.txt",
+      "to": "ship-balance-research/archive/gunpowder-rendering-2026-10-21/startup-and-deployment/deployment-0.10.6.txt",
+      "sha256_before": "C345A921C0B7B8C1FD6CB28CD78F1E05A061CB7F055051AD9BBB7CAF62D3810C",
+      "retains_current_authority_path": false
+    },
+    {
+      "from": "ship-balance-research/gunpowder-art/first-verification-failure.txt",
+      "to": "ship-balance-research/archive/gunpowder-rendering-2026-10-21/startup-and-deployment/first-verification-failure.txt",
+      "sha256_before": "9AC3531C7F898E36D8064B055DBCD405C635B38511673EB56670D26320C0B6EF",
+      "retains_current_authority_path": false
+    },
+    {
+      "from": "ship-balance-research/gunpowder-art/startup-json-failure.png",
+      "to": "ship-balance-research/archive/gunpowder-rendering-2026-10-21/startup-and-deployment/startup-json-failure.png",
+      "sha256_before": "8664F61B7B7932DCFDC19FAAF4704176719713924F0414E9CD6BB12B1A33A3B8",
+      "retains_current_authority_path": false
+    },
+    {
+      "from": "ship-balance-research/gunpowder-art/verification-0.10.6.json",
+      "to": "ship-balance-research/archive/gunpowder-rendering-2026-10-21/startup-and-deployment/verification-0.10.6.json",
+      "sha256_before": "86DBE8F1A4842DCD48BBCF7693DDC56ABEDD601E1A529069A94440D9736B80EB",
+      "retains_current_authority_path": false
+    },
+    {
+      "from": "ship-balance-research/capital-heavy-mount-plan-2026-09-25.md",
+      "to": "ship-balance-research/archive/implemented-plans/capital-heavy-mount-plan-2026-09-25.md",
+      "sha256_before": "D88366EB9623DC30004B976E0EED01C895237AC3F45A59F4723378C33EE48BAA",
+      "retains_current_authority_path": false
+    },
+    {
+      "from": "ship-balance-research/fusion-drive-open-cycle-candidates-2026-09-27.md",
+      "to": "ship-balance-research/archive/implemented-plans/fusion-drive-open-cycle-candidates-2026-09-27.md",
+      "sha256_before": "3E51729C4C5664463C5E3854177619F3EA26C9F187A62CEE97B51EEFD20B3860",
+      "retains_current_authority_path": false
+    },
+    {
+      "from": "economy-growth-initial-plan.md",
+      "to": "archive/economy/economy-growth-initial-plan.md",
+      "sha256_before": "3FB0C85E64A3DDD726FAA04D202A2A350DAF2C8AAA651CDFB17502208F7192B8",
+      "retains_current_authority_path": false
+    },
+    {
+      "from": "ship-balance-research/gunpowder-canonical-art-implementation-2026-10-21.md",
+      "to": "ship-balance-research/archive/gunpowder-rendering-2026-10-21/implementation-evolution.md",
+      "sha256_before": "B7E94C2E6A8B350A96ED0E5647E0F0C72F34B64210B76D69759D69CAA9733A48",
+      "retains_current_authority_path": true
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "release": "0.10.7",
+  "deployed_file_count": 48,
+  "dll_sha256": "875605E75CFDEC2B8078674F57225E4CE02D25B7D3D49A9BA0AD0C96CC451098",
+  "gameplay_data_files_unchanged": 41,
+  "private_json_absent": true,
+  "material_case_acceptance": "pending user test",
+  "new_commit": false,
+  "laser_implementation": false
+}

@@ -142,6 +142,9 @@
     <Compile Include="Core\WeaponCadenceMath.cs" />
     <Compile Include="Core\CapitalMountPolicy.cs" />
     <Compile Include="Core\MothershipMountGeometry.cs" />
+    <Compile Include="Core\GunpowderArtCatalog.cs" />
+    <Compile Include="Core\GunpowderArtGeometry.cs" />
+    <Compile Include="Patches\GunpowderArtPatches.cs" />
     <Compile Include="Patches\MothershipMountPatches.cs" />
     <Compile Include="Core\CapitalMountRuntime.cs" />
     <Compile Include="Patches\CapitalMountPatches.cs" />

@@ -1,0 +1,19 @@
+{
+  "release": "0.10.6",
+  "documentation_commit": "d247f16",
+  "prior_deployed_baseline_commit": "859a99b",
+  "dll_sha256": "11C643A84B1D0C73F21ED1D49A0E44EA6946E9785F939815B573D180911A65D9",
+  "deployed_files_verified": 48,
+  "old_private_json_absent": true,
+  "private_catalog": "Config/gunpowder-art-profiles.eeo",
+  "unchanged_root_gameplay_and_localization_files": 41,
+  "native_discovery_predicate_tested": true,
+  "native_array_root_files_checked": 25,
+  "validators_passed": 40,
+  "existing_formula_assertions": 1204,
+  "new_managed_lifecycle_assertions": 300,
+  "invalid_schema_cases": 12,
+  "manual_startup_0_10_5": "failed, user screenshot retained",
+  "manual_startup_0_10_6": "pending user retest",
+  "scene_aiming_and_visual_acceptance": "pending"
+}

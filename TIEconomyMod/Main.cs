@@ -16,6 +16,7 @@ namespace TIEconomyMod
         public static TechWeightCatalog techWeights;
         public static HullVolumeCatalog hullVolumes;
         public static HullDriveScaleCatalog hullDriveScales;
+        public static TIEconomyMod.Core.GunpowderArtCatalog gunpowderArt;
 
         public static bool Load(UnityModManager.ModEntry modEntry)
         {
@@ -39,6 +40,20 @@ namespace TIEconomyMod
                     modEntry.Path, "Config", "hull-variant-drive-scales.csv");
                 hullDriveScales = HullDriveScaleCatalog.Load(
                     hullDriveScalePath, Log);
+                try
+                {
+                    string gameAssembly = typeof(ShipModelController).Assembly.Location;
+                    string weaponBundle = Path.GetFullPath(Path.Combine(Path.GetDirectoryName(gameAssembly),
+                        "..", "StreamingAssets", "AssetBundles", "shipweapons"));
+                    gunpowderArt = TIEconomyMod.Core.GunpowderArtCatalog.Load(
+                        Path.Combine(modEntry.Path, "Config", "gunpowder-art-profiles.eeo"), gameAssembly, weaponBundle);
+                    Log("Loaded gunpowder art schema 1: " + gunpowderArt.Count + " guarded profiles.");
+                }
+                catch (Exception artException)
+                {
+                    gunpowderArt = null;
+                    Warn("Gunpowder art disabled; native art retained: " + artException.Message);
+                }
                 Harmony harmony = new Harmony(modEntry.Info.Id);
                 try
                 {
@@ -75,7 +90,7 @@ namespace TIEconomyMod
                     ShipPowerRuntime.RefreshTemplatePerformanceCaches();
                 }
                 CouncilorRuntimeCaps.InitializeOrganizationCap();
-                Log("Loaded TI Economic Equalization Overhaul 0.10.4, validated against TI 1.0.53b.");
+                Log("Loaded TI Economic Equalization Overhaul 0.10.8, validated against TI 1.0.53b.");
                 return true;
             }
             catch (Exception exception)
@@ -107,6 +122,7 @@ namespace TIEconomyMod
         private static bool OnToggle(UnityModManager.ModEntry modEntry, bool value)
         {
             enabled = value;
+            GunpowderArtRuntime.RefreshVisible();
             CouncilorRuntimeCaps.ApplyOrganizationCap();
             return true;
         }
@@ -114,6 +130,7 @@ namespace TIEconomyMod
         private static void OnGUI(UnityModManager.ModEntry modEntry)
         {
             settings.Draw(modEntry);
+            GunpowderArtRuntime.DrawRenderComparisonControls();
             GUILayout.Space(8f);
             if (GUILayout.Button("Reset all EEO settings to defaults"))
             {
@@ -128,6 +145,7 @@ namespace TIEconomyMod
             settings.ValidateAndRepair(Log);
             CouncilorRuntimeCaps.ApplyOrganizationCap();
             ShipPowerRuntime.RefreshTemplatePerformanceCaches();
+            GunpowderArtRuntime.RefreshVisible();
             settings.Save(modEntry);
         }
 

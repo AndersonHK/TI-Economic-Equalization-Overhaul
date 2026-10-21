@@ -33,7 +33,7 @@ XLSX exists in this directory.
 
 ## Relationship to the research
 
-The [candidate report](fusion-drive-open-cycle-candidates-2026-09-27.md)
+The [candidate report](archive/implemented-plans/fusion-drive-open-cycle-candidates-2026-09-27.md)
 preserves the pre-change evidence. This approved decision includes all its
 conditional and fiction-dependent candidates, not only the strongest cases.
 The Advanced Alien Fusion Torch previously resolved open through `Calc`; it

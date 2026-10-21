@@ -1,7 +1,9 @@
 # Fusion drives: candidates for open-cycle propulsion
 
+**Archived 2026-10-21.** Historical planning/investigation state; later outcomes supersede pending or provisional conclusions below. See the [current authority](../../fusion-open-cycle-implementation-2026-09-27.md). Original numerical evidence is retained.
+
 Date: 2026-09-27\
-Status: historical pre-change research; the user subsequently approved all fusion drives as open cycle and doubled human fusion reactor specific masses for 0.10.1. See the [implementation record](fusion-open-cycle-implementation-2026-09-27.md). The inventories and numeric examples below preserve the pre-change evidence.\
+Status: historical pre-change research; the user subsequently approved all fusion drives as open cycle and doubled human fusion reactor specific masses for 0.10.1. See the [implementation record](../../fusion-open-cycle-implementation-2026-09-27.md). The inventories and numeric examples below preserve the pre-change evidence.\
 Scope: installed main-game templates and English localization, overlaid with the current EEO workspace. All 26 human fusion-drive families and three alien families are covered, including their six engine-count variants. Scientific sources were checked on the report date.
 
 ## Assessment
@@ -30,7 +32,7 @@ The installed source root is:
 
 `D:/Games/SteamLibrary/steamapps/common/Terra Invicta/TerraInvicta_Data/StreamingAssets/`
 
-The audit read `Templates/TIDriveTemplate.json`, `TIPowerPlantTemplate.json`, `TIProjectTemplate.json`, and `TITechTemplate.json`, plus their matching files in `Localization/en/`. Supplied fields and localization keys in [EEO ModFiles](../../TIEconomyMod/ModFiles) were applied over those sources. The runtime behavior was checked in the installed `TerraInvicta_Data/Managed/Assembly-CSharp.dll`, particularly `TIDriveTemplate.openCycleCooling` and `TIProjectTemplate.summary`. The repository's existing compatibility baseline identifies this installation generation as [1.0.53b](../compatibility/ti-1.0.53b-baseline.json).
+The audit read `Templates/TIDriveTemplate.json`, `TIPowerPlantTemplate.json`, `TIProjectTemplate.json`, and `TITechTemplate.json`, plus their matching files in `Localization/en/`. Supplied fields and localization keys in [EEO ModFiles](../../../../TIEconomyMod/ModFiles) were applied over those sources. The runtime behavior was checked in the installed `TerraInvicta_Data/Managed/Assembly-CSharp.dll`, particularly `TIDriveTemplate.openCycleCooling` and `TIProjectTemplate.summary`. The repository's existing compatibility baseline identifies this installation generation as [1.0.53b](../../../compatibility/ti-1.0.53b-baseline.json).
 
 This is a main-game/EEO audit, not an audit of every DLC scenario or third-party mod load order. Numeric examples use the workspace values, not a saved ship with faction effects or hull scaling applied. No build, deployment, save edit, or in-game test was performed for this documentation-only task.
 
@@ -193,7 +195,7 @@ These corrections follow the fuel sources above. They do not invalidate the game
 
 ## Why flipping `cooling` alone is not a complete correction
 
-The current [thermal calculation](../../TIEconomyMod/Core/PowerPlantThermalMath.cs) treats a closed drive's requested power as useful electrical demand. With an open drive, it instead computes direct reactor demand separately from systems and weapons. The [ship power patches](../../TIEconomyMod/Patches/ShipPowerPatches.cs) feed `drive.openCycleCooling` into that accounting when the thermal feature is enabled.
+The current [thermal calculation](../../../../TIEconomyMod/Core/PowerPlantThermalMath.cs) treats a closed drive's requested power as useful electrical demand. With an open drive, it instead computes direct reactor demand separately from systems and weapons. The [ship power patches](../../../../TIEconomyMod/Patches/ShipPowerPatches.cs) feed `drive.openCycleCooling` into that accounting when the thermal feature is enabled.
 
 Using `D` for requested drive power, `S` for auxiliary electrical demand, `η` for plant efficiency, and `f` for the retained fraction parameter, the current formulas are:
 
@@ -222,7 +224,7 @@ For illustration, one unscaled Triton Nova has 355,200 N thrust, 270 km/s exhaus
 
 This roughly 117-fold reduction in the **plant waste-heat term** follows the game's formulas, not a demonstrated D-T thermal balance. The table is not total ship heat: it does not independently determine how the drive's own inefficiency, neutron leakage, intercepted radiation, or ignition system should be partitioned.
 
-The current [reactor mass-scaling default](../../TIEconomyMod/Core/PowerPlantScalingMath.cs) is 0.5 for fusion classes, unless overridden through the [registry](../../TIEconomyMod/Core/PowerPlantScalingRegistry.cs). Thus an open flag can also materially change reactor mass and output-cap accounting. Removing an electrical conversion stage could reduce mass, but does not halve the fusion core, shielding, magnets, or laser equipment by physical necessity.
+The current [reactor mass-scaling default](../../../../TIEconomyMod/Core/PowerPlantScalingMath.cs) is 0.5 for fusion classes, unless overridden through the [registry](../../../../TIEconomyMod/Core/PowerPlantScalingRegistry.cs). Thus an open flag can also materially change reactor mass and output-cap accounting. Removing an electrical conversion stage could reduce mass, but does not halve the fusion core, shielding, magnets, or laser equipment by physical necessity.
 
 A scientifically grounded future model would separately account for:
 

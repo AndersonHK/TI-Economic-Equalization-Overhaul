@@ -1,0 +1,299 @@
+[
+  {
+    "hull": "Gunship",
+    "appearance": 0,
+    "renderer_objects": [
+      "Earth_Gunship_Bridge",
+      "Earth_Gunship_Bridge_Detail",
+      "Earth_Gunship_Crew",
+      "Earth_Gunship_Radiators",
+      "Drive"
+    ]
+  },
+  {
+    "hull": "Gunship",
+    "appearance": 1,
+    "renderer_objects": [
+      "Earth_Gunship_ALT_Body",
+      "Earth_Gunship_ALT_Head",
+      "Earth_Gunship_ALT_Middle",
+      "Earth_Gunship_ALT_Rads",
+      "Drive"
+    ]
+  },
+  {
+    "hull": "Gunship",
+    "appearance": 2,
+    "renderer_objects": [
+      "Earth_GS_PRM_Body",
+      "Earth_GS_PRM_Head",
+      "Earth_GS_PRM_Rads",
+      "Drive"
+    ]
+  },
+  {
+    "hull": "Gunship",
+    "appearance": 3,
+    "renderer_objects": [
+      "Earth_DLCA_GS_Front",
+      "Earth_DLCA_Radiator",
+      "Earth_DLCA_GS_Details",
+      "Drive"
+    ]
+  },
+  {
+    "hull": "Escort",
+    "appearance": 0,
+    "renderer_objects": [
+      "Earth_ES_Crew",
+      "Earth_ES_Head",
+      "Earth_ES_Radiators",
+      "Earth_ES_Wings",
+      "Drive"
+    ]
+  },
+  {
+    "hull": "Escort",
+    "appearance": 1,
+    "renderer_objects": [
+      "Earth_ES_ALT_Body",
+      "Earth_ES_ALT_Head",
+      "Earth_ES_ALT_Middle",
+      "Earth_ES_ALT_Rads",
+      "Drive"
+    ]
+  },
+  {
+    "hull": "Escort",
+    "appearance": 2,
+    "renderer_objects": [
+      "Earth_ES_PRM_Body",
+      "Earth_ES_PRM_Head",
+      "Earth_ES_PRM_Rads",
+      "Drive"
+    ]
+  },
+  {
+    "hull": "Escort",
+    "appearance": 3,
+    "renderer_objects": [
+      "Earth_DLCA_Radiator",
+      "Earth_DLCA_ES_Details",
+      "Earth_DLCA_ES_Main",
+      "Drive"
+    ]
+  },
+  {
+    "hull": "Corvette",
+    "appearance": 0,
+    "renderer_objects": [
+      "Earth_CO_Bridge",
+      "Earth_CO_Bridge_Details",
+      "Earth_CO_Crew",
+      "Earth_CO_Radiators",
+      "Drive"
+    ]
+  },
+  {
+    "hull": "Corvette",
+    "appearance": 1,
+    "renderer_objects": [
+      "Earth_CO_ALT_Core_A",
+      "Earth_CO_ALT_Core_B",
+      "Earth_CO_ALT_Head",
+      "Earth_CO_ALT_Rads",
+      "Earth_CO_ALT_Shield_A",
+      "Earth_CO_ALT_Shield_B",
+      "Earth_CO_ALT_Tail",
+      "Drive"
+    ]
+  },
+  {
+    "hull": "Corvette",
+    "appearance": 2,
+    "renderer_objects": [
+      "Earth_CO_PRM_Mid",
+      "Earth_CO_PRM_Head",
+      "Earth_CO_PRM_Rads",
+      "Earth_CO_PRM_Back",
+      "Drive"
+    ]
+  },
+  {
+    "hull": "Corvette",
+    "appearance": 3,
+    "renderer_objects": [
+      "Earth_DLCA_CO_Ends",
+      "Earth_DLCA_CO_Head",
+      "Earth_DLCA_Radiator",
+      "Earth_DLCA_CO_Top",
+      "Drive"
+    ]
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 0,
+    "renderer_objects": [
+      "Earth_Frigate_Propellant_Tanks",
+      "Earth_Frigate_Crew",
+      "Earth_Frigate_Bridge",
+      "Earth_Frigate_Radiators",
+      "Earth_Frigate_Nose",
+      "Drive"
+    ]
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 1,
+    "renderer_objects": [
+      "Earth_FR_ALT_Back",
+      "Earth_FR_ALT_Front",
+      "Earth_FR_ALT_Head",
+      "Earth_FR_ALT_Middle_A",
+      "Earth_FR_ALT_Middle_B",
+      "Earth_FR_ALT_Middle_C",
+      "Earth_FR_ALT_Rads",
+      "Earth_FR_ALT_Tail",
+      "Drive"
+    ]
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 2,
+    "renderer_objects": [
+      "Earth_FRI_PRM_Back",
+      "Earth_FRI_PRM_Detail",
+      "Earth_FRI_PRM_Head",
+      "Earth_FRI_PRM_Mid",
+      "Earth_FRI_PRM_Rads",
+      "Drive"
+    ]
+  },
+  {
+    "hull": "Frigate",
+    "appearance": 3,
+    "renderer_objects": [
+      "Earth_DLCA_FRI_Body_A",
+      "Earth_DLCA_FRI_Body_B",
+      "Earth_DLCA_FRI_End",
+      "Earth_DLCA_FRI_Head",
+      "Earth_DLCA_Radiator",
+      "Drive"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 0,
+    "renderer_objects": [
+      "Earth_Destroyer_Back",
+      "Earth_Destroyer_Bridge",
+      "Earth_Destroyer_Crew",
+      "Earth_Destroyer_Crew_Detail",
+      "Earth_Destroyer_Radiators",
+      "Earth_Destroyer_Tanks",
+      "Drive"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 1,
+    "renderer_objects": [
+      "Earth_DES_ALT_Front_A",
+      "Earth_DES_ALT_Front_B",
+      "Earth_DES_ALT_Head",
+      "Earth_DES_ALT_Middle",
+      "Earth_DES_ALT_Rads",
+      "Earth_DES_ALT_Rear_A",
+      "Earth_DES_ALT_Rear_B",
+      "Drive"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 2,
+    "renderer_objects": [
+      "Earth_DES_PRM_Back",
+      "Earth_DES_PRM_Common_Details",
+      "Earth_DES_PRM_Head",
+      "Earth_DES_PRM_Mid",
+      "Earth_DES_PRM_Rads",
+      "Drive"
+    ]
+  },
+  {
+    "hull": "Destroyer",
+    "appearance": 3,
+    "renderer_objects": [
+      "Earth_DLCA_DES_Common_Details",
+      "Earth_DLCA_DES_Common_Head_B",
+      "Earth_DLCA_DES_Common_Mid_B",
+      "Earth_DLCA_DES_Head_A",
+      "Earth_DLCA_DES_Low_A",
+      "Earth_DLCA_DES_Mid_A",
+      "Earth_DLCA_Radiator",
+      "Earth_DLCA_DES_Tail",
+      "Drive"
+    ]
+  },
+  {
+    "hull": "Battleship",
+    "appearance": 0,
+    "renderer_objects": [
+      "Earth_Battleship_Crew",
+      "Earth_Battleship_Crew_Detail",
+      "Earth_Battleship_Head",
+      "Earth_Battleship_Laser",
+      "Earth_Battleship_Mid_HardPoint",
+      "Earth_Battleship_Mid_Module",
+      "Earth_Battleship_Radiators",
+      "Earth_Battleship_Shoulders",
+      "Earth_Battleship_Tanks",
+      "Drive"
+    ]
+  },
+  {
+    "hull": "Battleship",
+    "appearance": 1,
+    "renderer_objects": [
+      "Earth_BS_ALT_Details",
+      "Earth_BS_ALT_Front",
+      "Earth_BS_ALT_Head",
+      "Earth_BS_ALT_Heart",
+      "Earth_BS_ALT_Middle_A",
+      "Earth_BS_ALT_Middle_B",
+      "Earth_BS_ALT_Middle_C",
+      "Earth_BS_ALT_Rads",
+      "Earth_BS_ALT_Tail",
+      "Earth_BS_ALT_Wings",
+      "Drive"
+    ]
+  },
+  {
+    "hull": "Battleship",
+    "appearance": 2,
+    "renderer_objects": [
+      "Earth_BS_PRM_Common_A",
+      "Earth_BS_PRM_Common_B",
+      "Earth_BS_PRM_Head",
+      "Earth_BS_PRM_Mids",
+      "Earth_BS_PRM_Rads",
+      "Earth_BS_PRM_Tanks",
+      "Drive"
+    ]
+  },
+  {
+    "hull": "Battleship",
+    "appearance": 3,
+    "renderer_objects": [
+      "Earth_DLCA_BS_Bottom",
+      "Earth_DLCA_BS_Common_Details_A",
+      "Earth_DLCA_BS_Common_Details_B",
+      "Earth_DLCA_BS_Head",
+      "Earth_DLCA_BS_Head_Sides",
+      "Earth_DLCA_Radiator",
+      "Earth_DLCA_BS_Sides",
+      "Earth_DLCA_BS_Top",
+      "Drive"
+    ]
+  }
+]

@@ -1,6 +1,9 @@
 # Canonical turret projection report set
 
-2026-10-21. **Planning evidence; nothing here is implemented.** Start with the
+2026-10-21. **Projected evidence, not a current-loadout inventory.** The gunpowder
+dimensions are now implemented in [accepted 0.10.8](../gunpowder-canonical-art-implementation-2026-10-21.md);
+laser/magnetic, compact alien optics and retier scenarios remain unimplemented.
+The numeric snapshots are preserved. Start with the
 [canonical scaling plan](../canonical-turret-scaling-plan-2026-10-21.md).
 The [original turret audit](../turret-clearance/README.md) remains a preserved
 native-asset baseline, and the [25 mm plan is archived](../archive/25mm-autocannon-2026-10-21/README.md).

@@ -1,7 +1,9 @@
 # Titan and Mothership heavy-mount proposal
 
+**Archived 2026-10-21.** Historical planning/investigation state; later outcomes supersede pending or provisional conclusions below. See the [current authority](../../capital-heavy-mount-implementation.md). Original numerical evidence is retained.
+
 Historical planning snapshot. The approved change is implemented as **0.10.0**;
-see the [implementation record](capital-heavy-mount-implementation.md) for the
+see the [implementation record](../../capital-heavy-mount-implementation.md) for the
 final migration policy, release values and testing status. The baseline tables
 below remain unchanged for comparison.
 
@@ -138,7 +140,7 @@ definition. A six-cell alien nose does not score 2^6: it can fit a four-cell
 mount plus two more cells, giving 20 units in A or 30 in B.
 
 The installed game does not consistently follow either progression. The
-[nose audit and numerical A/B candidates](nose-weapon-scaling-audit-2026-09-25.md)
+[nose audit and numerical A/B candidates](../../nose-weapon-scaling-audit-2026-09-25.md)
 cover 120 weapons in 35 related families. They distinguish mounting mass,
 full-cycle raw throughput, mean electrical draw, and optical effectiveness.
 
@@ -417,13 +419,13 @@ Capital PD capability is an intended feature, not a failure criterion.
 
 ## Evidence
 
-- [Nose audit, A/B correction targets, and actual-template reference fits](nose-weapon-scaling-audit-2026-09-25.md).
-- [Merged source snapshot, hashes, both variants, and all appearance calculations](tables/capital-heavy-mount-proposal-2026-09-25.json).
-- [Hull overrides](../../TIEconomyMod/ModFiles/TIShipHullTemplate.json),
-  [flat appearance masses](../../TIEconomyMod/Core/ShipBalanceMath.cs),
-  [default settings](../../TIEconomyMod/ModFiles/Settings.xml), and
-  [module-volume accounting](../../TIEconomyMod/Patches/FuelCapacityPatches.cs).
-- [Measured hull envelopes](hull-utility-slot-volume-report.md).
+- [Nose audit, A/B correction targets, and actual-template reference fits](../../nose-weapon-scaling-audit-2026-09-25.md).
+- [Merged source snapshot, hashes, both variants, and all appearance calculations](../../tables/capital-heavy-mount-proposal-2026-09-25.json).
+- [Hull overrides](../../../../TIEconomyMod/ModFiles/TIShipHullTemplate.json),
+  [flat appearance masses](../../../../TIEconomyMod/Core/ShipBalanceMath.cs),
+  [default settings](../../../../TIEconomyMod/ModFiles/Settings.xml), and
+  [module-volume accounting](../../../../TIEconomyMod/Patches/FuelCapacityPatches.cs).
+- [Measured hull envelopes](../../hull-utility-slot-volume-report.md).
 
 Installed templates are merged by dataName with current repository partial
 overrides. Geometry uses the inspected native x+1/y+2 adjacency rules. Salvo
