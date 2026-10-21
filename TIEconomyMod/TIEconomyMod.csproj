@@ -141,6 +141,8 @@
     <Compile Include="Core\WeaponPowerMath.cs" />
     <Compile Include="Core\WeaponCadenceMath.cs" />
     <Compile Include="Core\CapitalMountPolicy.cs" />
+    <Compile Include="Core\MothershipMountGeometry.cs" />
+    <Compile Include="Patches\MothershipMountPatches.cs" />
     <Compile Include="Core\CapitalMountRuntime.cs" />
     <Compile Include="Patches\CapitalMountPatches.cs" />
     <Compile Include="Patches\CapitalMigrationPatches.cs" />

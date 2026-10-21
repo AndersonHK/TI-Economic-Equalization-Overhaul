@@ -430,6 +430,66 @@ public static class CapitalImportBackupProbe {
         @($eligible | Where-Object { $_.dataName -in @('CapitalFutureCoilgunMk3','CapitalRootCoilgunMk3','CapitalCycleCoilgunMk3','CapitalAlternativeCoilgunMk3') }).Count) {
         throw 'Stock technology inference selected an unsupported branch or missed a peer project.'
     }
+    # The Mothership geometry catalog is validated without invoking Unity scene
+    # APIs. Native controller lifecycle/aiming remains an in-game acceptance item.
+    $geometry = $modAssembly.GetType('TIEconomyMod.Core.MothershipMountGeometry', $true)
+    $vectorType = $geometry.GetMethod('Target').ReturnType
+    $catalog = Get-Content -Raw (Join-Path $RepositoryRoot 'docs\ship-balance-research\turret-clearance\mothership-layout-2026-10-21.json') | ConvertFrom-Json
+    $assetPath = Join-Path (Split-Path -Parent $TargetManagedDir) 'StreamingAssets\AssetBundles\ships'
+    if ((Get-FileHash -LiteralPath $assetPath -Algorithm SHA256).Hash -ne $catalog.source_bundle_sha256) {
+        throw 'Mothership original-geometry fixture does not match installed ships bundle.'
+    }
+    $tops = [Array]::CreateInstance($vectorType, 20)
+    $bottoms = [Array]::CreateInstance($vectorType, 20)
+    $ctor = $vectorType.GetConstructor([type[]]@([single], [single], [single]))
+    foreach ($row in $catalog.rows) {
+        for ($side = 0; $side -lt 2; ++$side) {
+            $key = if ($side -eq 0) { 'dorsal' } else { 'ventral' }
+            $expected = $ctor.Invoke([object[]]@([single]$row.$key[0], [single]$row.$key[1], [single]$row.$key[2]))
+            $actual = $geometry.GetMethod('Target').Invoke($null, @([int]$row.index, [bool]$side))
+            if (-not $geometry.GetMethod('Matches').Invoke($null, @($actual, $expected))) { throw "Mothership target differs from measured catalog: $key $($row.index)" }
+            $origKey = 'original_' + $key
+            $original = $ctor.Invoke([object[]]@([single]$row.$origKey[0], [single]$row.$origKey[1], [single]$row.$origKey[2]))
+            if (-not $geometry.GetMethod('Matches').Invoke($null, @($original, $geometry.GetMethod('Original').Invoke($null, @([int]$row.index, [bool]$side))))) {
+                throw 'Mothership source guard differs from extracted prefab.'
+            }
+            if ($side -eq 0) { $tops[$row.index] = $original } else { $bottoms[$row.index] = $original }
+        }
+    }
+    $guardArgs = New-Object object[] 3
+    $guardArgs[0] = $tops; $guardArgs[1] = $bottoms; $guardArgs[2] = $null
+    if (-not $geometry.GetMethod('ValidatePositions').Invoke($null, $guardArgs)) { throw 'Mothership rejected original asset geometry.' }
+    for ($side = 0; $side -lt 2; ++$side) {
+        if ($side -eq 0) { $values = $tops } else { $values = $bottoms }
+        for ($i = 0; $i -lt 20; ++$i) {
+            $saved = $values[$i]
+            $values[$i] = $ctor.Invoke([object[]]@([single]9999, [single]0, [single]0))
+            if ($geometry.GetMethod('ValidatePositions').Invoke($null, $guardArgs)) { throw "Mothership accepted changed source position at $side/$i" }
+            $values[$i] = $saved
+        }
+    }
+    for ($i = 0; $i -lt 20; ++$i) {
+        $tops[$i] = $geometry.GetMethod('Target').Invoke($null, @($i, $false))
+        $bottoms[$i] = $geometry.GetMethod('Target').Invoke($null, @($i, $true))
+    }
+    if (-not $geometry.GetMethod('ValidatePositions').Invoke($null, $guardArgs)) { throw 'Mothership placement is not idempotent.' }
+    $minimum = [double]::PositiveInfinity
+    for ($side = 0; $side -lt 2; ++$side) {
+        if ($side -eq 0) { $points = $tops } else { $points = $bottoms }
+        for ($a = 0; $a -lt 20; ++$a) { for ($b = $a + 1; $b -lt 20; ++$b) {
+            $pa = $points[$a]; $pb = $points[$b]
+            $distance = [Math]::Sqrt([Math]::Pow($pa.x-$pb.x,2)+[Math]::Pow($pa.y-$pb.y,2)+[Math]::Pow($pa.z-$pb.z,2))
+            $minimum = [Math]::Min($minimum, $distance)
+        } }
+    }
+    # The original all-faction preview sphere diameter is 29.018897 m,
+    # larger than combat art. Keep at least 5 m even on that conservative path.
+    if ($minimum -lt 34.19) { throw "Mothership size-4 geometry margin lost: $minimum" }
+    $mother = @($overrides | Where-Object dataName -eq 'AlienMothership')[0]
+    if (@($mother.shipModuleSlots | Where-Object moduleSlotType -eq 'HullHardPoint').Count -ne 16 -or $mother.mass_tons -ne 8200) {
+        throw 'Conditional Mothership UI/mass decision changed without additional UI capacity.'
+    }
+    Write-Host 'PASS: Mothership source hash and 40 guards, idempotent targets, 34.2 m authored-pair spacing (including preview margins), sixteen active slots and unchanged 8200 t validate. Scene hierarchy/aiming remains Unity-host validation.'
     Write-Host "PASS: $($stockDesigns.Count) ownerless stock capital designs, including Ship20a, normalize through the new-ship guard without repeated expansion."
     Write-Host 'PASS: ownerless missile replacement follows static project prerequisites and rejects future, unknown-root and cyclic research paths.'
     Write-Host "PASS: $($patches.Count - $unityOnly.Count) capital patches applied; $($unityOnly.Count) target-resolved patches require Unity native calls. Save schema round trips; future schemas reject; migration expansion, AI eligibility, independent heavy cells and utility/mass/crew data validate."
