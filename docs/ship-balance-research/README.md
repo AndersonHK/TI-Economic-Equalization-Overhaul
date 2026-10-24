@@ -1,6 +1,6 @@
 # Ship balance: implementations, plans and evidence
 
-Last reviewed: 2026-10-21. Use current implementation records for released
+Last reviewed: 2026-10-23. Use current implementation records for released
 behavior, planning records for unimplemented choices, and dated measurements
 for their stated baselines. The [implementation matrix](../current-implementation-matrix.xlsx)
 and [decision changelog](CHANGELOG.md) provide cross-checks. The
@@ -15,6 +15,8 @@ and [decision changelog](CHANGELOG.md) provide cross-checks. The
 
 ## Future weapon and hull design
 
+- [Rendered battle scale and collision report](rendered-battle-scale-and-collision-report-2026-10-23.md): confirmed 20x/200x ship enlargement relative to battle distances, projectile visual/collider differences, and limits on the expected hull-gun aiming benefit. Research only.
+- [Combat camera fine-control report](combat-camera-fine-control-report-2026-10-23.md): native zoom-dependent floors, per-frame keyboard movement, free-look radius divergence, and proposed distance-based controls. Research only; [shared code evidence](battle-scale-camera-code-evidence-2026-10-23.md).
 - [Canonical sizing plan](canonical-turret-scaling-plan-2026-10-21.md) and [projected report set](canonical-turret-projection/README.md): gunpowder portion implemented; laser/magnetic/compact alien optics, hull changes and retiers remain proposals.
 - [Larger-laser aperture proposal](larger-laser-aperture-proposal-2026-10-21.md): simulation aperture buffs are a separate balance choice from matching art to existing optics.
 - [Nose batteries and enlarged spinal tier](nose-battery-and-spinal-tier-proposal-2026-09-25.md): deferred fitting and output alternatives.

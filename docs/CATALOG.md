@@ -1,8 +1,8 @@
 # Complete documentation and artifact catalog
 
-Generated 2026-10-21. This catalog indexes every other file under `docs/`, including machine-readable evidence and images. For interpretation, start with the [documentation map](README.md), [ship-balance hub](ship-balance-research/README.md), or [archive index](archive/README.md). Location/type labels are navigation aids, not assertions that all research is implemented.
+Generated 2026-10-21; updated 2026-10-23 for the battle-scale and camera research. This catalog indexes every other file under `docs/`, including machine-readable evidence and images. For interpretation, start with the [documentation map](README.md), [ship-balance hub](ship-balance-research/README.md), or [archive index](archive/README.md). Location/type labels are navigation aids, not assertions that all research is implemented.
 
-Indexed files: **411**. No archived evidence was deleted during the organization pass.
+Indexed files: **414**. No archived evidence was deleted during the organization pass.
 
 
 ## Top-level guides and authorities
@@ -162,6 +162,9 @@ Indexed files: **411**. No archived evidence was deleted during the organization
 
 | File | Type |
 |---|---|
+| [ship-balance-research/battle-scale-camera-code-evidence-2026-10-23.md](ship-balance-research/battle-scale-camera-code-evidence-2026-10-23.md) | MD |
+| [ship-balance-research/combat-camera-fine-control-report-2026-10-23.md](ship-balance-research/combat-camera-fine-control-report-2026-10-23.md) | MD |
+| [ship-balance-research/rendered-battle-scale-and-collision-report-2026-10-23.md](ship-balance-research/rendered-battle-scale-and-collision-report-2026-10-23.md) | MD |
 | [ship-balance-research/ai-fuel-capacity-minimum-plan.md](ship-balance-research/ai-fuel-capacity-minimum-plan.md) | MD |
 | [ship-balance-research/ai-hull-appearance-selection-hypothetical.md](ship-balance-research/ai-hull-appearance-selection-hypothetical.md) | MD |
 | [ship-balance-research/alien-weapons-propulsion-and-armor-proposal.md](ship-balance-research/alien-weapons-propulsion-and-armor-proposal.md) | MD |

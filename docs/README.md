@@ -154,6 +154,11 @@ regenerate the catalog and verify links after later changes.
   deferred.
 - [Military 2022-2030 sanity check](military-investment-2022-2030-sanity-check.md)
   is a controlled calibration exercise, not a historical forecast.
+- [Rendered battle scale and collision](ship-balance-research/rendered-battle-scale-and-collision-report-2026-10-23.md)
+  traces the global ship/projectile enlargement, physical versus visual geometry,
+  and hull-gun aiming implications. [Combat camera precision](ship-balance-research/combat-camera-fine-control-report-2026-10-23.md)
+  diagnoses close-range steps and FPS-dependent movement. Both are research-only
+  reports with [fresh code excerpts and source hashes](ship-balance-research/battle-scale-camera-code-evidence-2026-10-23.md).
 - [Canonical turret scaling plan](ship-balance-research/canonical-turret-scaling-plan-2026-10-21.md)
   projects physics-based model sizes through all 28 classes and 64 appearances,
   with compact alien optics, legal-loadout checks, tier-coherence statistics and
