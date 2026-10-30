@@ -1,0 +1,1120 @@
+{
+  "sources": {
+    "TerraInvicta_Data/Managed/Assembly-CSharp.dll": "4A4B9AAE4154E444E9727204205D2D42AE8ED9E1C5F92CDC1280074A259D8350",
+    "TerraInvicta_Data/Managed/ShapesRuntime.dll": "FFEDA5558F26B6B9CFA697804F09CB9C1B427E13934F1E5281A838A86A7DB09D",
+    "TerraInvicta_Data/StreamingAssets/AssetBundles/spacecombat": "27F37070CBD1FC29275CB5FC38D3073DE24C10802AC441B5FAD39A54F573B90F",
+    "TerraInvicta_Data/StreamingAssets/AssetBundles/vfx": "CF7A2DE58BD037706028EB09C98308E8CED8BFAFB84C6F71AB8EF44F88801969"
+  },
+  "line_assets": [
+    {
+      "name": "Alien Laser Beam Blue",
+      "textureMode": 0,
+      "materials": [
+        {
+          "name": "Laser",
+          "shader": "TerraInvicta/Beam Weapon Line",
+          "textures": [
+            {
+              "property": "_MainTex",
+              "scale": {
+                "x": 0.5,
+                "y": 0.5
+              },
+              "offset": {
+                "x": 0.0,
+                "y": 0.0
+              },
+              "texture": "noiseBurnUp",
+              "size": [
+                1024,
+                1024
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Laser beam 1",
+      "textureMode": 0,
+      "materials": [
+        {
+          "name": "Laser1",
+          "shader": "ErbGameArt/Particles/Blend_CenterGlow",
+          "textures": [
+            {
+              "property": "_MainTex",
+              "scale": {
+                "x": 1.0,
+                "y": 1.0
+              },
+              "offset": {
+                "x": 0.0,
+                "y": 0.0
+              },
+              "texture": "Trail42",
+              "size": [
+                512,
+                512
+              ]
+            },
+            {
+              "property": "_Mask",
+              "scale": {
+                "x": 1.0,
+                "y": 1.0
+              },
+              "offset": {
+                "x": 0.0,
+                "y": 0.0
+              }
+            },
+            {
+              "property": "_Noise",
+              "scale": {
+                "x": 1.0,
+                "y": 1.0
+              },
+              "offset": {
+                "x": 0.0,
+                "y": 0.0
+              },
+              "texture": "Trail6",
+              "size": [
+                512,
+                512
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Phaser Beam Green",
+      "textureMode": 0,
+      "materials": [
+        {
+          "name": "Phaser",
+          "shader": "TerraInvicta/Beam Weapon Line",
+          "textures": [
+            {
+              "property": "_MainTex",
+              "scale": {
+                "x": 0.05000000074505806,
+                "y": 0.05000000074505806
+              },
+              "offset": {
+                "x": 0.0,
+                "y": 0.0
+              },
+              "texture": "Phaser",
+              "size": [
+                256,
+                256
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Laser beam 4",
+      "textureMode": 0,
+      "materials": [
+        {
+          "name": "Laser4",
+          "shader": "ErbGameArt/Particles/Blend_CenterGlow",
+          "textures": [
+            {
+              "property": "_MainTex",
+              "scale": {
+                "x": 1.0,
+                "y": 1.0
+              },
+              "offset": {
+                "x": 0.0,
+                "y": 0.0
+              },
+              "texture": "Trail6",
+              "size": [
+                512,
+                512
+              ]
+            },
+            {
+              "property": "_Mask",
+              "scale": {
+                "x": 1.0,
+                "y": 1.0
+              },
+              "offset": {
+                "x": 0.0,
+                "y": 0.0
+              }
+            },
+            {
+              "property": "_Noise",
+              "scale": {
+                "x": 1.0,
+                "y": 1.0
+              },
+              "offset": {
+                "x": 0.0,
+                "y": 0.0
+              },
+              "texture": "Noise34",
+              "size": [
+                1024,
+                1024
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Laser beam 8",
+      "textureMode": 0,
+      "materials": [
+        {
+          "name": "Laser8",
+          "shader": "ErbGameArt/Particles/Add_CenterGlow",
+          "textures": [
+            {
+              "property": "_MainTex",
+              "scale": {
+                "x": 1.0,
+                "y": 1.0
+              },
+              "offset": {
+                "x": 0.0,
+                "y": 0.0
+              },
+              "texture": "waves3",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "property": "_Mask",
+              "scale": {
+                "x": 1.0,
+                "y": 1.0
+              },
+              "offset": {
+                "x": 0.0,
+                "y": 0.0
+              }
+            },
+            {
+              "property": "_Noise",
+              "scale": {
+                "x": 1.0,
+                "y": 1.0
+              },
+              "offset": {
+                "x": 0.0,
+                "y": 0.0
+              },
+              "texture": "Trail6",
+              "size": [
+                512,
+                512
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Phaser Beam Violet",
+      "textureMode": 0,
+      "materials": [
+        {
+          "name": "Phaser",
+          "shader": "TerraInvicta/Beam Weapon Line",
+          "textures": [
+            {
+              "property": "_MainTex",
+              "scale": {
+                "x": 0.05000000074505806,
+                "y": 0.05000000074505806
+              },
+              "offset": {
+                "x": 0.0,
+                "y": 0.0
+              },
+              "texture": "Phaser",
+              "size": [
+                256,
+                256
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Laser beam 7",
+      "textureMode": 0,
+      "materials": [
+        {
+          "name": "Laser2",
+          "shader": "ErbGameArt/Particles/Blend_CenterGlow",
+          "textures": [
+            {
+              "property": "_MainTex",
+              "scale": {
+                "x": 1.0,
+                "y": 1.0
+              },
+              "offset": {
+                "x": 0.0,
+                "y": 0.0
+              },
+              "texture": "Line3",
+              "size": [
+                256,
+                256
+              ]
+            },
+            {
+              "property": "_Mask",
+              "scale": {
+                "x": 1.0,
+                "y": 1.0
+              },
+              "offset": {
+                "x": 0.0,
+                "y": 0.0
+              }
+            },
+            {
+              "property": "_Noise",
+              "scale": {
+                "x": 1.0,
+                "y": 1.0
+              },
+              "offset": {
+                "x": 0.0,
+                "y": 0.0
+              },
+              "texture": "Particles6",
+              "size": [
+                256,
+                256
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Standard Laser Beam Violet",
+      "textureMode": 0,
+      "materials": [
+        {
+          "name": "Laser",
+          "shader": "TerraInvicta/Beam Weapon Line",
+          "textures": [
+            {
+              "property": "_MainTex",
+              "scale": {
+                "x": 0.5,
+                "y": 0.5
+              },
+              "offset": {
+                "x": 0.0,
+                "y": 0.0
+              },
+              "texture": "noiseBurnUp",
+              "size": [
+                1024,
+                1024
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Laser beam 10",
+      "textureMode": 0,
+      "materials": [
+        {
+          "name": "Laser8",
+          "shader": "ErbGameArt/Particles/Add_CenterGlow",
+          "textures": [
+            {
+              "property": "_MainTex",
+              "scale": {
+                "x": 1.0,
+                "y": 1.0
+              },
+              "offset": {
+                "x": 0.0,
+                "y": 0.0
+              },
+              "texture": "waves3",
+              "size": [
+                1024,
+                1024
+              ]
+            },
+            {
+              "property": "_Mask",
+              "scale": {
+                "x": 1.0,
+                "y": 1.0
+              },
+              "offset": {
+                "x": 0.0,
+                "y": 0.0
+              }
+            },
+            {
+              "property": "_Noise",
+              "scale": {
+                "x": 1.0,
+                "y": 1.0
+              },
+              "offset": {
+                "x": 0.0,
+                "y": 0.0
+              },
+              "texture": "Trail6",
+              "size": [
+                512,
+                512
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Particle Beam Purple",
+      "textureMode": 0,
+      "materials": [
+        {
+          "name": "ParticleBeam2",
+          "shader": "TerraInvicta/Laser Beam No Middle",
+          "textures": [
+            {
+              "property": "_MainTex",
+              "scale": {
+                "x": 0.05000000074505806,
+                "y": 0.05000000074505806
+              },
+              "offset": {
+                "x": 0.0,
+                "y": 0.0
+              },
+              "texture": "ParticleBeam",
+              "size": [
+                512,
+                512
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Standard Laser Beam Red",
+      "textureMode": 0,
+      "materials": [
+        {
+          "name": "Laser",
+          "shader": "TerraInvicta/Beam Weapon Line",
+          "textures": [
+            {
+              "property": "_MainTex",
+              "scale": {
+                "x": 0.5,
+                "y": 0.5
+              },
+              "offset": {
+                "x": 0.0,
+                "y": 0.0
+              },
+              "texture": "noiseBurnUp",
+              "size": [
+                1024,
+                1024
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Alien Laser Gamma Ray",
+      "textureMode": 0,
+      "materials": [
+        {
+          "name": "GammaRayLaser",
+          "shader": "TerraInvicta/Laser Beam No Middle",
+          "textures": [
+            {
+              "property": "_MainTex",
+              "scale": {
+                "x": 1.0,
+                "y": 1.0
+              },
+              "offset": {
+                "x": 0.0,
+                "y": 0.0
+              },
+              "texture": "Phaser",
+              "size": [
+                256,
+                256
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Alien Laser XRay",
+      "textureMode": 0,
+      "materials": [
+        {
+          "name": "XRayLaser",
+          "shader": "TerraInvicta/Laser Beam No Middle",
+          "textures": [
+            {
+              "property": "_MainTex",
+              "scale": {
+                "x": 1.0,
+                "y": 1.0
+              },
+              "offset": {
+                "x": 0.0,
+                "y": 0.0
+              },
+              "texture": "Phaser",
+              "size": [
+                256,
+                256
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Particle Beam White",
+      "textureMode": 0,
+      "materials": [
+        {
+          "name": "ParticleBeam",
+          "shader": "TerraInvicta/Beam Weapon Line",
+          "textures": [
+            {
+              "property": "_MainTex",
+              "scale": {
+                "x": 0.05000000074505806,
+                "y": 0.05000000074505806
+              },
+              "offset": {
+                "x": 0.0,
+                "y": 0.0
+              },
+              "texture": "ParticleBeam",
+              "size": [
+                512,
+                512
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Laser beam 9",
+      "textureMode": 0,
+      "materials": [
+        {
+          "name": "Laser3",
+          "shader": "ErbGameArt/Particles/Blend_CenterGlow",
+          "textures": [
+            {
+              "property": "_MainTex",
+              "scale": {
+                "x": 1.0,
+                "y": 1.0
+              },
+              "offset": {
+                "x": 0.0,
+                "y": 0.0
+              },
+              "texture": "Trail6",
+              "size": [
+                512,
+                512
+              ]
+            },
+            {
+              "property": "_Mask",
+              "scale": {
+                "x": 1.0,
+                "y": 1.0
+              },
+              "offset": {
+                "x": 0.0,
+                "y": 0.0
+              }
+            },
+            {
+              "property": "_Noise",
+              "scale": {
+                "x": 1.0,
+                "y": 1.0
+              },
+              "offset": {
+                "x": 0.0,
+                "y": 0.0
+              },
+              "texture": "Noise43",
+              "size": [
+                1024,
+                1024
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Laser beam 5",
+      "textureMode": 0,
+      "materials": [
+        {
+          "name": "Laser5",
+          "shader": "ErbGameArt/Particles/Blend_CenterGlow",
+          "textures": [
+            {
+              "property": "_MainTex",
+              "scale": {
+                "x": 1.0,
+                "y": 1.0
+              },
+              "offset": {
+                "x": 0.0,
+                "y": 0.0
+              },
+              "texture": "Trail6",
+              "size": [
+                512,
+                512
+              ]
+            },
+            {
+              "property": "_Mask",
+              "scale": {
+                "x": 1.0,
+                "y": 1.0
+              },
+              "offset": {
+                "x": 0.0,
+                "y": 0.0
+              }
+            },
+            {
+              "property": "_Noise",
+              "scale": {
+                "x": 1.0,
+                "y": 1.0
+              },
+              "offset": {
+                "x": 0.0,
+                "y": 0.0
+              },
+              "texture": "Noise13",
+              "size": [
+                512,
+                512
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Laser beam 6",
+      "textureMode": 0,
+      "materials": [
+        {
+          "name": "Laser6",
+          "shader": "ErbGameArt/Particles/Add_CenterGlow",
+          "textures": [
+            {
+              "property": "_MainTex",
+              "scale": {
+                "x": 1.0,
+                "y": 1.0
+              },
+              "offset": {
+                "x": 0.0,
+                "y": 0.0
+              },
+              "texture": "Trail6",
+              "size": [
+                512,
+                512
+              ]
+            },
+            {
+              "property": "_Mask",
+              "scale": {
+                "x": 1.0,
+                "y": 1.0
+              },
+              "offset": {
+                "x": 0.0,
+                "y": 0.0
+              }
+            },
+            {
+              "property": "_Noise",
+              "scale": {
+                "x": 1.0,
+                "y": 1.0
+              },
+              "offset": {
+                "x": 0.0,
+                "y": 0.0
+              },
+              "texture": "Noise34",
+              "size": [
+                1024,
+                1024
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Alien Laser Beam Orange",
+      "textureMode": 0,
+      "materials": [
+        {
+          "name": "Laser",
+          "shader": "TerraInvicta/Beam Weapon Line",
+          "textures": [
+            {
+              "property": "_MainTex",
+              "scale": {
+                "x": 0.5,
+                "y": 0.5
+              },
+              "offset": {
+                "x": 0.0,
+                "y": 0.0
+              },
+              "texture": "noiseBurnUp",
+              "size": [
+                1024,
+                1024
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Arc Laser Beam Red",
+      "textureMode": 0,
+      "materials": [
+        {
+          "name": "ArcLaser",
+          "shader": "TerraInvicta/Beam Weapon Line",
+          "textures": [
+            {
+              "property": "_MainTex",
+              "scale": {
+                "x": 0.05000000074505806,
+                "y": 0.05000000074505806
+              },
+              "offset": {
+                "x": 0.0,
+                "y": 0.0
+              },
+              "texture": "ArcLaser",
+              "size": [
+                512,
+                512
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Particle Beam Yellow",
+      "textureMode": 0,
+      "materials": [
+        {
+          "name": "ParticleBeam",
+          "shader": "TerraInvicta/Beam Weapon Line",
+          "textures": [
+            {
+              "property": "_MainTex",
+              "scale": {
+                "x": 0.05000000074505806,
+                "y": 0.05000000074505806
+              },
+              "offset": {
+                "x": 0.0,
+                "y": 0.0
+              },
+              "texture": "ParticleBeam",
+              "size": [
+                512,
+                512
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Particle Beam Cyan",
+      "textureMode": 0,
+      "materials": [
+        {
+          "name": "ParticleBeam2",
+          "shader": "TerraInvicta/Laser Beam No Middle",
+          "textures": [
+            {
+              "property": "_MainTex",
+              "scale": {
+                "x": 0.05000000074505806,
+                "y": 0.05000000074505806
+              },
+              "offset": {
+                "x": 0.0,
+                "y": 0.0
+              },
+              "texture": "ParticleBeam",
+              "size": [
+                512,
+                512
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Phaser Beam Red",
+      "textureMode": 0,
+      "materials": [
+        {
+          "name": "Phaser",
+          "shader": "TerraInvicta/Beam Weapon Line",
+          "textures": [
+            {
+              "property": "_MainTex",
+              "scale": {
+                "x": 0.05000000074505806,
+                "y": 0.05000000074505806
+              },
+              "offset": {
+                "x": 0.0,
+                "y": 0.0
+              },
+              "texture": "Phaser",
+              "size": [
+                256,
+                256
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Laser beam 3",
+      "textureMode": 0,
+      "materials": [
+        {
+          "name": "Laser3",
+          "shader": "ErbGameArt/Particles/Blend_CenterGlow",
+          "textures": [
+            {
+              "property": "_MainTex",
+              "scale": {
+                "x": 1.0,
+                "y": 1.0
+              },
+              "offset": {
+                "x": 0.0,
+                "y": 0.0
+              },
+              "texture": "Trail6",
+              "size": [
+                512,
+                512
+              ]
+            },
+            {
+              "property": "_Mask",
+              "scale": {
+                "x": 1.0,
+                "y": 1.0
+              },
+              "offset": {
+                "x": 0.0,
+                "y": 0.0
+              }
+            },
+            {
+              "property": "_Noise",
+              "scale": {
+                "x": 1.0,
+                "y": 1.0
+              },
+              "offset": {
+                "x": 0.0,
+                "y": 0.0
+              },
+              "texture": "Noise43",
+              "size": [
+                1024,
+                1024
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Particle Beam Yellow-Green",
+      "textureMode": 0,
+      "materials": [
+        {
+          "name": "ParticleBeam2",
+          "shader": "TerraInvicta/Laser Beam No Middle",
+          "textures": [
+            {
+              "property": "_MainTex",
+              "scale": {
+                "x": 0.05000000074505806,
+                "y": 0.05000000074505806
+              },
+              "offset": {
+                "x": 0.0,
+                "y": 0.0
+              },
+              "texture": "ParticleBeam",
+              "size": [
+                512,
+                512
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Particle Beam Dark Blue",
+      "textureMode": 0,
+      "materials": [
+        {
+          "name": "ParticleBeam",
+          "shader": "TerraInvicta/Beam Weapon Line",
+          "textures": [
+            {
+              "property": "_MainTex",
+              "scale": {
+                "x": 0.05000000074505806,
+                "y": 0.05000000074505806
+              },
+              "offset": {
+                "x": 0.0,
+                "y": 0.0
+              },
+              "texture": "ParticleBeam",
+              "size": [
+                512,
+                512
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Laser beam 2",
+      "textureMode": 0,
+      "materials": [
+        {
+          "name": "Laser2",
+          "shader": "ErbGameArt/Particles/Blend_CenterGlow",
+          "textures": [
+            {
+              "property": "_MainTex",
+              "scale": {
+                "x": 1.0,
+                "y": 1.0
+              },
+              "offset": {
+                "x": 0.0,
+                "y": 0.0
+              },
+              "texture": "Line3",
+              "size": [
+                256,
+                256
+              ]
+            },
+            {
+              "property": "_Mask",
+              "scale": {
+                "x": 1.0,
+                "y": 1.0
+              },
+              "offset": {
+                "x": 0.0,
+                "y": 0.0
+              }
+            },
+            {
+              "property": "_Noise",
+              "scale": {
+                "x": 1.0,
+                "y": 1.0
+              },
+              "offset": {
+                "x": 0.0,
+                "y": 0.0
+              },
+              "texture": "Particles6",
+              "size": [
+                256,
+                256
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Standard Laser Beam Green",
+      "textureMode": 0,
+      "materials": [
+        {
+          "name": "Laser",
+          "shader": "TerraInvicta/Beam Weapon Line",
+          "textures": [
+            {
+              "property": "_MainTex",
+              "scale": {
+                "x": 0.5,
+                "y": 0.5
+              },
+              "offset": {
+                "x": 0.0,
+                "y": 0.0
+              },
+              "texture": "noiseBurnUp",
+              "size": [
+                1024,
+                1024
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Arc Laser Beam Violet",
+      "textureMode": 0,
+      "materials": [
+        {
+          "name": "ArcLaser",
+          "shader": "TerraInvicta/Beam Weapon Line",
+          "textures": [
+            {
+              "property": "_MainTex",
+              "scale": {
+                "x": 0.05000000074505806,
+                "y": 0.05000000074505806
+              },
+              "offset": {
+                "x": 0.0,
+                "y": 0.0
+              },
+              "texture": "ArcLaser",
+              "size": [
+                512,
+                512
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Solid Laser Red",
+      "textureMode": 0,
+      "materials": [
+        {
+          "name": "SolidLaser",
+          "shader": "TerraInvicta/Beam Weapon Line",
+          "textures": [
+            {
+              "property": "_MainTex",
+              "scale": {
+                "x": 0.5,
+                "y": 0.5
+              },
+              "offset": {
+                "x": 0.0,
+                "y": 0.0
+              },
+              "texture": "noiseBurnUp",
+              "size": [
+                1024,
+                1024
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Arc Laser Beam Green",
+      "textureMode": 0,
+      "materials": [
+        {
+          "name": "ArcLaser",
+          "shader": "TerraInvicta/Beam Weapon Line",
+          "textures": [
+            {
+              "property": "_MainTex",
+              "scale": {
+                "x": 0.05000000074505806,
+                "y": 0.05000000074505806
+              },
+              "offset": {
+                "x": 0.0,
+                "y": 0.0
+              },
+              "texture": "ArcLaser",
+              "size": [
+                512,
+                512
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

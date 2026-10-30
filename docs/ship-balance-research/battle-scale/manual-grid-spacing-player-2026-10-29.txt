@@ -1,0 +1,1793 @@
+Mono path[0] = 'D:/Games/SteamLibrary/steamapps/common/Terra Invicta/TerraInvicta_Data/Managed'
+Mono config path = 'D:/Games/SteamLibrary/steamapps/common/Terra Invicta/MonoBleedingEdge/etc'
+Initialize engine version: 2020.3.49f1 (18249dd5551b)
+[Subsystems] Discovering subsystems at path D:/Games/SteamLibrary/steamapps/common/Terra Invicta/TerraInvicta_Data/UnitySubsystems
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 5070 Ti (ID=0x2c05)
+    Vendor:   
+    VRAM:     15995 MB
+    Driver:   32.0.16.1692
+Begin MonoManager ReloadAssembly
+
+
+[Manager] Injection...
+[Manager] Initialize.
+[Manager] Version: 0.27.14.0.
+[Manager] OS: Microsoft Windows NT 10.0.19045.0 AMD64.
+[Manager] Net Framework: 4.0.30319.42000.
+[Manager] Unity Engine: 2020.3.491.
+[Manager] Game: Terra Invicta.
+[Manager] IsSupportOnSessionStart: False.
+[Manager] IsSupportOnSessionStop: False.
+[Manager] Mods path: D:\Games\SteamLibrary\steamapps\common\Terra Invicta\Mods/Enabled.
+Fallback handler could not load library D:/Games/SteamLibrary/steamapps/common/Terra Invicta/TerraInvicta_Data/Mono/data-00000219D518D0B0.dll
+Fallback handler could not load library D:/Games/SteamLibrary/steamapps/common/Terra Invicta/TerraInvicta_Data/Mono/data-00000219F8540070.dll
+[Manager] Injection successful.
+- Completed reload, in  0.343 seconds
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+The referenced script on this Behaviour (Game Object 'Game Controller') is missing!
+The referenced script on this Behaviour (Game Object 'Game Controller') is missing!
+The referenced script on this Behaviour (Game Object 'Game Controller') is missing!
+UnloadTime: 0.386300 ms
+Initializing Logging
+Log Config Loaded
+Logger ready
+TerraInvicta v1.0.53b
+Initializing global bindings
+Getting All DLC Content
+Adding DLC Directory: DLC_Content/DarkSkies
+Adding DLC Directory: DLC_Content/SupporterPack
+AltSavePath = 
+Setting savedGamesPath: C:/Users/imper/Documents/My Games/TerraInvicta/Saves/
+Found Profile Config File
+Use Mods:True
+Previous launch failed due to bad mod templates: False
+Setting Up Directories
+Getting All Mod Files
+Adding Enabled Mod Directory: Mods/Enabled/Economic Equalization Overhaul
+Adding Enabled Mod Directory: Mods/Enabled/Enable Achievements Fix
+Adding Disabled Mod Directory: Mods/Disabled/Color-Coded Traits
+Adding Disabled Mod Directory: Mods/Disabled/Normalize Ship Scaling
+Adding Disabled Mod Directory: Mods/Disabled/Normalize Ship Scaling and +2 Utility
+Adding Disabled Mod Directory: Mods/Disabled/Tweaked UI
+Mods/Enabled/Economic Equalization Overhaul/Economic Equalization Overhaul.png
+Mods/Enabled/Economic Equalization Overhaul/ModInfo.json
+Mods/Enabled/Economic Equalization Overhaul/Settings.xml
+Mods/Enabled/Economic Equalization Overhaul/TIArmyTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIDriveTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIEffectTemplate.en
+Mods/Enabled/Economic Equalization Overhaul/TIEffectTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIGlobalConfig.json
+Mods/Enabled/Economic Equalization Overhaul/TIGunTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIHabModuleTemplate.en
+Mods/Enabled/Economic Equalization Overhaul/TIHabModuleTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIHabSiteTemplate.en
+Mods/Enabled/Economic Equalization Overhaul/TIHabSiteTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIHabTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIHeatSinkTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TILaserWeaponTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIMagneticGunTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIMetaTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIMiningProfileTemplate.en
+Mods/Enabled/Economic Equalization Overhaul/TIMiningProfileTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIMissileTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIMissionTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TINationTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIOperationTemplate.en
+Mods/Enabled/Economic Equalization Overhaul/TIOrbitTemplate.en
+Mods/Enabled/Economic Equalization Overhaul/TIOrbitTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIPowerPlantTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIProjectTemplate.en
+Mods/Enabled/Economic Equalization Overhaul/TIProjectTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIRegionTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIShipHullTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TISpaceBodyTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIStartTimeTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TITechTemplate.en
+Mods/Enabled/Economic Equalization Overhaul/TITechTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIUtilityModuleTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/UICodex.en
+Mods/Enabled/Economic Equalization Overhaul/UIGeneralControls.en
+Mods/Enabled/Economic Equalization Overhaul/UIHabs.en
+Mods/Enabled/Economic Equalization Overhaul/UIIntel.en
+Mods/Enabled/Economic Equalization Overhaul/UINation.en
+Mods/Enabled/Economic Equalization Overhaul/UIScience.en
+Mods/Enabled/Economic Equalization Overhaul/Assembly/TIEconomyMod.dll
+Mods/Enabled/Economic Equalization Overhaul/Assembly/TIEconomyMod.pdb
+Mods/Enabled/Economic Equalization Overhaul/Config/combat-mesh-data-base.eeo
+Mods/Enabled/Economic Equalization Overhaul/Config/combat-mesh-data-dlc.eeo
+Mods/Enabled/Economic Equalization Overhaul/Config/combat-unreadable-meshes.eeo
+Mods/Enabled/Economic Equalization Overhaul/Config/economy-tech-weights.csv
+Mods/Enabled/Economic Equalization Overhaul/Config/gunpowder-art-profiles.eeo
+Mods/Enabled/Economic Equalization Overhaul/Config/hull-variant-drive-scales.csv
+Mods/Enabled/Economic Equalization Overhaul/Config/hull-variant-main-volumes.csv
+Mods/Enabled/Enable Achievements Fix/Enable Achievements Fix.png
+Mods/Enabled/Enable Achievements Fix/EnableAchievements.dll
+Mods/Enabled/Enable Achievements Fix/EnableAchievements.dll.17477.cache
+Mods/Enabled/Enable Achievements Fix/ModInfo.json
+Mods/Enabled/Enable Achievements Fix/Settings.xml
+Mods/Enabled/Enable Achievements Fix/WorkshopItemInfo.xml
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIArmyTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIDriveTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIEffectTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIGlobalConfig.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIGunTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIHabModuleTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIHabSiteTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIHabTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIHeatSinkTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TILaserWeaponTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIMagneticGunTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIMetaTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIMiningProfileTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIMissileTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIMissionTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TINationTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIOrbitTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIPowerPlantTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIProjectTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIRegionTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIShipHullTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TISpaceBodyTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIStartTimeTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TITechTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIUtilityModuleTemplate.json
+Done Staging Mod Templates
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIMetaTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIMetaTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIMetaTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIArmyTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIDriveTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIEffectTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIGlobalConfig.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIGunTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIHabModuleTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIHabSiteTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIHabTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIHeatSinkTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TILaserWeaponTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIMagneticGunTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIMiningProfileTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIMissileTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIMissionTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TINationTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIOrbitTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIPowerPlantTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIProjectTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIRegionTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIShipHullTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TISpaceBodyTemplate.json
+Found template with the same dataName AND same scenarioTags : Ship35, []
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIStartTimeTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TITechTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIUtilityModuleTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIArmyTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIEffectTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIHabModuleTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIHabTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIMissionTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TINationTemplate.json
+Found template with the same dataName AND same scenarioTags : 2003_AFG, []
+Found template with the same dataName AND same scenarioTags : 2003_SBK, []
+Found template with the same dataName AND same scenarioTags : 2003_DZA, []
+Found template with the same dataName AND same scenarioTags : 2003_AGO, []
+Found template with the same dataName AND same scenarioTags : 2003_ARG, []
+Found template with the same dataName AND same scenarioTags : 2003_ARM, []
+Found template with the same dataName AND same scenarioTags : 2003_AUS, []
+Found template with the same dataName AND same scenarioTags : 2003_ALP, []
+Found template with the same dataName AND same scenarioTags : 2003_AZE, []
+Found template with the same dataName AND same scenarioTags : 2003_BGD, []
+Found template with the same dataName AND same scenarioTags : 2003_BAH, []
+Found template with the same dataName AND same scenarioTags : 2003_BLR, []
+Found template with the same dataName AND same scenarioTags : 2003_BGM, []
+Found template with the same dataName AND same scenarioTags : 2003_BEL, []
+Found template with the same dataName AND same scenarioTags : 2003_BEN, []
+Found template with the same dataName AND same scenarioTags : 2003_BHU, []
+Found template with the same dataName AND same scenarioTags : 2003_BOL, []
+Found template with the same dataName AND same scenarioTags : 2003_BSM, []
+Found template with the same dataName AND same scenarioTags : 2003_BWA, []
+Found template with the same dataName AND same scenarioTags : 2003_BRA, []
+Found template with the same dataName AND same scenarioTags : 2003_BRU, []
+Found template with the same dataName AND same scenarioTags : 2003_BUL, []
+Found template with the same dataName AND same scenarioTags : 2003_BKF, []
+Found template with the same dataName AND same scenarioTags : 2003_CPV, []
+Found template with the same dataName AND same scenarioTags : 2003_KHM, []
+Found template with the same dataName AND same scenarioTags : 2003_CMR, []
+Found template with the same dataName AND same scenarioTags : 2003_CAN, []
+Found template with the same dataName AND same scenarioTags : 2003_CAF, []
+Found template with the same dataName AND same scenarioTags : 2003_TCD, []
+Found template with the same dataName AND same scenarioTags : 2003_CHL, []
+Found template with the same dataName AND same scenarioTags : 2003_CHN, []
+Found template with the same dataName AND same scenarioTags : 2003_COL, []
+Found template with the same dataName AND same scenarioTags : 2003_COD, []
+Found template with the same dataName AND same scenarioTags : 2003_COS, []
+Found template with the same dataName AND same scenarioTags : 2003_CRS, []
+Found template with the same dataName AND same scenarioTags : 2003_CUB, []
+Found template with the same dataName AND same scenarioTags : 2003_CZE, []
+Found template with the same dataName AND same scenarioTags : 2003_DEN, []
+Found template with the same dataName AND same scenarioTags : 2003_DJI, []
+Found template with the same dataName AND same scenarioTags : 2003_DOM, []
+Found template with the same dataName AND same scenarioTags : 2003_ECU, []
+Found template with the same dataName AND same scenarioTags : 2003_EGY, []
+Found template with the same dataName AND same scenarioTags : 2003_ELS, []
+Found template with the same dataName AND same scenarioTags : 2003_EQG, []
+Found template with the same dataName AND same scenarioTags : 2003_ERI, []
+Found template with the same dataName AND same scenarioTags : 2003_EST, []
+Found template with the same dataName AND same scenarioTags : 2003_ESW, []
+Found template with the same dataName AND same scenarioTags : 2003_ETH, []
+Found template with the same dataName AND same scenarioTags : 2003_FIN, []
+Found template with the same dataName AND same scenarioTags : 2003_EUA, []
+Found template with the same dataName AND same scenarioTags : 2003_LWG, []
+Found template with the same dataName AND same scenarioTags : 2003_GAM, []
+Found template with the same dataName AND same scenarioTags : 2003_GEO, []
+Found template with the same dataName AND same scenarioTags : 2003_DEU, []
+Found template with the same dataName AND same scenarioTags : 2003_GHA, []
+Found template with the same dataName AND same scenarioTags : 2003_GRE, []
+Found template with the same dataName AND same scenarioTags : 2003_GTM, []
+Found template with the same dataName AND same scenarioTags : 2003_GIN, []
+Found template with the same dataName AND same scenarioTags : 2003_GNB, []
+Found template with the same dataName AND same scenarioTags : 2003_GUS, []
+Found template with the same dataName AND same scenarioTags : 2003_GUY, []
+Found template with the same dataName AND same scenarioTags : 2003_HTI, []
+Found template with the same dataName AND same scenarioTags : 2003_HON, []
+Found template with the same dataName AND same scenarioTags : 2003_HUN, []
+Found template with the same dataName AND same scenarioTags : 2003_ISL, []
+Found template with the same dataName AND same scenarioTags : 2003_IND, []
+Found template with the same dataName AND same scenarioTags : 2003_IDN, []
+Found template with the same dataName AND same scenarioTags : 2003_IRN, []
+Found template with the same dataName AND same scenarioTags : 2003_IRQ, []
+Found template with the same dataName AND same scenarioTags : 2003_IRL, []
+Found template with the same dataName AND same scenarioTags : 2003_ISR, []
+Found template with the same dataName AND same scenarioTags : 2003_ITA, []
+Found template with the same dataName AND same scenarioTags : 2003_IVO, []
+Found template with the same dataName AND same scenarioTags : 2003_JAM, []
+Found template with the same dataName AND same scenarioTags : 2003_JPN, []
+Found template with the same dataName AND same scenarioTags : 2003_JOR, []
+Found template with the same dataName AND same scenarioTags : 2003_KAZ, []
+Found template with the same dataName AND same scenarioTags : 2003_KEN, []
+Found template with the same dataName AND same scenarioTags : 2003_KOS, []
+Found template with the same dataName AND same scenarioTags : 2003_KUW, []
+Found template with the same dataName AND same scenarioTags : 2003_KGZ, []
+Found template with the same dataName AND same scenarioTags : 2003_LAO, []
+Found template with the same dataName AND same scenarioTags : 2003_LVA, []
+Found template with the same dataName AND same scenarioTags : 2003_LEB, []
+Found template with the same dataName AND same scenarioTags : 2003_LES, []
+Found template with the same dataName AND same scenarioTags : 2003_CAB, []
+Found template with the same dataName AND same scenarioTags : 2003_LBR, []
+Found template with the same dataName AND same scenarioTags : 2003_LBY, []
+Found template with the same dataName AND same scenarioTags : 2003_LTU, []
+Found template with the same dataName AND same scenarioTags : 2003_MDG, []
+Found template with the same dataName AND same scenarioTags : 2003_MAL, []
+Found template with the same dataName AND same scenarioTags : 2003_MYS, []
+Found template with the same dataName AND same scenarioTags : 2003_MLD, []
+Found template with the same dataName AND same scenarioTags : 2003_MLI, []
+Found template with the same dataName AND same scenarioTags : 2003_MRT, []
+Found template with the same dataName AND same scenarioTags : 2003_MRS, []
+Found template with the same dataName AND same scenarioTags : 2003_PCS, []
+Found template with the same dataName AND same scenarioTags : 2003_MEX, []
+Found template with the same dataName AND same scenarioTags : 2003_MCS, []
+Found template with the same dataName AND same scenarioTags : 2003_MOL, []
+Found template with the same dataName AND same scenarioTags : 2003_MNG, []
+Found template with the same dataName AND same scenarioTags : 2003_MAR, []
+Found template with the same dataName AND same scenarioTags : 2003_MOZ, []
+Found template with the same dataName AND same scenarioTags : 2003_MMR, []
+Found template with the same dataName AND same scenarioTags : 2003_MNE, []
+Found template with the same dataName AND same scenarioTags : 2003_SWA, []
+Found template with the same dataName AND same scenarioTags : 2003_HYS, []
+Found template with the same dataName AND same scenarioTags : 2003_NET, []
+Found template with the same dataName AND same scenarioTags : 2003_NZL, []
+Found template with the same dataName AND same scenarioTags : 2003_NIC, []
+Found template with the same dataName AND same scenarioTags : 2003_NER, []
+Found template with the same dataName AND same scenarioTags : 2003_NGA, []
+Found template with the same dataName AND same scenarioTags : 2003_PRK, []
+Found template with the same dataName AND same scenarioTags : 2003_MKD, []
+Found template with the same dataName AND same scenarioTags : 2003_NOR, []
+Found template with the same dataName AND same scenarioTags : 2003_OMN, []
+Found template with the same dataName AND same scenarioTags : 2003_PAK, []
+Found template with the same dataName AND same scenarioTags : 2003_PAL, []
+Found template with the same dataName AND same scenarioTags : 2003_PAN, []
+Found template with the same dataName AND same scenarioTags : 2003_PNG, []
+Found template with the same dataName AND same scenarioTags : 2003_PRY, []
+Found template with the same dataName AND same scenarioTags : 2003_PER, []
+Found template with the same dataName AND same scenarioTags : 2003_PHL, []
+Found template with the same dataName AND same scenarioTags : 2003_POL, []
+Found template with the same dataName AND same scenarioTags : 2003_PLS, []
+Found template with the same dataName AND same scenarioTags : 2003_PRT, []
+Found template with the same dataName AND same scenarioTags : 2003_RTK, []
+Found template with the same dataName AND same scenarioTags : 2003_COR, []
+Found template with the same dataName AND same scenarioTags : 2003_ROM, []
+Found template with the same dataName AND same scenarioTags : 2003_RUS, []
+Found template with the same dataName AND same scenarioTags : 2003_RWB, []
+Found template with the same dataName AND same scenarioTags : 2003_STP, []
+Found template with the same dataName AND same scenarioTags : 2003_SAU, []
+Found template with the same dataName AND same scenarioTags : 2003_SEG, []
+Found template with the same dataName AND same scenarioTags : 2003_SER, []
+Found template with the same dataName AND same scenarioTags : 2003_SYC, []
+Found template with the same dataName AND same scenarioTags : 2003_SLE, []
+Found template with the same dataName AND same scenarioTags : 2003_SGP, []
+Found template with the same dataName AND same scenarioTags : 2003_SLO, []
+Found template with the same dataName AND same scenarioTags : 2003_SLV, []
+Found template with the same dataName AND same scenarioTags : 2003_SOM, []
+Found template with the same dataName AND same scenarioTags : 2003_ZAF, []
+Found template with the same dataName AND same scenarioTags : 2003_KOR, []
+Found template with the same dataName AND same scenarioTags : 2003_SSD, []
+Found template with the same dataName AND same scenarioTags : 2003_ESP, []
+Found template with the same dataName AND same scenarioTags : 2003_LKA, []
+Found template with the same dataName AND same scenarioTags : 2003_SDN, []
+Found template with the same dataName AND same scenarioTags : 2003_SUR, []
+Found template with the same dataName AND same scenarioTags : 2003_SCA, []
+Found template with the same dataName AND same scenarioTags : 2003_SWI, []
+Found template with the same dataName AND same scenarioTags : 2003_SYR, []
+Found template with the same dataName AND same scenarioTags : 2003_TWN, []
+Found template with the same dataName AND same scenarioTags : 2003_TJK, []
+Found template with the same dataName AND same scenarioTags : 2003_TZA, []
+Found template with the same dataName AND same scenarioTags : 2003_THA, []
+Found template with the same dataName AND same scenarioTags : 2003_TLS, []
+Found template with the same dataName AND same scenarioTags : 2003_TGO, []
+Found template with the same dataName AND same scenarioTags : 2003_TUN, []
+Found template with the same dataName AND same scenarioTags : 2003_TUR, []
+Found template with the same dataName AND same scenarioTags : 2003_TKM, []
+Found template with the same dataName AND same scenarioTags : 2003_UGA, []
+Found template with the same dataName AND same scenarioTags : 2003_UKR, []
+Found template with the same dataName AND same scenarioTags : 2003_UAE, []
+Found template with the same dataName AND same scenarioTags : 2003_GBR, []
+Found template with the same dataName AND same scenarioTags : 2003_USA, []
+Found template with the same dataName AND same scenarioTags : 2003_URY, []
+Found template with the same dataName AND same scenarioTags : 2003_UZB, []
+Found template with the same dataName AND same scenarioTags : 2003_VEN, []
+Found template with the same dataName AND same scenarioTags : 2003_VNM, []
+Found template with the same dataName AND same scenarioTags : 2003_YEM, []
+Found template with the same dataName AND same scenarioTags : 2003_ZMB, []
+Found template with the same dataName AND same scenarioTags : 2003_ZWE, []
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIProjectTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIRegionTemplate.json
+Found template with the same dataName AND same scenarioTags : 2003_Afghanistan, []
+Found template with the same dataName AND same scenarioTags : 2003_Tirana, []
+Found template with the same dataName AND same scenarioTags : 2003_Algeria, []
+Found template with the same dataName AND same scenarioTags : 2003_SaharanAlgeria, []
+Found template with the same dataName AND same scenarioTags : 2003_Angola, []
+Found template with the same dataName AND same scenarioTags : 2003_EastAngola, []
+Found template with the same dataName AND same scenarioTags : 2003_GranChaco, []
+Found template with the same dataName AND same scenarioTags : 2003_Pampas, []
+Found template with the same dataName AND same scenarioTags : 2003_Patagonia, []
+Found template with the same dataName AND same scenarioTags : 2003_Armenia, []
+Found template with the same dataName AND same scenarioTags : 2003_Brisbane, []
+Found template with the same dataName AND same scenarioTags : 2003_Sydney, []
+Found template with the same dataName AND same scenarioTags : 2003_Westralia, []
+Found template with the same dataName AND same scenarioTags : 2003_Darwin, []
+Found template with the same dataName AND same scenarioTags : 2003_Melbourne, []
+Found template with the same dataName AND same scenarioTags : 2003_Adelaide, []
+Found template with the same dataName AND same scenarioTags : 2003_Vienna, []
+Found template with the same dataName AND same scenarioTags : 2003_Azerbaijan, []
+Found template with the same dataName AND same scenarioTags : 2003_Bahamas, []
+Found template with the same dataName AND same scenarioTags : 2003_Bangladesh, []
+Found template with the same dataName AND same scenarioTags : 2003_Belarus, []
+Found template with the same dataName AND same scenarioTags : 2003_Belgium, []
+Found template with the same dataName AND same scenarioTags : 2003_Belize, []
+Found template with the same dataName AND same scenarioTags : 2003_TogoBenin, []
+Found template with the same dataName AND same scenarioTags : 2003_Bolivia, []
+Found template with the same dataName AND same scenarioTags : 2003_Sarajevo, []
+Found template with the same dataName AND same scenarioTags : 2003_Botswana, []
+Found template with the same dataName AND same scenarioTags : 2003_Amazonia, []
+Found template with the same dataName AND same scenarioTags : 2003_Belem, []
+Found template with the same dataName AND same scenarioTags : 2003_Brasilia, []
+Found template with the same dataName AND same scenarioTags : 2003_Cuiaba, []
+Found template with the same dataName AND same scenarioTags : 2003_Fortaleza, []
+Found template with the same dataName AND same scenarioTags : 2003_PortoAlegre, []
+Found template with the same dataName AND same scenarioTags : 2003_Recife, []
+Found template with the same dataName AND same scenarioTags : 2003_RiodeJaneiro, []
+Found template with the same dataName AND same scenarioTags : 2003_SaoPaulo, []
+Found template with the same dataName AND same scenarioTags : 2003_Bhutan, []
+Found template with the same dataName AND same scenarioTags : 2003_Brunei, []
+Found template with the same dataName AND same scenarioTags : 2003_Bulgaria, []
+Found template with the same dataName AND same scenarioTags : 2003_BurkinaFaso, []
+Found template with the same dataName AND same scenarioTags : 2003_CaboVerde, []
+Found template with the same dataName AND same scenarioTags : 2003_Cambodia, []
+Found template with the same dataName AND same scenarioTags : 2003_Cameroon, []
+Found template with the same dataName AND same scenarioTags : 2003_WestCameroon, []
+Found template with the same dataName AND same scenarioTags : 2003_Alberta, []
+Found template with the same dataName AND same scenarioTags : 2003_BritishColumbia, []
+Found template with the same dataName AND same scenarioTags : 2003_CanadianArctic, []
+Found template with the same dataName AND same scenarioTags : 2003_Halifax, []
+Found template with the same dataName AND same scenarioTags : 2003_Laurentia, []
+Found template with the same dataName AND same scenarioTags : 2003_Manitoba, []
+Found template with the same dataName AND same scenarioTags : 2003_Ontario, []
+Found template with the same dataName AND same scenarioTags : 2003_Prairies, []
+Found template with the same dataName AND same scenarioTags : 2003_Yukon, []
+Found template with the same dataName AND same scenarioTags : 2003_CentralAfricanRepublic, []
+Found template with the same dataName AND same scenarioTags : 2003_Logone, []
+Found template with the same dataName AND same scenarioTags : 2003_Chad, []
+Found template with the same dataName AND same scenarioTags : 2003_NorthernChad, []
+Found template with the same dataName AND same scenarioTags : 2003_Santiago, []
+Found template with the same dataName AND same scenarioTags : 2003_Valparaiso, []
+Found template with the same dataName AND same scenarioTags : 2003_Anhui, []
+Found template with the same dataName AND same scenarioTags : 2003_Beijing, []
+Found template with the same dataName AND same scenarioTags : 2003_Chongqing, []
+Found template with the same dataName AND same scenarioTags : 2003_Fujian, []
+Found template with the same dataName AND same scenarioTags : 2003_Gansu, []
+Found template with the same dataName AND same scenarioTags : 2003_Guangzhou, []
+Found template with the same dataName AND same scenarioTags : 2003_Guizhou, []
+Found template with the same dataName AND same scenarioTags : 2003_Hangzhou, []
+Found template with the same dataName AND same scenarioTags : 2003_HongKong, []
+Found template with the same dataName AND same scenarioTags : 2003_Hunan, []
+Found template with the same dataName AND same scenarioTags : 2003_InnerMongolia, []
+Found template with the same dataName AND same scenarioTags : 2003_Jilin, []
+Found template with the same dataName AND same scenarioTags : 2003_Liaoning, []
+Found template with the same dataName AND same scenarioTags : 2003_Manchuria, []
+Found template with the same dataName AND same scenarioTags : 2003_Nanchang, []
+Found template with the same dataName AND same scenarioTags : 2003_Nanning, []
+Found template with the same dataName AND same scenarioTags : 2003_Qinghai, []
+Found template with the same dataName AND same scenarioTags : 2003_Shandong, []
+Found template with the same dataName AND same scenarioTags : 2003_Shanghai, []
+Found template with the same dataName AND same scenarioTags : 2003_Shanxi, []
+Found template with the same dataName AND same scenarioTags : 2003_Tibet, []
+Found template with the same dataName AND same scenarioTags : 2003_Wuhan, []
+Found template with the same dataName AND same scenarioTags : 2003_Xian, []
+Found template with the same dataName AND same scenarioTags : 2003_Xinjiang, []
+Found template with the same dataName AND same scenarioTags : 2003_Yunnan, []
+Found template with the same dataName AND same scenarioTags : 2003_Zhengzhou, []
+Found template with the same dataName AND same scenarioTags : 2003_Colombia, []
+Found template with the same dataName AND same scenarioTags : 2003_Villavicencio, []
+Found template with the same dataName AND same scenarioTags : 2003_Ratnakara, []
+Found template with the same dataName AND same scenarioTags : 2003_Kinshasa, []
+Found template with the same dataName AND same scenarioTags : 2003_Kisangani, []
+Found template with the same dataName AND same scenarioTags : 2003_Lubumbashi, []
+Found template with the same dataName AND same scenarioTags : 2003_CostaRica, []
+Found template with the same dataName AND same scenarioTags : 2003_Zagreb, []
+Found template with the same dataName AND same scenarioTags : 2003_Cuba, []
+Found template with the same dataName AND same scenarioTags : 2003_Czechia, []
+Found template with the same dataName AND same scenarioTags : 2003_Denmark, []
+Found template with the same dataName AND same scenarioTags : 2003_Greenland, []
+Found template with the same dataName AND same scenarioTags : 2003_Djibouti, []
+Found template with the same dataName AND same scenarioTags : 2003_EastHispanola, []
+Found template with the same dataName AND same scenarioTags : 2003_Ecuador, []
+Found template with the same dataName AND same scenarioTags : 2003_Alexandria, []
+Found template with the same dataName AND same scenarioTags : 2003_Cairo, []
+Found template with the same dataName AND same scenarioTags : 2003_Luxor, []
+Found template with the same dataName AND same scenarioTags : 2003_ElSalvador, []
+Found template with the same dataName AND same scenarioTags : 2003_EquatorialGuinea, []
+Found template with the same dataName AND same scenarioTags : 2003_Eritrea, []
+Found template with the same dataName AND same scenarioTags : 2003_Estonia, []
+Found template with the same dataName AND same scenarioTags : 2003_Eswatini, []
+Found template with the same dataName AND same scenarioTags : 2003_DireDiwa, []
+Found template with the same dataName AND same scenarioTags : 2003_Ethiopia, []
+Found template with the same dataName AND same scenarioTags : 2003_Mekelle, []
+Found template with the same dataName AND same scenarioTags : 2003_Finland, []
+Found template with the same dataName AND same scenarioTags : 2003_FrenchGuiana, []
+Found template with the same dataName AND same scenarioTags : 2003_FrenchPacific, []
+Found template with the same dataName AND same scenarioTags : 2003_FrenchRatnakara, []
+Found template with the same dataName AND same scenarioTags : 2003_FrenchWestIndies, []
+Found template with the same dataName AND same scenarioTags : 2003_Lyon, []
+Found template with the same dataName AND same scenarioTags : 2003_Nantes, []
+Found template with the same dataName AND same scenarioTags : 2003_Paris, []
+Found template with the same dataName AND same scenarioTags : 2003_Toulouse, []
+Found template with the same dataName AND same scenarioTags : 2003_Libreville, []
+Found template with the same dataName AND same scenarioTags : 2003_Gambia, []
+Found template with the same dataName AND same scenarioTags : 2003_Georgia, []
+Found template with the same dataName AND same scenarioTags : 2003_Bavaria, []
+Found template with the same dataName AND same scenarioTags : 2003_EastGermany, []
+Found template with the same dataName AND same scenarioTags : 2003_Germany, []
+Found template with the same dataName AND same scenarioTags : 2003_Accra, []
+Found template with the same dataName AND same scenarioTags : 2003_Greece, []
+Found template with the same dataName AND same scenarioTags : 2003_Guatemala, []
+Found template with the same dataName AND same scenarioTags : 2003_Guinea, []
+Found template with the same dataName AND same scenarioTags : 2003_GuineaBissau, []
+Found template with the same dataName AND same scenarioTags : 2003_GulfStates, []
+Found template with the same dataName AND same scenarioTags : 2003_Guyana, []
+Found template with the same dataName AND same scenarioTags : 2003_WestHispanola, []
+Found template with the same dataName AND same scenarioTags : 2003_Honduras, []
+Found template with the same dataName AND same scenarioTags : 2003_Hungary, []
+Found template with the same dataName AND same scenarioTags : 2003_Iceland, []
+Found template with the same dataName AND same scenarioTags : 2003_AndhraPradesh, []
+Found template with the same dataName AND same scenarioTags : 2003_ArunchalPradesh, []
+Found template with the same dataName AND same scenarioTags : 2003_Assam, []
+Found template with the same dataName AND same scenarioTags : 2003_Bangalore, []
+Found template with the same dataName AND same scenarioTags : 2003_Bihar, []
+Found template with the same dataName AND same scenarioTags : 2003_Chennai, []
+Found template with the same dataName AND same scenarioTags : 2003_Faridabad, []
+Found template with the same dataName AND same scenarioTags : 2003_Gujarat, []
+Found template with the same dataName AND same scenarioTags : 2003_Hyderabad, []
+Found template with the same dataName AND same scenarioTags : 2003_Indore, []
+Found template with the same dataName AND same scenarioTags : 2003_Jaipur, []
+Found template with the same dataName AND same scenarioTags : 2003_JammuandKashmir, []
+Found template with the same dataName AND same scenarioTags : 2003_Kolkata, []
+Found template with the same dataName AND same scenarioTags : 2003_Mumbai, []
+Found template with the same dataName AND same scenarioTags : 2003_NewDelhi, []
+Found template with the same dataName AND same scenarioTags : 2003_Odisha, []
+Found template with the same dataName AND same scenarioTags : 2003_Raipur, []
+Found template with the same dataName AND same scenarioTags : 2003_Aceh, []
+Found template with the same dataName AND same scenarioTags : 2003_Borneo, []
+Found template with the same dataName AND same scenarioTags : 2003_Java, []
+Found template with the same dataName AND same scenarioTags : 2003_LesserSundas, []
+Found template with the same dataName AND same scenarioTags : 2003_MoluccasandSulawesi, []
+Found template with the same dataName AND same scenarioTags : 2003_NewGuinea, []
+Found template with the same dataName AND same scenarioTags : 2003_Sulawesi, []
+Found template with the same dataName AND same scenarioTags : 2003_Sumatra, []
+Found template with the same dataName AND same scenarioTags : 2003_Ahvaz, []
+Found template with the same dataName AND same scenarioTags : 2003_Isfahan, []
+Found template with the same dataName AND same scenarioTags : 2003_Mashhad, []
+Found template with the same dataName AND same scenarioTags : 2003_Tabriz, []
+Found template with the same dataName AND same scenarioTags : 2003_Tehran, []
+Found template with the same dataName AND same scenarioTags : 2003_Baghdad, []
+Found template with the same dataName AND same scenarioTags : 2003_Mosul, []
+Found template with the same dataName AND same scenarioTags : 2003_Ireland, []
+Found template with the same dataName AND same scenarioTags : 2003_Israel, []
+Found template with the same dataName AND same scenarioTags : 2003_Italy, []
+Found template with the same dataName AND same scenarioTags : 2003_Milan, []
+Found template with the same dataName AND same scenarioTags : 2003_Naples, []
+Found template with the same dataName AND same scenarioTags : 2003_IvoryCoast, []
+Found template with the same dataName AND same scenarioTags : 2003_Jamaica, []
+Found template with the same dataName AND same scenarioTags : 2003_Hokkaido, []
+Found template with the same dataName AND same scenarioTags : 2003_KyushuandShikoku, []
+Found template with the same dataName AND same scenarioTags : 2003_NorthHonshu, []
+Found template with the same dataName AND same scenarioTags : 2003_Ryukus, []
+Found template with the same dataName AND same scenarioTags : 2003_SouthHonshu, []
+Found template with the same dataName AND same scenarioTags : 2003_Jordan, []
+Found template with the same dataName AND same scenarioTags : 2003_Almaty, []
+Found template with the same dataName AND same scenarioTags : 2003_Astana, []
+Found template with the same dataName AND same scenarioTags : 2003_Kenya, []
+Found template with the same dataName AND same scenarioTags : 2003_Mombasa, []
+Found template with the same dataName AND same scenarioTags : 2003_Kosovo, []
+Found template with the same dataName AND same scenarioTags : 2003_Kuwait, []
+Found template with the same dataName AND same scenarioTags : 2003_Kyrgyzstan, []
+Found template with the same dataName AND same scenarioTags : 2003_Laos, []
+Found template with the same dataName AND same scenarioTags : 2003_Latvia, []
+Found template with the same dataName AND same scenarioTags : 2003_Lebanon, []
+Found template with the same dataName AND same scenarioTags : 2003_WestIndies, []
+Found template with the same dataName AND same scenarioTags : 2003_Lesotho, []
+Found template with the same dataName AND same scenarioTags : 2003_Liberia, []
+Found template with the same dataName AND same scenarioTags : 2003_Cyrenaica, []
+Found template with the same dataName AND same scenarioTags : 2003_Libya, []
+Found template with the same dataName AND same scenarioTags : 2003_Lithuania, []
+Found template with the same dataName AND same scenarioTags : 2003_Madagascar, []
+Found template with the same dataName AND same scenarioTags : 2003_Malawi, []
+Found template with the same dataName AND same scenarioTags : 2003_MalayPeninsula, []
+Found template with the same dataName AND same scenarioTags : 2003_SarawakandSabah, []
+Found template with the same dataName AND same scenarioTags : 2003_Maldives, []
+Found template with the same dataName AND same scenarioTags : 2003_Gao, []
+Found template with the same dataName AND same scenarioTags : 2003_Mali, []
+Found template with the same dataName AND same scenarioTags : 2003_Mauritania, []
+Found template with the same dataName AND same scenarioTags : 2003_Mauritius, []
+Found template with the same dataName AND same scenarioTags : 2003_Melanesia, []
+Found template with the same dataName AND same scenarioTags : 2003_Merida, []
+Found template with the same dataName AND same scenarioTags : 2003_MexicoCity, []
+Found template with the same dataName AND same scenarioTags : 2003_Monterrey, []
+Found template with the same dataName AND same scenarioTags : 2003_Tijuana, []
+Found template with the same dataName AND same scenarioTags : 2003_Micronesia, []
+Found template with the same dataName AND same scenarioTags : 2003_Moldova, []
+Found template with the same dataName AND same scenarioTags : 2003_Mongolia, []
+Found template with the same dataName AND same scenarioTags : 2003_Montenegro, []
+Found template with the same dataName AND same scenarioTags : 2003_Rabat, []
+Found template with the same dataName AND same scenarioTags : 2003_WesternSahara, []
+Found template with the same dataName AND same scenarioTags : 2003_Mozambique, []
+Found template with the same dataName AND same scenarioTags : 2003_NorthMozambique, []
+Found template with the same dataName AND same scenarioTags : 2003_Myanmar, []
+Found template with the same dataName AND same scenarioTags : 2003_UpperMyanmar, []
+Found template with the same dataName AND same scenarioTags : 2003_Namibia, []
+Found template with the same dataName AND same scenarioTags : 2003_Himalayas, []
+Found template with the same dataName AND same scenarioTags : 2003_DutchCaribbean, []
+Found template with the same dataName AND same scenarioTags : 2003_Netherlands, []
+Found template with the same dataName AND same scenarioTags : 2003_NewZealand, []
+Found template with the same dataName AND same scenarioTags : 2003_TeWaipounamu, []
+Found template with the same dataName AND same scenarioTags : 2003_Nicaragua, []
+Found template with the same dataName AND same scenarioTags : 2003_Niger, []
+Found template with the same dataName AND same scenarioTags : 2003_Kano, []
+Found template with the same dataName AND same scenarioTags : 2003_Lagos, []
+Found template with the same dataName AND same scenarioTags : 2003_PortHarcourt, []
+Found template with the same dataName AND same scenarioTags : 2003_NorthKorea, []
+Found template with the same dataName AND same scenarioTags : 2003_NorthMacedonia, []
+Found template with the same dataName AND same scenarioTags : 2003_Norway, []
+Found template with the same dataName AND same scenarioTags : 2003_Oman, []
+Found template with the same dataName AND same scenarioTags : 2003_Baluchistan, []
+Found template with the same dataName AND same scenarioTags : 2003_Peshawar, []
+Found template with the same dataName AND same scenarioTags : 2003_Punjab, []
+Found template with the same dataName AND same scenarioTags : 2003_Sindh, []
+Found template with the same dataName AND same scenarioTags : 2003_Palestine, []
+Found template with the same dataName AND same scenarioTags : 2003_Panama, []
+Found template with the same dataName AND same scenarioTags : 2003_PortMorseby, []
+Found template with the same dataName AND same scenarioTags : 2003_Paraguay, []
+Found template with the same dataName AND same scenarioTags : 2003_Arequipa, []
+Found template with the same dataName AND same scenarioTags : 2003_Peru, []
+Found template with the same dataName AND same scenarioTags : 2003_Luzon, []
+Found template with the same dataName AND same scenarioTags : 2003_Visayas, []
+Found template with the same dataName AND same scenarioTags : 2003_ViasyasyMindanao, []
+Found template with the same dataName AND same scenarioTags : 2003_Gdansk, []
+Found template with the same dataName AND same scenarioTags : 2003_Katowice, []
+Found template with the same dataName AND same scenarioTags : 2003_Poland, []
+Found template with the same dataName AND same scenarioTags : 2003_Polynesia, []
+Found template with the same dataName AND same scenarioTags : 2003_Azores, []
+Found template with the same dataName AND same scenarioTags : 2003_Portugal, []
+Found template with the same dataName AND same scenarioTags : 2003_Brazzaville, []
+Found template with the same dataName AND same scenarioTags : 2003_Romania, []
+Found template with the same dataName AND same scenarioTags : 2003_Transylvania, []
+Found template with the same dataName AND same scenarioTags : 2003_Arkhangelsk, []
+Found template with the same dataName AND same scenarioTags : 2003_Crimea, []
+Found template with the same dataName AND same scenarioTags : 2003_EasternSiberia, []
+Found template with the same dataName AND same scenarioTags : 2003_Kaliningrad, []
+Found template with the same dataName AND same scenarioTags : 2003_Kamchatka, []
+Found template with the same dataName AND same scenarioTags : 2003_Karelia, []
+Found template with the same dataName AND same scenarioTags : 2003_Kirov, []
+Found template with the same dataName AND same scenarioTags : 2003_Makhachkala, []
+Found template with the same dataName AND same scenarioTags : 2003_Moskva, []
+Found template with the same dataName AND same scenarioTags : 2003_Norilsk, []
+Found template with the same dataName AND same scenarioTags : 2003_Novgorod, []
+Found template with the same dataName AND same scenarioTags : 2003_Rostovskaya, []
+Found template with the same dataName AND same scenarioTags : 2003_RussianFarEast, []
+Found template with the same dataName AND same scenarioTags : 2003_Sakha, []
+Found template with the same dataName AND same scenarioTags : 2003_SakhalinKurils, []
+Found template with the same dataName AND same scenarioTags : 2003_Surgut, []
+Found template with the same dataName AND same scenarioTags : 2003_Urals, []
+Found template with the same dataName AND same scenarioTags : 2003_Volga, []
+Found template with the same dataName AND same scenarioTags : 2003_Voronezh, []
+Found template with the same dataName AND same scenarioTags : 2003_WesternSiberia, []
+Found template with the same dataName AND same scenarioTags : 2003_Kigali, []
+Found template with the same dataName AND same scenarioTags : 2003_SaoTomePrincipe, []
+Found template with the same dataName AND same scenarioTags : 2003_Hijaz, []
+Found template with the same dataName AND same scenarioTags : 2003_Najd, []
+Found template with the same dataName AND same scenarioTags : 2003_Qassimah, []
+Found template with the same dataName AND same scenarioTags : 2003_Senegambia, []
+Found template with the same dataName AND same scenarioTags : 2003_Belgrade, []
+Found template with the same dataName AND same scenarioTags : 2003_Seychelles, []
+Found template with the same dataName AND same scenarioTags : 2003_SierraLeone, []
+Found template with the same dataName AND same scenarioTags : 2003_Singapore, []
+Found template with the same dataName AND same scenarioTags : 2003_Slovenia, []
+Found template with the same dataName AND same scenarioTags : 2003_Slovakia, []
+Found template with the same dataName AND same scenarioTags : 2003_Somalia, []
+Found template with the same dataName AND same scenarioTags : 2003_CapeTown, []
+Found template with the same dataName AND same scenarioTags : 2003_Johannesburg, []
+Found template with the same dataName AND same scenarioTags : 2003_SouthKorea, []
+Found template with the same dataName AND same scenarioTags : 2003_SouthSudan, []
+Found template with the same dataName AND same scenarioTags : 2003_Barcelona, []
+Found template with the same dataName AND same scenarioTags : 2003_BasqueCountry, []
+Found template with the same dataName AND same scenarioTags : 2003_NorthernSpain, []
+Found template with the same dataName AND same scenarioTags : 2003_CanaryIslands, []
+Found template with the same dataName AND same scenarioTags : 2003_Spain, []
+Found template with the same dataName AND same scenarioTags : 2003_SriLanka, []
+Found template with the same dataName AND same scenarioTags : 2003_Darfur, []
+Found template with the same dataName AND same scenarioTags : 2003_NorthernSudan, []
+Found template with the same dataName AND same scenarioTags : 2003_Sudan, []
+Found template with the same dataName AND same scenarioTags : 2003_Suriname, []
+Found template with the same dataName AND same scenarioTags : 2003_Sweden, []
+Found template with the same dataName AND same scenarioTags : 2003_Zurich, []
+Found template with the same dataName AND same scenarioTags : 2003_Syria, []
+Found template with the same dataName AND same scenarioTags : 2003_Taiwan, []
+Found template with the same dataName AND same scenarioTags : 2003_Tajikistan, []
+Found template with the same dataName AND same scenarioTags : 2003_Tanzania, []
+Found template with the same dataName AND same scenarioTags : 2003_WestTanzania, []
+Found template with the same dataName AND same scenarioTags : 2003_Zanzibar, []
+Found template with the same dataName AND same scenarioTags : 2003_Bangkok, []
+Found template with the same dataName AND same scenarioTags : 2003_ChiangMai, []
+Found template with the same dataName AND same scenarioTags : 2003_TimorLeste, []
+Found template with the same dataName AND same scenarioTags : 2003_Togo, []
+Found template with the same dataName AND same scenarioTags : 2003_Tunisia, []
+Found template with the same dataName AND same scenarioTags : 2003_Anatolia, []
+Found template with the same dataName AND same scenarioTags : 2003_Diyarbakir, []
+Found template with the same dataName AND same scenarioTags : 2003_Istanbul, []
+Found template with the same dataName AND same scenarioTags : 2003_Turkmenistan, []
+Found template with the same dataName AND same scenarioTags : 2003_Uganda, []
+Found template with the same dataName AND same scenarioTags : 2003_Donetsk, []
+Found template with the same dataName AND same scenarioTags : 2003_Kharkiv, []
+Found template with the same dataName AND same scenarioTags : 2003_Kiev, []
+Found template with the same dataName AND same scenarioTags : 2003_Odesa, []
+Found template with the same dataName AND same scenarioTags : 2003_Dubai, []
+Found template with the same dataName AND same scenarioTags : 2003_EnglishMidlands, []
+Found template with the same dataName AND same scenarioTags : 2003_BritishWestIndies, []
+Found template with the same dataName AND same scenarioTags : 2003_England, []
+Found template with the same dataName AND same scenarioTags : 2003_NorthernIreland, []
+Found template with the same dataName AND same scenarioTags : 2003_Scotland, []
+Found template with the same dataName AND same scenarioTags : 2003_Wales, []
+Found template with the same dataName AND same scenarioTags : 2003_Uruguay, []
+Found template with the same dataName AND same scenarioTags : 2003_Alaska, []
+Found template with the same dataName AND same scenarioTags : 2003_AmericanCaribbean, []
+Found template with the same dataName AND same scenarioTags : 2003_AmericanPacific, []
+Found template with the same dataName AND same scenarioTags : 2003_Boise, []
+Found template with the same dataName AND same scenarioTags : 2003_California, []
+Found template with the same dataName AND same scenarioTags : 2003_Cascadia, []
+Found template with the same dataName AND same scenarioTags : 2003_Cumberland, []
+Found template with the same dataName AND same scenarioTags : 2003_Dakota, []
+Found template with the same dataName AND same scenarioTags : 2003_Dixie, []
+Found template with the same dataName AND same scenarioTags : 2003_HighPlains, []
+Found template with the same dataName AND same scenarioTags : 2003_MississippiDelta, []
+Found template with the same dataName AND same scenarioTags : 2003_NewEngland, []
+Found template with the same dataName AND same scenarioTags : 2003_NewYork, []
+Found template with the same dataName AND same scenarioTags : 2003_RockyMountains, []
+Found template with the same dataName AND same scenarioTags : 2003_RustBelt, []
+Found template with the same dataName AND same scenarioTags : 2003_Shenandoah, []
+Found template with the same dataName AND same scenarioTags : 2003_Texas, []
+Found template with the same dataName AND same scenarioTags : 2003_Karakalpakstan, []
+Found template with the same dataName AND same scenarioTags : 2003_Uzbekistan, []
+Found template with the same dataName AND same scenarioTags : 2003_Venezuela, []
+Found template with the same dataName AND same scenarioTags : 2003_Hanoi, []
+Found template with the same dataName AND same scenarioTags : 2003_HoChiMinhCity, []
+Found template with the same dataName AND same scenarioTags : 2003_Aden, []
+Found template with the same dataName AND same scenarioTags : 2003_Yemen, []
+Found template with the same dataName AND same scenarioTags : 2003_Zambia, []
+Found template with the same dataName AND same scenarioTags : 2003_Zimbabwe, []
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TISpaceBodyTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIStartTimeTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TITechTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIArmyTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIEffectTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIGlobalConfig.json
+Found template with the same dataName AND same scenarioTags : dummy, []
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TINationTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIProjectTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIRegionTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TISpaceBodyTemplate.json
+Found template with the same dataName AND same scenarioTags : Sol, [Millennium]
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIStartTimeTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TITechTemplate.json
+<color=#00cc00>LoadTime:</color> Load All Templates: 2.426s
+Loaded 14 languages
+<color=#00cc00>LoadTime:</color> Initialize Localization: 1.567s
+DefaultFallbackLanguage
+<color=#00cc00>LoadTime:</color> AssetBundleManager Initialize: 121.943ms
+Init Profile
+Found Profile Config File
+AA Mode: 0
+AA Level: 8
+TextureStreaming: True, 11996.25
+FullscreenMode:True
+Set Resolution: 3840x2160
+UI Scale Setting: 0
+Use Councilor and Leader Videos: True
+LastLaunch10/30/2026 3:45:57 AM
+Use Mods:True
+Previous launch failed due to bad mod templates: False
+Loaded saved Keybindings
+AA Mode: 0
+AA Level: 8
+FullscreenMode:True
+Set Resolution: 3840x2160
+UI Scale Setting: 0
+Use Councilor and Leader Videos: True
+Use Mods:True
+Previous launch failed due to bad mod templates: False
+Player Config Saved
+Windows 10  (10.0.19045) 64bit
+Processor: 13th Gen Intel(R) Core(TM) i9-13900K, 2995, 32
+GPU Vendor: NVIDIA
+GPU Name: NVIDIA GeForce RTX 5070 Ti
+GPU ID: 11269
+System RAM: 65285 MB
+GPU VRAM: 15995 MB
+US
+en-US
+English (United States)
+English
+Drive C:\  Drive type: Fixed
+Volume label: C:\  File system: NTFS
+Available space to current user: 61 GB
+Total available space: 61 GB
+Total size of drive: 1999 GB
+Drive D:\  Drive type: Fixed
+Volume label: D:\  File system: NTFS
+Available space to current user: 5968 GB
+Total available space: 5968 GB
+Total size of drive: 15998 GB
+Drive F:\  Drive type: CDRom
+Found Profile Config File
+Use Mods:True
+Previous launch failed due to bad mod templates: False
+Staging Mod Namelists
+Getting All Mod Files
+Done Staging Mod Namelists
+<color=#00cc00>LoadTime:</color> Load Namelists: 224.703ms
+GameControl Injected
+Developer Terminal Injected
+StartScreen Install Bindings
+Steam successfully initialized
+Error initializing animator: null _animator
+Getting All Mod Files
+Loading FMOD bank D:/Games/SteamLibrary/steamapps/common/Terra Invicta/TerraInvicta_Data/StreamingAssets/Audio/Desktop/Game_SFX.assets.bank
+Loading FMOD bank D:/Games/SteamLibrary/steamapps/common/Terra Invicta/TerraInvicta_Data/StreamingAssets/Audio/Desktop/Game_SFX.bank
+Loading FMOD bank D:/Games/SteamLibrary/steamapps/common/Terra Invicta/TerraInvicta_Data/StreamingAssets/Audio/Desktop/Master.assets.bank
+Loading FMOD bank D:/Games/SteamLibrary/steamapps/common/Terra Invicta/TerraInvicta_Data/StreamingAssets/Audio/Desktop/Master.bank
+Loading FMOD bank D:/Games/SteamLibrary/steamapps/common/Terra Invicta/TerraInvicta_Data/StreamingAssets/Audio/Desktop/Master.strings.bank
+Loading FMOD bank D:/Games/SteamLibrary/steamapps/common/Terra Invicta/TerraInvicta_Data/StreamingAssets/Audio/Desktop/Music.assets.bank
+Loading FMOD bank D:/Games/SteamLibrary/steamapps/common/Terra Invicta/TerraInvicta_Data/StreamingAssets/Audio/Desktop/Music.bank
+Loading FMOD bank D:/Games/SteamLibrary/steamapps/common/Terra Invicta/TerraInvicta_Data/StreamingAssets/Audio/Desktop/UI_SFX.assets.bank
+Loading FMOD bank D:/Games/SteamLibrary/steamapps/common/Terra Invicta/TerraInvicta_Data/StreamingAssets/Audio/Desktop/UI_SFX.bank
+Loading FMOD bank D:/Games/SteamLibrary/steamapps/common/Terra Invicta/TerraInvicta_Data/StreamingAssets/Audio/Desktop/Voice.assets.bank
+Loading FMOD bank D:/Games/SteamLibrary/steamapps/common/Terra Invicta/TerraInvicta_Data/StreamingAssets/Audio/Desktop/Voice.bank
+[Manager] Starting.
+[Manager] Parsing mods.
+[Manager] Reading file 'D:\Games\SteamLibrary\steamapps\common\Terra Invicta\Mods/Enabled\Economic Equalization Overhaul\ModInfo.json'.
+[Manager] Reading file 'D:\Games\SteamLibrary\steamapps\common\Terra Invicta\Mods/Enabled\Enable Achievements Fix\ModInfo.json'.
+[Manager] Sorting mods.
+[Manager] Loading mods.
+[EconomyMod] Version '0.10.10'. Loading.
+[EconomyMod] Loaded 149 enabled economy technology weights. Changes require a restart.
+[EconomyMod] Loaded measured main-hull volumes for 28 hull templates.
+[EconomyMod] Loaded measured De Laval/Magnetic drive-art scales for 12 human hull templates.
+[EconomyMod] Loaded gunpowder art schema 1: 8 guarded profiles.
+[EconomyMod] Bound generic power data for 5 gun template instance(s) from 5 record(s).
+[EconomyMod] Bound generic projectile diameter data for 8 explicit weapon template record(s); magnetic templates without an explicit diameter use mass-derived geometry.
+[EconomyMod] Bound multi-slot footprints for 28 utility and 6 heat-sink template instance(s).
+[EconomyMod] Bound 0 drive-specific propellant-density override(s).
+[EconomyMod] Bound 27 explicit open-cycle thermal mass multiplier(s). Other plants use technology-class defaults.
+[EconomyMod] [Error] Reactor-bay capacity configuration: No measured reactor bay is configured for hull 'AlienTitan' appearance 0. Using the Large class-maximum fallback 16549.54 m3.
+[EconomyMod] [Warning] Capital migration Ship20a: reactor/drive capacity exceeded
+[EconomyMod] [Error] Reactor-bay capacity configuration: No measured reactor bay is configured for hull 'AlienMothership' appearance 0. Using the Huge class-maximum fallback 16549.54 m3.
+[EconomyMod] [Warning] Capital migration Ship21: reactor/drive capacity exceeded
+[EconomyMod] [Warning] Capital migration Ship12: reactor/drive capacity exceeded
+[EconomyMod] [Error] Drive scaling configuration error: SalamanderGunship has no standalone alien drive resource; no measured scale can be applied. Safe fallback scale 1 is being used.
+[EconomyMod] [Error] Drive scaling configuration error: No measured human drive-art scale is configured for hull 'STOFighter' appearance 0 and nozzle 'DeLaval'. Safe fallback scale 1 is being used.
+[EconomyMod] [Error] Hull variant mass configuration error: No flat empty-hull mass is configured for hull 'STOFighter' appearance 0; vanilla empty hull mass is being used.
+[EconomyMod] Loaded TI Economic Equalization Overhaul 0.10.10, validated against TI 1.0.53b.
+[EconomyMod] Active.
+[EconomyMod] Loading time 1.95 s.
+[EnableAchievementsFix] Version '1.3.1'. Loading.
+[EnableAchievementsFix] Active.
+[EnableAchievementsFix] Loading time 0.00 s.
+[Manager] FINISH. SUCCESSFUL LOADED 2/2 MODS.
+
+
+[Manager] Spawning.
+<color=#00cc00>LoadTime:</color> PopulateSkirmishDropdowns: 719.142ms
+Starting Mod Manager
+Setting Up Directories
+Setting Up Files
+Getting Mod Map
+Loading mod map.
+QualityLevel0
+Master Texture Limit0
+AA Mode: 0
+AntiAliasing:8
+VSYNC: 1
+TextureStreaming: False
+Getting All Mod Files
+Adding Enabled Mod Directory: Mods/Enabled/Economic Equalization Overhaul
+Adding Enabled Mod Directory: Mods/Enabled/Enable Achievements Fix
+Adding Disabled Mod Directory: Mods/Disabled/Color-Coded Traits
+Adding Disabled Mod Directory: Mods/Disabled/Normalize Ship Scaling
+Adding Disabled Mod Directory: Mods/Disabled/Normalize Ship Scaling and +2 Utility
+Adding Disabled Mod Directory: Mods/Disabled/Tweaked UI
+Mods/Enabled/Economic Equalization Overhaul/Economic Equalization Overhaul.png
+Mods/Enabled/Economic Equalization Overhaul/ModInfo.json
+Mods/Enabled/Economic Equalization Overhaul/Settings.xml
+Mods/Enabled/Economic Equalization Overhaul/TIArmyTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIDriveTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIEffectTemplate.en
+Mods/Enabled/Economic Equalization Overhaul/TIEffectTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIGlobalConfig.json
+Mods/Enabled/Economic Equalization Overhaul/TIGunTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIHabModuleTemplate.en
+Mods/Enabled/Economic Equalization Overhaul/TIHabModuleTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIHabSiteTemplate.en
+Mods/Enabled/Economic Equalization Overhaul/TIHabSiteTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIHabTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIHeatSinkTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TILaserWeaponTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIMagneticGunTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIMetaTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIMiningProfileTemplate.en
+Mods/Enabled/Economic Equalization Overhaul/TIMiningProfileTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIMissileTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIMissionTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TINationTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIOperationTemplate.en
+Mods/Enabled/Economic Equalization Overhaul/TIOrbitTemplate.en
+Mods/Enabled/Economic Equalization Overhaul/TIOrbitTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIPowerPlantTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIProjectTemplate.en
+Mods/Enabled/Economic Equalization Overhaul/TIProjectTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIRegionTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIShipHullTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TISpaceBodyTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIStartTimeTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TITechTemplate.en
+Mods/Enabled/Economic Equalization Overhaul/TITechTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIUtilityModuleTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/UICodex.en
+Mods/Enabled/Economic Equalization Overhaul/UIGeneralControls.en
+Mods/Enabled/Economic Equalization Overhaul/UIHabs.en
+Mods/Enabled/Economic Equalization Overhaul/UIIntel.en
+Mods/Enabled/Economic Equalization Overhaul/UINation.en
+Mods/Enabled/Economic Equalization Overhaul/UIScience.en
+Mods/Enabled/Economic Equalization Overhaul/Assembly/TIEconomyMod.dll
+Mods/Enabled/Economic Equalization Overhaul/Assembly/TIEconomyMod.dll.37016.cache
+Mods/Enabled/Economic Equalization Overhaul/Assembly/TIEconomyMod.dll.37016.cache.pdb
+Mods/Enabled/Economic Equalization Overhaul/Assembly/TIEconomyMod.pdb
+Mods/Enabled/Economic Equalization Overhaul/Config/combat-mesh-data-base.eeo
+Mods/Enabled/Economic Equalization Overhaul/Config/combat-mesh-data-dlc.eeo
+Mods/Enabled/Economic Equalization Overhaul/Config/combat-unreadable-meshes.eeo
+Mods/Enabled/Economic Equalization Overhaul/Config/economy-tech-weights.csv
+Mods/Enabled/Economic Equalization Overhaul/Config/gunpowder-art-profiles.eeo
+Mods/Enabled/Economic Equalization Overhaul/Config/hull-variant-drive-scales.csv
+Mods/Enabled/Economic Equalization Overhaul/Config/hull-variant-main-volumes.csv
+Mods/Enabled/Enable Achievements Fix/Enable Achievements Fix.png
+Mods/Enabled/Enable Achievements Fix/EnableAchievements.dll
+Mods/Enabled/Enable Achievements Fix/EnableAchievements.dll.17477.cache
+Mods/Enabled/Enable Achievements Fix/ModInfo.json
+Mods/Enabled/Enable Achievements Fix/Settings.xml
+Mods/Enabled/Enable Achievements Fix/WorkshopItemInfo.xml
+[Manager] Checking updates.
+QuerySubscribedItems page 1
+Setting up 16 worker threads for Enlighten.
+  Thread -> id: 12630 -> priority: 1 
+  Thread -> id: 5f84 -> priority: 1 
+  Thread -> id: 12ea0 -> priority: 1 
+  Thread -> id: 12768 -> priority: 1 
+  Thread -> id: 2c44 -> priority: 1 
+  Thread -> id: ba30 -> priority: 1 
+  Thread -> id: 15954 -> priority: 1 
+  Thread -> id: 13aac -> priority: 1 
+  Thread -> id: ffc4 -> priority: 1 
+  Thread -> id: 14354 -> priority: 1 
+  Thread -> id: b620 -> priority: 1 
+  Thread -> id: 10d84 -> priority: 1 
+  Thread -> id: 1270 -> priority: 1 
+  Thread -> id: aebc -> priority: 1 
+  Thread -> id: 162f0 -> priority: 1 
+  Thread -> id: 151a8 -> priority: 1 
+OnSubscribedItemsCallCompleted: (fail:False) k_EResultOK requests left: 1
+AA Mode: 0
+AA Level: 8
+FullscreenMode:True
+Set Resolution: 3840x2160
+UI Scale Setting: 0
+Use Councilor and Leader Videos: True
+Use Mods:True
+Previous launch failed due to bad mod templates: False
+Player Config Saved
+QueryVotedItems page 1
+OnVotedItemsCallCompleted: (fail:False) k_EResultOK requests left: 1
+OnVotedItemsCallCompleted - started vote requests: 6
+OnUserVoteCallCompleted: (fail:False) k_EResultOK requests left: 6
+OnUserVoteCallCompleted: (fail:False) k_EResultOK requests left: 5
+OnUserVoteCallCompleted: (fail:False) k_EResultOK requests left: 4
+OnUserVoteCallCompleted: (fail:False) k_EResultOK requests left: 3
+OnUserVoteCallCompleted: (fail:False) k_EResultOK requests left: 2
+OnUserVoteCallCompleted: (fail:False) k_EResultOK requests left: 1
+QueryAllItems from SUBSCRIBED page 1
+OnAvailableItemsCallCompleted: (fail:False) k_EResultOK requests left: 1
+Retrieved Tweaked UI from Steam Workshop_OnAvailableItemsCallCompleted
+Retrieved Enable Achievements Fix from Steam Workshop_OnAvailableItemsCallCompleted
+Retrieved Normalize Ship Scaling and +2 Utility from Steam Workshop_OnAvailableItemsCallCompleted
+Retrieved Color-Coded Traits from Steam Workshop_OnAvailableItemsCallCompleted
+Enable Achievements Fix: need to check for update
+D:\Games\SteamLibrary\steamapps\workshop\content\1176470\3643427637
+Mods/Enabled/Enable Achievements Fix
+deleting outdated file: Mods/Enabled/Enable Achievements Fix\EnableAchievements.dll.17477.cache
+deleting outdated file: Mods/Enabled/Enable Achievements Fix\Settings.xml
+Access to the path "Mods/Enabled/Enable Achievements Fix\EnableAchievements.dll.17477.cache" is denied., Could not deleteMods/Enabled/Enable Achievements Fix\EnableAchievements.dll.17477.cache
+SteamWorkshopMain: ClearSingleShotEventHandler 'OnItemListLoaded' left handlers: 1/2 left single shots: 0/1
+OnAvailableItemsCallCompleted: loaded 4 items from page 1, 0 favorited by user, 6 voted by user
+AI Formation: Tight Great Wall Swords Center
+Init LoadWidget
+Unloading 6 Unused Serialized files (Serialized files now loaded: 55)
+UnloadTime: 18.232700 ms
+Init LoadWidget
+<color=#00cc00>LoadTime:</color> Solar System Bootstrap:: 10.807ms
+
+Unloading 352 unused Assets to reduce memory usage. Loaded Objects now: 4026.
+Total: 203.677400 ms (FindLiveObjects: 0.171100 ms CreateObjectMapping: 0.067700 ms MarkObjects: 203.236100 ms  DeleteObjects: 0.202300 ms)
+
+Loading SkirmishModeScenario
+<color=#00cc00>LoadTime:</color> Load MetaTemplates: 56.427ms
+<color=#00cc00>LoadTime:</color> Initialize GameTime: 0.927ms
+[EconomyMod] Registered 0 historical claim classifications for the active scenario.
+Campaign Start Version: 1.0.53b Current Version: 1.0.53b
+<color=#00cc00>LoadTime:</color> PostGlobalInit2: 42.660ms
+<color=#00cc00>LoadTime:</color> Load Players: 7.809ms
+<color=#00cc00>LoadTime:</color> CalculateHabStats: 18.198ms
+AA Mode: 0
+AA Level: 8
+FullscreenMode:True
+Set Resolution: 3840x2160
+UI Scale Setting: 0
+Use Councilor and Leader Videos: True
+Use Mods:True
+Previous launch failed due to bad mod templates: False
+Player Config Saved
+AA Mode: 0
+AA Level: 8
+FullscreenMode:True
+Set Resolution: 3840x2160
+UI Scale Setting: 0
+Use Councilor and Leader Videos: True
+Use Mods:True
+Previous launch failed due to bad mod templates: False
+Player Config Saved
+AA Mode: 0
+AA Level: 8
+FullscreenMode:True
+Set Resolution: 3840x2160
+UI Scale Setting: 0
+Use Councilor and Leader Videos: True
+Use Mods:True
+Previous launch failed due to bad mod templates: False
+Player Config Saved
+Error initializing animator: null _animator
+<color=#00cc00>LoadTime:</color> Init Canvas OptionsScreen: 0.721ms
+<color=#00cc00>LoadTime:</color> Init Canvas PreCombatCanvas: 0.595ms
+<color=#00cc00>LoadTime:</color> Init Canvas SpaceCombatCanvas: 17.277ms
+<color=#00cc00>LoadTime:</color> Init Canvas CodexCanvas: 15.579ms
+No ICanvas found on MagnifierCanvas
+<color=#00cc00>LoadTime:</color> LoadAllCanvases: 700.361ms
+QualityLevel0
+Master Texture Limit0
+AA Mode: 0
+AntiAliasing:8
+VSYNC: 1
+TextureStreaming: False
+Set Alien Proxy Faction as the Servants
+<color=#00cc00>LoadTime:</color> PostCanvasInit3: 13.643ms
+<color=#00cc00>LoadTime:</color> Initialize Nations: 4.034ms
+<color=#00cc00>LoadTime:</color> Initialize Factions: 126.051ms
+<color=#00cc00>LoadTime:</color> PostInit4: 25.221ms
+<color=#00cc00>LoadTime:</color> PostStartUpInit5: 837.507ms
+<color=#00cc00>LoadTime:</color> ViewControlInit: 2.142ms
+Init LoadWidget
+Execute Game Control Initialize Cycle
+<color=#00cc00>LoadTime:</color> MapController InitializeMap: 27.861ms
+<color=#00cc00>LoadTime:</color> SpaceObjectController Create MapController: 36.507ms
+Shader warmup: 118 shaders 6900 combinations 0.586s
+[EconomyMod] [Error] Reactor-bay capacity configuration: No measured reactor bay is configured for hull 'SalamanderGunship' appearance 0. Using the Small class-maximum fallback 2617.607 m3.
+<color=#00cc00>LoadTime:</color> PostVisualizerInit6: 8.186ms
+<color=#00cc00>LoadTime:</color> PostVisualizerInit7: 10.849ms
+<color=#00cc00>LoadTime:</color> PostEverything Save Repair: 2.285ms
+Number of GameStates: 464
+100% Loaded
+Initial Skirmish Loading Cycle Completed
+<color=#00cc00>LoadTime:</color> Init All Visualizers and Warm Shaders (Bad data in public build due to coroutine) : 4.279s
+<color=#00cc00>LoadTime:</color> BakeJourneyHeuristic: 0.040ms
+Visualizer Loader Complete: Complete Init
+<color=#00cc00>LoadTime:</color> Campaign total load time was 6.76359 seconds.
+<color=#72A0E5FF>The Resistance</color> Assign Formation: Tight Line Heavy Dispersed
+[EconomyMod] Combat render bake: Frigate(Clone) parts=33 vertexFactor=0.05 rendererScaleCompensation=20
+Adding ship to CombatManager as ActiveShip(CreateShip): 278, Cangjie
+[EconomyMod] Combat render bake: Corvette(Clone) parts=28 vertexFactor=0.05 rendererScaleCompensation=20
+Adding ship to CombatManager as ActiveShip(CreateShip): 277, Bellerophon
+[EconomyMod] Combat render bake: Corvette(Clone) parts=28 vertexFactor=0.05 rendererScaleCompensation=20
+Adding ship to CombatManager as ActiveShip(CreateShip): 279, Heracles
+<color=#795FA3FF>The Servants</color> AI Formation: Tight Wedge Shields Dispersed
+MaxShipsInCombat: 90
+<color=#795FA3FF>The Servants</color> Assign Formation: Tight Wedge Shields Dispersed
+[EconomyMod] Combat render bake: Frigate(Clone) parts=33 vertexFactor=0.05 rendererScaleCompensation=20
+Adding ship to CombatManager as ActiveShip(CreateShip): 281, Cetus
+[EconomyMod] Combat render bake: Corvette(Clone) parts=28 vertexFactor=0.05 rendererScaleCompensation=20
+Adding ship to CombatManager as ActiveShip(CreateShip): 280, Banshee
+[EconomyMod] Combat render bake: Corvette(Clone) parts=28 vertexFactor=0.05 rendererScaleCompensation=20
+Adding ship to CombatManager as ActiveShip(CreateShip): 282, Dryad
+<color=#00cc00>LoadTime:</color> CreateCombatVFXBuffer: 32.749ms
+[EconomyMod] Combat close camera: Main Camera near=0.0005 relativeModelScale=0.05
+<color=#72A0E5FF>The Resistance</color> Assign Formation: Tight Line Archers Dispersed
+<color=#72A0E5FF>The Resistance</color> Assign Formation: Tight Line Archers Dispersed
+[EconomyMod] Combat geometry readback: model:Frigate(Clone) cinematic=False boxes=19 replaced=6 maxRelativeBoundsError=99
+[EconomyMod] Combat render bake readback: Frigate(Clone) parts=33 maxLocalBoundsError=1.08106E-07
+[EconomyMod] Combat geometry readback: model:Corvette(Clone) cinematic=False boxes=15 replaced=4 maxRelativeBoundsError=99.0001
+[EconomyMod] Combat render bake readback: Corvette(Clone) parts=28 maxLocalBoundsError=8.93597E-08
+[EconomyMod] Combat render bake readback: Corvette(Clone) parts=28 maxLocalBoundsError=8.93597E-08
+[EconomyMod] Combat render bake readback: Frigate(Clone) parts=33 maxLocalBoundsError=1.08106E-07
+[EconomyMod] Combat render bake readback: Corvette(Clone) parts=28 maxLocalBoundsError=8.93597E-08
+[EconomyMod] Combat render bake readback: Corvette(Clone) parts=28 maxLocalBoundsError=8.93597E-08
+[EconomyMod] Combat projectile readback: LightRailCannonMk2 cinematic=False bodyMetres=0.0627762x0.627762 unitsPerMetre=5E-05 collider=BoxCollider
+[EconomyMod] Combat projectile readback: LightRailgunBatteryMk1 cinematic=False bodyMetres=0.0452023x0.452023 unitsPerMetre=5E-05 collider=BoxCollider
+removing ship from CombatManager ActiveShip(DestroyShip): 278, Cangjie
+removing ship from CombatManager ActiveShip(DestroyShip): 277, Bellerophon
+Clearing GameData
+Unloading 3 Unused Serialized files (Serialized files now loaded: 55)
+Getting All DLC Content
+Adding DLC Directory: DLC_Content/DarkSkies
+Adding DLC Directory: DLC_Content/SupporterPack
+Found Profile Config File
+Use Mods:True
+Previous launch failed due to bad mod templates: False
+Setting Up Directories
+Getting All Mod Files
+Adding Enabled Mod Directory: Mods/Enabled/Economic Equalization Overhaul
+Adding Enabled Mod Directory: Mods/Enabled/Enable Achievements Fix
+Adding Disabled Mod Directory: Mods/Disabled/Color-Coded Traits
+Adding Disabled Mod Directory: Mods/Disabled/Normalize Ship Scaling
+Adding Disabled Mod Directory: Mods/Disabled/Normalize Ship Scaling and +2 Utility
+Adding Disabled Mod Directory: Mods/Disabled/Tweaked UI
+Mods/Enabled/Economic Equalization Overhaul/Economic Equalization Overhaul.png
+Mods/Enabled/Economic Equalization Overhaul/ModInfo.json
+Mods/Enabled/Economic Equalization Overhaul/Settings.xml
+Mods/Enabled/Economic Equalization Overhaul/TIArmyTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIDriveTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIEffectTemplate.en
+Mods/Enabled/Economic Equalization Overhaul/TIEffectTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIGlobalConfig.json
+Mods/Enabled/Economic Equalization Overhaul/TIGunTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIHabModuleTemplate.en
+Mods/Enabled/Economic Equalization Overhaul/TIHabModuleTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIHabSiteTemplate.en
+Mods/Enabled/Economic Equalization Overhaul/TIHabSiteTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIHabTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIHeatSinkTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TILaserWeaponTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIMagneticGunTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIMetaTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIMiningProfileTemplate.en
+Mods/Enabled/Economic Equalization Overhaul/TIMiningProfileTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIMissileTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIMissionTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TINationTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIOperationTemplate.en
+Mods/Enabled/Economic Equalization Overhaul/TIOrbitTemplate.en
+Mods/Enabled/Economic Equalization Overhaul/TIOrbitTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIPowerPlantTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIProjectTemplate.en
+Mods/Enabled/Economic Equalization Overhaul/TIProjectTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIRegionTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIShipHullTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TISpaceBodyTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIStartTimeTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TITechTemplate.en
+Mods/Enabled/Economic Equalization Overhaul/TITechTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIUtilityModuleTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/UICodex.en
+Mods/Enabled/Economic Equalization Overhaul/UIGeneralControls.en
+Mods/Enabled/Economic Equalization Overhaul/UIHabs.en
+Mods/Enabled/Economic Equalization Overhaul/UIIntel.en
+Mods/Enabled/Economic Equalization Overhaul/UINation.en
+Mods/Enabled/Economic Equalization Overhaul/UIScience.en
+Mods/Enabled/Economic Equalization Overhaul/Assembly/TIEconomyMod.dll
+Mods/Enabled/Economic Equalization Overhaul/Assembly/TIEconomyMod.dll.37016.cache
+Mods/Enabled/Economic Equalization Overhaul/Assembly/TIEconomyMod.dll.37016.cache.pdb
+Mods/Enabled/Economic Equalization Overhaul/Assembly/TIEconomyMod.pdb
+Mods/Enabled/Economic Equalization Overhaul/Config/combat-mesh-data-base.eeo
+Mods/Enabled/Economic Equalization Overhaul/Config/combat-mesh-data-dlc.eeo
+Mods/Enabled/Economic Equalization Overhaul/Config/combat-unreadable-meshes.eeo
+Mods/Enabled/Economic Equalization Overhaul/Config/economy-tech-weights.csv
+Mods/Enabled/Economic Equalization Overhaul/Config/gunpowder-art-profiles.eeo
+Mods/Enabled/Economic Equalization Overhaul/Config/hull-variant-drive-scales.csv
+Mods/Enabled/Economic Equalization Overhaul/Config/hull-variant-main-volumes.csv
+Mods/Enabled/Enable Achievements Fix/Enable Achievements Fix.png
+Mods/Enabled/Enable Achievements Fix/EnableAchievements.dll
+Mods/Enabled/Enable Achievements Fix/EnableAchievements.dll.17477.cache
+Mods/Enabled/Enable Achievements Fix/ModInfo.json
+Mods/Enabled/Enable Achievements Fix/WorkshopItemInfo.xml
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIArmyTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIDriveTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIEffectTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIGlobalConfig.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIGunTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIHabModuleTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIHabSiteTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIHabTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIHeatSinkTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TILaserWeaponTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIMagneticGunTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIMetaTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIMiningProfileTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIMissileTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIMissionTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TINationTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIOrbitTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIPowerPlantTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIProjectTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIRegionTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIShipHullTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TISpaceBodyTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIStartTimeTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TITechTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIUtilityModuleTemplate.json
+Done Staging Mod Templates
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIMetaTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIMetaTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIMetaTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIArmyTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIDriveTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIEffectTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIGlobalConfig.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIGunTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIHabModuleTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIHabSiteTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIHabTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIHeatSinkTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TILaserWeaponTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIMagneticGunTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIMiningProfileTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIMissileTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIMissionTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TINationTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIOrbitTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIPowerPlantTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIProjectTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIRegionTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIShipHullTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TISpaceBodyTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIStartTimeTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TITechTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIUtilityModuleTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIArmyTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIEffectTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIHabModuleTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIHabTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIMissionTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TINationTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIProjectTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIRegionTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TISpaceBodyTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIStartTimeTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TITechTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIArmyTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIEffectTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIGlobalConfig.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TINationTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIProjectTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIRegionTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TISpaceBodyTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIStartTimeTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TITechTemplate.json
+<color=#00cc00>LoadTime:</color> Load All Templates: 2.103s
+[EconomyMod] Bound 0 drive-specific propellant-density override(s).
+[EconomyMod] Bound generic power data for 5 gun template instance(s) from 5 record(s).
+[EconomyMod] Bound generic projectile diameter data for 8 explicit weapon template record(s); magnetic templates without an explicit diameter use mass-derived geometry.
+[EconomyMod] Bound 27 explicit open-cycle thermal mass multiplier(s). Other plants use technology-class defaults.
+Bad hull weapon placement for Alien128cmVioletLaserBattery in Ship21
+Bad hull weapon placement for Alien128cmVioletLaserBattery in Ship21
+Bad hull weapon placement for CoilgunBatteryMk2 in Ship12
+Bad hull weapon placement for CoilgunBatteryMk2 in Ship12
+Bad hull weapon placement for PlasmaBatteryMk3 in Ship33
+Bad hull weapon placement for PlasmaBatteryMk3 in Ship33
+
+Unloading 19407 unused Assets to reduce memory usage. Loaded Objects now: 120041.
+Total: 458.483400 ms (FindLiveObjects: 5.322500 ms CreateObjectMapping: 2.166600 ms MarkObjects: 446.887000 ms  DeleteObjects: 4.107200 ms)
+
+The referenced script on this Behaviour (Game Object 'Game Controller') is missing!
+The referenced script on this Behaviour (Game Object 'Game Controller') is missing!
+The referenced script on this Behaviour (Game Object 'Game Controller') is missing!
+Unloading 3 Unused Serialized files (Serialized files now loaded: 55)
+Internal: JobTempAlloc has allocations that are more than 4 frames old - this is not allowed and likely a leak
+Internal: deleting an allocation that is older than its permitted lifetime of 4 frames (age = 10)
+SpaceCombatCameraBlend: Camera Blend effect was not cleaned up properly. Temporary memory has been released.
+UnloadTime: 34.235500 ms
+StartScreen Install Bindings
+Error initializing animator: null _animator
+Getting All Mod Files
+Loading FMOD bank D:/Games/SteamLibrary/steamapps/common/Terra Invicta/TerraInvicta_Data/StreamingAssets/Audio/Desktop/Game_SFX.assets.bank
+Loading FMOD bank D:/Games/SteamLibrary/steamapps/common/Terra Invicta/TerraInvicta_Data/StreamingAssets/Audio/Desktop/Game_SFX.bank
+Loading FMOD bank D:/Games/SteamLibrary/steamapps/common/Terra Invicta/TerraInvicta_Data/StreamingAssets/Audio/Desktop/Master.assets.bank
+Loading FMOD bank D:/Games/SteamLibrary/steamapps/common/Terra Invicta/TerraInvicta_Data/StreamingAssets/Audio/Desktop/Master.bank
+Loading FMOD bank D:/Games/SteamLibrary/steamapps/common/Terra Invicta/TerraInvicta_Data/StreamingAssets/Audio/Desktop/Master.strings.bank
+Loading FMOD bank D:/Games/SteamLibrary/steamapps/common/Terra Invicta/TerraInvicta_Data/StreamingAssets/Audio/Desktop/Music.assets.bank
+Loading FMOD bank D:/Games/SteamLibrary/steamapps/common/Terra Invicta/TerraInvicta_Data/StreamingAssets/Audio/Desktop/Music.bank
+Loading FMOD bank D:/Games/SteamLibrary/steamapps/common/Terra Invicta/TerraInvicta_Data/StreamingAssets/Audio/Desktop/UI_SFX.assets.bank
+Loading FMOD bank D:/Games/SteamLibrary/steamapps/common/Terra Invicta/TerraInvicta_Data/StreamingAssets/Audio/Desktop/UI_SFX.bank
+Loading FMOD bank D:/Games/SteamLibrary/steamapps/common/Terra Invicta/TerraInvicta_Data/StreamingAssets/Audio/Desktop/Voice.assets.bank
+Loading FMOD bank D:/Games/SteamLibrary/steamapps/common/Terra Invicta/TerraInvicta_Data/StreamingAssets/Audio/Desktop/Voice.bank
+[EconomyMod] [Warning] Capital migration Ship20a: reactor/drive capacity exceeded
+Bad hull weapon placement for Alien128cmVioletLaserBattery in Ship21
+Bad hull weapon placement for Alien128cmVioletLaserBattery in Ship21
+Bad hull weapon placement for Alien128cmVioletLaserBattery in Ship21
+Bad hull weapon placement for Alien128cmVioletLaserBattery in Ship21
+[EconomyMod] [Warning] Capital migration Ship21: reactor/drive capacity exceeded
+[EconomyMod] [Warning] Capital migration Ship12: reactor/drive capacity exceeded
+<color=#00cc00>LoadTime:</color> PopulateSkirmishDropdowns: 309.113ms
+Starting Mod Manager
+Setting Up Directories
+Setting Up Files
+Getting Mod Map
+Loading mod map.
+QualityLevel0
+Master Texture Limit0
+AA Mode: 0
+AntiAliasing:8
+VSYNC: 1
+TextureStreaming: False
+Getting All Mod Files
+Adding Enabled Mod Directory: Mods/Enabled/Economic Equalization Overhaul
+Adding Enabled Mod Directory: Mods/Enabled/Enable Achievements Fix
+Adding Disabled Mod Directory: Mods/Disabled/Color-Coded Traits
+Adding Disabled Mod Directory: Mods/Disabled/Normalize Ship Scaling
+Adding Disabled Mod Directory: Mods/Disabled/Normalize Ship Scaling and +2 Utility
+Adding Disabled Mod Directory: Mods/Disabled/Tweaked UI
+Mods/Enabled/Economic Equalization Overhaul/Economic Equalization Overhaul.png
+Mods/Enabled/Economic Equalization Overhaul/ModInfo.json
+Mods/Enabled/Economic Equalization Overhaul/Settings.xml
+Mods/Enabled/Economic Equalization Overhaul/TIArmyTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIDriveTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIEffectTemplate.en
+Mods/Enabled/Economic Equalization Overhaul/TIEffectTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIGlobalConfig.json
+Mods/Enabled/Economic Equalization Overhaul/TIGunTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIHabModuleTemplate.en
+Mods/Enabled/Economic Equalization Overhaul/TIHabModuleTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIHabSiteTemplate.en
+Mods/Enabled/Economic Equalization Overhaul/TIHabSiteTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIHabTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIHeatSinkTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TILaserWeaponTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIMagneticGunTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIMetaTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIMiningProfileTemplate.en
+Mods/Enabled/Economic Equalization Overhaul/TIMiningProfileTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIMissileTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIMissionTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TINationTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIOperationTemplate.en
+Mods/Enabled/Economic Equalization Overhaul/TIOrbitTemplate.en
+Mods/Enabled/Economic Equalization Overhaul/TIOrbitTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIPowerPlantTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIProjectTemplate.en
+Mods/Enabled/Economic Equalization Overhaul/TIProjectTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIRegionTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIShipHullTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TISpaceBodyTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIStartTimeTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TITechTemplate.en
+Mods/Enabled/Economic Equalization Overhaul/TITechTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIUtilityModuleTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/UICodex.en
+Mods/Enabled/Economic Equalization Overhaul/UIGeneralControls.en
+Mods/Enabled/Economic Equalization Overhaul/UIHabs.en
+Mods/Enabled/Economic Equalization Overhaul/UIIntel.en
+Mods/Enabled/Economic Equalization Overhaul/UINation.en
+Mods/Enabled/Economic Equalization Overhaul/UIScience.en
+Mods/Enabled/Economic Equalization Overhaul/Assembly/TIEconomyMod.dll
+Mods/Enabled/Economic Equalization Overhaul/Assembly/TIEconomyMod.dll.37016.cache
+Mods/Enabled/Economic Equalization Overhaul/Assembly/TIEconomyMod.dll.37016.cache.pdb
+Mods/Enabled/Economic Equalization Overhaul/Assembly/TIEconomyMod.pdb
+Mods/Enabled/Economic Equalization Overhaul/Config/combat-mesh-data-base.eeo
+Mods/Enabled/Economic Equalization Overhaul/Config/combat-mesh-data-dlc.eeo
+Mods/Enabled/Economic Equalization Overhaul/Config/combat-unreadable-meshes.eeo
+Mods/Enabled/Economic Equalization Overhaul/Config/economy-tech-weights.csv
+Mods/Enabled/Economic Equalization Overhaul/Config/gunpowder-art-profiles.eeo
+Mods/Enabled/Economic Equalization Overhaul/Config/hull-variant-drive-scales.csv
+Mods/Enabled/Economic Equalization Overhaul/Config/hull-variant-main-volumes.csv
+Mods/Enabled/Enable Achievements Fix/Enable Achievements Fix.png
+Mods/Enabled/Enable Achievements Fix/EnableAchievements.dll
+Mods/Enabled/Enable Achievements Fix/EnableAchievements.dll.17477.cache
+Mods/Enabled/Enable Achievements Fix/ModInfo.json
+Mods/Enabled/Enable Achievements Fix/WorkshopItemInfo.xml
+QuerySubscribedItems page 1
+
+Unloading 1175 unused Assets to reduce memory usage. Loaded Objects now: 39573.
+Total: 532.419200 ms (FindLiveObjects: 1.268700 ms CreateObjectMapping: 0.462600 ms MarkObjects: 529.615300 ms  DeleteObjects: 1.072400 ms)
+
+OnSubscribedItemsCallCompleted: (fail:False) k_EResultOK requests left: 1
+QueryVotedItems page 1
+OnVotedItemsCallCompleted: (fail:False) k_EResultOK requests left: 1
+OnVotedItemsCallCompleted - started vote requests: 6
+OnUserVoteCallCompleted: (fail:False) k_EResultOK requests left: 6
+OnUserVoteCallCompleted: (fail:False) k_EResultOK requests left: 5
+OnUserVoteCallCompleted: (fail:False) k_EResultOK requests left: 4
+OnUserVoteCallCompleted: (fail:False) k_EResultOK requests left: 3
+OnUserVoteCallCompleted: (fail:False) k_EResultOK requests left: 2
+OnUserVoteCallCompleted: (fail:False) k_EResultOK requests left: 1
+QueryAllItems from SUBSCRIBED page 1
+OnAvailableItemsCallCompleted: (fail:False) k_EResultOK requests left: 1
+Retrieved Tweaked UI from Steam Workshop_OnAvailableItemsCallCompleted
+Retrieved Enable Achievements Fix from Steam Workshop_OnAvailableItemsCallCompleted
+Retrieved Normalize Ship Scaling and +2 Utility from Steam Workshop_OnAvailableItemsCallCompleted
+Retrieved Color-Coded Traits from Steam Workshop_OnAvailableItemsCallCompleted
+SteamWorkshopMain: ClearSingleShotEventHandler 'OnItemListLoaded' left handlers: 1/2 left single shots: 0/1
+OnAvailableItemsCallCompleted: loaded 4 items from page 1, 0 favorited by user, 6 voted by user
+AI Formation: Tight Great Wall Swords Center
+Init LoadWidget
+Unloading 4 Unused Serialized files (Serialized files now loaded: 55)
+UnloadTime: 18.525600 ms
+Init LoadWidget
+<color=#00cc00>LoadTime:</color> Solar System Bootstrap:: 0.092ms
+
+Unloading 263 unused Assets to reduce memory usage. Loaded Objects now: 22064.
+Total: 542.990900 ms (FindLiveObjects: 0.604600 ms CreateObjectMapping: 0.231600 ms MarkObjects: 541.877700 ms  DeleteObjects: 0.276700 ms)
+
+Loading SkirmishModeScenario
+<color=#00cc00>LoadTime:</color> Load MetaTemplates: 20.020ms
+<color=#00cc00>LoadTime:</color> Initialize GameTime: 0.000ms
+[EconomyMod] Registered 0 historical claim classifications for the active scenario.
+Campaign Start Version: 1.0.53b Current Version: 1.0.53b
+<color=#00cc00>LoadTime:</color> PostGlobalInit2: 5.737ms
+<color=#00cc00>LoadTime:</color> Load Players: 3.418ms
+<color=#00cc00>LoadTime:</color> CalculateHabStats: 14.221ms
+AA Mode: 0
+AA Level: 8
+FullscreenMode:True
+Set Resolution: 3840x2160
+UI Scale Setting: 0
+Use Councilor and Leader Videos: True
+Use Mods:True
+Previous launch failed due to bad mod templates: False
+Player Config Saved
+AA Mode: 0
+AA Level: 8
+FullscreenMode:True
+Set Resolution: 3840x2160
+UI Scale Setting: 0
+Use Councilor and Leader Videos: True
+Use Mods:True
+Previous launch failed due to bad mod templates: False
+Player Config Saved
+AA Mode: 0
+AA Level: 8
+FullscreenMode:True
+Set Resolution: 3840x2160
+UI Scale Setting: 0
+Use Councilor and Leader Videos: True
+Use Mods:True
+Previous launch failed due to bad mod templates: False
+Player Config Saved
+Error initializing animator: null _animator
+<color=#00cc00>LoadTime:</color> Init Canvas OptionsScreen: 0.092ms
+<color=#00cc00>LoadTime:</color> Init Canvas PreCombatCanvas: 0.214ms
+<color=#00cc00>LoadTime:</color> Init Canvas SpaceCombatCanvas: 8.209ms
+<color=#00cc00>LoadTime:</color> Init Canvas CodexCanvas: 10.223ms
+No ICanvas found on MagnifierCanvas
+<color=#00cc00>LoadTime:</color> LoadAllCanvases: 656.921ms
+QualityLevel0
+Master Texture Limit0
+AA Mode: 0
+AntiAliasing:8
+VSYNC: 1
+TextureStreaming: False
+Set Alien Proxy Faction as the Servants
+<color=#00cc00>LoadTime:</color> PostCanvasInit3: 2.411ms
+<color=#00cc00>LoadTime:</color> Initialize Nations: 0.000ms
+<color=#00cc00>LoadTime:</color> Initialize Factions: 92.529ms
+<color=#00cc00>LoadTime:</color> PostInit4: 10.223ms
+<color=#00cc00>LoadTime:</color> PostStartUpInit5: 1.073s
+<color=#00cc00>LoadTime:</color> ViewControlInit: 0.214ms
+Init LoadWidget
+Execute Game Control Initialize Cycle
+<color=#00cc00>LoadTime:</color> MapController InitializeMap: 1.923ms
+<color=#00cc00>LoadTime:</color> SpaceObjectController Create MapController: 2.502ms
+Shader warmup: 277 shaders 9050 combinations 0.353s
+<color=#00cc00>LoadTime:</color> PostVisualizerInit6: 2.686ms
+<color=#00cc00>LoadTime:</color> PostVisualizerInit7: 8.484ms
+<color=#00cc00>LoadTime:</color> PostEverything Save Repair: 0.214ms
+Number of GameStates: 468
+100% Loaded
+Initial Skirmish Loading Cycle Completed
+<color=#00cc00>LoadTime:</color> Init All Visualizers and Warm Shaders (Bad data in public build due to coroutine) : 2.807s
+<color=#00cc00>LoadTime:</color> BakeJourneyHeuristic: 0.000ms
+Visualizer Loader Complete: Complete Init
+<color=#00cc00>LoadTime:</color> Campaign total load time was 5.598328 seconds.
+<color=#72A0E5FF>The Resistance</color> Assign Formation: Tight Line Heavy Dispersed
+[EconomyMod] Combat render bake: Battlecruiser_2(Clone) parts=40 vertexFactor=0.05 rendererScaleCompensation=20
+Adding ship to CombatManager as ActiveShip(CreateShip): 277, Relentless
+[EconomyMod] Combat render bake: Battlecruiser_2(Clone) parts=40 vertexFactor=0.05 rendererScaleCompensation=20
+Adding ship to CombatManager as ActiveShip(CreateShip): 278, Fearless
+[EconomyMod] Combat render bake: Battlecruiser_2(Clone) parts=40 vertexFactor=0.05 rendererScaleCompensation=20
+Adding ship to CombatManager as ActiveShip(CreateShip): 279, Valiant
+[EconomyMod] Combat render bake: Battlecruiser_2(Clone) parts=40 vertexFactor=0.05 rendererScaleCompensation=20
+Adding ship to CombatManager as ActiveShip(CreateShip): 280, Worthy
+[EconomyMod] Combat render bake: Battlecruiser_2(Clone) parts=40 vertexFactor=0.05 rendererScaleCompensation=20
+Adding ship to CombatManager as ActiveShip(CreateShip): 281, Venerable
+<color=#795FA3FF>The Servants</color> AI Formation: Tight Short Wall Shields Dispersed
+MaxShipsInCombat: 90
+<color=#795FA3FF>The Servants</color> Assign Formation: Tight Short Wall Shields Dispersed
+[EconomyMod] Combat render bake: Battleship(Clone) parts=57 vertexFactor=0.05 rendererScaleCompensation=20
+Adding ship to CombatManager as ActiveShip(CreateShip): 283, Asteria
+[EconomyMod] Combat render bake: Battlecruiser(Clone) parts=44 vertexFactor=0.05 rendererScaleCompensation=20
+Adding ship to CombatManager as ActiveShip(CreateShip): 282, Lahar
+[EconomyMod] Combat render bake: Battlecruiser(Clone) parts=44 vertexFactor=0.05 rendererScaleCompensation=20
+Adding ship to CombatManager as ActiveShip(CreateShip): 286, Tempest
+[EconomyMod] Combat render bake: Cruiser(Clone) parts=43 vertexFactor=0.05 rendererScaleCompensation=20
+Adding ship to CombatManager as ActiveShip(CreateShip): 284, Yukigumo
+[EconomyMod] Combat render bake: Cruiser(Clone) parts=43 vertexFactor=0.05 rendererScaleCompensation=20
+Adding ship to CombatManager as ActiveShip(CreateShip): 285, Thunderbolt
+<color=#00cc00>LoadTime:</color> CreateCombatVFXBuffer: 9.735ms
+[EconomyMod] Combat close camera: Main Camera near=0.0005 relativeModelScale=0.05
+<color=#72A0E5FF>The Resistance</color> Assign Formation: Tight Line Archers Dispersed
+<color=#72A0E5FF>The Resistance</color> Assign Formation: Tight Line Archers Dispersed
+[EconomyMod] Combat geometry readback: model:Battlecruiser_2(Clone) cinematic=False boxes=21 replaced=6 maxRelativeBoundsError=99
+[EconomyMod] Combat render bake readback: Battlecruiser_2(Clone) parts=40 maxLocalBoundsError=1.0748E-07
+[EconomyMod] Combat render bake readback: Battlecruiser_2(Clone) parts=40 maxLocalBoundsError=1.0748E-07
+[EconomyMod] Combat render bake readback: Battlecruiser_2(Clone) parts=40 maxLocalBoundsError=1.0748E-07
+[EconomyMod] Combat render bake readback: Battlecruiser_2(Clone) parts=40 maxLocalBoundsError=1.0748E-07
+[EconomyMod] Combat render bake readback: Battlecruiser_2(Clone) parts=40 maxLocalBoundsError=1.0748E-07
+<color=#72A0E5FF>The Resistance</color> Assign Formation: Tight Short Wall Archers Dispersed
+[EconomyMod] Combat geometry readback: model:Battleship(Clone) cinematic=False boxes=40 replaced=5 maxRelativeBoundsError=98.9995
+[EconomyMod] Combat render bake readback: Battleship(Clone) parts=57 maxLocalBoundsError=1.35038E-07
+[EconomyMod] Combat geometry readback: model:Cruiser(Clone) cinematic=False boxes=22 replaced=8 maxRelativeBoundsError=99.0001
+[EconomyMod] Combat render bake readback: Cruiser(Clone) parts=43 maxLocalBoundsError=2.02816E-07
+[EconomyMod] Combat render bake readback: Cruiser(Clone) parts=43 maxLocalBoundsError=2.02816E-07
+[EconomyMod] Combat geometry readback: model:Battlecruiser(Clone) cinematic=False boxes=24 replaced=10 maxRelativeBoundsError=98.9998
+[EconomyMod] Combat render bake readback: Battlecruiser(Clone) parts=44 maxLocalBoundsError=1.97102E-07
+[EconomyMod] Combat render bake readback: Battlecruiser(Clone) parts=44 maxLocalBoundsError=1.97102E-07
+[EconomyMod] Combat geometry readback: missile:AnacondaMissile(Clone) cinematic=False boxes=1 replaced=1 maxRelativeBoundsError=0.00117199
+[EconomyMod] Combat projectile readback: HeavyRailCannonMk3 cinematic=False bodyMetres=0.0840489x0.840489 unitsPerMetre=5E-05 collider=BoxCollider
+[EconomyMod] Combat projectile readback: RailgunBatteryMk3 cinematic=False bodyMetres=0.0582762x0.582762 unitsPerMetre=5E-05 collider=BoxCollider
+[EconomyMod] Combat projectile readback: RailCannonMk3 cinematic=False bodyMetres=0.0734234x0.734234 unitsPerMetre=5E-05 collider=BoxCollider
+removing ship from CombatManager ActiveShip(DestroyShip): 282, Lahar
+removing ship from CombatManager ActiveShip(DestroyShip): 283, Asteria
+removing ship from CombatManager ActiveShip(DestroyShip): 285, Thunderbolt
+removing ship from CombatManager ActiveShip(DestroyShip): 286, Tempest
+FLTS: Combat End Triggered at: 488.045
+Combat Will End at: 548.045
+removing ship from CombatManager ActiveShip(DestroyShip): 284, Yukigumo
+FLTS: Combat End Triggered at: 497.223
+Combat Will End at: 557.223
+PostCombat Container Destruction: ["277","278","279","280","281","WaypointPlacementVisual_HeightLine_147","283 Waypoint Container","283","WaypointPlacementVisual_HeightLine_154","282 Waypoint Container","282","WaypointPlacementVisual_HeightLine_161","286 Waypoint Container","286","WaypointPlacementVisual_HeightLine_168","284 Waypoint Container","284","WaypointPlacementVisual_HeightLine_175","285 Waypoint Container","285","CombatGrid(Clone)","EarthModel(Clone)","WaypointPlacementVisual_HeightLine_281","WaypointPlacementVisual_HeightLine_288","WaypointPlacementVisual_HeightLine_295","WaypointPlacementVisual_HeightLine_302","WaypointPlacementVisual_HeightLine_309","WaypointPlacementVisual_HeightLine_282","WaypointPlacementVisual_HeightLine_283","WaypointPlacementVisual_HeightLine_284","WaypointPlacementVisual_HeightLine_285","WaypointPlacementVisual_HeightLine_286","WaypointPlacementVisual_HeightLine_287","277 Waypoint Container","WaypointPlacementVisual_HeightLine_289","WaypointPlacementVisual_HeightLine_290","WaypointPlacementVisual_HeightLine_291","WaypointPlacementVisual_HeightLine_292","WaypointPlacementVisual_HeightLine_293","WaypointPlacementVisual_HeightLine_294","278 Waypoint Container","WaypointPlacementVisual_HeightLine_296","WaypointPlacementVisual_HeightLine_297","WaypointPlacementVisual_HeightLine_298","WaypointPlacementVisual_HeightLine_299","WaypointPlacementVisual_HeightLine_300","WaypointPlacementVisual_HeightLine_301","279 Waypoint Container","WaypointPlacementVisual_HeightLine_303","WaypointPlacementVisual_HeightLine_304","WaypointPlacementVisual_HeightLine_305","WaypointPlacementVisual_HeightLine_306","WaypointPlacementVisual_HeightLine_307","WaypointPlacementVisual_HeightLine_308","280 Waypoint Container","WaypointPlacementVisual_HeightLine_310","WaypointPlacementVisual_HeightLine_311","WaypointPlacementVisual_HeightLine_312","WaypointPlacementVisual_HeightLine_313","WaypointPlacementVisual_HeightLine_314","WaypointPlacementVisual_HeightLine_315","281 Waypoint Container"]
+Clearing GameData
+Unloading 3 Unused Serialized files (Serialized files now loaded: 55)
+Getting All DLC Content
+Adding DLC Directory: DLC_Content/DarkSkies
+Adding DLC Directory: DLC_Content/SupporterPack
+Found Profile Config File
+Use Mods:True
+Previous launch failed due to bad mod templates: False
+Setting Up Directories
+Getting All Mod Files
+Adding Enabled Mod Directory: Mods/Enabled/Economic Equalization Overhaul
+Adding Enabled Mod Directory: Mods/Enabled/Enable Achievements Fix
+Adding Disabled Mod Directory: Mods/Disabled/Color-Coded Traits
+Adding Disabled Mod Directory: Mods/Disabled/Normalize Ship Scaling
+Adding Disabled Mod Directory: Mods/Disabled/Normalize Ship Scaling and +2 Utility
+Adding Disabled Mod Directory: Mods/Disabled/Tweaked UI
+Mods/Enabled/Economic Equalization Overhaul/Economic Equalization Overhaul.png
+Mods/Enabled/Economic Equalization Overhaul/ModInfo.json
+Mods/Enabled/Economic Equalization Overhaul/Settings.xml
+Mods/Enabled/Economic Equalization Overhaul/TIArmyTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIDriveTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIEffectTemplate.en
+Mods/Enabled/Economic Equalization Overhaul/TIEffectTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIGlobalConfig.json
+Mods/Enabled/Economic Equalization Overhaul/TIGunTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIHabModuleTemplate.en
+Mods/Enabled/Economic Equalization Overhaul/TIHabModuleTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIHabSiteTemplate.en
+Mods/Enabled/Economic Equalization Overhaul/TIHabSiteTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIHabTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIHeatSinkTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TILaserWeaponTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIMagneticGunTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIMetaTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIMiningProfileTemplate.en
+Mods/Enabled/Economic Equalization Overhaul/TIMiningProfileTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIMissileTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIMissionTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TINationTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIOperationTemplate.en
+Mods/Enabled/Economic Equalization Overhaul/TIOrbitTemplate.en
+Mods/Enabled/Economic Equalization Overhaul/TIOrbitTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIPowerPlantTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIProjectTemplate.en
+Mods/Enabled/Economic Equalization Overhaul/TIProjectTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIRegionTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIShipHullTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TISpaceBodyTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIStartTimeTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TITechTemplate.en
+Mods/Enabled/Economic Equalization Overhaul/TITechTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIUtilityModuleTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/UICodex.en
+Mods/Enabled/Economic Equalization Overhaul/UIGeneralControls.en
+Mods/Enabled/Economic Equalization Overhaul/UIHabs.en
+Mods/Enabled/Economic Equalization Overhaul/UIIntel.en
+Mods/Enabled/Economic Equalization Overhaul/UINation.en
+Mods/Enabled/Economic Equalization Overhaul/UIScience.en
+Mods/Enabled/Economic Equalization Overhaul/Assembly/TIEconomyMod.dll
+Mods/Enabled/Economic Equalization Overhaul/Assembly/TIEconomyMod.dll.37016.cache
+Mods/Enabled/Economic Equalization Overhaul/Assembly/TIEconomyMod.dll.37016.cache.pdb
+Mods/Enabled/Economic Equalization Overhaul/Assembly/TIEconomyMod.pdb
+Mods/Enabled/Economic Equalization Overhaul/Config/combat-mesh-data-base.eeo
+Mods/Enabled/Economic Equalization Overhaul/Config/combat-mesh-data-dlc.eeo
+Mods/Enabled/Economic Equalization Overhaul/Config/combat-unreadable-meshes.eeo
+Mods/Enabled/Economic Equalization Overhaul/Config/economy-tech-weights.csv
+Mods/Enabled/Economic Equalization Overhaul/Config/gunpowder-art-profiles.eeo
+Mods/Enabled/Economic Equalization Overhaul/Config/hull-variant-drive-scales.csv
+Mods/Enabled/Economic Equalization Overhaul/Config/hull-variant-main-volumes.csv
+Mods/Enabled/Enable Achievements Fix/Enable Achievements Fix.png
+Mods/Enabled/Enable Achievements Fix/EnableAchievements.dll
+Mods/Enabled/Enable Achievements Fix/EnableAchievements.dll.17477.cache
+Mods/Enabled/Enable Achievements Fix/ModInfo.json
+Mods/Enabled/Enable Achievements Fix/WorkshopItemInfo.xml
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIArmyTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIDriveTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIEffectTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIGlobalConfig.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIGunTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIHabModuleTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIHabSiteTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIHabTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIHeatSinkTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TILaserWeaponTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIMagneticGunTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIMetaTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIMiningProfileTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIMissileTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIMissionTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TINationTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIOrbitTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIPowerPlantTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIProjectTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIRegionTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIShipHullTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TISpaceBodyTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIStartTimeTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TITechTemplate.json
+Mod Template Found: Mods/Enabled/Economic Equalization Overhaul/TIUtilityModuleTemplate.json
+Done Staging Mod Templates
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIMetaTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIMetaTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIMetaTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIArmyTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIDriveTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIEffectTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIGlobalConfig.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIGunTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIHabModuleTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIHabSiteTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIHabTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIHeatSinkTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TILaserWeaponTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIMagneticGunTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIMiningProfileTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIMissileTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIMissionTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TINationTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIOrbitTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIPowerPlantTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIProjectTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIRegionTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIShipHullTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TISpaceBodyTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIStartTimeTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TITechTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIUtilityModuleTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIArmyTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIEffectTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIHabModuleTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIHabTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIMissionTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TINationTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIProjectTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIRegionTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TISpaceBodyTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIStartTimeTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TITechTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIArmyTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIEffectTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIGlobalConfig.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TINationTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIProjectTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIRegionTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TISpaceBodyTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TIStartTimeTemplate.json
+Successfully Merged Mod Template: Mods/Enabled/Economic Equalization Overhaul/TITechTemplate.json
+<color=#00cc00>LoadTime:</color> Load All Templates: 2.124s
+[EconomyMod] Bound 0 drive-specific propellant-density override(s).
+[EconomyMod] Bound generic power data for 5 gun template instance(s) from 5 record(s).
+[EconomyMod] Bound generic projectile diameter data for 8 explicit weapon template record(s); magnetic templates without an explicit diameter use mass-derived geometry.
+[EconomyMod] Bound 27 explicit open-cycle thermal mass multiplier(s). Other plants use technology-class defaults.
+Bad hull weapon placement for Alien128cmVioletLaserBattery in Ship21
+Bad hull weapon placement for Alien128cmVioletLaserBattery in Ship21
+Bad hull weapon placement for CoilgunBatteryMk2 in Ship12
+Bad hull weapon placement for CoilgunBatteryMk2 in Ship12
+Bad hull weapon placement for PlasmaBatteryMk3 in Ship33
+Bad hull weapon placement for PlasmaBatteryMk3 in Ship33
+
+Unloading 24255 unused Assets to reduce memory usage. Loaded Objects now: 115985.
+Total: 669.969300 ms (FindLiveObjects: 5.999800 ms CreateObjectMapping: 2.290600 ms MarkObjects: 655.251600 ms  DeleteObjects: 6.427100 ms)
+
+The referenced script on this Behaviour (Game Object 'Game Controller') is missing!
+The referenced script on this Behaviour (Game Object 'Game Controller') is missing!
+The referenced script on this Behaviour (Game Object 'Game Controller') is missing!
+Unloading 3 Unused Serialized files (Serialized files now loaded: 55)
+UnloadTime: 29.250800 ms
+StartScreen Install Bindings
+Error initializing animator: null _animator
+Getting All Mod Files
+Loading FMOD bank D:/Games/SteamLibrary/steamapps/common/Terra Invicta/TerraInvicta_Data/StreamingAssets/Audio/Desktop/Game_SFX.assets.bank
+Loading FMOD bank D:/Games/SteamLibrary/steamapps/common/Terra Invicta/TerraInvicta_Data/StreamingAssets/Audio/Desktop/Game_SFX.bank
+Loading FMOD bank D:/Games/SteamLibrary/steamapps/common/Terra Invicta/TerraInvicta_Data/StreamingAssets/Audio/Desktop/Master.assets.bank
+Loading FMOD bank D:/Games/SteamLibrary/steamapps/common/Terra Invicta/TerraInvicta_Data/StreamingAssets/Audio/Desktop/Master.bank
+Loading FMOD bank D:/Games/SteamLibrary/steamapps/common/Terra Invicta/TerraInvicta_Data/StreamingAssets/Audio/Desktop/Master.strings.bank
+Loading FMOD bank D:/Games/SteamLibrary/steamapps/common/Terra Invicta/TerraInvicta_Data/StreamingAssets/Audio/Desktop/Music.assets.bank
+Loading FMOD bank D:/Games/SteamLibrary/steamapps/common/Terra Invicta/TerraInvicta_Data/StreamingAssets/Audio/Desktop/Music.bank
+Loading FMOD bank D:/Games/SteamLibrary/steamapps/common/Terra Invicta/TerraInvicta_Data/StreamingAssets/Audio/Desktop/UI_SFX.assets.bank
+Loading FMOD bank D:/Games/SteamLibrary/steamapps/common/Terra Invicta/TerraInvicta_Data/StreamingAssets/Audio/Desktop/UI_SFX.bank
+Loading FMOD bank D:/Games/SteamLibrary/steamapps/common/Terra Invicta/TerraInvicta_Data/StreamingAssets/Audio/Desktop/Voice.assets.bank
+Loading FMOD bank D:/Games/SteamLibrary/steamapps/common/Terra Invicta/TerraInvicta_Data/StreamingAssets/Audio/Desktop/Voice.bank
+[EconomyMod] [Warning] Capital migration Ship20a: reactor/drive capacity exceeded
+Bad hull weapon placement for Alien128cmVioletLaserBattery in Ship21
+Bad hull weapon placement for Alien128cmVioletLaserBattery in Ship21
+Bad hull weapon placement for Alien128cmVioletLaserBattery in Ship21
+Bad hull weapon placement for Alien128cmVioletLaserBattery in Ship21
+[EconomyMod] [Warning] Capital migration Ship21: reactor/drive capacity exceeded
+[EconomyMod] [Warning] Capital migration Ship12: reactor/drive capacity exceeded
+<color=#00cc00>LoadTime:</color> PopulateSkirmishDropdowns: 622.620ms
+Starting Mod Manager
+Setting Up Directories
+Setting Up Files
+Getting Mod Map
+Loading mod map.
+QualityLevel0
+Master Texture Limit0
+AA Mode: 0
+AntiAliasing:8
+VSYNC: 1
+TextureStreaming: False
+Getting All Mod Files
+Adding Enabled Mod Directory: Mods/Enabled/Economic Equalization Overhaul
+Adding Enabled Mod Directory: Mods/Enabled/Enable Achievements Fix
+Adding Disabled Mod Directory: Mods/Disabled/Color-Coded Traits
+Adding Disabled Mod Directory: Mods/Disabled/Normalize Ship Scaling
+Adding Disabled Mod Directory: Mods/Disabled/Normalize Ship Scaling and +2 Utility
+Adding Disabled Mod Directory: Mods/Disabled/Tweaked UI
+Mods/Enabled/Economic Equalization Overhaul/Economic Equalization Overhaul.png
+Mods/Enabled/Economic Equalization Overhaul/ModInfo.json
+Mods/Enabled/Economic Equalization Overhaul/Settings.xml
+Mods/Enabled/Economic Equalization Overhaul/TIArmyTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIDriveTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIEffectTemplate.en
+Mods/Enabled/Economic Equalization Overhaul/TIEffectTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIGlobalConfig.json
+Mods/Enabled/Economic Equalization Overhaul/TIGunTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIHabModuleTemplate.en
+Mods/Enabled/Economic Equalization Overhaul/TIHabModuleTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIHabSiteTemplate.en
+Mods/Enabled/Economic Equalization Overhaul/TIHabSiteTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIHabTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIHeatSinkTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TILaserWeaponTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIMagneticGunTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIMetaTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIMiningProfileTemplate.en
+Mods/Enabled/Economic Equalization Overhaul/TIMiningProfileTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIMissileTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIMissionTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TINationTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIOperationTemplate.en
+Mods/Enabled/Economic Equalization Overhaul/TIOrbitTemplate.en
+Mods/Enabled/Economic Equalization Overhaul/TIOrbitTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIPowerPlantTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIProjectTemplate.en
+Mods/Enabled/Economic Equalization Overhaul/TIProjectTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIRegionTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIShipHullTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TISpaceBodyTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIStartTimeTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TITechTemplate.en
+Mods/Enabled/Economic Equalization Overhaul/TITechTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/TIUtilityModuleTemplate.json
+Mods/Enabled/Economic Equalization Overhaul/UICodex.en
+Mods/Enabled/Economic Equalization Overhaul/UIGeneralControls.en
+Mods/Enabled/Economic Equalization Overhaul/UIHabs.en
+Mods/Enabled/Economic Equalization Overhaul/UIIntel.en
+Mods/Enabled/Economic Equalization Overhaul/UINation.en
+Mods/Enabled/Economic Equalization Overhaul/UIScience.en
+Mods/Enabled/Economic Equalization Overhaul/Assembly/TIEconomyMod.dll
+Mods/Enabled/Economic Equalization Overhaul/Assembly/TIEconomyMod.dll.37016.cache
+Mods/Enabled/Economic Equalization Overhaul/Assembly/TIEconomyMod.dll.37016.cache.pdb
+Mods/Enabled/Economic Equalization Overhaul/Assembly/TIEconomyMod.pdb
+Mods/Enabled/Economic Equalization Overhaul/Config/combat-mesh-data-base.eeo
+Mods/Enabled/Economic Equalization Overhaul/Config/combat-mesh-data-dlc.eeo
+Mods/Enabled/Economic Equalization Overhaul/Config/combat-unreadable-meshes.eeo
+Mods/Enabled/Economic Equalization Overhaul/Config/economy-tech-weights.csv
+Mods/Enabled/Economic Equalization Overhaul/Config/gunpowder-art-profiles.eeo
+Mods/Enabled/Economic Equalization Overhaul/Config/hull-variant-drive-scales.csv
+Mods/Enabled/Economic Equalization Overhaul/Config/hull-variant-main-volumes.csv
+Mods/Enabled/Enable Achievements Fix/Enable Achievements Fix.png
+Mods/Enabled/Enable Achievements Fix/EnableAchievements.dll
+Mods/Enabled/Enable Achievements Fix/EnableAchievements.dll.17477.cache
+Mods/Enabled/Enable Achievements Fix/ModInfo.json
+Mods/Enabled/Enable Achievements Fix/WorkshopItemInfo.xml
+QuerySubscribedItems page 1
+
+Unloading 927 unused Assets to reduce memory usage. Loaded Objects now: 46016.
+Total: 749.178500 ms (FindLiveObjects: 1.320800 ms CreateObjectMapping: 0.480900 ms MarkObjects: 746.307500 ms  DeleteObjects: 1.069100 ms)
+
+OnSubscribedItemsCallCompleted: (fail:False) k_EResultOK requests left: 1
+QueryVotedItems page 1
+OnVotedItemsCallCompleted: (fail:False) k_EResultOK requests left: 1
+OnVotedItemsCallCompleted - started vote requests: 6
+OnUserVoteCallCompleted: (fail:False) k_EResultOK requests left: 6
+OnUserVoteCallCompleted: (fail:False) k_EResultOK requests left: 5
+OnUserVoteCallCompleted: (fail:False) k_EResultOK requests left: 4
+OnUserVoteCallCompleted: (fail:False) k_EResultOK requests left: 3
+OnUserVoteCallCompleted: (fail:False) k_EResultOK requests left: 2
+OnUserVoteCallCompleted: (fail:False) k_EResultOK requests left: 1
+QueryAllItems from SUBSCRIBED page 1
+OnAvailableItemsCallCompleted: (fail:False) k_EResultOK requests left: 1
+Retrieved Tweaked UI from Steam Workshop_OnAvailableItemsCallCompleted
+Retrieved Enable Achievements Fix from Steam Workshop_OnAvailableItemsCallCompleted
+Retrieved Normalize Ship Scaling and +2 Utility from Steam Workshop_OnAvailableItemsCallCompleted
+Retrieved Color-Coded Traits from Steam Workshop_OnAvailableItemsCallCompleted
+SteamWorkshopMain: ClearSingleShotEventHandler 'OnItemListLoaded' left handlers: 1/2 left single shots: 0/1
+OnAvailableItemsCallCompleted: loaded 4 items from page 1, 0 favorited by user, 6 voted by user
+Closing Terra Invicta
+OnApplicationQuit
+OnApplicationQuit
+[Manager] Destroying when exit.

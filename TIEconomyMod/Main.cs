@@ -17,6 +17,7 @@ namespace TIEconomyMod
         public static HullVolumeCatalog hullVolumes;
         public static HullDriveScaleCatalog hullDriveScales;
         public static TIEconomyMod.Core.GunpowderArtCatalog gunpowderArt;
+        public static TIEconomyMod.Core.LaserOpticsCatalog laserBeamOptics;
 
         public static bool Load(UnityModManager.ModEntry modEntry)
         {
@@ -57,6 +58,19 @@ namespace TIEconomyMod
                 Harmony harmony = new Harmony(modEntry.Info.Id);
                 try
                 {
+                    string assembly = typeof(ShipModelController).Assembly.Location;
+                    string bundle = Path.GetFullPath(Path.Combine(Path.GetDirectoryName(assembly), "..", "StreamingAssets", "AssetBundles", "shipweapons"));
+                    laserBeamOptics = TIEconomyMod.Core.LaserOpticsCatalog.Load(
+                        Path.Combine(modEntry.Path, "Config", "laser-beam-optics.eeo"), assembly, bundle);
+                    Log("Loaded sixteen measured laser beam optics profiles.");
+                }
+                catch (Exception opticsException)
+                {
+                    laserBeamOptics = null;
+                    Warn("Measured beam optics unavailable; template aperture fallback: " + opticsException.Message);
+                }
+                try
+                {
                     harmony.PatchAll();
                 }
                 catch (Exception patchException)
@@ -90,7 +104,7 @@ namespace TIEconomyMod
                     ShipPowerRuntime.RefreshTemplatePerformanceCaches();
                 }
                 CouncilorRuntimeCaps.InitializeOrganizationCap();
-                Log("Loaded TI Economic Equalization Overhaul 0.10.8, validated against TI 1.0.53b.");
+                Log("Loaded TI Economic Equalization Overhaul 0.10.14, validated against TI 1.0.53b.");
                 return true;
             }
             catch (Exception exception)
@@ -145,7 +159,7 @@ namespace TIEconomyMod
             settings.ValidateAndRepair(Log);
             CouncilorRuntimeCaps.ApplyOrganizationCap();
             ShipPowerRuntime.RefreshTemplatePerformanceCaches();
-            GunpowderArtRuntime.RefreshVisible();
+            if (!TIGlobalValuesState.isSpaceCombatEnabled) GunpowderArtRuntime.RefreshVisible();
             settings.Save(modEntry);
         }
 
@@ -435,6 +449,10 @@ namespace TIEconomyMod
     public sealed class ShipBalanceSettings
     {
         public bool enabled = true;
+        [Draw("Ship/station combat scale (x; next battle)")]
+        public float shipScaleMultiplier = 10f;
+        [Draw("Projectile combat scale (x; next battle)")]
+        public float projectileScaleMultiplier = 10f;
         public bool multiSlotUtilitiesEnabled = true;
         public bool correctPowerPlantWasteHeat = true;
         public bool openCycleResidualHeatEnabled = true;
@@ -756,6 +774,10 @@ namespace TIEconomyMod
             RepairPositive(ref value.army.alienFloraFullDamageLevel, defaults.army.alienFloraFullDamageLevel, "army.alienFloraFullDamageLevel", log);
             RepairPositive(ref value.army.megafaunaMaximumTechLevel, defaults.army.megafaunaMaximumTechLevel, "army.megafaunaMaximumTechLevel", log);
             RepairRange(ref value.shipBalance.openCycleDriveHeatFraction, defaults.shipBalance.openCycleDriveHeatFraction, 0f, 1f, "shipBalance.openCycleDriveHeatFraction", log);
+            RepairRange(ref value.shipBalance.shipScaleMultiplier, defaults.shipBalance.shipScaleMultiplier,
+                TIEconomyMod.Core.BattleScaleMath.MinimumMultiplier, TIEconomyMod.Core.BattleScaleMath.MaximumMultiplier, "shipBalance.shipScaleMultiplier", log);
+            RepairRange(ref value.shipBalance.projectileScaleMultiplier, defaults.shipBalance.projectileScaleMultiplier,
+                TIEconomyMod.Core.BattleScaleMath.MinimumMultiplier, TIEconomyMod.Core.BattleScaleMath.MaximumMultiplier, "shipBalance.projectileScaleMultiplier", log);
             RepairPositive(ref value.shipBalance.crewSupportMass_tons, defaults.shipBalance.crewSupportMass_tons, "shipBalance.crewSupportMass_tons", log);
             RepairPositive(ref value.shipBalance.utilitySlotVolume_m3, defaults.shipBalance.utilitySlotVolume_m3, "shipBalance.utilitySlotVolume_m3", log);
             RepairPositive(ref value.shipBalance.hullWeaponSlotVolume_m3, defaults.shipBalance.hullWeaponSlotVolume_m3, "shipBalance.hullWeaponSlotVolume_m3", log);

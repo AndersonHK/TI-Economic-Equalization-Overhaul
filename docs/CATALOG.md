@@ -1,8 +1,8 @@
 # Complete documentation and artifact catalog
 
-Generated 2026-10-21; updated 2026-10-23 for the battle-scale and camera research. This catalog indexes every other file under `docs/`, including machine-readable evidence and images. For interpretation, start with the [documentation map](README.md), [ship-balance hub](ship-balance-research/README.md), or [archive index](archive/README.md). Location/type labels are navigation aids, not assertions that all research is implemented.
+Generated 2026-10-21; updated 2026-10-30 for settings-backed combat scale and the 10x trial. This catalog indexes every other file under `docs/`, including machine-readable evidence and images. For interpretation, start with the [documentation map](README.md), [ship-balance hub](ship-balance-research/README.md), or [archive index](archive/README.md). Location/type labels are navigation aids, not assertions that all research is implemented.
 
-Indexed files: **414**. No archived evidence was deleted during the organization pass.
+Indexed files: **467**. No archived evidence was deleted during the organization pass.
 
 
 ## Top-level guides and authorities
@@ -162,6 +162,59 @@ Indexed files: **414**. No archived evidence was deleted during the organization
 
 | File | Type |
 |---|---|
+| [ship-balance-research/battle-scale/acceptance-0.10.19-2026-10-30.md](ship-balance-research/battle-scale/acceptance-0.10.19-2026-10-30.md) | MD |
+| [ship-balance-research/battle-scale/deployment-0.10.19.txt](ship-balance-research/battle-scale/deployment-0.10.19.txt) | TXT |
+| [ship-balance-research/battle-scale/deployment-manifest-0.10.19.json](ship-balance-research/battle-scale/deployment-manifest-0.10.19.json) | JSON |
+| [ship-balance-research/laser-width-only-2026-10-30.md](ship-balance-research/laser-width-only-2026-10-30.md) | MD |
+| [ship-balance-research/battle-scale/beam-continuity-assets-2026-10-30.json](ship-balance-research/battle-scale/beam-continuity-assets-2026-10-30.json) | JSON |
+| [ship-balance-research/battle-scale/contact-performance-0.10.17-limited.txt](ship-balance-research/battle-scale/contact-performance-0.10.17-limited.txt) | TXT |
+| [ship-balance-research/battle-scale/deployment-0.10.18.txt](ship-balance-research/battle-scale/deployment-0.10.18.txt) | TXT |
+| [ship-balance-research/battle-scale/deployment-manifest-0.10.18.json](ship-balance-research/battle-scale/deployment-manifest-0.10.18.json) | JSON |
+| [ship-balance-research/battle-scale/manual-laser-discontinuity-2026-10-30.png](ship-balance-research/battle-scale/manual-laser-discontinuity-2026-10-30.png) | PNG |
+| [ship-balance-research/laser-beam-continuity-2026-10-30.md](ship-balance-research/laser-beam-continuity-2026-10-30.md) | MD |
+| [ship-balance-research/battle-scale/contact-performance-0.10.16.txt](ship-balance-research/battle-scale/contact-performance-0.10.16.txt) | TXT |
+| [ship-balance-research/battle-scale/deployment-0.10.17.txt](ship-balance-research/battle-scale/deployment-0.10.17.txt) | TXT |
+| [ship-balance-research/battle-scale/deployment-manifest-0.10.17.json](ship-balance-research/battle-scale/deployment-manifest-0.10.17.json) | JSON |
+| [ship-balance-research/battle-scale/skin-bind-audit-2026-10-30.json](ship-balance-research/battle-scale/skin-bind-audit-2026-10-30.json) | JSON |
+| [ship-balance-research/immutable-combat-contact-2026-10-30.md](ship-balance-research/immutable-combat-contact-2026-10-30.md) | MD |
+| [ship-balance-research/battle-scale/contact-performance-0.10.15.txt](ship-balance-research/battle-scale/contact-performance-0.10.15.txt) | TXT |
+| [ship-balance-research/battle-scale/deployment-0.10.16.txt](ship-balance-research/battle-scale/deployment-0.10.16.txt) | TXT |
+| [ship-balance-research/battle-scale/deployment-manifest-0.10.16.json](ship-balance-research/battle-scale/deployment-manifest-0.10.16.json) | JSON |
+| [ship-balance-research/projectile-contact-stall-2026-10-30.md](ship-balance-research/projectile-contact-stall-2026-10-30.md) | MD |
+| [ship-balance-research/battle-scale/deployment-0.10.15.txt](ship-balance-research/battle-scale/deployment-0.10.15.txt) | TXT |
+| [ship-balance-research/battle-scale/deployment-manifest-0.10.15.json](ship-balance-research/battle-scale/deployment-manifest-0.10.15.json) | JSON |
+| [ship-balance-research/battle-scale/manual-projectile-early-contact-2026-10-30.png](ship-balance-research/battle-scale/manual-projectile-early-contact-2026-10-30.png) | PNG |
+| [ship-balance-research/physical-projectile-contact-and-performance-2026-10-30.md](ship-balance-research/physical-projectile-contact-and-performance-2026-10-30.md) | MD |
+| [ship-balance-research/battle-scale/deployment-0.10.14.txt](ship-balance-research/battle-scale/deployment-0.10.14.txt) | TXT |
+| [ship-balance-research/battle-scale/deployment-manifest-0.10.14.json](ship-balance-research/battle-scale/deployment-manifest-0.10.14.json) | JSON |
+| [ship-balance-research/battle-scale/settings-pre-configurable-scale-2026-10-30.xml](ship-balance-research/battle-scale/settings-pre-configurable-scale-2026-10-30.xml) | XML |
+| [ship-balance-research/configurable-combat-scale-2026-10-30.md](ship-balance-research/configurable-combat-scale-2026-10-30.md) | MD |
+| [ship-balance-research/battle-scale/deployment-0.10.12.txt](ship-balance-research/battle-scale/deployment-0.10.12.txt) | TXT |
+| [ship-balance-research/battle-scale/deployment-0.10.13.txt](ship-balance-research/battle-scale/deployment-0.10.13.txt) | TXT |
+| [ship-balance-research/battle-scale/deployment-manifest-0.10.12.json](ship-balance-research/battle-scale/deployment-manifest-0.10.12.json) | JSON |
+| [ship-balance-research/battle-scale/deployment-manifest-0.10.13.json](ship-balance-research/battle-scale/deployment-manifest-0.10.13.json) | JSON |
+| [ship-balance-research/battle-scale/skirmish-startup-crash-0.10.11.txt](ship-balance-research/battle-scale/skirmish-startup-crash-0.10.11.txt) | TXT |
+| [ship-balance-research/battle-scale/skirmish-startup-success-0.10.12.txt](ship-balance-research/battle-scale/skirmish-startup-success-0.10.12.txt) | TXT |
+| [ship-balance-research/laser-beam-and-starting-camera-2026-10-29.md](ship-balance-research/laser-beam-and-starting-camera-2026-10-29.md) | MD |
+| [ship-balance-research/skirmish-asset-cache-startup-crash-2026-10-29.md](ship-balance-research/skirmish-asset-cache-startup-crash-2026-10-29.md) | MD |
+| [ship-balance-research/battle-grid-formation-effects-2026-10-29.md](ship-balance-research/battle-grid-formation-effects-2026-10-29.md) | MD |
+| [ship-balance-research/battle-scale/deployment-0.10.11.txt](ship-balance-research/battle-scale/deployment-0.10.11.txt) | TXT |
+| [ship-balance-research/battle-scale/deployment-manifest-0.10.11.json](ship-balance-research/battle-scale/deployment-manifest-0.10.11.json) | JSON |
+| [ship-balance-research/battle-scale/explosion-prefab-baseline-2026-10-29.json](ship-balance-research/battle-scale/explosion-prefab-baseline-2026-10-29.json) | JSON |
+| [ship-balance-research/battle-scale/manual-grid-spacing-2026-10-29.png](ship-balance-research/battle-scale/manual-grid-spacing-2026-10-29.png) | PNG |
+| [ship-balance-research/battle-scale/manual-grid-spacing-player-2026-10-29.txt](ship-balance-research/battle-scale/manual-grid-spacing-player-2026-10-29.txt) | TXT |
+| [ship-balance-research/battle-scale-rendering-camera-followup-2026-10-29.md](ship-balance-research/battle-scale-rendering-camera-followup-2026-10-29.md) | MD |
+| [ship-balance-research/battle-scale/deployment-0.10.10.txt](ship-balance-research/battle-scale/deployment-0.10.10.txt) | TXT |
+| [ship-balance-research/battle-scale/deployment-manifest-0.10.10.json](ship-balance-research/battle-scale/deployment-manifest-0.10.10.json) | JSON |
+| [ship-balance-research/battle-scale/manual-failure-player-2026-10-29.txt](ship-balance-research/battle-scale/manual-failure-player-2026-10-29.txt) | TXT |
+| [ship-balance-research/battle-scale/manual-invisible-ship-2026-10-29.png](ship-balance-research/battle-scale/manual-invisible-ship-2026-10-29.png) | PNG |
+| [ship-balance-research/battle-scale/manual-invisible-station-2026-10-29.png](ship-balance-research/battle-scale/manual-invisible-station-2026-10-29.png) | PNG |
+| [ship-balance-research/battle-scale/mesh-fallback-sources-2026-10-29.json](ship-balance-research/battle-scale/mesh-fallback-sources-2026-10-29.json) | JSON |
+| [ship-balance-research/battle-scale/tracking-particle-baseline-2026-10-29.json](ship-balance-research/battle-scale/tracking-particle-baseline-2026-10-29.json) | JSON |
+| [ship-balance-research/battle-scale-implementation-2026-10-23.md](ship-balance-research/battle-scale-implementation-2026-10-23.md) | MD |
+| [ship-balance-research/battle-scale/deployment-0.10.9.txt](ship-balance-research/battle-scale/deployment-0.10.9.txt) | TXT |
+| [ship-balance-research/battle-scale/deployment-manifest-0.10.9.json](ship-balance-research/battle-scale/deployment-manifest-0.10.9.json) | JSON |
+| [ship-balance-research/battle-scale/projectile-asset-baseline.json](ship-balance-research/battle-scale/projectile-asset-baseline.json) | JSON |
 | [ship-balance-research/battle-scale-camera-code-evidence-2026-10-23.md](ship-balance-research/battle-scale-camera-code-evidence-2026-10-23.md) | MD |
 | [ship-balance-research/combat-camera-fine-control-report-2026-10-23.md](ship-balance-research/combat-camera-fine-control-report-2026-10-23.md) | MD |
 | [ship-balance-research/rendered-battle-scale-and-collision-report-2026-10-23.md](ship-balance-research/rendered-battle-scale-and-collision-report-2026-10-23.md) | MD |

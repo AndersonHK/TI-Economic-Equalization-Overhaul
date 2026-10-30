@@ -1,0 +1,2549 @@
+{
+  "schema": 3,
+  "sources": {
+    "TerraInvicta_Data\\StreamingAssets\\AssetBundles\\ships": "F1804254B5C6F2C2FFBF78C333738F462BAA18023AC5AACF9A8EACAA4D9F09A4",
+    "TerraInvicta_Data\\StreamingAssets\\AssetBundles\\habmodules": "07CB503D152DE224526468BA04E6A9A090F0E627EBA0BA5B0391B6F04B12BA29",
+    "TerraInvicta_Data\\StreamingAssets\\AssetBundles\\shipweapons": "9DFCF8E93536DC400A00428AF2D6C32226BAC44F1ECD88B874D8F946E9EA912E",
+    "DLC_Content\\DarkSkies\\AssetBundles\\ships_prm": "58F8B233CD7814F3CD536B46725369F69D6EC58AA260E580DE9D1E1268CF5D63",
+    "TerraInvicta_Data/Managed/Assembly-CSharp.dll": "4A4B9AAE4154E444E9727204205D2D42AE8ED9E1C5F92CDC1280074A259D8350"
+  },
+  "file": "TIEconomyMod\\ModFiles\\Config\\combat-unreadable-meshes.eeo",
+  "unique_payloads": 438,
+  "payload_files": {
+    "TIEconomyMod\\ModFiles\\Config\\combat-mesh-data-base.eeo": "95655ACB6290987E2BCCC0C926E55F01131A871D0F25977EA2FCC687AFFCFBED",
+    "TIEconomyMod\\ModFiles\\Config\\combat-mesh-data-dlc.eeo": "89D4FC125C6AB6258A1C73A08677F31CE40B7CBEAD718A41205D6A83A450433C"
+  },
+  "sha256": "7FC35AAF7642377E918A069A29B19CAD8061902D6DE6396E23961C8FA1675B22",
+  "meshes": [
+    {
+      "name": "Earth_Fin_Radiator_destroyed",
+      "vertices": 810,
+      "submeshes": 1
+    },
+    {
+      "name": "Hydra_Spikes_Radiator_destroyed",
+      "vertices": 560,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_Jet",
+      "vertices": 25524,
+      "submeshes": 2
+    },
+    {
+      "name": "Shuttle_B",
+      "vertices": 8373,
+      "submeshes": 1
+    },
+    {
+      "name": "Soyouz",
+      "vertices": 6353,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_Jet_COLL",
+      "vertices": 247,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_Droplet_Radiator_destroyed",
+      "vertices": 1629,
+      "submeshes": 1
+    },
+    {
+      "name": "Shuttle_A",
+      "vertices": 5454,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_Spikes_Radiator_destroyed",
+      "vertices": 6050,
+      "submeshes": 1
+    },
+    {
+      "name": "station_T2_HeavyFissionReactorArray",
+      "vertices": 72649,
+      "submeshes": 1
+    },
+    {
+      "name": "station_T3_Helium3_Mine",
+      "vertices": 13052,
+      "submeshes": 1
+    },
+    {
+      "name": "station_T1_Quarters",
+      "vertices": 41789,
+      "submeshes": 1
+    },
+    {
+      "name": "station_T3_Civilian_Complex",
+      "vertices": 237296,
+      "submeshes": 1
+    },
+    {
+      "name": "station_T1_ListeningPost",
+      "vertices": 8180,
+      "submeshes": 1
+    },
+    {
+      "name": "station_T1_ParticleCollider",
+      "vertices": 3506,
+      "submeshes": 1
+    },
+    {
+      "name": "station_T1_HeavyFusionReactor",
+      "vertices": 26938,
+      "submeshes": 1
+    },
+    {
+      "name": "station_T3_SpaceMirror",
+      "vertices": 23068,
+      "submeshes": 1
+    },
+    {
+      "name": "station_T3_ArgusComplex",
+      "vertices": 76514,
+      "submeshes": 1
+    },
+    {
+      "name": "station_T2_Alien_Surveillance_Array_COLL",
+      "vertices": 1737,
+      "submeshes": 1
+    },
+    {
+      "name": "station_T1_ClimateModule",
+      "vertices": 15664,
+      "submeshes": 1
+    },
+    {
+      "name": "station_T2_Alien_Barracks",
+      "vertices": 16946,
+      "submeshes": 1
+    },
+    {
+      "name": "station_T3_Alien_Observation_Post",
+      "vertices": 114617,
+      "submeshes": 1
+    },
+    {
+      "name": "station_T2_HeavyFusionReactor",
+      "vertices": 51102,
+      "submeshes": 1
+    },
+    {
+      "name": "station_T1_Alien_Observation_Post",
+      "vertices": 33780,
+      "submeshes": 1
+    },
+    {
+      "name": "station_T1_Alien_Barracks",
+      "vertices": 5571,
+      "submeshes": 1
+    },
+    {
+      "name": "station_T1_SpaceMirror",
+      "vertices": 7319,
+      "submeshes": 1
+    },
+    {
+      "name": "station_T3_TerawattFusionReactor",
+      "vertices": 128563,
+      "submeshes": 1
+    },
+    {
+      "name": "station_T1_HeavyFissionPile",
+      "vertices": 20159,
+      "submeshes": 1
+    },
+    {
+      "name": "station_T1_Alien_Barracks_COLL",
+      "vertices": 315,
+      "submeshes": 1
+    },
+    {
+      "name": "station_T2_SpaceMirror",
+      "vertices": 9592,
+      "submeshes": 1
+    },
+    {
+      "name": "station_T2_ClimateModule",
+      "vertices": 77613,
+      "submeshes": 1
+    },
+    {
+      "name": "station_T3_ClimateModule",
+      "vertices": 54300,
+      "submeshes": 1
+    },
+    {
+      "name": "station_T2_Alien_Surveillance_Array",
+      "vertices": 69977,
+      "submeshes": 1
+    },
+    {
+      "name": "station_T3_HeavyFissionReactorFarm",
+      "vertices": 147335,
+      "submeshes": 1
+    },
+    {
+      "name": "station_T2_ReconnaissanceArray",
+      "vertices": 10820,
+      "submeshes": 1
+    },
+    {
+      "name": "station_T3_Administration_Complex",
+      "vertices": 96205,
+      "submeshes": 1
+    },
+    {
+      "name": "station_T1_Administration_Node",
+      "vertices": 2781,
+      "submeshes": 1
+    },
+    {
+      "name": "station_T1_Alien_Observation_Post_COLL",
+      "vertices": 561,
+      "submeshes": 1
+    },
+    {
+      "name": "station_T3_Alien_Barracks",
+      "vertices": 100218,
+      "submeshes": 1
+    },
+    {
+      "name": "station_T2_Residential_Module",
+      "vertices": 139566,
+      "submeshes": 1
+    },
+    {
+      "name": "Station_T2_Administration_Tower",
+      "vertices": 29395,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_LAN_PRM_DeLavalx1",
+      "vertices": 7609,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Escort_DeLavalx1",
+      "vertices": 3690,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Monitor_Pulsex1",
+      "vertices": 3069,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_CO_PRM_Rads",
+      "vertices": 3459,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_LC_Common_Mid",
+      "vertices": 11816,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Destroyer_Magneticx6",
+      "vertices": 16353,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_DR_DeLavalx3",
+      "vertices": 6094,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_MO_PRM_Back",
+      "vertices": 39045,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_BC_PRM_Back",
+      "vertices": 17041,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_BS_Common_Details_B",
+      "vertices": 5652,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Escort_Details",
+      "vertices": 7262,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_LAN_PRM_Head",
+      "vertices": 65961,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Gunship_Front",
+      "vertices": 3765,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Gunship_Magneticx1",
+      "vertices": 2751,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Corvette_Magneticx6",
+      "vertices": 16353,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Monitor_Magneticx3",
+      "vertices": 6475,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_DR_DeLavalx2",
+      "vertices": 5620,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Destroyer_Head_A",
+      "vertices": 4786,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_BC_PRM_Magneticx1",
+      "vertices": 4718,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Gunship_DeLavalx5",
+      "vertices": 10002,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Destroyer_Low_A",
+      "vertices": 5079,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_BC_Magneticx6",
+      "vertices": 16353,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_LC_Common_Back",
+      "vertices": 724,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DR_PRM_DeLavalx6",
+      "vertices": 45492,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DR_PRM_Pulsex1",
+      "vertices": 31944,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_BC_DeLavalx3",
+      "vertices": 6094,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Escort_DeLavalx2",
+      "vertices": 5620,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_MO_PRM_DeLavalx3",
+      "vertices": 23852,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_BC_Magneticx2",
+      "vertices": 5502,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_CR_PRM_Magneticx3",
+      "vertices": 13646,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_CR_PRM_Magneticx1",
+      "vertices": 4718,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Gunship_Magneticx5",
+      "vertices": 12271,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_TI_PRM_DeLavalx4",
+      "vertices": 31087,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_GS_PRM_DeLavalx1",
+      "vertices": 7609,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_DR_Magneticx3",
+      "vertices": 6475,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Monitor_Shoulders",
+      "vertices": 5534,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Destroyer_Magneticx4",
+      "vertices": 11332,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Gunship_DeLavalx4",
+      "vertices": 6568,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_Escort_PRM_Rads",
+      "vertices": 3435,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_DR_Pulsex1",
+      "vertices": 3069,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_BS_Head",
+      "vertices": 8298,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Destroyer_DeLavalx5",
+      "vertices": 10002,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Monitor_Magneticx4",
+      "vertices": 11332,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Gunship_Magneticx4",
+      "vertices": 11332,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_CR_PRM_Magneticx5",
+      "vertices": 22574,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_BS_PRM_Tanks",
+      "vertices": 23677,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_BS_PRM_Magneticx6",
+      "vertices": 27161,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_LAN_PRM_DeLavalx4",
+      "vertices": 31087,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_GS_PRM_DeLavalx4",
+      "vertices": 31087,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_DR_Center",
+      "vertices": 5758,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_TI_PRM_Magneticx1",
+      "vertices": 4718,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_CR_PRM_Rads",
+      "vertices": 3465,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Escort_Magneticx1",
+      "vertices": 2751,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Corvette_Ends",
+      "vertices": 3631,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_BC_Common_Middle",
+      "vertices": 2553,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DR_PRM_Magneticx4",
+      "vertices": 17760,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Cruiser_Magneticx5",
+      "vertices": 12271,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_GS_PRM_DeLavalx5",
+      "vertices": 39749,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_LC_DeLavalx6",
+      "vertices": 10476,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_BS_PRM_Magneticx1",
+      "vertices": 4718,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DR_PRM_Common_A",
+      "vertices": 30897,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_LAN_PRM_Magneticx3",
+      "vertices": 13646,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_TI_PRM_Head",
+      "vertices": 16570,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_CO_PRM_Magneticx6",
+      "vertices": 27161,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Escort_Pulsex1",
+      "vertices": 3069,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Monitor_Radiator",
+      "vertices": 4904,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Frigate_Body_B",
+      "vertices": 3076,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Gunship_Radiator",
+      "vertices": 4904,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_TI_DeLavalx3",
+      "vertices": 6094,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Frigate_DeLavalx5",
+      "vertices": 10002,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_TI_PRM_Magneticx4",
+      "vertices": 17760,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_DR_Common_Back_A",
+      "vertices": 10194,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_LAN_PRM_Pulsex1",
+      "vertices": 31944,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DR_PRM_Common_B",
+      "vertices": 35926,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Escort_Magneticx4",
+      "vertices": 11332,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_BS_PRM_DeLavalx4",
+      "vertices": 31087,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_LAN_PRM_Magneticx4",
+      "vertices": 17760,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_BC_Tail_B",
+      "vertices": 4932,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_BS_Magneticx1",
+      "vertices": 2751,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_TI_PRM_DeLavalx2",
+      "vertices": 14969,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_LAN_PRM_DeLavalx3",
+      "vertices": 23852,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DR_PRM_Magneticx2",
+      "vertices": 8906,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_BC_Tail_A",
+      "vertices": 7084,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_BC_Magneticx4",
+      "vertices": 11332,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_MO_PRM_Magneticx6",
+      "vertices": 27161,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Frigate_Magneticx4",
+      "vertices": 11332,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Gunship_Pulsex1",
+      "vertices": 3069,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_MO_PRM_Magneticx3",
+      "vertices": 13646,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_CO_PRM_Mid",
+      "vertices": 6999,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_LC_DeLavalx5",
+      "vertices": 10002,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_BC_PRM_Pulsex1",
+      "vertices": 31944,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Frigate_DeLavalx2",
+      "vertices": 5620,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_TI_PRM_Common_A",
+      "vertices": 11987,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DES_PRM_Magneticx1",
+      "vertices": 4718,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DR_PRM_Magneticx3",
+      "vertices": 13646,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_BC_PRM_Head",
+      "vertices": 36376,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_BC_Magneticx3",
+      "vertices": 6475,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Monitor_Head",
+      "vertices": 12764,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_Fin_Radiator_destroyed",
+      "vertices": 810,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Escort_Radiator",
+      "vertices": 4904,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Corvette_Magneticx2",
+      "vertices": 5502,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Destroyer_DeLavalx6",
+      "vertices": 10476,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_LC_DeLavalx1",
+      "vertices": 3690,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_BC_PRM_DeLavalx1",
+      "vertices": 7609,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_FRI_PRM_Detail",
+      "vertices": 16180,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_TI_PRM_DeLavalx5",
+      "vertices": 39749,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_MO_PRM_DeLavalx5",
+      "vertices": 39749,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DES_PRM_DeLavalx4",
+      "vertices": 31087,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Cruiser_Magneticx2",
+      "vertices": 5502,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Cruiser_Magneticx6",
+      "vertices": 16353,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_GS_PRM_Magneticx2",
+      "vertices": 8906,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_LC_Head",
+      "vertices": 4468,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_BS_PRM_Pulsex1",
+      "vertices": 31944,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DR_PRM_DeLavalx2",
+      "vertices": 14969,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_BS_PRM_Common_B",
+      "vertices": 24655,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_TI_PRM_Mid",
+      "vertices": 18268,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_TI_DeLavalx5",
+      "vertices": 10002,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_DR_Back",
+      "vertices": 11186,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_FRI_PRM_Magneticx4",
+      "vertices": 17760,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_DR_Magneticx6",
+      "vertices": 16353,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_CR_PRM_DeLavalx4",
+      "vertices": 31087,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Cruiser_Pulsex1",
+      "vertices": 3069,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_TI_PRM_DeLavalx3",
+      "vertices": 23852,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Cruiser_DeLavalx5",
+      "vertices": 10002,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Frigate_Body_A",
+      "vertices": 4872,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DES_PRM_DeLavalx3",
+      "vertices": 23852,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_FRI_PRM_DeLavalx3",
+      "vertices": 23852,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Monitor_Magneticx1",
+      "vertices": 2751,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_BC_Pulsex1",
+      "vertices": 3069,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_BC_Common_Center",
+      "vertices": 8064,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_Gunship_PRM_Body",
+      "vertices": 24946,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_BC_PRM_Magneticx4",
+      "vertices": 17760,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_TI_Common_Mounts",
+      "vertices": 19952,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_LAN_PRM_DeLavalx2",
+      "vertices": 14969,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_BC_PRM_Magneticx3",
+      "vertices": 13646,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_FRI_PRM_DeLavalx5",
+      "vertices": 39749,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Cruiser_Common_Back_A",
+      "vertices": 13356,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_LAN_PRM_Magneticx1",
+      "vertices": 4718,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DR_PRM_Mid",
+      "vertices": 9244,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_GS_PRM_DeLavalx6",
+      "vertices": 45492,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_GS_PRM_Magneticx4",
+      "vertices": 17760,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_DR_Common_Back_B",
+      "vertices": 18200,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_BC_PRM_DeLavalx2",
+      "vertices": 14969,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_TI_Common_Sides",
+      "vertices": 9802,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Destroyer_DeLavalx2",
+      "vertices": 5620,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_GS_PRM_Magneticx6",
+      "vertices": 27161,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_FRI_PRM_Magneticx2",
+      "vertices": 8906,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Corvette_Radiator",
+      "vertices": 4904,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_DR_Tail",
+      "vertices": 8528,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_MO_PRM_Pulsex1",
+      "vertices": 31944,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Cruiser_Back",
+      "vertices": 1781,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_LC_Magneticx2",
+      "vertices": 5502,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_TI_Shoulders_A",
+      "vertices": 2378,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Escort_Magneticx6",
+      "vertices": 16353,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Destroyer_Magneticx3",
+      "vertices": 6475,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Escort_DeLavalx6",
+      "vertices": 10476,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_ES_PRM_DeLavalx5",
+      "vertices": 39749,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_CO_PRM_DeLavalx1",
+      "vertices": 7609,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Frigate_Magneticx1",
+      "vertices": 2751,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_BC_Center",
+      "vertices": 12156,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_BS_PRM_DeLavalx5",
+      "vertices": 39749,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Monitor_Magneticx2",
+      "vertices": 5502,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_BS_PRM_Magneticx2",
+      "vertices": 8906,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_CO_PRM_DeLavalx4",
+      "vertices": 31087,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Corvette_DeLavalx2",
+      "vertices": 5620,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_BC_DeLavalx5",
+      "vertices": 10002,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_TI_Sides",
+      "vertices": 6168,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DES_PRM_Magneticx2",
+      "vertices": 8906,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DES_PRM_Details",
+      "vertices": 20797,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Cruiser_Common_Shoulder_A",
+      "vertices": 4442,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_FRI_PRM_Head",
+      "vertices": 36958,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_BC_Radiator",
+      "vertices": 4904,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_BS_PRM_Magneticx5",
+      "vertices": 22574,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Escort_DeLavalx5",
+      "vertices": 10002,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_TI_Common_Center",
+      "vertices": 10314,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_CR_PRM_Magneticx6",
+      "vertices": 27161,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_BC_PRM_Magneticx5",
+      "vertices": 22574,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Destroyer_Magneticx2",
+      "vertices": 5502,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DES_PRM_Pulsex1",
+      "vertices": 31944,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_TI_DeLavalx4",
+      "vertices": 6568,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_CO_PRM_Head",
+      "vertices": 15603,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DR_PRM_Rads",
+      "vertices": 3459,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_LC_Shoulders",
+      "vertices": 7084,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_DR_DeLavalx6",
+      "vertices": 10476,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Destroyer_DeLavalx4",
+      "vertices": 6568,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_MO_PRM_DeLavalx1",
+      "vertices": 7609,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_DR_Magneticx1",
+      "vertices": 2751,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Cruiser_DeLavalx2",
+      "vertices": 5620,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_TI_Shoulders_B",
+      "vertices": 2476,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_LAN_PRM_Mid",
+      "vertices": 13284,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DR_PRM_DeLavalx4",
+      "vertices": 31087,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_DR_Shoulders",
+      "vertices": 11150,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DES_PRM_DeLavalx5",
+      "vertices": 39749,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_TI_PRM_Magneticx6",
+      "vertices": 27161,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_MO_PRM_Details",
+      "vertices": 29517,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_LAN_PRM_DeLavalx6",
+      "vertices": 45492,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_LC_Magneticx1",
+      "vertices": 2751,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Cruiser_Mid",
+      "vertices": 7760,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_CR_PRM_DeLavalx6",
+      "vertices": 45492,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_CR_PRM_Common_A",
+      "vertices": 8667,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_MO_PRM_Magneticx4",
+      "vertices": 17760,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_LAN_PRM_Rads",
+      "vertices": 3459,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_BC_PRM_Magneticx2",
+      "vertices": 8906,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_ES_PRM_Magneticx5",
+      "vertices": 22574,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_ES_PRM_Magneticx1",
+      "vertices": 4718,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DR_PRM_Magneticx5",
+      "vertices": 22574,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_BC_Common_Details",
+      "vertices": 6993,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Destroyer_Common_Details",
+      "vertices": 17210,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Destroyer_Common_Head_B",
+      "vertices": 11519,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_ES_PRM_DeLavalx6",
+      "vertices": 45492,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_FRI_PRM_Rads",
+      "vertices": 3461,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_ES_PRM_DeLavalx4",
+      "vertices": 31087,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_LC_DeLavalx3",
+      "vertices": 6094,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_BS_Magneticx5",
+      "vertices": 12271,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Corvette_Magneticx4",
+      "vertices": 11332,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_TI_PRM_Common_C",
+      "vertices": 17320,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Cruiser_Shoulders",
+      "vertices": 2450,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Monitor_Center",
+      "vertices": 8412,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Corvette_DeLavalx6",
+      "vertices": 10476,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_BS_DeLavalx1",
+      "vertices": 3690,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_TI_Magneticx1",
+      "vertices": 2751,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_FRI_PRM_Magneticx5",
+      "vertices": 22574,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_LC_Common_Center",
+      "vertices": 24864,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_GS_PRM_Pulsex1",
+      "vertices": 31944,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_CO_PRM_DeLavalx3",
+      "vertices": 23852,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Frigate_Pulsex1",
+      "vertices": 3069,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_CO_PRM_Magneticx3",
+      "vertices": 13646,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_LAN_PRM_DeLavalx5",
+      "vertices": 39749,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_FRI_PRM_Magneticx3",
+      "vertices": 13646,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_LC_DeLavalx4",
+      "vertices": 6568,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_CR_PRM_Back",
+      "vertices": 12345,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_TI_Magneticx5",
+      "vertices": 12271,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Corvette_Pulsex1",
+      "vertices": 3069,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_BC_Head",
+      "vertices": 5882,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Monitor_Back",
+      "vertices": 11386,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DR_PRM_DeLavalx5",
+      "vertices": 39749,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_ES_PRM_Pulsex1",
+      "vertices": 31944,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_ES_PRM_Magneticx3",
+      "vertices": 13646,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_ES_PRM_Magneticx6",
+      "vertices": 27161,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_BS_PRM_Magneticx3",
+      "vertices": 13646,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_LAN_PRM_Magneticx6",
+      "vertices": 27161,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Corvette_DeLavalx1",
+      "vertices": 3690,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_Escort_PRM_Head",
+      "vertices": 13982,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DR_PRM_Tanks",
+      "vertices": 15992,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_TI_PRM_Tanks",
+      "vertices": 39287,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_BS_Magneticx2",
+      "vertices": 5502,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_Gunship_PRM_Head",
+      "vertices": 8517,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Corvette_Magneticx5",
+      "vertices": 12271,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_TI_DeLavalx1",
+      "vertices": 3690,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_ES_PRM_DeLavalx3",
+      "vertices": 23852,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_BC_PRM_DeLavalx5",
+      "vertices": 39749,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_BC_Magneticx5",
+      "vertices": 12271,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_BC_PRM_DeLavalx6",
+      "vertices": 45492,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_ES_PRM_DeLavalx1",
+      "vertices": 7609,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Cruiser_Common_Back_B",
+      "vertices": 7180,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DR_PRM_Front",
+      "vertices": 9375,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_BC_Magneticx1",
+      "vertices": 2751,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_TI_PRM_Magneticx2",
+      "vertices": 8906,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_TI_PRM_Pulsex1",
+      "vertices": 31944,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_LC_Magneticx6",
+      "vertices": 16353,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Monitor_Magneticx5",
+      "vertices": 12271,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_MO_PRM_Rads",
+      "vertices": 3465,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Corvette_Head",
+      "vertices": 5298,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Destroyer_Pulsex1",
+      "vertices": 3069,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_BC_PRM_DeLavalx3",
+      "vertices": 23852,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Frigate_DeLavalx3",
+      "vertices": 6094,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DES_PRM_Head",
+      "vertices": 16895,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_CO_PRM_Back",
+      "vertices": 21803,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_DR_Radiator",
+      "vertices": 4904,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_BS_PRM_Magneticx4",
+      "vertices": 17760,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Destroyer_Mid_A",
+      "vertices": 3251,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_LC_Magneticx4",
+      "vertices": 11332,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Escort_Magneticx2",
+      "vertices": 5502,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_BS_Pulsex1",
+      "vertices": 3069,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_BS_Common_Details_A",
+      "vertices": 9736,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DES_PRM_DeLavalx2",
+      "vertices": 14969,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Gunship_DeLavalx6",
+      "vertices": 10476,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_BS_Magneticx3",
+      "vertices": 6475,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_BS_PRM_Common_A",
+      "vertices": 21234,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_CO_PRM_DeLavalx2",
+      "vertices": 14969,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_CR_PRM_DeLavalx3",
+      "vertices": 23852,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_BS_DeLavalx6",
+      "vertices": 10476,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_GS_PRM_DeLavalx3",
+      "vertices": 23852,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_BS_DeLavalx5",
+      "vertices": 10002,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Frigate_Magneticx3",
+      "vertices": 6475,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_BC_PRM_Tanks",
+      "vertices": 11646,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_CR_PRM_DeLavalx5",
+      "vertices": 39749,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_BS_PRM_Mids",
+      "vertices": 27061,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_CO_PRM_DeLavalx5",
+      "vertices": 39749,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_LAN_PRM_Tanks",
+      "vertices": 15280,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Destroyer_Radiator",
+      "vertices": 4904,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Gunship_DeLavalx1",
+      "vertices": 3690,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Frigate_DeLavalx4",
+      "vertices": 6568,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Escort_Magneticx5",
+      "vertices": 12271,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Cruiser_Head",
+      "vertices": 3411,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_CR_PRM_Magneticx2",
+      "vertices": 8906,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Monitor_Mid",
+      "vertices": 15040,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Escort_DeLavalx4",
+      "vertices": 6568,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_CO_PRM_DeLavalx6",
+      "vertices": 45492,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_TI_PRM_Magneticx5",
+      "vertices": 22574,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DES_PRM_DeLavalx6",
+      "vertices": 45492,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Destroyer_Common_Mid_B",
+      "vertices": 3318,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_BS_PRM_DeLavalx1",
+      "vertices": 7609,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_CO_PRM_Magneticx5",
+      "vertices": 22574,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_DR_DeLavalx1",
+      "vertices": 3690,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_MO_PRM_DeLavalx4",
+      "vertices": 31087,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_DR_Head",
+      "vertices": 4312,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_FRI_PRM_DeLavalx4",
+      "vertices": 31087,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Destroyer_Tail",
+      "vertices": 10894,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Cruiser_Magneticx4",
+      "vertices": 11332,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_BC_DeLavalx4",
+      "vertices": 6568,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_BC_Shell_A",
+      "vertices": 10011,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_LC_Common_Mounts",
+      "vertices": 13311,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_TI_Magneticx2",
+      "vertices": 5502,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DR_PRM_Head",
+      "vertices": 27711,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Destroyer_DeLavalx1",
+      "vertices": 3690,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_BS_Top",
+      "vertices": 1222,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_DR_Magneticx4",
+      "vertices": 11332,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_MO_PRM_Magneticx1",
+      "vertices": 4718,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_TI_Magneticx6",
+      "vertices": 16353,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_TI_DeLavalx2",
+      "vertices": 5620,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DES_PRM_DeLavalx1",
+      "vertices": 7609,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_LAN_PRM_Magneticx5",
+      "vertices": 22574,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Monitor_Magneticx6",
+      "vertices": 16353,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_FRI_PRM_DeLavalx2",
+      "vertices": 14969,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_TI_PRM_Rads",
+      "vertices": 3465,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_CR_PRM_Mid_Details",
+      "vertices": 26449,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_CR_PRM_DeLavalx1",
+      "vertices": 7609,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_LC_DeLavalx2",
+      "vertices": 5620,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_BS_DeLavalx2",
+      "vertices": 5620,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_FRI_PRM_Back",
+      "vertices": 12825,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Monitor_DeLavalx6",
+      "vertices": 10476,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Corvette_DeLavalx3",
+      "vertices": 6094,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_Gunship_PRM_Rads",
+      "vertices": 3435,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_DR_Common_Head",
+      "vertices": 11312,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Monitor_DeLavalx5",
+      "vertices": 10002,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_MO_PRM_Head",
+      "vertices": 22181,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Frigate_DeLavalx1",
+      "vertices": 3688,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Destroyer_Magneticx5",
+      "vertices": 12271,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Cruiser_DeLavalx4",
+      "vertices": 6568,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Cruiser_Magneticx1",
+      "vertices": 2751,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_LAN_PRM_Magneticx2",
+      "vertices": 8906,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_GS_PRM_Magneticx3",
+      "vertices": 13646,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DR_PRM_DeLavalx1",
+      "vertices": 7609,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_CO_PRM_Magneticx1",
+      "vertices": 4718,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_GS_PRM_DeLavalx2",
+      "vertices": 14969,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DES_PRM_Rads",
+      "vertices": 3463,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DR_PRM_Magneticx6",
+      "vertices": 27161,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_ES_PRM_Magneticx2",
+      "vertices": 8906,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_BS_PRM_DeLavalx3",
+      "vertices": 23852,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_TI_Pulsex1",
+      "vertices": 3069,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_BS_DeLavalx3",
+      "vertices": 6094,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_DR_DeLavalx4",
+      "vertices": 6568,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DES_PRM_Back",
+      "vertices": 17120,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DR_PRM_DeLavalx3",
+      "vertices": 23852,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_DR_Magneticx2",
+      "vertices": 5502,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_BC_DeLavalx2",
+      "vertices": 5620,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_GS_PRM_Magneticx5",
+      "vertices": 22574,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Cruiser_Common_Details",
+      "vertices": 10868,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_MO_PRM_DeLavalx2",
+      "vertices": 14969,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_LC_Magneticx3",
+      "vertices": 6475,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_BS_PRM_DeLavalx6",
+      "vertices": 45492,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_BS_Magneticx6",
+      "vertices": 16353,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_CR_PRM_Head",
+      "vertices": 17678,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Corvette_DeLavalx5",
+      "vertices": 10002,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Corvette_Top",
+      "vertices": 1992,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_LC_Radiator",
+      "vertices": 4904,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_TI_PRM_DeLavalx1",
+      "vertices": 7609,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_BC_PRM_DeLavalx4",
+      "vertices": 31087,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Cruiser_Radiator",
+      "vertices": 4904,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_BC_DeLavalx1",
+      "vertices": 3690,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_BC_Shell_B",
+      "vertices": 3538,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_LC_Back",
+      "vertices": 4824,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DES_PRM_Magneticx3",
+      "vertices": 13646,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_TI_Top",
+      "vertices": 18492,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Frigate_End",
+      "vertices": 5576,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Gunship_Details",
+      "vertices": 10302,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_BC_PRM_Magneticx6",
+      "vertices": 27161,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Cruiser_DeLavalx3",
+      "vertices": 6094,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_CO_PRM_Magneticx2",
+      "vertices": 8906,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_TI_DeLavalx6",
+      "vertices": 10476,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Frigate_Head",
+      "vertices": 5287,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_CR_PRM_Common_B",
+      "vertices": 9665,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_TI_PRM_Front",
+      "vertices": 74804,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Gunship_DeLavalx2",
+      "vertices": 5620,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_BC_DeLavalx6",
+      "vertices": 10476,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_BS_PRM_Head",
+      "vertices": 20805,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_TI_Head",
+      "vertices": 5628,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_TI_PRM_Common_B",
+      "vertices": 18896,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_BC_PRM_Common_A",
+      "vertices": 43245,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_LC_Magneticx5",
+      "vertices": 12271,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_FRI_PRM_Pulsex1",
+      "vertices": 31944,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Gunship_Magneticx3",
+      "vertices": 6475,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_GS_PRM_Magneticx1",
+      "vertices": 4718,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Frigate_DeLavalx6",
+      "vertices": 10476,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_FRI_PRM_Magneticx1",
+      "vertices": 4718,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_BS_Sides",
+      "vertices": 6168,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Destroyer_DeLavalx3",
+      "vertices": 6094,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_DR_Magneticx5",
+      "vertices": 12271,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_Escort_PRM_Body",
+      "vertices": 10386,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Frigate_Magneticx2",
+      "vertices": 5502,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Cruiser_Center_A",
+      "vertices": 5758,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Destroyer_Magneticx1",
+      "vertices": 2751,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_TI_Magneticx4",
+      "vertices": 11332,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_Droplet_Radiator_destroyed",
+      "vertices": 1629,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Gunship_Magneticx6",
+      "vertices": 16353,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Escort_Magneticx3",
+      "vertices": 6475,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_MO_PRM_Magneticx5",
+      "vertices": 22574,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Frigate_Magneticx6",
+      "vertices": 16353,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Monitor_DeLavalx1",
+      "vertices": 3690,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_CR_PRM_DeLavalx2",
+      "vertices": 14969,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_BS_Radiator",
+      "vertices": 4904,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_CR_PRM_Pulsex1",
+      "vertices": 31944,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Corvette_Magneticx3",
+      "vertices": 6475,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_CO_PRM_Pulsex1",
+      "vertices": 31944,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_MO_PRM_Magneticx2",
+      "vertices": 8906,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_TI_PRM_DeLavalx6",
+      "vertices": 45492,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Gunship_Magneticx2",
+      "vertices": 5502,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Frigate_Magneticx5",
+      "vertices": 12271,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DES_PRM_Magneticx6",
+      "vertices": 27161,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_Spikes_Radiator_destroyed",
+      "vertices": 6050,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_TI_Radiator",
+      "vertices": 4904,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_BS_Head_Sides",
+      "vertices": 10490,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_TI_PRM_Magneticx3",
+      "vertices": 13646,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_CR_PRM_Magneticx4",
+      "vertices": 17760,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_ES_PRM_DeLavalx2",
+      "vertices": 14969,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Escort_Main",
+      "vertices": 2988,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Escort_DeLavalx3",
+      "vertices": 6094,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_TI_Common_Bottom",
+      "vertices": 6956,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Corvette_Magneticx1",
+      "vertices": 2751,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_CO_PRM_Magneticx4",
+      "vertices": 17760,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Frigate_Radiator",
+      "vertices": 4904,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Monitor_DeLavalx4",
+      "vertices": 6568,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DES_PRM_Mid",
+      "vertices": 8016,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DES_PRM_Magneticx4",
+      "vertices": 17760,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DES_PRM_Magneticx5",
+      "vertices": 22574,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Monitor_DeLavalx3",
+      "vertices": 6094,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_BS_PRM_Rads",
+      "vertices": 3465,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_BS_Bottom",
+      "vertices": 2723,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Cruiser_DeLavalx1",
+      "vertices": 3690,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_BC_PRM_Rads",
+      "vertices": 3461,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_BS_Magneticx4",
+      "vertices": 11332,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_BS_DeLavalx4",
+      "vertices": 6568,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_LC_Pulsex1",
+      "vertices": 3069,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Cruiser_Magneticx3",
+      "vertices": 6475,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_FRI_PRM_DeLavalx6",
+      "vertices": 45492,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_BC_PRM_Mid",
+      "vertices": 15887,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DR_PRM_Magneticx1",
+      "vertices": 4718,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_FRI_PRM_Mid",
+      "vertices": 11370,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Monitor_DeLavalx2",
+      "vertices": 5620,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_CR_PRM_Mid",
+      "vertices": 17173,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Corvette_DeLavalx4",
+      "vertices": 6568,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_TI_Common_Head",
+      "vertices": 6146,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Cruiser_DeLavalx6",
+      "vertices": 10476,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_DR_Common_Mounts",
+      "vertices": 11903,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_LAN_PRM_Common_B",
+      "vertices": 13605,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_BS_PRM_DeLavalx2",
+      "vertices": 14969,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_TI_Magneticx3",
+      "vertices": 6475,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_ES_PRM_Magneticx4",
+      "vertices": 17760,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_MO_PRM_DeLavalx6",
+      "vertices": 45492,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_FRI_PRM_Magneticx6",
+      "vertices": 27161,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_LAN_PRM_Common_A",
+      "vertices": 21083,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_DR_DeLavalx5",
+      "vertices": 10002,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_FRI_PRM_DeLavalx1",
+      "vertices": 7609,
+      "submeshes": 1
+    },
+    {
+      "name": "Earth_DLCA_Gunship_DeLavalx3",
+      "vertices": 6094,
+      "submeshes": 1
+    }
+  ]
+}

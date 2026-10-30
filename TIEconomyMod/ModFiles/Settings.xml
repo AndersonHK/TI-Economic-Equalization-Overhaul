@@ -134,6 +134,8 @@
   </army>
   <shipBalance>
     <enabled>true</enabled>
+    <shipScaleMultiplier>10</shipScaleMultiplier>
+    <projectileScaleMultiplier>10</projectileScaleMultiplier>
     <multiSlotUtilitiesEnabled>true</multiSlotUtilitiesEnabled>
     <correctPowerPlantWasteHeat>true</correctPowerPlantWasteHeat>
     <openCycleResidualHeatEnabled>true</openCycleResidualHeatEnabled>

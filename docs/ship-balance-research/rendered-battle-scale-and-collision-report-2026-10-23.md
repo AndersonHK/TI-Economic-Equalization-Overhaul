@@ -1,5 +1,8 @@
 # Rendered battle scale, projectile size, and collision geometry
 
+**Follow-up:** [0.10.9 implements the approved scale and mesh-collider policy](battle-scale-implementation-2026-10-23.md).
+The analysis below retains the pre-change baseline and research status.
+
 2026-10-23. **Research only.** No gameplay, template, asset, setting, build or
 deployment changes. Baseline: EEO 0.10.8 and the installed Terra Invicta DLL
 used by the repository's 1.0.53b compatibility record. Native methods were

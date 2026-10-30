@@ -157,6 +157,12 @@ if ([string]::IsNullOrWhiteSpace($powershellExecutable)) {
     throw 'No usable PowerShell executable was found for isolated validators.'
 }
 $patchValidationJobs = @(
+    New-ValidationJob 'Battle scale and geometry' $powershellExecutable @(
+        '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File',
+        (Join-Path $scriptDirectory 'validate-battle-geometry.ps1'),
+        '-TargetManagedDir', $resolvedManagedDir,
+        '-ModAssemblyPath', $assemblyPath,
+        '-RepositoryRoot', $repositoryRoot)
     New-ValidationJob 'Canonical gunpowder art' $powershellExecutable @(
         '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File',
         (Join-Path $scriptDirectory 'validate-gunpowder-art.ps1'),
@@ -584,7 +590,7 @@ $manifest = Get-Content -LiteralPath $manifestPath -Raw | ConvertFrom-Json
 if ($manifest.GameVersion -ne '1.0.53') {
     throw "ModInfo.json targets '$($manifest.GameVersion)' instead of TI 1.0.53."
 }
-if ($manifest.Version -ne '0.10.8') {
+if ($manifest.Version -ne '0.10.19') {
     throw "ModInfo.json version '$($manifest.Version)' does not match this release."
 }
 if ($manifest.AssemblyName -ne 'Assembly/TIEconomyMod.dll') {
@@ -1144,8 +1150,8 @@ if ($assemblyFile.LastWriteTime -lt $buildStarted.AddSeconds(-2)) {
     throw 'Packaged DLL predates this verification build.'
 }
 $assemblyVersion = [Reflection.AssemblyName]::GetAssemblyName($assemblyPath).Version.ToString()
-if ($assemblyVersion -ne '0.10.8.0') {
-    throw "Assembly version '$assemblyVersion' does not match release 0.10.8."
+if ($assemblyVersion -ne '0.10.19.0') {
+    throw "Assembly version '$assemblyVersion' does not match release 0.10.19."
 }
 $assemblyHash = (Get-FileHash -LiteralPath $assemblyPath -Algorithm SHA256).Hash
 
@@ -1207,6 +1213,10 @@ Copy-Item -LiteralPath $weights -Destination (Join-Path $stagingDirectory 'Confi
 Copy-Item -LiteralPath $hullVolumes -Destination (Join-Path $stagingDirectory 'Config')
 Copy-Item -LiteralPath $hullDriveScales -Destination (Join-Path $stagingDirectory 'Config')
 Copy-Item -LiteralPath $gunpowderArtProfiles -Destination (Join-Path $stagingDirectory 'Config')
+foreach ($meshFile in @('combat-unreadable-meshes.eeo','combat-mesh-data-base.eeo','combat-mesh-data-dlc.eeo','laser-beam-optics.eeo')) {
+    Copy-Item -LiteralPath (Join-Path $repositoryRoot ('TIEconomyMod\ModFiles\Config\' + $meshFile)) `
+        -Destination (Join-Path $stagingDirectory 'Config')
+}
 Copy-Item -LiteralPath $defaultSettings -Destination $stagingDirectory
 Copy-Item -LiteralPath $missionOverrides -Destination $stagingDirectory
 Copy-Item -LiteralPath $startOverrides -Destination $stagingDirectory
@@ -1241,7 +1251,7 @@ if (Test-Path -LiteralPath $imagePath) {
     Copy-Item -LiteralPath $imagePath -Destination $stagingDirectory
 }
 
-$zipPath = Join-Path $artifactDirectory 'TIEconomyMod-0.10.8-ti1.0.53.zip'
+$zipPath = Join-Path $artifactDirectory 'TIEconomyMod-0.10.19-ti1.0.53.zip'
 if (Test-Path -LiteralPath $zipPath) {
     Remove-Item -LiteralPath $zipPath
 }
@@ -1289,6 +1299,10 @@ try {
         }
     }
     $packagedShipFiles = @(
+        'TIEconomyMod/Config/combat-unreadable-meshes.eeo',
+        'TIEconomyMod/Config/combat-mesh-data-base.eeo',
+        'TIEconomyMod/Config/combat-mesh-data-dlc.eeo',
+        'TIEconomyMod/Config/laser-beam-optics.eeo',
         'TIEconomyMod/Config/gunpowder-art-profiles.eeo',
         'TIEconomyMod/TIPowerPlantTemplate.json',
         'TIEconomyMod/TIDriveTemplate.json',
@@ -1304,6 +1318,15 @@ try {
             Where-Object { $_.FullName.Replace('\', '/') -eq $packagedShipFile } |
             Select-Object -First 1)) {
             throw "Release archive is missing $packagedShipFile."
+        }
+        if ($packagedShipFile.EndsWith('.eeo')) {
+            $entry = $archive.Entries | Where-Object { $_.FullName.Replace('\','/') -eq $packagedShipFile } | Select-Object -First 1
+            $stream = $entry.Open()
+            $hash = [Security.Cryptography.SHA256]::Create()
+            try { $actual = ([BitConverter]::ToString($hash.ComputeHash($stream))).Replace('-','') }
+            finally { $hash.Dispose(); $stream.Dispose() }
+            $sourceFile = Join-Path $repositoryRoot ('TIEconomyMod\ModFiles\' + $packagedShipFile.Substring('TIEconomyMod/'.Length))
+            if ($actual -ne (Get-FileHash -LiteralPath $sourceFile -Algorithm SHA256).Hash) { throw "Packaged mesh/profile data mismatch: $packagedShipFile" }
         }
     }
     foreach ($packagedLogisticsLocalization in @(

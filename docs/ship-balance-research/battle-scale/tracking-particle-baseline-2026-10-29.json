@@ -1,0 +1,184 @@
+[
+  {
+    "name": "Plasma Bursts",
+    "fields": {
+      "m_RenderingLayerMask": 1,
+      "m_RendererPriority": 0,
+      "m_RenderMode": 0,
+      "m_MinParticleSize": 0.0,
+      "m_MaxParticleSize": 10.0,
+      "m_CameraVelocityScale": 0.0,
+      "m_VelocityScale": 0.0,
+      "m_LengthScale": 2.0,
+      "m_RenderAlignment": 0
+    }
+  },
+  {
+    "name": "Bullet",
+    "fields": {
+      "m_RenderingLayerMask": 4294967295,
+      "m_RendererPriority": 0,
+      "m_RenderMode": 1,
+      "m_MinParticleSize": 0.0,
+      "m_MaxParticleSize": 0.5,
+      "m_CameraVelocityScale": 0.0,
+      "m_VelocityScale": 0.10000000149011612,
+      "m_LengthScale": 0.10000000149011612,
+      "m_RenderAlignment": 0
+    }
+  },
+  {
+    "name": "Bullet",
+    "fields": {
+      "m_RenderingLayerMask": 4294967295,
+      "m_RendererPriority": 0,
+      "m_RenderMode": 3,
+      "m_MinParticleSize": 0.0,
+      "m_MaxParticleSize": 0.5,
+      "m_CameraVelocityScale": 0.0,
+      "m_VelocityScale": 0.10000000149011612,
+      "m_LengthScale": 0.10000000149011612,
+      "m_RenderAlignment": 0
+    }
+  },
+  {
+    "name": "Bullet",
+    "fields": {
+      "m_RenderingLayerMask": 4294967295,
+      "m_RendererPriority": 0,
+      "m_RenderMode": 1,
+      "m_MinParticleSize": 0.0,
+      "m_MaxParticleSize": 0.5,
+      "m_CameraVelocityScale": 0.0,
+      "m_VelocityScale": 0.10000000149011612,
+      "m_LengthScale": 0.10000000149011612,
+      "m_RenderAlignment": 0
+    }
+  },
+  {
+    "name": "SmokeTrails",
+    "fields": {
+      "m_RenderingLayerMask": 1,
+      "m_RendererPriority": 0,
+      "m_RenderMode": 0,
+      "m_MinParticleSize": 0.0,
+      "m_MaxParticleSize": 0.5,
+      "m_CameraVelocityScale": 0.0,
+      "m_VelocityScale": 0.0,
+      "m_LengthScale": 2.0,
+      "m_RenderAlignment": 0
+    }
+  },
+  {
+    "name": "SmokeTrail",
+    "fields": {
+      "m_RenderingLayerMask": 4294967295,
+      "m_RendererPriority": 0,
+      "m_RenderMode": 0,
+      "m_MinParticleSize": 0.0,
+      "m_MaxParticleSize": 0.5,
+      "m_CameraVelocityScale": 0.0,
+      "m_VelocityScale": 0.0,
+      "m_LengthScale": 2.0,
+      "m_RenderAlignment": 0
+    }
+  },
+  {
+    "name": "Bullet",
+    "fields": {
+      "m_RenderingLayerMask": 4294967295,
+      "m_RendererPriority": 0,
+      "m_RenderMode": 1,
+      "m_MinParticleSize": 0.0,
+      "m_MaxParticleSize": 0.5,
+      "m_CameraVelocityScale": 0.0,
+      "m_VelocityScale": 0.10000000149011612,
+      "m_LengthScale": 0.10000000149011612,
+      "m_RenderAlignment": 0
+    }
+  },
+  {
+    "name": "PlasmaExplosionEffect",
+    "fields": {
+      "m_RenderingLayerMask": 4294967295,
+      "m_RendererPriority": 0,
+      "m_RenderMode": 0,
+      "m_MinParticleSize": 0.0,
+      "m_MaxParticleSize": 0.5,
+      "m_CameraVelocityScale": 0.0,
+      "m_VelocityScale": 0.0,
+      "m_LengthScale": 1.0,
+      "m_RenderAlignment": 0
+    }
+  },
+  {
+    "name": "Bullet",
+    "fields": {
+      "m_RenderingLayerMask": 4294967295,
+      "m_RendererPriority": 0,
+      "m_RenderMode": 1,
+      "m_MinParticleSize": 0.0,
+      "m_MaxParticleSize": 0.5,
+      "m_CameraVelocityScale": 0.0,
+      "m_VelocityScale": 0.10000000149011612,
+      "m_LengthScale": 0.10000000149011612,
+      "m_RenderAlignment": 0
+    }
+  },
+  {
+    "name": "Bullet",
+    "fields": {
+      "m_RenderingLayerMask": 4294967295,
+      "m_RendererPriority": 0,
+      "m_RenderMode": 1,
+      "m_MinParticleSize": 0.0,
+      "m_MaxParticleSize": 0.5,
+      "m_CameraVelocityScale": 0.0,
+      "m_VelocityScale": 0.10000000149011612,
+      "m_LengthScale": 0.10000000149011612,
+      "m_RenderAlignment": 0
+    }
+  },
+  {
+    "name": "SmokeTrails",
+    "fields": {
+      "m_RenderingLayerMask": 1,
+      "m_RendererPriority": 0,
+      "m_RenderMode": 0,
+      "m_MinParticleSize": 0.0,
+      "m_MaxParticleSize": 0.5,
+      "m_CameraVelocityScale": 0.0,
+      "m_VelocityScale": 0.0,
+      "m_LengthScale": 2.0,
+      "m_RenderAlignment": 0
+    }
+  },
+  {
+    "name": "Trails",
+    "fields": {
+      "m_RenderingLayerMask": 4294967295,
+      "m_RendererPriority": 0,
+      "m_RenderMode": 1,
+      "m_MinParticleSize": 0.0,
+      "m_MaxParticleSize": 0.5,
+      "m_CameraVelocityScale": 0.0,
+      "m_VelocityScale": 0.10000000149011612,
+      "m_LengthScale": 5.0,
+      "m_RenderAlignment": 0
+    }
+  },
+  {
+    "name": "SmokeTrail",
+    "fields": {
+      "m_RenderingLayerMask": 4294967295,
+      "m_RendererPriority": 0,
+      "m_RenderMode": 0,
+      "m_MinParticleSize": 0.0,
+      "m_MaxParticleSize": 0.5,
+      "m_CameraVelocityScale": 0.0,
+      "m_VelocityScale": 0.0,
+      "m_LengthScale": 2.0,
+      "m_RenderAlignment": 0
+    }
+  }
+]

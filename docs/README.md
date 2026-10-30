@@ -14,6 +14,49 @@ regenerate the catalog and verify links after later changes.
 
 ## Current authorities
 
+- [Vanilla laser width-only correction](ship-balance-research/laser-width-only-2026-10-30.md):
+  0.10.19 removes the rejected replacement renderer, preserves native appearance
+  and endpoints, and restores vanilla longitudinal texture spacing while changing
+  ribbon width. Current visual result user-accepted on 2026-10-30;
+  [checkpoint scope](ship-balance-research/battle-scale/acceptance-0.10.19-2026-10-30.md) preserves remaining validation limits.
+
+- [Immutable prepared combat contacts](ship-balance-research/immutable-combat-contact-2026-10-30.md):
+  0.10.17 prepares bone-local rigid/blended collision forests, shares pose/query
+  scratch, removes live geometry refits and ballistic global sync, and caches
+  threat bounds. Deployed; the 15x battle acceptance target remains pending.
+
+- [Projectile contact stall](ship-balance-research/projectile-contact-stall-2026-10-30.md):
+  0.10.16 prepares static collision trees at initialization, refits skinned
+  topology, and extends diagnostics beyond one minute. Deployed for testing;
+  runtime recovery and post-sync collider-fit results remain pending.
+
+- [Physical projectile contacts and performance](ship-balance-research/physical-projectile-contact-and-performance-2026-10-30.md):
+  0.10.15 uses the completed rendered trajectory for collision, rejects hidden/trigger
+  damage volumes and empty mesh corners, and removes recurring scale setup.
+  Experimental; runtime performance and contact acceptance remain pending.
+
+- [Configurable combat scale](ship-balance-research/configurable-combat-scale-2026-10-30.md):
+  0.10.14 exposes independent ship/projectile multipliers in mod settings,
+  defaults both to 10x, and shares them across prior dimensional fixes.
+  Values are captured for each battle; deployed for manual testing.
+- [Laser width and starting battle camera](ship-balance-research/laser-beam-and-starting-camera-2026-10-29.md):
+  0.10.13 removes camera-distance beam widening, matches visible apertures and
+  brings the initial camera closer with hull scaling. Deployed for manual testing.
+- [Skirmish asset-cache startup crash](ship-balance-research/skirmish-asset-cache-startup-crash-2026-10-29.md):
+  0.10.12 removes the early station-destruction hook that poisoned the native
+  asset cache and installs a runtime observer. Fresh-process skirmish loading is
+  confirmed by runtime logs and the user.
+- [Combat grid, formation spacing and explosions](ship-balance-research/battle-grid-formation-effects-2026-10-29.md):
+  0.10.11 scales blue grid-line thickness and combat fleet spacing, and sizes
+  destruction effects against visible geometry. Deployed for manual testing.
+- [Physical-scale rendering and camera follow-up](ship-balance-research/battle-scale-rendering-camera-followup-2026-10-29.md):
+  0.10.10 responds to manual ship/station invisibility, oversized path visuals,
+  close-zoom limits and overshoot, plus projectile tactical-display distance.
+  Deployed with automatic checks; manual acceptance remains pending.
+- [Battle scale, mesh colliders and camera minima](ship-balance-research/battle-scale-implementation-2026-10-23.md):
+  0.10.9 deploys physical metres, optional 20x/50x cinematic enlargement,
+  mesh-fitted damage geometry and twentyfold lower minimum camera speeds.
+  Automated validation passed; manual gameplay acceptance is pending.
 - [Canonical gunpowder art](ship-balance-research/gunpowder-canonical-art-implementation-2026-10-21.md):
   accepted 0.10.8 mesh-baked sizing resolves the reported cutout. Eight guarded
   profiles retain canonical preview/combat dimensions, unchanged stats/tiers,

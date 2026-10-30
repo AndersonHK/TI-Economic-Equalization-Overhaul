@@ -1035,10 +1035,26 @@ namespace TIEconomyMod.FormulaTests
                 ProjectileCollisionMath.CrossSectionalArea_m2(30f),
                 0.00000001f,
                 "30mm projectile cross-section follows physical diameter");
-            Near(0.00254f,
-                ProjectileCollisionMath.WorldDiameter_gameUnits(254f, 0.01f),
-                0.00000001f,
-                "projectile collider uses the ship-model cinematic scale");
+            Near(0.00005f, BattleScaleMath.ModelScale(1f), 0.000000001f,
+                "physical ship metre matches the combat kilometre conversion");
+            Near(0.00005f, BattleScaleMath.ProjectileScale(1f), 0.000000001f,
+                "physical projectile metre matches ships");
+            Near(0.001f, BattleScaleMath.ModelScale(20f), 0.000000001f,
+                "configured 20x ship scale retains the earlier cinematic size");
+            Near(0.0025f, BattleScaleMath.ProjectileScale(50f), 0.000000001f,
+                "configured 50x projectiles retain the earlier cinematic size");
+            Near(0.0005f, BattleScaleMath.ModelScale(10f), 0.000000001f, "10x ship trial scale");
+            Near(0.0005f, BattleScaleMath.ProjectileScale(10f), 0.000000001f, "10x projectile trial scale");
+            foreach (float invalid in new float[] { 0f, -1f, float.NaN, float.PositiveInfinity, 1001f, 0.001f })
+                Near(10f, BattleScaleMath.ValidMultiplier(invalid), 0f, "invalid combat multiplier repairs to 10x");
+            Near(0.01f, BattleScaleMath.ValidMultiplier(0.01f), 0f, "minimum combat multiplier is valid");
+            Near(1000f, BattleScaleMath.ValidMultiplier(1000f), 0f, "maximum combat multiplier is valid");
+            Near(0.0000127f,
+                ProjectileCollisionMath.WorldDiameter_gameUnits(254f, BattleScaleMath.ProjectileScale(1f)),
+                0.000000001f, "254mm projectile occupies 254mm of battle space");
+            Near(0.000635f,
+                ProjectileCollisionMath.WorldDiameter_gameUnits(254f, BattleScaleMath.ProjectileScale(50f)),
+                0.000000001f, "cinematic caliber follows projectile 50x scale");
             Near(40.40647f,
                 ProjectileCollisionMath.MagneticProjectileDiameter_mm(10f),
                 0.0001f,

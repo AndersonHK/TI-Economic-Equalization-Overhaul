@@ -58,6 +58,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="Unity.Entities">
       <HintPath>$(TargetManagedDir)\Unity.Entities.dll</HintPath>
       <Private>False</Private>
@@ -76,6 +78,10 @@
     </Reference>
     <Reference Include="UnityEngine.PhysicsModule">
       <HintPath>$(TargetManagedDir)\UnityEngine.PhysicsModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ParticleSystemModule">
+      <HintPath>$(TargetManagedDir)\UnityEngine.ParticleSystemModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.UIModule">
@@ -125,6 +131,23 @@
     <Compile Include="Core\ProbeSurveyStateMath.cs" />
     <Compile Include="Core\ProbeSurveyNotifications.cs" />
     <Compile Include="Core\ProjectileCollisionMath.cs" />
+    <Compile Include="Core\BattleScaleMath.cs" />
+    <Compile Include="Core\CombatViewMath.cs" />
+    <Compile Include="Core\RenderedMeshRaycast.cs" />
+    <Compile Include="Core\PreparedSkinnedContact.cs" />
+    <Compile Include="Core\PreparedContactWorld.cs" />
+    <Compile Include="Core\CombatContactMetrics.cs" />
+    <Compile Include="Core\BallisticContactRuntime.cs" />
+    <Compile Include="Patches\BallisticContactPatches.cs" />
+    <Compile Include="Core\CombatExplosionGeometry.cs" />
+    <Compile Include="Core\LaserBeamGeometry.cs" />
+    <Compile Include="Patches\LaserBeamCameraPatches.cs" />
+    <Compile Include="Patches\CombatSpacingEffectsPatches.cs" />
+    <Compile Include="Core\CombatRenderGeometry.cs" />
+    <Compile Include="Patches\CombatViewPatches.cs" />
+    <Compile Include="Core\CombatMeshGeometry.cs" />
+    <Compile Include="Core\BattleProjectileGeometry.cs" />
+    <Compile Include="Patches\BattleGeometryPatches.cs" />
     <Compile Include="Core\DirectFireCommitmentMath.cs" />
     <Compile Include="Core\ProjectileGeometryRegistry.cs" />
     <Compile Include="Core\PropellantDensityRegistry.cs" />

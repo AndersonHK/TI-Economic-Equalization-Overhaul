@@ -3,6 +3,234 @@
 This is a decision log for the proposed ship rebalance. Entries here describe
 the balance decisions as well as their implementation status.
 
+## 2026-10-30
+
+### 0.10.19 checkpoint accepted for commit/push
+
+- User confirmed the current visual result ("Ok, it's looking good") and
+  requested documentation, commit and push. Record this visual acceptance while
+  retaining the limited-performance and broader 15x coverage boundaries.
+- Close all pending combat geometry/camera work since the research checkpoint
+  as one documented 0.10.19 baseline, including the final vanilla width-only laser
+  correction. No runtime rebuild/change accompanies this acceptance update.
+- [Acceptance record](battle-scale/acceptance-0.10.19-2026-10-30.md) links the
+  validated deployment, installed DLL identity and remaining limitations.
+
+
+### 0.10.19: undo replacement, preserve vanilla laser length/texture
+
+- User rejected the 0.10.18 renderer substitution and clarified the texture-repeat
+  problem. The subpixel diagnosis was not established and is retracted as the
+  basis for that change. Keep vanilla laser appearance and modify ribbon width.
+- Remove Shapes renderer/dependency and endpoint bridge. Preserve native shader,
+  texture, color, width profile, endpoints, visibility and effects. Set only the
+  measured-aperture width multiplier; no unit width-curve replacement.
+- Cancel the ship-scale factor on U only, restoring vanilla longitudinal texture
+  feature/repeat length; retain native V and offsets. Capture once per activation,
+  restore on disable, and prevent cumulative active-refire correction.
+- Normal 41-validator / 52-file deployment passed. Add 72 UV period/reuse cases
+  and native-renderer preservation guards; the user subsequently accepted the
+  current visual result. Broader scenario coverage remains unconfirmed.
+  See the [correction report](laser-width-only-2026-10-30.md).
+
+
+### 0.10.18: rejected renderer replacement (removed in 0.10.19)
+
+- User reports adequate performance in limited 0.10.17 testing, and shallow-angle
+  beam gaps. Full 15x arrival acceptance remains unconfirmed.
+- Replace the native noisy/thin ribbon for combat lasers with a solid additive
+  Shapes billboard at the same measured aperture width. Shader coverage fading
+  handles subpixel footprint; no global AA change or distance width floor.
+- Forward native beam endpoints through one new hook. Configure width/style at
+  fire/reuse only; hide and clean up the extra renderer, restore native state.
+  Preserve native duration, targeting/damage, colors, particles, lights and audio.
+- Normal 41-validator deployment / 52-file verification passed. Installed API,
+  Bind-only width and no frame construction/width-reset guards added. GPU visual
+  and pooling acceptance remain pending; see the [report](laser-beam-continuity-2026-10-30.md).
+
+
+### 0.10.17: immutable contact geometry and shared pose queries
+
+- Fresh logs show skinned updates still dominating 0.10.16 (80-130 ms slow
+  passes); giant radiator envelopes admit unnecessary candidates. Threat checks
+  also repeatedly scan all ship parts for bounds.
+- Prepare shared bone-local rigid/blended forests at initialization and prewarm
+  missile resources. Preserve real blended skin motion; no frozen initial pose.
+  Use fitted bone envelopes and separate preallocated pose/query scratch. No
+  battle-time mesh bake, full vertex copy, tree build or refit in contact queries.
+- Use body/part rejection, shared snapshots, analytic primitive tests and cached
+  ray reciprocals. Ballistic queries bypass global physics synchronization and
+  verified instance-ID hits preserve the native damage path. Cache threat bounds.
+- Audit ten native base/DLC bind-pose mesh records, including 22,670-vertex,
+  twenty-bone radiators and unweighted Ark assets. All are readable/no blend shapes.
+- 1,753 contact checks and normal 41-validator deployment pass. A synthetic
+  48-arrival / 32-body / 19-overlapping-skin workload measures p95 4.820 ms with
+  zero query allocation. Full 15x battle acceptance and host behavior remain
+  pending; see the [implementation record](immutable-combat-contact-2026-10-30.md).
+
+
+### 0.10.16: remove contact-time collision-tree construction
+
+- Fresh logs show 64 then 34 trees built around the first hull contacts, with
+  construction consuming 29.229 then 10.744 ms/frame in those five-second
+  intervals. The worst user-reported stall occurred outside the old probe window.
+- Prepare shared static trees at initialization. Retain references per part;
+  skinned animation refits existing topology rather than invalidating/rebuilding.
+  Fitted primitive rounds avoid decorative-mesh tree construction.
+- Keep completed rendered-segment collision, exact static-mesh admission and
+  initialization-only scale. Add four topology-preserving deformation tests and
+  IL guards against contact-time BVH construction (215 contact cases total).
+- Extend bounded stage diagnostics to ten minutes and cap slow-pass logging;
+  distinguish pre-sync/post-sync fit probes. Absolute bounds errors require
+  better evidence than the earlier tiny-helper explanation.
+- Normal deployment passed 41 validators / 1,219 formula assertions and verified
+  52 files. Runtime recovery is pending; the measured 16-20 ms/frame physics-sync
+  cost remains. See the [stall report](projectile-contact-stall-2026-10-30.md).
+
+
+### 0.10.15: completed ballistic contacts and initialization-only geometry
+
+- Retain the native constant-world-velocity movement job as the only flight
+  integrator. Run ballistic contact after its completion using previous/current
+  rendered poses, rather than a separate forward forecast along initial aim.
+- Admit active registered nontrigger damage geometry; refine candidate boxes
+  against rendered triangles with shared cached BVHs. Preserve native damage,
+  impact, range and destruction code. No predetermined live ballistic hit roll
+  or forced near-miss path was found in the audited branch.
+- Remove per-frame collider dimension updates, late mesh-bake polling and
+  camera-render beam-curve rewrites. Configure static scale on creation/reuse;
+  tactical visibility changes only on threshold/resolution changes.
+- Correct the tiny helper-box minimum and add absolute bounds diagnostics.
+  Add bounded contact traces and stage/frame counters. This is experimental:
+  no measured tenfold recovery or stable-baseline claim without in-game evidence.
+- Keep independent ship/projectile settings at 10x/10x. See the
+  [audit, implementation and limitations](physical-projectile-contact-and-performance-2026-10-30.md).
+
+
+### 0.10.14: settings-backed 10x ship and projectile trial
+
+- Added `shipBalance.shipScaleMultiplier` and
+  `shipBalance.projectileScaleMultiplier`, both 10x in packaged settings and
+  constructor defaults. Settings UI exposes both; valid range is 0.01–1000.
+  Invalid/missing data repairs/defaults to 10. Multipliers override the old
+  fixed cinematic geometry choices in either mode.
+- Capture both values on combat initialization and release on exit. A scale
+  edit cannot mix existing hulls/colliders with new projectile or UI sizes;
+  edits apply next battle. External XML edits require a game restart.
+- Shared ship scale drives models/stations, fitted colliders, baked render
+  geometry, laser aperture width, grid/waypoint/arrow sizing, camera framing/
+  clipping/close controls, formation spacing and visible-bounds explosions.
+  Projectile scale drives bodies/colliders and tactical markers. Tracking is
+  anchored to the same 50x reference in both modes: 10x switches at 8 km.
+- Preserved gameplay templates and all earlier settings. The original settings
+  XML is retained as hash-verified regression evidence; only the two approved
+  new fields are excluded from its semantic comparison.
+- Normal deployment passed 41 validators, 1,219 formula assertions and 384
+  aperture comparisons; 52 files deployed. XML defaults/migration/round trip,
+  invalid repair, independent values and battle capture/recapture validate.
+  [Implementation and manual checks](configurable-combat-scale-2026-10-30.md).
+
+## 2026-10-29
+
+### 0.10.13: lens-matched laser ribbons and initial camera framing
+
+- User confirmed 0.10.12 no longer crashes. Fresh runtime evidence records
+  successful EEO loading, skirmish creation, formation placement and firing.
+- Native beam rendering widens ribbons with a camera-distance floor unrelated
+  to optics. Combat laser ribbons now use measured aperture/body ratios from
+  sixteen guarded resources and the live mesh/transform, preserving scale and
+  mesh-bake compensation. Line state restores on disable/reuse. Unknown art
+  explicitly falls back to the native template mirror diameter in model units.
+- Kept laser meshes, simulation aperture, damage and endpoints unchanged.
+  Initial camera orbit and fleet/station offsets receive the model reduction,
+  bringing physical-mode orbit baseline 40 km to 2 km. Far/near controls retain
+  their established behavior.
+- Normal deployment passed all 41 validators, 1,209 formula assertions, 192
+  aperture scale/bake/mirror comparisons and six guarded opening-camera edits.
+  An earlier validation attempt stopped before copying on PowerShell typed
+  decimal syntax; leading zeros and positive fixture guards correct that issue
+  for aperture and earlier formation/effect cases.
+  [Implementation and manual checks](laser-beam-and-starting-camera-2026-10-29.md).
+
+### 0.10.12: avoid poisoning AssetCacheManager during startup patching
+
+- User crash log identifies the 0.10.11 `DestroyHabModule` Harmony wrapper
+  triggering the native asset-cache initializer before its asset loader exists.
+  EEO then reports Not loaded; later skirmish visualizer initialization fails
+  because the failed static initializer remains poisoned for the process.
+- Removed that native destruction patch. The station-effect observer attaches
+  at the existing `InitializeForCombat` boundary, discovers new destruction
+  children at runtime and disarms on combat exit.
+- Added a metadata/IL guard rejecting direct AssetCacheManager references in
+  the 30 explicit battle-hook targets, including a negative regression case
+  against the actual failed method. No static cache values are read in the test.
+- Normal deployment passed all 41 validators and 1,209 formula assertions;
+  51 files installed. Live game launch was rejected by computer-use app approval;
+  fresh-process skirmish confirmation remains pending.
+  [Diagnosis and evidence](skirmish-asset-cache-startup-crash-2026-10-29.md).
+  Subsequent runtime logs and user testing confirmed successful loading.
+
+### 0.10.11: grid thickness, formation density and destruction effects
+
+- Added a separate guarded `CombatGrid.Update` thickness rewrite; grid endpoints
+  and tactical input reach are preserved.
+- Combat formation factors become 0.005 physical / 0.1 cinematic, reducing
+  intra-fleet spacing 20x / 10x relative to the original same-mode baseline.
+  Setup, live changes and reinforcements share the native getter. Strategic
+  offsets and the initial opposing-fleet separation remain native.
+- Destruction effects derive absolute world size from visible hull/part bounds
+  and the particle prefab's largest authored start size. Renderer-parent scale
+  compensation and hierarchy particle sizing prevent oversized effects or
+  repeated multiplication. Ship, weapon, radiator, station and dynamically
+  generated particle-group paths are covered. Gameplay damage ranges are unchanged.
+- Spatial explosion jitter follows the model reduction; effect timing and
+  native later burst variation are retained. Ship effect state restores before
+  render geometry on combat exit.
+- Normal deployment passed all 41 validators and 1,209 formula assertions;
+  51 files installed. [Implementation and manual checks](battle-grid-formation-effects-2026-10-29.md).
+
+### 0.10.10: physical-scale rendering and tactical view corrections
+
+- User testing of 0.10.9 exposed invisible stations/ships, oversized paths,
+  insufficient closest zoom and free-look zoom passing ships from the side.
+- Applied the accepted private-mesh baking technique to solid ship/station
+  renderers while preserving world geometry, child pivots/muzzles, materials,
+  collider fit and exit restoration. Unreadable base/DLC meshes use guarded,
+  compressed CPU copies loaded on demand. GPU cause remains unproven.
+- Scaled world-space trajectory thickness and waypoint gain/minimum by the
+  model reduction. Native trajectory points and pixel-width lines are retained.
+- Closest zoom and world-camera clipping track the model reduction, with an
+  object-bounds standoff and a segment/sphere stop for free-look dolly travel.
+- Added the user's projectile tactical-view request: the native 40 km tracking
+  envelope becomes 800 m in physical mode and 4 km in cinematic mode. Ballistic
+  tactical tracers are separate from close-up caliber bodies and hitboxes.
+- Normal build/validation/deployment passed with 51 files. The implementation
+  remains uncommitted and manual visual acceptance is pending.
+  [Implementation and evidence](battle-scale-rendering-camera-followup-2026-10-29.md).
+
+## 2026-10-23
+
+### 0.10.9: physical battle scale and fitted damage geometry
+
+- Committed and pushed the prior read-only reports as `90493da`; verified
+  origin/master matches the commit.
+- Cinematic off now uses 0.00005 scene units per metre for ships, stations
+  and projectiles. Cinematic on uses 0.001 for models and 0.0025 for
+  projectiles: 20x and 50x. Battle kilometre/velocity conversions are unchanged.
+- Replaced authored damage primitives with boxes matching individual solid
+  mesh bounds, following animated transforms and restoring native model state
+  on exit. Caliber/mass-derived gunpowder and magnetic bodies replace oversized
+  flight particles; plasma uses its authored particle diameter, missiles their
+  solid meshes. Selection/proximity triggers and non-damaging VFX stay separate.
+- Actual bounds feed ship navigation sizing and predicted threat spheres.
+  Formation exit cannot re-enable replaced station boxes. Missile sweep no
+  longer adds 460 m or 3.5x travel lookahead.
+- Reduced only minimum camera movement 5 to 0.25 and minimum scrolling
+  coefficient -200 to -10. The full camera redesign remains deferred.
+- Normal final deployment passed all 41 validators, 1,209 formula assertions,
+  and package/deployment checks. Live scene/bounds and gameplay acceptance
+  remain manual. [Implementation and evidence](battle-scale-implementation-2026-10-23.md).
+
 ## 2026-10-21
 
 ### Accepted 0.10.8 and documentation organization

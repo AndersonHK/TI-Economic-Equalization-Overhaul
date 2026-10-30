@@ -6,6 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Reflection.Emit;
 using UnityEngine;
+using System.Reflection;
+using TIEconomyMod.Core;
 
 namespace TIEconomyMod.Patches
 {
@@ -21,86 +23,6 @@ namespace TIEconomyMod.Patches
         }
     }
 
-    internal static class ProjectileColliderSizer
-    {
-        private static bool unsupportedColliderReported;
-
-        public static void Apply(
-            ProjectileController projectile, float diameter_mm)
-        {
-            Collider collider = projectile.projectileCollider;
-            if (collider == null || diameter_mm <= 0f)
-            {
-                return;
-            }
-
-            // Ship combat models use metres times modelScalingFactor. Use the
-            // same cinematic scale for projectile caliber: much smaller than
-            // BulletGun's generic box, while remaining stable in Unity physics.
-            float worldDiameter =
-                ProjectileCollisionMath.WorldDiameter_gameUnits(
-                    diameter_mm,
-                    GameControl.spaceCombat.modelScalingFactor);
-            Vector3 scale = collider.transform.lossyScale;
-            float scaleX = SafeScale(scale.x);
-            float scaleY = SafeScale(scale.y);
-            float scaleZ = SafeScale(scale.z);
-
-            BoxCollider box = collider as BoxCollider;
-            if (box != null)
-            {
-                box.size = new Vector3(
-                    worldDiameter / scaleX,
-                    worldDiameter / scaleY,
-                    worldDiameter / scaleZ);
-                return;
-            }
-
-            SphereCollider sphere = collider as SphereCollider;
-            if (sphere != null)
-            {
-                sphere.radius = worldDiameter /
-                    (2f * Math.Max(scaleX, Math.Max(scaleY, scaleZ)));
-                return;
-            }
-
-            CapsuleCollider capsule = collider as CapsuleCollider;
-            if (capsule != null)
-            {
-                float maximumScale = Math.Max(
-                    scaleX, Math.Max(scaleY, scaleZ));
-                capsule.radius = worldDiameter / (2f * maximumScale);
-                capsule.height = 2f * capsule.radius;
-                return;
-            }
-
-            string replacedType = collider.GetType().Name;
-            collider.enabled = false;
-            BoxCollider replacement =
-                collider.gameObject.AddComponent<BoxCollider>();
-            replacement.center = Vector3.zero;
-            replacement.size = new Vector3(
-                worldDiameter / scaleX,
-                worldDiameter / scaleY,
-                worldDiameter / scaleZ);
-            projectile.hitColliders.Remove(collider);
-            projectile.hitColliders.Add(replacement);
-            projectile.projectileCollider = replacement;
-
-            if (!unsupportedColliderReported)
-            {
-                unsupportedColliderReported = true;
-                Main.Warn("Replaced unsupported projectile collider type '" +
-                    replacedType + "' with a caliber-sized box.");
-            }
-        }
-
-        private static float SafeScale(float value)
-        {
-            return Math.Max(0.000001f, Math.Abs(value));
-        }
-    }
-
     [HarmonyPatch(typeof(BallisticProjectileController), "Fire")]
     public static class ProjectileColliderSizingPatch
     {
@@ -112,12 +34,7 @@ namespace TIEconomyMod.Patches
                 return;
             }
 
-            float diameter_mm;
-            if (ProjectileGeometryRegistry.TryGetDiameter_mm(
-                __instance.projectileState.originWeapon, out diameter_mm))
-            {
-                ProjectileColliderSizer.Apply(__instance, diameter_mm);
-            }
+            TIEconomyMod.Core.BattleProjectileGeometry.Apply(__instance);
         }
     }
 
@@ -165,8 +82,21 @@ namespace TIEconomyMod.Patches
             List<CodeInstruction> patched =
                 new List<CodeInstruction>(instructions);
             int replacements = 0;
+            int casts=0,reflections=0;
+            var result=new List<CodeInstruction>();
             foreach (CodeInstruction instruction in patched)
             {
+                MethodInfo method=instruction.operand as MethodInfo;
+                if(method!=null&&method.DeclaringType==typeof(Physics)&&method.Name=="RaycastAll")
+                {
+                    var load=new CodeInstruction(OpCodes.Ldarg_0);load.labels.AddRange(instruction.labels);instruction.labels.Clear();
+                    result.Add(load);instruction.operand=AccessTools.Method(typeof(BallisticContactRuntime),nameof(BallisticContactRuntime.CastCompletedStep));casts++;
+                }
+                if(method!=null&&method.DeclaringType==typeof(Vector3)&&method.Name=="Reflect")
+                {
+                    var load=new CodeInstruction(OpCodes.Ldarg_0);load.labels.AddRange(instruction.labels);instruction.labels.Clear();
+                    result.Add(load);instruction.operand=AccessTools.Method(typeof(BallisticContactRuntime),nameof(BallisticContactRuntime.ReflectFlight));reflections++;
+                }
                 if (instruction.opcode == OpCodes.Ldc_R4 &&
                     instruction.operand is float &&
                     Math.Abs((float)instruction.operand - 1.2f) < 0.000001f)
@@ -177,6 +107,7 @@ namespace TIEconomyMod.Patches
                         "ActiveMovementSweepMultiplier");
                     replacements++;
                 }
+                result.Add(instruction);
             }
 
             if (replacements != 1)
@@ -186,7 +117,8 @@ namespace TIEconomyMod.Patches
                     "multiplier, found " + replacements + ".");
             }
 
-            return patched;
+            if(casts!=1||reflections!=1)throw new InvalidOperationException("Ballistic physical contact call sites changed.");
+            return result;
         }
     }
 

@@ -565,6 +565,8 @@ namespace TIEconomyMod
     public sealed class ShipBalanceSettings
     {
         public bool enabled = true;
+        public float shipScaleMultiplier = 10f;
+        public float projectileScaleMultiplier = 10f;
         public bool correctPowerPlantWasteHeat = true;
         public bool openCycleResidualHeatEnabled = true;
         public float openCycleDriveHeatFraction = 0.01f;

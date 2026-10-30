@@ -1,6 +1,66 @@
 # TI Economic Equalization Overhaul
 
-Current release: **0.10.8**, validated against **Terra Invicta 1.0.53b**.
+Current release: **0.10.19**, validated against **Terra Invicta 1.0.53b**.
+
+Release 0.10.19 restores vanilla laser rendering and changes only ribbon width,
+with longitudinal texture spacing preserved at the vanilla reference. The 0.10.18
+renderer replacement was rejected and removed. The user accepted the current
+visual result on 2026-10-30; see [the acceptance record](docs/ship-balance-research/battle-scale/acceptance-0.10.19-2026-10-30.md) and
+[the width-only correction](docs/ship-balance-research/laser-width-only-2026-10-30.md).
+
+Release 0.10.17 prepares immutable bone-local collision data and uses shared
+pose/query snapshots instead of live skin baking/refitting. It removes ballistic
+physics synchronization and repeated threat-bound scans. Deployed for testing;
+the full 15x battle target remains pending. See the
+[prepared contact implementation and measurements](docs/ship-balance-research/immutable-combat-contact-2026-10-30.md).
+
+Release 0.10.16 moves static collision-tree construction into object preparation
+and refits existing skinned trees instead of rebuilding them when rounds approach.
+It preserves completed-path collision and extends bounded stall diagnostics.
+Deployed for manual testing; the measured physics-sync cost remains. See the
+[contact-stall follow-up](docs/ship-balance-research/projectile-contact-stall-2026-10-30.md).
+
+Release 0.10.15 is an experimental ballistic-contact and performance correction.
+Collision now queries the rendered projectile's completed native movement segment,
+with registered damage geometry and exact static-mesh refinement. Scale setup
+runs at creation/reuse; recurring collider, mesh-bake and beam-width writes are
+removed. Runtime contact/performance acceptance remains pending; see the
+[contact and performance report](docs/ship-balance-research/physical-projectile-contact-and-performance-2026-10-30.md).
+
+Release 0.10.14 makes ship/station and projectile scale independently adjustable
+in Ship Balance mod settings. Both default to **10x**, override cinematic
+geometry sizing, and apply at the next battle. Prior geometry, tactical-display,
+3D UI, camera and spacing fixes share the appropriate captured scale. See
+[settings and the 10x trial](docs/ship-balance-research/configurable-combat-scale-2026-10-30.md).
+
+Release 0.10.13 matches combat laser ribbon width to the visible lens aperture
+and scales initial camera orbit/offsets with hull size. It retains the
+user-confirmed skirmish startup fix. Deployed for manual testing; see
+[laser width and starting camera](docs/ship-balance-research/laser-beam-and-starting-camera-2026-10-29.md).
+
+Release 0.10.12 fixes the 0.10.11 skirmish startup regression: station
+explosions now use a runtime observer instead of an early patch that initialized
+the native asset cache too soon. Restart the game before retesting.
+See the [crash diagnosis and regression guard](docs/ship-balance-research/skirmish-asset-cache-startup-crash-2026-10-29.md).
+
+Release 0.10.11 scales the blue combat grid lines, brings formation spacing
+into proportion with hulls, and fits destruction effects to visible ship/part
+dimensions. Deployed for manual testing; see the
+[grid, spacing and explosion record](docs/ship-balance-research/battle-grid-formation-effects-2026-10-29.md).
+
+Release 0.10.10 extends the accepted mesh-baking approach to physical-scale
+ships and stations, including unreadable native/DLC mesh data. It scales
+world-space trajectories and waypoints, permits proportionally closer zoom,
+stops free-look zoom crossing the selected object, and brings projectile
+tactical displays fifty times closer in physical mode. Deployed for manual
+testing; see the [rendering and camera follow-up](docs/ship-balance-research/battle-scale-rendering-camera-followup-2026-10-29.md).
+
+Release 0.10.9 uses physical combat metres with cinematic scaling off, and
+20x ship/station plus 50x projectile enlargement with it on. Damage colliders
+follow solid mesh parts; caliber rounds have matching simple visible bodies.
+Minimum camera movement and scrolling speeds are reduced twentyfold.
+The build is deployed for manual testing. See the
+[implementation and test checklist](docs/ship-balance-research/battle-scale-implementation-2026-10-23.md).
 
 Release 0.10.8 scales all eight existing gunpowder models to their canonical
 bores using private mesh copies and scaled pivots/muzzle transforms. The user

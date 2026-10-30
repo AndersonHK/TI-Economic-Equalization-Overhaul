@@ -1,0 +1,3405 @@
+{
+  "sources": {
+    "TerraInvicta_Data/StreamingAssets/AssetBundles/ships": "F1804254B5C6F2C2FFBF78C333738F462BAA18023AC5AACF9A8EACAA4D9F09A4",
+    "TerraInvicta_Data/StreamingAssets/AssetBundles/habmodules": "07CB503D152DE224526468BA04E6A9A090F0E627EBA0BA5B0391B6F04B12BA29",
+    "TerraInvicta_Data/StreamingAssets/AssetBundles/shipweapons": "9DFCF8E93536DC400A00428AF2D6C32226BAC44F1ECD88B874D8F946E9EA912E",
+    "DLC_Content/DarkSkies/AssetBundles/ships_prm": "58F8B233CD7814F3CD536B46725369F69D6EC58AA260E580DE9D1E1268CF5D63"
+  },
+  "meshes": [
+    {
+      "bundle": "TerraInvicta_Data/StreamingAssets/AssetBundles/ships",
+      "name": "Earth_Spikes_Radiator",
+      "readable": true,
+      "vertices": 22670,
+      "bones": 20,
+      "weighted_vertices": 22670,
+      "blended_vertices": 180,
+      "blend_shapes": 0,
+      "skin_renderers": [
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        }
+      ]
+    },
+    {
+      "bundle": "TerraInvicta_Data/StreamingAssets/AssetBundles/ships",
+      "name": "Earth_LC_Single_Radiator",
+      "readable": true,
+      "vertices": 1434,
+      "bones": 36,
+      "weighted_vertices": 1434,
+      "blended_vertices": 1044,
+      "blend_shapes": 0,
+      "skin_renderers": [
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        }
+      ]
+    },
+    {
+      "bundle": "TerraInvicta_Data/StreamingAssets/AssetBundles/ships",
+      "name": "Hydra_Spikes_Radiator",
+      "readable": true,
+      "vertices": 331,
+      "bones": 88,
+      "weighted_vertices": 331,
+      "blended_vertices": 205,
+      "blend_shapes": 0,
+      "skin_renderers": []
+    },
+    {
+      "bundle": "TerraInvicta_Data/StreamingAssets/AssetBundles/ships",
+      "name": "Earth_Ark_Radiators_A",
+      "readable": true,
+      "vertices": 6848,
+      "bones": 8,
+      "weighted_vertices": 0,
+      "blended_vertices": 0,
+      "blend_shapes": 0,
+      "skin_renderers": [
+        {
+          "bones": 8,
+          "quality": 0
+        }
+      ]
+    },
+    {
+      "bundle": "TerraInvicta_Data/StreamingAssets/AssetBundles/ships",
+      "name": "Earth_Droplet_Radiator",
+      "readable": true,
+      "vertices": 1779,
+      "bones": 2,
+      "weighted_vertices": 1779,
+      "blended_vertices": 268,
+      "blend_shapes": 0,
+      "skin_renderers": [
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        }
+      ]
+    },
+    {
+      "bundle": "TerraInvicta_Data/StreamingAssets/AssetBundles/ships",
+      "name": "Earth_Ark_Phase_01_Radiators_A",
+      "readable": true,
+      "vertices": 1760,
+      "bones": 4,
+      "weighted_vertices": 0,
+      "blended_vertices": 0,
+      "blend_shapes": 0,
+      "skin_renderers": [
+        {
+          "bones": 4,
+          "quality": 0
+        }
+      ]
+    },
+    {
+      "bundle": "TerraInvicta_Data/StreamingAssets/AssetBundles/ships",
+      "name": "Earth_Ark_UC_Radiators_A",
+      "readable": true,
+      "vertices": 3424,
+      "bones": 4,
+      "weighted_vertices": 0,
+      "blended_vertices": 0,
+      "blend_shapes": 0,
+      "skin_renderers": [
+        {
+          "bones": 4,
+          "quality": 0
+        }
+      ]
+    },
+    {
+      "bundle": "DLC_Content/DarkSkies/AssetBundles/ships_prm",
+      "name": "Earth_Spikes_Radiator",
+      "readable": true,
+      "vertices": 22670,
+      "bones": 20,
+      "weighted_vertices": 22670,
+      "blended_vertices": 180,
+      "blend_shapes": 0,
+      "skin_renderers": [
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        },
+        {
+          "bones": 20,
+          "quality": 0
+        }
+      ]
+    },
+    {
+      "bundle": "DLC_Content/DarkSkies/AssetBundles/ships_prm",
+      "name": "Earth_LC_Single_Radiator",
+      "readable": true,
+      "vertices": 1434,
+      "bones": 36,
+      "weighted_vertices": 1434,
+      "blended_vertices": 1044,
+      "blend_shapes": 0,
+      "skin_renderers": [
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        },
+        {
+          "bones": 36,
+          "quality": 0
+        }
+      ]
+    },
+    {
+      "bundle": "DLC_Content/DarkSkies/AssetBundles/ships_prm",
+      "name": "Earth_Droplet_Radiator",
+      "readable": true,
+      "vertices": 1779,
+      "bones": 2,
+      "weighted_vertices": 1779,
+      "blended_vertices": 268,
+      "blend_shapes": 0,
+      "skin_renderers": [
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        },
+        {
+          "bones": 2,
+          "quality": 0
+        }
+      ]
+    }
+  ]
+}

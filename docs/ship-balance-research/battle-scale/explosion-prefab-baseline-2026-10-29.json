@@ -1,0 +1,263 @@
+{
+  "assets/artresources/visual effects/space combat effects/explosions/bigexplosion.prefab": {
+    "name": "BigExplosion",
+    "particles": [
+      {
+        "scalingMode": 0,
+        "moveWithTransform": 0,
+        "lengthInSec": 2.0,
+        "startSize": 3.0
+      }
+    ],
+    "children": [
+      {
+        "name": "Light",
+        "particles": [
+          {
+            "scalingMode": 0,
+            "moveWithTransform": 0,
+            "lengthInSec": 2.0,
+            "startSize": 1.0
+          }
+        ],
+        "children": [],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "name": "Embers",
+        "particles": [
+          {
+            "scalingMode": 0,
+            "moveWithTransform": 0,
+            "lengthInSec": 2.0,
+            "startSize": 0.05000000074505806
+          }
+        ],
+        "children": [
+          {
+            "name": "Embers (1)",
+            "particles": [
+              {
+                "scalingMode": 0,
+                "moveWithTransform": 0,
+                "lengthInSec": 2.0,
+                "startSize": 0.05000000074505806
+              }
+            ],
+            "children": [],
+            "scale": [
+              1.0,
+              1.0,
+              1.0
+            ]
+          }
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "name": "AdditonalSmoke",
+        "particles": [
+          {
+            "scalingMode": 0,
+            "moveWithTransform": 0,
+            "lengthInSec": 2.0,
+            "startSize": 1.0
+          }
+        ],
+        "children": [],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "name": "Shockwave",
+        "particles": [
+          {
+            "scalingMode": 0,
+            "moveWithTransform": 0,
+            "lengthInSec": 2.0,
+            "startSize": 15.0
+          }
+        ],
+        "children": [],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "name": "Debris",
+        "particles": [
+          {
+            "scalingMode": 0,
+            "moveWithTransform": 0,
+            "lengthInSec": 2.0,
+            "startSize": 0.5
+          }
+        ],
+        "children": [
+          {
+            "name": "SmokeTrail",
+            "particles": [
+              {
+                "scalingMode": 0,
+                "moveWithTransform": 1,
+                "lengthInSec": 2.0,
+                "startSize": 3.0
+              }
+            ],
+            "children": [],
+            "scale": [
+              1.0,
+              1.0,
+              1.0
+            ]
+          }
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      }
+    ],
+    "scale": [
+      0.20000000298023224,
+      0.20000000298023224,
+      0.20000000298023224
+    ]
+  },
+  "assets/artresources/visual effects/space combat effects/explosions/finalexplosion.prefab": {
+    "name": "FinalExplosion",
+    "particles": [
+      {
+        "scalingMode": 0,
+        "moveWithTransform": 0,
+        "lengthInSec": 4.0,
+        "startSize": 3.0
+      }
+    ],
+    "children": [
+      {
+        "name": "Light",
+        "particles": [
+          {
+            "scalingMode": 0,
+            "moveWithTransform": 0,
+            "lengthInSec": 2.0,
+            "startSize": 1.0
+          }
+        ],
+        "children": [],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "name": "Embers",
+        "particles": [
+          {
+            "scalingMode": 0,
+            "moveWithTransform": 0,
+            "lengthInSec": 2.0,
+            "startSize": 0.05000000074505806
+          }
+        ],
+        "children": [
+          {
+            "name": "Embers (1)",
+            "particles": [
+              {
+                "scalingMode": 0,
+                "moveWithTransform": 0,
+                "lengthInSec": 2.0,
+                "startSize": 0.05000000074505806
+              }
+            ],
+            "children": [],
+            "scale": [
+              1.0,
+              1.0,
+              1.0
+            ]
+          }
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "name": "Shockwave",
+        "particles": [
+          {
+            "scalingMode": 0,
+            "moveWithTransform": 0,
+            "lengthInSec": 2.0,
+            "startSize": 15.0
+          }
+        ],
+        "children": [],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "name": "Debris",
+        "particles": [
+          {
+            "scalingMode": 0,
+            "moveWithTransform": 0,
+            "lengthInSec": 2.0,
+            "startSize": 0.5
+          }
+        ],
+        "children": [
+          {
+            "name": "SmokeTrail",
+            "particles": [
+              {
+                "scalingMode": 0,
+                "moveWithTransform": 1,
+                "lengthInSec": 2.0,
+                "startSize": 3.0
+              }
+            ],
+            "children": [],
+            "scale": [
+              1.0,
+              1.0,
+              1.0
+            ]
+          }
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      }
+    ],
+    "scale": [
+      1.0,
+      1.0,
+      1.0
+    ]
+  }
+}

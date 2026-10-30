@@ -140,6 +140,37 @@ foreach ($name in @('LightCoilgunBatteryMk1','PointDefenseLaserTurret','25mmAuto
 # Every gameplay/localization file has identical bytes to the pre-art baseline.
 $baseline = Get-Content -LiteralPath (Join-Path $RepositoryRoot 'docs\ship-balance-research\gunpowder-art\gameplay-data-baseline.json') -Raw | ConvertFrom-Json
 foreach ($property in $baseline.PSObject.Properties) {
+    if ($property.Name -eq 'TIEconomyMod\ModFiles\Settings.xml') {
+        # Preserve the original byte/hash evidence; compare all prior settings
+        # semantically after removing only the two newly approved scale fields.
+        $priorPath = Join-Path $RepositoryRoot 'docs\ship-balance-research\battle-scale\settings-pre-configurable-scale-2026-10-30.xml'
+        if ((Get-FileHash $priorPath).Hash -ne $property.Value) { throw 'Historical settings snapshot no longer matches the art baseline.' }
+        $prior = New-Object Xml.XmlDocument
+        $prior.Load($priorPath)
+        $current = New-Object Xml.XmlDocument
+        $current.Load((Join-Path $RepositoryRoot $property.Name))
+        foreach ($field in @('shipScaleMultiplier','projectileScaleMultiplier')) {
+            $node = $current.SelectSingleNode("/Settings/shipBalance/$field")
+            if ($null -eq $node -or $node.InnerText -ne '10') { throw "Expected 10x trial setting: $field" }
+            [void]$node.ParentNode.RemoveChild($node)
+        }
+        if ($prior.OuterXml -ne $current.OuterXml) { throw 'Unrelated settings changed during the configurable scale pass.' }
+        continue
+    }
+    # 0.10.9 deliberately changes only the two camera minima in this file.
+    # The historical byte baseline remains intact; verify its other fields.
+    if ($property.Name -eq 'TIEconomyMod\ModFiles\TIGlobalConfig.json') {
+        $global = Get-Content -LiteralPath (Join-Path $RepositoryRoot $property.Name) -Raw | ConvertFrom-Json
+        $expected = @{ dataName='globalConfig'; controlPointMaintenanceFreebies=0; councilorMaxOrgs=18;
+            combatCamera_minCameraMovementSpeed=0.25; combatCamera_minScrollSpeedOffset=-10;
+            crewWaterConsumptionTons_year=2; crewVolatilesConsumptionTons_year=2;
+            probePayloadBaseline_tons=0.325; probePayloadPerHabSite_tons=0 }
+        if (@($global).Count -ne 1 -or @($global[0].PSObject.Properties).Count -ne $expected.Count) { throw 'Unexpected global override fields.' }
+        foreach ($key in $expected.Keys) {
+            if ($global[0].$key -ne $expected[$key]) { throw "Unexpected global override value: $key" }
+        }
+        continue
+    }
     if ((Get-FileHash -LiteralPath (Join-Path $RepositoryRoot $property.Name) -Algorithm SHA256).Hash -ne $property.Value) {
         throw "Gameplay data changed during the art pass: $($property.Name)"
     }

@@ -3,6 +3,8 @@
     "dataName": "globalConfig",
     "controlPointMaintenanceFreebies": 0,
     "councilorMaxOrgs": 18,
+    "combatCamera_minCameraMovementSpeed": 0.25,
+    "combatCamera_minScrollSpeedOffset": -10,
     "crewWaterConsumptionTons_year": 2,
     "crewVolatilesConsumptionTons_year": 2,
     "probePayloadBaseline_tons": 0.325,

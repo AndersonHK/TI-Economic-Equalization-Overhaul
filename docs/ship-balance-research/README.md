@@ -1,6 +1,6 @@
 # Ship balance: implementations, plans and evidence
 
-Last reviewed: 2026-10-23. Use current implementation records for released
+Last reviewed: 2026-10-30. Use current implementation records for released
 behavior, planning records for unimplemented choices, and dated measurements
 for their stated baselines. The [implementation matrix](../current-implementation-matrix.xlsx)
 and [decision changelog](CHANGELOG.md) provide cross-checks. The
@@ -8,6 +8,20 @@ and [decision changelog](CHANGELOG.md) provide cross-checks. The
 
 ## Current implementations
 
+- [0.10.19 vanilla laser width](laser-width-only-2026-10-30.md): rejected renderer replacement removed; native appearance/width profile/endpoints retained and longitudinal texture repeat restored. Current result user-accepted; [checkpoint](battle-scale/acceptance-0.10.19-2026-10-30.md) records scope and remaining limits.
+
+- [0.10.17 immutable prepared contacts](immutable-combat-contact-2026-10-30.md): bone-local forests and shared pose/query snapshots replace live skin updates; ballistic physics sync and repeated threat-bound scans removed. Deployed; synthetic p95 4.820 ms, full 15x gameplay acceptance pending.
+
+- [0.10.16 contact stall](projectile-contact-stall-2026-10-30.md): measured contact-time tree builds moved to preparation; skinned topology refit replaces reconstruction. Deployed for testing; runtime recovery and synchronized fit readbacks pending.
+
+- [0.10.15 physical contacts and performance](physical-projectile-contact-and-performance-2026-10-30.md): one native flight integration, completed-segment mesh contact and initialization-only static scale setup. Experimental; in-game contact and performance acceptance pending.
+
+- [0.10.14 configurable combat scale](configurable-combat-scale-2026-10-30.md): two mod settings default to 10x/10x; geometry, tactical display and ship-related 3D UI/camera/spacing share captured per-battle values. Deployed for manual testing.
+- [0.10.13 laser width and starting camera](laser-beam-and-starting-camera-2026-10-29.md): measured lens-matched combat ribbons and proportionally closer opening camera framing. Deployed for manual acceptance.
+- [0.10.12 skirmish startup fix](skirmish-asset-cache-startup-crash-2026-10-29.md): confirmed early AssetCacheManager initializer failure, safer station-effect observer and direct-cache-reference regression guard. Fresh startup/skirmish success confirmed by logs and the user.
+- [0.10.11 grid, formation spacing and explosions](battle-grid-formation-effects-2026-10-29.md): proportional blue grid lines, closer combat spacing and hull/part-fitted destruction effects. Deployed for manual testing.
+- [0.10.10 rendering, paths and close zoom](battle-scale-rendering-camera-followup-2026-10-29.md): private mesh baking for ships/stations, scaled path visuals, closer camera limits with dolly stop, and projectile tactical displays. Deployed for manual acceptance.
+- [0.10.9 battle geometry and camera minima](battle-scale-implementation-2026-10-23.md): physical combat metres, 20x/50x cinematic enlargement, mesh-fitted damage geometry and twentyfold lower minimum camera speeds. Deployed for manual testing.
 - [Accepted 0.10.8 gunpowder art](gunpowder-canonical-art-implementation-2026-10-21.md): eight canonical calibers, private mesh-baked geometry, reversible state and unchanged stats/tiers. [Manual/deployment evidence](gunpowder-art/README.md) records the successful user test.
 - [0.10.4 symmetric Mothership geometry](mothership-symmetric-mount-implementation-2026-10-21.md): twenty authored pairs, sixteen active guns, unchanged mass and the UI-capacity decision.
 - [0.10.0 capital heavy mounts](capital-heavy-mount-implementation.md): current fitting, migration, mass and crew rules.

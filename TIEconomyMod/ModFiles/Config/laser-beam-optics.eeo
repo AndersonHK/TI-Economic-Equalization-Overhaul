@@ -1,0 +1,103 @@
+{
+  "schema": 1,
+  "assemblySha256": "4A4B9AAE4154E444E9727204205D2D42AE8ED9E1C5F92CDC1280074A259D8350",
+  "weaponBundleSha256": "9DFCF8E93536DC400A00428AF2D6C32226BAC44F1ECD88B874D8F946E9EA912E",
+  "profiles": [
+    {
+      "resource": "shipweapons/alien_huge_laser_cannon",
+      "meshName": "huge_laser_cannon",
+      "xRatio": 0.7097219635491582,
+      "yRatio": 0.8305535013374734
+    },
+    {
+      "resource": "shipweapons/alien_large_laser_battery",
+      "meshName": "large_laser_battery",
+      "xRatio": 0.23517278543804315,
+      "yRatio": 0.7146624901874958
+    },
+    {
+      "resource": "shipweapons/alien_large_laser_cannon",
+      "meshName": "large_laser_cannon",
+      "xRatio": 0.7097219784716672,
+      "yRatio": 0.8305534554544269
+    },
+    {
+      "resource": "shipweapons/alien_medium_laser_battery",
+      "meshName": "medium_laser_battery",
+      "xRatio": 0.22801853733053862,
+      "yRatio": 0.5434506756472476
+    },
+    {
+      "resource": "shipweapons/alien_medium_laser_cannon",
+      "meshName": "medium_laser_cannon",
+      "xRatio": 0.709721978471667,
+      "yRatio": 0.8305533917699846
+    },
+    {
+      "resource": "shipweapons/alien_point_defense_laser_battery",
+      "meshName": "PointDefenseLaserBattery",
+      "xRatio": 0.300555216292953,
+      "yRatio": 0.3159121744236648
+    },
+    {
+      "resource": "shipweapons/alien_small_laser_battery",
+      "meshName": "small_laser_battery",
+      "xRatio": 0.3204496333126885,
+      "yRatio": 0.5348491267907274
+    },
+    {
+      "resource": "shipweapons/alien_small_laser_cannon",
+      "meshName": "small_laser_cannon",
+      "xRatio": 0.8305536416221112,
+      "yRatio": 0.7097219372961222
+    },
+    {
+      "resource": "shipweapons/huge_laser_cannon",
+      "meshName": "laser_cannon",
+      "xRatio": 0.8314696829676799,
+      "yRatio": 0.8314696829676866
+    },
+    {
+      "resource": "shipweapons/large_laser_battery",
+      "meshName": "laser_battery",
+      "xRatio": 0.8314696496549501,
+      "yRatio": 0.8314696496549568
+    },
+    {
+      "resource": "shipweapons/large_laser_cannon",
+      "meshName": "laser_cannon",
+      "xRatio": 0.8314696829676801,
+      "yRatio": 0.8314696829676868
+    },
+    {
+      "resource": "shipweapons/medium_laser_battery",
+      "meshName": "laser_battery",
+      "xRatio": 0.83146964965495,
+      "yRatio": 0.8314696496549568
+    },
+    {
+      "resource": "shipweapons/medium_laser_cannon",
+      "meshName": "laser_cannon",
+      "xRatio": 0.83146968296768,
+      "yRatio": 0.8314696829676866
+    },
+    {
+      "resource": "shipweapons/point_defense_laser_battery",
+      "meshName": "laser_battery",
+      "xRatio": 0.8314696496549501,
+      "yRatio": 0.8314696496549568
+    },
+    {
+      "resource": "shipweapons/small_laser_battery",
+      "meshName": "laser_battery",
+      "xRatio": 0.83146964965495,
+      "yRatio": 0.8314696496549567
+    },
+    {
+      "resource": "shipweapons/small_laser_cannon",
+      "meshName": "laser_cannon",
+      "xRatio": 0.83146968296768,
+      "yRatio": 0.8314696829676869
+    }
+  ]
+}

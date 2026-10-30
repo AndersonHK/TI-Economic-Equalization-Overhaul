@@ -1,5 +1,8 @@
 # Combat camera: close-range zoom and movement precision
 
+**Follow-up:** [0.10.9 reduces the two camera speed minima twentyfold](battle-scale-implementation-2026-10-23.md).
+The broader redesign below remains deferred; baseline numbers are pre-change.
+
 2026-10-23. **Research only.** No code, configuration, build or deployment
 changes. Findings come from fresh decompilation of the installed
 `SpaceCombatCameraController`, installed global configuration, and searches of
