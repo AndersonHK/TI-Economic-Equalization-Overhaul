@@ -14,6 +14,10 @@ regenerate the catalog and verify links after later changes.
 
 ## Current authorities
 
+- [Alien combat acceleration and cruise limits](ship-balance-research/alien-combat-acceleration-2026-10-31.md):
+  0.10.21 retains the 7 G alien combat baseline and raises cruise to 3.5 G
+  through JSON fields. Human research/officer maxima remain unchanged.
+
 - [Vanilla laser width-only correction](ship-balance-research/laser-width-only-2026-10-30.md):
   0.10.19 removes the rejected replacement renderer, preserves native appearance
   and endpoints, and restores vanilla longitudinal texture spacing while changing

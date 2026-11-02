@@ -3,6 +3,46 @@
 This is a decision log for the proposed ship rebalance. Entries here describe
 the balance decisions as well as their implementation status.
 
+## 2026-11-02
+
+### 0.10.21 stable baseline accepted for commit/push
+
+- User confirmed "we are stable" and requested commit/push. Accept the deployed
+  7 G combat / 3.5 G cruise alien caps and inherited combat implementation as
+  the stable baseline. Human limits remain unchanged.
+- Preserve the previously validated and deployed runtime; this closure changes
+  documentation only. Historical deployment receipts retain their original
+  pending-acceptance status, superseded by this dated user acceptance.
+- The acceptance does not add new agent gameplay tests or exhaustive scenario
+  coverage. Existing technical limitations and archive omissions remain recorded
+  in the [acceleration report](alien-combat-acceleration-2026-10-31.md).
+
+## 2026-10-31
+
+### 0.10.21: alien starting cruise tolerance 3.5 G
+
+- User requested maxAlienCruiseAcceleration_g=3.5 after the cruise report.
+  Add this JSON field alongside retained combat 7 G. Human cruise stays 2 G
+  base / 3 G researched, and human combat 3/5/6.5 G remains unchanged.
+- Both alien baseline caps now exceed fully upgraded humans by 0.5 G.
+  No new gameplay C# patch, project/officer/drive changes or additional rotation
+  change. Release metadata increments to 0.10.21. All 41 validators and 52-file
+  deployed readback passed; manual gameplay acceptance remains pending.
+
+
+### 0.10.20: alien starting combat tolerance 7 G
+
+- Trace native human combat 3 G, four nonrepeatable +0.5 G projects and rank-3
+  Medical Officer +1.5 G (exact-rank effects, one per ship): attainable 6.5 G.
+  Alien native baseline is 4 G. User selected 7 G instead of the initial 7.5 G
+  proposal; add only maxAlienCombatAcceleration_g=7 to TIGlobalConfig.json.
+- Report cruise without changing it: human baseline 2 G, High-G Recombinants
+  +1 G for 3 G, no stock cruise officer bonus; alien baseline 2.5 G.
+- Preserve human/effect/officer/drive data. Native same-field angular-velocity
+  ceiling rises by sqrt(7/4). Actual linear acceleration remains thrust/mass limited.
+- Normal 41-validator deployment and 52-file readback pass; data-only gameplay
+  change, release metadata 0.10.20. [Source trace and receipt](alien-combat-acceleration-2026-10-31.md).
+
 ## 2026-10-30
 
 ### 0.10.19 checkpoint accepted for commit/push

@@ -590,7 +590,7 @@ $manifest = Get-Content -LiteralPath $manifestPath -Raw | ConvertFrom-Json
 if ($manifest.GameVersion -ne '1.0.53') {
     throw "ModInfo.json targets '$($manifest.GameVersion)' instead of TI 1.0.53."
 }
-if ($manifest.Version -ne '0.10.19') {
+if ($manifest.Version -ne '0.10.21') {
     throw "ModInfo.json version '$($manifest.Version)' does not match this release."
 }
 if ($manifest.AssemblyName -ne 'Assembly/TIEconomyMod.dll') {
@@ -1145,13 +1145,20 @@ if ($globalConfig.Count -ne 1 -or
     throw 'Global configuration must set base Control Point Capacity to 0, set the councilor organization cap to 18, and set both crew-resource overrides to 2 tons per year.'
 }
 
+if ([double]$globalConfig[0].maxAlienCombatAcceleration_g -ne 7) {
+    throw 'Alien combat acceleration cap must be 7 G.'
+}
+if ([double]$globalConfig[0].maxAlienCruiseAcceleration_g -ne 3.5) { throw 'Alien cruise acceleration cap must be 3.5 G.' }
+foreach ($unchanged in @('baselineMaxHumanCombatAcceleration_g','baselineMaxHumanCruiseAcceleration_g')) {
+    if ($globalConfig[0].PSObject.Properties.Name -contains $unchanged) { throw "Unrequested acceleration override: $unchanged" }
+}
 $assemblyFile = Get-Item -LiteralPath $assemblyPath
 if ($assemblyFile.LastWriteTime -lt $buildStarted.AddSeconds(-2)) {
     throw 'Packaged DLL predates this verification build.'
 }
 $assemblyVersion = [Reflection.AssemblyName]::GetAssemblyName($assemblyPath).Version.ToString()
-if ($assemblyVersion -ne '0.10.19.0') {
-    throw "Assembly version '$assemblyVersion' does not match release 0.10.19."
+if ($assemblyVersion -ne '0.10.21.0') {
+    throw "Assembly version '$assemblyVersion' does not match release 0.10.21."
 }
 $assemblyHash = (Get-FileHash -LiteralPath $assemblyPath -Algorithm SHA256).Hash
 
@@ -1251,7 +1258,7 @@ if (Test-Path -LiteralPath $imagePath) {
     Copy-Item -LiteralPath $imagePath -Destination $stagingDirectory
 }
 
-$zipPath = Join-Path $artifactDirectory 'TIEconomyMod-0.10.19-ti1.0.53.zip'
+$zipPath = Join-Path $artifactDirectory 'TIEconomyMod-0.10.21-ti1.0.53.zip'
 if (Test-Path -LiteralPath $zipPath) {
     Remove-Item -LiteralPath $zipPath
 }

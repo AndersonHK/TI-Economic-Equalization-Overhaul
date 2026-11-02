@@ -10,6 +10,7 @@ docs/ship-balance-research/archive/gunpowder-rendering-2026-10-21/**/*.json -tex
 docs/ship-balance-research/gunpowder-art/*.txt -text -whitespace
 docs/ship-balance-research/gunpowder-art/*.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 docs/ship-balance-research/battle-scale/*.txt -text -whitespace
+docs/ship-balance-research/acceleration-limits/*.txt -text -whitespace
 
 ###############################################################################
 # Set default behavior for command prompt diff.

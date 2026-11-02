@@ -1,12 +1,15 @@
 # Ship balance: implementations, plans and evidence
 
-Last reviewed: 2026-10-30. Use current implementation records for released
+Last reviewed: 2026-11-02. Version 0.10.21 is the user-accepted stable baseline.
+Use current implementation records for released
 behavior, planning records for unimplemented choices, and dated measurements
 for their stated baselines. The [implementation matrix](../current-implementation-matrix.xlsx)
 and [decision changelog](CHANGELOG.md) provide cross-checks. The
 [complete catalog](../CATALOG.md) lists every report, table, figure and evidence file.
 
 ## Current implementations
+
+- [0.10.21 alien acceleration](alien-combat-acceleration-2026-10-31.md): alien base caps 7 G combat / 3.5 G cruise; human maxima unchanged at 6.5/3 G. JSON-only gameplay changes.
 
 - [0.10.19 vanilla laser width](laser-width-only-2026-10-30.md): rejected renderer replacement removed; native appearance/width profile/endpoints retained and longitudinal texture repeat restored. Current result user-accepted; [checkpoint](battle-scale/acceptance-0.10.19-2026-10-30.md) records scope and remaining limits.
 

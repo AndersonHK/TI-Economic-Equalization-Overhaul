@@ -1,0 +1,199 @@
+{
+  "game_assembly_sha256": "4A4B9AAE4154E444E9727204205D2D42AE8ED9E1C5F92CDC1280074A259D8350",
+  "native_defaults_g": {
+    "human_combat": 3,
+    "alien_combat": 4,
+    "human_cruise": 2,
+    "alien_cruise": 2.5
+  },
+  "combat_effect": [
+    {
+      "dataName": "Effect_IncreaseMaxSurvivableCombatAcceleration",
+      "operation": "Additive",
+      "value": 0.5,
+      "effectTarget": "SourceFaction",
+      "effectDuration": "permanent",
+      "stackable": true,
+      "duration_months": -1,
+      "contexts": [
+        "Ship_MaxSurvivableCombatAcceleration_Bonus"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "friendlyName": "High-Thrust Ergonomics",
+      "dataName": "Project_High-ThrustErgonomics",
+      "techCategory": "LifeScience",
+      "AI_techRole": "SpaceWar",
+      "AI_criticalTech": true,
+      "AI_projectRole": "Propulsion",
+      "researchCost": 1000,
+      "prereqs": [
+        "Biotechnology",
+        "Project_Warships"
+      ],
+      "effects": [
+        "Effect_IncreaseMaxSurvivableCombatAcceleration"
+      ],
+      "oneTimeGlobally": false,
+      "repeatable": false,
+      "factionAvailableChance": 100,
+      "initialUnlockChance": 0,
+      "deltaUnlockChance": 16,
+      "maxUnlockChance": 100,
+      "resourcesGranted": []
+    },
+    {
+      "friendlyName": "Astronaut Fitness Regimen",
+      "dataName": "Project_AstronautFitnessRegimen",
+      "techCategory": "LifeScience",
+      "AI_techRole": "SpaceWar",
+      "AI_criticalTech": true,
+      "AI_projectRole": "Propulsion",
+      "researchCost": 2500,
+      "prereqs": [
+        "SpaceMedicine",
+        "Project_High-ThrustErgonomics"
+      ],
+      "effects": [
+        "Effect_IncreaseMaxSurvivableCombatAcceleration"
+      ],
+      "oneTimeGlobally": false,
+      "repeatable": false,
+      "factionAvailableChance": 100,
+      "initialUnlockChance": 0,
+      "deltaUnlockChance": 16,
+      "maxUnlockChance": 100,
+      "resourcesGranted": []
+    },
+    {
+      "friendlyName": "Acceleration Pharmaceuticals",
+      "dataName": "Project_AccelerationPharmaceuticals",
+      "techCategory": "LifeScience",
+      "AI_techRole": "SpaceWar",
+      "AI_projectRole": "Propulsion",
+      "researchCost": 10000,
+      "prereqs": [
+        "ExtendedSpaceSurvival"
+      ],
+      "effects": [
+        "Effect_IncreaseMaxSurvivableCombatAcceleration"
+      ],
+      "oneTimeGlobally": false,
+      "repeatable": false,
+      "factionAvailableChance": 50,
+      "initialUnlockChance": 0,
+      "deltaUnlockChance": 8,
+      "maxUnlockChance": 80,
+      "resourcesGranted": []
+    },
+    {
+      "friendlyName": "High-G Recombinants",
+      "dataName": "Project_High-GRecombinants",
+      "techCategory": "LifeScience",
+      "AI_techRole": "SpaceWar",
+      "AI_projectRole": "Propulsion",
+      "researchCost": 20000,
+      "prereqs": [
+        "Genies",
+        "Project_AccelerationPharmaceuticals"
+      ],
+      "effects": [
+        "Effect_IncreaseMaxSurvivableCombatAcceleration",
+        "Effect_IncreaseMaxSurvivableCruiseAcceleration"
+      ],
+      "oneTimeGlobally": false,
+      "repeatable": false,
+      "factionAvailableChance": 50,
+      "initialUnlockChance": 0,
+      "deltaUnlockChance": 8,
+      "maxUnlockChance": 80,
+      "resourcesGranted": []
+    }
+  ],
+  "officers": [
+    {
+      "dataName": "Officer_Medical",
+      "spawnChance": 0.01,
+      "spawnEventType": "SurviveCombat",
+      "location": "LifeSupportMain",
+      "sortOrder": 11,
+      "baseIconPath": "icons_2d/Ship_Officer_Medical_",
+      "requirements": [
+        {
+          "requirement": "MaxPerShip",
+          "value": 1
+        },
+        {
+          "requirement": "MaxTotalOfficersPerShip"
+        },
+        {
+          "requirement": "CrewMin",
+          "value": 40
+        }
+      ],
+      "effects": [
+        {
+          "level": 1,
+          "effect": "MaxSurvivableCombatAcceleration",
+          "value": 0.5
+        },
+        {
+          "level": 2,
+          "effect": "MaxSurvivableCombatAcceleration",
+          "value": 1
+        },
+        {
+          "level": 3,
+          "effect": "MaxSurvivableCombatAcceleration",
+          "value": 1.5
+        },
+        {
+          "level": 1,
+          "effect": "OfficerDeathChance",
+          "value": -0.3
+        },
+        {
+          "level": 2,
+          "effect": "OfficerDeathChance",
+          "value": -0.5
+        },
+        {
+          "level": 3,
+          "effect": "OfficerDeathChance",
+          "value": -0.7
+        },
+        {
+          "level": 1,
+          "effect": "RadiationDamageReduction",
+          "value": 0.9
+        },
+        {
+          "level": 2,
+          "effect": "RadiationDamageReduction",
+          "value": 0.75
+        },
+        {
+          "level": 3,
+          "effect": "RadiationDamageReduction",
+          "value": 0.5
+        }
+      ]
+    }
+  ],
+  "selected_alien_combat_g": 7,
+  "human_research_ceiling_g": 5,
+  "human_with_medical_ceiling_g": 6.5,
+  "human_cruise_research_ceiling_g": 3,
+  "alien_cruise_base_g": 2.5,
+  "stock_cruise_officer_effects": [],
+  "template_sha256": {
+    "TIEffectTemplate.json": "905AA752C53C4A9F03C36E525D8FD9FEA9F15AF2745DB1164B7E7A77BE9C3DF9",
+    "TIProjectTemplate.json": "65C4AF0411555B0BABE86001F1CF5D0E83999B831D6D72E7319702C2C03542D7",
+    "TIOfficerTemplate.json": "B8A36D5F7509FB3496B96B906B2C2337097E23F8DD8371F025DE8B816ED3B6DB",
+    "TIGlobalConfig.json": "415113FADEECB4D67FA79F34275E026396C3FE914B722D936D5ADCF737B07F4E"
+  },
+  "selected_alien_cruise_g": 3.5,
+  "selection_release": "0.10.21"
+}

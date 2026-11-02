@@ -2,7 +2,7 @@
 
 Generated 2026-10-21; updated 2026-10-30 for settings-backed combat scale and the 10x trial. This catalog indexes every other file under `docs/`, including machine-readable evidence and images. For interpretation, start with the [documentation map](README.md), [ship-balance hub](ship-balance-research/README.md), or [archive index](archive/README.md). Location/type labels are navigation aids, not assertions that all research is implemented.
 
-Indexed files: **467**. No archived evidence was deleted during the organization pass.
+Indexed files: **473**. No archived evidence was deleted during the organization pass.
 
 
 ## Top-level guides and authorities
@@ -162,6 +162,12 @@ Indexed files: **467**. No archived evidence was deleted during the organization
 
 | File | Type |
 |---|---|
+| [ship-balance-research/acceleration-limits/deployment-0.10.21.txt](ship-balance-research/acceleration-limits/deployment-0.10.21.txt) | TXT |
+| [ship-balance-research/acceleration-limits/deployment-manifest-0.10.21.json](ship-balance-research/acceleration-limits/deployment-manifest-0.10.21.json) | JSON |
+| [ship-balance-research/acceleration-limits/deployment-0.10.20.txt](ship-balance-research/acceleration-limits/deployment-0.10.20.txt) | TXT |
+| [ship-balance-research/acceleration-limits/deployment-manifest-0.10.20.json](ship-balance-research/acceleration-limits/deployment-manifest-0.10.20.json) | JSON |
+| [ship-balance-research/acceleration-limits/native-acceleration-audit-2026-10-31.json](ship-balance-research/acceleration-limits/native-acceleration-audit-2026-10-31.json) | JSON |
+| [ship-balance-research/alien-combat-acceleration-2026-10-31.md](ship-balance-research/alien-combat-acceleration-2026-10-31.md) | MD |
 | [ship-balance-research/battle-scale/acceptance-0.10.19-2026-10-30.md](ship-balance-research/battle-scale/acceptance-0.10.19-2026-10-30.md) | MD |
 | [ship-balance-research/battle-scale/deployment-0.10.19.txt](ship-balance-research/battle-scale/deployment-0.10.19.txt) | TXT |
 | [ship-balance-research/battle-scale/deployment-manifest-0.10.19.json](ship-balance-research/battle-scale/deployment-manifest-0.10.19.json) | JSON |

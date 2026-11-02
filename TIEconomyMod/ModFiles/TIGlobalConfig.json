@@ -1,6 +1,8 @@
 [
   {
     "dataName": "globalConfig",
+    "maxAlienCombatAcceleration_g": 7,
+    "maxAlienCruiseAcceleration_g": 3.5,
     "controlPointMaintenanceFreebies": 0,
     "councilorMaxOrgs": 18,
     "combatCamera_minCameraMovementSpeed": 0.25,

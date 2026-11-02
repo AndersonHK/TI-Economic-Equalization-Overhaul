@@ -1,6 +1,14 @@
 # TI Economic Equalization Overhaul
 
-Current release: **0.10.19**, validated against **Terra Invicta 1.0.53b**.
+Current release: **0.10.21**, validated against **Terra Invicta 1.0.53b**.
+
+User accepted **0.10.21 as the stable baseline on 2026-11-02** and requested
+commit/push. This checkpoint preserves the already deployed runtime.
+
+Release 0.10.21 raises the alien starting cruise cap to **3.5 G**, retaining
+**7 G** combat. Both are 0.5 G above the corresponding fully upgraded human caps
+(3 G cruise / 6.5 G combat). These are JSON data overrides; see the
+[limits and data change](docs/ship-balance-research/alien-combat-acceleration-2026-10-31.md).
 
 Release 0.10.19 restores vanilla laser rendering and changes only ribbon width,
 with longitudinal texture spacing preserved at the vanilla reference. The 0.10.18

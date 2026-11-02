@@ -157,11 +157,11 @@ foreach ($property in $baseline.PSObject.Properties) {
         if ($prior.OuterXml -ne $current.OuterXml) { throw 'Unrelated settings changed during the configurable scale pass.' }
         continue
     }
-    # 0.10.9 deliberately changes only the two camera minima in this file.
+    # Permit only the explicitly approved global data changes since the art pass.
     # The historical byte baseline remains intact; verify its other fields.
     if ($property.Name -eq 'TIEconomyMod\ModFiles\TIGlobalConfig.json') {
         $global = Get-Content -LiteralPath (Join-Path $RepositoryRoot $property.Name) -Raw | ConvertFrom-Json
-        $expected = @{ dataName='globalConfig'; controlPointMaintenanceFreebies=0; councilorMaxOrgs=18;
+        $expected = @{ dataName='globalConfig'; maxAlienCombatAcceleration_g=7; maxAlienCruiseAcceleration_g=3.5; controlPointMaintenanceFreebies=0; councilorMaxOrgs=18;
             combatCamera_minCameraMovementSpeed=0.25; combatCamera_minScrollSpeedOffset=-10;
             crewWaterConsumptionTons_year=2; crewVolatilesConsumptionTons_year=2;
             probePayloadBaseline_tons=0.325; probePayloadPerHabSite_tons=0 }
