@@ -20,10 +20,11 @@ namespace TIEconomyMod.Patches
         public static bool Prefix(TIShipHullTemplate __instance, TIShipHullTemplate.ShipModuleSlot coreSlot,
             Mount mount, ref List<TIShipHullTemplate.ShipModuleSlot> __result)
         {
-            if (!CapitalMountPolicy.Applies(__instance.dataName) || coreSlot.moduleSlotType != ShipModuleSlotType.HullHardPoint)
+            if (!CapitalMountPolicy.Applies(__instance.dataName) ||
+                (coreSlot.moduleSlotType != ShipModuleSlotType.HullHardPoint && coreSlot.moduleSlotType != ShipModuleSlotType.NoseHardPoint))
                 return true;
             __result = new List<TIShipHullTemplate.ShipModuleSlot>();
-            if (mount == Mount.FourHull) __result.Add(coreSlot);
+            if (mount == (coreSlot.moduleSlotType == ShipModuleSlotType.HullHardPoint ? Mount.FourHull : Mount.FourNose)) __result.Add(coreSlot);
             return false;
         }
     }
@@ -34,8 +35,8 @@ namespace TIEconomyMod.Patches
         internal static bool HiddenFromCatalog(TISpaceShipTemplate design, TIShipPartTemplate part)
         {
             TIShipWeaponTemplate weapon = part?.ref_weapon;
-            return design != null && CapitalMountPolicy.Applies(design.hullName) &&
-                weapon != null && weapon.hullWeapon && weapon.mount != Mount.FourHull;
+            return design != null && weapon != null && !CapitalMountPolicy.WeaponAllowed(
+                design.hullName, weapon.dataName, weapon.mount.ToString(), weapon.hullWeapon);
         }
 
         [HarmonyPostfix]
@@ -54,7 +55,7 @@ namespace TIEconomyMod.Patches
         public static void Postfix(FleetsScreenController __instance, bool ___loadingExistingTemplate,
             List<ShipModuleListItem> ___shipModuleListItems, List<ShipModuleListItem> ___shipModuleListItemsB)
         {
-            if (___loadingExistingTemplate || !CapitalMountPolicy.Applies(__instance.newShipTemplate?.hullName)) return;
+            if (___loadingExistingTemplate || __instance.newShipTemplate == null) return;
             // Native filtering restores eligible rows on each hull/obsolete/view
             // change. Only remove forbidden weapons; never reveal locked parts.
             HideRows(__instance.newShipTemplate, ___shipModuleListItems);
@@ -84,13 +85,43 @@ namespace TIEconomyMod.Patches
         [HarmonyPrefix]
         public static bool Prefix(TISpaceShipTemplate __instance, TIShipPartTemplate partTemplate, int slot, ref bool __result)
         {
-            if (!CapitalMountPolicy.Applies(__instance.hullName) || partTemplate == null || partTemplate.ref_weapon == null || !partTemplate.ref_weapon.hullWeapon)
+            if (partTemplate == null || partTemplate.ref_weapon == null)
                 return true;
+            TIShipWeaponTemplate weapon = partTemplate.ref_weapon;
+            if (CapitalMountRuntime.State(__instance).Schema >= CapitalMountPolicy.Schema &&
+                !CapitalMountPolicy.WeaponAllowed(__instance.hullName, weapon.dataName, weapon.mount.ToString(), weapon.hullWeapon))
+            { __result = false; return false; }
+            if (!CapitalMountPolicy.Applies(__instance.hullName)) return true;
             // Legacy entries must remain readable until the transaction has converted them.
-            if (CapitalMountRuntime.State(__instance).Schema == 0) return true;
-            __result = partTemplate.ref_weapon.mount == Mount.FourHull && slot >= 0 &&
+            bool hull = partTemplate.ref_weapon.hullWeapon;
+            if (CapitalMountRuntime.State(__instance).Schema < CapitalMountPolicy.Schema)
+            {
+                __result = slot >= 0 && slot < __instance.hullTemplate.shipModuleSlots.Count &&
+                    partTemplate.allowedSlots.Contains(__instance.hullTemplate.shipModuleSlots[slot].moduleSlotType);
+                return false;
+            }
+            __result = partTemplate.ref_weapon.mount == (hull ? Mount.FourHull : Mount.FourNose) && slot >= 0 &&
                 slot < __instance.hullTemplate.shipModuleSlots.Count &&
-                __instance.hullTemplate.shipModuleSlots[slot].moduleSlotType == ShipModuleSlotType.HullHardPoint;
+                __instance.hullTemplate.shipModuleSlots[slot].moduleSlotType == (hull ? ShipModuleSlotType.HullHardPoint : ShipModuleSlotType.NoseHardPoint);
+            return false;
+        }
+    }
+
+    [HarmonyPatch(typeof(TIShipHullTemplate), nameof(TIShipHullTemplate.AssignCoreSlotOnMultiMountPlacement))]
+    public static class CapitalWeaponCoreSlotPatch
+    {
+        [HarmonyPrefix]
+        public static bool Prefix(TISpaceShipTemplate ship, TIShipWeaponTemplate weapon, int droppedSlot,
+            ref TIShipHullTemplate.ShipModuleSlot __result)
+        {
+            if (ship == null) return true;
+            if (!CapitalMountPolicy.WeaponAllowed(ship.hullName, weapon.dataName, weapon.mount.ToString(), weapon.hullWeapon))
+                throw new InvalidOperationException("Weapon grade is not allowed on this hull.");
+            if (!CapitalMountPolicy.Applies(ship.hullName)) return true;
+            if (droppedSlot < 0 || droppedSlot >= ship.hullTemplate.shipModuleSlots.Count ||
+                !ship.ValidAssignedSlotForLocation(weapon, droppedSlot))
+                throw new InvalidOperationException("Invalid capital weapon destination.");
+            __result = ship.hullTemplate.shipModuleSlots[droppedSlot];
             return false;
         }
     }
@@ -103,11 +134,16 @@ namespace TIEconomyMod.Patches
             ref Vector2Int coordinates, ref bool __result)
         {
             TISpaceShipTemplate design = __instance.FleetsScreenController == null ? null : __instance.FleetsScreenController.newShipTemplate;
-            if (design == null || !CapitalMountPolicy.Applies(design.hullName) || moduleTemplate == null || moduleTemplate.ref_weapon == null || !moduleTemplate.ref_weapon.hullWeapon)
+            if (design == null || moduleTemplate == null || moduleTemplate.ref_weapon == null)
                 return true;
+            TIShipWeaponTemplate weapon = moduleTemplate.ref_weapon;
+            if (!CapitalMountPolicy.WeaponAllowed(design.hullName, weapon.dataName, weapon.mount.ToString(), weapon.hullWeapon))
+            { __result = false; return false; }
+            if (!CapitalMountPolicy.Applies(design.hullName)) return true;
             coordinates = __instance.SlotCoordinates;
-            __result = moduleTemplate.ref_weapon.mount == Mount.FourHull &&
-                __instance.shipModuleSlotType == ShipModuleSlotType.HullHardPoint &&
+            bool hull = moduleTemplate.ref_weapon.hullWeapon;
+            __result = moduleTemplate.ref_weapon.mount == (hull ? Mount.FourHull : Mount.FourNose) &&
+                __instance.shipModuleSlotType == (hull ? ShipModuleSlotType.HullHardPoint : ShipModuleSlotType.NoseHardPoint) &&
                 design.GetPartInHullSlot(coordinates, true) == null;
             return false;
         }
@@ -119,9 +155,9 @@ namespace TIEconomyMod.Patches
         [HarmonyPrefix]
         public static void Prefix(ShipModuleDragDestination __instance, ref Mount mount)
         {
-            if (mount == Mount.FourHull && __instance.FleetsScreenController != null &&
+            if ((mount == Mount.FourHull || mount == Mount.FourNose) && __instance.FleetsScreenController != null &&
                 CapitalMountPolicy.Applies(__instance.FleetsScreenController.newShipTemplate?.hullName))
-                mount = Mount.OneHull; // Argument only; the actual weapon remains FourHull.
+                mount = mount == Mount.FourHull ? Mount.OneHull : Mount.OneNose; // Visual argument only.
         }
     }
 
@@ -131,14 +167,26 @@ namespace TIEconomyMod.Patches
         [HarmonyTargetMethods]
         public static IEnumerable<MethodBase> TargetMethods()
         {
-            return new[] { typeof(TitanController), typeof(AlienTitanController), typeof(AlienMothershipController) }
+            return new[] { typeof(LancerController), typeof(DreadnoughtController), typeof(AlienDreadnoughtController), typeof(TitanController), typeof(AlienTitanController), typeof(AlienAssaultCarrierController), typeof(AlienMothershipController) }
                 .Select(type => AccessTools.Method(type, "SlotToWeaponMountIndex"));
         }
 
         [HarmonyPrefix]
-        public static void Prefix(ref Mount mount)
+        public static bool Prefix(ShipModelController __instance, int slot, ref Mount mount, ref int __result)
         {
+            if (__instance is AlienMothershipController && (mount == Mount.FourNose || mount == Mount.OneNose) && slot >= 38 && slot <= 41)
+            {
+                __result = slot - 33; // Appended nose cells use new controllers 5–8.
+                return false;
+            }
+            if (__instance is AlienMothershipController && (mount == Mount.FourHull || mount == Mount.OneHull) && (slot == 42 || slot == 43))
+            {
+                __result = slot == 42 ? 8 : 11; // Previously dormant mirrored rim pair.
+                return false;
+            }
             if (mount == Mount.FourHull) mount = Mount.OneHull;
+            if (mount == Mount.FourNose) mount = Mount.OneNose;
+            return true;
         }
     }
 
@@ -149,15 +197,26 @@ namespace TIEconomyMod.Patches
         public static bool Prefix(TIFactionState __instance, bool playerAutoDesign, ref TISpaceShipTemplate design,
             bool allowExotics, IEnumerable<TIShipWeaponTemplate> choices)
         {
+            return Fit(__instance, playerAutoDesign, design, allowExotics, choices, false);
+        }
+
+        internal static bool Fit(TIFactionState faction, bool playerAutoDesign, TISpaceShipTemplate design,
+            bool allowExotics, IEnumerable<TIShipWeaponTemplate> choices, bool nose)
+        {
             if (design == null || !CapitalMountPolicy.Applies(design.hullName)) return true;
-            List<TIShipWeaponTemplate> weapons = (choices ?? __instance.allowedHullWeapons)
-                .Where(w => w.mount == Mount.FourHull && w.FactionCanBuild(__instance) &&
+            List<TIShipWeaponTemplate> weapons = (choices ?? (nose ? faction.allowedNoseWeapons : faction.allowedHullWeapons))
+                .Where(w => w.mount == (nose ? Mount.FourNose : Mount.FourHull) &&
+                    CapitalMountPolicy.WeaponAllowed(design.hullName, w.dataName, w.mount.ToString(), !nose) && w.FactionCanBuild(faction) &&
                     (allowExotics || w.buildCost().GetSingleCostValue(FactionResource.Exotics) == 0f)).ToList();
-            List<TIShipWeaponTemplate> current = weapons.Where(w => !__instance.obsoletedShipParts.Contains(w.dataName)).ToList();
+            List<TIShipWeaponTemplate> current = weapons.Where(w => !faction.obsoletedShipParts.Contains(w.dataName)).ToList();
             if (current.Count > 0) weapons = current;
-            design.hullWeaponTemplateEntries.Clear();
+            var entries = nose ? design.noseWeaponTemplateEntries : design.hullWeaponTemplateEntries;
+            entries.Clear();
+            var slotType = nose ? ShipModuleSlotType.NoseHardPoint : ShipModuleSlotType.HullHardPoint;
+            design.fireModeTemplateEntries.RemoveAll(m => m.slot >= 0 && m.slot < design.hullTemplate.shipModuleSlots.Count &&
+                design.hullTemplate.shipModuleSlots[m.slot].moduleSlotType == slotType);
             CapitalMountRuntime.State(design).Schema = CapitalMountPolicy.Schema;
-            if (weapons.Count == 0) return false;
+            if (weapons.Count == 0) { CapitalMountRuntime.Invalidate(design); return false; }
             ShipRole role = design.role;
             TIShipWeaponTemplate attack = weapons.Where(w => w.attackMode)
                 .OrderByDescending(w => w.GetCuratedDesignScore(role, weapons, !playerAutoDesign))
@@ -165,16 +224,34 @@ namespace TIEconomyMod.Patches
             TIShipWeaponTemplate defense = weapons.Where(w => w.defenseMode)
                 .OrderByDescending(w => w.GetCuratedDesignScore(ShipRole.LM_Protector, weapons, !playerAutoDesign))
                 .ThenBy(w => w.dataName, StringComparer.Ordinal).FirstOrDefault();
-            List<TIShipHullTemplate.ShipModuleSlot> slots = design.hullTemplate.GetAllSlotsOfType(ShipModuleSlotType.HullHardPoint);
+            List<TIShipHullTemplate.ShipModuleSlot> slots = design.hullTemplate.GetAllSlotsOfType(slotType);
             for (int i = 0; i < slots.Count; ++i)
             {
                 TIShipWeaponTemplate weapon = role == ShipRole.LM_Protector ? defense ?? attack :
                     (i == slots.Count - 1 && defense != null ? defense : attack ?? defense);
                 if (weapon == null) break;
-                design.hullWeaponTemplateEntries.Add(new ModuleDataTemplateEntry(weapon, design.hullTemplate.slotIndex(slots[i])));
+                entries.Add(new ModuleDataTemplateEntry(weapon, design.hullTemplate.slotIndex(slots[i])));
             }
             CapitalMountRuntime.Invalidate(design);
             return false;
+        }
+    }
+
+    [HarmonyPatch(typeof(TIFactionState), "SetShipDesignNoseWeapons")]
+    public static class CapitalAiNoseWeaponsPatch
+    {
+        [HarmonyPrefix]
+        public static bool Prefix(TIFactionState __instance, bool playerAutodesign, ref TISpaceShipTemplate design,
+            bool allowExotics, ref IEnumerable<TIShipWeaponTemplate> choices)
+        {
+            if (design != null && !CapitalMountPolicy.Applies(design.hullName))
+            {
+                string hullName = design.hullName;
+                choices = (choices ?? __instance.allowedNoseWeapons).Where(w =>
+                    CapitalMountPolicy.WeaponAllowed(hullName, w.dataName, w.mount.ToString(), false)).ToList();
+                return true;
+            }
+            return CapitalAiHullWeaponsPatch.Fit(__instance, playerAutodesign, design, allowExotics, choices, true);
         }
     }
 
@@ -209,7 +286,7 @@ namespace TIEconomyMod.Patches
         [HarmonyPostfix]
         public static void Postfix(TISpaceShipTemplate __instance, ref bool __result)
         {
-            if (CapitalMountPolicy.Applies(__instance.hullName) && CapitalMountRuntime.State(__instance).Schema > 0)
+            if (CapitalMountRuntime.RequiresPolicy(__instance) && CapitalMountRuntime.State(__instance).Schema >= CapitalMountPolicy.Schema)
                 __result &= CapitalMountRuntime.ValidLayout(__instance);
         }
     }
@@ -221,8 +298,8 @@ namespace TIEconomyMod.Patches
         public static void Prefix(TISpaceShipTemplate __instance)
         {
             CapitalMountRuntime.EnsureDesign(__instance);
-            if (CapitalMountPolicy.Applies(__instance.hullName) && !CapitalMountRuntime.ValidLayout(__instance))
-                throw new InvalidOperationException("Capital hull weapons require one FourHull weapon per hull cell.");
+            if (CapitalMountRuntime.RequiresPolicy(__instance) && !CapitalMountRuntime.ValidLayout(__instance))
+                throw new InvalidOperationException("Hull requires its designated weapon grade, one weapon per matching hardpoint.");
         }
     }
 
@@ -235,7 +312,7 @@ namespace TIEconomyMod.Patches
         {
             TISpaceShipTemplate design = __instance.shipDesign;
             CapitalMountRuntime.EnsureDesign(design);
-            return !CapitalMountPolicy.Applies(design.hullName) || CapitalMountRuntime.ValidLayout(design);
+            return !CapitalMountRuntime.RequiresPolicy(design) || CapitalMountRuntime.ValidLayout(design);
         }
     }
 
@@ -245,10 +322,10 @@ namespace TIEconomyMod.Patches
         [HarmonyPostfix]
         public static void Postfix(TISpaceShipTemplate __instance, ref bool __result, ref string reason)
         {
-            if (CapitalMountPolicy.Applies(__instance.hullName) && !CapitalMountRuntime.ValidLayout(__instance))
+            if (CapitalMountRuntime.RequiresPolicy(__instance) && !CapitalMountRuntime.ValidLayout(__instance))
             {
                 __result = false;
-                reason = "Capital hull mounts require one heavy weapon per cell.";
+                reason = "This hull requires its designated weapon sizes, one weapon per hardpoint.";
             }
         }
     }

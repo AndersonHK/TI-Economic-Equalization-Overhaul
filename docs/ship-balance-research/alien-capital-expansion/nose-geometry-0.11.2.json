@@ -1,0 +1,66 @@
+{
+  "method": "Forward XY barycentric rays against decoded Hydra_Mothership_Outer_A, center and four cardinal samples at 4 m; mirrored forward station; original mesh bundle hash retained.",
+  "sourceBundleSha256": "F1804254B5C6F2C2FFBF78C333738F462BAA18023AC5AACF9A8EACAA4D9F09A4",
+  "rows": [
+    {
+      "controller": 7,
+      "target": [
+        -136,
+        0,
+        240.9154
+      ],
+      "surface_probes": [
+        [
+          240.86537577267927,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          234.28630229713235,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          247.44444924822622,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          240.86537559783378,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          240.86537594752488,
+          "Hydra_Mothership_Outer_A"
+        ]
+      ]
+    },
+    {
+      "controller": 8,
+      "target": [
+        136,
+        0,
+        240.9154
+      ],
+      "surface_probes": [
+        [
+          240.8653757726793,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          247.44444924822622,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          234.28630229713238,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          240.86537559783378,
+          "Hydra_Mothership_Outer_A"
+        ],
+        [
+          240.8653759475249,
+          "Hydra_Mothership_Outer_A"
+        ]
+      ]
+    }
+  ]
+}

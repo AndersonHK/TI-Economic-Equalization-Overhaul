@@ -198,6 +198,38 @@ namespace TIEconomyMod
             return volume_m3 > 0f;
         }
 
+        // Prepared from the 2026-11-04 alien asset audit. These are machinery
+        // allowances: eleven geometry-bounded proxies and four calibrated
+        // small-hull fallbacks, not identified internal reactor vessel volumes.
+        public static bool TryGetAlienReactorBayVolume_m3(
+            string hullDataName, int appearanceIndex, out float volume_m3,
+            out bool calibratedFallback)
+        {
+            volume_m3 = 0f;
+            calibratedFallback = false;
+            if (appearanceIndex != 0) return false;
+            switch (hullDataName)
+            {
+                case "AlienAssaultCarrier": volume_m3 = 6865.571313f; break;
+                case "AlienBattlecruiser": volume_m3 = 3544.628833f; break;
+                case "AlienBattleship": volume_m3 = 5860.079834f; break;
+                case "AlienCruiser": volume_m3 = 2332.440390f; break;
+                case "AlienDestroyer": volume_m3 = 2571.761076f; break;
+                case "AlienDreadnought": volume_m3 = 6012.812247f; break;
+                case "AlienFrigate": volume_m3 = 1152.553282f; break;
+                case "AlienLancer": volume_m3 = 9486.200690f; break;
+                case "AlienMonitor": volume_m3 = 776.258707f; break;
+                case "AlienMothership": volume_m3 = 137456.803901f; break;
+                case "AlienTitan": volume_m3 = 14625.723848f; break;
+                case "AlienCorvette": volume_m3 = 317.839199f; calibratedFallback = true; break;
+                case "AlienEscort": volume_m3 = 177.520382f; calibratedFallback = true; break;
+                case "AlienGunship": volume_m3 = 262.779094f; calibratedFallback = true; break;
+                case "SalamanderGunship": volume_m3 = 350.770707f; calibratedFallback = true; break;
+                default: return false;
+            }
+            return true;
+        }
+
         private static float VariantValue(
             int appearanceIndex, float index0, float index1,
             float index2, float index3)
@@ -233,6 +265,15 @@ namespace TIEconomyMod
             {
                 usedFallback = false;
                 sizeBand = null;
+                return measured;
+            }
+
+            bool calibratedAlienFallback;
+            if (TryGetAlienReactorBayVolume_m3(hullDataName, appearanceIndex,
+                    out measured, out calibratedAlienFallback))
+            {
+                usedFallback = calibratedAlienFallback;
+                sizeBand = calibratedAlienFallback ? "AlienSmallCalibrated" : "AlienGeometry";
                 return measured;
             }
 
@@ -562,7 +603,7 @@ namespace TIEconomyMod
                     break;
                 case "Lancer":
                     mass_tons = VariantValue(
-                        appearanceIndex, 1958f, 2458f, 3858f, 3858f);
+                        appearanceIndex, 2395f, 2895f, 4295f, 4295f);
                     break;
                 case "Battleship":
                     mass_tons = VariantValue(
@@ -570,11 +611,11 @@ namespace TIEconomyMod
                     break;
                 case "Dreadnought":
                     mass_tons = VariantValue(
-                        appearanceIndex, 2343f, 2943f, 2543f, 3543f);
+                        appearanceIndex, 3044f, 3644f, 3244f, 4244f);
                     break;
                 case "Titan":
                     mass_tons = VariantValue(
-                        appearanceIndex, 3280f, 4180f, 3380f, 5080f);
+                        appearanceIndex, 3632f, 4532f, 3732f, 5432f);
                     break;
             }
             return mass_tons > 0f;

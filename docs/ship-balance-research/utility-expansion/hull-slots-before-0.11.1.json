@@ -1,0 +1,722 @@
+[
+  {
+    "dataName": "Lancer",
+    "mass_tons": 2395,
+    "crew": 35,
+    "internalModules": 7,
+    "shipModuleSlots": [
+      {
+        "moduleSlotType": "Drive",
+        "x": 0,
+        "y": 3
+      },
+      {
+        "moduleSlotType": "PowerPlant",
+        "x": 1,
+        "y": 3
+      },
+      {
+        "moduleSlotType": "Utility",
+        "x": 3,
+        "y": 3
+      },
+      {
+        "moduleSlotType": "Radiator",
+        "x": 2,
+        "y": 3
+      },
+      {
+        "moduleSlotType": "TailArmor",
+        "x": 0,
+        "y": 6
+      },
+      {
+        "moduleSlotType": "LateralArmor",
+        "x": 4,
+        "y": 6
+      },
+      {
+        "moduleSlotType": "NoseArmor",
+        "x": 8,
+        "y": 6
+      },
+      {
+        "moduleSlotType": "NoseHardPoint",
+        "x": 8,
+        "y": 3
+      },
+      {
+        "moduleSlotType": "NoseHardPoint",
+        "x": 7,
+        "y": 1
+      },
+      {
+        "moduleSlotType": "NoseHardPoint",
+        "x": 7,
+        "y": 3
+      },
+      {
+        "moduleSlotType": "NoseHardPoint",
+        "x": 7,
+        "y": 5
+      },
+      {
+        "moduleSlotType": "HullHardPoint",
+        "x": 6,
+        "y": 3
+      },
+      {
+        "moduleSlotType": "Utility",
+        "x": 6,
+        "y": 1
+      },
+      {
+        "moduleSlotType": "Utility",
+        "x": 6,
+        "y": 5
+      },
+      {
+        "moduleSlotType": "HullHardPoint",
+        "x": 5,
+        "y": 3
+      },
+      {
+        "moduleSlotType": "Utility",
+        "x": 5,
+        "y": 1
+      },
+      {
+        "moduleSlotType": "Utility",
+        "x": 5,
+        "y": 5
+      },
+      {
+        "moduleSlotType": "Utility",
+        "x": 4,
+        "y": 1
+      },
+      {
+        "moduleSlotType": "HullHardPoint",
+        "x": 4,
+        "y": 3
+      },
+      {
+        "moduleSlotType": "Utility",
+        "x": 4,
+        "y": 5
+      },
+      {
+        "moduleSlotType": "Propellant",
+        "x": 0,
+        "y": 0
+      }
+    ]
+  },
+  {
+    "dataName": "Dreadnought",
+    "mass_tons": 3044,
+    "crew": 52,
+    "internalModules": 8,
+    "shipModuleSlots": [
+      {
+        "moduleSlotType": "Drive",
+        "x": 0,
+        "y": 3
+      },
+      {
+        "moduleSlotType": "PowerPlant",
+        "x": 1,
+        "y": 3
+      },
+      {
+        "moduleSlotType": "Utility",
+        "x": 3,
+        "y": 2
+      },
+      {
+        "moduleSlotType": "Radiator",
+        "x": 2,
+        "y": 3
+      },
+      {
+        "moduleSlotType": "TailArmor",
+        "x": 0,
+        "y": 6
+      },
+      {
+        "moduleSlotType": "LateralArmor",
+        "x": 3,
+        "y": 6
+      },
+      {
+        "moduleSlotType": "NoseArmor",
+        "x": 9,
+        "y": 6
+      },
+      {
+        "moduleSlotType": "NoseHardPoint",
+        "x": 9,
+        "y": 3
+      },
+      {
+        "moduleSlotType": "NoseHardPoint",
+        "x": 8,
+        "y": 2
+      },
+      {
+        "moduleSlotType": "NoseHardPoint",
+        "x": 8,
+        "y": 4
+      },
+      {
+        "moduleSlotType": "Utility",
+        "x": 7,
+        "y": 0
+      },
+      {
+        "moduleSlotType": "Utility",
+        "x": 6,
+        "y": 0
+      },
+      {
+        "moduleSlotType": "Utility",
+        "x": 5,
+        "y": 0
+      },
+      {
+        "moduleSlotType": "Utility",
+        "x": 7,
+        "y": 6
+      },
+      {
+        "moduleSlotType": "Utility",
+        "x": 6,
+        "y": 6
+      },
+      {
+        "moduleSlotType": "Utility",
+        "x": 5,
+        "y": 6
+      },
+      {
+        "moduleSlotType": "HullHardPoint",
+        "x": 4,
+        "y": 2
+      },
+      {
+        "moduleSlotType": "HullHardPoint",
+        "x": 4,
+        "y": 4
+      },
+      {
+        "moduleSlotType": "HullHardPoint",
+        "x": 7,
+        "y": 2
+      },
+      {
+        "moduleSlotType": "HullHardPoint",
+        "x": 7,
+        "y": 4
+      },
+      {
+        "moduleSlotType": "HullHardPoint",
+        "x": 6,
+        "y": 2
+      },
+      {
+        "moduleSlotType": "HullHardPoint",
+        "x": 6,
+        "y": 4
+      },
+      {
+        "moduleSlotType": "HullHardPoint",
+        "x": 5,
+        "y": 2
+      },
+      {
+        "moduleSlotType": "HullHardPoint",
+        "x": 5,
+        "y": 4
+      },
+      {
+        "moduleSlotType": "Propellant",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "x": 3,
+        "y": 4,
+        "moduleSlotType": "Utility"
+      }
+    ]
+  },
+  {
+    "dataName": "Titan",
+    "mass_tons": 3632,
+    "crew": 56,
+    "internalModules": 12,
+    "shipModuleSlots": [
+      {
+        "moduleSlotType": "Drive",
+        "x": 0,
+        "y": 3
+      },
+      {
+        "moduleSlotType": "PowerPlant",
+        "x": 1,
+        "y": 3
+      },
+      {
+        "moduleSlotType": "Utility",
+        "x": 3,
+        "y": 3
+      },
+      {
+        "moduleSlotType": "Radiator",
+        "x": 2,
+        "y": 3
+      },
+      {
+        "moduleSlotType": "TailArmor",
+        "x": 0,
+        "y": 6
+      },
+      {
+        "moduleSlotType": "LateralArmor",
+        "x": 3,
+        "y": 6
+      },
+      {
+        "moduleSlotType": "NoseArmor",
+        "x": 9,
+        "y": 6
+      },
+      {
+        "moduleSlotType": "NoseHardPoint",
+        "x": 9,
+        "y": 3
+      },
+      {
+        "moduleSlotType": "NoseHardPoint",
+        "x": 8,
+        "y": 1
+      },
+      {
+        "moduleSlotType": "NoseHardPoint",
+        "x": 8,
+        "y": 3
+      },
+      {
+        "moduleSlotType": "NoseHardPoint",
+        "x": 8,
+        "y": 5
+      },
+      {
+        "moduleSlotType": "Utility",
+        "x": 7,
+        "y": 0
+      },
+      {
+        "moduleSlotType": "HullHardPoint",
+        "x": 7,
+        "y": 2
+      },
+      {
+        "moduleSlotType": "HullHardPoint",
+        "x": 7,
+        "y": 4
+      },
+      {
+        "moduleSlotType": "Utility",
+        "x": 7,
+        "y": 6
+      },
+      {
+        "moduleSlotType": "Utility",
+        "x": 6,
+        "y": 0
+      },
+      {
+        "moduleSlotType": "HullHardPoint",
+        "x": 6,
+        "y": 2
+      },
+      {
+        "moduleSlotType": "HullHardPoint",
+        "x": 6,
+        "y": 4
+      },
+      {
+        "moduleSlotType": "Utility",
+        "x": 6,
+        "y": 6
+      },
+      {
+        "moduleSlotType": "Utility",
+        "x": 5,
+        "y": 0
+      },
+      {
+        "moduleSlotType": "HullHardPoint",
+        "x": 5,
+        "y": 2
+      },
+      {
+        "moduleSlotType": "HullHardPoint",
+        "x": 5,
+        "y": 4
+      },
+      {
+        "moduleSlotType": "Utility",
+        "x": 5,
+        "y": 6
+      },
+      {
+        "moduleSlotType": "Utility",
+        "x": 4,
+        "y": 1
+      },
+      {
+        "moduleSlotType": "Utility",
+        "x": 4,
+        "y": 3
+      },
+      {
+        "moduleSlotType": "Propellant",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "x": 3,
+        "y": 1,
+        "moduleSlotType": "Utility"
+      },
+      {
+        "x": 4,
+        "y": 5,
+        "moduleSlotType": "Utility"
+      },
+      {
+        "x": 3,
+        "y": 5,
+        "moduleSlotType": "Utility"
+      }
+    ]
+  },
+  {
+    "dataName": "AlienDreadnought",
+    "mass_tons": 2750,
+    "crew": 50,
+    "internalModules": 10,
+    "shipModuleSlots": [
+      {
+        "moduleSlotType": "Drive",
+        "x": 0,
+        "y": 3
+      },
+      {
+        "moduleSlotType": "PowerPlant",
+        "x": 1,
+        "y": 3
+      },
+      {
+        "moduleSlotType": "Utility",
+        "x": 3,
+        "y": 3
+      },
+      {
+        "moduleSlotType": "Radiator",
+        "x": 2,
+        "y": 3
+      },
+      {
+        "moduleSlotType": "TailArmor",
+        "x": 0,
+        "y": 6
+      },
+      {
+        "moduleSlotType": "LateralArmor",
+        "x": 4,
+        "y": 6
+      },
+      {
+        "moduleSlotType": "NoseArmor",
+        "x": 9,
+        "y": 6
+      },
+      {
+        "moduleSlotType": "NoseHardPoint",
+        "x": 9,
+        "y": 3
+      },
+      {
+        "moduleSlotType": "NoseHardPoint",
+        "x": 8,
+        "y": 3
+      },
+      {
+        "moduleSlotType": "NoseHardPoint",
+        "x": 8,
+        "y": 1
+      },
+      {
+        "moduleSlotType": "NoseHardPoint",
+        "x": 8,
+        "y": 5
+      },
+      {
+        "moduleSlotType": "Utility",
+        "x": 7,
+        "y": 0
+      },
+      {
+        "moduleSlotType": "Utility",
+        "x": 6,
+        "y": 0
+      },
+      {
+        "moduleSlotType": "Utility",
+        "x": 5,
+        "y": 0
+      },
+      {
+        "moduleSlotType": "Utility",
+        "x": 3,
+        "y": 1
+      },
+      {
+        "moduleSlotType": "Utility",
+        "x": 7,
+        "y": 6
+      },
+      {
+        "moduleSlotType": "Utility",
+        "x": 6,
+        "y": 6
+      },
+      {
+        "moduleSlotType": "Utility",
+        "x": 5,
+        "y": 6
+      },
+      {
+        "moduleSlotType": "Utility",
+        "x": 3,
+        "y": 5
+      },
+      {
+        "moduleSlotType": "HullHardPoint",
+        "x": 4,
+        "y": 2
+      },
+      {
+        "moduleSlotType": "HullHardPoint",
+        "x": 4,
+        "y": 4
+      },
+      {
+        "moduleSlotType": "HullHardPoint",
+        "x": 7,
+        "y": 2
+      },
+      {
+        "moduleSlotType": "HullHardPoint",
+        "x": 7,
+        "y": 4
+      },
+      {
+        "moduleSlotType": "HullHardPoint",
+        "x": 6,
+        "y": 2
+      },
+      {
+        "moduleSlotType": "HullHardPoint",
+        "x": 6,
+        "y": 4
+      },
+      {
+        "moduleSlotType": "HullHardPoint",
+        "x": 5,
+        "y": 2
+      },
+      {
+        "moduleSlotType": "HullHardPoint",
+        "x": 5,
+        "y": 4
+      },
+      {
+        "moduleSlotType": "Propellant",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "x": 4,
+        "y": 0,
+        "moduleSlotType": "Utility"
+      }
+    ]
+  },
+  {
+    "dataName": "AlienTitan",
+    "mass_tons": 2820,
+    "crew": 60,
+    "internalModules": 10,
+    "shipModuleSlots": [
+      {
+        "moduleSlotType": "Drive",
+        "x": 0,
+        "y": 3
+      },
+      {
+        "moduleSlotType": "PowerPlant",
+        "x": 1,
+        "y": 3
+      },
+      {
+        "moduleSlotType": "Utility",
+        "x": 3,
+        "y": 3
+      },
+      {
+        "moduleSlotType": "Radiator",
+        "x": 2,
+        "y": 3
+      },
+      {
+        "moduleSlotType": "TailArmor",
+        "x": 0,
+        "y": 6
+      },
+      {
+        "moduleSlotType": "LateralArmor",
+        "x": 4,
+        "y": 6
+      },
+      {
+        "moduleSlotType": "NoseArmor",
+        "x": 9,
+        "y": 6
+      },
+      {
+        "moduleSlotType": "NoseHardPoint",
+        "x": 8,
+        "y": 1
+      },
+      {
+        "moduleSlotType": "NoseHardPoint",
+        "x": 8,
+        "y": 3
+      },
+      {
+        "moduleSlotType": "NoseHardPoint",
+        "x": 8,
+        "y": 5
+      },
+      {
+        "moduleSlotType": "NoseHardPoint",
+        "x": 9,
+        "y": 1
+      },
+      {
+        "moduleSlotType": "NoseHardPoint",
+        "x": 9,
+        "y": 3
+      },
+      {
+        "moduleSlotType": "NoseHardPoint",
+        "x": 9,
+        "y": 5
+      },
+      {
+        "moduleSlotType": "HullHardPoint",
+        "x": 4,
+        "y": 2
+      },
+      {
+        "moduleSlotType": "HullHardPoint",
+        "x": 4,
+        "y": 4
+      },
+      {
+        "moduleSlotType": "HullHardPoint",
+        "x": 5,
+        "y": 2
+      },
+      {
+        "moduleSlotType": "HullHardPoint",
+        "x": 5,
+        "y": 4
+      },
+      {
+        "moduleSlotType": "HullHardPoint",
+        "x": 6,
+        "y": 2
+      },
+      {
+        "moduleSlotType": "HullHardPoint",
+        "x": 6,
+        "y": 4
+      },
+      {
+        "moduleSlotType": "HullHardPoint",
+        "x": 7,
+        "y": 2
+      },
+      {
+        "moduleSlotType": "HullHardPoint",
+        "x": 7,
+        "y": 4
+      },
+      {
+        "moduleSlotType": "Utility",
+        "x": 5,
+        "y": 0
+      },
+      {
+        "moduleSlotType": "Utility",
+        "x": 6,
+        "y": 0
+      },
+      {
+        "moduleSlotType": "Utility",
+        "x": 7,
+        "y": 0
+      },
+      {
+        "moduleSlotType": "Utility",
+        "x": 5,
+        "y": 5
+      },
+      {
+        "moduleSlotType": "Utility",
+        "x": 6,
+        "y": 5
+      },
+      {
+        "moduleSlotType": "Utility",
+        "x": 7,
+        "y": 5
+      },
+      {
+        "moduleSlotType": "Propellant",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "x": 4,
+        "y": 0,
+        "moduleSlotType": "Utility"
+      },
+      {
+        "x": 3,
+        "y": 1,
+        "moduleSlotType": "Utility"
+      },
+      {
+        "x": 3,
+        "y": 5,
+        "moduleSlotType": "Utility"
+      }
+    ]
+  }
+]

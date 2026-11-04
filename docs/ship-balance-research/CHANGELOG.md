@@ -3,7 +3,347 @@
 This is a decision log for the proposed ship rebalance. Entries here describe
 the balance decisions as well as their implementation status.
 
+## 2026-11-04
+
+### Stable 0.11.6 accepted for documentation, commit and push
+
+- User confirms "The bug is fixed, the game is stable" and requests closing the
+  baseline. Record acceptance of the final beam correction and current deployed
+  package, with all pending work since v0.10.21 included in the checkpoint.
+- Preserve the tested runtime without rebuilding. Recheck all 57 source,
+  installed and ZIP hashes against the successful 44-validator / 1,887-assertion
+  deployment. Update the matrix acceptance note and documentation authorities.
+- Retain historical deployment snapshots, rejected rendering/calibration records
+  and research-only plans without inventing feature-by-feature manual coverage.
+  [Acceptance record](battle-scale/acceptance-0.11.6-2026-11-04.md).
+
+### 0.11.6: include particle beams in constant-width handling
+
+- User confirms alien violet lasers now look correct and suspects particle PD
+  produces the remaining broad white beams. Native alien particle PD is white;
+  selected human antimatter PD is another possible source. Do not infer each
+  shooter solely from a screenshot.
+- Confirm laser-only guards omitted TIParticleWeaponTemplate, leaving native
+  cameraDistance*0.005 widening active. Admit particle types, capture the native
+  authored width*effect scale at activation/reuse, and bypass the distance floor.
+  Keep laser aperture/0.46 calibration and all accepted shader assets unchanged.
+- Normal 44-validator deployment passed, including 1,887 formula assertions and
+  compiled type-coverage guards. All 57 source/installed/archive files match.
+  [Correction, readback and remaining manual checks](particle-beam-scale-correction-2026-11-04.md).
+
+### Armor calibration correction and performance gate
+
+- User rejected the multi-parameter C0/C1 calibration. Use one global divisor for
+  armor points removed/work per point, uniformly for every impact and material.
+  No extra battery spreading, weapon-specific work coefficient, thermal-area
+  tuning or internal-deposition coefficient is selected. The 80% baseline, if
+  chosen, belongs in that same divisor rather than a second energy multiplier.
+- Another 1 ms of frame time for about ten impacts/frame is unacceptable. Sparse
+  adaptive tiles remain ideal only if the complete engine patch path is cheap:
+  cached contact/state handles, contiguous arrays, no hot allocations, no repeated
+  engine/geometry searches and minimal reads/writes. Benchmark integration as well
+  as arithmetic on the actual runtime.
+- [Corrected active plan](armor-rework-plan.md); [rejected proposal and artifacts](archive/armor-rework-calibration-2026-11-04/rejected-calibration-plan.md).
+  Documentation only, no implementation or runtime benchmark.
+
+### 0.11.5: isolate alien main-beam color/material state
+
+- User confirms subpixel issue solved, human arc PD seemingly correct and alien
+  red PD correct/beautiful. Two violet-equipped alien ships also render white;
+  do not explain the full report as X-ray-only color selection.
+- Trace native violet blue HDR versus authored-white X-ray and green gamma
+  effects. The angstrom patch only affects graser physics/cache/display, not
+  render resource or color. Add one material-state comparison per report key.
+- HLSL/shader/manifest remain byte-identical to 0.11.4. No retint, HDR tuning,
+  effect replacement or new visual fix is claimed. Normal 44-validator deployment,
+  1,808 assertions and 57-file source/install/archive readback pass.
+  [Investigation and diagnostic handoff](alien-beam-color-investigation-2026-11-04.md).
+
+### 0.11.4: restore native resolved beam after cone/flow regressions
+
+- User rejected 0.11.3 widening cones and lost close-up flow appearance. That
+  build independently normalized the core and reconstructed/padded vertices,
+  exceeding the intended width/sampling correction. Mark it superseded.
+- Restore native vertex bytecode/wrapper/interface, resolved core and halo.
+  Remove endpoint uniforms/callback and GPU padding. Retain the approved fixed
+  aperture/0.46 ribbon multiplier. Blend core filtering only below four-pixel
+  support; native texture flow and profile stay unchanged when resolved.
+- Normal 44-validator deployment passed, with 1,808 formula assertions and
+  all 57 source/installed/archive files matched. Verify complete resolved RGB
+  equations in 1,800 cases. Both supplied visual cases remain manual acceptance.
+  [Restoration and receipts](laser-native-profile-restoration-2026-11-04.md).
+
+### Armor model candidates and physical-area requirements
+
+- **Superseded calibration:** the C0/C1 and extra coefficient proposals in this
+  entry were subsequently rejected; use the correction above.
+
+- Expand the [armor rework plan](armor-rework-plan.md) with adaptive surface tiles
+  versus aggregate depth histograms, actual-contact aiming, optional component
+  regions, energy/work formulas, finite impact footprints and measured-area
+  catalogs per ship appearance/armor node. Resolution must converge at fixed
+  physical footprint rather than becoming an unreported armor multiplier.
+- User requires initial maximum-capital protection even against the heaviest
+  hull batteries, while preserving nose-weapon power headroom and meaningful
+  15–20-point mid-game armor. C0 minimum-roll calibration alone fails that strict
+  heavy-battery case; C1 diffuse battery profiles are a proposed comparison,
+  not approved tuning. Lasers' repeated precision drilling needs its own tests.
+- Remove damage-roll energy variation in the proposed solver; consider the
+  conservative 0.8 roll as explicit coupling. Track all energy through armor,
+  internal deposition, exit and losses. Runtime/memory figures are targets and
+  estimates only. Documentation/calculations, no gameplay implementation.
+
+### 0.11.3: fixed lens-sized core and subpixel sampling
+
+- User approved both fixes and selected a constant core/ribbon ratio of 0.46,
+  giving an authored ribbon 2.173913 times the measured aperture. Physical core
+  support remains the aperture diameter; native radial brightness still pulses.
+- Add a source-guarded native-style D3D11 shader variant that filters the core
+  over its pixel footprint. GPU carrier support covers sampling without a bright
+  one-pixel floor. Preserve native endpoints, texture/scroll/noise/pulse, color,
+  effects and weapon simulation. Endpoint vectors mirror native motion only;
+  sizes/resources configure at bind/reuse, with no frame-time mesh/collider work.
+- Normal 44-validator deployment passed; 1,659 formula assertions and all 57
+  source/installed/archive file hashes match. Unity subsequently loaded the
+  shader and bound live emitters. Visual flow/continuity and GPU/battle cost
+  remain manual acceptance items. [Implementation and receipts](laser-core-sampling-implementation-2026-11-04.md).
+
+### Armor rework direction: officer skill and capital protection
+
+- Officers should affect critical/weak-spot selection and/or aim precision, not
+  directly increase weapon damage or impact energy.
+- Aim for a small general armor buff: strong weapons still penetrate lightly
+  armored targets, while intact maximum practical capital armor resists initial
+  standard hull-gun hits. Dedicated heavy weapons/torpedoes retain their role;
+  routine one-hit kills should not dominate.
+- [Plan and unresolved choices](armor-rework-plan.md). Historical autocannon PD
+  dispersion was found, but no current general aim-noise hook was verified.
+  Documentation only; no new formulas or gameplay changes implemented.
+
+### 0.11.2: designer offset and full-window fit
+
+- Disable the enabled native middle-centered GridLayoutGroup when JSON owns
+  coordinates. Eleven allocated half-rows in the nine-row-sized region otherwise
+  produce a 37-unit upward overwrite and clipped first row.
+- Measure real post-layout viewport/header keepouts and full catalog/active
+  control bounds. Place one common origin, expand center/window for measured
+  shortage, and uniformly fit the outer window below native notification space.
+  Bounded event-triggered passes log content/window containment, then disable.
+- Logical anchors, pitch, counts, weight and save metadata stay unchanged.
+  Native API compile probe and normal guarded deployment pass 44 validators /
+  1,391 assertions; all 55 installed/archived files match. [Validation](designer-viewport-fit-2026-11-04.md).
+  Live Titan/Mothership/scale checks remain pending.
+
+### 0.11.2: alien-only generic armor selection crash fix
+
+- Fix the null native armor choice during remote alien base initialization.
+  Budget mode compares complete construction recipes at equal build mass,
+  valued with configured reference resource prices; premium mode retains
+  lowest mass per damage point. Exotics are priced rather than excluded for
+  aliens. No armor names are encoded; humans retain the original selector.
+- Preserve unlocks, native obsolescence fallback, recipes, costs and physical
+  properties. No save-version change or migration. Native regressions cover
+  the original null, repaired choices, human gating, renamed/synthetic records,
+  changing prices and unavailable parts. Normal guarded deployment passes
+  44 validators / 1,376 assertions; all 55 installed/archive files match.
+  [Implementation](alien-armor-selection-fix-2026-11-04.md); manual reload pending.
+
+### Alien armor materials in the untested 0.11.2 package
+
+- Alien Adamantane adopts Hybrid density, vaporization energy, radiation shielding,
+  0.75 laser damage and material costs. Alien Exotic is 30% thinner/lighter per
+  point (1.75 cm, 35 kg/m²), retains its cost mix, and matches Hybrid shielding
+  per point and laser resistance. Native identities and alien unlocks remain.
+- User confirmed equal per-point radiation protection. Exotic half-value depths
+  are therefore 3.15/7.7 cm, with unchanged 1.8/4.4 tooltip point values.
+- Normal guarded deployment passed 43 validators and 1,376 assertions; 55 files
+  match the installed package. [Implementation and manual checks](alien-armor-material-update-2026-11-04.md).
+
+### 0.11.2: symmetric alien utilities and canonical Mothership layout
+
+- Alien Dreadnought/Titan: 13 utilities each, +20 t structure, unchanged crew.
+  Titan's lower utility group translates together to preserve its footprints.
+- Mothership: 8 N5 noses, 18 forward heavy hull cells, 20 utilities. Reinforcement
+  is +540 t over 0.11.1, giving 9,240 t structure / 9,540 t bare, crew 100.
+  JSON allocation adds the row between armor controls without another window
+  enlargement. Schema column membership and real icon/control bounds reject
+  invalid members; no redundant protected-area element remains.
+- Canonical armor: tail at column 0, side anchor 4 with native half-cell offset,
+  nose at column 9. Fuel is (0,0); other systems remain fixed. Older utility
+  footprints/indices and model bindings remain; JSON retains original shared
+  hull coordinates for legacy conversion. Native save version/mod schema 3 stay.
+- User authorized reusing 0.11.2 for these untested iterations. Final guarded
+  deployment passes 43 validators / 1,376 assertions; all 55 installed and
+  archived files match. Live acceptance pending. [Implementation and diagrams](alien-capital-expansion-0.11.2-2026-11-04.md).
+
+### 0.11.1: utility cells, crew/weight and JSON designer rows
+
+- JSON: +2 utilities on Human Lancer/Dreadnought/Titan and Alien Dreadnought/Titan;
+  +40 t structure each, +2 human base crew, alien crew unchanged. Preserve old
+  slot indices/types and utility adjacency. Alien Lancer is unchanged.
+- Parse a private JSON row/spacing/panel document; prepare destinations from
+  data and grow the designer one 74-unit tile row. Armor positions move to data
+  row 8. Base structural mass comes from hull JSON across all appearances.
+- Native save version and mod-owned schema 3 stay unchanged. Normal guarded
+  deployment passes 43 validators, 1,376 assertions and 261 patch references.
+  All 54 installed/release-archive files match. Live acceptance pending; see
+  [implementation and diagrams](capital-utility-expansion-0.11.1-2026-11-04.md).
+
+### 0.11.0: asymmetric tiers, size-5 noses and graser precision
+
+- Implement the approved species-specific tier catalog; preserve native
+  construction semantics and existing research/MC gates. Human Lancer gains
+  four independent N4 noses/three heavy hull cells; Alien Carrier gains six
+  heavy hull cells, retaining no noses. Alien Lancer remains native T3.
+- Human Titan and Mothership require N5. Tag three Spinal Siege Coilers and
+  the alien Relativistic Particle/1024 cm Graser; halve both firing intervals
+  for exact 2x sustained output. Count N5 as five capacity units and apply
+  approved hull mass/human crew costs. Alien Titan remains compact N4 T4.
+- Schema 3 converts legacy shared footprints and grade conflicts, preserving
+  already compact cells and built-ship state. Original source/report backups
+  retain replacement provenance; baseline migration-only equipment access
+  does not grant research. Exact integer-angstrom graser physics/UI edges and
+  cache invalidation fix the two native zero-rounded wavelengths.
+- Guarded deployment passes 42 validators, 1,372 assertions and the 121-feature /
+  260-patch matrix; all 53 installed files match. Manual acceptance pending.
+  See [implementation and tables](asymmetric-tiers-implementation-2026-11-04.md).
+
+### 0.10.24: deploy alien machinery-bay inputs
+
+- Implement all fifteen audited appearance-0 allowances in prepared production
+  math, with eleven geometry-proxy inputs and four calibrated small-hull
+  fallbacks distinguished from the human measured map. Mothership is
+  137,456.8 m³; Alien Titan 14,625.7 m³. Unknown hull/appearance fallbacks remain.
+- Normal deployment passed 41 validators, 1,339 formula assertions and the
+  120-row / 255-patch matrix. All 52 installed files match. Existing equipment,
+  fuel and layouts are not rewritten; editing/refitting uses the new limits.
+- A production-helper preflight of 68 saved alien designs (27 distinct
+  propulsion configurations) finds three newly over-limit configurations,
+  recorded in the [implementation evidence](alien-reactor-bay-implementation-2026-11-04.md).
+  Manual campaign/refit and live AI acceptance remain pending.
+
+### Planning: asymmetric five-tier species ladder
+
+- At the user's request, add the [new plan and cluster tables](asymmetric-human-alien-tier-plan-2026-11-04.md):
+  Alien Cruiser T2, Lancer T3, Titan/Assault Carrier T4, Mothership T5. Human
+  categories remain; no one-to-one species equivalence or occupied T6 is needed.
+- Alien V0 main-hull ranges are nonoverlapping across T1–4. Shared T5 remains a
+  strategic ceiling, not a tight physical-size match. Record the N5 consequence
+  (Human Titan/Mothership only), native Alien Lancer fitting, unchanged Alien
+  Titan N4, and conditional Carrier heavy-hull conversion/cost. No tier/N5
+  implementation is included in 0.10.24.
+
+### Research: alien machinery-bay geometry and art progression
+
+- Audit all fifteen alien prefabs directly from the installed ships bundle,
+  decoding complete vertex/triangle geometry and authored hierarchy/renderer
+  state. No reactor-tagged internal chamber is established; distinguish measured
+  aft housings from modeled machinery allowances and four calibrated fallbacks.
+- Separate Mothership's three large Engine_A housings and clip each to its own
+  radiator band, excluding gaps and the ambiguous Tail_Sphere. The 137,457 m³
+  candidate is about 9.4x similarly modeled Alien Titan; the full outer housings
+  total 378,121 m³. No runtime capacity is changed.
+- Run 45 production numerical reactor-limit comparisons. Mothership and Titan
+  already reach all current reactor-template ceilings with old and proposed bay
+  values; larger geometry alone adds no GW. Candidates would reduce some limits
+  on six smaller classes, requiring stock/AI/live checks before adoption.
+- Add full-triangle figures for the geometry, human V0/alternative art-family
+  curves and common-scale alien fleet hulls. Update tier/N5 and boundary analysis
+  without silently normalizing mesh size, cost or gameplay.
+- See the [measurement report](alien-reactor-bay-measurements-2026-11-04.md)
+  and [auditable evidence](alien-reactor-bay-audit-2026-11-04.json).
+
+## 2026-11-03
+
+### Research: all-class mesh volume and capacity statistics
+
+- Invoke the packaged production volume/drive catalog readers and reactor/alien
+  sizing helpers for all 28 classes / 64 appearances. Summarize minimum, median
+  and maximum main-hull envelopes, reactor/engine-bay allowances and both engine
+  nozzle-family coefficients; cross-check source catalogs and record hashes.
+- Distinguish 48 measured human bay entries from 16 fallback entries. Engine
+  performance uses art-area coefficients, not a third mesh volume. Actual fuel
+  capacity additionally deducts fitted module and crew volume and depends on
+  propellant density.
+- Add the [complete comparison and source snapshot](hull-volume-capacity-comparison-2026-11-03.md)
+  to the tier-boundary and N5 support-budget planning. No gameplay changes.
+
+### Planning: lower-tier boundaries
+
+- Add a small [Frigate/Cruiser boundary plan](frigate-and-cruiser-tier-boundary-plan-2026-11-03.md):
+  recommend formal tier 2 for both Frigates and tier 3 for both Cruisers and
+  Battlecruisers. Human tiers 1–5 then align with existing hull-project waves
+  and MC 1–5. Frigate is the light utility escort; Cruiser remains the marginal
+  lower tier-3 utility/endurance option. Recheck 14 hulls against current data.
+- Refine the broader proposal's classification tables; preserve native
+  construction tiers and current fits. No gameplay, save, build or deployment.
+
+### Planning: formal ship tiers 4–6, size-5 noses and wavelength precision
+
+- Audit installed TI 1.0.53b plus current mod overrides and the latest Project
+  Exodus save. Lancer and Dreadnought share Ships of the Line / native consTier 3;
+  missing Improved Shipbuilding Techniques explains why neither is unlocked.
+- Separate five human hull-project waves, three construction tiers, length-based
+  size flags, native Small/Medium/Large and the mod's compact-capital rules.
+  Identify Lancer's lost spinal niche and unsafe native AI assumptions if
+  construction tiers are simply renumbered to 4–6.
+- Compare all 36 FourNose templates by exact project and family, including seven
+  shared-unlock pairs. Human siege coils gain 1.80–1.92x raw output/slot at
+  5.57–6.44x loaded mass; unnamed alien graser/relativistic alternatives do not
+  uniformly improve raw throughput. The name-only inventory is superseded.
+- Record the user's tentative mandatory N5 / tier-5–6 direction, exact doubled
+  cadence, complete human/alien Lancer conversion and initial mass/crew targets.
+  Flag incomplete family coverage, unsupported legacy fits and graser's 1.333x
+  post-doubling raw output versus xaser as decisions to resolve before implementation.
+- Confirm 0.1 nm -> 0 native deserialization on both graser cannon templates.
+  Propose integer angstroms in a mod-owned precision layer, with physical/UI
+  conversions and cache handling, rather than changing the units of every
+  native integer-nanometre field. No gameplay, save, build or deployment changes.
+- See the [analysis and sources](hull-progression-and-capital-weapon-analysis-2026-11-03.md),
+  [formal tier/weapon plan](tier-4-6-and-size-5-implementation-plan-2026-11-03.md)
+  and [wavelength bug/fix proposal](laser-wavelength-precision-bug-2026-11-03.md).
+
 ## 2026-11-02
+
+### 0.10.23: nose weapon background-cutout correction
+
+- The user reported background-shaped cutouts on nose weapons, showing Heavy
+  Rail Cannon Mk3 on a Battlecruiser. That magnetic gun is outside the eight
+  conventional-gun profiles covered by the accepted 0.10.8 fix.
+- Extend the existing combat mesh-baking pass with a nose-only, per-renderer
+  factor. Enlarge tiny renderer matrices while retaining visible geometry,
+  child/muzzle positions and scales, primitive/mesh collider geometry and the
+  native materials. Use power-of-two steps to bound cached mesh variants.
+  Preserve the existing factor for other renderers and the restoration lifecycle.
+- Normal deployment passed 41 validators, 1,226 formula assertions and 1,008
+  added coordinate comparisons; all 52 installed files match. The actual visual
+  correction remains pending a repeat of the user's screenshot case. See the
+  [implementation and evidence](nose-weapon-render-cutout-2026-11-02.md).
+
+### 0.10.22: compact capital hull and nose weapons
+
+- Extend heavy-only, one-weapon-per-cell hull fitting to human and alien
+  Dreadnoughts. Both Dreadnoughts, both Titans and the Mothership now require
+  FourNose weapons with one weapon per nose cell. Full weapon equipment stats
+  and costs remain; designer fitting, catalog visibility, model selection,
+  validation, player auto-design and AI share the rule.
+- Add two Mothership nose cells, reaching six and the native grid's 40-control
+  capacity. Append saved indices 38/39, repack only nose/nose-armor coordinates,
+  and preserve utility footprints. Clone two complete native weapon-controller
+  hierarchies onto measured symmetric outer nose surfaces before model build.
+- Schema 2 converts vanilla and schema-1 saves, preserving existing compact
+  Titan/Mothership hulls while expanding Dreadnought hulls and all legacy nose
+  footprints. Preserve explicit anchors in overlapping stock layouts, fill each
+  occupied cell once, retain empty cells and built-ship ammo/damage/repair state.
+- Add 20 t reinforcement per extra effective weapon cell and +1 human billet
+  per cell, with existing crew mass and bare-total rounding. Human
+  Dreadnought/Titan base crew becomes 52 each; V0 bare masses are 3,200/3,700 t.
+  Alien Dreadnought/Titan/Mothership bare masses become 2,900/3,000/8,900 t;
+  alien crew remains unchanged.
+- Normal deployment passed 41 validators, 1,226 formula assertions and the
+  120-row / 255-patch matrix; all 52 installed files match. Designer/model,
+  real legacy campaign load and combat acceptance remain manual. See the
+  [implementation, balance table and verification evidence](capital-mount-expansion-2026-11-02.md).
 
 ### 0.10.21 stable baseline accepted for commit/push
 

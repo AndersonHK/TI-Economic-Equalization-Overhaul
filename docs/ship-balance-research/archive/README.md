@@ -7,6 +7,7 @@ the [complete repository document catalog](../../CATALOG.md) for every artifact.
 
 | Archive | Why retained | Current authority or direction |
 |---|---|---|
+| [Rejected armor calibration](armor-rework-calibration-2026-11-04/rejected-calibration-plan.md) | User rejected C0/C1 weapon-specific work/spreading and extra mitigation coefficients; original calculations and figure retained | [One-divisor armor plan and performance gate](../armor-rework-plan.md) |
 | [Gunpowder rendering investigation](gunpowder-rendering-2026-10-21/README.md) | Startup-schema failure, material investigation, cutout screenshots and earlier deployment evidence | [Accepted 0.10.8 implementation](../gunpowder-canonical-art-implementation-2026-10-21.md) |
 | [25 mm addition/two-cell autocannon plan](25mm-autocannon-2026-10-21/README.md) | Never implemented; archived by user request | Existing weapons were resized without changing tiers |
 | [Capital heavy-mount proposal](implemented-plans/capital-heavy-mount-plan-2026-09-25.md) | Superseded proposal and original baseline | [Capital implementation](../capital-heavy-mount-implementation.md) |

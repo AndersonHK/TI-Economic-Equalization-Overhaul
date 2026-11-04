@@ -18,6 +18,7 @@ namespace TIEconomyMod
         public static HullDriveScaleCatalog hullDriveScales;
         public static TIEconomyMod.Core.GunpowderArtCatalog gunpowderArt;
         public static TIEconomyMod.Core.LaserOpticsCatalog laserBeamOptics;
+        public static TIEconomyMod.Core.ShipDesignerLayout shipDesignerLayout;
 
         public static bool Load(UnityModManager.ModEntry modEntry)
         {
@@ -32,6 +33,8 @@ namespace TIEconomyMod
 
             try
             {
+                shipDesignerLayout = TIEconomyMod.Core.ShipDesignerLayout.Load(
+                    Path.Combine(modEntry.Path, "Config", "ship-designer-layout.eeo"));
                 string weightPath = Path.Combine(modEntry.Path, "Config", "economy-tech-weights.csv");
                 techWeights = TechWeightCatalog.Load(weightPath, Log, IsKnownTechnology);
                 string hullVolumePath = Path.Combine(
@@ -71,6 +74,15 @@ namespace TIEconomyMod
                 }
                 try
                 {
+                    TIEconomyMod.Core.LaserSamplingShader.Load(modEntry.Path, typeof(ShipModelController).Assembly.Location);
+                }
+                catch (Exception samplingException)
+                {
+                    Warn("Laser sampling shader unavailable; fixed ribbon sizing only: " + samplingException.Message);
+                }
+                try
+                {
+                    LaserWavelengthFeature.Validate();
                     harmony.PatchAll();
                 }
                 catch (Exception patchException)
@@ -95,16 +107,18 @@ namespace TIEconomyMod
                 if (TemplateManager.self != null &&
                     TemplateManager.self.Initialized)
                 {
+                    ShipDesignerDataLayoutPatch.ValidateTemplates();
                     GunPowerRegistry.Refresh();
                     ProjectileGeometryRegistry.Refresh();
                     UtilityFootprintRegistry.Refresh();
                     PropellantDensityRegistry.Refresh();
                     PowerPlantScalingRegistry.Refresh();
+                    LaserWavelengthFeature.Refresh();
                     TIEconomyMod.Core.CapitalMountRuntime.NormalizeStockDesigns();
                     ShipPowerRuntime.RefreshTemplatePerformanceCaches();
                 }
                 CouncilorRuntimeCaps.InitializeOrganizationCap();
-                Log("Loaded TI Economic Equalization Overhaul 0.10.14, validated against TI 1.0.53b.");
+                Log("Loaded TI Economic Equalization Overhaul " + modEntry.Info.Version + ", validated against TI 1.0.53b.");
                 return true;
             }
             catch (Exception exception)

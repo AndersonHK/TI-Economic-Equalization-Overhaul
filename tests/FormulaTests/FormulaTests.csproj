@@ -22,6 +22,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\..\TIEconomyMod\Core\CapitalMountPolicy.cs" />
+    <Compile Include="..\..\TIEconomyMod\Core\LaserSamplingMath.cs" />
+    <Compile Include="..\..\TIEconomyMod\Core\WavelengthPrecision.cs" />
+    <Compile Include="..\..\TIEconomyMod\Core\DesignerViewportMath.cs" />
     <Compile Include="..\..\TIEconomyMod\Core\AlienFloraAssaultMath.cs">
       <Link>AlienFloraAssaultMath.cs</Link>
     </Compile>

@@ -3,6 +3,88 @@
 These rules are the balance authority for future work. Compatibility scaffolding
 may change between TI releases; the units and incentives below should not.
 
+## Runtime performance
+
+User direction, 2026-11-03: favor one-time loading preparation and retained RAM
+over recurring CPU work. Added main-thread milliseconds deserve severe scrutiny,
+even when a patch's work is correctly classified as simulation rather than
+rendering. This applies to all patches, including frequently called getters and
+UI hooks, not only explicit Update/LateUpdate methods.
+
+Prepare immutable data, lookup tables and reusable buffers before use. Update
+changing state at its actual lifecycle/simulation boundary; rendering an unchanged
+state must not repeat simulation work. Batch necessary work and use workers where
+safe. Count main-thread capture, copies, scheduling, result handling and worker
+waits as part of the cost. Moving a stall to a different callback or timer does
+not remove it. Preserve intended behavior; a different and substantially simpler
+implementation is preferable when the current architecture imposes recurring cost.
+
+For battle collision, the target is zero or near-zero added main-thread ballistic
+and pose overhead, with no repeated full ship/bone scans or duplicate physical
+collider hierarchy maintained solely for an independent collision calculation.
+Actual hit application still needs a small, measured native integration step.
+The [revised battle FPS plan](ship-balance-research/battle-fps-investigation-plan-2026-11-03.md)
+sets proposed budgets, behavior constraints and validation gates; implementation
+is pending review. Do not trade away correct collision, introduce stale poses or
+delay damage merely to meet a timer target.
+
+## Armor, weapon energy and officer skill
+
+User direction, 2026-11-04: officers should improve critical-hit/weak-spot
+selection and/or aim precision, not multiply weapon damage or impact energy.
+An identical projectile arriving with identical mass, velocity and contact
+conditions must not gain joules because its firing officer is more experienced.
+Retain meaningful officer progression through hit quality; the exact replacement
+mechanic is part of the pending [armor rework plan](ship-balance-research/armor-rework-plan.md).
+
+The rework should produce a **small general armor buff**. Powerful weapons should
+still penetrate under-armored targets, while maximally armored late-game capitals
+should not be easily destroyed by standard hull-mounted weapons. The user's
+battleship/cruiser analogy describes the intended relationship: cruiser gunfire
+should be unlikely to penetrate an intact battleship belt on its first hit;
+torpedoes and dedicated heavy penetrators remain credible threats. This is a
+gameplay analogy, not a literal claim about torpedo impact location or naval
+armor physics. Routine one-hit kills should not dominate the late-game balance.
+
+Further user clarification: include **even the heaviest hull batteries** in the
+initial protection goal; do not reclassify them as automatic exceptions. Preserve
+separate hull-battery and nose-weapon power progressions, with room for lower-tier
+nose weapons to exceed higher-tier batteries. Test the user's 15–20-point
+mid-game nose-armor scale as well as heavily armored end-game Titans.
+
+Armor area must follow the selected ship appearance's actual armorable exterior
+and the surface assigned to each armor node. Larger variants require more area
+and material at the same thickness. Logical 2D armor-grid extent scales with that
+area; numerical resolution must not secretly change physical wound size. Hits
+affect a finite area according to projectile, beam or warhead behavior. The plan
+must decide actual-contact versus abstract hit placement and component targeting
+explicitly. Use delivered energy as the damage source, without random or
+officer-created joules. If the conservative 80% baseline is chosen, represent
+it through the single armor-work divisor described below.
+
+Armor strengthening must use **one global divisor in
+armor loss/work**, applied uniformly to every impact and material. Do not add
+weapon-specific work normalization, battery-spread tuning, a balancing laser
+area floor or an extra internal-damage coefficient. Express an 80% conservative
+baseline through that same divisor if chosen; do not also multiply energy by 0.8.
+The final divisor value is not selected. The prior multi-parameter proposal is
+rejected, not an implementation target.
+
+Sparse adaptive surface tiles are desirable if they can be implemented cheaply
+through the existing engine. At about **ten impacts per frame, another 1 ms of
+frame time for armor is unacceptable**. Measure the whole added patch path:
+contact/state access, adapter, local numeric processing and notifications. Favor
+hot contiguous arrays, cached handles and minimal reads/writes; array size alone
+does not establish expense. No per-hit allocation/reflection/component searches,
+duplicate geometry queries or recurring full-grid scans. Feasibility must be
+demonstrated on the actual game runtime, not inferred from arithmetic alone.
+
+Assess first-hit penetration, cumulative degradation, weak-spot damage and
+internal lethality separately. The desired local-depth/area-damage model and
+these durability targets are linked requirements; changing one does not prove
+the others are satisfied. The [current late-game calculations](ship-balance-research/armor-system-as-is-2026-11-04.md#12-late-game-coiler-lethality-400-armor-titans-and-200-armor-battlecruisers)
+provide the baseline, not the desired balance.
+
 ## Fresh campaigns and save migration
 
 Fresh campaigns started on the current mod version are the primary design and
@@ -290,3 +372,48 @@ runtime burden may still be removed after a peaceful transfer without erasing
 the historical standard for a future ownership change. Scenario history is
 explicit: Russia's claims on Donetsk, Kharkiv, Kiev, and Odesa are historical
 in the 2022/2026/2070 families but ordinary in the Dark Skies 2003 start.
+
+## Asymmetric naval progression and weapon grades
+
+Native save-version metadata belongs to upstream game developers. Never advance
+that version to identify mod changes. Store mod migration/layout versions in
+separate namespaced metadata such as `eeoCapitalLayout`; keep unrelated native
+save compatibility fields unchanged. Appending index-preserving utility slots
+in 0.11.1 does not require advancing the existing mod-owned schema 3.
+
+The 0.11.0 species-specific naval tier catalog is authoritative for compact
+fitting/weapon grade and UI labels. Native construction tiers remain separate
+game AI metadata. Human Lancer/Dreadnought and Alien Dreadnought/Titan/Carrier
+are T4; Human Titan and Alien Mothership are T5. Alien Cruiser is T2 and Alien
+Lancer T3. Only T5 accepts N5, and its occupied noses require N5. All T4+ hull
+cells use one heavy weapon each; Carrier retains no nose bank. N5 uses native
+FourNose geometry but counts five capacity units. Its five approved templates
+have exactly doubled sustained output through halved firing intervals.
+
+Fractional graser wavelengths belong in the mod integer-angstrom precision
+catalog, converted at physics/UI edges without reinterpreting native/save nm
+fields. New fitting grades require save-version migration that distinguishes
+previously compact cells from legacy shared footprints and preserves built
+state. See [implementation and migration policy](ship-balance-research/asymmetric-tiers-implementation-2026-11-04.md).
+
+## Fixed designer system anchors
+
+Armor, drive, reactor, radiator and fuel controls are fixed anchors. Repack
+weapon and utility cells around them; do not move fixed controls to gain room.
+Mothership side armor is (4,8), tail/nose armor (0,8)/(9,8), drive/reactor/radiator
+(0,4)/(1,4)/(2,4), and propellant (0,0). Their row follows an explicitly
+authorized window/grid expansion, rather than an opportunistic hull repack.
+
+Canonical designer armor controls use tail column 0, lateral anchor column 4
+with the native half-cell horizontal offset, and nose column 9. Do not add
+a separate protected-area graphic: infer blocked cells from actual centered
+icons and count-control bounds. JSON rules still reject invalid aft members.
+
+## Designer layout ownership and visible-window validation
+
+When JSON owns cell positions, disable the native centered GridLayoutGroup;
+allocated destinations are not the same as visible content rows. Validate
+post-layout visible rectangles below headers/toolbars, including armor inputs
+and Max labels, and preserve the upper notification reservation. Requested
+panel dimensions and a standalone slot diagram do not prove screen fit. Use
+bounded runtime containment checks/logs alongside pure geometry/API tests.

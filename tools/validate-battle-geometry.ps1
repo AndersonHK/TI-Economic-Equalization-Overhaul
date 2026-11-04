@@ -331,12 +331,23 @@ Write-Host 'PASS: 10x settings/default migration, independent 20x/5x XML round t
 Write-Host 'Unity mesh/collider world bounds require the in-game readback; this validator does not instantiate a Unity scene.'
 
 # Vanilla renderer/texture contract. No replacement renderer, endpoint writes,
-# UV offsets, shader/color replacement, transform scale or width-curve changes.
+# UV offsets, texture/color replacement, transform scale or width-curve changes.
+# The approved sampling variant may switch shader on bind/restore only.
 $laser=$mod.GetType('TIEconomyMod.Core.LaserBeamGeometry',$true)
+$emitterBody=@($reader.Invoke($null,[object[]]@($mod.GetType('TIEconomyMod.Patches.BattleLaserEmitterPatch',$true).GetMethod('Postfix'),$null)))
+$applyBody=@($reader.Invoke($null,[object[]]@($laser.GetMethod('Apply'),$null)))
+foreach($weaponClass in @('TILaserWeaponTemplate','TIParticleWeaponTemplate')) {
+    foreach($body in @($emitterBody,$applyBody)) {
+        if (@($body | Where-Object { $_.operand -is [Type] -and $_.operand.FullName -eq $weaponClass }).Count -eq 0) {
+            throw "Beam binding/render guard omits $weaponClass"
+        }
+    }
+}
 foreach($method in $laser.GetMethods([Reflection.BindingFlags]'Public,NonPublic,Instance,DeclaredOnly')) {
     if($null -eq $method.GetMethodBody()){continue}
     $body=@($reader.Invoke($null,[object[]]@($method,$null)))
-    if(@($body | Where-Object {$_.operand -is [Reflection.MethodInfo] -and $_.operand.Name -in @('AddComponent','SetPositions','SetPosition','set_localScale','set_widthCurve','set_mainTexture','set_mainTextureOffset','set_shader','set_color','set_enabled')}).Count){throw "Vanilla beam contract violated by $($method.Name)"}
+    if(@($body | Where-Object {$_.operand -is [Reflection.MethodInfo] -and $_.operand.Name -in @('AddComponent','SetPositions','SetPosition','set_localScale','set_widthCurve','set_mainTexture','set_mainTextureOffset','set_color','set_enabled')}).Count){throw "Vanilla beam contract violated by $($method.Name)"}
+    if ($method.Name -eq 'SetBeamPoints' -and @($body | Where-Object {$_.operand -is [Reflection.MethodInfo] -and $_.operand.Name -in @('set_shader','set_widthMultiplier','RibbonWidth','GetComponent','get_bounds','get_lossyScale','newobj')}).Count) { throw 'Endpoint mirror must not configure size/materials/geometry.' }
 }
 if($mod.GetType('TIEconomyMod.Patches.BattleLaserContinuousEndpointsPatch',$false)){throw 'Rejected endpoint bridge remains packaged.'}
 if(@($mod.GetReferencedAssemblies() | Where-Object Name -eq 'ShapesRuntime').Count){throw 'Rejected Shapes renderer dependency remains.'}
@@ -359,4 +370,44 @@ foreach($legacyParent in @([single]0.001,[single]0.01,[single]0.00013)) {
         if($rebinding.x -ne 1 -or $rebinding.y -ne 7){throw 'Reused effect did not recapture native UV state.'};$uvChecks++
     }
 }
-Write-Host "PASS: vanilla LineRenderer/material/texture/profile/endpoints preserved; no Shapes dependency/bridge; $uvChecks longitudinal-period/V/refire/restore/reuse cases. Visual acceptance remains Unity-host testing."
+Write-Host "PASS: native LineRenderer/material/flow texture/endpoints retained; no Shapes replacement; $uvChecks longitudinal-period/V/refire/restore/reuse cases. Visual acceptance remains Unity-host testing."
+& (Join-Path $PSScriptRoot 'validate-laser-sampling.ps1') -RepositoryRoot $RepositoryRoot
+
+# The reported HeavyRailCannonMk3 cutout occurs outside the eight conventional
+# gun profiles. Exercise the actual compiled nose-only matrix compensation.
+$renderType=$mod.GetType('TIEconomyMod.Core.CombatRenderGeometry',$true)
+$chooseBake=$renderType.GetMethod('RendererBakeFactor')
+$noseChecks=0
+function Pick-NoseBake([single]$Ordinary,[bool]$Nose,[single[]]$Axes) {
+    return [single]$chooseBake.Invoke($null,[object[]]@($Ordinary,$Nose,$Axes[0],$Axes[1],$Axes[2]))
+}
+foreach($ordinary in @([single]0.00005,[single]0.0005,[single]0.05,[single]0.5,[single]1,[single]5,[single]50)) {
+    foreach($axes in @(@(.0000317041576,.0000317041576,.0000317041576),@(.00000002,.000004,.0000003),@(-.00002,.00008,-.00004),@(1,2,3))) {
+        $v=[single[]]$axes
+        $selected=Pick-NoseBake $ordinary $true $v
+        if($selected -le 0 -or $selected -gt $ordinary){throw 'Invalid nose mesh bake factor.'}
+        if((Pick-NoseBake $ordinary $false $v) -ne $ordinary){throw 'Non-nose renderer compensation changed.'}
+        $steps=[Math]::Log([double]$ordinary/$selected,2)
+        if([Math]::Abs($steps-[Math]::Round($steps)) -gt .00001){throw 'Nose factors create per-instance float cache variants.'}
+        foreach($axis in $v){if([Math]::Abs($axis)/$selected -lt .0009999){throw 'Nose renderer matrix remains below scale floor.'}}
+        foreach($angle in @(0,23,75,139)) {
+            $c=[Math]::Cos($angle*[Math]::PI/180);$sn=[Math]::Sin($angle*[Math]::PI/180)
+            $childFactor=Pick-NoseBake $ordinary $true ([single[]]@(($v[0]*1.1784289),($v[1]*.8),($v[2]*1.4)))
+            foreach($point in @(@(-19,4,30),@(21,-7,-12),@(0,0,47.2))) {
+                # Independent moving mesh and muzzle hierarchy factors cancel
+                # before the aimed, mirrored/nonuniform parent transform.
+                $original=@((15.6+$c*1.1784289*$point[0]-$sn*.8*$point[1]),(1.8+$sn*1.1784289*$point[0]+$c*.8*$point[1]),(1.4*$point[2]))
+                $changed=@(((15.6*$selected+$c*(1.1784289*$selected/$childFactor)*($point[0]*$childFactor)-$sn*(.8*$selected/$childFactor)*($point[1]*$childFactor))/$selected),
+                    ((1.8*$selected+$sn*(1.1784289*$selected/$childFactor)*($point[0]*$childFactor)+$c*(.8*$selected/$childFactor)*($point[1]*$childFactor))/$selected),
+                    (((1.4*$selected/$childFactor)*($point[2]*$childFactor))/$selected))
+                for($axis=0;$axis -lt 3;++$axis){if([Math]::Abs(($original[$axis]-$changed[$axis])*$v[$axis]) -gt .000001){throw 'Nose bake changed aimed mesh or muzzle world geometry.'};$noseChecks++}
+            }
+        }
+    }
+    foreach($invalid in @(@(0,.1,.1),@([single]::NaN,.1,.1),@([single]::PositiveInfinity,.1,.1))) {
+        if((Pick-NoseBake $ordinary $true ([single[]]$invalid)) -ne $ordinary){throw 'Invalid renderer matrix must retain ordinary compensation.'}
+    }
+}
+$addBody=@($reader.Invoke($null,[object[]]@($renderType.GetMethod('Add',$flags),$null)))
+if(-not ($addBody | Where-Object {$_.operand -is [Reflection.MethodInfo] -and $_.operand.Name -eq 'RendererBakeFactor'})){throw 'Nose factor selector is not wired into actual mesh preparation.'}
+Write-Host "PASS: $noseChecks nose mesh/pivot/muzzle coordinate checks; actual heavy-rail scale, nose-only floor, binary cache factors, mirrored/nonuniform parents and invalid matrices. Scene rendering remains manual."

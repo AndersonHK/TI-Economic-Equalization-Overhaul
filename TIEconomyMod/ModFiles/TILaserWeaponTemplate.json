@@ -2,5 +2,9 @@
   {
     "dataName": "PointDefenseLaserTurret",
     "crew": 0
+  },
+  {
+    "dataName": "Alien1024cmGraserCannon",
+    "cooldown_s": 18
   }
 ]

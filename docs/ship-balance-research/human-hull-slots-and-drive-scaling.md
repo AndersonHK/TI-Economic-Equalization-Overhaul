@@ -3,6 +3,11 @@
 Status: measurement record and implementation specification for the 2026-08-12
 graphical-variant drive-scaling pass.
 
+For the current tier/unlock interpretation, compact-capital discontinuities and
+the proposed tier-4–6 / size-5 system, see the
+[2026-11-03 progression analysis](hull-progression-and-capital-weapon-analysis-2026-11-03.md).
+The measured geometry and historical tier comparisons below retain their original baseline.
+
 Implementation note (2026-08-16): the conservative human hull-only factors in
 the historical sections below have been superseded. Human De Laval and magnetic
 drives now use the measured factor for each graphical appearance, while

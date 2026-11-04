@@ -193,3 +193,21 @@ The user subsequently reported adequate performance in limited testing. The
 and fresh logs. A logged 15x interval has no contact candidates, so the full
 clustered-arrival target remains unconfirmed. The contact implementation is
 retained by the laser-only visual correction.
+
+## Remaining FPS regression: 2026-11-03 investigation
+
+The user reports that most simulation-speed problems are resolved but FPS still
+falls strongly with ship count. The [investigation and staged plan](battle-fps-investigation-plan-2026-11-03.md)
+separates the remaining collider/transform hierarchy, rendering and native-update
+cost from the measured prepared-contact pass. Existing 0.10.23 battle windows
+show roughly 1.8 ms/frame in that pass at about 44 FPS; it cannot account for
+most frame time. The added physical collider hierarchy is a leading hypothesis,
+not a measured root cause. No follow-up fix is implemented or deployed.
+
+The user then clarified that the known 1–3 ms/frame serial pass is itself
+unacceptable even if other costs dominate. The revised plan targets zero or
+near-zero added main-thread collision/pose overhead through precomputation,
+batched worker simulation and a small native event-commit step. It explicitly
+counts state capture and worker waits, preserves contact behavior, and applies
+the same performance scrutiny to other patches. A substantial replacement of
+the existing architecture is proposed; it remains unimplemented pending review.

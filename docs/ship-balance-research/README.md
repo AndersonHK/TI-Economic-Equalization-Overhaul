@@ -1,6 +1,7 @@
 # Ship balance: implementations, plans and evidence
 
-Last reviewed: 2026-11-02. Version 0.10.21 is the user-accepted stable baseline.
+Last reviewed: 2026-11-04. Version 0.11.6 is the user-accepted stable baseline;
+the user confirmed the beam bug fixed and game stable. [Acceptance and runtime identity](battle-scale/acceptance-0.11.6-2026-11-04.md).
 Use current implementation records for released
 behavior, planning records for unimplemented choices, and dated measurements
 for their stated baselines. The [implementation matrix](../current-implementation-matrix.xlsx)
@@ -8,6 +9,28 @@ and [decision changelog](CHANGELOG.md) provide cross-checks. The
 [complete catalog](../CATALOG.md) lists every report, table, figure and evidence file.
 
 ## Current implementations
+
+- [0.11.6 particle-beam width correction](particle-beam-scale-correction-2026-11-04.md): includes particle weapons in constant-width handling, using the native authored width times captured effect scale and removing camera-distance widening. Accepted laser path/shader assets preserved. Full deployment passed; user confirms the bug fixed and game stable.
+
+- [0.11.5 alien beam diagnostics](alien-beam-color-investigation-2026-11-04.md): native wavelength adapter does not choose beam colors; X-ray is authored white, violet uses a blue HDR effect. Bounded live before/after material logging added; 0.11.4 shader assets unchanged. User accepts subpixel behavior and tested human/alien PD; alien main-beam appearance remains unresolved.
+
+- [0.11.4 native laser profile restoration](laser-native-profile-restoration-2026-11-04.md): removes the rejected 0.11.3 vertex reconstruction/padding and replacement core. Original native vertex bytes and resolved profile retained; fixed aperture/0.46 ribbon multiplier and subpixel-only filtering. Deployed; both visual regression cases remain for user testing.
+
+- [Designer row offset and full-window fit](designer-viewport-fit-2026-11-04.md): native centered layout driver disabled, post-header viewport measured, all-hull/control bounds fitted and screen containment logged. Deployed in 0.11.2; live Titan/Mothership/UI-scale validation pending.
+
+- [Alien-only armor selection crash fix](alien-armor-selection-fix-2026-11-04.md): generic recipe-price budget selection and mass-efficient premium selection include exotic-bearing alien armor; humans retain native restrictions. Deployed in 0.11.2; manual campaign reload pending.
+
+- [Save-load crash: exotic-bearing alien baseline armor](save-load-crash-armor-selection-2026-11-04.md): confirmed native null-selection regression after habitat initialization; fixed by the [alien-only selection update](alien-armor-selection-fix-2026-11-04.md); manual reload pending.
+
+- [Alien armor materials](alien-armor-material-update-2026-11-04.md): Alien Adamantane adopts Hybrid properties/costs; Alien Exotic uses 1.75 cm / 35 kg/m² per point with equivalent per-point radiation shielding and 0.75 laser damage. Deployed in 0.11.2; [receipt](alien-armor-deployment-2026-11-04.json), manual testing pending.
+
+- [0.11.2 alien capital symmetry and Mothership expansion](alien-capital-expansion-0.11.2-2026-11-04.md): 13 utilities each on Alien Dreadnought/Titan; Mothership 8 N5 / 18 forward heavy hull / 20 utilities, with reinforcement, model mappings and generic spinner preparation. Deployed; manual acceptance pending.
+
+- [0.11.1 utility expansion and data-driven designer rows](capital-utility-expansion-0.11.1-2026-11-04.md): five hulls gain two utility cells, structure/human crew costs and an extra full tile row. Native save version unchanged; deployed for manual testing.
+
+- [0.11.0 asymmetric tiers, fitting and graser precision](asymmetric-tiers-implementation-2026-11-04.md): authoritative species tiers, Lancer/Carrier conversion, five doubled-output N5 templates, updated costs and schema-3 migration. [Runtime snapshot](asymmetric-tiers-runtime-0.11.0-2026-11-04.json) and [deployment receipt](asymmetric-tiers-deployment-0.11.0-2026-11-04.json).
+
+- [0.10.24 alien machinery-bay allowances](alien-reactor-bay-implementation-2026-11-04.md): fifteen prepared geometry/fallback inputs are deployed; effective-cap and save-design checks, including tighter small-hull limits. [Current runtime inputs](alien-reactor-bay-runtime-0.10.24-2026-11-04.json).
 
 - [0.10.21 alien acceleration](alien-combat-acceleration-2026-10-31.md): alien base caps 7 G combat / 3.5 G cruise; human maxima unchanged at 6.5/3 G. JSON-only gameplay changes.
 
@@ -27,17 +50,41 @@ and [decision changelog](CHANGELOG.md) provide cross-checks. The
 - [0.10.9 battle geometry and camera minima](battle-scale-implementation-2026-10-23.md): physical combat metres, 20x/50x cinematic enlargement, mesh-fitted damage geometry and twentyfold lower minimum camera speeds. Deployed for manual testing.
 - [Accepted 0.10.8 gunpowder art](gunpowder-canonical-art-implementation-2026-10-21.md): eight canonical calibers, private mesh-baked geometry, reversible state and unchanged stats/tiers. [Manual/deployment evidence](gunpowder-art/README.md) records the successful user test.
 - [0.10.4 symmetric Mothership geometry](mothership-symmetric-mount-implementation-2026-10-21.md): twenty authored pairs, sixteen active guns, unchanged mass and the UI-capacity decision.
-- [0.10.0 capital heavy mounts](capital-heavy-mount-implementation.md): current fitting, migration, mass and crew rules.
+- [0.10.23 nose weapon rendering](nose-weapon-render-cutout-2026-11-02.md): equivalent mesh baking avoids tiny nose renderer matrices; visual comparison pending.
+- [0.10.22 capital hull/nose expansion](capital-mount-expansion-2026-11-02.md): five hulls, schema-2 save conversion, six Mothership nose cells and added model anchors.
+- [0.10.0 capital heavy mounts](capital-heavy-mount-implementation.md): historical fitting, migration, mass and crew rules; superseded by 0.10.22 above.
 - [0.10.1 fusion open cycle](fusion-open-cycle-implementation-2026-09-27.md): fusion-drive cooling and human reactor-mass changes.
 
 ## Future weapon and hull design
+
+- [Armor rework plan: one divisor and strict performance gate](armor-rework-plan.md): one uniform armor-work divisor; adaptive surface tiles versus simpler representations; per-appearance/node areas and contact-based aiming. Another 1 ms at ten impacts/frame is unacceptable; benchmark the complete cached patch path. The [earlier multi-parameter calibration](archive/armor-rework-calibration-2026-11-04/rejected-calibration-plan.md) is rejected and archived. Planning only; no armor engine implemented.
+
+- [Late-game coiler lethality](armor-system-as-is-2026-11-04.md#12-late-game-coiler-lethality-400-armor-titans-and-200-armor-battlecruisers): 400-Hybrid Titans and 200-Hybrid Battlecruisers, current Mk3 kinetic damage, velocity/bonus thresholds, internal durability and exit-chip amplification. [Calculated cases](armor-as-is/late-game-coiler-cases-2026-11-04.json). Research only; records the preference against routine one-hit kills.
+
+- [Armor-system Step 0: current behavior](armor-system-as-is-2026-11-04.md): freshly traced coverage chipping versus thickness loss, laser/magnetic penetration, Critical UI accounting, component routing and spatial-model boundaries. [Native code evidence](armor-as-is/native-code-evidence-2026-11-04.md) and [hashed current data](armor-as-is/snapshot-2026-11-04.json). Research only; records the user's local-thickness/area-damage ideal for the next planning turn.
+
+- [Latest asymmetric human/alien tier proposal](asymmetric-human-alien-tier-plan-2026-11-04.md): Alien Cruiser T2, Lancer T3, Titan/Carrier T4 and Mothership T5; species-specific categories, production-backed cluster tables, N5 consequences and revised cost implications. [Cluster data](asymmetric-tier-clusters-2026-11-04.json). Proposal only.
+
+- [Alien machinery-bay asset audit and art progression](alien-reactor-bay-measurements-2026-11-04.md): all fifteen alien prefabs, three separate Mothership housings, geometry-bounded/calibrated inputs, common-scale figures and 45 reactor-limit checks. The source audit is retained; its selected inputs are deployed by 0.10.24 above. [Detailed evidence](alien-reactor-bay-audit-2026-11-04.json).
+
+- [All-class mesh volumes and runtime capacity inputs](hull-volume-capacity-comparison-2026-11-03.md): minimum/median/maximum hull and reactor-bay values for all 28 classes, engine-art scaling triplets, measured versus fallback distinctions, and tier-boundary implications. [Production-reader results](hull-volume-capacity-comparison-2026-11-03.json).
+
+- [Frigate and Cruiser tier-boundary plan](frigate-and-cruiser-tier-boundary-plan-2026-11-03.md): recommends tier-2 Frigates and tier-3 Cruisers/Battlecruisers, scrutinizes both species' boundary roles, and preserves native construction/fitting rules during classification. Proposal only.
+
+- [Remaining battle FPS regression](battle-fps-investigation-plan-2026-11-03.md): revised plan awaiting review; loading-time preparation, batched worker collision, near-zero added main-thread ballistic/pose cost, removal of duplicated collision proxies, and recurring-cost audit across other patches.
+
+- [Hull progression, unlocks and capital-grade weapons](hull-progression-and-capital-weapon-analysis-2026-11-03.md): latest-save Lancer finding, native tier/size distinctions, full same-project N4 comparisons and restructuring analysis. [Auditable input/results snapshot](hull-progression-audit-2026-11-03.json).
+- [Formal tier-4–6 and size-5 implementation plan](tier-4-6-and-size-5-implementation-plan-2026-11-03.md): the user's tentative exclusive N5 direction, exact cadence doubling, full Lancer implications, capacity/crew/cost targets and migration decisions. Not implemented.
+- [Fractional graser wavelength bug and precision proposal](laser-wavelength-precision-bug-2026-11-03.md): two native integer truncations confirmed; recommends integer angstroms in a mod-owned precision layer with explicit conversion boundaries. Fix proposed, not deployed.
+
+- [Lens-sized laser cores and subpixel sampling](laser-core-and-subpixel-plan-2026-11-04.md): research and approved plan, subsequently [implemented in 0.11.3](laser-core-sampling-implementation-2026-11-04.md). Original-resolution samples show the core/ribbon mismatch and a roughly 53-pixel row-crossing pattern. Supersedes the [November 3 halo-first priority](laser-distance-investigation-2026-11-03.md).
 
 - [Rendered battle scale and collision report](rendered-battle-scale-and-collision-report-2026-10-23.md): confirmed 20x/200x ship enlargement relative to battle distances, projectile visual/collider differences, and limits on the expected hull-gun aiming benefit. Research only.
 - [Combat camera fine-control report](combat-camera-fine-control-report-2026-10-23.md): native zoom-dependent floors, per-frame keyboard movement, free-look radius divergence, and proposed distance-based controls. Research only; [shared code evidence](battle-scale-camera-code-evidence-2026-10-23.md).
 - [Canonical sizing plan](canonical-turret-scaling-plan-2026-10-21.md) and [projected report set](canonical-turret-projection/README.md): gunpowder portion implemented; laser/magnetic/compact alien optics, hull changes and retiers remain proposals.
 - [Larger-laser aperture proposal](larger-laser-aperture-proposal-2026-10-21.md): simulation aperture buffs are a separate balance choice from matching art to existing optics.
 - [Nose batteries and enlarged spinal tier](nose-battery-and-spinal-tier-proposal-2026-09-25.md): deferred fitting and output alternatives.
-- [Weapon visibility and maximum nose mounts](weapon-visibility-and-maximum-nose-plan-2026-09-25.md): capital filtering implemented; nose restrictions remain deferred.
+- [Weapon visibility and maximum nose mounts](weapon-visibility-and-maximum-nose-plan-2026-09-25.md): broader maximum-nose proposal deferred; the five-class compact nose system is implemented in 0.10.22.
 - [Nose weapon scaling audit](nose-weapon-scaling-audit-2026-09-25.md): comparative data supporting the deferred nose choices.
 
 ## Reproducible measurement baselines

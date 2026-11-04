@@ -1,5 +1,14 @@
 # Nose batteries and a larger spinal tier — proposal
 
+The newer [formal tier-4–6 and size-5 plan](tier-4-6-and-size-5-implementation-plan-2026-11-03.md)
+records the user's 2026-11-03 tentative direction, including heavy same-tech
+variants, doubled firing cadence, complete Lancer conversion and wavelength precision.
+
+**Current fitting:** [0.10.22 capital expansion](capital-mount-expansion-2026-11-02.md)
+implements a later compact size-4 hull/nose system on both Dreadnoughts,
+both Titans and the six-nose-cell Mothership. The earlier alternatives
+and weapon-stat proposals below remain historical/deferred.
+
 2026-09-25. **Planning only. No gameplay, JSON layouts, weapon templates, compiled assemblies or deployment changed by this proposal.** Baseline is the current EEO 0.10.0 package against installed TI 1.0.53b, including the already implemented capital heavy hull mounts. This is a new discussion candidate; it does not activate the earlier maximum-nose restriction or the deferred size-1–3 normalization.
 
 ## Assessment

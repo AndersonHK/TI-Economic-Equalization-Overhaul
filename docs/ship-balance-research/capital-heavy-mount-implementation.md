@@ -1,5 +1,7 @@
 # Capital heavy mounts — EEO 0.10.0
 
+**Superseded fitting/mass values:** [0.10.22 expansion](capital-mount-expansion-2026-11-02.md) extends compact size-4 hull and nose mounts to both Dreadnoughts, both Titans and Motherships. Motherships now have six nose cells; migration schema 2 upgrades schema-0/1 layouts. The dated sections below document the earlier release.
+
 ## Symmetric human utility grids, 2026-09-25
 
 Implemented and deployed: follow the annotated designer screenshots using JSON coordinates only.

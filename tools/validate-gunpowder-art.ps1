@@ -159,6 +159,36 @@ foreach ($property in $baseline.PSObject.Properties) {
     }
     # Permit only the explicitly approved global data changes since the art pass.
     # The historical byte baseline remains intact; verify its other fields.
+    if ($property.Name -eq 'TIEconomyMod\ModFiles\TIShipHullTemplate.json') {
+        # Approved 0.10.22 capital mass/crew and six-cell Mothership snapshot.
+        # Keep the historical art baseline intact and pin the full new dataset;
+        # validate-capital-mounts independently checks geometry and fitting.
+        if ((Get-FileHash -LiteralPath (Join-Path $RepositoryRoot $property.Name)).Hash -ne
+            'C6709A0FBA88A22C53EB563AF954D0F858B188312CAB3C96926476686E573B7D') {
+            throw 'Hull data differs from the approved 0.11.2 alien expansion JSON snapshot.'
+        }
+        continue
+    }
+    if ($property.Name -eq 'TIEconomyMod\ModFiles\TIMagneticGunTemplate.json') {
+        # Authorized N5 cadence snapshot; other source fields stay pinned byte-for-byte.
+        if ((Get-FileHash (Join-Path $RepositoryRoot $property.Name)).Hash -ne '09D8841EFAC41EA4EE07FD796718C81ECAEEEB6B05596E3814067D1971B72BBD') { throw 'Weapon data differs from approved 0.11.0 cadence snapshot.' }
+        continue
+    }
+    if ($property.Name -eq 'TIEconomyMod\ModFiles\TIParticleWeaponTemplate.json') {
+        # Authorized N5 cadence snapshot; other source fields stay pinned byte-for-byte.
+        if ((Get-FileHash (Join-Path $RepositoryRoot $property.Name)).Hash -ne '9F997E57E40AC4353A9FE55C1A822A325BE63FAD47B520C555F47EAB9ABF67CE') { throw 'Weapon data differs from approved 0.11.0 cadence snapshot.' }
+        continue
+    }
+    if ($property.Name -eq 'TIEconomyMod\ModFiles\TILaserWeaponTemplate.json') {
+        # Authorized N5 cadence snapshot; other source fields stay pinned byte-for-byte.
+        if ((Get-FileHash (Join-Path $RepositoryRoot $property.Name)).Hash -ne '636E9B03FA921D29D1504B60D83F1CB7776E080DD33669C90B91048E43787A2C') { throw 'Weapon data differs from approved 0.11.0 cadence snapshot.' }
+        continue
+    }
+    if ($property.Name -eq 'TIEconomyMod\ModFiles\UIGeneralControls.en') {
+        # Approved ship-tier, compact mount and N5 description keys.
+        if ((Get-FileHash (Join-Path $RepositoryRoot $property.Name)).Hash -ne '5FBB6347D131A0C3D61184293715E9B799BA09168BA0E200DC69A3160BD2A3C6') { throw 'Localization differs from approved 0.11.0 progression snapshot.' }
+        continue
+    }
     if ($property.Name -eq 'TIEconomyMod\ModFiles\TIGlobalConfig.json') {
         $global = Get-Content -LiteralPath (Join-Path $RepositoryRoot $property.Name) -Raw | ConvertFrom-Json
         $expected = @{ dataName='globalConfig'; maxAlienCombatAcceleration_g=7; maxAlienCruiseAcceleration_g=3.5; controlPointMaintenanceFreebies=0; councilorMaxOrgs=18;

@@ -1,0 +1,23 @@
+{
+  "date": "2026-11-04",
+  "native_effect": "spaceCombat/Particle Beam White",
+  "native_shader": "TerraInvicta/Beam Weapon Line",
+  "authored_beam_width": 6.0,
+  "beam_color": {
+    "r": 0.9528301954269409,
+    "g": 0.9528301954269409,
+    "b": 0.9528301954269409,
+    "a": 1.0
+  },
+  "intensity": 1.0,
+  "old_mod_exclusion": "Only TILaserWeaponTemplate bound in emitter and render guards; TIParticleWeaponTemplate omitted",
+  "native_combat_width": "max(authoredWidth * inheritedScale, cameraDistance * 0.005)",
+  "proposed_particle_width": "authoredWidth * max(abs(inherited effect scale axes)) captured at activation/reuse",
+  "isolated_compiled_math_checks": 79,
+  "validation_status": "Normal 0.11.6 deployment passed after game closed and validation type-name correction; 44 validators, 1887 formula assertions, 57-file source/install/archive readback.",
+  "screenshot": {
+    "path": "manual-particle-beam-candidate-2026-11-04.png",
+    "sha256": "94563FD9390AF1A9E2B7F295D7C4C76190570ED2C834304B9030148E8B2CC0E0"
+  },
+  "attribution": "White particle PD is plausible; selected human ship has Heavy Antimatter PD too. Actual particle weapon logging is required to identify each visible white stroke."
+}

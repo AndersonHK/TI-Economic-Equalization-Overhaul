@@ -1,5 +1,27 @@
 # Vanilla laser appearance with width-only scaling
 
+**Current follow-up:** [0.11.4 restores native resolved rendering](laser-native-profile-restoration-2026-11-04.md)
+after the user rejected the 0.11.3 cone/flow regressions. The original vertex
+program is retained exactly, with the fixed ribbon multiplier and subpixel-only
+fragment correction. The earlier implementation notes below are historical.
+
+**Implemented follow-up:** [0.11.3 fixes core sizing and subpixel sampling](laser-core-sampling-implementation-2026-11-04.md)
+with the approved fixed 46% core/ribbon ratio. Native scrolling texture and
+animation are retained; runtime shader loading/binding is confirmed. The older
+notes below describe the investigation before that implementation.
+
+**2026-11-04 sizing correction:** The lens should determine the continuous
+core diameter, not the whole ribbon. The current shader narrows the core inside
+the aperture-sized ribbon. [The latest planning report](laser-core-and-subpixel-plan-2026-11-04.md)
+also analyzes the supplied one-pixel distant-beam crop. No correction has yet
+been implemented; earlier close-view acceptance does not settle core sizing.
+
+**2026-11-03 follow-up:** Close appearance is accepted, but the user reports
+discontinuities at distance. [The new investigation](laser-distance-investigation-2026-11-03.md)
+finds that this shader samples noise in camera-plane X/Y, so the longitudinal-U /
+transverse-V explanation below is superseded. The existing correction restores
+only one camera-plane axis. No follow-up fix has been implemented.
+
 2026-10-30. **0.10.19 current visual result accepted by the user.** This undoes the rejected 0.10.18
 renderer replacement. The prior subpixel diagnosis was not established and did
 not justify replacing vanilla rendering. The user clarified that shrinking the

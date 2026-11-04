@@ -1,0 +1,494 @@
+{
+  "date": "2026-11-03",
+  "status": "planning only; no runtime changes or GPU reproduction",
+  "native_assembly_sha256": "4A4B9AAE4154E444E9727204205D2D42AE8ED9E1C5F92CDC1280074A259D8350",
+  "bundle_hashes": {
+    "spacecombat": "27F37070CBD1FC29275CB5FC38D3073DE24C10802AC441B5FAD39A54F573B90F",
+    "vfx": "CF7A2DE58BD037706028EB09C98308E8CED8BFAFB84C6F71AB8EF44F88801969"
+  },
+  "reviewed_mod_manifest_version": "0.10.23",
+  "laser_source_sha256": {
+    "TIEconomyMod\\Core\\LaserBeamGeometry.cs": "F948A8C0893FB88C241001849C04371E6EDEB669BDF9D7919AA3A58CCF7EDF09",
+    "TIEconomyMod\\Patches\\LaserBeamCameraPatches.cs": "CD79713F8F1FC59D50EAAEFEEB50CD83330F7701D02A1E9D62B9934D91E72BD4"
+  },
+  "prefab_audit": {
+    "line_assets_using_shader": 15,
+    "laser_arc_phaser_assets": 11,
+    "lod_groups_in_spacecombat_and_vfx": 0,
+    "laser_prefab_parents": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      []
+    ],
+    "line_position_count": 2,
+    "texture_mode": 0
+  },
+  "shader_audit": {
+    "name": "TerraInvicta/Beam Weapon Line",
+    "subshader_count": 1,
+    "lod": 100,
+    "pass_count": 1,
+    "vertex_programs": 1,
+    "fragment_programs": 1,
+    "fallback": "",
+    "bytecode_hashes": {
+      "program-0": "26EDD8DC65AF5CD30FA35FCFFEBE7F08E59A39FF3144E08DD66B0DCA3AA0D13F",
+      "program-1": "B4BDFEC08EA206BA5822A2A7B42D18A58E2FF69E6EBE73F21AA12F76BBEE8090"
+    },
+    "derived_semantics": {
+      "noise_coordinates": "viewPosition.xy * _MainTex_ST.xy + _MainTex_ST.zw; subtract 0.15 * _NoiseTimescale * time from sample y",
+      "line_coordinates": "u=max(lineUV.x,0.01); v=lineUV.y",
+      "radius": "_LaserStartRadius + _LaserMaxRadius * pow(u, _LaserDistanceFalloff)",
+      "core": "1 - saturate(pow(abs(v - 0.5), _LaserFalloff * (1 + pulse)) / radius)",
+      "pulse": "sin(pi * _NoiseScaleSpeed * time) * _NoiseScaleStrength",
+      "pixel_output": "(core + nonnegative animated noise halo) * _Color.rgb * _Color.a",
+      "sampling": "ordinary sample instruction with implicit mip derivatives; no sample_l, sample_b, sample_d or explicit mip index",
+      "camera_distance_uniform": false,
+      "screen_coverage_derivatives": false,
+      "pixel_discard": false
+    }
+  },
+  "materials": {
+    "Laser": {
+      "prefabs": [
+        "Alien Laser Beam Blue",
+        "Standard Laser Beam Violet",
+        "Standard Laser Beam Red",
+        "Alien Laser Beam Orange",
+        "Standard Laser Beam Green"
+      ],
+      "texture": {
+        "property": "_MainTex",
+        "scale": [
+          0.5,
+          0.5
+        ],
+        "offset": [
+          0.0,
+          0.0
+        ],
+        "texture": "CAB-fc0c4d24483274e62df4e6323ad07837:7494207216460788667"
+      },
+      "parameters": {
+        "_LaserDistanceFalloff": 0.800000011920929,
+        "_LaserFalloff": 0.8999999761581421,
+        "_LaserMaxRadius": 0.20200000703334808,
+        "_LaserStartRadius": 0.07500000298023224,
+        "_NoiseExponent": 7.349999904632568,
+        "_NoiseOpacity": 0.014000000432133675,
+        "_NoiseScaleSpeed": 30.0,
+        "_NoiseScaleStrength": 0.05000000074505806,
+        "_NoiseStart": 0.0,
+        "_NoiseThreshold": 0.11699999868869781,
+        "_NoiseTimescale": 6.0
+      }
+    },
+    "Phaser": {
+      "prefabs": [
+        "Phaser Beam Green",
+        "Phaser Beam Violet",
+        "Phaser Beam Red"
+      ],
+      "texture": {
+        "property": "_MainTex",
+        "scale": [
+          0.05000000074505806,
+          0.05000000074505806
+        ],
+        "offset": [
+          0.0,
+          0.0
+        ],
+        "texture": "CAB-fc0c4d24483274e62df4e6323ad07837:-5448011309945631522"
+      },
+      "parameters": {
+        "_LaserDistanceFalloff": 1.3899999856948853,
+        "_LaserFalloff": 1.25,
+        "_LaserMaxRadius": 0.15000000596046448,
+        "_LaserStartRadius": 0.10000000149011612,
+        "_NoiseExponent": 2.0,
+        "_NoiseOpacity": 1.0,
+        "_NoiseScaleSpeed": 20.0,
+        "_NoiseScaleStrength": 0.25200000405311584,
+        "_NoiseStart": 0.16300000250339508,
+        "_NoiseThreshold": 0.07100000232458115,
+        "_NoiseTimescale": 3.0
+      }
+    },
+    "ArcLaser": {
+      "prefabs": [
+        "Arc Laser Beam Red",
+        "Arc Laser Beam Violet",
+        "Arc Laser Beam Green"
+      ],
+      "texture": {
+        "property": "_MainTex",
+        "scale": [
+          0.05000000074505806,
+          0.05000000074505806
+        ],
+        "offset": [
+          0.0,
+          0.0
+        ],
+        "texture": "CAB-fc0c4d24483274e62df4e6323ad07837:3082356816755898284"
+      },
+      "parameters": {
+        "_LaserDistanceFalloff": 1.3899999856948853,
+        "_LaserFalloff": 1.25,
+        "_LaserMaxRadius": 0.07500000298023224,
+        "_LaserStartRadius": 0.029999999329447746,
+        "_NoiseExponent": 4.0,
+        "_NoiseOpacity": 1.0,
+        "_NoiseScaleSpeed": 10.0,
+        "_NoiseScaleStrength": 0.11999999731779099,
+        "_NoiseStart": 1.0,
+        "_NoiseThreshold": 0.0949999988079071,
+        "_NoiseTimescale": 10.0
+      }
+    }
+  },
+  "textures": {
+    "CAB-fc0c4d24483274e62df4e6323ad07837:7494207216460788667": {
+      "m_Name": "noiseBurnUp",
+      "m_Width": 1024,
+      "m_Height": 1024,
+      "m_MipCount": 11,
+      "m_MipMap": null,
+      "m_StreamingMipmaps": false,
+      "m_StreamingMipmapsPriority": 0,
+      "m_TextureSettings": {
+        "m_FilterMode": 1,
+        "m_Aniso": 1,
+        "m_MipBias": 0.0,
+        "m_WrapU": 0,
+        "m_WrapV": 0,
+        "m_WrapW": 0
+      },
+      "m_TextureFormat": 25,
+      "m_IsReadable": false
+    },
+    "CAB-fc0c4d24483274e62df4e6323ad07837:-5448011309945631522": {
+      "m_Name": "Phaser",
+      "m_Width": 256,
+      "m_Height": 256,
+      "m_MipCount": 9,
+      "m_MipMap": null,
+      "m_StreamingMipmaps": false,
+      "m_StreamingMipmapsPriority": 0,
+      "m_TextureSettings": {
+        "m_FilterMode": 1,
+        "m_Aniso": 1,
+        "m_MipBias": 0.0,
+        "m_WrapU": 2,
+        "m_WrapV": 2,
+        "m_WrapW": 2
+      },
+      "m_TextureFormat": 10,
+      "m_IsReadable": false
+    },
+    "CAB-fc0c4d24483274e62df4e6323ad07837:3082356816755898284": {
+      "m_Name": "ArcLaser",
+      "m_Width": 512,
+      "m_Height": 512,
+      "m_MipCount": 10,
+      "m_MipMap": null,
+      "m_StreamingMipmaps": false,
+      "m_StreamingMipmapsPriority": 0,
+      "m_TextureSettings": {
+        "m_FilterMode": 1,
+        "m_Aniso": 1,
+        "m_MipBias": 0.0,
+        "m_WrapU": 2,
+        "m_WrapV": 2,
+        "m_WrapW": 2
+      },
+      "m_TextureFormat": 10,
+      "m_IsReadable": false
+    }
+  },
+  "default_scale_anisotropy": [
+    {
+      "cinematic": false,
+      "ship_multiplier": 10,
+      "model_ratio": 0.5,
+      "remaining_texture_y_frequency_vs_vanilla": 2.0,
+      "uv_rate_vs_vanilla_by_screen_angle": {
+        "0": 1.0,
+        "45": 1.5811388300841898,
+        "90": 2.0
+      }
+    },
+    {
+      "cinematic": true,
+      "ship_multiplier": 10,
+      "model_ratio": 0.05,
+      "remaining_texture_y_frequency_vs_vanilla": 20.0,
+      "uv_rate_vs_vanilla_by_screen_angle": {
+        "0": 1.0,
+        "45": 14.159802258506296,
+        "90": 20.0
+      }
+    }
+  ],
+  "illustrative_projection": {
+    "assumptions": "1 metre aperture; ship multiplier 10; 2160 pixel viewport height; 60 degree vertical perspective FOV; camera depth approximately distance; full ribbon width, not narrower shader core; not measured live",
+    "rows": [
+      {
+        "camera_depth_km": 2,
+        "full_ribbon_width_px": 9.353074360871938
+      },
+      {
+        "camera_depth_km": 10,
+        "full_ribbon_width_px": 1.8706148721743876
+      },
+      {
+        "camera_depth_km": 20,
+        "full_ribbon_width_px": 0.9353074360871938
+      },
+      {
+        "camera_depth_km": 100,
+        "full_ribbon_width_px": 0.18706148721743876
+      },
+      {
+        "camera_depth_km": 1000,
+        "full_ribbon_width_px": 0.018706148721743875
+      }
+    ]
+  },
+  "findings": {
+    "confirmed": [
+      "Current correction restores view X texture frequency, leaves view Y scaled by inverse model ratio.",
+      "No managed beam length/UV rewrite with camera distance in audited controllers.",
+      "No beam LODGroup or alternate distance shader tier found in audited assets.",
+      "Standard laser/arc/phaser noise textures have full mip chains and implicit sampling.",
+      "Analytic core does not sample the noise texture."
+    ],
+    "unconfirmed": [
+      "Which contribution dominates the reported far-distance gaps.",
+      "Live selected mip levels, actual projected width and pixel coverage.",
+      "Whether full two-axis scale cancellation alone is sufficient."
+    ]
+  },
+  "runtime_package_files_before": 52,
+  "pill_pattern_followup": {
+    "date": "2026-11-03",
+    "user_observation": "Periodically repeated pill shapes several pixels tall; projected line should grow smoothly with FOV/distance; no fixed one-pixel floor requested.",
+    "priority": "Trace noise-contour halo, continuous-core width normalization and postprocessing before a geometric coverage change.",
+    "confirmed": {
+      "constant_line_width_curves": true,
+      "laser_fire_particle_system_absent": true
+    },
+    "derived_noise_halo": {
+      "q": "abs(lineUV.y - 0.5)",
+      "u": "max(lineUV.x,0.01)",
+      "ramp": "saturate(u / _NoiseStart); 1 for positive u and zero NoiseStart",
+      "d": "max(q - radius, 0)",
+      "threshold": "_NoiseThreshold * (1 + pulse)",
+      "level": "0.5 + 0.1 * sin(10*pi*time)",
+      "mask": "1 - saturate(abs(sampledNoise - level) * d^2 / (threshold^2 * ramp)); limit 1 at d=0 for finite noise",
+      "halo": "_NoiseOpacity * pow(1 - saturate(2*d), _NoiseExponent) * ramp^2 * mask",
+      "interpretation": "Selects a band around an animated noise level; not a simple multiplicative decal or a spatial sequence of spawned pills."
+    },
+    "core_width_analysis": {
+      "assumptions": "Zero pulse, native material parameters; support is positive-core extent, FWHM is half-maximum width before color/HDR/bloom; ratios refer to full ribbon width, not lens diameter.",
+      "rows": [
+        {
+          "material": "Laser",
+          "core_support_fraction_source": 0.12097267752464749,
+          "core_support_fraction_midpoint": 0.3178520362479496,
+          "core_fwhm_fraction_source": 0.05600277035628902,
+          "core_fwhm_fraction_midpoint": 0.1471455783033818,
+          "noise_opacity": 0.014000000432133675,
+          "prefab_widths": {
+            "Alien Laser Beam Blue": 2.200000047683716,
+            "Standard Laser Beam Violet": 2.5,
+            "Standard Laser Beam Red": 2.0,
+            "Alien Laser Beam Orange": 2.0,
+            "Standard Laser Beam Green": 1.0
+          }
+        },
+        {
+          "material": "Phaser",
+          "core_support_fraction_source": 0.3176097496642807,
+          "core_support_fraction_midpoint": 0.45526972099091007,
+          "core_fwhm_fraction_source": 0.18241889848518966,
+          "core_fwhm_fraction_midpoint": 0.26148378979110876,
+          "noise_opacity": 1.0,
+          "prefab_widths": {
+            "Phaser Beam Green": 0.800000011920929,
+            "Phaser Beam Violet": 1.100000023841858,
+            "Phaser Beam Red": 1.100000023841858
+          }
+        },
+        {
+          "material": "ArcLaser",
+          "core_support_fraction_source": 0.12138513582382277,
+          "core_support_fraction_midpoint": 0.20675261204266085,
+          "core_fwhm_fraction_source": 0.06971745292095843,
+          "core_fwhm_fraction_midpoint": 0.11874819267237234,
+          "noise_opacity": 1.0,
+          "prefab_widths": {
+            "Arc Laser Beam Red": 6.0,
+            "Arc Laser Beam Violet": 6.0,
+            "Arc Laser Beam Green": 6.0
+          }
+        }
+      ]
+    },
+    "arc_laser_example": {
+      "assumptions": "u=0.5, time=0: pulse 0, contour level 0.5, native ArcLaser constants; hypothetical post-sampler noise values, not a GPU reproduction.",
+      "samples": [
+        {
+          "abs_cross_ribbon_offset": 0.0,
+          "noise_sample": 0.3,
+          "core": 1.0,
+          "halo": 0.25,
+          "total": 1.25
+        },
+        {
+          "abs_cross_ribbon_offset": 0.0,
+          "noise_sample": 0.5,
+          "core": 1.0,
+          "halo": 0.25,
+          "total": 1.25
+        },
+        {
+          "abs_cross_ribbon_offset": 0.0,
+          "noise_sample": 0.7,
+          "core": 1.0,
+          "halo": 0.25,
+          "total": 1.25
+        },
+        {
+          "abs_cross_ribbon_offset": 0.125,
+          "noise_sample": 0.3,
+          "core": 0,
+          "halo": 0.11379308955570817,
+          "total": 0.11379308955570817
+        },
+        {
+          "abs_cross_ribbon_offset": 0.125,
+          "noise_sample": 0.5,
+          "core": 0,
+          "halo": 0.14141212190448646,
+          "total": 0.14141212190448646
+        },
+        {
+          "abs_cross_ribbon_offset": 0.125,
+          "noise_sample": 0.7,
+          "core": 0,
+          "halo": 0.11379308955570817,
+          "total": 0.11379308955570817
+        },
+        {
+          "abs_cross_ribbon_offset": 0.25,
+          "noise_sample": 0.3,
+          "core": 0,
+          "halo": 0.0,
+          "total": 0.0
+        },
+        {
+          "abs_cross_ribbon_offset": 0.25,
+          "noise_sample": 0.5,
+          "core": 0,
+          "halo": 0.036286192814088625,
+          "total": 0.036286192814088625
+        },
+        {
+          "abs_cross_ribbon_offset": 0.25,
+          "noise_sample": 0.7,
+          "core": 0,
+          "halo": 0.0,
+          "total": 0.0
+        },
+        {
+          "abs_cross_ribbon_offset": 0.375,
+          "noise_sample": 0.3,
+          "core": 0,
+          "halo": 0.0,
+          "total": 0.0
+        },
+        {
+          "abs_cross_ribbon_offset": 0.375,
+          "noise_sample": 0.5,
+          "core": 0,
+          "halo": 0.0045468953188539055,
+          "total": 0.0045468953188539055
+        },
+        {
+          "abs_cross_ribbon_offset": 0.375,
+          "noise_sample": 0.7,
+          "core": 0,
+          "halo": 0.0,
+          "total": 0.0
+        }
+      ],
+      "native_red_rgb_after_color_setup": [
+        19.602324479582265,
+        1.0944885078297262,
+        0.0
+      ],
+      "halo_peak_red_at_q025_noise05": 0.7112937256704516,
+      "illustrative_12px_ribbon": {
+        "core_support_width_px": 2.4810313445119303,
+        "core_fwhm_width_px": 1.424978312068468,
+        "noise_island_test_offset_px": 3.0,
+        "assumption": "Conditional example with full ribbon 12px tall; not a measured screenshot or a proposed minimum width."
+      }
+    },
+    "updated_order": [
+      "Capture true ribbon/core/halo and pre/post bloom separately for the same camera pose; core-only control first.",
+      "Check direct aperture-to-full-ribbon assignment for an overly narrow core; preserve accepted close appearance during calibration experiments.",
+      "Compare two-axis noise scale cancellation and isolated mip controls; these affect the noisy halo, not core continuity.",
+      "Use FOV/depth projected physical core width; no fixed pixel height or distance-driven patch stretching."
+    ],
+    "material_hdr_color": {
+      "Phaser": [
+        14.10875415802002,
+        0.732058048248291,
+        1.65704345703125,
+        1.0
+      ],
+      "ArcLaser": [
+        10.679994583129883,
+        0.8182351589202881,
+        0.0,
+        1.0
+      ],
+      "Laser": [
+        47.937255859375,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    "nonlinear_mip_example": {
+      "assumptions": "Same arc u/time/q as above; two hypothetical post-decoding samples 0.3/0.7 and their arithmetic mean 0.5; illustrative sampling order, not a measurement of stored mip generation.",
+      "raw_noise_values": [
+        0.3,
+        0.7
+      ],
+      "halo_for_each": [
+        0,
+        0
+      ],
+      "mean_shaped_halo": 0,
+      "halo_from_mean_noise": 0.036286192814088625,
+      "result": "Filtering the raw noise before the band-pass mask does not equal filtering the final halo intensity. Coarse noise can create a bright contour where the original samples were dark."
+    },
+    "unconfirmed": [
+      "Whether the user-visible pills originate primarily in this halo, bloom, or another active render pass.",
+      "Actual selected mip levels and observed raw ribbon/core widths.",
+      "Exact close/far appearance after removing only the noise halo."
+    ]
+  }
+}

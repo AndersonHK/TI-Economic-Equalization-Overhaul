@@ -28,3 +28,8 @@ UI.Fleets.FuelMaterial.ReactionProducts=reaction mass
 UI.Fleets.FuelMaterial.Anything=water-equivalent propellant
 UI.GeneralControls.WaterDetail=Water is vital for life support and supplies both hydrogen and oxygen through electrolysis. Hydrogen is used in many advanced space-propulsion systems, and water is also a source of deuterium for nuclear applications. It is rare in the inner Solar System but increasingly abundant beyond the Asteroid Belt. <h>Water will be sent from Earth when production is insufficient at a Boost penalty.</h>
 UI.GeneralControls.VolatilesDetail=Volatiles are reactive substances such as carbon, nitrogen, sulfur, chlorine, phosphorus, and hydrogen-bearing compounds other than water. These are critical for life support and self-sustaining space habitats, while carbon may also be fashioned into high-tech armors. Oxygen bound into silicates and oxides is not included; mineral oxygen is recovered through regolith processing, while oxygen from ice is represented by Water. <h>Volatiles will be sent from Earth when production is insufficient at a Boost penalty.</h>
+
+UI.Fleets.ModShipTier=Ship tier {0}
+UI.Fleets.CompactHeavyHullRules=Heavy hull weapons only; one weapon per hardpoint.
+UI.Fleets.CapitalNoseGradeRules=Size {0} nose weapons only; one weapon per hardpoint.
+UI.Fleets.Size5NoseMount=Size 5 nose weapon

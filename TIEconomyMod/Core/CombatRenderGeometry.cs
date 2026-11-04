@@ -22,6 +22,8 @@ namespace TIEconomyMod.Core
             internal MeshFilter Filter;
             internal Mesh Source, Baked;
             internal Vector3 Scale;
+            internal float BakeFactor;
+            internal bool Nose;
             internal List<Child> Children = new List<Child>();
             internal List<Shape> Shapes = new List<Shape>();
         }
@@ -54,6 +56,13 @@ namespace TIEconomyMod.Core
             if (root == null || root.GetComponent<CombatRenderGeometry>() != null) return;
             var value = root.gameObject.AddComponent<CombatRenderGeometry>();
             value.factor = Patches.BattleScaleRuntime.ModelRatio;
+            var noseFilters = new HashSet<MeshFilter>();
+            foreach (ShipWeaponVisController weapon in root.GetComponentsInChildren<ShipWeaponVisController>(true))
+            {
+                if (weapon.weaponTemplate == null || !weapon.weaponTemplate.noseWeapon) continue;
+                if (weapon.baseObject != null) noseFilters.Add(weapon.baseObject.GetComponent<MeshFilter>());
+                if (weapon.weaponObject != null) noseFilters.Add(weapon.weaponObject.GetComponent<MeshFilter>());
+            }
             var filters = new List<MeshFilter>(root.GetComponentsInChildren<MeshFilter>(true));
             filters.Sort((a, b) => Depth(a.transform).CompareTo(Depth(b.transform)));
             foreach (MeshFilter filter in filters)
@@ -62,11 +71,12 @@ namespace TIEconomyMod.Core
                     filter.GetComponent<MeshRenderer>() == null || filter.GetComponentInParent<ParticleSystem>() != null) continue;
                 if (filter.gameObject.layer == LayerMask.NameToLayer("Space Combat UI") ||
                     filter.gameObject.layer == LayerMask.NameToLayer("Selection")) continue;
-                try { value.Add(filter); }
+                try { value.Add(filter, noseFilters.Contains(filter)); }
                 catch (Exception ex) { Main.Warn("Combat mesh bake skipped " + filter.sharedMesh.name + ": " + ex.Message); }
             }
             Main.Log("Combat render bake: " + root.name + " parts=" + value.parts.Count +
-                " vertexFactor=" + value.factor.ToString("G6") + " rendererScaleCompensation=" + (1f / value.factor).ToString("G6"));
+                " vertexFactor=" + value.factor.ToString("G6") + " rendererScaleCompensation=" + (1f / value.factor).ToString("G6") +
+                " noseParts=" + value.parts.FindAll(p => p.Nose).Count);
         }
 
         private static int Depth(Transform node)
@@ -76,10 +86,14 @@ namespace TIEconomyMod.Core
             return result;
         }
 
-        private void Add(MeshFilter filter)
+        private void Add(MeshFilter filter, bool nose)
         {
-            Mesh baked = BakedMesh(filter.sharedMesh, factor);
-            var part = new Part { Filter = filter, Source = filter.sharedMesh, Baked = baked, Scale = filter.transform.localScale };
+            Matrix4x4 matrix = filter.transform.localToWorldMatrix;
+            float bakeFactor = RendererBakeFactor(factor, nose, matrix.GetColumn(0).magnitude,
+                matrix.GetColumn(1).magnitude, matrix.GetColumn(2).magnitude);
+            Mesh baked = BakedMesh(filter.sharedMesh, bakeFactor);
+            var part = new Part { Filter = filter, Source = filter.sharedMesh, Baked = baked,
+                Scale = filter.transform.localScale, BakeFactor = bakeFactor, Nose = nose };
             foreach (Transform child in filter.transform)
             {
                 // Fitted damage boxes always use the renderer's local frame.
@@ -101,14 +115,30 @@ namespace TIEconomyMod.Core
             }
             parts.Add(part);
             filter.sharedMesh = baked;
-            filter.transform.localScale = part.Scale / factor;
+            filter.transform.localScale = part.Scale / bakeFactor;
             foreach (Child child in part.Children)
             {
-                child.Transform.localPosition *= factor;
-                child.Transform.localScale *= factor;
+                child.Transform.localPosition *= bakeFactor;
+                child.Transform.localScale *= bakeFactor;
             }
-            foreach (Shape shape in part.Shapes) shape.Apply(factor);
+            foreach (Shape shape in part.Shapes) shape.Apply(bakeFactor);
         }
+
+        // Same visible geometry, with larger renderer matrices. Limit cache
+        // variants to binary steps rather than per-instance matrix float noise.
+        public static float RendererBakeFactor(float ordinary, bool nose, float x, float y, float z)
+        {
+            if (!nose || !FinitePositive(ordinary)) return ordinary;
+            x = Math.Abs(x); y = Math.Abs(y); z = Math.Abs(z);
+            if (!FinitePositive(x) || !FinitePositive(y) || !FinitePositive(z)) return ordinary;
+            float minimum = Math.Min(x, Math.Min(y, z));
+            float result = ordinary;
+            while (minimum / result < 0.001f && result > float.Epsilon * 2f) result *= 0.5f;
+            return result;
+        }
+
+        private static bool FinitePositive(float value)
+        { return value > 0f && !float.IsNaN(value) && !float.IsInfinity(value); }
 
         public static Mesh BakedMesh(Mesh source, float factor)
         {
@@ -137,13 +167,21 @@ namespace TIEconomyMod.Core
             {
                 enabled = false; // One readback; scale baking is initialization-only.
                 float maxError = 0f;
+                float minimumNoseAxis = float.PositiveInfinity;
                 foreach (Part part in parts)
                 {
                     if (part.Filter == null) continue;
-                    Vector3 expected = part.Source.bounds.size * factor;
+                    Vector3 expected = part.Source.bounds.size * part.BakeFactor;
                     maxError = Math.Max(maxError, (part.Baked.bounds.size - expected).magnitude / Math.Max(0.000000001f, expected.magnitude));
+                    if (part.Nose)
+                    {
+                        Matrix4x4 matrix = part.Filter.transform.localToWorldMatrix;
+                        minimumNoseAxis = Math.Min(minimumNoseAxis, Math.Min(matrix.GetColumn(0).magnitude,
+                            Math.Min(matrix.GetColumn(1).magnitude, matrix.GetColumn(2).magnitude)));
+                    }
                 }
-                Main.Log("Combat render bake readback: " + name + " parts=" + parts.Count + " maxLocalBoundsError=" + maxError.ToString("G6"));
+                Main.Log("Combat render bake readback: " + name + " parts=" + parts.Count + " maxLocalBoundsError=" + maxError.ToString("G6") +
+                    " minimumNoseRendererAxis=" + minimumNoseAxis.ToString("G6"));
             }
         }
 

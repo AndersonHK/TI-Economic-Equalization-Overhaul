@@ -1,0 +1,265 @@
+{
+  "status": "Investigation only. Existing uncontrolled log; no fresh game run or implementation.",
+  "log": {
+    "path": "C:\\Users\\imper\\AppData\\LocalLow\\Pavonis Interactive\\TerraInvicta\\Player.log",
+    "sha256": "40A3C23A0D840FF069ABD9402747AC1E437EE5965E8F7FFA60B076342B94BB52",
+    "last_write_utc": "2026-11-02T20:22:16.503064+00:00"
+  },
+  "engine": "2020.3.49f1",
+  "native_assembly_sha256": "4A4B9AAE4154E444E9727204205D2D42AE8ED9E1C5F92CDC1280074A259D8350",
+  "source_sha256": {
+    "TIEconomyMod/Core/CombatMeshGeometry.cs": "A9F9D529C9980A114B38C540098DD2862D0F219ABD652AC1B163B52811DD71BE",
+    "TIEconomyMod/Core/PreparedContactWorld.cs": "1A40D385C84D8A37EC97D76AF9FECB7CDF36D2025F3B3CBDDC65825F8E98F72F",
+    "TIEconomyMod/Core/BattleProjectileGeometry.cs": "5D006B498AAC06DD30705AAFC17230473282BFC62CC6D60802E075DEB6A2E777",
+    "TIEconomyMod/Core/CombatContactMetrics.cs": "5CF6FBB51DCEDA69336B097EBF4F1AA7492EEF8CFEB889CDC06457C86FA3D180",
+    "TIEconomyMod/Core/BallisticContactRuntime.cs": "03177E0EB2AF5A03E6108FA670013B3584E9366C3E558C08BCF1775A10C650BD"
+  },
+  "version_lines": [
+    {
+      "source_line": 809,
+      "text": "[EconomyMod] Version '0.10.23'. Loading."
+    },
+    {
+      "source_line": 831,
+      "text": "[EconomyMod] Loaded TI Economic Equalization Overhaul 0.10.14, validated against TI 1.0.53b."
+    }
+  ],
+  "battles": [
+    {
+      "start_line": 2607,
+      "registered_ships": 23,
+      "performance_samples": [
+        {
+          "source_line": 2690,
+          "text": "[EconomyMod] Combat contact performance: speed=0 paused=True fps=43.6 collisionMs/frame=0.000 bvhBuildMs/frame=7.069 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=0.00 boundEvals=0 mixedVertexReads=0 boundsScans=44 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=10067 queries=0 candidates=0 contacts=0 bvhBuilds=55 nodes=0 triangles=0 gc0=285"
+        },
+        {
+          "source_line": 2697,
+          "text": "[EconomyMod] Combat contact performance: speed=5 paused=False fps=86.0 collisionMs/frame=0.000 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=0.00 boundEvals=0 mixedVertexReads=0 boundsScans=59 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=0 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=285"
+        },
+        {
+          "source_line": 2698,
+          "text": "[EconomyMod] Combat contact performance: speed=15 paused=False fps=47.7 collisionMs/frame=0.000 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=0.00 boundEvals=0 mixedVertexReads=0 boundsScans=0 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=0 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=285"
+        },
+        {
+          "source_line": 2701,
+          "text": "[EconomyMod] Combat contact performance: speed=15 paused=False fps=44.2 collisionMs/frame=0.676 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.483 maxPassMs=3.41 boundEvals=0 mixedVertexReads=0 boundsScans=0 bodyChecks=10710 bodyCandidates=0 bonePoseReads=167832 colliderConfigs=0 queries=510 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=285"
+        },
+        {
+          "source_line": 2705,
+          "text": "[EconomyMod] Combat contact performance: speed=5 paused=False fps=37.8 collisionMs/frame=1.496 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.986 maxPassMs=1.89 boundEvals=0 mixedVertexReads=0 boundsScans=84 bodyChecks=89540 bodyCandidates=0 bonePoseReads=285768 colliderConfigs=0 queries=4756 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=286"
+        },
+        {
+          "source_line": 2707,
+          "text": "[EconomyMod] Combat contact performance: speed=3 paused=False fps=43.8 collisionMs/frame=1.679 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.995 maxPassMs=2.02 boundEvals=0 mixedVertexReads=0 boundsScans=175 bodyChecks=161179 bodyCandidates=0 bonePoseReads=332640 colliderConfigs=0 queries=10926 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=286"
+        },
+        {
+          "source_line": 2708,
+          "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=43.9 collisionMs/frame=1.776 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.998 maxPassMs=2.13 boundEvals=0 mixedVertexReads=0 boundsScans=182 bodyChecks=185057 bodyCandidates=0 bonePoseReads=332640 colliderConfigs=0 queries=13403 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=286"
+        },
+        {
+          "source_line": 2709,
+          "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=44.0 collisionMs/frame=1.789 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.993 maxPassMs=2.11 boundEvals=0 mixedVertexReads=0 boundsScans=98 bodyChecks=186791 bodyCandidates=0 bonePoseReads=332640 colliderConfigs=0 queries=13871 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=286"
+        },
+        {
+          "source_line": 2710,
+          "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=43.9 collisionMs/frame=1.807 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.994 maxPassMs=2.23 boundEvals=0 mixedVertexReads=0 boundsScans=142 bodyChecks=195044 bodyCandidates=0 bonePoseReads=332640 colliderConfigs=0 queries=14264 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=286"
+        },
+        {
+          "source_line": 2711,
+          "text": "[EconomyMod] Combat contact performance: speed=15 paused=False fps=42.2 collisionMs/frame=1.864 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.985 maxPassMs=2.24 boundEvals=0 mixedVertexReads=0 boundsScans=279 bodyChecks=203996 bodyCandidates=0 bonePoseReads=319032 colliderConfigs=0 queries=15415 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=286"
+        },
+        {
+          "source_line": 2729,
+          "text": "[EconomyMod] Combat contact performance: speed=15 paused=False fps=33.4 collisionMs/frame=2.669 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.990 maxPassMs=7.26 boundEvals=0 mixedVertexReads=0 boundsScans=1601 bodyChecks=240397 bodyCandidates=13 bonePoseReads=252504 colliderConfigs=0 queries=22377 candidates=63 contacts=14 bvhBuilds=0 nodes=18429 triangles=19504 gc0=287"
+        },
+        {
+          "source_line": 2732,
+          "text": "[EconomyMod] Combat contact performance: speed=15 paused=False fps=31.5 collisionMs/frame=3.406 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.986 maxPassMs=13.10 boundEvals=0 mixedVertexReads=0 boundsScans=3437 bodyChecks=250518 bodyCandidates=24 bonePoseReads=238896 colliderConfigs=0 queries=28358 candidates=114 contacts=25 bvhBuilds=0 nodes=33540 triangles=36540 gc0=287"
+        },
+        {
+          "source_line": 2735,
+          "text": "[EconomyMod] Combat contact performance: speed=15 paused=False fps=31.2 collisionMs/frame=2.848 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.976 maxPassMs=8.58 boundEvals=0 mixedVertexReads=0 boundsScans=2768 bodyChecks=122745 bodyCandidates=20 bonePoseReads=235872 colliderConfigs=0 queries=25287 candidates=68 contacts=20 bvhBuilds=0 nodes=11344 triangles=12520 gc0=287"
+        },
+        {
+          "source_line": 2736,
+          "text": "[EconomyMod] Combat contact performance: speed=15 paused=False fps=30.5 collisionMs/frame=1.881 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.969 maxPassMs=2.31 boundEvals=0 mixedVertexReads=0 boundsScans=1659 bodyChecks=30534 bodyCandidates=0 bonePoseReads=231336 colliderConfigs=0 queries=15083 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=287"
+        },
+        {
+          "source_line": 2740,
+          "text": "[EconomyMod] Combat contact performance: speed=15 paused=False fps=47.3 collisionMs/frame=0.262 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.102 maxPassMs=1.68 boundEvals=0 mixedVertexReads=0 boundsScans=1 bodyChecks=819 bodyCandidates=0 bonePoseReads=37800 colliderConfigs=0 queries=7147 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=287"
+        },
+        {
+          "source_line": 2741,
+          "text": "[EconomyMod] Combat contact performance: speed=15 paused=False fps=51.2 collisionMs/frame=0.000 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=0.00 boundEvals=0 mixedVertexReads=0 boundsScans=36 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=0 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=287"
+        }
+      ],
+      "end_line": 2766
+    },
+    {
+      "start_line": 2819,
+      "registered_ships": 12,
+      "performance_samples": [
+        {
+          "source_line": 2863,
+          "text": "[EconomyMod] Combat contact performance: speed=0 paused=True fps=66.6 collisionMs/frame=0.000 bvhBuildMs/frame=4.841 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=0.00 boundEvals=0 mixedVertexReads=0 boundsScans=34 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=5342 queries=0 candidates=0 contacts=0 bvhBuilds=23 nodes=0 triangles=0 gc0=296"
+        },
+        {
+          "source_line": 2868,
+          "text": "[EconomyMod] Combat contact performance: speed=0 paused=True fps=141.4 collisionMs/frame=0.000 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=0.00 boundEvals=0 mixedVertexReads=0 boundsScans=75 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=0 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=296"
+        },
+        {
+          "source_line": 2869,
+          "text": "[EconomyMod] Combat contact performance: speed=5 paused=False fps=138.3 collisionMs/frame=0.000 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=0.00 boundEvals=0 mixedVertexReads=0 boundsScans=35 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=0 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=296"
+        },
+        {
+          "source_line": 2870,
+          "text": "[EconomyMod] Combat contact performance: speed=5 paused=False fps=77.9 collisionMs/frame=0.000 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=0.00 boundEvals=0 mixedVertexReads=0 boundsScans=0 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=0 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=296"
+        },
+        {
+          "source_line": 2871,
+          "text": "[EconomyMod] Combat contact performance: speed=5 paused=False fps=73.1 collisionMs/frame=0.000 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=0.00 boundEvals=0 mixedVertexReads=0 boundsScans=33 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=0 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=296"
+        },
+        {
+          "source_line": 2872,
+          "text": "[EconomyMod] Combat contact performance: speed=5 paused=False fps=56.4 collisionMs/frame=0.000 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=0.00 boundEvals=0 mixedVertexReads=0 boundsScans=25 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=0 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=296"
+        },
+        {
+          "source_line": 2873,
+          "text": "[EconomyMod] Combat contact performance: speed=15 paused=False fps=61.3 collisionMs/frame=0.000 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=0.00 boundEvals=0 mixedVertexReads=0 boundsScans=0 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=0 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=297"
+        },
+        {
+          "source_line": 2874,
+          "text": "[EconomyMod] Combat contact performance: speed=15 paused=False fps=61.7 collisionMs/frame=0.000 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=0.00 boundEvals=0 mixedVertexReads=0 boundsScans=0 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=0 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=297"
+        },
+        {
+          "source_line": 2876,
+          "text": "[EconomyMod] Combat contact performance: speed=15 paused=False fps=61.8 collisionMs/frame=0.069 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.050 maxPassMs=0.99 boundEvals=0 mixedVertexReads=0 boundsScans=0 bodyChecks=770 bodyCandidates=0 bonePoseReads=22176 colliderConfigs=0 queries=70 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=297"
+        },
+        {
+          "source_line": 2877,
+          "text": "[EconomyMod] Combat contact performance: speed=15 paused=False fps=55.5 collisionMs/frame=0.784 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.531 maxPassMs=1.17 boundEvals=0 mixedVertexReads=0 boundsScans=21 bodyChecks=54065 bodyCandidates=0 bonePoseReads=220176 colliderConfigs=0 queries=4915 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=298"
+        },
+        {
+          "source_line": 2878,
+          "text": "[EconomyMod] Combat contact performance: speed=0 paused=True fps=112.6 collisionMs/frame=0.152 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.090 maxPassMs=1.12 boundEvals=0 mixedVertexReads=0 boundsScans=173 bodyChecks=35761 bodyCandidates=0 bonePoseReads=75240 colliderConfigs=0 queries=3251 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=298"
+        },
+        {
+          "source_line": 2879,
+          "text": "[EconomyMod] Combat contact performance: speed=0 paused=True fps=141.7 collisionMs/frame=0.011 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=0.02 boundEvals=0 mixedVertexReads=0 boundsScans=0 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=0 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=299"
+        },
+        {
+          "source_line": 2880,
+          "text": "[EconomyMod] Combat contact performance: speed=15 paused=False fps=104.7 collisionMs/frame=0.200 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.120 maxPassMs=1.07 boundEvals=0 mixedVertexReads=0 boundsScans=509 bodyChecks=45738 bodyCandidates=0 bonePoseReads=95040 colliderConfigs=0 queries=4158 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=300"
+        },
+        {
+          "source_line": 2881,
+          "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=112.6 collisionMs/frame=0.180 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.109 maxPassMs=1.13 boundEvals=0 mixedVertexReads=0 boundsScans=308 bodyChecks=44297 bodyCandidates=0 bonePoseReads=91080 colliderConfigs=0 queries=4027 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=300"
+        },
+        {
+          "source_line": 2882,
+          "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=59.1 collisionMs/frame=0.832 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.533 maxPassMs=1.14 boundEvals=0 mixedVertexReads=0 boundsScans=850 bodyChecks=114554 bodyCandidates=0 bonePoseReads=234432 colliderConfigs=0 queries=10414 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=301"
+        },
+        {
+          "source_line": 2884,
+          "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=59.5 collisionMs/frame=0.866 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.540 maxPassMs=1.19 boundEvals=0 mixedVertexReads=0 boundsScans=640 bodyChecks=124003 bodyCandidates=0 bonePoseReads=236016 colliderConfigs=0 queries=11273 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=301"
+        },
+        {
+          "source_line": 2885,
+          "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=57.7 collisionMs/frame=0.887 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.534 maxPassMs=1.20 boundEvals=0 mixedVertexReads=0 boundsScans=242 bodyChecks=138292 bodyCandidates=0 bonePoseReads=228888 colliderConfigs=0 queries=12572 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=301"
+        },
+        {
+          "source_line": 2886,
+          "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=58.8 collisionMs/frame=0.894 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.523 maxPassMs=1.24 boundEvals=0 mixedVertexReads=0 boundsScans=88 bodyChecks=159533 bodyCandidates=0 bonePoseReads=232848 colliderConfigs=0 queries=14503 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=301"
+        },
+        {
+          "source_line": 2887,
+          "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=58.6 collisionMs/frame=0.919 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.521 maxPassMs=1.27 boundEvals=0 mixedVertexReads=0 boundsScans=95 bodyChecks=180972 bodyCandidates=0 bonePoseReads=232848 colliderConfigs=0 queries=16452 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=302"
+        },
+        {
+          "source_line": 2888,
+          "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=59.5 collisionMs/frame=0.930 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.519 maxPassMs=1.18 boundEvals=0 mixedVertexReads=0 boundsScans=106 bodyChecks=193380 bodyCandidates=0 bonePoseReads=236016 colliderConfigs=0 queries=17580 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=302"
+        },
+        {
+          "source_line": 2889,
+          "text": "[EconomyMod] Combat contact performance: speed=10 paused=False fps=57.9 collisionMs/frame=0.957 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.524 maxPassMs=1.35 boundEvals=0 mixedVertexReads=0 boundsScans=307 bodyChecks=205865 bodyCandidates=0 bonePoseReads=229680 colliderConfigs=0 queries=18715 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=302"
+        },
+        {
+          "source_line": 2890,
+          "text": "[EconomyMod] Combat contact performance: speed=10 paused=False fps=52.0 collisionMs/frame=1.112 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.515 maxPassMs=1.36 boundEvals=0 mixedVertexReads=0 boundsScans=1430 bodyChecks=287705 bodyCandidates=0 bonePoseReads=205920 colliderConfigs=0 queries=26155 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=303"
+        },
+        {
+          "source_line": 2895,
+          "text": "[EconomyMod] Combat contact performance: speed=0 paused=True fps=68.6 collisionMs/frame=0.818 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.308 maxPassMs=7.12 boundEvals=0 mixedVertexReads=0 boundsScans=1917 bodyChecks=296879 bodyCandidates=4 bonePoseReads=163152 colliderConfigs=0 queries=26989 candidates=17 contacts=4 bvhBuilds=0 nodes=2941 triangles=2118 gc0=303"
+        },
+        {
+          "source_line": 2896,
+          "text": "[EconomyMod] Combat contact performance: speed=10 paused=False fps=129.4 collisionMs/frame=0.080 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.021 maxPassMs=1.64 boundEvals=0 mixedVertexReads=0 boundsScans=255 bodyChecks=36938 bodyCandidates=0 bonePoseReads=20592 colliderConfigs=0 queries=3358 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=304"
+        },
+        {
+          "source_line": 2897,
+          "text": "[EconomyMod] Combat contact performance: speed=10 paused=False fps=49.0 collisionMs/frame=1.324 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.527 maxPassMs=1.59 boundEvals=0 mixedVertexReads=0 boundsScans=2086 bodyChecks=348647 bodyCandidates=0 bonePoseReads=194832 colliderConfigs=0 queries=31857 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=304"
+        },
+        {
+          "source_line": 2906,
+          "text": "[EconomyMod] Combat contact performance: speed=10 paused=False fps=47.7 collisionMs/frame=1.632 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.472 maxPassMs=6.71 boundEvals=0 mixedVertexReads=0 boundsScans=2322 bodyChecks=321330 bodyCandidates=9 bonePoseReads=160416 colliderConfigs=0 queries=33580 candidates=38 contacts=8 bvhBuilds=0 nodes=6268 triangles=3873 gc0=304"
+        },
+        {
+          "source_line": 2907,
+          "text": "[EconomyMod] Combat contact performance: speed=10 paused=False fps=44.3 collisionMs/frame=2.025 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.431 maxPassMs=2.49 boundEvals=0 mixedVertexReads=0 boundsScans=2233 bodyChecks=319786 bodyCandidates=0 bonePoseReads=134568 colliderConfigs=0 queries=38554 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=304"
+        },
+        {
+          "source_line": 2908,
+          "text": "[EconomyMod] Combat contact performance: speed=0 paused=True fps=124.8 collisionMs/frame=0.187 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.025 maxPassMs=2.67 boundEvals=0 mixedVertexReads=0 boundsScans=380 bodyChecks=62242 bodyCandidates=0 bonePoseReads=21888 colliderConfigs=0 queries=7639 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=304"
+        },
+        {
+          "source_line": 2914,
+          "text": "[EconomyMod] Combat contact performance: speed=3 paused=False fps=61.3 collisionMs/frame=1.507 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.245 maxPassMs=3.52 boundEvals=0 mixedVertexReads=0 boundsScans=1986 bodyChecks=313409 bodyCandidates=18 bonePoseReads=101952 colliderConfigs=0 queries=38729 candidates=41 contacts=16 bvhBuilds=0 nodes=8383 triangles=5753 gc0=305"
+        },
+        {
+          "source_line": 2915,
+          "text": "[EconomyMod] Combat contact performance: speed=3 paused=False fps=51.6 collisionMs/frame=1.988 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.370 maxPassMs=3.64 boundEvals=0 mixedVertexReads=0 boundsScans=2397 bodyChecks=333620 bodyCandidates=14 bonePoseReads=130032 colliderConfigs=0 queries=45212 candidates=29 contacts=10 bvhBuilds=0 nodes=5965 triangles=4369 gc0=305"
+        },
+        {
+          "source_line": 2916,
+          "text": "[EconomyMod] Combat contact performance: speed=3 paused=False fps=58.9 collisionMs/frame=1.707 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.371 maxPassMs=11.55 boundEvals=0 mixedVertexReads=0 boundsScans=2633 bodyChecks=332510 bodyCandidates=14 bonePoseReads=148680 colliderConfigs=0 queries=44662 candidates=14 contacts=9 bvhBuilds=0 nodes=3832 triangles=2684 gc0=305"
+        },
+        {
+          "source_line": 2917,
+          "text": "[EconomyMod] Combat contact performance: speed=3 paused=False fps=68.5 collisionMs/frame=1.422 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.380 maxPassMs=6.38 boundEvals=0 mixedVertexReads=0 boundsScans=2664 bodyChecks=321528 bodyCandidates=16 bonePoseReads=172872 colliderConfigs=0 queries=43472 candidates=34 contacts=7 bvhBuilds=0 nodes=5224 triangles=3530 gc0=306"
+        },
+        {
+          "source_line": 2919,
+          "text": "[EconomyMod] Combat contact performance: speed=3 paused=False fps=73.5 collisionMs/frame=1.259 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.383 maxPassMs=2.62 boundEvals=0 mixedVertexReads=0 boundsScans=2700 bodyChecks=299256 bodyCandidates=10 bonePoseReads=185472 colliderConfigs=0 queries=40784 candidates=22 contacts=5 bvhBuilds=0 nodes=3594 triangles=2313 gc0=306"
+        },
+        {
+          "source_line": 2920,
+          "text": "[EconomyMod] Combat contact performance: speed=3 paused=False fps=72.5 collisionMs/frame=1.028 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.372 maxPassMs=2.33 boundEvals=0 mixedVertexReads=0 boundsScans=2650 bodyChecks=211348 bodyCandidates=23 bonePoseReads=180072 colliderConfigs=0 queries=30243 candidates=36 contacts=14 bvhBuilds=0 nodes=7078 triangles=4312 gc0=306"
+        },
+        {
+          "source_line": 2923,
+          "text": "[EconomyMod] Combat contact performance: speed=15 paused=False fps=80.8 collisionMs/frame=0.738 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.316 maxPassMs=6.54 boundEvals=0 mixedVertexReads=0 boundsScans=2493 bodyChecks=126361 bodyCandidates=3 bonePoseReads=174528 colliderConfigs=0 queries=22859 candidates=3 contacts=2 bvhBuilds=0 nodes=771 triangles=574 gc0=306"
+        },
+        {
+          "source_line": 2924,
+          "text": "[EconomyMod] Combat contact performance: speed=15 paused=False fps=89.4 collisionMs/frame=0.312 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.171 maxPassMs=0.78 boundEvals=0 mixedVertexReads=0 boundsScans=361 bodyChecks=14472 bodyCandidates=0 bonePoseReads=110160 colliderConfigs=0 queries=8857 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=306"
+        },
+        {
+          "source_line": 2925,
+          "text": "[EconomyMod] Combat contact performance: speed=15 paused=False fps=90.9 collisionMs/frame=0.013 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=0.14 boundEvals=0 mixedVertexReads=0 boundsScans=0 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=0 queries=1627 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=307"
+        },
+        {
+          "source_line": 2930,
+          "text": "[EconomyMod] Combat contact performance: speed=15 paused=False fps=94.5 collisionMs/frame=0.000 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=0.00 boundEvals=0 mixedVertexReads=0 boundsScans=0 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=0 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=307"
+        }
+      ],
+      "end_line": 2939
+    }
+  ],
+  "limitations": [
+    "Configuration counts include inactive variants and are not active collider counts.",
+    "Speed/pause labels are end-of-window snapshots.",
+    "Postcombat probe output excluded.",
+    "No CPU/GPU/physics profile or controlled baseline comparison available."
+  ]
+}

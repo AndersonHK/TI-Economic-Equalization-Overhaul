@@ -1,0 +1,137 @@
+{
+  "Schema": 1,
+  "Columns": 10,
+  "Rows": 11,
+  "ColumnPitch": 74,
+  "HalfRowPitch": 37,
+  "OriginX": 85,
+  "OriginY": -60,
+  "CenterPanelPath": "Inner Container/Center Container",
+  "FixedHeightPanels": [
+    "Ship Core Settings"
+  ],
+  "PropellantLabel": {
+    "Width": 72,
+    "Height": 24,
+    "OffsetY": 24,
+    "MaximumFontSize": 12
+  },
+  "LegacyWeaponSlots": [
+    {
+      "Hull": "AlienMothership",
+      "MaximumSchema": 0,
+      "Positions": [
+        {
+          "Slot": 14,
+          "X": 4,
+          "Y": 0
+        },
+        {
+          "Slot": 18,
+          "X": 4,
+          "Y": 6
+        },
+        {
+          "Slot": 19,
+          "X": 4,
+          "Y": 2
+        },
+        {
+          "Slot": 20,
+          "X": 4,
+          "Y": 4
+        }
+      ]
+    }
+  ],
+  "WindowRows": 9,
+  "ColumnRestrictions": [
+    {
+      "Hull": "*",
+      "Columns": [
+        0
+      ],
+      "AllowedTypes": [
+        "Drive",
+        "Propellant",
+        "TailArmor"
+      ]
+    },
+    {
+      "Hull": "AlienMothership",
+      "Columns": [
+        1,
+        2,
+        3,
+        4,
+        9
+      ],
+      "AllowedTypes": [
+        "Drive",
+        "PowerPlant",
+        "Radiator",
+        "Propellant",
+        "TailArmor",
+        "LateralArmor",
+        "NoseArmor",
+        "Utility",
+        "NoseHardPoint"
+      ]
+    }
+  ],
+  "ReservedCells": [
+    {
+      "Hull": "AlienMothership",
+      "X": 0,
+      "Y": 1
+    },
+    {
+      "Hull": "AlienMothership",
+      "X": 0,
+      "Y": 2
+    },
+    {
+      "Hull": "AlienMothership",
+      "X": 0,
+      "Y": 3
+    },
+    {
+      "Hull": "AlienMothership",
+      "X": 0,
+      "Y": 5
+    },
+    {
+      "Hull": "AlienMothership",
+      "X": 0,
+      "Y": 6
+    },
+    {
+      "Hull": "AlienMothership",
+      "X": 0,
+      "Y": 7
+    },
+    {
+      "Hull": "AlienMothership",
+      "X": 0,
+      "Y": 9
+    },
+    {
+      "Hull": "AlienMothership",
+      "X": 0,
+      "Y": 10
+    }
+  ],
+  "Viewport": {
+    "RegionPath": "Layout Background",
+    "HeaderPaths": [
+      "Ship Core Settings",
+      "Layout Background/TogglePartObsoleteSort",
+      "Layout Background/ValidRefitMessage"
+    ],
+    "PaddingTop": 10,
+    "PaddingBottom": 12,
+    "PaddingLeft": 12,
+    "PaddingRight": 12,
+    "ScreenMargin": 6
+  }
+}

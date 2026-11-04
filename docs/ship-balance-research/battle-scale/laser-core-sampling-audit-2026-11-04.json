@@ -1,0 +1,307 @@
+{
+  "date": "2026-11-04",
+  "status": "planning only; numerical screenshot/signal analysis, no code change, build, deployment or game launch",
+  "screenshots": [
+    {
+      "path": "docs/ship-balance-research/battle-scale/manual-laser-subpixel-crop-2026-11-04.png",
+      "size": [
+        172,
+        29
+      ],
+      "sha256": "9928B643D39203F73C3F1ED8AF6B4A8130DACDDF3320418A888DE1E45832EBEE",
+      "copied_without_resampling": true
+    },
+    {
+      "path": "docs/ship-balance-research/battle-scale/manual-laser-360cm-phaser-2026-11-04.png",
+      "size": [
+        3840,
+        2160
+      ],
+      "sha256": "E5D2093A4B2F1F7B5C6C2438BFAF15A713BEC134FC5AF253E8A2B3E28BB572EB",
+      "copied_without_resampling": true
+    }
+  ],
+  "user_measurement": {
+    "cavity_diameter_px_approx": 40,
+    "solid_beam_diameter_px_approx": 20,
+    "weapon": "360cm hull phaser, screenshot UI 360 CM ULTRAVIOLET PHASER BATTERY",
+    "method": "User measurement in Paint; aperture edge, normal direction, depth and display threshold not independently calibrated"
+  },
+  "crop_analysis": {
+    "pixel_coordinates": "zero-based in the supplied 172x29 crop",
+    "selection": "x=25..171, rows 14/15/16, green >= 150; center weighted by green-100",
+    "patches": [
+      {
+        "row_y": 16,
+        "start_x": 32,
+        "end_x": 48,
+        "weighted_center_x": 39.94059405940594
+      },
+      {
+        "row_y": 15,
+        "start_x": 85,
+        "end_x": 101,
+        "weighted_center_x": 93.06660088801183
+      },
+      {
+        "row_y": 14,
+        "start_x": 138,
+        "end_x": 155,
+        "weighted_center_x": 146.4573754789272
+      }
+    ],
+    "spacing_x": [
+      53.126006828605895,
+      53.390774590915356
+    ],
+    "fitted_slope": -0.01877634541947184,
+    "fitted_angle_degrees": -1.075678948481851,
+    "row_crossing_period_x": 53.25850039821695,
+    "residual_y": [
+      0.0008306213751883007,
+      -0.0016571236536879752,
+      0.0008265022784996745
+    ],
+    "inference": "Strong evidence of pixel-phase aliasing: successive similar bright islands occupy successive rows, with spacing matching a one-row crossing. Does not identify the exact GPU sampling stage or exclude all texture/postprocess effects."
+  },
+  "close_beam_scans": {
+    "description": "Vertical scan through the lowest firing beam near the closest firing turret; fixed pixel thresholds demonstrate displayed width dependence, not linear HDR FWHM or geometric aperture measurement.",
+    "rows": [
+      {
+        "column_x": 1500,
+        "green_threshold": 128,
+        "blue_minimum": 200,
+        "first_y": 767,
+        "last_y": 788,
+        "vertical_pixel_count": 22
+      },
+      {
+        "column_x": 1500,
+        "green_threshold": 180,
+        "blue_minimum": 200,
+        "first_y": 768,
+        "last_y": 788,
+        "vertical_pixel_count": 21
+      },
+      {
+        "column_x": 1500,
+        "green_threshold": 220,
+        "blue_minimum": 200,
+        "first_y": 771,
+        "last_y": 785,
+        "vertical_pixel_count": 15
+      },
+      {
+        "column_x": 1540,
+        "green_threshold": 128,
+        "blue_minimum": 200,
+        "first_y": 779,
+        "last_y": 800,
+        "vertical_pixel_count": 22
+      },
+      {
+        "column_x": 1540,
+        "green_threshold": 180,
+        "blue_minimum": 200,
+        "first_y": 780,
+        "last_y": 799,
+        "vertical_pixel_count": 20
+      },
+      {
+        "column_x": 1540,
+        "green_threshold": 220,
+        "blue_minimum": 200,
+        "first_y": 783,
+        "last_y": 797,
+        "vertical_pixel_count": 15
+      },
+      {
+        "column_x": 1580,
+        "green_threshold": 128,
+        "blue_minimum": 200,
+        "first_y": 791,
+        "last_y": 811,
+        "vertical_pixel_count": 21
+      },
+      {
+        "column_x": 1580,
+        "green_threshold": 180,
+        "blue_minimum": 200,
+        "first_y": 792,
+        "last_y": 810,
+        "vertical_pixel_count": 19
+      },
+      {
+        "column_x": 1580,
+        "green_threshold": 220,
+        "blue_minimum": 200,
+        "first_y": 794,
+        "last_y": 808,
+        "vertical_pixel_count": 15
+      },
+      {
+        "column_x": 1590,
+        "green_threshold": 128,
+        "blue_minimum": 200,
+        "first_y": 794,
+        "last_y": 814,
+        "vertical_pixel_count": 21
+      },
+      {
+        "column_x": 1590,
+        "green_threshold": 180,
+        "blue_minimum": 200,
+        "first_y": 795,
+        "last_y": 813,
+        "vertical_pixel_count": 19
+      },
+      {
+        "column_x": 1590,
+        "green_threshold": 220,
+        "blue_minimum": 200,
+        "first_y": 798,
+        "last_y": 811,
+        "vertical_pixel_count": 14
+      },
+      {
+        "column_x": 1600,
+        "green_threshold": 128,
+        "blue_minimum": 200,
+        "first_y": 797,
+        "last_y": 816,
+        "vertical_pixel_count": 20
+      },
+      {
+        "column_x": 1600,
+        "green_threshold": 180,
+        "blue_minimum": 200,
+        "first_y": 798,
+        "last_y": 815,
+        "vertical_pixel_count": 18
+      },
+      {
+        "column_x": 1600,
+        "green_threshold": 220,
+        "blue_minimum": 200,
+        "first_y": 801,
+        "last_y": 811,
+        "vertical_pixel_count": 11
+      }
+    ]
+  },
+  "native_weapon": {
+    "dataName": "360cmUVPhaserBattery",
+    "friendlyName": "360 cm UV Phaser Battery",
+    "mirrorRadius_cm": 360,
+    "modelResource": "shipweapons/large_laser_battery",
+    "effectResource": "spaceCombat/Phaser Beam Violet"
+  },
+  "native_weapon_note": "360cm is the displayed label; native mirrorRadius_cm is 360, not 180. Render size remains based on graphical clear aperture, not inferred from the label or simulation field.",
+  "phaser_parameters": {
+    "_LaserDistanceFalloff": 1.3899999856948853,
+    "_LaserFalloff": 1.25,
+    "_LaserMaxRadius": 0.15000000596046448,
+    "_LaserStartRadius": 0.10000000149011612,
+    "_NoiseExponent": 2.0,
+    "_NoiseOpacity": 1.0,
+    "_NoiseScaleSpeed": 20.0,
+    "_NoiseScaleStrength": 0.25200000405311584,
+    "_NoiseStart": 0.16300000250339508,
+    "_NoiseThreshold": 0.07100000232458115,
+    "_NoiseTimescale": 3.0
+  },
+  "phaser_core_profile": {
+    "assumptions": "Source line u clamped to .01, native material constants, source geometric support, pulse at extremes/zero. Not a screenshot fit or a universal correction factor.",
+    "radius_at_source": 0.10024893955252308,
+    "rows": [
+      {
+        "pulse": -0.25200000405311584,
+        "exponent": 0.9349999949336052,
+        "source_core_support_fraction_of_ribbon": 0.17087012062186324,
+        "ribbon_to_core_at_that_phase": 5.852398279819834,
+        "conditional_support_if_ribbon_is_40px": 6.83480482487453
+      },
+      {
+        "pulse": 0,
+        "exponent": 1.25,
+        "source_core_support_fraction_of_ribbon": 0.3176097496642807,
+        "ribbon_to_core_at_that_phase": 3.1485179565709753,
+        "conditional_support_if_ribbon_is_40px": 12.704389986571227
+      },
+      {
+        "pulse": 0.25200000405311584,
+        "exponent": 1.5650000050663948,
+        "source_core_support_fraction_of_ribbon": 0.45998357247566907,
+        "ribbon_to_core_at_that_phase": 2.173990681053931,
+        "conditional_support_if_ribbon_is_40px": 18.399342899026763
+      }
+    ]
+  },
+  "sampling_example": {
+    "assumptions": "One-dimensional normal-axis pixel box filter, projected physical core support .3px, profile max(0,1-(2*abs(x)/width)^1.25), unit peak radiance. Arithmetic example, no renderer simulation; exact rotated pixel footprint, HDR and postprocessing excluded.",
+    "expected_energy": 0.16666666666666666,
+    "rows": [
+      {
+        "center_offset_pixels": 0,
+        "point_sample_row_0": 1.0,
+        "box_integrated_row_0": 0.16666666666666666,
+        "box_integrated_row_1": 0.0,
+        "sum_across_rows": 0.16666666666666666
+      },
+      {
+        "center_offset_pixels": 0.1,
+        "point_sample_row_0": 0.3975986642601034,
+        "box_integrated_row_0": 0.16666666666666666,
+        "box_integrated_row_1": 0.0,
+        "sum_across_rows": 0.16666666666666666
+      },
+      {
+        "center_offset_pixels": 0.2,
+        "point_sample_row_0": 0,
+        "box_integrated_row_0": 0.16666666666666666,
+        "box_integrated_row_1": 0.0,
+        "sum_across_rows": 0.16666666666666666
+      },
+      {
+        "center_offset_pixels": 0.3,
+        "point_sample_row_0": 0,
+        "box_integrated_row_0": 0.16666666666666666,
+        "box_integrated_row_1": 0.0,
+        "sum_across_rows": 0.16666666666666666
+      },
+      {
+        "center_offset_pixels": 0.4,
+        "point_sample_row_0": 0,
+        "box_integrated_row_0": 0.15655994063378237,
+        "box_integrated_row_1": 0.010106726032884303,
+        "sum_across_rows": 0.16666666666666669
+      },
+      {
+        "center_offset_pixels": 0.5,
+        "point_sample_row_0": 0,
+        "box_integrated_row_0": 0.08333333333333333,
+        "box_integrated_row_1": 0.08333333333333333,
+        "sum_across_rows": 0.16666666666666666
+      }
+    ]
+  },
+  "recommendation": {
+    "core": "Graphical clear aperture defines physical core diameter at emitter; distinguish envelope, radial intensity profile and outer glow. Preserve native appearance as far as compatible with this normalization.",
+    "sampling": "Integrate/fade by actual projected core footprint rather than sample only the pixel center; test pixel-phase cadence first.",
+    "setup": "Capture physical diameter once at creation/reuse; derive changing projection and filtering in the graphics pipeline, with no per-frame CPU scale/collider work.",
+    "raster_support": "If geometry omits intersected pixels, a padded sampling carrier or adequate multisample treatment may be required; it must not impose a minimum bright core width or constant intensity.",
+    "priority": "Sizing and pixel-phase sampling now precede the previously proposed noise-halo/mip experiments."
+  },
+  "unconfirmed": [
+    "Which stage loses the actual core: geometry/sample mask, pixel shader center evaluation or postprocess resolve.",
+    "Exact aperture silhouette and beam-normal linear-HDR core width in the large screenshot.",
+    "Shader integration feasibility/build pipeline and GPU cost in the installed Unity version."
+  ],
+  "scope_guard": {
+    "laser_source_sha256": {
+      "TIEconomyMod\\Core\\LaserBeamGeometry.cs": "F948A8C0893FB88C241001849C04371E6EDEB669BDF9D7919AA3A58CCF7EDF09",
+      "TIEconomyMod\\Patches\\LaserBeamCameraPatches.cs": "CD79713F8F1FC59D50EAAEFEEB50CD83330F7701D02A1E9D62B9934D91E72BD4"
+    },
+    "note": "This turn edited documentation and copied attachments only. Unrelated work was already pending in the shared checkout; DLL/PDB build outputs changed concurrently during analysis. No code edit, build or deployment was performed by this planning task."
+  }
+}

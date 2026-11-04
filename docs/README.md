@@ -12,7 +12,50 @@ separates superseded material from current authorities; the
 The [index-maintenance guide](tooling/documentation-indexing.md) describes how to
 regenerate the catalog and verify links after later changes.
 
+For the armor rework's research baseline, the [2026-11-04 as-is audit](ship-balance-research/armor-system-as-is-2026-11-04.md) traces current armor coverage, penetration, critical-hit reporting and internal damage, and records the desired partial-thickness surface model. This is Step 0 documentation; the rework design and implementation remain future work.
+
+The [armor rework plan](ship-balance-research/armor-rework-plan.md) uses one uniform armor-work divisor and compares spatial tiles with simpler representations, retaining contact/area and hull/nose progression requirements. Complete patch-path performance at ten impacts/frame is a hard feasibility gate. The earlier multi-parameter calibration is rejected and archived; no runtime model is implemented.
+
 ## Current authorities
+
+- [Stable 0.11.6 acceptance](ship-balance-research/battle-scale/acceptance-0.11.6-2026-11-04.md):
+  user confirms the beam bug fixed and game stable; records the accepted runtime
+  hashes and separates acceptance from automated and feature-specific coverage.
+
+- [Designer viewport offset/full-layout fit](ship-balance-research/designer-viewport-fit-2026-11-04.md):
+  disables competing native layout, measures the actual viewport/screen budget
+  and fits full hull/control bounds. Deployed; live containment logs/manual checks pending.
+
+- [Alien armor selection crash fix](ship-balance-research/alien-armor-selection-fix-2026-11-04.md):
+  alien budget/premium selection includes exotic-bearing armor without hardcoded
+  identities; human exotic restrictions stay native. Deployed in 0.11.2.
+
+- [Alien armor material update](ship-balance-research/alien-armor-material-update-2026-11-04.md): Hybrid-equivalent Alien Adamantane and lighter/thinner Alien Exotic, both with Hybrid shielding per point and 25% laser resistance. Deployed in 0.11.2; manual testing pending.
+
+- [Alien capital symmetry and Mothership expansion](ship-balance-research/alien-capital-expansion-0.11.2-2026-11-04.md):
+  0.11.2 completes reflected alien utility rows and fills safe expanded Mothership
+  grid cells with N5 noses, heavy hull weapons and utilities. Manual testing pending.
+
+- [Capital utility expansion and JSON designer rows](ship-balance-research/capital-utility-expansion-0.11.1-2026-11-04.md):
+  0.11.1 adds two cells to five hulls, with crew/weight costs, generic JSON row
+  parsing and a taller window. Native save version unchanged; manual UI testing pending.
+
+- [Asymmetric ship tiers, N5 fitting and graser precision](ship-balance-research/asymmetric-tiers-implementation-2026-11-04.md):
+  0.11.0 implements species-specific tiers 1–5, Lancer/Carrier heavy fitting,
+  Titan/Mothership N5-only noses and schema-3 conversion. Deployed; manual
+  designer/campaign/combat acceptance pending.
+
+- [Alien machinery-bay runtime update](ship-balance-research/alien-reactor-bay-implementation-2026-11-04.md):
+  0.10.24 deploys the audited alien allowances in the compatibility/engine-bay
+  path, with source metadata and current-save propulsion preflight evidence.
+
+- [Nose weapon background-cutout correction](ship-balance-research/nose-weapon-render-cutout-2026-11-02.md):
+  0.10.23 nose-only renderer matrix compensation through equivalent private
+  mesh baking. Deployed; visual comparison remains pending.
+
+- [Capital hull and nose mount expansion](ship-balance-research/capital-mount-expansion-2026-11-02.md):
+  0.10.22 compact size-4 hull/nose cells, Dreadnought coverage, six-cell Mothership,
+  schema-2 migration, and revised mass/crew values. Deployed for manual testing.
 
 - [Alien combat acceleration and cruise limits](ship-balance-research/alien-combat-acceleration-2026-10-31.md):
   0.10.21 retains the 7 G alien combat baseline and raises cruise to 3.5 G
@@ -185,6 +228,27 @@ regenerate the catalog and verify links after later changes.
   records the approved mass-grounded bands and vanilla Luna/Mars comparisons.
 
 ## Historical, exploratory, and deferred material
+
+The latest [species-asymmetric tier plan](ship-balance-research/asymmetric-human-alien-tier-plan-2026-11-04.md)
+replaces the earlier mirrored species/tier-6 classification. Its cluster tables
+use the deployed 0.10.24 bay inputs; tier/N5/fitting/cost changes remain proposals.
+
+The [current progression analysis](ship-balance-research/hull-progression-and-capital-weapon-analysis-2026-11-03.md)
+checks native tiers/unlocks and same-tech heavy nose alternatives. Its
+[formal implementation plan](ship-balance-research/tier-4-6-and-size-5-implementation-plan-2026-11-03.md)
+records the proposed tier-4–6 / size-5 changes, while the
+[wavelength precision proposal](ship-balance-research/laser-wavelength-precision-bug-2026-11-03.md)
+documents a confirmed native-type bug and a scoped fix. These are analysis and
+plans, not changes to the installed runtime.
+The separate [Frigate/Cruiser boundary plan](ship-balance-research/frigate-and-cruiser-tier-boundary-plan-2026-11-03.md)
+refines the proposed lower bands to match human unlock waves and MC costs.
+Its [mesh-volume capacity comparison](ship-balance-research/hull-volume-capacity-comparison-2026-11-03.md)
+adds all-class variant statistics for the actual hull-volume, reactor-bay and
+engine-art inputs, including the alien bay fallbacks.
+The completed [alien prefab audit](ship-balance-research/alien-reactor-bay-measurements-2026-11-04.md)
+measures aft machinery geometry, proposes explicitly modeled allowances and
+checks current reactor ceilings before any tier/N5 capacity decision. Its
+figures also compare human art-family progression and alien hulls at common scale.
 
 - [Campaign difficulty preset control-cap assessment](campaign-difficulty-preset-control-cap.md)
   traces the new-campaign preset code and JSON merge path, establishes that a

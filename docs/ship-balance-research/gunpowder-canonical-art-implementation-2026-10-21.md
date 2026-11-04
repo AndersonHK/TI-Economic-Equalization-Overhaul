@@ -6,6 +6,11 @@ The successful runtime trace records **baked=True, nonInstanced=False**. This
 supports the mesh-baked path; it does not establish the exact GPU-level cause
 of the failing transform-scaled path. See the [acceptance record](gunpowder-art/manual-acceptance-2026-10-21.md).
 
+The separate [0.10.23 nose-weapon correction](nose-weapon-render-cutout-2026-11-02.md)
+extends equivalent combat mesh baking to small nose renderer matrices, including
+magnetic cannons outside these eight canonical profiles. Its visual acceptance
+is pending; it does not change the canonical calibers or profile statistics below.
+
 ## Scope and canonical dimensions
 
 Only the eight existing gunpowder templates receive canonical art sizing.

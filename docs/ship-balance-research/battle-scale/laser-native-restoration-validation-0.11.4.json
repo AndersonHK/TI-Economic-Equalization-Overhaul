@@ -1,0 +1,13 @@
+{
+  "release": "0.11.4",
+  "native_vertex_bytecode_sha256": "26EDD8DC65AF5CD30FA35FCFFEBE7F08E59A39FF3144E08DD66B0DCA3AA0D13F",
+  "native_vertex_entire_wrapper_unchanged": true,
+  "native_vertex_metadata_unchanged": true,
+  "native_render_state_unchanged": true,
+  "native_property_layout_unchanged": true,
+  "endpoint_uniforms": false,
+  "vertex_padding": false,
+  "complete_resolved_rgb_cases": 1800,
+  "max_absolute_rgb_error": 2.6645352591003757e-15,
+  "limits": "Static byte identity and CPU equation checks, not GPU image/animation/performance acceptance. Native raster coverage retained; no arbitrary-distance continuity claim."
+}

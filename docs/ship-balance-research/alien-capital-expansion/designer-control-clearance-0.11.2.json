@@ -1,0 +1,2299 @@
+{
+  "method": "Recorded native 72-unit icon and spinner rectangles; JSON propellant label dimensions; no rendering claim.",
+  "sourceHullSha256": "C6709A0FBA88A22C53EB563AF954D0F858B188312CAB3C96926476686E573B7D",
+  "sourceLayoutSha256": "19031756F7E2C1B9FFAC657EE204A8A164827DC500ED663958486110E4E60FA7",
+  "hulls": [
+    {
+      "hull": "Lancer",
+      "tiles": [
+        {
+          "slot": 0,
+          "kind": "Drive",
+          "bounds": [
+            -36,
+            75,
+            36,
+            147
+          ]
+        },
+        {
+          "slot": 1,
+          "kind": "PowerPlant",
+          "bounds": [
+            38,
+            75,
+            110,
+            147
+          ]
+        },
+        {
+          "slot": 2,
+          "kind": "Utility",
+          "bounds": [
+            186,
+            75,
+            258,
+            147
+          ]
+        },
+        {
+          "slot": 3,
+          "kind": "Radiator",
+          "bounds": [
+            112,
+            75,
+            184,
+            147
+          ]
+        },
+        {
+          "slot": 4,
+          "kind": "TailArmor",
+          "bounds": [
+            -36,
+            296,
+            36,
+            368
+          ]
+        },
+        {
+          "slot": 5,
+          "kind": "LateralArmor",
+          "bounds": [
+            296,
+            296,
+            368,
+            368
+          ]
+        },
+        {
+          "slot": 6,
+          "kind": "NoseArmor",
+          "bounds": [
+            630,
+            296,
+            702,
+            368
+          ]
+        },
+        {
+          "slot": 7,
+          "kind": "NoseHardPoint",
+          "bounds": [
+            556,
+            75,
+            628,
+            147
+          ]
+        },
+        {
+          "slot": 8,
+          "kind": "NoseHardPoint",
+          "bounds": [
+            482,
+            1,
+            554,
+            73
+          ]
+        },
+        {
+          "slot": 9,
+          "kind": "NoseHardPoint",
+          "bounds": [
+            482,
+            75,
+            554,
+            147
+          ]
+        },
+        {
+          "slot": 10,
+          "kind": "NoseHardPoint",
+          "bounds": [
+            482,
+            149,
+            554,
+            221
+          ]
+        },
+        {
+          "slot": 11,
+          "kind": "HullHardPoint",
+          "bounds": [
+            408,
+            75,
+            480,
+            147
+          ]
+        },
+        {
+          "slot": 12,
+          "kind": "Utility",
+          "bounds": [
+            408,
+            1,
+            480,
+            73
+          ]
+        },
+        {
+          "slot": 13,
+          "kind": "Utility",
+          "bounds": [
+            408,
+            149,
+            480,
+            221
+          ]
+        },
+        {
+          "slot": 14,
+          "kind": "HullHardPoint",
+          "bounds": [
+            334,
+            75,
+            406,
+            147
+          ]
+        },
+        {
+          "slot": 15,
+          "kind": "Utility",
+          "bounds": [
+            334,
+            1,
+            406,
+            73
+          ]
+        },
+        {
+          "slot": 16,
+          "kind": "Utility",
+          "bounds": [
+            334,
+            149,
+            406,
+            221
+          ]
+        },
+        {
+          "slot": 17,
+          "kind": "Utility",
+          "bounds": [
+            260,
+            1,
+            332,
+            73
+          ]
+        },
+        {
+          "slot": 18,
+          "kind": "HullHardPoint",
+          "bounds": [
+            260,
+            75,
+            332,
+            147
+          ]
+        },
+        {
+          "slot": 19,
+          "kind": "Utility",
+          "bounds": [
+            260,
+            149,
+            332,
+            221
+          ]
+        },
+        {
+          "slot": 21,
+          "kind": "Utility",
+          "bounds": [
+            186,
+            1,
+            258,
+            73
+          ]
+        },
+        {
+          "slot": 22,
+          "kind": "Utility",
+          "bounds": [
+            186,
+            149,
+            258,
+            221
+          ]
+        }
+      ],
+      "controls": [
+        {
+          "slot": 0,
+          "kind": "Drive",
+          "bounds": [
+            -36,
+            149.5,
+            36,
+            169.5
+          ]
+        },
+        {
+          "slot": 4,
+          "kind": "TailArmor",
+          "bounds": [
+            -36,
+            370.5,
+            36,
+            412.5
+          ]
+        },
+        {
+          "slot": 5,
+          "kind": "LateralArmor",
+          "bounds": [
+            296,
+            370.5,
+            368,
+            412.5
+          ]
+        },
+        {
+          "slot": 6,
+          "kind": "NoseArmor",
+          "bounds": [
+            630,
+            370.5,
+            702,
+            412.5
+          ]
+        },
+        {
+          "slot": 20,
+          "kind": "Propellant",
+          "bounds": [
+            -36,
+            10.0,
+            36,
+            56
+          ]
+        }
+      ]
+    },
+    {
+      "hull": "Dreadnought",
+      "tiles": [
+        {
+          "slot": 0,
+          "kind": "Drive",
+          "bounds": [
+            -36,
+            75,
+            36,
+            147
+          ]
+        },
+        {
+          "slot": 1,
+          "kind": "PowerPlant",
+          "bounds": [
+            38,
+            75,
+            110,
+            147
+          ]
+        },
+        {
+          "slot": 2,
+          "kind": "Utility",
+          "bounds": [
+            186,
+            38,
+            258,
+            110
+          ]
+        },
+        {
+          "slot": 3,
+          "kind": "Radiator",
+          "bounds": [
+            112,
+            75,
+            184,
+            147
+          ]
+        },
+        {
+          "slot": 4,
+          "kind": "TailArmor",
+          "bounds": [
+            -36,
+            296,
+            36,
+            368
+          ]
+        },
+        {
+          "slot": 5,
+          "kind": "LateralArmor",
+          "bounds": [
+            296,
+            296,
+            368,
+            368
+          ]
+        },
+        {
+          "slot": 6,
+          "kind": "NoseArmor",
+          "bounds": [
+            630,
+            296,
+            702,
+            368
+          ]
+        },
+        {
+          "slot": 7,
+          "kind": "NoseHardPoint",
+          "bounds": [
+            630,
+            75,
+            702,
+            147
+          ]
+        },
+        {
+          "slot": 8,
+          "kind": "NoseHardPoint",
+          "bounds": [
+            556,
+            38,
+            628,
+            110
+          ]
+        },
+        {
+          "slot": 9,
+          "kind": "NoseHardPoint",
+          "bounds": [
+            556,
+            112,
+            628,
+            184
+          ]
+        },
+        {
+          "slot": 10,
+          "kind": "Utility",
+          "bounds": [
+            482,
+            -36,
+            554,
+            36
+          ]
+        },
+        {
+          "slot": 11,
+          "kind": "Utility",
+          "bounds": [
+            408,
+            -36,
+            480,
+            36
+          ]
+        },
+        {
+          "slot": 12,
+          "kind": "Utility",
+          "bounds": [
+            334,
+            -36,
+            406,
+            36
+          ]
+        },
+        {
+          "slot": 13,
+          "kind": "Utility",
+          "bounds": [
+            482,
+            186,
+            554,
+            258
+          ]
+        },
+        {
+          "slot": 14,
+          "kind": "Utility",
+          "bounds": [
+            408,
+            186,
+            480,
+            258
+          ]
+        },
+        {
+          "slot": 15,
+          "kind": "Utility",
+          "bounds": [
+            334,
+            186,
+            406,
+            258
+          ]
+        },
+        {
+          "slot": 16,
+          "kind": "HullHardPoint",
+          "bounds": [
+            260,
+            38,
+            332,
+            110
+          ]
+        },
+        {
+          "slot": 17,
+          "kind": "HullHardPoint",
+          "bounds": [
+            260,
+            112,
+            332,
+            184
+          ]
+        },
+        {
+          "slot": 18,
+          "kind": "HullHardPoint",
+          "bounds": [
+            482,
+            38,
+            554,
+            110
+          ]
+        },
+        {
+          "slot": 19,
+          "kind": "HullHardPoint",
+          "bounds": [
+            482,
+            112,
+            554,
+            184
+          ]
+        },
+        {
+          "slot": 20,
+          "kind": "HullHardPoint",
+          "bounds": [
+            408,
+            38,
+            480,
+            110
+          ]
+        },
+        {
+          "slot": 21,
+          "kind": "HullHardPoint",
+          "bounds": [
+            408,
+            112,
+            480,
+            184
+          ]
+        },
+        {
+          "slot": 22,
+          "kind": "HullHardPoint",
+          "bounds": [
+            334,
+            38,
+            406,
+            110
+          ]
+        },
+        {
+          "slot": 23,
+          "kind": "HullHardPoint",
+          "bounds": [
+            334,
+            112,
+            406,
+            184
+          ]
+        },
+        {
+          "slot": 25,
+          "kind": "Utility",
+          "bounds": [
+            186,
+            112,
+            258,
+            184
+          ]
+        },
+        {
+          "slot": 26,
+          "kind": "Utility",
+          "bounds": [
+            260,
+            -36,
+            332,
+            36
+          ]
+        },
+        {
+          "slot": 27,
+          "kind": "Utility",
+          "bounds": [
+            260,
+            186,
+            332,
+            258
+          ]
+        }
+      ],
+      "controls": [
+        {
+          "slot": 0,
+          "kind": "Drive",
+          "bounds": [
+            -36,
+            149.5,
+            36,
+            169.5
+          ]
+        },
+        {
+          "slot": 4,
+          "kind": "TailArmor",
+          "bounds": [
+            -36,
+            370.5,
+            36,
+            412.5
+          ]
+        },
+        {
+          "slot": 5,
+          "kind": "LateralArmor",
+          "bounds": [
+            296,
+            370.5,
+            368,
+            412.5
+          ]
+        },
+        {
+          "slot": 6,
+          "kind": "NoseArmor",
+          "bounds": [
+            630,
+            370.5,
+            702,
+            412.5
+          ]
+        },
+        {
+          "slot": 24,
+          "kind": "Propellant",
+          "bounds": [
+            -36,
+            10.0,
+            36,
+            56
+          ]
+        }
+      ]
+    },
+    {
+      "hull": "Titan",
+      "tiles": [
+        {
+          "slot": 0,
+          "kind": "Drive",
+          "bounds": [
+            -36,
+            75,
+            36,
+            147
+          ]
+        },
+        {
+          "slot": 1,
+          "kind": "PowerPlant",
+          "bounds": [
+            38,
+            75,
+            110,
+            147
+          ]
+        },
+        {
+          "slot": 2,
+          "kind": "Utility",
+          "bounds": [
+            186,
+            38,
+            258,
+            110
+          ]
+        },
+        {
+          "slot": 3,
+          "kind": "Radiator",
+          "bounds": [
+            112,
+            75,
+            184,
+            147
+          ]
+        },
+        {
+          "slot": 4,
+          "kind": "TailArmor",
+          "bounds": [
+            -36,
+            296,
+            36,
+            368
+          ]
+        },
+        {
+          "slot": 5,
+          "kind": "LateralArmor",
+          "bounds": [
+            296,
+            296,
+            368,
+            368
+          ]
+        },
+        {
+          "slot": 6,
+          "kind": "NoseArmor",
+          "bounds": [
+            630,
+            296,
+            702,
+            368
+          ]
+        },
+        {
+          "slot": 7,
+          "kind": "NoseHardPoint",
+          "bounds": [
+            630,
+            75,
+            702,
+            147
+          ]
+        },
+        {
+          "slot": 8,
+          "kind": "NoseHardPoint",
+          "bounds": [
+            556,
+            1,
+            628,
+            73
+          ]
+        },
+        {
+          "slot": 9,
+          "kind": "NoseHardPoint",
+          "bounds": [
+            556,
+            75,
+            628,
+            147
+          ]
+        },
+        {
+          "slot": 10,
+          "kind": "NoseHardPoint",
+          "bounds": [
+            556,
+            149,
+            628,
+            221
+          ]
+        },
+        {
+          "slot": 11,
+          "kind": "Utility",
+          "bounds": [
+            482,
+            -36,
+            554,
+            36
+          ]
+        },
+        {
+          "slot": 12,
+          "kind": "HullHardPoint",
+          "bounds": [
+            482,
+            38,
+            554,
+            110
+          ]
+        },
+        {
+          "slot": 13,
+          "kind": "HullHardPoint",
+          "bounds": [
+            482,
+            112,
+            554,
+            184
+          ]
+        },
+        {
+          "slot": 14,
+          "kind": "Utility",
+          "bounds": [
+            482,
+            186,
+            554,
+            258
+          ]
+        },
+        {
+          "slot": 15,
+          "kind": "Utility",
+          "bounds": [
+            408,
+            -36,
+            480,
+            36
+          ]
+        },
+        {
+          "slot": 16,
+          "kind": "HullHardPoint",
+          "bounds": [
+            408,
+            38,
+            480,
+            110
+          ]
+        },
+        {
+          "slot": 17,
+          "kind": "HullHardPoint",
+          "bounds": [
+            408,
+            112,
+            480,
+            184
+          ]
+        },
+        {
+          "slot": 18,
+          "kind": "Utility",
+          "bounds": [
+            408,
+            186,
+            480,
+            258
+          ]
+        },
+        {
+          "slot": 19,
+          "kind": "Utility",
+          "bounds": [
+            334,
+            -36,
+            406,
+            36
+          ]
+        },
+        {
+          "slot": 20,
+          "kind": "HullHardPoint",
+          "bounds": [
+            334,
+            38,
+            406,
+            110
+          ]
+        },
+        {
+          "slot": 21,
+          "kind": "HullHardPoint",
+          "bounds": [
+            334,
+            112,
+            406,
+            184
+          ]
+        },
+        {
+          "slot": 22,
+          "kind": "Utility",
+          "bounds": [
+            334,
+            186,
+            406,
+            258
+          ]
+        },
+        {
+          "slot": 23,
+          "kind": "Utility",
+          "bounds": [
+            260,
+            -36,
+            332,
+            36
+          ]
+        },
+        {
+          "slot": 24,
+          "kind": "Utility",
+          "bounds": [
+            260,
+            38,
+            332,
+            110
+          ]
+        },
+        {
+          "slot": 26,
+          "kind": "Utility",
+          "bounds": [
+            186,
+            -36,
+            258,
+            36
+          ]
+        },
+        {
+          "slot": 27,
+          "kind": "Utility",
+          "bounds": [
+            260,
+            112,
+            332,
+            184
+          ]
+        },
+        {
+          "slot": 28,
+          "kind": "Utility",
+          "bounds": [
+            186,
+            112,
+            258,
+            184
+          ]
+        },
+        {
+          "slot": 29,
+          "kind": "Utility",
+          "bounds": [
+            186,
+            186,
+            258,
+            258
+          ]
+        },
+        {
+          "slot": 30,
+          "kind": "Utility",
+          "bounds": [
+            260,
+            186,
+            332,
+            258
+          ]
+        }
+      ],
+      "controls": [
+        {
+          "slot": 0,
+          "kind": "Drive",
+          "bounds": [
+            -36,
+            149.5,
+            36,
+            169.5
+          ]
+        },
+        {
+          "slot": 4,
+          "kind": "TailArmor",
+          "bounds": [
+            -36,
+            370.5,
+            36,
+            412.5
+          ]
+        },
+        {
+          "slot": 5,
+          "kind": "LateralArmor",
+          "bounds": [
+            296,
+            370.5,
+            368,
+            412.5
+          ]
+        },
+        {
+          "slot": 6,
+          "kind": "NoseArmor",
+          "bounds": [
+            630,
+            370.5,
+            702,
+            412.5
+          ]
+        },
+        {
+          "slot": 25,
+          "kind": "Propellant",
+          "bounds": [
+            -36,
+            10.0,
+            36,
+            56
+          ]
+        }
+      ]
+    },
+    {
+      "hull": "AlienDreadnought",
+      "tiles": [
+        {
+          "slot": 0,
+          "kind": "Drive",
+          "bounds": [
+            -36,
+            75,
+            36,
+            147
+          ]
+        },
+        {
+          "slot": 1,
+          "kind": "PowerPlant",
+          "bounds": [
+            38,
+            75,
+            110,
+            147
+          ]
+        },
+        {
+          "slot": 2,
+          "kind": "Utility",
+          "bounds": [
+            186,
+            75,
+            258,
+            147
+          ]
+        },
+        {
+          "slot": 3,
+          "kind": "Radiator",
+          "bounds": [
+            112,
+            75,
+            184,
+            147
+          ]
+        },
+        {
+          "slot": 4,
+          "kind": "TailArmor",
+          "bounds": [
+            -36,
+            296,
+            36,
+            368
+          ]
+        },
+        {
+          "slot": 5,
+          "kind": "LateralArmor",
+          "bounds": [
+            296,
+            296,
+            368,
+            368
+          ]
+        },
+        {
+          "slot": 6,
+          "kind": "NoseArmor",
+          "bounds": [
+            630,
+            296,
+            702,
+            368
+          ]
+        },
+        {
+          "slot": 7,
+          "kind": "NoseHardPoint",
+          "bounds": [
+            630,
+            75,
+            702,
+            147
+          ]
+        },
+        {
+          "slot": 8,
+          "kind": "NoseHardPoint",
+          "bounds": [
+            556,
+            75,
+            628,
+            147
+          ]
+        },
+        {
+          "slot": 9,
+          "kind": "NoseHardPoint",
+          "bounds": [
+            556,
+            1,
+            628,
+            73
+          ]
+        },
+        {
+          "slot": 10,
+          "kind": "NoseHardPoint",
+          "bounds": [
+            556,
+            149,
+            628,
+            221
+          ]
+        },
+        {
+          "slot": 11,
+          "kind": "Utility",
+          "bounds": [
+            482,
+            -36,
+            554,
+            36
+          ]
+        },
+        {
+          "slot": 12,
+          "kind": "Utility",
+          "bounds": [
+            408,
+            -36,
+            480,
+            36
+          ]
+        },
+        {
+          "slot": 13,
+          "kind": "Utility",
+          "bounds": [
+            334,
+            -36,
+            406,
+            36
+          ]
+        },
+        {
+          "slot": 14,
+          "kind": "Utility",
+          "bounds": [
+            186,
+            1,
+            258,
+            73
+          ]
+        },
+        {
+          "slot": 15,
+          "kind": "Utility",
+          "bounds": [
+            482,
+            186,
+            554,
+            258
+          ]
+        },
+        {
+          "slot": 16,
+          "kind": "Utility",
+          "bounds": [
+            408,
+            186,
+            480,
+            258
+          ]
+        },
+        {
+          "slot": 17,
+          "kind": "Utility",
+          "bounds": [
+            334,
+            186,
+            406,
+            258
+          ]
+        },
+        {
+          "slot": 18,
+          "kind": "Utility",
+          "bounds": [
+            186,
+            149,
+            258,
+            221
+          ]
+        },
+        {
+          "slot": 19,
+          "kind": "HullHardPoint",
+          "bounds": [
+            260,
+            38,
+            332,
+            110
+          ]
+        },
+        {
+          "slot": 20,
+          "kind": "HullHardPoint",
+          "bounds": [
+            260,
+            112,
+            332,
+            184
+          ]
+        },
+        {
+          "slot": 21,
+          "kind": "HullHardPoint",
+          "bounds": [
+            482,
+            38,
+            554,
+            110
+          ]
+        },
+        {
+          "slot": 22,
+          "kind": "HullHardPoint",
+          "bounds": [
+            482,
+            112,
+            554,
+            184
+          ]
+        },
+        {
+          "slot": 23,
+          "kind": "HullHardPoint",
+          "bounds": [
+            408,
+            38,
+            480,
+            110
+          ]
+        },
+        {
+          "slot": 24,
+          "kind": "HullHardPoint",
+          "bounds": [
+            408,
+            112,
+            480,
+            184
+          ]
+        },
+        {
+          "slot": 25,
+          "kind": "HullHardPoint",
+          "bounds": [
+            334,
+            38,
+            406,
+            110
+          ]
+        },
+        {
+          "slot": 26,
+          "kind": "HullHardPoint",
+          "bounds": [
+            334,
+            112,
+            406,
+            184
+          ]
+        },
+        {
+          "slot": 28,
+          "kind": "Utility",
+          "bounds": [
+            260,
+            -36,
+            332,
+            36
+          ]
+        },
+        {
+          "slot": 29,
+          "kind": "Utility",
+          "bounds": [
+            112,
+            1,
+            184,
+            73
+          ]
+        },
+        {
+          "slot": 30,
+          "kind": "Utility",
+          "bounds": [
+            112,
+            149,
+            184,
+            221
+          ]
+        },
+        {
+          "slot": 31,
+          "kind": "Utility",
+          "bounds": [
+            260,
+            186,
+            332,
+            258
+          ]
+        }
+      ],
+      "controls": [
+        {
+          "slot": 0,
+          "kind": "Drive",
+          "bounds": [
+            -36,
+            149.5,
+            36,
+            169.5
+          ]
+        },
+        {
+          "slot": 4,
+          "kind": "TailArmor",
+          "bounds": [
+            -36,
+            370.5,
+            36,
+            412.5
+          ]
+        },
+        {
+          "slot": 5,
+          "kind": "LateralArmor",
+          "bounds": [
+            296,
+            370.5,
+            368,
+            412.5
+          ]
+        },
+        {
+          "slot": 6,
+          "kind": "NoseArmor",
+          "bounds": [
+            630,
+            370.5,
+            702,
+            412.5
+          ]
+        },
+        {
+          "slot": 27,
+          "kind": "Propellant",
+          "bounds": [
+            -36,
+            10.0,
+            36,
+            56
+          ]
+        }
+      ]
+    },
+    {
+      "hull": "AlienTitan",
+      "tiles": [
+        {
+          "slot": 0,
+          "kind": "Drive",
+          "bounds": [
+            -36,
+            75,
+            36,
+            147
+          ]
+        },
+        {
+          "slot": 1,
+          "kind": "PowerPlant",
+          "bounds": [
+            38,
+            75,
+            110,
+            147
+          ]
+        },
+        {
+          "slot": 2,
+          "kind": "Utility",
+          "bounds": [
+            186,
+            75,
+            258,
+            147
+          ]
+        },
+        {
+          "slot": 3,
+          "kind": "Radiator",
+          "bounds": [
+            112,
+            75,
+            184,
+            147
+          ]
+        },
+        {
+          "slot": 4,
+          "kind": "TailArmor",
+          "bounds": [
+            -36,
+            296,
+            36,
+            368
+          ]
+        },
+        {
+          "slot": 5,
+          "kind": "LateralArmor",
+          "bounds": [
+            296,
+            296,
+            368,
+            368
+          ]
+        },
+        {
+          "slot": 6,
+          "kind": "NoseArmor",
+          "bounds": [
+            630,
+            296,
+            702,
+            368
+          ]
+        },
+        {
+          "slot": 7,
+          "kind": "NoseHardPoint",
+          "bounds": [
+            556,
+            1,
+            628,
+            73
+          ]
+        },
+        {
+          "slot": 8,
+          "kind": "NoseHardPoint",
+          "bounds": [
+            556,
+            75,
+            628,
+            147
+          ]
+        },
+        {
+          "slot": 9,
+          "kind": "NoseHardPoint",
+          "bounds": [
+            556,
+            149,
+            628,
+            221
+          ]
+        },
+        {
+          "slot": 10,
+          "kind": "NoseHardPoint",
+          "bounds": [
+            630,
+            1,
+            702,
+            73
+          ]
+        },
+        {
+          "slot": 11,
+          "kind": "NoseHardPoint",
+          "bounds": [
+            630,
+            75,
+            702,
+            147
+          ]
+        },
+        {
+          "slot": 12,
+          "kind": "NoseHardPoint",
+          "bounds": [
+            630,
+            149,
+            702,
+            221
+          ]
+        },
+        {
+          "slot": 13,
+          "kind": "HullHardPoint",
+          "bounds": [
+            260,
+            38,
+            332,
+            110
+          ]
+        },
+        {
+          "slot": 14,
+          "kind": "HullHardPoint",
+          "bounds": [
+            260,
+            112,
+            332,
+            184
+          ]
+        },
+        {
+          "slot": 15,
+          "kind": "HullHardPoint",
+          "bounds": [
+            334,
+            38,
+            406,
+            110
+          ]
+        },
+        {
+          "slot": 16,
+          "kind": "HullHardPoint",
+          "bounds": [
+            334,
+            112,
+            406,
+            184
+          ]
+        },
+        {
+          "slot": 17,
+          "kind": "HullHardPoint",
+          "bounds": [
+            408,
+            38,
+            480,
+            110
+          ]
+        },
+        {
+          "slot": 18,
+          "kind": "HullHardPoint",
+          "bounds": [
+            408,
+            112,
+            480,
+            184
+          ]
+        },
+        {
+          "slot": 19,
+          "kind": "HullHardPoint",
+          "bounds": [
+            482,
+            38,
+            554,
+            110
+          ]
+        },
+        {
+          "slot": 20,
+          "kind": "HullHardPoint",
+          "bounds": [
+            482,
+            112,
+            554,
+            184
+          ]
+        },
+        {
+          "slot": 21,
+          "kind": "Utility",
+          "bounds": [
+            334,
+            -36,
+            406,
+            36
+          ]
+        },
+        {
+          "slot": 22,
+          "kind": "Utility",
+          "bounds": [
+            408,
+            -36,
+            480,
+            36
+          ]
+        },
+        {
+          "slot": 23,
+          "kind": "Utility",
+          "bounds": [
+            482,
+            -36,
+            554,
+            36
+          ]
+        },
+        {
+          "slot": 24,
+          "kind": "Utility",
+          "bounds": [
+            334,
+            186,
+            406,
+            258
+          ]
+        },
+        {
+          "slot": 25,
+          "kind": "Utility",
+          "bounds": [
+            408,
+            186,
+            480,
+            258
+          ]
+        },
+        {
+          "slot": 26,
+          "kind": "Utility",
+          "bounds": [
+            482,
+            186,
+            554,
+            258
+          ]
+        },
+        {
+          "slot": 28,
+          "kind": "Utility",
+          "bounds": [
+            260,
+            -36,
+            332,
+            36
+          ]
+        },
+        {
+          "slot": 29,
+          "kind": "Utility",
+          "bounds": [
+            186,
+            1,
+            258,
+            73
+          ]
+        },
+        {
+          "slot": 30,
+          "kind": "Utility",
+          "bounds": [
+            186,
+            149,
+            258,
+            221
+          ]
+        },
+        {
+          "slot": 31,
+          "kind": "Utility",
+          "bounds": [
+            112,
+            1,
+            184,
+            73
+          ]
+        },
+        {
+          "slot": 32,
+          "kind": "Utility",
+          "bounds": [
+            112,
+            149,
+            184,
+            221
+          ]
+        },
+        {
+          "slot": 33,
+          "kind": "Utility",
+          "bounds": [
+            260,
+            186,
+            332,
+            258
+          ]
+        }
+      ],
+      "controls": [
+        {
+          "slot": 0,
+          "kind": "Drive",
+          "bounds": [
+            -36,
+            149.5,
+            36,
+            169.5
+          ]
+        },
+        {
+          "slot": 4,
+          "kind": "TailArmor",
+          "bounds": [
+            -36,
+            370.5,
+            36,
+            412.5
+          ]
+        },
+        {
+          "slot": 5,
+          "kind": "LateralArmor",
+          "bounds": [
+            296,
+            370.5,
+            368,
+            412.5
+          ]
+        },
+        {
+          "slot": 6,
+          "kind": "NoseArmor",
+          "bounds": [
+            630,
+            370.5,
+            702,
+            412.5
+          ]
+        },
+        {
+          "slot": 27,
+          "kind": "Propellant",
+          "bounds": [
+            -36,
+            10.0,
+            36,
+            56
+          ]
+        }
+      ]
+    },
+    {
+      "hull": "AlienMothership",
+      "tiles": [
+        {
+          "slot": 0,
+          "kind": "Drive",
+          "bounds": [
+            -36,
+            112,
+            36,
+            184
+          ]
+        },
+        {
+          "slot": 1,
+          "kind": "PowerPlant",
+          "bounds": [
+            38,
+            112,
+            110,
+            184
+          ]
+        },
+        {
+          "slot": 2,
+          "kind": "Utility",
+          "bounds": [
+            260,
+            112,
+            332,
+            184
+          ]
+        },
+        {
+          "slot": 3,
+          "kind": "Radiator",
+          "bounds": [
+            112,
+            112,
+            184,
+            184
+          ]
+        },
+        {
+          "slot": 4,
+          "kind": "TailArmor",
+          "bounds": [
+            -36,
+            296,
+            36,
+            368
+          ]
+        },
+        {
+          "slot": 5,
+          "kind": "LateralArmor",
+          "bounds": [
+            296,
+            296,
+            368,
+            368
+          ]
+        },
+        {
+          "slot": 6,
+          "kind": "NoseArmor",
+          "bounds": [
+            630,
+            296,
+            702,
+            368
+          ]
+        },
+        {
+          "slot": 7,
+          "kind": "NoseHardPoint",
+          "bounds": [
+            630,
+            38,
+            702,
+            110
+          ]
+        },
+        {
+          "slot": 8,
+          "kind": "NoseHardPoint",
+          "bounds": [
+            556,
+            38,
+            628,
+            110
+          ]
+        },
+        {
+          "slot": 9,
+          "kind": "NoseHardPoint",
+          "bounds": [
+            556,
+            -36,
+            628,
+            36
+          ]
+        },
+        {
+          "slot": 10,
+          "kind": "NoseHardPoint",
+          "bounds": [
+            556,
+            112,
+            628,
+            184
+          ]
+        },
+        {
+          "slot": 11,
+          "kind": "HullHardPoint",
+          "bounds": [
+            482,
+            -36,
+            554,
+            36
+          ]
+        },
+        {
+          "slot": 12,
+          "kind": "HullHardPoint",
+          "bounds": [
+            408,
+            -36,
+            480,
+            36
+          ]
+        },
+        {
+          "slot": 13,
+          "kind": "HullHardPoint",
+          "bounds": [
+            334,
+            -36,
+            406,
+            36
+          ]
+        },
+        {
+          "slot": 14,
+          "kind": "HullHardPoint",
+          "bounds": [
+            556,
+            260,
+            628,
+            332
+          ]
+        },
+        {
+          "slot": 15,
+          "kind": "HullHardPoint",
+          "bounds": [
+            482,
+            186,
+            554,
+            258
+          ]
+        },
+        {
+          "slot": 16,
+          "kind": "HullHardPoint",
+          "bounds": [
+            408,
+            186,
+            480,
+            258
+          ]
+        },
+        {
+          "slot": 17,
+          "kind": "HullHardPoint",
+          "bounds": [
+            334,
+            186,
+            406,
+            258
+          ]
+        },
+        {
+          "slot": 18,
+          "kind": "HullHardPoint",
+          "bounds": [
+            482,
+            334,
+            554,
+            406
+          ]
+        },
+        {
+          "slot": 19,
+          "kind": "HullHardPoint",
+          "bounds": [
+            556,
+            334,
+            628,
+            406
+          ]
+        },
+        {
+          "slot": 20,
+          "kind": "HullHardPoint",
+          "bounds": [
+            408,
+            334,
+            480,
+            406
+          ]
+        },
+        {
+          "slot": 21,
+          "kind": "HullHardPoint",
+          "bounds": [
+            482,
+            38,
+            554,
+            110
+          ]
+        },
+        {
+          "slot": 22,
+          "kind": "HullHardPoint",
+          "bounds": [
+            482,
+            112,
+            554,
+            184
+          ]
+        },
+        {
+          "slot": 23,
+          "kind": "HullHardPoint",
+          "bounds": [
+            408,
+            38,
+            480,
+            110
+          ]
+        },
+        {
+          "slot": 24,
+          "kind": "HullHardPoint",
+          "bounds": [
+            408,
+            112,
+            480,
+            184
+          ]
+        },
+        {
+          "slot": 25,
+          "kind": "HullHardPoint",
+          "bounds": [
+            334,
+            38,
+            406,
+            110
+          ]
+        },
+        {
+          "slot": 26,
+          "kind": "HullHardPoint",
+          "bounds": [
+            334,
+            112,
+            406,
+            184
+          ]
+        },
+        {
+          "slot": 27,
+          "kind": "Utility",
+          "bounds": [
+            260,
+            38,
+            332,
+            110
+          ]
+        },
+        {
+          "slot": 28,
+          "kind": "Utility",
+          "bounds": [
+            260,
+            186,
+            332,
+            258
+          ]
+        },
+        {
+          "slot": 29,
+          "kind": "Utility",
+          "bounds": [
+            186,
+            38,
+            258,
+            110
+          ]
+        },
+        {
+          "slot": 30,
+          "kind": "Utility",
+          "bounds": [
+            186,
+            186,
+            258,
+            258
+          ]
+        },
+        {
+          "slot": 31,
+          "kind": "Utility",
+          "bounds": [
+            112,
+            186,
+            184,
+            258
+          ]
+        },
+        {
+          "slot": 32,
+          "kind": "Utility",
+          "bounds": [
+            112,
+            38,
+            184,
+            110
+          ]
+        },
+        {
+          "slot": 34,
+          "kind": "Utility",
+          "bounds": [
+            38,
+            -36,
+            110,
+            36
+          ]
+        },
+        {
+          "slot": 35,
+          "kind": "Utility",
+          "bounds": [
+            112,
+            -36,
+            184,
+            36
+          ]
+        },
+        {
+          "slot": 36,
+          "kind": "Utility",
+          "bounds": [
+            186,
+            -36,
+            258,
+            36
+          ]
+        },
+        {
+          "slot": 37,
+          "kind": "Utility",
+          "bounds": [
+            260,
+            -36,
+            332,
+            36
+          ]
+        },
+        {
+          "slot": 38,
+          "kind": "NoseHardPoint",
+          "bounds": [
+            630,
+            112,
+            702,
+            184
+          ]
+        },
+        {
+          "slot": 39,
+          "kind": "NoseHardPoint",
+          "bounds": [
+            630,
+            186,
+            702,
+            258
+          ]
+        },
+        {
+          "slot": 40,
+          "kind": "NoseHardPoint",
+          "bounds": [
+            556,
+            186,
+            628,
+            258
+          ]
+        },
+        {
+          "slot": 41,
+          "kind": "NoseHardPoint",
+          "bounds": [
+            630,
+            -36,
+            702,
+            36
+          ]
+        },
+        {
+          "slot": 42,
+          "kind": "HullHardPoint",
+          "bounds": [
+            408,
+            260,
+            480,
+            332
+          ]
+        },
+        {
+          "slot": 43,
+          "kind": "HullHardPoint",
+          "bounds": [
+            482,
+            260,
+            554,
+            332
+          ]
+        },
+        {
+          "slot": 44,
+          "kind": "Utility",
+          "bounds": [
+            112,
+            260,
+            184,
+            332
+          ]
+        },
+        {
+          "slot": 45,
+          "kind": "Utility",
+          "bounds": [
+            186,
+            260,
+            258,
+            332
+          ]
+        },
+        {
+          "slot": 46,
+          "kind": "Utility",
+          "bounds": [
+            38,
+            334,
+            110,
+            406
+          ]
+        },
+        {
+          "slot": 47,
+          "kind": "Utility",
+          "bounds": [
+            186,
+            112,
+            258,
+            184
+          ]
+        },
+        {
+          "slot": 48,
+          "kind": "Utility",
+          "bounds": [
+            38,
+            38,
+            110,
+            110
+          ]
+        },
+        {
+          "slot": 49,
+          "kind": "Utility",
+          "bounds": [
+            112,
+            334,
+            184,
+            406
+          ]
+        },
+        {
+          "slot": 50,
+          "kind": "Utility",
+          "bounds": [
+            186,
+            334,
+            258,
+            406
+          ]
+        },
+        {
+          "slot": 51,
+          "kind": "Utility",
+          "bounds": [
+            38,
+            186,
+            110,
+            258
+          ]
+        },
+        {
+          "slot": 52,
+          "kind": "Utility",
+          "bounds": [
+            38,
+            260,
+            110,
+            332
+          ]
+        }
+      ],
+      "controls": [
+        {
+          "slot": 0,
+          "kind": "Drive",
+          "bounds": [
+            -36,
+            186.5,
+            36,
+            206.5
+          ]
+        },
+        {
+          "slot": 4,
+          "kind": "TailArmor",
+          "bounds": [
+            -36,
+            370.5,
+            36,
+            412.5
+          ]
+        },
+        {
+          "slot": 5,
+          "kind": "LateralArmor",
+          "bounds": [
+            296,
+            370.5,
+            368,
+            412.5
+          ]
+        },
+        {
+          "slot": 6,
+          "kind": "NoseArmor",
+          "bounds": [
+            630,
+            370.5,
+            702,
+            412.5
+          ]
+        },
+        {
+          "slot": 33,
+          "kind": "Propellant",
+          "bounds": [
+            -36,
+            10.0,
+            36,
+            56
+          ]
+        }
+      ]
+    }
+  ]
+}

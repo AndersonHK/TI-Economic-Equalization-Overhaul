@@ -1,0 +1,6 @@
+[EconomyMod] Loaded fixed 46% laser core shader with filtered subpixel sampling.
+[EconomyMod] Loaded TI Economic Equalization Overhaul 0.11.3, validated against TI 1.0.53b.
+[EconomyMod] Laser native ribbon: 240cmIRArcLaserCannon:False measured=True coreDiameter=0.0007956135 ribbonWidth=0.001729594 filtered=True longitudinalScaleRatio=0.4999999
+[EconomyMod] Laser native ribbon: 60cmGreenArcLaserBattery:False measured=True coreDiameter=0.0005344169 ribbonWidth=0.001161776 filtered=True longitudinalScaleRatio=0.4999999
+[EconomyMod] Laser native ribbon: 60cmIRArcLaserBattery:False measured=True coreDiameter=0.0005344167 ribbonWidth=0.001161775 filtered=True longitudinalScaleRatio=0.4999999
+[EconomyMod] Laser native ribbon: Alien768cmXaserCannon:False measured=True coreDiameter=0.0005165019 ribbonWidth=0.00112283 filtered=True longitudinalScaleRatio=0.4999999

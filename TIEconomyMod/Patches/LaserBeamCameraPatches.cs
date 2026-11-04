@@ -15,7 +15,8 @@ namespace TIEconomyMod.Patches
         public static void Postfix(ShipWeaponVisController __instance, BeamWeaponController ___beamController)
         {
             if (!BattleScaleRuntime.Enabled || !TIGlobalValuesState.isSpaceCombatEnabled ||
-                !(__instance.weaponTemplate is TILaserWeaponTemplate) || ___beamController == null) return;
+                (!(__instance.weaponTemplate is TILaserWeaponTemplate) && !(__instance.weaponTemplate is TIParticleWeaponTemplate)) ||
+                ___beamController == null) return;
             var effect = ___beamController.GetComponent<BeamEffectController>();
             if (effect == null) return;
             var geometry = effect.GetComponent<LaserBeamGeometry>();

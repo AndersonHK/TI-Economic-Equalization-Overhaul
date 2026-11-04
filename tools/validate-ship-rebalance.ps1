@@ -25,8 +25,8 @@ function Assert-Properties {
         [string]$Label
     )
 
-    $actual = @($Value.PSObject.Properties.Name)
-    if (($actual -join ';') -ne ($Expected -join ';')) {
+    $actual = @($Value.PSObject.Properties.Name | Sort-Object)
+    if (($actual -join ';') -ne (($Expected | Sort-Object) -join ';')) {
         throw "$Label has fields '$($actual -join ', ')' instead of '$($Expected -join ', ')'."
     }
 }
@@ -280,12 +280,20 @@ foreach ($entry in $expectedGunDiameters.GetEnumerator()) {
 }
 
 $laserOverrides = Read-JsonArray (Join-Path $modFiles 'TILaserWeaponTemplate.json')
-if ($laserOverrides.Count -ne 1 -or
-    $laserOverrides[0].dataName -ne 'PointDefenseLaserTurret') {
-    throw 'Laser override must contain exactly the Point Defense Laser Turret.'
+if ($laserOverrides.Count -ne 2 -or
+    $laserOverrides[0].dataName -ne 'PointDefenseLaserTurret' -or
+    $laserOverrides[1].dataName -ne 'Alien1024cmGraserCannon') {
+    throw 'Laser override must contain the PD crew and N5 graser cadence changes only.'
 }
 Assert-Properties $laserOverrides[0] @('dataName', 'crew') 'PointDefenseLaserTurret'
 Assert-Near $laserOverrides[0].crew 0 'PointDefenseLaserTurret crew'
+Assert-Properties $laserOverrides[1] @('dataName', 'cooldown_s') 'Alien1024cmGraserCannon'
+Assert-Near $laserOverrides[1].cooldown_s 18 'Alien1024cmGraserCannon doubled cadence'
+$particleOverrides = Read-JsonArray (Join-Path $modFiles 'TIParticleWeaponTemplate.json')
+if ($particleOverrides.Count -ne 1 -or $particleOverrides[0].dataName -ne 'AlienRelativisticParticleCannon') { throw 'Unexpected particle overrides.' }
+Assert-Properties $particleOverrides[0] @('dataName','cooldown_s','intraSalvoCooldown_s') 'AlienRelativisticParticleCannon'
+Assert-Near $particleOverrides[0].cooldown_s 32 'AlienRelativisticParticleCannon cooldown'
+Assert-Near $particleOverrides[0].intraSalvoCooldown_s 1.5 'AlienRelativisticParticleCannon intra-salvo'
 
 $magneticOverrides = Read-JsonArray (Join-Path $modFiles 'TIMagneticGunTemplate.json')
 $expectedHumanRails = [ordered]@{
@@ -325,9 +333,9 @@ $expectedHumanCoils = [ordered]@{
     HeavySiegeCoilerMk1 = @(938, 704, 4.3, 1000, 24, 22)
     HeavySiegeCoilerMk2 = @(938, 750, 4.8, 1050, 19, 15)
     HeavySiegeCoilerMk3 = @(938, 821, 5.9, 1100, 12, 11)
-    SpinalSiegeCoilerMk1 = @(1250, 938, 4.5, 1100, 24, 22)
-    SpinalSiegeCoilerMk2 = @(1250, 1000, 5.1, 1150, 19, 15)
-    SpinalSiegeCoilerMk3 = @(1250, 1094, 6.3, 1250, 12, 11)
+    SpinalSiegeCoilerMk1 = @(1250, 938, 4.5, 1100, 12, 11)
+    SpinalSiegeCoilerMk2 = @(1250, 1000, 5.1, 1150, 9.5, 7.5)
+    SpinalSiegeCoilerMk3 = @(1250, 1094, 6.3, 1250, 6, 5.5)
 }
 $expectedAlienMags = [ordered]@{
     AlienLightMagBattery = @(6.3, 650, 0.60, 19, 16, 9, 3)
@@ -409,7 +417,7 @@ foreach ($entry in $expectedAlienMags.GetEnumerator()) {
 }
 
 $allHullOverrides = Read-JsonArray (Join-Path $modFiles 'TIShipHullTemplate.json')
-$hullOverrides = @($allHullOverrides | Where-Object { $_.dataName -notlike 'Alien*' })
+$hullOverrides = @($allHullOverrides | Where-Object { $_.dataName -notlike 'Alien*' -and $_.dataName -notin @('STOFighter','SalamanderGunship') })
 $expectedHulls = [ordered]@{
     Gunship = @(55, 15, 9719, 171, 3)
     Escort = @(62, 15, 10956, 338, 4)
@@ -419,10 +427,10 @@ $expectedHulls = [ordered]@{
     Destroyer = @(100, 23, 41548, 873, 9)
     Cruiser = @($null, $null, $null, 964, 12)
     Battlecruiser = @($null, $null, $null, 1170, 10)
-    Lancer = @($null, $null, $null, 1958, 14)
+    Lancer = @($null, $null, $null, 2435, 37)
     Battleship = @($null, $null, $null, 1558, 14)
-    Dreadnought = @($null, $null, $null, 2343, 19)
-    Titan = @($null, $null, $null, 3280, 40)
+    Dreadnought = @($null, $null, $null, 3084, 54)
+    Titan = @($null, $null, $null, 3672, 58)
 }
 if ($hullOverrides.Count -ne $expectedHulls.Count) {
     throw "Hull override has $($hullOverrides.Count) rows instead of $($expectedHulls.Count)."
@@ -433,17 +441,17 @@ foreach ($entry in $expectedHulls.GetEnumerator()) {
         throw "Hull override must contain '$($entry.Key)' exactly once."
     }
     if ($null -eq $entry.Value[0]) {
-        if ($entry.Key -in @('Titan', 'Dreadnought')) {
+        if ($entry.Key -in @('Titan', 'Dreadnought','Lancer')) {
             Assert-Properties $row[0] @('dataName', 'mass_tons', 'crew', 'internalModules', 'shipModuleSlots') $entry.Key
         } else {
-            Assert-Properties $row[0] @('dataName', 'mass_tons', 'crew') $entry.Key
+            Assert-Properties $row[0] @('dataName', 'mass_tons', 'crew','shipModuleSlots') $entry.Key
         }
         Assert-Near $row[0].mass_tons $entry.Value[3] "$($entry.Key) mass_tons"
         Assert-Near $row[0].crew $entry.Value[4] "$($entry.Key) crew"
     }
     else {
         Assert-Properties $row[0] @(
-            'dataName', 'length_m', 'width_m', 'volume', 'mass_tons', 'crew') $entry.Key
+            'dataName', 'length_m', 'width_m', 'volume', 'mass_tons', 'crew','shipModuleSlots') $entry.Key
         $fields = @('length_m', 'width_m', 'volume', 'mass_tons', 'crew')
         for ($i = 0; $i -lt $fields.Count; $i++) {
             Assert-Near $row[0].($fields[$i]) $entry.Value[$i] "$($entry.Key) $($fields[$i])"
@@ -465,10 +473,10 @@ foreach ($entry in $expectedHulls.GetEnumerator()) {
         Destroyer { 900 }
         Cruiser { 1000 }
         Battlecruiser { 1200 }
-        Lancer { 2000 }
+        Lancer { 2546 }
         Battleship { 1600 }
-        Dreadnought { 2400 }
-        Titan { 3400 }
+        Dreadnought { 3246 }
+        Titan { 3846 }
     }
     Assert-Near $emptyMass $expectedEmptyMass "$($entry.Key) empty mass"
 }
@@ -660,11 +668,13 @@ foreach ($row in $magneticProgressionRows) {
     Assert-Near `
         ([double]$row.proposed_intraSalvoCooldown_s) $expectedIntraSalvo `
         "$id artifact percentage-scaled intra-salvo reload"
+    $runtimeInterSalvo=$expectedInterSalvo; $runtimeIntraSalvo=$expectedIntraSalvo
+    if($id -match '^SpinalSiegeCoilerMk[123]$'){$runtimeInterSalvo/=2; $runtimeIntraSalvo/=2}
     Assert-Near `
-        (Get-EffectiveMagneticValue $id 'cooldown_s') $expectedInterSalvo `
+        (Get-EffectiveMagneticValue $id 'cooldown_s') $runtimeInterSalvo `
         "$id runtime unchanged inter-salvo reload"
     Assert-Near `
-        (Get-EffectiveMagneticValue $id 'intraSalvoCooldown_s') $expectedIntraSalvo `
+        (Get-EffectiveMagneticValue $id 'intraSalvoCooldown_s') $runtimeIntraSalvo `
         "$id runtime percentage-scaled intra-salvo reload"
     Assert-Near `
         (Get-EffectiveMagneticValue $id 'muzzleVelocity_kps') `
@@ -725,7 +735,11 @@ foreach ($id in $housekeepingIds) {
     $proposedCycle = [double]$override.cooldown_s +
         ([double]$vanilla.salvo_shots - 1.0) *
         [double]$override.intraSalvoCooldown_s
-    $cycleDelta = $proposedCycle / $vanillaCycle - 1.0
+    # Original cohort housekeeping bounds apply before the separately validated
+    # exact 2x N5 cadence change. N5 fractional seconds are intentional.
+    $isN5 = $id -in @('SpinalSiegeCoilerMk1','SpinalSiegeCoilerMk2','SpinalSiegeCoilerMk3')
+    $housekeepingCycle = if ($isN5) { 2.0 * $proposedCycle } else { $proposedCycle }
+    $cycleDelta = $housekeepingCycle / $vanillaCycle - 1.0
     if ($cycleDelta -lt -0.6000001 -or $cycleDelta -ge 0.0) {
         throw "$id total cycle changes by $cycleDelta instead of remaining faster than vanilla without exceeding a 60% reduction."
     }
@@ -741,6 +755,7 @@ foreach ($id in $housekeepingIds) {
     }
     foreach ($field in @(
         'ammoMass_kg', 'warheadMass_kg', 'targetingRange_km', 'cooldown_s')) {
+        if ($isN5 -and $field -eq 'cooldown_s') { continue }
         if ([double]$override.$field -ne [Math]::Round([double]$override.$field)) {
             throw "$id $field must be rounded to a whole unit."
         }

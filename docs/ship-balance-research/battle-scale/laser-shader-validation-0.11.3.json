@@ -1,0 +1,42 @@
+{
+  "objects": [
+    "AssetBundle",
+    "Shader"
+  ],
+  "shader": "EEO/Beam Weapon Line",
+  "unity": "2020.3.49f1",
+  "programs": [
+    {
+      "stage": "progVertex",
+      "bindings": {
+        "$Globals": 0,
+        "UnityPerCamera": 1,
+        "UnityPerFrame": 2
+      },
+      "physical_uniform_offsets": {
+        "_EEOBeamStart": 0,
+        "_EEOBeamEnd": 16
+      },
+      "derivative_instructions": 0,
+      "texture_samples": 0,
+      "sha256": "328A658336C504DAF39777A09FF52529DE1CED35E03E9448C9580B4DBE2F96E3"
+    },
+    {
+      "stage": "progFragment",
+      "bindings": {
+        "$Globals": 0,
+        "UnityPerCamera": 1
+      },
+      "physical_uniform_offsets": {
+        "_EEOBeamStart": 0,
+        "_EEOBeamEnd": 16
+      },
+      "derivative_instructions": 2,
+      "texture_samples": 1,
+      "sha256": "D77ACF5B4872FC73018DB046FF4582233A4919CCE2EDC0FDD40EA036687D930C"
+    }
+  ],
+  "flow_cases": 1800,
+  "flow_max_absolute_error": 1.6653345369377348e-16,
+  "limits": "No Unity-host loading, GPU rendering or manual appearance/performance acceptance. Halo parity is algebraic; native texture bindings and runtime behavior still require in-game confirmation."
+}

@@ -45,6 +45,8 @@ namespace TIEconomyMod.FormulaTests
                 TestBalanceTuning();
                 TestUtilityFootprints();
                 TestCapitalMounts();
+                TestDesignerViewport();
+                TestLaserSampling();
                 TestPerformanceCaches();
                 TestWeaponCadence();
                 TestAbundance();
@@ -68,12 +70,66 @@ namespace TIEconomyMod.FormulaTests
             }
         }
 
+        private static void TestDesignerViewport()
+        {
+            float oldCenteredOrigin = (342f - (72f + 6f * 37f)) / 2f + 36f;
+            float competingOrigin = (416f - (72f + 10f * 37f)) / 2f + 36f;
+            Near(37f, oldCenteredOrigin - competingOrigin, 0, "native centered layout overwrites data by one half-row after allocation grows to eleven rows");
+            var content = new DesignerRect(-36, -36, 702, 412.5f);
+            var viewport = new DesignerRect(8, 54, 828, 472);
+            DesignerPlacement fit = DesignerViewportMath.Place(content, viewport, 85, -60);
+            True(!fit.Fits, "full Mothership plus armor counters detects the short visible region");
+            Near(30.5f, fit.MissingHeight, .001f, "header keepout shortage is measured");
+            Near(0f, fit.MissingWidth, 0, "native width already contains all columns");
+            viewport.Bottom += fit.MissingHeight + .1f;
+            fit = DesignerViewportMath.Place(content, viewport, 85, -60);
+            True(fit.Fits, "measured expansion accommodates full layout");
+            Near(85f, fit.OriginX, .001f, "fitting retains valid horizontal origin");
+            Near(-90f, fit.OriginY, .001f, "fitting moves rows beneath headers");
+            True(viewport.Contains(content.Translate(fit.OriginX, -fit.OriginY), .001f), "all rows and Max label lie in visible rectangle");
+            float scale = DesignerViewportMath.WindowScale(1750, 1004.5f, 1908, 974);
+            True(scale < 1 && scale > .96f, "notification reservation constrains uniform outer-window scale");
+            Near(1074f, 100 + 1004.5f * scale, .001f, "window fits below top reservation with six-unit bottom margin");
+            Near(1f, DesignerViewportMath.WindowScale(1750, 974, 1908, 974), 0, "fitting never enlarges an already fitting window");
+            True(!DesignerViewportMath.Place(content, new DesignerRect(0, 0, 100, 100), 85, -60).Fits, "insufficient width and height are rejected");
+            True(!DesignerViewportMath.Place(content, new DesignerRect(0, 0, float.NaN, 600), 85, -60).Fits, "unsettled NaN viewport is rejected");
+            Near(0f, DesignerViewportMath.WindowScale(0, 1000, 1908, 974), 0, "zero-size window waits for layout");
+            Near(0f, DesignerViewportMath.WindowScale(1750, 1000, 1908, float.PositiveInfinity), 0, "invalid canvas dimensions are rejected");
+        }
+
         private static void TestCapitalMounts()
         {
+            True(CapitalMountPolicy.ShipTier("AlienCruiser") == 2 && CapitalMountPolicy.ShipTier("Cruiser") == 3, "species cruiser tiers differ");
+            True(CapitalMountPolicy.ShipTier("AlienLancer") == 3 && CapitalMountPolicy.ShipTier("Lancer") == 4, "species lancer tiers differ");
+            True(CapitalMountPolicy.ShipTier("AlienTitan") == 4 && CapitalMountPolicy.ShipTier("Titan") == 5 && CapitalMountPolicy.ShipTier("AlienMothership") == 5, "asymmetric capital tiers");
+            True(CapitalMountPolicy.Applies("Lancer") && CapitalMountPolicy.Applies("AlienAssaultCarrier") && !CapitalMountPolicy.Applies("AlienLancer"), "new compact members preserve native alien Lancer");
+            True(CapitalMountPolicy.HadCompactHull("Dreadnought", 2) && CapitalMountPolicy.HadCompactNose("Titan", 2), "schema-2 compact banks stay compact");
+            True(!CapitalMountPolicy.HadCompactHull("Lancer", 2) && !CapitalMountPolicy.HadCompactHull("AlienAssaultCarrier", 2), "new compact banks still expand from schema 2");
+            foreach (string weapon in new[] { "SpinalSiegeCoilerMk1", "SpinalSiegeCoilerMk2", "SpinalSiegeCoilerMk3", "AlienRelativisticParticleCannon", "Alien1024cmGraserCannon" })
+            {
+                True(CapitalMountPolicy.IsSize5(weapon) && CapitalMountPolicy.CapacitySize(weapon, 4) == 5, weapon + " has five effective capacity units");
+                True(CapitalMountPolicy.WeaponAllowed("Titan", weapon, "FourNose", false) && CapitalMountPolicy.WeaponAllowed("AlienMothership", weapon, "FourNose", false), weapon + " is legal on tier 5");
+                True(!CapitalMountPolicy.WeaponAllowed("AlienTitan", weapon, "FourNose", false) && !CapitalMountPolicy.WeaponAllowed("AlienLancer", weapon, "FourNose", false), weapon + " cannot leak to lower tiers");
+                True(CapitalMountPolicy.Size5Equivalent(CapitalMountPolicy.StandardEquivalent(weapon)) == weapon, weapon + " has a reversible explicit grade pair");
+            }
+            True(!CapitalMountPolicy.WeaponAllowed("Titan", "SpinalCoilerMk3", "FourNose", false), "ordinary spinal rejected on tier 5");
+            True(CapitalMountPolicy.WeaponAllowed("AlienLancer", "SpinalCoilerMk3", "FourNose", false), "ordinary spinal preserves lower native fitting");
+            True(WavelengthPrecision.Angstroms("Alien768cmGraserCannon", 0) == 1 && WavelengthPrecision.Angstroms("Alien1024cmGraserCannon", 0) == 1, "both grasers store exact angstroms");
+            Near(1e-10f, WavelengthPrecision.Metres("Alien1024cmGraserCannon", 0), 1e-17f, "angstrom-to-metres boundary");
+            True(WavelengthPrecision.Angstroms("Control", 810) == 8100, "ordinary nanometres convert exactly to angstroms");
+            Near(810 / 1e9f, WavelengthPrecision.Metres("Control", 810), 1e-13f, "ordinary nanometre semantics preserved");
+            True(WavelengthPrecision.Angstroms("Alien1024cmGraserCannon", 10) == 100, "nonzero competing override is respected");
             True(CapitalMountPolicy.Applies("Titan"), "human Titan uses compact mounts");
             True(CapitalMountPolicy.Applies("AlienTitan"), "alien Titan uses compact mounts");
             True(CapitalMountPolicy.Applies("AlienMothership"), "mothership uses compact mounts");
-            True(!CapitalMountPolicy.Applies("Dreadnought"), "Dreadnought retains native mounts");
+            True(CapitalMountPolicy.Applies("Dreadnought"), "human Dreadnought uses compact mounts");
+            True(CapitalMountPolicy.Applies("AlienDreadnought"), "alien Dreadnought uses compact mounts");
+            True(!CapitalMountPolicy.Applies("Battleship"), "Battleship retains native mounts");
+            True(CapitalMountPolicy.HadCompactHull("Titan", 1), "schema-1 Titan hull is already compact");
+            True(!CapitalMountPolicy.HadCompactHull("Dreadnought", 1), "schema-1 Dreadnought hull still expands");
+            True(CapitalMountPolicy.NoseEquivalent("HeavyCoilCannonMk3") == "SpinalCoilerMk3", "nose coil tier retained");
+            True(CapitalMountPolicy.NoseEquivalent("720cmUVPhaserCannon") == "960cmUVPhaserCannon", "nose laser family retained");
+            True(CapitalMountPolicy.NoseEquivalent("Gen3AlienHeavyMagCannon") == "Gen3AlienSpinalMagCannon", "alien nose magnetic tier retained");
             Near(1, CapitalMountPolicy.LegacyOffsets("OneHull").Count, 0, "single expands once");
             Near(2, CapitalMountPolicy.LegacyOffsets("TwoHullHoriz").Count, 0, "horizontal expands twice");
             Near(2, CapitalMountPolicy.LegacyOffsets("TwoHullVert").Count, 0, "vertical expands twice");
@@ -1191,10 +1247,10 @@ namespace TIEconomyMod.FormulaTests
                 { 873f, 1730f, 1858f, 2055f },
                 { 964f, 1764f, 1564f, 2264f },
                 { 1170f, 2470f, 1870f, 3070f },
-                { 1958f, 2458f, 3858f, 3858f },
+                { 2395f, 2895f, 4295f, 4295f },
                 { 1558f, 1958f, 1858f, 2258f },
-                { 2343f, 2943f, 2543f, 3543f },
-                { 3280f, 4180f, 3380f, 5080f }
+                { 3044f, 3644f, 3244f, 4244f },
+                { 3632f, 4532f, 3732f, 5432f }
             };
             for (int hullIndex = 0;
                 hullIndex < humanVariantHulls.Length;
@@ -1352,6 +1408,48 @@ namespace TIEconomyMod.FormulaTests
                     "FutureHuge", 9, false, false, false, true,
                     out usedBayFallback, out baySizeBand), 0.002f,
                 "unknown huge hull uses the maximum measured huge fallback");
+
+            // Alien machinery inputs are audited geometry proxies or explicit
+            // calibrated fallbacks, not part of the measured human appearance map.
+            string[] alienBayHulls = { "AlienAssaultCarrier", "AlienBattlecruiser", "AlienBattleship", "AlienCorvette", "AlienCruiser", "AlienDestroyer", "AlienDreadnought", "AlienEscort", "AlienFrigate", "AlienGunship", "AlienLancer", "AlienMonitor", "AlienMothership", "AlienTitan", "SalamanderGunship" };
+            float[] alienBayVolumes = { 6865.571313f, 3544.628833f, 5860.079834f, 317.839199f, 2332.440390f, 2571.761076f, 6012.812247f, 177.520382f, 1152.553282f, 262.779094f, 9486.200690f, 776.258707f, 137456.803901f, 14625.723848f, 350.770707f };
+            bool[] alienBayCalibrated = { false, false, false, true, false, false, false, true, false, true, false, false, false, false, true };
+            for (int i = 0; i < alienBayHulls.Length; ++i)
+            {
+                float bay; bool calibrated;
+                True(ShipBalanceMath.TryGetAlienReactorBayVolume_m3(alienBayHulls[i], 0, out bay, out calibrated),
+                    alienBayHulls[i] + " has an audited prepared allowance");
+                Near(alienBayVolumes[i], bay, 0.02f, alienBayHulls[i] + " matches the asset audit");
+                True(calibrated == alienBayCalibrated[i], alienBayHulls[i] + " preserves fallback provenance");
+                Near(bay, ShipBalanceMath.ReactorBayVolume_m3(alienBayHulls[i], 0, false, false, false, false,
+                    out usedBayFallback, out baySizeBand), 0f, alienBayHulls[i] + " production lookup uses its prepared value");
+                True(usedBayFallback == calibrated && baySizeBand == (calibrated ? "AlienSmallCalibrated" : "AlienGeometry"),
+                    alienBayHulls[i] + " reports its actual input source");
+                True(!ShipBalanceMath.TryGetMeasuredReactorBayVolume_m3(alienBayHulls[i], 0, out absentVolume),
+                    alienBayHulls[i] + " does not masquerade as a human measured bay");
+                True(!ShipBalanceMath.TryGetAlienReactorBayVolume_m3(alienBayHulls[i], 1, out bay, out calibrated),
+                    alienBayHulls[i] + " unknown appearance cannot inherit appearance zero");
+            }
+            float missingAlienBay; bool missingAlienCalibration;
+            True(!ShipBalanceMath.TryGetAlienReactorBayVolume_m3("FutureAlienHull", 0, out missingAlienBay, out missingAlienCalibration),
+                "unknown alien hull does not acquire a configured allowance");
+            foreach (string capital in new[] { "AlienTitan", "AlienMothership" })
+            {
+                float volume = ShipBalanceMath.ReactorBayVolume_m3(capital, 0, false, false, true, false,
+                    out usedBayFallback, out baySizeBand);
+                float[] maxima = { 5000f, 32000f, 107550f };
+                float[] specificMasses = { 0.5f, 0.175f, 0.025f };
+                for (int i = 0; i < maxima.Length; ++i)
+                    Near(maxima[i], ShipBalanceMath.EffectiveReactorOutput_GW(maxima[i],
+                        ShipBalanceMath.ReactorBayOutputLimit_GW(volume, "Hybrid_Confinement_Fusion", specificMasses[i], maxima[i])),
+                        0.02f, capital + " geometry update preserves the current reactor ceiling");
+            }
+            float gunshipBay = ShipBalanceMath.ReactorBayVolume_m3("AlienGunship", 0, true, false, false, false,
+                out usedBayFallback, out baySizeBand);
+            float gunshipLimit = ShipBalanceMath.EffectiveReactorOutput_GW(5000f,
+                ShipBalanceMath.ReactorBayOutputLimit_GW(gunshipBay, "Hybrid_Confinement_Fusion", 0.5f, 5000f));
+            True(gunshipLimit > 1400f && gunshipLimit < 1403f,
+                "calibrated small alien bay enforces its lower basic-reactor limit");
 
             string[] reactorClasses =
             {
@@ -1720,6 +1818,15 @@ namespace TIEconomyMod.FormulaTests
             HullVariantEmptyMassPatch.Postfix(ref variantMass, ship);
             Near(1800f, variantMass, 0.001f,
                 "Cruiser appearance 1 adds its rounded 800-ton structural penalty");
+            for (int appearance = 0; appearance < 4; ++appearance)
+            {
+                ship.hullAppearanceIndex = appearance;
+                float beforeDataChange = HullVariantEmptyMassFeature.EmptyHullMass_tons(ship);
+                ship.hullTemplate.mass_tons += 40f;
+                Near(beforeDataChange + 40f, HullVariantEmptyMassFeature.EmptyHullMass_tons(ship), .001f,
+                    "JSON structural reinforcement survives appearance adjustment " + appearance);
+                ship.hullTemplate.mass_tons -= 40f;
+            }
 
             ship.hullTemplate = new TIShipHullTemplate
             {
@@ -3381,6 +3488,76 @@ namespace TIEconomyMod.FormulaTests
             TechWeights weights;
             True(catalog.TryGetWeights(id, out weights), "weight exists for " + id);
             return weights;
+        }
+
+        private static void TestLaserSampling()
+        {
+            foreach (double authored in new double[] { 0.8, 1.5, 6 })
+            foreach (double scale in new double[] { 0.00001, 0.0005, 0.001, 0.01, 1 })
+            {
+                double width=LaserSamplingMath.ParticleRibbonWidth(authored,scale);
+                True(Math.Abs(width-authored*scale)<1e-12,"particle width matches native authored base term");
+                foreach (double distance in new double[] { 0, 1, 10, 1000 })
+                {
+                    double native=Math.Max(authored*scale,distance*0.005);
+                    True(width<=native+1e-12,"particle removes camera floor without exceeding native base width");
+                }
+            }
+            foreach (double bad in new double[] { 0, -1, Double.NaN, Double.PositiveInfinity })
+            {
+                bool rejected=false;
+                try { LaserSamplingMath.ParticleRibbonWidth(6,bad); } catch (ArgumentOutOfRangeException) { rejected=true; }
+                True(rejected,"invalid particle effect scale rejected");
+            }
+            foreach (double diameter in new double[] { 1e-9, 0.00005, 0.0005, 0.1, 5 })
+                True(Math.Abs(LaserSamplingMath.RibbonWidth(diameter) * 0.46 - diameter) < diameter * 1e-12,
+                    "fixed lens/core/ribbon calibration");
+            bool invalid=false;
+            try { LaserSamplingMath.RibbonWidth(Double.NaN); } catch (ArgumentOutOfRangeException) { invalid=true; }
+            True(invalid,"invalid core size rejected");
+            foreach (double width in new double[] { 0.01, 0.1, 0.3, 0.99, 1.0, 2, 10 })
+            foreach (double exponent in new double[] { 0.9, 0.935, 1.25, 1.565, 4 })
+            foreach (double phase in new double[] { 0, 0.1, 0.25, 0.49, 0.5, 0.73, 0.99 })
+            {
+                double total=0;
+                for (int row=-12; row<=12; row++)
+                    total += LaserSamplingMath.FilteredCore(2*(row-phase)/width,1/width,exponent);
+                double expected=width*exponent/(exponent+1);
+                True(Math.Abs(total-expected)<1e-9,"subpixel energy invariant across phase/zoom/pulse");
+            }
+            // Independent midpoint quadrature checks the primitive, including edge overlap.
+            foreach (double center in new double[] { -1.3, -0.8, 0, 0.3, 1.1 })
+            foreach (double half in new double[] { 0.1, 0.7, 3 })
+            {
+                double numerical=0;
+                const int samples=10000;
+                for (int i=0;i<samples;i++)
+                {
+                    double x=center-half+(i+0.5)*2*half/samples;
+                    numerical += Math.Max(0,1-Math.Pow(Math.Abs(x),1.25))/samples;
+                }
+                True(Math.Abs(numerical-LaserSamplingMath.FilteredCore(center,half,1.25))<1e-6,
+                    "filtered core matches independent quadrature");
+            }
+            True(LaserSamplingMath.FilteredCore(0,0,1.25)==1,"resolved center retains native peak");
+            True(LaserSamplingMath.FilteredCore(1.1,0,1.25)==0,"fixed core support outside lens");
+            foreach (double radius in new double[] { 0.03, 0.075, 0.1, 0.2 })
+            foreach (double exponent in new double[] { 0.9, 0.935, 1.25, 1.565, 4 })
+            foreach (double offset in new double[] { -0.5, -0.23, -0.1, 0, 0.1, 0.23, 0.5 })
+            {
+                double point=1-Math.Min(1,Math.Pow(Math.Abs(offset),exponent)/radius);
+                double support=Math.Pow(radius,1/exponent);
+                True(LaserSamplingMath.NativeCore(offset,radius,exponent,support*0.125)==point,
+                    "resolved native profile is exactly unchanged");
+            }
+            foreach (double width in new double[] { 0.1, 0.3, 0.5 })
+            foreach (double phase in new double[] { 0, 0.25, 0.5 })
+            {
+                double support=Math.Pow(0.1,1/1.25),total=0;
+                for (int row=-3;row<=3;row++)
+                    total+=LaserSamplingMath.NativeCore((row-phase)*2*support/width,0.1,1.25,support/width);
+                True(Math.Abs(total-width*1.25/2.25)<1e-10,"native core retains subpixel energy");
+            }
         }
 
         private static void Near(float expected, float actual, float tolerance, string name)

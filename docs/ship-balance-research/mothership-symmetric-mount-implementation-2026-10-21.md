@@ -1,5 +1,7 @@
 # Mothership symmetric mount correction and weapon-size follow-up
 
+**Nose extension:** [0.10.22](capital-mount-expansion-2026-11-02.md) adds two symmetric nose model anchors and six compact nose cells. The twenty-pair hull geometry below remains unchanged.
+
 Research baseline committed before implementation: `d5cf300`.
 
 ## Authorized scope and UI decision

@@ -7,6 +7,8 @@ remain deferred.
 
 Last reviewed: 2026-08-12
 
+For the later 2026-11-04 alien armor-material changes, use the [current material implementation](alien-armor-material-update-2026-11-04.md). This report's armor-allocation mechanism remains distinct from the newly changed material properties and costs.
+
 ## Scope and baseline
 
 This report layers the current Economic Equalization Overhaul magnetic-gun

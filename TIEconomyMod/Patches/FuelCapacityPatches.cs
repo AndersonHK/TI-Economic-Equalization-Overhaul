@@ -304,7 +304,7 @@ namespace TIEconomyMod.Patches
             int noseWeaponCells = 0;
             foreach (TIShipWeaponTemplate weapon in ship.noseWeaponTemplates)
             {
-                noseWeaponCells += Math.Max(1, weapon.internalSize);
+                noseWeaponCells += CapitalMountPolicy.CapacitySize(weapon.dataName, weapon.internalSize);
             }
 
             return utilityCells *

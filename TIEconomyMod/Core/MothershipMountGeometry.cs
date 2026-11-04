@@ -4,10 +4,22 @@ using UnityEngine;
 namespace TIEconomyMod.Core
 {
     // Source geometry and surface probes: docs/ship-balance-research/turret-clearance/mothership-layout-2026-10-21.json
-    // All twenty authored pairs are spaced; four remain unavailable in the native UI.
+    // All twenty authored pairs are spaced; two remain unused after the N5 expansion.
     public static class MothershipMountGeometry
     {
         public const int Count = 20;
+        // Paired outer head surfaces, measured by front-facing mesh rays.
+        // See capital-nose-geometry-2026-11-02.json; preserve authored rotation.
+        public static Vector3 AddedNosePosition(int index)
+        {
+            if (index < 0 || index > 3) throw new ArgumentOutOfRangeException(nameof(index));
+            return index < 2 ? new Vector3(index == 0 ? -80f : 80f, 0f, 255.6295f) :
+                new Vector3(index == 2 ? -136f : 136f, 0f, 240.9154f);
+        }
+        public static string AddedNoseName(int index)
+        {
+            return new[] { "EEO Nose Base Port", "EEO Nose Base Starboard", "EEO Nose Base Outer Port", "EEO Nose Base Outer Starboard" }[index];
+        }
         private static readonly string[] Suffixes = { "70", "60", "50", "40", "72", "7C", "74", "62", "6C", "64", "52", "5C", "54", "42", "4C", "44", "76", "66", "56", "46" };
         private static readonly Vector3[] original_dorsal =
         {

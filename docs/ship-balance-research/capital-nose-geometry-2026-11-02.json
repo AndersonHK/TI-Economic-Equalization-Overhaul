@@ -1,0 +1,67 @@
+{
+  "method": "Front-facing XY barycentric rays against the measured installed Mothership head meshes; four cardinal samples at 4 m around each anchor.",
+  "rows": [
+    {
+      "controller": 5,
+      "target": [
+        -80,
+        0,
+        255.6294
+      ],
+      "surface_probes": [
+        [
+          255.57923061136268,
+          "Hydra_Mothership_Head_A"
+        ],
+        [
+          254.57384224057284,
+          "Hydra_Mothership_Head_A"
+        ],
+        [
+          270.21732375151157,
+          "Hydra_Mothership_Head_A"
+        ],
+        [
+          254.38000935664473,
+          "Hydra_Mothership_Head_A"
+        ],
+        [
+          255.1090463481633,
+          "Hydra_Mothership_Head_A"
+        ]
+      ]
+    },
+    {
+      "controller": 6,
+      "target": [
+        80,
+        0,
+        255.6294
+      ],
+      "surface_probes": [
+        [
+          255.57944820917928,
+          "Hydra_Mothership_Head_A"
+        ],
+        [
+          270.2174879184747,
+          "Hydra_Mothership_Head_A"
+        ],
+        [
+          254.57383504829053,
+          "Hydra_Mothership_Head_A"
+        ],
+        [
+          255.10903226511994,
+          "Hydra_Mothership_Head_A"
+        ],
+        [
+          254.37999546450763,
+          "Hydra_Mothership_Head_A"
+        ]
+      ]
+    }
+  ],
+  "source_bundle_sha256": "F1804254B5C6F2C2FFBF78C333738F462BAA18023AC5AACF9A8EACAA4D9F09A4",
+  "source_geometry": "Measured native AlienMothership-0 mesh vertices/triangles, originally extracted by the turret-clearance workflow. Source bundle verified by validate-capital-mounts.ps1."
+}

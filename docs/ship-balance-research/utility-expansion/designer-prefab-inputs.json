@@ -1,0 +1,21 @@
+{
+  "uiBundleSha256": "E8CBE690EF562415492C4C4CE8F492717050FFCC76C9AF8E53C5302E023E71FD",
+  "prefab": "assets/ui/canvas prefabs/fleetsscreen/fleetsscreencanvas.prefab",
+  "totalPrefabDestinations": 80,
+  "activeDestinationsAfterDesignerActivation": 70,
+  "dormantDestinations": 10,
+  "nativeColumns": 10,
+  "nativeRows": 7,
+  "preparedRows": 9,
+  "newDestinations": 20,
+  "nativeWindowHeight": 900,
+  "preparedWindowHeight": 974,
+  "nativeCenterHeight": 462,
+  "preparedCenterHeight": 536,
+  "addedHeight": 74,
+  "armorDataRow": 8,
+  "nativeIconHeight": 72,
+  "nativeHalfRowPitch": 37,
+  "lastNativeRowHasSpinners": true,
+  "scope": "Asset hierarchy readback and arithmetic; Unity runtime acceptance pending"
+}

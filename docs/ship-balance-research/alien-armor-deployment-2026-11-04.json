@@ -1,0 +1,64 @@
+{
+  "date": "2026-11-04",
+  "version": "0.11.2",
+  "scope": "Alien armor materials; full current package deployed through normal guarded deployment",
+  "game_assembly_sha256": "4A4B9AAE4154E444E9727204205D2D42AE8ED9E1C5F92CDC1280074A259D8350",
+  "mod_dll_sha256": "212C9BA43F6A7B3A306F6FEF7C345F8D175F9170033D53CFCBA6078A8C903322",
+  "armor_template_sha256": "14A8A5F425BF73B7B06E19B9B16BD60C9F6E4C3E850184193E9600529D35397E",
+  "manifest_sha256": "DCB3E3EEEC66E4FC0CC48F5A60551CC993B31C4BCAFEC3B12C746CEAA6FEBA13",
+  "installed_file_count": 55,
+  "all_installed_files_match_source": true,
+  "armor_archive_matches_source": true,
+  "validation": "43 validators, 1376 formula assertions; native JSON merger and native armor getters passed; post-edit matrix validator passed",
+  "manual_runtime_validation": "pending",
+  "overrides": [
+    {
+      "dataName": "AlienAdamantaneArmor",
+      "weightedBuildMaterials": {
+        "volatiles": 0.38,
+        "metals": 0.45,
+        "nobleMetals": 0.165,
+        "exotics": 0.005
+      },
+      "xRayHalfValue_cm": 4.5,
+      "baryonicHalfValue_cm": 11,
+      "density_kgm3": 2000,
+      "heatofVaporization_MJkg": 80,
+      "specialties": [
+        {
+          "armorSpecialty": "XRayResistance",
+          "value": 1.8
+        },
+        {
+          "armorSpecialty": "BaryonicResistance",
+          "value": 4.4
+        },
+        {
+          "armorSpecialty": "LaserResistance",
+          "value": 0.75
+        }
+      ]
+    },
+    {
+      "dataName": "AlienExoticArmor",
+      "xRayHalfValue_cm": 3.15,
+      "baryonicHalfValue_cm": 7.7,
+      "density_kgm3": 2000,
+      "heatofVaporization_MJkg": 114.28571428571429,
+      "specialties": [
+        {
+          "armorSpecialty": "XRayResistance",
+          "value": 1.8
+        },
+        {
+          "armorSpecialty": "BaryonicResistance",
+          "value": 4.4
+        },
+        {
+          "armorSpecialty": "LaserResistance",
+          "value": 0.75
+        }
+      ]
+    }
+  ]
+}

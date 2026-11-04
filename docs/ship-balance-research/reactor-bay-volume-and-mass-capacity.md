@@ -1,5 +1,12 @@
 # Reactor-bay volume and mass-capacity planning
 
+The [all-class runtime capacity comparison](hull-volume-capacity-comparison-2026-11-03.md)
+summarizes variant minima/medians/maxima and explicitly separates measured human
+bays from alien/fighter fallback allowances.
+The [2026-11-04 alien prefab audit](alien-reactor-bay-measurements-2026-11-04.md)
+adds direct housing measurements, modeled fallback candidates and current-reactor
+limit checks. Those candidate volumes are not runtime changes.
+
 Status: asset-measurement record and planning analysis. No gameplay rule is
 implemented by this document.
 

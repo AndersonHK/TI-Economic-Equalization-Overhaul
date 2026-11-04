@@ -1,6 +1,75 @@
 # TI Economic Equalization Overhaul
 
-Current release: **0.10.21**, validated against **Terra Invicta 1.0.53b**.
+Current release: **0.11.6**, validated against **Terra Invicta 1.0.53b**.
+
+**User-accepted stable baseline, 2026-11-04.** The user confirmed the beam bug is
+fixed and the game is stable, then requested documentation, commit and push.
+[Acceptance and verified runtime identity](docs/ship-balance-research/battle-scale/acceptance-0.11.6-2026-11-04.md).
+
+The [particle-beam sizing correction](docs/ship-balance-research/particle-beam-scale-correction-2026-11-04.md)
+extends constant-width handling to the previously omitted particle weapons,
+removing native camera-distance widening. The user accepts violet lasers and
+tested laser PD; their shader assets remain unchanged. The final particle-beam
+correction is now user-accepted.
+
+The [laser rendering correction](docs/ship-balance-research/laser-native-profile-restoration-2026-11-04.md)
+restores native geometry and the resolved profile after the rejected 0.11.3 cone
+and flow regressions. It keeps the fixed aperture/0.46 ribbon calibration and
+filters only unresolved cores. Included in the accepted 0.11.6 baseline.
+
+The [alien armor material update](docs/ship-balance-research/alien-armor-material-update-2026-11-04.md)
+is included in this baseline: Alien Adamantane matches Hybrid properties
+and costs; Alien Exotic uses 1.75 cm / 35 kg/m² per point. Both have Hybrid
+radiation protection per point and 25% laser resistance. Manual testing pending.
+
+The 0.11.2 designer viewport correction disables the native centered layout
+driver that overwrote JSON rows by 37 UI units. It measures the full layout
+below headers, fits the window within the notification/screen budget, and logs
+runtime containment. [Offset and fit validation](docs/ship-balance-research/designer-viewport-fit-2026-11-04.md).
+
+The 0.11.2 testing build also fixed the alien habitat save-load crash:
+alien budget armor selection compares complete material prices, including
+exotics, while premium selection retains mass efficiency. Human exotic gates
+remain native. See [selection policy and native regression checks](docs/ship-balance-research/alien-armor-selection-fix-2026-11-04.md).
+
+Release 0.11.2 completes symmetric Alien Dreadnought/Titan utilities (13 each)
+and Mothership fitting (20 utilities, 18 forward heavy hull cells, 8 N5 noses).
+Canonical armor controls stay at the far left/right and centered between columns
+4/5; fuel is (0,0). JSON membership and actual icon/control bounds reject invalid
+placements. A new row between armor controls fits the existing window. Untested
+reworks retain 0.11.2 by user instruction; native save version stays unchanged.
+Deployed for manual testing; see [values, diagrams and validation](docs/ship-balance-research/alien-capital-expansion-0.11.2-2026-11-04.md).
+
+Release 0.11.1 adds two JSON utility cells to Human Lancer/Dreadnought/Titan
+and Alien Dreadnought/Titan, with +40 t structure each and +2 human base crew.
+A JSON-driven designer row extension adds one tile row of window height and
+moves armor controls below the grid. Native save version stays unchanged.
+Deployed for manual testing; see [values, layout and checks](docs/ship-balance-research/capital-utility-expansion-0.11.1-2026-11-04.md).
+
+Release 0.11.0 implements asymmetric ship tiers 1–5, compact Human Lancer and
+Alien Carrier fitting, N5-only Human Titan/Mothership noses with exactly doubled
+sustained weapon output, revised hull/crew costs, schema-3 save conversion and
+exact angstrom wavelengths for both alien grasers. Deployed for manual testing;
+see the [implementation and test record](docs/ship-balance-research/asymmetric-tiers-implementation-2026-11-04.md).
+
+Release 0.10.24 installs fifteen audited alien machinery-bay allowances in the
+existing reactor compatibility and designer engine-bay lookup: eleven geometry
+proxies and four calibrated fallbacks. Mothership uses 137,456.8 m³ and Alien
+Titan 14,625.7 m³. Small-hull fit limits tighten; 0.11.0 adds the separately approved tier and size-5 changes. See the [implementation and save-design preflight](docs/ship-balance-research/alien-reactor-bay-implementation-2026-11-04.md).
+
+Release 0.10.23 extends the accepted mesh-baking rendering approach to small
+nose-weapon renderer transforms, including the reported Heavy Rail Cannon Mk3.
+Visible dimensions, muzzle positions, collision geometry and weapon statistics
+are preserved. Deployed for visual comparison; see the
+[nose cutout correction and validation](docs/ship-balance-research/nose-weapon-render-cutout-2026-11-02.md).
+
+Release 0.10.22 gives human/alien Dreadnoughts, human/alien Titans and the
+Mothership one size-4 weapon per corresponding hull or nose cell. The
+Mothership gains two nose cells (six total) and symmetric model anchors.
+Human Dreadnought/Titan base crew becomes 52 each; structural masses rise
+with effective weapon capacity. Schema-2 migration handles vanilla and
+previous compact saves. Deployed for manual designer/save/combat testing;
+see the [implementation and balance values](docs/ship-balance-research/capital-mount-expansion-2026-11-02.md).
 
 User accepted **0.10.21 as the stable baseline on 2026-11-02** and requested
 commit/push. This checkpoint preserves the already deployed runtime.

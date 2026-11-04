@@ -1,0 +1,232 @@
+{
+  "date": "2026-11-04",
+  "status": "Source trace, no native tint/brightness/effect alteration",
+  "wavelength_patch_scope": "Only Alien768cmGraserCannon/Alien1024cmGraserCannon physical conversion, caches and display precision; not visual color/effects",
+  "user_acceptance": "User reports subpixel issue solved, human arc PD seemingly correct and alien red PD correct/beautiful; alien main-beam appearance still rejected, including violet-equipped ships.",
+  "effects": [
+    {
+      "effect": "Alien Laser Beam Blue",
+      "shader": "TerraInvicta/Beam Weapon Line",
+      "beamColor": {
+        "r": 0.06300002336502075,
+        "g": 0.17669451236724854,
+        "b": 1.0,
+        "a": 1.0
+      },
+      "intensity": 0.800000011920929,
+      "expectedHdrRGB": [
+        1.9488983436804008,
+        5.466024044066374,
+        30.93488287120985
+      ],
+      "texture": [
+        {
+          "property": "_MainTex",
+          "scale": [
+            0.5,
+            0.5
+          ],
+          "texture": "noiseBurnUp"
+        }
+      ],
+      "serialized_laser_noise_parameters": {
+        "_LaserDistanceFalloff": 0.800000011920929,
+        "_LaserDistanceScale": 3.0,
+        "_LaserFalloff": 0.8999999761581421,
+        "_LaserMaxRadius": 0.20200000703334808,
+        "_LaserRadius": 0.02500000037252903,
+        "_LaserStartRadius": 0.07500000298023224,
+        "_NoiseExponent": 7.349999904632568,
+        "_NoiseOpacity": 0.014000000432133675,
+        "_NoiseScale": 4.0,
+        "_NoiseScaleSpeed": 30.0,
+        "_NoiseScaleStrength": 0.05000000074505806,
+        "_NoiseStart": 0.0,
+        "_NoiseThreshold": 0.11699999868869781,
+        "_NoiseTimescale": 6.0
+      }
+    },
+    {
+      "effect": "Alien Laser Gamma Ray",
+      "shader": "TerraInvicta/Laser Beam No Middle",
+      "beamColor": {
+        "r": 0.004716992378234863,
+        "g": 0.7490196228027344,
+        "b": 0.1921568661928177,
+        "a": 1.0
+      },
+      "intensity": 6.0,
+      "expectedHdrRGB": [
+        0.9049009442262098,
+        143.69083296500636,
+        36.86309319891218
+      ],
+      "texture": [
+        {
+          "property": "_MainTex",
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "texture": "Phaser"
+        }
+      ],
+      "serialized_laser_noise_parameters": {
+        "_LaserDistanceFalloff": 8.0,
+        "_LaserDistanceScale": 3.0,
+        "_LaserFalloff": 0.10000000149011612,
+        "_LaserMaxRadius": 0.10300000011920929,
+        "_LaserOpacity": 0.0,
+        "_LaserRadius": 0.02500000037252903,
+        "_LaserStartRadius": 0.027000000700354576,
+        "_NoiseExponent": 30.0,
+        "_NoiseOpacity": 1.0,
+        "_NoiseScale": 4.0,
+        "_NoiseScaleSpeed": 2.0,
+        "_NoiseScaleStrength": 0.03999999910593033,
+        "_NoiseStart": 0.041999999433755875,
+        "_NoiseThreshold": 0.006000000052154064,
+        "_NoiseTimescale": 10.0
+      }
+    },
+    {
+      "effect": "Alien Laser XRay",
+      "shader": "TerraInvicta/Laser Beam No Middle",
+      "beamColor": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1.0
+      },
+      "intensity": 3.0,
+      "expectedHdrRGB": [
+        17.59162187576294,
+        17.59162187576294,
+        17.59162187576294
+      ],
+      "texture": [
+        {
+          "property": "_MainTex",
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "texture": "Phaser"
+        }
+      ],
+      "serialized_laser_noise_parameters": {
+        "_LaserDistanceFalloff": 8.0,
+        "_LaserDistanceScale": 3.0,
+        "_LaserFalloff": 0.10000000149011612,
+        "_LaserMaxRadius": 0.10300000011920929,
+        "_LaserOpacity": 0.0,
+        "_LaserRadius": 0.02500000037252903,
+        "_LaserStartRadius": 0.027000000700354576,
+        "_NoiseExponent": 30.0,
+        "_NoiseOpacity": 1.0,
+        "_NoiseScale": 4.0,
+        "_NoiseScaleSpeed": 2.0,
+        "_NoiseScaleStrength": 0.03999999910593033,
+        "_NoiseStart": 0.041999999433755875,
+        "_NoiseThreshold": 0.006000000052154064,
+        "_NoiseTimescale": 10.0
+      }
+    },
+    {
+      "effect": "Alien Laser Beam Orange",
+      "shader": "TerraInvicta/Beam Weapon Line",
+      "beamColor": {
+        "r": 1.0,
+        "g": 0.737805187702179,
+        "b": 0.06132078170776367,
+        "a": 1.0
+      },
+      "intensity": 0.6000000238418579,
+      "expectedHdrRGB": [
+        15.986848696298573,
+        11.795179903138903,
+        0.980326059100771
+      ],
+      "texture": [
+        {
+          "property": "_MainTex",
+          "scale": [
+            0.5,
+            0.5
+          ],
+          "texture": "noiseBurnUp"
+        }
+      ],
+      "serialized_laser_noise_parameters": {
+        "_LaserDistanceFalloff": 0.800000011920929,
+        "_LaserDistanceScale": 3.0,
+        "_LaserFalloff": 0.8999999761581421,
+        "_LaserMaxRadius": 0.20200000703334808,
+        "_LaserRadius": 0.02500000037252903,
+        "_LaserStartRadius": 0.07500000298023224,
+        "_NoiseExponent": 7.349999904632568,
+        "_NoiseOpacity": 0.014000000432133675,
+        "_NoiseScale": 4.0,
+        "_NoiseScaleSpeed": 30.0,
+        "_NoiseScaleStrength": 0.05000000074505806,
+        "_NoiseStart": 0.0,
+        "_NoiseThreshold": 0.11699999868869781,
+        "_NoiseTimescale": 6.0
+      }
+    },
+    {
+      "effect": "Solid Laser Red",
+      "shader": "TerraInvicta/Beam Weapon Line",
+      "beamColor": {
+        "r": 1.0,
+        "g": 0.0,
+        "b": 0.03333330154418945,
+        "a": 1.0
+      },
+      "intensity": 0.75,
+      "expectedHdrRGB": [
+        17.39658454415366,
+        0.0,
+        0.5798855984492596
+      ],
+      "texture": [
+        {
+          "property": "_MainTex",
+          "scale": [
+            0.5,
+            0.5
+          ],
+          "texture": "noiseBurnUp"
+        }
+      ],
+      "serialized_laser_noise_parameters": {
+        "_LaserDistanceFalloff": 0.5,
+        "_LaserDistanceScale": 3.0,
+        "_LaserFalloff": 0.8999999761581421,
+        "_LaserMaxRadius": 0.20000000298023224,
+        "_LaserRadius": 0.02500000037252903,
+        "_LaserStartRadius": 0.07500000298023224,
+        "_NoiseExponent": 7.349999904632568,
+        "_NoiseOpacity": 0.057999998331069946,
+        "_NoiseScale": 4.0,
+        "_NoiseScaleSpeed": 15.0,
+        "_NoiseScaleStrength": 0.02500000037252903,
+        "_NoiseStart": 0.0010000000474974513,
+        "_NoiseThreshold": 0.3140000104904175,
+        "_NoiseTimescale": 6.0
+      }
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "manual-alien-white-beam-2026-11-04.png",
+      "sha256": "A5A5873C0E2A08C09E48872CC294034F843B9C140044CDC8FC52829AB33B0B3E"
+    },
+    {
+      "path": "manual-alien-pd-control-2026-11-04.png",
+      "sha256": "6C3300A31CB7F956206E027BD9B8CD81E1A5067B188F8C314B6355730BF6C47E"
+    }
+  ],
+  "live_material_state": "Requires bounded 0.11.5 comparison; prefab HDR values alone do not identify the live fault.",
+  "parameter_note": "Serialized material values can include unused historical fields; do not treat every saved key as an active shader control. Color estimates use the audited BeamEffectController setup formula, not live GPU readback."
+}

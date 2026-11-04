@@ -1,0 +1,2379 @@
+{
+  "date": "2026-11-03",
+  "method": "Invoke packaged production HullVolumeCatalog, HullDriveScaleCatalog and ShipBalanceMath via reflection for all 64 catalog appearances; summarize by hull class.",
+  "units": {
+    "mainHull_m3": "measured exterior main-hull elliptical envelope, cubic metres; fuel allowance input before module/crew deductions",
+    "reactorEngineBay_m3": "reactor-bay capacity and engine-bay UI input, cubic metres; measured only for 12 human hull classes",
+    "deLaval": "dimensionless engine-art area multiplier, not volume",
+    "magnetic": "dimensionless engine-art area multiplier, not volume"
+  },
+  "median": "unweighted numeric median across authored modelResource appearances; even-count median is average of the middle two values",
+  "summary": [
+    {
+      "hull": "Gunship",
+      "alien": false,
+      "appearances": 4,
+      "mainHull_m3": {
+        "minimum": 3452.25732,
+        "median": 5024.6503649999995,
+        "maximum": 11019.6641,
+        "minimumAppearances": [
+          2
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "reactorEngineBay_m3": {
+        "minimum": 264.240631,
+        "median": 384.7537235,
+        "maximum": 712.241638,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          3
+        ]
+      },
+      "reactorSource": "measured human machinery-bay mesh envelope",
+      "deLaval": {
+        "minimum": 0.66823,
+        "median": 1.1384509999999999,
+        "maximum": 1.596452,
+        "minimumAppearances": [
+          2
+        ],
+        "maximumAppearances": [
+          3
+        ]
+      },
+      "magnetic": {
+        "minimum": 0.397033,
+        "median": 0.9509095000000001,
+        "maximum": 1.326684,
+        "minimumAppearances": [
+          2
+        ],
+        "maximumAppearances": [
+          3
+        ]
+      },
+      "pulsed": 1,
+      "driveSource": "runtime human drive-art catalog"
+    },
+    {
+      "hull": "Escort",
+      "alien": false,
+      "appearances": 4,
+      "mainHull_m3": {
+        "minimum": 5625.38232,
+        "median": 6238.02025,
+        "maximum": 6946.027,
+        "minimumAppearances": [
+          3
+        ],
+        "maximumAppearances": [
+          1
+        ]
+      },
+      "reactorEngineBay_m3": {
+        "minimum": 264.24057,
+        "median": 384.7537235,
+        "maximum": 712.241638,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          3
+        ]
+      },
+      "reactorSource": "measured human machinery-bay mesh envelope",
+      "deLaval": {
+        "minimum": 0.66823,
+        "median": 1.1384509999999999,
+        "maximum": 1.596452,
+        "minimumAppearances": [
+          2
+        ],
+        "maximumAppearances": [
+          3
+        ]
+      },
+      "magnetic": {
+        "minimum": 0.397033,
+        "median": 0.9509095000000001,
+        "maximum": 1.326684,
+        "minimumAppearances": [
+          2
+        ],
+        "maximumAppearances": [
+          3
+        ]
+      },
+      "pulsed": 1,
+      "driveSource": "runtime human drive-art catalog"
+    },
+    {
+      "hull": "Corvette",
+      "alien": false,
+      "appearances": 4,
+      "mainHull_m3": {
+        "minimum": 5070.771,
+        "median": 10725.187,
+        "maximum": 13890.2461,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          2
+        ]
+      },
+      "reactorEngineBay_m3": {
+        "minimum": 264.240631,
+        "median": 528.452133,
+        "maximum": 837.5878,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          3
+        ]
+      },
+      "reactorSource": "measured human machinery-bay mesh envelope",
+      "deLaval": {
+        "minimum": 1,
+        "median": 1.1863595,
+        "maximum": 1.778657,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          3
+        ]
+      },
+      "magnetic": {
+        "minimum": 0.651092,
+        "median": 0.9509095000000001,
+        "maximum": 1.478097,
+        "minimumAppearances": [
+          2
+        ],
+        "maximumAppearances": [
+          3
+        ]
+      },
+      "pulsed": 1,
+      "driveSource": "runtime human drive-art catalog"
+    },
+    {
+      "hull": "Frigate",
+      "alien": false,
+      "appearances": 4,
+      "mainHull_m3": {
+        "minimum": 13692.4648,
+        "median": 16191.3799,
+        "maximum": 22332.8086,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          3
+        ]
+      },
+      "reactorEngineBay_m3": {
+        "minimum": 332.341248,
+        "median": 954.48535,
+        "maximum": 1246.49207,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          2
+        ]
+      },
+      "reactorSource": "measured human machinery-bay mesh envelope",
+      "deLaval": {
+        "minimum": 1.276902,
+        "median": 1.66402,
+        "maximum": 2.302341,
+        "minimumAppearances": [
+          1
+        ],
+        "maximumAppearances": [
+          3
+        ]
+      },
+      "magnetic": {
+        "minimum": 0.901819,
+        "median": 1.2155420000000001,
+        "maximum": 1.913292,
+        "minimumAppearances": [
+          1
+        ],
+        "maximumAppearances": [
+          3
+        ]
+      },
+      "pulsed": 1,
+      "driveSource": "runtime human drive-art catalog"
+    },
+    {
+      "hull": "Monitor",
+      "alien": false,
+      "appearances": 4,
+      "mainHull_m3": {
+        "minimum": 17160.43,
+        "median": 37733.99805,
+        "maximum": 48694.69,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          3
+        ]
+      },
+      "reactorEngineBay_m3": {
+        "minimum": 384.582062,
+        "median": 1352.05913,
+        "maximum": 2617.60718,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          2
+        ]
+      },
+      "reactorSource": "measured human machinery-bay mesh envelope",
+      "deLaval": {
+        "minimum": 1,
+        "median": 2.597097,
+        "maximum": 4.219133,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          2
+        ]
+      },
+      "magnetic": {
+        "minimum": 0.901819,
+        "median": 1.8120205,
+        "maximum": 3.25534,
+        "minimumAppearances": [
+          1
+        ],
+        "maximumAppearances": [
+          3
+        ]
+      },
+      "pulsed": 1,
+      "driveSource": "runtime human drive-art catalog"
+    },
+    {
+      "hull": "Destroyer",
+      "alien": false,
+      "appearances": 4,
+      "mainHull_m3": {
+        "minimum": 22061.9551,
+        "median": 52876.36,
+        "maximum": 66132.5859,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          1
+        ]
+      },
+      "reactorEngineBay_m3": {
+        "minimum": 384.582062,
+        "median": 1352.05913,
+        "maximum": 2617.60669,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          2
+        ]
+      },
+      "reactorSource": "measured human machinery-bay mesh envelope",
+      "deLaval": {
+        "minimum": 1,
+        "median": 2.9793855000000002,
+        "maximum": 4.219133,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          2
+        ]
+      },
+      "magnetic": {
+        "minimum": 1,
+        "median": 2.1642485000000002,
+        "maximum": 3.25534,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          3
+        ]
+      },
+      "pulsed": 1,
+      "driveSource": "runtime human drive-art catalog"
+    },
+    {
+      "hull": "Cruiser",
+      "alien": false,
+      "appearances": 4,
+      "mainHull_m3": {
+        "minimum": 45819.95,
+        "median": 120065.49549999999,
+        "maximum": 202070.375,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          3
+        ]
+      },
+      "reactorEngineBay_m3": {
+        "minimum": 1384.98376,
+        "median": 2747.395995,
+        "maximum": 3930.6377,
+        "minimumAppearances": [
+          1
+        ],
+        "maximumAppearances": [
+          2
+        ]
+      },
+      "reactorSource": "measured human machinery-bay mesh envelope",
+      "deLaval": {
+        "minimum": 2.609292,
+        "median": 4.8882829999999995,
+        "maximum": 5.637461,
+        "minimumAppearances": [
+          1
+        ],
+        "maximumAppearances": [
+          3
+        ]
+      },
+      "magnetic": {
+        "minimum": 2.737858,
+        "median": 3.1793285,
+        "maximum": 4.684833,
+        "minimumAppearances": [
+          1
+        ],
+        "maximumAppearances": [
+          3
+        ]
+      },
+      "pulsed": 1,
+      "driveSource": "runtime human drive-art catalog"
+    },
+    {
+      "hull": "Battlecruiser",
+      "alien": false,
+      "appearances": 4,
+      "mainHull_m3": {
+        "minimum": 43684.42,
+        "median": 121679.745,
+        "maximum": 205738.656,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          3
+        ]
+      },
+      "reactorEngineBay_m3": {
+        "minimum": 1384.98376,
+        "median": 2747.39642,
+        "maximum": 3930.6377,
+        "minimumAppearances": [
+          1
+        ],
+        "maximumAppearances": [
+          2
+        ]
+      },
+      "reactorSource": "measured human machinery-bay mesh envelope",
+      "deLaval": {
+        "minimum": 2.179095,
+        "median": 4.457196,
+        "maximum": 5.637461,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          3
+        ]
+      },
+      "magnetic": {
+        "minimum": 2.001142,
+        "median": 3.3934335,
+        "maximum": 4.684833,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          3
+        ]
+      },
+      "pulsed": 1,
+      "driveSource": "runtime human drive-art catalog"
+    },
+    {
+      "hull": "Battleship",
+      "alien": false,
+      "appearances": 4,
+      "mainHull_m3": {
+        "minimum": 105142.664,
+        "median": 149256.086,
+        "maximum": 168180.609,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          3
+        ]
+      },
+      "reactorEngineBay_m3": {
+        "minimum": 2090.292,
+        "median": 5556.4235,
+        "maximum": 6945.7,
+        "minimumAppearances": [
+          1
+        ],
+        "maximumAppearances": [
+          3
+        ]
+      },
+      "reactorSource": "measured human machinery-bay mesh envelope",
+      "deLaval": {
+        "minimum": 2.846865,
+        "median": 4.4856255,
+        "maximum": 8.893183,
+        "minimumAppearances": [
+          1
+        ],
+        "maximumAppearances": [
+          3
+        ]
+      },
+      "magnetic": {
+        "minimum": 2.899977,
+        "median": 3.5495065,
+        "maximum": 7.390387,
+        "minimumAppearances": [
+          1
+        ],
+        "maximumAppearances": [
+          3
+        ]
+      },
+      "pulsed": 1,
+      "driveSource": "runtime human drive-art catalog"
+    },
+    {
+      "hull": "Lancer",
+      "alien": false,
+      "appearances": 4,
+      "mainHull_m3": {
+        "minimum": 152598.422,
+        "median": 236015.711,
+        "maximum": 259685.281,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          2
+        ]
+      },
+      "reactorEngineBay_m3": {
+        "minimum": 2090.29224,
+        "median": 5219.208500000001,
+        "maximum": 10223.8789,
+        "minimumAppearances": [
+          1
+        ],
+        "maximumAppearances": [
+          2
+        ]
+      },
+      "reactorSource": "measured human machinery-bay mesh envelope",
+      "deLaval": {
+        "minimum": 1.715049,
+        "median": 5.694824499999999,
+        "maximum": 9.830835,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          3
+        ]
+      },
+      "magnetic": {
+        "minimum": 1.715052,
+        "median": 4.1065295,
+        "maximum": 8.169598,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          3
+        ]
+      },
+      "pulsed": 1,
+      "driveSource": "runtime human drive-art catalog"
+    },
+    {
+      "hull": "Dreadnought",
+      "alien": false,
+      "appearances": 4,
+      "mainHull_m3": {
+        "minimum": 207412.75,
+        "median": 341355.53150000004,
+        "maximum": 542945.6,
+        "minimumAppearances": [
+          2
+        ],
+        "maximumAppearances": [
+          3
+        ]
+      },
+      "reactorEngineBay_m3": {
+        "minimum": 2090.293,
+        "median": 10588.2505,
+        "maximum": 11476.33,
+        "minimumAppearances": [
+          1
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "reactorSource": "measured human machinery-bay mesh envelope",
+      "deLaval": {
+        "minimum": 6.743748,
+        "median": 9.33536515,
+        "maximum": 12.0482788,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          3
+        ]
+      },
+      "magnetic": {
+        "minimum": 4.324953,
+        "median": 7.038354,
+        "maximum": 10.0123348,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          3
+        ]
+      },
+      "pulsed": 1,
+      "driveSource": "runtime human drive-art catalog"
+    },
+    {
+      "hull": "Titan",
+      "alien": false,
+      "appearances": 4,
+      "mainHull_m3": {
+        "minimum": 407508.8,
+        "median": 690023.5,
+        "maximum": 987672.4,
+        "minimumAppearances": [
+          2
+        ],
+        "maximumAppearances": [
+          3
+        ]
+      },
+      "reactorEngineBay_m3": {
+        "minimum": 6290.837,
+        "median": 15898.2331,
+        "maximum": 16549.54,
+        "minimumAppearances": [
+          1
+        ],
+        "maximumAppearances": [
+          2
+        ]
+      },
+      "reactorSource": "measured human machinery-bay mesh envelope",
+      "deLaval": {
+        "minimum": 8.111787,
+        "median": 12.34461975,
+        "maximum": 25.2033749,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          3
+        ]
+      },
+      "magnetic": {
+        "minimum": 6.593247,
+        "median": 9.755064050000001,
+        "maximum": 20.9444466,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          3
+        ]
+      },
+      "pulsed": 1,
+      "driveSource": "runtime human drive-art catalog"
+    },
+    {
+      "hull": "STOFighter",
+      "alien": false,
+      "appearances": 1,
+      "mainHull_m3": {
+        "minimum": 4081.717,
+        "median": 4081.717,
+        "maximum": 4081.717,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "reactorEngineBay_m3": {
+        "minimum": 2617.60718,
+        "median": 2617.60718,
+        "maximum": 2617.60718,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "reactorSource": "size-band fallback: Small",
+      "deLaval": {
+        "minimum": 1,
+        "median": 1,
+        "maximum": 1,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "magnetic": {
+        "minimum": 1,
+        "median": 1,
+        "maximum": 1,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "pulsed": 1,
+      "driveSource": "safe 1x fallback; missing human drive-art row"
+    },
+    {
+      "hull": "AlienGunship",
+      "alien": true,
+      "appearances": 1,
+      "mainHull_m3": {
+        "minimum": 10892.207,
+        "median": 10892.207,
+        "maximum": 10892.207,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "reactorEngineBay_m3": {
+        "minimum": 2617.60718,
+        "median": 2617.60718,
+        "maximum": 2617.60718,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "reactorSource": "size-band fallback: Small",
+      "deLaval": {
+        "minimum": 1,
+        "median": 1,
+        "maximum": 1,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "magnetic": {
+        "minimum": 1,
+        "median": 1,
+        "maximum": 1,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "pulsed": 1,
+      "driveSource": "compiled alien art scale (early hulls have 1x floor)"
+    },
+    {
+      "hull": "AlienEscort",
+      "alien": true,
+      "appearances": 1,
+      "mainHull_m3": {
+        "minimum": 7358.229,
+        "median": 7358.229,
+        "maximum": 7358.229,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "reactorEngineBay_m3": {
+        "minimum": 2617.60718,
+        "median": 2617.60718,
+        "maximum": 2617.60718,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "reactorSource": "size-band fallback: Small",
+      "deLaval": {
+        "minimum": 1,
+        "median": 1,
+        "maximum": 1,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "magnetic": {
+        "minimum": 1,
+        "median": 1,
+        "maximum": 1,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "pulsed": 1,
+      "driveSource": "compiled alien art scale (early hulls have 1x floor)"
+    },
+    {
+      "hull": "AlienCorvette",
+      "alien": true,
+      "appearances": 1,
+      "mainHull_m3": {
+        "minimum": 13174.4512,
+        "median": 13174.4512,
+        "maximum": 13174.4512,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "reactorEngineBay_m3": {
+        "minimum": 2617.60718,
+        "median": 2617.60718,
+        "maximum": 2617.60718,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "reactorSource": "size-band fallback: Small",
+      "deLaval": {
+        "minimum": 1,
+        "median": 1,
+        "maximum": 1,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "magnetic": {
+        "minimum": 1,
+        "median": 1,
+        "maximum": 1,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "pulsed": 1,
+      "driveSource": "compiled alien art scale (early hulls have 1x floor)"
+    },
+    {
+      "hull": "AlienFrigate",
+      "alien": true,
+      "appearances": 1,
+      "mainHull_m3": {
+        "minimum": 30659.9277,
+        "median": 30659.9277,
+        "maximum": 30659.9277,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "reactorEngineBay_m3": {
+        "minimum": 2617.60718,
+        "median": 2617.60718,
+        "maximum": 2617.60718,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "reactorSource": "size-band fallback: Small",
+      "deLaval": {
+        "minimum": 1.144,
+        "median": 1.144,
+        "maximum": 1.144,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "magnetic": {
+        "minimum": 1.144,
+        "median": 1.144,
+        "maximum": 1.144,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "pulsed": 1,
+      "driveSource": "compiled alien art scale (early hulls have 1x floor)"
+    },
+    {
+      "hull": "AlienMonitor",
+      "alien": true,
+      "appearances": 1,
+      "mainHull_m3": {
+        "minimum": 75475.81,
+        "median": 75475.81,
+        "maximum": 75475.81,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "reactorEngineBay_m3": {
+        "minimum": 3930.6377,
+        "median": 3930.6377,
+        "maximum": 3930.6377,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "reactorSource": "size-band fallback: Medium",
+      "deLaval": {
+        "minimum": 2.202,
+        "median": 2.202,
+        "maximum": 2.202,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "magnetic": {
+        "minimum": 2.202,
+        "median": 2.202,
+        "maximum": 2.202,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "pulsed": 1,
+      "driveSource": "compiled alien art scale (early hulls have 1x floor)"
+    },
+    {
+      "hull": "AlienDestroyer",
+      "alien": true,
+      "appearances": 1,
+      "mainHull_m3": {
+        "minimum": 47314.4141,
+        "median": 47314.4141,
+        "maximum": 47314.4141,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "reactorEngineBay_m3": {
+        "minimum": 3930.6377,
+        "median": 3930.6377,
+        "maximum": 3930.6377,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "reactorSource": "size-band fallback: Medium",
+      "deLaval": {
+        "minimum": 3.384,
+        "median": 3.384,
+        "maximum": 3.384,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "magnetic": {
+        "minimum": 3.384,
+        "median": 3.384,
+        "maximum": 3.384,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "pulsed": 1,
+      "driveSource": "compiled alien art scale (early hulls have 1x floor)"
+    },
+    {
+      "hull": "AlienCruiser",
+      "alien": true,
+      "appearances": 1,
+      "mainHull_m3": {
+        "minimum": 57947.52,
+        "median": 57947.52,
+        "maximum": 57947.52,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "reactorEngineBay_m3": {
+        "minimum": 3930.6377,
+        "median": 3930.6377,
+        "maximum": 3930.6377,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "reactorSource": "size-band fallback: Medium",
+      "deLaval": {
+        "minimum": 3.291,
+        "median": 3.291,
+        "maximum": 3.291,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "magnetic": {
+        "minimum": 3.291,
+        "median": 3.291,
+        "maximum": 3.291,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "pulsed": 1,
+      "driveSource": "compiled alien art scale (early hulls have 1x floor)"
+    },
+    {
+      "hull": "AlienBattlecruiser",
+      "alien": true,
+      "appearances": 1,
+      "mainHull_m3": {
+        "minimum": 172807.625,
+        "median": 172807.625,
+        "maximum": 172807.625,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "reactorEngineBay_m3": {
+        "minimum": 3930.6377,
+        "median": 3930.6377,
+        "maximum": 3930.6377,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "reactorSource": "size-band fallback: Medium",
+      "deLaval": {
+        "minimum": 3.445,
+        "median": 3.445,
+        "maximum": 3.445,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "magnetic": {
+        "minimum": 3.445,
+        "median": 3.445,
+        "maximum": 3.445,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "pulsed": 1,
+      "driveSource": "compiled alien art scale (early hulls have 1x floor)"
+    },
+    {
+      "hull": "AlienBattleship",
+      "alien": true,
+      "appearances": 1,
+      "mainHull_m3": {
+        "minimum": 201325.219,
+        "median": 201325.219,
+        "maximum": 201325.219,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "reactorEngineBay_m3": {
+        "minimum": 16549.54,
+        "median": 16549.54,
+        "maximum": 16549.54,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "reactorSource": "size-band fallback: Large",
+      "deLaval": {
+        "minimum": 3.445,
+        "median": 3.445,
+        "maximum": 3.445,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "magnetic": {
+        "minimum": 3.445,
+        "median": 3.445,
+        "maximum": 3.445,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "pulsed": 1,
+      "driveSource": "compiled alien art scale (early hulls have 1x floor)"
+    },
+    {
+      "hull": "AlienLancer",
+      "alien": true,
+      "appearances": 1,
+      "mainHull_m3": {
+        "minimum": 166671.7,
+        "median": 166671.7,
+        "maximum": 166671.7,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "reactorEngineBay_m3": {
+        "minimum": 16549.54,
+        "median": 16549.54,
+        "maximum": 16549.54,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "reactorSource": "size-band fallback: Large",
+      "deLaval": {
+        "minimum": 3.291,
+        "median": 3.291,
+        "maximum": 3.291,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "magnetic": {
+        "minimum": 3.291,
+        "median": 3.291,
+        "maximum": 3.291,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "pulsed": 1,
+      "driveSource": "compiled alien art scale (early hulls have 1x floor)"
+    },
+    {
+      "hull": "AlienDreadnought",
+      "alien": true,
+      "appearances": 1,
+      "mainHull_m3": {
+        "minimum": 302989.8,
+        "median": 302989.8,
+        "maximum": 302989.8,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "reactorEngineBay_m3": {
+        "minimum": 16549.54,
+        "median": 16549.54,
+        "maximum": 16549.54,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "reactorSource": "size-band fallback: Large",
+      "deLaval": {
+        "minimum": 3.445,
+        "median": 3.445,
+        "maximum": 3.445,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "magnetic": {
+        "minimum": 3.445,
+        "median": 3.445,
+        "maximum": 3.445,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "pulsed": 1,
+      "driveSource": "compiled alien art scale (early hulls have 1x floor)"
+    },
+    {
+      "hull": "AlienTitan",
+      "alien": true,
+      "appearances": 1,
+      "mainHull_m3": {
+        "minimum": 349989.25,
+        "median": 349989.25,
+        "maximum": 349989.25,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "reactorEngineBay_m3": {
+        "minimum": 16549.54,
+        "median": 16549.54,
+        "maximum": 16549.54,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "reactorSource": "size-band fallback: Large",
+      "deLaval": {
+        "minimum": 7.531,
+        "median": 7.531,
+        "maximum": 7.531,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "magnetic": {
+        "minimum": 7.531,
+        "median": 7.531,
+        "maximum": 7.531,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "pulsed": 1,
+      "driveSource": "compiled alien art scale (early hulls have 1x floor)"
+    },
+    {
+      "hull": "AlienAssaultCarrier",
+      "alien": true,
+      "appearances": 1,
+      "mainHull_m3": {
+        "minimum": 419181.8,
+        "median": 419181.8,
+        "maximum": 419181.8,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "reactorEngineBay_m3": {
+        "minimum": 16549.54,
+        "median": 16549.54,
+        "maximum": 16549.54,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "reactorSource": "size-band fallback: Large",
+      "deLaval": {
+        "minimum": 3.445,
+        "median": 3.445,
+        "maximum": 3.445,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "magnetic": {
+        "minimum": 3.445,
+        "median": 3.445,
+        "maximum": 3.445,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "pulsed": 1,
+      "driveSource": "compiled alien art scale (early hulls have 1x floor)"
+    },
+    {
+      "hull": "AlienMothership",
+      "alien": true,
+      "appearances": 1,
+      "mainHull_m3": {
+        "minimum": 49197068,
+        "median": 49197068,
+        "maximum": 49197068,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "reactorEngineBay_m3": {
+        "minimum": 16549.54,
+        "median": 16549.54,
+        "maximum": 16549.54,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "reactorSource": "size-band fallback: Huge",
+      "deLaval": {
+        "minimum": 26.216,
+        "median": 26.216,
+        "maximum": 26.216,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "magnetic": {
+        "minimum": 26.216,
+        "median": 26.216,
+        "maximum": 26.216,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "pulsed": 1,
+      "driveSource": "compiled alien art scale (early hulls have 1x floor)"
+    },
+    {
+      "hull": "SalamanderGunship",
+      "alien": true,
+      "appearances": 1,
+      "mainHull_m3": {
+        "minimum": 14539.4639,
+        "median": 14539.4639,
+        "maximum": 14539.4639,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "reactorEngineBay_m3": {
+        "minimum": 2617.60718,
+        "median": 2617.60718,
+        "maximum": 2617.60718,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "reactorSource": "size-band fallback: Small",
+      "deLaval": {
+        "minimum": 1,
+        "median": 1,
+        "maximum": 1,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "magnetic": {
+        "minimum": 1,
+        "median": 1,
+        "maximum": 1,
+        "minimumAppearances": [
+          0
+        ],
+        "maximumAppearances": [
+          0
+        ]
+      },
+      "pulsed": 1,
+      "driveSource": "safe 1x fallback; no standalone drive"
+    }
+  ],
+  "perAppearance": [
+    {
+      "hull": "Gunship",
+      "alien": false,
+      "appearance": 0,
+      "modelResource": "ships/Gunship",
+      "hullVolume_m3": 11019.6641,
+      "reactorBay_m3": 264.240631,
+      "reactorFallback": false,
+      "reactorBand": null,
+      "deLaval": 1,
+      "magnetic": 1,
+      "driveSource": "runtime human drive-art catalog",
+      "pulsed": 1
+    },
+    {
+      "hull": "Gunship",
+      "alien": false,
+      "appearance": 1,
+      "modelResource": "ships/Gunship_1",
+      "hullVolume_m3": 6474.44873,
+      "reactorBay_m3": 452.197327,
+      "reactorFallback": false,
+      "reactorBand": null,
+      "deLaval": 1.276902,
+      "magnetic": 0.901819,
+      "driveSource": "runtime human drive-art catalog",
+      "pulsed": 1
+    },
+    {
+      "hull": "Gunship",
+      "alien": false,
+      "appearance": 2,
+      "modelResource": "ships_prm/Gunship_2",
+      "hullVolume_m3": 3452.25732,
+      "reactorBay_m3": 317.31012,
+      "reactorFallback": false,
+      "reactorBand": null,
+      "deLaval": 0.66823,
+      "magnetic": 0.397033,
+      "driveSource": "runtime human drive-art catalog",
+      "pulsed": 1
+    },
+    {
+      "hull": "Gunship",
+      "alien": false,
+      "appearance": 3,
+      "modelResource": "ships_prm/Gunship_3",
+      "hullVolume_m3": 3574.852,
+      "reactorBay_m3": 712.241638,
+      "reactorFallback": false,
+      "reactorBand": null,
+      "deLaval": 1.596452,
+      "magnetic": 1.326684,
+      "driveSource": "runtime human drive-art catalog",
+      "pulsed": 1
+    },
+    {
+      "hull": "Escort",
+      "alien": false,
+      "appearance": 0,
+      "modelResource": "ships/Escort",
+      "hullVolume_m3": 6701.582,
+      "reactorBay_m3": 264.24057,
+      "reactorFallback": false,
+      "reactorBand": null,
+      "deLaval": 1,
+      "magnetic": 1,
+      "driveSource": "runtime human drive-art catalog",
+      "pulsed": 1
+    },
+    {
+      "hull": "Escort",
+      "alien": false,
+      "appearance": 1,
+      "modelResource": "ships/Escort_1",
+      "hullVolume_m3": 6946.027,
+      "reactorBay_m3": 452.197327,
+      "reactorFallback": false,
+      "reactorBand": null,
+      "deLaval": 1.276902,
+      "magnetic": 0.901819,
+      "driveSource": "runtime human drive-art catalog",
+      "pulsed": 1
+    },
+    {
+      "hull": "Escort",
+      "alien": false,
+      "appearance": 2,
+      "modelResource": "ships_prm/Escort_2",
+      "hullVolume_m3": 5774.4585,
+      "reactorBay_m3": 317.31012,
+      "reactorFallback": false,
+      "reactorBand": null,
+      "deLaval": 0.66823,
+      "magnetic": 0.397033,
+      "driveSource": "runtime human drive-art catalog",
+      "pulsed": 1
+    },
+    {
+      "hull": "Escort",
+      "alien": false,
+      "appearance": 3,
+      "modelResource": "ships_prm/Escort_3",
+      "hullVolume_m3": 5625.38232,
+      "reactorBay_m3": 712.241638,
+      "reactorFallback": false,
+      "reactorBand": null,
+      "deLaval": 1.596452,
+      "magnetic": 1.326684,
+      "driveSource": "runtime human drive-art catalog",
+      "pulsed": 1
+    },
+    {
+      "hull": "Corvette",
+      "alien": false,
+      "appearance": 0,
+      "modelResource": "ships/Corvette",
+      "hullVolume_m3": 5070.771,
+      "reactorBay_m3": 264.240631,
+      "reactorFallback": false,
+      "reactorBand": null,
+      "deLaval": 1,
+      "magnetic": 1,
+      "driveSource": "runtime human drive-art catalog",
+      "pulsed": 1
+    },
+    {
+      "hull": "Corvette",
+      "alien": false,
+      "appearance": 1,
+      "modelResource": "ships/Corvette_1",
+      "hullVolume_m3": 10445.9912,
+      "reactorBay_m3": 452.197235,
+      "reactorFallback": false,
+      "reactorBand": null,
+      "deLaval": 1.276902,
+      "magnetic": 0.901819,
+      "driveSource": "runtime human drive-art catalog",
+      "pulsed": 1
+    },
+    {
+      "hull": "Corvette",
+      "alien": false,
+      "appearance": 2,
+      "modelResource": "ships_prm/Corvette_2",
+      "hullVolume_m3": 13890.2461,
+      "reactorBay_m3": 604.707031,
+      "reactorFallback": false,
+      "reactorBand": null,
+      "deLaval": 1.095817,
+      "magnetic": 0.651092,
+      "driveSource": "runtime human drive-art catalog",
+      "pulsed": 1
+    },
+    {
+      "hull": "Corvette",
+      "alien": false,
+      "appearance": 3,
+      "modelResource": "ships_prm/Corvette_3",
+      "hullVolume_m3": 11004.3828,
+      "reactorBay_m3": 837.5878,
+      "reactorFallback": false,
+      "reactorBand": null,
+      "deLaval": 1.778657,
+      "magnetic": 1.478097,
+      "driveSource": "runtime human drive-art catalog",
+      "pulsed": 1
+    },
+    {
+      "hull": "Frigate",
+      "alien": false,
+      "appearance": 0,
+      "modelResource": "ships/Frigate",
+      "hullVolume_m3": 13692.4648,
+      "reactorBay_m3": 332.341248,
+      "reactorFallback": false,
+      "reactorBand": null,
+      "deLaval": 1.553163,
+      "magnetic": 1.376526,
+      "driveSource": "runtime human drive-art catalog",
+      "pulsed": 1
+    },
+    {
+      "hull": "Frigate",
+      "alien": false,
+      "appearance": 1,
+      "modelResource": "ships/Frigate_1",
+      "hullVolume_m3": 13923.5586,
+      "reactorBay_m3": 675.4437,
+      "reactorFallback": false,
+      "reactorBand": null,
+      "deLaval": 1.276902,
+      "magnetic": 0.901819,
+      "driveSource": "runtime human drive-art catalog",
+      "pulsed": 1
+    },
+    {
+      "hull": "Frigate",
+      "alien": false,
+      "appearance": 2,
+      "modelResource": "ships_prm/Frigate_2",
+      "hullVolume_m3": 18459.2012,
+      "reactorBay_m3": 1246.49207,
+      "reactorFallback": false,
+      "reactorBand": null,
+      "deLaval": 1.774877,
+      "magnetic": 1.054558,
+      "driveSource": "runtime human drive-art catalog",
+      "pulsed": 1
+    },
+    {
+      "hull": "Frigate",
+      "alien": false,
+      "appearance": 3,
+      "modelResource": "ships_prm/Frigate_3",
+      "hullVolume_m3": 22332.8086,
+      "reactorBay_m3": 1233.527,
+      "reactorFallback": false,
+      "reactorBand": null,
+      "deLaval": 2.302341,
+      "magnetic": 1.913292,
+      "driveSource": "runtime human drive-art catalog",
+      "pulsed": 1
+    },
+    {
+      "hull": "Monitor",
+      "alien": false,
+      "appearance": 0,
+      "modelResource": "ships/Monitor",
+      "hullVolume_m3": 17160.43,
+      "reactorBay_m3": 384.582062,
+      "reactorFallback": false,
+      "reactorBand": null,
+      "deLaval": 1,
+      "magnetic": 1,
+      "driveSource": "runtime human drive-art catalog",
+      "pulsed": 1
+    },
+    {
+      "hull": "Monitor",
+      "alien": false,
+      "appearance": 1,
+      "modelResource": "ships/Monitor_1",
+      "hullVolume_m3": 30394.7813,
+      "reactorBay_m3": 675.4437,
+      "reactorFallback": false,
+      "reactorBand": null,
+      "deLaval": 1.276902,
+      "magnetic": 0.901819,
+      "driveSource": "runtime human drive-art catalog",
+      "pulsed": 1
+    },
+    {
+      "hull": "Monitor",
+      "alien": false,
+      "appearance": 2,
+      "modelResource": "ships_prm/Monitor_2",
+      "hullVolume_m3": 45073.2148,
+      "reactorBay_m3": 2617.60718,
+      "reactorFallback": false,
+      "reactorBand": null,
+      "deLaval": 4.219133,
+      "magnetic": 2.624041,
+      "driveSource": "runtime human drive-art catalog",
+      "pulsed": 1
+    },
+    {
+      "hull": "Monitor",
+      "alien": false,
+      "appearance": 3,
+      "modelResource": "ships_prm/Monitor_3",
+      "hullVolume_m3": 48694.69,
+      "reactorBay_m3": 2028.67456,
+      "reactorFallback": false,
+      "reactorBand": null,
+      "deLaval": 3.917292,
+      "magnetic": 3.25534,
+      "driveSource": "runtime human drive-art catalog",
+      "pulsed": 1
+    },
+    {
+      "hull": "Destroyer",
+      "alien": false,
+      "appearance": 0,
+      "modelResource": "ships/Destroyer",
+      "hullVolume_m3": 22061.9551,
+      "reactorBay_m3": 384.582062,
+      "reactorFallback": false,
+      "reactorBand": null,
+      "deLaval": 1,
+      "magnetic": 1,
+      "driveSource": "runtime human drive-art catalog",
+      "pulsed": 1
+    },
+    {
+      "hull": "Destroyer",
+      "alien": false,
+      "appearance": 1,
+      "modelResource": "ships/Destroyer_1",
+      "hullVolume_m3": 66132.5859,
+      "reactorBay_m3": 675.4437,
+      "reactorFallback": false,
+      "reactorBand": null,
+      "deLaval": 2.041479,
+      "magnetic": 1.704456,
+      "driveSource": "runtime human drive-art catalog",
+      "pulsed": 1
+    },
+    {
+      "hull": "Destroyer",
+      "alien": false,
+      "appearance": 2,
+      "modelResource": "ships_prm/Destroyer_2",
+      "hullVolume_m3": 42867.29,
+      "reactorBay_m3": 2617.60669,
+      "reactorFallback": false,
+      "reactorBand": null,
+      "deLaval": 4.219133,
+      "magnetic": 2.624041,
+      "driveSource": "runtime human drive-art catalog",
+      "pulsed": 1
+    },
+    {
+      "hull": "Destroyer",
+      "alien": false,
+      "appearance": 3,
+      "modelResource": "ships_prm/Destroyer_3",
+      "hullVolume_m3": 62885.43,
+      "reactorBay_m3": 2028.67456,
+      "reactorFallback": false,
+      "reactorBand": null,
+      "deLaval": 3.917292,
+      "magnetic": 3.25534,
+      "driveSource": "runtime human drive-art catalog",
+      "pulsed": 1
+    },
+    {
+      "hull": "Cruiser",
+      "alien": false,
+      "appearance": 0,
+      "modelResource": "ships/Cruiser",
+      "hullVolume_m3": 45819.95,
+      "reactorBay_m3": 1989.2417,
+      "reactorFallback": false,
+      "reactorBand": null,
+      "deLaval": 4.150085,
+      "magnetic": 2.859339,
+      "driveSource": "runtime human drive-art catalog",
+      "pulsed": 1
+    },
+    {
+      "hull": "Cruiser",
+      "alien": false,
+      "appearance": 1,
+      "modelResource": "ships/Cruiser_1",
+      "hullVolume_m3": 143362.031,
+      "reactorBay_m3": 1384.98376,
+      "reactorFallback": false,
+      "reactorBand": null,
+      "deLaval": 2.609292,
+      "magnetic": 2.737858,
+      "driveSource": "runtime human drive-art catalog",
+      "pulsed": 1
+    },
+    {
+      "hull": "Cruiser",
+      "alien": false,
+      "appearance": 2,
+      "modelResource": "ships_prm/Cruiser_2",
+      "hullVolume_m3": 96768.96,
+      "reactorBay_m3": 3930.6377,
+      "reactorFallback": false,
+      "reactorBand": null,
+      "deLaval": 5.626481,
+      "magnetic": 3.499318,
+      "driveSource": "runtime human drive-art catalog",
+      "pulsed": 1
+    },
+    {
+      "hull": "Cruiser",
+      "alien": false,
+      "appearance": 3,
+      "modelResource": "ships_prm/Cruiser_3",
+      "hullVolume_m3": 202070.375,
+      "reactorBay_m3": 3505.55029,
+      "reactorFallback": false,
+      "reactorBand": null,
+      "deLaval": 5.637461,
+      "magnetic": 4.684833,
+      "driveSource": "runtime human drive-art catalog",
+      "pulsed": 1
+    },
+    {
+      "hull": "Battlecruiser",
+      "alien": false,
+      "appearance": 0,
+      "modelResource": "ships/Battlecruiser",
+      "hullVolume_m3": 43684.42,
+      "reactorBay_m3": 1989.24255,
+      "reactorFallback": false,
+      "reactorBand": null,
+      "deLaval": 2.179095,
+      "magnetic": 2.001142,
+      "driveSource": "runtime human drive-art catalog",
+      "pulsed": 1
+    },
+    {
+      "hull": "Battlecruiser",
+      "alien": false,
+      "appearance": 1,
+      "modelResource": "ships/Battlecruiser_1",
+      "hullVolume_m3": 162618.5,
+      "reactorBay_m3": 1384.98376,
+      "reactorFallback": false,
+      "reactorBand": null,
+      "deLaval": 3.287911,
+      "magnetic": 3.287549,
+      "driveSource": "runtime human drive-art catalog",
+      "pulsed": 1
+    },
+    {
+      "hull": "Battlecruiser",
+      "alien": false,
+      "appearance": 2,
+      "modelResource": "ships_prm/Battlecruiser_2",
+      "hullVolume_m3": 80740.99,
+      "reactorBay_m3": 3930.6377,
+      "reactorFallback": false,
+      "reactorBand": null,
+      "deLaval": 5.626481,
+      "magnetic": 3.499318,
+      "driveSource": "runtime human drive-art catalog",
+      "pulsed": 1
+    },
+    {
+      "hull": "Battlecruiser",
+      "alien": false,
+      "appearance": 3,
+      "modelResource": "ships_prm/Battlecruiser_3",
+      "hullVolume_m3": 205738.656,
+      "reactorBay_m3": 3505.55029,
+      "reactorFallback": false,
+      "reactorBand": null,
+      "deLaval": 5.637461,
+      "magnetic": 4.684833,
+      "driveSource": "runtime human drive-art catalog",
+      "pulsed": 1
+    },
+    {
+      "hull": "Battleship",
+      "alien": false,
+      "appearance": 0,
+      "modelResource": "ships/Battleship",
+      "hullVolume_m3": 105142.664,
+      "reactorBay_m3": 5648.074,
+      "reactorFallback": false,
+      "reactorBand": null,
+      "deLaval": 3.34477,
+      "magnetic": 3.599695,
+      "driveSource": "runtime human drive-art catalog",
+      "pulsed": 1
+    },
+    {
+      "hull": "Battleship",
+      "alien": false,
+      "appearance": 1,
+      "modelResource": "ships/Battleship_1",
+      "hullVolume_m3": 164048.422,
+      "reactorBay_m3": 2090.292,
+      "reactorFallback": false,
+      "reactorBand": null,
+      "deLaval": 2.846865,
+      "magnetic": 2.899977,
+      "driveSource": "runtime human drive-art catalog",
+      "pulsed": 1
+    },
+    {
+      "hull": "Battleship",
+      "alien": false,
+      "appearance": 2,
+      "modelResource": "ships_prm/Battleship_2",
+      "hullVolume_m3": 134463.75,
+      "reactorBay_m3": 5464.773,
+      "reactorFallback": false,
+      "reactorBand": null,
+      "deLaval": 5.626481,
+      "magnetic": 3.499318,
+      "driveSource": "runtime human drive-art catalog",
+      "pulsed": 1
+    },
+    {
+      "hull": "Battleship",
+      "alien": false,
+      "appearance": 3,
+      "modelResource": "ships_prm/Battleship_3",
+      "hullVolume_m3": 168180.609,
+      "reactorBay_m3": 6945.7,
+      "reactorFallback": false,
+      "reactorBand": null,
+      "deLaval": 8.893183,
+      "magnetic": 7.390387,
+      "driveSource": "runtime human drive-art catalog",
+      "pulsed": 1
+    },
+    {
+      "hull": "Lancer",
+      "alien": false,
+      "appearance": 0,
+      "modelResource": "ships/Lancer",
+      "hullVolume_m3": 152598.422,
+      "reactorBay_m3": 2365.773,
+      "reactorFallback": false,
+      "reactorBand": null,
+      "deLaval": 1.715049,
+      "magnetic": 1.715052,
+      "driveSource": "runtime human drive-art catalog",
+      "pulsed": 1
+    },
+    {
+      "hull": "Lancer",
+      "alien": false,
+      "appearance": 1,
+      "modelResource": "ships/Lancer_1",
+      "hullVolume_m3": 215348.953,
+      "reactorBay_m3": 2090.29224,
+      "reactorFallback": false,
+      "reactorBand": null,
+      "deLaval": 2.846865,
+      "magnetic": 2.899977,
+      "driveSource": "runtime human drive-art catalog",
+      "pulsed": 1
+    },
+    {
+      "hull": "Lancer",
+      "alien": false,
+      "appearance": 2,
+      "modelResource": "ships_prm/Lancer_2",
+      "hullVolume_m3": 259685.281,
+      "reactorBay_m3": 10223.8789,
+      "reactorFallback": false,
+      "reactorBand": null,
+      "deLaval": 8.542784,
+      "magnetic": 5.313082,
+      "driveSource": "runtime human drive-art catalog",
+      "pulsed": 1
+    },
+    {
+      "hull": "Lancer",
+      "alien": false,
+      "appearance": 3,
+      "modelResource": "ships_prm/Lancer_3",
+      "hullVolume_m3": 256682.469,
+      "reactorBay_m3": 8072.644,
+      "reactorFallback": false,
+      "reactorBand": null,
+      "deLaval": 9.830835,
+      "magnetic": 8.169598,
+      "driveSource": "runtime human drive-art catalog",
+      "pulsed": 1
+    },
+    {
+      "hull": "Dreadnought",
+      "alien": false,
+      "appearance": 0,
+      "modelResource": "ships/Dreadnought",
+      "hullVolume_m3": 272229.438,
+      "reactorBay_m3": 11476.33,
+      "reactorFallback": false,
+      "reactorBand": null,
+      "deLaval": 6.743748,
+      "magnetic": 4.324953,
+      "driveSource": "runtime human drive-art catalog",
+      "pulsed": 1
+    },
+    {
+      "hull": "Dreadnought",
+      "alien": false,
+      "appearance": 1,
+      "modelResource": "ships/Dreadnought_1",
+      "hullVolume_m3": 410481.625,
+      "reactorBay_m3": 2090.293,
+      "reactorFallback": false,
+      "reactorBand": null,
+      "deLaval": 6.901653,
+      "magnetic": 6.757068,
+      "driveSource": "runtime human drive-art catalog",
+      "pulsed": 1
+    },
+    {
+      "hull": "Dreadnought",
+      "alien": false,
+      "appearance": 2,
+      "modelResource": "ships_prm/Dreadnought_2",
+      "hullVolume_m3": 207412.75,
+      "reactorBay_m3": 10223.8789,
+      "reactorFallback": false,
+      "reactorBand": null,
+      "deLaval": 11.7690773,
+      "magnetic": 7.31964,
+      "driveSource": "runtime human drive-art catalog",
+      "pulsed": 1
+    },
+    {
+      "hull": "Dreadnought",
+      "alien": false,
+      "appearance": 3,
+      "modelResource": "ships_prm/Dreadnought_3",
+      "hullVolume_m3": 542945.6,
+      "reactorBay_m3": 10952.6221,
+      "reactorFallback": false,
+      "reactorBand": null,
+      "deLaval": 12.0482788,
+      "magnetic": 10.0123348,
+      "driveSource": "runtime human drive-art catalog",
+      "pulsed": 1
+    },
+    {
+      "hull": "Titan",
+      "alien": false,
+      "appearance": 0,
+      "modelResource": "ships/Titan",
+      "hullVolume_m3": 514552.1,
+      "reactorBay_m3": 15955.5762,
+      "reactorFallback": false,
+      "reactorBand": null,
+      "deLaval": 8.111787,
+      "magnetic": 6.593247,
+      "driveSource": "runtime human drive-art catalog",
+      "pulsed": 1
+    },
+    {
+      "hull": "Titan",
+      "alien": false,
+      "appearance": 1,
+      "modelResource": "ships/Titan_1",
+      "hullVolume_m3": 865494.9,
+      "reactorBay_m3": 6290.837,
+      "reactorFallback": false,
+      "reactorBand": null,
+      "deLaval": 10.0287495,
+      "magnetic": 10.3922071,
+      "driveSource": "runtime human drive-art catalog",
+      "pulsed": 1
+    },
+    {
+      "hull": "Titan",
+      "alien": false,
+      "appearance": 2,
+      "modelResource": "ships_prm/Titan_2",
+      "hullVolume_m3": 407508.8,
+      "reactorBay_m3": 16549.54,
+      "reactorFallback": false,
+      "reactorBand": null,
+      "deLaval": 14.66049,
+      "magnetic": 9.117921,
+      "driveSource": "runtime human drive-art catalog",
+      "pulsed": 1
+    },
+    {
+      "hull": "Titan",
+      "alien": false,
+      "appearance": 3,
+      "modelResource": "ships_prm/Titan_3",
+      "hullVolume_m3": 987672.4,
+      "reactorBay_m3": 15840.89,
+      "reactorFallback": false,
+      "reactorBand": null,
+      "deLaval": 25.2033749,
+      "magnetic": 20.9444466,
+      "driveSource": "runtime human drive-art catalog",
+      "pulsed": 1
+    },
+    {
+      "hull": "STOFighter",
+      "alien": false,
+      "appearance": 0,
+      "modelResource": "ships/STOFighter",
+      "hullVolume_m3": 4081.717,
+      "reactorBay_m3": 2617.60718,
+      "reactorFallback": true,
+      "reactorBand": "Small",
+      "deLaval": 1,
+      "magnetic": 1,
+      "driveSource": "safe 1x fallback; missing human drive-art row",
+      "pulsed": 1
+    },
+    {
+      "hull": "AlienGunship",
+      "alien": true,
+      "appearance": 0,
+      "modelResource": "ships/AlienGunship",
+      "hullVolume_m3": 10892.207,
+      "reactorBay_m3": 2617.60718,
+      "reactorFallback": true,
+      "reactorBand": "Small",
+      "deLaval": 1,
+      "magnetic": 1,
+      "driveSource": "compiled alien art scale (early hulls have 1x floor)",
+      "pulsed": 1
+    },
+    {
+      "hull": "AlienEscort",
+      "alien": true,
+      "appearance": 0,
+      "modelResource": "ships/AlienEscort",
+      "hullVolume_m3": 7358.229,
+      "reactorBay_m3": 2617.60718,
+      "reactorFallback": true,
+      "reactorBand": "Small",
+      "deLaval": 1,
+      "magnetic": 1,
+      "driveSource": "compiled alien art scale (early hulls have 1x floor)",
+      "pulsed": 1
+    },
+    {
+      "hull": "AlienCorvette",
+      "alien": true,
+      "appearance": 0,
+      "modelResource": "ships/AlienCorvette",
+      "hullVolume_m3": 13174.4512,
+      "reactorBay_m3": 2617.60718,
+      "reactorFallback": true,
+      "reactorBand": "Small",
+      "deLaval": 1,
+      "magnetic": 1,
+      "driveSource": "compiled alien art scale (early hulls have 1x floor)",
+      "pulsed": 1
+    },
+    {
+      "hull": "AlienFrigate",
+      "alien": true,
+      "appearance": 0,
+      "modelResource": "ships/AlienFrigate",
+      "hullVolume_m3": 30659.9277,
+      "reactorBay_m3": 2617.60718,
+      "reactorFallback": true,
+      "reactorBand": "Small",
+      "deLaval": 1.144,
+      "magnetic": 1.144,
+      "driveSource": "compiled alien art scale (early hulls have 1x floor)",
+      "pulsed": 1
+    },
+    {
+      "hull": "AlienMonitor",
+      "alien": true,
+      "appearance": 0,
+      "modelResource": "ships/AlienMonitor",
+      "hullVolume_m3": 75475.81,
+      "reactorBay_m3": 3930.6377,
+      "reactorFallback": true,
+      "reactorBand": "Medium",
+      "deLaval": 2.202,
+      "magnetic": 2.202,
+      "driveSource": "compiled alien art scale (early hulls have 1x floor)",
+      "pulsed": 1
+    },
+    {
+      "hull": "AlienDestroyer",
+      "alien": true,
+      "appearance": 0,
+      "modelResource": "ships/AlienDestroyer",
+      "hullVolume_m3": 47314.4141,
+      "reactorBay_m3": 3930.6377,
+      "reactorFallback": true,
+      "reactorBand": "Medium",
+      "deLaval": 3.384,
+      "magnetic": 3.384,
+      "driveSource": "compiled alien art scale (early hulls have 1x floor)",
+      "pulsed": 1
+    },
+    {
+      "hull": "AlienCruiser",
+      "alien": true,
+      "appearance": 0,
+      "modelResource": "ships/AlienCruiser",
+      "hullVolume_m3": 57947.52,
+      "reactorBay_m3": 3930.6377,
+      "reactorFallback": true,
+      "reactorBand": "Medium",
+      "deLaval": 3.291,
+      "magnetic": 3.291,
+      "driveSource": "compiled alien art scale (early hulls have 1x floor)",
+      "pulsed": 1
+    },
+    {
+      "hull": "AlienBattlecruiser",
+      "alien": true,
+      "appearance": 0,
+      "modelResource": "ships/AlienBattlecruiser",
+      "hullVolume_m3": 172807.625,
+      "reactorBay_m3": 3930.6377,
+      "reactorFallback": true,
+      "reactorBand": "Medium",
+      "deLaval": 3.445,
+      "magnetic": 3.445,
+      "driveSource": "compiled alien art scale (early hulls have 1x floor)",
+      "pulsed": 1
+    },
+    {
+      "hull": "AlienBattleship",
+      "alien": true,
+      "appearance": 0,
+      "modelResource": "ships/AlienBattleship",
+      "hullVolume_m3": 201325.219,
+      "reactorBay_m3": 16549.54,
+      "reactorFallback": true,
+      "reactorBand": "Large",
+      "deLaval": 3.445,
+      "magnetic": 3.445,
+      "driveSource": "compiled alien art scale (early hulls have 1x floor)",
+      "pulsed": 1
+    },
+    {
+      "hull": "AlienLancer",
+      "alien": true,
+      "appearance": 0,
+      "modelResource": "ships/AlienLancer",
+      "hullVolume_m3": 166671.7,
+      "reactorBay_m3": 16549.54,
+      "reactorFallback": true,
+      "reactorBand": "Large",
+      "deLaval": 3.291,
+      "magnetic": 3.291,
+      "driveSource": "compiled alien art scale (early hulls have 1x floor)",
+      "pulsed": 1
+    },
+    {
+      "hull": "AlienDreadnought",
+      "alien": true,
+      "appearance": 0,
+      "modelResource": "ships/AlienDreadnought",
+      "hullVolume_m3": 302989.8,
+      "reactorBay_m3": 16549.54,
+      "reactorFallback": true,
+      "reactorBand": "Large",
+      "deLaval": 3.445,
+      "magnetic": 3.445,
+      "driveSource": "compiled alien art scale (early hulls have 1x floor)",
+      "pulsed": 1
+    },
+    {
+      "hull": "AlienTitan",
+      "alien": true,
+      "appearance": 0,
+      "modelResource": "ships/AlienTitan",
+      "hullVolume_m3": 349989.25,
+      "reactorBay_m3": 16549.54,
+      "reactorFallback": true,
+      "reactorBand": "Large",
+      "deLaval": 7.531,
+      "magnetic": 7.531,
+      "driveSource": "compiled alien art scale (early hulls have 1x floor)",
+      "pulsed": 1
+    },
+    {
+      "hull": "AlienAssaultCarrier",
+      "alien": true,
+      "appearance": 0,
+      "modelResource": "ships/AlienAssaultCarrier",
+      "hullVolume_m3": 419181.8,
+      "reactorBay_m3": 16549.54,
+      "reactorFallback": true,
+      "reactorBand": "Large",
+      "deLaval": 3.445,
+      "magnetic": 3.445,
+      "driveSource": "compiled alien art scale (early hulls have 1x floor)",
+      "pulsed": 1
+    },
+    {
+      "hull": "AlienMothership",
+      "alien": true,
+      "appearance": 0,
+      "modelResource": "ships/AlienMothership",
+      "hullVolume_m3": 49197068,
+      "reactorBay_m3": 16549.54,
+      "reactorFallback": true,
+      "reactorBand": "Huge",
+      "deLaval": 26.216,
+      "magnetic": 26.216,
+      "driveSource": "compiled alien art scale (early hulls have 1x floor)",
+      "pulsed": 1
+    },
+    {
+      "hull": "SalamanderGunship",
+      "alien": true,
+      "appearance": 0,
+      "modelResource": "ships/SalamanderGunship",
+      "hullVolume_m3": 14539.4639,
+      "reactorBay_m3": 2617.60718,
+      "reactorFallback": true,
+      "reactorBand": "Small",
+      "deLaval": 1,
+      "magnetic": 1,
+      "driveSource": "safe 1x fallback; no standalone drive",
+      "pulsed": 1
+    }
+  ],
+  "sourceSha256": {
+    "TIEconomyMod\\ModFiles\\Assembly\\TIEconomyMod.dll": "7173D6DB1132094A6498F4F7D4F40F277CF212E06E3E944211C12B0B0C9B4383",
+    "TIEconomyMod\\Core\\ShipBalanceMath.cs": "D81E1689074585F9466EDC12ED81B257A55F6B473720414E91D94E628AD42F05",
+    "TIEconomyMod\\Patches\\BalancePatches.cs": "FBA6D937B04210A963F32C5CAEA7BE4CC9F1D42851A1627960C7765C782D5EEC",
+    "TIEconomyMod\\Patches\\FuelCapacityPatches.cs": "6891DC1C0DBD1C6955CDE0FA85FF6FCB7A60996F9A2DF069880A54C66BA37162",
+    "TIEconomyMod\\Core\\HullDriveScaleCatalog.cs": "BC8BB9CC07DEA026395C6E29747467BE9214DFE369B07D1FAE184B6EB6696B3E",
+    "TIEconomyMod\\Core\\HullVolumeCatalog.cs": "8DD027D74725FB1EEB0ADBB1CCA9A746B30CADA618B963052BC9C1EC5ADC736B",
+    "TIEconomyMod\\ModFiles\\Config\\hull-variant-main-volumes.csv": "736CC3248146E8C7C24B1AB7469B182A377B950BF704F4DA4905244F8C10C2A5",
+    "TIEconomyMod\\ModFiles\\Config\\hull-variant-drive-scales.csv": "CEF8BBFFF1C457AE22B94A69B4ACA8D21CD7D2E268A2ED734684E559C0F42565",
+    "docs\\ship-balance-research\\tables\\reactor-bay-variant-volumes.csv": "7E35A9DFF796D5F74BD80ACDD787A4C098A3814B7D04DD674F73C9F90838A6A4",
+    "docs\\ship-balance-research\\tables\\hull-variant-volume-and-slots.json": "13C5DAB70D42E1E8D1FE514E8A348A168518CFE0EFF76F505DC8F6468BF6F155"
+  }
+}

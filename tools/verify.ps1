@@ -175,6 +175,24 @@ $patchValidationJobs = @(
         '-TargetManagedDir', $resolvedManagedDir,
         '-ModAssemblyPath', $assemblyPath,
         '-RepositoryRoot', $repositoryRoot)
+    New-ValidationJob 'Asymmetric progression and wavelength' $powershellExecutable @(
+        '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File',
+        (Join-Path $scriptDirectory 'validate-asymmetric-progression.ps1'),
+        '-TargetManagedDir', $resolvedManagedDir,
+        '-ModAssemblyPath', $assemblyPath,
+        '-RepositoryRoot', $repositoryRoot)
+    New-ValidationJob 'Data-driven designer rows and utility expansion' $powershellExecutable @(
+        '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File',
+        (Join-Path $scriptDirectory 'validate-designer-layout.ps1'),
+        '-TargetManagedDir', $resolvedManagedDir,
+        '-ModAssemblyPath', $assemblyPath,
+        '-RepositoryRoot', $repositoryRoot)
+    New-ValidationJob 'Alien armor selection' $powershellExecutable @(
+        '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File',
+        (Join-Path $scriptDirectory 'validate-alien-armor-selection.ps1'),
+        '-TargetManagedDir', $resolvedManagedDir,
+        '-ModAssemblyPath', $assemblyPath,
+        '-RepositoryRoot', $repositoryRoot)
     New-ValidationJob 'National space assets' $powershellExecutable @(
         '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File',
         (Join-Path $scriptDirectory 'validate-national-space-assets.ps1'),
@@ -348,6 +366,8 @@ $gunOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIGunTemplate.j
 $laserWeaponOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TILaserWeaponTemplate.json'
 $magneticGunOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIMagneticGunTemplate.json'
 $shipHullOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIShipHullTemplate.json'
+$particleWeaponOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIParticleWeaponTemplate.json'
+$shipDesignerLayout = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\Config\ship-designer-layout.eeo'
 $utilityModuleOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIUtilityModuleTemplate.json'
 $nationLocalization = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\UINation.en'
 $effectLocalization = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIEffectTemplate.en'
@@ -590,7 +610,7 @@ $manifest = Get-Content -LiteralPath $manifestPath -Raw | ConvertFrom-Json
 if ($manifest.GameVersion -ne '1.0.53') {
     throw "ModInfo.json targets '$($manifest.GameVersion)' instead of TI 1.0.53."
 }
-if ($manifest.Version -ne '0.10.21') {
+if ($manifest.Version -ne '0.11.6') {
     throw "ModInfo.json version '$($manifest.Version)' does not match this release."
 }
 if ($manifest.AssemblyName -ne 'Assembly/TIEconomyMod.dll') {
@@ -1157,8 +1177,8 @@ if ($assemblyFile.LastWriteTime -lt $buildStarted.AddSeconds(-2)) {
     throw 'Packaged DLL predates this verification build.'
 }
 $assemblyVersion = [Reflection.AssemblyName]::GetAssemblyName($assemblyPath).Version.ToString()
-if ($assemblyVersion -ne '0.10.21.0') {
-    throw "Assembly version '$assemblyVersion' does not match release 0.10.21."
+if ($assemblyVersion -ne '0.11.6.0') {
+    throw "Assembly version '$assemblyVersion' does not match release 0.11.6."
 }
 $assemblyHash = (Get-FileHash -LiteralPath $assemblyPath -Algorithm SHA256).Hash
 
@@ -1184,6 +1204,8 @@ $requiredFiles = @(
     $laserWeaponOverrides,
     $magneticGunOverrides,
     $shipHullOverrides,
+    $particleWeaponOverrides,
+    $shipDesignerLayout,
     $utilityModuleOverrides,
     $nationLocalization,
     $effectLocalization,
@@ -1220,6 +1242,7 @@ Copy-Item -LiteralPath $weights -Destination (Join-Path $stagingDirectory 'Confi
 Copy-Item -LiteralPath $hullVolumes -Destination (Join-Path $stagingDirectory 'Config')
 Copy-Item -LiteralPath $hullDriveScales -Destination (Join-Path $stagingDirectory 'Config')
 Copy-Item -LiteralPath $gunpowderArtProfiles -Destination (Join-Path $stagingDirectory 'Config')
+Copy-Item -LiteralPath $shipDesignerLayout -Destination (Join-Path $stagingDirectory 'Config')
 foreach ($meshFile in @('combat-unreadable-meshes.eeo','combat-mesh-data-base.eeo','combat-mesh-data-dlc.eeo','laser-beam-optics.eeo')) {
     Copy-Item -LiteralPath (Join-Path $repositoryRoot ('TIEconomyMod\ModFiles\Config\' + $meshFile)) `
         -Destination (Join-Path $stagingDirectory 'Config')
@@ -1242,6 +1265,7 @@ Copy-Item -LiteralPath $gunOverrides -Destination $stagingDirectory
 Copy-Item -LiteralPath $laserWeaponOverrides -Destination $stagingDirectory
 Copy-Item -LiteralPath $magneticGunOverrides -Destination $stagingDirectory
 Copy-Item -LiteralPath $shipHullOverrides -Destination $stagingDirectory
+Copy-Item -LiteralPath $particleWeaponOverrides -Destination $stagingDirectory
 Copy-Item -LiteralPath $utilityModuleOverrides -Destination $stagingDirectory
 Copy-Item -LiteralPath $nationLocalization -Destination $stagingDirectory
 Copy-Item -LiteralPath $effectLocalization -Destination $stagingDirectory
@@ -1258,7 +1282,17 @@ if (Test-Path -LiteralPath $imagePath) {
     Copy-Item -LiteralPath $imagePath -Destination $stagingDirectory
 }
 
-$zipPath = Join-Path $artifactDirectory 'TIEconomyMod-0.10.21-ti1.0.53.zip'
+# The deployer uses the whole ModFiles tree. Package that same tree rather
+# than silently omitting future JSON/localization/sidecar additions from the
+# historical explicit copy list above.
+$packageSource = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles'
+foreach ($source in Get-ChildItem -LiteralPath $packageSource -File -Recurse) {
+    $relative = $source.FullName.Substring($packageSource.Length).TrimStart('\','/')
+    $target = Join-Path $stagingDirectory $relative
+    [void](New-Item -ItemType Directory -Path (Split-Path -Parent $target) -Force)
+    Copy-Item -LiteralPath $source.FullName -Destination $target -Force
+}
+$zipPath = Join-Path $artifactDirectory 'TIEconomyMod-0.11.6-ti1.0.53.zip'
 if (Test-Path -LiteralPath $zipPath) {
     Remove-Item -LiteralPath $zipPath
 }
@@ -1267,6 +1301,15 @@ Compress-Archive -LiteralPath $stagingDirectory -DestinationPath $zipPath -Compr
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 $archive = [IO.Compression.ZipFile]::OpenRead($zipPath)
 try {
+    foreach ($source in Get-ChildItem -LiteralPath $packageSource -File -Recurse) {
+        $relative = $source.FullName.Substring($packageSource.Length).TrimStart('\','/').Replace('\','/')
+        $entry = $archive.Entries | Where-Object { $_.FullName.Replace('\','/') -eq ('TIEconomyMod/' + $relative) } | Select-Object -First 1
+        if ($null -eq $entry) { throw "Release archive omits package file: $relative" }
+        $stream = $entry.Open(); $hash = [Security.Cryptography.SHA256]::Create()
+        try { $actual = ([BitConverter]::ToString($hash.ComputeHash($stream))).Replace('-','') }
+        finally { $hash.Dispose(); $stream.Dispose() }
+        if ($actual -ne (Get-FileHash -LiteralPath $source.FullName -Algorithm SHA256).Hash) { throw "Release archive differs from package: $relative" }
+    }
     $packagedDll = $archive.Entries |
         Where-Object { $_.FullName.Replace('\', '/') -eq 'TIEconomyMod/Assembly/TIEconomyMod.dll' } |
         Select-Object -First 1
@@ -1306,6 +1349,8 @@ try {
         }
     }
     $packagedShipFiles = @(
+        'TIEconomyMod/Config/ship-designer-layout.eeo',
+        'TIEconomyMod/TIParticleWeaponTemplate.json',
         'TIEconomyMod/Config/combat-unreadable-meshes.eeo',
         'TIEconomyMod/Config/combat-mesh-data-base.eeo',
         'TIEconomyMod/Config/combat-mesh-data-dlc.eeo',
@@ -1318,6 +1363,7 @@ try {
         'TIEconomyMod/TILaserWeaponTemplate.json',
         'TIEconomyMod/TIMagneticGunTemplate.json',
         'TIEconomyMod/TIShipHullTemplate.json',
+        'TIEconomyMod/TIShipArmorTemplate.json',
         'TIEconomyMod/TIUtilityModuleTemplate.json'
     )
     foreach ($packagedShipFile in $packagedShipFiles) {

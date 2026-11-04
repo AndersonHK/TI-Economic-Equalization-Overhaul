@@ -278,8 +278,12 @@ namespace TIEconomyMod.Patches
                 return 0f;
             }
 
-            float baseMass_tons = hull.buildMass_tons();
-            return mass_tons - baseMass_tons;
+            // JSON owns the base hull mass. The art catalog contributes only
+            // the appearance difference, so data-only reinforcement changes
+            // apply to every appearance instead of being cancelled here.
+            float referenceMass;
+            if (!ShipBalanceMath.TryGetVariantEmptyHullMass_tons(hull.dataName, 0, out referenceMass)) return 0f;
+            return mass_tons - referenceMass;
         }
 
         private static void ReportDiagnosticOnce(string diagnostic)
@@ -392,9 +396,9 @@ namespace TIEconomyMod.Patches
             if (usedFallback)
             {
                 ReportDiagnosticOnce(
-                    "No measured reactor bay is configured for hull '" +
+                    "Reactor-bay allowance for hull '" +
                     hull.dataName + "' appearance " + appearanceIndex +
-                    ". Using the " + sizeBand + " class-maximum fallback " +
+                    ". Using the " + sizeBand + " fallback " +
                     bayVolume_m3.ToString("0.###") + " m3.");
             }
             if (powerPlant.specificPower_tGW <= 0f ||

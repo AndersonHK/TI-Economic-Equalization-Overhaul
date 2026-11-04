@@ -1,0 +1,42 @@
+[
+  {
+    "referenceHeight": 1080,
+    "reservedTop": 100,
+    "scale": 0.9696366,
+    "windowBottom": 1073.9999838769436,
+    "screenBottom": 1074,
+    "fits": true
+  },
+  {
+    "referenceHeight": 1030,
+    "reservedTop": 100,
+    "scale": 0.9198606,
+    "windowBottom": 1023.9999741315842,
+    "screenBottom": 1024,
+    "fits": true
+  },
+  {
+    "referenceHeight": 1000,
+    "reservedTop": 100,
+    "scale": 0.88999504,
+    "windowBottom": 994.000016182661,
+    "screenBottom": 994,
+    "fits": true
+  },
+  {
+    "referenceHeight": 940,
+    "reservedTop": 100,
+    "scale": 0.8302638,
+    "windowBottom": 933.9999805390835,
+    "screenBottom": 934,
+    "fits": true
+  },
+  {
+    "referenceHeight": 900,
+    "reservedTop": 85,
+    "scale": 0.8053758,
+    "windowBottom": 894.0000056028366,
+    "screenBottom": 894,
+    "fits": true
+  }
+]

@@ -184,9 +184,11 @@ namespace TIEconomyMod.Patches
         [HarmonyPostfix]
         public static void Postfix()
         {
+            ShipDesignerDataLayoutPatch.ValidateTemplates();
             GunPowerRegistry.Refresh();
             ProjectileGeometryRegistry.Refresh();
             PowerPlantScalingRegistry.Refresh();
+                LaserWavelengthFeature.Refresh();
             TIEconomyMod.Core.CapitalMountRuntime.NormalizeStockDesigns();
             ShipPowerRuntime.RefreshTemplatePerformanceCaches();
         }

@@ -284,8 +284,8 @@
     "warheadMass_kg": 938,
     "muzzleVelocity_kps": 4.5,
     "targetingRange_km": 1100,
-    "cooldown_s": 24,
-    "intraSalvoCooldown_s": 22
+    "cooldown_s": 12,
+    "intraSalvoCooldown_s": 11
   },
   {
     "dataName": "SpinalSiegeCoilerMk2",
@@ -293,8 +293,8 @@
     "warheadMass_kg": 1000,
     "muzzleVelocity_kps": 5.1,
     "targetingRange_km": 1150,
-    "cooldown_s": 19,
-    "intraSalvoCooldown_s": 15
+    "cooldown_s": 9.5,
+    "intraSalvoCooldown_s": 7.5
   },
   {
     "dataName": "SpinalSiegeCoilerMk3",
@@ -302,8 +302,8 @@
     "warheadMass_kg": 1094,
     "muzzleVelocity_kps": 6.3,
     "targetingRange_km": 1250,
-    "cooldown_s": 12,
-    "intraSalvoCooldown_s": 11
+    "cooldown_s": 6,
+    "intraSalvoCooldown_s": 5.5
   },
   {
     "dataName": "AlienLightMagBattery",

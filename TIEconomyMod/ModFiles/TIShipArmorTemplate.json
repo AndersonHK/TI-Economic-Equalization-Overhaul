@@ -1,0 +1,32 @@
+[
+  {
+    "dataName": "AlienAdamantaneArmor",
+    "weightedBuildMaterials": {
+      "volatiles": 0.38,
+      "metals": 0.45,
+      "nobleMetals": 0.165,
+      "exotics": 0.005
+    },
+    "xRayHalfValue_cm": 4.5,
+    "baryonicHalfValue_cm": 11,
+    "density_kgm3": 2000,
+    "heatofVaporization_MJkg": 80,
+    "specialties": [
+      { "armorSpecialty": "XRayResistance", "value": 1.8 },
+      { "armorSpecialty": "BaryonicResistance", "value": 4.4 },
+      { "armorSpecialty": "LaserResistance", "value": 0.75 }
+    ]
+  },
+  {
+    "dataName": "AlienExoticArmor",
+    "xRayHalfValue_cm": 3.15,
+    "baryonicHalfValue_cm": 7.7,
+    "density_kgm3": 2000,
+    "heatofVaporization_MJkg": 114.28571428571429,
+    "specialties": [
+      { "armorSpecialty": "XRayResistance", "value": 1.8 },
+      { "armorSpecialty": "BaryonicResistance", "value": 4.4 },
+      { "armorSpecialty": "LaserResistance", "value": 0.75 }
+    ]
+  }
+]

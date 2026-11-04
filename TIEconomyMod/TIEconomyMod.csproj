@@ -72,6 +72,10 @@
       <HintPath>$(TargetManagedDir)\UnityEngine.CoreModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.AssetBundleModule">
+      <HintPath>$(TargetManagedDir)\UnityEngine.AssetBundleModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="UnityEngine.IMGUIModule">
       <HintPath>$(TargetManagedDir)\UnityEngine.IMGUIModule.dll</HintPath>
       <Private>False</Private>
@@ -141,6 +145,8 @@
     <Compile Include="Patches\BallisticContactPatches.cs" />
     <Compile Include="Core\CombatExplosionGeometry.cs" />
     <Compile Include="Core\LaserBeamGeometry.cs" />
+    <Compile Include="Core\LaserSamplingMath.cs" />
+    <Compile Include="Core\LaserSamplingShader.cs" />
     <Compile Include="Patches\LaserBeamCameraPatches.cs" />
     <Compile Include="Patches\CombatSpacingEffectsPatches.cs" />
     <Compile Include="Core\CombatRenderGeometry.cs" />
@@ -164,6 +170,13 @@
     <Compile Include="Core\WeaponPowerMath.cs" />
     <Compile Include="Core\WeaponCadenceMath.cs" />
     <Compile Include="Core\CapitalMountPolicy.cs" />
+    <Compile Include="Core\WavelengthPrecision.cs" />
+    <Compile Include="Core\ShipDesignerLayout.cs" />
+    <Compile Include="Core\DesignerViewportMath.cs" />
+    <Compile Include="Patches\ShipDesignerViewportPatches.cs" />
+    <Compile Include="Patches\ShipDesignerLayoutPatches.cs" />
+    <Compile Include="Patches\AlienArmorSelectionPatches.cs" />
+    <Compile Include="Patches\ProgressionAndPrecisionPatches.cs" />
     <Compile Include="Core\MothershipMountGeometry.cs" />
     <Compile Include="Core\GunpowderArtCatalog.cs" />
     <Compile Include="Core\GunpowderArtGeometry.cs" />
@@ -246,6 +259,7 @@
     <None Include="ModFiles\TIPowerPlantTemplate.json" />
     <None Include="ModFiles\TIDriveTemplate.json" />
     <None Include="ModFiles\TIShipHullTemplate.json" />
+    <None Include="ModFiles\TIShipArmorTemplate.json" />
     <None Include="ModFiles\TIUtilityModuleTemplate.json" />
     <None Include="ModFiles\TIStartTimeTemplate.json" />
     <None Include="ModFiles\TITechTemplate.json" />

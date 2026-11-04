@@ -22,6 +22,7 @@ namespace TIEconomyMod.Core
     {
         internal TISpaceShipTemplate Design;
         internal List<ModuleDataTemplateEntry> Weapons;
+        internal List<ModuleDataTemplateEntry> NoseWeapons;
         internal List<FireModeDataTemplateEntry> Modes;
         internal readonly Dictionary<int, int> SourceSlots = new Dictionary<int, int>();
         internal string CapacityWarning;
@@ -31,6 +32,7 @@ namespace TIEconomyMod.Core
     {
         internal TISpaceShipState Ship;
         internal List<ModuleDataEntry> Weapons;
+        internal List<ModuleDataEntry> NoseWeapons;
         internal Dictionary<ModuleDataEntry, int> Ammo;
         internal List<DamagedShipPartData> Damage;
         internal List<DamagedShipPartData> Repair;
@@ -79,17 +81,32 @@ namespace TIEconomyMod.Core
 
         internal static bool ValidLayout(TISpaceShipTemplate design)
         {
-            if (design.hullWeaponTemplateEntries == null) return true;
             var used = new HashSet<int>();
-            return design.hullWeaponTemplateEntries.All(entry => entry.moduleTemplate != null &&
-                entry.moduleTemplate.ref_weapon != null && entry.moduleTemplate.ref_weapon.mount == Mount.FourHull &&
+            return ValidEntries(design, design.hullWeaponTemplateEntries, Mount.FourHull, ShipModuleSlotType.HullHardPoint, used) &&
+                ValidEntries(design, design.noseWeaponTemplateEntries, Mount.FourNose, ShipModuleSlotType.NoseHardPoint, used);
+        }
+
+        internal static bool RequiresPolicy(TISpaceShipTemplate design)
+        {
+            return design != null && (CapitalMountPolicy.Applies(design.hullName) ||
+                (design.noseWeaponTemplateEntries ?? new List<ModuleDataTemplateEntry>()).Any(e => CapitalMountPolicy.IsSize5(e.moduleName)));
+        }
+
+        private static bool ValidEntries(TISpaceShipTemplate design, List<ModuleDataTemplateEntry> entries,
+            Mount mount, ShipModuleSlotType type, HashSet<int> used)
+        {
+            bool compact = CapitalMountPolicy.Applies(design.hullName);
+            return (entries ?? new List<ModuleDataTemplateEntry>()).All(entry => entry.moduleName == "Empty" || entry.moduleTemplate != null &&
+                entry.moduleTemplate.ref_weapon != null && (!compact || entry.moduleTemplate.ref_weapon.mount == mount) &&
+                CapitalMountPolicy.WeaponAllowed(design.hullName, entry.moduleName, entry.moduleTemplate.ref_weapon.mount.ToString(), type == ShipModuleSlotType.HullHardPoint) &&
                 entry.slot >= 0 && entry.slot < design.hullTemplate.shipModuleSlots.Count &&
-                design.hullTemplate.shipModuleSlots[entry.slot].moduleSlotType == ShipModuleSlotType.HullHardPoint && used.Add(entry.slot));
+                design.hullTemplate.shipModuleSlots[entry.slot].moduleSlotType == type && used.Add(entry.slot) &&
+                (compact || design.ValidAssignedSlotForLocation(entry.moduleTemplate, entry.slot)));
         }
 
         internal static void Invalidate(TISpaceShipTemplate design)
         {
-            foreach (string name in new[] { "cachedHullWeapons", "cachedHullWeaponTemplates", "_spaceResourceConstructionCost" })
+            foreach (string name in new[] { "cachedHullWeapons", "cachedHullWeaponTemplates", "cachedNoseWeapons", "cachedNoseWeaponTemplates", "_spaceResourceConstructionCost" })
                 AccessTools.Field(typeof(TISpaceShipTemplate), name).SetValue(design, null);
             foreach (string name in new[] { "_unnormalizedCombatValue", "_combatValue", "_baseCruiseDeltaV_kps", "_baseCruiseAcceleration_mps2", "_requiredExotics", "_requiredAntimatter", "_heatCapacity_GJ", "_batteryCapacity_GJ" })
                 AccessTools.Field(typeof(TISpaceShipTemplate), name).SetValue(design, -1f);
@@ -108,7 +125,7 @@ namespace TIEconomyMod.Core
 
         private static void EnsureDesignWithBackup(TISpaceShipTemplate design, bool imported)
         {
-            if (Planning || design == null || !CapitalMountPolicy.Applies(design.hullName) || State(design).Schema == CapitalMountPolicy.Schema) return;
+            if (Planning || design == null || State(design).Schema == CapitalMountPolicy.Schema || !RequiresPolicy(design)) return;
             CapitalConversion conversion = Prepare(design);
             // Stock skirmish/benchmark templates are initialized at the main
             // menu, before campaign factions exist. They contain no save data.
@@ -121,21 +138,23 @@ namespace TIEconomyMod.Core
         internal static void NormalizeStockDesigns()
         {
             foreach (TISpaceShipTemplate design in TemplateManager.GetAllTemplates<TISpaceShipTemplate>())
-                if (CapitalMountPolicy.Applies(design.hullName) && design.designingFaction == null)
+                if (RequiresPolicy(design) && design.designingFaction == null)
                     EnsureDesign(design);
         }
 
-        private static List<TIShipWeaponTemplate> Eligible(TISpaceShipTemplate design)
+        private static List<TIShipWeaponTemplate> Eligible(TISpaceShipTemplate design, bool nose = false)
         {
             TIFactionState faction = design.designingFaction;
-            if (faction == null) return InferredStockWeapons(design);
+            if (faction == null) return InferredStockWeapons(design, nose);
             return TemplateManager.IterateByClass<TIShipWeaponTemplate>()
-                .Where(w => w.mount == Mount.FourHull && w.isAlien == design.isAlien && w.FactionCanBuild(faction))
+                .Where(w => w.mount == (nose ? Mount.FourNose : Mount.FourHull) &&
+                    CapitalMountPolicy.WeaponAllowed(design.hullName, w.dataName, w.mount.ToString(), !nose) &&
+                    w.isAlien == design.isAlien && w.FactionCanBuild(faction))
                 .OrderByDescending(w => CapitalMountPolicy.FallbackRank(w.dataName))
                 .ThenBy(w => w.dataName, StringComparer.Ordinal).ToList();
         }
 
-        private static List<TIShipWeaponTemplate> InferredStockWeapons(TISpaceShipTemplate design)
+        private static List<TIShipWeaponTemplate> InferredStockWeapons(TISpaceShipTemplate design, bool nose)
         {
             // TemplateManager is available at the main menu even though faction
             // research states are not. Infer a conservative tech floor from the
@@ -149,7 +168,8 @@ namespace TIEconomyMod.Core
                 if (entry.moduleName != "Empty" && entry.moduleTemplate != null)
                     InferPrerequisites(entry.moduleTemplate.requiredProjectName, registry, known);
             return TemplateManager.IterateByClass<TIShipWeaponTemplate>()
-                .Where(w => w.mount == Mount.FourHull && w.isAlien == design.isAlien &&
+                .Where(w => w.mount == (nose ? Mount.FourNose : Mount.FourHull) &&
+                    CapitalMountPolicy.WeaponAllowed(design.hullName, w.dataName, w.mount.ToString(), !nose) && w.isAlien == design.isAlien &&
                     ProjectSupported(w.requiredProjectName, registry, known, new HashSet<string>()))
                 .OrderByDescending(w => CapitalMountPolicy.FallbackRank(w.dataName))
                 .ThenBy(w => w.dataName, StringComparer.Ordinal).ToList();
@@ -189,15 +209,37 @@ namespace TIEconomyMod.Core
             return supported;
         }
 
-        private static TIShipWeaponTemplate Replacement(TIShipWeaponTemplate old, List<TIShipWeaponTemplate> eligible, bool owned)
+        private static TIShipWeaponTemplate Replacement(TIShipWeaponTemplate old, List<TIShipWeaponTemplate> eligible, bool owned, bool nose)
         {
+            return ReplacementForHull(old, eligible, owned, nose, null);
+        }
+
+        private static TIShipWeaponTemplate ReplacementForHull(TIShipWeaponTemplate old, List<TIShipWeaponTemplate> eligible, bool owned, bool nose, string hull)
+        {
+            Mount required = nose ? Mount.FourNose : Mount.FourHull;
             // Already-installed heavy equipment is retained even if its unlock is no longer available.
-            if (old.mount == Mount.FourHull) return old;
-            string equivalent = CapitalMountPolicy.HeavyEquivalent(old.dataName);
+            if (old.mount == required && CapitalMountPolicy.WeaponAllowed(hull, old.dataName, old.mount.ToString(), !nose)) return old;
+            string equivalent = nose ? CapitalMountPolicy.NoseEquivalent(old.dataName) : CapitalMountPolicy.HeavyEquivalent(old.dataName);
+            if (nose)
+            {
+                if (CapitalMountPolicy.NoseGrade(hull) == 5)
+                    equivalent = CapitalMountPolicy.Size5Equivalent(old.dataName) ?? CapitalMountPolicy.Size5Equivalent(equivalent);
+                else if (CapitalMountPolicy.IsSize5(old.dataName))
+                    equivalent = CapitalMountPolicy.StandardEquivalent(old.dataName);
+                else if (CapitalMountPolicy.IsSize5(equivalent))
+                    equivalent = CapitalMountPolicy.StandardEquivalent(equivalent);
+            }
+            // A promoted weapon and its explicit standard counterpart share a
+            // project; preserve installed-equipment access in either direction.
+            if (nose && equivalent != null && (CapitalMountPolicy.IsSize5(old.dataName) || old.mount == Mount.FourNose))
+            {
+                TIShipWeaponTemplate paired = TemplateManager.Find<TIShipWeaponTemplate>(equivalent, true);
+                if (paired != null && paired.mount == required && CapitalMountPolicy.WeaponAllowed(hull, paired.dataName, paired.mount.ToString(), false)) return paired;
+            }
             if (!owned && equivalent != null)
             {
                 TIShipWeaponTemplate family = TemplateManager.Find<TIShipWeaponTemplate>(equivalent, true);
-                if (family != null && family.mount == Mount.FourHull) return family;
+                if (family != null && family.mount == required && CapitalMountPolicy.WeaponAllowed(hull, family.dataName, family.mount.ToString(), !nose)) return family;
             }
             TIShipWeaponTemplate result = eligible.FirstOrDefault(w => w.dataName == equivalent);
             if (result != null) return result;
@@ -207,8 +249,12 @@ namespace TIEconomyMod.Core
                 // Legacy equipment is an explicit exception, never a research unlock.
                 // Prefer the old weapon's heavy relative; otherwise use a baseline mag.
                 result = equivalent == null ? null : TemplateManager.Find<TIShipWeaponTemplate>(equivalent, true);
-                if (result == null || result.mount != Mount.FourHull)
-                    result = TemplateManager.Find<TIShipWeaponTemplate>(old.isAlien ? "AlienHeavyMagBattery" : "HeavyRailgunBatteryMk1", true);
+                if (result == null || result.mount != required || !CapitalMountPolicy.WeaponAllowed(hull, result.dataName, result.mount.ToString(), !nose))
+                    result = TemplateManager.Find<TIShipWeaponTemplate>(nose && CapitalMountPolicy.NoseGrade(hull) == 5 ?
+                        (hull == "AlienMothership" ? "AlienRelativisticParticleCannon" : "SpinalSiegeCoilerMk1") : nose ?
+                        (old.isAlien ? "AlienSpinalMagCannon" : "SpinalRailgunMk1") :
+                        (old.isAlien ? "AlienHeavyMagBattery" : "HeavyRailgunBatteryMk1"), true);
+                if (result == null || result.mount != required) throw new InvalidOperationException("Missing capital replacement for " + old.dataName);
                 if (owned) Main.Warn("No researched capital replacement for " + old.dataName + "; retaining legacy equipment access through " + result.dataName + ". No project unlocked.");
             }
             return result;
@@ -217,35 +263,16 @@ namespace TIEconomyMod.Core
         private static CapitalConversion Prepare(TISpaceShipTemplate design)
         {
             var result = new CapitalConversion { Design = design, Weapons = new List<ModuleDataTemplateEntry>(),
+                NoseWeapons = new List<ModuleDataTemplateEntry>(),
                 Modes = new List<FireModeDataTemplateEntry>(design.fireModeTemplateEntries ?? new List<FireModeDataTemplateEntry>()) };
-            var eligible = Eligible(design);
-            foreach (ModuleDataTemplateEntry entry in design.hullWeaponTemplateEntries ?? new List<ModuleDataTemplateEntry>())
-            {
-                // Authored skirmish rosters retain explicit vacant-cell entries.
-                if (entry.moduleName == "Empty") continue;
-                TIShipWeaponTemplate old = entry.moduleTemplate?.ref_weapon;
-                if (old == null || entry.slot < 0 || entry.slot >= design.hullTemplate.shipModuleSlots.Count)
-                    throw new InvalidOperationException("Missing weapon or invalid slot in " + design.dataName);
-                TIShipWeaponTemplate weapon = Replacement(old, eligible, design.designingFaction != null);
-                TIShipHullTemplate.ShipModuleSlot anchor = design.hullTemplate.shipModuleSlots[entry.slot];
-                FireMode mode = design.GetFireModeDataEntryFromSlot(entry.slot).fireMode;
-                if (!weapon.GetActualFireModes().Contains(mode)) mode = weapon.DefaultFireMode;
-                foreach (UtilityGridCell offset in CapitalMountPolicy.LegacyOffsets(old.mount.ToString()))
-                {
-                    int slot = design.hullTemplate.shipModuleSlots.FindIndex(s => s.x == anchor.x + offset.X && s.y == anchor.y + offset.Y && s.moduleSlotType == ShipModuleSlotType.HullHardPoint);
-                    if (slot < 0 || result.SourceSlots.ContainsKey(slot))
-                        throw new InvalidOperationException("Invalid or overlapping legacy footprint in " + design.dataName + " at " + entry.slot);
-                    result.SourceSlots.Add(slot, entry.slot);
-                    result.Weapons.Add(new ModuleDataTemplateEntry(weapon, slot));
-                    result.Modes.RemoveAll(m => m.slot == slot);
-                    result.Modes.Add(new FireModeDataTemplateEntry(slot, mode));
-                }
-            }
+            PrepareWeapons(design, result, false);
+            PrepareWeapons(design, result, true);
             Planning = true;
             try
             {
                 TISpaceShipTemplate trial = design.Clone(design.dataName, design.factionName);
                 trial.hullWeaponTemplateEntries = result.Weapons;
+                trial.noseWeaponTemplateEntries = result.NoseWeapons;
                 trial.fireModeTemplateEntries = result.Modes;
                 State(trial).Schema = CapitalMountPolicy.Schema;
                 Invalidate(trial);
@@ -268,12 +295,95 @@ namespace TIEconomyMod.Core
             return result;
         }
 
+        private static void PrepareWeapons(TISpaceShipTemplate design, CapitalConversion result, bool nose)
+        {
+            var eligible = Eligible(design, nose);
+            var destination = nose ? result.NoseWeapons : result.Weapons;
+            foreach (ModuleDataTemplateEntry entry in (nose ? design.noseWeaponTemplateEntries : design.hullWeaponTemplateEntries) ?? new List<ModuleDataTemplateEntry>())
+            {
+                // Authored skirmish rosters retain explicit vacant-cell entries.
+                if (entry.moduleName == "Empty") continue;
+                TIShipWeaponTemplate old = entry.moduleTemplate?.ref_weapon;
+                if (old == null || entry.slot < 0 || entry.slot >= design.hullTemplate.shipModuleSlots.Count)
+                    throw new InvalidOperationException("Missing weapon or invalid slot in " + design.dataName);
+                TIShipWeaponTemplate weapon = !CapitalMountPolicy.Applies(design.hullName) && !CapitalMountPolicy.IsSize5(old.dataName)
+                    ? old : ReplacementForHull(old, eligible, design.designingFaction != null, nose, design.hullName);
+                FireMode mode = design.GetFireModeDataEntryFromSlot(entry.slot).fireMode;
+                if (!weapon.GetActualFireModes().Contains(mode)) mode = weapon.DefaultFireMode;
+                foreach (int slot in LegacySlots(design, entry, nose))
+                {
+                    if (slot < 0)
+                        throw new InvalidOperationException("Invalid legacy footprint in " + design.dataName + " at " + entry.slot);
+                    int previous;
+                    if (result.SourceSlots.TryGetValue(slot, out previous))
+                    {
+                        // Some native rosters overlap a large weapon's secondary
+                        // cells with explicitly anchored smaller weapons. Preserve
+                        // each explicit anchor; fill the remaining occupied union.
+                        if (slot != entry.slot) continue;
+                        if (previous == entry.slot) throw new InvalidOperationException("Duplicate legacy weapon anchor in " + design.dataName);
+                        destination.RemoveAll(w => w.slot == slot);
+                    }
+                    result.SourceSlots[slot] = entry.slot;
+                    destination.Add(new ModuleDataTemplateEntry(weapon, slot));
+                    result.Modes.RemoveAll(m => m.slot == slot);
+                    result.Modes.Add(new FireModeDataTemplateEntry(slot, mode));
+                }
+            }
+        }
+
+        // Read footprints from the old geometry, never from the patched compact API.
+        private static IEnumerable<int> LegacySlots(TISpaceShipTemplate design, ModuleDataTemplateEntry entry, bool nose)
+        {
+            if (!CapitalMountPolicy.Applies(design.hullName) ||
+                (nose ? CapitalMountPolicy.HadCompactNose(design.hullName, State(design).Schema) :
+                    CapitalMountPolicy.HadCompactHull(design.hullName, State(design).Schema))) return new[] { entry.slot };
+            var slots = design.hullTemplate.shipModuleSlots.ToList();
+            if (!nose && Main.shipDesignerLayout != null)
+                foreach (var history in Main.shipDesignerLayout.LegacyWeaponSlots.Where(h => h.Hull == design.hullName && State(design).Schema <= h.MaximumSchema))
+                    foreach (var p in history.Positions)
+                    {
+                        if (p.Slot >= slots.Count) throw new InvalidOperationException("Historical weapon slot is outside its hull.");
+                        slots[p.Slot] = new TIShipHullTemplate.ShipModuleSlot { x = p.X, y = p.Y, moduleSlotType = slots[p.Slot].moduleSlotType };
+                    }
+            if (nose && design.hullName == "AlienMothership")
+            {
+                int[] xs = { 9, 8, 8, 8 }; int[] ys = { 3, 3, 1, 5 };
+                for (int i = 0; i < 4; ++i)
+                    slots[7 + i] = new TIShipHullTemplate.ShipModuleSlot { x = xs[i], y = ys[i], moduleSlotType = ShipModuleSlotType.NoseHardPoint };
+            }
+            var anchor = slots[entry.slot];
+            var type = nose ? ShipModuleSlotType.NoseHardPoint : ShipModuleSlotType.HullHardPoint;
+            if (anchor.moduleSlotType != type) throw new InvalidOperationException("Weapon in wrong legacy slot type: " + design.dataName);
+            if (!nose) return CapitalMountPolicy.LegacyOffsets(entry.moduleTemplate.ref_weapon.mount.ToString())
+                .Select(o => slots.FindIndex(s => s.x == anchor.x + o.X && s.y == anchor.y + o.Y && s.moduleSlotType == type)).ToList();
+            Mount mount = entry.moduleTemplate.ref_weapon.mount;
+            var cells = new List<int> { entry.slot };
+            if (mount == Mount.OneNose || mount == Mount.HalfNose) return cells;
+            int down = slots.FindIndex(s => s.x == anchor.x && s.y == anchor.y + 2 && s.moduleSlotType == type);
+            int horizontal = slots.FindIndex(s => s.x == anchor.x + 1 && (s.y == anchor.y || s.y == anchor.y + 1) && s.moduleSlotType == type);
+            if (mount == Mount.TwoNoseHoriz) cells.Add(horizontal);
+            else if (mount == Mount.TwoNoseVert) cells.Add(down);
+            else if (mount == Mount.ThreeNoseAngle) { cells.Add(down); cells.Add(horizontal); }
+            else if (mount == Mount.FourNose)
+            {
+                cells.Add(down);
+                cells.Add(slots.FindIndex(s => s.x == anchor.x + 1 && s.y == anchor.y + 2 && s.moduleSlotType == type));
+                cells.Add(slots.FindIndex(s => s.x == anchor.x && s.y == anchor.y + 4 && s.moduleSlotType == type));
+            }
+            else throw new InvalidOperationException("Unsupported legacy nose mount: " + mount);
+            if (cells.Any(s => s < 0) || cells.Distinct().Count() != cells.Count)
+                throw new InvalidOperationException("Invalid legacy nose footprint in " + design.dataName);
+            return cells;
+        }
+
         private static void Commit(CapitalConversion conversion)
         {
             conversion.Design.hullWeaponTemplateEntries = conversion.Weapons;
+            conversion.Design.noseWeaponTemplateEntries = conversion.NoseWeapons;
             conversion.Design.fireModeTemplateEntries = conversion.Modes;
             State(conversion.Design).Schema = CapitalMountPolicy.Schema;
-            State(conversion.Design).LegacyCapacity = !string.IsNullOrEmpty(conversion.CapacityWarning);
+            State(conversion.Design).LegacyCapacity |= !string.IsNullOrEmpty(conversion.CapacityWarning);
             Invalidate(conversion.Design);
             if (!string.IsNullOrEmpty(conversion.CapacityWarning))
                 Main.Warn("Capital migration " + conversion.Design.dataName + ": " + conversion.CapacityWarning);
@@ -282,12 +392,13 @@ namespace TIEconomyMod.Core
         private static CapitalShipConversion PrepareShip(TISpaceShipState ship, CapitalConversion design)
         {
             var result = new CapitalShipConversion { Ship = ship, Weapons = new List<ModuleDataEntry>(),
+                NoseWeapons = new List<ModuleDataEntry>(),
                 Ammo = new Dictionary<ModuleDataEntry, int>(ship.ammo),
                 Damage = new List<DamagedShipPartData>(ship.damagedParts),
                 Repair = new List<DamagedShipPartData>(ship.plannedResupplyAndRepair.modulesToRepair),
                 PreviousRepair = new List<DamagedShipPartData>(ship.prevPartsBeingRepaired),
                 Reload = new Dictionary<ModuleDataEntry, int>(ship.plannedResupplyAndRepair.ammoToReload) };
-            foreach (ModuleDataEntry old in ship.hullWeapons)
+            foreach (ModuleDataEntry old in ship.hullWeapons.Concat(ship.noseWeapons))
             {
                 result.Ammo.Remove(old);
                 result.Reload.Remove(old);
@@ -295,13 +406,13 @@ namespace TIEconomyMod.Core
                 result.Repair.RemoveAll(d => d.module.Equals(old));
                 result.PreviousRepair.RemoveAll(d => d.module.Equals(old));
             }
-            foreach (ModuleDataTemplateEntry entry in design.Weapons)
+            foreach (ModuleDataTemplateEntry entry in design.Weapons.Concat(design.NoseWeapons))
             {
                 int sourceSlot = design.SourceSlots[entry.slot];
-                ModuleDataEntry old = ship.hullWeapons.SingleOrDefault(w => w.slotIndex == sourceSlot);
+                ModuleDataEntry old = ship.hullWeapons.Concat(ship.noseWeapons).SingleOrDefault(w => w.slotIndex == sourceSlot);
                 if (old == null) throw new InvalidOperationException("Built ship " + ship.ID + " lacks legacy weapon at slot " + sourceSlot);
                 var replacement = new ModuleDataEntry(entry.moduleTemplate, entry.slot);
-                result.Weapons.Add(replacement);
+                (entry.moduleTemplate.ref_weapon.hullWeapon ? result.Weapons : result.NoseWeapons).Add(replacement);
                 CopyDamage(ship.damagedParts, result.Damage, old, replacement);
                 CopyDamage(ship.plannedResupplyAndRepair.modulesToRepair, result.Repair, old, replacement);
                 CopyDamage(ship.prevPartsBeingRepaired, result.PreviousRepair, old, replacement);
@@ -333,6 +444,7 @@ namespace TIEconomyMod.Core
         {
             TISpaceShipState ship = conversion.Ship;
             ship.hullWeapons = conversion.Weapons;
+            ship.noseWeapons = conversion.NoseWeapons;
             ship.ammo.Clear();
             foreach (var pair in conversion.Ammo) ship.ammo.Add(pair.Key, pair.Value);
             ship.damagedParts = conversion.Damage;
@@ -368,10 +480,10 @@ namespace TIEconomyMod.Core
                             }
                 }
                 designs.UnionWith(ships.Select(s => s.template));
-                List<CapitalConversion> plans = designs.Where(d => d != null && CapitalMountPolicy.Applies(d.hullName) && State(d).Schema == 0)
+                List<CapitalConversion> plans = designs.Where(d => d != null && RequiresPolicy(d) && State(d).Schema < CapitalMountPolicy.Schema)
                     .OrderBy(d => d.dataName, StringComparer.Ordinal).Select(Prepare).ToList();
                 var shipPlans = new List<CapitalShipConversion>();
-                foreach (TISpaceShipState ship in ships.Where(s => CapitalMountPolicy.Applies(s.template.hullName) && State(s).Schema == 0))
+                foreach (TISpaceShipState ship in ships.Where(s => RequiresPolicy(s.template) && State(s).Schema < CapitalMountPolicy.Schema))
                 {
                     CapitalConversion plan = plans.SingleOrDefault(p => ReferenceEquals(p.Design, ship.template));
                     if (plan == null)
@@ -420,11 +532,11 @@ namespace TIEconomyMod.Core
             string directory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "TIEconomyMod", "CapitalMigrationBackups");
             Directory.CreateDirectory(directory);
             string stem = DateTime.UtcNow.ToString("yyyyMMdd-HHmmss-fffffff") + (campaign ? "-campaign" : "-design");
-            var report = new StringBuilder("EEO capital mount schema 1 preflight\n");
+            var report = new StringBuilder("EEO capital mount schema " + CapitalMountPolicy.Schema + " preflight\n");
             foreach (CapitalConversion plan in plans)
             {
                 report.AppendLine(plan.Design.dataName + " (" + plan.Design.hullName + ") " + plan.CapacityWarning);
-                foreach (ModuleDataTemplateEntry weapon in plan.Weapons)
+                foreach (ModuleDataTemplateEntry weapon in plan.Weapons.Concat(plan.NoseWeapons))
                     report.AppendLine("  old slot " + plan.SourceSlots[weapon.slot] + " -> " + weapon.slot + ": " + weapon.moduleName);
                 if (!campaign)
                     File.WriteAllText(Path.Combine(directory, stem + ".json"), StringSerializationAPI.SerializePretty(typeof(TISpaceShipTemplate), plan.Design));

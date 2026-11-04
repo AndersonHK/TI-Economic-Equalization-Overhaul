@@ -60,9 +60,9 @@ public static class TechnologyTemplateMergeValidation
             mode = MergeArrayHandling.Concat;
         if (mod.TemplatesToReplaceArrays != null && mod.TemplatesToReplaceArrays.Contains(fileName))
             mode = MergeArrayHandling.Replace;
-        if (fileName == "TITechTemplate.json")
+        if (fileName == "TITechTemplate.json" || fileName == "TIShipArmorTemplate.json")
             Require(mode == MergeArrayHandling.Replace,
-                "TITechTemplate.json must use TemplatesToReplaceArrays to clear inherited prerequisites and effects.");
+                fileName + " must use TemplatesToReplaceArrays for authored arrays.");
 
         List<JObject> merged = controller.CombineJson(Read(baselinePath), mod.FileContents, false, mode);
         Require(merged.Count == baseline.Count, "Unexpected template additions/removals in " + fileName);
@@ -119,7 +119,38 @@ public static class TechnologyTemplateMergeValidation
         Require(!((JArray)Find(starts, "ModernDayStart")["globalTechsCompleted"]).Values<string>()
             .Contains("AdvancedNeuralNetworks"),
             "The resolved 2022 start must not complete Neural Networks.");
-        return "PASS: native JSON merge validates " + technologies.Count +
+        List<JObject> armor = MergeAndVerify(controller,
+            Path.Combine(templates, "TIShipArmorTemplate.json"),
+            Path.Combine(modFiles, "TIShipArmorTemplate.json"));
+        List<JObject> armorOverrides = Read(Path.Combine(modFiles, "TIShipArmorTemplate.json"));
+        Require(armorOverrides.Count == 2 && armorOverrides.All(row =>
+            (string)row["dataName"] == "AlienAdamantaneArmor" || (string)row["dataName"] == "AlienExoticArmor"),
+            "Only the two alien armor materials may be overridden.");
+        JObject hybrid = Find(armor, "HybridArmor");
+        JObject adamantane = Find(armor, "AlienAdamantaneArmor");
+        foreach (string field in new[] { "weightedBuildMaterials", "density_kgm3", "heatofVaporization_MJkg",
+            "xRayHalfValue_cm", "baryonicHalfValue_cm", "specialties" })
+            Require(JToken.DeepEquals(adamantane[field], hybrid[field]),
+                "Alien Adamantane must match Hybrid: " + field);
+        foreach (string name in new[] { "AlienAdamantaneArmor", "AlienExoticArmor" })
+        {
+            JObject row = Find(armor, name);
+            TIShipArmorTemplate material = row.ToObject<TIShipArmorTemplate>();
+            double expectedCm = name == "AlienExoticArmor" ? 1.75 : 2.5;
+            double expectedKg = name == "AlienExoticArmor" ? 35.0 : 50.0;
+            Require(Math.Abs(material.plate_thickness_m * 100.0 - expectedCm) < 0.00001,
+                name + " native thickness does not match requested cm per point.");
+            Require(Math.Abs(material.single_armor_point_mass_tons * 1000.0 - expectedKg) < 0.00001,
+                name + " native areal mass does not match requested kg/m2 per point.");
+            Require(Math.Abs(material.xRayHalfValue_cm / (material.plate_thickness_m * 100.0) - 1.8) < 0.00001 &&
+                Math.Abs(material.baryonicHalfValue_cm / (material.plate_thickness_m * 100.0) - 4.4) < 0.00001,
+                name + " radiation protection per point must match Hybrid.");
+            Require((string)row["requiredProjectName"] == "Project_AlienMasterProject" &&
+                ((JArray)row["specialties"]).Count == 3 &&
+                Math.Abs(material.GetSpecialtyModifiers(ArmorSpecialty.LaserResistance) - 0.75) < 0.00001,
+                name + " must retain alien unlock and exactly one laser resistance specialty.");
+        }
+        return "PASS: native JSON merge validates two alien armor overrides, native material getters, unchanged armor records and costs; " + technologies.Count +
             " technologies, authored arrays and preserved baseline fields, 2,500-cost prerequisite-free Neural Networks, and the 2026-only completion grant.";
     }
 }

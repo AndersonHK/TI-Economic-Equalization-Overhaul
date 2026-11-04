@@ -158,6 +158,8 @@ foreach ($row in $csvRows) {
     $nose = [int]$template.noseHardpoints
     $hull = [int]$template.hullHardpoints
     $override = $overrideByName[[string]$template.dataName]
+    if ($null -ne $override -and $null -ne $override.noseHardpoints) { $nose = [int]$override.noseHardpoints }
+    if ($null -ne $override -and $null -ne $override.hullHardpoints) { $hull = [int]$override.hullHardpoints }
     $utility = if ($null -ne $override -and $null -ne $override.internalModules) { [int]$override.internalModules } else { [int]$template.internalModules }
     if ([int]$row.noseHardpoints -ne $nose -or
         [int]$row.hullHardpoints -ne $hull -or

@@ -1,5 +1,10 @@
 # Weapon visibility and maximum nose mounts
 
+**Current fitting:** [0.10.22 capital expansion](capital-mount-expansion-2026-11-02.md)
+implements a later compact size-4 hull/nose system on both Dreadnoughts,
+both Titans and the six-nose-cell Mothership. The earlier alternatives
+and weapon-stat proposals below remain historical/deferred.
+
 New discussion candidate: [nose batteries and enlarged spinal tier](nose-battery-and-spinal-tier-proposal-2026-09-25.md).
 Its proposed counts differ from the single-primary table below, and alien
 Dreadnought/Titan choices remain open. Neither nose proposal is implemented.

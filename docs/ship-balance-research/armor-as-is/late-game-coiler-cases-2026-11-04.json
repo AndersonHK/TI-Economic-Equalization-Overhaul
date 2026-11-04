@@ -1,0 +1,1336 @@
+{
+  "date": "2026-11-04",
+  "scope": "Analytic single-projectile armor cases, not full ship combat simulation. Armor is struck-facing value, normal incidence. Velocity additions are collinear closing examples. Full projectile mass, no PD loss. Entry-only probability examples exclude internal routing/exit chips.",
+  "game_dll_sha256": "4A4B9AAE4154E444E9727204205D2D42AE8ED9E1C5F92CDC1280074A259D8350",
+  "sources": [
+    {
+      "path": "D:\\Games\\SteamLibrary\\steamapps\\common\\Terra Invicta\\TerraInvicta_Data\\StreamingAssets\\Templates\\TIMagneticGunTemplate.json",
+      "sha256": "DB4FCE6D3B9AE8AB31B10D2D0CDEFF1A18079C964FA545E7D3C0F127167BA5E3"
+    },
+    {
+      "path": "TIEconomyMod\\ModFiles\\TIMagneticGunTemplate.json",
+      "sha256": "09D8841EFAC41EA4EE07FD796718C81ECAEEEB6B05596E3814067D1971B72BBD",
+      "installed_matches": true
+    },
+    {
+      "path": "D:\\Games\\SteamLibrary\\steamapps\\common\\Terra Invicta\\TerraInvicta_Data\\StreamingAssets\\Templates\\TIShipHullTemplate.json",
+      "sha256": "36952BDDFFCBEBE1C3AB2C2141B7D7DF53F985C0EED326C5A43A9B52BD86826B"
+    },
+    {
+      "path": "TIEconomyMod\\ModFiles\\TIShipHullTemplate.json",
+      "sha256": "C6709A0FBA88A22C53EB563AF954D0F858B188312CAB3C96926476686E573B7D",
+      "installed_matches": true
+    },
+    {
+      "path": "D:\\Games\\SteamLibrary\\steamapps\\common\\Terra Invicta\\TerraInvicta_Data\\StreamingAssets\\Templates\\TIShipArmorTemplate.json",
+      "sha256": "9AD3C07825E19A47D3072A7DBF7C484C434C443D093ED1437DACD11DD61E0777"
+    },
+    {
+      "path": "TIEconomyMod\\ModFiles\\TIShipArmorTemplate.json",
+      "sha256": "14A8A5F425BF73B7B06E19B9B16BD60C9F6E4C3E850184193E9600529D35397E",
+      "installed_matches": true
+    },
+    {
+      "path": "D:\\Games\\SteamLibrary\\steamapps\\common\\Terra Invicta\\TerraInvicta_Data\\StreamingAssets\\Templates\\TIOfficerTemplate.json",
+      "sha256": "B8A36D5F7509FB3496B96B906B2C2337097E23F8DD8371F025DE8B816ED3B6DB"
+    },
+    {
+      "path": "D:\\Games\\SteamLibrary\\steamapps\\common\\Terra Invicta\\TerraInvicta_Data\\StreamingAssets\\Templates\\TIEffectTemplate.json",
+      "sha256": "905AA752C53C4A9F03C36E525D8FD9FEA9F15AF2745DB1164B7E7A77BE9C3DF9"
+    },
+    {
+      "path": "TIEconomyMod\\ModFiles\\TIEffectTemplate.json",
+      "sha256": "418C4D95B8B4C26F588D1ADFDC21967998E5C41B0331B654EFA361ED1FD41973",
+      "installed_matches": true
+    },
+    {
+      "path": "D:\\Games\\SteamLibrary\\steamapps\\common\\Terra Invicta\\TerraInvicta_Data\\StreamingAssets\\Templates\\TIProjectTemplate.json",
+      "sha256": "65C4AF0411555B0BABE86001F1CF5D0E83999B831D6D72E7319702C2C03542D7"
+    },
+    {
+      "path": "TIEconomyMod\\ModFiles\\TIProjectTemplate.json",
+      "sha256": "E754AAE1BAEFF78D59546BEB62DE487B1AE41FADE22C8E9FA8D5FFBD960DE7C7",
+      "installed_matches": true
+    }
+  ],
+  "weapons": [
+    {
+      "dataName": "SpinalCoilerMk3",
+      "warheadMass_kg": 109,
+      "muzzleVelocity_kps": 12.4,
+      "flatChipping": 0.35,
+      "salvo_shots": 5,
+      "intraSalvoCooldown_s": 8,
+      "cooldown_s": 10
+    },
+    {
+      "dataName": "HeavySiegeCoilerMk3",
+      "warheadMass_kg": 821,
+      "muzzleVelocity_kps": 5.9,
+      "flatChipping": 0.25,
+      "salvo_shots": 3,
+      "intraSalvoCooldown_s": 11,
+      "cooldown_s": 12
+    },
+    {
+      "dataName": "SpinalSiegeCoilerMk3",
+      "warheadMass_kg": 1094,
+      "muzzleVelocity_kps": 6.3,
+      "flatChipping": 0.25,
+      "salvo_shots": 3,
+      "intraSalvoCooldown_s": 5.5,
+      "cooldown_s": 6
+    }
+  ],
+  "hulls": [
+    {
+      "dataName": "Titan",
+      "length_m": 300,
+      "width_m": 35,
+      "structuralIntegrity": 64,
+      "consTier": 3
+    },
+    {
+      "dataName": "Battlecruiser",
+      "length_m": 175,
+      "width_m": 20,
+      "structuralIntegrity": 24,
+      "consTier": 2
+    }
+  ],
+  "hybrid": {
+    "dataName": "HybridArmor",
+    "friendlyName": "Hybrid Armor",
+    "weightedBuildMaterials": {
+      "volatiles": 0.38,
+      "metals": 0.45,
+      "nobleMetals": 0.165,
+      "exotics": 0.005
+    },
+    "requiredProjectName": "Project_HybridArmor",
+    "xRayHalfValue_cm": 4.5,
+    "baryonicHalfValue_cm": 11,
+    "density_kgm3": 2000,
+    "heatofVaporization_MJkg": 80,
+    "specialties": [
+      {
+        "armorSpecialty": "XRayResistance",
+        "value": 1.8
+      },
+      {
+        "armorSpecialty": "BaryonicResistance",
+        "value": 4.4
+      },
+      {
+        "armorSpecialty": "LaserResistance",
+        "value": 0.75
+      }
+    ],
+    "iconResource": "shipbuildericons/ICO_HybridArmor"
+  },
+  "cases": [
+    {
+      "weapon": "SpinalCoilerMk3",
+      "closing_kps": 0,
+      "impact_kps": 12.4,
+      "armor": 200,
+      "attack_multiplier": 1,
+      "prearmor_defense": 1,
+      "internal_multiplier": 1,
+      "kinetic_multiplier": 1,
+      "full_points": 418.9960000000001,
+      "direct_points": 272.3474000000001,
+      "chipping_points": 146.64860000000002,
+      "intact_penetration_nominal": 72.3474000000001,
+      "intact_penetration_min": 17.877920000000103,
+      "intact_penetration_max": 126.81688000000014,
+      "penetration_probability": 1,
+      "mean_intact_internal_points": 72.3474000000001,
+      "hole_nominal_internal_points": 418.9960000000001
+    },
+    {
+      "weapon": "SpinalCoilerMk3",
+      "closing_kps": 2,
+      "impact_kps": 14.4,
+      "armor": 200,
+      "attack_multiplier": 1,
+      "prearmor_defense": 1,
+      "internal_multiplier": 1,
+      "kinetic_multiplier": 1,
+      "full_points": 565.056,
+      "direct_points": 367.28640000000007,
+      "chipping_points": 197.7696,
+      "intact_penetration_nominal": 167.28640000000007,
+      "intact_penetration_min": 93.82912000000005,
+      "intact_penetration_max": 240.7436800000001,
+      "penetration_probability": 1,
+      "mean_intact_internal_points": 167.28640000000007,
+      "hole_nominal_internal_points": 565.056
+    },
+    {
+      "weapon": "SpinalCoilerMk3",
+      "closing_kps": 3,
+      "impact_kps": 15.4,
+      "armor": 200,
+      "attack_multiplier": 1,
+      "prearmor_defense": 1,
+      "internal_multiplier": 1,
+      "kinetic_multiplier": 1,
+      "full_points": 646.2610000000001,
+      "direct_points": 420.0696500000001,
+      "chipping_points": 226.19135,
+      "intact_penetration_nominal": 220.06965000000008,
+      "intact_penetration_min": 136.05572000000006,
+      "intact_penetration_max": 304.0835800000001,
+      "penetration_probability": 1,
+      "mean_intact_internal_points": 220.06965000000008,
+      "hole_nominal_internal_points": 646.2610000000001
+    },
+    {
+      "weapon": "SpinalCoilerMk3",
+      "closing_kps": 5,
+      "impact_kps": 17.4,
+      "armor": 200,
+      "attack_multiplier": 1,
+      "prearmor_defense": 1,
+      "internal_multiplier": 1,
+      "kinetic_multiplier": 1,
+      "full_points": 825.021,
+      "direct_points": 536.26365,
+      "chipping_points": 288.75735,
+      "intact_penetration_nominal": 336.26365,
+      "intact_penetration_min": 229.01092,
+      "intact_penetration_max": 443.5163799999999,
+      "penetration_probability": 1,
+      "mean_intact_internal_points": 336.26365,
+      "hole_nominal_internal_points": 825.021
+    },
+    {
+      "weapon": "SpinalCoilerMk3",
+      "closing_kps": 10,
+      "impact_kps": 22.4,
+      "armor": 200,
+      "attack_multiplier": 1,
+      "prearmor_defense": 1,
+      "internal_multiplier": 1,
+      "kinetic_multiplier": 1,
+      "full_points": 1367.2959999999998,
+      "direct_points": 888.7423999999999,
+      "chipping_points": 478.5535999999999,
+      "intact_penetration_nominal": 688.7423999999999,
+      "intact_penetration_min": 510.9939199999999,
+      "intact_penetration_max": 866.4908799999998,
+      "penetration_probability": 1,
+      "mean_intact_internal_points": 688.7423999999999,
+      "hole_nominal_internal_points": 1367.2959999999998
+    },
+    {
+      "weapon": "SpinalCoilerMk3",
+      "closing_kps": 0,
+      "impact_kps": 12.4,
+      "armor": 400,
+      "attack_multiplier": 1,
+      "prearmor_defense": 1,
+      "internal_multiplier": 1,
+      "kinetic_multiplier": 1,
+      "full_points": 418.9960000000001,
+      "direct_points": 272.3474000000001,
+      "chipping_points": 146.64860000000002,
+      "intact_penetration_nominal": 0,
+      "intact_penetration_min": 0,
+      "intact_penetration_max": 0,
+      "penetration_probability": 0,
+      "mean_intact_internal_points": 0,
+      "hole_nominal_internal_points": 418.9960000000001
+    },
+    {
+      "weapon": "SpinalCoilerMk3",
+      "closing_kps": 2,
+      "impact_kps": 14.4,
+      "armor": 400,
+      "attack_multiplier": 1,
+      "prearmor_defense": 1,
+      "internal_multiplier": 1,
+      "kinetic_multiplier": 1,
+      "full_points": 565.056,
+      "direct_points": 367.28640000000007,
+      "chipping_points": 197.7696,
+      "intact_penetration_nominal": 0,
+      "intact_penetration_min": 0,
+      "intact_penetration_max": 40.7436800000001,
+      "penetration_probability": 0.27732908161042774,
+      "mean_intact_internal_points": 5.649703677914589,
+      "hole_nominal_internal_points": 565.056
+    },
+    {
+      "weapon": "SpinalCoilerMk3",
+      "closing_kps": 3,
+      "impact_kps": 15.4,
+      "armor": 400,
+      "attack_multiplier": 1,
+      "prearmor_defense": 1,
+      "internal_multiplier": 1,
+      "kinetic_multiplier": 1,
+      "full_points": 646.2610000000001,
+      "direct_points": 420.0696500000001,
+      "chipping_points": 226.19135,
+      "intact_penetration_nominal": 20.06965000000008,
+      "intact_penetration_min": 0,
+      "intact_penetration_max": 104.0835800000001,
+      "penetration_probability": 0.6194423948504735,
+      "mean_intact_internal_points": 32.23689102990545,
+      "hole_nominal_internal_points": 646.2610000000001
+    },
+    {
+      "weapon": "SpinalCoilerMk3",
+      "closing_kps": 5,
+      "impact_kps": 17.4,
+      "armor": 400,
+      "attack_multiplier": 1,
+      "prearmor_defense": 1,
+      "internal_multiplier": 1,
+      "kinetic_multiplier": 1,
+      "full_points": 825.021,
+      "direct_points": 536.26365,
+      "chipping_points": 288.75735,
+      "intact_penetration_nominal": 136.26364999999998,
+      "intact_penetration_min": 29.01092,
+      "intact_penetration_max": 243.5163799999999,
+      "penetration_probability": 1,
+      "mean_intact_internal_points": 136.26364999999998,
+      "hole_nominal_internal_points": 825.021
+    },
+    {
+      "weapon": "SpinalCoilerMk3",
+      "closing_kps": 10,
+      "impact_kps": 22.4,
+      "armor": 400,
+      "attack_multiplier": 1,
+      "prearmor_defense": 1,
+      "internal_multiplier": 1,
+      "kinetic_multiplier": 1,
+      "full_points": 1367.2959999999998,
+      "direct_points": 888.7423999999999,
+      "chipping_points": 478.5535999999999,
+      "intact_penetration_nominal": 488.74239999999986,
+      "intact_penetration_min": 310.9939199999999,
+      "intact_penetration_max": 666.4908799999998,
+      "penetration_probability": 1,
+      "mean_intact_internal_points": 488.74239999999986,
+      "hole_nominal_internal_points": 1367.2959999999998
+    },
+    {
+      "weapon": "HeavySiegeCoilerMk3",
+      "closing_kps": 0,
+      "impact_kps": 5.9,
+      "armor": 200,
+      "attack_multiplier": 1,
+      "prearmor_defense": 1,
+      "internal_multiplier": 1,
+      "kinetic_multiplier": 1,
+      "full_points": 714.4752500000002,
+      "direct_points": 535.8564375000001,
+      "chipping_points": 178.61881250000005,
+      "intact_penetration_nominal": 335.8564375000001,
+      "intact_penetration_min": 228.68515000000008,
+      "intact_penetration_max": 443.02772500000003,
+      "penetration_probability": 1,
+      "mean_intact_internal_points": 335.8564375000001,
+      "hole_nominal_internal_points": 714.4752500000002
+    },
+    {
+      "weapon": "HeavySiegeCoilerMk3",
+      "closing_kps": 2,
+      "impact_kps": 7.9,
+      "armor": 200,
+      "attack_multiplier": 1,
+      "prearmor_defense": 1,
+      "internal_multiplier": 1,
+      "kinetic_multiplier": 1,
+      "full_points": 1280.9652500000002,
+      "direct_points": 960.7239375000001,
+      "chipping_points": 320.24131250000005,
+      "intact_penetration_nominal": 760.7239375000001,
+      "intact_penetration_min": 568.5791500000001,
+      "intact_penetration_max": 952.868725,
+      "penetration_probability": 1,
+      "mean_intact_internal_points": 760.7239375000001,
+      "hole_nominal_internal_points": 1280.9652500000002
+    },
+    {
+      "weapon": "HeavySiegeCoilerMk3",
+      "closing_kps": 3,
+      "impact_kps": 8.9,
+      "armor": 200,
+      "attack_multiplier": 1,
+      "prearmor_defense": 1,
+      "internal_multiplier": 1,
+      "kinetic_multiplier": 1,
+      "full_points": 1625.7852500000004,
+      "direct_points": 1219.3389375000002,
+      "chipping_points": 406.4463125000001,
+      "intact_penetration_nominal": 1019.3389375000002,
+      "intact_penetration_min": 775.4711500000002,
+      "intact_penetration_max": 1263.2067250000002,
+      "penetration_probability": 1,
+      "mean_intact_internal_points": 1019.3389375000002,
+      "hole_nominal_internal_points": 1625.7852500000004
+    },
+    {
+      "weapon": "HeavySiegeCoilerMk3",
+      "closing_kps": 5,
+      "impact_kps": 10.9,
+      "armor": 200,
+      "attack_multiplier": 1,
+      "prearmor_defense": 1,
+      "internal_multiplier": 1,
+      "kinetic_multiplier": 1,
+      "full_points": 2438.57525,
+      "direct_points": 1828.9314375,
+      "chipping_points": 609.6438125,
+      "intact_penetration_nominal": 1628.9314375,
+      "intact_penetration_min": 1263.14515,
+      "intact_penetration_max": 1994.717725,
+      "penetration_probability": 1,
+      "mean_intact_internal_points": 1628.9314375,
+      "hole_nominal_internal_points": 2438.57525
+    },
+    {
+      "weapon": "HeavySiegeCoilerMk3",
+      "closing_kps": 10,
+      "impact_kps": 15.9,
+      "armor": 200,
+      "attack_multiplier": 1,
+      "prearmor_defense": 1,
+      "internal_multiplier": 1,
+      "kinetic_multiplier": 1,
+      "full_points": 5188.92525,
+      "direct_points": 3891.6939375,
+      "chipping_points": 1297.2313125,
+      "intact_penetration_nominal": 3691.6939375,
+      "intact_penetration_min": 2913.3551500000003,
+      "intact_penetration_max": 4470.032725,
+      "penetration_probability": 1,
+      "mean_intact_internal_points": 3691.6939375,
+      "hole_nominal_internal_points": 5188.92525
+    },
+    {
+      "weapon": "HeavySiegeCoilerMk3",
+      "closing_kps": 0,
+      "impact_kps": 5.9,
+      "armor": 400,
+      "attack_multiplier": 1,
+      "prearmor_defense": 1,
+      "internal_multiplier": 1,
+      "kinetic_multiplier": 1,
+      "full_points": 714.4752500000002,
+      "direct_points": 535.8564375000001,
+      "chipping_points": 178.61881250000005,
+      "intact_penetration_nominal": 135.85643750000008,
+      "intact_penetration_min": 28.68515000000008,
+      "intact_penetration_max": 243.02772500000003,
+      "penetration_probability": 1,
+      "mean_intact_internal_points": 135.85643750000008,
+      "hole_nominal_internal_points": 714.4752500000002
+    },
+    {
+      "weapon": "HeavySiegeCoilerMk3",
+      "closing_kps": 2,
+      "impact_kps": 7.9,
+      "armor": 400,
+      "attack_multiplier": 1,
+      "prearmor_defense": 1,
+      "internal_multiplier": 1,
+      "kinetic_multiplier": 1,
+      "full_points": 1280.9652500000002,
+      "direct_points": 960.7239375000001,
+      "chipping_points": 320.24131250000005,
+      "intact_penetration_nominal": 560.7239375000001,
+      "intact_penetration_min": 368.57915000000014,
+      "intact_penetration_max": 752.868725,
+      "penetration_probability": 1,
+      "mean_intact_internal_points": 560.7239375000001,
+      "hole_nominal_internal_points": 1280.9652500000002
+    },
+    {
+      "weapon": "HeavySiegeCoilerMk3",
+      "closing_kps": 3,
+      "impact_kps": 8.9,
+      "armor": 400,
+      "attack_multiplier": 1,
+      "prearmor_defense": 1,
+      "internal_multiplier": 1,
+      "kinetic_multiplier": 1,
+      "full_points": 1625.7852500000004,
+      "direct_points": 1219.3389375000002,
+      "chipping_points": 406.4463125000001,
+      "intact_penetration_nominal": 819.3389375000002,
+      "intact_penetration_min": 575.4711500000002,
+      "intact_penetration_max": 1063.2067250000002,
+      "penetration_probability": 1,
+      "mean_intact_internal_points": 819.3389375000002,
+      "hole_nominal_internal_points": 1625.7852500000004
+    },
+    {
+      "weapon": "HeavySiegeCoilerMk3",
+      "closing_kps": 5,
+      "impact_kps": 10.9,
+      "armor": 400,
+      "attack_multiplier": 1,
+      "prearmor_defense": 1,
+      "internal_multiplier": 1,
+      "kinetic_multiplier": 1,
+      "full_points": 2438.57525,
+      "direct_points": 1828.9314375,
+      "chipping_points": 609.6438125,
+      "intact_penetration_nominal": 1428.9314375,
+      "intact_penetration_min": 1063.14515,
+      "intact_penetration_max": 1794.717725,
+      "penetration_probability": 1,
+      "mean_intact_internal_points": 1428.9314375,
+      "hole_nominal_internal_points": 2438.57525
+    },
+    {
+      "weapon": "HeavySiegeCoilerMk3",
+      "closing_kps": 10,
+      "impact_kps": 15.9,
+      "armor": 400,
+      "attack_multiplier": 1,
+      "prearmor_defense": 1,
+      "internal_multiplier": 1,
+      "kinetic_multiplier": 1,
+      "full_points": 5188.92525,
+      "direct_points": 3891.6939375,
+      "chipping_points": 1297.2313125,
+      "intact_penetration_nominal": 3491.6939375,
+      "intact_penetration_min": 2713.3551500000003,
+      "intact_penetration_max": 4270.032725,
+      "penetration_probability": 1,
+      "mean_intact_internal_points": 3491.6939375,
+      "hole_nominal_internal_points": 5188.92525
+    },
+    {
+      "weapon": "SpinalSiegeCoilerMk3",
+      "closing_kps": 0,
+      "impact_kps": 6.3,
+      "armor": 200,
+      "attack_multiplier": 1,
+      "prearmor_defense": 1,
+      "internal_multiplier": 1,
+      "kinetic_multiplier": 1,
+      "full_points": 1085.5215,
+      "direct_points": 814.1411250000001,
+      "chipping_points": 271.380375,
+      "intact_penetration_nominal": 614.1411250000001,
+      "intact_penetration_min": 451.3129000000001,
+      "intact_penetration_max": 776.9693500000001,
+      "penetration_probability": 1,
+      "mean_intact_internal_points": 614.1411250000001,
+      "hole_nominal_internal_points": 1085.5215
+    },
+    {
+      "weapon": "SpinalSiegeCoilerMk3",
+      "closing_kps": 2,
+      "impact_kps": 8.3,
+      "armor": 200,
+      "attack_multiplier": 1,
+      "prearmor_defense": 1,
+      "internal_multiplier": 1,
+      "kinetic_multiplier": 1,
+      "full_points": 1884.1415000000004,
+      "direct_points": 1413.1061250000002,
+      "chipping_points": 471.0353750000001,
+      "intact_penetration_nominal": 1213.1061250000002,
+      "intact_penetration_min": 930.4849000000002,
+      "intact_penetration_max": 1495.7273500000003,
+      "penetration_probability": 1,
+      "mean_intact_internal_points": 1213.1061250000002,
+      "hole_nominal_internal_points": 1884.1415000000004
+    },
+    {
+      "weapon": "SpinalSiegeCoilerMk3",
+      "closing_kps": 3,
+      "impact_kps": 9.3,
+      "armor": 200,
+      "attack_multiplier": 1,
+      "prearmor_defense": 1,
+      "internal_multiplier": 1,
+      "kinetic_multiplier": 1,
+      "full_points": 2365.5015000000003,
+      "direct_points": 1774.1261250000002,
+      "chipping_points": 591.3753750000001,
+      "intact_penetration_nominal": 1574.1261250000002,
+      "intact_penetration_min": 1219.3009000000002,
+      "intact_penetration_max": 1928.9513500000003,
+      "penetration_probability": 1,
+      "mean_intact_internal_points": 1574.1261250000002,
+      "hole_nominal_internal_points": 2365.5015000000003
+    },
+    {
+      "weapon": "SpinalSiegeCoilerMk3",
+      "closing_kps": 5,
+      "impact_kps": 11.3,
+      "armor": 200,
+      "attack_multiplier": 1,
+      "prearmor_defense": 1,
+      "internal_multiplier": 1,
+      "kinetic_multiplier": 1,
+      "full_points": 3492.3215000000005,
+      "direct_points": 2619.2411250000005,
+      "chipping_points": 873.0803750000001,
+      "intact_penetration_nominal": 2419.2411250000005,
+      "intact_penetration_min": 1895.3929000000003,
+      "intact_penetration_max": 2943.0893500000006,
+      "penetration_probability": 1,
+      "mean_intact_internal_points": 2419.2411250000005,
+      "hole_nominal_internal_points": 3492.3215000000005
+    },
+    {
+      "weapon": "SpinalSiegeCoilerMk3",
+      "closing_kps": 10,
+      "impact_kps": 16.3,
+      "armor": 200,
+      "attack_multiplier": 1,
+      "prearmor_defense": 1,
+      "internal_multiplier": 1,
+      "kinetic_multiplier": 1,
+      "full_points": 7266.621500000001,
+      "direct_points": 5449.966125000001,
+      "chipping_points": 1816.6553750000003,
+      "intact_penetration_nominal": 5249.966125000001,
+      "intact_penetration_min": 4159.972900000001,
+      "intact_penetration_max": 6339.959350000001,
+      "penetration_probability": 1,
+      "mean_intact_internal_points": 5249.966125000001,
+      "hole_nominal_internal_points": 7266.621500000001
+    },
+    {
+      "weapon": "SpinalSiegeCoilerMk3",
+      "closing_kps": 0,
+      "impact_kps": 6.3,
+      "armor": 400,
+      "attack_multiplier": 1,
+      "prearmor_defense": 1,
+      "internal_multiplier": 1,
+      "kinetic_multiplier": 1,
+      "full_points": 1085.5215,
+      "direct_points": 814.1411250000001,
+      "chipping_points": 271.380375,
+      "intact_penetration_nominal": 414.1411250000001,
+      "intact_penetration_min": 251.31290000000013,
+      "intact_penetration_max": 576.9693500000001,
+      "penetration_probability": 1,
+      "mean_intact_internal_points": 414.1411250000001,
+      "hole_nominal_internal_points": 1085.5215
+    },
+    {
+      "weapon": "SpinalSiegeCoilerMk3",
+      "closing_kps": 2,
+      "impact_kps": 8.3,
+      "armor": 400,
+      "attack_multiplier": 1,
+      "prearmor_defense": 1,
+      "internal_multiplier": 1,
+      "kinetic_multiplier": 1,
+      "full_points": 1884.1415000000004,
+      "direct_points": 1413.1061250000002,
+      "chipping_points": 471.0353750000001,
+      "intact_penetration_nominal": 1013.1061250000002,
+      "intact_penetration_min": 730.4849000000002,
+      "intact_penetration_max": 1295.7273500000003,
+      "penetration_probability": 1,
+      "mean_intact_internal_points": 1013.1061250000002,
+      "hole_nominal_internal_points": 1884.1415000000004
+    },
+    {
+      "weapon": "SpinalSiegeCoilerMk3",
+      "closing_kps": 3,
+      "impact_kps": 9.3,
+      "armor": 400,
+      "attack_multiplier": 1,
+      "prearmor_defense": 1,
+      "internal_multiplier": 1,
+      "kinetic_multiplier": 1,
+      "full_points": 2365.5015000000003,
+      "direct_points": 1774.1261250000002,
+      "chipping_points": 591.3753750000001,
+      "intact_penetration_nominal": 1374.1261250000002,
+      "intact_penetration_min": 1019.3009000000002,
+      "intact_penetration_max": 1728.9513500000003,
+      "penetration_probability": 1,
+      "mean_intact_internal_points": 1374.1261250000002,
+      "hole_nominal_internal_points": 2365.5015000000003
+    },
+    {
+      "weapon": "SpinalSiegeCoilerMk3",
+      "closing_kps": 5,
+      "impact_kps": 11.3,
+      "armor": 400,
+      "attack_multiplier": 1,
+      "prearmor_defense": 1,
+      "internal_multiplier": 1,
+      "kinetic_multiplier": 1,
+      "full_points": 3492.3215000000005,
+      "direct_points": 2619.2411250000005,
+      "chipping_points": 873.0803750000001,
+      "intact_penetration_nominal": 2219.2411250000005,
+      "intact_penetration_min": 1695.3929000000003,
+      "intact_penetration_max": 2743.0893500000006,
+      "penetration_probability": 1,
+      "mean_intact_internal_points": 2219.2411250000005,
+      "hole_nominal_internal_points": 3492.3215000000005
+    },
+    {
+      "weapon": "SpinalSiegeCoilerMk3",
+      "closing_kps": 10,
+      "impact_kps": 16.3,
+      "armor": 400,
+      "attack_multiplier": 1,
+      "prearmor_defense": 1,
+      "internal_multiplier": 1,
+      "kinetic_multiplier": 1,
+      "full_points": 7266.621500000001,
+      "direct_points": 5449.966125000001,
+      "chipping_points": 1816.6553750000003,
+      "intact_penetration_nominal": 5049.966125000001,
+      "intact_penetration_min": 3959.9729000000007,
+      "intact_penetration_max": 6139.959350000001,
+      "penetration_probability": 1,
+      "mean_intact_internal_points": 5049.966125000001,
+      "hole_nominal_internal_points": 7266.621500000001
+    }
+  ],
+  "equipped_cases": [
+    {
+      "weapon": "SpinalCoilerMk3",
+      "closing_kps": 0,
+      "impact_kps": 12.4,
+      "armor": 400,
+      "attack_multiplier": 1.61,
+      "prearmor_defense": 0.95,
+      "internal_multiplier": 0.525,
+      "kinetic_multiplier": 1,
+      "full_points": 674.5835600000001,
+      "direct_points": 438.4793140000001,
+      "chipping_points": 236.10424600000005,
+      "intact_penetration_nominal": 8.691557857500056,
+      "intact_penetration_min": 0.0,
+      "intact_penetration_max": 52.42986942900005,
+      "penetration_probability": 0.5993586348582726,
+      "mean_intact_internal_points": 15.712147483381477,
+      "hole_nominal_internal_points": 336.44855055000005
+    },
+    {
+      "weapon": "SpinalCoilerMk3",
+      "closing_kps": 3,
+      "impact_kps": 15.4,
+      "armor": 400,
+      "attack_multiplier": 1.61,
+      "prearmor_defense": 0.95,
+      "internal_multiplier": 0.525,
+      "kinetic_multiplier": 1,
+      "full_points": 1040.4802100000002,
+      "direct_points": 676.3121365000002,
+      "chipping_points": 364.16807350000005,
+      "intact_penetration_nominal": 127.31067807937508,
+      "intact_penetration_min": 59.84854246350005,
+      "intact_penetration_max": 194.7728136952501,
+      "penetration_probability": 1,
+      "mean_intact_internal_points": 127.31067807937508,
+      "hole_nominal_internal_points": 518.9395047375001
+    },
+    {
+      "weapon": "SpinalCoilerMk3",
+      "closing_kps": 5,
+      "impact_kps": 17.4,
+      "armor": 400,
+      "attack_multiplier": 1.61,
+      "prearmor_defense": 0.95,
+      "internal_multiplier": 0.525,
+      "kinetic_multiplier": 1,
+      "full_points": 1328.28381,
+      "direct_points": 863.3844764999999,
+      "chipping_points": 464.89933349999995,
+      "intact_penetration_nominal": 220.61300765437494,
+      "intact_penetration_min": 134.49040612349992,
+      "intact_penetration_max": 306.7356091852498,
+      "penetration_probability": 1,
+      "mean_intact_internal_points": 220.61300765437488,
+      "hole_nominal_internal_points": 662.4815502375
+    },
+    {
+      "weapon": "HeavySiegeCoilerMk3",
+      "closing_kps": 0,
+      "impact_kps": 5.9,
+      "armor": 200,
+      "attack_multiplier": 1.61,
+      "prearmor_defense": 0.95,
+      "internal_multiplier": 0.525,
+      "kinetic_multiplier": 1,
+      "full_points": 1150.3051525000003,
+      "direct_points": 862.7288643750003,
+      "chipping_points": 287.5762881250001,
+      "intact_penetration_nominal": 325.2860211070314,
+      "intact_penetration_min": 239.22881688562515,
+      "intact_penetration_max": 411.3432253284376,
+      "penetration_probability": 1,
+      "mean_intact_internal_points": 325.2860211070314,
+      "hole_nominal_internal_points": 573.7146948093751
+    },
+    {
+      "weapon": "HeavySiegeCoilerMk3",
+      "closing_kps": 3,
+      "impact_kps": 8.9,
+      "armor": 200,
+      "attack_multiplier": 1.61,
+      "prearmor_defense": 0.95,
+      "internal_multiplier": 0.525,
+      "kinetic_multiplier": 1,
+      "full_points": 2617.5142525000006,
+      "direct_points": 1963.1356893750003,
+      "chipping_points": 654.3785631250001,
+      "intact_penetration_nominal": 874.1139250757814,
+      "intact_penetration_min": 678.2911400606251,
+      "intact_penetration_max": 1069.9367100909376,
+      "penetration_probability": 1,
+      "mean_intact_internal_points": 874.1139250757814,
+      "hole_nominal_internal_points": 1305.4852334343752
+    },
+    {
+      "weapon": "HeavySiegeCoilerMk3",
+      "closing_kps": 5,
+      "impact_kps": 10.9,
+      "armor": 200,
+      "attack_multiplier": 1.61,
+      "prearmor_defense": 0.95,
+      "internal_multiplier": 0.525,
+      "kinetic_multiplier": 1,
+      "full_points": 3926.1061525,
+      "direct_points": 2944.579614375,
+      "chipping_points": 981.526538125,
+      "intact_penetration_nominal": 1363.609082669531,
+      "intact_penetration_min": 1069.887266135625,
+      "intact_penetration_max": 1657.3308992034374,
+      "penetration_probability": 1,
+      "mean_intact_internal_points": 1363.609082669531,
+      "hole_nominal_internal_points": 1958.1454435593748
+    },
+    {
+      "weapon": "SpinalSiegeCoilerMk3",
+      "closing_kps": 0,
+      "impact_kps": 6.3,
+      "armor": 400,
+      "attack_multiplier": 1.61,
+      "prearmor_defense": 0.95,
+      "internal_multiplier": 0.525,
+      "kinetic_multiplier": 1,
+      "full_points": 1747.6896150000002,
+      "direct_points": 1310.7672112500002,
+      "chipping_points": 436.92240375000006,
+      "intact_penetration_nominal": 443.74514661093764,
+      "intact_penetration_min": 312.99611728875016,
+      "intact_penetration_max": 574.494175933125,
+      "penetration_probability": 1,
+      "mean_intact_internal_points": 443.74514661093764,
+      "hole_nominal_internal_points": 871.6601954812501
+    },
+    {
+      "weapon": "SpinalSiegeCoilerMk3",
+      "closing_kps": 3,
+      "impact_kps": 9.3,
+      "armor": 400,
+      "attack_multiplier": 1.61,
+      "prearmor_defense": 0.95,
+      "internal_multiplier": 0.525,
+      "kinetic_multiplier": 1,
+      "full_points": 3808.4574150000008,
+      "direct_points": 2856.3430612500006,
+      "chipping_points": 952.1143537500002,
+      "intact_penetration_nominal": 1214.6011017984379,
+      "intact_penetration_min": 929.6808814387502,
+      "intact_penetration_max": 1499.5213221581253,
+      "penetration_probability": 1,
+      "mean_intact_internal_points": 1214.6011017984376,
+      "hole_nominal_internal_points": 1899.4681357312504
+    },
+    {
+      "weapon": "SpinalSiegeCoilerMk3",
+      "closing_kps": 5,
+      "impact_kps": 11.3,
+      "armor": 400,
+      "attack_multiplier": 1.61,
+      "prearmor_defense": 0.95,
+      "internal_multiplier": 0.525,
+      "kinetic_multiplier": 1,
+      "full_points": 5622.6376150000015,
+      "direct_points": 4216.978211250002,
+      "chipping_points": 1405.6594037500004,
+      "intact_penetration_nominal": 1893.2178828609383,
+      "intact_penetration_min": 1472.574306288751,
+      "intact_penetration_max": 2313.861459433126,
+      "penetration_probability": 1,
+      "mean_intact_internal_points": 1893.2178828609385,
+      "hole_nominal_internal_points": 2804.2905104812507
+    }
+  ],
+  "equipped_assumptions": "Attacker: Vital Point Shell Targeting +10%, rank-3 Gunnery +30%, Captain +6%, Intel +15%, additive deltas at magnetic damage call = 1.61. Defender: Smart Spacecraft Defenses x0.95 pre-armor; rank-3 Engineering and DamageControl -0.15 each, ComponentArmor x0.75 = x0.525 internal. Representative high-end case, not universal maximum or observed loadout.",
+  "thresholds": [
+    {
+      "weapon": "SpinalCoilerMk3",
+      "armor": 200,
+      "any_penetration_closing_kps": -2.699716141290317,
+      "nominal_penetration_closing_kps": -1.7738714327629008,
+      "all_rolls_penetrate_closing_kps": -0.5196270930027023
+    },
+    {
+      "weapon": "SpinalCoilerMk3",
+      "armor": 400,
+      "any_penetration_closing_kps": 1.3182729918560536,
+      "nominal_penetration_closing_kps": 2.6276151353068897,
+      "all_rolls_penetrate_closing_kps": 4.40138449112545
+    },
+    {
+      "weapon": "HeavySiegeCoilerMk3",
+      "armor": 200,
+      "any_penetration_closing_kps": -2.60957375731144,
+      "nominal_penetration_closing_kps": -2.295518646145015,
+      "all_rolls_penetrate_closing_kps": -1.8700673345748902
+    },
+    {
+      "weapon": "HeavySiegeCoilerMk3",
+      "armor": 400,
+      "any_penetration_closing_kps": -1.2466345816014925,
+      "nominal_penetration_closing_kps": -0.8024935840573448,
+      "all_rolls_penetrate_closing_kps": -0.2008145691054528
+    },
+    {
+      "weapon": "SpinalSiegeCoilerMk3",
+      "armor": 200,
+      "any_penetration_closing_kps": -3.4495391679399146,
+      "nominal_penetration_closing_kps": -3.1774766059914925,
+      "all_rolls_penetrate_closing_kps": -2.808912714831809
+    },
+    {
+      "weapon": "SpinalSiegeCoilerMk3",
+      "armor": 400,
+      "any_penetration_closing_kps": -2.26883963228733,
+      "nominal_penetration_closing_kps": -1.884085067365901,
+      "all_rolls_penetrate_closing_kps": -1.3628570138868756
+    }
+  ],
+  "geometry": [
+    {
+      "hull": "Titan",
+      "nose_points": 400,
+      "lateral_points": 0,
+      "mode": "realistic",
+      "nose_volume_m3": 28863.38250485622,
+      "each_lateral_volume_m3": 0.0,
+      "nominal_entry_chip_fraction": 0.005080783583674803,
+      "at_least_one_hole_hit_in_first_five_nominal_entry_only": 0.04991087503904157,
+      "exit_chip_fraction_if_50_internal_points_remain_on_side": null
+    },
+    {
+      "hull": "Titan",
+      "nose_points": 400,
+      "lateral_points": 0,
+      "mode": "cinematic",
+      "nose_volume_m3": 9621.127501618741,
+      "each_lateral_volume_m3": 0.0,
+      "nominal_entry_chip_fraction": 0.01524235075102441,
+      "at_least_one_hole_hit_in_first_five_nominal_entry_only": 0.1444677502912407,
+      "exit_chip_fraction_if_50_internal_points_remain_on_side": null
+    },
+    {
+      "hull": "Titan",
+      "nose_points": 400,
+      "lateral_points": 20,
+      "mode": "realistic",
+      "nose_volume_m3": 30536.280592892785,
+      "each_lateral_volume_m3": 4182.245220091412,
+      "nominal_entry_chip_fraction": 0.004802438186729656,
+      "at_least_one_hole_hit_in_first_five_nominal_entry_only": 0.04722268769303917,
+      "exit_chip_fraction_if_50_internal_points_remain_on_side": 1.7532281380286292
+    },
+    {
+      "hull": "Titan",
+      "nose_points": 400,
+      "lateral_points": 20,
+      "mode": "cinematic",
+      "nose_volume_m3": 10178.760197630929,
+      "each_lateral_volume_m3": 6273.367830137118,
+      "nominal_entry_chip_fraction": 0.014407314560188967,
+      "at_least_one_hole_hit_in_first_five_nominal_entry_only": 0.13695666342586732,
+      "exit_chip_fraction_if_50_internal_points_remain_on_side": 1.1688187586857528
+    },
+    {
+      "hull": "Titan",
+      "nose_points": 400,
+      "lateral_points": 100,
+      "mode": "realistic",
+      "nose_volume_m3": 37699.111843077524,
+      "each_lateral_volume_m3": 22089.32334555323,
+      "nominal_entry_chip_fraction": 0.0038899749312510203,
+      "at_least_one_hole_hit_in_first_five_nominal_entry_only": 0.03837307027986836,
+      "exit_chip_fraction_if_50_internal_points_remain_on_side": 0.33194452746675385
+    },
+    {
+      "hull": "Titan",
+      "nose_points": 400,
+      "lateral_points": 100,
+      "mode": "cinematic",
+      "nose_volume_m3": 12566.370614359173,
+      "each_lateral_volume_m3": 33133.98501832985,
+      "nominal_entry_chip_fraction": 0.011669924793753061,
+      "at_least_one_hole_hit_in_first_five_nominal_entry_only": 0.11201171743361604,
+      "exit_chip_fraction_if_50_internal_points_remain_on_side": 0.22129635164450254
+    },
+    {
+      "hull": "Battlecruiser",
+      "nose_points": 200,
+      "lateral_points": 0,
+      "mode": "realistic",
+      "nose_volume_m3": 4712.3889803846905,
+      "each_lateral_volume_m3": 0.0,
+      "nominal_entry_chip_fraction": 0.03790408925143923,
+      "at_least_one_hole_hit_in_first_five_nominal_entry_only": 0.3314290313230127,
+      "exit_chip_fraction_if_50_internal_points_remain_on_side": null
+    },
+    {
+      "hull": "Battlecruiser",
+      "nose_points": 200,
+      "lateral_points": 0,
+      "mode": "cinematic",
+      "nose_volume_m3": 1570.7963267948967,
+      "each_lateral_volume_m3": 0.0,
+      "nominal_entry_chip_fraction": 0.11371226775431771,
+      "at_least_one_hole_hit_in_first_five_nominal_entry_only": 0.7540608570826177,
+      "exit_chip_fraction_if_50_internal_points_remain_on_side": null
+    },
+    {
+      "hull": "Battlecruiser",
+      "nose_points": 200,
+      "lateral_points": 20,
+      "mode": "realistic",
+      "nose_volume_m3": 5195.408850874121,
+      "each_lateral_volume_m3": 1408.8079555941727,
+      "nominal_entry_chip_fraction": 0.03438012630516031,
+      "at_least_one_hole_hit_in_first_five_nominal_entry_only": 0.3044298280786796,
+      "exit_chip_fraction_if_50_internal_points_remain_on_side": 6.3393598748051705
+    },
+    {
+      "hull": "Battlecruiser",
+      "nose_points": 200,
+      "lateral_points": 20,
+      "mode": "cinematic",
+      "nose_volume_m3": 1731.8029502913735,
+      "each_lateral_volume_m3": 2113.2119333912588,
+      "nominal_entry_chip_fraction": 0.10314037891548093,
+      "at_least_one_hole_hit_in_first_five_nominal_entry_only": 0.7112200367663694,
+      "exit_chip_fraction_if_50_internal_points_remain_on_side": 4.226239916536781
+    },
+    {
+      "hull": "Battlecruiser",
+      "nose_points": 200,
+      "lateral_points": 100,
+      "mode": "realistic",
+      "nose_volume_m3": 7363.1077818510785,
+      "each_lateral_volume_m3": 7731.263170943631,
+      "nominal_entry_chip_fraction": 0.024258617120921113,
+      "at_least_one_hole_hit_in_first_five_nominal_entry_only": 0.22269482828646137,
+      "exit_chip_fraction_if_50_internal_points_remain_on_side": 1.1551722438533867
+    },
+    {
+      "hull": "Battlecruiser",
+      "nose_points": 200,
+      "lateral_points": 100,
+      "mode": "cinematic",
+      "nose_volume_m3": 2454.369260617026,
+      "each_lateral_volume_m3": 11596.894756415446,
+      "nominal_entry_chip_fraction": 0.07277585136276334,
+      "at_least_one_hole_hit_in_first_five_nominal_entry_only": 0.560986155765246,
+      "exit_chip_fraction_if_50_internal_points_remain_on_side": 0.770114829235591
+    }
+  ],
+  "officer_inputs": [
+    {
+      "dataName": "Officer_Gunnery",
+      "spawnChance": 0.06,
+      "spawnEventType": "CombatKill_Guns",
+      "location": "FireControl",
+      "sortOrder": 6,
+      "baseIconPath": "icons_2d/Ship_Officer_Gunnery_",
+      "requirements": [
+        {
+          "requirement": "MaxPerShip",
+          "value": 1
+        },
+        {
+          "requirement": "MaxTotalOfficersPerShip"
+        },
+        {
+          "requirement": "GunWeapons"
+        }
+      ],
+      "effects": [
+        {
+          "level": 1,
+          "effect": "GunTargeting",
+          "value": 0.1
+        },
+        {
+          "level": 2,
+          "effect": "GunTargeting",
+          "value": 0.2
+        },
+        {
+          "level": 3,
+          "effect": "GunTargeting",
+          "value": 0.3
+        },
+        {
+          "level": 1,
+          "effect": "GunDamage",
+          "value": 1.1
+        },
+        {
+          "level": 2,
+          "effect": "GunDamage",
+          "value": 1.2
+        },
+        {
+          "level": 3,
+          "effect": "GunDamage",
+          "value": 1.3
+        }
+      ]
+    },
+    {
+      "dataName": "Officer_Captain",
+      "spawnChance": 0.01,
+      "spawnEventType": "WinCombat",
+      "location": "Bridge",
+      "sortOrder": 2,
+      "baseIconPath": "icons_2d/Ship_Officer_Captain_",
+      "requirements": [
+        {
+          "requirement": "MaxPerShip",
+          "value": 1
+        }
+      ],
+      "effects": [
+        {
+          "level": 1,
+          "effect": "ShipMissionControl",
+          "value": -1
+        },
+        {
+          "level": 2,
+          "effect": "ShipMissionControl",
+          "value": -2
+        },
+        {
+          "level": 3,
+          "effect": "ShipMissionControl",
+          "value": -3
+        },
+        {
+          "level": 1,
+          "effect": "GlobalDamage",
+          "value": 1.02
+        },
+        {
+          "level": 2,
+          "effect": "GlobalDamage",
+          "value": 1.04
+        },
+        {
+          "level": 3,
+          "effect": "GlobalDamage",
+          "value": 1.06
+        }
+      ]
+    },
+    {
+      "dataName": "Officer_Intel",
+      "spawnChance": 0.02,
+      "spawnEventType": "CombatKill",
+      "location": "Bridge",
+      "sortOrder": 13,
+      "baseIconPath": "icons_2d/Ship_Officer_Intel_",
+      "requirements": [
+        {
+          "requirement": "MaxPerShip",
+          "value": 1
+        },
+        {
+          "requirement": "MaxTotalOfficersPerShip"
+        },
+        {
+          "requirement": "CrewMin",
+          "value": 40
+        }
+      ],
+      "effects": [
+        {
+          "level": 1,
+          "effect": "GlobalTargeting",
+          "value": 0.05
+        },
+        {
+          "level": 2,
+          "effect": "GlobalTargeting",
+          "value": 0.1
+        },
+        {
+          "level": 3,
+          "effect": "GlobalTargeting",
+          "value": 0.15
+        },
+        {
+          "level": 1,
+          "effect": "GlobalDamage",
+          "value": 1.05
+        },
+        {
+          "level": 2,
+          "effect": "GlobalDamage",
+          "value": 1.1
+        },
+        {
+          "level": 3,
+          "effect": "GlobalDamage",
+          "value": 1.15
+        }
+      ]
+    },
+    {
+      "dataName": "Officer_Engineering",
+      "spawnChance": 0.01,
+      "spawnEventType": "SurviveCombat",
+      "location": "PowerPlant",
+      "sortOrder": 4,
+      "baseIconPath": "icons_2d/Ship_Officer_Engineering_",
+      "requirements": [
+        {
+          "requirement": "MaxPerShip",
+          "value": 1
+        },
+        {
+          "requirement": "MaxTotalOfficersPerShip"
+        }
+      ],
+      "effects": [
+        {
+          "level": 1,
+          "effect": "InternalDamageTaken",
+          "value": -0.05
+        },
+        {
+          "level": 2,
+          "effect": "InternalDamageTaken",
+          "value": -0.1
+        },
+        {
+          "level": 3,
+          "effect": "InternalDamageTaken",
+          "value": -0.15
+        },
+        {
+          "level": 1,
+          "effect": "DockRepairSpeed",
+          "value": 0.8
+        },
+        {
+          "level": 2,
+          "effect": "DockRepairSpeed",
+          "value": 0.7
+        },
+        {
+          "level": 3,
+          "effect": "DockRepairSpeed",
+          "value": 0.5
+        }
+      ]
+    },
+    {
+      "dataName": "Officer_DamageControl",
+      "spawnChance": 0.01,
+      "spawnEventType": "SurviveCombat",
+      "location": "DamageControl",
+      "sortOrder": 8,
+      "baseIconPath": "icons_2d/Ship_Officer_DamageControl_",
+      "requirements": [
+        {
+          "requirement": "MaxPerShip",
+          "value": 1
+        },
+        {
+          "requirement": "MaxTotalOfficersPerShip"
+        },
+        {
+          "requirement": "CrewMin",
+          "value": 10
+        }
+      ],
+      "effects": [
+        {
+          "level": 1,
+          "effect": "DamageControlSpeed",
+          "value": 1.1
+        },
+        {
+          "level": 2,
+          "effect": "DamageControlSpeed",
+          "value": 1.2
+        },
+        {
+          "level": 3,
+          "effect": "DamageControlSpeed",
+          "value": 1.3
+        },
+        {
+          "level": 1,
+          "effect": "InternalDamageTaken",
+          "value": -0.05
+        },
+        {
+          "level": 2,
+          "effect": "InternalDamageTaken",
+          "value": -0.1
+        },
+        {
+          "level": 3,
+          "effect": "InternalDamageTaken",
+          "value": -0.15
+        }
+      ]
+    }
+  ],
+  "effect_inputs": [
+    {
+      "dataName": "Effect_ShipMagDamage",
+      "operation": "Multiplicative",
+      "value": 1.1,
+      "effectTarget": "SourceFaction",
+      "effectDuration": "permanent",
+      "stackable": true,
+      "duration_months": -1,
+      "contexts": [
+        "ShipMagDamage"
+      ]
+    },
+    {
+      "dataName": "Effect_SurvivabilityUpgrades",
+      "operation": "Multiplicative",
+      "value": 0.95,
+      "effectTarget": "SourceFaction",
+      "effectDuration": "permanent",
+      "stackable": true,
+      "duration_months": -1,
+      "contexts": [
+        "DamageReductionAgainstAllShips"
+      ]
+    }
+  ]
+}

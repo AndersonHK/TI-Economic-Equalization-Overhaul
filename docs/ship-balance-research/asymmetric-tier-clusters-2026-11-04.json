@@ -1,0 +1,1014 @@
+{
+  "date": "2026-11-04",
+  "status": "tier proposal only; current bay values are deployed 0.10.24 inputs",
+  "statistic": "V0 triples are across hull classes. Class-median triples take each hull class median across its appearances, then summarize across classes; not a pooled/ship-count-weighted median.",
+  "hulls": [
+    {
+      "dataName": "Gunship",
+      "alien": false,
+      "consTier": 1,
+      "bareMass_t": 180,
+      "crew": 3,
+      "structuralIntegrity": 4,
+      "missionControl": 1,
+      "noseCells": 1,
+      "hullCells": 0,
+      "internalModules": 2,
+      "compactSize4": false,
+      "proposedTier": 1,
+      "mainHullV0_m3": 11019.6641,
+      "mainHullClassMedian_m3": 5024.6503649999995,
+      "allAppearanceHullMinimum_m3": 3452.25732,
+      "allAppearanceHullMaximum_m3": 11019.6641,
+      "currentBayV0_m3": 264.240631,
+      "currentBayClassMedian_m3": 384.7537235
+    },
+    {
+      "dataName": "Escort",
+      "alien": false,
+      "consTier": 1,
+      "bareMass_t": 350,
+      "crew": 4,
+      "structuralIntegrity": 7,
+      "missionControl": 1,
+      "noseCells": 0,
+      "hullCells": 2,
+      "internalModules": 2,
+      "compactSize4": false,
+      "proposedTier": 1,
+      "mainHullV0_m3": 6701.582,
+      "mainHullClassMedian_m3": 6238.02025,
+      "allAppearanceHullMinimum_m3": 5625.38232,
+      "allAppearanceHullMaximum_m3": 6946.027,
+      "currentBayV0_m3": 264.24057,
+      "currentBayClassMedian_m3": 384.7537235
+    },
+    {
+      "dataName": "Corvette",
+      "alien": false,
+      "consTier": 1,
+      "bareMass_t": 400,
+      "crew": 5,
+      "structuralIntegrity": 8,
+      "missionControl": 1,
+      "noseCells": 1,
+      "hullCells": 1,
+      "internalModules": 3,
+      "compactSize4": false,
+      "proposedTier": 1,
+      "mainHullV0_m3": 5070.771,
+      "mainHullClassMedian_m3": 10725.187,
+      "allAppearanceHullMinimum_m3": 5070.771,
+      "allAppearanceHullMaximum_m3": 13890.2461,
+      "currentBayV0_m3": 264.240631,
+      "currentBayClassMedian_m3": 528.452133
+    },
+    {
+      "dataName": "Frigate",
+      "alien": false,
+      "consTier": 1,
+      "bareMass_t": 600,
+      "crew": 8,
+      "structuralIntegrity": 12,
+      "missionControl": 2,
+      "noseCells": 1,
+      "hullCells": 2,
+      "internalModules": 5,
+      "compactSize4": false,
+      "proposedTier": 2,
+      "mainHullV0_m3": 13692.4648,
+      "mainHullClassMedian_m3": 16191.3799,
+      "allAppearanceHullMinimum_m3": 13692.4648,
+      "allAppearanceHullMaximum_m3": 22332.8086,
+      "currentBayV0_m3": 332.341248,
+      "currentBayClassMedian_m3": 954.48535
+    },
+    {
+      "dataName": "Monitor",
+      "alien": false,
+      "consTier": 2,
+      "bareMass_t": 700,
+      "crew": 7,
+      "structuralIntegrity": 16,
+      "missionControl": 2,
+      "noseCells": 0,
+      "hullCells": 4,
+      "internalModules": 3,
+      "compactSize4": false,
+      "proposedTier": 2,
+      "mainHullV0_m3": 17160.43,
+      "mainHullClassMedian_m3": 37733.99805,
+      "allAppearanceHullMinimum_m3": 17160.43,
+      "allAppearanceHullMaximum_m3": 48694.69,
+      "currentBayV0_m3": 384.582062,
+      "currentBayClassMedian_m3": 1352.05913
+    },
+    {
+      "dataName": "Destroyer",
+      "alien": false,
+      "consTier": 2,
+      "bareMass_t": 900,
+      "crew": 9,
+      "structuralIntegrity": 18,
+      "missionControl": 2,
+      "noseCells": 2,
+      "hullCells": 2,
+      "internalModules": 5,
+      "compactSize4": false,
+      "proposedTier": 2,
+      "mainHullV0_m3": 22061.9551,
+      "mainHullClassMedian_m3": 52876.36,
+      "allAppearanceHullMinimum_m3": 22061.9551,
+      "allAppearanceHullMaximum_m3": 66132.5859,
+      "currentBayV0_m3": 384.582062,
+      "currentBayClassMedian_m3": 1352.05913
+    },
+    {
+      "dataName": "Cruiser",
+      "alien": false,
+      "consTier": 2,
+      "bareMass_t": 1000,
+      "crew": 12,
+      "structuralIntegrity": 20,
+      "missionControl": 3,
+      "noseCells": 2,
+      "hullCells": 3,
+      "internalModules": 7,
+      "compactSize4": false,
+      "proposedTier": 3,
+      "mainHullV0_m3": 45819.95,
+      "mainHullClassMedian_m3": 120065.49549999999,
+      "allAppearanceHullMinimum_m3": 45819.95,
+      "allAppearanceHullMaximum_m3": 202070.375,
+      "currentBayV0_m3": 1989.2417,
+      "currentBayClassMedian_m3": 2747.395995
+    },
+    {
+      "dataName": "Battlecruiser",
+      "alien": false,
+      "consTier": 2,
+      "bareMass_t": 1200,
+      "crew": 10,
+      "structuralIntegrity": 24,
+      "missionControl": 3,
+      "noseCells": 3,
+      "hullCells": 2,
+      "internalModules": 5,
+      "compactSize4": false,
+      "proposedTier": 3,
+      "mainHullV0_m3": 43684.42,
+      "mainHullClassMedian_m3": 121679.745,
+      "allAppearanceHullMinimum_m3": 43684.42,
+      "allAppearanceHullMaximum_m3": 205738.656,
+      "currentBayV0_m3": 1989.24255,
+      "currentBayClassMedian_m3": 2747.39642
+    },
+    {
+      "dataName": "Battleship",
+      "alien": false,
+      "consTier": 3,
+      "bareMass_t": 1600,
+      "crew": 14,
+      "structuralIntegrity": 40,
+      "missionControl": 3,
+      "noseCells": 2,
+      "hullCells": 6,
+      "internalModules": 6,
+      "compactSize4": false,
+      "proposedTier": 3,
+      "mainHullV0_m3": 105142.664,
+      "mainHullClassMedian_m3": 149256.086,
+      "allAppearanceHullMinimum_m3": 105142.664,
+      "allAppearanceHullMaximum_m3": 168180.609,
+      "currentBayV0_m3": 5648.074,
+      "currentBayClassMedian_m3": 5556.4235
+    },
+    {
+      "dataName": "Lancer",
+      "alien": false,
+      "consTier": 3,
+      "bareMass_t": 2000,
+      "crew": 14,
+      "structuralIntegrity": 36,
+      "missionControl": 4,
+      "noseCells": 4,
+      "hullCells": 3,
+      "internalModules": 7,
+      "compactSize4": false,
+      "proposedTier": 4,
+      "mainHullV0_m3": 152598.422,
+      "mainHullClassMedian_m3": 236015.711,
+      "allAppearanceHullMinimum_m3": 152598.422,
+      "allAppearanceHullMaximum_m3": 259685.281,
+      "currentBayV0_m3": 2365.773,
+      "currentBayClassMedian_m3": 5219.208500000001
+    },
+    {
+      "dataName": "Dreadnought",
+      "alien": false,
+      "consTier": 3,
+      "bareMass_t": 3200,
+      "crew": 52,
+      "structuralIntegrity": 48,
+      "missionControl": 4,
+      "noseCells": 3,
+      "hullCells": 8,
+      "internalModules": 8,
+      "compactSize4": true,
+      "proposedTier": 4,
+      "mainHullV0_m3": 272229.438,
+      "mainHullClassMedian_m3": 341355.53150000004,
+      "allAppearanceHullMinimum_m3": 207412.75,
+      "allAppearanceHullMaximum_m3": 542945.6,
+      "currentBayV0_m3": 11476.33,
+      "currentBayClassMedian_m3": 10588.2505
+    },
+    {
+      "dataName": "Titan",
+      "alien": false,
+      "consTier": 3,
+      "bareMass_t": 3700,
+      "crew": 52,
+      "structuralIntegrity": 64,
+      "missionControl": 5,
+      "noseCells": 4,
+      "hullCells": 6,
+      "internalModules": 12,
+      "compactSize4": true,
+      "proposedTier": 5,
+      "mainHullV0_m3": 514552.1,
+      "mainHullClassMedian_m3": 690023.5,
+      "allAppearanceHullMinimum_m3": 407508.8,
+      "allAppearanceHullMaximum_m3": 987672.4,
+      "currentBayV0_m3": 15955.5762,
+      "currentBayClassMedian_m3": 15898.2331
+    },
+    {
+      "dataName": "AlienGunship",
+      "alien": true,
+      "consTier": 1,
+      "bareMass_t": 195,
+      "crew": 1,
+      "structuralIntegrity": 6,
+      "missionControl": 1,
+      "noseCells": 1,
+      "hullCells": 0,
+      "internalModules": 3,
+      "compactSize4": false,
+      "proposedTier": 1,
+      "mainHullV0_m3": 10892.207,
+      "mainHullClassMedian_m3": 10892.207,
+      "allAppearanceHullMinimum_m3": 10892.207,
+      "allAppearanceHullMaximum_m3": 10892.207,
+      "currentBayV0_m3": 262.779083,
+      "currentBayClassMedian_m3": 262.779083
+    },
+    {
+      "dataName": "AlienEscort",
+      "alien": true,
+      "consTier": 1,
+      "bareMass_t": 294,
+      "crew": 2,
+      "structuralIntegrity": 10,
+      "missionControl": 1,
+      "noseCells": 0,
+      "hullCells": 2,
+      "internalModules": 4,
+      "compactSize4": false,
+      "proposedTier": 1,
+      "mainHullV0_m3": 7358.229,
+      "mainHullClassMedian_m3": 7358.229,
+      "allAppearanceHullMinimum_m3": 7358.229,
+      "allAppearanceHullMaximum_m3": 7358.229,
+      "currentBayV0_m3": 177.520386,
+      "currentBayClassMedian_m3": 177.520386
+    },
+    {
+      "dataName": "AlienCorvette",
+      "alien": true,
+      "consTier": 1,
+      "bareMass_t": 297,
+      "crew": 3,
+      "structuralIntegrity": 10,
+      "missionControl": 1,
+      "noseCells": 1,
+      "hullCells": 1,
+      "internalModules": 4,
+      "compactSize4": false,
+      "proposedTier": 1,
+      "mainHullV0_m3": 13174.4512,
+      "mainHullClassMedian_m3": 13174.4512,
+      "allAppearanceHullMinimum_m3": 13174.4512,
+      "allAppearanceHullMaximum_m3": 13174.4512,
+      "currentBayV0_m3": 317.8392,
+      "currentBayClassMedian_m3": 317.8392
+    },
+    {
+      "dataName": "AlienFrigate",
+      "alien": true,
+      "consTier": 1,
+      "bareMass_t": 606,
+      "crew": 10,
+      "structuralIntegrity": 20,
+      "missionControl": 1,
+      "noseCells": 1,
+      "hullCells": 3,
+      "internalModules": 5,
+      "compactSize4": false,
+      "proposedTier": 2,
+      "mainHullV0_m3": 30659.9277,
+      "mainHullClassMedian_m3": 30659.9277,
+      "allAppearanceHullMinimum_m3": 30659.9277,
+      "allAppearanceHullMaximum_m3": 30659.9277,
+      "currentBayV0_m3": 1152.55322,
+      "currentBayClassMedian_m3": 1152.55322
+    },
+    {
+      "dataName": "AlienMonitor",
+      "alien": true,
+      "consTier": 2,
+      "bareMass_t": 720,
+      "crew": 16,
+      "structuralIntegrity": 22,
+      "missionControl": 1,
+      "noseCells": 1,
+      "hullCells": 4,
+      "internalModules": 5,
+      "compactSize4": false,
+      "proposedTier": 2,
+      "mainHullV0_m3": 75475.81,
+      "mainHullClassMedian_m3": 75475.81,
+      "allAppearanceHullMinimum_m3": 75475.81,
+      "allAppearanceHullMaximum_m3": 75475.81,
+      "currentBayV0_m3": 776.2587,
+      "currentBayClassMedian_m3": 776.2587
+    },
+    {
+      "dataName": "AlienDestroyer",
+      "alien": true,
+      "consTier": 2,
+      "bareMass_t": 732,
+      "crew": 20,
+      "structuralIntegrity": 24,
+      "missionControl": 1,
+      "noseCells": 2,
+      "hullCells": 2,
+      "internalModules": 5,
+      "compactSize4": false,
+      "proposedTier": 2,
+      "mainHullV0_m3": 47314.4141,
+      "mainHullClassMedian_m3": 47314.4141,
+      "allAppearanceHullMinimum_m3": 47314.4141,
+      "allAppearanceHullMaximum_m3": 47314.4141,
+      "currentBayV0_m3": 2571.761,
+      "currentBayClassMedian_m3": 2571.761
+    },
+    {
+      "dataName": "AlienCruiser",
+      "alien": true,
+      "consTier": 2,
+      "bareMass_t": 1131,
+      "crew": 25,
+      "structuralIntegrity": 36,
+      "missionControl": 1,
+      "noseCells": 2,
+      "hullCells": 4,
+      "internalModules": 7,
+      "compactSize4": false,
+      "proposedTier": 2,
+      "mainHullV0_m3": 57947.52,
+      "mainHullClassMedian_m3": 57947.52,
+      "allAppearanceHullMinimum_m3": 57947.52,
+      "allAppearanceHullMaximum_m3": 57947.52,
+      "currentBayV0_m3": 2332.44043,
+      "currentBayClassMedian_m3": 2332.44043
+    },
+    {
+      "dataName": "AlienBattlecruiser",
+      "alien": true,
+      "consTier": 2,
+      "bareMass_t": 1545,
+      "crew": 35,
+      "structuralIntegrity": 48,
+      "missionControl": 1,
+      "noseCells": 3,
+      "hullCells": 3,
+      "internalModules": 6,
+      "compactSize4": false,
+      "proposedTier": 3,
+      "mainHullV0_m3": 172807.625,
+      "mainHullClassMedian_m3": 172807.625,
+      "allAppearanceHullMinimum_m3": 172807.625,
+      "allAppearanceHullMaximum_m3": 172807.625,
+      "currentBayV0_m3": 3544.629,
+      "currentBayClassMedian_m3": 3544.629
+    },
+    {
+      "dataName": "AlienBattleship",
+      "alien": true,
+      "consTier": 2,
+      "bareMass_t": 1656,
+      "crew": 40,
+      "structuralIntegrity": 60,
+      "missionControl": 1,
+      "noseCells": 2,
+      "hullCells": 6,
+      "internalModules": 7,
+      "compactSize4": false,
+      "proposedTier": 3,
+      "mainHullV0_m3": 201325.219,
+      "mainHullClassMedian_m3": 201325.219,
+      "allAppearanceHullMinimum_m3": 201325.219,
+      "allAppearanceHullMaximum_m3": 201325.219,
+      "currentBayV0_m3": 5860.08,
+      "currentBayClassMedian_m3": 5860.08
+    },
+    {
+      "dataName": "AlienLancer",
+      "alien": true,
+      "consTier": 2,
+      "bareMass_t": 1656,
+      "crew": 40,
+      "structuralIntegrity": 52,
+      "missionControl": 1,
+      "noseCells": 6,
+      "hullCells": 4,
+      "internalModules": 7,
+      "compactSize4": false,
+      "proposedTier": 3,
+      "mainHullV0_m3": 166671.7,
+      "mainHullClassMedian_m3": 166671.7,
+      "allAppearanceHullMinimum_m3": 166671.7,
+      "allAppearanceHullMaximum_m3": 166671.7,
+      "currentBayV0_m3": 9486.201,
+      "currentBayClassMedian_m3": 9486.201
+    },
+    {
+      "dataName": "AlienDreadnought",
+      "alien": true,
+      "consTier": 2,
+      "bareMass_t": 2900,
+      "crew": 50,
+      "structuralIntegrity": 72,
+      "missionControl": 1,
+      "noseCells": 4,
+      "hullCells": 8,
+      "internalModules": 10,
+      "compactSize4": true,
+      "proposedTier": 4,
+      "mainHullV0_m3": 302989.8,
+      "mainHullClassMedian_m3": 302989.8,
+      "allAppearanceHullMinimum_m3": 302989.8,
+      "allAppearanceHullMaximum_m3": 302989.8,
+      "currentBayV0_m3": 6012.812,
+      "currentBayClassMedian_m3": 6012.812
+    },
+    {
+      "dataName": "AlienTitan",
+      "alien": true,
+      "consTier": 3,
+      "bareMass_t": 3000,
+      "crew": 60,
+      "structuralIntegrity": 90,
+      "missionControl": 1,
+      "noseCells": 6,
+      "hullCells": 8,
+      "internalModules": 10,
+      "compactSize4": true,
+      "proposedTier": 4,
+      "mainHullV0_m3": 349989.25,
+      "mainHullClassMedian_m3": 349989.25,
+      "allAppearanceHullMinimum_m3": 349989.25,
+      "allAppearanceHullMaximum_m3": 349989.25,
+      "currentBayV0_m3": 14625.7236,
+      "currentBayClassMedian_m3": 14625.7236
+    },
+    {
+      "dataName": "AlienAssaultCarrier",
+      "alien": true,
+      "consTier": 3,
+      "bareMass_t": 2928,
+      "crew": 80,
+      "structuralIntegrity": 90,
+      "missionControl": 1,
+      "noseCells": 0,
+      "hullCells": 6,
+      "internalModules": 6,
+      "compactSize4": false,
+      "proposedTier": 4,
+      "mainHullV0_m3": 419181.8,
+      "mainHullClassMedian_m3": 419181.8,
+      "allAppearanceHullMinimum_m3": 419181.8,
+      "allAppearanceHullMaximum_m3": 419181.8,
+      "currentBayV0_m3": 6865.57129,
+      "currentBayClassMedian_m3": 6865.57129
+    },
+    {
+      "dataName": "AlienMothership",
+      "alien": true,
+      "consTier": 3,
+      "bareMass_t": 8900,
+      "crew": 100,
+      "structuralIntegrity": 512,
+      "missionControl": 1,
+      "noseCells": 6,
+      "hullCells": 16,
+      "internalModules": 11,
+      "compactSize4": true,
+      "proposedTier": 5,
+      "mainHullV0_m3": 49197068,
+      "mainHullClassMedian_m3": 49197068,
+      "allAppearanceHullMinimum_m3": 49197068,
+      "allAppearanceHullMaximum_m3": 49197068,
+      "currentBayV0_m3": 137456.8,
+      "currentBayClassMedian_m3": 137456.8
+    }
+  ],
+  "clusters": [
+    {
+      "species": "human",
+      "tier": 1,
+      "classes": [
+        "Gunship",
+        "Escort",
+        "Corvette"
+      ],
+      "mainHullV0_m3": {
+        "minimum": 5070.771,
+        "median": 6701.582,
+        "maximum": 11019.6641
+      },
+      "mainHullClassMedian_m3": {
+        "minimum": 5024.6503649999995,
+        "median": 6238.02025,
+        "maximum": 10725.187
+      },
+      "allAppearanceHullRange_m3": [
+        3452.25732,
+        13890.2461
+      ],
+      "currentBayClassMedian_m3": {
+        "minimum": 384.7537235,
+        "median": 384.7537235,
+        "maximum": 528.452133
+      },
+      "currentBayV0_m3": {
+        "minimum": 264.24057,
+        "median": 264.240631,
+        "maximum": 264.240631
+      },
+      "bareMassV0_t": {
+        "minimum": 180,
+        "median": 350,
+        "maximum": 400
+      },
+      "integrity": {
+        "minimum": 4,
+        "median": 7,
+        "maximum": 8
+      }
+    },
+    {
+      "species": "human",
+      "tier": 2,
+      "classes": [
+        "Frigate",
+        "Monitor",
+        "Destroyer"
+      ],
+      "mainHullV0_m3": {
+        "minimum": 13692.4648,
+        "median": 17160.43,
+        "maximum": 22061.9551
+      },
+      "mainHullClassMedian_m3": {
+        "minimum": 16191.3799,
+        "median": 37733.99805,
+        "maximum": 52876.36
+      },
+      "allAppearanceHullRange_m3": [
+        13692.4648,
+        66132.5859
+      ],
+      "currentBayClassMedian_m3": {
+        "minimum": 954.48535,
+        "median": 1352.05913,
+        "maximum": 1352.05913
+      },
+      "currentBayV0_m3": {
+        "minimum": 332.341248,
+        "median": 384.582062,
+        "maximum": 384.582062
+      },
+      "bareMassV0_t": {
+        "minimum": 600,
+        "median": 700,
+        "maximum": 900
+      },
+      "integrity": {
+        "minimum": 12,
+        "median": 16,
+        "maximum": 18
+      }
+    },
+    {
+      "species": "human",
+      "tier": 3,
+      "classes": [
+        "Cruiser",
+        "Battlecruiser",
+        "Battleship"
+      ],
+      "mainHullV0_m3": {
+        "minimum": 43684.42,
+        "median": 45819.95,
+        "maximum": 105142.664
+      },
+      "mainHullClassMedian_m3": {
+        "minimum": 120065.49549999999,
+        "median": 121679.745,
+        "maximum": 149256.086
+      },
+      "allAppearanceHullRange_m3": [
+        43684.42,
+        205738.656
+      ],
+      "currentBayClassMedian_m3": {
+        "minimum": 2747.395995,
+        "median": 2747.39642,
+        "maximum": 5556.4235
+      },
+      "currentBayV0_m3": {
+        "minimum": 1989.2417,
+        "median": 1989.24255,
+        "maximum": 5648.074
+      },
+      "bareMassV0_t": {
+        "minimum": 1000,
+        "median": 1200,
+        "maximum": 1600
+      },
+      "integrity": {
+        "minimum": 20,
+        "median": 24,
+        "maximum": 40
+      }
+    },
+    {
+      "species": "human",
+      "tier": 4,
+      "classes": [
+        "Lancer",
+        "Dreadnought"
+      ],
+      "mainHullV0_m3": {
+        "minimum": 152598.422,
+        "median": 212413.93,
+        "maximum": 272229.438
+      },
+      "mainHullClassMedian_m3": {
+        "minimum": 236015.711,
+        "median": 288685.62125,
+        "maximum": 341355.53150000004
+      },
+      "allAppearanceHullRange_m3": [
+        152598.422,
+        542945.6
+      ],
+      "currentBayClassMedian_m3": {
+        "minimum": 5219.208500000001,
+        "median": 7903.7295,
+        "maximum": 10588.2505
+      },
+      "currentBayV0_m3": {
+        "minimum": 2365.773,
+        "median": 6921.0515,
+        "maximum": 11476.33
+      },
+      "bareMassV0_t": {
+        "minimum": 2000,
+        "median": 2600.0,
+        "maximum": 3200
+      },
+      "integrity": {
+        "minimum": 36,
+        "median": 42.0,
+        "maximum": 48
+      }
+    },
+    {
+      "species": "human",
+      "tier": 5,
+      "classes": [
+        "Titan"
+      ],
+      "mainHullV0_m3": {
+        "minimum": 514552.1,
+        "median": 514552.1,
+        "maximum": 514552.1
+      },
+      "mainHullClassMedian_m3": {
+        "minimum": 690023.5,
+        "median": 690023.5,
+        "maximum": 690023.5
+      },
+      "allAppearanceHullRange_m3": [
+        407508.8,
+        987672.4
+      ],
+      "currentBayClassMedian_m3": {
+        "minimum": 15898.2331,
+        "median": 15898.2331,
+        "maximum": 15898.2331
+      },
+      "currentBayV0_m3": {
+        "minimum": 15955.5762,
+        "median": 15955.5762,
+        "maximum": 15955.5762
+      },
+      "bareMassV0_t": {
+        "minimum": 3700,
+        "median": 3700,
+        "maximum": 3700
+      },
+      "integrity": {
+        "minimum": 64,
+        "median": 64,
+        "maximum": 64
+      }
+    },
+    {
+      "species": "alien",
+      "tier": 1,
+      "classes": [
+        "AlienGunship",
+        "AlienEscort",
+        "AlienCorvette"
+      ],
+      "mainHullV0_m3": {
+        "minimum": 7358.229,
+        "median": 10892.207,
+        "maximum": 13174.4512
+      },
+      "mainHullClassMedian_m3": {
+        "minimum": 7358.229,
+        "median": 10892.207,
+        "maximum": 13174.4512
+      },
+      "allAppearanceHullRange_m3": [
+        7358.229,
+        13174.4512
+      ],
+      "currentBayClassMedian_m3": {
+        "minimum": 177.520386,
+        "median": 262.779083,
+        "maximum": 317.8392
+      },
+      "currentBayV0_m3": {
+        "minimum": 177.520386,
+        "median": 262.779083,
+        "maximum": 317.8392
+      },
+      "bareMassV0_t": {
+        "minimum": 195,
+        "median": 294,
+        "maximum": 297
+      },
+      "integrity": {
+        "minimum": 6,
+        "median": 10,
+        "maximum": 10
+      }
+    },
+    {
+      "species": "alien",
+      "tier": 2,
+      "classes": [
+        "AlienFrigate",
+        "AlienMonitor",
+        "AlienDestroyer",
+        "AlienCruiser"
+      ],
+      "mainHullV0_m3": {
+        "minimum": 30659.9277,
+        "median": 52630.96705,
+        "maximum": 75475.81
+      },
+      "mainHullClassMedian_m3": {
+        "minimum": 30659.9277,
+        "median": 52630.96705,
+        "maximum": 75475.81
+      },
+      "allAppearanceHullRange_m3": [
+        30659.9277,
+        75475.81
+      ],
+      "currentBayClassMedian_m3": {
+        "minimum": 776.2587,
+        "median": 1742.4968250000002,
+        "maximum": 2571.761
+      },
+      "currentBayV0_m3": {
+        "minimum": 776.2587,
+        "median": 1742.4968250000002,
+        "maximum": 2571.761
+      },
+      "bareMassV0_t": {
+        "minimum": 606,
+        "median": 726.0,
+        "maximum": 1131
+      },
+      "integrity": {
+        "minimum": 20,
+        "median": 23.0,
+        "maximum": 36
+      }
+    },
+    {
+      "species": "alien",
+      "tier": 3,
+      "classes": [
+        "AlienBattlecruiser",
+        "AlienBattleship",
+        "AlienLancer"
+      ],
+      "mainHullV0_m3": {
+        "minimum": 166671.7,
+        "median": 172807.625,
+        "maximum": 201325.219
+      },
+      "mainHullClassMedian_m3": {
+        "minimum": 166671.7,
+        "median": 172807.625,
+        "maximum": 201325.219
+      },
+      "allAppearanceHullRange_m3": [
+        166671.7,
+        201325.219
+      ],
+      "currentBayClassMedian_m3": {
+        "minimum": 3544.629,
+        "median": 5860.08,
+        "maximum": 9486.201
+      },
+      "currentBayV0_m3": {
+        "minimum": 3544.629,
+        "median": 5860.08,
+        "maximum": 9486.201
+      },
+      "bareMassV0_t": {
+        "minimum": 1545,
+        "median": 1656,
+        "maximum": 1656
+      },
+      "integrity": {
+        "minimum": 48,
+        "median": 52,
+        "maximum": 60
+      }
+    },
+    {
+      "species": "alien",
+      "tier": 4,
+      "classes": [
+        "AlienDreadnought",
+        "AlienTitan",
+        "AlienAssaultCarrier"
+      ],
+      "mainHullV0_m3": {
+        "minimum": 302989.8,
+        "median": 349989.25,
+        "maximum": 419181.8
+      },
+      "mainHullClassMedian_m3": {
+        "minimum": 302989.8,
+        "median": 349989.25,
+        "maximum": 419181.8
+      },
+      "allAppearanceHullRange_m3": [
+        302989.8,
+        419181.8
+      ],
+      "currentBayClassMedian_m3": {
+        "minimum": 6012.812,
+        "median": 6865.57129,
+        "maximum": 14625.7236
+      },
+      "currentBayV0_m3": {
+        "minimum": 6012.812,
+        "median": 6865.57129,
+        "maximum": 14625.7236
+      },
+      "bareMassV0_t": {
+        "minimum": 2900,
+        "median": 2928,
+        "maximum": 3000
+      },
+      "integrity": {
+        "minimum": 72,
+        "median": 90,
+        "maximum": 90
+      }
+    },
+    {
+      "species": "alien",
+      "tier": 5,
+      "classes": [
+        "AlienMothership"
+      ],
+      "mainHullV0_m3": {
+        "minimum": 49197068,
+        "median": 49197068,
+        "maximum": 49197068
+      },
+      "mainHullClassMedian_m3": {
+        "minimum": 49197068,
+        "median": 49197068,
+        "maximum": 49197068
+      },
+      "allAppearanceHullRange_m3": [
+        49197068,
+        49197068
+      ],
+      "currentBayClassMedian_m3": {
+        "minimum": 137456.8,
+        "median": 137456.8,
+        "maximum": 137456.8
+      },
+      "currentBayV0_m3": {
+        "minimum": 137456.8,
+        "median": 137456.8,
+        "maximum": 137456.8
+      },
+      "bareMassV0_t": {
+        "minimum": 8900,
+        "median": 8900,
+        "maximum": 8900
+      },
+      "integrity": {
+        "minimum": 512,
+        "median": 512,
+        "maximum": 512
+      }
+    }
+  ],
+  "V0ClusterGaps": [
+    {
+      "species": "human",
+      "fromTier": 1,
+      "toTier": 2,
+      "V0NextMinimum_div_PreviousMaximum": 1.2425482914674322
+    },
+    {
+      "species": "human",
+      "fromTier": 2,
+      "toTier": 3,
+      "V0NextMinimum_div_PreviousMaximum": 1.9800792723034777
+    },
+    {
+      "species": "human",
+      "fromTier": 3,
+      "toTier": 4,
+      "V0NextMinimum_div_PreviousMaximum": 1.4513463535601494
+    },
+    {
+      "species": "human",
+      "fromTier": 4,
+      "toTier": 5,
+      "V0NextMinimum_div_PreviousMaximum": 1.8901412858957596
+    },
+    {
+      "species": "alien",
+      "fromTier": 1,
+      "toTier": 2,
+      "V0NextMinimum_div_PreviousMaximum": 2.327226176981095
+    },
+    {
+      "species": "alien",
+      "fromTier": 2,
+      "toTier": 3,
+      "V0NextMinimum_div_PreviousMaximum": 2.2082797124005693
+    },
+    {
+      "species": "alien",
+      "fromTier": 3,
+      "toTier": 4,
+      "V0NextMinimum_div_PreviousMaximum": 1.504976880218866
+    },
+    {
+      "species": "alien",
+      "fromTier": 4,
+      "toTier": 5,
+      "V0NextMinimum_div_PreviousMaximum": 117.36451344023047
+    }
+  ],
+  "unrankedAuxiliaries": [
+    "STOFighter",
+    "SalamanderGunship"
+  ],
+  "sourceSha256": {
+    "docs\\ship-balance-research\\hull-progression-audit-2026-11-03.json": "004711FE12F667E5E9DFE4F3D2FBB5F9587BEF60D6E88AFDE08849602C36CADE",
+    "TIEconomyMod\\ModFiles\\Assembly\\TIEconomyMod.dll": "E0160A34098A6B0C41EFD7AC0AD4154D65F90F25C3917A64F18FAE999A6414C5",
+    "TIEconomyMod\\Core\\ShipBalanceMath.cs": "4275B66317BF00C41C43C0B377C30057F36C752BB4F2A5F6864B30302712BD6A"
+  }
+}
