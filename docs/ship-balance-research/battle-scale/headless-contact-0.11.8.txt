@@ -1,0 +1,4 @@
+[EconomyMod] Native contact kernel loaded: ABI 0x10003, thirteen record layouts verified.
+[EconomyMod] PASS: native worker contact self-test checks=1764; rigid/blended/primitive, nearest/faction/inactive/strict endpoint, nonuniform transform jobs and disabled collider identity.
+[EconomyMod] PASS: native contact lifecycle: reserved-slot reuse, activation/deactivation, stale generations, faction changes, collapsed child scale and updated poses.
+[EconomyMod] HEADLESS CONTACT EXIT 0

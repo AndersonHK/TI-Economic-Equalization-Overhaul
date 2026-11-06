@@ -1,0 +1,5 @@
+[EconomyMod] Loaded TI Economic Equalization Overhaul 0.11.9, validated against TI 1.0.53b.
+[EconomyMod] PASS: waypoint lifetime host checks=37; three synthetic battle cycles, destroyed yaw/visuals, repeated cleanup, event detachment, live-owner preservation and no container resurrection. Camera follow policy unchanged.
+[EconomyMod] PASS: native worker contact self-test checks=1764; rigid/blended/primitive, nearest/faction/inactive/strict endpoint, nonuniform transform jobs and disabled collider identity.
+[EconomyMod] PASS: native contact lifecycle: reserved-slot reuse, activation/deactivation, stale generations, faction changes, collapsed child scale and updated poses.
+[EconomyMod] HEADLESS CONTACT EXIT 0

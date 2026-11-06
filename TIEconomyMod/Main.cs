@@ -33,6 +33,7 @@ namespace TIEconomyMod
 
             try
             {
+                TIEconomyMod.Core.NativeContact.Load(modEntry.Path);
                 shipDesignerLayout = TIEconomyMod.Core.ShipDesignerLayout.Load(
                     Path.Combine(modEntry.Path, "Config", "ship-designer-layout.eeo"));
                 string weightPath = Path.Combine(modEntry.Path, "Config", "economy-tech-weights.csv");
@@ -119,6 +120,7 @@ namespace TIEconomyMod
                 }
                 CouncilorRuntimeCaps.InitializeOrganizationCap();
                 Log("Loaded TI Economic Equalization Overhaul " + modEntry.Info.Version + ", validated against TI 1.0.53b.");
+                TIEconomyMod.Core.ContactHeadlessHarness.InstallIfRequested();
                 return true;
             }
             catch (Exception exception)

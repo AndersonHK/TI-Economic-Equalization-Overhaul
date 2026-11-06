@@ -18,6 +18,24 @@ The [armor rework plan](ship-balance-research/armor-rework-plan.md) uses one uni
 
 ## Current authorities
 
+- [Stable 0.11.9 acceptance](ship-balance-research/battle-scale/acceptance-0.11.9-2026-11-05.md):
+  user confirms stability/performance and requests commit/push before further
+  read-only profiling. The accepted runtime is not rebuilt for the checkpoint.
+
+- [0.11.9 repeat-battle cleanup](ship-balance-research/repeat-battle-waypoint-cleanup-2026-11-05.md):
+  stale waypoint UI ownership and callbacks are retired safely. User confirms
+  0.11.8 performance/missiles; real repeat-battle acceptance remains pending.
+  Camera-follow changes are deferred.
+
+- [0.11.8 live-regression response](ship-balance-research/compatibility-query-rework-2026-11-05.md):
+  0.11.7 failed live performance; its compatibility scan is replaced and the
+  candidate awaits the same-battle retest. Headless worker tests alone are not acceptance.
+
+- [0.11.7 collision performance testing](ship-balance-research/battle-worker-contact-2026-11-04.md):
+  implementation, native/headless checks, measured wait costs and remaining
+  rendered-battle acceptance. [Friendly collision/avoidance](ship-balance-research/friendly-ship-collision-plan-2026-11-04.md)
+  is planned separately; 0.11.6 remains the accepted stable baseline.
+
 - [Stable 0.11.6 acceptance](ship-balance-research/battle-scale/acceptance-0.11.6-2026-11-04.md):
   user confirms the beam bug fixed and game stable; records the accepted runtime
   hashes and separates acceptance from automated and feature-specific coverage.
@@ -134,6 +152,9 @@ The [armor rework plan](ship-balance-research/armor-rework-plan.md) uses one uni
 - [National space assets](economy/national-space-assets-implementation.md):
   national MC/Boost/Funding upkeep, the GDP/Education Boost cap, configuration,
   and 0.9.8 manual test targets.
+  The [MC research progression proposal](technology-tree/mission-control-progression-proposal-2026-11-05.md)
+  recommends technology/project bonuses to national MC construction capacity and
+  yield; it remains unimplemented.
 - [Global technology AI selection](global-technology-ai-selection.md):
   authoritative soft-priority, relative-cost, and weighted-selection formula
   for AI replacement of completed global technologies.
@@ -257,9 +278,11 @@ figures also compare human art-family progression and alien hulls at common scal
   manual-test plan.
 - [Initial Economy plan](archive/economy/economy-growth-initial-plan.md) is a superseded design
   record. The calibration document and source describe the implemented model.
-- [Hab capacity beyond twenty facilities](hab-slot-expansion-assessment.md) is a
-  feasibility assessment, not implemented scope. The implemented T1 station
-  sector visibility is recorded in the matrix and
+- [Hab slot progression and capacity expansion](hab-slot-expansion-assessment.md)
+  plans phase 1: existing T2 sectors at T1 and T3 sectors at T2 for human
+  stations and surface bases, with connector/UI/combat/save acceptance before
+  phase 2 new lots and authored connectors. The plan is unimplemented; the
+  current T1 station behavior is recorded in the matrix and
   [station slot map](hab-station-slot-map.md).
 - [Nuclear Winter modification](nuclear-winter-deferred.md) is explicitly
   deferred.

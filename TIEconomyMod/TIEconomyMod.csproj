@@ -12,6 +12,7 @@
     <AssemblyName>TIEconomyMod</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
     <TargetManagedDir Condition="'$(TargetManagedDir)' == ''">$(TI_TARGET_MANAGED_DIR)</TargetManagedDir>
@@ -60,6 +61,14 @@
     <Reference Include="System.Core" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="Unity.Collections">
+      <HintPath>$(TargetManagedDir)\Unity.Collections.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Jobs">
+      <HintPath>$(TargetManagedDir)\Unity.Jobs.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.Entities">
       <HintPath>$(TargetManagedDir)\Unity.Entities.dll</HintPath>
       <Private>False</Private>
@@ -107,6 +116,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Include="Core\ContactJobSelfTest.cs" />
+    <Compile Include="Core\NativeContact.cs" />
+    <Compile Include="Core\ContactHeadlessHarness.cs" />
+    <Compile Include="Core\WaypointLifetime.cs" />
+    <Compile Include="Core\WaypointLifetimeChecks.cs" />
+    <Compile Include="Patches\WaypointLifetimePatches.cs" />
+    <Compile Include="Core\ContactJobGeometry.cs" />
+    <Compile Include="Core\ContactJobRuntime.cs" />
+    <Compile Include="Core\CompatibilityContactWorld.cs" />
+    <Compile Include="Patches\PreparedNativeContactPatches.cs" />
     <Compile Include="Core\HabLogistics.cs" />
     <Compile Include="Core\EarthLaunchCost.cs" />
     <Compile Include="Core\EarthLaunchCostMath.cs" />

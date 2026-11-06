@@ -76,6 +76,22 @@ namespace TIEconomyMod.Core
             var ray=new PreparedContactRay(origin,direction);
             return Visit(0,ref ray,ref distance,ref normal);
         }
+        internal int Export(ContactAssetBuilder builder)
+        {
+            if(nodes.Count==0){int empty=builder.Nodes.Count;builder.Nodes.Add(new ContactNode{Skip=empty+1});return empty;}
+            int vertexBase=builder.Vertices.Count;
+            foreach(Vector3 point in vertices)builder.Vertices.Add(new ContactVertex{Point=point});
+            return ExportNode(0,vertexBase,builder);
+        }
+        private int ExportNode(int source,int vertexBase,ContactAssetBuilder builder)
+        {
+            Node n=nodes[source];int index=builder.Nodes.Count;
+            ContactNode result=new ContactNode{Min=n.Min,Max=n.Max,Start=builder.Indices.Count,Count=n.Count*3};
+            builder.Nodes.Add(result);
+            if(n.Count==0){ExportNode(n.Left,vertexBase,builder);ExportNode(n.Right,vertexBase,builder);}
+            else for(int i=n.Start;i<n.Start+n.Count;i++)for(int v=0;v<3;v++)builder.Indices.Add(vertexBase+triangles[order[i]*3+v]);
+            result.Skip=builder.Nodes.Count;builder.Nodes[index]=result;return index;
+        }
         private bool Visit(int index,ref PreparedContactRay ray,ref float closest,ref Vector3 normal)
         {
             Node n = nodes[index]; CombatContactMetrics.BvhNodes++;

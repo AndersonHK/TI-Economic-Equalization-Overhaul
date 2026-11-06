@@ -15,6 +15,23 @@ foreach ($file in Get-ChildItem $TargetManagedDir -Filter '*.dll' | Where-Object
 $game = Load-Bytes (Join-Path $TargetManagedDir 'Assembly-CSharp.dll')
 $mod = Load-Bytes $ModAssemblyPath
 $flags = [Reflection.BindingFlags]'Public,NonPublic,Static,Instance'
+$waypointNav=$game.GetType('PavonisInteractive.TerraInvicta.SpaceCombat.WaypointNavigationController',$true)
+foreach($field in @('_activeInputHandlingController','_waypointPlacementVisual','_waypointControllers','_waypointContainer')) {
+    if($null -eq $waypointNav.GetField($field,$flags)){throw "Waypoint lifetime field missing: $field"}
+}
+$lifetimeBinder=New-Object HarmonyLib.Harmony('eeo.waypoint.lifetime.validation')
+try {
+    foreach($name in @('WaypointLifetimeRegistrationPatch','WaypointLifetimeCleanupPatch','WaypointControllerDisposePatch','WaypointStaleInputPatch','WaypointBattleBoundaryPatch')) {
+        $type=$mod.GetType('TIEconomyMod.Patches.'+$name,$true)
+        try { [void]$lifetimeBinder.CreateClassProcessor($type).Patch() }
+        catch {
+            if ($_.Exception.ToString() -match 'ECall methods must be packaged into a system module') {
+                Write-Host "Unity-host binding required: $name (Unity internal call unavailable in the standalone CLR)."
+            } else { throw ($name + ': ' + $_.Exception.ToString()) }
+        }
+    }
+} finally {$lifetimeBinder.UnpatchAll('eeo.waypoint.lifetime.validation')}
+Write-Host 'PASS: waypoint lifetime metadata and guarded binding attempts. Targets listed above require Unity-host binding and destroyed-visual lifecycle confirmation.'
 $targets = @(
     @('PavonisInteractive.TerraInvicta.SpaceCombatManager','get_modelScalingFactor'),
     @('PavonisInteractive.TerraInvicta.SpaceCombatManager','get_projectileScalingFactor'),

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations"><ProjectConfiguration Include="Release|x64"><Configuration>Release</Configuration><Platform>x64</Platform></ProjectConfiguration></ItemGroup>
+  <PropertyGroup Label="Globals"><ProjectGuid>{733DCFC2-6C6B-4F14-9114-BC8E0D40B952}</ProjectGuid><WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion></PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration"><ConfigurationType>DynamicLibrary</ConfigurationType><PlatformToolset>v143</PlatformToolset><UseDebugLibraries>false</UseDebugLibraries><WholeProgramOptimization>true</WholeProgramOptimization></PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <PropertyGroup><OutDir>$(ProjectDir)..\..\TIEconomyMod\ModFiles\Assembly\</OutDir><IntDir>$(ProjectDir)..\..\.tmp\contact-native-build\</IntDir><TargetName>TIEconomyContact</TargetName><LinkIncremental>false</LinkIncremental></PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile><Optimization>MaxSpeed</Optimization><IntrinsicFunctions>true</IntrinsicFunctions><RuntimeLibrary>MultiThreaded</RuntimeLibrary><FloatingPointModel>Precise</FloatingPointModel><WarningLevel>Level4</WarningLevel><TreatWarningAsError>true</TreatWarningAsError><LanguageStandard>stdcpp17</LanguageStandard><RuntimeTypeInfo>false</RuntimeTypeInfo><ExceptionHandling>false</ExceptionHandling><AdditionalOptions>/Brepro %(AdditionalOptions)</AdditionalOptions></ClCompile>
+    <Link><ImportLibrary>$(IntDir)$(TargetName).lib</ImportLibrary><GenerateDebugInformation>false</GenerateDebugInformation><OptimizeReferences>true</OptimizeReferences><EnableCOMDATFolding>true</EnableCOMDATFolding><AdditionalOptions>/Brepro %(AdditionalOptions)</AdditionalOptions></Link>
+  </ItemDefinitionGroup>
+  <ItemGroup><ClCompile Include="ContactKernel.cpp" /></ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+</Project>

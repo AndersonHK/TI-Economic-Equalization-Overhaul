@@ -3,6 +3,12 @@
 Status: implementation reference for the current T1 station-sector visibility
 patch. It maps vanilla UI topology; it does not propose additional capacity.
 
+The [phase 1 progression plan](hab-slot-expansion-assessment.md#phase-1-unlock-existing-sectors-one-tier-earlier)
+retains these indices while proposing the existing T3 station sectors at T2
+and equivalent earlier unlocks for surface bases. That extension is not yet
+implemented; complete the remaining station/base coordinate and connector
+inventory before using this partial cardinal map as its full validation basis.
+
 Terra Invicta's `HabitatsScreenController.PreviewStationModule` selects each
 station cell by the key `S{sector}_M{slot}`. The corresponding
 `StationGridCell` RectTransforms are serialized in

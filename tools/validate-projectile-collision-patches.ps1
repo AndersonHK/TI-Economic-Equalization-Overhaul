@@ -245,3 +245,22 @@ if($field.GetValue($identity) -ne 12345 -or $identity.distance -ne 4) {throw 'Pr
 $references=@($ModAssemblyPath,(Join-Path $TargetManagedDir 'UnityEngine.CoreModule.dll'),(Join-Path $TargetManagedDir 'UnityEngine.PhysicsModule.dll'))
 Add-Type -Path (Join-Path $PSScriptRoot 'validation\PreparedContactChecks.cs') -ReferencedAssemblies $references
 Write-Host ([PreparedContactChecks]::Run())
+
+# New worker integration and native compatibility call-site contracts. Actual
+# TransformAccess scheduling and disabled hit identities also self-test in Unity.
+foreach($entry in @(@('ContactPoseJob','IJobParallelForTransform'),@('ContactIndexJob','IJob'),@('ContactFlightJob','IJobParallelFor'))) {
+    $type=$modAssembly.GetType('TIEconomyMod.Core.'+$entry[0],$true)
+    if($entry[1] -notin @($type.GetInterfaces().Name)){throw "Missing worker job contract: $($entry[0])"}
+    foreach($field in $type.GetFields([Reflection.BindingFlags]'Public,NonPublic,Instance')) {
+        if($field.FieldType.IsClass){throw "Worker job retains managed reference: $($entry[0]).$($field.Name)"}
+    }
+}
+foreach($entry in @(@('PreparedMissileContactPatch','PavonisInteractive.TerraInvicta.SpaceCombat.MissileController','HasHitTarget',1),@('PreparedConeContactPatch','PavonisInteractive.TerraInvicta.TIUtilities','SimpleConeCastAll',2))) {
+    $target=$gameAssembly.GetType($entry[1],$true).GetMethod($entry[2],[Reflection.BindingFlags]'Public,NonPublic,Static,Instance')
+    $patch=$modAssembly.GetType('TIEconomyMod.Patches.'+$entry[0],$true)
+    $original=$instructionReader[0].PSObject.BaseObject.Invoke($null,[object[]]@($target,$null))
+    $changed=@($patch.GetMethod('Transpiler').Invoke($null,[object[]]@(,$original)))
+    $count=@($changed | Where-Object {$_.operand -is [Reflection.MethodInfo] -and $_.operand.DeclaringType -eq $worldType -and $_.operand.Name -eq $(if($entry[0] -eq 'PreparedMissileContactPatch'){'RaycastMissile'}else{'RaycastAll'})}).Count
+    if($count -ne $entry[3]){throw "Prepared native query count mismatch: $($entry[0])"}
+}
+Write-Host 'PASS: worker job data has no managed reference fields; native missile and shaped-cone query replacements match pinned call sites. Worker-host self-test remains required.'

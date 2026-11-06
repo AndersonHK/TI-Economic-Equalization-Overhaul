@@ -105,6 +105,9 @@ $msbuild = Find-MSBuild
 $project = Join-Path $repositoryRoot 'TIEconomyMod\TIEconomyMod.csproj'
 
 Write-Host "Target assemblies: $managedDirectory"
+$nativeProject = Join-Path $repositoryRoot 'native\ContactKernel\ContactKernel.vcxproj'
+& $msbuild $nativeProject '/t:Rebuild' '/p:Configuration=Release' '/p:Platform=x64' '/v:minimal' '/nologo'
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 $arguments = @(
     $project,
     '/t:Rebuild',

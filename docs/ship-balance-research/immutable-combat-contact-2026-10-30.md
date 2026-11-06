@@ -202,7 +202,7 @@ separates the remaining collider/transform hierarchy, rendering and native-updat
 cost from the measured prepared-contact pass. Existing 0.10.23 battle windows
 show roughly 1.8 ms/frame in that pass at about 44 FPS; it cannot account for
 most frame time. The added physical collider hierarchy is a leading hypothesis,
-not a measured root cause. No follow-up fix is implemented or deployed.
+not a measured root cause in that investigation.
 
 The user then clarified that the known 1–3 ms/frame serial pass is itself
 unacceptable even if other costs dominate. The revised plan targets zero or
@@ -210,4 +210,8 @@ near-zero added main-thread collision/pose overhead through precomputation,
 batched worker simulation and a small native event-commit step. It explicitly
 counts state capture and worker waits, preserves contact behavior, and applies
 the same performance scrutiny to other patches. A substantial replacement of
-the existing architecture is proposed; it remains unimplemented pending review.
+the existing architecture was approved on 2026-11-04. The
+[0.11.7 worker/native implementation](battle-worker-contact-2026-11-04.md)
+supersedes the serial hot path while retaining the prepared geometry mathematics.
+Its headless timings and remaining full-battle acceptance are recorded separately;
+the historical measurements above remain tied to their original builds.

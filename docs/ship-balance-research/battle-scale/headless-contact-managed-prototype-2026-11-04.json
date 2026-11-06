@@ -1,0 +1,83 @@
+{
+  "version": "0.11.7",
+  "unity": "2020.3.49f1",
+  "description": "Actual Unity job runtime, synthetic geometry and poses. Immediate completion includes all worker waits. Not a rendered battle or GPU/FPS measurement.",
+  "reports": [
+    {
+      "ships": 32,
+      "projectiles": 256,
+      "staticPartsPerShip": 40,
+      "skinsPerShip": 4,
+      "bonesPerSkin": 20,
+      "trianglesPerAsset": 2048,
+      "clustered": false,
+      "frames": 160,
+      "totalMeanMs": 2.2896987500000012,
+      "totalP50Ms": 1.8848,
+      "totalP95Ms": 2.3045,
+      "totalMaxMs": 14.1166,
+      "dispatchMeanMs": 0.03445312499999999,
+      "dispatchP95Ms": 0.0457,
+      "mainAllocatedBytes": null,
+      "contactsIncludingWarmup": 0,
+      "activePoses": 4096,
+      "surfaces": 3968,
+      "isolatedStageMeanMsPoseIndexQuery": [
+        0.105075,
+        1.80561875,
+        0.04083125
+      ]
+    },
+    {
+      "ships": 32,
+      "projectiles": 48,
+      "staticPartsPerShip": 40,
+      "skinsPerShip": 4,
+      "bonesPerSkin": 20,
+      "trianglesPerAsset": 2048,
+      "clustered": true,
+      "frames": 160,
+      "totalMeanMs": 3.810441249999999,
+      "totalP50Ms": 3.4665,
+      "totalP95Ms": 4.583,
+      "totalMaxMs": 16.3325,
+      "dispatchMeanMs": 0.02336937500000001,
+      "dispatchP95Ms": 0.0405,
+      "mainAllocatedBytes": null,
+      "contactsIncludingWarmup": 8832,
+      "activePoses": 3888,
+      "surfaces": 3968,
+      "isolatedStageMeanMsPoseIndexQuery": [
+        0.09642500000000001,
+        1.7096,
+        1.68634375
+      ]
+    },
+    {
+      "ships": 64,
+      "projectiles": 1024,
+      "staticPartsPerShip": 40,
+      "skinsPerShip": 4,
+      "bonesPerSkin": 20,
+      "trianglesPerAsset": 2048,
+      "clustered": false,
+      "frames": 160,
+      "totalMeanMs": 4.676046875000003,
+      "totalP50Ms": 3.7244,
+      "totalP95Ms": 5.1583,
+      "totalMaxMs": 29.5516,
+      "dispatchMeanMs": 0.06339562499999998,
+      "dispatchP95Ms": 0.0947,
+      "mainAllocatedBytes": null,
+      "contactsIncludingWarmup": 0,
+      "activePoses": 8704,
+      "surfaces": 7936,
+      "isolatedStageMeanMsPoseIndexQuery": [
+        0.1315125,
+        3.46020625,
+        0.0621625
+      ]
+    }
+  ],
+  "evidence_note": "Earlier managed prototype. Its fixture did not yet include projectile bodies as targets or reserved inactive slots; this is not a controlled performance comparison or a rendered FPS baseline."
+}

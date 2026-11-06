@@ -1,0 +1,170 @@
+{
+  "status": "Source inventory, not runtime cost measurements or an exhaustive native call graph. Getters are potential recurring callers; cadence requires native call-site/profile confirmation.",
+  "entries": [
+    {
+      "file": "TIEconomyMod/Core/BattleProjectileGeometry.cs",
+      "line": 139,
+      "signature": "private void LateUpdate()"
+    },
+    {
+      "file": "TIEconomyMod/Core/CombatContactMetrics.cs",
+      "line": 61,
+      "signature": "private void Update()"
+    },
+    {
+      "file": "TIEconomyMod/Core/CombatExplosionGeometry.cs",
+      "line": 23,
+      "signature": "private void LateUpdate()"
+    },
+    {
+      "file": "TIEconomyMod/Core/CombatMeshGeometry.cs",
+      "line": 439,
+      "signature": "private void LateUpdate()"
+    },
+    {
+      "file": "TIEconomyMod/Core/CombatRenderGeometry.cs",
+      "line": 163,
+      "signature": "private void LateUpdate()"
+    },
+    {
+      "file": "TIEconomyMod/Patches/BallisticContactPatches.cs",
+      "line": 17,
+      "signature": "[HarmonyPatch(typeof(ProjectileJobContainer),\"UpdateControllers\")]"
+    },
+    {
+      "file": "TIEconomyMod/Patches/BallisticContactPatches.cs",
+      "line": 36,
+      "signature": "[HarmonyPatch(typeof(BallisticProjectileController),\"UpdateController\")]"
+    },
+    {
+      "file": "TIEconomyMod/Patches/BallisticContactPatches.cs",
+      "line": 42,
+      "signature": "[HarmonyPatch(typeof(ProjectileJobContainer),\"LateUpdate\")]"
+    },
+    {
+      "file": "TIEconomyMod/Patches/BattleGeometryPatches.cs",
+      "line": 48,
+      "signature": "[HarmonyPatch(typeof(SpaceCombatManager), \"get_modelScalingFactor\")]"
+    },
+    {
+      "file": "TIEconomyMod/Patches/BattleGeometryPatches.cs",
+      "line": 58,
+      "signature": "[HarmonyPatch(typeof(SpaceCombatManager), \"get_projectileScalingFactor\")]"
+    },
+    {
+      "file": "TIEconomyMod/Patches/BattleGeometryPatches.cs",
+      "line": 85,
+      "signature": "[HarmonyPatch(typeof(CombatShipController), \"get_BoundingBoxSize\")]"
+    },
+    {
+      "file": "TIEconomyMod/Patches/BattleGeometryPatches.cs",
+      "line": 191,
+      "signature": "[HarmonyPatch(typeof(TISpaceCombatProjectileState), \"WillHitSphere\")]"
+    },
+    {
+      "file": "TIEconomyMod/Patches/CapitalMountPatches.cs",
+      "line": 283,
+      "signature": "[HarmonyPatch(typeof(TISpaceShipTemplate), \"get_ValidTemplate\")]"
+    },
+    {
+      "file": "TIEconomyMod/Patches/CombatSpacingEffectsPatches.cs",
+      "line": 13,
+      "signature": "[HarmonyPatch(typeof(CombatGrid), \"Update\")]"
+    },
+    {
+      "file": "TIEconomyMod/Patches/CombatViewPatches.cs",
+      "line": 65,
+      "signature": "[HarmonyPatch(typeof(SpaceCombatCameraController), \"get_ScaledMinZoom\")]"
+    },
+    {
+      "file": "TIEconomyMod/Patches/CombatViewPatches.cs",
+      "line": 103,
+      "signature": "[HarmonyPatch(typeof(SpaceCombatCameraController), \"get_minCameraMovementSpeed\")]"
+    },
+    {
+      "file": "TIEconomyMod/Patches/CombatViewPatches.cs",
+      "line": 113,
+      "signature": "[HarmonyPatch(typeof(SpaceCombatCameraController), \"get_minScrollSpeedOffset\")]"
+    },
+    {
+      "file": "TIEconomyMod/Patches/CombatViewPatches.cs",
+      "line": 147,
+      "signature": "[HarmonyPatch(typeof(WaypointVisual), \"UpdateWaypointScale\")]"
+    },
+    {
+      "file": "TIEconomyMod/Patches/CombatViewPatches.cs",
+      "line": 215,
+      "signature": "[HarmonyPatch(typeof(MissileController), \"UpdateTrackingDisplay\")]"
+    },
+    {
+      "file": "TIEconomyMod/Patches/GlobalResearchPatches.cs",
+      "line": 251,
+      "signature": "[HarmonyPatch(typeof(ResearchPanelController), \"UpdatePanel\")]"
+    },
+    {
+      "file": "TIEconomyMod/Patches/GunpowderArtPatches.cs",
+      "line": 265,
+      "signature": "private void Update()"
+    },
+    {
+      "file": "TIEconomyMod/Patches/LaserBeamCameraPatches.cs",
+      "line": 27,
+      "signature": "[HarmonyPatch(typeof(BeamEffectController), \"OnWillRenderObject\")]"
+    },
+    {
+      "file": "TIEconomyMod/Patches/NationalHarmonizationPatches.cs",
+      "line": 749,
+      "signature": "[HarmonyPatch(typeof(ClaimListItemController), \"UpdateListItem\")]"
+    },
+    {
+      "file": "TIEconomyMod/Patches/NationalHarmonizationPatches.cs",
+      "line": 761,
+      "signature": "[HarmonyPatch(typeof(NationInfoController), \"UpdateRegionList\")]"
+    },
+    {
+      "file": "TIEconomyMod/Patches/NationalHarmonizationPatches.cs",
+      "line": 773,
+      "signature": "[HarmonyPatch(typeof(PolicyTargetGridItemController), \"UpdateListItem\")]"
+    },
+    {
+      "file": "TIEconomyMod/Patches/NationalSpaceAssetUiPatches.cs",
+      "line": 16,
+      "signature": "[HarmonyPatch(typeof(NationInfoController), \"UpdatePrimaryDisplayElements\")]"
+    },
+    {
+      "file": "TIEconomyMod/Patches/ProgressionAndPrecisionPatches.cs",
+      "line": 12,
+      "signature": "[HarmonyPatch(typeof(TIShipHullTemplate), \"get_description\")]"
+    },
+    {
+      "file": "TIEconomyMod/Patches/ProgressionAndPrecisionPatches.cs",
+      "line": 77,
+      "signature": "[HarmonyPatch(typeof(TILaserWeaponTemplate), \"get_wavelength_m\")]"
+    },
+    {
+      "file": "TIEconomyMod/Patches/ProjectileCollisionPatches.cs",
+      "line": 68,
+      "signature": "[HarmonyPatch(typeof(BallisticProjectileController), \"UpdateController\")]"
+    },
+    {
+      "file": "TIEconomyMod/Patches/RepairDebtDisplayPatches.cs",
+      "line": 294,
+      "signature": "[HarmonyPatch(typeof(NationInfoController), \"UpdatePriorityList\")]"
+    },
+    {
+      "file": "TIEconomyMod/Patches/ShipDesignerViewportPatches.cs",
+      "line": 51,
+      "signature": "private void LateUpdate()"
+    },
+    {
+      "file": "TIEconomyMod/Patches/UtilityFootprintPatches.cs",
+      "line": 153,
+      "signature": "[HarmonyPatch(typeof(ShipModuleListItem), \"UpdateItem\")]"
+    },
+    {
+      "file": "TIEconomyMod/Main.cs",
+      "line": 160,
+      "signature": "private static void OnGUI(UnityModManager.ModEntry modEntry)"
+    }
+  ]
+}

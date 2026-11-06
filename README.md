@@ -1,6 +1,25 @@
 # TI Economic Equalization Overhaul
 
-Current release: **0.11.6**, validated against **Terra Invicta 1.0.53b**.
+Current release: **0.11.9**, targeting **Terra Invicta 1.0.53b**.
+**User-accepted stable and performant, 2026-11-05.**
+[Acceptance and verified runtime identity](docs/ship-balance-research/battle-scale/acceptance-0.11.9-2026-11-05.md).
+
+The user confirms excellent 0.11.8 performance and working missiles.
+[0.11.9 waypoint cleanup](docs/ship-balance-research/repeat-battle-waypoint-cleanup-2026-11-05.md)
+addresses the subsequent second-battle formation crash. Three synthetic host
+lifecycles pass; the user now accepts the current version as stable. Camera-follow
+changes are explicitly deferred.
+
+The [0.11.8 compatibility-query rework](docs/ship-balance-research/compatibility-query-rework-2026-11-05.md)
+replaces the main-thread full-world scan that caused 0.11.7 to exceed 600 ms/frame
+after missile firing. Expanded headless production-wrapper checks pass, and the
+user confirms excellent live performance and working missiles.
+
+The [collision performance implementation](docs/ship-balance-research/battle-worker-contact-2026-11-04.md)
+uses prepared data, Unity pose jobs and an optimized native numerical kernel.
+Headless checks and timing evidence are separate from rendered-battle acceptance.
+The [friendly ship collision/avoidance plan](docs/ship-balance-research/friendly-ship-collision-plan-2026-11-04.md)
+is a separate, unimplemented behavioral follow-up.
 
 **User-accepted stable baseline, 2026-11-04.** The user confirmed the beam bug is
 fixed and the game is stable, then requested documentation, commit and push.
@@ -449,6 +468,10 @@ artifacts/TIEconomyMod-0.10.3-ti1.0.53.zip
 The project targets .NET Framework 4.8. Set `TI_TARGET_MANAGED_DIR`, or let the
 build script locate Steam. References come from one selected installation so
 Harmony and Unity Mod Manager are not mixed across versions.
+The collision kernel additionally requires Visual Studio 2022 C++ tools
+(MSVC v143 x64) and Windows SDK 10. The build script builds both assemblies.
+Deploy the complete package, including `Assembly/TIEconomyContact.dll`; its ABI
+must match the managed assembly.
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\build.ps1

@@ -24,8 +24,9 @@ and pose overhead, with no repeated full ship/bone scans or duplicate physical
 collider hierarchy maintained solely for an independent collision calculation.
 Actual hit application still needs a small, measured native integration step.
 The [revised battle FPS plan](ship-balance-research/battle-fps-investigation-plan-2026-11-03.md)
-sets proposed budgets, behavior constraints and validation gates; implementation
-is pending review. Do not trade away correct collision, introduce stale poses or
+sets proposed budgets, behavior constraints and validation gates. The
+[implementation record](ship-balance-research/battle-worker-contact-2026-11-04.md)
+distinguishes headless evidence from full-battle acceptance. Do not trade away correct collision, introduce stale poses or
 delay damage merely to meet a timer target.
 
 ## Armor, weapon energy and officer skill

@@ -1,0 +1,358 @@
+{
+  "status": "Proposal only; no gameplay implementation",
+  "review_date": "2026-11-05",
+  "global_technology_count": 149,
+  "project_count_screened": 750,
+  "sources": [
+    {
+      "path": "D:\\Games\\SteamLibrary\\steamapps\\common\\Terra Invicta\\TerraInvicta_Data\\StreamingAssets\\Templates\\TITechTemplate.json",
+      "sha256": "761d307177c86fb1b6945c9e9c03deda08814143967597b54d1647c84c7dbde5"
+    },
+    {
+      "path": "D:\\Games\\SteamLibrary\\steamapps\\common\\Terra Invicta\\TerraInvicta_Data\\StreamingAssets\\Templates\\TIProjectTemplate.json",
+      "sha256": "65c4af0411555b0babe86001f1cf5d0e83999b831d6d72e7319702c2c03542d7"
+    },
+    {
+      "path": "D:\\Games\\SteamLibrary\\steamapps\\common\\Terra Invicta\\TerraInvicta_Data\\StreamingAssets\\Templates\\TIEffectTemplate.json",
+      "sha256": "905aa752c53c4a9f03c36e525d8fd9fea9f15af2745db1164b7e7a77be9c3df9"
+    },
+    {
+      "path": "D:\\Games\\SteamLibrary\\steamapps\\common\\Terra Invicta\\TerraInvicta_Data\\StreamingAssets\\Templates\\TIGlobalConfig.json",
+      "sha256": "415113fadeecb4d67fa79f34275e026396c3fe914b722d936d5adcf737b07f4e"
+    },
+    {
+      "path": "C:\\Users\\imper\\Documents\\GitHub\\TI-Economic-Equalization-Overhaul\\TIEconomyMod\\ModFiles\\TITechTemplate.json",
+      "sha256": "dfa148ade4548611c9b9f4e62e1f3abb86182922564345359880586e012d44be"
+    },
+    {
+      "path": "C:\\Users\\imper\\Documents\\GitHub\\TI-Economic-Equalization-Overhaul\\TIEconomyMod\\ModFiles\\TIProjectTemplate.json",
+      "sha256": "e754aae1baeff78d59546beb62de487b1ae41fade22c8e9fa8d5ffbd960de7c7"
+    },
+    {
+      "path": "C:\\Users\\imper\\Documents\\GitHub\\TI-Economic-Equalization-Overhaul\\TIEconomyMod\\ModFiles\\TIStartTimeTemplate.json",
+      "sha256": "10515d7cd91175c82eee192e3a4529129a5f4acfb94a6cad60ab06b46ce8dce7"
+    },
+    {
+      "path": "C:\\Users\\imper\\Documents\\GitHub\\TI-Economic-Equalization-Overhaul\\TIEconomyMod\\ModFiles\\ModInfo.json",
+      "sha256": "1d3842704a932a74e5f7cde4e2be92adf6b56c1617e1143400385f8019395c5d"
+    }
+  ],
+  "selected_records": [
+    {
+      "proposal_lane": "cap",
+      "proposed_percent": 5,
+      "template_file": "TITechTemplate.json",
+      "source_record": {
+        "friendlyName": "Ad Astra",
+        "dataName": "AdAstra",
+        "techCategory": "SocialScience",
+        "AI_techRole": "SpaceDevelopment",
+        "AI_criticalTech": true,
+        "endGameTech": false,
+        "researchCost": 5000,
+        "prereqs": [
+          "MissiontotheMoon",
+          "OrbitalShipbuilding"
+        ]
+      }
+    },
+    {
+      "proposal_lane": "cap",
+      "proposed_percent": 5,
+      "template_file": "TITechTemplate.json",
+      "source_record": {
+        "friendlyName": "Space Commerce",
+        "dataName": "SpaceCommerce",
+        "techCategory": "SocialScience",
+        "AI_techRole": "SpaceDevelopment",
+        "AI_criticalTech": false,
+        "endGameTech": false,
+        "researchCost": 20000,
+        "prereqs": [
+          "IndustrializationofSpace",
+          "ArrivalEconomics",
+          "ArrivalLaw"
+        ]
+      }
+    },
+    {
+      "proposal_lane": "cap",
+      "proposed_percent": 5,
+      "template_file": "TITechTemplate.json",
+      "source_record": {
+        "friendlyName": "Our Space Future",
+        "dataName": "OurSpaceFuture",
+        "techCategory": "SocialScience",
+        "AI_techRole": "SpaceDevelopment",
+        "AI_criticalTech": false,
+        "endGameTech": false,
+        "researchCost": 30000,
+        "prereqs": [
+          "SpaceNavies",
+          "DirectedSpaceResearch",
+          "SpaceCommerce"
+        ]
+      }
+    },
+    {
+      "proposal_lane": "cap",
+      "proposed_percent": 5,
+      "template_file": "TITechTemplate.json",
+      "source_record": {
+        "friendlyName": "White Collar Automation",
+        "dataName": "WhiteCollarAutomation",
+        "techCategory": "InformationScience",
+        "AI_techRole": "Efficiency",
+        "AI_criticalTech": false,
+        "endGameTech": false,
+        "researchCost": 40000,
+        "prereqs": [
+          "ArrivalInternationalDevelopment",
+          "SelfRepairingSoftware",
+          "AppliedArtificialIntelligence"
+        ]
+      }
+    },
+    {
+      "proposal_lane": "cap",
+      "proposed_percent": 10,
+      "template_file": "TITechTemplate.json",
+      "source_record": {
+        "friendlyName": "Integrated Earth-Space Economy",
+        "dataName": "IntegratedEarthSpaceEconomy",
+        "techCategory": "SocialScience",
+        "AI_techRole": "EarthPolitics",
+        "AI_criticalTech": false,
+        "endGameTech": false,
+        "researchCost": 40000,
+        "prereqs": [
+          "ArrivalInternationalDevelopment",
+          "OurSpaceFuture",
+          "NextGenerationAerospace"
+        ],
+        "effects": [
+          "Effect_Economy_BasePCGDPIncrease02",
+          "Effect_WelfareReduction_CO2_ppm",
+          "Effect_EnvironmentBestSustainabilityValue05"
+        ]
+      }
+    },
+    {
+      "proposal_lane": "cap",
+      "proposed_percent": 10,
+      "template_file": "TITechTemplate.json",
+      "source_record": {
+        "friendlyName": "Administration Algorithms",
+        "dataName": "AdministrationAlgorithms",
+        "techCategory": "InformationScience",
+        "AI_techRole": "Efficiency",
+        "AI_criticalTech": false,
+        "endGameTech": false,
+        "researchCost": 50000,
+        "prereqs": [
+          "WhiteCollarAutomation",
+          "QuantumEncryption"
+        ],
+        "effects": [
+          "Effect_Economy_BasePCGDPIncrease02"
+        ]
+      }
+    },
+    {
+      "proposal_lane": "global_yield",
+      "proposed_percent": 5,
+      "template_file": "TITechTemplate.json",
+      "source_record": {
+        "friendlyName": "Self-Repairing Software",
+        "dataName": "SelfRepairingSoftware",
+        "techCategory": "InformationScience",
+        "AI_techRole": "Efficiency",
+        "AI_criticalTech": false,
+        "endGameTech": false,
+        "researchCost": 10000,
+        "prereqs": [
+          "AdvancedNeuralNetworks"
+        ]
+      }
+    },
+    {
+      "proposal_lane": "global_yield",
+      "proposed_percent": 5,
+      "template_file": "TITechTemplate.json",
+      "source_record": {
+        "friendlyName": "Quantum Computing",
+        "dataName": "QuantumComputing",
+        "techCategory": "InformationScience",
+        "AI_techRole": "Efficiency",
+        "AI_criticalTech": false,
+        "endGameTech": false,
+        "researchCost": 15000,
+        "prereqs": [
+          "AdvancedAtomicManipulation",
+          "AdvancedNeuralNetworks",
+          "AdvancedHeatManagementConcepts"
+        ]
+      }
+    },
+    {
+      "proposal_lane": "global_yield",
+      "proposed_percent": 5,
+      "template_file": "TITechTemplate.json",
+      "source_record": {
+        "friendlyName": "Applied Artificial Intelligence",
+        "dataName": "AppliedArtificialIntelligence",
+        "techCategory": "InformationScience",
+        "AI_techRole": "Efficiency",
+        "AI_criticalTech": false,
+        "endGameTech": false,
+        "researchCost": 25000,
+        "prereqs": [
+          "QuantumComputing"
+        ],
+        "effects": [
+          "Effect_IncreaseMaxArmyTechLevel"
+        ]
+      }
+    },
+    {
+      "proposal_lane": "global_yield",
+      "proposed_percent": 5,
+      "template_file": "TITechTemplate.json",
+      "source_record": {
+        "friendlyName": "Mind and Machine",
+        "dataName": "MindandMachine",
+        "techCategory": "LifeScience",
+        "AI_techRole": "EarthPolitics",
+        "AI_criticalTech": false,
+        "endGameTech": false,
+        "researchCost": 35000,
+        "prereqs": [
+          "AppliedArtificialIntelligence",
+          "Cybernetics",
+          "ArrivalPsychology"
+        ]
+      }
+    },
+    {
+      "proposal_lane": "faction_yield",
+      "proposed_percent": 10,
+      "template_file": "TIProjectTemplate.json",
+      "source_record": {
+        "friendlyName": "Space Traffic Control",
+        "dataName": "Project_SpaceTrafficControl",
+        "techCategory": "InformationScience",
+        "AI_techRole": "SpaceDevelopment",
+        "AI_projectRole": "MissionControl",
+        "researchCost": 1200,
+        "prereqs": [
+          "WhiteCollarAutomation",
+          "SpaceCommerce"
+        ],
+        "effects": [
+          "Effect_MissionControlPriorityBonus25"
+        ],
+        "oneTimeGlobally": false,
+        "repeatable": false,
+        "factionAvailableChance": 67,
+        "initialUnlockChance": 25,
+        "deltaUnlockChance": 10,
+        "maxUnlockChance": 75,
+        "resourcesGranted": []
+      }
+    },
+    {
+      "proposal_lane": "faction_yield",
+      "proposed_percent": 5,
+      "template_file": "TIProjectTemplate.json",
+      "source_record": {
+        "friendlyName": "Their Computers",
+        "dataName": "Project_TheirComputers",
+        "techCategory": "Xenology",
+        "AI_techRole": "FactionObjective",
+        "AI_projectRole": "Xenology",
+        "researchCost": 5000,
+        "prereqs": [
+          "Project_TheirTechnology",
+          "QuantumComputing"
+        ],
+        "effects": [
+          "Effect_MissionControlPriorityBonus25",
+          "Effect_KnowledgePriorityBonus02"
+        ],
+        "oneTimeGlobally": false,
+        "repeatable": false,
+        "factionAvailableChance": 100,
+        "initialUnlockChance": 50,
+        "deltaUnlockChance": 50,
+        "maxUnlockChance": 100,
+        "resourcesGranted": []
+      }
+    },
+    {
+      "proposal_lane": "faction_yield",
+      "proposed_percent": 5,
+      "template_file": "TIProjectTemplate.json",
+      "source_record": {
+        "friendlyName": "Devolved Space Command",
+        "dataName": "Project_DevolvedSpaceCommand",
+        "techCategory": "SpaceScience",
+        "AI_techRole": "SpaceDevelopment",
+        "AI_projectRole": "HabDefense",
+        "researchCost": 2500,
+        "prereqs": [
+          "IndustrializationofSpace",
+          "AdministrationAlgorithms"
+        ],
+        "effects": [
+          "Effect_DummyTooltipDevolvedSpaceCommand1",
+          "Effect_DummyTooltipDevolvedSpaceCommand2"
+        ],
+        "oneTimeGlobally": false,
+        "repeatable": false,
+        "factionAvailableChance": 80,
+        "factionAlways": "EscapeCouncil",
+        "initialUnlockChance": 25,
+        "deltaUnlockChance": 5,
+        "maxUnlockChance": 100,
+        "orgGranted": "RandomAerospace34",
+        "resourcesGranted": []
+      }
+    },
+    {
+      "proposal_lane": "faction_yield",
+      "proposed_percent": 5,
+      "template_file": "TIProjectTemplate.json",
+      "source_record": {
+        "friendlyName": "Alien Bandwidth",
+        "dataName": "Project_AlienBandwidth",
+        "techCategory": "Xenology",
+        "AI_techRole": "FactionObjective",
+        "AI_criticalTech": true,
+        "AI_projectRole": "MissionControl",
+        "researchCost": 2500,
+        "prereqs": [
+          "Project_HydraDiplomacy",
+          "Project_SubmitVictory"
+        ],
+        "effects": [
+          "Effect_MissionControlPriorityBonus25"
+        ],
+        "oneTimeGlobally": false,
+        "repeatable": false,
+        "factionPrereq": [
+          "SubmitCouncil"
+        ],
+        "factionAvailableChance": 100,
+        "initialUnlockChance": 0,
+        "deltaUnlockChance": 34,
+        "maxUnlockChance": 100,
+        "resourcesGranted": [
+          {
+            "resource": "MissionControl",
+            "value": 100
+          }
+        ]
+      }
+    }
+  ]
+}

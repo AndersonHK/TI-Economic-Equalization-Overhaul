@@ -28,6 +28,8 @@ namespace TIEconomyMod.Core
             internal Matrix4x4 Inverse;
             internal Bounds WorldBounds;
             internal bool Visible;
+            internal int[] WorkerSurfaces;
+            internal bool WorkerVisible;
             internal readonly List<BoxCollider> Boxes = new List<BoxCollider>();
         }
         private sealed class Original { internal Collider Collider; internal bool Enabled; }
@@ -52,10 +54,15 @@ namespace TIEconomyMod.Core
         private Matrix4x4 visualBoundsRoot;
         private Bounds visualBounds;
         private bool hasVisualBounds;
+        private bool workerLive;
+        private int workerEpoch;
+        private int workerFaction;
         private static readonly Dictionary<CombatantController,CombatMeshGeometry> Combatants=new Dictionary<CombatantController,CombatMeshGeometry>();
         public static CombatMeshGeometry ForCombatant(CombatantController value)
         {CombatMeshGeometry geometry;return Combatants.TryGetValue(value,out geometry)?geometry:null;}
         public IDamageable Damageable { get { return combatant != null ? (IDamageable)combatant : projectile; } }
+        public bool IsCombatant {get{return !ReferenceEquals(combatant,null);}}
+        public bool HasPreparedParts {get{return parts.Count!=0;}}
 
         public static CombatMeshGeometry ForShip(CombatShipController ship)
         {
@@ -99,6 +106,9 @@ namespace TIEconomyMod.Core
                 PreparedContactWorld.Register(value);
             }
             value.Refresh();
+            PreparedContactWorld.Register(value);
+            value.RefreshWorkerVisibility();
+            value.RefreshWorkerLife();
         }
 
         private void Bind(Transform root, List<Collider> targetHits)
@@ -132,7 +142,9 @@ namespace TIEconomyMod.Core
                 if (collider.gameObject.layer != hurtLayer && !priorHits.Contains(collider)) continue;
                 if (collider.isTrigger || collider.gameObject.layer == LayerMask.NameToLayer("Ignore Raycast")) continue;
                 originals.Add(new Original { Collider = collider, Enabled = collider.enabled });
-                collider.enabled = false;
+                // Native low-count body colliders retain navigation/ramming.
+                // Registered weapon hit lists below use only prepared identities.
+                if(combatant==null)collider.enabled = false;
             }
             Refresh();
             PrimeProjectiles(root);
@@ -162,7 +174,7 @@ namespace TIEconomyMod.Core
         private BoxCollider AddBox(Part part,Transform parent)
         {
             var go=new GameObject("EEO Mesh Hitbox");go.layer=LayerMask.NameToLayer("HurtBox");
-            go.transform.SetParent(parent,false);var box=go.AddComponent<BoxCollider>();
+            go.transform.SetParent(parent,false);var box=go.AddComponent<BoxCollider>();box.enabled=false;
             part.Boxes.Add(box);byCollider.Add(box,part);Owners.Add(box,this);return box;
         }
         private static void Fit(BoxCollider box,Vector3 min,Vector3 max)
@@ -193,10 +205,11 @@ namespace TIEconomyMod.Core
                         var envelope=part.SkinTree.Envelope(i);
                         if(envelope.Bone>=part.Bones.Length||part.Bones[envelope.Bone]==null)
                             throw new InvalidOperationException("Prepared skin has a missing bone: "+part.Skin.name);
-                        var box=AddBox(part,part.Bones[envelope.Bone]);Fit(box,envelope.Min,envelope.Max);
-                        if(part.Box==null)part.Box=box;
+                        // One disabled identity per part, no live bone physics actors.
+                        if(part.Box==null){part.Box=AddBox(part,part.Skin.transform);Fit(part.Box,envelope.Min,envelope.Max);}
                     }
                     part.Configured=true;
+                    RegisterWorker(part);
                     continue;
                 }
                 Mesh mesh=part.Filter==null?null:part.Filter.sharedMesh;
@@ -204,7 +217,57 @@ namespace TIEconomyMod.Core
                 part.AppliedMesh=mesh;part.Configured=true;
                 Bounds bounds=mesh.bounds;Fit(part.Box,bounds.min,bounds.max);
                 part.Tree=PrepareStatic(mesh);
+                RegisterWorker(part);
             }
+        }
+        private void RegisterWorker(Part part)
+        {
+            if(part.WorkerSurfaces!=null)foreach(int id in part.WorkerSurfaces)ContactJobRuntime.SetLive(id,false);
+            bool live=part.Renderer.enabled&&part.Renderer.gameObject.activeInHierarchy;
+            workerEpoch=ContactJobRuntime.Epoch;
+            int faction=ContactJobRuntime.Faction(combatant!=null?combatant.faction:projectile.projectileState.shootingFaction);
+            workerFaction=faction;
+            int body=gameObject.GetInstanceID(),layer=part.Box.gameObject.layer;
+            part.WorkerSurfaces=part.SkinTree!=null ? ContactJobRuntime.Skin(part.SkinTree,part.Bones,part.Box,body,faction,layer,live,projectile!=null) :
+                new[]{ContactJobRuntime.Static(part.Tree,part.Renderer.transform,part.Box,body,faction,layer,live,projectile!=null)};
+            part.WorkerVisible=live;workerLive=true;
+        }
+        public void RefreshWorkerVisibility()
+        {
+            if(workerEpoch!=ContactJobRuntime.Epoch)return;
+            bool bodyLive=ContactLive;
+            foreach(Part part in parts)
+            {
+                bool live=bodyLive&&part.Renderer!=null&&part.Renderer.enabled&&part.Renderer.gameObject.activeInHierarchy;
+                if(part.WorkerVisible==live)
+                {
+                    if(live&&part.WorkerSurfaces!=null)foreach(int id in part.WorkerSurfaces)ContactJobRuntime.Invalidate(id);
+                    continue;
+                }
+                part.WorkerVisible=live;
+                if(part.WorkerSurfaces!=null)foreach(int id in part.WorkerSurfaces)ContactJobRuntime.SetLive(id,live);
+            }
+            workerLive=bodyLive;snapshotFrame=visualBoundsFrame=-1;
+            foreach(Part part in parts)part.SnapshotFrame=-1;
+        }
+        public void RefreshWorkerLife()
+        {
+            if(workerEpoch!=ContactJobRuntime.Epoch)return;
+            if(workerLive!=ContactLive)RefreshWorkerVisibility();
+            if(!workerLive)return;
+            int faction=ContactJobRuntime.Faction(combatant!=null?combatant.faction:projectile.projectileState.shootingFaction);
+            if(faction==workerFaction)return;workerFaction=faction;
+            foreach(Part part in parts)if(part.WorkerSurfaces!=null)foreach(int id in part.WorkerSurfaces)ContactJobRuntime.SetFaction(id,faction);
+        }
+        public void DeactivateWorker()
+        {
+            if(workerEpoch!=ContactJobRuntime.Epoch)return;
+            foreach(Part part in parts)
+            {
+                part.WorkerVisible=false;
+                if(part.WorkerSurfaces!=null)foreach(int id in part.WorkerSurfaces)ContactJobRuntime.SetLive(id,false);
+            }
+            workerLive=false;
         }
         private static RenderedMeshRaycast PrepareStatic(Mesh mesh)
         {
@@ -222,11 +285,11 @@ namespace TIEconomyMod.Core
             {
                 if(weapon.projectilePrefab==null||weapon.projectilePrefab.GetComponent<MissileController>()==null)continue;
                 foreach(var filter in weapon.projectilePrefab.GetComponentsInChildren<MeshFilter>(true))
-                    if(filter.sharedMesh!=null&&filter.sharedMesh.vertexCount>=3&&filter.GetComponent<MeshRenderer>()!=null&&!IsEffect(filter.transform,weapon.projectilePrefab.transform))PrepareStatic(filter.sharedMesh);
+                    if(filter.sharedMesh!=null&&filter.sharedMesh.vertexCount>=3&&filter.GetComponent<MeshRenderer>()!=null&&!IsEffect(filter.transform,weapon.projectilePrefab.transform))ContactJobRuntime.Prewarm(PrepareStatic(filter.sharedMesh));
                 foreach(var skin in weapon.projectilePrefab.GetComponentsInChildren<SkinnedMeshRenderer>(true))
                 {
                     int quality=skin.quality==SkinQuality.Auto?(int)QualitySettings.skinWeights:(int)skin.quality;
-                    PreparedSkinnedContact.Prepare(skin.sharedMesh,quality==1?1:quality==2?2:4);
+                    ContactJobRuntime.Prewarm(PreparedSkinnedContact.Prepare(skin.sharedMesh,quality==1?1:quality==2?2:4));
                 }
             }
         }
@@ -237,7 +300,8 @@ namespace TIEconomyMod.Core
             Part part;
             return !restored && byCollider.TryGetValue(collider, out part) && part.Renderer != null &&
                 part.Renderer.enabled && part.Renderer.gameObject.activeInHierarchy &&
-                (combatant == null || !combatant.destructionTriggered) && (projectile == null || !projectile.beenDestroyed);
+                (combatant == null || !combatant.destructionTriggered&&!combatant.isDestroyed) &&
+                (projectile == null || !projectile.beenDestroyed&&!projectile.hasHit);
         }
         public bool RaycastVisual(Collider collider, Vector3 origin, Vector3 direction, float length, out float distance, out Vector3 normal)
         {
@@ -254,6 +318,36 @@ namespace TIEconomyMod.Core
                 inverse.MultiplyVector(direction), length, out distance, out localNormal);
             if (result) normal = RenderedMeshRaycast.TransformNormal(inverse,localNormal);
             return result;
+        }
+        // Compatibility for native missile/cone/beam consumers: preserve their
+        // fitted-box query semantics without registering those boxes in PhysX.
+        public bool RaycastProxy(Collider collider,Ray ray,float maximum,out RaycastHit hit,bool firstBone=false)
+        {
+            hit=new RaycastHit();Part part;
+            if(!VisibleDamagePart(collider)||!byCollider.TryGetValue(collider,out part))return false;
+            bool found=false;
+            int count=part.SkinTree==null?1:part.SkinTree.EnvelopeCount;
+            for(int i=0;i<count;i++)
+            {
+                Matrix4x4 inverse;Vector3 min,max;
+                if(part.SkinTree!=null)
+                {var e=part.SkinTree.Envelope(i);inverse=part.Bones[e.Bone].worldToLocalMatrix;min=e.Min;max=e.Max;}
+                else {inverse=part.Renderer.worldToLocalMatrix;Bounds b=part.AppliedMesh.bounds;min=b.min;max=b.max;}
+                Vector3 size=max-min;size=new Vector3(Math.Max(1e-8f,size.x),Math.Max(1e-8f,size.y),Math.Max(1e-8f,size.z));
+                Bounds local=new Bounds((min+max)*.5f,size);Vector3 origin=inverse.MultiplyPoint3x4(ray.origin);
+                if(local.Contains(origin))continue; // Collider.Raycast does not admit an inside origin.
+                float distance;Vector3 normal;
+                if(!PreparedContactWorld.PrimitiveContact(false,local,origin,inverse.MultiplyVector(ray.direction),maximum,out distance,out normal))continue;
+                hit=PreparedContactWorld.Hit(collider,ray.origin+ray.direction*distance,RenderedMeshRaycast.TransformNormal(inverse,normal),distance);
+                found=true;if(firstBone)return true;maximum=distance;
+            }
+            return found;
+        }
+        public void AppendProxyHits(Ray ray,float maximum,int mask,List<RaycastHit> result)
+        {
+            if(!ContactLive)return;
+            foreach(Part part in parts)
+            {RaycastHit hit;if((mask&(1<<part.Box.gameObject.layer))!=0&&RaycastProxy(part.Box,ray,maximum,out hit))result.Add(hit);}
         }
 
         private static Bounds Transformed(Vector3 min,Vector3 max,Matrix4x4 matrix)
@@ -291,7 +385,7 @@ namespace TIEconomyMod.Core
             CombatContactMetrics.End(3,timer);
         }
         public bool ContactLive
-        {get{return !restored&&gameObject.activeInHierarchy&&(combatant==null||!combatant.destructionTriggered&&!combatant.isDestroyed)&&
+        {get{return !restored&&gameObject.activeInHierarchy&&(model==null||!model.mainHullDestroyed)&&(combatant==null||!combatant.destructionTriggered&&!combatant.isDestroyed)&&
             (projectile==null||!projectile.beenDestroyed&&!projectile.hasHit);}}
         public bool TryContact(Vector3 origin,Vector3 direction,float maximum,int mask,out RaycastHit hit)
         {
@@ -319,7 +413,7 @@ namespace TIEconomyMod.Core
 
         public void SuppressNativeDamageColliders()
         {
-            if (restored) return;
+            if (restored || combatant!=null) return;
             foreach (Original item in originals)
                 if (item.Collider != null && item.Collider.enabled) item.Collider.enabled = false;
         }
@@ -329,6 +423,7 @@ namespace TIEconomyMod.Core
             Matrix4x4 root=transform.localToWorldMatrix;
             if(visualBoundsFrame!=Time.frameCount||root!=visualBoundsRoot)
             {
+                long timer=CombatContactMetrics.Begin();
                 visualBoundsFrame=Time.frameCount;visualBoundsRoot=root;hasVisualBounds=false;
                 foreach(Part part in parts)
                 {
@@ -337,6 +432,7 @@ namespace TIEconomyMod.Core
                     else visualBounds.Encapsulate(part.Renderer.bounds);
                 }
                 CombatContactMetrics.VisualBoundsScans++;
+                CombatContactMetrics.End(9,timer);
             }
             bounds=visualBounds;return hasVisualBounds;
         }
@@ -347,6 +443,7 @@ namespace TIEconomyMod.Core
             frame++;
             if (frame != 2) return;
             enabled = false; // Probe only; no recurring dimension/visibility work.
+            RefreshWorkerVisibility();
             Readback(false);
         }
         private void Readback(bool synchronized)
@@ -354,36 +451,23 @@ namespace TIEconomyMod.Core
             string key = (projectile != null ? "missile:" : "model:") +
                 (model != null ? model.name : gameObject.name)+(synchronized?":synced":":initial");
             if (!Reported.Add(key)) return;
-            float maximumError = 0f;
-            float absoluteError = 0f; Part worst=null;
-            int live = 0;
-            foreach (Part part in parts)
+            int visible=0,identityCount=0,enabledIdentities=0,enabledOriginals=0;
+            foreach(Part part in parts)
             {
-                if (part.Box == null || !part.Box.enabled) continue;
-                Bounds visual = part.Renderer.bounds;
-                Bounds physical = part.Box.bounds;
-                foreach(var box in part.Boxes)if(box!=part.Box&&box.gameObject.activeInHierarchy)physical.Encapsulate(box.bounds);
-                float scale = Math.Max(0.000000001f, visual.size.magnitude);
-                maximumError = Math.Max(maximumError, (visual.center - physical.center).magnitude / scale);
-                maximumError = Math.Max(maximumError, (visual.size - physical.size).magnitude / scale);
-                float error=(visual.center-physical.center).magnitude+(visual.size-physical.size).magnitude;
-                if(error>absoluteError){absoluteError=error;worst=part;}
-                live++;
+                if(part.Renderer!=null&&part.Renderer.enabled&&part.Renderer.gameObject.activeInHierarchy)visible++;
+                foreach(var box in part.Boxes){identityCount++;if(box!=null&&box.enabled)enabledIdentities++;}
             }
-            Main.Log("Combat geometry readback: " + key + " cinematic=" + Patches.BattleScaleRuntime.Cinematic +
-                " boxes=" + live + " replaced=" + originals.Count + " maxRelativeBoundsError=" + maximumError.ToString("G6")+
-                " maxAbsoluteErrorUnits="+absoluteError.ToString("G7")+" configurations="+CombatContactMetrics.ColliderConfigurations);
-            if(worst!=null)Main.Log("Combat geometry worst part: "+worst.Renderer.name+
-                " rendererBounds="+worst.Renderer.bounds+" physicsBounds="+worst.Box.bounds+
-                " boxSize="+worst.Box.size.ToString("G7")+" childScale="+worst.Box.transform.localScale.ToString("G7")+
-                " rendererScale="+worst.Renderer.transform.lossyScale.ToString("G7")+
-                " meshBounds="+(worst.Filter==null?worst.Skin.localBounds.ToString():worst.Filter.sharedMesh.bounds.ToString()));
+            foreach(Original item in originals)if(item.Collider!=null&&item.Collider.enabled&&item.Collider.gameObject.activeInHierarchy)enabledOriginals++;
+            Main.Log("Prepared combat geometry: "+key+" parts="+parts.Count+" visibleParts="+visible+
+                " identityColliders="+identityCount+" enabledIdentityColliders="+enabledIdentities+
+                " activeOriginalBodyColliders="+enabledOriginals+" workerSurfaces="+ContactJobRuntime.SurfaceCount);
         }
 
         public void Restore()
         {
             if (restored) return;
             restored = true;
+            if(workerEpoch==ContactJobRuntime.Epoch)foreach(Part part in parts)if(part.WorkerSurfaces!=null)foreach(int id in part.WorkerSurfaces)ContactJobRuntime.SetLive(id,false);
             PreparedContactWorld.Unregister(this);
             if(!ReferenceEquals(combatant,null))Combatants.Remove(combatant);
             foreach (Part part in parts)

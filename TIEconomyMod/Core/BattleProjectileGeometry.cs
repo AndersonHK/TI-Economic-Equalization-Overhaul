@@ -12,7 +12,7 @@ namespace TIEconomyMod.Core
         private static readonly AccessTools.FieldRef<ProjectileController, ParticleSystem> FlightParticles =
             AccessTools.FieldRefAccess<ProjectileController, ParticleSystem>("projectileParticleSystem");
         private static readonly Dictionary<WeaponClass, Material> Materials = new Dictionary<WeaponClass, Material>();
-        private static readonly HashSet<string> Reported = new HashSet<string>();
+        private static readonly Dictionary<string,int> Reported = new Dictionary<string,int>();
         private GameObject body;
         private Collider bodyCollider;
         private Renderer bodyRenderer;
@@ -24,6 +24,12 @@ namespace TIEconomyMod.Core
         private int tacticalHeight;
 
         public static void Apply(BallisticProjectileController projectile)
+        {
+            long timer=CombatContactMetrics.Begin();
+            try{ApplyCore(projectile);}
+            finally{if(!BallisticContactRuntime.Resolving)CombatContactMetrics.End(10,timer);}
+        }
+        private static void ApplyCore(BallisticProjectileController projectile)
         {
             BattleProjectileGeometry value = projectile.GetComponent<BattleProjectileGeometry>();
             if (value == null)
@@ -95,14 +101,19 @@ namespace TIEconomyMod.Core
             projectile.hitColliders.Add(value.bodyCollider);
             PreparedContactWorld.RegisterRound(projectile,value.bodyCollider);
             value.body.SetActive(true);
-            value.bodyCollider.enabled = true;
+            value.bodyCollider.enabled = false; // Identity only; prepared queries own damage geometry.
             value.enabled = true;
             value.tacticalVisible = null;
-            if (Reported.Add(weapon.dataName + ":" + Patches.BattleScaleRuntime.Cinematic))
+            bool cinematic=Patches.BattleScaleRuntime.Cinematic;int mode=cinematic?2:1,reported;
+            Reported.TryGetValue(weapon.dataName,out reported);
+            if ((reported&mode)==0)
+            {
+                Reported[weapon.dataName]=reported|mode;
                 Main.Log("Combat projectile readback: " + weapon.dataName + " cinematic=" + Patches.BattleScaleRuntime.Cinematic +
                     " bodyMetres=" + diameter.ToString("G6") + "x" + length.ToString("G6") +
                     " unitsPerMetre=" + Patches.BattleScaleRuntime.ProjectileScale.ToString("G6") +
                     " collider=" + value.bodyCollider.GetType().Name);
+            }
         }
 
         private static Material MaterialFor(WeaponClass family)

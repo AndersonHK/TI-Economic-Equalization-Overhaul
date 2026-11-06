@@ -1,0 +1,204 @@
+{
+  "reported_symptom": "Severe slowdown when projectiles fire; user reports roughly 0.5 FPS at worst.",
+  "process_id": 67328,
+  "log_sha256": "88268D8E3DC8C24F7CE8D02D08623AB5B5FC24AA33D06ABCC0B65AC12E00D9E3",
+  "samples": [
+    {
+      "line": 1174,
+      "text": "[EconomyMod] Combat contact performance: speed=5 paused=False fps=135.1 collisionMs/frame=0.000 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=0.00 boundEvals=0 mixedVertexReads=0 boundsScans=171 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=0 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=201 mainCollisionMs/frame=0.0000 prepareMs/frame=0.0000 waitMs/frame=0.0000 commitMs/frame=0.0000 nativeLateBoundaryMs/frame=0.0000 compatibilityMs/frame=0.0000 boundsScanMs/frame=0.0048 ballisticSpawnMs/frame=0.0000 mainGeometryMs/frame=0.0048 ballisticBatchP95Ms=0.0000 batchMaxMs=0.0000 workerSurfaces=7838 workerPoses=2430 queryBackend=native serialCountersOnly=True"
+    },
+    {
+      "line": 1175,
+      "text": "[EconomyMod] Combat contact performance: speed=5 paused=False fps=143.2 collisionMs/frame=0.000 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=0.00 boundEvals=0 mixedVertexReads=0 boundsScans=0 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=0 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=203 mainCollisionMs/frame=0.0000 prepareMs/frame=0.0000 waitMs/frame=0.0000 commitMs/frame=0.0000 nativeLateBoundaryMs/frame=0.0000 compatibilityMs/frame=0.0000 boundsScanMs/frame=0.0000 ballisticSpawnMs/frame=0.0000 mainGeometryMs/frame=0.0000 ballisticBatchP95Ms=0.0000 batchMaxMs=0.0000 workerSurfaces=7838 workerPoses=2430 queryBackend=native serialCountersOnly=True"
+    },
+    {
+      "line": 1178,
+      "text": "[EconomyMod] Combat contact performance: speed=5 paused=False fps=41.1 collisionMs/frame=0.104 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=2.11 boundEvals=0 mixedVertexReads=0 boundsScans=0 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=220 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=203 mainCollisionMs/frame=16.9301 prepareMs/frame=0.0052 waitMs/frame=0.1033 commitMs/frame=0.0002 nativeLateBoundaryMs/frame=0.1290 compatibilityMs/frame=16.8213 boundsScanMs/frame=0.0000 ballisticSpawnMs/frame=0.0606 mainGeometryMs/frame=16.9907 ballisticBatchP95Ms=2.1924 batchMaxMs=2.1924 workerSurfaces=7838 workerPoses=2663 queryBackend=native serialCountersOnly=True"
+    },
+    {
+      "line": 1210,
+      "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=29.6 collisionMs/frame=0.048 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=1.95 boundEvals=0 mixedVertexReads=0 boundsScans=0 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=19 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=262 mainCollisionMs/frame=32.4481 prepareMs/frame=0.0023 waitMs/frame=0.0474 commitMs/frame=0.0002 nativeLateBoundaryMs/frame=0.0806 compatibilityMs/frame=32.3981 boundsScanMs/frame=0.0000 ballisticSpawnMs/frame=0.0010 mainGeometryMs/frame=32.4491 ballisticBatchP95Ms=2.0037 batchMaxMs=2.0037 workerSurfaces=7838 workerPoses=2956 queryBackend=native serialCountersOnly=True"
+    },
+    {
+      "line": 1211,
+      "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=1.6 collisionMs/frame=1.737 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=1.98 boundEvals=0 mixedVertexReads=0 boundsScans=0 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=28 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=262 mainCollisionMs/frame=591.4925 prepareMs/frame=0.0530 waitMs/frame=1.7343 commitMs/frame=0.0027 nativeLateBoundaryMs/frame=2.3102 compatibilityMs/frame=589.7023 boundsScanMs/frame=0.0000 ballisticSpawnMs/frame=0.0193 mainGeometryMs/frame=591.5117 ballisticBatchP95Ms=2.0406 batchMaxMs=2.0406 workerSurfaces=7838 workerPoses=2986 queryBackend=native serialCountersOnly=True"
+    },
+    {
+      "line": 1212,
+      "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=1.5 collisionMs/frame=1.613 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=1.94 boundEvals=0 mixedVertexReads=0 boundsScans=0 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=10 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=262 mainCollisionMs/frame=628.0192 prepareMs/frame=0.0775 waitMs/frame=1.6074 commitMs/frame=0.0057 nativeLateBoundaryMs/frame=2.3990 compatibilityMs/frame=626.3284 boundsScanMs/frame=0.0000 ballisticSpawnMs/frame=0.0257 mainGeometryMs/frame=628.0449 ballisticBatchP95Ms=2.0308 batchMaxMs=2.0308 workerSurfaces=7838 workerPoses=3000 queryBackend=native serialCountersOnly=True"
+    },
+    {
+      "line": 1213,
+      "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=1.5 collisionMs/frame=1.272 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=2.01 boundEvals=0 mixedVertexReads=0 boundsScans=0 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=6 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=262 mainCollisionMs/frame=630.4153 prepareMs/frame=0.0471 waitMs/frame=1.2685 commitMs/frame=0.0032 nativeLateBoundaryMs/frame=1.8752 compatibilityMs/frame=629.0963 boundsScanMs/frame=0.0000 ballisticSpawnMs/frame=0.0084 mainGeometryMs/frame=630.4237 ballisticBatchP95Ms=2.0690 batchMaxMs=2.0690 workerSurfaces=7838 workerPoses=3008 queryBackend=native serialCountersOnly=True"
+    },
+    {
+      "line": 1214,
+      "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=1.5 collisionMs/frame=0.504 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=1.67 boundEvals=0 mixedVertexReads=0 boundsScans=0 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=1 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=262 mainCollisionMs/frame=641.8877 prepareMs/frame=0.0413 waitMs/frame=0.5002 commitMs/frame=0.0032 nativeLateBoundaryMs/frame=1.2148 compatibilityMs/frame=641.3428 boundsScanMs/frame=0.0000 ballisticSpawnMs/frame=0.0000 mainGeometryMs/frame=641.8877 ballisticBatchP95Ms=1.7249 batchMaxMs=1.7249 workerSurfaces=7838 workerPoses=3010 queryBackend=native serialCountersOnly=True"
+    },
+    {
+      "line": 1215,
+      "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=1.5 collisionMs/frame=0.297 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=0.53 boundEvals=0 mixedVertexReads=0 boundsScans=0 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=0 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=262 mainCollisionMs/frame=634.8316 prepareMs/frame=0.0313 waitMs/frame=0.2935 commitMs/frame=0.0037 nativeLateBoundaryMs/frame=0.9951 compatibilityMs/frame=634.5030 boundsScanMs/frame=0.0000 ballisticSpawnMs/frame=0.0247 mainGeometryMs/frame=634.8563 ballisticBatchP95Ms=0.5862 batchMaxMs=0.5862 workerSurfaces=7838 workerPoses=3013 queryBackend=native serialCountersOnly=True"
+    },
+    {
+      "line": 1216,
+      "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=1.5 collisionMs/frame=0.293 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=0.43 boundEvals=0 mixedVertexReads=0 boundsScans=0 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=0 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=262 mainCollisionMs/frame=637.2072 prepareMs/frame=0.0321 waitMs/frame=0.2902 commitMs/frame=0.0027 nativeLateBoundaryMs/frame=0.9014 compatibilityMs/frame=636.8821 boundsScanMs/frame=0.0000 ballisticSpawnMs/frame=0.0294 mainGeometryMs/frame=637.2365 ballisticBatchP95Ms=0.4551 batchMaxMs=0.4551 workerSurfaces=7838 workerPoses=3017 queryBackend=native serialCountersOnly=True"
+    },
+    {
+      "line": 1217,
+      "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=1.5 collisionMs/frame=0.170 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=0.32 boundEvals=0 mixedVertexReads=0 boundsScans=0 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=0 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=262 mainCollisionMs/frame=633.1504 prepareMs/frame=0.0274 waitMs/frame=0.1658 commitMs/frame=0.0039 nativeLateBoundaryMs/frame=0.9108 compatibilityMs/frame=632.9533 boundsScanMs/frame=0.0000 ballisticSpawnMs/frame=0.0250 mainGeometryMs/frame=633.1754 ballisticBatchP95Ms=0.3383 batchMaxMs=0.3383 workerSurfaces=7838 workerPoses=3017 queryBackend=native serialCountersOnly=True"
+    },
+    {
+      "line": 1218,
+      "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=1.5 collisionMs/frame=0.214 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=0.42 boundEvals=0 mixedVertexReads=0 boundsScans=0 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=0 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=262 mainCollisionMs/frame=643.6396 prepareMs/frame=0.0395 waitMs/frame=0.2084 commitMs/frame=0.0054 nativeLateBoundaryMs/frame=0.9147 compatibilityMs/frame=643.3862 boundsScanMs/frame=0.0000 ballisticSpawnMs/frame=0.0000 mainGeometryMs/frame=643.6396 ballisticBatchP95Ms=0.4399 batchMaxMs=0.4399 workerSurfaces=7838 workerPoses=3021 queryBackend=native serialCountersOnly=True"
+    },
+    {
+      "line": 1219,
+      "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=1.5 collisionMs/frame=0.262 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=0.43 boundEvals=0 mixedVertexReads=0 boundsScans=0 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=0 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=262 mainCollisionMs/frame=638.1781 prepareMs/frame=0.0291 waitMs/frame=0.2582 commitMs/frame=0.0042 nativeLateBoundaryMs/frame=0.9408 compatibilityMs/frame=637.8865 boundsScanMs/frame=0.0000 ballisticSpawnMs/frame=0.0094 mainGeometryMs/frame=638.1874 ballisticBatchP95Ms=0.4503 batchMaxMs=0.4503 workerSurfaces=7838 workerPoses=3022 queryBackend=native serialCountersOnly=True"
+    },
+    {
+      "line": 1220,
+      "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=1.5 collisionMs/frame=0.324 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=0.60 boundEvals=0 mixedVertexReads=0 boundsScans=0 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=0 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=262 mainCollisionMs/frame=638.9035 prepareMs/frame=0.0248 waitMs/frame=0.3196 commitMs/frame=0.0041 nativeLateBoundaryMs/frame=1.0007 compatibilityMs/frame=638.5549 boundsScanMs/frame=0.0000 ballisticSpawnMs/frame=0.0000 mainGeometryMs/frame=638.9035 ballisticBatchP95Ms=0.6258 batchMaxMs=0.6258 workerSurfaces=7838 workerPoses=3022 queryBackend=native serialCountersOnly=True"
+    },
+    {
+      "line": 1221,
+      "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=1.5 collisionMs/frame=0.269 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=0.48 boundEvals=0 mixedVertexReads=0 boundsScans=0 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=0 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=262 mainCollisionMs/frame=635.1766 prepareMs/frame=0.0380 waitMs/frame=0.2641 commitMs/frame=0.0047 nativeLateBoundaryMs/frame=0.9493 compatibilityMs/frame=634.8697 boundsScanMs/frame=0.0000 ballisticSpawnMs/frame=0.0345 mainGeometryMs/frame=635.2111 ballisticBatchP95Ms=0.5033 batchMaxMs=0.5033 workerSurfaces=7838 workerPoses=3025 queryBackend=native serialCountersOnly=True"
+    },
+    {
+      "line": 1222,
+      "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=1.5 collisionMs/frame=0.441 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=2.01 boundEvals=0 mixedVertexReads=0 boundsScans=0 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=0 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=262 mainCollisionMs/frame=640.1975 prepareMs/frame=0.0335 waitMs/frame=0.4377 commitMs/frame=0.0033 nativeLateBoundaryMs/frame=1.0914 compatibilityMs/frame=639.7229 boundsScanMs/frame=0.0000 ballisticSpawnMs/frame=0.0213 mainGeometryMs/frame=640.2189 ballisticBatchP95Ms=2.0678 batchMaxMs=2.0678 workerSurfaces=7838 workerPoses=3029 queryBackend=native serialCountersOnly=True"
+    },
+    {
+      "line": 1223,
+      "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=1.5 collisionMs/frame=0.221 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=0.51 boundEvals=0 mixedVertexReads=0 boundsScans=0 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=0 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=262 mainCollisionMs/frame=643.3425 prepareMs/frame=0.0351 waitMs/frame=0.2150 commitMs/frame=0.0056 nativeLateBoundaryMs/frame=1.0166 compatibilityMs/frame=643.0867 boundsScanMs/frame=0.0000 ballisticSpawnMs/frame=0.0270 mainGeometryMs/frame=643.3694 ballisticBatchP95Ms=0.5381 batchMaxMs=0.5381 workerSurfaces=7838 workerPoses=3033 queryBackend=native serialCountersOnly=True"
+    },
+    {
+      "line": 1224,
+      "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=1.5 collisionMs/frame=0.204 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=0.57 boundEvals=0 mixedVertexReads=0 boundsScans=0 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=0 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=262 mainCollisionMs/frame=644.9672 prepareMs/frame=0.0326 waitMs/frame=0.1991 commitMs/frame=0.0047 nativeLateBoundaryMs/frame=0.9499 compatibilityMs/frame=644.7307 boundsScanMs/frame=0.0000 ballisticSpawnMs/frame=0.0100 mainGeometryMs/frame=644.9772 ballisticBatchP95Ms=0.5955 batchMaxMs=0.5955 workerSurfaces=7838 workerPoses=3033 queryBackend=native serialCountersOnly=True"
+    },
+    {
+      "line": 1225,
+      "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=1.4 collisionMs/frame=0.102 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=0.37 boundEvals=0 mixedVertexReads=0 boundsScans=0 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=0 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=262 mainCollisionMs/frame=661.4013 prepareMs/frame=0.0438 waitMs/frame=0.0976 commitMs/frame=0.0039 nativeLateBoundaryMs/frame=0.8274 compatibilityMs/frame=661.2559 boundsScanMs/frame=0.0000 ballisticSpawnMs/frame=0.0000 mainGeometryMs/frame=661.4013 ballisticBatchP95Ms=0.4334 batchMaxMs=0.4334 workerSurfaces=7838 workerPoses=3034 queryBackend=native serialCountersOnly=True"
+    },
+    {
+      "line": 1226,
+      "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=1.5 collisionMs/frame=0.092 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=0.21 boundEvals=0 mixedVertexReads=0 boundsScans=0 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=0 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=262 mainCollisionMs/frame=645.3641 prepareMs/frame=0.0400 waitMs/frame=0.0872 commitMs/frame=0.0046 nativeLateBoundaryMs/frame=0.9650 compatibilityMs/frame=645.2323 boundsScanMs/frame=0.0000 ballisticSpawnMs/frame=0.0248 mainGeometryMs/frame=645.3889 ballisticBatchP95Ms=0.2682 batchMaxMs=0.2682 workerSurfaces=7838 workerPoses=3036 queryBackend=native serialCountersOnly=True"
+    },
+    {
+      "line": 1227,
+      "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=1.5 collisionMs/frame=0.158 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=0.32 boundEvals=0 mixedVertexReads=0 boundsScans=0 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=0 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=262 mainCollisionMs/frame=638.4773 prepareMs/frame=0.0395 waitMs/frame=0.1524 commitMs/frame=0.0050 nativeLateBoundaryMs/frame=0.9236 compatibilityMs/frame=638.2802 boundsScanMs/frame=0.0000 ballisticSpawnMs/frame=0.0098 mainGeometryMs/frame=638.4871 ballisticBatchP95Ms=0.3484 batchMaxMs=0.3484 workerSurfaces=7838 workerPoses=3038 queryBackend=native serialCountersOnly=True"
+    },
+    {
+      "line": 1228,
+      "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=1.5 collisionMs/frame=0.093 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=0.30 boundEvals=0 mixedVertexReads=0 boundsScans=0 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=0 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=262 mainCollisionMs/frame=635.4340 prepareMs/frame=0.0381 waitMs/frame=0.0879 commitMs/frame=0.0050 nativeLateBoundaryMs/frame=1.0138 compatibilityMs/frame=635.3029 boundsScanMs/frame=0.0000 ballisticSpawnMs/frame=0.0202 mainGeometryMs/frame=635.4541 ballisticBatchP95Ms=0.3220 batchMaxMs=0.3220 workerSurfaces=7838 workerPoses=3041 queryBackend=native serialCountersOnly=True"
+    },
+    {
+      "line": 1229,
+      "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=1.5 collisionMs/frame=0.180 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=0.30 boundEvals=0 mixedVertexReads=0 boundsScans=0 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=0 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=262 mainCollisionMs/frame=641.2315 prepareMs/frame=0.0344 waitMs/frame=0.1743 commitMs/frame=0.0055 nativeLateBoundaryMs/frame=0.9066 compatibilityMs/frame=641.0172 boundsScanMs/frame=0.0000 ballisticSpawnMs/frame=0.0237 mainGeometryMs/frame=641.2552 ballisticBatchP95Ms=0.3281 batchMaxMs=0.3281 workerSurfaces=7838 workerPoses=3045 queryBackend=native serialCountersOnly=True"
+    },
+    {
+      "line": 1231,
+      "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=1.5 collisionMs/frame=0.361 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=1.79 boundEvals=0 mixedVertexReads=0 boundsScans=0 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=0 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=262 mainCollisionMs/frame=643.9501 prepareMs/frame=0.0452 waitMs/frame=0.3566 commitMs/frame=0.0044 nativeLateBoundaryMs/frame=1.1115 compatibilityMs/frame=643.5437 boundsScanMs/frame=0.0000 ballisticSpawnMs/frame=0.0675 mainGeometryMs/frame=644.0176 ballisticBatchP95Ms=1.8527 batchMaxMs=1.8527 workerSurfaces=7838 workerPoses=3052 queryBackend=native serialCountersOnly=True"
+    },
+    {
+      "line": 1232,
+      "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=1.4 collisionMs/frame=0.119 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=0.20 boundEvals=0 mixedVertexReads=0 boundsScans=0 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=0 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=262 mainCollisionMs/frame=652.2176 prepareMs/frame=0.0474 waitMs/frame=0.1128 commitMs/frame=0.0062 nativeLateBoundaryMs/frame=0.8834 compatibilityMs/frame=652.0511 boundsScanMs/frame=0.0000 ballisticSpawnMs/frame=0.0105 mainGeometryMs/frame=652.2281 ballisticBatchP95Ms=0.2447 batchMaxMs=0.2447 workerSurfaces=7838 workerPoses=3053 queryBackend=native serialCountersOnly=True"
+    },
+    {
+      "line": 1233,
+      "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=1.4 collisionMs/frame=0.146 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=0.24 boundEvals=0 mixedVertexReads=0 boundsScans=0 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=0 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=263 mainCollisionMs/frame=650.2604 prepareMs/frame=0.0452 waitMs/frame=0.1396 commitMs/frame=0.0060 nativeLateBoundaryMs/frame=0.8971 compatibilityMs/frame=650.0696 boundsScanMs/frame=0.0000 ballisticSpawnMs/frame=0.0270 mainGeometryMs/frame=650.2875 ballisticBatchP95Ms=0.3316 batchMaxMs=0.3316 workerSurfaces=7838 workerPoses=3056 queryBackend=native serialCountersOnly=True"
+    },
+    {
+      "line": 1234,
+      "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=1.5 collisionMs/frame=0.445 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=2.09 boundEvals=0 mixedVertexReads=0 boundsScans=0 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=0 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=263 mainCollisionMs/frame=638.7900 prepareMs/frame=0.0396 waitMs/frame=0.4371 commitMs/frame=0.0082 nativeLateBoundaryMs/frame=1.1526 compatibilityMs/frame=638.3051 boundsScanMs/frame=0.0000 ballisticSpawnMs/frame=0.0509 mainGeometryMs/frame=638.8409 ballisticBatchP95Ms=2.1488 batchMaxMs=2.1488 workerSurfaces=7838 workerPoses=3060 queryBackend=native serialCountersOnly=True"
+    },
+    {
+      "line": 1235,
+      "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=1.5 collisionMs/frame=0.326 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=0.49 boundEvals=0 mixedVertexReads=0 boundsScans=0 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=0 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=263 mainCollisionMs/frame=644.5719 prepareMs/frame=0.0334 waitMs/frame=0.3171 commitMs/frame=0.0084 nativeLateBoundaryMs/frame=1.0208 compatibilityMs/frame=644.2129 boundsScanMs/frame=0.0000 ballisticSpawnMs/frame=0.0000 mainGeometryMs/frame=644.5719 ballisticBatchP95Ms=0.5217 batchMaxMs=0.5217 workerSurfaces=7838 workerPoses=3063 queryBackend=native serialCountersOnly=True"
+    },
+    {
+      "line": 1236,
+      "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=1.5 collisionMs/frame=0.357 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=0.49 boundEvals=0 mixedVertexReads=0 boundsScans=0 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=0 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=263 mainCollisionMs/frame=637.6909 prepareMs/frame=0.0371 waitMs/frame=0.3486 commitMs/frame=0.0079 nativeLateBoundaryMs/frame=1.1148 compatibilityMs/frame=637.2972 boundsScanMs/frame=0.0000 ballisticSpawnMs/frame=0.0275 mainGeometryMs/frame=637.7185 ballisticBatchP95Ms=0.5292 batchMaxMs=0.5292 workerSurfaces=7838 workerPoses=3067 queryBackend=native serialCountersOnly=True"
+    },
+    {
+      "line": 1237,
+      "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=1.5 collisionMs/frame=0.460 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=1.78 boundEvals=0 mixedVertexReads=0 boundsScans=0 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=0 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=263 mainCollisionMs/frame=638.5525 prepareMs/frame=0.0542 waitMs/frame=0.4519 commitMs/frame=0.0079 nativeLateBoundaryMs/frame=1.3590 compatibilityMs/frame=638.0383 boundsScanMs/frame=0.0000 ballisticSpawnMs/frame=0.0371 mainGeometryMs/frame=638.5896 ballisticBatchP95Ms=1.8890 batchMaxMs=1.8890 workerSurfaces=7838 workerPoses=3073 queryBackend=native serialCountersOnly=True"
+    },
+    {
+      "line": 1238,
+      "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=1.5 collisionMs/frame=0.751 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=2.07 boundEvals=0 mixedVertexReads=0 boundsScans=0 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=2 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=263 mainCollisionMs/frame=647.9732 prepareMs/frame=0.0704 waitMs/frame=0.7415 commitMs/frame=0.0089 nativeLateBoundaryMs/frame=1.5365 compatibilityMs/frame=647.1522 boundsScanMs/frame=0.0000 ballisticSpawnMs/frame=0.0097 mainGeometryMs/frame=647.9828 ballisticBatchP95Ms=2.1724 batchMaxMs=2.1724 workerSurfaces=7838 workerPoses=3076 queryBackend=native serialCountersOnly=True"
+    },
+    {
+      "line": 1239,
+      "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=1.4 collisionMs/frame=0.974 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=2.15 boundEvals=0 mixedVertexReads=0 boundsScans=0 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=4 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=263 mainCollisionMs/frame=656.8454 prepareMs/frame=0.0659 waitMs/frame=0.9643 commitMs/frame=0.0091 nativeLateBoundaryMs/frame=1.7553 compatibilityMs/frame=655.8059 boundsScanMs/frame=0.0000 ballisticSpawnMs/frame=0.0448 mainGeometryMs/frame=656.8902 ballisticBatchP95Ms=2.2545 batchMaxMs=2.2545 workerSurfaces=7838 workerPoses=3083 queryBackend=native serialCountersOnly=True"
+    },
+    {
+      "line": 1240,
+      "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=1.4 collisionMs/frame=1.386 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=2.26 boundEvals=0 mixedVertexReads=0 boundsScans=0 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=6 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=263 mainCollisionMs/frame=665.4543 prepareMs/frame=0.0601 waitMs/frame=1.3781 commitMs/frame=0.0075 nativeLateBoundaryMs/frame=2.2210 compatibilityMs/frame=664.0085 boundsScanMs/frame=0.0000 ballisticSpawnMs/frame=0.0307 mainGeometryMs/frame=665.4850 ballisticBatchP95Ms=2.3161 batchMaxMs=2.3161 workerSurfaces=7838 workerPoses=3096 queryBackend=native serialCountersOnly=True"
+    },
+    {
+      "line": 1241,
+      "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=1.4 collisionMs/frame=1.233 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=2.08 boundEvals=0 mixedVertexReads=0 boundsScans=0 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=7 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=263 mainCollisionMs/frame=673.4722 prepareMs/frame=0.0517 waitMs/frame=1.2251 commitMs/frame=0.0075 nativeLateBoundaryMs/frame=1.8934 compatibilityMs/frame=672.1878 boundsScanMs/frame=0.0000 ballisticSpawnMs/frame=0.0251 mainGeometryMs/frame=673.4973 ballisticBatchP95Ms=2.1348 batchMaxMs=2.1348 workerSurfaces=7838 workerPoses=3102 queryBackend=native serialCountersOnly=True"
+    },
+    {
+      "line": 1242,
+      "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=1.4 collisionMs/frame=0.921 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=2.18 boundEvals=0 mixedVertexReads=0 boundsScans=0 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=2 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=263 mainCollisionMs/frame=681.6248 prepareMs/frame=0.0490 waitMs/frame=0.9079 commitMs/frame=0.0125 nativeLateBoundaryMs/frame=1.6336 compatibilityMs/frame=680.6551 boundsScanMs/frame=0.0000 ballisticSpawnMs/frame=0.0000 mainGeometryMs/frame=681.6248 ballisticBatchP95Ms=2.2893 batchMaxMs=2.2893 workerSurfaces=7838 workerPoses=3108 queryBackend=native serialCountersOnly=True"
+    },
+    {
+      "line": 1245,
+      "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=1.4 collisionMs/frame=0.774 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=2.11 boundEvals=0 mixedVertexReads=0 boundsScans=14 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=1 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=263 mainCollisionMs/frame=683.6975 prepareMs/frame=0.0476 waitMs/frame=0.7675 commitMs/frame=0.0060 nativeLateBoundaryMs/frame=1.6535 compatibilityMs/frame=682.8763 boundsScanMs/frame=0.0447 ballisticSpawnMs/frame=0.0423 mainGeometryMs/frame=683.7846 ballisticBatchP95Ms=2.1782 batchMaxMs=2.1782 workerSurfaces=7838 workerPoses=3115 queryBackend=native serialCountersOnly=True"
+    },
+    {
+      "line": 1246,
+      "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=1.4 collisionMs/frame=0.997 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=2.04 boundEvals=0 mixedVertexReads=0 boundsScans=0 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=2 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=263 mainCollisionMs/frame=683.3104 prepareMs/frame=0.0538 waitMs/frame=0.9893 commitMs/frame=0.0074 nativeLateBoundaryMs/frame=1.7577 compatibilityMs/frame=682.2598 boundsScanMs/frame=0.0000 ballisticSpawnMs/frame=0.0106 mainGeometryMs/frame=683.3210 ballisticBatchP95Ms=2.1294 batchMaxMs=2.1294 workerSurfaces=7838 workerPoses=3119 queryBackend=native serialCountersOnly=True"
+    },
+    {
+      "line": 1247,
+      "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=1.4 collisionMs/frame=0.587 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=2.12 boundEvals=0 mixedVertexReads=0 boundsScans=19 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=2 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=263 mainCollisionMs/frame=684.4195 prepareMs/frame=0.1192 waitMs/frame=0.5769 commitMs/frame=0.0098 nativeLateBoundaryMs/frame=1.4834 compatibilityMs/frame=683.7134 boundsScanMs/frame=0.0555 ballisticSpawnMs/frame=0.0297 mainGeometryMs/frame=684.5047 ballisticBatchP95Ms=2.1883 batchMaxMs=2.1883 workerSurfaces=7838 workerPoses=3120 queryBackend=native serialCountersOnly=True"
+    },
+    {
+      "line": 1248,
+      "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=1.4 collisionMs/frame=1.064 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=2.30 boundEvals=0 mixedVertexReads=0 boundsScans=84 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=1 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=263 mainCollisionMs/frame=690.4269 prepareMs/frame=0.0643 waitMs/frame=1.0565 commitMs/frame=0.0078 nativeLateBoundaryMs/frame=1.8683 compatibilityMs/frame=689.2983 boundsScanMs/frame=0.2417 ballisticSpawnMs/frame=0.0692 mainGeometryMs/frame=690.7379 ballisticBatchP95Ms=2.3689 batchMaxMs=2.3689 workerSurfaces=7838 workerPoses=3126 queryBackend=native serialCountersOnly=True"
+    },
+    {
+      "line": 1253,
+      "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=1.4 collisionMs/frame=4.326 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=16.90 boundEvals=0 mixedVertexReads=0 boundsScans=74 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=0 queries=4 candidates=0 contacts=4 bvhBuilds=0 nodes=0 triangles=0 gc0=263 mainCollisionMs/frame=687.0806 prepareMs/frame=0.0567 waitMs/frame=0.1894 commitMs/frame=4.1366 nativeLateBoundaryMs/frame=5.0498 compatibilityMs/frame=682.6978 boundsScanMs/frame=0.2187 ballisticSpawnMs/frame=0.0154 mainGeometryMs/frame=687.3147 ballisticBatchP95Ms=16.9295 batchMaxMs=16.9295 workerSurfaces=7838 workerPoses=3128 queryBackend=native serialCountersOnly=True"
+    },
+    {
+      "line": 1254,
+      "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=1.4 collisionMs/frame=0.380 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=1.82 boundEvals=0 mixedVertexReads=0 boundsScans=14 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=0 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=263 mainCollisionMs/frame=688.0759 prepareMs/frame=0.0548 waitMs/frame=0.3692 commitMs/frame=0.0106 nativeLateBoundaryMs/frame=1.4346 compatibilityMs/frame=687.6412 boundsScanMs/frame=0.0502 ballisticSpawnMs/frame=0.0255 mainGeometryMs/frame=688.1516 ballisticBatchP95Ms=1.9016 batchMaxMs=1.9016 workerSurfaces=7838 workerPoses=3128 queryBackend=native serialCountersOnly=True"
+    },
+    {
+      "line": 1258,
+      "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=1.4 collisionMs/frame=0.516 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=2.02 boundEvals=0 mixedVertexReads=0 boundsScans=16 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=0 queries=3 candidates=0 contacts=3 bvhBuilds=0 nodes=0 triangles=0 gc0=263 mainCollisionMs/frame=682.7809 prepareMs/frame=0.0460 waitMs/frame=0.2187 commitMs/frame=0.2970 nativeLateBoundaryMs/frame=1.4420 compatibilityMs/frame=682.2191 boundsScanMs/frame=0.0580 ballisticSpawnMs/frame=0.0049 mainGeometryMs/frame=682.8438 ballisticBatchP95Ms=2.0625 batchMaxMs=2.0625 workerSurfaces=7838 workerPoses=3125 queryBackend=native serialCountersOnly=True"
+    },
+    {
+      "line": 1259,
+      "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=1.4 collisionMs/frame=0.532 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=2.11 boundEvals=0 mixedVertexReads=0 boundsScans=21 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=0 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=263 mainCollisionMs/frame=704.8398 prepareMs/frame=0.0587 waitMs/frame=0.5227 commitMs/frame=0.0092 nativeLateBoundaryMs/frame=1.3268 compatibilityMs/frame=704.2492 boundsScanMs/frame=0.0715 ballisticSpawnMs/frame=0.0055 mainGeometryMs/frame=704.9168 ballisticBatchP95Ms=2.1878 batchMaxMs=2.1878 workerSurfaces=7838 workerPoses=3127 queryBackend=native serialCountersOnly=True"
+    },
+    {
+      "line": 1260,
+      "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=1.3 collisionMs/frame=0.211 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=0.49 boundEvals=0 mixedVertexReads=0 boundsScans=21 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=0 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=263 mainCollisionMs/frame=707.2754 prepareMs/frame=0.0396 waitMs/frame=0.2002 commitMs/frame=0.0109 nativeLateBoundaryMs/frame=1.1729 compatibilityMs/frame=707.0246 boundsScanMs/frame=0.0734 ballisticSpawnMs/frame=0.0000 mainGeometryMs/frame=707.3488 ballisticBatchP95Ms=0.5224 batchMaxMs=0.5224 workerSurfaces=7838 workerPoses=3127 queryBackend=native serialCountersOnly=True"
+    },
+    {
+      "line": 1263,
+      "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=1.3 collisionMs/frame=1.163 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.138 maxPassMs=5.03 boundEvals=0 mixedVertexReads=0 boundsScans=44 bodyChecks=582 bodyCandidates=1 bonePoseReads=720 colliderConfigs=0 queries=2 candidates=3 contacts=2 bvhBuilds=0 nodes=303 triangles=175 gc0=263 mainCollisionMs/frame=689.3611 prepareMs/frame=0.0690 waitMs/frame=0.4739 commitMs/frame=0.6893 nativeLateBoundaryMs/frame=2.0491 compatibilityMs/frame=688.1288 boundsScanMs/frame=0.1382 ballisticSpawnMs/frame=0.0258 mainGeometryMs/frame=689.5252 ballisticBatchP95Ms=5.0696 batchMaxMs=5.0696 workerSurfaces=7838 workerPoses=3129 queryBackend=native serialCountersOnly=True"
+    },
+    {
+      "line": 1267,
+      "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=1.4 collisionMs/frame=0.660 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=3.26 boundEvals=0 mixedVertexReads=0 boundsScans=51 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=0 queries=3 candidates=0 contacts=3 bvhBuilds=0 nodes=0 triangles=0 gc0=263 mainCollisionMs/frame=687.4412 prepareMs/frame=0.0684 waitMs/frame=0.1871 commitMs/frame=0.4732 nativeLateBoundaryMs/frame=1.5037 compatibilityMs/frame=686.7124 boundsScanMs/frame=0.1559 ballisticSpawnMs/frame=0.0115 mainGeometryMs/frame=687.6085 ballisticBatchP95Ms=3.3971 batchMaxMs=3.3971 workerSurfaces=7838 workerPoses=3130 queryBackend=native serialCountersOnly=True"
+    },
+    {
+      "line": 1268,
+      "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=1.4 collisionMs/frame=0.299 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=0.47 boundEvals=0 mixedVertexReads=0 boundsScans=55 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=0 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=263 mainCollisionMs/frame=682.2582 prepareMs/frame=0.0452 waitMs/frame=0.2906 commitMs/frame=0.0082 nativeLateBoundaryMs/frame=1.0895 compatibilityMs/frame=681.9141 boundsScanMs/frame=0.1622 ballisticSpawnMs/frame=0.0000 mainGeometryMs/frame=682.4204 ballisticBatchP95Ms=0.5083 batchMaxMs=0.5083 workerSurfaces=7838 workerPoses=3090 queryBackend=native serialCountersOnly=True"
+    },
+    {
+      "line": 1273,
+      "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=1.4 collisionMs/frame=1.428 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=8.27 boundEvals=0 mixedVertexReads=0 boundsScans=18 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=0 queries=4 candidates=0 contacts=4 bvhBuilds=0 nodes=0 triangles=0 gc0=263 mainCollisionMs/frame=679.7002 prepareMs/frame=0.0698 waitMs/frame=0.4775 commitMs/frame=0.9505 nativeLateBoundaryMs/frame=2.3733 compatibilityMs/frame=678.2023 boundsScanMs/frame=0.0622 ballisticSpawnMs/frame=0.0168 mainGeometryMs/frame=679.7792 ballisticBatchP95Ms=8.3446 batchMaxMs=8.3446 workerSurfaces=7838 workerPoses=3090 queryBackend=native serialCountersOnly=True"
+    },
+    {
+      "line": 1274,
+      "text": "[EconomyMod] Combat contact performance: speed=1 paused=False fps=1.4 collisionMs/frame=0.654 bvhBuildMs/frame=0.000 syncMs/frame=0.000 poseSnapshotMs/frame=0.000 maxPassMs=2.05 boundEvals=0 mixedVertexReads=0 boundsScans=14 bodyChecks=0 bodyCandidates=0 bonePoseReads=0 colliderConfigs=0 queries=0 candidates=0 contacts=0 bvhBuilds=0 nodes=0 triangles=0 gc0=264 mainCollisionMs/frame=685.5989 prepareMs/frame=0.0388 waitMs/frame=0.6450 commitMs/frame=0.0092 nativeLateBoundaryMs/frame=1.4718 compatibilityMs/frame=684.9058 boundsScanMs/frame=0.0498 ballisticSpawnMs/frame=0.0042 mainGeometryMs/frame=685.6530 ballisticBatchP95Ms=2.1131 batchMaxMs=2.1131 workerSurfaces=7838 workerPoses=3091 queryBackend=native serialCountersOnly=True"
+    }
+  ],
+  "limits": "Five-second aggregates do not establish maximum whole-frame latency. CPU ETW recording unavailable due Windows profiling policy; noninvasive nonsuspending stacks captured separately."
+}

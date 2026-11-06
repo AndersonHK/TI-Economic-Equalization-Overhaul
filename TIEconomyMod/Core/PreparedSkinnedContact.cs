@@ -55,6 +55,30 @@ namespace TIEconomyMod.Core
         public BoneEnvelope Envelope(int index) { return envelopes[index]; }
         public int RigidGroupCount { get { return rigid.Length; } }
         public int BlendedTriangleCount { get { return order.Length; } }
+        internal void Export(ContactAssetBuilder builder,out int[] roots,out int[] bones)
+        {
+            roots=new int[rigid.Length+(nodes.Count>0?1:0)];bones=new int[roots.Length];
+            for(int i=0;i<rigid.Length;i++){roots[i]=builder.Add(rigid[i].Tree);bones[i]=rigid[i].Bone;}
+            if(nodes.Count==0)return;
+            int vertexBase=builder.Vertices.Count;
+            foreach(Vertex vertex in vertices)
+            {
+                builder.Vertices.Add(new ContactVertex{InfluenceStart=builder.Influences.Count,InfluenceCount=vertex.Influences.Length});
+                foreach(Influence inf in vertex.Influences)builder.Influences.Add(new ContactInfluence{Point=inf.Point,Weight=inf.Weight,Bone=inf.Bone});
+            }
+            roots[rigid.Length]=ExportNode(0,vertexBase,builder);bones[rigid.Length]=-1;
+        }
+        private int ExportNode(int source,int vertexBase,ContactAssetBuilder builder)
+        {
+            Node n=nodes[source];int index=builder.Nodes.Count;
+            ContactNode result=new ContactNode{Start=builder.Indices.Count,Count=n.Count*3,
+                EnvelopeStart=builder.Envelopes.Count,EnvelopeCount=n.Bounds.Length};
+            foreach(BoneEnvelope envelope in n.Bounds)builder.Envelopes.Add(new ContactEnvelope{Bone=envelope.Bone,Min=envelope.Min,Max=envelope.Max});
+            builder.Nodes.Add(result);
+            if(n.Count==0){ExportNode(n.Left,vertexBase,builder);ExportNode(n.Right,vertexBase,builder);}
+            else for(int i=n.Start;i<n.Start+n.Count;i++)for(int v=0;v<3;v++)builder.Indices.Add(vertexBase+triangles[order[i]*3+v]);
+            result.Skip=builder.Nodes.Count;builder.Nodes[index]=result;return index;
+        }
 
         public static PreparedSkinnedContact Prepare(Mesh mesh,int maxWeights)
         {

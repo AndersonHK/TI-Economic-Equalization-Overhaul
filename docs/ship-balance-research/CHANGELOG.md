@@ -3,7 +3,61 @@
 This is a decision log for the proposed ship rebalance. Entries here describe
 the balance decisions as well as their implementation status.
 
+## 2026-11-05
+
+### Stable 0.11.9 accepted for commit and push
+
+- User confirms the current version is stable and performant. Preserve the
+  tested package without rebuilding and record source/install/archive identity.
+- Checkpoint the collision-query and waypoint-lifecycle implementation together
+  with accumulated research documentation. Mission Control/habitat expansion
+  proposals remain unimplemented; camera follow and friendly collision policies
+  remain deferred.
+- [Acceptance record](battle-scale/acceptance-0.11.9-2026-11-05.md).
+
+### 0.11.9 second-battle waypoint cleanup
+
+- User confirms excellent 0.11.8 performance and working missiles, then reports
+  a second-battle formation crash. The stack reaches a destroyed yaw gizmo through
+  the static active waypoint controller; it is not a native collision-buffer fault.
+- Retire waypoint event subscriptions and input ownership at cleanup/battle
+  boundaries. Repeated cleanup and already-destroyed Unity visuals are safe;
+  teardown does not recreate a destroyed container.
+- Preserve live input ownership and leave camera-follow behavior unchanged,
+  as explicitly requested. The native hover block remains a plausible explanation
+  for the separate follow pause; changing it is deferred.
+- [Implementation and 37 Unity-host lifecycle checks](repeat-battle-waypoint-cleanup-2026-11-05.md).
+  Actual first-battle exit and second-battle formation setup remain for acceptance.
+
+### 0.11.8 compatibility-query regression candidate
+
+- Live 0.11.7 data shows approximately 630–652 ms/frame in synchronous
+  compatibility queries after missile firing. Initial 16–20 ms averages
+  understated the failure; the prior headless acceptance omitted this path.
+- Replace per-missile full-world scans with indexed nearest eligible contacts
+  and phase-scoped current pose snapshots. Retain cone all-contact and targeted
+  beam semantics, native missile movement/sweep and native damage handling.
+- Add production-wrapper workloads, proxy semantics/lifecycle cases and
+  Stopwatch whole-frame mean/p95/max reporting. Do not claim the live regression
+  resolved until the same encounter is retested.
+- [Implementation and evidence](compatibility-query-rework-2026-11-05.md).
+
 ## 2026-11-04
+
+### 0.11.7 collision performance testing
+
+- Implement the approved preparation/worker redesign with a verified x64
+  numerical kernel. Remove live mesh/bone damage proxies, retain disabled hit
+  identities and native low-count body colliders, and bridge native query users.
+- Reserve projectile slots and pose buffers during preparation, track reuse and
+  destruction with generations, and retain native flight/damage behavior.
+- Count preparation, waits, commits and synchronous compatibility costs. Keep
+  headless timings separate from actual rendered-battle acceptance and do not
+  treat dispatch-only time as the full main-thread cost.
+- Record the [implementation and evidence](battle-worker-contact-2026-11-04.md)
+  and a separate [ship collision/avoidance plan](friendly-ship-collision-plan-2026-11-04.md).
+  Friendly damage/steering policy is not changed. Native body footprint and full
+  FPS acceptance remain for testing; this is not a new user-accepted baseline.
 
 ### Stable 0.11.6 accepted for documentation, commit and push
 

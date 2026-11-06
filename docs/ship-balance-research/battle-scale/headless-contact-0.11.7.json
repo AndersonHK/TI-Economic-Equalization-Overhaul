@@ -1,0 +1,93 @@
+{
+  "version": "0.11.7",
+  "unity": "2020.3.49f1",
+  "description": "Actual Unity job runtime, synthetic geometry and poses. Immediate completion includes all worker waits. Not a rendered battle or GPU/FPS measurement.",
+  "reports": [
+    {
+      "ships": 32,
+      "projectiles": 256,
+      "staticPartsPerShip": 40,
+      "skinsPerShip": 4,
+      "bonesPerSkin": 20,
+      "trianglesPerAsset": 2048,
+      "clustered": false,
+      "frames": 160,
+      "totalMeanMs": 0.2470793749999999,
+      "totalP50Ms": 0.242,
+      "totalP95Ms": 0.3076,
+      "totalMaxMs": 0.3565,
+      "dispatchMeanMs": 0.026820624999999997,
+      "dispatchP95Ms": 0.0338,
+      "mainAllocatedBytes": null,
+      "contactsIncludingWarmup": 0,
+      "activePoses": 4096,
+      "surfaces": 8064,
+      "isolatedStageMeanMsPoseIndexQuery": [
+        0.05656875,
+        0.161675,
+        0.02626875
+      ]
+    },
+    {
+      "ships": 32,
+      "projectiles": 48,
+      "staticPartsPerShip": 40,
+      "skinsPerShip": 4,
+      "bonesPerSkin": 20,
+      "trianglesPerAsset": 2048,
+      "clustered": true,
+      "frames": 160,
+      "totalMeanMs": 0.3053187500000002,
+      "totalP50Ms": 0.295,
+      "totalP95Ms": 0.3617,
+      "totalMaxMs": 0.5286,
+      "dispatchMeanMs": 0.019991875000000013,
+      "dispatchP95Ms": 0.0239,
+      "mainAllocatedBytes": null,
+      "contactsIncludingWarmup": 8832,
+      "activePoses": 3888,
+      "surfaces": 8064,
+      "isolatedStageMeanMsPoseIndexQuery": [
+        0.05160625,
+        0.15636875,
+        0.096625
+      ]
+    },
+    {
+      "ships": 64,
+      "projectiles": 1024,
+      "staticPartsPerShip": 40,
+      "skinsPerShip": 4,
+      "bonesPerSkin": 20,
+      "trianglesPerAsset": 2048,
+      "clustered": false,
+      "frames": 160,
+      "totalMeanMs": 0.48848250000000004,
+      "totalP50Ms": 0.4793,
+      "totalP95Ms": 0.5636,
+      "totalMaxMs": 0.6618,
+      "dispatchMeanMs": 0.054324375,
+      "dispatchP95Ms": 0.073,
+      "mainAllocatedBytes": null,
+      "contactsIncludingWarmup": 0,
+      "activePoses": 8704,
+      "surfaces": 12032,
+      "isolatedStageMeanMsPoseIndexQuery": [
+        0.07218125,
+        0.33566875,
+        0.04474375
+      ]
+    }
+  ],
+  "installed_identity": {
+    "managed_sha256": "450564E4A7E0D58CBB3C3F1D4EC5128C7025EB7F020F7F806AE9F7A6921DCEF0",
+    "native_sha256": "02D9BF31CC0C9EED604444143929FB40310BAE72B7CA799454435CB17BAAB6AB",
+    "native_abi": "0x10002"
+  },
+  "limitations": [
+    "Synthetic geometry and poses in the actual Unity player, not a rendered battle.",
+    "Immediate completion includes worker waits, but native AI/damage/effects and all production callbacks are outside this fixture.",
+    "Per-thread allocation measurement is unavailable in this Mono player.",
+    "The proposed 0.10 ms mean / 0.25 ms p95 routine target is not met by the 32-ship/256-round headless fixture."
+  ]
+}

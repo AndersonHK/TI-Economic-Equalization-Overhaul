@@ -181,6 +181,8 @@ namespace TIEconomyMod.Patches
         public static void Prefix(ProjectileController __instance)
         {
             BallisticContactRuntime.Remove(__instance);
+            CombatMeshGeometry geometry=__instance.GetComponent<CombatMeshGeometry>();
+            if(geometry!=null){geometry.DeactivateWorker();PreparedContactWorld.Unregister(geometry);}
             BattleProjectileGeometry body = __instance.GetComponent<BattleProjectileGeometry>();
             if (body != null) body.Hide();
         }

@@ -1,5 +1,9 @@
 # Technology-tree analysis and visual previews
 
+The [Mission Control progression proposal](mission-control-progression-proposal-2026-11-05.md)
+reviews the current technology/project tree and recommends finite national MC
+capacity and yield bonuses. It is research only; its bonuses are not implemented.
+
 These are research and review artifacts accompanying the technology JSON edits
 approved and deployed on 2026-09-23. The interactive preview and current snapshots
 now reflect the implemented prices and prerequisite change. Before-change

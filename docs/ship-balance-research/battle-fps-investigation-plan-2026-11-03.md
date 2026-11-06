@@ -1,8 +1,10 @@
 # Battle FPS regression: investigation and proposed plan
 
-2026-11-03. **Investigation and plan only; awaiting user review.** No runtime
-implementation, settings change, build, deployment or game launch was performed.
-This follows the [prepared-contact implementation](immutable-combat-contact-2026-10-30.md).
+2026-11-03 plan, **approved for implementation on 2026-11-04**. This document
+records the preimplementation investigation and requirements, following the
+[prepared-contact implementation](immutable-combat-contact-2026-10-30.md).
+The [0.11.7 implementation/evidence](battle-worker-contact-2026-11-04.md) records
+what was built and tested, including limits on the performance claims.
 
 ## Revised performance requirement
 
@@ -345,6 +347,7 @@ frame-tail behavior and any remaining budget failures. Retire redundant old path
 and temporary diagnostic bypasses. Do not claim success from a zeroed/removed
 legacy timer or synthetic query benchmark alone.
 
-This revised plan proposes a replacement of the serial collision architecture,
-not just incremental optimization of it. All implementation remains pending the
-user's review of this revision.
+The user approved this replacement of the serial architecture. Implementation
+and remaining acceptance work are tracked in the
+[0.11.7 record](battle-worker-contact-2026-11-04.md); the budgets above remain
+targets, not an automatic acceptance claim.

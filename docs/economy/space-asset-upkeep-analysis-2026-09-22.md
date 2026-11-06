@@ -44,6 +44,10 @@ actual regional cap = max(existing regional MC, structural regional cap)
 national cap = sum(actual regional caps in regions not fully occupied)
 ```
 
+The later [MC research progression proposal](../technology-tree/mission-control-progression-proposal-2026-11-05.md)
+would add technology-based capacity and yield bonuses; it is not implemented and
+does not alter the as-is formula documented here.
+
 These are the installed game's `TIRegionState.maxMissionControl` and
 `TINationState.maxMissionControl`; EEO does not replace them. Education 10 gives
 D = 240, Education 15 gives D = 210, and D reaches its floor at Education 16.667.
@@ -64,6 +68,31 @@ Funding already has a GDP cap: annual Funding <= 0.005 × GDP / 1,000,000,
 or **5 × GDP in billions per year**. Thus $1T GDP supports up to $5,000/year
 Funding. Unlike the MC getter, its change method clamps the stock to that cap.
 Boost currently has no analogous GDP capacity cap.
+
+### Follow-up: India's unchanged 198 cap (November 5, 2026)
+
+Read-only comparison of the player's 2042 Exodus saves confirms that growth can
+raise the GDP/Education-based capacity without changing the displayed cap:
+
+| Save date | GDP ($T) | Education | Formula capacity before existing-MC floor | Built MC / displayed cap |
+|---|---:|---:|---:|---:|
+| January 16, 2042 | 42.106 | 7.235049 | 179 | 196 / 196 |
+| June 16, 2042 | 43.690 | 7.291497 | 187 | 198 / 198 |
+| November 1, 2042 | 45.322 | 7.356612 | 194 | 198 / 198 |
+| December 8, 2042 | 45.804 | 7.379900 | 195 | 198 / 198 |
+
+All four saves have 29 Indian regions and no occupations in those regions.
+In the latest `Exitsave.gz`, every region is at or above its formula capacity;
+Patna has 13 built versus 12 supported, Dhaka 15 versus 14, and Peshawar 5 versus 4.
+Growth has therefore been catching up to protected existing facilities. A region
+must support **more** than its built MC before it adds construction headroom.
+At fixed current regional population weights and Education, the next increase is
+Lahore-Islamabad (13 to 14) at about $46.393T national GDP, 1.285% above current GDP.
+At fixed GDP and weights, the same threshold is Education 7.9206; combined GDP and
+Education growth reaches it sooner than either fixed-variable case.
+The installed game getters and regional GDP allocation were rechecked; save hashes
+were unchanged after inspection. This is a save-specific illustration of the
+formula above, not a gameplay change or a claim about how the excess MC originated.
 
 ## Upkeep and compensation model
 
