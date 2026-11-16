@@ -11,7 +11,7 @@ namespace TIEconomyMod.Patches
     internal static class AmbientHabHazardWeightPatch
     {
         private const string SelectorMethodName =
-            "<NarrativeEventsMonthlyUpdate>b__241_2";
+            "<NarrativeEventsMonthlyUpdate>b__245_2";
 
         [HarmonyTargetMethod]
         internal static MethodBase TargetMethod()

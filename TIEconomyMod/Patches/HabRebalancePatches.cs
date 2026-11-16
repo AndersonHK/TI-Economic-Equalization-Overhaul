@@ -399,9 +399,7 @@ namespace TIEconomyMod.Patches
                 materials,
                 false,
                 true,
-                substituteBoost &&
-                    (faction.IsActiveHumanFaction ||
-                     GameStateManager.AlienNation().extant));
+                substituteBoost && faction.IsActiveHumanFaction);
             TIResourcesCost cost = HabConstructionCostRewrite.ToResourcesCost(
                 faction,
                 destinationState,
@@ -721,14 +719,38 @@ namespace TIEconomyMod.Patches
     [HarmonyPatch(typeof(FactionGoal_BuildRefuellingStation), nameof(FactionGoal_BuildRefuellingStation.GoalFulfilled))]
     internal static class HabRefuellingCapacityPatch
     {
-        [HarmonyPrefix]
-        internal static bool Prefix(FactionGoal_BuildRefuellingStation __instance, ref bool __result)
+        [HarmonyTranspiler]
+        internal static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
-            TIHabState hab = __instance.hab;
-            if (!HabSectorProgression.Eligible(hab))
+            var codes = new List<CodeInstruction>(instructions);
+            MethodInfo vanilla = AccessTools.Method(typeof(TIHabState), nameof(TIHabState.maxModules), new[] { typeof(int) });
+            MethodInfo capacity = AccessTools.Method(typeof(HabRefuellingCapacityPatch), nameof(ActualCapacity));
+            int replacements = 0;
+            for (int i = 0; i < codes.Count; i++)
             {
-                return true;
+                if (!codes[i].Calls(vanilla))
+                    continue;
+                // Keep the native AllowsResupply check and replace only maxModules(tier).
+                CodeInstruction loadGoal = new CodeInstruction(OpCodes.Ldarg_0);
+                loadGoal.labels.AddRange(codes[i].labels);
+                loadGoal.blocks.AddRange(codes[i].blocks);
+                codes[i].labels.Clear();
+                codes[i].blocks.Clear();
+                codes.Insert(i++, loadGoal);
+                codes[i].opcode = OpCodes.Call;
+                codes[i].operand = capacity;
+                replacements++;
             }
+            if (replacements != 1)
+                throw new InvalidOperationException("Refuelling station goal expected one native capacity calculation.");
+            return codes;
+        }
+
+        private static int ActualCapacity(int tier, FactionGoal_BuildRefuellingStation goal)
+        {
+            TIHabState hab = goal.hab;
+            if (!HabSectorProgression.Eligible(hab))
+                return TIHabState.maxModules(tier);
             int capacity = 0;
             foreach (TISectorState sector in hab.sectors)
             {
@@ -737,9 +759,7 @@ namespace TIEconomyMod.Patches
                     capacity += sector.habModules.Count;
                 }
             }
-            __result = hab.numCompletedModules == capacity &&
-                hab.AllowsResupply(__instance.faction, allowHumanTheft: true);
-            return false;
+            return capacity;
         }
     }
 

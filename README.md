@@ -1,6 +1,8 @@
 # TI Economic Equalization Overhaul
 
-Current release: **0.11.13**, targeting **Terra Invicta 1.0.53b**.
+Current release: **0.11.14**, targeting **Terra Invicta 1.0.65**.
+See the [1.0.65 port audit](docs/compatibility/ti-1.0.65-port.md) for the game
+file comparison, compatibility changes, and validation status.
 0.11.13 applies inclination-change costs to same-altitude station and idle-fleet rendezvous.
 0.11.12 routes [equal-altitude LEO plane changes](docs/orbits-and-lunar-resources/approved-design.md#6-equal-altitude-leo-fleet-transfer-failure)
 to the game's inclination-change solver and checks that the resulting burns clear the body.
@@ -446,16 +448,10 @@ defaults.
 
 ## Compatibility and save behavior
 
-Version 0.10.3 is built and guarded against the installed Terra Invicta 1.0.53b
-assemblies. Transpilers validate their expected IL shapes, and verification
-dynamically binds the changed claim-harmonization contract and other focused
-patch families so a missing target or changed patch parameter fails before
-deployment.
-
-The [53B compatibility audit](docs/compatibility/ti-1.0.53b-audit-and-mass-tooltip.md)
-records the changed game binary, scenario-value overlap review, and selected-art
-hull mass tooltip correction. ModInfo's numeric `GameVersion` and the package
-filename remain `1.0.53`; the `b` suffix identifies the reviewed hotfix release.
+Version 0.11.14 is built against the installed Terra Invicta 1.0.65 assemblies.
+Verification checks guarded IL and Harmony patch binding, exercises the game's
+template merger for the base game and Dark Skies, and checks the exact assembly
+and asset bundle hashes behind EEO's combat geometry and rendering data.
 
 The manufacturing source registry, cache generations, routes, quotes, and
 per-site survey state are runtime-derived from existing game data. They add no
@@ -470,7 +466,7 @@ states serialized when they were created.
 The current release archive is:
 
 ```text
-artifacts/TIEconomyMod-0.10.3-ti1.0.53.zip
+artifacts/TIEconomyMod-0.11.14-ti1.0.65.zip
 ```
 
 ## Build and verification
@@ -491,8 +487,8 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\verify.ps1
 Verification rebuilds with warnings as errors and checks:
 
 - dependency-free formula assertions;
-- every guarded TI 1.0.53b IL patch point and focused dynamic Harmony
-  application, including the changed claim-harmonization contract;
+- guarded TI 1.0.65 IL patch points, focused Harmony application, and native
+  template merges for base and Dark Skies records;
 - all 110 hab-module overrides and logistics localization;
 - construction, founding, probe, AI-priority, lazy-cache, and compact cost-label patches;
 - the implementation matrix against settings and patch references;

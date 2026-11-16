@@ -624,6 +624,7 @@ public static class CapitalImportBackupProbe {
     # The Mothership geometry catalog is validated without invoking Unity scene
     # APIs. Native controller lifecycle/aiming remains an in-game acceptance item.
     $geometry = $modAssembly.GetType('TIEconomyMod.Core.MothershipMountGeometry', $true)
+    $assetSources = Get-Content -Raw (Join-Path $RepositoryRoot 'docs\compatibility\ti-1.0.65-asset-sources.json') | ConvertFrom-Json
     $noseGeometry = Get-Content -Raw (Join-Path $RepositoryRoot 'docs\ship-balance-research\capital-nose-geometry-2026-11-02.json') | ConvertFrom-Json
     if ($noseGeometry.rows.Count -ne 2) { throw 'Expected exactly two measured new Mothership nose anchors.' }
     for ($i=0;$i -lt 2;++$i) {
@@ -638,8 +639,11 @@ public static class CapitalImportBackupProbe {
     $vectorType = $geometry.GetMethod('Target').ReturnType
     $catalog = Get-Content -Raw (Join-Path $RepositoryRoot 'docs\ship-balance-research\turret-clearance\mothership-layout-2026-10-21.json') | ConvertFrom-Json
     $assetPath = Join-Path (Split-Path -Parent $TargetManagedDir) 'StreamingAssets\AssetBundles\ships'
-    if ((Get-FileHash -LiteralPath $assetPath -Algorithm SHA256).Hash -ne $catalog.source_bundle_sha256) {
-        throw 'Mothership original-geometry fixture does not match installed ships bundle.'
+    # The port re-extracted the current prefab and matched the old anchors and hull triangles.
+    if ((Get-FileHash -LiteralPath $assetPath -Algorithm SHA256).Hash -ne
+            $assetSources.sources.'TerraInvicta_Data\StreamingAssets\AssetBundles\ships' -or
+        $catalog.source_bundle_sha256 -ne $assetSources.capital_geometry_original_bundle_sha256) {
+        throw 'Installed ships bundle or historical Mothership fixture is not the verified source.'
     }
     $tops = [Array]::CreateInstance($vectorType, 20)
     $bottoms = [Array]::CreateInstance($vectorType, 20)

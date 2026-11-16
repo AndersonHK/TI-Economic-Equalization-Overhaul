@@ -1,6 +1,9 @@
 # Ship-hull graphical variants, measured volume, and utility slots
 
-Status: generated asset-measurement report using current mod hull overrides, including the revised 0.11.2 protected-armor layout; meshes are retained measurements.
+Status: remeasured against Terra Invicta 1.0.65 and the current mod hull
+overrides, including the revised 0.11.2 protected-armor layout. All 64
+measurement rows, runtime volume and drive scale tables, and rendered images
+matched the prior measurements.
 
 ## Result
 
@@ -151,8 +154,8 @@ A later utility-slot change should therefore choose hull-level counts first, the
 ## Reproducibility
 
 - Installed hull template SHA-256: `36952BDDFFCBEBE1C3AB2C2141B7D7DF53F985C0EED326C5A43A9B52BD86826B`
-- Base `ships` bundle SHA-256: `F1804254B5C6F2C2FFBF78C333738F462BAA18023AC5AACF9A8EACAA4D9F09A4`
-- Dark Skies `ships_prm` bundle SHA-256: `58F8B233CD7814F3CD536B46725369F69D6EC58AA260E580DE9D1E1268CF5D63`
+- Base `ships` bundle SHA-256: `62395D9EB742DD0629F818DF6CE6A452C0C9C4F13E3707757E05E1E9814F3959`
+- Dark Skies `ships_prm` bundle SHA-256: `253000CAF2AE08A171BBE77A01000153F678F8E2BFFC1DD31ED7723A8D6C4D14`
 - Mod hull override SHA-256: `C6709A0FBA88A22C53EB563AF954D0F858B188312CAB3C96926476686E573B7D`
 - Generator: [`generate_hull_variant_report.py`](../../scripts/ship-balance/generate_hull_variant_report.py)
 - Shared prefab traversal: [`measure_ship_prefabs.py`](../../scripts/ship-balance/measure_ship_prefabs.py)

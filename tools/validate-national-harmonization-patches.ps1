@@ -91,4 +91,4 @@ finally {
     $harmony.UnpatchAll($harmonyId)
 }
 
-Write-Host 'PASS: all three claim-harmonization decision and explanation patches bind to the TI 1.0.53 nation/region contracts and Harmony emits them together.'
+Write-Host 'PASS: all three claim-harmonization decision and explanation patches bind to the installed nation/region contracts and Harmony emits them together.'

@@ -119,7 +119,7 @@ namespace TIEconomyMod
                     ShipPowerRuntime.RefreshTemplatePerformanceCaches();
                 }
                 CouncilorRuntimeCaps.InitializeOrganizationCap();
-                Log("Loaded TI Economic Equalization Overhaul " + modEntry.Info.Version + ", validated against TI 1.0.53b.");
+                Log("Loaded TI Economic Equalization Overhaul " + modEntry.Info.Version + ", validated against TI 1.0.65.");
                 TIEconomyMod.Core.ContactHeadlessHarness.InstallIfRequested();
                 return true;
             }

@@ -15,6 +15,7 @@ public static class HabSectorProgressionTests
     private static int assignments;
     private static int checks;
     private static Type policy;
+    private static bool allowResupply = true;
 
     private static T Raw<T>() { return (T)FormatterServices.GetUninitializedObject(typeof(T)); }
     private static void Set(object obj, string name, object value)
@@ -43,9 +44,10 @@ public static class HabSectorProgressionTests
         __result = Aliens.Any(f => Object.ReferenceEquals(f, __instance));
         return false;
     }
-    public static bool Resupply(ref bool __result)
+    public static bool Resupply(bool checkInactives, ref bool __result)
     {
-        __result = true;
+        Assert(checkInactives, "native refuelling goal checks inactive resupply");
+        __result = allowResupply;
         return false;
     }
     private static int Unlock(bool station, int sector)
@@ -218,7 +220,7 @@ public static class HabSectorProgressionTests
             prefix: new HarmonyMethod(typeof(HabSectorProgressionTests), "Resupply"));
         Type refuel = mod.GetType("TIEconomyMod.Patches.HabRefuellingCapacityPatch", true);
         harmony.Patch(AccessTools.Method(typeof(FactionGoal_BuildRefuellingStation), "GoalFulfilled"),
-            prefix: new HarmonyMethod(AccessTools.Method(refuel, "Prefix")));
+            transpiler: new HarmonyMethod(AccessTools.Method(refuel, "Transpiler")));
         for (int tier = 1; tier <= 3; tier++)
         {
             TIHabState h = Hab(true, tier, false, false);
@@ -233,6 +235,9 @@ public static class HabSectorProgressionTests
                 Set(slots[i], "constructionCompleted", true);
                 Assert(goal.GoalFulfilled() == (i == slots.Count - 1), "AI uses actual expanded capacity");
             }
+            allowResupply = false;
+            Assert(!goal.GoalFulfilled(), "full hab still requires native resupply eligibility");
+            allowResupply = true;
         }
 
         Type upgrade = mod.GetType("TIEconomyMod.Patches.HabUpgradeSectorProgressionPatch", true);

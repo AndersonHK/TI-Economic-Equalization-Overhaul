@@ -129,7 +129,7 @@ if ($null -eq $targetMethodResolver) {
 }
 $resolvedTarget = $targetMethodResolver.Invoke($null, @())
 if ($null -eq $resolvedTarget -or
-    $resolvedTarget.Name -ne '<NarrativeEventsMonthlyUpdate>b__241_2') {
+    $resolvedTarget.Name -ne '<NarrativeEventsMonthlyUpdate>b__245_2') {
     throw "Ambient-hab hazard patch resolved the wrong selector: $($resolvedTarget.Name)"
 }
 $harmonyType = $harmonyAssembly.GetType('HarmonyLib.Harmony', $true)

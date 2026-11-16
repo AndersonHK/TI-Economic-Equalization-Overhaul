@@ -65,6 +65,9 @@ editor; it belongs in `TIStartTimeTemplate.json`.
 - Input snapshots are from the installed game plus repository data on
   2026-09-23. A game update, additional mod, or different scenario requires
   refreshing the baseline/model as appropriate.
+- Terra Invicta 1.0.65 redesigned the in-game tree. These older diagrams still
+  show the historical data model; the new line routing, highlighting, and
+  layout are not modeled here. See the [1.0.65 port audit](../compatibility/ti-1.0.65-port.md).
 - Unknown prerequisites, cycles, unsupported alternate global prerequisites,
   and non-converging layouts are rejected before replacing the drawn result.
 

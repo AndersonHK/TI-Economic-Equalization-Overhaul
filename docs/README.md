@@ -169,6 +169,8 @@ The [armor rework plan](ship-balance-research/armor-rework-plan.md) uses one uni
   baseline.
 - [Patch sanity audit](patch-sanity-audit.md): scale, unit, and compatibility
   review of the implemented Harmony patches.
+- [Terra Invicta 1.0.65 port](compatibility/ti-1.0.65-port.md): installed game
+  file and method comparison, Dark Skies merges, asset checks, and release status.
 - [Terra Invicta 1.0.53 compatibility](compatibility/ti-1.0.53-compatibility.md):
   diagnosis of the all-patches-disabled regression, API migration plan,
   automatic acceptance criteria, and focused manual-test checklist.

@@ -364,7 +364,7 @@ try {
         1 `
         'Live propulsion generation ship-template power source'
 
-    Write-Host 'PASS: target IL contains every guarded TI 1.0.53 patch point, including the nation-level claim compatibility signature, coup effects, research ownership, councilor caps, climate damage, nuclear GDP effects, and ship drive-power consumers.'
+    Write-Host 'PASS: target IL contains every guarded patch point on the installed target, including the nation-level claim compatibility signature, coup effects, research ownership, councilor caps, climate damage, nuclear GDP effects, and ship drive-power consumers.'
 }
 finally {
     $resolvedProbe = (Resolve-Path -LiteralPath $probeDirectory).Path

@@ -64,7 +64,8 @@ public static class TechnologyTemplateMergeValidation
             Require(mode == MergeArrayHandling.Replace,
                 fileName + " must use TemplatesToReplaceArrays for authored arrays.");
 
-        List<JObject> merged = controller.CombineJson(Read(baselinePath), mod.FileContents, false, mode);
+        List<JObject> merged = controller.CombineJson(Read(baselinePath), mod.FileContents, false,
+            Path.GetFileNameWithoutExtension(fileName), mode);
         Require(merged.Count == baseline.Count, "Unexpected template additions/removals in " + fileName);
         foreach (JObject original in baseline)
         {
@@ -83,7 +84,7 @@ public static class TechnologyTemplateMergeValidation
         return merged;
     }
 
-    public static string Run(string templates, string modFiles)
+    public static string Run(string templates, string modFiles, string darkSkies)
     {
         JsonController controller = new JsonController();
         string techPath = Path.Combine(templates, "TITechTemplate.json");
@@ -91,7 +92,8 @@ public static class TechnologyTemplateMergeValidation
         List<JObject> overrides = Read(overridePath);
 
         // Reproduce the original loader bug before asserting the configured fix.
-        List<JObject> oldMerge = controller.CombineJson(Read(techPath), overrides, false, MergeArrayHandling.Merge);
+        List<JObject> oldMerge = controller.CombineJson(Read(techPath), overrides, false,
+            "TITechTemplate", MergeArrayHandling.Merge);
         JObject oldNeural = Find(oldMerge, "AdvancedNeuralNetworks");
         Require(((JArray)oldNeural["prereqs"]).Values<string>().SequenceEqual(new[] { "PhotonicComputing" }),
             "Installed default merge no longer reproduces the inherited prerequisite; reassess this regression.");
@@ -150,12 +152,37 @@ public static class TechnologyTemplateMergeValidation
                 Math.Abs(material.GetSpecialtyModifiers(ArmorSpecialty.LaserResistance) - 0.75) < 0.00001,
                 name + " must retain alien unlock and exactly one laser resistance specialty.");
         }
-        return "PASS: native JSON merge validates two alien armor overrides, native material getters, unchanged armor records and costs; " + technologies.Count +
+        foreach (string filename in new[] { "TISpaceBodyTemplate.json", "TIShipHullTemplate.json" })
+            MergeAndVerify(controller, Path.Combine(templates, filename), Path.Combine(modFiles, filename));
+
+        // These 1.0.65 scenario files are loaded in addition to the base templates.
+        // Verify that applying EEO to them preserves fields and records it does not own.
+        foreach (string scenario in new[] { "2003_Scenario", "Broken_Earth_Scenario" })
+        {
+            string scenarioTemplates = Path.Combine(darkSkies, scenario, "Templates");
+            foreach (string filename in new[] { "TIGlobalConfig.json", "TIStartTimeTemplate.json" })
+                MergeAndVerify(controller, Path.Combine(scenarioTemplates, filename), Path.Combine(modFiles, filename));
+        }
+        List<JObject> millennium = MergeAndVerify(controller,
+            Path.Combine(darkSkies, "2003_Scenario", "Templates", "TITechTemplate.json"), overridePath);
+        JObject millenniumNeural = Find(millennium, "AdvancedNeuralNetworks");
+        Require((int)millenniumNeural["researchCost"] == 2500 && ((JArray)millenniumNeural["prereqs"]).Count == 0 &&
+            ((JArray)millenniumNeural["scenarioTags"]).Values<string>().Contains("Millennium"),
+            "EEO research tuning must preserve the Millennium tech variant and leave it prerequisite-free.");
+        List<JObject> brokenMissions = MergeAndVerify(controller,
+            Path.Combine(darkSkies, "Broken_Earth_Scenario", "Templates", "TIMissionTemplate.json"),
+            Path.Combine(modFiles, "TIMissionTemplate.json"));
+        Require((string)Find(brokenMissions, "AssumeControl")["friendlyName"] == "Grant Alien Control",
+            "The new Broken Earth variant of Assume Control must survive EEO.");
+
+        return "PASS: native JSON merge preserves base space bodies and hulls, Dark Skies start/config fields, Millennium tech tags and Broken Earth missions; two alien armor overrides, native material getters, unchanged armor records and costs; " + technologies.Count +
             " technologies, authored arrays and preserved baseline fields, 2,500-cost prerequisite-free Neural Networks, and the 2026-only completion grant.";
     }
 }
 '@
 
-$templates = Join-Path (Split-Path -Parent $TargetManagedDir) 'StreamingAssets\Templates'
+$dataDir = Split-Path -Parent $TargetManagedDir
+$templates = Join-Path $dataDir 'StreamingAssets\Templates'
+$darkSkies = Join-Path (Split-Path -Parent $dataDir) 'DLC_Content\DarkSkies'
 $modFiles = Join-Path $RepositoryRoot 'TIEconomyMod\ModFiles'
-Write-Host ([TechnologyTemplateMergeValidation]::Run($templates, $modFiles))
+Write-Host ([TechnologyTemplateMergeValidation]::Run($templates, $modFiles, $darkSkies))

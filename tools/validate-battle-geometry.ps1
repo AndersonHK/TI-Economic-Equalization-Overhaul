@@ -116,7 +116,7 @@ $fallback = $mod.GetType('TIEconomyMod.Core.CombatUnreadableMeshes',$true)
 $records = $fallback.GetMethod('Load').Invoke($null,[object[]]@([string]$catalogPath,[string](Join-Path $TargetManagedDir 'Assembly-CSharp.dll')))
 $payloads = $fallback.GetMethod('VerifyPayloads').Invoke($null,@())
 if ($records -ne 503 -or $payloads -lt 400) { throw 'Expected complete base/DLC unreadable mesh coverage.' }
-$manifest = Get-Content (Join-Path $RepositoryRoot 'docs\ship-balance-research\battle-scale\mesh-fallback-sources-2026-10-29.json') -Raw | ConvertFrom-Json
+$manifest = Get-Content (Join-Path $RepositoryRoot 'docs\compatibility\ti-1.0.65-asset-sources.json') -Raw | ConvertFrom-Json
 if ((Get-FileHash $catalogPath).Hash -ne $manifest.sha256) { throw 'Fallback index differs from the extracted source record.' }
 foreach ($property in $manifest.payload_files.PSObject.Properties) {
     if ((Get-FileHash (Join-Path $RepositoryRoot $property.Name)).Hash -ne $property.Value) { throw 'Fallback payload hash mismatch.' }

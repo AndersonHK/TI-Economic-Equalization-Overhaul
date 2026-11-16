@@ -169,7 +169,7 @@ foreach ($requiredField in @('warheadMass_kg', 'massDamage_kg')) {
     }
 }
 
-Write-Host 'PASS: projectile geometry covers explicit calibers and mass-derived magnetic rounds, magnetic durability follows damaging mass, and the guarded sweep rewrites exactly 120% to 100% for TI 1.0.51.'
+Write-Host 'PASS: projectile geometry covers explicit calibers and mass-derived magnetic rounds, magnetic durability follows damaging mass, and the guarded sweep rewrites exactly 120% to 100% on the installed game.'
 
 $runtime = $modAssembly.GetType('TIEconomyMod.Core.BallisticContactRuntime',$true)
 foreach ($helper in @('CastCompletedStep','ReflectFlight')) {

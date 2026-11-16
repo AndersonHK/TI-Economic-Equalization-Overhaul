@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("TIEconomyMod")]
-[assembly: AssemblyDescription("Configurable TI 1.0.53b economic and national-priority balance overhaul")]
+[assembly: AssemblyDescription("Configurable TI 1.0.65 economic and national-priority balance overhaul")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("TIEconomyMod")]
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("0.11.13.0")]
-[assembly: AssemblyFileVersion("0.11.13.0")]
+[assembly: AssemblyVersion("0.11.14.0")]
+[assembly: AssemblyFileVersion("0.11.14.0")]

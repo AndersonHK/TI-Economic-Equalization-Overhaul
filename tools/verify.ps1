@@ -610,10 +610,10 @@ foreach ($entry in $controlTechnologies.GetEnumerator()) {
 
 $manifestPath = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\ModInfo.json'
 $manifest = Get-Content -LiteralPath $manifestPath -Raw | ConvertFrom-Json
-if ($manifest.GameVersion -ne '1.0.53') {
-    throw "ModInfo.json targets '$($manifest.GameVersion)' instead of TI 1.0.53."
+if ($manifest.GameVersion -ne '1.0.65') {
+    throw "ModInfo.json targets '$($manifest.GameVersion)' instead of TI 1.0.65."
 }
-if ($manifest.Version -ne '0.11.13') {
+if ($manifest.Version -ne '0.11.14') {
     throw "ModInfo.json version '$($manifest.Version)' does not match this release."
 }
 if ($manifest.AssemblyName -ne 'Assembly/TIEconomyMod.dll') {
@@ -1180,8 +1180,8 @@ if ($assemblyFile.LastWriteTime -lt $buildStarted.AddSeconds(-2)) {
     throw 'Packaged DLL predates this verification build.'
 }
 $assemblyVersion = [Reflection.AssemblyName]::GetAssemblyName($assemblyPath).Version.ToString()
-if ($assemblyVersion -ne '0.11.13.0') {
-    throw "Assembly version '$assemblyVersion' does not match release 0.11.13."
+if ($assemblyVersion -ne '0.11.14.0') {
+    throw "Assembly version '$assemblyVersion' does not match release 0.11.14."
 }
 $assemblyHash = (Get-FileHash -LiteralPath $assemblyPath -Algorithm SHA256).Hash
 
@@ -1295,7 +1295,7 @@ foreach ($source in Get-ChildItem -LiteralPath $packageSource -File -Recurse) {
     [void](New-Item -ItemType Directory -Path (Split-Path -Parent $target) -Force)
     Copy-Item -LiteralPath $source.FullName -Destination $target -Force
 }
-$zipPath = Join-Path $artifactDirectory 'TIEconomyMod-0.11.13-ti1.0.53.zip'
+$zipPath = Join-Path $artifactDirectory 'TIEconomyMod-0.11.14-ti1.0.65.zip'
 if (Test-Path -LiteralPath $zipPath) {
     Remove-Item -LiteralPath $zipPath
 }
@@ -1435,4 +1435,4 @@ Write-Host ('Verification wall time: {0:N2}s with {1} validation workers.' -f
     $ValidationThreads)
 Write-Host "DLL SHA256: $assemblyHash"
 Write-Host "Artifact: $zipPath"
-Write-Host 'Compatibility target: TI 1.0.53b installed assemblies, guarded IL patch points, and focused Harmony binding (numeric GameVersion 1.0.53).'
+Write-Host 'Compatibility target: TI 1.0.65 installed assemblies, guarded IL patch points, and focused Harmony binding (numeric GameVersion 1.0.65).'

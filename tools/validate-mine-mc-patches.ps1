@@ -180,4 +180,4 @@ foreach ($case in @(
     }
 }
 
-Write-Host 'PASS: mine MC patches bind to TI 1.0.53 and Harmony emits all five replacements; Tier 1/2/3 costs are 1/2/3 and MC colors use the 75%/100% boundaries.'
+Write-Host 'PASS: mine MC patches bind to the installed game and Harmony emits all five replacements; Tier 1/2/3 costs are 1/2/3 and MC colors use the 75%/100% boundaries.'

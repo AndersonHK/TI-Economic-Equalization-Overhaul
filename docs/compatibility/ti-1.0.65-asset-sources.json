@@ -1,0 +1,19 @@
+{
+  "schema": 3,
+  "sources": {
+    "TerraInvicta_Data\\StreamingAssets\\AssetBundles\\ships": "62395D9EB742DD0629F818DF6CE6A452C0C9C4F13E3707757E05E1E9814F3959",
+    "TerraInvicta_Data\\StreamingAssets\\AssetBundles\\habmodules": "07CB503D152DE224526468BA04E6A9A090F0E627EBA0BA5B0391B6F04B12BA29",
+    "TerraInvicta_Data\\StreamingAssets\\AssetBundles\\shipweapons": "9DFCF8E93536DC400A00428AF2D6C32226BAC44F1ECD88B874D8F946E9EA912E",
+    "DLC_Content\\DarkSkies\\AssetBundles\\ships_prm": "253000CAF2AE08A171BBE77A01000153F678F8E2BFFC1DD31ED7723A8D6C4D14",
+    "TerraInvicta_Data/Managed/Assembly-CSharp.dll": "64D88E996C63B4254675D608E859AAC523B43488625937D8E2E9B1E04A3E8B3B"
+  },
+  "file": "TIEconomyMod/ModFiles/Config/combat-unreadable-meshes.eeo",
+  "unique_payloads": 438,
+  "payload_files": {
+    "TIEconomyMod/ModFiles/Config/combat-mesh-data-base.eeo": "95655ACB6290987E2BCCC0C926E55F01131A871D0F25977EA2FCC687AFFCFBED",
+    "TIEconomyMod/ModFiles/Config/combat-mesh-data-dlc.eeo": "89D4FC125C6AB6258A1C73A08677F31CE40B7CBEAD718A41205D6A83A450433C"
+  },
+  "sha256": "46336F2AA15341A2AB7A2D0A7EBB2E89769D4D9082AB2024A12684CCA62791BF",
+  "record_count": 506,
+  "capital_geometry_original_bundle_sha256": "F1804254B5C6F2C2FFBF78C333738F462BAA18023AC5AACF9A8EACAA4D9F09A4"
+}
