@@ -2,6 +2,9 @@
 
 Last reviewed: 2026-11-05. Version 0.11.9 is the user-accepted stable and performant
 baseline. [Acceptance and runtime identity](battle-scale/acceptance-0.11.9-2026-11-05.md).
+The subsequent [live performance inspection](live-performance-inspection-2026-11-05.md)
+records remaining CPU targets and the confirmed waypoint-hover camera defect;
+these follow-ups are not implemented.
 Use current implementation records for released
 behavior, planning records for unimplemented choices, and dated measurements
 for their stated baselines. The [implementation matrix](../current-implementation-matrix.xlsx)
@@ -10,11 +13,11 @@ and [decision changelog](CHANGELOG.md) provide cross-checks. The
 
 ## Current implementations
 
-- [0.11.9 repeat-battle waypoint cleanup](repeat-battle-waypoint-cleanup-2026-11-05.md): idempotent retirement of waypoint controllers and event subscriptions, stale input guard, and battle-boundary reset. 37 host checks across three synthetic cycles pass; actual repeat-battle acceptance remains pending. Camera-follow changes deferred.
+- [0.11.9 repeat-battle waypoint cleanup](repeat-battle-waypoint-cleanup-2026-11-05.md): idempotent retirement of waypoint controllers and event subscriptions, stale input guard, and battle-boundary reset. 37 host checks across three synthetic cycles pass; the user subsequently accepted 0.11.9 as stable and performant. Camera-follow changes deferred.
 
-- [0.11.8 compatibility-query rework](compatibility-query-rework-2026-11-05.md): replaces the 0.11.7 full-world missile scan measured above 600 ms/frame. Uses phase snapshots and indexed nearest/all-contact queries, expanded production-wrapper tests and whole-frame wall-time metrics. Deployed for live retesting.
+- [0.11.8 compatibility-query rework](compatibility-query-rework-2026-11-05.md): replaces the 0.11.7 full-world missile scan measured above 600 ms/frame. Uses phase snapshots and indexed nearest/all-contact queries, expanded production-wrapper tests and whole-frame wall-time metrics. Retained in accepted 0.11.9.
 
-- [0.11.7 collision performance testing](battle-worker-contact-2026-11-04.md): prepared data, Unity pose jobs, optimized native queries, disabled damage identities and reserved projectile slots. Headless timings include waits; rendered-battle acceptance remains pending. [Friendly collision/avoidance](friendly-ship-collision-plan-2026-11-04.md) remains a separate plan.
+- [0.11.7 collision performance testing](battle-worker-contact-2026-11-04.md): historical failed live candidate; its compatibility-query regression was corrected in 0.11.8. Prepared geometry and worker infrastructure remain in accepted 0.11.9. [Friendly collision/avoidance](friendly-ship-collision-plan-2026-11-04.md) remains a separate plan.
 
 - [0.11.6 particle-beam width correction](particle-beam-scale-correction-2026-11-04.md): includes particle weapons in constant-width handling, using the native authored width times captured effect scale and removing camera-distance widening. Accepted laser path/shader assets preserved. Full deployment passed; user confirms the bug fixed and game stable.
 

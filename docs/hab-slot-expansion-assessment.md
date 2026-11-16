@@ -2,10 +2,15 @@
 
 Updated: 2026-11-05 (America/Los_Angeles).
 
-Status: **phase 1 implementation plan only; not implemented or deployed**.
-The existing human T1 station expansion remains the runtime baseline. Phase 2
-retains the earlier feasibility research below and must wait for phase 1 manual
-acceptance. This planning task changes documentation only.
+Status: **phase 1 implemented and deployed in 0.11.10; manual acceptance
+pending**. Phase 2 retains the earlier feasibility research below
+and must wait for phase 1 manual acceptance.
+
+Implementation decision: reconcile in `OnHabCreated` after income services are
+initialized and before founding/load visualizers, and in core completion before
+the native connector rebuild/final event. Do not reconcile in scenario creation
+stage 1: its income dictionary is not yet initialized. Preserve already owned
+upgrade sectors instead of letting native upgrade activation overwrite them.
 
 ## Phase 1: unlock existing sectors one tier earlier
 
@@ -18,7 +23,7 @@ indices, UI cells, model attachment points, and connector assets.
 Counts below exclude the core. A surface base's count includes its one reserved
 mine position; it is not an additional freely assignable facility slot.
 
-| Hab type | Tier | Current mod facility positions | Planned positions | Planned active internal sectors |
+| Hab type | Tier | Before phase 1 | Phase 1 positions | Phase 1 active internal sectors |
 |---|---:|---:|---:|---|
 | Human station | 1 | 12 | 12 | 0, 2, 4 |
 | Human station | 2 | 12 | 20 | 0, 1, 2, 3, 4 |
@@ -46,7 +51,7 @@ or increases beyond twenty facility positions in phase 1. If existing assets
 cannot render the early unlock correctly, resolve that within the existing
 topology or record a phase 1 blocker before taking on phase 2 geometry.
 
-### Evidence and current implementation
+### Evidence and preimplementation baseline
 
 The local game assembly was freshly decompiled for this plan with ILSpy
 9.1.0.7988. Target: installed `TerraInvicta_Data/Managed/Assembly-CSharp.dll`,
@@ -229,15 +234,60 @@ phase 1 layout/connector map and a retained occupied-save fixture. This makes
 later failures attributable to newly authored geometry rather than unfinished
 early-unlock behavior.
 
-### Planning outcome and remaining uncertainty
+### Implementation and remaining acceptance
 
-The state and UI paths support the proposed progression without changing list
-sizes or coordinate identities. The main uncertainty is whether every newly
-exposed coordinate has usable lower-tier geometry and connector rendering in
-all native visual contexts. The targeted asset audit and rendered playtests are
-hard gates; this plan does not claim that they have already passed. No mod
-build, deployment, save modification, or live gameplay test was performed for
-this documentation task.
+Version 0.11.10 implements the policy in `HabSectorProgression` and
+`HabRebalanceMath.SectorUnlockTier`. The runtime hooks are:
+
+- `InitializeHabSectorProgressionPatch`: prefix on `OnHabCreated`, shared by
+  normal founding, template creation and loaded campaigns. It runs after
+  `InitializeIncomes`, before the founding/load visualizer. Template creation's
+  first-stage connector pass stays native until this safe reconciliation. It
+  rebuilds connectors once even when all sectors are already active, repairing
+  stale flags inherited from older saves. Later repair remains a no-op if no
+  sectors need activation.
+- `HabUpgradeSectorProgressionPatch`: guarded transpiler on
+  `CompleteModuleConstruction`, preserving already owned sectors at all eight
+  native assignments and reconciling after tier assignment, before the native
+  connector rebuild and final construction-status event.
+- `RepairExistingHabSectorPatch`: idempotent prefix on late repair, before its
+  possible docked-fleet combat initiation. It is a safety net for the earlier
+  startup hook, not the primary migration path.
+- `HabSectorConnectorMapPatch`: replaces exactly eight native sector thresholds
+  while preserving module-size and occupancy logic, ring topology and base
+  connection routing. Aliens, fixed habs and inactive-sector gates stay native.
+- `HabRefuellingCapacityPatch`: scopes AI refuelling-goal completion to the
+  eligible hab's actual active capacity instead of the native five-position
+  threshold. Native global `maxModules` and other goals remain unchanged.
+
+The [static asset inventory](habitat-slots/phase1-assets-2026-11-05.json) records
+all 21 station model positions, both 21-cell UI layouts, and six base connection
+cells. The native station model uses per-position connector branches, rather
+than requiring all nine possible branches at every position. `HabModule3D`
+selects module art independently of hab tier and reads those connector flags;
+station combat uses the existing strategic station model. Surface bases use
+their native grid/sprite path; no station-style attachment points were added to
+the base prefabs.
+
+Normal verification now compiles and executes
+`tools/validation/HabSectorProgressionTests.cs` through the existing connector
+validator. Its 342 connector fixtures compare all module flags, rings and base
+connections with the corresponding native routing at the equivalent unlock
+tier. Its 485 assertions also cover null/malformed/missing-owner states,
+alien/static controls, module identity and queued-date preservation,
+idempotence, upgrade ownership, 13/21-position AI completion, and native IL
+emission/order. Faction-template lookup, ownership event side effects and
+resupply service lookup are stubbed in the isolated process. These results do
+not establish Unity event delivery, save serialization or rendered behavior.
+
+The [deployment receipt](habitat-slots/phase1-deployment-0.11.10.json) records
+normal verification, both game-closed assertions, package identity and matching
+source/installed/archive hashes for every deployed file. No gameplay save was
+modified.
+
+Rendered grid/connector appearance, station combat, live AI behavior and actual
+campaign reload are **pending manual acceptance**. The full manual matrix above
+remains the gate for phase 2; no user acceptance is implied by automated checks.
 
 ## Phase 2: retained capacity research (deferred)
 

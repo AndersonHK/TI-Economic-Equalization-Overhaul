@@ -332,3 +332,144 @@ or AI-valuation issue should be appended here with its campaign conditions.
   files. The deployed localization contains all 35 concise labels, has a maximum
   label length of 29 characters, and matches the source SHA-256
   `BF84CB932FE9239663EA7D34E9BD95A7C51ED5E5D59640BAB690D684AA323DF8`.
+
+## 6. Equal-altitude LEO fleet transfer failure
+
+Diagnosis and proposed correction, 2026-11-06. The failure was reproduced
+outside Unity using the installed Terra Invicta 1.0.53b managed assembly
+(SHA-256 `4A4B9AAE4154E444E9727204205D2D42AE8ED9E1C5F92CDC1280074A259D8350`).
+The enabled EEO package was 0.11.10. This investigation did not change
+gameplay code, templates, saves, or the installed package.
+
+### Reproduction and cause
+
+On 2043-07-17 at 07:18:27, Earth Defense was docked at Hadfield Station in
+`LowEarthOrbit1`. Selecting the bare `LowEarthOrbitPlus40` orbit in the
+Transfer operation produced `Fail_CodePathNotImplemented` with both values
+zero. The preceding July 8 save has the same fleet docked in LEO1 with no
+assigned trajectory. Its 32 ships yield fleet minima of 32.34874 km/s
+remaining delta-v and 0.3677968 m/s² cruise acceleration, consistent with
+the screenshot. The loaded definitions give both orbits a 500 km altitude,
+zero eccentricity and a 310-degree ascending node. Their inclinations are
+0 and +40 degrees. An idle fleet reads its orbital elements from its orbit
+state, and both orbit states use their templates' nominal axes.
+
+1. `MasterTransferPlanner.GetTrajectoryModelsForConditions` puts equal
+   semimajor axes in the orbital-phasing branch. The test that can add
+   `InclinationChange` sits in the unequal-axis branch. At this acceleration,
+   the native microthrust sphere is about 23,277 km from Earth's center,
+   outside the roughly 6,857 km orbit radius, so the equal-axis branch also
+   omits the hybrid solver.
+2. `OrbitPhasing_GetPhasingOrbitsAndTiming` rejects a bare local orbit target
+   because it has no asset to phase with. `CalculateOrbitPhasingTransfers_`
+   maps that rejection to `Fail_CodePathNotImplemented`. There is no other
+   candidate model in this request.
+3. A read-only replay with reconstructed state and the original DLL selected
+   only `OrbitPhasing`. Native `RequestTrajectories` returned zero candidates,
+   `Fail_CodePathNotImplemented`, two zero values, and a lowest-delta-v
+   sentinel of -1. The replay used July 8 save inputs and the screenshot's
+   July 17 time. It did not load the campaign or run Unity.
+4. Calling native `InclinationChangeTransfer.Solve` separately with those
+   inputs succeeded on its three-period sample at 5.5805 km/s and about
+   6.05 hours in transit before any wait for departure. The first two samples
+   hit the burn-duration check. The successful result establishes solver
+   feasibility within the fleet's budget. Building the patched trajectory,
+   fuel accounting and in-game arrival still need validation.
+
+EEO exposes the stock dispatch gap by adding different planes at the same
+altitude. The vanilla ISS and Tiangong bands have different nominal altitudes
+from LEO1. The installed planner classified LEO1 to LEO2 as hybrid and LEO2
+to +40 as hybrid plus inclination change. This makes LEO2 a possible staging
+orbit if both legs produce valid previews in game.
+
+### Proposed correction
+
+1. Keep the approved orbit definitions. Staggering the altitudes would
+   avoid the equal-axis branch by changing the intended geometry and the
+   altitude-sensitive Boost costs.
+2. Add a narrow Harmony postfix to `GetTrajectoryModelsForConditions`.
+   For a fleet with no assigned trajectory targeting a distinct bare orbit
+   around the same body, correct the equal-axis classification when the
+   orbits are circular and their planes are distinct. First cover the
+   common line of nodes and sub-90-degree plane separations used by the EEO
+   bands. Calculate plane separation from oriented normal vectors so signed
+   inclinations, equatorial orbits, and angle wrapping are handled consistently.
+   Replace the unusable phasing entry with the existing `InclinationChange`
+   model and retain any native hybrid candidate. Use the native solver and
+   `Trajectory_Patched` builder so the normal candidate and operation flow
+   applies the fleet's delta-v budget, burn constraints and arrival handling.
+3. Add a targeted regression against the 1.0.53b method signature and the
+   failing equal-altitude geometry. Exercise LEO1 to all four bands and back,
+   the +40 to -40 case, multiple departure phases, low fuel, and acceleration
+   on both sides of the native hybrid threshold. Check that a valid built
+   candidate has ordered, finite burn and coast segments, remains outside the
+   body, and ends on the destination plane. Treat coplanar phasing,
+   unequal-altitude routes, transfers already assigned, and interbody routes
+   as controls. Test station and fleet targets separately because rendezvous
+   must match a specific arrival position.
+4. Run the guarded deployment flow after implementation and when the game
+   is closed. In an existing campaign, preview and launch the Hadfield to +40
+   transfer, compare the charged delta-v with the selected trajectory,
+   confirm arrival and a return transfer, and save and reload during transit.
+   Repeat a representative route on a fresh campaign. Record the in-game
+   results here.
+
+### Burn clearance follow-up
+
+EEO 0.11.11 passed release verification and deployed 58 files. It fixes
+dispatch, and the installed game loaded the patch. Post-deployment sampling
+of the native trajectory builder exposed a separate issue. On the
+reconstructed 37.5-milligee LEO1 to +40 route, the first and last long
+burn curves passed within about 168 km of Earth's center. The builder
+applies its body-clearance routine only to the intermediate burn.
+
+The 0.11.12 safeguard applies the native clearance routine to each unsafe
+burn on the newly enabled routes. A single native split can still pass
+below the surface, so the patch bounds the number of splits and uses the
+Bézier control hull to verify continuous clearance against the largest
+body radius. It rejects a candidate if it cannot establish clearance.
+The native burn flags, departure and arrival times, and thrust-based
+fuel accounting carry over to the resulting segments.
+
+The standalone replay built and repaired 36 native trajectories using
+four departure phases for each of nine routes. The matrix covered LEO1
+to each of the four inclination bands and back, plus +40 to -40.
+It kept the destination planes and segment order. The lowest sampled
+radius exceeded Earth's equatorial radius by about 8.9 km, and delta-v
+differed by less than 0.005 m/s after splitting. A 1 km/s budget yielded
+`Fail_InsufficientDV` with no candidate. These checks used reconstructed
+state outside Unity. Preview, launch, fuel charge, arrival and save/reload
+remain in-game checks.
+
+Guarded deployment of 0.11.12 completed on 2026-11-06 after release
+verification and copied 58 hash-verified files. The installed DLL SHA-256
+is `960F895C2C2A45B9DEEEFEA6E6DCD9676AF00223846CA58D6CBFEC8F04663A9A`.
+
+### Station and idle-fleet rendezvous cost
+
+The 0.11.12 playtest confirmed launch and arrival and exposed underpriced
+plane changes. The campaign records Earth Defense's Tiangong rendezvous
+quote as 1.018248 km/s and 0.2208353 days. The preceding save and
+pre-combat snapshot show its remaining fleet delta-v dropping from
+32.34874 to 31.19348 km/s. A native replay using the saved fleet, station,
+and departure epoch reproduced the recorded quote and duration exactly
+with `OrbitPhasing`. Its burn calculation uses orbital speeds and
+longitude separation while its transfer orbit takes the target's
+inclination for free. The bare +40 orbit replay uses
+`InclinationChange` and quotes about 5.58 km/s.
+
+Apply the same plane-change dispatch and burn clearance to a bare
+orbit, station, or idle fleet in the supported geometry. Pass the
+original target through to the native solver so a rendezvous also matches
+the target's phase. In the reconstructed Tiangong case that solver quotes
+about 5.49 km/s. Keep coplanar phasing and active-transfer interception
+on their existing paths.
+
+Guarded deployment of 0.11.13 completed on 2026-11-11 after full release
+verification and copied 58 hash-verified files. The rebuilt DLL selected
+`InclinationChange` for the reconstructed Tiangong departure. The
+cleared candidate quoted 5.48908 km/s, and its burn segments account for
+the same delta-v by arrival to within 0.001 m/s. The bare orbit candidate
+quoted 5.58052 km/s. The user confirmed live launch and arrival on
+0.11.12. The corrected 0.11.13 quote and actual fuel charge await a
+live rendezvous test.

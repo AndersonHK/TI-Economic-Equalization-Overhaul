@@ -21,7 +21,9 @@ function Read-LoadedInt {
     param([object]$Instruction)
 
     switch ($Instruction.opcode.Name) {
+        'ldc.i4.1' { return 1 }
         'ldc.i4.2' { return 2 }
+        'ldc.i4.3' { return 3 }
         'ldc.i4.4' { return 4 }
         'ldc.i4' { return [int]$Instruction.operand }
         'ldc.i4.s' { return [int]$Instruction.operand }
@@ -84,7 +86,7 @@ $originalInstructions = $instructionReader.Invoke(
     $readerArguments)
 
 $patchType = $modAssembly.GetType(
-    'TIEconomyMod.Patches.TierOneStationConnectorMapPatch',
+    'TIEconomyMod.Patches.HabSectorConnectorMapPatch',
     $true)
 $transpiler = $patchType.GetMethod(
     'Transpiler',
@@ -107,7 +109,7 @@ catch {
 }
 
 $helperType = $modAssembly.GetType(
-    'TIEconomyMod.Patches.HabStationSectorRebalance',
+    'TIEconomyMod.Patches.HabSectorProgression',
     $true)
 $helper = $helperType.GetMethod(
     'ConnectorTierRequirement',
@@ -121,28 +123,28 @@ for ($index = 0; $index -lt $transpiledInstructions.Count; $index++) {
     }
 }
 
-if ($transpiledInstructions.Count -ne $originalInstructions.Count + 4) {
+if ($transpiledInstructions.Count -ne $originalInstructions.Count + 24) {
     throw "Connector transpiler changed the instruction count by $(
-        $transpiledInstructions.Count - $originalInstructions.Count) instead of 4."
+        $transpiledInstructions.Count - $originalInstructions.Count) instead of 24."
 }
-if ($helperCallIndexes.Count -ne 2) {
-    throw "Connector transpiler inserted $($helperCallIndexes.Count) helper calls instead of 2."
+if ($helperCallIndexes.Count -ne 8) {
+    throw "Connector transpiler inserted $($helperCallIndexes.Count) helper calls instead of 8."
 }
 
 $patchedSectors = @()
 foreach ($callIndex in $helperCallIndexes) {
-    if ($callIndex -lt 2 -or
+    if ($callIndex -lt 3 -or
         $callIndex + 1 -ge $transpiledInstructions.Count -or
-        $transpiledInstructions[$callIndex - 2].opcode.Name -ne 'ldarg.0' -or
+        $transpiledInstructions[$callIndex - 3].opcode.Name -ne 'ldarg.0' -or
         $transpiledInstructions[$callIndex + 1].opcode.Name -notmatch '^blt') {
         throw "Connector helper call at instruction $callIndex has an unexpected stack shape."
     }
     $patchedSectors += Read-LoadedInt (
-        $transpiledInstructions[$callIndex - 1])
+        $transpiledInstructions[$callIndex - 2])
 }
-if (($patchedSectors -join ',') -ne '2,4') {
+if (($patchedSectors -join ',') -ne '1,2,3,4,1,2,3,4') {
     throw "Connector transpiler targeted internal sectors '$(
-        $patchedSectors -join ',')' instead of '2,4'."
+        $patchedSectors -join ',')' instead of '1,2,3,4,1,2,3,4'."
 }
 
 $harmonyType = $harmonyAssembly.GetType('HarmonyLib.Harmony', $true)
@@ -185,5 +187,16 @@ if ($null -eq $replacementMethod) {
     throw 'Harmony did not emit a replacement connector-map method.'
 }
 
-Write-Host "PASS: connector transpiler rewrites exactly sectors 2 and 4 ($(
-    $originalInstructions.Count) -> $($transpiledInstructions.Count) instructions) and Harmony emits the patched method."
+$harmony.UnpatchAll($harmonyId)
+$references = @(
+    (Join-Path $TargetManagedDir 'Assembly-CSharp.dll'),
+    (Join-Path $TargetManagedDir 'UnityModManager\0Harmony.dll'),
+    (Join-Path $TargetManagedDir 'UnityEngine.CoreModule.dll'),
+    (Join-Path $TargetManagedDir 'UnityEngine.dll'),
+    (Join-Path $TargetManagedDir 'Unity.Entities.dll'),
+    (Join-Path $TargetManagedDir 'Unity.Mathematics.dll')
+)
+Add-Type -Path (Join-Path $PSScriptRoot 'validation\HabSectorProgressionTests.cs') -ReferencedAssemblies $references
+try { $result = [HabSectorProgressionTests]::Run($modAssembly) }
+catch { throw $_.Exception.ToString() }
+Write-Host "PASS: eight connector gates ($($originalInstructions.Count) -> $($transpiledInstructions.Count) instructions); emitted/executed native patches. $result"

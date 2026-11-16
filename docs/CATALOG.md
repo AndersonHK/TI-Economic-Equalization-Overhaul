@@ -2,8 +2,7 @@
 
 Generated 2026-11-05. This catalog indexes every other file under `docs/`, including machine-readable evidence and images. For interpretation, start with the [documentation map](README.md), [ship-balance hub](ship-balance-research/README.md), or [archive index](archive/README.md). Location/type labels are navigation aids, not assertions that all research is implemented.
 
-Indexed files: **583**. No archived evidence was deleted during the organization pass.
-
+Indexed files: **587**. No archived evidence was deleted during the organization pass.
 
 ## Top-level guides and authorities
 
@@ -144,6 +143,13 @@ Indexed files: **583**. No archived evidence was deleted during the organization
 | [hab-economy/t1-monthly-demand-scaling-proposal.md](hab-economy/t1-monthly-demand-scaling-proposal.md) | MD |
 | [hab-economy/t1-t3-monthly-demand-revision-plan.md](hab-economy/t1-t3-monthly-demand-revision-plan.md) | MD |
 | [hab-economy/t2-t3-monthly-demand-scaling-proposal.md](hab-economy/t2-t3-monthly-demand-scaling-proposal.md) | MD |
+
+## habitat-slots
+
+| File | Type |
+|---|---|
+| [habitat-slots/phase1-assets-2026-11-05.json](habitat-slots/phase1-assets-2026-11-05.json) | JSON |
+| [habitat-slots/phase1-deployment-0.11.10.json](habitat-slots/phase1-deployment-0.11.10.json) | JSON |
 
 ## orbits-and-lunar-resources
 
@@ -290,6 +296,7 @@ Indexed files: **583**. No archived evidence was deleted during the organization
 | [ship-balance-research/battle-scale/laser-runtime-load-0.11.3.txt](ship-balance-research/battle-scale/laser-runtime-load-0.11.3.txt) | TXT |
 | [ship-balance-research/battle-scale/laser-shader-validation-0.11.3.json](ship-balance-research/battle-scale/laser-shader-validation-0.11.3.json) | JSON |
 | [ship-balance-research/battle-scale/live-contact-regression-2026-11-05.json](ship-balance-research/battle-scale/live-contact-regression-2026-11-05.json) | JSON |
+| [ship-balance-research/battle-scale/live-inspection-0.11.9-2026-11-05.json](ship-balance-research/battle-scale/live-inspection-0.11.9-2026-11-05.json) | JSON |
 | [ship-balance-research/battle-scale/manual-alien-pd-control-2026-11-04.png](ship-balance-research/battle-scale/manual-alien-pd-control-2026-11-04.png) | PNG |
 | [ship-balance-research/battle-scale/manual-alien-white-beam-2026-11-04.png](ship-balance-research/battle-scale/manual-alien-white-beam-2026-11-04.png) | PNG |
 | [ship-balance-research/battle-scale/manual-failure-player-2026-10-29.txt](ship-balance-research/battle-scale/manual-failure-player-2026-10-29.txt) | TXT |
@@ -484,6 +491,7 @@ Indexed files: **583**. No archived evidence was deleted during the organization
 | [ship-balance-research/laser-native-profile-restoration-2026-11-04.md](ship-balance-research/laser-native-profile-restoration-2026-11-04.md) | MD |
 | [ship-balance-research/laser-wavelength-precision-bug-2026-11-03.md](ship-balance-research/laser-wavelength-precision-bug-2026-11-03.md) | MD |
 | [ship-balance-research/laser-width-only-2026-10-30.md](ship-balance-research/laser-width-only-2026-10-30.md) | MD |
+| [ship-balance-research/live-performance-inspection-2026-11-05.md](ship-balance-research/live-performance-inspection-2026-11-05.md) | MD |
 | [ship-balance-research/localization-and-unlock-audit.md](ship-balance-research/localization-and-unlock-audit.md) | MD |
 | [ship-balance-research/low-tech-rebalance-slice.md](ship-balance-research/low-tech-rebalance-slice.md) | MD |
 | [ship-balance-research/missile-role-and-alien-launcher-exploration-2026-09-25.md](ship-balance-research/missile-role-and-alien-launcher-exploration-2026-09-25.md) | MD |

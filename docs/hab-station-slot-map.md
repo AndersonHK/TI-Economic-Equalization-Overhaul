@@ -1,13 +1,15 @@
 # Station Slot Cardinal Map
 
-Status: implementation reference for the current T1 station-sector visibility
-patch. It maps vanilla UI topology; it does not propose additional capacity.
+Status: coordinate reference for the existing native station topology, retained
+in phase 1 (0.11.10). This cardinal table covers sectors 0, 2 and 4; the linked
+asset inventory also records the other existing station and base coordinates.
 
 The [phase 1 progression plan](hab-slot-expansion-assessment.md#phase-1-unlock-existing-sectors-one-tier-earlier)
-retains these indices while proposing the existing T3 station sectors at T2
-and equivalent earlier unlocks for surface bases. That extension is not yet
-implemented; complete the remaining station/base coordinate and connector
-inventory before using this partial cardinal map as its full validation basis.
+retains these indices and unlocks existing T3 station sectors at T2, with
+equivalent earlier unlocks for surface bases. The
+[complete static inventory](habitat-slots/phase1-assets-2026-11-05.json) records
+both UI layouts, station model positions and existing connector branches.
+Rendered UI/combat and save/reload acceptance remains pending.
 
 Terra Invicta's `HabitatsScreenController.PreviewStationModule` selects each
 station cell by the key `S{sector}_M{slot}`. The corresponding

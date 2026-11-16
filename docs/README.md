@@ -279,10 +279,10 @@ figures also compare human art-family progression and alien hulls at common scal
 - [Initial Economy plan](archive/economy/economy-growth-initial-plan.md) is a superseded design
   record. The calibration document and source describe the implemented model.
 - [Hab slot progression and capacity expansion](hab-slot-expansion-assessment.md)
-  plans phase 1: existing T2 sectors at T1 and T3 sectors at T2 for human
-  stations and surface bases, with connector/UI/combat/save acceptance before
-  phase 2 new lots and authored connectors. The plan is unimplemented; the
-  current T1 station behavior is recorded in the matrix and
+  records deployed 0.11.10 phase 1: twelve facility positions at T1 and twenty
+  at T2/T3 for human stations and surface bases. Manual connector/UI/combat/save
+  acceptance is pending before phase 2 new lots and authored connectors.
+  Existing station coordinates are recorded in the matrix and
   [station slot map](hab-station-slot-map.md).
 - [Nuclear Winter modification](nuclear-winter-deferred.md) is explicitly
   deferred.

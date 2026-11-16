@@ -173,18 +173,19 @@ namespace TIEconomyMod
             return boost > FractionTolerance;
         }
 
-        internal static int ConnectorTierRequirement(
-            int habTier,
-            bool isStation,
-            bool isAlien,
-            bool sectorActive)
+        internal static int SectorUnlockTier(bool isStation, int sectorIndex)
         {
-            return habTier == 1 &&
-                isStation &&
-                !isAlien &&
-                sectorActive
-                ? 1
-                : 2;
+            if (sectorIndex == 0)
+            {
+                return 1;
+            }
+            if (sectorIndex < 1 || sectorIndex > 4)
+            {
+                return int.MaxValue;
+            }
+            return isStation
+                ? (sectorIndex == 2 || sectorIndex == 4 ? 1 : 2)
+                : (sectorIndex <= 2 ? 1 : 2);
         }
     }
 }

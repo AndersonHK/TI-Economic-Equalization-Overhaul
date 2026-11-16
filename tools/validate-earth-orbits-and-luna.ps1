@@ -272,7 +272,25 @@ $moduleType = $gameAssembly.GetType(
     'PavonisInteractive.TerraInvicta.TIHabModuleState', $true)
 $shipType = $gameAssembly.GetType(
     'PavonisInteractive.TerraInvicta.TISpaceShipState', $true)
+$plannerType = $gameAssembly.GetType(
+    'PavonisInteractive.TerraInvicta.MasterTransferPlanner', $true)
+$planePatchName = 'TIEconomyMod.Patches.InclinedOrbitTransferPatch'
+$clearancePatchName = 'TIEconomyMod.Patches.InclinedOrbitBurnClearancePatch'
 $contracts = @(
+    @{
+        Type = $planePatchName
+        Method = 'Postfix'
+        HarmonyArgument = 2
+        Target = $plannerType.GetMethod('GetTrajectoryModelsForConditions')
+    },
+    @{
+        Type = $clearancePatchName
+        Method = 'Postfix'
+        Prefix = 'Prefix'
+        HarmonyArgument = 2
+        Target = $plannerType.GetMethod('CalculateInclinationChangeTransfers',
+            [Reflection.BindingFlags]'NonPublic,Static')
+    },
     @{
         Type = 'TIEconomyMod.Patches.GenericEarthLaunchCostPatch'
         Method = 'Prefix'
@@ -326,6 +344,10 @@ foreach ($contract in $contracts) {
     $arguments = [object[]]::new(5)
     $arguments[0] = $contract.Target
     $arguments[$contract.HarmonyArgument] = $harmonyPatch
+    if ($contract.Prefix) {
+        $prefix = $patchType.GetMethod($contract.Prefix, [Reflection.BindingFlags]'NonPublic,Static')
+        $arguments[1] = [Activator]::CreateInstance($harmonyMethodType, [object[]]@($prefix))
+    }
     try {
         $replacement = $patchApi[0].PSObject.BaseObject.Invoke(
             $harmony,
@@ -341,6 +363,98 @@ foreach ($contract in $contracts) {
         throw "Harmony did not emit $($contract.Type)."
     }
 }
+
+$nativeNamespace = 'PavonisInteractive.TerraInvicta.'
+$fields = [Reflection.BindingFlags]'Instance,NonPublic'
+$orbitType = $gameAssembly.GetType($nativeNamespace + 'TIOrbitState', $true)
+$orbitTemplateType = $gameAssembly.GetType('TIOrbitTemplate', $true)
+$bodyType = $gameAssembly.GetType($nativeNamespace + 'TISpaceBodyState', $true)
+$assetType = $gameAssembly.GetType($nativeNamespace + 'TISpaceAssetState', $true)
+$fleetType = $gameAssembly.GetType($nativeNamespace + 'TISpaceFleetState', $true)
+$modelType = $gameAssembly.GetType($nativeNamespace + 'TrajectoryModel', $true)
+$modelListType = [System.Collections.Generic.List`1].MakeGenericType($modelType)
+$body = [Runtime.Serialization.FormatterServices]::GetUninitializedObject($bodyType)
+$fleet = [Runtime.Serialization.FormatterServices]::GetUninitializedObject($fleetType)
+$orbitField = $assetType.GetField('<orbitState>k__BackingField', $fields)
+$patch = $modAssembly.GetType($planePatchName, $true).GetMethod(
+    'Postfix', [Reflection.BindingFlags]'Static,NonPublic')
+
+function New-TestOrbit([int]$Id, [double]$Inclination, [double]$Axis_m, [double]$Node = 310) {
+    $orbit = [Runtime.Serialization.FormatterServices]::GetUninitializedObject($orbitType)
+    $template = [Runtime.Serialization.FormatterServices]::GetUninitializedObject($orbitTemplateType)
+    $orbit.ID = [Activator]::CreateInstance($orbit.ID.GetType(), [object[]]@($Id))
+    $orbit.barycenter = $body
+    $orbit.semiMajorAxis_m = $Axis_m
+    $orbitTemplateType.GetField('eccentricity').SetValue($template, 0.0)
+    $orbitTemplateType.GetField('inclination_Deg').SetValue($template, $Inclination)
+    $orbitTemplateType.GetField('longAscendingNode_Deg').SetValue($template, $Node)
+    $gameStateType.GetField('template', $fields).SetValue($orbit, $template)
+    return $orbit
+}
+
+function Assert-TransferModels($Origin, $Destination, [string[]]$Before, [string[]]$Expected) {
+    $orbitField.SetValue($fleet, $Origin)
+    $models = [Activator]::CreateInstance($modelListType)
+    foreach ($name in $Before) {
+        $models.Add([Enum]::Parse($modelType, $name))
+    }
+    [void]$patch.Invoke($null, [object[]]@($fleet, $Destination, $models))
+    if (($models -join ',') -cne ($Expected -join ',')) {
+        throw "Unexpected transfer models from orbit $($Origin.ID) to $($Destination.ID). Expected $Expected, found $models."
+    }
+}
+
+$axis_m = 6856751.107
+$leo = New-TestOrbit 1 0 $axis_m
+$inclined = @(
+    (New-TestOrbit 2 20 $axis_m),
+    (New-TestOrbit 3 40 $axis_m),
+    (New-TestOrbit 4 -20 $axis_m),
+    (New-TestOrbit 5 -40 $axis_m)
+)
+foreach ($band in $inclined) {
+    Assert-TransferModels $leo $band OrbitPhasing InclinationChange
+    Assert-TransferModels $band $leo OrbitPhasing InclinationChange
+}
+Assert-TransferModels $inclined[1] $inclined[3] OrbitPhasing InclinationChange
+Assert-TransferModels $leo $inclined[1] @('OrbitPhasing', 'ImpulseMicrothrustHybrid') @('InclinationChange', 'ImpulseMicrothrustHybrid')
+Assert-TransferModels $leo $leo OrbitPhasing OrbitPhasing
+Assert-TransferModels $leo (New-TestOrbit 6 0 $axis_m) OrbitPhasing OrbitPhasing
+Assert-TransferModels $leo (New-TestOrbit 7 40 ($axis_m + 500000)) ImpulseMicrothrustHybrid ImpulseMicrothrustHybrid
+Assert-TransferModels $leo (New-TestOrbit 8 40 $axis_m 270) OrbitPhasing OrbitPhasing
+
+$habType = $gameAssembly.GetType($nativeNamespace + 'TIHabState', $true)
+$station = [Runtime.Serialization.FormatterServices]::GetUninitializedObject($habType)
+$habTypeField = $habType.GetField('<habType>k__BackingField', $fields)
+$habTypeField.SetValue($station, [Enum]::Parse($habTypeField.FieldType, 'Station'))
+$orbitField.SetValue($station, $inclined[1])
+Assert-TransferModels $leo $station OrbitPhasing InclinationChange
+Assert-TransferModels $inclined[1] $station OrbitPhasing OrbitPhasing
+
+$targetFleet = [Runtime.Serialization.FormatterServices]::GetUninitializedObject($fleetType)
+$orbitField.SetValue($targetFleet, $inclined[1])
+Assert-TransferModels $leo $targetFleet OrbitPhasing InclinationChange
+$trajectoryType = $gameAssembly.GetType($nativeNamespace + 'Trajectory_Patched', $true)
+$fleetType.GetField('<trajectory>k__BackingField', $fields).SetValue(
+    $targetFleet, [Runtime.Serialization.FormatterServices]::GetUninitializedObject($trajectoryType))
+Assert-TransferModels $leo $targetFleet OrbitPhasing OrbitPhasing
+Write-Host 'PASS: equal-altitude orbit, station, and idle-fleet plane-change dispatch and native-route controls.'
+
+$clearance = $modAssembly.GetType($clearancePatchName, $true).GetMethod(
+    'ClearsBody', [Reflection.BindingFlags]'Static,NonPublic')
+$vectorType = $clearance.GetParameters()[0].ParameterType
+function New-Point([double]$X, [double]$Y) {
+    return [Activator]::CreateInstance($vectorType, [object[]]@($X, $Y, 0.0))
+}
+$clearCurve = [object[]]@((New-Point 1.3 0), (New-Point 1.3 0.718),
+    (New-Point 0.718 1.3), (New-Point 0 1.3), 1.0, 8)
+$crossing = [object[]]@((New-Point 2 0), (New-Point 2 0),
+    (New-Point -2 0), (New-Point -2 0), 1.0, 8)
+if (!$clearance.Invoke($null, $clearCurve) -or $clearance.Invoke($null, $crossing)) {
+    throw 'Inclination-burn clearance must certify the curved arc and reject an interior crossing.'
+}
+Write-Host 'PASS: inclination-burn clearance proof accepts a subdivided arc and rejects a body crossing.'
+
 foreach ($typeName in @(
     'TIEconomyMod.Core.EarthLaunchCostMath',
     'TIEconomyMod.EarthLaunchCost')) {

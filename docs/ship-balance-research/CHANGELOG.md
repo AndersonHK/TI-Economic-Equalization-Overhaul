@@ -5,6 +5,15 @@ the balance decisions as well as their implementation status.
 
 ## 2026-11-05
 
+### Read-only follow-up after stable checkpoint
+
+- [Live inspection](live-performance-inspection-2026-11-05.md) finds near-saturated
+  main-thread CPU and spare GPU/CPU capacity. Earlier same-battle logs identify
+  synchronous compatibility snapshots and visual-bounds scans as measurable
+  targets; most frame time remains unattributed. No runtime change made.
+- User confirms waypoint hover interrupts camera follow. Record a separate
+  future click/drag-only suspension correction; leave accepted behavior intact.
+
 ### Stable 0.11.9 accepted for commit and push
 
 - User confirms the current version is stable and performant. Preserve the

@@ -613,7 +613,7 @@ $manifest = Get-Content -LiteralPath $manifestPath -Raw | ConvertFrom-Json
 if ($manifest.GameVersion -ne '1.0.53') {
     throw "ModInfo.json targets '$($manifest.GameVersion)' instead of TI 1.0.53."
 }
-if ($manifest.Version -ne '0.11.9') {
+if ($manifest.Version -ne '0.11.13') {
     throw "ModInfo.json version '$($manifest.Version)' does not match this release."
 }
 if ($manifest.AssemblyName -ne 'Assembly/TIEconomyMod.dll') {
@@ -1180,8 +1180,8 @@ if ($assemblyFile.LastWriteTime -lt $buildStarted.AddSeconds(-2)) {
     throw 'Packaged DLL predates this verification build.'
 }
 $assemblyVersion = [Reflection.AssemblyName]::GetAssemblyName($assemblyPath).Version.ToString()
-if ($assemblyVersion -ne '0.11.9.0') {
-    throw "Assembly version '$assemblyVersion' does not match release 0.11.9."
+if ($assemblyVersion -ne '0.11.13.0') {
+    throw "Assembly version '$assemblyVersion' does not match release 0.11.13."
 }
 $assemblyHash = (Get-FileHash -LiteralPath $assemblyPath -Algorithm SHA256).Hash
 
@@ -1295,7 +1295,7 @@ foreach ($source in Get-ChildItem -LiteralPath $packageSource -File -Recurse) {
     [void](New-Item -ItemType Directory -Path (Split-Path -Parent $target) -Force)
     Copy-Item -LiteralPath $source.FullName -Destination $target -Force
 }
-$zipPath = Join-Path $artifactDirectory 'TIEconomyMod-0.11.9-ti1.0.53.zip'
+$zipPath = Join-Path $artifactDirectory 'TIEconomyMod-0.11.13-ti1.0.53.zip'
 if (Test-Path -LiteralPath $zipPath) {
     Remove-Item -LiteralPath $zipPath
 }

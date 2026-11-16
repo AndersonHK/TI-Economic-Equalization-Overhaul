@@ -1,13 +1,22 @@
 # TI Economic Equalization Overhaul
 
-Current release: **0.11.9**, targeting **Terra Invicta 1.0.53b**.
-**User-accepted stable and performant, 2026-11-05.**
+Current release: **0.11.13**, targeting **Terra Invicta 1.0.53b**.
+0.11.13 applies inclination-change costs to same-altitude station and idle-fleet rendezvous.
+0.11.12 routes [equal-altitude LEO plane changes](docs/orbits-and-lunar-resources/approved-design.md#6-equal-altitude-leo-fleet-transfer-failure)
+to the game's inclination-change solver and checks that the resulting burns clear the body.
+0.11.10 deploys [phase 1 habitat slot progression](docs/hab-slot-expansion-assessment.md):
+human stations and surface bases have 12 facility positions at T1 and 20 at
+T2/T3. Base totals include the reserved mine. Automatic checks passed; manual
+UI, existing-save, upgrade and combat acceptance is pending. Phase 2 new lots
+and authored connectors remain deferred.
+
+**Last user-accepted stable baseline: 0.11.9, 2026-11-05.**
 [Acceptance and verified runtime identity](docs/ship-balance-research/battle-scale/acceptance-0.11.9-2026-11-05.md).
 
 The user confirms excellent 0.11.8 performance and working missiles.
 [0.11.9 waypoint cleanup](docs/ship-balance-research/repeat-battle-waypoint-cleanup-2026-11-05.md)
 addresses the subsequent second-battle formation crash. Three synthetic host
-lifecycles pass; the user now accepts the current version as stable. Camera-follow
+lifecycles pass; the user accepted 0.11.9 as stable. Camera-follow
 changes are explicitly deferred.
 
 The [0.11.8 compatibility-query rework](docs/ship-balance-research/compatibility-query-rework-2026-11-05.md)
@@ -367,10 +376,11 @@ Government, Inequality, and Knowledge gaps, the larger GDP-per-capita ratio,
   with respect to origin count.
 - AI factions prioritize completing one same-hab factory-dock pair in each major
   colonized system, with the strongest priority in Earth-Moon.
-- Human T1 stations expose visible sectors 1-3 and twelve facility slots. T1
-  hab-list icons remain free of peripheral sector overlays; T2/T3 retain their
-  vanilla composites. Starting ISS/Tiangong layouts, T1 crews, and consumables
-  are rescaled.
+- Human stations and surface bases expose twelve facility positions at T1 and
+  twenty at T2/T3, excluding the core. Base totals include the reserved mine.
+  Existing indices, module tiers, alien/static restrictions and foreign sector
+  ownership are preserved. T1 station-list overlays remain suppressed. Starting
+  ISS/Tiangong assignments, T1 crews and consumables retain their prior tuning.
 
 ### Earth launch orbits and Luna
 
@@ -593,8 +603,10 @@ enabled-mod destination and verifies every deployed file by SHA-256.
 ### Compatibility and UI
 
 - Load an older save and verify caches rebuild without save errors.
-- Confirm T1 human stations expose sectors 1-3 while bases and alien stations do
-  not, and T1/T2/T3 hab-list overlays retain their intended tier behavior.
+- Confirm existing and new human stations/bases expose 12 facility positions
+  at T1 and 20 at T2/T3, with the base mine reserved. Test T1-to-T2 completion,
+  sparse connector layouts, station combat, capture, and occupied save/reload.
+  Alien/static controls and T1 station-list overlays must retain their rules.
 - Review module, project, operation, and Codex text for the concise rule: local
   factory; same-hab dock for export; lower tier caps; any-system route; less
   Boost; Earth fallback. Earth and space purchase buttons should retain their

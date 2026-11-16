@@ -451,54 +451,101 @@ namespace TIEconomyMod.Patches
         }
     }
 
-    internal static class HabStationSectorRebalance
+    internal static class HabSectorProgression
     {
-        internal static void ReconcileTierOneStation(TIHabState hab)
+        internal static bool HasValidTopology(TIHabState hab)
         {
-            if (hab == null ||
-                !hab.IsStation ||
-                hab.tier != 1 ||
-                hab.IsAlien() ||
-                hab.sectors == null ||
-                hab.sectors.Count <= 4)
+            if (hab == null || hab.sectors == null || hab.sectors.Count != 5)
             {
-                return;
+                return false;
             }
-
-            TISectorState coreSector = hab.sectors[0];
-            if (coreSector.faction == null)
+            for (int sectorIndex = 0; sectorIndex < 5; sectorIndex++)
             {
-                return;
+                TISectorState sector = hab.sectors[sectorIndex];
+                int count = sectorIndex == 0 ? 5 : 4;
+                if (sector == null || sector.hab != hab ||
+                    sector.sectorNum != sectorIndex ||
+                    sector.habModules == null || sector.habModules.Count != count)
+                {
+                    return false;
+                }
+                for (int slot = 0; slot < count; slot++)
+                {
+                    TIHabModuleState module = sector.habModules[slot];
+                    if (module == null || module.sector != sector || module.slot != slot)
+                    {
+                        return false;
+                    }
+                }
             }
-
-            ActivateSector(hab.sectors[2], coreSector.faction);
-            ActivateSector(hab.sectors[4], coreSector.faction);
+            return true;
         }
 
-        private static void ActivateSector(
-            TISectorState sector,
-            TIFactionState faction)
+        internal static bool Eligible(TIHabState hab)
         {
-            if (!sector.active)
+            return HasValidTopology(hab) && !hab.staticHab &&
+                (hab.IsStation || hab.IsBase) && hab.tier >= 1 && hab.tier <= 3 &&
+                hab.coreModule.moduleTemplate != null &&
+                hab.sectors[0].faction != null && !hab.IsAlien();
+        }
+
+        // Called only after initialization of income/faction services. Keep
+        // module identities, construction, and foreign sector ownership intact.
+        internal static bool Reconcile(TIHabState hab)
+        {
+            if (!HasValidTopology(hab))
+            {
+                Main.Warn("Hab sector progression skipped an incomplete/native-incompatible topology.");
+                return false;
+            }
+            if (!Eligible(hab) || hab.sectors[0].faction == null)
+            {
+                return false;
+            }
+            bool changed = false;
+            for (int sectorIndex = 1; sectorIndex < 5; sectorIndex++)
+            {
+                TISectorState sector = hab.sectors[sectorIndex];
+                if (!sector.active && hab.tier >=
+                    HabRebalanceMath.SectorUnlockTier(hab.IsStation, sectorIndex))
+                {
+                    sector.SetFaction(hab.sectors[0].faction);
+                    changed = true;
+                }
+            }
+            return changed;
+        }
+
+        internal static void ReconcileBeforeConnectors(TIHabState hab)
+        {
+            Reconcile(hab);
+        }
+
+        internal static void ReconcileAndRefresh(TIHabState hab)
+        {
+            if (Reconcile(hab))
+            {
+                hab.UpdateAllModuleConnectors();
+            }
+        }
+
+        internal static void ActivateUpgradeSector(TISectorState sector, TIFactionState faction)
+        {
+            // Native core upgrades reassign their newly unlocked sectors.
+            // Those sectors can already be owned under the earlier unlocks.
+            if (!Eligible(sector.hab) || !sector.active)
             {
                 sector.SetFaction(faction);
             }
         }
 
         internal static int ConnectorTierRequirement(
-            TIHabState hab,
-            int sectorIndex)
+            TIHabState hab, int sectorIndex, int nativeRequirement)
         {
-            bool validSector =
-                (sectorIndex == 2 || sectorIndex == 4) &&
-                hab != null &&
-                hab.sectors != null &&
-                hab.sectors.Count > sectorIndex;
-            return HabRebalanceMath.ConnectorTierRequirement(
-                hab == null ? 0 : hab.tier,
-                hab != null && hab.IsStation,
-                hab != null && hab.IsAlien(),
-                validSector && hab.sectors[sectorIndex].active);
+            return Eligible(hab) && sectorIndex >= 1 && sectorIndex <= 4 &&
+                hab.sectors[sectorIndex].active
+                ? HabRebalanceMath.SectorUnlockTier(hab.IsStation, sectorIndex)
+                : nativeRequirement;
         }
     }
 
@@ -506,115 +553,104 @@ namespace TIEconomyMod.Patches
         typeof(TISectorState),
         nameof(TISectorState.UpdateModuleConnectorMap),
         new Type[] { typeof(TIHabState), typeof(TIHabModuleState) })]
-    internal static class TierOneStationConnectorMapPatch
+    internal static class HabSectorConnectorMapPatch
     {
         [HarmonyTranspiler]
         internal static IEnumerable<CodeInstruction> Transpiler(
             IEnumerable<CodeInstruction> instructions)
         {
-            List<CodeInstruction> codes =
-                new List<CodeInstruction>(instructions);
-            MethodInfo tierGetter =
-                AccessTools.PropertyGetter(typeof(TIHabState), "tier");
-            FieldInfo sectorsField =
-                AccessTools.Field(typeof(TIHabState), "sectors");
-            MethodInfo hasAnyModules =
-                AccessTools.Method(typeof(TISectorState), "HasAnyModules");
-            MethodInfo requirement =
-                AccessTools.Method(
-                    typeof(HabStationSectorRebalance),
-                    nameof(HabStationSectorRebalance.ConnectorTierRequirement));
-            int firstSectorSwitch = codes.FindIndex(
-                instruction => instruction.opcode == OpCodes.Switch);
-            if (firstSectorSwitch < 0)
-            {
-                throw new InvalidOperationException(
-                    "Could not find the station-sector switch in " +
-                    "TISectorState.UpdateModuleConnectorMap.");
-            }
-
+            List<CodeInstruction> codes = new List<CodeInstruction>(instructions);
+            MethodInfo tierGetter = AccessTools.PropertyGetter(typeof(TIHabState), "tier");
+            FieldInfo sectorsField = AccessTools.Field(typeof(TIHabState), "sectors");
+            MethodInfo sectorGetter = AccessTools.PropertyGetter(typeof(List<TISectorState>), "Item");
+            MethodInfo hasAnyModules = AccessTools.Method(typeof(TISectorState), "HasAnyModules");
+            MethodInfo requirement = AccessTools.Method(typeof(HabSectorProgression),
+                nameof(HabSectorProgression.ConnectorTierRequirement));
+            int[] expectedSector = { 1, 2, 3, 4, 1, 2, 3, 4 };
+            int[] expectedTier = { 3, 2, 3, 2, 2, 2, 3, 3 };
             int replacements = 0;
-
-            for (int index = 1;
-                index + 6 < firstSectorSwitch;
-                index++)
+            for (int index = 1; index + 6 < codes.Count; index++)
             {
                 if (!codes[index - 1].Calls(tierGetter) ||
-                    !LoadsInt(codes[index], 2) ||
                     (codes[index + 1].opcode != OpCodes.Blt &&
                      codes[index + 1].opcode != OpCodes.Blt_S) ||
+                    codes[index + 2].opcode != OpCodes.Ldarg_0 ||
                     !codes[index + 3].LoadsField(sectorsField) ||
-                    !TryGetTargetSector(codes[index + 4], out int sectorIndex) ||
+                    !codes[index + 5].Calls(sectorGetter) ||
                     !codes[index + 6].Calls(hasAnyModules))
                 {
                     continue;
                 }
-
-                CodeInstruction originalThreshold = codes[index];
-                CodeInstruction loadHab =
-                    new CodeInstruction(OpCodes.Ldarg_0);
-                loadHab.labels.AddRange(originalThreshold.labels);
-                loadHab.blocks.AddRange(originalThreshold.blocks);
+                if (replacements >= 8 ||
+                    !codes[index].LoadsConstant(expectedTier[replacements]) ||
+                    !codes[index + 4].LoadsConstant(expectedSector[replacements]))
+                {
+                    throw new InvalidOperationException("Hab connector branch/sector/tier gate drifted.");
+                }
+                CodeInstruction original = codes[index];
+                CodeInstruction loadHab = new CodeInstruction(OpCodes.Ldarg_0);
+                loadHab.labels.AddRange(original.labels);
+                loadHab.blocks.AddRange(original.blocks);
                 codes[index] = loadHab;
-                codes.Insert(
-                    index + 1,
-                    new CodeInstruction(OpCodes.Ldc_I4, sectorIndex));
-                codes.Insert(
-                    index + 2,
-                    new CodeInstruction(OpCodes.Call, requirement));
+                codes.InsertRange(index + 1, new[]
+                {
+                    new CodeInstruction(OpCodes.Ldc_I4, expectedSector[replacements]),
+                    new CodeInstruction(OpCodes.Ldc_I4, expectedTier[replacements]),
+                    new CodeInstruction(OpCodes.Call, requirement)
+                });
                 replacements++;
-                index += 2;
+                index += 3;
             }
-
-            if (replacements != 2)
+            if (replacements != 8)
             {
-                throw new InvalidOperationException(
-                    "Expected exactly two T1 station connector tier gates in " +
-                    "TISectorState.UpdateModuleConnectorMap; found " +
-                    replacements + ".");
+                throw new InvalidOperationException("Expected eight station/base connector tier gates; found " + replacements + ".");
             }
-
             return codes;
         }
+    }
 
-        private static bool TryGetTargetSector(
-            CodeInstruction instruction,
-            out int sectorIndex)
+    [HarmonyPatch(typeof(TIHabState), nameof(TIHabState.CompleteModuleConstruction))]
+    internal static class HabUpgradeSectorProgressionPatch
+    {
+        [HarmonyTranspiler]
+        internal static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
-            if (LoadsInt(instruction, 2))
+            List<CodeInstruction> codes = new List<CodeInstruction>(instructions);
+            MethodInfo setFaction = AccessTools.Method(typeof(TISectorState), "SetFaction");
+            MethodInfo activate = AccessTools.Method(typeof(HabSectorProgression),
+                nameof(HabSectorProgression.ActivateUpgradeSector));
+            MethodInfo update = AccessTools.Method(typeof(TIHabState), "UpdateAllModuleConnectors");
+            MethodInfo reconcile = AccessTools.Method(typeof(HabSectorProgression),
+                nameof(HabSectorProgression.ReconcileBeforeConnectors));
+            int assignments = 0;
+            int updates = 0;
+            for (int i = 0; i < codes.Count; i++)
             {
-                sectorIndex = 2;
-                return true;
+                if (codes[i].Calls(setFaction))
+                {
+                    codes[i].opcode = OpCodes.Call;
+                    codes[i].operand = activate;
+                    assignments++;
+                }
+                if (codes[i].Calls(update))
+                {
+                    // The hab is already on the stack. Duplicate it for the
+                    // reconciliation call; preserve the native rebuild/event.
+                    CodeInstruction duplicate = new CodeInstruction(OpCodes.Dup);
+                    duplicate.labels.AddRange(codes[i].labels);
+                    duplicate.blocks.AddRange(codes[i].blocks);
+                    codes[i].labels.Clear();
+                    codes[i].blocks.Clear();
+                    codes.Insert(i++, duplicate);
+                    codes.Insert(i++, new CodeInstruction(OpCodes.Call, reconcile));
+                    updates++;
+                }
             }
-
-            if (LoadsInt(instruction, 4))
+            if (assignments != 8 || updates != 1)
             {
-                sectorIndex = 4;
-                return true;
+                throw new InvalidOperationException("Hab upgrade expected eight ownership assignments and one connector rebuild.");
             }
-
-            sectorIndex = -1;
-            return false;
-        }
-
-        private static bool LoadsInt(
-            CodeInstruction instruction,
-            int value)
-        {
-            if (instruction.opcode == OpCodes.Ldc_I4)
-            {
-                return instruction.operand is int &&
-                    (int)instruction.operand == value;
-            }
-
-            if (instruction.opcode == OpCodes.Ldc_I4_S)
-            {
-                return instruction.operand is sbyte &&
-                    (sbyte)instruction.operand == value;
-            }
-
-            return value == 2 && instruction.opcode == OpCodes.Ldc_I4_2 ||
-                value == 4 && instruction.opcode == OpCodes.Ldc_I4_4;
+            return codes;
         }
     }
 
@@ -682,23 +718,55 @@ namespace TIEconomyMod.Patches
         }
     }
 
-    [HarmonyPatch(typeof(TIHabState), nameof(TIHabState.InitializeNewHab))]
-    internal static class InitializeNewHabSectorPatch
+    [HarmonyPatch(typeof(FactionGoal_BuildRefuellingStation), nameof(FactionGoal_BuildRefuellingStation.GoalFulfilled))]
+    internal static class HabRefuellingCapacityPatch
     {
-        [HarmonyPostfix]
-        internal static void Postfix(TIHabState __instance)
+        [HarmonyPrefix]
+        internal static bool Prefix(FactionGoal_BuildRefuellingStation __instance, ref bool __result)
         {
-            HabStationSectorRebalance.ReconcileTierOneStation(__instance);
+            TIHabState hab = __instance.hab;
+            if (!HabSectorProgression.Eligible(hab))
+            {
+                return true;
+            }
+            int capacity = 0;
+            foreach (TISectorState sector in hab.sectors)
+            {
+                if (sector.active)
+                {
+                    capacity += sector.habModules.Count;
+                }
+            }
+            __result = hab.numCompletedModules == capacity &&
+                hab.AllowsResupply(__instance.faction, allowHumanTheft: true);
+            return false;
+        }
+    }
+
+    [HarmonyPatch(typeof(TIHabState), nameof(TIHabState.OnHabCreated))]
+    internal static class InitializeHabSectorProgressionPatch
+    {
+        [HarmonyPrefix]
+        internal static void Prefix(TIHabState __instance)
+        {
+            HabSectorProgression.ReconcileBeforeConnectors(__instance);
+            // Load can restore stale connector flags even when an earlier mod
+            // already activated every required sector. Rebuild once at startup,
+            // independently of whether ownership reconciliation changed state.
+            if (HabSectorProgression.Eligible(__instance))
+            {
+                __instance.UpdateAllModuleConnectors();
+            }
         }
     }
 
     [HarmonyPatch(typeof(TIHabState), nameof(TIHabState.PostEverythingSaveRepair_8))]
     internal static class RepairExistingHabSectorPatch
     {
-        [HarmonyPostfix]
-        internal static void Postfix(TIHabState __instance)
+        [HarmonyPrefix]
+        internal static void Prefix(TIHabState __instance)
         {
-            HabStationSectorRebalance.ReconcileTierOneStation(__instance);
+            HabSectorProgression.ReconcileAndRefresh(__instance);
         }
     }
 }

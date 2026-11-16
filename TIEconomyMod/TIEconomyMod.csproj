@@ -128,6 +128,7 @@
     <Compile Include="Patches\PreparedNativeContactPatches.cs" />
     <Compile Include="Core\HabLogistics.cs" />
     <Compile Include="Core\EarthLaunchCost.cs" />
+    <Compile Include="Patches\InclinedOrbitTransferPatch.cs" />
     <Compile Include="Core\EarthLaunchCostMath.cs" />
     <Compile Include="Core\EnvironmentMath.cs" />
     <Compile Include="Core\AlienFloraAssaultMath.cs" />

@@ -2225,26 +2225,21 @@ namespace TIEconomyMod.FormulaTests
                 "mandatory equipment adds Earth transfer time");
             True(!HabRebalanceMath.HasEarthDelivery(0f),
                 "zero Boost has no Earth transfer time");
-            Near(1f,
-                HabRebalanceMath.ConnectorTierRequirement(1, true, false, true),
-                0f,
-                "active human T1 station sector connects");
-            Near(2f,
-                HabRebalanceMath.ConnectorTierRequirement(1, true, false, false),
-                0f,
-                "inactive human T1 station sector stays gated");
-            Near(2f,
-                HabRebalanceMath.ConnectorTierRequirement(1, true, true, true),
-                0f,
-                "alien T1 station sector stays gated");
-            Near(2f,
-                HabRebalanceMath.ConnectorTierRequirement(1, false, false, true),
-                0f,
-                "T1 base sector stays gated");
-            Near(2f,
-                HabRebalanceMath.ConnectorTierRequirement(2, true, false, true),
-                0f,
-                "T2 station retains vanilla connector threshold");
+            for (int kind = 0; kind < 2; kind++)
+            {
+                bool station = kind == 0;
+                for (int sector = 0; sector < 5; sector++)
+                {
+                    int expected = sector == 0 ? 1 :
+                        (station ? (sector == 2 || sector == 4 ? 1 : 2) : (sector <= 2 ? 1 : 2));
+                    Near(expected, HabRebalanceMath.SectorUnlockTier(station, sector), 0f,
+                        "earlier sector unlock matrix");
+                }
+                True(HabRebalanceMath.SectorUnlockTier(station, -1) == int.MaxValue,
+                    "negative sector rejected");
+                True(HabRebalanceMath.SectorUnlockTier(station, 5) == int.MaxValue,
+                    "sixth sector rejected");
+            }
         }
 
         private static void TestAbundance()
