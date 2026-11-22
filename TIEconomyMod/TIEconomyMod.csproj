@@ -93,6 +93,10 @@
       <HintPath>$(TargetManagedDir)\UnityEngine.IMGUIModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>$(TargetManagedDir)\UnityEngine.InputLegacyModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="UnityEngine.PhysicsModule">
       <HintPath>$(TargetManagedDir)\UnityEngine.PhysicsModule.dll</HintPath>
       <Private>False</Private>

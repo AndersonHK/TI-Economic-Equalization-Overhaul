@@ -293,7 +293,9 @@ figures also compare human art-family progression and alien hulls at common scal
 - [Hab slot progression and capacity expansion](hab-slot-expansion-assessment.md)
   records deployed 0.11.10 phase 1: twelve facility positions at T1 and twenty
   at T2/T3 for human stations and surface bases. Manual connector/UI/combat/save
-  acceptance is pending before phase 2 new lots and authored connectors.
+  acceptance is pending. The [phase 2 station design](habitat-slots/phase2-station-expansion-plan.md)
+  maps orbital and surface layouts, proposes eight T3 orbital lots and
+  defines save migration and rendering checks.
   Existing station coordinates are recorded in the matrix and
   [station slot map](hab-station-slot-map.md).
 - [Nuclear Winter modification](nuclear-winter-deferred.md) is explicitly

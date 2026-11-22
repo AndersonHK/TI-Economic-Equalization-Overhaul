@@ -64,6 +64,61 @@ function Assert-NoEarlyAssetCacheReference([Reflection.MethodBase]$Method) {
         }
     }
 }
+# Execute the installed Update gate after applying the production transpiler.
+# Supply mode, ownership and mouse state as arguments so no desktop input is needed.
+$cameraType = $game.GetType('PavonisInteractive.TerraInvicta.SpaceCombat.SpaceCombatCameraController', $true)
+$gateTest = [Reflection.Emit.DynamicMethod]::new('RunCameraUpdate', [bool], [Type[]]@([bool], [int], [bool]))
+$il = $gateTest.GetILGenerator()
+$original = $reader.Invoke($null, [object[]]@($cameraType.GetMethod('Update',$flags), $il))
+$hoverPatch = $mod.GetType('TIEconomyMod.Patches.WaypointHoverFollowPatch',$true).GetMethod('Transpiler')
+$patchedCamera = @($hoverPatch.Invoke($null, [object[]]@($original,$il)))
+$blockField = $cameraType.GetField('IsCameraMovementBlocked',$flags)
+$modeField = $cameraType.GetField('_cameraMovement',$flags)
+$blockIndex = [Array]::IndexOf($patchedCamera, ($patchedCamera | Where-Object { $_.operand -eq $blockField }))
+$continueLabel = $patchedCamera[$blockIndex+1].operand
+for ($i=$blockIndex-1; $i -lt $patchedCamera.Count; $i++) {
+    $op = $patchedCamera[$i]
+    foreach ($label in $op.labels) { $il.MarkLabel($label) }
+    if ($op.labels.Contains($continueLabel)) {
+        $il.Emit([Reflection.Emit.OpCodes]::Ldc_I4_1)
+        $il.Emit([Reflection.Emit.OpCodes]::Ret)
+        break
+    }
+    switch ($op.opcode.Name) {
+        'ldarg.0' { } # Field reads below consume fixture arguments directly.
+        'ldfld' {
+            if ($op.operand -eq $blockField) { $il.Emit([Reflection.Emit.OpCodes]::Ldarg_0) }
+            elseif ($op.operand -eq $modeField) { $il.Emit([Reflection.Emit.OpCodes]::Ldarg_1) }
+            else { throw "Unexpected field in camera gate: $($op.operand)" }
+        }
+        'call' {
+            if ($op.operand.DeclaringType.FullName -ne 'UnityEngine.Input' -or $op.operand.Name -ne 'GetMouseButton' -or
+                $patchedCamera[$i-1].opcode.Name -ne 'ldc.i4.0') { throw 'Expected native primary button read.' }
+            $il.Emit([Reflection.Emit.OpCodes]::Pop)
+            $il.Emit([Reflection.Emit.OpCodes]::Ldarg_2)
+        }
+        'ret' {
+            $il.Emit([Reflection.Emit.OpCodes]::Ldc_I4_0)
+            $il.Emit($op.opcode)
+        }
+        default {
+            if ($op.operand -is [Reflection.Emit.Label]) { $il.Emit($op.opcode, [Reflection.Emit.Label]$op.operand) }
+            elseif ($op.operand -is [int]) { $il.Emit($op.opcode,[int]$op.operand) }
+            elseif ($null -eq $op.operand) { $il.Emit($op.opcode) }
+            else { throw "Unexpected camera gate instruction: $op" }
+        }
+    }
+}
+$runCamera = $gateTest.CreateDelegate([Func[bool,int,bool,bool]])
+foreach ($mode in [Enum]::GetValues($modeField.FieldType)) {
+    foreach ($owned in @($false,$true)) {
+        foreach ($held in @($false,$true,$true,$false)) {
+            $expected = -not $owned -or ($mode.ToString() -eq 'Follow' -and -not $held)
+            if ($runCamera.Invoke($owned,[int]$mode,$held) -ne $expected) { throw "Wrong camera gate for $mode owned=$owned held=$held" }
+        }
+    }
+}
+Write-Host 'PASS: installed camera Update gate, hover/press/hold/release in Follow and FreeLook with and without waypoint ownership.'
 # This is the actual failed 0.10.11 target. Detect it by metadata/IL only;
 # never read its static fields and never poison the game's cache in the test.
 $oldStationTarget = $game.GetType('PavonisInteractive.TerraInvicta.SpaceCombat.CombatHabModuleController',$true).GetMethod('DestroyHabModule',$flags)

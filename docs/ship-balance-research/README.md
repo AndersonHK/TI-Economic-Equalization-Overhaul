@@ -3,8 +3,9 @@
 Last reviewed: 2026-11-05. Version 0.11.9 is the user-accepted stable and performant
 baseline. [Acceptance and runtime identity](battle-scale/acceptance-0.11.9-2026-11-05.md).
 The subsequent [live performance inspection](live-performance-inspection-2026-11-05.md)
-records remaining CPU targets and the confirmed waypoint-hover camera defect;
-these follow-ups are not implemented.
+records remaining CPU targets and the confirmed waypoint-hover camera defect.
+The [November 22 waypoint fix and cruiser performance plan](waypoint-follow-and-missile-performance.md)
+records the deployed hover correction and measurements from the missile salvo against Jahn Station.
 Use current implementation records for released
 behavior, planning records for unimplemented choices, and dated measurements
 for their stated baselines. The [implementation matrix](../current-implementation-matrix.xlsx)

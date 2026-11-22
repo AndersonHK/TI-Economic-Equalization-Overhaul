@@ -49,6 +49,40 @@ namespace TIEconomyMod.Patches
         }
     }
 
+    [HarmonyPatch(typeof(SpaceCombatCameraController), "Update")]
+    public static class WaypointHoverFollowPatch
+    {
+        [HarmonyTranspiler]
+        public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions, ILGenerator generator)
+        {
+            var code = new List<CodeInstruction>(instructions);
+            var camera = typeof(SpaceCombatCameraController);
+            var block = AccessTools.Field(camera, nameof(SpaceCombatCameraController.IsCameraMovementBlocked));
+            var mode = AccessTools.Field(camera, "_cameraMovement");
+            int gate = code.FindIndex(instruction => instruction.LoadsField(block));
+            if (gate < 0 || gate + 2 >= code.Count || gate != code.FindLastIndex(instruction => instruction.LoadsField(block)) ||
+                (code[gate + 1].opcode != OpCodes.Brfalse_S && code[gate + 1].opcode != OpCodes.Brfalse) ||
+                code[gate + 2].opcode != OpCodes.Ret)
+                throw new InvalidOperationException("Expected the waypoint camera block followed by the camera update early return.");
+
+            // The normal unblocked frame already branches past this entire sequence.
+            // While a waypoint owns input, let the native Follow path run again on release.
+            Label stop = generator.DefineLabel();
+            code[gate + 2].labels.Add(stop);
+            code.InsertRange(gate + 2, new[]
+            {
+                new CodeInstruction(OpCodes.Ldarg_0),
+                new CodeInstruction(OpCodes.Ldfld, mode),
+                new CodeInstruction(OpCodes.Ldc_I4, Convert.ToInt32(Enum.Parse(mode.FieldType, "Follow"))),
+                new CodeInstruction(OpCodes.Bne_Un_S, stop),
+                new CodeInstruction(OpCodes.Ldc_I4_0),
+                new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(Input), nameof(Input.GetMouseButton), new[] { typeof(int) })),
+                new CodeInstruction(OpCodes.Brfalse, code[gate + 1].operand)
+            });
+            return code;
+        }
+    }
+
     [HarmonyPatch(typeof(SpaceCombatManager), "Initialize")]
     public static class BattleHabRenderBakePatch
     {

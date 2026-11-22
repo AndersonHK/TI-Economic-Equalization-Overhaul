@@ -291,6 +291,11 @@ remains the gate for phase 2; no user acceptance is implied by automated checks.
 
 ## Phase 2: retained capacity research (deferred)
 
+The current [28-facility orbital design](habitat-slots/phase2-station-expansion-plan.md)
+compares area unlock policies and specifies the floorplans, save bridge and
+rendering checks. It advances the design to two new lots per outer orbital
+sector. The material below records the earlier four-lot investigation.
+
 The following is the earlier station-focused feasibility assessment for going
 beyond the existing twenty facility positions. Its 24-position approach is a
 candidate, not an approved new layout. Resume and extend the research to the

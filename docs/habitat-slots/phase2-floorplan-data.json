@@ -1,0 +1,2770 @@
+{
+  "input_sha256": {
+    "ui": "B2F63FE775934CA8DD650F7197A346CEB22626565601976CD738DBB4FCB5172C",
+    "resources.assets": "598CD9BA9D4D377F27A511A1F1E6BC2F6EAF3EC905AA803CF45106F81C160859",
+    "Assembly-CSharp.dll": "64D88E996C63B4254675D608E859AAC523B43488625937D8E2E9B1E04A3E8B3B"
+  },
+  "ui": {
+    "orbital": {
+      "S1_M3": {
+        "xy": [
+          187.5,
+          -37.5
+        ],
+        "children": [
+          "E1",
+          "E2",
+          "FactionIcon",
+          "GridStructure(Keep)",
+          "Module",
+          "N1",
+          "N2",
+          "PowerIcon",
+          "S1",
+          "S2",
+          "W1",
+          "W2"
+        ]
+      },
+      "S1_M0": {
+        "xy": [
+          262.5,
+          -37.5
+        ],
+        "children": [
+          "E1",
+          "E2",
+          "FactionIcon",
+          "GridStructure(Keep)",
+          "Module",
+          "N1",
+          "N2",
+          "PowerIcon",
+          "S1",
+          "S2",
+          "W1",
+          "W2"
+        ]
+      },
+      "S1_M1": {
+        "xy": [
+          337.5,
+          -37.5
+        ],
+        "children": [
+          "E1",
+          "E2",
+          "FactionIcon",
+          "GridStructure(Keep)",
+          "Module",
+          "N1",
+          "N2",
+          "PowerIcon",
+          "S1",
+          "S2",
+          "W1",
+          "W2"
+        ]
+      },
+      "S1_M2": {
+        "xy": [
+          262.5,
+          -112.5
+        ],
+        "children": [
+          "E1",
+          "E2",
+          "FactionIcon",
+          "GridStructure(Keep)",
+          "Module",
+          "N1",
+          "N2",
+          "PowerIcon",
+          "S1",
+          "S2",
+          "W1",
+          "W2"
+        ]
+      },
+      "S4_M1": {
+        "xy": [
+          37.5,
+          -187.5
+        ],
+        "children": [
+          "E1",
+          "E2",
+          "FactionIcon",
+          "GridStructure(Keep)",
+          "Module",
+          "N1",
+          "N2",
+          "PowerIcon",
+          "S1",
+          "S2",
+          "W1",
+          "W2"
+        ]
+      },
+      "S0_M1": {
+        "xy": [
+          262.5,
+          -187.5
+        ],
+        "children": [
+          "E1",
+          "E2",
+          "FactionIcon",
+          "GridStructure(Keep)",
+          "Module",
+          "N1",
+          "N2",
+          "PowerIcon",
+          "S1",
+          "S2",
+          "W1",
+          "W2"
+        ]
+      },
+      "S2_M3": {
+        "xy": [
+          487.5,
+          -187.5
+        ],
+        "children": [
+          "E1",
+          "E2",
+          "FactionIcon",
+          "GridStructure(Keep)",
+          "Module",
+          "N1",
+          "N2",
+          "PowerIcon",
+          "S1",
+          "S2",
+          "W1",
+          "W2"
+        ]
+      },
+      "S4_M0": {
+        "xy": [
+          37.5,
+          -262.5
+        ],
+        "children": [
+          "E1",
+          "E2",
+          "FactionIcon",
+          "GridStructure(Keep)",
+          "Module",
+          "N1",
+          "N2",
+          "PowerIcon",
+          "S1",
+          "S2"
+        ]
+      },
+      "S4_M2": {
+        "xy": [
+          112.5,
+          -262.5
+        ],
+        "children": [
+          "E1",
+          "E2",
+          "FactionIcon",
+          "GridStructure(Keep)",
+          "Module",
+          "PowerIcon",
+          "W1",
+          "W2"
+        ]
+      },
+      "S0_M4": {
+        "xy": [
+          187.5,
+          -262.5
+        ],
+        "children": [
+          "E1",
+          "E2",
+          "FactionIcon",
+          "GridStructure(Keep)",
+          "Module",
+          "PowerIcon",
+          "W1",
+          "W2"
+        ]
+      },
+      "S0_M0": {
+        "xy": [
+          262.5,
+          -262.5
+        ],
+        "children": [
+          "E1",
+          "E2",
+          "FactionIcon",
+          "GridStructure(Keep)",
+          "Module",
+          "N1",
+          "N2",
+          "PowerIcon",
+          "S1",
+          "S2",
+          "W1",
+          "W2"
+        ]
+      },
+      "S0_M2": {
+        "xy": [
+          337.5,
+          -262.5
+        ],
+        "children": [
+          "E1",
+          "E2",
+          "FactionIcon",
+          "GridStructure(Keep)",
+          "Module",
+          "PowerIcon",
+          "W1",
+          "W2"
+        ]
+      },
+      "S2_M2": {
+        "xy": [
+          412.5,
+          -262.5
+        ],
+        "children": [
+          "E1",
+          "E2",
+          "FactionIcon",
+          "GridStructure(Keep)",
+          "Module",
+          "PowerIcon",
+          "W1",
+          "W2"
+        ]
+      },
+      "S2_M0": {
+        "xy": [
+          487.5,
+          -262.5
+        ],
+        "children": [
+          "FactionIcon",
+          "GridStructure(Keep)",
+          "Module",
+          "N1",
+          "N2",
+          "PowerIcon",
+          "S1",
+          "S2",
+          "W1",
+          "W2"
+        ]
+      },
+      "S4_M3": {
+        "xy": [
+          37.5,
+          -337.5
+        ],
+        "children": [
+          "FactionIcon",
+          "GridStructure(Keep)",
+          "Module",
+          "N1",
+          "N2",
+          "PowerIcon",
+          "S1",
+          "S2"
+        ]
+      },
+      "S0_M3": {
+        "xy": [
+          262.5,
+          -337.5
+        ],
+        "children": [
+          "FactionIcon",
+          "GridStructure(Keep)",
+          "Module",
+          "N1",
+          "N2",
+          "PowerIcon",
+          "S1",
+          "S2"
+        ]
+      },
+      "S2_M1": {
+        "xy": [
+          487.5,
+          -337.5
+        ],
+        "children": [
+          "FactionIcon",
+          "GridStructure(Keep)",
+          "Module",
+          "N1",
+          "N2",
+          "PowerIcon",
+          "S1",
+          "S2"
+        ]
+      },
+      "S3_M2": {
+        "xy": [
+          262.5,
+          -412.5
+        ],
+        "children": [
+          "FactionIcon",
+          "GridStructure(Keep)",
+          "Module",
+          "N1",
+          "N2",
+          "PowerIcon",
+          "S1",
+          "S2"
+        ]
+      },
+      "S3_M1": {
+        "xy": [
+          187.5,
+          -487.5
+        ],
+        "children": [
+          "E1",
+          "E2",
+          "FactionIcon",
+          "GridStructure(Keep)",
+          "Module",
+          "PowerIcon",
+          "W1",
+          "W2"
+        ]
+      },
+      "S3_M0": {
+        "xy": [
+          262.5,
+          -487.5
+        ],
+        "children": [
+          "E1",
+          "E2",
+          "FactionIcon",
+          "GridStructure(Keep)",
+          "Module",
+          "N1",
+          "N2",
+          "PowerIcon",
+          "W1",
+          "W2"
+        ]
+      },
+      "S3_M3": {
+        "xy": [
+          337.5,
+          -487.5
+        ],
+        "children": [
+          "E1",
+          "E2",
+          "FactionIcon",
+          "GridStructure(Keep)",
+          "Module",
+          "PowerIcon",
+          "W1",
+          "W2"
+        ]
+      }
+    },
+    "surface": {
+      "C_42": {
+        "xy": [
+          0.0,
+          0.0
+        ],
+        "children": [
+          "GridStructure(Keep)",
+          "Module",
+          "N1",
+          "N2",
+          "S1",
+          "S2"
+        ],
+        "parent": "BaseGridDisplay",
+        "sibling": 10,
+        "parent_children": 49
+      },
+      "S2_M1": {
+        "xy": [
+          0.0,
+          0.0
+        ],
+        "children": [
+          "FactionIcon",
+          "GridStructure(Keep)",
+          "Module",
+          "PowerIcon",
+          "S1",
+          "S2"
+        ],
+        "parent": "BaseGridDisplay",
+        "sibling": 14,
+        "parent_children": 49
+      },
+      "S0_M1": {
+        "xy": [
+          0.0,
+          0.0
+        ],
+        "children": [
+          "FactionIcon",
+          "GridStructure(Keep)",
+          "Module",
+          "PowerIcon",
+          "S1",
+          "S2"
+        ],
+        "parent": "BaseGridDisplay",
+        "sibling": 17,
+        "parent_children": 49
+      },
+      "S1_M3": {
+        "xy": [
+          0.0,
+          0.0
+        ],
+        "children": [
+          "FactionIcon",
+          "GridStructure(Keep)",
+          "Module",
+          "PowerIcon",
+          "S1",
+          "S2"
+        ],
+        "parent": "BaseGridDisplay",
+        "sibling": 20,
+        "parent_children": 49
+      },
+      "S2_M0": {
+        "xy": [
+          0.0,
+          0.0
+        ],
+        "children": [
+          "E1",
+          "E2",
+          "FactionIcon",
+          "GridStructure(Keep)",
+          "Module",
+          "N1",
+          "N2",
+          "PowerIcon",
+          "S1",
+          "S2"
+        ],
+        "parent": "BaseGridDisplay",
+        "sibling": 21,
+        "parent_children": 49
+      },
+      "S2_M2": {
+        "xy": [
+          0.0,
+          0.0
+        ],
+        "children": [
+          "E1",
+          "E2",
+          "FactionIcon",
+          "GridStructure(Keep)",
+          "Module",
+          "PowerIcon",
+          "W1",
+          "W2"
+        ],
+        "parent": "BaseGridDisplay",
+        "sibling": 22,
+        "parent_children": 49
+      },
+      "S0_M4": {
+        "xy": [
+          0.0,
+          0.0
+        ],
+        "children": [
+          "E1",
+          "E2",
+          "FactionIcon",
+          "GridStructure(Keep)",
+          "Module",
+          "PowerIcon",
+          "W1",
+          "W2"
+        ],
+        "parent": "BaseGridDisplay",
+        "sibling": 23,
+        "parent_children": 49
+      },
+      "S0_M0": {
+        "xy": [
+          0.0,
+          0.0
+        ],
+        "children": [
+          "E1",
+          "E2",
+          "FactionIcon",
+          "GridStructure(Keep)",
+          "Module",
+          "N1",
+          "N2",
+          "PowerIcon",
+          "S1",
+          "S2",
+          "W1",
+          "W2"
+        ],
+        "parent": "BaseGridDisplay",
+        "sibling": 24,
+        "parent_children": 49
+      },
+      "S0_M2": {
+        "xy": [
+          0.0,
+          0.0
+        ],
+        "children": [
+          "E1",
+          "E2",
+          "FactionIcon",
+          "GridStructure(Keep)",
+          "Module",
+          "PowerIcon",
+          "W1",
+          "W2"
+        ],
+        "parent": "BaseGridDisplay",
+        "sibling": 25,
+        "parent_children": 49
+      },
+      "S1_M2": {
+        "xy": [
+          0.0,
+          0.0
+        ],
+        "children": [
+          "E1",
+          "E2",
+          "FactionIcon",
+          "GridStructure(Keep)",
+          "Module",
+          "PowerIcon",
+          "W1",
+          "W2"
+        ],
+        "parent": "BaseGridDisplay",
+        "sibling": 26,
+        "parent_children": 49
+      },
+      "S1_M0": {
+        "xy": [
+          0.0,
+          0.0
+        ],
+        "children": [
+          "FactionIcon",
+          "GridStructure(Keep)",
+          "Module",
+          "N1",
+          "N2",
+          "PowerIcon",
+          "S1",
+          "S2",
+          "W1",
+          "W2"
+        ],
+        "parent": "BaseGridDisplay",
+        "sibling": 27,
+        "parent_children": 49
+      },
+      "S2_M3": {
+        "xy": [
+          0.0,
+          0.0
+        ],
+        "children": [
+          "FactionIcon",
+          "GridStructure(Keep)",
+          "Module",
+          "N1",
+          "N2",
+          "PowerIcon",
+          "S1",
+          "S2"
+        ],
+        "parent": "BaseGridDisplay",
+        "sibling": 28,
+        "parent_children": 49
+      },
+      "S0_M3": {
+        "xy": [
+          0.0,
+          0.0
+        ],
+        "children": [
+          "FactionIcon",
+          "GridStructure(Keep)",
+          "Module",
+          "N1",
+          "N2",
+          "PowerIcon",
+          "S1",
+          "S2"
+        ],
+        "parent": "BaseGridDisplay",
+        "sibling": 31,
+        "parent_children": 49
+      },
+      "S1_M1": {
+        "xy": [
+          0.0,
+          0.0
+        ],
+        "children": [
+          "FactionIcon",
+          "GridStructure(Keep)",
+          "Module",
+          "N1",
+          "N2",
+          "PowerIcon",
+          "S1",
+          "S2"
+        ],
+        "parent": "BaseGridDisplay",
+        "sibling": 34,
+        "parent_children": 49
+      },
+      "C_16": {
+        "xy": [
+          0.0,
+          0.0
+        ],
+        "children": [
+          "E1",
+          "E2",
+          "GridStructure(Keep)",
+          "Module",
+          "N1",
+          "N2"
+        ],
+        "parent": "BaseGridDisplay",
+        "sibling": 35,
+        "parent_children": 49
+      },
+      "S4_M2": {
+        "xy": [
+          0.0,
+          0.0
+        ],
+        "children": [
+          "E1",
+          "E2",
+          "FactionIcon",
+          "GridStructure(Keep)",
+          "Module",
+          "PowerIcon",
+          "S1",
+          "S2",
+          "W1",
+          "W2"
+        ],
+        "parent": "BaseGridDisplay",
+        "sibling": 36,
+        "parent_children": 49
+      },
+      "C_36": {
+        "xy": [
+          0.0,
+          0.0
+        ],
+        "children": [
+          "E1",
+          "E2",
+          "GridStructure(Keep)",
+          "Module",
+          "W1",
+          "W2"
+        ],
+        "parent": "BaseGridDisplay",
+        "sibling": 37,
+        "parent_children": 49
+      },
+      "C_46": {
+        "xy": [
+          0.0,
+          0.0
+        ],
+        "children": [
+          "E1",
+          "E2",
+          "GridStructure(Keep)",
+          "Module",
+          "N1",
+          "N2",
+          "W1",
+          "W2"
+        ],
+        "parent": "BaseGridDisplay",
+        "sibling": 38,
+        "parent_children": 49
+      },
+      "C_56": {
+        "xy": [
+          0.0,
+          0.0
+        ],
+        "children": [
+          "E1",
+          "E2",
+          "GridStructure(Keep)",
+          "Module",
+          "W1",
+          "W2"
+        ],
+        "parent": "BaseGridDisplay",
+        "sibling": 39,
+        "parent_children": 49
+      },
+      "S3_M2": {
+        "xy": [
+          0.0,
+          0.0
+        ],
+        "children": [
+          "E1",
+          "E2",
+          "FactionIcon",
+          "GridStructure(Keep)",
+          "Module",
+          "PowerIcon",
+          "S1",
+          "S2",
+          "W1",
+          "W2"
+        ],
+        "parent": "BaseGridDisplay",
+        "sibling": 40,
+        "parent_children": 49
+      },
+      "C_76": {
+        "xy": [
+          0.0,
+          0.0
+        ],
+        "children": [
+          "GridStructure(Keep)",
+          "Module",
+          "N1",
+          "N2",
+          "W1",
+          "W2"
+        ],
+        "parent": "BaseGridDisplay",
+        "sibling": 41,
+        "parent_children": 49
+      },
+      "S4_M1": {
+        "xy": [
+          0.0,
+          0.0
+        ],
+        "children": [
+          "E1",
+          "E2",
+          "FactionIcon",
+          "GridStructure(Keep)",
+          "Module",
+          "PowerIcon"
+        ],
+        "parent": "BaseGridDisplay",
+        "sibling": 42,
+        "parent_children": 49
+      },
+      "S4_M0": {
+        "xy": [
+          0.0,
+          0.0
+        ],
+        "children": [
+          "E1",
+          "E2",
+          "FactionIcon",
+          "GridStructure(Keep)",
+          "Module",
+          "N1",
+          "N2",
+          "PowerIcon",
+          "W1",
+          "W2"
+        ],
+        "parent": "BaseGridDisplay",
+        "sibling": 43,
+        "parent_children": 49
+      },
+      "S4_M3": {
+        "xy": [
+          0.0,
+          0.0
+        ],
+        "children": [
+          "FactionIcon",
+          "GridStructure(Keep)",
+          "Module",
+          "PowerIcon",
+          "W1",
+          "W2"
+        ],
+        "parent": "BaseGridDisplay",
+        "sibling": 44,
+        "parent_children": 49
+      },
+      "S3_M1": {
+        "xy": [
+          0.0,
+          0.0
+        ],
+        "children": [
+          "E1",
+          "E2",
+          "FactionIcon",
+          "GridStructure(Keep)",
+          "Module",
+          "PowerIcon"
+        ],
+        "parent": "BaseGridDisplay",
+        "sibling": 46,
+        "parent_children": 49
+      },
+      "S3_M0": {
+        "xy": [
+          0.0,
+          0.0
+        ],
+        "children": [
+          "E1",
+          "E2",
+          "FactionIcon",
+          "GridStructure(Keep)",
+          "Module",
+          "N1",
+          "N2",
+          "PowerIcon",
+          "W1",
+          "W2"
+        ],
+        "parent": "BaseGridDisplay",
+        "sibling": 47,
+        "parent_children": 49
+      },
+      "S3_M3": {
+        "xy": [
+          0.0,
+          0.0
+        ],
+        "children": [
+          "FactionIcon",
+          "GridStructure(Keep)",
+          "Module",
+          "PowerIcon",
+          "W1",
+          "W2"
+        ],
+        "parent": "BaseGridDisplay",
+        "sibling": 48,
+        "parent_children": 49
+      }
+    }
+  },
+  "station_model": {
+    "S0_M0": {
+      "local_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "connector_children": [
+        "E1",
+        "E2",
+        "N1",
+        "N2",
+        "S1",
+        "S2",
+        "W1",
+        "W2"
+      ]
+    },
+    "S0_M1": {
+      "local_xyz": [
+        0.0,
+        0.0,
+        150.0
+      ],
+      "connector_children": [
+        "C_M",
+        "N1",
+        "N2",
+        "S1",
+        "S2"
+      ]
+    },
+    "S0_M2": {
+      "local_xyz": [
+        150.0,
+        0.0,
+        0.0
+      ],
+      "connector_children": [
+        "C_M",
+        "E1",
+        "E2",
+        "W1",
+        "W2"
+      ]
+    },
+    "S0_M3": {
+      "local_xyz": [
+        0.0,
+        0.0,
+        -150.0
+      ],
+      "connector_children": [
+        "C_M",
+        "N1",
+        "N2",
+        "S1",
+        "S2"
+      ]
+    },
+    "S0_M4": {
+      "local_xyz": [
+        -150.0,
+        0.0,
+        0.0
+      ],
+      "connector_children": [
+        "C_M",
+        "E1",
+        "E2",
+        "W1",
+        "W2"
+      ]
+    },
+    "S1_M0": {
+      "local_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "connector_children": [
+        "C_M",
+        "E1",
+        "E2",
+        "S1",
+        "S2",
+        "W1",
+        "W2"
+      ]
+    },
+    "S1_M1": {
+      "local_xyz": [
+        0.0,
+        0.0,
+        150.0
+      ],
+      "connector_children": [
+        "C_M",
+        "E1",
+        "E2",
+        "W1",
+        "W2"
+      ]
+    },
+    "S1_M2": {
+      "local_xyz": [
+        150.0,
+        0.0,
+        0.0
+      ],
+      "connector_children": [
+        "C_M",
+        "N1",
+        "N2",
+        "S1",
+        "S2"
+      ]
+    },
+    "S1_M3": {
+      "local_xyz": [
+        0.0,
+        0.0,
+        -150.0
+      ],
+      "connector_children": [
+        "C_M",
+        "E1",
+        "E2",
+        "W1",
+        "W2"
+      ]
+    },
+    "S2_M0": {
+      "local_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "connector_children": [
+        "C_M",
+        "N1",
+        "N2",
+        "S1",
+        "S2",
+        "W1",
+        "W2"
+      ]
+    },
+    "S2_M1": {
+      "local_xyz": [
+        0.0,
+        0.0,
+        150.0
+      ],
+      "connector_children": [
+        "C_M",
+        "N1",
+        "N2",
+        "S1",
+        "S2"
+      ]
+    },
+    "S2_M2": {
+      "local_xyz": [
+        150.0,
+        0.0,
+        0.0
+      ],
+      "connector_children": [
+        "C_M",
+        "E1",
+        "E2",
+        "W1",
+        "W2"
+      ]
+    },
+    "S2_M3": {
+      "local_xyz": [
+        0.0,
+        0.0,
+        -150.0
+      ],
+      "connector_children": [
+        "C_M",
+        "N1",
+        "N2",
+        "S1",
+        "S2"
+      ]
+    },
+    "S3_M0": {
+      "local_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "connector_children": [
+        "C_M",
+        "E1",
+        "E2",
+        "N1",
+        "N2",
+        "W1",
+        "W2"
+      ]
+    },
+    "S3_M1": {
+      "local_xyz": [
+        0.0,
+        0.0,
+        150.0
+      ],
+      "connector_children": [
+        "C_M",
+        "E1",
+        "E2",
+        "W1",
+        "W2"
+      ]
+    },
+    "S3_M2": {
+      "local_xyz": [
+        150.0,
+        0.0,
+        0.0
+      ],
+      "connector_children": [
+        "C_M",
+        "N1",
+        "N2",
+        "S1",
+        "S2"
+      ]
+    },
+    "S3_M3": {
+      "local_xyz": [
+        0.0,
+        0.0,
+        -150.0
+      ],
+      "connector_children": [
+        "C_M",
+        "E1",
+        "E2",
+        "W1",
+        "W2"
+      ]
+    },
+    "S4_M0": {
+      "local_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "connector_children": [
+        "C_M",
+        "E1",
+        "E2",
+        "N1",
+        "N2",
+        "S1",
+        "S2"
+      ]
+    },
+    "S4_M1": {
+      "local_xyz": [
+        0.0,
+        0.0,
+        150.0
+      ],
+      "connector_children": [
+        "C_M",
+        "N1",
+        "N2",
+        "S1",
+        "S2"
+      ]
+    },
+    "S4_M2": {
+      "local_xyz": [
+        150.0,
+        0.0,
+        0.0
+      ],
+      "connector_children": [
+        "C_M",
+        "E1",
+        "E2",
+        "W1",
+        "W2"
+      ]
+    },
+    "S4_M3": {
+      "local_xyz": [
+        0.0,
+        0.0,
+        -150.0
+      ],
+      "connector_children": [
+        "C_M",
+        "N1",
+        "N2",
+        "S1",
+        "S2"
+      ]
+    },
+    "Torus_1_2": {
+      "local_xyz": [
+        225.0,
+        0.0,
+        225.0
+      ]
+    },
+    "Torus_2_3": {
+      "local_xyz": [
+        225.0,
+        0.0,
+        -225.0
+      ]
+    },
+    "Torus_3_4": {
+      "local_xyz": [
+        -225.0,
+        0.0,
+        -225.0
+      ]
+    },
+    "Torus_4_1": {
+      "local_xyz": [
+        -225.0,
+        0.0,
+        225.0
+      ]
+    }
+  },
+  "ui_ring_nodes": {
+    "Toruses": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "Torus_4_1": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "Torus_1_2": {
+      "x": 613.5499877929688,
+      "y": -151.1999969482422
+    },
+    "Torus_3_4": {
+      "x": 151.1999969482422,
+      "y": -613.2000122070312
+    },
+    "Torus_2_3": {
+      "x": 572.25,
+      "y": -572.25
+    }
+  },
+  "base_layout": {
+    "m_Padding": {
+      "m_Left": 0,
+      "m_Right": 0,
+      "m_Top": 0,
+      "m_Bottom": 0
+    },
+    "m_ChildAlignment": 0,
+    "m_StartCorner": 0,
+    "m_StartAxis": 0,
+    "m_CellSize": {
+      "x": 75.0,
+      "y": 75.0
+    },
+    "m_Spacing": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "m_Constraint": 1,
+    "m_ConstraintCount": 7
+  },
+  "native_surface_reference": {
+    "cells": {
+      "C_16": {
+        "xy": [
+          0,
+          5
+        ],
+        "area": 0,
+        "role": "passage",
+        "ports": [
+          "E",
+          "N"
+        ]
+      },
+      "C_36": {
+        "xy": [
+          2,
+          5
+        ],
+        "area": 0,
+        "role": "passage",
+        "ports": [
+          "E",
+          "W"
+        ]
+      },
+      "C_42": {
+        "xy": [
+          3,
+          1
+        ],
+        "area": 0,
+        "role": "passage",
+        "ports": [
+          "N",
+          "S"
+        ]
+      },
+      "C_46": {
+        "xy": [
+          3,
+          5
+        ],
+        "area": 0,
+        "role": "passage",
+        "ports": [
+          "E",
+          "N",
+          "W"
+        ]
+      },
+      "C_56": {
+        "xy": [
+          4,
+          5
+        ],
+        "area": 0,
+        "role": "passage",
+        "ports": [
+          "E",
+          "W"
+        ]
+      },
+      "C_76": {
+        "xy": [
+          6,
+          5
+        ],
+        "area": 0,
+        "role": "passage",
+        "ports": [
+          "N",
+          "W"
+        ]
+      },
+      "S0_M0": {
+        "xy": [
+          3,
+          3
+        ],
+        "area": 1,
+        "role": "core",
+        "ports": [
+          "E",
+          "N",
+          "S",
+          "W"
+        ]
+      },
+      "S0_M1": {
+        "xy": [
+          3,
+          2
+        ],
+        "area": 1,
+        "role": "mine",
+        "ports": [
+          "S"
+        ]
+      },
+      "S0_M2": {
+        "xy": [
+          4,
+          3
+        ],
+        "area": 1,
+        "role": "facility",
+        "ports": [
+          "E",
+          "W"
+        ]
+      },
+      "S0_M3": {
+        "xy": [
+          3,
+          4
+        ],
+        "area": 1,
+        "role": "facility",
+        "ports": [
+          "N",
+          "S"
+        ]
+      },
+      "S0_M4": {
+        "xy": [
+          2,
+          3
+        ],
+        "area": 1,
+        "role": "facility",
+        "ports": [
+          "E",
+          "W"
+        ]
+      },
+      "S1_M0": {
+        "xy": [
+          6,
+          3
+        ],
+        "area": 3,
+        "role": "facility",
+        "ports": [
+          "N",
+          "S",
+          "W"
+        ]
+      },
+      "S1_M1": {
+        "xy": [
+          6,
+          4
+        ],
+        "area": 3,
+        "role": "facility",
+        "ports": [
+          "N",
+          "S"
+        ]
+      },
+      "S1_M2": {
+        "xy": [
+          5,
+          3
+        ],
+        "area": 3,
+        "role": "facility",
+        "ports": [
+          "E",
+          "W"
+        ]
+      },
+      "S1_M3": {
+        "xy": [
+          6,
+          2
+        ],
+        "area": 3,
+        "role": "facility",
+        "ports": [
+          "S"
+        ]
+      },
+      "S2_M0": {
+        "xy": [
+          0,
+          3
+        ],
+        "area": 2,
+        "role": "facility",
+        "ports": [
+          "E",
+          "N",
+          "S"
+        ]
+      },
+      "S2_M1": {
+        "xy": [
+          0,
+          2
+        ],
+        "area": 2,
+        "role": "facility",
+        "ports": [
+          "S"
+        ]
+      },
+      "S2_M2": {
+        "xy": [
+          1,
+          3
+        ],
+        "area": 2,
+        "role": "facility",
+        "ports": [
+          "E",
+          "W"
+        ]
+      },
+      "S2_M3": {
+        "xy": [
+          0,
+          4
+        ],
+        "area": 2,
+        "role": "facility",
+        "ports": [
+          "N",
+          "S"
+        ]
+      },
+      "S3_M0": {
+        "xy": [
+          5,
+          6
+        ],
+        "area": 5,
+        "role": "facility",
+        "ports": [
+          "E",
+          "N",
+          "W"
+        ]
+      },
+      "S3_M1": {
+        "xy": [
+          4,
+          6
+        ],
+        "area": 5,
+        "role": "facility",
+        "ports": [
+          "E"
+        ]
+      },
+      "S3_M2": {
+        "xy": [
+          5,
+          5
+        ],
+        "area": 5,
+        "role": "facility",
+        "ports": [
+          "E",
+          "S",
+          "W"
+        ]
+      },
+      "S3_M3": {
+        "xy": [
+          6,
+          6
+        ],
+        "area": 5,
+        "role": "facility",
+        "ports": [
+          "W"
+        ]
+      },
+      "S4_M0": {
+        "xy": [
+          1,
+          6
+        ],
+        "area": 4,
+        "role": "facility",
+        "ports": [
+          "E",
+          "N",
+          "W"
+        ]
+      },
+      "S4_M1": {
+        "xy": [
+          0,
+          6
+        ],
+        "area": 4,
+        "role": "facility",
+        "ports": [
+          "E"
+        ]
+      },
+      "S4_M2": {
+        "xy": [
+          1,
+          5
+        ],
+        "area": 4,
+        "role": "facility",
+        "ports": [
+          "E",
+          "S",
+          "W"
+        ]
+      },
+      "S4_M3": {
+        "xy": [
+          2,
+          6
+        ],
+        "area": 4,
+        "role": "facility",
+        "ports": [
+          "W"
+        ]
+      }
+    },
+    "native_straight": [
+      [
+        "C_16",
+        "S4_M2"
+      ],
+      [
+        "C_36",
+        "C_46"
+      ],
+      [
+        "C_46",
+        "C_56"
+      ],
+      [
+        "C_56",
+        "S3_M2"
+      ],
+      [
+        "S0_M0",
+        "S0_M2"
+      ],
+      [
+        "S0_M0",
+        "S0_M3"
+      ],
+      [
+        "S0_M1",
+        "S0_M0"
+      ],
+      [
+        "S0_M2",
+        "S1_M2"
+      ],
+      [
+        "S0_M3",
+        "C_46"
+      ],
+      [
+        "S0_M4",
+        "S0_M0"
+      ],
+      [
+        "S1_M0",
+        "S1_M1"
+      ],
+      [
+        "S1_M1",
+        "C_76"
+      ],
+      [
+        "S1_M2",
+        "S1_M0"
+      ],
+      [
+        "S1_M3",
+        "S1_M0"
+      ],
+      [
+        "S2_M0",
+        "S2_M2"
+      ],
+      [
+        "S2_M0",
+        "S2_M3"
+      ],
+      [
+        "S2_M1",
+        "S2_M0"
+      ],
+      [
+        "S2_M2",
+        "S0_M4"
+      ],
+      [
+        "S2_M3",
+        "C_16"
+      ],
+      [
+        "S3_M0",
+        "S3_M3"
+      ],
+      [
+        "S3_M1",
+        "S3_M0"
+      ],
+      [
+        "S3_M2",
+        "C_76"
+      ],
+      [
+        "S3_M2",
+        "S3_M0"
+      ],
+      [
+        "S4_M0",
+        "S4_M3"
+      ],
+      [
+        "S4_M1",
+        "S4_M0"
+      ],
+      [
+        "S4_M2",
+        "C_36"
+      ],
+      [
+        "S4_M2",
+        "S4_M0"
+      ]
+    ],
+    "new_radials": [],
+    "ring_pairs": [],
+    "passage_spurs": [
+      [
+        "C_42",
+        "S0_M1"
+      ]
+    ]
+  },
+  "floorplans": {
+    "orbital": {
+      "cells": {
+        "S0_M0": {
+          "xy": [
+            3,
+            3
+          ],
+          "area": 1,
+          "role": "core",
+          "ports": [
+            "E",
+            "N",
+            "S",
+            "W"
+          ],
+          "remapped_area": 1,
+          "remapped_index": 0,
+          "added_area": 1,
+          "added_index": 0
+        },
+        "S0_M1": {
+          "xy": [
+            3,
+            2
+          ],
+          "area": 1,
+          "role": "facility",
+          "ports": [
+            "E",
+            "N",
+            "S",
+            "W"
+          ],
+          "remapped_area": 1,
+          "remapped_index": 1,
+          "added_area": 1,
+          "added_index": 1
+        },
+        "S0_M2": {
+          "xy": [
+            4,
+            3
+          ],
+          "area": 1,
+          "role": "facility",
+          "ports": [
+            "E",
+            "W"
+          ],
+          "remapped_area": 1,
+          "remapped_index": 2,
+          "added_area": 1,
+          "added_index": 2
+        },
+        "S0_M3": {
+          "xy": [
+            3,
+            4
+          ],
+          "area": 1,
+          "role": "facility",
+          "ports": [
+            "N",
+            "S"
+          ],
+          "remapped_area": 1,
+          "remapped_index": 3,
+          "added_area": 1,
+          "added_index": 3
+        },
+        "S0_M4": {
+          "xy": [
+            2,
+            3
+          ],
+          "area": 1,
+          "role": "facility",
+          "ports": [
+            "E",
+            "W"
+          ],
+          "remapped_area": 1,
+          "remapped_index": 4,
+          "added_area": 1,
+          "added_index": 4
+        },
+        "S1_M0": {
+          "xy": [
+            3,
+            0
+          ],
+          "area": 4,
+          "role": "facility",
+          "ports": [
+            "E",
+            "N",
+            "S",
+            "W"
+          ],
+          "remapped_area": 2,
+          "remapped_index": 0,
+          "added_area": 4,
+          "added_index": 0
+        },
+        "S1_M1": {
+          "xy": [
+            4,
+            0
+          ],
+          "area": 4,
+          "role": "facility",
+          "ports": [
+            "E",
+            "N",
+            "S",
+            "W"
+          ],
+          "remapped_area": 2,
+          "remapped_index": 1,
+          "added_area": 4,
+          "added_index": 1
+        },
+        "S1_M2": {
+          "xy": [
+            3,
+            1
+          ],
+          "area": 4,
+          "role": "facility",
+          "ports": [
+            "E",
+            "N",
+            "S",
+            "W"
+          ],
+          "remapped_area": 2,
+          "remapped_index": 2,
+          "added_area": 4,
+          "added_index": 2
+        },
+        "S1_M3": {
+          "xy": [
+            2,
+            0
+          ],
+          "area": 4,
+          "role": "facility",
+          "ports": [
+            "E",
+            "N",
+            "S",
+            "W"
+          ],
+          "remapped_area": 2,
+          "remapped_index": 3,
+          "added_area": 4,
+          "added_index": 3
+        },
+        "S2_M0": {
+          "xy": [
+            6,
+            3
+          ],
+          "area": 3,
+          "role": "facility",
+          "ports": [
+            "N",
+            "S",
+            "W"
+          ],
+          "remapped_area": 1,
+          "remapped_index": 9,
+          "added_area": 3,
+          "added_index": 0
+        },
+        "S2_M1": {
+          "xy": [
+            6,
+            4
+          ],
+          "area": 3,
+          "role": "facility",
+          "ports": [
+            "N",
+            "S"
+          ],
+          "remapped_area": 1,
+          "remapped_index": 10,
+          "added_area": 3,
+          "added_index": 1
+        },
+        "S2_M2": {
+          "xy": [
+            5,
+            3
+          ],
+          "area": 3,
+          "role": "facility",
+          "ports": [
+            "E",
+            "W"
+          ],
+          "remapped_area": 1,
+          "remapped_index": 11,
+          "added_area": 3,
+          "added_index": 2
+        },
+        "S2_M3": {
+          "xy": [
+            6,
+            2
+          ],
+          "area": 3,
+          "role": "facility",
+          "ports": [
+            "E",
+            "N",
+            "S",
+            "W"
+          ],
+          "remapped_area": 1,
+          "remapped_index": 12,
+          "added_area": 3,
+          "added_index": 3
+        },
+        "S3_M0": {
+          "xy": [
+            3,
+            6
+          ],
+          "area": 5,
+          "role": "facility",
+          "ports": [
+            "E",
+            "N",
+            "W"
+          ],
+          "remapped_area": 3,
+          "remapped_index": 0,
+          "added_area": 5,
+          "added_index": 0
+        },
+        "S3_M1": {
+          "xy": [
+            2,
+            6
+          ],
+          "area": 5,
+          "role": "facility",
+          "ports": [
+            "E",
+            "W"
+          ],
+          "remapped_area": 3,
+          "remapped_index": 1,
+          "added_area": 5,
+          "added_index": 1
+        },
+        "S3_M2": {
+          "xy": [
+            3,
+            5
+          ],
+          "area": 5,
+          "role": "facility",
+          "ports": [
+            "N",
+            "S"
+          ],
+          "remapped_area": 3,
+          "remapped_index": 2,
+          "added_area": 5,
+          "added_index": 2
+        },
+        "S3_M3": {
+          "xy": [
+            4,
+            6
+          ],
+          "area": 5,
+          "role": "facility",
+          "ports": [
+            "E",
+            "W"
+          ],
+          "remapped_area": 3,
+          "remapped_index": 3,
+          "added_area": 5,
+          "added_index": 3
+        },
+        "S4_M0": {
+          "xy": [
+            0,
+            3
+          ],
+          "area": 2,
+          "role": "facility",
+          "ports": [
+            "E",
+            "N",
+            "S"
+          ],
+          "remapped_area": 1,
+          "remapped_index": 5,
+          "added_area": 2,
+          "added_index": 0
+        },
+        "S4_M1": {
+          "xy": [
+            0,
+            2
+          ],
+          "area": 2,
+          "role": "facility",
+          "ports": [
+            "E",
+            "N",
+            "S",
+            "W"
+          ],
+          "remapped_area": 1,
+          "remapped_index": 6,
+          "added_area": 2,
+          "added_index": 1
+        },
+        "S4_M2": {
+          "xy": [
+            1,
+            3
+          ],
+          "area": 2,
+          "role": "facility",
+          "ports": [
+            "E",
+            "W"
+          ],
+          "remapped_area": 1,
+          "remapped_index": 7,
+          "added_area": 2,
+          "added_index": 2
+        },
+        "S4_M3": {
+          "xy": [
+            0,
+            4
+          ],
+          "area": 2,
+          "role": "facility",
+          "ports": [
+            "N",
+            "S"
+          ],
+          "remapped_area": 1,
+          "remapped_index": 8,
+          "added_area": 2,
+          "added_index": 3
+        },
+        "S1_M4": {
+          "xy": [
+            4,
+            -1
+          ],
+          "role": "candidate",
+          "area": 4,
+          "remapped_area": 4,
+          "remapped_index": 0,
+          "added_area": 6,
+          "added_index": 0
+        },
+        "S1_M5": {
+          "xy": [
+            2,
+            -1
+          ],
+          "role": "candidate",
+          "area": 4,
+          "remapped_area": 4,
+          "remapped_index": 1,
+          "added_area": 6,
+          "added_index": 1
+        },
+        "S2_M4": {
+          "xy": [
+            7,
+            4
+          ],
+          "role": "candidate",
+          "area": 3,
+          "remapped_area": 5,
+          "remapped_index": 2,
+          "added_area": 7,
+          "added_index": 2
+        },
+        "S2_M5": {
+          "xy": [
+            7,
+            2
+          ],
+          "role": "candidate",
+          "area": 3,
+          "remapped_area": 5,
+          "remapped_index": 3,
+          "added_area": 7,
+          "added_index": 3
+        },
+        "S3_M4": {
+          "xy": [
+            2,
+            7
+          ],
+          "role": "candidate",
+          "area": 5,
+          "remapped_area": 5,
+          "remapped_index": 0,
+          "added_area": 7,
+          "added_index": 0
+        },
+        "S3_M5": {
+          "xy": [
+            4,
+            7
+          ],
+          "role": "candidate",
+          "area": 5,
+          "remapped_area": 5,
+          "remapped_index": 1,
+          "added_area": 7,
+          "added_index": 1
+        },
+        "S4_M4": {
+          "xy": [
+            -1,
+            2
+          ],
+          "role": "candidate",
+          "area": 2,
+          "remapped_area": 4,
+          "remapped_index": 2,
+          "added_area": 6,
+          "added_index": 2
+        },
+        "S4_M5": {
+          "xy": [
+            -1,
+            4
+          ],
+          "role": "candidate",
+          "area": 2,
+          "remapped_area": 4,
+          "remapped_index": 3,
+          "added_area": 6,
+          "added_index": 3
+        }
+      },
+      "native_straight": [
+        [
+          "S0_M0",
+          "S0_M2"
+        ],
+        [
+          "S0_M0",
+          "S0_M3"
+        ],
+        [
+          "S0_M1",
+          "S0_M0"
+        ],
+        [
+          "S0_M2",
+          "S2_M2"
+        ],
+        [
+          "S0_M3",
+          "S3_M2"
+        ],
+        [
+          "S0_M4",
+          "S0_M0"
+        ],
+        [
+          "S1_M0",
+          "S1_M1"
+        ],
+        [
+          "S1_M0",
+          "S1_M2"
+        ],
+        [
+          "S1_M2",
+          "S0_M1"
+        ],
+        [
+          "S1_M3",
+          "S1_M0"
+        ],
+        [
+          "S2_M0",
+          "S2_M1"
+        ],
+        [
+          "S2_M2",
+          "S2_M0"
+        ],
+        [
+          "S2_M3",
+          "S2_M0"
+        ],
+        [
+          "S3_M0",
+          "S3_M3"
+        ],
+        [
+          "S3_M1",
+          "S3_M0"
+        ],
+        [
+          "S3_M2",
+          "S3_M0"
+        ],
+        [
+          "S4_M0",
+          "S4_M2"
+        ],
+        [
+          "S4_M0",
+          "S4_M3"
+        ],
+        [
+          "S4_M1",
+          "S4_M0"
+        ],
+        [
+          "S4_M2",
+          "S0_M4"
+        ]
+      ],
+      "new_radials": [
+        [
+          "S1_M1",
+          "S1_M4"
+        ],
+        [
+          "S1_M3",
+          "S1_M5"
+        ],
+        [
+          "S2_M1",
+          "S2_M4"
+        ],
+        [
+          "S2_M3",
+          "S2_M5"
+        ],
+        [
+          "S3_M1",
+          "S3_M4"
+        ],
+        [
+          "S3_M3",
+          "S3_M5"
+        ],
+        [
+          "S4_M1",
+          "S4_M4"
+        ],
+        [
+          "S4_M3",
+          "S4_M5"
+        ]
+      ],
+      "ring_pairs": [
+        [
+          "S4_M1",
+          "S1_M3",
+          "NW"
+        ],
+        [
+          "S1_M1",
+          "S2_M3",
+          "NE"
+        ],
+        [
+          "S2_M1",
+          "S3_M3",
+          "SE"
+        ],
+        [
+          "S3_M1",
+          "S4_M3",
+          "SW"
+        ]
+      ],
+      "passage_spurs": []
+    },
+    "surface": {
+      "cells": {
+        "C_16": {
+          "xy": [
+            0,
+            5
+          ],
+          "area": 0,
+          "role": "passage",
+          "ports": [
+            "E",
+            "N"
+          ]
+        },
+        "C_36": {
+          "xy": [
+            2,
+            5
+          ],
+          "area": 0,
+          "role": "passage",
+          "ports": [
+            "E",
+            "W"
+          ]
+        },
+        "C_42": {
+          "xy": [
+            3,
+            6
+          ],
+          "area": 0,
+          "role": "passage",
+          "ports": [
+            "N"
+          ]
+        },
+        "C_46": {
+          "xy": [
+            3,
+            5
+          ],
+          "area": 0,
+          "role": "passage",
+          "ports": [
+            "E",
+            "N",
+            "W"
+          ]
+        },
+        "C_56": {
+          "xy": [
+            4,
+            5
+          ],
+          "area": 0,
+          "role": "passage",
+          "ports": [
+            "E",
+            "W"
+          ]
+        },
+        "C_76": {
+          "xy": [
+            6,
+            5
+          ],
+          "area": 0,
+          "role": "passage",
+          "ports": [
+            "N",
+            "W"
+          ]
+        },
+        "S0_M0": {
+          "xy": [
+            3,
+            3
+          ],
+          "area": 1,
+          "role": "core",
+          "ports": [
+            "E",
+            "N",
+            "S",
+            "W"
+          ]
+        },
+        "S0_M1": {
+          "xy": [
+            3,
+            2
+          ],
+          "area": 1,
+          "role": "mine",
+          "ports": [
+            "S"
+          ]
+        },
+        "S0_M2": {
+          "xy": [
+            4,
+            3
+          ],
+          "area": 1,
+          "role": "facility",
+          "ports": [
+            "E",
+            "W"
+          ]
+        },
+        "S0_M3": {
+          "xy": [
+            3,
+            4
+          ],
+          "area": 1,
+          "role": "facility",
+          "ports": [
+            "N",
+            "S"
+          ]
+        },
+        "S0_M4": {
+          "xy": [
+            2,
+            3
+          ],
+          "area": 1,
+          "role": "facility",
+          "ports": [
+            "E",
+            "W"
+          ]
+        },
+        "S1_M0": {
+          "xy": [
+            6,
+            3
+          ],
+          "area": 3,
+          "role": "facility",
+          "ports": [
+            "N",
+            "S",
+            "W"
+          ]
+        },
+        "S1_M1": {
+          "xy": [
+            6,
+            4
+          ],
+          "area": 3,
+          "role": "facility",
+          "ports": [
+            "N",
+            "S"
+          ]
+        },
+        "S1_M2": {
+          "xy": [
+            5,
+            3
+          ],
+          "area": 3,
+          "role": "facility",
+          "ports": [
+            "E",
+            "W"
+          ]
+        },
+        "S1_M3": {
+          "xy": [
+            6,
+            2
+          ],
+          "area": 3,
+          "role": "facility",
+          "ports": [
+            "S"
+          ]
+        },
+        "S2_M0": {
+          "xy": [
+            0,
+            3
+          ],
+          "area": 2,
+          "role": "facility",
+          "ports": [
+            "E",
+            "N",
+            "S"
+          ]
+        },
+        "S2_M1": {
+          "xy": [
+            0,
+            2
+          ],
+          "area": 2,
+          "role": "facility",
+          "ports": [
+            "S"
+          ]
+        },
+        "S2_M2": {
+          "xy": [
+            1,
+            3
+          ],
+          "area": 2,
+          "role": "facility",
+          "ports": [
+            "E",
+            "W"
+          ]
+        },
+        "S2_M3": {
+          "xy": [
+            0,
+            4
+          ],
+          "area": 2,
+          "role": "facility",
+          "ports": [
+            "N",
+            "S"
+          ]
+        },
+        "S3_M0": {
+          "xy": [
+            5,
+            6
+          ],
+          "area": 5,
+          "role": "facility",
+          "ports": [
+            "E",
+            "N",
+            "W"
+          ]
+        },
+        "S3_M1": {
+          "xy": [
+            4,
+            6
+          ],
+          "area": 5,
+          "role": "facility",
+          "ports": [
+            "E"
+          ]
+        },
+        "S3_M2": {
+          "xy": [
+            5,
+            5
+          ],
+          "area": 5,
+          "role": "facility",
+          "ports": [
+            "E",
+            "S",
+            "W"
+          ]
+        },
+        "S3_M3": {
+          "xy": [
+            6,
+            6
+          ],
+          "area": 5,
+          "role": "facility",
+          "ports": [
+            "W"
+          ]
+        },
+        "S4_M0": {
+          "xy": [
+            1,
+            6
+          ],
+          "area": 4,
+          "role": "facility",
+          "ports": [
+            "E",
+            "N",
+            "W"
+          ]
+        },
+        "S4_M1": {
+          "xy": [
+            0,
+            6
+          ],
+          "area": 4,
+          "role": "facility",
+          "ports": [
+            "E"
+          ]
+        },
+        "S4_M2": {
+          "xy": [
+            1,
+            5
+          ],
+          "area": 4,
+          "role": "facility",
+          "ports": [
+            "E",
+            "S",
+            "W"
+          ]
+        },
+        "S4_M3": {
+          "xy": [
+            2,
+            6
+          ],
+          "area": 4,
+          "role": "facility",
+          "ports": [
+            "W"
+          ]
+        }
+      },
+      "native_straight": [
+        [
+          "C_16",
+          "S4_M2"
+        ],
+        [
+          "C_36",
+          "C_46"
+        ],
+        [
+          "C_46",
+          "C_56"
+        ],
+        [
+          "C_56",
+          "S3_M2"
+        ],
+        [
+          "S0_M0",
+          "S0_M2"
+        ],
+        [
+          "S0_M0",
+          "S0_M3"
+        ],
+        [
+          "S0_M1",
+          "S0_M0"
+        ],
+        [
+          "S0_M2",
+          "S1_M2"
+        ],
+        [
+          "S0_M3",
+          "C_46"
+        ],
+        [
+          "S0_M4",
+          "S0_M0"
+        ],
+        [
+          "S1_M0",
+          "S1_M1"
+        ],
+        [
+          "S1_M1",
+          "C_76"
+        ],
+        [
+          "S1_M2",
+          "S1_M0"
+        ],
+        [
+          "S1_M3",
+          "S1_M0"
+        ],
+        [
+          "S2_M0",
+          "S2_M2"
+        ],
+        [
+          "S2_M0",
+          "S2_M3"
+        ],
+        [
+          "S2_M1",
+          "S2_M0"
+        ],
+        [
+          "S2_M2",
+          "S0_M4"
+        ],
+        [
+          "S2_M3",
+          "C_16"
+        ],
+        [
+          "S3_M0",
+          "S3_M3"
+        ],
+        [
+          "S3_M1",
+          "S3_M0"
+        ],
+        [
+          "S3_M2",
+          "C_76"
+        ],
+        [
+          "S3_M2",
+          "S3_M0"
+        ],
+        [
+          "S4_M0",
+          "S4_M3"
+        ],
+        [
+          "S4_M1",
+          "S4_M0"
+        ],
+        [
+          "S4_M2",
+          "C_36"
+        ],
+        [
+          "S4_M2",
+          "S4_M0"
+        ]
+      ],
+      "new_radials": [],
+      "ring_pairs": [],
+      "passage_spurs": [],
+      "passage_arm": [
+        [
+          "C_46",
+          "C_42"
+        ]
+      ]
+    }
+  },
+  "notes": {
+    "date": "2026-11-22",
+    "baseline": "Terra Invicta 1.0.65, EEO 0.11.19 source checkpoint ebb4a36",
+    "surface": "Zero authored anchoredPosition is normal for UI layout children. Convert the sibling index using a serialized 7-column, top-left, horizontal GridLayoutGroup.",
+    "orbital": "75-unit authored grid pitch. Straight routes follow the native arms; ring endpoints come from TIHabState.ActivateRings. Local 3D coordinates are prefab parent-relative.",
+    "links": "Surface adjacency uses facing graphical ports. C_42 north of the mine is a separate authored passage stub; the mine tile has only a south-facing port. Edge drawings show potential runs, not the runtime visibility masks.",
+    "proposal": "Orbital S1-S4 M4/M5 are physical design keys. In the seven-area option the expansion pairs belong to added areas 6 and 7. The surface sketch keeps mine S0_M1 at its native position with its core connection. Passage C_42 moves below C_46 and joins it by a short connector. These are 2D placement studies."
+  }
+}

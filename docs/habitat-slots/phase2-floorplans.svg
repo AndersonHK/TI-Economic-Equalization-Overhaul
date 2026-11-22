@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 548" width="1040" height="548" role="img" aria-label="Orbital and surface habitat connector floorplans">
+<style>
+    text {fill:#152636;font-family:system-ui,sans-serif;font-size:14px;text-anchor:middle;pointer-events:none}
+    path {fill:none;stroke-width:2;vector-effect:non-scaling-stroke}
+    .link {stroke:#7990a3}
+    .ring {stroke:#5862a6;stroke-dasharray:5 3}
+    .proposed {stroke:#9c4a10;stroke-dasharray:2 3}
+    rect {fill:#f8fafc;stroke:#7990a3;stroke-width:1;vector-effect:non-scaling-stroke}
+    .core rect,.mine rect {stroke:#106c81;stroke-width:2}
+    .passage rect {stroke:#5862a6;stroke-dasharray:3 2}
+    .candidate rect {stroke:#9c4a10;stroke-width:1.7;stroke-dasharray:3 2}
+    .dim {opacity:.26}
+     .head {font-size:19px;font-weight:600}</style>
+<rect width="1040" height="548" style="fill:#f8fafc;stroke:none"/>
+<text class="head" x="260" y="29">Orbital station · areas 6 and 7</text>
+<text class="head" x="780" y="29">Surface habitat · relocated passage 4.2</text>
+<path class="link" data-a="S0_M0" data-b="S0_M2" d="M260.0 287.0L314.67 287.0"/>
+<path class="link" data-a="S0_M0" data-b="S0_M3" d="M260.0 287.0L260.0 341.67"/>
+<path class="link" data-a="S0_M1" data-b="S0_M0" d="M260.0 232.33L260.0 287.0"/>
+<path class="link" data-a="S0_M2" data-b="S2_M2" d="M314.67 287.0L369.33 287.0"/>
+<path class="link" data-a="S0_M3" data-b="S3_M2" d="M260.0 341.67L260.0 396.33"/>
+<path class="link" data-a="S0_M4" data-b="S0_M0" d="M205.33 287.0L260.0 287.0"/>
+<path class="link" data-a="S1_M0" data-b="S1_M1" d="M260.0 123.0L314.67 123.0"/>
+<path class="link" data-a="S1_M0" data-b="S1_M2" d="M260.0 123.0L260.0 177.67"/>
+<path class="link" data-a="S1_M2" data-b="S0_M1" d="M260.0 177.67L260.0 232.33"/>
+<path class="link" data-a="S1_M3" data-b="S1_M0" d="M205.33 123.0L260.0 123.0"/>
+<path class="link" data-a="S2_M0" data-b="S2_M1" d="M424.0 287.0L424.0 341.67"/>
+<path class="link" data-a="S2_M2" data-b="S2_M0" d="M369.33 287.0L424.0 287.0"/>
+<path class="link" data-a="S2_M3" data-b="S2_M0" d="M424.0 232.33L424.0 287.0"/>
+<path class="link" data-a="S3_M0" data-b="S3_M3" d="M260.0 451.0L314.67 451.0"/>
+<path class="link" data-a="S3_M1" data-b="S3_M0" d="M205.33 451.0L260.0 451.0"/>
+<path class="link" data-a="S3_M2" data-b="S3_M0" d="M260.0 396.33L260.0 451.0"/>
+<path class="link" data-a="S4_M0" data-b="S4_M2" d="M96.0 287.0L150.67 287.0"/>
+<path class="link" data-a="S4_M0" data-b="S4_M3" d="M96.0 287.0L96.0 341.67"/>
+<path class="link" data-a="S4_M1" data-b="S4_M0" d="M96.0 232.33L96.0 287.0"/>
+<path class="link" data-a="S4_M2" data-b="S0_M4" d="M150.67 287.0L205.33 287.0"/>
+<path class="proposed" data-a="S1_M1" data-b="S1_M4" d="M314.67 123.0L314.67 68.33"/>
+<path class="proposed" data-a="S1_M3" data-b="S1_M5" d="M205.33 123.0L205.33 68.33"/>
+<path class="proposed" data-a="S2_M1" data-b="S2_M4" d="M424.0 341.67L478.67 341.67"/>
+<path class="proposed" data-a="S2_M3" data-b="S2_M5" d="M424.0 232.33L478.67 232.33"/>
+<path class="proposed" data-a="S3_M1" data-b="S3_M4" d="M205.33 451.0L205.33 505.67"/>
+<path class="proposed" data-a="S3_M3" data-b="S3_M5" d="M314.67 451.0L314.67 505.67"/>
+<path class="proposed" data-a="S4_M1" data-b="S4_M4" d="M96.0 232.33L41.33 232.33"/>
+<path class="proposed" data-a="S4_M3" data-b="S4_M5" d="M96.0 341.67L41.33 341.67"/>
+<path class="ring" data-a="S4_M1" data-b="S1_M3" d="M96.0 232.33Q96.0 123.0 205.33 123.0"/>
+<path class="ring" data-a="S1_M1" data-b="S2_M3" d="M314.67 123.0Q424.0 123.0 424.0 232.33"/>
+<path class="ring" data-a="S2_M1" data-b="S3_M3" d="M424.0 341.67Q424.0 451.0 314.67 451.0"/>
+<path class="ring" data-a="S3_M1" data-b="S4_M3" d="M205.33 451.0Q96.0 451.0 96.0 341.67"/>
+<g class="node core" data-slot="S0_M0"><title>S0_M0 · Area 1, slot 0</title><rect x="236.5" y="271.69" width="47.01" height="30.61" rx="4"/><text x="260.0" y="287.0" dominant-baseline="central">Core</text></g>
+<g class="node facility" data-slot="S0_M1"><title>S0_M1 · Area 1, slot 1</title><rect x="236.5" y="217.03" width="47.01" height="30.61" rx="4"/><text x="260.0" y="232.33" dominant-baseline="central">1·1</text></g>
+<g class="node facility" data-slot="S0_M2"><title>S0_M2 · Area 1, slot 2</title><rect x="291.16" y="271.69" width="47.01" height="30.61" rx="4"/><text x="314.67" y="287.0" dominant-baseline="central">1·2</text></g>
+<g class="node facility" data-slot="S0_M3"><title>S0_M3 · Area 1, slot 3</title><rect x="236.5" y="326.36" width="47.01" height="30.61" rx="4"/><text x="260.0" y="341.67" dominant-baseline="central">1·3</text></g>
+<g class="node facility" data-slot="S0_M4"><title>S0_M4 · Area 1, slot 4</title><rect x="181.83" y="271.69" width="47.01" height="30.61" rx="4"/><text x="205.33" y="287.0" dominant-baseline="central">1·4</text></g>
+<g class="node facility" data-slot="S1_M0"><title>S1_M0 · Area 4, slot 0</title><rect x="236.5" y="107.69" width="47.01" height="30.61" rx="4"/><text x="260.0" y="123.0" dominant-baseline="central">4·0</text></g>
+<g class="node facility" data-slot="S1_M1"><title>S1_M1 · Area 4, slot 1</title><rect x="291.16" y="107.69" width="47.01" height="30.61" rx="4"/><text x="314.67" y="123.0" dominant-baseline="central">4·1</text></g>
+<g class="node facility" data-slot="S1_M2"><title>S1_M2 · Area 4, slot 2</title><rect x="236.5" y="162.36" width="47.01" height="30.61" rx="4"/><text x="260.0" y="177.67" dominant-baseline="central">4·2</text></g>
+<g class="node facility" data-slot="S1_M3"><title>S1_M3 · Area 4, slot 3</title><rect x="181.83" y="107.69" width="47.01" height="30.61" rx="4"/><text x="205.33" y="123.0" dominant-baseline="central">4·3</text></g>
+<g class="node facility" data-slot="S2_M0"><title>S2_M0 · Area 3, slot 0</title><rect x="400.5" y="271.69" width="47.01" height="30.61" rx="4"/><text x="424.0" y="287.0" dominant-baseline="central">3·0</text></g>
+<g class="node facility" data-slot="S2_M1"><title>S2_M1 · Area 3, slot 1</title><rect x="400.5" y="326.36" width="47.01" height="30.61" rx="4"/><text x="424.0" y="341.67" dominant-baseline="central">3·1</text></g>
+<g class="node facility" data-slot="S2_M2"><title>S2_M2 · Area 3, slot 2</title><rect x="345.83" y="271.69" width="47.01" height="30.61" rx="4"/><text x="369.33" y="287.0" dominant-baseline="central">3·2</text></g>
+<g class="node facility" data-slot="S2_M3"><title>S2_M3 · Area 3, slot 3</title><rect x="400.5" y="217.03" width="47.01" height="30.61" rx="4"/><text x="424.0" y="232.33" dominant-baseline="central">3·3</text></g>
+<g class="node facility" data-slot="S3_M0"><title>S3_M0 · Area 5, slot 0</title><rect x="236.5" y="435.69" width="47.01" height="30.61" rx="4"/><text x="260.0" y="451.0" dominant-baseline="central">5·0</text></g>
+<g class="node facility" data-slot="S3_M1"><title>S3_M1 · Area 5, slot 1</title><rect x="181.83" y="435.69" width="47.01" height="30.61" rx="4"/><text x="205.33" y="451.0" dominant-baseline="central">5·1</text></g>
+<g class="node facility" data-slot="S3_M2"><title>S3_M2 · Area 5, slot 2</title><rect x="236.5" y="381.03" width="47.01" height="30.61" rx="4"/><text x="260.0" y="396.33" dominant-baseline="central">5·2</text></g>
+<g class="node facility" data-slot="S3_M3"><title>S3_M3 · Area 5, slot 3</title><rect x="291.16" y="435.69" width="47.01" height="30.61" rx="4"/><text x="314.67" y="451.0" dominant-baseline="central">5·3</text></g>
+<g class="node facility" data-slot="S4_M0"><title>S4_M0 · Area 2, slot 0</title><rect x="72.5" y="271.69" width="47.01" height="30.61" rx="4"/><text x="96.0" y="287.0" dominant-baseline="central">2·0</text></g>
+<g class="node facility" data-slot="S4_M1"><title>S4_M1 · Area 2, slot 1</title><rect x="72.5" y="217.03" width="47.01" height="30.61" rx="4"/><text x="96.0" y="232.33" dominant-baseline="central">2·1</text></g>
+<g class="node facility" data-slot="S4_M2"><title>S4_M2 · Area 2, slot 2</title><rect x="127.16" y="271.69" width="47.01" height="30.61" rx="4"/><text x="150.67" y="287.0" dominant-baseline="central">2·2</text></g>
+<g class="node facility" data-slot="S4_M3"><title>S4_M3 · Area 2, slot 3</title><rect x="72.5" y="326.36" width="47.01" height="30.61" rx="4"/><text x="96.0" y="341.67" dominant-baseline="central">2·3</text></g>
+<g class="node candidate" data-slot="S1_M4"><title>S1_M4 · Area 6, slot 0 · Proposed T3</title><rect x="291.16" y="53.03" width="47.01" height="30.61" rx="4"/><text x="314.67" y="68.33" dominant-baseline="central">6·0</text></g>
+<g class="node candidate" data-slot="S1_M5"><title>S1_M5 · Area 6, slot 1 · Proposed T3</title><rect x="181.83" y="53.03" width="47.01" height="30.61" rx="4"/><text x="205.33" y="68.33" dominant-baseline="central">6·1</text></g>
+<g class="node candidate" data-slot="S2_M4"><title>S2_M4 · Area 7, slot 2 · Proposed T3</title><rect x="455.16" y="326.36" width="47.01" height="30.61" rx="4"/><text x="478.67" y="341.67" dominant-baseline="central">7·2</text></g>
+<g class="node candidate" data-slot="S2_M5"><title>S2_M5 · Area 7, slot 3 · Proposed T3</title><rect x="455.16" y="217.03" width="47.01" height="30.61" rx="4"/><text x="478.67" y="232.33" dominant-baseline="central">7·3</text></g>
+<g class="node candidate" data-slot="S3_M4"><title>S3_M4 · Area 7, slot 0 · Proposed T3</title><rect x="181.83" y="490.36" width="47.01" height="30.61" rx="4"/><text x="205.33" y="505.67" dominant-baseline="central">7·0</text></g>
+<g class="node candidate" data-slot="S3_M5"><title>S3_M5 · Area 7, slot 1 · Proposed T3</title><rect x="291.16" y="490.36" width="47.01" height="30.61" rx="4"/><text x="314.67" y="505.67" dominant-baseline="central">7·1</text></g>
+<g class="node candidate" data-slot="S4_M4"><title>S4_M4 · Area 6, slot 2 · Proposed T3</title><rect x="17.83" y="217.03" width="47.01" height="30.61" rx="4"/><text x="41.33" y="232.33" dominant-baseline="central">6·2</text></g>
+<g class="node candidate" data-slot="S4_M5"><title>S4_M5 · Area 6, slot 3 · Proposed T3</title><rect x="17.83" y="326.36" width="47.01" height="30.61" rx="4"/><text x="41.33" y="341.67" dominant-baseline="central">6·3</text></g>
+<path class="link" data-a="C_16" data-b="S4_M2" d="M616.0 396.33L670.67 396.33"/>
+<path class="link" data-a="C_36" data-b="C_46" d="M725.33 396.33L780.0 396.33"/>
+<path class="link" data-a="C_46" data-b="C_56" d="M780.0 396.33L834.67 396.33"/>
+<path class="link" data-a="C_56" data-b="S3_M2" d="M834.67 396.33L889.33 396.33"/>
+<path class="link" data-a="S0_M0" data-b="S0_M2" d="M780.0 287.0L834.67 287.0"/>
+<path class="link" data-a="S0_M0" data-b="S0_M3" d="M780.0 287.0L780.0 341.67"/>
+<path class="link" data-a="S0_M1" data-b="S0_M0" d="M780.0 232.33L780.0 287.0"/>
+<path class="link" data-a="S0_M2" data-b="S1_M2" d="M834.67 287.0L889.33 287.0"/>
+<path class="link" data-a="S0_M3" data-b="C_46" d="M780.0 341.67L780.0 396.33"/>
+<path class="link" data-a="S0_M4" data-b="S0_M0" d="M725.33 287.0L780.0 287.0"/>
+<path class="link" data-a="S1_M0" data-b="S1_M1" d="M944.0 287.0L944.0 341.67"/>
+<path class="link" data-a="S1_M1" data-b="C_76" d="M944.0 341.67L944.0 396.33"/>
+<path class="link" data-a="S1_M2" data-b="S1_M0" d="M889.33 287.0L944.0 287.0"/>
+<path class="link" data-a="S1_M3" data-b="S1_M0" d="M944.0 232.33L944.0 287.0"/>
+<path class="link" data-a="S2_M0" data-b="S2_M2" d="M616.0 287.0L670.67 287.0"/>
+<path class="link" data-a="S2_M0" data-b="S2_M3" d="M616.0 287.0L616.0 341.67"/>
+<path class="link" data-a="S2_M1" data-b="S2_M0" d="M616.0 232.33L616.0 287.0"/>
+<path class="link" data-a="S2_M2" data-b="S0_M4" d="M670.67 287.0L725.33 287.0"/>
+<path class="link" data-a="S2_M3" data-b="C_16" d="M616.0 341.67L616.0 396.33"/>
+<path class="link" data-a="S3_M0" data-b="S3_M3" d="M889.33 451.0L944.0 451.0"/>
+<path class="link" data-a="S3_M1" data-b="S3_M0" d="M834.67 451.0L889.33 451.0"/>
+<path class="link" data-a="S3_M2" data-b="C_76" d="M889.33 396.33L944.0 396.33"/>
+<path class="link" data-a="S3_M2" data-b="S3_M0" d="M889.33 396.33L889.33 451.0"/>
+<path class="link" data-a="S4_M0" data-b="S4_M3" d="M670.67 451.0L725.33 451.0"/>
+<path class="link" data-a="S4_M1" data-b="S4_M0" d="M616.0 451.0L670.67 451.0"/>
+<path class="link" data-a="S4_M2" data-b="C_36" d="M670.67 396.33L725.33 396.33"/>
+<path class="link" data-a="S4_M2" data-b="S4_M0" d="M670.67 396.33L670.67 451.0"/>
+<path class="proposed" data-a="C_46" data-b="C_42" d="M780.0 396.33L780.0 451.0"/>
+<g class="node passage" data-slot="C_16"><title>C_16 · Native passage</title><rect x="592.5" y="381.03" width="47.01" height="30.61" rx="4"/><text x="616.0" y="396.33" dominant-baseline="central">16</text></g>
+<g class="node passage" data-slot="C_36"><title>C_36 · Native passage</title><rect x="701.83" y="381.03" width="47.01" height="30.61" rx="4"/><text x="725.33" y="396.33" dominant-baseline="central">36</text></g>
+<g class="node passage" data-slot="C_42"><title>C_42 · Native passage</title><rect x="756.5" y="435.69" width="47.01" height="30.61" rx="4"/><text x="780.0" y="451.0" dominant-baseline="central">42</text></g>
+<g class="node passage" data-slot="C_46"><title>C_46 · Native passage</title><rect x="756.5" y="381.03" width="47.01" height="30.61" rx="4"/><text x="780.0" y="396.33" dominant-baseline="central">46</text></g>
+<g class="node passage" data-slot="C_56"><title>C_56 · Native passage</title><rect x="811.16" y="381.03" width="47.01" height="30.61" rx="4"/><text x="834.67" y="396.33" dominant-baseline="central">56</text></g>
+<g class="node passage" data-slot="C_76"><title>C_76 · Native passage</title><rect x="920.5" y="381.03" width="47.01" height="30.61" rx="4"/><text x="944.0" y="396.33" dominant-baseline="central">76</text></g>
+<g class="node core" data-slot="S0_M0"><title>S0_M0 · Area 1, slot 0</title><rect x="756.5" y="271.69" width="47.01" height="30.61" rx="4"/><text x="780.0" y="287.0" dominant-baseline="central">Core</text></g>
+<g class="node mine" data-slot="S0_M1"><title>S0_M1 · Area 1, slot 1</title><rect x="756.5" y="217.03" width="47.01" height="30.61" rx="4"/><text x="780.0" y="232.33" dominant-baseline="central">Mine</text></g>
+<g class="node facility" data-slot="S0_M2"><title>S0_M2 · Area 1, slot 2</title><rect x="811.16" y="271.69" width="47.01" height="30.61" rx="4"/><text x="834.67" y="287.0" dominant-baseline="central">1·2</text></g>
+<g class="node facility" data-slot="S0_M3"><title>S0_M3 · Area 1, slot 3</title><rect x="756.5" y="326.36" width="47.01" height="30.61" rx="4"/><text x="780.0" y="341.67" dominant-baseline="central">1·3</text></g>
+<g class="node facility" data-slot="S0_M4"><title>S0_M4 · Area 1, slot 4</title><rect x="701.83" y="271.69" width="47.01" height="30.61" rx="4"/><text x="725.33" y="287.0" dominant-baseline="central">1·4</text></g>
+<g class="node facility" data-slot="S1_M0"><title>S1_M0 · Area 3, slot 0</title><rect x="920.5" y="271.69" width="47.01" height="30.61" rx="4"/><text x="944.0" y="287.0" dominant-baseline="central">3·0</text></g>
+<g class="node facility" data-slot="S1_M1"><title>S1_M1 · Area 3, slot 1</title><rect x="920.5" y="326.36" width="47.01" height="30.61" rx="4"/><text x="944.0" y="341.67" dominant-baseline="central">3·1</text></g>
+<g class="node facility" data-slot="S1_M2"><title>S1_M2 · Area 3, slot 2</title><rect x="865.83" y="271.69" width="47.01" height="30.61" rx="4"/><text x="889.33" y="287.0" dominant-baseline="central">3·2</text></g>
+<g class="node facility" data-slot="S1_M3"><title>S1_M3 · Area 3, slot 3</title><rect x="920.5" y="217.03" width="47.01" height="30.61" rx="4"/><text x="944.0" y="232.33" dominant-baseline="central">3·3</text></g>
+<g class="node facility" data-slot="S2_M0"><title>S2_M0 · Area 2, slot 0</title><rect x="592.5" y="271.69" width="47.01" height="30.61" rx="4"/><text x="616.0" y="287.0" dominant-baseline="central">2·0</text></g>
+<g class="node facility" data-slot="S2_M1"><title>S2_M1 · Area 2, slot 1</title><rect x="592.5" y="217.03" width="47.01" height="30.61" rx="4"/><text x="616.0" y="232.33" dominant-baseline="central">2·1</text></g>
+<g class="node facility" data-slot="S2_M2"><title>S2_M2 · Area 2, slot 2</title><rect x="647.16" y="271.69" width="47.01" height="30.61" rx="4"/><text x="670.67" y="287.0" dominant-baseline="central">2·2</text></g>
+<g class="node facility" data-slot="S2_M3"><title>S2_M3 · Area 2, slot 3</title><rect x="592.5" y="326.36" width="47.01" height="30.61" rx="4"/><text x="616.0" y="341.67" dominant-baseline="central">2·3</text></g>
+<g class="node facility" data-slot="S3_M0"><title>S3_M0 · Area 5, slot 0</title><rect x="865.83" y="435.69" width="47.01" height="30.61" rx="4"/><text x="889.33" y="451.0" dominant-baseline="central">5·0</text></g>
+<g class="node facility" data-slot="S3_M1"><title>S3_M1 · Area 5, slot 1</title><rect x="811.16" y="435.69" width="47.01" height="30.61" rx="4"/><text x="834.67" y="451.0" dominant-baseline="central">5·1</text></g>
+<g class="node facility" data-slot="S3_M2"><title>S3_M2 · Area 5, slot 2</title><rect x="865.83" y="381.03" width="47.01" height="30.61" rx="4"/><text x="889.33" y="396.33" dominant-baseline="central">5·2</text></g>
+<g class="node facility" data-slot="S3_M3"><title>S3_M3 · Area 5, slot 3</title><rect x="920.5" y="435.69" width="47.01" height="30.61" rx="4"/><text x="944.0" y="451.0" dominant-baseline="central">5·3</text></g>
+<g class="node facility" data-slot="S4_M0"><title>S4_M0 · Area 4, slot 0</title><rect x="647.16" y="435.69" width="47.01" height="30.61" rx="4"/><text x="670.67" y="451.0" dominant-baseline="central">4·0</text></g>
+<g class="node facility" data-slot="S4_M1"><title>S4_M1 · Area 4, slot 1</title><rect x="592.5" y="435.69" width="47.01" height="30.61" rx="4"/><text x="616.0" y="451.0" dominant-baseline="central">4·1</text></g>
+<g class="node facility" data-slot="S4_M2"><title>S4_M2 · Area 4, slot 2</title><rect x="647.16" y="381.03" width="47.01" height="30.61" rx="4"/><text x="670.67" y="396.33" dominant-baseline="central">4·2</text></g>
+<g class="node facility" data-slot="S4_M3"><title>S4_M3 · Area 4, slot 3</title><rect x="701.83" y="435.69" width="47.01" height="30.61" rx="4"/><text x="725.33" y="451.0" dominant-baseline="central">4·3</text></g>
+<text x="260" y="526">Area·Slot • solid native route • dashed torus • dotted proposed T3</text>
+<text x="780" y="526">Area·Slot • numbered passage cells • dotted mini arm</text>
+</svg>

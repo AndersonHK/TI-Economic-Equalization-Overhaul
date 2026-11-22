@@ -19,6 +19,22 @@ the installed Terra Invicta 1.0.65 call paths.
 
 ## Verify before consolidating
 
+- **Waypoint hover and camera follow.** The installed camera update owns the
+  decision to suspend tracking. Navigation ready/end own the native input
+  flag and EEO lifetime cleanup clears stale owners. The fix refines the
+  single camera consumer for follow mode. Reproduce by following a moving
+  ship, hovering its waypoint, holding to edit, releasing over the waypoint,
+  then switching battles. [Design and verification](../ship-balance-research/waypoint-follow-and-missile-performance.md).
+
+- **Habitat slots and graphical connections.** Phase 1 owns sector gates in
+  HabSectorProgression. The preview and strategic model still use fixed cell
+  and module loops, native connector code has separate directional and
+  ring/passage paths, and AI capacity checks include fixed-count consumers.
+  Drive each from the resolved layout before adding M4/M5. Use the same sparse,
+  full, foreign-owned and damaged save fixtures across placement, UI,
+  overworld, rendered and simulated combat, and save recovery.
+  [Consumer seams and parity cases](../habitat-slots/phase2-station-expansion-plan.md#shared-layout-resolver-and-consumer-parity).
+
 - **Combat contact.** Prepared projectile queries and native raycasts
   can participate in the same enabled battle, and a native fallback
   body sends nearest-missile queries through the all-hit path. Compare

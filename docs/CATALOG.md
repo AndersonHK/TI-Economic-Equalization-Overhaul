@@ -2,7 +2,7 @@
 
 Last updated 2026-11-22. This catalog indexes every other file under `docs/`, including machine-readable evidence and images. For interpretation, start with the [documentation map](README.md), [ship-balance hub](ship-balance-research/README.md), or [archive index](archive/README.md). Location/type labels are navigation aids, not assertions that all research is implemented.
 
-Indexed files: **608**. No archived evidence was deleted during the organization pass.
+Indexed files: **612**. No archived evidence was deleted during the organization pass.
 
 
 ## Top-level guides and authorities
@@ -156,6 +156,9 @@ Indexed files: **608**. No archived evidence was deleted during the organization
 |---|---|
 | [habitat-slots/phase1-assets-2026-11-05.json](habitat-slots/phase1-assets-2026-11-05.json) | JSON |
 | [habitat-slots/phase1-deployment-0.11.10.json](habitat-slots/phase1-deployment-0.11.10.json) | JSON |
+| [habitat-slots/phase2-floorplan-data.json](habitat-slots/phase2-floorplan-data.json) | JSON |
+| [habitat-slots/phase2-floorplans.svg](habitat-slots/phase2-floorplans.svg) | SVG |
+| [habitat-slots/phase2-station-expansion-plan.md](habitat-slots/phase2-station-expansion-plan.md) | MD |
 
 ## orbits-and-lunar-resources
 
@@ -628,6 +631,7 @@ Indexed files: **608**. No archived evidence was deleted during the organization
 | [ship-balance-research/utility-expansion/designer-prefab-inputs.json](ship-balance-research/utility-expansion/designer-prefab-inputs.json) | JSON |
 | [ship-balance-research/utility-expansion/hull-slots-before-0.11.1.json](ship-balance-research/utility-expansion/hull-slots-before-0.11.1.json) | JSON |
 | [ship-balance-research/utility-expansion/runtime-0.11.1.json](ship-balance-research/utility-expansion/runtime-0.11.1.json) | JSON |
+| [ship-balance-research/waypoint-follow-and-missile-performance.md](ship-balance-research/waypoint-follow-and-missile-performance.md) | MD |
 | [ship-balance-research/weapon-automation-and-crew.md](ship-balance-research/weapon-automation-and-crew.md) | MD |
 | [ship-balance-research/weapon-visibility-and-maximum-nose-plan-2026-09-25.md](ship-balance-research/weapon-visibility-and-maximum-nose-plan-2026-09-25.md) | MD |
 
