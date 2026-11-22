@@ -46,6 +46,23 @@ namespace TIEconomyMod.Patches
         public static bool TryGetSnapshot(
             TISpaceShipTemplate ship, out FuelCapacitySnapshot snapshot)
         {
+            DesignerPartEdit edit = DesignerPartEdit.ForPublication(ship);
+            if (edit == null)
+            {
+                return CalculateSnapshot(ship, out snapshot);
+            }
+            if (!edit.FuelComputed)
+            {
+                edit.HasFuelCapacity = CalculateSnapshot(ship, out edit.FuelCapacity);
+                edit.FuelComputed = true;
+            }
+            snapshot = edit.FuelCapacity;
+            return edit.HasFuelCapacity;
+        }
+
+        private static bool CalculateSnapshot(
+            TISpaceShipTemplate ship, out FuelCapacitySnapshot snapshot)
+        {
             snapshot = default(FuelCapacitySnapshot);
             if (!Enabled || ship == null || ship.hullTemplate == null ||
                 ship.driveTemplate == null)
@@ -73,12 +90,13 @@ namespace TIEconomyMod.Patches
 
             ShipBalanceSettings settings = Main.settings.shipBalance;
             float moduleVolume_m3 = ModuleVolume_m3(ship, settings);
-            float crewVolume_m3 = Math.Max(0, ship.crewBillets) *
+            int crew = ship.crewBillets;
+            float crewVolume_m3 = Math.Max(0, crew) *
                 Math.Max(0f, settings.crewPressurizedVolume_m3);
             float fuelVolume_m3 = ShipBalanceMath.FuelVolume_m3(
                 hullVolume_m3,
                 moduleVolume_m3,
-                ship.crewBillets,
+                crew,
                 settings.crewPressurizedVolume_m3);
             float density = PropellantDensityRegistry.Density_kgm3(
                 ship.driveTemplate);
@@ -285,6 +303,14 @@ namespace TIEconomyMod.Patches
         private static float ModuleVolume_m3(
             TISpaceShipTemplate ship, ShipBalanceSettings settings)
         {
+            var edit = DesignerPartEdit.ForPublication(ship);
+            if (edit != null)
+            {
+                var totals = edit.Totals;
+                return totals.UtilityCells * Math.Max(0f, settings.utilitySlotVolume_m3) +
+                    totals.HullCells * Math.Max(0f, settings.hullWeaponSlotVolume_m3) +
+                    totals.NoseCells * Math.Max(0f, settings.noseWeaponSlotVolume_m3);
+            }
             int utilityCells = 0;
             foreach (ModuleDataEntry module in ship.utilityModules)
             {
@@ -622,16 +648,6 @@ namespace TIEconomyMod.Patches
             rect.anchoredPosition = new Vector2(0f, -8f);
             rect.sizeDelta = new Vector2(-120f, 58f);
             return label;
-        }
-    }
-
-    [HarmonyPatch(typeof(TemplateManager), "Initialize")]
-    public static class PropellantDensityTemplateInitializationPatch
-    {
-        [HarmonyPostfix]
-        public static void Postfix()
-        {
-            PropellantDensityRegistry.Refresh();
         }
     }
 

@@ -1,0 +1,1076 @@
+{
+  "scope": "Unity 2020.3.49f1 batchmode / nographics, Terra Invicta 1.0.65. Copied campaign. Handler plus forced Canvas update measured in the input frame; following frames sampled without profiler timing. Stage samples have additional Harmony instrumentation and are inclusive. Headless frames include background scene work and are not GPU/presentation measurements.",
+  "fixture": {
+    "sha256": "2B6B416A58A33A32C985E2F42CDA4E0B390BA30A7DC99ED53CCE80BD25EA7BF7",
+    "route": "First to last Earth orbit by semimajor axis; route 0 is unset and route 1 configured.",
+    "roundtrip": "Remove Salvage Bay and reinstall in the same anchor, selecting the newly installed slot."
+  },
+  "runs": {
+    "0.11.15": {
+      "unity": "2020.3.49f1",
+      "hull": "Dreadnought",
+      "utilities": 8,
+      "weapons": 11,
+      "part": "SalvageBay",
+      "counts": {
+        "shipModuleListItems": 752,
+        "shipModuleListItemsB": 504
+      },
+      "original": {
+        "propellantTanks": 131,
+        "crewBillets": 129,
+        "dryMass": 22938.4648,
+        "dv": 37.4066963,
+        "heat": 0.0,
+        "battery": 0.0,
+        "cost": [
+          {
+            "resource": 10,
+            "value": 996.494141
+          },
+          {
+            "resource": 9,
+            "value": 1042.68188
+          },
+          {
+            "resource": 8,
+            "value": 1324.13037
+          },
+          {
+            "resource": 11,
+            "value": 216.375122
+          },
+          {
+            "resource": 12,
+            "value": 17.0651474
+          }
+        ]
+      },
+      "final": {
+        "propellantTanks": 131,
+        "crewBillets": 129,
+        "dryMass": 22938.4648,
+        "dv": 37.4066963,
+        "heat": 0.0,
+        "battery": 0.0,
+        "cost": [
+          {
+            "resource": 10,
+            "value": 996.494141
+          },
+          {
+            "resource": 9,
+            "value": 1042.68188
+          },
+          {
+            "resource": 8,
+            "value": 1324.13037
+          },
+          {
+            "resource": 11,
+            "value": 216.375122
+          },
+          {
+            "resource": 12,
+            "value": 17.0651474
+          }
+        ]
+      },
+      "results": [
+        {
+          "route": 0,
+          "add": false,
+          "handlerMs": 997.1962000000001,
+          "canvasMs": 28.1936,
+          "stageFrames": [
+            8.5867,
+            7.503100000000001,
+            8.3262
+          ],
+          "stages": null,
+          "tanksBefore": 131,
+          "propellantTanks": 131
+        },
+        {
+          "route": 0,
+          "add": true,
+          "handlerMs": 2018.9674,
+          "canvasMs": 29.763900000000003,
+          "stageFrames": [
+            8.2955,
+            7.519100000000001,
+            7.3176000000000005
+          ],
+          "stages": null,
+          "tanksBefore": 131,
+          "propellantTanks": 131
+        },
+        {
+          "route": 0,
+          "add": false,
+          "handlerMs": 959.4458000000001,
+          "canvasMs": 38.2336,
+          "stageFrames": [
+            8.4708,
+            7.4267,
+            7.392600000000001
+          ],
+          "stages": null,
+          "tanksBefore": 131,
+          "propellantTanks": 131
+        },
+        {
+          "route": 0,
+          "add": true,
+          "handlerMs": 1933.305,
+          "canvasMs": 33.181400000000004,
+          "stageFrames": [
+            8.9048,
+            7.868600000000001,
+            8.3492
+          ],
+          "stages": null,
+          "tanksBefore": 131,
+          "propellantTanks": 131
+        },
+        {
+          "route": 0,
+          "add": false,
+          "handlerMs": 959.9641,
+          "canvasMs": 28.378500000000003,
+          "stageFrames": [
+            8.3354,
+            7.4341,
+            7.178400000000001
+          ],
+          "stages": null,
+          "tanksBefore": 131,
+          "propellantTanks": 131
+        },
+        {
+          "route": 0,
+          "add": true,
+          "handlerMs": 1942.0369,
+          "canvasMs": 30.904300000000003,
+          "stageFrames": [
+            8.6302,
+            7.3912,
+            7.1196
+          ],
+          "stages": null,
+          "tanksBefore": 131,
+          "propellantTanks": 131
+        },
+        {
+          "route": 0,
+          "add": false,
+          "handlerMs": 933.2750000000001,
+          "canvasMs": 33.9198,
+          "stageFrames": [
+            8.7195,
+            7.4131,
+            7.6812000000000005
+          ],
+          "stages": null,
+          "tanksBefore": 131,
+          "propellantTanks": 131
+        },
+        {
+          "route": 0,
+          "add": true,
+          "handlerMs": 2156.2958000000003,
+          "canvasMs": 29.2494,
+          "stageFrames": [
+            9.972000000000001,
+            8.5131,
+            9.16
+          ],
+          "stages": null,
+          "tanksBefore": 131,
+          "propellantTanks": 131
+        },
+        {
+          "route": 0,
+          "add": false,
+          "handlerMs": 960.4223000000001,
+          "canvasMs": 28.7928,
+          "stageFrames": [
+            9.5515,
+            7.682200000000001,
+            7.0774
+          ],
+          "stages": null,
+          "tanksBefore": 131,
+          "propellantTanks": 131
+        },
+        {
+          "route": 0,
+          "add": true,
+          "handlerMs": 1874.6732000000002,
+          "canvasMs": 30.2238,
+          "stageFrames": [
+            8.3986,
+            7.9054,
+            7.5518
+          ],
+          "stages": null,
+          "tanksBefore": 131,
+          "propellantTanks": 131
+        },
+        {
+          "route": 0,
+          "add": false,
+          "handlerMs": 997.7843,
+          "canvasMs": 31.4159,
+          "stageFrames": [
+            8.987400000000001,
+            8.105500000000001,
+            7.5414
+          ],
+          "stages": null,
+          "tanksBefore": 131,
+          "propellantTanks": 131
+        },
+        {
+          "route": 0,
+          "add": true,
+          "handlerMs": 1985.7706,
+          "canvasMs": 45.990100000000005,
+          "stageFrames": [
+            10.8092,
+            8.943200000000001,
+            8.020100000000001
+          ],
+          "stages": {
+            "cost": {
+              "calls": 6,
+              "inclusiveMs": 0.6071000000000002
+            },
+            "mass": {
+              "calls": 4630,
+              "inclusiveMs": 5.332699999999824
+            },
+            "fuel": {
+              "calls": 12,
+              "inclusiveMs": 0.6092
+            },
+            "dataPanel": {
+              "calls": 4,
+              "inclusiveMs": 27.7168
+            },
+            "roleDropdown": {
+              "calls": 2,
+              "inclusiveMs": 1.462
+            },
+            "reactor": {
+              "calls": 34216,
+              "inclusiveMs": 1861.4797000000335
+            },
+            "catalog": {
+              "calls": 2,
+              "inclusiveMs": 1955.96
+            },
+            "transferUi": {
+              "calls": 2,
+              "inclusiveMs": 0.0106
+            },
+            "remove": {
+              "calls": 1,
+              "inclusiveMs": 914.6553
+            },
+            "combatScore": {
+              "calls": 1,
+              "inclusiveMs": 25.04
+            }
+          },
+          "tanksBefore": 131,
+          "propellantTanks": 131
+        },
+        {
+          "route": 1,
+          "add": false,
+          "handlerMs": 992.5848000000001,
+          "canvasMs": 29.184800000000003,
+          "stageFrames": [
+            8.273,
+            7.491300000000001,
+            7.9355
+          ],
+          "stages": null,
+          "tanksBefore": 131,
+          "propellantTanks": 131
+        },
+        {
+          "route": 1,
+          "add": true,
+          "handlerMs": 2067.7577,
+          "canvasMs": 30.3949,
+          "stageFrames": [
+            10.4192,
+            8.68,
+            7.8749
+          ],
+          "stages": null,
+          "tanksBefore": 131,
+          "propellantTanks": 131
+        },
+        {
+          "route": 1,
+          "add": false,
+          "handlerMs": 934.8763,
+          "canvasMs": 31.4459,
+          "stageFrames": [
+            9.526100000000001,
+            7.9775,
+            7.7431
+          ],
+          "stages": null,
+          "tanksBefore": 131,
+          "propellantTanks": 131
+        },
+        {
+          "route": 1,
+          "add": true,
+          "handlerMs": 2131.8789,
+          "canvasMs": 37.0715,
+          "stageFrames": [
+            10.2644,
+            8.722,
+            7.1333
+          ],
+          "stages": null,
+          "tanksBefore": 131,
+          "propellantTanks": 131
+        },
+        {
+          "route": 1,
+          "add": false,
+          "handlerMs": 951.4734000000001,
+          "canvasMs": 36.1866,
+          "stageFrames": [
+            8.855,
+            7.277200000000001,
+            7.11
+          ],
+          "stages": null,
+          "tanksBefore": 131,
+          "propellantTanks": 131
+        },
+        {
+          "route": 1,
+          "add": true,
+          "handlerMs": 1943.8323,
+          "canvasMs": 31.171000000000003,
+          "stageFrames": [
+            9.595600000000001,
+            8.129800000000001,
+            7.1207
+          ],
+          "stages": null,
+          "tanksBefore": 131,
+          "propellantTanks": 131
+        },
+        {
+          "route": 1,
+          "add": false,
+          "handlerMs": 921.9194,
+          "canvasMs": 28.4538,
+          "stageFrames": [
+            8.4015,
+            7.292000000000001,
+            7.4161
+          ],
+          "stages": null,
+          "tanksBefore": 131,
+          "propellantTanks": 131
+        },
+        {
+          "route": 1,
+          "add": true,
+          "handlerMs": 1898.7167000000002,
+          "canvasMs": 33.074200000000005,
+          "stageFrames": [
+            10.0258,
+            7.650600000000001,
+            7.6078
+          ],
+          "stages": null,
+          "tanksBefore": 131,
+          "propellantTanks": 131
+        },
+        {
+          "route": 1,
+          "add": false,
+          "handlerMs": 926.9254000000001,
+          "canvasMs": 28.167,
+          "stageFrames": [
+            8.6409,
+            7.7168,
+            7.926500000000001
+          ],
+          "stages": null,
+          "tanksBefore": 131,
+          "propellantTanks": 131
+        },
+        {
+          "route": 1,
+          "add": true,
+          "handlerMs": 1951.6508000000001,
+          "canvasMs": 30.1932,
+          "stageFrames": [
+            8.378300000000001,
+            7.271100000000001,
+            7.187200000000001
+          ],
+          "stages": null,
+          "tanksBefore": 131,
+          "propellantTanks": 131
+        },
+        {
+          "route": 1,
+          "add": false,
+          "handlerMs": 935.1169000000001,
+          "canvasMs": 28.171100000000003,
+          "stageFrames": [
+            8.9441,
+            7.1467,
+            7.0159
+          ],
+          "stages": null,
+          "tanksBefore": 131,
+          "propellantTanks": 131
+        },
+        {
+          "route": 1,
+          "add": true,
+          "handlerMs": 1949.8216,
+          "canvasMs": 29.9147,
+          "stageFrames": [
+            8.8794,
+            9.047600000000001,
+            7.024500000000001
+          ],
+          "stages": {
+            "cost": {
+              "calls": 6,
+              "inclusiveMs": 0.5724
+            },
+            "mass": {
+              "calls": 4638,
+              "inclusiveMs": 5.770199999999738
+            },
+            "fuel": {
+              "calls": 12,
+              "inclusiveMs": 0.5875000000000001
+            },
+            "dataPanel": {
+              "calls": 4,
+              "inclusiveMs": 28.168400000000002
+            },
+            "roleDropdown": {
+              "calls": 2,
+              "inclusiveMs": 1.3227
+            },
+            "reactor": {
+              "calls": 34216,
+              "inclusiveMs": 1805.4792000000311
+            },
+            "catalog": {
+              "calls": 2,
+              "inclusiveMs": 1899.2368000000001
+            },
+            "transferUi": {
+              "calls": 2,
+              "inclusiveMs": 20.5309
+            },
+            "remove": {
+              "calls": 1,
+              "inclusiveMs": 956.163
+            },
+            "combatScore": {
+              "calls": 1,
+              "inclusiveMs": 25.6001
+            },
+            "transferSolver": {
+              "calls": 2,
+              "inclusiveMs": 19.3187
+            }
+          },
+          "tanksBefore": 131,
+          "propellantTanks": 131
+        }
+      ],
+      "summary": [
+        {
+          "route": 0,
+          "add": false,
+          "samples": 6,
+          "handlerMedianMs": 960.193,
+          "handlerMaxMs": 997.784,
+          "forcedCanvasMedianMs": 30.104,
+          "forcedCanvasMaxMs": 38.234,
+          "followingFrameMedianMs": 7.682,
+          "followingFrameMaxMs": 9.552
+        },
+        {
+          "route": 0,
+          "add": true,
+          "samples": 5,
+          "handlerMedianMs": 1942.037,
+          "handlerMaxMs": 2156.296,
+          "forcedCanvasMedianMs": 30.224,
+          "forcedCanvasMaxMs": 33.181,
+          "followingFrameMedianMs": 8.296,
+          "followingFrameMaxMs": 9.972
+        },
+        {
+          "route": 1,
+          "add": false,
+          "samples": 6,
+          "handlerMedianMs": 934.997,
+          "handlerMaxMs": 992.585,
+          "forcedCanvasMedianMs": 28.819,
+          "forcedCanvasMaxMs": 36.187,
+          "followingFrameMedianMs": 7.835,
+          "followingFrameMaxMs": 9.526
+        },
+        {
+          "route": 1,
+          "add": true,
+          "samples": 5,
+          "handlerMedianMs": 1951.651,
+          "handlerMaxMs": 2131.879,
+          "forcedCanvasMedianMs": 31.171,
+          "forcedCanvasMaxMs": 37.072,
+          "followingFrameMedianMs": 8.13,
+          "followingFrameMaxMs": 10.419
+        }
+      ],
+      "modDllSha256": "B2DE0BE1CB903512839B144AB8C9ABC3C6E022BD5CC5C499F8D8E16FC950E2B5"
+    },
+    "0.11.16": {
+      "unity": "2020.3.49f1",
+      "hull": "Dreadnought",
+      "utilities": 8,
+      "weapons": 11,
+      "part": "SalvageBay",
+      "counts": {
+        "shipModuleListItems": 752,
+        "shipModuleListItemsB": 504
+      },
+      "original": {
+        "propellantTanks": 131,
+        "crewBillets": 129,
+        "dryMass": 22938.4648,
+        "dv": 37.4066963,
+        "heat": 0.0,
+        "battery": 0.0,
+        "cost": [
+          {
+            "resource": 10,
+            "value": 996.494141
+          },
+          {
+            "resource": 9,
+            "value": 1042.68188
+          },
+          {
+            "resource": 8,
+            "value": 1324.13037
+          },
+          {
+            "resource": 11,
+            "value": 216.375122
+          },
+          {
+            "resource": 12,
+            "value": 17.0651474
+          }
+        ]
+      },
+      "final": {
+        "propellantTanks": 131,
+        "crewBillets": 129,
+        "dryMass": 22938.4648,
+        "dv": 37.4066963,
+        "heat": 0.0,
+        "battery": 0.0,
+        "cost": [
+          {
+            "resource": 10,
+            "value": 996.494141
+          },
+          {
+            "resource": 9,
+            "value": 1042.68188
+          },
+          {
+            "resource": 8,
+            "value": 1324.13037
+          },
+          {
+            "resource": 11,
+            "value": 216.375122
+          },
+          {
+            "resource": 12,
+            "value": 17.0651474
+          }
+        ]
+      },
+      "results": [
+        {
+          "route": 0,
+          "add": false,
+          "handlerMs": 17.8274,
+          "canvasMs": 2.4863,
+          "stageFrames": [
+            7.5793,
+            9.2024,
+            8.8588
+          ],
+          "stages": null,
+          "tanksBefore": 131,
+          "propellantTanks": 131
+        },
+        {
+          "route": 0,
+          "add": true,
+          "handlerMs": 18.4333,
+          "canvasMs": 3.8602000000000003,
+          "stageFrames": [
+            7.7096,
+            7.6774000000000004,
+            7.7708
+          ],
+          "stages": null,
+          "tanksBefore": 131,
+          "propellantTanks": 131
+        },
+        {
+          "route": 0,
+          "add": false,
+          "handlerMs": 17.7447,
+          "canvasMs": 2.5342000000000002,
+          "stageFrames": [
+            8.232700000000001,
+            8.4758,
+            7.2888
+          ],
+          "stages": null,
+          "tanksBefore": 131,
+          "propellantTanks": 131
+        },
+        {
+          "route": 0,
+          "add": true,
+          "handlerMs": 19.0445,
+          "canvasMs": 3.8987000000000003,
+          "stageFrames": [
+            7.6103000000000005,
+            7.523300000000001,
+            7.2876
+          ],
+          "stages": null,
+          "tanksBefore": 131,
+          "propellantTanks": 131
+        },
+        {
+          "route": 0,
+          "add": false,
+          "handlerMs": 17.918400000000002,
+          "canvasMs": 2.4983,
+          "stageFrames": [
+            7.8799,
+            8.566600000000001,
+            7.206
+          ],
+          "stages": null,
+          "tanksBefore": 131,
+          "propellantTanks": 131
+        },
+        {
+          "route": 0,
+          "add": true,
+          "handlerMs": 17.868100000000002,
+          "canvasMs": 3.6493,
+          "stageFrames": [
+            7.3458000000000006,
+            7.3036,
+            8.0036
+          ],
+          "stages": null,
+          "tanksBefore": 131,
+          "propellantTanks": 131
+        },
+        {
+          "route": 0,
+          "add": false,
+          "handlerMs": 18.4415,
+          "canvasMs": 2.5985,
+          "stageFrames": [
+            7.481400000000001,
+            7.761500000000001,
+            7.619700000000001
+          ],
+          "stages": null,
+          "tanksBefore": 131,
+          "propellantTanks": 131
+        },
+        {
+          "route": 0,
+          "add": true,
+          "handlerMs": 25.277900000000002,
+          "canvasMs": 5.1706,
+          "stageFrames": [
+            9.7286,
+            8.1122,
+            7.0829
+          ],
+          "stages": null,
+          "tanksBefore": 131,
+          "propellantTanks": 131
+        },
+        {
+          "route": 0,
+          "add": false,
+          "handlerMs": 17.5896,
+          "canvasMs": 2.4807,
+          "stageFrames": [
+            7.2961,
+            6.9491000000000005,
+            7.0200000000000005
+          ],
+          "stages": null,
+          "tanksBefore": 131,
+          "propellantTanks": 131
+        },
+        {
+          "route": 0,
+          "add": true,
+          "handlerMs": 18.012,
+          "canvasMs": 3.8105,
+          "stageFrames": [
+            7.710800000000001,
+            8.4634,
+            7.3235
+          ],
+          "stages": null,
+          "tanksBefore": 131,
+          "propellantTanks": 131
+        },
+        {
+          "route": 0,
+          "add": false,
+          "handlerMs": 18.3703,
+          "canvasMs": 3.5741,
+          "stageFrames": [
+            7.4752,
+            7.134600000000001,
+            7.109
+          ],
+          "stages": null,
+          "tanksBefore": 131,
+          "propellantTanks": 131
+        },
+        {
+          "route": 0,
+          "add": true,
+          "handlerMs": 19.3609,
+          "canvasMs": 3.8270000000000004,
+          "stageFrames": [
+            8.1141,
+            7.779100000000001,
+            7.819500000000001
+          ],
+          "stages": {
+            "remove": {
+              "calls": 1,
+              "inclusiveMs": 0.0062
+            },
+            "fuel": {
+              "calls": 4,
+              "inclusiveMs": 0.0092
+            },
+            "mass": {
+              "calls": 4611,
+              "inclusiveMs": 4.221699999999854
+            },
+            "cost": {
+              "calls": 2,
+              "inclusiveMs": 0.0392
+            },
+            "combatScore": {
+              "calls": 1,
+              "inclusiveMs": 17.9605
+            },
+            "dataPanel": {
+              "calls": 1,
+              "inclusiveMs": 18.4165
+            },
+            "transferUi": {
+              "calls": 1,
+              "inclusiveMs": 0.005
+            }
+          },
+          "tanksBefore": 131,
+          "propellantTanks": 131
+        },
+        {
+          "route": 1,
+          "add": false,
+          "handlerMs": 57.842000000000006,
+          "canvasMs": 2.9330000000000003,
+          "stageFrames": [
+            10.0817,
+            9.4603,
+            10.246400000000001
+          ],
+          "stages": null,
+          "tanksBefore": 131,
+          "propellantTanks": 131
+        },
+        {
+          "route": 1,
+          "add": true,
+          "handlerMs": 47.496300000000005,
+          "canvasMs": 4.0907,
+          "stageFrames": [
+            9.789100000000001,
+            9.431700000000001,
+            9.412600000000001
+          ],
+          "stages": null,
+          "tanksBefore": 131,
+          "propellantTanks": 131
+        },
+        {
+          "route": 1,
+          "add": false,
+          "handlerMs": 52.891400000000004,
+          "canvasMs": 3.0330000000000004,
+          "stageFrames": [
+            9.2201,
+            9.0538,
+            8.8353
+          ],
+          "stages": null,
+          "tanksBefore": 131,
+          "propellantTanks": 131
+        },
+        {
+          "route": 1,
+          "add": true,
+          "handlerMs": 55.519600000000004,
+          "canvasMs": 4.0321,
+          "stageFrames": [
+            9.4665,
+            9.5218,
+            8.758600000000001
+          ],
+          "stages": null,
+          "tanksBefore": 131,
+          "propellantTanks": 131
+        },
+        {
+          "route": 1,
+          "add": false,
+          "handlerMs": 40.4819,
+          "canvasMs": 2.8687,
+          "stageFrames": [
+            9.2133,
+            8.9777,
+            8.5868
+          ],
+          "stages": null,
+          "tanksBefore": 131,
+          "propellantTanks": 131
+        },
+        {
+          "route": 1,
+          "add": true,
+          "handlerMs": 40.596000000000004,
+          "canvasMs": 5.1532,
+          "stageFrames": [
+            10.934700000000001,
+            10.5594,
+            10.3086
+          ],
+          "stages": null,
+          "tanksBefore": 131,
+          "propellantTanks": 131
+        },
+        {
+          "route": 1,
+          "add": false,
+          "handlerMs": 47.4159,
+          "canvasMs": 2.7214,
+          "stageFrames": [
+            9.292,
+            8.9093,
+            8.8309
+          ],
+          "stages": null,
+          "tanksBefore": 131,
+          "propellantTanks": 131
+        },
+        {
+          "route": 1,
+          "add": true,
+          "handlerMs": 48.74,
+          "canvasMs": 4.0576,
+          "stageFrames": [
+            9.3793,
+            9.069600000000001,
+            9.2263
+          ],
+          "stages": null,
+          "tanksBefore": 131,
+          "propellantTanks": 131
+        },
+        {
+          "route": 1,
+          "add": false,
+          "handlerMs": 49.6879,
+          "canvasMs": 2.8758000000000004,
+          "stageFrames": [
+            8.925600000000001,
+            8.7141,
+            8.749
+          ],
+          "stages": null,
+          "tanksBefore": 131,
+          "propellantTanks": 131
+        },
+        {
+          "route": 1,
+          "add": true,
+          "handlerMs": 37.288000000000004,
+          "canvasMs": 3.9916,
+          "stageFrames": [
+            9.2135,
+            9.657,
+            10.296700000000001
+          ],
+          "stages": null,
+          "tanksBefore": 131,
+          "propellantTanks": 131
+        },
+        {
+          "route": 1,
+          "add": false,
+          "handlerMs": 53.695800000000006,
+          "canvasMs": 2.8225000000000002,
+          "stageFrames": [
+            7.7023,
+            7.2239,
+            7.1299
+          ],
+          "stages": null,
+          "tanksBefore": 131,
+          "propellantTanks": 131
+        },
+        {
+          "route": 1,
+          "add": true,
+          "handlerMs": 28.236500000000003,
+          "canvasMs": 4.0254,
+          "stageFrames": [
+            7.7815,
+            7.224200000000001,
+            7.1094
+          ],
+          "stages": {
+            "remove": {
+              "calls": 1,
+              "inclusiveMs": 0.0052
+            },
+            "fuel": {
+              "calls": 4,
+              "inclusiveMs": 0.008499999999999999
+            },
+            "mass": {
+              "calls": 4615,
+              "inclusiveMs": 4.207899999999935
+            },
+            "cost": {
+              "calls": 2,
+              "inclusiveMs": 0.0368
+            },
+            "combatScore": {
+              "calls": 1,
+              "inclusiveMs": 17.3618
+            },
+            "dataPanel": {
+              "calls": 1,
+              "inclusiveMs": 17.7854
+            },
+            "transferSolver": {
+              "calls": 1,
+              "inclusiveMs": 9.2282
+            },
+            "transferUi": {
+              "calls": 1,
+              "inclusiveMs": 9.6341
+            }
+          },
+          "tanksBefore": 131,
+          "propellantTanks": 131
+        }
+      ],
+      "checks": [
+        "SalvageBay removal and installation matched full recalculation.",
+        "Magazine removal and installation matched full recalculation.",
+        "HeavyIonBattery removal and installation matched full recalculation.",
+        "Fuel limit 132 -> 131 including cost."
+      ],
+      "summary": [
+        {
+          "route": 0,
+          "add": false,
+          "samples": 6,
+          "handlerMedianMs": 17.873,
+          "handlerMaxMs": 18.442,
+          "forcedCanvasMedianMs": 2.516,
+          "forcedCanvasMaxMs": 3.574,
+          "followingFrameMedianMs": 7.53,
+          "followingFrameMaxMs": 9.202
+        },
+        {
+          "route": 0,
+          "add": true,
+          "samples": 5,
+          "handlerMedianMs": 18.433,
+          "handlerMaxMs": 25.278,
+          "forcedCanvasMedianMs": 3.86,
+          "forcedCanvasMaxMs": 5.171,
+          "followingFrameMedianMs": 7.677,
+          "followingFrameMaxMs": 9.729
+        },
+        {
+          "route": 1,
+          "add": false,
+          "samples": 6,
+          "handlerMedianMs": 51.29,
+          "handlerMaxMs": 57.842,
+          "forcedCanvasMedianMs": 2.872,
+          "forcedCanvasMaxMs": 3.033,
+          "followingFrameMedianMs": 8.917,
+          "followingFrameMaxMs": 10.246
+        },
+        {
+          "route": 1,
+          "add": true,
+          "samples": 5,
+          "handlerMedianMs": 47.496,
+          "handlerMaxMs": 55.52,
+          "forcedCanvasMedianMs": 4.058,
+          "forcedCanvasMaxMs": 5.153,
+          "followingFrameMedianMs": 9.466,
+          "followingFrameMaxMs": 10.935
+        }
+      ],
+      "modDllSha256": "7CA473158929C9C38917AA4FECA6F6D18E3324E8D39BC671B76B2F0A6FDB3388"
+    }
+  }
+}

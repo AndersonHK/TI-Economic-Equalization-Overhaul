@@ -369,6 +369,10 @@ namespace TIEconomyMod.Patches
                 __instance.newShipTemplate.hullTemplate;
             TIShipHullTemplate.ShipModuleSlot queriedSlot =
                 hull.GetSlotByCoordinates(coordinates);
+            if (queriedSlot.moduleSlotType != ShipModuleSlotType.Utility)
+            {
+                return true;
+            }
             int queriedSlotIndex = hull.slotIndex(queriedSlot);
             TIShipPartTemplate part;
             int anchorSlotIndex;

@@ -3,6 +3,26 @@
 This is a decision log for the proposed ship rebalance. Entries here describe
 the balance decisions as well as their implementation status.
 
+## 2026-11-21
+
+### 0.11.18 designer changes accepted
+
+- Publish a finished part edit once and apply the part delta to installed
+  mass, cost, crew, fuel space, and electrical and thermal totals. Cache bay
+  limits by hull appearance and plant, and size the reactor from its demand
+  inputs. Refresh the affected catalog rows.
+- Keep combat score and transfer time automatic. The headless Dreadnought
+  install median fell from 1,942 ms to 18.4 ms with a route unset. The player
+  found the speed sufficient. The under-1-ms target remains open.
+- Attach EEO runtime hooks after the native template merge and roll them
+  back on initialization failure. The copied campaign loaded after an
+  isolated mods-off startup and a same-session enable. The player confirmed
+  save loading and designer readouts in 0.11.17.
+- Rebuild the missing preview when returning from the transfer planner.
+  Headless checks covered immediate and delayed returns. The player confirmed
+  that the ship art stayed visible in 0.11.18.
+  [Implementation and validation](ship-designer-edit-performance-plan.md).
+
 ## 2026-11-05
 
 ### Read-only follow-up after stable checkpoint

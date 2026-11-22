@@ -2,6 +2,7 @@ using HarmonyLib;
 using PavonisInteractive.TerraInvicta;
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 
 namespace TIEconomyMod.Patches
 {
@@ -187,6 +188,21 @@ namespace TIEconomyMod.Patches
 
     internal static class ShipPowerDemandFeature
     {
+        private sealed class Sizing
+        {
+            internal TIPowerPlantTemplate Plant;
+            internal bool OpenCycle;
+            internal float Drive;
+            internal float Auxiliary;
+            internal float Efficiency;
+            internal float ResidualHeat;
+            internal float MassScale;
+            internal ShipPowerDemandSnapshot Result;
+        }
+
+        private static readonly ConditionalWeakTable<TISpaceShipTemplate, Sizing> sizing =
+            new ConditionalWeakTable<TISpaceShipTemplate, Sizing>();
+
         public static bool Enabled
         {
             get
@@ -224,15 +240,37 @@ namespace TIEconomyMod.Patches
                 ? PowerPlantScalingRegistry
                     .OpenCycleThermalMassMultiplier(powerPlant)
                 : 1f;
-            return PowerPlantThermalMath.CalculateShipDemand(
-                drive != null && drive.openCycleCooling,
-                driveDemand_GW,
-                auxiliaryElectricalDemand_GW,
-                powerPlant.efficiency,
-                settings.openCycleResidualHeatEnabled
-                    ? settings.openCycleDriveHeatFraction
-                    : 0f,
-                multiplier);
+            bool openCycle = drive != null && drive.openCycleCooling;
+            float residualHeat = settings.openCycleResidualHeatEnabled
+                ? settings.openCycleDriveHeatFraction : 0f;
+            if (ship == null)
+            {
+                return PowerPlantThermalMath.CalculateShipDemand(openCycle,
+                    driveDemand_GW, auxiliaryElectricalDemand_GW, powerPlant.efficiency,
+                    residualHeat, multiplier);
+            }
+            Sizing cache = sizing.GetOrCreateValue(ship);
+            lock (cache)
+            {
+                float efficiency = powerPlant.efficiency;
+                if (cache.Plant != powerPlant || cache.OpenCycle != openCycle ||
+                    cache.Drive != driveDemand_GW || cache.Auxiliary != auxiliaryElectricalDemand_GW ||
+                    cache.Efficiency != efficiency || cache.ResidualHeat != residualHeat ||
+                    cache.MassScale != multiplier)
+                {
+                    cache.Result = PowerPlantThermalMath.CalculateShipDemand(openCycle,
+                        driveDemand_GW, auxiliaryElectricalDemand_GW, efficiency,
+                        residualHeat, multiplier);
+                    cache.Plant = powerPlant;
+                    cache.OpenCycle = openCycle;
+                    cache.Drive = driveDemand_GW;
+                    cache.Auxiliary = auxiliaryElectricalDemand_GW;
+                    cache.Efficiency = efficiency;
+                    cache.ResidualHeat = residualHeat;
+                    cache.MassScale = multiplier;
+                }
+                return cache.Result;
+            }
         }
     }
 
@@ -318,6 +356,23 @@ namespace TIEconomyMod.Patches
 
     internal static class ReactorBayCapacityFeature
     {
+        private struct CachedLimit
+        {
+            internal float RatedOutput;
+            internal float SpecificPower;
+            internal PowerPlantRequirement PlantClass;
+            internal ReactorBayCapacitySnapshot Snapshot;
+        }
+
+        private sealed class HullLimits
+        {
+            internal readonly Dictionary<(int Appearance, TIPowerPlantTemplate Plant), CachedLimit>
+                ByAppearanceAndPlant =
+                    new Dictionary<(int, TIPowerPlantTemplate), CachedLimit>();
+        }
+
+        private static ConditionalWeakTable<TIShipHullTemplate, HullLimits> limits =
+            new ConditionalWeakTable<TIShipHullTemplate, HullLimits>();
         private static readonly object diagnosticLock = new object();
         private static readonly HashSet<string> reportedDiagnostics =
             new HashSet<string>(StringComparer.Ordinal);
@@ -337,6 +392,27 @@ namespace TIEconomyMod.Patches
             TIPowerPlantTemplate powerPlant,
             out ReactorBayCapacitySnapshot snapshot)
         {
+            if (!TryGetLimit(ship, powerPlant, out snapshot))
+            {
+                return false;
+            }
+
+            ShipPowerDemandSnapshot demand =
+                ShipPowerDemandFeature.Snapshot(ship, ship.driveTemplate, powerPlant);
+            snapshot.BayVolumeUsed_m3 = ShipBalanceMath.ReactorBayVolumeUsed_m3(
+                demand.MassRatedOutput_GW,
+                powerPlant.powerPlantClass.ToString(),
+                powerPlant.specificPower_tGW);
+            snapshot.TotalReactorOutput_GWth = demand.TotalReactorOutput_GWth;
+            snapshot.MassRatedOutput_GW = demand.MassRatedOutput_GW;
+            return true;
+        }
+
+        internal static bool TryGetLimit(
+            TISpaceShipTemplate ship,
+            TIPowerPlantTemplate powerPlant,
+            out ReactorBayCapacitySnapshot snapshot)
+        {
             snapshot = default(ReactorBayCapacitySnapshot);
             if (!Enabled || ship == null || ship.hullTemplate == null ||
                 powerPlant == null)
@@ -346,6 +422,38 @@ namespace TIEconomyMod.Patches
 
             TIShipHullTemplate hull = ship.hullTemplate;
             int appearanceIndex = ship.GetHullAppearanceIndex;
+            var entries = limits.GetOrCreateValue(hull).ByAppearanceAndPlant;
+            var key = (appearanceIndex, powerPlant);
+            lock (entries)
+            {
+                if (!entries.TryGetValue(key, out CachedLimit limit) ||
+                    limit.RatedOutput != powerPlant.maxOutput_GW ||
+                    limit.SpecificPower != powerPlant.specificPower_tGW ||
+                    limit.PlantClass != powerPlant.powerPlantClass)
+                {
+                    limit = new CachedLimit
+                    {
+                        RatedOutput = powerPlant.maxOutput_GW,
+                        SpecificPower = powerPlant.specificPower_tGW,
+                        PlantClass = powerPlant.powerPlantClass,
+                        Snapshot = CalculateLimit(hull, appearanceIndex, powerPlant)
+                    };
+                    entries[key] = limit;
+                }
+                snapshot = limit.Snapshot;
+            }
+            return true;
+        }
+
+        internal static void InvalidateLimits()
+        {
+            limits = new ConditionalWeakTable<TIShipHullTemplate, HullLimits>();
+        }
+
+        private static ReactorBayCapacitySnapshot CalculateLimit(
+            TIShipHullTemplate hull, int appearanceIndex, TIPowerPlantTemplate powerPlant)
+        {
+            var snapshot = new ReactorBayCapacitySnapshot();
             bool usedFallback;
             string sizeBand;
             float bayVolume_m3 = ShipBalanceMath.ReactorBayVolume_m3(
@@ -370,23 +478,10 @@ namespace TIEconomyMod.Patches
             float effectiveOutput_GW =
                 ShipBalanceMath.EffectiveReactorOutput_GW(
                     powerPlant.maxOutput_GW, bayOutputLimit_GW);
-            ShipPowerDemandSnapshot demand =
-                ShipPowerDemandFeature.Snapshot(
-                    ship, ship.driveTemplate, powerPlant);
-            float bayVolumeUsed_m3 =
-                ShipBalanceMath.ReactorBayVolumeUsed_m3(
-                    demand.MassRatedOutput_GW,
-                    plantClass,
-                    powerPlant.specificPower_tGW);
-
             snapshot.BayVolume_m3 = bayVolume_m3;
-            snapshot.BayVolumeUsed_m3 = bayVolumeUsed_m3;
             snapshot.BayMassAllowance_tons = massAllowance_tons;
             snapshot.BayOutputLimit_GW = bayOutputLimit_GW;
             snapshot.EffectiveOutput_GW = effectiveOutput_GW;
-            snapshot.TotalReactorOutput_GWth =
-                demand.TotalReactorOutput_GWth;
-            snapshot.MassRatedOutput_GW = demand.MassRatedOutput_GW;
             snapshot.BayLimited = bayOutputLimit_GW + 0.0001f <
                 Math.Max(0f, powerPlant.maxOutput_GW);
             snapshot.UsedFallback = usedFallback;
@@ -412,14 +507,14 @@ namespace TIEconomyMod.Patches
                     "; its theoretical maximum remains in use.");
             }
 
-            return true;
+            return snapshot;
         }
 
         public static float EffectiveOutput_GW(
             TISpaceShipTemplate ship, TIPowerPlantTemplate powerPlant)
         {
             ReactorBayCapacitySnapshot snapshot;
-            return TryGetSnapshot(ship, powerPlant, out snapshot)
+            return TryGetLimit(ship, powerPlant, out snapshot)
                 ? snapshot.EffectiveOutput_GW
                 : Math.Max(0f, powerPlant == null
                     ? 0f

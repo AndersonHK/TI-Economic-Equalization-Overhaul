@@ -201,6 +201,8 @@
     <Compile Include="Core\DesignerViewportMath.cs" />
     <Compile Include="Patches\ShipDesignerViewportPatches.cs" />
     <Compile Include="Patches\ShipDesignerLayoutPatches.cs" />
+    <Compile Include="Patches\ShipDesignerEditPerformancePatches.cs" />
+    <Compile Include="Patches\ShipDesignerPartTotals.cs" />
     <Compile Include="Patches\AlienArmorSelectionPatches.cs" />
     <Compile Include="Patches\ProgressionAndPrecisionPatches.cs" />
     <Compile Include="Core\MothershipMountGeometry.cs" />

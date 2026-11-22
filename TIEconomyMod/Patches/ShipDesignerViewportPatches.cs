@@ -220,4 +220,42 @@ namespace TIEconomyMod.Patches
             if (fitter != null) fitter.Request();
         }
     }
+
+    [HarmonyPatch(typeof(FleetsScreenController), "OnExitShipDesigner")]
+    internal static class RetireDesignerPreviewReferencesPatch
+    {
+        [HarmonyPostfix]
+        private static void Postfix(ref GameObject ___fleetSceneCameraInstance,
+            ref GameObject ___previewPosition, ref GameObject ___shipVisObject)
+        {
+            if (!Main.enabled)
+                return;
+
+            // Unity destroys the camera and its children at the end of the
+            // frame. A same-frame return must not reuse the retiring hierarchy.
+            ___fleetSceneCameraInstance = null;
+            ___previewPosition = null;
+            ___shipVisObject = null;
+        }
+    }
+
+    [HarmonyPatch(typeof(FleetsScreenController),
+        nameof(FleetsScreenController.OnDesignShipButtonFromFleetListClicked))]
+    internal static class RestoreDesignerPreviewOnReturnPatch
+    {
+        [HarmonyPostfix]
+        private static void Postfix(FleetsScreenController __instance,
+            GameObject ___fleetSceneCameraInstance, GameObject ___shipVisObject)
+        {
+            var design = __instance.newShipTemplate;
+            if (!Main.enabled || design?.hullTemplate == null ||
+                !__instance.ShipDesignerCanvas.enabled ||
+                (___fleetSceneCameraInstance != null && ___shipVisObject != null))
+                return;
+
+            // The native return to an already-selected designer tab skips its
+            // normal update. Recreate just the missing preview.
+            __instance.UpdateConstructionCameraImage(design, updateSpaceBackground: false);
+        }
+    }
 }

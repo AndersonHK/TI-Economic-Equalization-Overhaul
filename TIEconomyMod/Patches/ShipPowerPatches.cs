@@ -178,22 +178,6 @@ namespace TIEconomyMod.Patches
         }
     }
 
-    [HarmonyPatch(typeof(TemplateManager), "Initialize")]
-    public static class GunPowerTemplateInitializationPatch
-    {
-        [HarmonyPostfix]
-        public static void Postfix()
-        {
-            ShipDesignerDataLayoutPatch.ValidateTemplates();
-            GunPowerRegistry.Refresh();
-            ProjectileGeometryRegistry.Refresh();
-            PowerPlantScalingRegistry.Refresh();
-                LaserWavelengthFeature.Refresh();
-            TIEconomyMod.Core.CapitalMountRuntime.NormalizeStockDesigns();
-            ShipPowerRuntime.RefreshTemplatePerformanceCaches();
-        }
-    }
-
     [HarmonyPatch(typeof(TIEffectsState),
         "PostGlobalGameStateCreateInit_2")]
     public static class ShipDesignPerformanceSaveLoadCachePatch
@@ -535,7 +519,7 @@ namespace TIEconomyMod.Patches
         {
             ReactorBayCapacitySnapshot snapshot;
             if (powerPlant == null ||
-                !ReactorBayCapacityFeature.TryGetSnapshot(
+                !ReactorBayCapacityFeature.TryGetLimit(
                     ship, powerPlant, out snapshot))
             {
                 return powerPlant == null
@@ -818,7 +802,7 @@ namespace TIEconomyMod.Patches
             TIPowerPlantTemplate powerPlant =
                 row.GetModuleTemplate().ref_powerPlant;
             ReactorBayCapacitySnapshot snapshot;
-            if (!ReactorBayCapacityFeature.TryGetSnapshot(
+            if (!ReactorBayCapacityFeature.TryGetLimit(
                 ship, powerPlant, out snapshot))
             {
                 entries[2].textElement.text = SanitizeModuleTableText(
@@ -828,7 +812,8 @@ namespace TIEconomyMod.Patches
             }
 
             entries[2].textElement.text = SanitizeModuleTableText(
-                GetHullEffectivePowerPlantOutput(powerPlant, ship), false);
+                TIUtilities.LocalizeGW("TIPowerPlantTemplate.MaximumOutputGW",
+                    snapshot.EffectiveOutput_GW), false);
             entries[2].value = snapshot.EffectiveOutput_GW;
         }
 
@@ -1186,6 +1171,9 @@ namespace TIEconomyMod.Patches
             {
                 return 0f;
             }
+            var edit = DesignerPartEdit.ForPublication(ship);
+            if (edit != null)
+                return edit.Totals.WeaponHeat;
 
             float weaponHeat_GW = 0f;
             foreach (TIShipWeaponTemplate weapon in
@@ -1196,15 +1184,16 @@ namespace TIEconomyMod.Patches
                     continue;
                 }
 
-                float heatPerShot_GJ = weapon.HeatGeneration_GJ(
-                    ship.GetBonusPowerForWeapon_GJ(weapon));
-                weaponHeat_GW += WeaponPowerMath.DesignHeatRate_GW(
-                    heatPerShot_GJ,
-                    weapon.salvo_shots,
-                    weapon.cooldown_s,
-                    weapon.intraSalvoCooldown_s);
+                weaponHeat_GW += WeaponHeat_GW(weapon, ship.GetBonusPowerForWeapon_GJ(weapon));
             }
             return weaponHeat_GW;
+        }
+
+        internal static float WeaponHeat_GW(TIShipWeaponTemplate weapon, float bonus_GJ)
+        {
+            return WeaponPowerMath.DesignHeatRate_GW(
+                weapon.HeatGeneration_GJ(bonus_GJ), weapon.salvo_shots,
+                weapon.cooldown_s, weapon.intraSalvoCooldown_s);
         }
     }
 

@@ -1,6 +1,17 @@
 # TI Economic Equalization Overhaul
 
-Current release: **0.11.15**, targeting **Terra Invicta 1.0.65**.
+Current release is **0.11.18** for **Terra Invicta 1.0.65**.
+
+0.11.18 restores the ship preview when returning from the transfer planner.
+The player confirmed the preview fix in game and accepted 0.11.17's save
+loading, designer performance and automatic readouts.
+
+0.11.17 starts EEO's runtime when Terra Invicta loads its mod templates and
+removes the runtime hooks when the game returns to stock templates.
+
+0.11.16 updates ship designer part totals by delta and removes redundant
+catalog and reactor checks. The combat score and transfer preview remain
+automatic. [Performance plan and validation](docs/ship-balance-research/ship-designer-edit-performance-plan.md).
 
 0.11.15 searches finite-thrust paths for equal-altitude LEO plane changes
 and uses the selected path for the preview, flight, and delta-v charge.
@@ -451,7 +462,7 @@ defaults.
 
 ## Compatibility and save behavior
 
-Version 0.11.15 is built against the installed Terra Invicta 1.0.65 assemblies.
+Version 0.11.18 is built against the installed Terra Invicta 1.0.65 assemblies.
 Verification checks guarded IL and Harmony patch binding, exercises the game's
 template merger for the base game and Dark Skies, and checks the exact assembly
 and asset bundle hashes behind EEO's combat geometry and rendering data.
@@ -469,7 +480,7 @@ states serialized when they were created.
 The current release archive is:
 
 ```text
-artifacts/TIEconomyMod-0.11.15-ti1.0.65.zip
+artifacts/TIEconomyMod-0.11.18-ti1.0.65.zip
 ```
 
 ## Build and verification

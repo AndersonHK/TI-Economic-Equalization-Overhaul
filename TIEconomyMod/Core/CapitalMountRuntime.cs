@@ -59,6 +59,14 @@ namespace TIEconomyMod.Core
             processorInstalled = true;
         }
 
+        internal static void RemoveSerializer()
+        {
+            if (!processorInstalled) return;
+            ((fsSerializer)AccessTools.Field(typeof(StringSerializationAPI), "_serializer").GetValue(null))
+                .RemoveProcessor<CapitalLayoutProcessor>();
+            processorInstalled = false;
+        }
+
         internal static void BeginDeserialize(Type type, string source)
         {
             if (type.Name != "SaveStructure") return;

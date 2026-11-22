@@ -1,8 +1,8 @@
 # Complete documentation and artifact catalog
 
-Generated 2026-11-05. This catalog indexes every other file under `docs/`, including machine-readable evidence and images. For interpretation, start with the [documentation map](README.md), [ship-balance hub](ship-balance-research/README.md), or [archive index](archive/README.md). Location/type labels are navigation aids, not assertions that all research is implemented.
+Last updated 2026-11-21. This catalog indexes every other file under `docs/`, including machine-readable evidence and images. For interpretation, start with the [documentation map](README.md), [ship-balance hub](ship-balance-research/README.md), or [archive index](archive/README.md). Location/type labels are navigation aids, not assertions that all research is implemented.
 
-Indexed files: **587**. No archived evidence was deleted during the organization pass.
+Indexed files: **593**. No archived evidence was deleted during the organization pass.
 
 ## Top-level guides and authorities
 
@@ -522,6 +522,8 @@ Indexed files: **587**. No archived evidence was deleted during the organization
 | [ship-balance-research/rendered-battle-scale-and-collision-report-2026-10-23.md](ship-balance-research/rendered-battle-scale-and-collision-report-2026-10-23.md) | MD |
 | [ship-balance-research/repeat-battle-waypoint-cleanup-2026-11-05.md](ship-balance-research/repeat-battle-waypoint-cleanup-2026-11-05.md) | MD |
 | [ship-balance-research/save-load-crash-armor-selection-2026-11-04.md](ship-balance-research/save-load-crash-armor-selection-2026-11-04.md) | MD |
+| [ship-balance-research/ship-designer-edit-performance-headless-2026-11-21.json](ship-balance-research/ship-designer-edit-performance-headless-2026-11-21.json) | JSON |
+| [ship-balance-research/ship-designer-edit-performance-plan.md](ship-balance-research/ship-designer-edit-performance-plan.md) | MD |
 | [ship-balance-research/skirmish-asset-cache-startup-crash-2026-10-29.md](ship-balance-research/skirmish-asset-cache-startup-crash-2026-10-29.md) | MD |
 | [ship-balance-research/skirmish-roster-performance-investigation.md](ship-balance-research/skirmish-roster-performance-investigation.md) | MD |
 | [ship-balance-research/space-energy-and-industrial-timelines-2026-2100.md](ship-balance-research/space-energy-and-industrial-timelines-2026-2100.md) | MD |

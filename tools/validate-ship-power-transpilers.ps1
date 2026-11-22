@@ -795,7 +795,6 @@ $harmony = [Activator]::CreateInstance(
 # generated wrapper trips the host's ECall restriction. Unity Mono patches it.
 $patchTypeNames = @(
     'TIEconomyMod.Patches.HullVariantMassTooltipPatch',
-    'TIEconomyMod.Patches.GunPowerTemplateInitializationPatch',
     'TIEconomyMod.Patches.ShipDesignPerformanceSaveLoadCachePatch',
     'TIEconomyMod.Patches.ShipPowerSaveLoadCachePatch',
     'TIEconomyMod.Patches.GunSelfPoweredPatch',
@@ -807,7 +806,6 @@ $patchTypeNames = @(
     'TIEconomyMod.Patches.HullScaledDriveTooltipPatch',
     'TIEconomyMod.Patches.HullScaledDriveTableRefreshPatch',
     'TIEconomyMod.Patches.ReactorBayAppearanceRefreshPatch',
-    'TIEconomyMod.Patches.PropellantDensityTemplateInitializationPatch',
     'TIEconomyMod.Patches.FuelCapacitySpinnerLabelPatch',
     'TIEconomyMod.Patches.FuelCapacitySaveGuardPatch',
     'TIEconomyMod.Patches.AiShipDesignCapacityBoundaryPatch',

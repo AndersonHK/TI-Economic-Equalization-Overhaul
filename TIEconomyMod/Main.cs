@@ -1,7 +1,9 @@
 using HarmonyLib;
 using PavonisInteractive.TerraInvicta;
+using PavonisInteractive.TerraInvicta.Modding;
 using System;
 using System.IO;
+using TIEconomyMod.Core;
 using TIEconomyMod.Patches;
 using UnityEngine;
 using UnityModManagerNet;
@@ -19,115 +21,195 @@ namespace TIEconomyMod
         public static TIEconomyMod.Core.GunpowderArtCatalog gunpowderArt;
         public static TIEconomyMod.Core.LaserOpticsCatalog laserBeamOptics;
         public static TIEconomyMod.Core.ShipDesignerLayout shipDesignerLayout;
+        private static Harmony runtimeHarmony;
+        private static bool managerEnabled;
+        private static string hullOverridePath;
 
         public static bool Load(UnityModManager.ModEntry modEntry)
         {
             mod = modEntry;
             settings = UnityModManager.ModSettings.Load<Settings>(modEntry) ?? new Settings();
             settings.ValidateAndRepair(Log);
-
+            managerEnabled = true;
             modEntry.OnToggle = OnToggle;
             modEntry.OnGUI = OnGUI;
             modEntry.OnSaveGUI = OnSaveGUI;
-            enabled = true;
+            hullOverridePath = Path.GetFullPath(Path.Combine(modEntry.Path, "TIShipHullTemplate.json"));
+
+            // UMM loads DLLs even when Terra Invicta's own mod switch is off.
+            // This observer stays attached so the native switch takes effect on
+            // the next template load without leaving a partly active package.
+            var lifecycle = new Harmony(modEntry.Info.Id + ".TemplateLifecycle");
+            lifecycle.Patch(AccessTools.Method(typeof(TemplateManager), nameof(TemplateManager.Initialize)),
+                prefix: new HarmonyMethod(typeof(Main), nameof(BeforeTemplateInitialization)),
+                postfix: new HarmonyMethod(typeof(Main), nameof(AfterTemplateInitialization)));
+            SynchronizeRuntime();
+            return true;
+        }
+
+        private static void BeforeTemplateInitialization(TemplateManager __instance, out bool __state)
+        {
+            __state = !__instance.Initialized;
+            if (__state && runtimeHarmony != null &&
+                (!TIPlayerProfileManager.useMods || TIPlayerProfileManager.loadingFailureDueToMods))
+            {
+                StopRuntime();
+            }
+        }
+
+        private static void AfterTemplateInitialization(TemplateManager __instance, bool __state)
+        {
+            if (__state && __instance.Initialized)
+            {
+                SynchronizeRuntime();
+            }
+        }
+
+        private static bool HasMergedModTemplates()
+        {
+            if (!TIPlayerProfileManager.useMods || TIPlayerProfileManager.loadingFailureDueToMods ||
+                TemplateManager.self == null || !TemplateManager.self.Initialized)
+            {
+                return false;
+            }
+            foreach (JsonMod template in ModTemplateManager.jsonMods)
+            {
+                if (template.foundVanillaMatch && !string.IsNullOrEmpty(template.ModFilePath) &&
+                    string.Equals(Path.GetFullPath(template.ModFilePath), hullOverridePath,
+                        StringComparison.OrdinalIgnoreCase))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private static void SynchronizeRuntime()
+        {
+            if (!HasMergedModTemplates())
+            {
+                StopRuntime();
+                Log("EEO runtime idle until Terra Invicta merges its installed templates.");
+                return;
+            }
 
             try
             {
-                TIEconomyMod.Core.NativeContact.Load(modEntry.Path);
-                shipDesignerLayout = TIEconomyMod.Core.ShipDesignerLayout.Load(
-                    Path.Combine(modEntry.Path, "Config", "ship-designer-layout.eeo"));
-                string weightPath = Path.Combine(modEntry.Path, "Config", "economy-tech-weights.csv");
-                techWeights = TechWeightCatalog.Load(weightPath, Log, IsKnownTechnology);
-                string hullVolumePath = Path.Combine(
-                    modEntry.Path, "Config", "hull-variant-main-volumes.csv");
-                hullVolumes = HullVolumeCatalog.Load(hullVolumePath, Log);
-                string hullDriveScalePath = Path.Combine(
-                    modEntry.Path, "Config", "hull-variant-drive-scales.csv");
-                hullDriveScales = HullDriveScaleCatalog.Load(
-                    hullDriveScalePath, Log);
-                try
-                {
-                    string gameAssembly = typeof(ShipModelController).Assembly.Location;
-                    string weaponBundle = Path.GetFullPath(Path.Combine(Path.GetDirectoryName(gameAssembly),
-                        "..", "StreamingAssets", "AssetBundles", "shipweapons"));
-                    gunpowderArt = TIEconomyMod.Core.GunpowderArtCatalog.Load(
-                        Path.Combine(modEntry.Path, "Config", "gunpowder-art-profiles.eeo"), gameAssembly, weaponBundle);
-                    Log("Loaded gunpowder art schema 1: " + gunpowderArt.Count + " guarded profiles.");
-                }
-                catch (Exception artException)
-                {
-                    gunpowderArt = null;
-                    Warn("Gunpowder art disabled; native art retained: " + artException.Message);
-                }
-                Harmony harmony = new Harmony(modEntry.Info.Id);
-                try
-                {
-                    string assembly = typeof(ShipModelController).Assembly.Location;
-                    string bundle = Path.GetFullPath(Path.Combine(Path.GetDirectoryName(assembly), "..", "StreamingAssets", "AssetBundles", "shipweapons"));
-                    laserBeamOptics = TIEconomyMod.Core.LaserOpticsCatalog.Load(
-                        Path.Combine(modEntry.Path, "Config", "laser-beam-optics.eeo"), assembly, bundle);
-                    Log("Loaded sixteen measured laser beam optics profiles.");
-                }
-                catch (Exception opticsException)
-                {
-                    laserBeamOptics = null;
-                    Warn("Measured beam optics unavailable; template aperture fallback: " + opticsException.Message);
-                }
-                try
-                {
-                    TIEconomyMod.Core.LaserSamplingShader.Load(modEntry.Path, typeof(ShipModelController).Assembly.Location);
-                }
-                catch (Exception samplingException)
-                {
-                    Warn("Laser sampling shader unavailable; fixed ribbon sizing only: " + samplingException.Message);
-                }
-                try
-                {
-                    LaserWavelengthFeature.Validate();
-                    harmony.PatchAll();
-                }
-                catch (Exception patchException)
-                {
-                    try
-                    {
-                        harmony.UnpatchAll(modEntry.Info.Id);
-                    }
-                    catch (Exception rollbackException)
-                    {
-                        throw new AggregateException(
-                            "EEO patching failed and its partial-patch " +
-                            "rollback also failed.",
-                            patchException,
-                            rollbackException);
-                    }
-
-                    throw;
-                }
-                TIEconomyMod.Core.CapitalMountRuntime.InstallSerializer();
-                HabLogistics.Clear();
-                if (TemplateManager.self != null &&
-                    TemplateManager.self.Initialized)
+                if (runtimeHarmony != null)
                 {
                     ShipDesignerDataLayoutPatch.ValidateTemplates();
-                    GunPowerRegistry.Refresh();
-                    ProjectileGeometryRegistry.Refresh();
-                    UtilityFootprintRegistry.Refresh();
-                    PropellantDensityRegistry.Refresh();
-                    PowerPlantScalingRegistry.Refresh();
-                    LaserWavelengthFeature.Refresh();
-                    TIEconomyMod.Core.CapitalMountRuntime.NormalizeStockDesigns();
-                    ShipPowerRuntime.RefreshTemplatePerformanceCaches();
+                    RefreshTemplates();
+                    return;
                 }
-                CouncilorRuntimeCaps.InitializeOrganizationCap();
-                Log("Loaded TI Economic Equalization Overhaul " + modEntry.Info.Version + ", validated against TI 1.0.65.");
-                TIEconomyMod.Core.ContactHeadlessHarness.InstallIfRequested();
-                return true;
+                StartRuntime();
             }
             catch (Exception exception)
             {
-                enabled = false;
-                modEntry.Logger.Error("EEO initialization failed; all EEO features are disabled.\n" + exception);
-                return false;
+                try
+                {
+                    StopRuntime();
+                }
+                catch (Exception rollbackFailure)
+                {
+                    exception = new AggregateException(exception, rollbackFailure);
+                }
+                mod.Logger.Error("EEO initialization failed.\n" + exception);
+            }
+        }
+
+        private static void StartRuntime()
+        {
+            var modEntry = mod;
+            NativeContact.Load(modEntry.Path);
+            shipDesignerLayout = TIEconomyMod.Core.ShipDesignerLayout.Load(
+                Path.Combine(modEntry.Path, "Config", "ship-designer-layout.eeo"));
+            ShipDesignerDataLayoutPatch.ValidateTemplates();
+            string weightPath = Path.Combine(modEntry.Path, "Config", "economy-tech-weights.csv");
+            techWeights = TechWeightCatalog.Load(weightPath, Log, IsKnownTechnology);
+            string hullVolumePath = Path.Combine(
+                modEntry.Path, "Config", "hull-variant-main-volumes.csv");
+            hullVolumes = HullVolumeCatalog.Load(hullVolumePath, Log);
+            string hullDriveScalePath = Path.Combine(
+                modEntry.Path, "Config", "hull-variant-drive-scales.csv");
+            hullDriveScales = HullDriveScaleCatalog.Load(
+                hullDriveScalePath, Log);
+            try
+            {
+                string gameAssembly = typeof(ShipModelController).Assembly.Location;
+                string weaponBundle = Path.GetFullPath(Path.Combine(Path.GetDirectoryName(gameAssembly),
+                    "..", "StreamingAssets", "AssetBundles", "shipweapons"));
+                gunpowderArt = TIEconomyMod.Core.GunpowderArtCatalog.Load(
+                    Path.Combine(modEntry.Path, "Config", "gunpowder-art-profiles.eeo"), gameAssembly, weaponBundle);
+                Log("Loaded gunpowder art schema 1: " + gunpowderArt.Count + " guarded profiles.");
+            }
+            catch (Exception artException)
+            {
+                gunpowderArt = null;
+                Warn("Gunpowder art disabled; native art retained: " + artException.Message);
+            }
+            try
+            {
+                string assembly = typeof(ShipModelController).Assembly.Location;
+                string bundle = Path.GetFullPath(Path.Combine(Path.GetDirectoryName(assembly), "..", "StreamingAssets", "AssetBundles", "shipweapons"));
+                laserBeamOptics = TIEconomyMod.Core.LaserOpticsCatalog.Load(
+                    Path.Combine(modEntry.Path, "Config", "laser-beam-optics.eeo"), assembly, bundle);
+                Log("Loaded sixteen measured laser beam optics profiles.");
+            }
+            catch (Exception opticsException)
+            {
+                laserBeamOptics = null;
+                Warn("Measured beam optics unavailable; template aperture fallback: " + opticsException.Message);
+            }
+            try
+            {
+                TIEconomyMod.Core.LaserSamplingShader.Load(modEntry.Path, typeof(ShipModelController).Assembly.Location);
+            }
+            catch (Exception samplingException)
+            {
+                Warn("Laser sampling shader unavailable; fixed ribbon sizing only: " + samplingException.Message);
+            }
+            LaserWavelengthFeature.Validate();
+            enabled = managerEnabled;
+            runtimeHarmony = new Harmony(modEntry.Info.Id);
+            runtimeHarmony.PatchAll();
+            RefreshTemplates();
+            CouncilorRuntimeCaps.InitializeOrganizationCap();
+            CapitalMountRuntime.InstallSerializer();
+            Log("Loaded TI Economic Equalization Overhaul " + modEntry.Info.Version + ", validated against TI 1.0.65.");
+            ContactHeadlessHarness.InstallIfRequested();
+        }
+
+        private static void RefreshTemplates()
+        {
+            DesignerPartTotals.InvalidateAll();
+            ReactorBayCapacityFeature.InvalidateLimits();
+            HabLogistics.Clear();
+            GunPowerRegistry.Refresh();
+            ProjectileGeometryRegistry.Refresh();
+            UtilityFootprintRegistry.Refresh();
+            PropellantDensityRegistry.Refresh();
+            PowerPlantScalingRegistry.Refresh();
+            LaserWavelengthFeature.Refresh();
+            CapitalMountRuntime.NormalizeStockDesigns();
+            ShipPowerRuntime.RefreshTemplatePerformanceCaches();
+        }
+
+        private static void StopRuntime()
+        {
+            enabled = false;
+            if (runtimeHarmony == null)
+            {
+                return;
+            }
+            var harmony = runtimeHarmony;
+            runtimeHarmony = null;
+            try
+            {
+                harmony.UnpatchAll(harmony.Id);
+            }
+            finally
+            {
+                CapitalMountRuntime.RemoveSerializer();
             }
         }
 
@@ -151,6 +233,13 @@ namespace TIEconomyMod
 
         private static bool OnToggle(UnityModManager.ModEntry modEntry, bool value)
         {
+            managerEnabled = value;
+            if (runtimeHarmony == null)
+            {
+                return true;
+            }
+            DesignerPartTotals.InvalidateAll();
+            ReactorBayCapacityFeature.InvalidateLimits();
             enabled = value;
             GunpowderArtRuntime.RefreshVisible();
             CouncilorRuntimeCaps.ApplyOrganizationCap();
@@ -159,6 +248,11 @@ namespace TIEconomyMod
 
         private static void OnGUI(UnityModManager.ModEntry modEntry)
         {
+            if (runtimeHarmony == null)
+            {
+                GUILayout.Label("EEO is waiting for Terra Invicta to load its mod templates.");
+                return;
+            }
             settings.Draw(modEntry);
             GunpowderArtRuntime.DrawRenderComparisonControls();
             GUILayout.Space(8f);
@@ -172,10 +266,15 @@ namespace TIEconomyMod
 
         private static void OnSaveGUI(UnityModManager.ModEntry modEntry)
         {
+            DesignerPartTotals.InvalidateAll();
+            ReactorBayCapacityFeature.InvalidateLimits();
             settings.ValidateAndRepair(Log);
-            CouncilorRuntimeCaps.ApplyOrganizationCap();
-            ShipPowerRuntime.RefreshTemplatePerformanceCaches();
-            if (!TIGlobalValuesState.isSpaceCombatEnabled) GunpowderArtRuntime.RefreshVisible();
+            if (runtimeHarmony != null)
+            {
+                CouncilorRuntimeCaps.ApplyOrganizationCap();
+                ShipPowerRuntime.RefreshTemplatePerformanceCaches();
+                if (!TIGlobalValuesState.isSpaceCombatEnabled) GunpowderArtRuntime.RefreshVisible();
+            }
             settings.Save(modEntry);
         }
 

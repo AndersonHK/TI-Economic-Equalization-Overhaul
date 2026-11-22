@@ -11,6 +11,10 @@ for their stated baselines. The [implementation matrix](../current-implementatio
 and [decision changelog](CHANGELOG.md) provide cross-checks. The
 [complete catalog](../CATALOG.md) lists every report, table, figure and evidence file.
 
+The player accepted 0.11.18's ship designer improvements and confirmed the
+ship preview remains visible after returning from the transfer planner.
+[Designer changes, timing and acceptance](ship-designer-edit-performance-plan.md).
+
 ## Current implementations
 
 - [0.11.9 repeat-battle waypoint cleanup](repeat-battle-waypoint-cleanup-2026-11-05.md): idempotent retirement of waypoint controllers and event subscriptions, stale input guard, and battle-boundary reset. 37 host checks across three synthetic cycles pass; the user subsequently accepted 0.11.9 as stable and performant. Camera-follow changes deferred.
