@@ -19,6 +19,14 @@ the installed Terra Invicta 1.0.65 call paths.
 
 ## Verify before consolidating
 
+- **Station shell clearance.** Acquisition calls both the base and projectile
+  `GetPositionToTarget` adapters. Visual selection and the aligned
+  `TryFireCommon` gate also select a face. All three must use the same
+  finite segment and shell eligibility rules. Preserve the preferred face
+  when both are blocked and recheck the actual muzzle after rotation.
+  Reproduce with Kasai firing both Lancehead bays at Jahn Station's two
+  Layered Defense Arrays. [Replay and measurement](../ship-balance-research/waypoint-follow-and-missile-performance.md).
+
 - **Waypoint hover and camera follow.** The installed camera update owns the
   decision to suspend tracking. Navigation ready/end own the native input
   flag and EEO lifetime cleanup clears stale owners. The fix refines the

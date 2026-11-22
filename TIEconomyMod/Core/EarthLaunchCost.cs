@@ -66,10 +66,10 @@ namespace TIEconomyMod
                     earth,
                     sites,
                     parking) - reference;
-                double transfer = TISpaceObjectState.GenericTransferDeltaV_mps(
+                double transfer = HabLogistics.TransferDeltaV_kps(
                     parking,
                     destination,
-                    ignoreDestinationInclination) / 1000d;
+                    ignoreDestinationInclination);
                 best = Math.Min(
                     best,
                     launchSurcharge + transfer + landing);

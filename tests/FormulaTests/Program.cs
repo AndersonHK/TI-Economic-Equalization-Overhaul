@@ -2141,6 +2141,18 @@ namespace TIEconomyMod.FormulaTests
                 HabRebalanceMath.PropellantMass(10f, 1d, 2.11d),
                 0.0001f,
                 "space freight uses the probe rocket equation");
+            HabRebalanceMath.CollinearFreightLeg(
+                3.9856e14, 26556751d, 1471527180d, 31558149.76d,
+                out double haloDeltaV, out float haloDays);
+            True(haloDeltaV > 1.5d && haloDeltaV < 2.1d &&
+                haloDays > 37f && haloDays < 38f,
+                "Earth L1 freight uses planet-centered flight time and nonzero delta-v");
+            True(HabRebalanceMath.PreferFreightLeg(0.1244f, 3.38d, haloDays, haloDeltaV),
+                "LEO freight wins the intermediate orbit quote even when the halo leg consumes less fuel");
+            True(!HabRebalanceMath.PreferFreightLeg(haloDays, haloDeltaV, 0.1244f, 3.38d),
+                "An already selected LEO route cannot be displaced by a slower halo route");
+            True(HabRebalanceMath.PreferFreightLeg(0.1244f, 3d, 0.1244f, 3.38d),
+                "Propellant breaks equal arrival ties");
             float priorRocketPropellant = HabRebalanceMath.PropellantMass(
                 10f,
                 10d,

@@ -347,10 +347,7 @@ namespace TIEconomyMod
                     FactoryTier = 3,
                     DockTier = 3,
                     ExportTier = 3,
-                    TrajectoryTime_days = TISpaceObjectState
-                        .GenericTransferTimeFromEarthsSurface_d(
-                            faction,
-                            destination)
+                    TrajectoryTime_days = EarthTrajectoryTime(faction, destination)
                 };
             }
 
@@ -440,14 +437,57 @@ namespace TIEconomyMod
             TIGameState destination,
             LogisticsDeliveryKind deliveryKind)
         {
-            float trajectoryDays = TISpaceObjectState
-                .GenericTransferTimeFromEarthsSurface_d(
-                    faction,
-                    destination);
+            float trajectoryDays = EarthTrajectoryTime(faction, destination);
             return EffectiveDeliveryTime(
                 faction,
                 trajectoryDays,
                 deliveryKind);
+        }
+
+        internal static float EarthTrajectoryTime(TIFactionState faction, TIGameState destination) =>
+            TransferTime_days(faction, GameStateManager.Earth(), destination);
+
+        private static float TransferTime_days(TIFactionState faction, TIGameState origin, TIGameState destination)
+        {
+            if (ReferenceEquals(origin, destination))
+                return 0f;
+            return TryCollinearLeg(origin, destination, out _, out float time)
+                ? time
+                : TISpaceObjectState.GenericTransferTime_d(faction, origin, destination);
+        }
+
+        internal static double TransferDeltaV_kps(TIGameState origin, TIGameState destination, bool ignoreInclination = false)
+        {
+            if (ReferenceEquals(origin, destination))
+                return 0d;
+            return TryCollinearLeg(origin, destination, out double deltaV, out _)
+                ? deltaV
+                : TISpaceObjectState.GenericTransferDeltaV_mps(origin, destination, ignoreInclination) / 1000d;
+        }
+
+        private static bool TryCollinearLeg(TIGameState origin, TIGameState destination, out double deltaV, out float time)
+        {
+            deltaV = 0d;
+            time = 0f;
+            TINaturalSpaceObjectState originCenter = origin.ref_naturalSpaceObject;
+            TINaturalSpaceObjectState destinationCenter = destination.ref_naturalSpaceObject;
+            var halo = originCenter as TILagrangePointState ?? destinationCenter as TILagrangePointState;
+            if (halo == null || (halo.lagrangeValue != LagrangeValue.L1 && halo.lagrangeValue != LagrangeValue.L2))
+                return false;
+
+            var inner = ReferenceEquals(halo, originCenter) ? destination : origin;
+            TISpaceBodyState body = halo.secondaryObject;
+            if (body == null || !ReferenceEquals(inner.ref_naturalSpaceObject, body))
+                return false;
+
+            bool atSurface = inner.isSpaceBodyState || inner.isHabSiteState || inner.ref_hab?.IsBase == true;
+            double radius_m = atSurface ? body.meanRadius_m : inner.ref_orbit?.semiMajorAxis_m ?? 0d;
+            if (!(radius_m > 0d && radius_m < body.hillRadius_m && body.mu > 0d && body.orbitalPeriod_s > 0d))
+                return false;
+
+            HabRebalanceMath.CollinearFreightLeg(body.mu, radius_m, body.hillRadius_m, body.orbitalPeriod_s,
+                out deltaV, out time);
+            return true;
         }
 
         internal static float EffectiveDeliveryTime(
@@ -674,24 +714,12 @@ namespace TIEconomyMod
             {
                 foreach (RouteEndpoint routeDestination in destinations)
                 {
-                    double transferDeltaV = ReferenceEquals(
-                        origin.State,
-                        routeDestination.State)
-                        ? 0d
-                        : TISpaceObjectState.GenericTransferDeltaV_mps(
-                            origin.State,
-                            routeDestination.State) / 1000d;
+                    double transferDeltaV = TransferDeltaV_kps(origin.State, routeDestination.State);
                     double totalDeltaV = origin.ExtraDeltaV_kps +
                         transferDeltaV +
                         routeDestination.ExtraDeltaV_kps;
-                    float transferTime = TISpaceObjectState
-                        .GenericTransferTime_d(
-                            faction,
-                            origin.State,
-                            routeDestination.State);
-                    if (totalDeltaV < bestTotal ||
-                        Math.Abs(totalDeltaV - bestTotal) < 0.000001d &&
-                        transferTime < bestTime)
+                    float transferTime = TransferTime_days(faction, origin.State, routeDestination.State);
+                    if (HabRebalanceMath.PreferFreightLeg(transferTime, totalDeltaV, bestTime, bestTotal))
                     {
                         bestTotal = totalDeltaV;
                         bestLaunch = origin.ExtraDeltaV_kps;
@@ -701,6 +729,9 @@ namespace TIEconomyMod
                     }
                 }
             }
+
+            if (float.IsPositiveInfinity(bestTime))
+                return null;
 
             return new HabLogisticsRoute
             {
@@ -720,30 +751,12 @@ namespace TIEconomyMod
             HabLogisticsRoute candidate,
             HabLogisticsRoute current)
         {
-            const double tolerance = 0.000001d;
-            if (candidate.TotalDeltaV_kps + tolerance < current.TotalDeltaV_kps)
-            {
-                return true;
-            }
-
-            if (Math.Abs(candidate.TotalDeltaV_kps - current.TotalDeltaV_kps) >
-                tolerance)
-            {
-                return false;
-            }
-
-            if (candidate.TrajectoryTime_days < current.TrajectoryTime_days)
-            {
-                return true;
-            }
-
-            if (candidate.TrajectoryTime_days > current.TrajectoryTime_days)
-            {
-                return false;
-            }
-
-            return candidate.OriginHab.ID.CompareTo(
-                current.OriginHab.ID) < 0;
+            return HabRebalanceMath.PreferFreightLeg(
+                candidate.TrajectoryTime_days, candidate.TotalDeltaV_kps,
+                current.TrajectoryTime_days, current.TotalDeltaV_kps) ||
+                (candidate.TrajectoryTime_days == current.TrajectoryTime_days &&
+                 candidate.TotalDeltaV_kps == current.TotalDeltaV_kps &&
+                 candidate.OriginHab.ID.CompareTo(current.OriginHab.ID) < 0);
         }
 
         private static HabFreightQuote CalculateQuote(

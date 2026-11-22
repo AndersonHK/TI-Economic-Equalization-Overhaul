@@ -178,6 +178,7 @@ namespace TIEconomyMod
             CapitalMountRuntime.InstallSerializer();
             Log("Loaded TI Economic Equalization Overhaul " + modEntry.Info.Version + ", validated against TI 1.0.65.");
             ContactHeadlessHarness.InstallIfRequested();
+            StationBattleReplay.InstallIfRequested();
         }
 
         private static void RefreshTemplates()

@@ -30,6 +30,18 @@ namespace TIEconomyMod.Core
         private static extern int eeo_contact_raycast(ref ContactNativeView view,ref ContactRay ray,int capacity);
         [DllImport("TIEconomyContact.dll",CallingConvention=CallingConvention.Cdecl)]
         private static extern int eeo_contact_nearest(ref ContactNativeView view,ref ContactRay ray,int faction);
+        [DllImport("TIEconomyContact.dll", CallingConvention = CallingConvention.Cdecl)]
+        private static extern int eeo_shell_blocked(ContactNode* nodes, int count, ContactVertex* vertices,
+            int* indices, Vector3 origin, Vector3 direction, float maximum);
+
+        internal static bool ShellBlocked(ContactNode[] nodes, ContactVertex[] vertices, int[] indices,
+            Vector3 origin, Vector3 direction, float maximum)
+        {
+            fixed (ContactNode* tree = nodes)
+            fixed (ContactVertex* points = vertices)
+            fixed (int* triangles = indices)
+                return eeo_shell_blocked(tree, nodes.Length, points, triangles, origin, direction, maximum) != 0;
+        }
         internal static void Load(string modPath)
         {
             if(validated)return;
@@ -37,13 +49,13 @@ namespace TIEconomyMod.Core
             string path=Path.GetFullPath(Path.Combine(modPath,"Assembly","TIEconomyContact.dll"));
             if(library==IntPtr.Zero)library=LoadLibraryEx(path,IntPtr.Zero,0x1100);
             if(library==IntPtr.Zero)throw new InvalidOperationException("Native contact kernel load failed: "+Marshal.GetLastWin32Error());
-            if(eeo_contact_abi()!=0x10003)throw new InvalidOperationException("Native contact ABI version mismatch; restart with a matched package.");
+            if(eeo_contact_abi()!=0x10004)throw new InvalidOperationException("Native contact ABI version mismatch; restart with a matched package.");
             Type[] types={typeof(Vector3),typeof(Matrix4x4),typeof(Bounds),typeof(ContactNode),typeof(ContactVertex),typeof(ContactInfluence),typeof(ContactEnvelope),typeof(ContactSurface),typeof(ContactFlight),typeof(ContactResult),typeof(ContactWorldNode),typeof(ContactNativeView),typeof(ContactRay)};
             for(int i=0;i<types.Length;i++)if(eeo_contact_size(i)!=Marshal.SizeOf(types[i]))throw new InvalidOperationException("Native contact layout mismatch: "+types[i].Name);
             if(Marshal.OffsetOf(typeof(Matrix4x4),"m03").ToInt32()!=48||Marshal.OffsetOf(typeof(Matrix4x4),"m10").ToInt32()!=4)
                 throw new InvalidOperationException("Native contact matrix layout changed.");
             validated=true;
-            Main.Log("Native contact kernel loaded: ABI 0x10003, thirteen record layouts verified.");
+            Main.Log("Native contact kernel loaded: ABI 0x10004, thirteen record layouts verified.");
         }
         private static IntPtr Read<T>(NativeArray<T> data) where T:struct
         {return (IntPtr)NativeArrayUnsafeUtility.GetUnsafeReadOnlyPtr(data);}

@@ -183,6 +183,7 @@ try {
         foreach ($patchTypeName in @(
             'TIEconomyMod.Patches.HabBuildMaterialsRewritePatch',
             'TIEconomyMod.Patches.HabBoostCostFromEarthRewritePatch',
+            'TIEconomyMod.Patches.HabEarthFreightTimePatch',
             'TIEconomyMod.Patches.HabCostFromSpaceRewritePatch',
             'TIEconomyMod.Patches.SystemAgnosticHabFoundingAvailabilityPatch',
             'TIEconomyMod.Patches.SystemAgnosticHabFoundingTierPatch',

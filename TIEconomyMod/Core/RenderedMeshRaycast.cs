@@ -83,6 +83,28 @@ namespace TIEconomyMod.Core
             foreach(Vector3 point in vertices)builder.Vertices.Add(new ContactVertex{Point=point});
             return ExportNode(0,vertexBase,builder);
         }
+        internal sealed class ShellQuery
+        {
+            private readonly ContactNode[] nodes;
+            private readonly ContactVertex[] vertices;
+            private readonly int[] indices;
+
+            internal ShellQuery(RenderedMeshRaycast source)
+            {
+                var builder = new ContactAssetBuilder();
+                source.Export(builder);
+                nodes = builder.Nodes.ToArray();
+                vertices = builder.Vertices.ToArray();
+                indices = builder.Indices.ToArray();
+            }
+
+            internal bool Blocked(Vector3 start, Vector3 end)
+            {
+                Vector3 delta = end - start;
+                float length = delta.magnitude;
+                return length > 0f && NativeContact.ShellBlocked(nodes, vertices, indices, start, delta / length, length);
+            }
+        }
         private int ExportNode(int source,int vertexBase,ContactAssetBuilder builder)
         {
             Node n=nodes[source];int index=builder.Nodes.Count;

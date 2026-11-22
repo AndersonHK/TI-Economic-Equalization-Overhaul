@@ -7,6 +7,30 @@ using System.Reflection;
 
 namespace TIEconomyMod.Patches
 {
+    [HarmonyPatch(typeof(TIHabModuleTemplate), nameof(TIHabModuleTemplate.CostFromEarth))]
+    internal static class HabEarthFreightTimePatch
+    {
+        [HarmonyTranspiler]
+        internal static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+        {
+            MethodInfo native = AccessTools.Method(typeof(TISpaceObjectState),
+                nameof(TISpaceObjectState.GenericTransferTimeFromEarthsSurface_d));
+            MethodInfo shared = AccessTools.Method(typeof(HabLogistics), nameof(HabLogistics.EarthTrajectoryTime));
+            int count = 0;
+            foreach (CodeInstruction instruction in instructions)
+            {
+                if (instruction.Calls(native))
+                {
+                    instruction.operand = shared;
+                    count++;
+                }
+                yield return instruction;
+            }
+            if (count != 1)
+                throw new InvalidOperationException("Earth hab construction transfer-time call changed.");
+        }
+    }
+
     [HarmonyPatch(typeof(TIFactionState), nameof(TIFactionState.CanFoundHabFromHabAtLocation))]
     internal static class SystemAgnosticHabFoundingAvailabilityPatch
     {
@@ -177,12 +201,7 @@ namespace TIEconomyMod.Patches
                             .GetPurchaseResourceMarketValue(
                                 FactionResource.NobleMetals)
                 });
-            float transferDays = TISpaceObjectState
-                .GenericTransferTimeFromEarthsSurface_d(faction, site);
-            transferDays += TIEffectsState.SumEffectsModifiers(
-                Context.ProbeTransferTime,
-                faction,
-                transferDays);
+            float transferDays = HabLogistics.EarthDeliveryTime(faction, site, LogisticsDeliveryKind.Probe);
             cost.SetCompletionTime_Days(
                 TemplateManager.global.probeConstructionTime_d +
                 transferDays +

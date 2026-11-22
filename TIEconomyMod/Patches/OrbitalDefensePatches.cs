@@ -134,23 +134,51 @@ namespace TIEconomyMod.Patches
     {
         private sealed class ModuleModels
         {
+            private struct CachedSegment
+            {
+                internal Vector3 Start, End;
+                internal bool Valid, Blocked;
+            }
+
+            private static readonly ConditionalWeakTable<Mesh, RenderedMeshRaycast.ShellQuery> shells =
+                new ConditionalWeakTable<Mesh, RenderedMeshRaycast.ShellQuery>();
             internal readonly List<GameObject> Objects = new List<GameObject>();
             internal MeshFilter Hull;
-            internal Mesh RayMesh;
-            internal RenderedMeshRaycast RayTree;
+            private Mesh rayMesh;
+            private RenderedMeshRaycast.ShellQuery shell;
+            private readonly CachedSegment[] segments = new CachedSegment[2048];
+
+            internal void PrepareShell(Mesh mesh)
+            {
+                shell = shells.GetValue(mesh, PrepareGeometry);
+                rayMesh = mesh;
+                Array.Clear(segments, 0, segments.Length);
+            }
+
+            private static RenderedMeshRaycast.ShellQuery PrepareGeometry(Mesh mesh)
+            {
+                Mesh readable = mesh.isReadable ? mesh : CombatUnreadableMeshes.Copy(mesh);
+                return new RenderedMeshRaycast.ShellQuery(RenderedMeshRaycast.For(readable));
+            }
 
             internal bool Blocks(Vector3 start, Vector3 end)
             {
                 Mesh mesh = Hull.sharedMesh;
-                if (RayMesh != mesh || RayTree == null)
+                if (rayMesh != mesh) PrepareShell(mesh);
+                Transform hull = Hull.transform;
+                Vector3 a = hull.InverseTransformPoint(start);
+                Vector3 b = hull.InverseTransformPoint(end);
+
+                // Equality checks both actual local endpoints. Hash collisions only evict
+                // entries. Rotation, target motion and aligned muzzle changes stay visible.
+                uint hash = unchecked((uint)(a.GetHashCode() * 397 ^ b.GetHashCode()));
+                int slot = (int)(unchecked(hash * 2654435761u) >> 21);
+                ref CachedSegment cached = ref segments[slot];
+                if (!cached.Valid || !cached.Start.Equals(a) || !cached.End.Equals(b))
                 {
-                    RayMesh = mesh;
-                    RayTree = RenderedMeshRaycast.For(mesh.isReadable ? mesh : CombatUnreadableMeshes.Copy(mesh));
+                    cached = new CachedSegment { Start = a, End = b, Blocked = shell.Blocked(a, b), Valid = true };
                 }
-                Vector3 a = Hull.transform.InverseTransformPoint(start);
-                Vector3 delta = Hull.transform.InverseTransformPoint(end) - a;
-                float length = delta.magnitude;
-                return length > 0f && RayTree.Intersect(a, delta / length, length, out _, out _);
+                return cached.Blocked;
             }
         }
 
@@ -196,6 +224,7 @@ namespace TIEconomyMod.Patches
             var state = new ModuleModels { Hull = controller.GetComponent<MeshFilter>() };
             if (state.Hull == null || state.Hull.sharedMesh == null)
                 throw new InvalidOperationException("Missing defense shell on " + module.moduleTemplate.dataName);
+            state.PrepareShell(state.Hull.sharedMesh);
             models.Add(controller, state);
             var prefabs = new Dictionary<string, GameObject>(StringComparer.Ordinal);
             for (int i = 0; i < loadout.Count; i++)
@@ -294,16 +323,23 @@ namespace TIEconomyMod.Patches
             return weapon.combatant is CombatHabModuleController controller && models.TryGetValue(controller, out _);
         }
 
-        internal static ShipWeaponVisController SelectFace(Weapon weapon, Vector3 target)
+        internal static ShipWeaponVisController SelectFace(Weapon weapon, Vector3 target, out bool possible)
         {
             ShipWeaponVisController a = weapon.weaponVisualization;
             ShipWeaponVisController b = weapon.altWeaponVisualization;
-            if (Elevation(b, target) > Elevation(a, target))
+            float elevationA = Elevation(a, target), elevationB = Elevation(b, target);
+            if (elevationB > elevationA)
             {
                 a = b;
                 b = weapon.weaponVisualization;
+                float swap = elevationA;
+                elevationA = elevationB;
+                elevationB = swap;
             }
-            return CanAim(a, target, false) || !CanAim(b, target, false) ? a : b;
+            possible = CanAim(a, target, false, elevationA);
+            if (possible) return a;
+            possible = CanAim(b, target, false, elevationB);
+            return possible ? b : a;
         }
 
         private static float Elevation(ShipWeaponVisController visual, Vector3 target)
@@ -311,9 +347,14 @@ namespace TIEconomyMod.Patches
             return Vector3.Dot(visual.transform.up, (target - visual.weaponObjectTransform.position).normalized);
         }
 
-        internal static bool CanAim(ShipWeaponVisController visual, Vector3 target, bool aligned)
+        internal static bool AlignedMuzzleClear(ShipWeaponVisController visual, Vector3 target)
         {
-            if (Elevation(visual, target) < 0f)
+            return CanAim(visual, target, true, Elevation(visual, target));
+        }
+
+        private static bool CanAim(ShipWeaponVisController visual, Vector3 target, bool aligned, float elevation)
+        {
+            if (elevation < 0f)
                 return false;
             Transform head = visual.weaponObjectTransform;
             Vector3 muzzle = visual.firePointTransform.position;
@@ -334,7 +375,7 @@ namespace TIEconomyMod.Patches
         {
             if (!OrbitalDefenseCombat.Managed(__instance))
                 return true;
-            __result = OrbitalDefenseCombat.SelectFace(__instance, targetedPosition);
+            __result = OrbitalDefenseCombat.SelectFace(__instance, targetedPosition, out _);
             return false;
         }
     }
@@ -351,7 +392,10 @@ namespace TIEconomyMod.Patches
         private static void Postfix(Weapon __instance, ref bool impossible, Vector3 __result)
         {
             if (!impossible && OrbitalDefenseCombat.Managed(__instance))
-                impossible = !OrbitalDefenseCombat.CanAim(OrbitalDefenseCombat.SelectFace(__instance, __result), __result, false);
+            {
+                OrbitalDefenseCombat.SelectFace(__instance, __result, out bool possible);
+                impossible = !possible;
+            }
         }
     }
 
@@ -361,8 +405,8 @@ namespace TIEconomyMod.Patches
         private static void Postfix(Weapon __instance, ref bool __result)
         {
             if (__result && OrbitalDefenseCombat.Managed(__instance))
-                __result = OrbitalDefenseCombat.CanAim(
-                    OrbitalDefenseCombat.SelectFace(__instance, __instance.targetedPosition), __instance.targetedPosition, true);
+                __result = OrbitalDefenseCombat.AlignedMuzzleClear(
+                    OrbitalDefenseCombat.SelectFace(__instance, __instance.targetedPosition, out _), __instance.targetedPosition);
         }
     }
 

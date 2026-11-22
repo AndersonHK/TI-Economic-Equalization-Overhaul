@@ -22,6 +22,10 @@ Revisit the deferred values during the broader module rework. The isolated defen
 
 - The layout data binds the measured coordinates and model scaling to named module and role records. One selector uses native research eligibility and feeds the ordered rendered and simulated loadouts, module previews and range, and strategic strength. Existing-state initialization rebuilds the derived state.
 - Rendered batteries use the fitted models and own-shell checks. Simulated combat uses the same weapon complement under the native formation abstraction. No physical turret pose is available to that simulation.
+- Rendered face selection returns its predicted clearance result. The station
+  checks the aligned muzzle at fire time. Shared prepared triangle geometry
+  and an exact local segment cache reduce the cost of both checks.
+  [Kasai versus Jahn Station timing and parity](../waypoint-follow-and-missile-performance.md).
 - Check each named module's count, paired coordinates and model scales, template economics and package version. Verify the layout adapters and the project-completion path. The normal deployment flow runs the build and validators before installing.
 
 ## Initial deployment and evidence

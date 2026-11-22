@@ -41,7 +41,24 @@ dll.eeo_contact_raycast.argtypes=[c.POINTER(View),c.POINTER(RayInput),c.c_int]
 dll.eeo_contact_raycast.restype=c.c_int
 dll.eeo_contact_nearest.argtypes=[c.POINTER(View),c.POINTER(RayInput),c.c_int]
 dll.eeo_contact_nearest.restype=c.c_int
-assert dll.eeo_contact_abi()==0x10003
+assert dll.eeo_contact_abi()==0x10004
+shell_blocked = dll.eeo_shell_blocked
+shell_blocked.argtypes = [c.POINTER(N), c.c_int, c.POINTER(Vertex), c.POINTER(c.c_int), V, V, c.c_float]
+shell_blocked.restype = c.c_int
+# Two leaves on distinct planes. Exercise finite endpoints, parallel slabs,
+# the back of a face, grazing its edge, and skipping an entire missed leaf.
+mesh = (Vertex * 6)(*(Vertex(V(x, y, z), 0, 0) for x, y, z in
+                      [(-1,-1,0),(1,-1,0),(0,1,0),(2,-1,2),(4,-1,2),(3,1,2)]))
+tree = (N * 3)(N(V(-1,-1,0), V(4,1,2), 0,0,3,0,0),
+               N(V(-1,-1,0), V(1,1,0), 0,3,2,0,0),
+               N(V(2,-1,2), V(4,1,2), 3,3,3,0,0))
+indices = (c.c_int * 6)(*range(6))
+for origin, direction, maximum, expected in [
+        ((0,0,-1),(0,0,1),1,True), ((0,0,-1),(0,0,1),.999,False),
+        ((0,0,1),(0,0,-1),2,True), ((0,1,-2),(0,0,1),3,True),
+        ((3,0,-1),(0,0,1),3,True), ((.95,.95,-1),(0,0,1),2,False),
+        ((-2,2,0),(1,0,0),5,False)]:
+    assert bool(shell_blocked(tree,3,mesh,indices,V(*origin),V(*direction),maximum)) == expected
 for i,typ in enumerate((V,M,B,N,Vertex,Influence,Envelope,Surface,Flight,Result,W,View,RayInput)):
     assert dll.eeo_contact_size(i)==c.sizeof(typ),(typ.__name__,dll.eeo_contact_size(i),c.sizeof(typ))
 

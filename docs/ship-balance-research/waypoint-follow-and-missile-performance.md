@@ -72,7 +72,100 @@ Direct timing by caller is still needed to quantify its share.
 [Station query callers](../../TIEconomyMod/Patches/OrbitalDefensePatches.cs)
 and [managed tree traversal](../../TIEconomyMod/Core/RenderedMeshRaycast.cs).
 
-## Order of performance work
+## Performance implementation and measurements
+
+The implementation starts with an opt-in batch replay of the named save.
+Measure the existing shell query and explicit job completion sites inside
+the native battle loop before changing the backend. Reuse the same driver
+and formation on the optimized build. Keep interval data and sample counts
+with the results.
+
+### Direct attribution in the campaign replay
+
+With the original solver, three 10× runs reached 48 live missiles about
+42–43 simulated seconds after launch. The frames with 48 live at both ends
+averaged 256.92–260.06 ms. Timing `ModuleModels.Blocks` on the game thread
+accounted for 212.17–214.51 ms/frame. There were 37,040 shell calls/frame
+in these peak intervals. Time inside explicit movement/contact
+`JobHandle.Complete` calls averaged 0.081–0.084 ms/frame. This measurement
+includes any job work executed by the caller during completion.
+
+The changed service resolves the preferred face and its eligibility once
+per decision. It still checks the aligned muzzle at fire time. Loading
+prepares a flat local-space shell tree and the native kernel returns on the
+first finite-segment obstruction. A small bounded cache compares both
+hull-local endpoints exactly and resets when the mesh changes. Hash
+collisions cause recomputation. The service adds no job-completion fence.
+
+The replay driver runs only with the batch replay flag. It loads a copy of
+the save, intercepts campaign save writes, and verifies silent FMOD output
+before loading. Each sample uses elapsed time between Unity updates. The
+wait column covers the projectile movement and contact completion sites.
+It excludes unrelated engine waits such as presentation. The ordinary
+deployment and interactive player do not install replay timing hooks.
+
+| At 48 live missiles, 10× speed | Baseline, three runs | Optimized station clearance, three runs |
+|---|---:|---:|
+| Mean whole frame, ms | 256.92–260.06 | 7.01–7.06 |
+| 95th percentile whole frame, ms | 260.08–265.60 | 8.77–8.80 |
+| Mean inclusive shell check, ms/frame | 212.17–214.51 | 1.64–1.66 |
+| Mean measured job completion, ms/frame | 0.081–0.084 | 0.067–0.068 |
+
+All six runs reached 48 missiles. Matching the interval from 60 to 170
+simulated seconds after launch gives the same result. In the first matched
+pair, an individual shell call averaged 5.79 microseconds before and 1.25
+after, including lookup, transformation and diagnostic overhead. Per
+simulated second, shell checks consumed 82.48 ms before and 23.48 ms after.
+Both runs delivered roughly ten simulation seconds per wall second. The much
+larger improvement per displayed frame includes the reduction in catch-up
+ticks each frame. No simulation tick was removed by the patch.
+
+A seventh replay evaluated the previous nearest-triangle solver against
+each returned obstruction decision on its actual inputs. All 3,118,538
+decisions agreed. Its extra reference work is excluded from timings.
+The replay covers the 180 simulated seconds after first launch, including
+the 48-missile peak. It does not establish lockstep damage outcomes for a
+whole battle or GPU frame time on a player's desktop. All runs used D3D11
+on the same RTX 5070 Ti in batch mode.
+
+The final deployed package passed a separate 15× replay through the end of
+the missile wave (launch at combat second 611.84, zero live missiles at
+916.74). The 2,233 peak-count samples averaged 7.40 ms/frame with a
+9.03 ms p95, 2.06 ms in shell checks and 0.067 ms in measured completions.
+Use `-ThroughSalvo` to extend the normal observation window. The deployed
+managed DLL SHA-256 is
+`477F6D772A96701DED4AD9C2A8EA81E16C05059D8F5AFDB307458CFE19B705B7`.
+
+[Per-frame traces and run manifest](battle-scale/station-salvo-replays-2026-11-22.zip).
+From the repository root, run `tools/replay-station-battle.ps1` with
+`-GameInstallDir`, `-Save`, a fresh `-OutputDirectory` and `-Speed 10`.
+Use `-VerifyShell` for a separate parity run. Pass its `frames.json` to
+`python tools/summarize-station-replay.py` to reproduce the timing windows.
+
+### Independent fleet worker experiment
+
+The Tiangong campaign combat autosave from 2043-07-17 spawned 43 ships
+without a station. An active missile interval averaged 115.25 ms/frame
+with 4.7754 ms/frame in compatibility snapshots and 4,476 active poses.
+Use this encounter for the worker experiment. Schedule large read-only
+transform captures in parallel batches, retain the dependency on native
+movement, and chain the proxy index behind the capture. Wait at the query
+consumer. Compare wall time and all measured completions on the same save
+before choosing whether to retain the experiment.
+
+Both variants reached 1,056 live missiles. From 60 to 170 simulated
+seconds after first launch, the original scheduler averaged 76.66 ms/frame
+and 3.97 ms/frame in measured completion calls. The experiment averaged
+105.63 and 5.63 ms respectively, with whole-frame p95 changing from 218.50
+to 186.73 ms. The computer selected a different alien formation in each
+run. These two observations cannot isolate a scheduler effect. Although
+all 1,152 synthetic shared-hierarchy pose matrices and their inverses
+matched Unity, the experiment did not demonstrate a frame-time or wait
+benefit. Its runtime changes were removed. The deployed improvement applies
+to station clearance. A future fleet trial needs a fixed formation, seed
+and weapon orders, and separate capture/index wall times on the same poses.
+
+## Original performance plan
 
 1. **Reproduce and account for a whole slow frame.** Restore a copy of this
    encounter in a headless Unity combat-scene replay, with the rendered

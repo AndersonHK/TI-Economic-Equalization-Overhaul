@@ -2,7 +2,7 @@
 
 Last updated 2026-11-22. This catalog indexes every other file under `docs/`, including machine-readable evidence and images. For interpretation, start with the [documentation map](README.md), [ship-balance hub](ship-balance-research/README.md), or [archive index](archive/README.md). Location/type labels are navigation aids, not assertions that all research is implemented.
 
-Indexed files: **612**. No archived evidence was deleted during the organization pass.
+Indexed files: **613**. No archived evidence was deleted during the organization pass.
 
 
 ## Top-level guides and authorities
@@ -326,6 +326,7 @@ Indexed files: **612**. No archived evidence was deleted during the organization
 | [ship-balance-research/battle-scale/projectile-asset-baseline.json](ship-balance-research/battle-scale/projectile-asset-baseline.json) | JSON |
 | [ship-balance-research/battle-scale/recurring-patch-inventory-2026-11-04.json](ship-balance-research/battle-scale/recurring-patch-inventory-2026-11-04.json) | JSON |
 | [ship-balance-research/battle-scale/repeat-battle-crash-2026-11-05.json](ship-balance-research/battle-scale/repeat-battle-crash-2026-11-05.json) | JSON |
+| [ship-balance-research/battle-scale/station-salvo-replays-2026-11-22.zip](ship-balance-research/battle-scale/station-salvo-replays-2026-11-22.zip) | ZIP |
 | [ship-balance-research/battle-scale/settings-pre-configurable-scale-2026-10-30.xml](ship-balance-research/battle-scale/settings-pre-configurable-scale-2026-10-30.xml) | XML |
 | [ship-balance-research/battle-scale/skin-bind-audit-2026-10-30.json](ship-balance-research/battle-scale/skin-bind-audit-2026-10-30.json) | JSON |
 | [ship-balance-research/battle-scale/skirmish-startup-crash-0.10.11.txt](ship-balance-research/battle-scale/skirmish-startup-crash-0.10.11.txt) | TXT |

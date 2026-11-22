@@ -59,7 +59,7 @@ The factory dispatch is a freight requirement, not a second material charge.
 The full 30 tonnes are paid once through stockpile debits and Earth purchases.
 
 If an eligible space factory exists, Earth does not compete with it as another
-origin. The lowest-propellant eligible space route wins. Earth supplies the
+origin. The earliest eligible space delivery wins. Earth supplies the
 mandatory dispatched share only when no space origin can perform the job.
 
 ## Factory and dock tiers
@@ -99,8 +99,8 @@ universal surcharge on Moon, Mars, or orbital manufacturing.
 The resolver evaluates valid interface orbits and ranks eligible space origins
 by:
 
-1. lowest propellant requirement;
-2. shortest transfer time;
+1. shortest transfer time;
+2. lowest propellant requirement at that time;
 3. stable hab identity.
 
 For non-Earth freight:
@@ -119,11 +119,52 @@ portion of a mixed delivery. Route and freight caches include the faction's
 current off-window-time and exhaust-velocity effect values so a completed
 project changes a quote immediately, without waiting for time to advance.
 
-Trajectory time comes from the vanilla generic-transfer calculation.
+The shared freight estimator uses the native generic-transfer calculation
+for ordinary legs. A transfer between an orbit around a planet and that
+planet's L1 or L2 halo uses the Hill radius as the outer endpoint of a
+planet-centered two-body transfer. It estimates the halo endpoint speed
+from corotation. This is an abstract freight estimate and uses the same
+leg for delta-v and time.
 Solar Steamers reduces only an applicable off-launch-window penalty inside that
 calculation. Afterward, hab and module deliveries apply
 `GenericModuleTransferTime` exactly once, including Space Tugs, Nuclear
 Freighters, and Fusion Freighters.
+
+### Intermediate Earth Orbit delivery correction
+
+The reported Residential Module quote at Liu Yang Station showed 60.1
+days from Earth and 231.2 days in space. An October 8 campaign snapshot
+already contains powered T2 Nanofactory and Shipyard pairs in LEO,
+Extreme Earth Orbit, and a Sun–Earth L1 halo. With the stock estimator,
+the L1-to-Earth leg compares heliocentric axes. Its small apparent
+delta-v can beat the factories in Earth orbit despite a nominal half
+solar orbit in transit. The quoted screen does not identify its selected
+factory, so this explains the reproduced route-selection failure rather
+than identifying the exact clicked quote's source.
+
+Prefer arrival time in the common freight resolver. Use propellant as
+the second criterion and retain the existing source eligibility, Earth
+fallback, and freight accounting. Construction quotes and queued jobs
+consume the same selected route.
+
+On 2026-11-22, a headless replay used the three eligible factory
+locations reconstructed from the campaign snapshot and a station in
+Intermediate Earth Orbit. The runtime route estimator returned these
+values before freighter bonuses and fabrication.
+
+| Origin | Transit | Freight delta-v |
+|---|---:|---:|
+| Hadfield, LEO | 0.1244 days | 3.3804 km/s |
+| Hermaszewski, Extreme Earth Orbit | 13.7243 days | 2.0494 km/s |
+| Kanai, Sun–Earth L1 | 37.3377 days | 1.7509 km/s |
+
+The resolver chose Hadfield. The Earth module path, Earth freight
+fallback, mixed delivery, and probes now read the shared freight timing.
+Full release verification passed and the guarded 0.12.0 deployment
+hash-verified 61 files. The installed managed DLL SHA-256 is
+`A3A6A1230060EEA9E0DB87B7D5910A0FB5A599391347935F5673149942AB80A9`.
+On 2026-11-22 the player confirmed the delivery correction worked as
+intended and requested the checkpoint.
 
 ## Founding habs
 

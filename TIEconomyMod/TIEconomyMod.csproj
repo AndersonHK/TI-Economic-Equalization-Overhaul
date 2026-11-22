@@ -49,6 +49,10 @@
       <HintPath>$(TargetManagedDir)\UnityModManager\0Harmony.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="FMODUnity">
+      <HintPath>$(TargetManagedDir)\FMODUnity.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Assembly-CSharp">
       <HintPath>$(TargetManagedDir)\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
@@ -127,6 +131,7 @@
     <Compile Include="Core\ContactJobSelfTest.cs" />
     <Compile Include="Core\NativeContact.cs" />
     <Compile Include="Core\ContactHeadlessHarness.cs" />
+    <Compile Include="Core\StationBattleReplay.cs" />
     <Compile Include="Core\WaypointLifetime.cs" />
     <Compile Include="Core\WaypointLifetimeChecks.cs" />
     <Compile Include="Patches\WaypointLifetimePatches.cs" />

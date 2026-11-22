@@ -13,6 +13,26 @@ namespace TIEconomyMod
         internal const float OtherLogisticsPairPriority = 34f;
         internal const int CostDecimalPlaces = 4;
 
+        internal static void CollinearFreightLeg(
+            double mu, double innerRadius_m, double hillRadius_m, double bodyPeriod_s,
+            out double deltaV_kps, out float time_days)
+        {
+            double axis = (innerRadius_m + hillRadius_m) * 0.5d;
+            double innerTransferSpeed = Math.Sqrt(mu * (2d / innerRadius_m - 1d / axis));
+            double outerTransferSpeed = Math.Sqrt(mu * (2d / hillRadius_m - 1d / axis));
+            double haloSpeed = 2d * Math.PI * hillRadius_m / bodyPeriod_s;
+            deltaV_kps = (Math.Abs(innerTransferSpeed - Math.Sqrt(mu / innerRadius_m)) +
+                Math.Abs(outerTransferSpeed - haloSpeed)) / 1000d;
+            time_days = (float)(Math.PI * Math.Sqrt(axis * axis * axis / mu) / 86400d);
+        }
+
+        internal static bool PreferFreightLeg(float days, double deltaV, float currentDays, double currentDeltaV)
+        {
+            return !float.IsNaN(days) && !float.IsInfinity(days) && days >= 0f &&
+                !double.IsNaN(deltaV) && !double.IsInfinity(deltaV) && deltaV >= 0d &&
+                (days < currentDays || (days == currentDays && deltaV < currentDeltaV));
+        }
+
         internal static bool HasRebalancedMaterialFraction(float materialFraction)
         {
             return materialFraction >=

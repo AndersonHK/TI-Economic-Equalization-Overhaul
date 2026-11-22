@@ -128,7 +128,29 @@ static int build(View&v,int start,int count,int&next){
         int half=left-start;if(half==0||half==count)half=count/2;build(v,start,half,next);build(v,start+half,count-half,next);n.count=0;
     }n.skip=next;v.nodes[slot]=n;return slot;
 }
-extern "C" __declspec(dllexport) unsigned eeo_contact_abi(){return 0x10003;}
+// Shell clearance needs only one intersection on the finite muzzle-target segment.
+// Nodes are depth-first with a skip link, as in the worker contact backend.
+extern "C" __declspec(dllexport) int eeo_shell_blocked(const Node* nodes, int count,
+    const Vertex* vertices, const int* indices, V origin, V direction, float maximum) {
+    const Ray ray(origin, direction);
+    for (int index = 0; index < count;) {
+        const Node& node = nodes[index];
+        if (!ray.box(node.min, node.max, maximum)) {
+            index = node.skip;
+            continue;
+        }
+        for (int i = node.start; i < node.start + node.count; i += 3) {
+            float distance;
+            V normal;
+            if (triangle(ray, vertices[indices[i]].point, vertices[indices[i + 1]].point,
+                vertices[indices[i + 2]].point, maximum, distance, normal)) return 1;
+        }
+        ++index;
+    }
+    return 0;
+}
+
+extern "C" __declspec(dllexport) unsigned eeo_contact_abi(){return 0x10004;}
 extern "C" __declspec(dllexport) unsigned eeo_contact_size(int type){
     const unsigned sizes[]={sizeof(V),sizeof(M),sizeof(Bounds),sizeof(Node),sizeof(Vertex),sizeof(Influence),sizeof(Envelope),sizeof(Surface),sizeof(Flight),sizeof(Result),sizeof(WorldNode),sizeof(View),sizeof(RayInput)};
     return type>=0&&type<13?sizes[type]:0;
