@@ -4,12 +4,18 @@ namespace TIEconomyMod.Core
 {
     public static class LaserSamplingMath
     {
-        public const double CoreRibbonRatio = 0.46;
+        public const double LegacyCarrierRatio = 0.46;
         public static double RibbonWidth(double coreDiameter)
+        {
+            return RibbonWidth(coreDiameter, LegacyCarrierRatio);
+        }
+        public static double RibbonWidth(double coreDiameter, double carrierRatio)
         {
             if (Double.IsNaN(coreDiameter) || Double.IsInfinity(coreDiameter) || coreDiameter <= 0)
                 throw new ArgumentOutOfRangeException(nameof(coreDiameter));
-            return coreDiameter / CoreRibbonRatio;
+            if (Double.IsNaN(carrierRatio) || Double.IsInfinity(carrierRatio) || carrierRatio <= 0 || carrierRatio > 1)
+                throw new ArgumentOutOfRangeException(nameof(carrierRatio));
+            return coreDiameter / carrierRatio;
         }
         public static double ParticleRibbonWidth(double authoredWidth, double inheritedScale)
         {

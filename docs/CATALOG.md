@@ -2,7 +2,7 @@
 
 Last updated 2026-11-22. This catalog indexes every other file under `docs/`, including machine-readable evidence and images. For interpretation, start with the [documentation map](README.md), [ship-balance hub](ship-balance-research/README.md), or [archive index](archive/README.md). Location/type labels are navigation aids, not assertions that all research is implemented.
 
-Indexed files: **603**. No archived evidence was deleted during the organization pass.
+Indexed files: **608**. No archived evidence was deleted during the organization pass.
 
 
 ## Top-level guides and authorities
@@ -294,6 +294,7 @@ Indexed files: **603**. No archived evidence was deleted during the organization
 | [ship-balance-research/battle-scale/headless-contact-0.11.8.txt](ship-balance-research/battle-scale/headless-contact-0.11.8.txt) | TXT |
 | [ship-balance-research/battle-scale/headless-contact-0.11.9.json](ship-balance-research/battle-scale/headless-contact-0.11.9.json) | JSON |
 | [ship-balance-research/battle-scale/headless-contact-managed-prototype-2026-11-04.json](ship-balance-research/battle-scale/headless-contact-managed-prototype-2026-11-04.json) | JSON |
+| [ship-balance-research/battle-scale/laser-aperture-calibration-2026-11-22.json](ship-balance-research/battle-scale/laser-aperture-calibration-2026-11-22.json) | JSON |
 | [ship-balance-research/battle-scale/laser-core-sampling-audit-2026-11-04.json](ship-balance-research/battle-scale/laser-core-sampling-audit-2026-11-04.json) | JSON |
 | [ship-balance-research/battle-scale/laser-distance-audit-2026-11-03.json](ship-balance-research/battle-scale/laser-distance-audit-2026-11-03.json) | JSON |
 | [ship-balance-research/battle-scale/laser-material-readback-0.11.5.txt](ship-balance-research/battle-scale/laser-material-readback-0.11.5.txt) | TXT |

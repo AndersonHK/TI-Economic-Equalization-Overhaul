@@ -1,17 +1,16 @@
 {
-  "schema": 1,
+  "schema": 3,
   "shaderName": "EEO/Beam Weapon Line",
   "assetName": "assets/eeo/beam-ribbon.shader",
   "unityVersion": "2020.3.49f1",
   "graphicsApi": "Direct3D11",
-  "coreRibbonRatio": 0.46,
   "nativeAssemblySha256": "64D88E996C63B4254675D608E859AAC523B43488625937D8E2E9B1E04A3E8B3B",
   "nativeBundleSha256": "27F37070CBD1FC29275CB5FC38D3073DE24C10802AC441B5FAD39A54F573B90F",
   "nativeVertexUnchanged": true,
   "vertexSha256": "26EDD8DC65AF5CD30FA35FCFFEBE7F08E59A39FF3144E08DD66B0DCA3AA0D13F",
-  "hlslSha256": "C2C420D695756B6B873158F90154953FC6600F66C8EA76CBDDE087196661A6BA",
-  "bundleSha256": "09EAA8A2F649838295D456D6DE00507F51B9827C88AE3C5467C07312F0671D4B",
-  "bundleBytes": 75982,
+  "hlslSha256": "A34213AE8571D18C789D0AF480BEC90A12BC02ADAF5B179610B78A65F8A031B4",
+  "bundleSha256": "DE6BCE84315203921499E89AEBE69F13D6BF6A41C56CEF045F8770A3908BB72C",
+  "bundleBytes": 75990,
   "programs": [
     {
       "stage": "vertex",
@@ -23,5 +22,26 @@
       "sha256": "1F8EF95499908B3BD816C8FBC8FB3A0E80D58EDD2EBA72562DA3A0DE773FC7A2",
       "bytes": 4004
     }
-  ]
+  ],
+  "aperture": {
+    "bundleSha256": "F0033C043AAAFC84D2B085D7A037BE46C718715D15725E0469DDC21694FCB79F",
+    "shaders": [
+      {
+        "nativeShader": "TerraInvicta/Beam Weapon Line",
+        "shaderName": "EEO/Calibrated Beam core",
+        "assetName": "assets/eeo/lens-core.shader",
+        "carrierRatio": 0.46,
+        "vertexSha256": "26EDD8DC65AF5CD30FA35FCFFEBE7F08E59A39FF3144E08DD66B0DCA3AA0D13F",
+        "fragmentSha256": "3F8769021D091B6EDE1BA1721AE5C1C2D65D7139A6D8676775E30C9E74F94A89"
+      },
+      {
+        "nativeShader": "TerraInvicta/Laser Beam No Middle",
+        "shaderName": "EEO/Calibrated Beam flow",
+        "assetName": "assets/eeo/lens-flow.shader",
+        "carrierRatio": 0.35,
+        "vertexSha256": "26EDD8DC65AF5CD30FA35FCFFEBE7F08E59A39FF3144E08DD66B0DCA3AA0D13F",
+        "fragmentSha256": "EF92A916ADFF4D77D92816F3F6FD1515FC427EC93C94A7B64E7523F2AAD41301"
+      }
+    ]
+  }
 }

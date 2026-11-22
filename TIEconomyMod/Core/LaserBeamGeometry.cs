@@ -131,19 +131,12 @@ namespace TIEconomyMod.Core
                     var laser=(TILaserWeaponTemplate)emitter.weaponTemplate;
                     diameter=Math.Max(1e-9f,laser.mirrorRadius_cm*.02f*Patches.BattleScaleRuntime.ModelScale);
                 }
-                // Fixed approved calibration only. Keep the authored shader profile.
-                ribbonWidth=(float)LaserSamplingMath.RibbonWidth(diameter);
             }
-            line.widthMultiplier=ribbonWidth;
             // Native BeamEffectController already instances this material in Awake.
             Material material=line.sharedMaterial;
             if(material!=beamMaterial)
             {
-                if(beamMaterial!=null&&beamMaterial.HasProperty("_MainTex"))
-                    beamMaterial.mainTextureScale=texturePeriod.Restore(beamMaterial.mainTextureScale);
-                else texturePeriod.Reset();
-                if (sampling && beamMaterial != null) beamMaterial.shader=originalShader;
-                sampling=false;
+                RestoreMaterial();
                 beamMaterial=material;
             }
             if(beamMaterial!=null&&beamMaterial.HasProperty("_MainTex"))
@@ -155,15 +148,26 @@ namespace TIEconomyMod.Core
             string beforeShader=report && beamMaterial!=null && beamMaterial.shader!=null ? beamMaterial.shader.name : "none";
             Vector2 beforeUV=report && beamMaterial!=null && beamMaterial.HasProperty("_MainTex") ? beamMaterial.mainTextureScale : default(Vector2);
             Texture beforeTexture=report && beamMaterial!=null && beamMaterial.HasProperty("_MainTex") ? beamMaterial.mainTexture : null;
-            if (beamMaterial != null && LaserSamplingShader.Shader != null &&
-                (sampling || (beamMaterial.shader != null && beamMaterial.shader.name == "TerraInvicta/Beam Weapon Line")))
+            Shader native=beamMaterial==null ? null : sampling ? originalShader : beamMaterial.shader;
+            if (LaserSamplingShader.TryResolve(native, particle, out Shader variant, out float carrierRatio))
             {
-                if (!sampling) { originalShader=beamMaterial.shader; beamMaterial.shader=LaserSamplingShader.Shader; sampling=true; }
+                originalShader=native;
+                if (beamMaterial.shader != variant) beamMaterial.shader=variant;
+                sampling=true;
             }
+            else if (sampling)
+            {
+                beamMaterial.shader=originalShader;
+                sampling=false;
+            }
+            if (!particle)
+                ribbonWidth=(float)LaserSamplingMath.RibbonWidth(diameter, carrierRatio);
+            line.widthMultiplier=ribbonWidth;
             if(Reports.Add(key))Main.Log("Laser native ribbon: "+key+" measured="+measured+
                 " particle="+particle+" widthSource="+(particle ? "authoredEffectScale" : "graphicalAperture")+
                 " apertureDiameter="+diameter.ToString("G7")+" ribbonWidth="+ribbonWidth.ToString("G7")+
-                " filtered="+sampling+" longitudinalScaleRatio="+Patches.BattleScaleRuntime.ModelRatio.ToString("G7"));
+                " carrierRatio="+carrierRatio.ToString("G7")+" filtered="+sampling+
+                " longitudinalScaleRatio="+Patches.BattleScaleRuntime.ModelRatio.ToString("G7"));
             if (report && beamMaterial!=null)
             {
                 Color afterTint=hasTint ? beamMaterial.GetColor("_Color") : default(Color);
@@ -188,11 +192,17 @@ namespace TIEconomyMod.Core
         public void Restore()
         {
             if(captured&&line!=null)line.widthMultiplier=originalMultiplier;
+            RestoreMaterial();
+            active=false;
+        }
+
+        private void RestoreMaterial()
+        {
             if(beamMaterial!=null&&beamMaterial.HasProperty("_MainTex"))
                 beamMaterial.mainTextureScale=texturePeriod.Restore(beamMaterial.mainTextureScale);
+            else texturePeriod.Reset();
             if (sampling && beamMaterial != null) beamMaterial.shader=originalShader;
             sampling=false;
-            active=false;
         }
     }
 }

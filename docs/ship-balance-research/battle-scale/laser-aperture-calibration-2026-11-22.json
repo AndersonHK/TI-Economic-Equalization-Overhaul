@@ -1,0 +1,287 @@
+{
+  "nativeBundleSha256": "27F37070CBD1FC29275CB5FC38D3073DE24C10802AC441B5FAD39A54F573B90F",
+  "referenceContour": 0.1353352832366127,
+  "effects": [
+    {
+      "effect": "spacecombat/alien laser beam blue",
+      "shader": "TerraInvicta/Beam Weapon Line",
+      "material": "Laser",
+      "optical": true
+    },
+    {
+      "effect": "spacecombat/alien laser beam orange",
+      "shader": "TerraInvicta/Beam Weapon Line",
+      "material": "Laser",
+      "optical": true
+    },
+    {
+      "effect": "spacecombat/alien laser gamma ray",
+      "shader": "TerraInvicta/Laser Beam No Middle",
+      "material": "GammaRayLaser",
+      "optical": true
+    },
+    {
+      "effect": "spacecombat/alien laser xray",
+      "shader": "TerraInvicta/Laser Beam No Middle",
+      "material": "XRayLaser",
+      "optical": true
+    },
+    {
+      "effect": "spacecombat/arc laser beam green",
+      "shader": "TerraInvicta/Beam Weapon Line",
+      "material": "ArcLaser",
+      "optical": true
+    },
+    {
+      "effect": "spacecombat/arc laser beam red",
+      "shader": "TerraInvicta/Beam Weapon Line",
+      "material": "ArcLaser",
+      "optical": true
+    },
+    {
+      "effect": "spacecombat/arc laser beam violet",
+      "shader": "TerraInvicta/Beam Weapon Line",
+      "material": "ArcLaser",
+      "optical": true
+    },
+    {
+      "effect": "spacecombat/particle beam cyan",
+      "shader": "TerraInvicta/Laser Beam No Middle",
+      "material": "ParticleBeam2",
+      "optical": false
+    },
+    {
+      "effect": "spacecombat/particle beam dark blue",
+      "shader": "TerraInvicta/Beam Weapon Line",
+      "material": "ParticleBeam",
+      "optical": false
+    },
+    {
+      "effect": "spacecombat/particle beam purple",
+      "shader": "TerraInvicta/Laser Beam No Middle",
+      "material": "ParticleBeam2",
+      "optical": false
+    },
+    {
+      "effect": "spacecombat/particle beam white",
+      "shader": "TerraInvicta/Beam Weapon Line",
+      "material": "ParticleBeam",
+      "optical": false
+    },
+    {
+      "effect": "spacecombat/particle beam yellow",
+      "shader": "TerraInvicta/Beam Weapon Line",
+      "material": "ParticleBeam",
+      "optical": false
+    },
+    {
+      "effect": "spacecombat/particle beam yellow-green",
+      "shader": "TerraInvicta/Laser Beam No Middle",
+      "material": "ParticleBeam2",
+      "optical": false
+    },
+    {
+      "effect": "spacecombat/phaser beam green",
+      "shader": "TerraInvicta/Beam Weapon Line",
+      "material": "Phaser",
+      "optical": true
+    },
+    {
+      "effect": "spacecombat/phaser beam red",
+      "shader": "TerraInvicta/Beam Weapon Line",
+      "material": "Phaser",
+      "optical": true
+    },
+    {
+      "effect": "spacecombat/phaser beam violet",
+      "shader": "TerraInvicta/Beam Weapon Line",
+      "material": "Phaser",
+      "optical": true
+    },
+    {
+      "effect": "spacecombat/solid laser red",
+      "shader": "TerraInvicta/Beam Weapon Line",
+      "material": "SolidLaser",
+      "optical": true
+    },
+    {
+      "effect": "spacecombat/standard laser beam green",
+      "shader": "TerraInvicta/Beam Weapon Line",
+      "material": "Laser",
+      "optical": true
+    },
+    {
+      "effect": "spacecombat/standard laser beam red",
+      "shader": "TerraInvicta/Beam Weapon Line",
+      "material": "Laser",
+      "optical": true
+    },
+    {
+      "effect": "spacecombat/standard laser beam violet",
+      "shader": "TerraInvicta/Beam Weapon Line",
+      "material": "Laser",
+      "optical": true
+    }
+  ],
+  "textures": {
+    "noiseBurnUp": {
+      "size": [
+        1024,
+        1024
+      ],
+      "redSha256": "BB101E462DBD0FA746533A1D1EEBAD1DDA6494C9DB72C37233F30BC17ECCFD57",
+      "alphaRange": [
+        0,
+        255
+      ]
+    },
+    "Phaser": {
+      "size": [
+        256,
+        256
+      ],
+      "redSha256": "31A699556171B9F376B5292A4B6CC42E883557D6A2210DDAB2D8AADAB8D05362",
+      "alphaRange": [
+        255,
+        255
+      ]
+    },
+    "ArcLaser": {
+      "size": [
+        512,
+        512
+      ],
+      "redSha256": "2CD1D93026E383D9D814A3FF08029B9C2D36071EF702DDCD1BC7BFC761145A48",
+      "alphaRange": [
+        255,
+        255
+      ]
+    }
+  },
+  "profiles": {
+    "Laser": {
+      "texture": "noiseBurnUp",
+      "parameters": {
+        "_LaserDistanceFalloff": 0.800000011920929,
+        "_LaserDistanceScale": 3.0,
+        "_LaserFalloff": 0.8999999761581421,
+        "_LaserMaxRadius": 0.20200000703334808,
+        "_LaserRadius": 0.02500000037252903,
+        "_LaserStartRadius": 0.07500000298023224,
+        "_NoiseExponent": 7.349999904632568,
+        "_NoiseOpacity": 0.014000000432133675,
+        "_NoiseScale": 4.0,
+        "_NoiseScaleSpeed": 30.0,
+        "_NoiseScaleStrength": 0.05000000074505806,
+        "_NoiseStart": 0.0,
+        "_NoiseThreshold": 0.11699999868869781,
+        "_NoiseTimescale": 6.0
+      },
+      "nativeHalfPeakWidth": 0.05600277035628902,
+      "nativeOpticalWidth": 0.10292434476487157,
+      "maximumMuzzleHalfSupport": 0.2726403516105982
+    },
+    "Phaser": {
+      "texture": "Phaser",
+      "parameters": {
+        "_LaserDistanceFalloff": 1.3899999856948853,
+        "_LaserDistanceScale": 3.0,
+        "_LaserFalloff": 1.25,
+        "_LaserMaxRadius": 0.15000000596046448,
+        "_LaserRadius": 0.02500000037252903,
+        "_LaserStartRadius": 0.10000000149011612,
+        "_NoiseExponent": 2.0,
+        "_NoiseOpacity": 1.0,
+        "_NoiseScale": 4.0,
+        "_NoiseScaleSpeed": 20.0,
+        "_NoiseScaleStrength": 0.25200000405311584,
+        "_NoiseStart": 0.16300000250339508,
+        "_NoiseThreshold": 0.07100000232458115,
+        "_NoiseTimescale": 3.0
+      },
+      "nativeHalfPeakWidth": 0.18241889848518966,
+      "nativeOpticalWidth": 0.28273007970484376,
+      "maximumMuzzleHalfSupport": 0.2687016683574252
+    },
+    "ArcLaser": {
+      "texture": "ArcLaser",
+      "parameters": {
+        "_LaserDistanceFalloff": 1.3899999856948853,
+        "_LaserDistanceScale": 3.0,
+        "_LaserFalloff": 1.25,
+        "_LaserMaxRadius": 0.07500000298023224,
+        "_LaserRadius": 0.02500000037252903,
+        "_LaserStartRadius": 0.029999999329447746,
+        "_NoiseExponent": 4.0,
+        "_NoiseOpacity": 1.0,
+        "_NoiseScale": 4.0,
+        "_NoiseScaleSpeed": 10.0,
+        "_NoiseScaleStrength": 0.11999999731779099,
+        "_NoiseStart": 1.0,
+        "_NoiseThreshold": 0.0949999988079071,
+        "_NoiseTimescale": 10.0
+      },
+      "nativeHalfPeakWidth": 0.06971745292095843,
+      "nativeOpticalWidth": 0.10805470916030993,
+      "maximumMuzzleHalfSupport": 0.26250584832801754
+    },
+    "SolidLaser": {
+      "texture": "noiseBurnUp",
+      "parameters": {
+        "_LaserDistanceFalloff": 0.5,
+        "_LaserDistanceScale": 3.0,
+        "_LaserFalloff": 0.8999999761581421,
+        "_LaserMaxRadius": 0.20000000298023224,
+        "_LaserRadius": 0.02500000037252903,
+        "_LaserStartRadius": 0.07500000298023224,
+        "_NoiseExponent": 7.349999904632568,
+        "_NoiseOpacity": 0.057999998331069946,
+        "_NoiseScale": 4.0,
+        "_NoiseScaleSpeed": 15.0,
+        "_NoiseScaleStrength": 0.02500000037252903,
+        "_NoiseStart": 0.0010000000474974513,
+        "_NoiseThreshold": 0.3140000104904175,
+        "_NoiseTimescale": 6.0
+      },
+      "nativeHalfPeakWidth": 0.06771572609220576,
+      "nativeOpticalWidth": 0.12445092794476587,
+      "maximumMuzzleHalfSupport": 0.271453989075458
+    }
+  },
+  "flow": {
+    "texture": "Phaser",
+    "parameters": {
+      "_LaserDistanceFalloff": 8.0,
+      "_LaserDistanceScale": 3.0,
+      "_LaserFalloff": 0.10000000149011612,
+      "_LaserMaxRadius": 0.10300000011920929,
+      "_LaserOpacity": 0.0,
+      "_LaserRadius": 0.02500000037252903,
+      "_LaserStartRadius": 0.027000000700354576,
+      "_NoiseExponent": 30.0,
+      "_NoiseOpacity": 1.0,
+      "_NoiseScale": 4.0,
+      "_NoiseScaleSpeed": 2.0,
+      "_NoiseScaleStrength": 0.03999999910593033,
+      "_NoiseStart": 0.041999999433755875,
+      "_NoiseThreshold": 0.006000000052154064,
+      "_NoiseTimescale": 10.0
+    },
+    "opticalWidth": 0.0695991496026513,
+    "phaseWidths": {
+      "decoded": {
+        "min": 0.06827695795642377,
+        "median": 0.07089463190840563,
+        "max": 0.0721223241530249
+      },
+      "srgb_linearized": {
+        "min": 0.06562091333561064,
+        "median": 0.06830366729689698,
+        "max": 0.06978283755006981
+      }
+    },
+    "carrierRatio": 0.35,
+    "retainedTailThreshold": 0.01,
+    "fadeEnd": 0.8
+  }
+}

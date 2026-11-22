@@ -1364,6 +1364,7 @@ try {
         'TIEconomyMod/Config/combat-mesh-data-base.eeo',
         'TIEconomyMod/Config/combat-mesh-data-dlc.eeo',
         'TIEconomyMod/Config/laser-beam-optics.eeo',
+        'TIEconomyMod/Config/laser-aperture.eeo',
         'TIEconomyMod/Config/gunpowder-art-profiles.eeo',
         'TIEconomyMod/TIPowerPlantTemplate.json',
         'TIEconomyMod/TIDriveTemplate.json',
