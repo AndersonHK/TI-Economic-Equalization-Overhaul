@@ -1,6 +1,9 @@
 # TI Economic Equalization Overhaul
 
-Current release: **0.11.14**, targeting **Terra Invicta 1.0.65**.
+Current release: **0.11.15**, targeting **Terra Invicta 1.0.65**.
+
+0.11.15 searches finite-thrust paths for equal-altitude LEO plane changes
+and uses the selected path for the preview, flight, and delta-v charge.
 See the [1.0.65 port audit](docs/compatibility/ti-1.0.65-port.md) for the game
 file comparison, compatibility changes, and validation status.
 0.11.13 applies inclination-change costs to same-altitude station and idle-fleet rendezvous.
@@ -448,7 +451,7 @@ defaults.
 
 ## Compatibility and save behavior
 
-Version 0.11.14 is built against the installed Terra Invicta 1.0.65 assemblies.
+Version 0.11.15 is built against the installed Terra Invicta 1.0.65 assemblies.
 Verification checks guarded IL and Harmony patch binding, exercises the game's
 template merger for the base game and Dark Skies, and checks the exact assembly
 and asset bundle hashes behind EEO's combat geometry and rendering data.
@@ -466,7 +469,7 @@ states serialized when they were created.
 The current release archive is:
 
 ```text
-artifacts/TIEconomyMod-0.11.14-ti1.0.65.zip
+artifacts/TIEconomyMod-0.11.15-ti1.0.65.zip
 ```
 
 ## Build and verification

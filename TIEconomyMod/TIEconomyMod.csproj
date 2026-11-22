@@ -73,6 +73,10 @@
       <HintPath>$(TargetManagedDir)\Unity.Entities.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.Mathematics">
+      <HintPath>$(TargetManagedDir)\Unity.Mathematics.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="UnityEngine">
       <HintPath>$(TargetManagedDir)\UnityEngine.dll</HintPath>
       <Private>False</Private>
@@ -129,6 +133,8 @@
     <Compile Include="Core\HabLogistics.cs" />
     <Compile Include="Core\EarthLaunchCost.cs" />
     <Compile Include="Patches\InclinedOrbitTransferPatch.cs" />
+    <Compile Include="Patches\FiniteThrustTrailPatches.cs" />
+    <Compile Include="Core\FiniteThrustPlaneChange.cs" />
     <Compile Include="Core\EarthLaunchCostMath.cs" />
     <Compile Include="Core\EnvironmentMath.cs" />
     <Compile Include="Core\AlienFloraAssaultMath.cs" />
@@ -288,6 +294,7 @@
     <None Include="ModFiles\UIGeneralControls.en" />
     <None Include="ModFiles\UIHabs.en" />
     <None Include="ModFiles\UIIntel.en" />
+    <None Include="ModFiles\UITransferResults.en" />
     <None Include="ModFiles\ModInfo.json" />
   </ItemGroup>
 

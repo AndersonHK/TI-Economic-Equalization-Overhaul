@@ -1,0 +1,2 @@
+UI.TransferResult.EEO_NoDepartureWindow=The planner found no usable departure window for this transfer.
+UI.TransferResult.EEO_NoFeasiblePlaneChange=The planner found no plane-change trajectory within the search limits.

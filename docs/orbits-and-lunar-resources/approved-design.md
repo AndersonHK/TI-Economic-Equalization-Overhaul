@@ -473,3 +473,126 @@ the same delta-v by arrival to within 0.001 m/s. The bare orbit candidate
 quoted 5.58052 km/s. The user confirmed live launch and arrival on
 0.11.12. The corrected 0.11.13 quote and actual fuel charge await a
 live rendezvous test.
+
+### Low-acceleration plane changes and departure-window reporting
+
+On Terra Invicta 1.0.65 with EEO 0.11.14, the April 4, 2044 screenshot
+shows Earth Defense at 27.1 milligees and a 22 milligee rejection. The
+nearby campaign saves identify Libertad as the limiting ship at
+0.2660899 m/s² and show 32.7005 km/s available. The replay used the
+screenshot time and the nearby save's orbital epoch and anomaly. The
+bare +40 orbit returned no candidate and `Fail_LaunchInPast` with
+`Value = -2565.793 s` and `Value2 = 10780.384 s`. The stock solver
+tries the nearest forward node and, on failure, the next node. A long
+departure burn can start before both of those trial epochs.
+
+`ThrustProfileTool.UpdateUI` converts the failure using the stock
+`TryGetMinimumAccelerationNeeded` formula
+`fleetAcceleration / (1 - Value / Value2)`. A negative time offset
+reduces the reported acceleration, from 27.13 to about 21.9 milligees
+in this replay. Report the failed departure search in place of that
+contradictory minimum. The message describes the search result and
+gives no estimate of fleet capability.
+
+A constant-radius reference trajectory proves that the fleet has enough
+thrust for a slower route. In coordinates aligned with the shared node,
+take the position to be
+`r (cos u, sin u cos i, sin u sin i)`, where `u` advances at the
+circular mean motion and `i` changes linearly. Start and end at nodes
+so velocity joins the two circular orbits exactly. Differentiate the
+position twice and subtract central gravity to get the required thrust
+acceleration. Integrate its magnitude to get the propellant delta-v.
+For a 15-half-orbit maneuver at the 500 km band, this gives 11.77 hours,
+6.778 km/s, and a conservative peak thrust acceleration bound of
+0.2531 m/s² versus the fleet's 0.2661 m/s². Departure can require up to
+half an orbit of additional wait. This is a feasible reference for
+the free-phase target and one candidate family for the search.
+
+The trajectory work requires a common physical trajectory for the
+preview, actual fleet motion, and propellant accounting. The native
+inclination solver models impulses at selected nodes and then depicts
+finite burns with Bézier curves. The 0.11.12 clearance repair guarantees
+that those curves clear the body, but its split curves retain the
+original burn durations and do not solve the thrust needed to fly the
+new curve. The stock hybrid microthrust path also interpolates orbital
+elements and derives its radial acceleration from the radius change.
+Equal radii make that component zero. Neither path establishes a
+physically feasible finite-thrust trajectory for this case.
+
+1. Compare finite-thrust candidates for later node windows, changes
+   spread across multiple revolutions, and a raise/change/lower route.
+   Use two-body propagation with the fleet's limiting acceleration and
+   integrate thrust magnitude to obtain delta-v. For a rendezvous,
+   require the target's propagated position and velocity at arrival.
+   For a bare orbit, let the arrival phase vary.
+2. Enforce body clearance, allowed acceleration, fuel, elapsed time,
+   and continuity of position and velocity on the trajectory the game
+   will evaluate. Use an orbit-averaged result only to initialize the
+   search. Propagate or independently verify every retained candidate.
+   [NASA many-revolution transfer analysis](https://ntrs.nasa.gov/citations/20170001473).
+3. Retain the non-dominated candidates by total delta-v and arrival
+   time. Compare with a finer search around the frontier so the game
+   offers the best feasible candidates found within the tested search
+   bounds. Report a search failure as such unless a physical or budget
+   constraint can be established.
+4. Compare the displayed path and cost with replayed flight, propellant
+   deductions, save/reload, and interrupted transfers. Start with
+   27.1 and 37.5 milligees and repeat at lower acceleration with fixed
+   and free arrival phase.
+
+The focused verification compiled the UI patch against the installed
+1.0.65 assemblies and exercised both the reported rejected departure
+and an actual burn-length acceleration rejection. The guarded deployment
+stopped at its running-game check. The trajectory search is design work
+pending implementation and live validation.
+
+### Finite-thrust solver implementation plan
+
+For the same circular, shared-node geometry, search a bounded family
+of continuous two-body paths. Vary the number of half-revolutions,
+the temporary raise in orbital radius, and how much of the inclination
+change happens near apogee. For a fixed-phase rendezvous, solve the
+radius excursion for the needed phase gain. Certify the acceleration
+bound over each entire path before ranking candidates by elapsed time
+and integrated delta-v. Start and end at nodes with circular position
+and velocity continuous with the original and target orbits.
+
+Place the selected path in a saveable segment of the game's existing
+patched trajectory. The segment evaluates position, velocity, and
+cumulative thrust integral for the native preview, flight, and fuel
+systems. Verify the segment with the game's serializer and native
+trajectory accessors before deployment. The comparison covers the
+sampled path families and does not claim a global optimal-control
+solution.
+
+### 0.11.15 deployment and validation
+
+The solver searches the circular, same-radius, shared-node routes
+introduced by EEO, including bare orbits, stations, and idle fleets.
+It compares durations, temporary altitude raises, and thrust profiles
+that can concentrate plane changes near nodes or apogee. Every retained
+option has a conservative bound on required thrust, and every
+rendezvous has a phase-matched arrival. The stock slider receives the
+non-dominated options that fit the fleet's fuel budget.
+
+The selected segment supplies the game's position and velocity from
+one continuous path and charges the integral of the thrust required
+by that path. The map trail samples that path by orbital angle to
+avoid skipping revolutions. Very long transfers show a moving window
+of consecutive revolutions to bound the size of the rendered line.
+In-flight saves use the EEO segment type and require EEO to reload.
+
+Full release verification passed on Terra Invicta 1.0.65. The native
+request path returned Earth Defense options from 12.41 hours at
+6.78 km/s to 60.28 hours at 6.02 km/s, including departure wait.
+Regression checks covered a 1 milligee fleet, a phase-matched station
+arrival, a 1 km/s budget rejection, independently sampled acceleration
+and clearance, preview and arrival coordinates, and uninterrupted
+and shortened segments after a native serializer round trip.
+The guarded deployment copied and hash-verified 59 files on 2026-11-16.
+The installed DLL SHA-256 is
+`B2DE0BE1CB903512839B144AB8C9ABC3C6E022BD5CC5C499F8D8E16FC950E2B5`.
+On 2026-11-21 the player confirmed that orbit transfers work in the
+campaign and accepted 0.11.15 as stable. The player also reported
+clusters of slider options with nearly identical delta-v. Exact
+campaign fuel deductions were not part of that report.

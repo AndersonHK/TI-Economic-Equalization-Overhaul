@@ -238,6 +238,7 @@ function Load-AssemblyBytes([string]$Path) {
 $harmonyAssembly = Load-AssemblyBytes (
     Join-Path $TargetManagedDir 'UnityModManager\0Harmony.dll')
 foreach ($assemblyName in @(
+    'Assembly-CSharp-firstpass.dll',
     'FMODUnity.dll',
     'Unity.Burst.dll',
     'Unity.Collections.dll',
@@ -275,7 +276,7 @@ $shipType = $gameAssembly.GetType(
 $plannerType = $gameAssembly.GetType(
     'PavonisInteractive.TerraInvicta.MasterTransferPlanner', $true)
 $planePatchName = 'TIEconomyMod.Patches.InclinedOrbitTransferPatch'
-$clearancePatchName = 'TIEconomyMod.Patches.InclinedOrbitBurnClearancePatch'
+$solverPatchName = 'TIEconomyMod.Patches.FiniteThrustPlaneChangePatch'
 $contracts = @(
     @{
         Type = $planePatchName
@@ -284,10 +285,9 @@ $contracts = @(
         Target = $plannerType.GetMethod('GetTrajectoryModelsForConditions')
     },
     @{
-        Type = $clearancePatchName
-        Method = 'Postfix'
-        Prefix = 'Prefix'
-        HarmonyArgument = 2
+        Type = $solverPatchName
+        Method = 'Prefix'
+        HarmonyArgument = 1
         Target = $plannerType.GetMethod('CalculateInclinationChangeTransfers',
             [Reflection.BindingFlags]'NonPublic,Static')
     },
@@ -344,10 +344,6 @@ foreach ($contract in $contracts) {
     $arguments = [object[]]::new(5)
     $arguments[0] = $contract.Target
     $arguments[$contract.HarmonyArgument] = $harmonyPatch
-    if ($contract.Prefix) {
-        $prefix = $patchType.GetMethod($contract.Prefix, [Reflection.BindingFlags]'NonPublic,Static')
-        $arguments[1] = [Activator]::CreateInstance($harmonyMethodType, [object[]]@($prefix))
-    }
     try {
         $replacement = $patchApi[0].PSObject.BaseObject.Invoke(
             $harmony,
@@ -385,9 +381,12 @@ function New-TestOrbit([int]$Id, [double]$Inclination, [double]$Axis_m, [double]
     $orbit.ID = [Activator]::CreateInstance($orbit.ID.GetType(), [object[]]@($Id))
     $orbit.barycenter = $body
     $orbit.semiMajorAxis_m = $Axis_m
+    $orbit.semiMajorAxis_km = $Axis_m / 1000
+    $orbit.exists = $true
     $orbitTemplateType.GetField('eccentricity').SetValue($template, 0.0)
     $orbitTemplateType.GetField('inclination_Deg').SetValue($template, $Inclination)
     $orbitTemplateType.GetField('longAscendingNode_Deg').SetValue($template, $Node)
+    $orbitTemplateType.GetField('argPeriapsis_Deg').SetValue($template, 300.0)
     $gameStateType.GetField('template', $fields).SetValue($orbit, $template)
     return $orbit
 }
@@ -417,7 +416,7 @@ foreach ($band in $inclined) {
     Assert-TransferModels $band $leo OrbitPhasing InclinationChange
 }
 Assert-TransferModels $inclined[1] $inclined[3] OrbitPhasing InclinationChange
-Assert-TransferModels $leo $inclined[1] @('OrbitPhasing', 'ImpulseMicrothrustHybrid') @('InclinationChange', 'ImpulseMicrothrustHybrid')
+Assert-TransferModels $leo $inclined[1] @('OrbitPhasing', 'ImpulseMicrothrustHybrid') InclinationChange
 Assert-TransferModels $leo $leo OrbitPhasing OrbitPhasing
 Assert-TransferModels $leo (New-TestOrbit 6 0 $axis_m) OrbitPhasing OrbitPhasing
 Assert-TransferModels $leo (New-TestOrbit 7 40 ($axis_m + 500000)) ImpulseMicrothrustHybrid ImpulseMicrothrustHybrid
@@ -440,20 +439,35 @@ $fleetType.GetField('<trajectory>k__BackingField', $fields).SetValue(
 Assert-TransferModels $leo $targetFleet OrbitPhasing OrbitPhasing
 Write-Host 'PASS: equal-altitude orbit, station, and idle-fleet plane-change dispatch and native-route controls.'
 
-$clearance = $modAssembly.GetType($clearancePatchName, $true).GetMethod(
-    'ClearsBody', [Reflection.BindingFlags]'Static,NonPublic')
-$vectorType = $clearance.GetParameters()[0].ParameterType
-function New-Point([double]$X, [double]$Y) {
-    return [Activator]::CreateInstance($vectorType, [object[]]@($X, $Y, 0.0))
+$uiType = $gameAssembly.GetType($nativeNamespace + 'ThrustProfileTool', $true)
+$messagePatch = $modAssembly.GetType('TIEconomyMod.Patches.TransferDepartureWindowMessagePatch', $true)
+$prefix = $messagePatch.GetMethod('Prefix', [Reflection.BindingFlags]'Static,NonPublic')
+$patchTarget = @($messagePatch.GetCustomAttributesData() | Where-Object {
+    $_.AttributeType.FullName -eq 'HarmonyLib.HarmonyPatch' -and
+    $_.ConstructorArguments.Count -eq 2 -and
+    $_.ConstructorArguments[0].Value -eq $uiType -and
+    $_.ConstructorArguments[1].Value -eq 'UpdateUI'
+})
+if ($patchTarget.Count -ne 1 -or $null -eq $uiType.GetMethod('UpdateUI') -or
+    $null -eq $uiType.GetMethod('DisplayFailureReport') -or
+    $prefix.GetParameters()[0].ParameterType -ne $uiType) {
+    throw 'The transfer departure-window message must bind to the native thrust profile UI.'
 }
-$clearCurve = [object[]]@((New-Point 1.3 0), (New-Point 1.3 0.718),
-    (New-Point 0.718 1.3), (New-Point 0 1.3), 1.0, 8)
-$crossing = [object[]]@((New-Point 2 0), (New-Point 2 0),
-    (New-Point -2 0), (New-Point -2 0), 1.0, 8)
-if (!$clearance.Invoke($null, $clearCurve) -or $clearance.Invoke($null, $crossing)) {
-    throw 'Inclination-burn clearance must certify the curved arc and reject an interior crossing.'
+$messageCheck = $messagePatch.GetMethod(
+    'HasContradictoryAccelerationMinimum', [Reflection.BindingFlags]'Static,NonPublic')
+$resultType = $gameAssembly.GetType($nativeNamespace + 'TransferResult', $true)
+$outcomeType = $resultType.GetNestedType('Outcome')
+$missedWindow = [Activator]::CreateInstance($resultType, [object[]]@(
+    [Enum]::Parse($outcomeType, 'Fail_LaunchInPast'), -2565.793, 10780.384))
+$realMinimum = [Activator]::CreateInstance($resultType, [object[]]@(
+    [Enum]::Parse($outcomeType, 'Fail_BurnLongerThanHalfOrbit'), 8000.0, 6000.0))
+if (!$messageCheck.Invoke($null, [object[]]@($missedWindow, 0.2660899)) -or
+    $messageCheck.Invoke($null, [object[]]@($realMinimum, 0.2660899))) {
+    throw 'The transfer UI must report a missed departure without suppressing a burn-length rejection.'
 }
-Write-Host 'PASS: inclination-burn clearance proof accepts a subdivided arc and rejects a body crossing.'
+Write-Host 'PASS: the thrust profile distinguishes a missed departure from an actual acceleration requirement.'
+
+. (Join-Path $PSScriptRoot 'validation\Test-FiniteThrustPlaneChange.ps1')
 
 foreach ($typeName in @(
     'TIEconomyMod.Core.EarthLaunchCostMath',
