@@ -143,6 +143,8 @@ if (($expectedNames -join ';') -ne ($actualNames -join ';') -or
 }
 
 $overrideByName = @{}
+$defenseLayoutPath = Join-Path $RepositoryRoot 'TIEconomyMod\ModFiles\Config\orbital-defense-layouts.eeo'
+$expandedDefenseNames = (Get-Content -LiteralPath $defenseLayoutPath -Raw | ConvertFrom-Json).layouts.module
 $maintenanceTotalByTier = @{ 1 = 0.0; 2 = 0.0; 3 = 0.0 }
 foreach ($override in $overrides) {
     $overrideByName[$override.dataName] = $override
@@ -161,7 +163,11 @@ foreach ($override in $overrides) {
     else {
         $expectedUnitMass
     }
-    if ([Math]::Abs([double]$override.baseMass_tons - $expectedMass) -gt 0.000001) {
+    # Expanded defenses are checked against their approved economy by
+    # validate-orbital-defense.py. The generic material mix still applies.
+    $expandedDefense = $source.dataName -in $expandedDefenseNames
+    if (-not $expandedDefense -and
+        [Math]::Abs([double]$override.baseMass_tons - $expectedMass) -gt 0.000001) {
         throw "$($override.dataName) mass does not match its approved generic or solar-specific mass rule."
     }
 
@@ -221,7 +227,7 @@ foreach ($override in $overrides) {
             throw "$($override.dataName) does not double direct generator output."
         }
     }
-    elseif ($override.PSObject.Properties['power']) {
+    elseif (-not $expandedDefense -and $override.PSObject.Properties['power']) {
         throw "$($override.dataName) unexpectedly overrides non-generator power."
     }
 

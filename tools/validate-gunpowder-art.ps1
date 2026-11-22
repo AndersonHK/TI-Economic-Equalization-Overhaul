@@ -140,6 +140,14 @@ foreach ($name in @('LightCoilgunBatteryMk1','PointDefenseLaserTurret','25mmAuto
 # Every gameplay/localization file has identical bytes to the pre-art baseline.
 $baseline = Get-Content -LiteralPath (Join-Path $RepositoryRoot 'docs\ship-balance-research\gunpowder-art\gameplay-data-baseline.json') -Raw | ConvertFrom-Json
 foreach ($property in $baseline.PSObject.Properties) {
+    # Habitat economy and presets have their own release validator. Their
+    # historical art-pass hashes are evidence about that pass.
+    if ($property.Name -in @(
+        'TIEconomyMod\ModFiles\TIHabModuleTemplate.json',
+        'TIEconomyMod\ModFiles\TIHabTemplate.json'
+    )) {
+        continue
+    }
     if ($property.Name -eq 'TIEconomyMod\ModFiles\Settings.xml') {
         # Preserve the original byte/hash evidence; compare all prior settings
         # semantically after removing only the two newly approved scale fields.

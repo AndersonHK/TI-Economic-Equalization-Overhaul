@@ -157,6 +157,8 @@ if ([string]::IsNullOrWhiteSpace($powershellExecutable)) {
     throw 'No usable PowerShell executable was found for isolated validators.'
 }
 $patchValidationJobs = @(
+    New-ValidationJob 'Orbital defense layouts and power' (Get-Command python -ErrorAction Stop).Source @(
+        (Join-Path $scriptDirectory 'validate-orbital-defense.py'), $resolvedManagedDir)
     New-ValidationJob 'Native collision kernel' (Get-Command python -ErrorAction Stop).Source @(
         (Join-Path $scriptDirectory 'validate-native-contact.py'),
         (Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\Assembly\TIEconomyContact.dll'))
@@ -371,6 +373,7 @@ $magneticGunOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIMagne
 $shipHullOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIShipHullTemplate.json'
 $particleWeaponOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIParticleWeaponTemplate.json'
 $shipDesignerLayout = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\Config\ship-designer-layout.eeo'
+$orbitalDefenseLayout = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\Config\orbital-defense-layouts.eeo'
 $utilityModuleOverrides = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIUtilityModuleTemplate.json'
 $nationLocalization = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\UINation.en'
 $effectLocalization = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIEffectTemplate.en'
@@ -613,7 +616,7 @@ $manifest = Get-Content -LiteralPath $manifestPath -Raw | ConvertFrom-Json
 if ($manifest.GameVersion -ne '1.0.65') {
     throw "ModInfo.json targets '$($manifest.GameVersion)' instead of TI 1.0.65."
 }
-if ($manifest.Version -ne '0.11.19') {
+if ($manifest.Version -ne '0.12.0') {
     throw "ModInfo.json version '$($manifest.Version)' does not match this release."
 }
 if ($manifest.AssemblyName -ne 'Assembly/TIEconomyMod.dll') {
@@ -1180,8 +1183,8 @@ if ($assemblyFile.LastWriteTime -lt $buildStarted.AddSeconds(-2)) {
     throw 'Packaged DLL predates this verification build.'
 }
 $assemblyVersion = [Reflection.AssemblyName]::GetAssemblyName($assemblyPath).Version.ToString()
-if ($assemblyVersion -ne '0.11.19.0') {
-    throw "Assembly version '$assemblyVersion' does not match release 0.11.19."
+if ($assemblyVersion -ne '0.12.0.0') {
+    throw "Assembly version '$assemblyVersion' does not match release 0.12.0."
 }
 $assemblyHash = (Get-FileHash -LiteralPath $assemblyPath -Algorithm SHA256).Hash
 
@@ -1209,6 +1212,7 @@ $requiredFiles = @(
     $shipHullOverrides,
     $particleWeaponOverrides,
     $shipDesignerLayout,
+    $orbitalDefenseLayout,
     $utilityModuleOverrides,
     $nationLocalization,
     $effectLocalization,
@@ -1246,6 +1250,7 @@ Copy-Item -LiteralPath $hullVolumes -Destination (Join-Path $stagingDirectory 'C
 Copy-Item -LiteralPath $hullDriveScales -Destination (Join-Path $stagingDirectory 'Config')
 Copy-Item -LiteralPath $gunpowderArtProfiles -Destination (Join-Path $stagingDirectory 'Config')
 Copy-Item -LiteralPath $shipDesignerLayout -Destination (Join-Path $stagingDirectory 'Config')
+Copy-Item -LiteralPath $orbitalDefenseLayout -Destination (Join-Path $stagingDirectory 'Config')
 foreach ($meshFile in @('combat-unreadable-meshes.eeo','combat-mesh-data-base.eeo','combat-mesh-data-dlc.eeo','laser-beam-optics.eeo')) {
     Copy-Item -LiteralPath (Join-Path $repositoryRoot ('TIEconomyMod\ModFiles\Config\' + $meshFile)) `
         -Destination (Join-Path $stagingDirectory 'Config')
@@ -1295,7 +1300,7 @@ foreach ($source in Get-ChildItem -LiteralPath $packageSource -File -Recurse) {
     [void](New-Item -ItemType Directory -Path (Split-Path -Parent $target) -Force)
     Copy-Item -LiteralPath $source.FullName -Destination $target -Force
 }
-$zipPath = Join-Path $artifactDirectory 'TIEconomyMod-0.11.19-ti1.0.65.zip'
+$zipPath = Join-Path $artifactDirectory 'TIEconomyMod-0.12.0-ti1.0.65.zip'
 if (Test-Path -LiteralPath $zipPath) {
     Remove-Item -LiteralPath $zipPath
 }
@@ -1353,6 +1358,7 @@ try {
     }
     $packagedShipFiles = @(
         'TIEconomyMod/Config/ship-designer-layout.eeo',
+        'TIEconomyMod/Config/orbital-defense-layouts.eeo',
         'TIEconomyMod/TIParticleWeaponTemplate.json',
         'TIEconomyMod/Config/combat-unreadable-meshes.eeo',
         'TIEconomyMod/Config/combat-mesh-data-base.eeo',

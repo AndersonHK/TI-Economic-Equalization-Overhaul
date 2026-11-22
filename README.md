@@ -1,6 +1,11 @@
 # TI Economic Equalization Overhaul
 
-Current release is **0.11.19** for **Terra Invicta 1.0.65**.
+Current release is **0.12.0** for **Terra Invicta 1.0.65**.
+
+0.12.0 equips orbital defense modules with expanded paired turret layouts.
+Human defenses use their pre-0.12 power and base mass while the module
+economy, generation, and station-slot reworks are pending.
+[Layout, economy, and migration notes](docs/ship-balance-research/defense-module-mounts/implementation-0.12.md).
 
 0.11.19 routes fleet transfer requests and estimates through a shared
 planner and fixes ship-completion rendezvous and fleet alarm shortcuts.
@@ -465,7 +470,7 @@ defaults.
 
 ## Compatibility and save behavior
 
-Version 0.11.19 is built against the installed Terra Invicta 1.0.65 assemblies.
+Version 0.12.0 is built against the installed Terra Invicta 1.0.65 assemblies.
 Verification checks guarded IL and Harmony patch binding, exercises the game's
 template merger for the base game and Dark Skies, and checks the exact assembly
 and asset bundle hashes behind EEO's combat geometry and rendering data.
@@ -483,7 +488,7 @@ states serialized when they were created.
 The current release archive is:
 
 ```text
-artifacts/TIEconomyMod-0.11.19-ti1.0.65.zip
+artifacts/TIEconomyMod-0.12.0-ti1.0.65.zip
 ```
 
 ## Build and verification

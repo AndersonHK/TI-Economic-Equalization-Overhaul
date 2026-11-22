@@ -13,6 +13,10 @@ Measured on November 22, 2026 from the installed Terra Invicta 1.0.65 assets. Co
 
 [All six modules with top and bottom anchor overlays](orbital-defense-anchors.png)
 
+[Proposed layouts and turret clearance](clearance.md) checks the three expanded human layouts and an alien layout for each tier.
+
+[0.12 deployment and migration](implementation-0.12.md) records the released budget, shared combat adapters and checks.
+
 ## Human Layered Defense Array
 
 **74 raised pads in the mesh.** Each broad face has a 5×5 grid. Four perimeter sides each have an upper and lower bevel, with three pads on each bevel. That gives **37 pad positions per half** and **68 unused pads across the module** after accounting for the six prefab anchors.

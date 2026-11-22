@@ -225,3 +225,68 @@ finally {
 }
 
 Write-Host 'PASS: all ship and hab weapons replace the native one-attempt-per-second partition with native acquisition and fire checks on a guarded 50 ms combat-time grid.'
+
+$staticPrivate = [Reflection.BindingFlags]'NonPublic,Static'
+$orbital = $modAssembly.GetType('TIEconomyMod.Core.OrbitalDefense', $true)
+$package = [string](Split-Path -Parent (Split-Path -Parent $ModAssemblyPath))
+$orbital.GetMethod('Load', $staticPrivate).PSObject.BaseObject.Invoke(
+    $null, [object[]]@($package.PSObject.BaseObject))
+$layouts = $orbital.GetField('layouts', $staticPrivate).GetValue($null)
+if ($layouts.Count -ne 6) {
+    throw 'Orbital defense runtime must deserialize six layouts.'
+}
+$nativeModule = $gameAssembly.GetType(
+    'PavonisInteractive.TerraInvicta.SpaceCombat.CombatHabModuleController', $true)
+$initializer = $nativeModule.GetMethod('InitializeForCombat')
+$armorStores = @(Read-Instructions $initializer | Where-Object {
+    $_.opcode.Name -eq 'stfld' -and $_.operand.Name -eq 'armor'
+})
+if ($armorStores.Count -ne 1) {
+    throw 'Expected one orbital initializer handoff after native armor setup.'
+}
+$initializerPatch = $modAssembly.GetType('TIEconomyMod.Patches.OrbitalDefenseInitializePatch', $true)
+$transpiler = $initializerPatch.GetMethod('Transpiler', $staticPrivate)
+$emit = [Reflection.Emit.DynamicMethod]::new('ValidateOrbitalInitializer', [void], [type[]]@())
+$ilArgs = [object[]]::new(2)
+$nativeIl = New-Object 'System.Collections.Generic.List[HarmonyLib.CodeInstruction]'
+foreach ($instruction in @(Read-Instructions $initializer)) {
+    $nativeIl.Add($instruction)
+}
+$ilArgs[0] = $nativeIl.PSObject.BaseObject
+$ilArgs[1] = $emit.GetILGenerator().PSObject.BaseObject
+$expandedIl = @($transpiler.PSObject.BaseObject.Invoke($null, $ilArgs))
+if (@($expandedIl | Where-Object { $_.opcode.Name -eq 'call' -and
+    $_.operand.DeclaringType.FullName -eq 'TIEconomyMod.Patches.OrbitalDefenseCombat' -and
+    $_.operand.Name -eq 'Build' }).Count -ne 1) {
+    throw 'Orbital combat initializer did not add the shared layout handoff.'
+}
+$orbitalRuntime = $modAssembly.GetType('TIEconomyMod.Patches.OrbitalDefenseCombat', $true)
+[Runtime.CompilerServices.RuntimeHelpers]::RunClassConstructor($orbitalRuntime.TypeHandle)
+
+$orbitalId = $harmonyId + '.orbital'
+$orbitalHarmony = [Activator]::CreateInstance($harmonyType, [object[]]@($orbitalId))
+$orbitalPatches = @($modAssembly.GetTypes() | Where-Object {
+    $_.FullName -match '^TIEconomyMod\.Patches\.OrbitalDefense.+Patch$'
+})
+if ($orbitalPatches.Count -ne 10) {
+    throw "Expected ten orbital defense adapters, found $($orbitalPatches.Count)."
+}
+try {
+    foreach ($adapter in $orbitalPatches) {
+        try {
+            [void]$orbitalHarmony.CreateClassProcessor($adapter).Patch()
+        } catch {
+            $failure = $_.Exception
+            while ($failure.InnerException) { $failure = $failure.InnerException }
+            if ($failure -isnot [Security.SecurityException] -or
+                $failure.Message -notmatch 'ECall' -or
+                $adapter.Name -notin @('OrbitalDefenseInitializePatch', 'OrbitalDefenseEndPatch')) {
+                throw
+            }
+            Write-Host "Unity-host binding remains for $($adapter.Name)."
+        }
+    }
+} finally {
+    $orbitalHarmony.UnpatchAll($orbitalId)
+}
+Write-Host 'PASS: six compiled orbital layouts, native initializer IL, and ten orbital defense adapters.'

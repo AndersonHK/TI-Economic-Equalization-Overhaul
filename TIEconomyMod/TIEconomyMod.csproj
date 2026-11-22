@@ -188,6 +188,8 @@
     <Compile Include="Core\ReferenceContextVariantCache.cs" />
     <Compile Include="Core\ReferenceIdentityComparer.cs" />
     <Compile Include="Core\ShipBalanceMath.cs" />
+    <Compile Include="Core\OrbitalDefenseLayout.cs" />
+    <Compile Include="Patches\OrbitalDefensePatches.cs" />
     <Compile Include="Core\TemplateFloatExtensionReader.cs" />
     <Compile Include="Core\TemplateStringExtensionReader.cs" />
     <Compile Include="Core\UtilityFootprintMath.cs" />

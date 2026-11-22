@@ -16,6 +16,15 @@ if ([string]::IsNullOrWhiteSpace($MaintenanceProposalPath)) {
 }
 
 $sourcePath = Join-Path $VanillaTemplatesDir 'TIHabModuleTemplate.json'
+$defenseLayoutPath = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\Config\orbital-defense-layouts.eeo'
+$defenseTemplates = (Get-Content -LiteralPath $defenseLayoutPath -Raw | ConvertFrom-Json).layouts.module
+$authoredOverridePath = Join-Path $repositoryRoot 'TIEconomyMod\ModFiles\TIHabModuleTemplate.json'
+$defenseEconomy = @{}
+foreach ($record in (Get-Content -LiteralPath $authoredOverridePath -Raw | ConvertFrom-Json)) {
+    if ($record.dataName -in $defenseTemplates) {
+        $defenseEconomy[$record.dataName] = $record
+    }
+}
 if (-not (Test-Path -LiteralPath $sourcePath)) {
     throw "Vanilla hab-module templates not found: $sourcePath"
 }
@@ -160,6 +169,14 @@ $overrides = foreach ($template in $targets) {
         dataName = $template.dataName
         baseMass_tons = $rebalancedMass
         weightedBuildMaterials = $weights
+    }
+    if ($template.dataName -in $defenseTemplates) {
+        $values = $defenseEconomy[$template.dataName]
+        if ($null -eq $values -or $values.power -ge 0 -or $values.baseMass_tons -le 0) {
+            throw "Missing authored defense economy for $($template.dataName)."
+        }
+        $entry.baseMass_tons = $values.baseMass_tons
+        $entry.power = $values.power
     }
     if ($template.tier -eq 1) {
         if (-not $crewValues.ContainsKey($template.dataName)) {

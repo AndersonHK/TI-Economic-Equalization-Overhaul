@@ -31,6 +31,12 @@ Test Terra Invicta changes headlessly. Use save-based replays and
 automated validators for campaign cases. Leave interactive game
 testing to the user.
 
+When tuning habitat defense power, use roughly 10 MW per hab power point
+as a reference for sustained weapon recharge. Compare electrical energy
+per shot and salvo cadence for the actual mounted mix, then check the
+power budget on station presets and existing habs. The game defines hab
+power as an abstract budget.
+
 # One implementation for each system
 
 When EEO changes the rules of a system, own the complete implementation

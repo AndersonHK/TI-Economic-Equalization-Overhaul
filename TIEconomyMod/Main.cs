@@ -121,6 +121,7 @@ namespace TIEconomyMod
         {
             var modEntry = mod;
             NativeContact.Load(modEntry.Path);
+            OrbitalDefense.Load(modEntry.Path);
             shipDesignerLayout = TIEconomyMod.Core.ShipDesignerLayout.Load(
                 Path.Combine(modEntry.Path, "Config", "ship-designer-layout.eeo"));
             ShipDesignerDataLayoutPatch.ValidateTemplates();

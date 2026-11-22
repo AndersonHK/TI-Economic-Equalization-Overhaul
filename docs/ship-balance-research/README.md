@@ -102,7 +102,7 @@ ship preview remains visible after returning from the transfer planner.
 
 ## Reproducible measurement baselines
 
-- [Orbital defense module turret placements](defense-module-mounts/README.md) records the six station prefabs, top and bottom renders, and the centers and normals of the 74 human T2 pads.
+- [Orbital defense module turret placements](defense-module-mounts/README.md) records the six station prefabs and the positions of the 74 human T2 pads. [Expanded turret layouts](defense-module-mounts/clearance.md) gives swept clearances, muzzle obstructions, and fitted renders for human and alien modules.
 
 - [Barrel and lens audit](barrel-and-lens-dimensional-audit-2026-10-21.md): 203 templates, 41 measured resources and caliber/aperture ratios.
 - [Original turret clearance/firepower audit](turret-clearance/README.md): 28 classes, 64 appearances, 147 hull weapons, 35 resources; original native geometry rather than current gunpowder/Mothership state.

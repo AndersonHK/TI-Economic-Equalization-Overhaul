@@ -494,6 +494,7 @@
   },
   {
     "dataName": "PointDefenseArray",
+    "power": -10,
     "baseMass_tons": 150.0,
     "weightedBuildMaterials": {
       "water": 0.0,
@@ -908,6 +909,7 @@
   },
   {
     "dataName": "LayeredDefenseArray",
+    "power": -40,
     "baseMass_tons": 750.0,
     "weightedBuildMaterials": {
       "water": 0.0,
@@ -1378,6 +1380,7 @@
   },
   {
     "dataName": "Battlestations",
+    "power": -240,
     "baseMass_tons": 6000.0,
     "weightedBuildMaterials": {
       "water": 0.0,

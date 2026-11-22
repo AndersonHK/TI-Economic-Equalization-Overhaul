@@ -1,8 +1,8 @@
 # Complete documentation and artifact catalog
 
-Last updated 2026-11-21. This catalog indexes every other file under `docs/`, including machine-readable evidence and images. For interpretation, start with the [documentation map](README.md), [ship-balance hub](ship-balance-research/README.md), or [archive index](archive/README.md). Location/type labels are navigation aids, not assertions that all research is implemented.
+Last updated 2026-11-22. This catalog indexes every other file under `docs/`, including machine-readable evidence and images. For interpretation, start with the [documentation map](README.md), [ship-balance hub](ship-balance-research/README.md), or [archive index](archive/README.md). Location/type labels are navigation aids, not assertions that all research is implemented.
 
-Indexed files: **596**. No archived evidence was deleted during the organization pass.
+Indexed files: **603**. No archived evidence was deleted during the organization pass.
 
 
 ## Top-level guides and authorities
@@ -369,9 +369,16 @@ Indexed files: **596**. No archived evidence was deleted during the organization
 | [ship-balance-research/combat-camera-fine-control-report-2026-10-23.md](ship-balance-research/combat-camera-fine-control-report-2026-10-23.md) | MD |
 | [ship-balance-research/compatibility-query-rework-2026-11-05.md](ship-balance-research/compatibility-query-rework-2026-11-05.md) | MD |
 | [ship-balance-research/configurable-combat-scale-2026-10-30.md](ship-balance-research/configurable-combat-scale-2026-10-30.md) | MD |
+| [ship-balance-research/defense-module-mounts/alien-turret-placements.png](ship-balance-research/defense-module-mounts/alien-turret-placements.png) | PNG |
+| [ship-balance-research/defense-module-mounts/clearance-results.json](ship-balance-research/defense-module-mounts/clearance-results.json) | JSON |
+| [ship-balance-research/defense-module-mounts/clearance.md](ship-balance-research/defense-module-mounts/clearance.md) | MD |
 | [ship-balance-research/defense-module-mounts/human-t2-pad-map.png](ship-balance-research/defense-module-mounts/human-t2-pad-map.png) | PNG |
+| [ship-balance-research/defense-module-mounts/human-turret-clearance.png](ship-balance-research/defense-module-mounts/human-turret-clearance.png) | PNG |
+| [ship-balance-research/defense-module-mounts/implementation-0.12.md](ship-balance-research/defense-module-mounts/implementation-0.12.md) | MD |
+| [ship-balance-research/defense-module-mounts/module-ship-silhouettes.png](ship-balance-research/defense-module-mounts/module-ship-silhouettes.png) | PNG |
 | [ship-balance-research/defense-module-mounts/mount-positions.json](ship-balance-research/defense-module-mounts/mount-positions.json) | JSON |
 | [ship-balance-research/defense-module-mounts/orbital-defense-anchors.png](ship-balance-research/defense-module-mounts/orbital-defense-anchors.png) | PNG |
+| [ship-balance-research/defense-module-mounts/power-and-armor.md](ship-balance-research/defense-module-mounts/power-and-armor.md) | MD |
 | [ship-balance-research/defense-module-mounts/README.md](ship-balance-research/defense-module-mounts/README.md) | MD |
 | [ship-balance-research/designer-viewport-deployment-2026-11-04.json](ship-balance-research/designer-viewport-deployment-2026-11-04.json) | JSON |
 | [ship-balance-research/designer-viewport-fit-2026-11-04.md](ship-balance-research/designer-viewport-fit-2026-11-04.md) | MD |
