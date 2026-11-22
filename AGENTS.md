@@ -21,6 +21,38 @@ has passed the normal `deploy.ps1` flow.
 
 `rg` and `gh` are not installed in this environment.
 
+When asked to commit, stage the whole workspace by default with
+`git add -A -- '*'` from the repository root. Honor explicitly scoped
+commits and keep parallel edits separate when there is a concrete reason.
+Use stashes for deliberate temporary isolation, never as a default way
+to exclude uncertain changes from a commit.
+
+Test Terra Invicta changes headlessly. Use save-based replays and
+automated validators for campaign cases. Leave interactive game
+testing to the user.
+
+# One implementation for each system
+
+When EEO changes the rules of a system, own the complete implementation
+for all consumers of those rules. Route every caller through the same
+service, including player actions, AI, previews, estimates, validation,
+execution, and saved-state recovery where applicable. Do not replace one
+case and leave native code or another EEO implementation responsible
+for the other cases of the same decision.
+
+The shared service can use specialized algorithms, data-driven policies,
+and optimized backends. It owns their selection, inputs, invariants,
+and result validation. A quick query can stop early after it has a
+result that passes the same checks as the full query. Compatibility
+adapters and fallback backends must preserve the same rules. A feature
+that is disabled in its entirety may leave the native system in charge.
+
+Before changing a system, inventory its callers and check for paths
+that bypass the shared implementation. Treat existing splits as
+retroactive fixes. Record the owning entry points and how to reproduce
+or test each split in the [implementation audit](docs/tooling/shared-implementation-audit.md).
+Verify parity across consumers before switching the system over.
+
 # Documentation artifacts
 
 Place persistent documentation and research artifacts under `docs/` in the

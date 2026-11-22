@@ -1,0 +1,1836 @@
+{
+  "source": "Installed Terra Invicta 1.0.65 habmodules Unity bundle",
+  "coordinates": "Unity prefab-local XYZ, +Y dorsal, quaternion XYZW",
+  "modules": [
+    {
+      "module": "T1_PointDefenseArray",
+      "prefab": "assets/artresources/habitats/3d_modules/prefabs/station_t1_pointdefensearray_module.prefab",
+      "mesh": "station_T1_PointDefenseArray",
+      "anchors": [
+        {
+          "index": 0,
+          "name": "Dorsal Weapon Base 1",
+          "position": [
+            8.5,
+            4.0,
+            0.0
+          ],
+          "rotation": [
+            -0.0,
+            -0.0,
+            -0.0,
+            1.0
+          ]
+        },
+        {
+          "index": 1,
+          "name": "Dorsal Weapon Base 2",
+          "position": [
+            -8.5,
+            4.0,
+            0.0
+          ],
+          "rotation": [
+            -0.0,
+            -0.0,
+            -0.0,
+            1.0
+          ]
+        },
+        {
+          "index": 2,
+          "name": "Dorsal Weapon Base 3",
+          "position": [
+            0.0,
+            4.0,
+            0.0
+          ],
+          "rotation": [
+            -0.0,
+            -0.0,
+            -0.0,
+            1.0
+          ]
+        },
+        {
+          "index": 3,
+          "name": "Ventral Weapon Base 1",
+          "position": [
+            8.5,
+            -3.5139999389648438,
+            -0.0
+          ],
+          "rotation": [
+            -0.0,
+            -2.1855694143368964e-08,
+            1.0,
+            0.0
+          ]
+        },
+        {
+          "index": 4,
+          "name": "Ventral Weapon Base 2",
+          "position": [
+            -8.5,
+            -3.51200008392334,
+            -0.0
+          ],
+          "rotation": [
+            -0.0,
+            -2.1855694143368964e-08,
+            1.0,
+            0.0
+          ]
+        },
+        {
+          "index": 5,
+          "name": "Ventral Weapon Base 3",
+          "position": [
+            0.0,
+            -3.51200008392334,
+            -0.0
+          ],
+          "rotation": [
+            -0.0,
+            -2.1855694143368964e-08,
+            1.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    {
+      "module": "T2_LayeredDefenseArray",
+      "prefab": "assets/artresources/habitats/3d_modules/prefabs/station_t2_layereddefensearray_module.prefab",
+      "mesh": "station_T2_LayeredDefenseArray",
+      "anchors": [
+        {
+          "index": 0,
+          "name": "Dorsal Weapon Base 1",
+          "position": [
+            20.979999542236328,
+            10.359000205993652,
+            4.789999961853027
+          ],
+          "rotation": [
+            -0.0,
+            -0.0,
+            -0.0,
+            1.0
+          ]
+        },
+        {
+          "index": 1,
+          "name": "Dorsal Weapon Base 2",
+          "position": [
+            -14.899999618530273,
+            10.329999923706055,
+            -6.400000095367432
+          ],
+          "rotation": [
+            -0.0,
+            -0.0,
+            -0.0,
+            1.0
+          ]
+        },
+        {
+          "index": 2,
+          "name": "Dorsal Weapon Base 3",
+          "position": [
+            3.299999952316284,
+            10.329999923706055,
+            16.290000915527344
+          ],
+          "rotation": [
+            -0.0,
+            -0.0,
+            -0.0,
+            1.0
+          ]
+        },
+        {
+          "index": 3,
+          "name": "Ventral Weapon Base 1",
+          "position": [
+            14.538000106811523,
+            -10.847999572753906,
+            -6.769999980926514
+          ],
+          "rotation": [
+            -0.0,
+            -2.1855694143368964e-08,
+            1.0,
+            0.0
+          ]
+        },
+        {
+          "index": 4,
+          "name": "Ventral Weapon Base 2",
+          "position": [
+            -21.34000015258789,
+            -10.833000183105469,
+            -6.710000038146973
+          ],
+          "rotation": [
+            -0.0,
+            -2.1855694143368964e-08,
+            1.0,
+            0.0
+          ]
+        },
+        {
+          "index": 5,
+          "name": "Ventral Weapon Base 3",
+          "position": [
+            -3.130000114440918,
+            -10.829999923706055,
+            16.149999618530273
+          ],
+          "rotation": [
+            -0.0,
+            -2.1855694143368964e-08,
+            1.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    {
+      "module": "T3_Battlestations",
+      "prefab": "assets/artresources/habitats/3d_modules/prefabs/station_t3_battlestations_module.prefab",
+      "mesh": "station_T3_Battlestations",
+      "anchors": [
+        {
+          "index": 0,
+          "name": "Dorsal Weapon Base 1",
+          "position": [
+            0.0,
+            17.079999923706055,
+            0.0
+          ],
+          "rotation": [
+            -0.0,
+            -0.0,
+            -0.0,
+            1.0
+          ]
+        },
+        {
+          "index": 1,
+          "name": "Dorsal Weapon Base 2",
+          "position": [
+            -53.79999923706055,
+            49.56999969482422,
+            -54.04999923706055
+          ],
+          "rotation": [
+            -0.0,
+            -0.0,
+            -0.0,
+            1.0
+          ]
+        },
+        {
+          "index": 2,
+          "name": "Dorsal Weapon Base 3",
+          "position": [
+            54.0,
+            49.56999969482422,
+            53.75
+          ],
+          "rotation": [
+            -0.0,
+            -0.0,
+            -0.0,
+            1.0
+          ]
+        },
+        {
+          "index": 3,
+          "name": "Ventral Weapon Base 1",
+          "position": [
+            0.0,
+            -16.871999740600586,
+            0.0
+          ],
+          "rotation": [
+            -0.0,
+            -2.1855694143368964e-08,
+            1.0,
+            0.0
+          ]
+        },
+        {
+          "index": 4,
+          "name": "Ventral Weapon Base 2",
+          "position": [
+            -54.0,
+            -16.871999740600586,
+            -54.0
+          ],
+          "rotation": [
+            -0.0,
+            -2.1855694143368964e-08,
+            1.0,
+            0.0
+          ]
+        },
+        {
+          "index": 5,
+          "name": "Ventral Weapon Base 3",
+          "position": [
+            41.790000915527344,
+            -17.010000228881836,
+            59.9900016784668
+          ],
+          "rotation": [
+            -0.0,
+            -2.1855694143368964e-08,
+            1.0,
+            0.0
+          ]
+        },
+        {
+          "index": 6,
+          "name": "Dorsal Weapon Base 4",
+          "position": [
+            -41.79999923706055,
+            17.079999923706055,
+            60.4900016784668
+          ],
+          "rotation": [
+            -0.0,
+            -0.0,
+            -0.0,
+            1.0
+          ]
+        },
+        {
+          "index": 7,
+          "name": "Ventral Weapon Base 4",
+          "position": [
+            -41.79999923706055,
+            -16.871999740600586,
+            60.4900016784668
+          ],
+          "rotation": [
+            -0.0,
+            -2.1855694143368964e-08,
+            1.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    {
+      "module": "T1_AlienPointDefenseArray",
+      "prefab": "assets/artresources/habitats_alien/3d_modules/prefabs/station_t1_alienpointdefensearray_module.prefab",
+      "mesh": "station_T1_AlienPointDefenseArray",
+      "anchors": [
+        {
+          "index": 0,
+          "name": "Dorsal Weapon Base 1",
+          "position": [
+            3.8299999237060547,
+            25.559999465942383,
+            -0.0
+          ],
+          "rotation": [
+            -2.1855694143368964e-08,
+            -0.0,
+            -0.0,
+            1.0
+          ]
+        },
+        {
+          "index": 1,
+          "name": "Dorsal Weapon Base 2",
+          "position": [
+            -3.8299999237060547,
+            25.559999465942383,
+            0.0
+          ],
+          "rotation": [
+            -2.1855694143368964e-08,
+            -0.0,
+            -0.0,
+            1.0
+          ]
+        },
+        {
+          "index": 2,
+          "name": "Dorsal Weapon Base 3",
+          "position": [
+            0.0,
+            25.559999465942383,
+            0.0
+          ],
+          "rotation": [
+            -2.1855694143368964e-08,
+            -0.0,
+            -0.0,
+            1.0
+          ]
+        },
+        {
+          "index": 3,
+          "name": "Ventral Weapon Base 1",
+          "position": [
+            3.8299560546875,
+            -25.559999465942383,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ]
+        },
+        {
+          "index": 4,
+          "name": "Ventral Weapon Base 2",
+          "position": [
+            -3.8299560546875,
+            -25.559999465942383,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ]
+        },
+        {
+          "index": 5,
+          "name": "Ventral Weapon Base 3",
+          "position": [
+            0.0,
+            -25.559999465942383,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    {
+      "module": "T2_AlienLayeredDefenseArray",
+      "prefab": "assets/artresources/habitats_alien/3d_modules/prefabs/station_t2_alienlayereddefensearray_module.prefab",
+      "mesh": "station_T2_AlienLayeredDefenseArray",
+      "anchors": [
+        {
+          "index": 0,
+          "name": "Dorsal Weapon Base 1",
+          "position": [
+            0.0,
+            21.0,
+            0.0
+          ],
+          "rotation": [
+            -2.1855694143368964e-08,
+            -0.0,
+            -0.0,
+            1.0
+          ]
+        },
+        {
+          "index": 1,
+          "name": "Dorsal Weapon Base 2",
+          "position": [
+            2.4100000858306885,
+            26.3700008392334,
+            -0.0
+          ],
+          "rotation": [
+            -2.1855694143368964e-08,
+            -0.0,
+            -0.0,
+            1.0
+          ]
+        },
+        {
+          "index": 2,
+          "name": "Dorsal Weapon Base 3",
+          "position": [
+            -2.4100000858306885,
+            26.3700008392334,
+            0.0
+          ],
+          "rotation": [
+            -2.1855694143368964e-08,
+            -0.0,
+            -0.0,
+            1.0
+          ]
+        },
+        {
+          "index": 3,
+          "name": "Ventral Weapon Base 1",
+          "position": [
+            0.0,
+            -21.329999923706055,
+            0.0
+          ],
+          "rotation": [
+            -0.0,
+            -0.0,
+            1.0,
+            0.0
+          ]
+        },
+        {
+          "index": 4,
+          "name": "Ventral Weapon Base 2",
+          "position": [
+            -2.427999973297119,
+            -26.200000762939453,
+            0.0
+          ],
+          "rotation": [
+            -0.0,
+            -0.0,
+            1.0,
+            0.0
+          ]
+        },
+        {
+          "index": 5,
+          "name": "Ventral Weapon Base 3",
+          "position": [
+            2.427999973297119,
+            -26.200000762939453,
+            0.0
+          ],
+          "rotation": [
+            -0.0,
+            -0.0,
+            1.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    {
+      "module": "T3_AlienBattlestations",
+      "prefab": "assets/artresources/habitats_alien/3d_modules/prefabs/station_t3_alienbattlestations_module.prefab",
+      "mesh": "station_T3_AlienBattlestations",
+      "anchors": [
+        {
+          "index": 0,
+          "name": "Dorsal Weapon Base 1",
+          "position": [
+            0.0,
+            35.172000885009766,
+            0.0
+          ],
+          "rotation": [
+            -2.1855694143368964e-08,
+            -0.0,
+            -0.0,
+            1.0
+          ]
+        },
+        {
+          "index": 1,
+          "name": "Dorsal Weapon Base 2",
+          "position": [
+            -3.3499999046325684,
+            36.779998779296875,
+            0.0
+          ],
+          "rotation": [
+            -2.1855694143368964e-08,
+            -0.0,
+            -0.0,
+            1.0
+          ]
+        },
+        {
+          "index": 2,
+          "name": "Dorsal Weapon Base 3",
+          "position": [
+            3.3499999046325684,
+            36.779998779296875,
+            0.0
+          ],
+          "rotation": [
+            -2.1855694143368964e-08,
+            -0.0,
+            -0.0,
+            1.0
+          ]
+        },
+        {
+          "index": 3,
+          "name": "Ventral Weapon Base 1",
+          "position": [
+            0.0,
+            -35.18000030517578,
+            0.0
+          ],
+          "rotation": [
+            -0.0,
+            -0.0,
+            1.0,
+            0.0
+          ]
+        },
+        {
+          "index": 4,
+          "name": "Ventral Weapon Base 2",
+          "position": [
+            -3.4200000762939453,
+            -36.84000015258789,
+            -0.0
+          ],
+          "rotation": [
+            -0.0,
+            -0.0,
+            1.0,
+            0.0
+          ]
+        },
+        {
+          "index": 5,
+          "name": "Ventral Weapon Base 3",
+          "position": [
+            3.5999999046325684,
+            -36.84000015258789,
+            -0.0
+          ],
+          "rotation": [
+            -0.0,
+            -0.0,
+            1.0,
+            0.0
+          ]
+        }
+      ]
+    }
+  ],
+  "t2HumanPads": [
+    {
+      "face": "bottom",
+      "bank": "+x",
+      "capCenter": [
+        39.5065,
+        -8.1435,
+        -32.6665
+      ],
+      "outwardNormal": [
+        0.70711,
+        -0.70711,
+        0.0
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "bottom",
+      "bank": "+x",
+      "capCenter": [
+        39.5065,
+        -8.1435,
+        -7.5295
+      ],
+      "outwardNormal": [
+        0.70711,
+        -0.70711,
+        0.0
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "bottom",
+      "bank": "+x",
+      "capCenter": [
+        39.5065,
+        -8.1435,
+        18.355
+      ],
+      "outwardNormal": [
+        0.70711,
+        -0.70711,
+        0.0
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "bottom",
+      "bank": "+z",
+      "capCenter": [
+        -18.7745,
+        -8.1435,
+        39.654
+      ],
+      "outwardNormal": [
+        0.0,
+        -0.7069,
+        0.70731
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "bottom",
+      "bank": "+z",
+      "capCenter": [
+        7.11,
+        -8.1435,
+        39.654
+      ],
+      "outwardNormal": [
+        0.0,
+        -0.7069,
+        0.70731
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "bottom",
+      "bank": "+z",
+      "capCenter": [
+        32.247,
+        -8.1435,
+        39.654
+      ],
+      "outwardNormal": [
+        0.0,
+        -0.7069,
+        0.70731
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "bottom",
+      "bank": "-x",
+      "capCenter": [
+        -39.6695,
+        -8.1435,
+        -18.936
+      ],
+      "outwardNormal": [
+        -0.70711,
+        -0.70711,
+        0.0
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "bottom",
+      "bank": "-x",
+      "capCenter": [
+        -39.6695,
+        -8.1435,
+        6.9485
+      ],
+      "outwardNormal": [
+        -0.70711,
+        -0.70711,
+        0.0
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "bottom",
+      "bank": "-x",
+      "capCenter": [
+        -39.6695,
+        -8.1435,
+        32.0855
+      ],
+      "outwardNormal": [
+        -0.70711,
+        -0.70711,
+        0.0
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "bottom",
+      "bank": "-z",
+      "capCenter": [
+        -32.215,
+        -8.1435,
+        -39.7215
+      ],
+      "outwardNormal": [
+        0.0,
+        -0.70711,
+        -0.70711
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "bottom",
+      "bank": "-z",
+      "capCenter": [
+        -7.078,
+        -8.1435,
+        -39.7215
+      ],
+      "outwardNormal": [
+        0.0,
+        -0.70711,
+        -0.70711
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "bottom",
+      "bank": "-z",
+      "capCenter": [
+        18.8065,
+        -8.1435,
+        -39.7215
+      ],
+      "outwardNormal": [
+        0.0,
+        -0.70711,
+        -0.70711
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "bottom",
+      "bank": "deck",
+      "capCenter": [
+        -33.0175,
+        -10.889,
+        -17.8835
+      ],
+      "outwardNormal": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "bottom",
+      "bank": "deck",
+      "capCenter": [
+        -21.1845,
+        -10.889,
+        -17.8835
+      ],
+      "outwardNormal": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "bottom",
+      "bank": "deck",
+      "capCenter": [
+        -3.338,
+        -10.889,
+        -17.8835
+      ],
+      "outwardNormal": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "bottom",
+      "bank": "deck",
+      "capCenter": [
+        14.508,
+        -10.889,
+        -17.8835
+      ],
+      "outwardNormal": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "bottom",
+      "bank": "deck",
+      "capCenter": [
+        32.3545,
+        -10.889,
+        -17.8835
+      ],
+      "outwardNormal": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "bottom",
+      "bank": "deck",
+      "capCenter": [
+        -33.0175,
+        -10.889,
+        -6.6305
+      ],
+      "outwardNormal": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "bottom",
+      "bank": "deck",
+      "capCenter": [
+        -21.1845,
+        -10.889,
+        -6.6305
+      ],
+      "outwardNormal": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "prefabAnchor": 4
+    },
+    {
+      "face": "bottom",
+      "bank": "deck",
+      "capCenter": [
+        -3.338,
+        -10.889,
+        -6.6305
+      ],
+      "outwardNormal": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "bottom",
+      "bank": "deck",
+      "capCenter": [
+        14.508,
+        -10.889,
+        -6.6305
+      ],
+      "outwardNormal": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "prefabAnchor": 3
+    },
+    {
+      "face": "bottom",
+      "bank": "deck",
+      "capCenter": [
+        32.3545,
+        -10.889,
+        -6.6305
+      ],
+      "outwardNormal": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "bottom",
+      "bank": "deck",
+      "capCenter": [
+        -33.0175,
+        -10.889,
+        4.554
+      ],
+      "outwardNormal": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "bottom",
+      "bank": "deck",
+      "capCenter": [
+        -21.1845,
+        -10.889,
+        4.554
+      ],
+      "outwardNormal": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "bottom",
+      "bank": "deck",
+      "capCenter": [
+        -3.338,
+        -10.889,
+        4.554
+      ],
+      "outwardNormal": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "bottom",
+      "bank": "deck",
+      "capCenter": [
+        14.508,
+        -10.889,
+        4.554
+      ],
+      "outwardNormal": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "bottom",
+      "bank": "deck",
+      "capCenter": [
+        32.3545,
+        -10.889,
+        4.554
+      ],
+      "outwardNormal": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "bottom",
+      "bank": "deck",
+      "capCenter": [
+        -33.0175,
+        -10.889,
+        16.1365
+      ],
+      "outwardNormal": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "bottom",
+      "bank": "deck",
+      "capCenter": [
+        -21.1845,
+        -10.889,
+        16.1365
+      ],
+      "outwardNormal": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "bottom",
+      "bank": "deck",
+      "capCenter": [
+        -3.338,
+        -10.889,
+        16.1365
+      ],
+      "outwardNormal": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "prefabAnchor": 5
+    },
+    {
+      "face": "bottom",
+      "bank": "deck",
+      "capCenter": [
+        14.508,
+        -10.889,
+        16.1365
+      ],
+      "outwardNormal": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "bottom",
+      "bank": "deck",
+      "capCenter": [
+        32.3545,
+        -10.889,
+        16.1365
+      ],
+      "outwardNormal": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "bottom",
+      "bank": "deck",
+      "capCenter": [
+        -33.0175,
+        -10.889,
+        27.4455
+      ],
+      "outwardNormal": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "bottom",
+      "bank": "deck",
+      "capCenter": [
+        -21.1845,
+        -10.889,
+        27.4455
+      ],
+      "outwardNormal": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "bottom",
+      "bank": "deck",
+      "capCenter": [
+        -3.338,
+        -10.889,
+        27.4455
+      ],
+      "outwardNormal": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "bottom",
+      "bank": "deck",
+      "capCenter": [
+        14.508,
+        -10.889,
+        27.4455
+      ],
+      "outwardNormal": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "bottom",
+      "bank": "deck",
+      "capCenter": [
+        32.3545,
+        -10.889,
+        27.4455
+      ],
+      "outwardNormal": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "top",
+      "bank": "+x",
+      "capCenter": [
+        39.418,
+        7.6285,
+        -18.8065
+      ],
+      "outwardNormal": [
+        0.70731,
+        0.7069,
+        0.0
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "top",
+      "bank": "+x",
+      "capCenter": [
+        39.418,
+        7.6285,
+        7.0775
+      ],
+      "outwardNormal": [
+        0.70731,
+        0.7069,
+        0.0
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "top",
+      "bank": "+x",
+      "capCenter": [
+        39.418,
+        7.6285,
+        32.215
+      ],
+      "outwardNormal": [
+        0.70731,
+        0.7069,
+        0.0
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "top",
+      "bank": "+z",
+      "capCenter": [
+        -32.4985,
+        7.6285,
+        39.7835
+      ],
+      "outwardNormal": [
+        0.0,
+        0.70711,
+        0.70711
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "top",
+      "bank": "+z",
+      "capCenter": [
+        -7.3615,
+        7.6285,
+        39.7835
+      ],
+      "outwardNormal": [
+        0.0,
+        0.70711,
+        0.70711
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "top",
+      "bank": "+z",
+      "capCenter": [
+        18.5225,
+        7.6285,
+        39.7835
+      ],
+      "outwardNormal": [
+        0.0,
+        0.70711,
+        0.70711
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "top",
+      "bank": "-x",
+      "capCenter": [
+        -39.758,
+        7.6285,
+        -32.5375
+      ],
+      "outwardNormal": [
+        -0.70731,
+        0.7069,
+        0.0
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "top",
+      "bank": "-x",
+      "capCenter": [
+        -39.758,
+        7.6285,
+        -7.4
+      ],
+      "outwardNormal": [
+        -0.70731,
+        0.7069,
+        0.0
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "top",
+      "bank": "-x",
+      "capCenter": [
+        -39.758,
+        7.6285,
+        18.4845
+      ],
+      "outwardNormal": [
+        -0.70731,
+        0.7069,
+        0.0
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "top",
+      "bank": "-z",
+      "capCenter": [
+        -19.058,
+        7.6285,
+        -39.592
+      ],
+      "outwardNormal": [
+        0.0,
+        0.7069,
+        -0.70731
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "top",
+      "bank": "-z",
+      "capCenter": [
+        6.8265,
+        7.6285,
+        -39.592
+      ],
+      "outwardNormal": [
+        0.0,
+        0.7069,
+        -0.70731
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "top",
+      "bank": "-z",
+      "capCenter": [
+        31.9635,
+        7.6285,
+        -39.592
+      ],
+      "outwardNormal": [
+        0.0,
+        0.7069,
+        -0.70731
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "top",
+      "bank": "deck",
+      "capCenter": [
+        -32.606,
+        10.374,
+        -17.7535
+      ],
+      "outwardNormal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "top",
+      "bank": "deck",
+      "capCenter": [
+        -14.7595,
+        10.374,
+        -17.7535
+      ],
+      "outwardNormal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "top",
+      "bank": "deck",
+      "capCenter": [
+        3.0865,
+        10.374,
+        -17.7535
+      ],
+      "outwardNormal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "top",
+      "bank": "deck",
+      "capCenter": [
+        20.9325,
+        10.374,
+        -17.7535
+      ],
+      "outwardNormal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "top",
+      "bank": "deck",
+      "capCenter": [
+        32.766,
+        10.374,
+        -17.7535
+      ],
+      "outwardNormal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "top",
+      "bank": "deck",
+      "capCenter": [
+        -32.606,
+        10.374,
+        -6.5015
+      ],
+      "outwardNormal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "top",
+      "bank": "deck",
+      "capCenter": [
+        -14.7595,
+        10.374,
+        -6.5015
+      ],
+      "outwardNormal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "prefabAnchor": 1
+    },
+    {
+      "face": "top",
+      "bank": "deck",
+      "capCenter": [
+        3.0865,
+        10.374,
+        -6.5015
+      ],
+      "outwardNormal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "top",
+      "bank": "deck",
+      "capCenter": [
+        20.9325,
+        10.374,
+        -6.5015
+      ],
+      "outwardNormal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "top",
+      "bank": "deck",
+      "capCenter": [
+        32.766,
+        10.374,
+        -6.5015
+      ],
+      "outwardNormal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "top",
+      "bank": "deck",
+      "capCenter": [
+        -32.606,
+        10.374,
+        4.6835
+      ],
+      "outwardNormal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "top",
+      "bank": "deck",
+      "capCenter": [
+        -14.7595,
+        10.374,
+        4.6835
+      ],
+      "outwardNormal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "top",
+      "bank": "deck",
+      "capCenter": [
+        3.0865,
+        10.374,
+        4.6835
+      ],
+      "outwardNormal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "top",
+      "bank": "deck",
+      "capCenter": [
+        20.9325,
+        10.374,
+        4.6835
+      ],
+      "outwardNormal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "prefabAnchor": 0
+    },
+    {
+      "face": "top",
+      "bank": "deck",
+      "capCenter": [
+        32.766,
+        10.374,
+        4.6835
+      ],
+      "outwardNormal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "top",
+      "bank": "deck",
+      "capCenter": [
+        -32.606,
+        10.374,
+        16.2655
+      ],
+      "outwardNormal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "top",
+      "bank": "deck",
+      "capCenter": [
+        -14.7595,
+        10.374,
+        16.2655
+      ],
+      "outwardNormal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "top",
+      "bank": "deck",
+      "capCenter": [
+        3.0865,
+        10.374,
+        16.2655
+      ],
+      "outwardNormal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "prefabAnchor": 2
+    },
+    {
+      "face": "top",
+      "bank": "deck",
+      "capCenter": [
+        20.9325,
+        10.374,
+        16.2655
+      ],
+      "outwardNormal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "top",
+      "bank": "deck",
+      "capCenter": [
+        32.766,
+        10.374,
+        16.2655
+      ],
+      "outwardNormal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "top",
+      "bank": "deck",
+      "capCenter": [
+        -32.606,
+        10.374,
+        27.575
+      ],
+      "outwardNormal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "top",
+      "bank": "deck",
+      "capCenter": [
+        -14.7595,
+        10.374,
+        27.575
+      ],
+      "outwardNormal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "top",
+      "bank": "deck",
+      "capCenter": [
+        3.0865,
+        10.374,
+        27.575
+      ],
+      "outwardNormal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "top",
+      "bank": "deck",
+      "capCenter": [
+        20.9325,
+        10.374,
+        27.575
+      ],
+      "outwardNormal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "prefabAnchor": null
+    },
+    {
+      "face": "top",
+      "bank": "deck",
+      "capCenter": [
+        32.766,
+        10.374,
+        27.575
+      ],
+      "outwardNormal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "prefabAnchor": null
+    }
+  ],
+  "t3AlienCandidateHousings": [
+    {
+      "face": "top",
+      "boundingBoxCenter": [
+        62.705,
+        17.445,
+        0.0
+      ],
+      "boundingBoxSize": [
+        6.802,
+        11.826,
+        8.622
+      ]
+    },
+    {
+      "face": "bottom",
+      "boundingBoxCenter": [
+        62.705,
+        -17.228,
+        0.0
+      ],
+      "boundingBoxSize": [
+        6.802,
+        11.826,
+        8.622
+      ]
+    },
+    {
+      "face": "top",
+      "boundingBoxCenter": [
+        0.065,
+        17.445,
+        62.64
+      ],
+      "boundingBoxSize": [
+        8.623,
+        11.826,
+        6.802
+      ]
+    },
+    {
+      "face": "top",
+      "boundingBoxCenter": [
+        0.065,
+        17.445,
+        -62.64
+      ],
+      "boundingBoxSize": [
+        8.623,
+        11.826,
+        6.802
+      ]
+    },
+    {
+      "face": "bottom",
+      "boundingBoxCenter": [
+        0.065,
+        -17.228,
+        62.64
+      ],
+      "boundingBoxSize": [
+        8.623,
+        11.826,
+        6.802
+      ]
+    },
+    {
+      "face": "bottom",
+      "boundingBoxCenter": [
+        0.065,
+        -17.228,
+        -62.64
+      ],
+      "boundingBoxSize": [
+        8.623,
+        11.826,
+        6.802
+      ]
+    },
+    {
+      "face": "top",
+      "boundingBoxCenter": [
+        -62.576,
+        17.445,
+        0.0
+      ],
+      "boundingBoxSize": [
+        6.802,
+        11.826,
+        8.622
+      ]
+    },
+    {
+      "face": "bottom",
+      "boundingBoxCenter": [
+        -62.576,
+        -17.228,
+        0.0
+      ],
+      "boundingBoxSize": [
+        6.802,
+        11.826,
+        8.622
+      ]
+    }
+  ]
+}

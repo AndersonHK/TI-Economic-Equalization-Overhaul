@@ -74,11 +74,12 @@ $capture = [Linq.Expressions.Expression]::Block([Linq.Expressions.Expression[]]@
 $callback = [Linq.Expressions.Expression]::Lambda(
     $callbackType, $capture, [Linq.Expressions.ParameterExpression[]]@($fixtureArray)).Compile()
 
-function Invoke-PlaneFixture($Target, [single]$Acceleration, [single]$Budget) {
+function Invoke-PlaneFixture($Target, [single]$Acceleration, [single]$Budget,
+    [bool]$Quick = $false, $Actor = $fleet, [bool]$IsPlayer = $true) {
     $fixtureCandidates.Clear()
     Set-PlaneFixtureField $ship $shipType '<cruiseAcceleration_mps2>k__BackingField' $Acceleration
     Set-PlaneFixtureField $ship $shipType '<currentDeltaV_kps>k__BackingField' $Budget
-    $request.Invoke($null, [object[]]@($fleet, $Target, $callback, 0.0, $false, $false, [single]1, $true))
+    $request.Invoke($null, [object[]]@($Actor, $Target, $callback, 0.0, $false, $Quick, [single]1, $IsPlayer))
 }
 
 function Assert-PlaneFixturePaths([double]$Acceleration, $Target) {
@@ -143,6 +144,41 @@ $cruise = [single]0.2660899
 $result = Invoke-PlaneFixture $target40 $cruise 32.7005
 if ($result.Result.ToString() -ne 'Success') { throw "The reported plane-change case failed: $($result.Result)." }
 $fast = Assert-PlaneFixturePaths $cruise $target40
+$expected = @('6.8/12.41', '6.7/13.54', '6.0/15.55')
+$options = @($fixtureCandidates[0] | Sort-Object duration_s | ForEach-Object {
+    '{0:F1}/{1:F2}' -f $_.DV_kps, $_.duration_h
+})
+if (($options -join ',') -ne ($expected -join ',')) {
+    throw "Wrong Earth Defense slider options: $options."
+}
+$result = Invoke-PlaneFixture $target40 $cruise 32.7005 $true
+if ($result.Result.ToString() -ne 'Success' -or @($fixtureCandidates[0]).Count -ne 1 -or
+    $fixtureCandidates[0][0].DV_mps -ne $fast.DV_mps) {
+    throw 'The feasibility query must return the same certified route as the full request.'
+}
+$virtualType = $gameAssembly.GetType($nativeNamespace + 'TIVirtualFleetState.TIVirtualSpaceFleet', $true)
+$virtual = [Activator]::CreateInstance($virtualType, [object[]]@($fleet, $cruise, [single]32700.5, $faction))
+$result = Invoke-PlaneFixture $target40 $cruise 32.7005 $false $virtual $false
+if ($result.Result.ToString() -ne 'Success' -or @($fixtureCandidates[0]).Count -ne 3) {
+    throw 'Virtual fleets must receive the same finite-thrust choices.'
+}
+$estimateArgs = [object[]]@($fleet, $station, [double]$cruise, 32700.5, $false)
+# GetEstimatedTransferTime_s accepts a space object, so use the station
+# endpoint to verify the shipyard ETA along the fixed-phase route.
+$eta = $plannerType.GetMethod('GetEstimatedTransferTime_s').Invoke($null, $estimateArgs)
+$result = Invoke-PlaneFixture $station $cruise 32.7005 $false $virtual $false
+$stationFast = $fixtureCandidates[0] | Sort-Object duration_s | Select-Object -First 1
+if ($estimateArgs[4] -or $result.Result.ToString() -ne 'Success' -or
+    [math]::Abs($eta - $stationFast.duration_s) -gt 0.001) {
+    throw 'The shipyard estimate must use the shared solver ETA.'
+}
+$result = Invoke-PlaneFixture $target40 $cruise 6.025
+if ($result.Result.ToString() -ne 'Success' -or @($fixtureCandidates[0]).Count -ne 1 -or
+    $fixtureCandidates[0][0].DV_mps -gt 6025.001 -or $fixtureCandidates[0][0].duration_h -le 15.55) {
+    throw 'A tight fuel ceiling must select an affordable later variant.'
+}
+Write-Host "PASS: exact reference slider: $options. Quick, virtual, shipyard estimate, and tight-budget requests agree."
+$null = Invoke-PlaneFixture $target40 $cruise 32.7005
 $cheapest = $fixtureCandidates[0] | Sort-Object DV_mps | Select-Object -First 1
 Write-Host ("Earth Defense options span {0:N2} km/s in {1:N2} hours to {2:N2} km/s in {3:N2} hours." -f
     $fast.DV_kps, $fast.duration_h, $cheapest.DV_kps, $cheapest.duration_h)
@@ -174,5 +210,20 @@ if ($slow.flightDuration_s -le $fast.flightDuration_s) { throw 'Less thrust must
 $result = Invoke-PlaneFixture $target40 $cruise 1.0
 if ($result.Result.ToString() -ne 'Fail_InsufficientDV' -or @($fixtureCandidates[0]).Count -ne 0 -or $result.Value -lt 5000) {
     throw 'The planner must reject a phase-change-sized delta-v budget for the 40 degree route.'
+}
+
+foreach ($stockTarget in @((New-TestOrbit 80 0 ($axis_m + 500000)),
+                          (New-TestOrbit 81 40 ($axis_m + 500000)))) {
+    $stockArguments = [object[]]@($fleet, $stockTarget, $false, [double]$cruise, 32700.5, $null, $null, $null)
+    $stock = $plannerType.GetMethod('GetTrajectoryModelsForConditions').Invoke($null, $stockArguments)
+    $candidateSource = $modAssembly.GetType('TIEconomyMod.Core.NativeTransferCandidates', $true)
+    $constructor = $candidateSource.GetConstructors([Reflection.BindingFlags]'Instance,NonPublic')[0]
+    $now = $clockType.GetMethod('Now').Invoke($null, @())
+    $source = $constructor.Invoke([object[]]@($fleet, $stockTarget, $stockTarget, $now, 1.0, $true))
+    $owned = $candidateSource.GetMethod('Models', [Reflection.BindingFlags]'Instance,NonPublic').Invoke(
+        $source, [object[]]@($false))
+    if (($stock -join ',') -ne ($owned -join ',')) {
+        throw 'The unified planner must select the stock candidate families for ordinary local routes.'
+    }
 }
 Write-Host 'PASS: finite-thrust slider frontier at 27.1 and 1 milligee, station phase, fuel, and native serialization.'

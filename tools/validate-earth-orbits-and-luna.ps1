@@ -275,21 +275,18 @@ $shipType = $gameAssembly.GetType(
     'PavonisInteractive.TerraInvicta.TISpaceShipState', $true)
 $plannerType = $gameAssembly.GetType(
     'PavonisInteractive.TerraInvicta.MasterTransferPlanner', $true)
-$planePatchName = 'TIEconomyMod.Patches.InclinedOrbitTransferPatch'
-$solverPatchName = 'TIEconomyMod.Patches.FiniteThrustPlaneChangePatch'
 $contracts = @(
     @{
-        Type = $planePatchName
-        Method = 'Postfix'
-        HarmonyArgument = 2
-        Target = $plannerType.GetMethod('GetTrajectoryModelsForConditions')
-    },
-    @{
-        Type = $solverPatchName
+        Type = 'TIEconomyMod.Patches.UnifiedFleetTransferRequestPatch'
         Method = 'Prefix'
         HarmonyArgument = 1
-        Target = $plannerType.GetMethod('CalculateInclinationChangeTransfers',
-            [Reflection.BindingFlags]'NonPublic,Static')
+        Target = $plannerType.GetMethod('RequestTrajectories')
+    },
+    @{
+        Type = 'TIEconomyMod.Patches.UnifiedFleetTransferEstimatePatch'
+        Method = 'Prefix'
+        HarmonyArgument = 1
+        Target = $plannerType.GetMethod('GetEstimatedTransferTime_s')
     },
     @{
         Type = 'TIEconomyMod.Patches.GenericEarthLaunchCostPatch'
@@ -367,14 +364,9 @@ $orbitTemplateType = $gameAssembly.GetType('TIOrbitTemplate', $true)
 $bodyType = $gameAssembly.GetType($nativeNamespace + 'TISpaceBodyState', $true)
 $assetType = $gameAssembly.GetType($nativeNamespace + 'TISpaceAssetState', $true)
 $fleetType = $gameAssembly.GetType($nativeNamespace + 'TISpaceFleetState', $true)
-$modelType = $gameAssembly.GetType($nativeNamespace + 'TrajectoryModel', $true)
-$modelListType = [System.Collections.Generic.List`1].MakeGenericType($modelType)
 $body = [Runtime.Serialization.FormatterServices]::GetUninitializedObject($bodyType)
 $fleet = [Runtime.Serialization.FormatterServices]::GetUninitializedObject($fleetType)
 $orbitField = $assetType.GetField('<orbitState>k__BackingField', $fields)
-$patch = $modAssembly.GetType($planePatchName, $true).GetMethod(
-    'Postfix', [Reflection.BindingFlags]'Static,NonPublic')
-
 function New-TestOrbit([int]$Id, [double]$Inclination, [double]$Axis_m, [double]$Node = 310) {
     $orbit = [Runtime.Serialization.FormatterServices]::GetUninitializedObject($orbitType)
     $template = [Runtime.Serialization.FormatterServices]::GetUninitializedObject($orbitTemplateType)
@@ -391,18 +383,6 @@ function New-TestOrbit([int]$Id, [double]$Inclination, [double]$Axis_m, [double]
     return $orbit
 }
 
-function Assert-TransferModels($Origin, $Destination, [string[]]$Before, [string[]]$Expected) {
-    $orbitField.SetValue($fleet, $Origin)
-    $models = [Activator]::CreateInstance($modelListType)
-    foreach ($name in $Before) {
-        $models.Add([Enum]::Parse($modelType, $name))
-    }
-    [void]$patch.Invoke($null, [object[]]@($fleet, $Destination, $models))
-    if (($models -join ',') -cne ($Expected -join ',')) {
-        throw "Unexpected transfer models from orbit $($Origin.ID) to $($Destination.ID). Expected $Expected, found $models."
-    }
-}
-
 $axis_m = 6856751.107
 $leo = New-TestOrbit 1 0 $axis_m
 $inclined = @(
@@ -411,34 +391,11 @@ $inclined = @(
     (New-TestOrbit 4 -20 $axis_m),
     (New-TestOrbit 5 -40 $axis_m)
 )
-foreach ($band in $inclined) {
-    Assert-TransferModels $leo $band OrbitPhasing InclinationChange
-    Assert-TransferModels $band $leo OrbitPhasing InclinationChange
-}
-Assert-TransferModels $inclined[1] $inclined[3] OrbitPhasing InclinationChange
-Assert-TransferModels $leo $inclined[1] @('OrbitPhasing', 'ImpulseMicrothrustHybrid') InclinationChange
-Assert-TransferModels $leo $leo OrbitPhasing OrbitPhasing
-Assert-TransferModels $leo (New-TestOrbit 6 0 $axis_m) OrbitPhasing OrbitPhasing
-Assert-TransferModels $leo (New-TestOrbit 7 40 ($axis_m + 500000)) ImpulseMicrothrustHybrid ImpulseMicrothrustHybrid
-Assert-TransferModels $leo (New-TestOrbit 8 40 $axis_m 270) OrbitPhasing OrbitPhasing
-
 $habType = $gameAssembly.GetType($nativeNamespace + 'TIHabState', $true)
 $station = [Runtime.Serialization.FormatterServices]::GetUninitializedObject($habType)
 $habTypeField = $habType.GetField('<habType>k__BackingField', $fields)
 $habTypeField.SetValue($station, [Enum]::Parse($habTypeField.FieldType, 'Station'))
 $orbitField.SetValue($station, $inclined[1])
-Assert-TransferModels $leo $station OrbitPhasing InclinationChange
-Assert-TransferModels $inclined[1] $station OrbitPhasing OrbitPhasing
-
-$targetFleet = [Runtime.Serialization.FormatterServices]::GetUninitializedObject($fleetType)
-$orbitField.SetValue($targetFleet, $inclined[1])
-Assert-TransferModels $leo $targetFleet OrbitPhasing InclinationChange
-$trajectoryType = $gameAssembly.GetType($nativeNamespace + 'Trajectory_Patched', $true)
-$fleetType.GetField('<trajectory>k__BackingField', $fields).SetValue(
-    $targetFleet, [Runtime.Serialization.FormatterServices]::GetUninitializedObject($trajectoryType))
-Assert-TransferModels $leo $targetFleet OrbitPhasing OrbitPhasing
-Write-Host 'PASS: equal-altitude orbit, station, and idle-fleet plane-change dispatch and native-route controls.'
-
 $uiType = $gameAssembly.GetType($nativeNamespace + 'ThrustProfileTool', $true)
 $messagePatch = $modAssembly.GetType('TIEconomyMod.Patches.TransferDepartureWindowMessagePatch', $true)
 $prefix = $messagePatch.GetMethod('Prefix', [Reflection.BindingFlags]'Static,NonPublic')
@@ -466,6 +423,26 @@ if (!$messageCheck.Invoke($null, [object[]]@($missedWindow, 0.2660899)) -or
     throw 'The transfer UI must report a missed departure without suppressing a burn-length rejection.'
 }
 Write-Host 'PASS: the thrust profile distinguishes a missed departure from an actual acceleration requirement.'
+
+$notificationType = $gameAssembly.GetType($nativeNamespace + 'NotificationScreenController', $true)
+$notificationMethod = $notificationType.GetMethod('SetCustomNotificationButtons',
+    [Reflection.BindingFlags]'Instance,NonPublic')
+$reader = $harmonyAssembly.GetType('HarmonyLib.PatchProcessor', $true).GetMethods() | Where-Object {
+    $_.Name -eq 'GetOriginalInstructions' -and $_.GetParameters().Count -eq 2 -and
+    !$_.GetParameters()[1].ParameterType.IsByRef
+}
+$instructions = $reader.Invoke($null, [object[]]@($notificationMethod, $null))
+$notificationPatch = $modAssembly.GetType('TIEconomyMod.Patches.FleetTransferNotificationPatch', $true)
+$rewrite = $notificationPatch.GetMethod('Transpiler', [Reflection.BindingFlags]'Static,NonPublic')
+$rewriteArgs = [object[]]::new(1)
+$rewriteArgs[0] = $instructions
+$patched = @($rewrite.Invoke($null, $rewriteArgs))
+if ($patched.Count -ne $instructions.Count + 4 -or @($patched | Where-Object {
+    $_.operand -is [Reflection.MethodInfo] -and $_.operand.Name -eq 'ShipCompletionTargets'
+}).Count -ne 1) {
+    throw 'Expected one ship-completion pool expansion and two alarm index adjustments.'
+}
+Write-Host 'PASS: both notification fixes match the installed notification method IL.'
 
 . (Join-Path $PSScriptRoot 'validation\Test-FiniteThrustPlaneChange.ps1')
 

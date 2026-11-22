@@ -2,7 +2,8 @@
 
 Last updated 2026-11-21. This catalog indexes every other file under `docs/`, including machine-readable evidence and images. For interpretation, start with the [documentation map](README.md), [ship-balance hub](ship-balance-research/README.md), or [archive index](archive/README.md). Location/type labels are navigation aids, not assertions that all research is implemented.
 
-Indexed files: **593**. No archived evidence was deleted during the organization pass.
+Indexed files: **596**. No archived evidence was deleted during the organization pass.
+
 
 ## Top-level guides and authorities
 
@@ -10,6 +11,7 @@ Indexed files: **593**. No archived evidence was deleted during the organization
 |---|---|
 | [alien-start-wormhole-and-earth-invasion.md](alien-start-wormhole-and-earth-invasion.md) | MD |
 | [alien-territory-demands.md](alien-territory-demands.md) | MD |
+| [allied-federation-and-unification-plan.md](allied-federation-and-unification-plan.md) | MD |
 | [campaign-difficulty-preset-control-cap.md](campaign-difficulty-preset-control-cap.md) | MD |
 | [coup-inequality-stabilization-report.md](coup-inequality-stabilization-report.md) | MD |
 | [current-implementation-matrix.xlsx](current-implementation-matrix.xlsx) | XLSX |
@@ -125,6 +127,7 @@ Indexed files: **593**. No archived evidence was deleted during the organization
 
 | File | Type |
 |---|---|
+| [economy/environment-ai-and-public-opinion-plan.md](economy/environment-ai-and-public-opinion-plan.md) | MD |
 | [economy/national-space-assets-implementation.md](economy/national-space-assets-implementation.md) | MD |
 | [economy/space-asset-upkeep-analysis-2026-09-22.md](economy/space-asset-upkeep-analysis-2026-09-22.md) | MD |
 | [economy/space-asset-upkeep-snapshot-2039-06-16.json](economy/space-asset-upkeep-snapshot-2039-06-16.json) | JSON |
@@ -366,6 +369,10 @@ Indexed files: **593**. No archived evidence was deleted during the organization
 | [ship-balance-research/combat-camera-fine-control-report-2026-10-23.md](ship-balance-research/combat-camera-fine-control-report-2026-10-23.md) | MD |
 | [ship-balance-research/compatibility-query-rework-2026-11-05.md](ship-balance-research/compatibility-query-rework-2026-11-05.md) | MD |
 | [ship-balance-research/configurable-combat-scale-2026-10-30.md](ship-balance-research/configurable-combat-scale-2026-10-30.md) | MD |
+| [ship-balance-research/defense-module-mounts/human-t2-pad-map.png](ship-balance-research/defense-module-mounts/human-t2-pad-map.png) | PNG |
+| [ship-balance-research/defense-module-mounts/mount-positions.json](ship-balance-research/defense-module-mounts/mount-positions.json) | JSON |
+| [ship-balance-research/defense-module-mounts/orbital-defense-anchors.png](ship-balance-research/defense-module-mounts/orbital-defense-anchors.png) | PNG |
+| [ship-balance-research/defense-module-mounts/README.md](ship-balance-research/defense-module-mounts/README.md) | MD |
 | [ship-balance-research/designer-viewport-deployment-2026-11-04.json](ship-balance-research/designer-viewport-deployment-2026-11-04.json) | JSON |
 | [ship-balance-research/designer-viewport-fit-2026-11-04.md](ship-balance-research/designer-viewport-fit-2026-11-04.md) | MD |
 | [ship-balance-research/designer-viewport-screen-budget-2026-11-04.json](ship-balance-research/designer-viewport-screen-budget-2026-11-04.json) | JSON |
@@ -654,4 +661,6 @@ Indexed files: **593**. No archived evidence was deleted during the organization
 | [tooling/documentation-indexing.md](tooling/documentation-indexing.md) | MD |
 | [tooling/documentation-organization-2026-10-21.json](tooling/documentation-organization-2026-10-21.json) | JSON |
 | [tooling/parallel-validation.md](tooling/parallel-validation.md) | MD |
+| [tooling/shared-implementation-audit.md](tooling/shared-implementation-audit.md) | MD |
+| [tooling/stale-hab-assault-state-handout.md](tooling/stale-hab-assault-state-handout.md) | MD |
 | [tooling/terra-invicta-save-format-and-editing.md](tooling/terra-invicta-save-format-and-editing.md) | MD |

@@ -135,6 +135,8 @@
     <Compile Include="Patches\InclinedOrbitTransferPatch.cs" />
     <Compile Include="Patches\FiniteThrustTrailPatches.cs" />
     <Compile Include="Core\FiniteThrustPlaneChange.cs" />
+    <Compile Include="Core\FleetTransferPlanner.cs" />
+    <Compile Include="Patches\FleetTransferNotificationPatch.cs" />
     <Compile Include="Core\EarthLaunchCostMath.cs" />
     <Compile Include="Core\EnvironmentMath.cs" />
     <Compile Include="Core\AlienFloraAssaultMath.cs" />

@@ -2,6 +2,8 @@
 
 Status: implemented, automatically validated, and deployed for Terra Invicta 1.0.51 on 2026-08-19.
 
+For the later 1.0.65 AI and public-opinion audit, see [Environment priorities and pollution accountability](economy/environment-ai-and-public-opinion-plan.md).
+
 ## Result
 
 The Environment system now treats the displayed 0-10 value as a technology-bounded sustainability rating. The reciprocal value remains only as an internal save-compatible carrier.

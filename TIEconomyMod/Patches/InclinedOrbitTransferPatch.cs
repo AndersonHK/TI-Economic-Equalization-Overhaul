@@ -1,5 +1,5 @@
 using System;
-using System.Collections.Generic;
+using System.Linq;
 using HarmonyLib;
 using PavonisInteractive.TerraInvicta;
 using PavonisInteractive.TerraInvicta.TIVirtualFleetState;
@@ -29,71 +29,44 @@ namespace TIEconomyMod.Patches
         }
     }
 
-    [HarmonyPatch(typeof(MasterTransferPlanner), nameof(MasterTransferPlanner.GetTrajectoryModelsForConditions))]
-    internal static class InclinedOrbitTransferPatch
+    [HarmonyPatch(typeof(MasterTransferPlanner), nameof(MasterTransferPlanner.RequestTrajectories))]
+    internal static class UnifiedFleetTransferRequestPatch
     {
-        private const double PlaneTolerance = 1e-8;
-
-        private static void Postfix(IMobileAsset fleet, TIGameState destination, List<TrajectoryModel> __result)
+        private static bool Prefix(IMobileAsset fleet, TIGameState destination, Action<Trajectory[]> callback,
+            out double lowestDVFound_kps, bool usePlaceholderTrajectories, bool stopOnFirstSuccess,
+            float sampleSizeMultiplier, bool isPlayer, ref TransferResult __result)
         {
-            if (!__result.Contains(TrajectoryModel.OrbitPhasing) || !IsLocalPlaneChange(fleet, destination))
-                return;
-
-            // Only compare candidates priced from the thrust needed to fly them.
-            __result.Remove(TrajectoryModel.OrbitPhasing);
-            __result.Remove(TrajectoryModel.ImpulseMicrothrustHybrid);
-            if (!__result.Contains(TrajectoryModel.InclinationChange))
-                __result.Add(TrajectoryModel.InclinationChange);
-        }
-
-        internal static bool IsLocalPlaneChange(IMobileAsset fleet, TIGameState destination)
-        {
-            if (!(fleet is TISpaceFleetState spaceFleet) || spaceFleet.transferAssigned)
-                return false;
-
-            bool stationaryTarget = destination is TIOrbitState ||
-                (destination is TIHabState station && station.IsStation) ||
-                (destination is TISpaceFleetState targetFleet && !targetFleet.transferAssigned && !targetFleet.landed);
-            if (!stationaryTarget)
-                return false;
-
-            TIOrbitState target = destination.ref_orbit;
-            TIOrbitState origin = spaceFleet.ref_orbit;
-            if (origin == null || target == null || origin == target || !(origin.barycenter is TISpaceBodyState) ||
-                origin.barycenter != target.barycenter || origin.eccentricity != 0.0 || target.eccentricity != 0.0 ||
-                Math.Abs(origin.semiMajorAxis_m - target.semiMajorAxis_m) > 0.001)
-                return false;
-
-            var departure = new OrbitalElementsState(origin, 0.0, default(DateTime));
-            var arrival = new OrbitalElementsState(target, 0.0, default(DateTime));
-            Vector3d departureNormal = departure.normalVector;
-            Vector3d arrivalNormal = arrival.normalVector;
-            Vector3d intersection = Vector3d.Cross(departureNormal, arrivalNormal);
-            if (!(intersection.sqrMagnitude > PlaneTolerance * PlaneTolerance) ||
-                !(Vector3d.Dot(departureNormal, arrivalNormal) > 0.0))
-                return false;
-
-            // This solver rotates the orbital plane about the common node axis.
-            Vector3d lineOfNodes = intersection.normalized;
-            return Vector3d.Cross(lineOfNodes, departure.ascendingNodeVector).sqrMagnitude <= PlaneTolerance * PlaneTolerance &&
-                Vector3d.Cross(lineOfNodes, arrival.ascendingNodeVector).sqrMagnitude <= PlaneTolerance * PlaneTolerance;
+            __result = FleetTransferPlanner.Request(fleet, destination, callback, out lowestDVFound_kps,
+                usePlaceholderTrajectories, stopOnFirstSuccess, sampleSizeMultiplier, isPlayer);
+            return false;
         }
     }
 
-    [HarmonyPatch(typeof(MasterTransferPlanner), "CalculateInclinationChangeTransfers")]
-    internal static class FiniteThrustPlaneChangePatch
+    [HarmonyPatch(typeof(MasterTransferPlanner), nameof(MasterTransferPlanner.GetEstimatedTransferTime_s))]
+    internal static class UnifiedFleetTransferEstimatePatch
     {
-        private static bool Prefix(
-            ref List<Trajectory> candidateTrajectories, ref double lowestDVFound_kps, IMobileAsset fleet,
-            TISpaceGameState sDestination, TINaturalSpaceObjectState commonBarycenter,
-            double fleetDeltaV_mps, double fleetAcceleration_mps2, ref TransferResult __result)
+        private static bool Prefix(TISpaceAssetState asset, TISpaceObjectState destination, double acceleration_mps2,
+            double deltaV_mps, out bool impossible, ref double __result)
         {
-            if (!(commonBarycenter is TISpaceBodyState body) ||
-                !InclinedOrbitTransferPatch.IsLocalPlaneChange(fleet, sDestination))
-                return true;
-
-            __result = FiniteThrustPlaneChange.Search(candidateTrajectories, ref lowestDVFound_kps,
-                fleet, sDestination, body, fleetDeltaV_mps, fleetAcceleration_mps2);
+            TIOrbitState origin = asset.ref_orbit ?? asset.ref_naturalSpaceObject?.orbits
+                .OrderBy(orbit => orbit.semiMajorAxis_m).FirstOrDefault();
+            if (origin == null)
+            {
+                impossible = true;
+                __result = double.PositiveInfinity;
+                return false;
+            }
+            var fleet = asset.orbitState != null
+                ? new TIVirtualSpaceFleet(asset, (float)acceleration_mps2, (float)deltaV_mps, asset.faction)
+                : new TIVirtualSpaceFleet(origin, (float)acceleration_mps2, (float)deltaV_mps, asset.faction);
+            double eta = double.PositiveInfinity;
+            FleetTransferPlanner.Request(fleet, destination, choices =>
+            {
+                foreach (Trajectory choice in choices)
+                    eta = Math.Min(eta, choice.duration_s);
+            }, out _, false, false, 0.2f, false);
+            impossible = double.IsPositiveInfinity(eta);
+            __result = eta;
             return false;
         }
     }

@@ -1,6 +1,9 @@
 # TI Economic Equalization Overhaul
 
-Current release is **0.11.18** for **Terra Invicta 1.0.65**.
+Current release is **0.11.19** for **Terra Invicta 1.0.65**.
+
+0.11.19 routes fleet transfer requests and estimates through a shared
+planner and fixes ship-completion rendezvous and fleet alarm shortcuts.
 
 0.11.18 restores the ship preview when returning from the transfer planner.
 The player confirmed the preview fix in game and accepted 0.11.17's save
@@ -462,7 +465,7 @@ defaults.
 
 ## Compatibility and save behavior
 
-Version 0.11.18 is built against the installed Terra Invicta 1.0.65 assemblies.
+Version 0.11.19 is built against the installed Terra Invicta 1.0.65 assemblies.
 Verification checks guarded IL and Harmony patch binding, exercises the game's
 template merger for the base game and Dark Skies, and checks the exact assembly
 and asset bundle hashes behind EEO's combat geometry and rendering data.
@@ -480,7 +483,7 @@ states serialized when they were created.
 The current release archive is:
 
 ```text
-artifacts/TIEconomyMod-0.11.18-ti1.0.65.zip
+artifacts/TIEconomyMod-0.11.19-ti1.0.65.zip
 ```
 
 ## Build and verification

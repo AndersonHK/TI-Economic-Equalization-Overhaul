@@ -17,6 +17,41 @@ namespace TIEconomyMod.Core
             AccessTools.MethodDelegate<Func<TIFactionState, double>>(
                 AccessTools.Method(typeof(MasterTransferPlanner), "TransferDurationHardCap"));
 
+        private const double PlaneTolerance = 1e-8;
+
+        internal static bool Supports(IMobileAsset fleet, TIGameState destination)
+        {
+            if (fleet.transferAssigned)
+                return false;
+
+            bool stationaryTarget = destination is TIOrbitState ||
+                (destination is TIHabState station && station.IsStation) ||
+                (destination is TISpaceFleetState targetFleet && !targetFleet.transferAssigned && !targetFleet.landed);
+            if (!stationaryTarget)
+                return false;
+
+            TIOrbitState target = destination.ref_orbit;
+            TIOrbitState origin = fleet.ref_orbit;
+            if (origin == null || target == null || origin == target || !(origin.barycenter is TISpaceBodyState) ||
+                origin.barycenter != target.barycenter || origin.eccentricity != 0.0 || target.eccentricity != 0.0 ||
+                Math.Abs(origin.semiMajorAxis_m - target.semiMajorAxis_m) > 0.001)
+                return false;
+
+            var departure = new OrbitalElementsState(origin, 0.0, default(DateTime));
+            var arrival = new OrbitalElementsState(target, 0.0, default(DateTime));
+            Vector3d departureNormal = departure.normalVector;
+            Vector3d arrivalNormal = arrival.normalVector;
+            Vector3d intersection = Vector3d.Cross(departureNormal, arrivalNormal);
+            if (!(intersection.sqrMagnitude > PlaneTolerance * PlaneTolerance) ||
+                !(Vector3d.Dot(departureNormal, arrivalNormal) > 0.0))
+                return false;
+
+            // This solver rotates the orbital plane about the common node axis.
+            Vector3d lineOfNodes = intersection.normalized;
+            return Vector3d.Cross(lineOfNodes, departure.ascendingNodeVector).sqrMagnitude <= PlaneTolerance * PlaneTolerance &&
+                Vector3d.Cross(lineOfNodes, arrival.ascendingNodeVector).sqrMagnitude <= PlaneTolerance * PlaneTolerance;
+        }
+
         internal static TransferResult Search(
             List<Trajectory> candidates, ref double lowestDv_kps, IMobileAsset fleet,
             TISpaceGameState target, TISpaceBodyState body, double budget, double acceleration)
@@ -81,7 +116,7 @@ namespace TIEconomyMod.Core
 
             double availableTime = DurationCap(fleet.faction) - launch.DifferenceInSeconds(now);
             int maxHalfTurns = (int)Math.Min(32768, Math.Floor(availableTime * omega / Math.PI));
-            var frontier = new List<FiniteThrustPlaneChangeSegment>();
+            var budgets = new BudgetWinners(budget);
             double maxRaise = maximumRadius - radius;
             foreach (double nodeWeight in NodeWeights)
             {
@@ -93,7 +128,7 @@ namespace TIEconomyMod.Core
                     if (rendezvous)
                     {
                         for (int winding = 0; winding <= 3; winding++)
-                            SampleFamily(template, frontier, acceleration, availableTime, maxHalfTurns,
+                            SampleFamily(template, budgets, acceleration, availableTime, maxHalfTurns,
                                 weight, maxRaise, phaseGain + 2 * Math.PI * winding);
                     }
                     else
@@ -101,24 +136,20 @@ namespace TIEconomyMod.Core
                         foreach (double raise in Raises)
                         {
                             if (radius * raise <= maxRaise)
-                                SampleFamily(template, frontier, acceleration, availableTime, maxHalfTurns,
+                                SampleFamily(template, budgets, acceleration, availableTime, maxHalfTurns,
                                     weight, radius * raise, null);
                         }
                     }
                 }
             }
 
-            double bestDv = double.PositiveInfinity;
+            double bestDv = budgets.MinimumCost;
             int initialCandidateCount = candidates.Count;
-            foreach (var route in frontier)
+            foreach (var route in budgets.Earliest.Values)
             {
-                bestDv = Math.Min(bestDv, route.DV_mps);
-                if (route.DV_mps <= budget)
-                {
-                    var trajectory = BuildTrajectory(fleet, target, route, acceleration);
-                    if (trajectory != null)
-                        candidates.Add(trajectory);
-                }
+                var trajectory = BuildTrajectory(fleet, target, route, acceleration);
+                if (trajectory != null)
+                    candidates.Add(trajectory);
             }
             if (double.IsPositiveInfinity(bestDv))
                 return new SearchFailure();
@@ -132,8 +163,31 @@ namespace TIEconomyMod.Core
                 : new TransferResult(TransferResult.Outcome.Fail_InsufficientDV, bestDv);
         }
 
+        private sealed class BudgetWinners
+        {
+            private const double BudgetStep_mps = 100;
+            private readonly double budget;
+            internal readonly Dictionary<double, FiniteThrustPlaneChangeSegment> Earliest =
+                new Dictionary<double, FiniteThrustPlaneChangeSegment>();
+            internal double MinimumCost { get; private set; } = double.PositiveInfinity;
+
+            internal BudgetWinners(double budget) { this.budget = budget; }
+
+            internal void Score(FiniteThrustPlaneChangeSegment trial)
+            {
+                double cost = trial.DV_mps;
+                MinimumCost = Math.Min(MinimumCost, cost);
+                if (cost > budget)
+                    return;
+                double ceiling = Math.Min(budget, (Math.Floor(cost / BudgetStep_mps + 0.5) + 0.5) * BudgetStep_mps);
+                if (!Earliest.TryGetValue(ceiling, out var winner) || trial.Duration_s < winner.Duration_s ||
+                    (trial.Duration_s == winner.Duration_s && cost < winner.DV_mps))
+                    Earliest[ceiling] = trial;
+            }
+        }
+
         private static void SampleFamily(
-            FiniteThrustPlaneChangeSegment template, List<FiniteThrustPlaneChangeSegment> frontier, double acceleration,
+            FiniteThrustPlaneChangeSegment template, BudgetWinners budgets, double acceleration,
             double availableTime, int maxHalfTurns, double weight, double maxRaise, double? phaseGain)
         {
             double baseAngularSpeed = Math.Sqrt(template.gravitationalParameter / Math.Pow(template.referenceRadius_m, 3));
@@ -163,10 +217,7 @@ namespace TIEconomyMod.Core
                 var path = template.Build(turns);
                 if (path.Duration_s > availableTime)
                     break;
-                if (frontier.Exists(other => other.Duration_s <= path.Duration_s && other.DV_mps <= path.DV_mps))
-                    continue;
-                frontier.RemoveAll(other => path.Duration_s <= other.Duration_s && path.DV_mps <= other.DV_mps);
-                frontier.Add(path);
+                budgets.Score(path);
             }
         }
 

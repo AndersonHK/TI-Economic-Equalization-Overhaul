@@ -18,6 +18,10 @@ The [armor rework plan](ship-balance-research/armor-rework-plan.md) uses one uni
 
 ## Current authorities
 
+- [Shared implementation audit](tooling/shared-implementation-audit.md)
+  tracks systems where consumers can use different implementations
+  and records the fixes and parity checks.
+
 - [Stable 0.11.9 acceptance](ship-balance-research/battle-scale/acceptance-0.11.9-2026-11-05.md):
   user confirms stability/performance and requests commit/push before further
   read-only profiling. The accepted runtime is not rebuilt for the checkpoint.
@@ -193,6 +197,10 @@ The [armor rework plan](ship-balance-research/armor-rework-plan.md) uses one uni
   authoritative implemented claim score, `6`/`3` integration thresholds,
   `12` federation gate, historical-claim matrix, Dark Skies ownership gate,
   automated results, and manual-test plan.
+- [Allied Federation and unification plan](allied-federation-and-unification-plan.md)
+  proposes AI acceptance and shared control-point eligibility based on
+  Non-Aggression and Information Sharing, using the June 2044 India–Vietnam
+  save as the regression case.
 - [National unification harmonization table](national-unification-harmonization-table.xlsx):
   formula-driven, filterable scores for all evaluable directional capital
   claims across 2003, 2022, 2026, and 2070, including project unlocks,
@@ -251,6 +259,8 @@ The [armor rework plan](ship-balance-research/armor-rework-plan.md) uses one uni
   records the approved mass-grounded bands and vanilla Luna/Mars comparisons.
 
 ## Historical, exploratory, and deferred material
+
+- [Environment AI and pollution accountability](economy/environment-ai-and-public-opinion-plan.md) traces the live 1.0.65 priority rules, compares them with a 2044 campaign, and proposes emissions-based AI investment and public reaction.
 
 The latest [species-asymmetric tier plan](ship-balance-research/asymmetric-human-alien-tier-plan-2026-11-04.md)
 replaces the earlier mirrored species/tier-6 classification. Its cluster tables

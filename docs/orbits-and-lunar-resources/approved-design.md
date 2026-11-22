@@ -596,3 +596,207 @@ On 2026-11-21 the player confirmed that orbit transfers work in the
 campaign and accepted 0.11.15 as stable. The player also reported
 clusters of slider options with nearly identical delta-v. Exact
 campaign fuel deductions were not part of that report.
+
+### Slider granularity and rendezvous investigation, 2026-11-21
+
+The investigation uses the installed Terra Invicta 1.0.65 assembly
+and the accepted EEO 0.11.15 release.
+
+#### Plane-change slider
+
+The native `RequestTrajectories` replay returned ten options for
+Earth Defense at 27.1 milligees transferring from LEO1 to +40. The
+picker displays these costs to one decimal place.
+
+| Displayed delta-v | Choices | Computed delta-v range | Earliest arrival | Latest arrival |
+|---|---:|---:|---:|---:|
+| 6.8 km/s | 1 | 6.77784 km/s | 12.41 h | 12.41 h |
+| 6.7 km/s | 2 | 6.70459–6.70661 km/s | 13.54 h | 15.26 h |
+| 6.0 km/s | 7 | 6.02437–6.02633 km/s | 15.55 h | 60.28 h |
+
+`FiniteThrustPlaneChange.SampleFamily` keeps a slower candidate if it
+saves any amount of delta-v. The native planner drops dominated
+trajectories and checks approximate equality of both fuel and arrival
+time. `ThrustProfileTool` gives every survivor one slider stop. The
+integrated cost includes the change of plane. The extra revolutions in
+the slowest family save very little fuel once the cost levels off.
+The native hybrid solver samples arrival times on an exponential grid
+and uses the same final dominance filter.
+
+**Required output.** With the existing Earth Defense fixture, the
+public `RequestTrajectories` callback returns exactly these three
+options, including departure wait in the arrival time.
+
+| Displayed delta-v | Arrival | Exact delta-v of the current route |
+|---|---:|---:|
+| 6.8 km/s | 12.41 h | 6.77784 km/s |
+| 6.7 km/s | 13.54 h | 6.70661 km/s |
+| 6.0 km/s | 15.55 h | 6.02633 km/s |
+
+**Planner source and implementation.** Replace the complete
+`MasterTransferPlanner.RequestTrajectories` workflow with one
+EEO-owned solver for all transfers and all callers. Preserve the
+native signature, callback, result, and `lowestDVFound_kps` contract.
+Retire the current model-list and inclination-branch overrides once
+the replacement covers the full contract. Keep the supported transfer
+methods as candidate generators under that solver, including stock
+numerical methods that can be reused without delegating the request.
+The solver owns model selection, timing and target propagation,
+candidate validation, ranking, and results for every route. Match
+ordinary transfers against stock reference cases before switching over.
+
+Route manual Transfer, alarms and other feasibility queries, AI
+planning, fleet retargeting, ship-design estimates, and shipyard
+selection through the same solver. In particular, adapt
+`MasterTransferPlanner.GetEstimatedTransferTime_s`, which
+`AI_GetBestShipyardForBuild` calls and which currently substitutes a
+generic estimate for several routes. Make quick, estimate, and
+placeholder behavior explicit request modes. A feasibility query
+may return on its first fully valid candidate. A display placeholder
+cannot act as proof of feasibility. Completed and in-flight stock
+and EEO trajectory types remain readable, and any new planning request
+uses the shared solver.
+
+Generate options by asking a series of fuel-budget questions. Establish
+the fastest affordable route and the minimum feasible cost with a
+bounded pass over the existing trajectory families. Use meaningful fuel
+ceilings over that range. In the reference case, start just below
+6.05 km/s, the upper edge of the fuel floor's display band, and step
+up in 0.1 km/s increments. Always enforce the fleet's exact remaining
+delta-v as a hard ceiling. Score
+each feasible trial by which ceilings it satisfies and how early it
+arrives. Within a ceiling, keep the earliest certified arrival across
+families. A tighter ceiling that yields that same winner costs no
+additional slider stop. For example, a ceiling just below 6.05 km/s
+admits the 15.55 h route, so later trials near 6.024 km/s cannot win it.
+A fleet with less than 6.02633 km/s still gets a search at its actual
+budget and can use a slower affordable route. Keep the exact fuel floor
+for insufficient-delta-v reporting.
+
+Evaluate shared trials once, use elapsed time and certified thrust
+bounds to skip work that cannot improve any remaining budget winner,
+and build full trajectory segments only for selected winners. The
+shared solver publishes those segments directly. Apply the budget
+search where it improves choice generation and preserve validated
+stock behavior for ordinary routes inside the shared solver. The same segment still
+controls the preview, position, velocity, and fuel charge. Test the
+three-row callback before tuning performance or adding a faster
+high-delta-v family. Any faster option needs an independently verified
+two-body path with correct endpoints and thrust, and a separate
+comparison against the three-option baseline. Add a tight-budget
+fixture, a genuinely cheaper slow route, and stock-route controls.
+
+**Migration and validation.** Inventory native and EEO call sites
+before implementation. Capture stock reference cases for same-orbit
+phasing, ordinary local and interplanetary routes, slow and fast
+propulsion, rendezvous and interception, aborted and retargeted
+transfers, and insufficient fuel. Compare availability, timing,
+budget reporting, and execution. Add the three-row LEO reference and
+hard-budget case, plus same-state comparisons of quick, full, AI,
+and estimate requests. Implement and validate the replacement behind
+the native signature before activating it for every consumer in one
+release. Use the existing trajectory serialization round trips for
+both stock and EEO in-flight saves. Track the current splits in the
+[shared implementation audit](../tooling/shared-implementation-audit.md).
+
+#### Ship completion and sortie shortcuts
+
+Manual Transfer returns multiple usable routes in both reported cases.
+The relevant stock path is
+`NotificationScreenController.SetCustomNotificationButtons`. The
+planet filter in the manual picker can independently omit inbound
+fleets, but it does not decide which notification shortcuts appear.
+
+- **Ship completed.** `LogShipComplete` installs
+  `JoinOrRallyToFleet` delegates. The handler collects ships eligible
+  for immediate merge at the same station, then tests transfer targets
+  from `shipyard.ref_orbit.fleetsInOrbit` only. An Earth Defense fleet
+  in LEO is excluded from a shipyard in Extreme Earth Orbit before
+  `AnyValidTrajectory` can run. Transfer can readily offer a route
+  once the player selects the fleet. The completion button for a
+  transfer is **Launch to** and opens the regular trajectory picker.
+  Immediate **Join** uses `MergeFleetOperation` and its co-location
+  checks. Expand **Launch to** discovery to the planet's body, using
+  the shipyard orbit first and then the other orbits. Check friendly
+  fleets in orbit and at orbital stations, deduplicate the pools, and
+  retain the operation and trajectory feasibility checks. Regress
+  Extreme Earth Orbit ship completion with Earth Defense docked in LEO.
+- **Inbound fleet alarm.** The launch warning offers **Set Alarm**.
+  When the alarm fires, `OnFleetAlarm` appends candidates from the
+  destination orbit before candidates from the other orbits. It uses
+  the absolute notification button slot to index the resulting sortie
+  list. **Select Fleet** occupies slot zero. With only a feasible LEO
+  defender, the alarm shows zero sorties. With feasible LEO and Extreme
+  Orbit defenders in that order, it skips the LEO defender and shows
+  the Extreme Orbit defender. This matches the reported asymmetry if
+  both fleets pass the probe. Use an independent sortie index in the
+  alarm handler. The six-candidate limit is incidental to these cases.
+- **Fleet arrival.** The sortie works after the enemy enters LEO in
+  this case. `OnFleetArrival` uses an independent sortie index and
+  evaluates a target that has already inserted into orbit. Use that
+  working notification as a control.
+
+`AnyValidTrajectory` calls the stock planner with
+`stopOnFirstSuccess: true`. Manual Transfer uses the full search.
+The fast path can stop on a candidate before `RequestTrajectories`
+adds the moving target's remaining delta-v and applies final budget and
+duration checks. The early candidate can then be discarded with no
+alternate left. Compare the two modes at the alarm timestamp, with
+identical fleet fuel and target trajectory. Record whether the LEO
+defender enters the alarm's pool, passes `AnyValidTrajectory`, and
+occupies the first slot in the feasible-fleet list. Reproduce both
+the one-defender and LEO-plus-Extreme-Orbit cases. Check that the
+button opens the existing transfer picker for the correct pair.
+
+If the LEO defender reaches the probe and only the full request
+succeeds, cover the case in the shared solver. Both request modes
+apply the same final fuel, duration, and target-state checks. If both modes
+fail before arrival, trace the same-orbit branch, which caps the
+regular hybrid window at insertion while orbit phasing runs as a
+separate model. This determines whether the alarm needs
+post-insertion phasing or whether the existing search is already
+returning an eligible solution. Preserve native action eligibility,
+visibility, and arrival behavior. The acceptance scenario is a
+working LEO sortie button at the alarm for an incoming alien fleet
+bound for LEO, with the arrival notification as a control.
+
+### Unified planner implementation checkpoint
+
+The implementation owns the fleet request and estimate entry points.
+Native numerical searches serve as candidate generators inside the
+shared request workflow. Every candidate passes the same final
+fuel, time, and intercept checks. The finite-thrust search scores
+trials under discrete fuel ceilings during generation and preserves
+the exact fuel floor. Fleet notification changes broaden the
+ship-completion search to the planet and correct the alarm's
+candidate index after the Select Fleet button.
+
+0.11.19 passed full release verification and deployed 59 hash-verified
+files for Terra Invicta 1.0.65. The DLL SHA-256 is
+`8A58459952FC1EF927CBBA94DDFD3DB645EE3FAD48CA4CB4C4B3E14A5A9FC623`.
+The public request fixture returned the required three slider rows.
+The quick request, virtual fleet, and shipyard ETA checks passed,
+along with station rendezvous, the tight fuel budget, 1 milligee
+flight, and native save serialization. The notification validator
+verified one ship-completion pool expansion and both alarm index
+changes in the installed game method's IL.
+
+A headless replay used the 2045-05-23 manual save's clock, Earth
+Defense's orbit and propulsion, and Victor-390's four inbound
+trajectory segments and destination. The harness reconstructed the
+required states and used a managed replacement for Unity's matrix
+inversion in the torch search. The installed package retains the
+game's matrix implementation. At five days and fourteen hours
+before insertion, both the shared feasibility query and manual
+planner found a usable sortie. The full request returned 34 choices,
+including a 0.237 km/s intercept about nine minutes before insertion
+and a 0.0064 km/s rendezvous about 83 minutes after insertion. The quick request stopped after finding an affordable
+candidate. The stock quick query also found a candidate in this
+fixture, supporting the notification index as the cause of the
+missing button. The same-planet ship-completion pool included Earth
+Defense from Extreme Earth Orbit. Under the same harness, stock and
+shared requests returned identical arrival times and delta-v for
+one LEO1-to-LEO2 option and 25 Earth-to-Mars options.
+
+On 2026-11-22 the player confirmed the work was validated and requested
+the release checkpoint.
